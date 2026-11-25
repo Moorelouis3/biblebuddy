@@ -2992,6 +2992,598 @@
   "ref": "Ezra 7:28"
  },
  {
+  "id": "ezra-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Persia was reigning when Ezra went up to Jerusalem?",
+  "choices": [
+   "Artaxerxes",
+   "Cyrus",
+   "Darius",
+   "Nebuchadnezzar"
+  ],
+  "answer": 0,
+  "explanation": "Ezra went up in the reign of Artaxerxes king of Persia.",
+  "ref": "Ezra 7:1"
+ },
+ {
+  "id": "ezra-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which city did Ezra go up?",
+  "choices": [
+   "Susa",
+   "Nineveh",
+   "Damascus",
+   "Babylon"
+  ],
+  "answer": 3,
+  "explanation": "This Ezra went up from Babylon.",
+  "ref": "Ezra 7:6"
+ },
+ {
+  "id": "ezra-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did Ezra and the people go up?",
+  "choices": [
+   "Bethel",
+   "Samaria",
+   "Jerusalem",
+   "Shechem"
+  ],
+  "answer": 2,
+  "explanation": "They went up unto Jerusalem in the seventh year of Artaxerxes the king.",
+  "ref": "Ezra 7:7"
+ },
+ {
+  "id": "ezra-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Ezra traced his family back to which chief priest?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "David",
+   "Zadok"
+  ],
+  "answer": 1,
+  "explanation": "Ezra was the son of Seraiah, back to Eleazar, the son of Aaron the chief priest.",
+  "ref": "Ezra 7:5"
+ },
+ {
+  "id": "ezra-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which group went up to Jerusalem with the priests and the Levites?",
+  "choices": [
+   "The singers",
+   "The prophets",
+   "The soldiers",
+   "The shepherds"
+  ],
+  "answer": 0,
+  "explanation": "There went up some of the priests, the Levites, the singers, the porters, and the Nethinims.",
+  "ref": "Ezra 7:7"
+ },
+ {
+  "id": "ezra-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who could go up to Jerusalem with Ezra, by the king's decree?",
+  "choices": [
+   "Only the priests",
+   "Only men of Judah",
+   "Only those chosen by lot",
+   "Any Israelite who was willing"
+  ],
+  "answer": 3,
+  "explanation": "The king decreed that all of Israel minded of their own freewill to go up to Jerusalem might go with Ezra.",
+  "ref": "Ezra 7:13"
+ },
+ {
+  "id": "ezra-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who had put it into the king's heart to beautify the house of the LORD?",
+  "choices": [
+   "The king's counsellors",
+   "Ezra the scribe",
+   "The LORD God of their fathers",
+   "The priests of Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Ezra blessed the LORD God of our fathers, which hath put such a thing in the king's heart.",
+  "ref": "Ezra 7:27"
+ },
+ {
+  "id": "ezra-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title does Artaxerxes give himself at the start of his letter?",
+  "choices": [
+   "Lord of the earth",
+   "King of kings",
+   "Ruler of Babylon",
+   "Great king of Persia"
+  ],
+  "answer": 1,
+  "explanation": "The letter begins, Artaxerxes, king of kings, unto Ezra the priest.",
+  "ref": "Ezra 7:12"
+ },
+ {
+  "id": "ezra-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the king and his counsellors freely offered to the God of Israel?",
+  "choices": [
+   "Silver and gold",
+   "Land and cattle",
+   "Horses and chariots",
+   "Wheat and wine"
+  ],
+  "answer": 0,
+  "explanation": "Ezra was to carry the silver and gold which the king and his counsellors had freely offered.",
+  "ref": "Ezra 7:15"
+ },
+ {
+  "id": "ezra-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many counsellors joined the king in sending Ezra?",
+  "choices": [
+   "Three",
+   "Ten",
+   "Twelve",
+   "Seven"
+  ],
+  "answer": 3,
+  "explanation": "Ezra was sent of the king, and of his seven counsellors.",
+  "ref": "Ezra 7:14"
+ },
+ {
+  "id": "ezra-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezra sent to enquire about?",
+  "choices": [
+   "Babylon and Persia",
+   "The temple treasures only",
+   "Judah and Jerusalem",
+   "The borders of the empire"
+  ],
+  "answer": 2,
+  "explanation": "He was sent to enquire concerning Judah and Jerusalem, according to the law of his God.",
+  "ref": "Ezra 7:14"
+ },
+ {
+  "id": "ezra-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezra to buy speedily with the silver and gold?",
+  "choices": [
+   "Doves and pigeons",
+   "Bullocks, rams and lambs",
+   "Oxen and camels",
+   "Goats and calves"
+  ],
+  "answer": 1,
+  "explanation": "The money was to buy bullocks, rams, lambs, with their meat offerings and drink offerings.",
+  "ref": "Ezra 7:17"
+ },
+ {
+  "id": "ezra-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezra to do with the vessels given for the service of the house of God?",
+  "choices": [
+   "Deliver them before the God of Jerusalem",
+   "Melt them for the treasury",
+   "Hide them in the hills",
+   "Sell them to pay the builders"
+  ],
+  "answer": 0,
+  "explanation": "The vessels were to be delivered before the God of Jerusalem.",
+  "ref": "Ezra 7:19"
+ },
+ {
+  "id": "ezra-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Ezra to get whatever else the house of God needed?",
+  "choices": [
+   "The temple storerooms",
+   "The governors' houses",
+   "The people's gifts",
+   "The king's treasure house"
+  ],
+  "answer": 3,
+  "explanation": "Whatever more is needful, bestow it out of the king's treasure house.",
+  "ref": "Ezra 7:20"
+ },
+ {
+  "id": "ezra-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the king command to do speedily whatever Ezra the priest required?",
+  "choices": [
+   "The priests of Jerusalem",
+   "The Levites at the river",
+   "The treasurers beyond the river",
+   "The princes of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "The king made a decree to all the treasurers which are beyond the river.",
+  "ref": "Ezra 7:21"
+ },
+ {
+  "id": "ezra-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why must the work for the house of God be done diligently, said the king?",
+  "choices": [
+   "So the king could be praised",
+   "So no wrath fall on the king's realm",
+   "So the work would end in a year",
+   "So the people would pay less"
+  ],
+  "answer": 1,
+  "explanation": "The king asked, why should there be wrath against the realm of the king and his sons?",
+  "ref": "Ezra 7:23"
+ },
+ {
+  "id": "ezra-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which groups did the king exempt from toll, tribute or custom?",
+  "choices": [
+   "Priests, Levites, singers and porters",
+   "Merchants and travellers",
+   "Soldiers and governors",
+   "Farmers and shepherds"
+  ],
+  "answer": 0,
+  "explanation": "It was not lawful to impose toll, tribute, or custom on the priests, Levites, singers, porters, Nethinims.",
+  "ref": "Ezra 7:24"
+ },
+ {
+  "id": "ezra-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was one penalty for refusing to do the law of God and the law of the king?",
+  "choices": [
+   "Forced labour",
+   "Public beating",
+   "Branding",
+   "Banishment"
+  ],
+  "answer": 3,
+  "explanation": "Judgment was to be executed on the disobedient, whether unto death, or banishment, or confiscation of goods, or imprisonment.",
+  "ref": "Ezra 7:26"
+ },
+ {
+  "id": "ezra-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year of Artaxerxes did Ezra go up?",
+  "choices": [
+   "The first",
+   "The twentieth",
+   "The seventh",
+   "The fortieth"
+  ],
+  "answer": 2,
+  "explanation": "They went up unto Jerusalem in the seventh year of Artaxerxes the king.",
+  "ref": "Ezra 7:7"
+ },
+ {
+  "id": "ezra-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Ezra?",
+  "choices": [
+   "Hilkiah",
+   "Seraiah",
+   "Zadok",
+   "Azariah"
+  ],
+  "answer": 1,
+  "explanation": "Ezra the son of Seraiah, the son of Azariah.",
+  "ref": "Ezra 7:1"
+ },
+ {
+  "id": "ezra-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What title does the king use for Ezra's God in his letter?",
+  "choices": [
+   "The God of heaven",
+   "The Lord of hosts",
+   "The God of Babylon",
+   "The King of Israel"
+  ],
+  "answer": 0,
+  "explanation": "The king calls Ezra a scribe of the law of the God of heaven.",
+  "ref": "Ezra 7:12"
+ },
+ {
+  "id": "ezra-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom was Ezra to teach?",
+  "choices": [
+   "Only the king's children",
+   "The priests of Babylon",
+   "The Persian judges",
+   "Those who did not know God's laws"
+  ],
+  "answer": 3,
+  "explanation": "Ezra was to set judges and teach them that know not the laws of his God.",
+  "ref": "Ezra 7:25"
+ },
+ {
+  "id": "ezra-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where besides the king's gift was Ezra to collect silver and gold?",
+  "choices": [
+   "In the cities of Judah",
+   "In the land of Egypt",
+   "In all the province of Babylon",
+   "In the temple at Susa"
+  ],
+  "answer": 2,
+  "explanation": "The king told Ezra to take all the silver and gold he could find in all the province of Babylon.",
+  "ref": "Ezra 7:16"
+ },
+ {
+  "id": "ezra-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of silver could Ezra ask from the treasurers?",
+  "choices": [
+   "An hundred",
+   "Fifty",
+   "Two hundred",
+   "Five hundred"
+  ],
+  "answer": 0,
+  "explanation": "The decree allowed up to an hundred talents of silver.",
+  "ref": "Ezra 7:22"
+ },
+ {
+  "id": "ezra-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was given without prescribing how much?",
+  "choices": [
+   "Wheat",
+   "Oil",
+   "Wine",
+   "Salt"
+  ],
+  "answer": 3,
+  "explanation": "The decree gave an hundred measures of wheat, baths of wine and oil, and salt without prescribing how much.",
+  "ref": "Ezra 7:22"
+ },
+ {
+  "id": "ezra-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Up to a hundred measures of which grain did the king allow?",
+  "choices": [
+   "Barley",
+   "Millet",
+   "Wheat",
+   "Spelt"
+  ],
+  "answer": 2,
+  "explanation": "The decree allowed an hundred measures of wheat.",
+  "ref": "Ezra 7:22"
+ },
+ {
+  "id": "ezra-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what day of the first month did Ezra begin to go up from Babylon?",
+  "choices": [
+   "The seventh day",
+   "The first day",
+   "The twelfth day",
+   "The fifteenth day"
+  ],
+  "answer": 1,
+  "explanation": "Upon the first day of the first month began he to go up from Babylon.",
+  "ref": "Ezra 7:9"
+ },
+ {
+  "id": "ezra-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month did Ezra come to Jerusalem?",
+  "choices": [
+   "The fifth month",
+   "The first month",
+   "The seventh month",
+   "The tenth month"
+  ],
+  "answer": 0,
+  "explanation": "On the first day of the fifth month came he to Jerusalem.",
+  "ref": "Ezra 7:8\u20139"
+ },
+ {
+  "id": "ezra-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Ezra's ancestor Abishua was the son of whom?",
+  "choices": [
+   "Eleazar",
+   "Aaron",
+   "Zadok",
+   "Phinehas"
+  ],
+  "answer": 3,
+  "explanation": "The list reads: the son of Abishua, the son of Phinehas, the son of Eleazar.",
+  "ref": "Ezra 7:5"
+ },
+ {
+  "id": "ezra-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Ezra's ancestor Zadok was the son of whom?",
+  "choices": [
+   "Shallum",
+   "Meraioth",
+   "Ahitub",
+   "Bukki"
+  ],
+  "answer": 2,
+  "explanation": "The list reads: the son of Shallum, the son of Zadok, the son of Ahitub.",
+  "ref": "Ezra 7:2"
+ },
+ {
+  "id": "ezra-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which group of temple servants is named among those who went up?",
+  "choices": [
+   "The Gibeonites",
+   "The Nethinims",
+   "The Rechabites",
+   "The Nazarites"
+  ],
+  "answer": 1,
+  "explanation": "Those who went up included the Nethinims, with the priests, Levites, singers and porters.",
+  "ref": "Ezra 7:7"
+ },
+ {
+  "id": "ezra-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What offerings were to go with the bullocks, rams and lambs?",
+  "choices": [
+   "Meat offerings and drink offerings",
+   "Incense and first fruits",
+   "Wave offerings and tithes",
+   "Peace offerings and vows"
+  ],
+  "answer": 0,
+  "explanation": "The king wrote of bullocks, rams, lambs, with their meat offerings and their drink offerings.",
+  "ref": "Ezra 7:17"
+ },
+ {
+  "id": "ezra-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Ezra prepared his heart to teach in Israel?",
+  "choices": [
+   "Songs and psalms",
+   "Parables",
+   "The history of the kings",
+   "Statutes and judgments"
+  ],
+  "answer": 3,
+  "explanation": "Ezra prepared his heart to seek the law of the LORD, and to do it, and to teach in Israel statutes and judgments.",
+  "ref": "Ezra 7:10"
+ },
+ {
+  "id": "ezra-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had God extended to Ezra before the king and his counsellors?",
+  "choices": [
+   "Wealth",
+   "Wisdom",
+   "Mercy",
+   "Victory"
+  ],
+  "answer": 2,
+  "explanation": "God hath extended mercy unto me before the king, and his counsellors.",
+  "ref": "Ezra 7:28"
+ },
+ {
+  "id": "ezra-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom were Ezra's magistrates and judges to judge?",
+  "choices": [
+   "Only the priests of Jerusalem",
+   "All the people beyond the river who knew God's laws",
+   "The princes of Persia",
+   "The Levites of the temple"
+  ],
+  "answer": 1,
+  "explanation": "Judges were set to judge all the people beyond the river, all such as know the laws of God.",
+  "ref": "Ezra 7:25"
+ },
+ {
+  "id": "ezra-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people and priests offer willingly for the house of God?",
+  "choices": [
+   "On the altar of the house of God in Jerusalem",
+   "At the river of Ahava",
+   "In the king's palace",
+   "In the province of Babylon"
+  ],
+  "answer": 0,
+  "explanation": "The animals were to be offered upon the altar of the house of your God in Jerusalem.",
+  "ref": "Ezra 7:16"
+ },
+ {
+  "id": "ezra-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what was Ezra to judge the matter of Judah and Jerusalem?",
+  "choices": [
+   "The law of his God",
+   "The law of Persia",
+   "The words of the prophets",
+   "The counsel of the elders"
+  ],
+  "answer": 3,
+  "explanation": "Ezra was to enquire concerning Judah and Jerusalem according to the law of thy God which is in thine hand.",
+  "ref": "Ezra 7:16"
+ },
+ {
   "id": "old-ezra-8-1",
   "chapter": 8,
   "level": "beginner",
@@ -3070,6 +3662,646 @@
   "answer": 1,
   "explanation": "The treasures were carefully weighed into the temple's custody.",
   "ref": "Ezra 8:33\u201334"
+ },
+ {
+  "id": "ezra-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "At which river did Ezra gather the returning people?",
+  "choices": [
+   "Ahava",
+   "Chebar",
+   "Jordan",
+   "Euphrates"
+  ],
+  "answer": 0,
+  "explanation": "I gathered them together to the river that runneth to Ahava; and there abode we in tents three days.",
+  "ref": "Ezra 8:15"
+ },
+ {
+  "id": "ezra-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Ezra find none of among the people at Ahava?",
+  "choices": [
+   "The priests",
+   "The princes",
+   "The singers",
+   "The sons of Levi"
+  ],
+  "answer": 3,
+  "explanation": "Ezra viewed the people and the priests, and found there none of the sons of Levi.",
+  "ref": "Ezra 8:15"
+ },
+ {
+  "id": "ezra-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra proclaim at the river of Ahava?",
+  "choices": [
+   "A feast",
+   "A battle",
+   "A fast",
+   "A census"
+  ],
+  "answer": 2,
+  "explanation": "Then I proclaimed a fast there, at the river of Ahava, that we might afflict ourselves before our God.",
+  "ref": "Ezra 8:21"
+ },
+ {
+  "id": "ezra-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra refuse to ask the king for on the journey?",
+  "choices": [
+   "Gold and silver",
+   "Soldiers and horsemen",
+   "Food and water",
+   "A letter of safe passage"
+  ],
+  "answer": 1,
+  "explanation": "Ezra was ashamed to require of the king a band of soldiers and horsemen to help against the enemy.",
+  "ref": "Ezra 8:22"
+ },
+ {
+  "id": "ezra-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many of the chief priests did Ezra separate to guard the treasure?",
+  "choices": [
+   "Twelve",
+   "Three",
+   "Seven",
+   "Twenty"
+  ],
+  "answer": 0,
+  "explanation": "Then I separated twelve of the chief of the priests.",
+  "ref": "Ezra 8:24"
+ },
+ {
+  "id": "ezra-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What delivered the people from the enemy and from those who lay in wait?",
+  "choices": [
+   "Soldiers from the king",
+   "The speed of their horses",
+   "A cloud by day",
+   "The hand of their God"
+  ],
+  "answer": 3,
+  "explanation": "The hand of our God was upon us, and he delivered us from the hand of the enemy.",
+  "ref": "Ezra 8:31"
+ },
+ {
+  "id": "ezra-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the returned captives offer to the God of Israel in Jerusalem?",
+  "choices": [
+   "Incense only",
+   "Wave sheaves",
+   "Burnt offerings",
+   "First fruits of the harvest"
+  ],
+  "answer": 2,
+  "explanation": "The children of the captivity offered burnt offerings unto the God of Israel.",
+  "ref": "Ezra 8:35"
+ },
+ {
+  "id": "ezra-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra tell the twelve priests about the vessels?",
+  "choices": [
+   "They belong to the king",
+   "They are holy unto the LORD",
+   "They must be hidden",
+   "They are cursed"
+  ],
+  "answer": 1,
+  "explanation": "Ezra said, Ye are holy unto the LORD; the vessels are holy also.",
+  "ref": "Ezra 8:28"
+ },
+ {
+  "id": "ezra-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which place did Ezra send men to get ministers for the house of God?",
+  "choices": [
+   "Casiphia",
+   "Babylon",
+   "Susa",
+   "Shushan"
+  ],
+  "answer": 0,
+  "explanation": "Ezra sent them with commandment unto Iddo the chief at the place Casiphia.",
+  "ref": "Ezra 8:17"
+ },
+ {
+  "id": "ezra-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the silver, gold and vessels finally weighed?",
+  "choices": [
+   "At the river Ahava",
+   "In the king's palace",
+   "In the tents of the priests",
+   "In the house of God at Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "On the fourth day the silver and the gold and the vessels were weighed in the house of our God.",
+  "ref": "Ezra 8:33"
+ },
+ {
+  "id": "ezra-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the people camp in tents at Ahava?",
+  "choices": [
+   "One day",
+   "Seven days",
+   "Three days",
+   "Forty days"
+  ],
+  "answer": 2,
+  "explanation": "There abode we in tents three days.",
+  "ref": "Ezra 8:15"
+ },
+ {
+  "id": "ezra-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Ezra ashamed to ask the king for soldiers?",
+  "choices": [
+   "The king had already refused",
+   "He had told the king God's hand is on those who seek him",
+   "The way was safe",
+   "He feared the king's anger"
+  ],
+  "answer": 1,
+  "explanation": "They had said, The hand of our God is upon all them for good that seek him.",
+  "ref": "Ezra 8:22"
+ },
+ {
+  "id": "ezra-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did Ezra send for ministers at Casiphia?",
+  "choices": [
+   "Iddo the chief",
+   "Meremoth the priest",
+   "Sherebiah",
+   "Shemaiah"
+  ],
+  "answer": 0,
+  "explanation": "Ezra sent them with commandment unto Iddo the chief at the place Casiphia.",
+  "ref": "Ezra 8:17"
+ },
+ {
+  "id": "ezra-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezra ask God for through the fast at Ahava?",
+  "choices": [
+   "Rain for the journey",
+   "Victory over Persia",
+   "Wealth for the temple",
+   "A right way for them, their little ones and their goods"
+  ],
+  "answer": 3,
+  "explanation": "The fast was to seek of God a right way for us, and for our little ones, and for all our substance.",
+  "ref": "Ezra 8:21"
+ },
+ {
+  "id": "ezra-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what day of the first month did they leave the river of Ahava?",
+  "choices": [
+   "The first day",
+   "The fifteenth day",
+   "The twelfth day",
+   "The twentieth day"
+  ],
+  "answer": 2,
+  "explanation": "We departed from the river of Ahava on the twelfth day of the first month.",
+  "ref": "Ezra 8:31"
+ },
+ {
+  "id": "ezra-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day in Jerusalem were the silver, gold and vessels weighed?",
+  "choices": [
+   "The first day",
+   "The fourth day",
+   "The third day",
+   "The seventh day"
+  ],
+  "answer": 1,
+  "explanation": "We came to Jerusalem, and abode there three days. Now on the fourth day was the silver and the gold weighed.",
+  "ref": "Ezra 8:32\u201333"
+ },
+ {
+  "id": "ezra-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many bullocks did they offer for all Israel?",
+  "choices": [
+   "Twelve",
+   "Seven",
+   "Ninety-six",
+   "Seventy-seven"
+  ],
+  "answer": 0,
+  "explanation": "They offered twelve bullocks for all Israel.",
+  "ref": "Ezra 8:35"
+ },
+ {
+  "id": "ezra-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the twelve he goats offered as?",
+  "choices": [
+   "A peace offering",
+   "A thank offering",
+   "A drink offering",
+   "A sin offering"
+  ],
+  "answer": 3,
+  "explanation": "They offered twelve he goats for a sin offering.",
+  "ref": "Ezra 8:35"
+ },
+ {
+  "id": "ezra-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did they deliver the king's commissions?",
+  "choices": [
+   "The priests and Levites",
+   "The princes of Judah",
+   "The king's lieutenants and governors",
+   "The elders of Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "They delivered the king's commissions unto the king's lieutenants, and to the governors on this side the river.",
+  "ref": "Ezra 8:36"
+ },
+ {
+  "id": "ezra-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king's lieutenants and governors do for the people and the house of God?",
+  "choices": [
+   "They taxed them",
+   "They furthered them",
+   "They hindered them",
+   "They ignored them"
+  ],
+  "answer": 1,
+  "explanation": "They furthered the people, and the house of God.",
+  "ref": "Ezra 8:36"
+ },
+ {
+  "id": "ezra-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long were the twelve priests to keep watch over the treasure?",
+  "choices": [
+   "Until it was weighed in Jerusalem",
+   "Until the king's return",
+   "Until the first month ended",
+   "Until the temple was finished"
+  ],
+  "answer": 0,
+  "explanation": "Watch ye, and keep them, until ye weigh them before the chief of the priests and the Levites at Jerusalem.",
+  "ref": "Ezra 8:29"
+ },
+ {
+  "id": "ezra-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Ezra's men ask Iddo and his brethren to bring?",
+  "choices": [
+   "Soldiers for the road",
+   "Singers for the feast",
+   "Builders for the walls",
+   "Ministers for the house of God"
+  ],
+  "answer": 3,
+  "explanation": "They were to bring unto us ministers for the house of our God.",
+  "ref": "Ezra 8:17"
+ },
+ {
+  "id": "ezra-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Ezra told the king about those who forsake God?",
+  "choices": [
+   "They would be sent to Persia",
+   "They would be forgiven",
+   "His power and wrath is against them",
+   "They would lose their land"
+  ],
+  "answer": 2,
+  "explanation": "His power and his wrath is against all them that forsake him.",
+  "ref": "Ezra 8:22"
+ },
+ {
+  "id": "ezra-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had offered the silver, gold and vessels for the house of God?",
+  "choices": [
+   "Only the priests",
+   "The king, his lords and all Israel present",
+   "The people of Babylon",
+   "The governors beyond the river"
+  ],
+  "answer": 1,
+  "explanation": "The offering was that which the king, and his counsellors, and his lords, and all Israel there present, had offered.",
+  "ref": "Ezra 8:25"
+ },
+ {
+  "id": "ezra-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two named priests were among the twelve Ezra separated?",
+  "choices": [
+   "Sherebiah and Hashabiah",
+   "Meremoth and Eleazar",
+   "Iddo and Zechariah",
+   "Jozabad and Noadiah"
+  ],
+  "answer": 0,
+  "explanation": "Ezra separated twelve of the chief of the priests, Sherebiah, Hashabiah, and ten of their brethren.",
+  "ref": "Ezra 8:24"
+ },
+ {
+  "id": "ezra-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of silver did Ezra weigh into the hands of the priests?",
+  "choices": [
+   "One hundred",
+   "Two hundred and twenty",
+   "Three hundred",
+   "Six hundred and fifty"
+  ],
+  "answer": 3,
+  "explanation": "I even weighed unto their hand six hundred and fifty talents of silver.",
+  "ref": "Ezra 8:26"
+ },
+ {
+  "id": "ezra-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents were the silver vessels?",
+  "choices": [
+   "Fifty",
+   "Six hundred",
+   "An hundred",
+   "Twenty"
+  ],
+  "answer": 2,
+  "explanation": "Ezra weighed silver vessels an hundred talents.",
+  "ref": "Ezra 8:26"
+ },
+ {
+  "id": "ezra-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many basons of gold were weighed out?",
+  "choices": [
+   "Twelve",
+   "Twenty",
+   "Seventy",
+   "One hundred"
+  ],
+  "answer": 1,
+  "explanation": "Ezra also weighed twenty basons of gold, of a thousand drams.",
+  "ref": "Ezra 8:27"
+ },
+ {
+  "id": "ezra-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The two vessels of fine copper were as precious as what?",
+  "choices": [
+   "Gold",
+   "Silver",
+   "Jewels",
+   "Ivory"
+  ],
+  "answer": 0,
+  "explanation": "Two vessels of fine copper, precious as gold.",
+  "ref": "Ezra 8:27"
+ },
+ {
+  "id": "ezra-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many rams were offered as a burnt offering?",
+  "choices": [
+   "Twelve",
+   "Seventy and seven",
+   "Two hundred",
+   "Ninety and six"
+  ],
+  "answer": 3,
+  "explanation": "They offered ninety and six rams.",
+  "ref": "Ezra 8:35"
+ },
+ {
+  "id": "ezra-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many lambs were offered as a burnt offering?",
+  "choices": [
+   "Ninety and six",
+   "Twelve",
+   "Seventy and seven",
+   "Fifty"
+  ],
+  "answer": 2,
+  "explanation": "They offered seventy and seven lambs.",
+  "ref": "Ezra 8:35"
+ },
+ {
+  "id": "ezra-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who came with eighteen sons and brethren as ministers from Casiphia?",
+  "choices": [
+   "Hashabiah",
+   "Sherebiah",
+   "Iddo",
+   "Elnathan"
+  ],
+  "answer": 1,
+  "explanation": "They brought a man of understanding, and Sherebiah, with his sons and his brethren, eighteen.",
+  "ref": "Ezra 8:18"
+ },
+ {
+  "id": "ezra-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who came with twenty of his brethren and their sons, of the sons of Merari?",
+  "choices": [
+   "Hashabiah",
+   "Sherebiah",
+   "Jeshaiah",
+   "Meshullam"
+  ],
+  "answer": 0,
+  "explanation": "Hashabiah, and with him Jeshaiah of the sons of Merari, his brethren and their sons, twenty.",
+  "ref": "Ezra 8:19"
+ },
+ {
+  "id": "ezra-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Nethinims, appointed by David and the princes, came to serve the Levites?",
+  "choices": [
+   "Eighteen",
+   "Twenty",
+   "Six hundred and fifty",
+   "Two hundred and twenty"
+  ],
+  "answer": 3,
+  "explanation": "Of the Nethinims, whom David and the princes had appointed, two hundred and twenty.",
+  "ref": "Ezra 8:20"
+ },
+ {
+  "id": "ezra-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the priest, son of Uriah, by whose hand the treasure was weighed?",
+  "choices": [
+   "Eleazar",
+   "Jozabad",
+   "Meremoth",
+   "Noadiah"
+  ],
+  "answer": 2,
+  "explanation": "The silver was weighed by the hand of Meremoth the son of Uriah the priest.",
+  "ref": "Ezra 8:33"
+ },
+ {
+  "id": "ezra-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Which Levite, son of Binnui, was with those who weighed the treasure?",
+  "choices": [
+   "Jozabad",
+   "Noadiah",
+   "Eleazar",
+   "Meremoth"
+  ],
+  "answer": 1,
+  "explanation": "With them was Jozabad the son of Jeshua, and Noadiah the son of Binnui, Levites.",
+  "ref": "Ezra 8:33"
+ },
+ {
+  "id": "ezra-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son of Phinehas was named of those who went up?",
+  "choices": [
+   "Gershom",
+   "Daniel",
+   "Hattush",
+   "Zechariah"
+  ],
+  "answer": 0,
+  "explanation": "Of the sons of Phinehas; Gershom.",
+  "ref": "Ezra 8:2"
+ },
+ {
+  "id": "ezra-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many males went up with Zechariah of the sons of Pharosh?",
+  "choices": [
+   "Fifty",
+   "Two hundred",
+   "Seventy",
+   "An hundred and fifty"
+  ],
+  "answer": 3,
+  "explanation": "Zechariah, and with him were reckoned by genealogy of the males an hundred and fifty.",
+  "ref": "Ezra 8:3"
+ },
+ {
+  "id": "ezra-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many males went with Obadiah the son of Jehiel, of the sons of Joab?",
+  "choices": [
+   "Eighty",
+   "Seventy",
+   "Two hundred and eighteen",
+   "One hundred and ten"
+  ],
+  "answer": 2,
+  "explanation": "Obadiah the son of Jehiel, and with him two hundred and eighteen males.",
+  "ref": "Ezra 8:9"
+ },
+ {
+  "id": "ezra-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Eleazar, who helped weigh the treasure, was the son of whom?",
+  "choices": [
+   "Meremoth",
+   "Phinehas",
+   "Uriah",
+   "Jeshua"
+  ],
+  "answer": 1,
+  "explanation": "With Meremoth was Eleazar the son of Phinehas.",
+  "ref": "Ezra 8:33"
  },
  {
   "id": "old-ezra-9-1",
@@ -3152,6 +4384,310 @@
   "ref": "Ezra 9:6"
  },
  {
+  "id": "ezra-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to Ezra to say the people had not separated themselves from the people of the lands?",
+  "choices": [
+   "The princes",
+   "The priests",
+   "The prophets",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "The princes came to me, saying, The people of Israel have not separated themselves from the people of the lands.",
+  "ref": "Ezra 9:1"
+ },
+ {
+  "id": "ezra-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra do when he heard about the mixed marriages?",
+  "choices": [
+   "Wrote to the king",
+   "Called for an army",
+   "Fled to Babylon",
+   "Rent his garment and mantle and plucked off his hair"
+  ],
+  "answer": 3,
+  "explanation": "I rent my garment and my mantle, and plucked off the hair of my head and of my beard, and sat down astonied.",
+  "ref": "Ezra 9:3"
+ },
+ {
+  "id": "ezra-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the people of Israel done that troubled the princes?",
+  "choices": [
+   "Stopped keeping the passover",
+   "Robbed the temple",
+   "Taken the daughters of the lands as wives",
+   "Worshipped in Babylon"
+  ],
+  "answer": 2,
+  "explanation": "They have taken of their daughters for themselves, and for their sons.",
+  "ref": "Ezra 9:2"
+ },
+ {
+  "id": "ezra-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who gathered to Ezra as he sat astonied?",
+  "choices": [
+   "The princes and rulers",
+   "Everyone who trembled at the words of the God of Israel",
+   "The king's lieutenants",
+   "The singers and porters"
+  ],
+  "answer": 1,
+  "explanation": "Then were assembled unto me every one that trembled at the words of the God of Israel.",
+  "ref": "Ezra 9:4"
+ },
+ {
+  "id": "ezra-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when did Ezra sit astonied?",
+  "choices": [
+   "The evening sacrifice",
+   "The morning",
+   "The new moon",
+   "The sabbath"
+  ],
+  "answer": 0,
+  "explanation": "I sat astonied until the evening sacrifice.",
+  "ref": "Ezra 9:4"
+ },
+ {
+  "id": "ezra-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Ezra pray to the LORD at the evening sacrifice?",
+  "choices": [
+   "Standing with his face covered",
+   "Lying on his face in silence",
+   "Walking round the altar",
+   "On his knees with his hands spread out"
+  ],
+  "answer": 3,
+  "explanation": "I fell upon my knees, and spread out my hands unto the LORD my God.",
+  "ref": "Ezra 9:5"
+ },
+ {
+  "id": "ezra-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose hand had been chief in the trespass?",
+  "choices": [
+   "The priests and Levites",
+   "The singers",
+   "The princes and rulers",
+   "The people of the lands"
+  ],
+  "answer": 2,
+  "explanation": "The hand of the princes and rulers hath been chief in this trespass.",
+  "ref": "Ezra 9:2"
+ },
+ {
+  "id": "ezra-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezra say had grown up unto the heavens?",
+  "choices": [
+   "Their towers",
+   "Their trespass",
+   "Their prayers",
+   "Their wealth"
+  ],
+  "answer": 1,
+  "explanation": "Our iniquities are increased over our head, and our trespass is grown up unto the heavens.",
+  "ref": "Ezra 9:6"
+ },
+ {
+  "id": "ezra-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezra say God had given them in his holy place?",
+  "choices": [
+   "A nail",
+   "A wall",
+   "A lamp",
+   "An altar"
+  ],
+  "answer": 0,
+  "explanation": "God had given them a nail in his holy place, that he may lighten our eyes.",
+  "ref": "Ezra 9:8"
+ },
+ {
+  "id": "ezra-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the prophets describe the land Israel went to possess?",
+  "choices": [
+   "A land of giants",
+   "A land of rest",
+   "A barren land",
+   "An unclean land"
+  ],
+  "answer": 3,
+  "explanation": "The land is an unclean land with the filthiness of the people of the lands.",
+  "ref": "Ezra 9:11"
+ },
+ {
+  "id": "ezra-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezra say God had commanded about their daughters and sons?",
+  "choices": [
+   "Marry only within your own tribe",
+   "Send them away to Persia",
+   "Do not give or take daughters in marriage with them",
+   "Teach them the law"
+  ],
+  "answer": 2,
+  "explanation": "Give not your daughters unto their sons, neither take their daughters unto your sons.",
+  "ref": "Ezra 9:12"
+ },
+ {
+  "id": "ezra-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these peoples is named among the people of the lands?",
+  "choices": [
+   "The Philistines",
+   "The Perizzites",
+   "The Edomites",
+   "The Assyrians"
+  ],
+  "answer": 1,
+  "explanation": "The list names the Canaanites, Hittites, Perizzites, Jebusites, Ammonites, Moabites, Egyptians and Amorites.",
+  "ref": "Ezra 9:1"
+ },
+ {
+  "id": "ezra-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Ezra call Israel when he says it has mingled with the peoples of the lands?",
+  "choices": [
+   "The holy seed",
+   "The chosen flock",
+   "The royal house",
+   "The remnant of Judah"
+  ],
+  "answer": 0,
+  "explanation": "The holy seed have mingled themselves with the people of those lands.",
+  "ref": "Ezra 9:2"
+ },
+ {
+  "id": "ezra-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had God given them in Judah and Jerusalem, besides setting up the house?",
+  "choices": [
+   "A king",
+   "A river",
+   "A new law",
+   "A wall"
+  ],
+  "answer": 3,
+  "explanation": "God extended mercy to set up the house of our God and to give us a wall in Judah and in Jerusalem.",
+  "ref": "Ezra 9:9"
+ },
+ {
+  "id": "ezra-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into whose hand were Israel, their kings and priests delivered for their iniquities?",
+  "choices": [
+   "The Philistines",
+   "The judges",
+   "The kings of the lands",
+   "The Levites"
+  ],
+  "answer": 2,
+  "explanation": "We, our kings, and our priests, been delivered into the hand of the kings of the lands, to the sword, to captivity, and to a spoil.",
+  "ref": "Ezra 9:7"
+ },
+ {
+  "id": "ezra-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did obeying the command let them do with the land?",
+  "choices": [
+   "Build cities there",
+   "Eat the good of it and leave it as an inheritance",
+   "Gather an army",
+   "Pay no tribute"
+  ],
+  "answer": 1,
+  "explanation": "That ye may be strong, and eat the good of the land, and leave it for an inheritance to your children.",
+  "ref": "Ezra 9:12"
+ },
+ {
+  "id": "ezra-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How had God punished them, in Ezra's words?",
+  "choices": [
+   "Less than their iniquities deserved",
+   "More than they could bear",
+   "Only by famine",
+   "Not at all"
+  ],
+  "answer": 0,
+  "explanation": "Thou our God hast punished us less than our iniquities deserve.",
+  "ref": "Ezra 9:13"
+ },
+ {
+  "id": "ezra-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ezra call God in the closing words of his prayer?",
+  "choices": [
+   "Faithful",
+   "Mighty",
+   "Jealous",
+   "Righteous"
+  ],
+  "answer": 3,
+  "explanation": "O LORD God of Israel, thou art righteous.",
+  "ref": "Ezra 9:15"
+ },
+ {
+  "id": "ezra-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ezra say they were not to seek of the people of the lands for ever?",
+  "choices": [
+   "Their land or their gods",
+   "Their wives or their daughters",
+   "Their peace or their wealth",
+   "Their help in war"
+  ],
+  "answer": 2,
+  "explanation": "Nor seek their peace or their wealth for ever.",
+  "ref": "Ezra 9:12"
+ },
+ {
   "id": "old-ezra-10-1",
   "chapter": 10,
   "level": "beginner",
@@ -3230,5 +4766,645 @@
   "answer": 3,
   "explanation": "The matter was examined carefully over time by appointed leaders.",
   "ref": "Ezra 10:16\u201317"
+ },
+ {
+  "id": "ezra-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Ezra there was still hope in Israel concerning the strange wives?",
+  "choices": [
+   "Shechaniah the son of Jehiel",
+   "Johanan the son of Eliashib",
+   "Jonathan the son of Asahel",
+   "Meremoth the son of Uriah"
+  ],
+  "answer": 0,
+  "explanation": "Shechaniah the son of Jehiel said, We have trespassed against our God, yet now there is hope in Israel.",
+  "ref": "Ezra 10:2"
+ },
+ {
+  "id": "ezra-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Shechaniah propose to do about the strange wives?",
+  "choices": [
+   "Send them to Babylon",
+   "Ask the king for help",
+   "Teach them the law",
+   "Make a covenant with God to put them away"
+  ],
+  "answer": 3,
+  "explanation": "Let us make a covenant with our God to put away all the wives, and such as are born of them.",
+  "ref": "Ezra 10:3"
+ },
+ {
+  "id": "ezra-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra make the chief priests, Levites and all Israel do?",
+  "choices": [
+   "Fast for forty days",
+   "Leave Jerusalem",
+   "Swear to do as Shechaniah had said",
+   "Build an altar"
+  ],
+  "answer": 2,
+  "explanation": "Ezra made the chief priests, the Levites, and all Israel to swear that they should do according to this word. And they sware.",
+  "ref": "Ezra 10:5"
+ },
+ {
+  "id": "ezra-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra not do in the chamber of Johanan the son of Eliashib?",
+  "choices": [
+   "Pray aloud",
+   "Eat bread or drink water",
+   "Read the law",
+   "Speak to anyone"
+  ],
+  "answer": 1,
+  "explanation": "He did eat no bread, nor drink water: for he mourned because of the transgression.",
+  "ref": "Ezra 10:6"
+ },
+ {
+  "id": "ezra-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Ezra mourn?",
+  "choices": [
+   "For the transgression of those who had been carried away",
+   "For the death of the king",
+   "For the ruin of the walls",
+   "For the loss of the temple vessels"
+  ],
+  "answer": 0,
+  "explanation": "He mourned because of the transgression of them that had been carried away.",
+  "ref": "Ezra 10:6"
+ },
+ {
+  "id": "ezra-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Within how many days were all the people to gather at Jerusalem?",
+  "choices": [
+   "One day",
+   "Seven days",
+   "Ten days",
+   "Three days"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever would not come within three days, all his substance should be forfeited.",
+  "ref": "Ezra 10:8"
+ },
+ {
+  "id": "ezra-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would happen to anyone who did not come within three days?",
+  "choices": [
+   "He would be put to death",
+   "He would be sent to Babylon",
+   "Lose his goods and be separated from the people",
+   "He would pay a ram"
+  ],
+  "answer": 2,
+  "explanation": "All his substance should be forfeited, and himself separated from the congregation.",
+  "ref": "Ezra 10:8"
+ },
+ {
+  "id": "ezra-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stood up and told the people they had transgressed by taking strange wives?",
+  "choices": [
+   "Shechaniah",
+   "Ezra the priest",
+   "The princes",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Ezra the priest stood up, and said unto them, Ye have transgressed, and have taken strange wives.",
+  "ref": "Ezra 10:10"
+ },
+ {
+  "id": "ezra-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What troubled the people as they sat in the street of the house of God?",
+  "choices": [
+   "The great rain",
+   "A great wind",
+   "The heat of the sun",
+   "An earthquake"
+  ],
+  "answer": 0,
+  "explanation": "All the people sat in the street, trembling because of this matter, and for the great rain.",
+  "ref": "Ezra 10:9"
+ },
+ {
+  "id": "ezra-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the guilty priests offer for their trespass?",
+  "choices": [
+   "A bullock",
+   "A pair of doves",
+   "A lamb of the first year",
+   "A ram of the flock"
+  ],
+  "answer": 3,
+  "explanation": "They gave their hands that they would put away their wives; and being guilty, they offered a ram of the flock.",
+  "ref": "Ezra 10:19"
+ },
+ {
+  "id": "ezra-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who assembled to Ezra as he prayed and wept before the house of God?",
+  "choices": [
+   "Only the priests",
+   "The princes of Persia",
+   "A very great congregation of men, women and children",
+   "The elders of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "There assembled unto him out of Israel a very great congregation of men and women and children.",
+  "ref": "Ezra 10:1"
+ },
+ {
+  "id": "ezra-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To which family did Shechaniah belong?",
+  "choices": [
+   "The sons of Pashur",
+   "The sons of Elam",
+   "The sons of Harim",
+   "The sons of Immer"
+  ],
+  "answer": 1,
+  "explanation": "Shechaniah the son of Jehiel, one of the sons of Elam, answered and said unto Ezra.",
+  "ref": "Ezra 10:2"
+ },
+ {
+  "id": "ezra-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Shechaniah say to encourage Ezra?",
+  "choices": [
+   "Be of good courage and do it",
+   "Wait for the king's word",
+   "Let others do it",
+   "Pray for a sign"
+  ],
+  "answer": 0,
+  "explanation": "Arise; this matter belongeth unto thee: we also will be with thee: be of good courage, and do it.",
+  "ref": "Ezra 10:4"
+ },
+ {
+  "id": "ezra-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the congregation answer Ezra's command?",
+  "choices": [
+   "We cannot do it",
+   "Let us ask the king",
+   "Give us a year",
+   "As thou hast said, so must we do"
+  ],
+  "answer": 3,
+  "explanation": "Then all the congregation answered with a loud voice, As thou hast said, so must we do.",
+  "ref": "Ezra 10:12"
+ },
+ {
+  "id": "ezra-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people say they could not stand outside?",
+  "choices": [
+   "The king forbade it",
+   "The city was under siege",
+   "They were many and it was a time of much rain",
+   "They were afraid of the princes"
+  ],
+  "answer": 2,
+  "explanation": "The people are many, and it is a time of much rain, and we are not able to stand without.",
+  "ref": "Ezra 10:13"
+ },
+ {
+  "id": "ezra-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which men gathered unto Jerusalem within three days?",
+  "choices": [
+   "The men of Levi",
+   "The men of Judah and Benjamin",
+   "The men of Ephraim",
+   "The men of Gad"
+  ],
+  "answer": 1,
+  "explanation": "All the men of Judah and Benjamin gathered themselves together unto Jerusalem within three days.",
+  "ref": "Ezra 10:9"
+ },
+ {
+  "id": "ezra-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezra tell the people to do besides confessing to the LORD?",
+  "choices": [
+   "Separate from the people of the land and the strange wives",
+   "Pay a tenth of their goods",
+   "Leave Jerusalem",
+   "Build the walls"
+  ],
+  "answer": 0,
+  "explanation": "Make confession unto the LORD, and do his pleasure: and separate yourselves from the people of the land.",
+  "ref": "Ezra 10:11"
+ },
+ {
+  "id": "ezra-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were to stand for all the congregation at appointed times?",
+  "choices": [
+   "The singers and porters",
+   "The princes of Persia",
+   "The Levites alone",
+   "The rulers, with the elders and judges of each city"
+  ],
+  "answer": 3,
+  "explanation": "Let our rulers stand, and let them come at appointed times, and with them the elders of every city, and the judges thereof.",
+  "ref": "Ezra 10:14"
+ },
+ {
+  "id": "ezra-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who helped Jonathan and Jahaziah in this matter?",
+  "choices": [
+   "Eliashib and Johanan",
+   "Shechaniah and Jehiel",
+   "Meshullam and Shabbethai the Levite",
+   "Meremoth and Eleazar"
+  ],
+  "answer": 2,
+  "explanation": "Meshullam and Shabbethai the Levite helped them.",
+  "ref": "Ezra 10:15"
+ },
+ {
+  "id": "ezra-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when were the rulers to keep handling the matter?",
+  "choices": [
+   "Until the king returned",
+   "Until the fierce wrath of God was turned away",
+   "Until the next feast",
+   "Until the walls were built"
+  ],
+  "answer": 1,
+  "explanation": "Until the fierce wrath of our God for this matter be turned from us.",
+  "ref": "Ezra 10:14"
+ },
+ {
+  "id": "ezra-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was true of some of the men who had taken strange wives?",
+  "choices": [
+   "They had children by them",
+   "They were priests",
+   "They had come from Persia",
+   "They had been judges"
+  ],
+  "answer": 0,
+  "explanation": "All these had taken strange wives: and some of them had wives by whom they had children.",
+  "ref": "Ezra 10:44"
+ },
+ {
+  "id": "ezra-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Israel done, according to Shechaniah?",
+  "choices": [
+   "Forgotten the sabbath",
+   "Defiled the altar",
+   "Stopped the offerings",
+   "Taken strange wives of the people of the land"
+  ],
+  "answer": 3,
+  "explanation": "We have trespassed against our God, and have taken strange wives of the people of the land.",
+  "ref": "Ezra 10:2"
+ },
+ {
+  "id": "ezra-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Which priestly line is named first among those who had taken strange wives?",
+  "choices": [
+   "The sons of Immer",
+   "The sons of Harim",
+   "The sons of Jeshua the son of Jozadak",
+   "The sons of Pashur"
+  ],
+  "answer": 2,
+  "explanation": "Among the sons of the priests were the sons of Jeshua the son of Jozadak, and his brethren.",
+  "ref": "Ezra 10:18"
+ },
+ {
+  "id": "ezra-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the sons of the priests do to show they would put away their wives?",
+  "choices": [
+   "Sent a letter",
+   "Gave their hands",
+   "Signed a scroll",
+   "Swore by the altar"
+  ],
+  "answer": 1,
+  "explanation": "They gave their hands that they would put away their wives.",
+  "ref": "Ezra 10:19"
+ },
+ {
+  "id": "ezra-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month did the people gather at Jerusalem?",
+  "choices": [
+   "The ninth month",
+   "The first month",
+   "The fifth month",
+   "The tenth month"
+  ],
+  "answer": 0,
+  "explanation": "It was the ninth month, on the twentieth day of the month.",
+  "ref": "Ezra 10:9"
+ },
+ {
+  "id": "ezra-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what day of the ninth month did the people gather?",
+  "choices": [
+   "The first day",
+   "The tenth day",
+   "The twenty-fifth day",
+   "The twentieth day"
+  ],
+  "answer": 3,
+  "explanation": "It was the ninth month, on the twentieth day of the month.",
+  "ref": "Ezra 10:9"
+ },
+ {
+  "id": "ezra-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Ezra and the chief of the fathers sit down to examine the matter?",
+  "choices": [
+   "The first day of the first month",
+   "The twentieth day of the ninth month",
+   "The first day of the tenth month",
+   "The first day of the seventh month"
+  ],
+  "answer": 2,
+  "explanation": "They sat down in the first day of the tenth month to examine the matter.",
+  "ref": "Ezra 10:16"
+ },
+ {
+  "id": "ezra-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By when did they make an end with all the men who had taken strange wives?",
+  "choices": [
+   "The first day of the tenth month",
+   "The first day of the first month",
+   "The twentieth day of the ninth month",
+   "The fifth month"
+  ],
+  "answer": 1,
+  "explanation": "They made an end with all the men that had taken strange wives by the first day of the first month.",
+  "ref": "Ezra 10:17"
+ },
+ {
+  "id": "ezra-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man, the son of Asahel, was employed about this matter?",
+  "choices": [
+   "Jonathan",
+   "Jahaziah",
+   "Meshullam",
+   "Shabbethai"
+  ],
+  "answer": 0,
+  "explanation": "Only Jonathan the son of Asahel and Jahaziah the son of Tikvah were employed about this matter.",
+  "ref": "Ezra 10:15"
+ },
+ {
+  "id": "ezra-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Jeshua, named among the priests?",
+  "choices": [
+   "Immer",
+   "Pashur",
+   "Harim",
+   "Jozadak"
+  ],
+  "answer": 3,
+  "explanation": "Of the sons of Jeshua the son of Jozadak, and his brethren.",
+  "ref": "Ezra 10:18"
+ },
+ {
+  "id": "ezra-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which Levite is also called Kelita?",
+  "choices": [
+   "Jozabad",
+   "Shimei",
+   "Kelaiah",
+   "Pethahiah"
+  ],
+  "answer": 2,
+  "explanation": "Of the Levites; Jozabad, Shimei, Kelaiah, (the same is Kelita), Pethahiah, Judah, and Eliezer.",
+  "ref": "Ezra 10:23"
+ },
+ {
+  "id": "ezra-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which singer is named among those who had taken strange wives?",
+  "choices": [
+   "Shallum",
+   "Eliashib",
+   "Telem",
+   "Uri"
+  ],
+  "answer": 1,
+  "explanation": "Of the singers also; Eliashib.",
+  "ref": "Ezra 10:24"
+ },
+ {
+  "id": "ezra-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of the porters is named among those who had taken strange wives?",
+  "choices": [
+   "Shallum",
+   "Eliashib",
+   "Hanani",
+   "Zebadiah"
+  ],
+  "answer": 0,
+  "explanation": "Of the porters; Shallum, and Telem, and Uri.",
+  "ref": "Ezra 10:24"
+ },
+ {
+  "id": "ezra-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two men of the sons of Immer are named?",
+  "choices": [
+   "Maaseiah and Elijah",
+   "Elioenai and Ishmael",
+   "Jozabad and Elasah",
+   "Hanani and Zebadiah"
+  ],
+  "answer": 3,
+  "explanation": "And of the sons of Immer; Hanani, and Zebadiah.",
+  "ref": "Ezra 10:20"
+ },
+ {
+  "id": "ezra-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did all the people sit, trembling, when they gathered?",
+  "choices": [
+   "In the temple court",
+   "By the river Ahava",
+   "In the street of the house of God",
+   "In the king's gate"
+  ],
+  "answer": 2,
+  "explanation": "All the people sat in the street of the house of God, trembling because of this matter.",
+  "ref": "Ezra 10:9"
+ },
+ {
+  "id": "ezra-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the wives, whom did Shechaniah say they would put away?",
+  "choices": [
+   "Their servants",
+   "Those born of the wives",
+   "Their cattle",
+   "Their friends"
+  ],
+  "answer": 1,
+  "explanation": "Let us put away all the wives, and such as are born of them.",
+  "ref": "Ezra 10:3"
+ },
+ {
+  "id": "ezra-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Shechaniah said the covenant was to be done according to what?",
+  "choices": [
+   "The law",
+   "The king's decree",
+   "The vote of the elders",
+   "The lot"
+  ],
+  "answer": 0,
+  "explanation": "Let it be done according to the law.",
+  "ref": "Ezra 10:3"
+ },
+ {
+  "id": "ezra-10-h-14",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose chamber did Ezra go into when he rose from before the house of God?",
+  "choices": [
+   "Meremoth the son of Uriah",
+   "Shechaniah the son of Jehiel",
+   "Iddo the chief",
+   "Johanan the son of Eliashib"
+  ],
+  "answer": 3,
+  "explanation": "Ezra went into the chamber of Johanan the son of Eliashib.",
+  "ref": "Ezra 10:6"
+ },
+ {
+  "id": "ezra-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who sat down with Ezra to examine the matter?",
+  "choices": [
+   "The princes of Persia",
+   "The priests of Immer",
+   "Certain chief of the fathers, by their names",
+   "The elders of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "Ezra the priest, with certain chief of the fathers, all of them by their names, were separated, and sat down to examine the matter.",
+  "ref": "Ezra 10:16"
+ },
+ {
+  "id": "ezra-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where were all the children of the captivity told to gather by the proclamation?",
+  "choices": [
+   "Jerusalem",
+   "Bethel",
+   "Casiphia",
+   "The river Ahava"
+  ],
+  "answer": 0,
+  "explanation": "They made proclamation throughout Judah and Jerusalem that they should gather themselves together unto Jerusalem.",
+  "ref": "Ezra 10:7"
  }
 ]

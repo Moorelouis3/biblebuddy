@@ -61,7 +61,7 @@
   ],
   "answer": 1,
   "explanation": "He asked God to remember His promise to regather repentant Israel.",
-  "ref": "Nehemiah 1:8–9"
+  "ref": "Nehemiah 1:8\u20139"
  },
  {
   "id": "old-nehemiah-1-5",
@@ -80,6 +80,214 @@
   "ref": "Nehemiah 1:11"
  },
  {
+  "id": "nehemiah-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which place was Nehemiah when Hanani brought him news?",
+  "choices": [
+   "Shushan the palace",
+   "Jerusalem",
+   "Babylon",
+   "Bethel"
+  ],
+  "answer": 0,
+  "explanation": "It came to pass in the twentieth year, as I was in Shushan the palace, that Hanani came.",
+  "ref": "Nehemiah 1:1"
+ },
+ {
+  "id": "nehemiah-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nehemiah ask Hanani and the men of Judah about?",
+  "choices": [
+   "The king's treasure",
+   "The roads to Judah",
+   "The prophets of Israel",
+   "The Jews who had escaped and Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "I asked them concerning the Jews that had escaped, which were left of the captivity, and concerning Jerusalem.",
+  "ref": "Nehemiah 1:2"
+ },
+ {
+  "id": "nehemiah-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what state did the men say the remnant in the province were?",
+  "choices": [
+   "Great wealth",
+   "Peace and plenty",
+   "Great affliction and reproach",
+   "Fear of the king"
+  ],
+  "answer": 2,
+  "explanation": "The remnant are in great affliction and reproach.",
+  "ref": "Nehemiah 1:3"
+ },
+ {
+  "id": "nehemiah-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To which God did Nehemiah pray?",
+  "choices": [
+   "The God of Babylon",
+   "The LORD God of heaven",
+   "The Lord of the sea",
+   "The God of the east"
+  ],
+  "answer": 1,
+  "explanation": "I fasted, and prayed before the God of heaven, and said, I beseech thee, O LORD God of heaven.",
+  "ref": "Nehemiah 1:4\u20135"
+ },
+ {
+  "id": "nehemiah-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose sins did Nehemiah confess along with the children of Israel's?",
+  "choices": [
+   "His own and his father's house",
+   "The king's and the queen's",
+   "The priests' alone",
+   "Sanballat's"
+  ],
+  "answer": 0,
+  "explanation": "Both I and my father's house have sinned.",
+  "ref": "Nehemiah 1:6"
+ },
+ {
+  "id": "nehemiah-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God promise to do if Israel turned to him and kept his commandments?",
+  "choices": [
+   "Send a new king",
+   "Give them Persian gold",
+   "Rebuild the walls by angels",
+   "Gather them to the place he chose for his name"
+  ],
+  "answer": 3,
+  "explanation": "If ye turn unto me, I will gather them from thence, and will bring them unto the place that I have chosen to set my name there.",
+  "ref": "Nehemiah 1:9"
+ },
+ {
+  "id": "nehemiah-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what had God redeemed his servants and people?",
+  "choices": [
+   "Silver and gold",
+   "The king's decree",
+   "His great power and strong hand",
+   "Their own wisdom"
+  ],
+  "answer": 2,
+  "explanation": "They are thy servants, whom thou hast redeemed by thy great power, and by thy strong hand.",
+  "ref": "Nehemiah 1:10"
+ },
+ {
+  "id": "nehemiah-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month did Hanani come to Nehemiah?",
+  "choices": [
+   "Nisan",
+   "Chisleu",
+   "Tishri",
+   "Elul"
+  ],
+  "answer": 1,
+  "explanation": "It came to pass in the month Chisleu, in the twentieth year.",
+  "ref": "Nehemiah 1:1"
+ },
+ {
+  "id": "nehemiah-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Nehemiah?",
+  "choices": [
+   "Hachaliah",
+   "Hanani",
+   "Asaph",
+   "Eliashib"
+  ],
+  "answer": 0,
+  "explanation": "The words of Nehemiah the son of Hachaliah.",
+  "ref": "Nehemiah 1:1"
+ },
+ {
+  "id": "nehemiah-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say he would do if Israel transgressed?",
+  "choices": [
+   "Send famine upon the land",
+   "Give the city to Persia",
+   "Take away the temple",
+   "Scatter them abroad among the nations"
+  ],
+  "answer": 3,
+  "explanation": "If ye transgress, I will scatter you abroad among the nations.",
+  "ref": "Nehemiah 1:8"
+ },
+ {
+  "id": "nehemiah-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Nehemiah describe God at the start of his prayer?",
+  "choices": [
+   "The silent God",
+   "The God of the hills",
+   "The great and terrible God",
+   "The God of war"
+  ],
+  "answer": 2,
+  "explanation": "O LORD God of heaven, the great and terrible God, that keepeth covenant and mercy for them that love him.",
+  "ref": "Nehemiah 1:5"
+ },
+ {
+  "id": "nehemiah-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Nehemiah say he prayed for the children of Israel?",
+  "choices": [
+   "Only at the evening sacrifice",
+   "Day and night",
+   "At the new moon",
+   "On the sabbath"
+  ],
+  "answer": 1,
+  "explanation": "I pray before thee now, day and night, for the children of Israel thy servants.",
+  "ref": "Nehemiah 1:6"
+ },
+ {
+  "id": "nehemiah-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Nehemiah say Israel had dealt against God?",
+  "choices": [
+   "Very corruptly",
+   "Proudly",
+   "Secretly",
+   "Foolishly"
+  ],
+  "answer": 0,
+  "explanation": "We have dealt very corruptly against thee, and have not kept the commandments, nor the statutes, nor the judgments.",
+  "ref": "Nehemiah 1:7"
+ },
+ {
   "id": "old-nehemiah-2-1",
   "chapter": 2,
   "level": "beginner",
@@ -93,7 +301,7 @@
   ],
   "answer": 0,
   "explanation": "Artaxerxes saw Nehemiah's sorrow and questioned him.",
-  "ref": "Nehemiah 2:1–2"
+  "ref": "Nehemiah 2:1\u20132"
  },
  {
   "id": "old-nehemiah-2-2",
@@ -125,7 +333,7 @@
   ],
   "answer": 1,
   "explanation": "He requested official letters and timber from the king's forest.",
-  "ref": "Nehemiah 2:7–8"
+  "ref": "Nehemiah 2:7\u20138"
  },
  {
   "id": "old-nehemiah-2-4",
@@ -157,7 +365,7 @@
   ],
   "answer": 2,
   "explanation": "He quietly surveyed the damage at night.",
-  "ref": "Nehemiah 2:12–15"
+  "ref": "Nehemiah 2:12\u201315"
  },
  {
   "id": "old-nehemiah-3-1",
@@ -237,7 +445,7 @@
   ],
   "answer": 1,
   "explanation": "The chapter highlights cooperative rebuilding across the city.",
-  "ref": "Nehemiah 3:1–32"
+  "ref": "Nehemiah 3:1\u201332"
  },
  {
   "id": "old-nehemiah-4-1",
@@ -333,7 +541,7 @@
   ],
   "answer": 0,
   "explanation": "They cried out over famine, mortgages, and debt slavery.",
-  "ref": "Nehemiah 5:1–5"
+  "ref": "Nehemiah 5:1\u20135"
  },
  {
   "id": "old-nehemiah-5-2",
@@ -397,7 +605,7 @@
   ],
   "answer": 2,
   "explanation": "Nehemiah refused to burden the people with the governor's provision.",
-  "ref": "Nehemiah 5:14–18"
+  "ref": "Nehemiah 5:14\u201318"
  },
  {
   "id": "old-nehemiah-6-1",
@@ -445,7 +653,7 @@
   ],
   "answer": 2,
   "explanation": "His enemies accused him of planning a revolt.",
-  "ref": "Nehemiah 6:6–7"
+  "ref": "Nehemiah 6:6\u20137"
  },
  {
   "id": "old-nehemiah-6-4",
@@ -557,7 +765,7 @@
   ],
   "answer": 0,
   "explanation": "The chapter preserves the returnees' genealogical record.",
-  "ref": "Nehemiah 7:6–73"
+  "ref": "Nehemiah 7:6\u201373"
  },
  {
   "id": "old-nehemiah-8-1",
@@ -605,7 +813,7 @@
   ],
   "answer": 2,
   "explanation": "They explained the sense so the people understood what was read.",
-  "ref": "Nehemiah 8:7–8"
+  "ref": "Nehemiah 8:7\u20138"
  },
  {
   "id": "old-nehemiah-8-4",
@@ -637,7 +845,7 @@
   ],
   "answer": 3,
   "explanation": "They kept the Feast of Booths with great gladness.",
-  "ref": "Nehemiah 8:14–17"
+  "ref": "Nehemiah 8:14\u201317"
  },
  {
   "id": "old-nehemiah-9-1",
@@ -701,7 +909,7 @@
   ],
   "answer": 3,
   "explanation": "The prayer reviews God's works from creation through settlement in the land.",
-  "ref": "Nehemiah 9:6–25"
+  "ref": "Nehemiah 9:6\u201325"
  },
  {
   "id": "old-nehemiah-9-5",
@@ -845,7 +1053,7 @@
   ],
   "answer": 3,
   "explanation": "The chapter details residents from Judah and Benjamin.",
-  "ref": "Nehemiah 11:4–9"
+  "ref": "Nehemiah 11:4\u20139"
  },
  {
   "id": "old-nehemiah-11-4",
@@ -861,7 +1069,7 @@
   ],
   "answer": 0,
   "explanation": "The chapter includes several groups serving around the temple.",
-  "ref": "Nehemiah 11:10–24"
+  "ref": "Nehemiah 11:10\u201324"
  },
  {
   "id": "old-nehemiah-11-5",
@@ -893,7 +1101,7 @@
   ],
   "answer": 0,
   "explanation": "The chapter begins with records of priests and Levites.",
-  "ref": "Nehemiah 12:1–26"
+  "ref": "Nehemiah 12:1\u201326"
  },
  {
   "id": "old-nehemiah-12-2",
@@ -957,7 +1165,7 @@
   ],
   "answer": 1,
   "explanation": "Provision for temple workers was organized faithfully.",
-  "ref": "Nehemiah 12:44–47"
+  "ref": "Nehemiah 12:44\u201347"
  },
  {
   "id": "old-nehemiah-13-1",
@@ -989,7 +1197,7 @@
   ],
   "answer": 0,
   "explanation": "Tobiah had been given a chamber in the temple complex.",
-  "ref": "Nehemiah 13:4–5"
+  "ref": "Nehemiah 13:4\u20135"
  },
  {
   "id": "old-nehemiah-13-3",
@@ -1021,7 +1229,7 @@
   ],
   "answer": 2,
   "explanation": "He shut down Sabbath commerce at the gates.",
-  "ref": "Nehemiah 13:15–22"
+  "ref": "Nehemiah 13:15\u201322"
  },
  {
   "id": "old-nehemiah-13-5",
