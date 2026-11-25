@@ -16224,6 +16224,646 @@
   "ref": "2 Chronicles 32:21"
  },
  {
+  "id": "2-chronicles-32-e-01",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah and the people stop outside the city so Assyria would find little water?",
+  "choices": [
+   "The fountains",
+   "The wells of Beer-sheba",
+   "The pools of Siloam's gate",
+   "The river Jordan"
+  ],
+  "answer": 0,
+  "explanation": "Much people together stopped all the fountains, and the brook that ran through the midst of the land.",
+  "ref": "2 Chronicles 32:3–4"
+ },
+ {
+  "id": "2-chronicles-32-e-02",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah say was with the king of Assyria?",
+  "choices": [
+   "A great army of chariots",
+   "An arm of flesh",
+   "The gods of the nations",
+   "A fenced wall"
+  ],
+  "answer": 1,
+  "explanation": "With him is an arm of flesh; but with us is the LORD our God to help us, and to fight our battles.",
+  "ref": "2 Chronicles 32:8"
+ },
+ {
+  "id": "2-chronicles-32-e-03",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Sennacherib write to rail on the LORD God of Israel?",
+  "choices": [
+   "A psalm",
+   "A proclamation",
+   "Letters",
+   "A treaty"
+  ],
+  "answer": 2,
+  "explanation": "He wrote also letters to rail on the LORD God of Israel, and to speak against him.",
+  "ref": "2 Chronicles 32:17"
+ },
+ {
+  "id": "2-chronicles-32-e-04",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the people of Jerusalem when the Assyrians cried to them in the Jews' speech?",
+  "choices": [
+   "In the temple",
+   "In the east street",
+   "At the gate of the palace",
+   "On the wall"
+  ],
+  "answer": 3,
+  "explanation": "They cried with a loud voice in the Jews' speech unto the people of Jerusalem that were on the wall.",
+  "ref": "2 Chronicles 32:18"
+ },
+ {
+  "id": "2-chronicles-32-e-05",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Sennacherib die after he returned home?",
+  "choices": [
+   "Slain with the sword in the house of his god",
+   "In battle against Egypt",
+   "Of a sickness",
+   "Drowned in a river"
+  ],
+  "answer": 0,
+  "explanation": "When he was come into the house of his god, they that came forth of his own bowels slew him there with the sword.",
+  "ref": "2 Chronicles 32:21"
+ },
+ {
+  "id": "2-chronicles-32-e-06",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Hezekiah in those days?",
+  "choices": [
+   "He was taken captive",
+   "He was sick to the death",
+   "He lost his sight",
+   "He fled to Egypt"
+  ],
+  "answer": 1,
+  "explanation": "In those days Hezekiah was sick to the death, and prayed unto the LORD.",
+  "ref": "2 Chronicles 32:24"
+ },
+ {
+  "id": "2-chronicles-32-e-07",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah and the people of Jerusalem do for the pride of his heart?",
+  "choices": [
+   "Fasted for forty days",
+   "Tore down the walls",
+   "Humbled themselves",
+   "Sent gifts to Assyria"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah humbled himself for the pride of his heart, both he and the inhabitants of Jerusalem.",
+  "ref": "2 Chronicles 32:26"
+ },
+ {
+  "id": "2-chronicles-32-e-08",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sent ambassadors to Hezekiah to enquire about the wonder in the land?",
+  "choices": [
+   "The king of Egypt",
+   "The queen of Sheba",
+   "The king of Tyre",
+   "The princes of Babylon"
+  ],
+  "answer": 3,
+  "explanation": "The ambassadors of the princes of Babylon sent unto him to enquire of the wonder that was done in the land.",
+  "ref": "2 Chronicles 32:31"
+ },
+ {
+  "id": "2-chronicles-32-e-09",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Hezekiah's place after he died?",
+  "choices": [
+   "Manasseh",
+   "Amon",
+   "Josiah",
+   "Jotham"
+  ],
+  "answer": 0,
+  "explanation": "Hezekiah slept with his fathers, and Manasseh his son reigned in his stead.",
+  "ref": "2 Chronicles 32:33"
+ },
+ {
+  "id": "2-chronicles-32-e-10",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Hezekiah buried?",
+  "choices": [
+   "In a cave at Hebron",
+   "In the chiefest of the sepulchres of the sons of David",
+   "In the garden of Uzza",
+   "In Samaria"
+  ],
+  "answer": 1,
+  "explanation": "They buried him in the chiefest of the sepulchres of the sons of David.",
+  "ref": "2 Chronicles 32:33"
+ },
+ {
+  "id": "2-chronicles-32-m-01",
+  "chapter": 32,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city did Sennacherib himself lay siege to while his servants went to Jerusalem?",
+  "choices": [
+   "Samaria",
+   "Hebron",
+   "Lachish",
+   "Gath"
+  ],
+  "answer": 2,
+  "explanation": "Sennacherib king of Assyria laid siege against Lachish, and all his power with him.",
+  "ref": "2 Chronicles 32:9"
+ },
+ {
+  "id": "2-chronicles-32-m-02",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people say they should stop the waters?",
+  "choices": [
+   "So the city would not flood",
+   "So the brook would turn red",
+   "So the enemy would be drowned",
+   "So the kings of Assyria would not find much water"
+  ],
+  "answer": 3,
+  "explanation": "Why should the kings of Assyria come, and find much water?",
+  "ref": "2 Chronicles 32:4"
+ },
+ {
+  "id": "2-chronicles-32-m-03",
+  "chapter": 32,
+  "level": "medium",
+  "category": "place",
+  "question": "Which place in the city of David did Hezekiah repair?",
+  "choices": [
+   "Millo",
+   "Ophel",
+   "The tower of Hananeel",
+   "The fish gate"
+  ],
+  "answer": 0,
+  "explanation": "He repaired Millo in the city of David, and made darts and shields in abundance.",
+  "ref": "2 Chronicles 32:5"
+ },
+ {
+  "id": "2-chronicles-32-m-04",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hezekiah make in abundance?",
+  "choices": [
+   "Swords and spears",
+   "Darts and shields",
+   "Chariots and horses",
+   "Bows and arrows"
+  ],
+  "answer": 1,
+  "explanation": "He made darts and shields in abundance.",
+  "ref": "2 Chronicles 32:5"
+ },
+ {
+  "id": "2-chronicles-32-m-05",
+  "chapter": 32,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Hezekiah gather the people to speak comfortably to them?",
+  "choices": [
+   "On the mountain of Zion",
+   "In the court of the temple",
+   "In the street of the gate of the city",
+   "By the brook Kidron"
+  ],
+  "answer": 2,
+  "explanation": "He gathered them together to him in the street of the gate of the city.",
+  "ref": "2 Chronicles 32:6"
+ },
+ {
+  "id": "2-chronicles-32-m-06",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hezekiah say was true about those with them compared to those with Assyria?",
+  "choices": [
+   "There be fewer with us but braver",
+   "We have more horses",
+   "We have more gold",
+   "There be more with us than with him"
+  ],
+  "answer": 3,
+  "explanation": "Be not afraid nor dismayed: for there be more with us than with him.",
+  "ref": "2 Chronicles 32:7"
+ },
+ {
+  "id": "2-chronicles-32-m-07",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people do after Hezekiah's words?",
+  "choices": [
+   "Rested themselves upon his words",
+   "Opened the gates",
+   "Fled by night",
+   "Made an altar"
+  ],
+  "answer": 0,
+  "explanation": "The people rested themselves upon the words of Hezekiah king of Judah.",
+  "ref": "2 Chronicles 32:8"
+ },
+ {
+  "id": "2-chronicles-32-m-08",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Before how many altars did Sennacherib say Hezekiah commanded Judah to worship?",
+  "choices": [
+   "Two altars",
+   "One altar",
+   "Seven altars",
+   "Twelve altars"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall worship before one altar, and burn incense upon it.",
+  "ref": "2 Chronicles 32:12"
+ },
+ {
+  "id": "2-chronicles-32-m-09",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what speech did the Assyrians cry to the people on the wall?",
+  "choices": [
+   "The Syrian tongue",
+   "The speech of Ashdod",
+   "The Jews' speech",
+   "The Chaldees' language"
+  ],
+  "answer": 2,
+  "explanation": "They cried with a loud voice in the Jews' speech unto the people of Jerusalem.",
+  "ref": "2 Chronicles 32:18"
+ },
+ {
+  "id": "2-chronicles-32-m-10",
+  "chapter": 32,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the angel cut off in the camp of the king of Assyria?",
+  "choices": [
+   "The king's sons",
+   "The servants at Lachish",
+   "The priests of his god",
+   "The mighty men of valour, leaders and captains"
+  ],
+  "answer": 3,
+  "explanation": "The LORD sent an angel, which cut off all the mighty men of valour, and the leaders and captains.",
+  "ref": "2 Chronicles 32:21"
+ },
+ {
+  "id": "2-chronicles-32-m-11",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Sennacherib return to his own land?",
+  "choices": [
+   "With shame of face",
+   "With great spoil",
+   "With tribute from Judah",
+   "With a new army"
+  ],
+  "answer": 0,
+  "explanation": "So he returned with shame of face to his own land.",
+  "ref": "2 Chronicles 32:21"
+ },
+ {
+  "id": "2-chronicles-32-m-12",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did many bring to Jerusalem after the LORD saved it?",
+  "choices": [
+   "Captives from Assyria",
+   "Gifts to the LORD and presents to Hezekiah",
+   "Tribute to Sennacherib",
+   "Spoil from Lachish"
+  ],
+  "answer": 1,
+  "explanation": "Many brought gifts unto the LORD to Jerusalem, and presents to Hezekiah king of Judah.",
+  "ref": "2 Chronicles 32:23"
+ },
+ {
+  "id": "2-chronicles-32-m-13",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was there wrath upon Hezekiah, Judah and Jerusalem?",
+  "choices": [
+   "He opened the temple doors",
+   "He fought Sennacherib",
+   "His heart was lifted up",
+   "He hid the vessels"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah rendered not again according to the benefit done unto him; for his heart was lifted up: therefore there was wrath upon him.",
+  "ref": "2 Chronicles 32:25"
+ },
+ {
+  "id": "2-chronicles-32-m-14",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD give Hezekiah when he prayed in his sickness?",
+  "choices": [
+   "A son",
+   "A new city",
+   "A written scroll",
+   "A sign"
+  ],
+  "answer": 3,
+  "explanation": "Hezekiah was sick to the death, and prayed unto the LORD: and he spake unto him, and he gave him a sign.",
+  "ref": "2 Chronicles 32:24"
+ },
+ {
+  "id": "2-chronicles-32-m-15",
+  "chapter": 32,
+  "level": "medium",
+  "category": "place",
+  "question": "Which watercourse did Hezekiah stop and bring straight down to the west side of the city of David?",
+  "choices": [
+   "The upper watercourse of Gihon",
+   "The pool of Bethesda",
+   "The brook Kidron",
+   "The well of Bethlehem"
+  ],
+  "answer": 0,
+  "explanation": "Hezekiah also stopped the upper watercourse of Gihon, and brought it straight down to the west side of the city of David.",
+  "ref": "2 Chronicles 32:30"
+ },
+ {
+  "id": "2-chronicles-32-h-01",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What ran through the midst of the land that the people stopped?",
+  "choices": [
+   "The river",
+   "The brook",
+   "The spring of En-gedi",
+   "The pool"
+  ],
+  "answer": 1,
+  "explanation": "They stopped all the fountains, and the brook that ran through the midst of the land.",
+  "ref": "2 Chronicles 32:4"
+ },
+ {
+  "id": "2-chronicles-32-h-02",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hezekiah build up outside the wall that was broken?",
+  "choices": [
+   "A tower of cedar",
+   "A moat",
+   "Another wall",
+   "A great gate"
+  ],
+  "answer": 2,
+  "explanation": "He built up all the wall that was broken, and raised it up to the towers, and another wall without.",
+  "ref": "2 Chronicles 32:5"
+ },
+ {
+  "id": "2-chronicles-32-h-03",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what two things did Sennacherib say Hezekiah persuaded them to die?",
+  "choices": [
+   "Sword and fire",
+   "Plague and war",
+   "Cold and hunger",
+   "Famine and thirst"
+  ],
+  "answer": 3,
+  "explanation": "Doth not Hezekiah persuade you to give over yourselves to die by famine and by thirst?",
+  "ref": "2 Chronicles 32:11"
+ },
+ {
+  "id": "2-chronicles-32-h-04",
+  "chapter": 32,
+  "level": "hard",
+  "category": "person",
+  "question": "Isaiah the prophet was the son of whom?",
+  "choices": [
+   "Amoz",
+   "Hilkiah",
+   "Shaphan",
+   "Micah"
+  ],
+  "answer": 0,
+  "explanation": "Hezekiah the king, and the prophet Isaiah the son of Amoz, prayed and cried to heaven.",
+  "ref": "2 Chronicles 32:20"
+ },
+ {
+  "id": "2-chronicles-32-h-05",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In his letters, to whom did Sennacherib compare the God of Hezekiah?",
+  "choices": [
+   "The idols of Egypt",
+   "The gods of nations that never delivered",
+   "The god of Babylon",
+   "The sun and moon"
+  ],
+  "answer": 1,
+  "explanation": "As the gods of the nations of other lands have not delivered their people out of mine hand, so shall not the God of Hezekiah deliver his people.",
+  "ref": "2 Chronicles 32:17"
+ },
+ {
+  "id": "2-chronicles-32-h-06",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Assyrians spoke of the God of Jerusalem as like gods that were what?",
+  "choices": [
+   "The gods of the mountains",
+   "The gods of the sea",
+   "The work of the hands of man",
+   "Gods without names"
+  ],
+  "answer": 2,
+  "explanation": "They spake against the God of Jerusalem, as against the gods of the people of the earth, which were the work of the hands of man.",
+  "ref": "2 Chronicles 32:19"
+ },
+ {
+  "id": "2-chronicles-32-h-07",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the Assyrians cry aloud in the Jews' speech?",
+  "choices": [
+   "To offer peace terms",
+   "To call Hezekiah out",
+   "To mock Isaiah",
+   "To frighten the people so they might take the city"
+  ],
+  "answer": 3,
+  "explanation": "To affright them, and to trouble them; that they might take the city.",
+  "ref": "2 Chronicles 32:18"
+ },
+ {
+  "id": "2-chronicles-32-h-08",
+  "chapter": 32,
+  "level": "hard",
+  "category": "person",
+  "question": "Who slew Sennacherib in the house of his god?",
+  "choices": [
+   "Those who came forth of his own bowels",
+   "The Medes",
+   "Hezekiah's captains",
+   "The Egyptians"
+  ],
+  "answer": 0,
+  "explanation": "They that came forth of his own bowels slew him there with the sword.",
+  "ref": "2 Chronicles 32:21"
+ },
+ {
+  "id": "2-chronicles-32-h-09",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do for Hezekiah and Jerusalem besides saving them from Sennacherib?",
+  "choices": [
+   "Gave them Lachish",
+   "Guided them on every side",
+   "Sent them rain",
+   "Gave them Assyria's gold"
+  ],
+  "answer": 1,
+  "explanation": "The LORD saved Hezekiah and the inhabitants of Jerusalem from Sennacherib, and from the hand of all other, and guided them on every side.",
+  "ref": "2 Chronicles 32:22"
+ },
+ {
+  "id": "2-chronicles-32-h-10",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hezekiah make storehouses for?",
+  "choices": [
+   "Silver and gold",
+   "Shields and spears",
+   "The increase of corn, wine and oil",
+   "Spices and jewels"
+  ],
+  "answer": 2,
+  "explanation": "Storehouses also for the increase of corn, and wine, and oil.",
+  "ref": "2 Chronicles 32:28"
+ },
+ {
+  "id": "2-chronicles-32-h-11",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the wonder the Babylonian ambassadors came to enquire about?",
+  "choices": [
+   "Hezekiah's treasuries",
+   "The walls of Jerusalem",
+   "The defeat of Assyria",
+   "The wonder that was done in the land"
+  ],
+  "answer": 3,
+  "explanation": "The ambassadors sent to enquire of the wonder that was done in the land.",
+  "ref": "2 Chronicles 32:31"
+ },
+ {
+  "id": "2-chronicles-32-h-12",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did God leave Hezekiah in the business of the Babylonian ambassadors?",
+  "choices": [
+   "To try him, that he might know all that was in his heart",
+   "To punish Judah",
+   "To end his reign",
+   "To teach Manasseh"
+  ],
+  "answer": 0,
+  "explanation": "God left him, to try him, that he might know all that was in his heart.",
+  "ref": "2 Chronicles 32:31"
+ },
+ {
+  "id": "2-chronicles-32-h-13",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what is the rest of the acts of Hezekiah written, besides the book of the kings?",
+  "choices": [
+   "The book of Jasher",
+   "The vision of Isaiah the prophet",
+   "The chronicles of Nathan",
+   "The book of Gad the seer"
+  ],
+  "answer": 1,
+  "explanation": "The rest of the acts of Hezekiah are written in the vision of Isaiah the prophet, and in the book of the kings of Judah and Israel.",
+  "ref": "2 Chronicles 32:32"
+ },
+ {
+  "id": "2-chronicles-32-h-14",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hezekiah humble himself for?",
+  "choices": [
+   "The sins of the princes",
+   "The idols of Ahaz",
+   "The pride of his heart",
+   "His sickness"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah humbled himself for the pride of his heart.",
+  "ref": "2 Chronicles 32:26"
+ },
+ {
+  "id": "2-chronicles-32-h-15",
+  "chapter": 32,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Hezekiah set over the people before he gathered them in the street of the gate?",
+  "choices": [
+   "Judges of the gates",
+   "Princes of the tribes",
+   "Priests of the courses",
+   "Captains of war"
+  ],
+  "answer": 3,
+  "explanation": "He set captains of war over the people, and gathered them together to him in the street of the gate of the city.",
+  "ref": "2 Chronicles 32:6"
+ },
+ {
   "id": "old-2-chronicles-33-1",
   "chapter": 33,
   "level": "beginner",
