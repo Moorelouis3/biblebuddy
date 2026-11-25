@@ -11507,17 +11507,33 @@
   "id": "1-kings-16-h-15",
   "chapter": 16,
   "level": "hard",
-  "category": "keyword",
-  "question": "What did the LORD say Baasha had done that made him guilty besides walking in Jeroboam's way?",
+  "category": "person",
+  "question": "In whose way did Zimri walk, doing evil in the sight of the LORD?",
   "choices": [
-   "He burned the house of the LORD",
-   "He killed the house of Jeroboam",
-   "He made a league with Syria",
-   "He took the wife of Nadab"
+   "Jeroboam's",
+   "Baasha's",
+   "Omri's",
+   "Asa's"
   ],
-  "answer": 1,
-  "explanation": "The word of the LORD came against Baasha, being like the house of Jeroboam; and because he killed him.",
-  "ref": "1 Kings 16:7"
+  "answer": 0,
+  "explanation": "Zimri sinned in doing evil in the sight of the LORD, in walking in the way of Jeroboam.",
+  "ref": "1 Kings 16:19"
+ },
+ {
+  "id": "1-kings-16-m-15",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people camped at Gibbethon hear before they made Omri king?",
+  "choices": [
+   "That Zimri had conspired and slain the king",
+   "That Baasha's house was destroyed",
+   "That Tibni had been made king",
+   "That Asa was marching on Tirzah"
+  ],
+  "answer": 0,
+  "explanation": "They heard say, Zimri hath conspired, and hath also slain the king: wherefore all Israel made Omri king.",
+  "ref": "1 Kings 16:16"
  },
  {
   "id": "old-1-kings-17-1",
