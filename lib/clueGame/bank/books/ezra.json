@@ -13,7 +13,7 @@
   ],
   "answer": 0,
   "explanation": "Cyrus issued the opening decree of Ezra.",
-  "ref": "Ezra 1:1–2"
+  "ref": "Ezra 1:1\u20132"
  },
  {
   "id": "old-ezra-1-2",
@@ -45,7 +45,7 @@
   ],
   "answer": 2,
   "explanation": "Their neighbors strengthened them with gifts and offerings.",
-  "ref": "Ezra 1:4–6"
+  "ref": "Ezra 1:4\u20136"
  },
  {
   "id": "old-ezra-1-4",
@@ -80,35 +80,243 @@
   "ref": "Ezra 1:11"
  },
  {
+  "id": "ezra-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose word from the LORD was fulfilled when Cyrus made his proclamation?",
+  "choices": [
+   "Isaiah",
+   "Haggai",
+   "Jeremiah",
+   "Ezra"
+  ],
+  "answer": 2,
+  "explanation": "The word of the LORD by the mouth of Jeremiah was fulfilled in the first year of Cyrus.",
+  "ref": "Ezra 1:1"
+ },
+ {
+  "id": "ezra-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year of Cyrus did the LORD stir up his spirit?",
+  "choices": [
+   "The first",
+   "The third",
+   "The seventh",
+   "The twentieth"
+  ],
+  "answer": 0,
+  "explanation": "In the first year of Cyrus the LORD stirred up the spirit of Cyrus king of Persia.",
+  "ref": "Ezra 1:1"
+ },
+ {
+  "id": "ezra-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two tribes' chief fathers rose up to go and build the house of the LORD?",
+  "choices": [
+   "Reuben and Gad",
+   "Judah and Benjamin",
+   "Ephraim and Manasseh",
+   "Levi and Simeon"
+  ],
+  "answer": 1,
+  "explanation": "The chief of the fathers of Judah and Benjamin, with the priests and Levites, rose up.",
+  "ref": "Ezra 1:5"
+ },
+ {
+  "id": "ezra-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who rose up to go to Jerusalem, according to the chapter?",
+  "choices": [
+   "All the king's soldiers",
+   "Everyone in Babylon",
+   "All whose spirit God had raised",
+   "Only the priests"
+  ],
+  "answer": 2,
+  "explanation": "They rose up, with all them whose spirit God had raised, to go up to build the house.",
+  "ref": "Ezra 1:5"
+ },
+ {
+  "id": "ezra-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Where had Nebuchadnezzar put the vessels of the house of the LORD?",
+  "choices": [
+   "In the house of his gods",
+   "In the king's treasury",
+   "In the river",
+   "In Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Nebuchadnezzar had put them in the house of his gods.",
+  "ref": "Ezra 1:7"
+ },
+ {
+  "id": "ezra-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the treasurer by whose hand Cyrus brought forth the vessels?",
+  "choices": [
+   "Sheshbazzar",
+   "Mithredath",
+   "Jeshua",
+   "Zerubbabel"
+  ],
+  "answer": 1,
+  "explanation": "Cyrus brought them forth by the hand of Mithredath the treasurer.",
+  "ref": "Ezra 1:8"
+ },
+ {
+  "id": "ezra-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "What title is given to Sheshbazzar?",
+  "choices": [
+   "Priest of Judah",
+   "Governor of Persia",
+   "Prince of Judah",
+   "Scribe of the king"
+  ],
+  "answer": 2,
+  "explanation": "Mithredath numbered them unto Sheshbazzar, the prince of Judah.",
+  "ref": "Ezra 1:8"
+ },
+ {
+  "id": "ezra-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many chargers of silver were among the vessels?",
+  "choices": [
+   "Thirty",
+   "A thousand",
+   "Four hundred and ten",
+   "Nine and twenty"
+  ],
+  "answer": 1,
+  "explanation": "The number was thirty chargers of gold, a thousand chargers of silver, nine and twenty knives.",
+  "ref": "Ezra 1:9"
+ },
+ {
+  "id": "ezra-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many knives were among the vessels?",
+  "choices": [
+   "Nine and twenty",
+   "Thirty",
+   "A thousand",
+   "Four hundred"
+  ],
+  "answer": 0,
+  "explanation": "The number included nine and twenty knives.",
+  "ref": "Ezra 1:9"
+ },
+ {
+  "id": "ezra-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many silver basons of a second sort were there?",
+  "choices": [
+   "Thirty",
+   "A thousand",
+   "Four hundred and ten",
+   "Five thousand four hundred"
+  ],
+  "answer": 2,
+  "explanation": "Silver basons of a second sort were four hundred and ten.",
+  "ref": "Ezra 1:10"
+ },
+ {
+  "id": "ezra-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many basons of gold were there?",
+  "choices": [
+   "Nine and twenty",
+   "Four hundred",
+   "A thousand",
+   "Thirty"
+  ],
+  "answer": 3,
+  "explanation": "There were thirty basons of gold.",
+  "ref": "Ezra 1:10"
+ },
+ {
+  "id": "ezra-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who strengthened the hands of those going up with vessels, gold, goods and beasts?",
+  "choices": [
+   "All they that were about them",
+   "The king's princes",
+   "The Levites alone",
+   "The people of Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "All they that were about them strengthened their hands with vessels of silver, with gold, with goods, and with beasts.",
+  "ref": "Ezra 1:6"
+ },
+ {
+  "id": "ezra-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides gifts for the journey, what did Cyrus say the men of each place should give?",
+  "choices": [
+   "The firstborn of their flocks",
+   "A freewill offering for the house of God",
+   "A tenth of their land",
+   "Their best workmen"
+  ],
+  "answer": 1,
+  "explanation": "Let the men of his place help him, beside the freewill offering for the house of God that is in Jerusalem.",
+  "ref": "Ezra 1:4"
+ },
+ {
   "id": "old-ezra-2-1",
   "chapter": 2,
   "level": "beginner",
   "category": "person",
-  "question": "Who is listed throughout this chapter?",
+  "question": "Which king of Babylon had carried these people away to Babylon?",
   "choices": [
-   "Only Persian officials",
-   "Only priests in Jerusalem",
-   "The people who returned from captivity",
-   "The tribes living in Egypt"
+   "Nebuchadnezzar",
+   "Cyrus",
+   "Darius",
+   "Belshazzar"
   ],
-  "answer": 2,
-  "explanation": "Ezra 2 records those who returned from Babylon to Judah.",
+  "answer": 0,
+  "explanation": "They were those whom Nebuchadnezzar the king of Babylon had carried away unto Babylon.",
   "ref": "Ezra 2:1"
  },
  {
   "id": "old-ezra-2-2",
   "chapter": 2,
   "level": "beginner",
-  "category": "keyword",
-  "question": "Which leader is named first among those who came with Zerubbabel?",
+  "category": "person",
+  "question": "Who led the people who came up out of the captivity with Jeshua?",
   "choices": [
    "Ezra",
+   "Zerubbabel",
    "Mordecai",
-   "Daniel",
-   "Jeshua"
+   "Sheshbazzar"
   ],
-  "answer": 3,
-  "explanation": "Jeshua is the first name in the list of those who came with Zerubbabel.",
+  "answer": 1,
+  "explanation": "They came with Zerubbabel: Jeshua, Nehemiah, Seraiah, and the others.",
   "ref": "Ezra 2:2"
  },
  {
@@ -158,6 +366,662 @@
   "answer": 1,
   "explanation": "The matter was deferred until a priest could inquire with Urim and Thummim.",
   "ref": "Ezra 2:63"
+ },
+ {
+  "id": "ezra-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the people who came up out of the captivity return to?",
+  "choices": [
+   "Jerusalem and Judah",
+   "Samaria and Galilee",
+   "Babylon and Persia",
+   "Egypt and Sinai"
+  ],
+  "answer": 0,
+  "explanation": "They came again unto Jerusalem and Judah, every one unto his city.",
+  "ref": "Ezra 2:1"
+ },
+ {
+  "id": "ezra-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did some of the chief fathers give toward the house of God?",
+  "choices": [
+   "They were taxed",
+   "They offered freely",
+   "They lent it out",
+   "They gave nothing"
+  ],
+  "answer": 1,
+  "explanation": "Some of the chief of the fathers offered freely for the house of God to set it up in his place.",
+  "ref": "Ezra 2:68"
+ },
+ {
+  "id": "ezra-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose children are named as the singers in the register?",
+  "choices": [
+   "Heman",
+   "Jeduthun",
+   "Asaph",
+   "Korah"
+  ],
+  "answer": 2,
+  "explanation": "The singers: the children of Asaph, an hundred twenty and eight.",
+  "ref": "Ezra 2:41"
+ },
+ {
+  "id": "ezra-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did all Israel live once they had returned?",
+  "choices": [
+   "In tents at Jerusalem",
+   "In Babylon",
+   "In Samaria",
+   "In their cities"
+  ],
+  "answer": 3,
+  "explanation": "The priests, Levites, singers and the rest dwelt in their cities, and all Israel in their cities.",
+  "ref": "Ezra 2:70"
+ },
+ {
+  "id": "ezra-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the givers offer besides gold and silver?",
+  "choices": [
+   "Priests' garments",
+   "Cedar timber",
+   "Oil and wine",
+   "Camels"
+  ],
+  "answer": 0,
+  "explanation": "They gave gold, silver, and one hundred priests garments.",
+  "ref": "Ezra 2:69"
+ },
+ {
+  "id": "ezra-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose servants' children are listed with the returned exiles?",
+  "choices": [
+   "Moses'",
+   "Solomon's",
+   "David's",
+   "Cyrus's"
+  ],
+  "answer": 1,
+  "explanation": "The children of Solomon's servants are named in the register.",
+  "ref": "Ezra 2:55"
+ },
+ {
+  "id": "ezra-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these men is named among the leaders who came with Zerubbabel?",
+  "choices": [
+   "Daniel",
+   "Esther",
+   "Nehemiah",
+   "Haggai"
+  ],
+  "answer": 2,
+  "explanation": "Which came with Zerubbabel: Jeshua, Nehemiah, Seraiah, Reelaiah, Mordecai.",
+  "ref": "Ezra 2:2"
+ },
+ {
+  "id": "ezra-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides horses, mules and asses, which animal did the returning people bring?",
+  "choices": [
+   "Oxen",
+   "Goats",
+   "Doves",
+   "Camels"
+  ],
+  "answer": 3,
+  "explanation": "Their camels were four hundred thirty and five.",
+  "ref": "Ezra 2:66\u201367"
+ },
+ {
+  "id": "ezra-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which group of Levites' children is named with Jeshua?",
+  "choices": [
+   "Kadmiel",
+   "Kohath",
+   "Merari",
+   "Gershom"
+  ],
+  "answer": 0,
+  "explanation": "The Levites: the children of Jeshua and Kadmiel, of the children of Hodaviah.",
+  "ref": "Ezra 2:40"
+ },
+ {
+  "id": "ezra-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which town is named in the register of the returning families?",
+  "choices": [
+   "Nazareth",
+   "Bethlehem",
+   "Capernaum",
+   "Bethany"
+  ],
+  "answer": 1,
+  "explanation": "The children of Bethlehem, an hundred twenty and three.",
+  "ref": "Ezra 2:21"
+ },
+ {
+  "id": "ezra-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many people were in the whole congregation together?",
+  "choices": [
+   "32,360",
+   "40,000",
+   "42,360",
+   "52,300"
+  ],
+  "answer": 2,
+  "explanation": "The whole congregation together was forty and two thousand three hundred and threescore.",
+  "ref": "Ezra 2:64"
+ },
+ {
+  "id": "ezra-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many servants and maids came with them?",
+  "choices": [
+   "7,337",
+   "6,720",
+   "1,254",
+   "3,630"
+  ],
+  "answer": 0,
+  "explanation": "Beside their servants and their maids there were seven thousand three hundred thirty and seven.",
+  "ref": "Ezra 2:65"
+ },
+ {
+  "id": "ezra-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What could the people from Tel-melah and Tel-harsa not show?",
+  "choices": [
+   "Their tithes",
+   "Their father's house and whether they were of Israel",
+   "Their weapons",
+   "Their permission to return"
+  ],
+  "answer": 1,
+  "explanation": "They could not shew their father's house, and their seed, whether they were of Israel.",
+  "ref": "Ezra 2:59"
+ },
+ {
+  "id": "ezra-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose daughters did a priestly family take a wife from, and take the name of?",
+  "choices": [
+   "Barzillai the Gileadite",
+   "Tobiah the Ammonite",
+   "Jeshua the priest",
+   "Asaph the singer"
+  ],
+  "answer": 0,
+  "explanation": "They took a wife of the daughters of Barzillai the Gileadite, and were called after their name.",
+  "ref": "Ezra 2:61"
+ },
+ {
+  "id": "ezra-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of their animals was the most numerous?",
+  "choices": [
+   "Horses",
+   "Mules",
+   "Camels",
+   "Asses"
+  ],
+  "answer": 3,
+  "explanation": "Their asses were six thousand seven hundred and twenty.",
+  "ref": "Ezra 2:67"
+ },
+ {
+  "id": "ezra-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many were the children of Adonikam?",
+  "choices": [
+   "Six hundred sixty and six",
+   "Two hundred sixty and six",
+   "Three hundred twenty and three",
+   "Four hundred fifty and four"
+  ],
+  "answer": 0,
+  "explanation": "The children of Adonikam, six hundred sixty and six.",
+  "ref": "Ezra 2:13"
+ },
+ {
+  "id": "ezra-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many of the children of Asaph, the singers, returned?",
+  "choices": [
+   "Seventy and four",
+   "An hundred twenty and eight",
+   "An hundred thirty and nine",
+   "Two hundred"
+  ],
+  "answer": 1,
+  "explanation": "The singers: the children of Asaph, an hundred twenty and eight.",
+  "ref": "Ezra 2:41"
+ },
+ {
+  "id": "ezra-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which family was the largest named, at three thousand six hundred thirty?",
+  "choices": [
+   "Parosh",
+   "Pahath-moab",
+   "Senaah",
+   "Bigvai"
+  ],
+  "answer": 2,
+  "explanation": "The children of Senaah, three thousand and six hundred and thirty.",
+  "ref": "Ezra 2:35"
+ },
+ {
+  "id": "ezra-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many Levites returned?",
+  "choices": [
+   "Nine hundred seventy and three",
+   "One hundred twenty and eight",
+   "One hundred thirty and nine",
+   "Seventy and four"
+  ],
+  "answer": 3,
+  "explanation": "The Levites: the children of Jeshua and Kadmiel were seventy and four.",
+  "ref": "Ezra 2:40"
+ },
+ {
+  "id": "ezra-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who were counted with the Nethinims, three hundred ninety and two in all?",
+  "choices": [
+   "Solomon's servants",
+   "The porters",
+   "The singers",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "All the Nethinims and the children of Solomon's servants were three hundred ninety and two.",
+  "ref": "Ezra 2:58"
+ },
+ {
+  "id": "ezra-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many were the children of Pahath-moab?",
+  "choices": [
+   "Two thousand an hundred seventy and two",
+   "Two thousand eight hundred and twelve",
+   "Three thousand and six hundred and thirty",
+   "Two thousand fifty and six"
+  ],
+  "answer": 1,
+  "explanation": "The children of Pahath-moab, of the children of Jeshua and Joab, two thousand eight hundred and twelve.",
+  "ref": "Ezra 2:6"
+ },
+ {
+  "id": "ezra-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Which three families of priests sought their register and could not find it?",
+  "choices": [
+   "Immer, Pashur and Harim",
+   "Jedaiah, Immer and Pashur",
+   "Habaiah, Koz and Barzillai",
+   "Shallum, Talmon and Akkub"
+  ],
+  "answer": 2,
+  "explanation": "Of the priests: the children of Habaiah, the children of Koz, the children of Barzillai sought their register.",
+  "ref": "Ezra 2:61\u201362"
+ },
+ {
+  "id": "ezra-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much gold did the chief fathers give to the treasure of the work?",
+  "choices": [
+   "Five thousand pound",
+   "An hundred drams",
+   "Seven thousand drams",
+   "Threescore and one thousand drams"
+  ],
+  "answer": 3,
+  "explanation": "They gave threescore and one thousand drams of gold.",
+  "ref": "Ezra 2:69"
+ },
+ {
+  "id": "ezra-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "How many singing men and singing women were among them?",
+  "choices": [
+   "Two hundred",
+   "An hundred",
+   "Seven hundred",
+   "Forty-two"
+  ],
+  "answer": 0,
+  "explanation": "There were among them two hundred singing men and singing women.",
+  "ref": "Ezra 2:65"
+ },
+ {
+  "id": "ezra-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which families, together numbering six hundred fifty and two, could not prove their descent?",
+  "choices": [
+   "Immer and Pashur",
+   "Delaiah, Tobiah and Nekoda",
+   "Ziha and Hasupha",
+   "Hodaviah and Kadmiel"
+  ],
+  "answer": 1,
+  "explanation": "The children of Delaiah, Tobiah and Nekoda, six hundred fifty and two, could not shew their father's house.",
+  "ref": "Ezra 2:59\u201360"
+ },
+ {
+  "id": "ezra-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men were there of Anathoth?",
+  "choices": [
+   "Fifty and six",
+   "An hundred twenty and two",
+   "An hundred twenty and eight",
+   "Two hundred twenty and three"
+  ],
+  "answer": 2,
+  "explanation": "The men of Anathoth, an hundred twenty and eight.",
+  "ref": "Ezra 2:23"
+ },
+ {
+  "id": "ezra-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men were there of Netophah?",
+  "choices": [
+   "Fifty and six",
+   "Forty and two",
+   "Fifty and two",
+   "Ninety and five"
+  ],
+  "answer": 0,
+  "explanation": "The men of Netophah, fifty and six.",
+  "ref": "Ezra 2:22"
+ },
+ {
+  "id": "ezra-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many people were there of Bethel and Ai?",
+  "choices": [
+   "An hundred twenty and two",
+   "Two hundred twenty and three",
+   "Six hundred twenty and one",
+   "Seven hundred twenty and five"
+  ],
+  "answer": 1,
+  "explanation": "The men of Bethel and Ai, two hundred twenty and three.",
+  "ref": "Ezra 2:28"
+ },
+ {
+  "id": "ezra-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many children of Pashur were there?",
+  "choices": [
+   "A thousand fifty and two",
+   "A thousand and seventeen",
+   "A thousand two hundred forty and seven",
+   "Nine hundred seventy and three"
+  ],
+  "answer": 2,
+  "explanation": "The children of Pashur, a thousand two hundred forty and seven.",
+  "ref": "Ezra 2:38"
+ },
+ {
+  "id": "ezra-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many porters were there in all?",
+  "choices": [
+   "Seventy and four",
+   "An hundred twenty and eight",
+   "Three hundred ninety and two",
+   "An hundred thirty and nine"
+  ],
+  "answer": 3,
+  "explanation": "The children of the porters were in all an hundred thirty and nine.",
+  "ref": "Ezra 2:42"
+ },
+ {
+  "id": "ezra-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many horses did they have?",
+  "choices": [
+   "Seven hundred thirty and six",
+   "Two hundred forty and five",
+   "Four hundred thirty and five",
+   "Six thousand seven hundred and twenty"
+  ],
+  "answer": 0,
+  "explanation": "Their horses were seven hundred thirty and six.",
+  "ref": "Ezra 2:66"
+ },
+ {
+  "id": "ezra-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many mules did they have?",
+  "choices": [
+   "Seven hundred thirty and six",
+   "Two hundred forty and five",
+   "Four hundred thirty and five",
+   "Six hundred fifty and two"
+  ],
+  "answer": 1,
+  "explanation": "Their mules were two hundred forty and five.",
+  "ref": "Ezra 2:66"
+ },
+ {
+  "id": "ezra-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much silver did the chief fathers give to the treasure of the work?",
+  "choices": [
+   "An hundred pound",
+   "Threescore pound",
+   "Five thousand pound",
+   "A thousand pound"
+  ],
+  "answer": 2,
+  "explanation": "They gave five thousand pound of silver.",
+  "ref": "Ezra 2:69"
+ },
+ {
+  "id": "ezra-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many priests' garments did they give?",
+  "choices": [
+   "Twelve",
+   "Seventy",
+   "Two hundred",
+   "One hundred"
+  ],
+  "answer": 3,
+  "explanation": "They gave one hundred priests garments.",
+  "ref": "Ezra 2:69"
+ },
+ {
+  "id": "ezra-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the children of the other Elam?",
+  "choices": [
+   "A thousand two hundred fifty and four",
+   "Two thousand eight hundred and twelve",
+   "Three hundred and twenty",
+   "Nine hundred forty and five"
+  ],
+  "answer": 0,
+  "explanation": "The children of the other Elam, a thousand two hundred fifty and four.",
+  "ref": "Ezra 2:31"
+ },
+ {
+  "id": "ezra-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the children of Ater of Hezekiah?",
+  "choices": [
+   "Fifty and two",
+   "Ninety and eight",
+   "Ninety and five",
+   "An hundred and twelve"
+  ],
+  "answer": 1,
+  "explanation": "The children of Ater of Hezekiah, ninety and eight.",
+  "ref": "Ezra 2:16"
+ },
+ {
+  "id": "ezra-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the children of Ramah and Gaba?",
+  "choices": [
+   "Seven hundred twenty and five",
+   "An hundred twenty and two",
+   "Six hundred twenty and one",
+   "Six hundred forty and two"
+  ],
+  "answer": 2,
+  "explanation": "The children of Ramah and Gaba, six hundred twenty and one.",
+  "ref": "Ezra 2:26"
+ },
+ {
+  "id": "ezra-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the children of Lod, Hadid and Ono?",
+  "choices": [
+   "Three hundred forty and five",
+   "Seven hundred and forty and three",
+   "Six hundred twenty and one",
+   "Seven hundred twenty and five"
+  ],
+  "answer": 3,
+  "explanation": "The children of Lod, Hadid, and Ono, seven hundred twenty and five.",
+  "ref": "Ezra 2:33"
+ },
+ {
+  "id": "ezra-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the children of Kirjath-arim, Chephirah and Beeroth?",
+  "choices": [
+   "Seven hundred and forty and three",
+   "An hundred and twelve",
+   "Three hundred twenty and three",
+   "Three hundred and twenty"
+  ],
+  "answer": 0,
+  "explanation": "The children of Kirjath-arim, Chephirah, and Beeroth, seven hundred and forty and three.",
+  "ref": "Ezra 2:25"
+ },
+ {
+  "id": "ezra-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the men of Michmas?",
+  "choices": [
+   "Fifty and two",
+   "An hundred twenty and two",
+   "An hundred fifty and six",
+   "Ninety and five"
+  ],
+  "answer": 1,
+  "explanation": "The men of Michmas, an hundred twenty and two.",
+  "ref": "Ezra 2:27"
+ },
+ {
+  "id": "ezra-2-h-16",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the children of Jericho?",
+  "choices": [
+   "Three hundred and twenty",
+   "Two hundred twenty and three",
+   "Three hundred forty and five",
+   "Seven hundred twenty and five"
+  ],
+  "answer": 2,
+  "explanation": "The children of Jericho, three hundred forty and five.",
+  "ref": "Ezra 2:34"
  },
  {
   "id": "old-ezra-3-1",
@@ -240,6 +1104,262 @@
   "ref": "Ezra 3:12"
  },
  {
+  "id": "ezra-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who built the altar together with Jeshua and his brethren the priests?",
+  "choices": [
+   "Zerubbabel",
+   "Mordecai",
+   "Sheshbazzar",
+   "Cyrus"
+  ],
+  "answer": 0,
+  "explanation": "Jeshua and Zerubbabel the son of Shealtiel and their brethren builded the altar of the God of Israel.",
+  "ref": "Ezra 3:2"
+ },
+ {
+  "id": "ezra-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Levites, the sons of Asaph, play to praise the LORD?",
+  "choices": [
+   "Harps",
+   "Cymbals",
+   "Flutes",
+   "Drums"
+  ],
+  "answer": 1,
+  "explanation": "The Levites the sons of Asaph were set with cymbals, to praise the LORD.",
+  "ref": "Ezra 3:10"
+ },
+ {
+  "id": "ezra-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month did the people gather as one man to Jerusalem?",
+  "choices": [
+   "The first",
+   "The second",
+   "The seventh",
+   "The tenth"
+  ],
+  "answer": 2,
+  "explanation": "When the seventh month was come, the people gathered themselves together as one man to Jerusalem.",
+  "ref": "Ezra 3:1"
+ },
+ {
+  "id": "ezra-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose law did they follow when they built the altar and offered burnt offerings?",
+  "choices": [
+   "Moses",
+   "Solomon",
+   "Cyrus",
+   "Jeremiah"
+  ],
+  "answer": 0,
+  "explanation": "They offered burnt offerings as it is written in the law of Moses the man of God.",
+  "ref": "Ezra 3:2"
+ },
+ {
+  "id": "ezra-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not yet laid when they began to offer burnt offerings?",
+  "choices": [
+   "The altar",
+   "The foundation of the temple",
+   "The walls of the city",
+   "The gates"
+  ],
+  "answer": 1,
+  "explanation": "From the first day of the seventh month began they to offer; but the foundation of the temple was not yet laid.",
+  "ref": "Ezra 3:6"
+ },
+ {
+  "id": "ezra-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they send to Zidon and Tyre in exchange for cedar trees?",
+  "choices": [
+   "Gold and silver",
+   "Camels and mules",
+   "Meat, drink and oil",
+   "Garments and spices"
+  ],
+  "answer": 2,
+  "explanation": "They gave meat, and drink, and oil unto them of Zidon and Tyre to bring cedar trees from Lebanon.",
+  "ref": "Ezra 3:7"
+ },
+ {
+  "id": "ezra-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had granted them permission to bring in cedar from Lebanon?",
+  "choices": [
+   "Darius",
+   "Artaxerxes",
+   "Nebuchadnezzar",
+   "Cyrus king of Persia"
+  ],
+  "answer": 3,
+  "explanation": "They brought the cedar according to the grant that they had of Cyrus king of Persia.",
+  "ref": "Ezra 3:7"
+ },
+ {
+  "id": "ezra-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From what age were the Levites appointed to set forward the work?",
+  "choices": [
+   "Twenty years old and upward",
+   "Thirty years old and upward",
+   "Twelve years old",
+   "Fifty years old"
+  ],
+  "answer": 0,
+  "explanation": "They appointed the Levites, from twenty years old and upward, to set forward the work.",
+  "ref": "Ezra 3:8"
+ },
+ {
+  "id": "ezra-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priests in their apparel hold when the foundation was laid?",
+  "choices": [
+   "Cymbals",
+   "Trumpets",
+   "Harps",
+   "Censers"
+  ],
+  "answer": 1,
+  "explanation": "They set the priests in their apparel with trumpets.",
+  "ref": "Ezra 3:10"
+ },
+ {
+  "id": "ezra-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month of the second year did the work on the house begin?",
+  "choices": [
+   "The first",
+   "The seventh",
+   "The second",
+   "The fifth"
+  ],
+  "answer": 2,
+  "explanation": "In the second year, in the second month, began Zerubbabel and Jeshua.",
+  "ref": "Ezra 3:8"
+ },
+ {
+  "id": "ezra-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man stood with his sons alongside Jeshua to set forward the workmen?",
+  "choices": [
+   "Kadmiel",
+   "Mithredath",
+   "Asaph",
+   "Seraiah"
+  ],
+  "answer": 0,
+  "explanation": "Then stood Jeshua with his sons and his brethren, Kadmiel and his sons.",
+  "ref": "Ezra 3:9"
+ },
+ {
+  "id": "ezra-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "To which sea were the cedar trees brought from Lebanon?",
+  "choices": [
+   "The sea of Galilee",
+   "The sea of Joppa",
+   "The great sea of Tyre",
+   "The salt sea"
+  ],
+  "answer": 1,
+  "explanation": "They brought cedar trees from Lebanon to the sea of Joppa.",
+  "ref": "Ezra 3:7"
+ },
+ {
+  "id": "ezra-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "After whose ordinance did the priests and Levites praise the LORD?",
+  "choices": [
+   "Moses",
+   "Solomon",
+   "David king of Israel",
+   "Cyrus"
+  ],
+  "answer": 2,
+  "explanation": "They praised the LORD, after the ordinance of David king of Israel.",
+  "ref": "Ezra 3:10"
+ },
+ {
+  "id": "ezra-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they say in their song of thanks about the LORD's mercy?",
+  "choices": [
+   "It is new every morning",
+   "It reaches to the heavens",
+   "It is greater than the sea",
+   "It endureth for ever toward Israel"
+  ],
+  "answer": 3,
+  "explanation": "He is good, for his mercy endureth for ever toward Israel.",
+  "ref": "Ezra 3:11"
+ },
+ {
+  "id": "ezra-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What could the people not tell apart?",
+  "choices": [
+   "The noise of joy and the noise of weeping",
+   "The priests and the Levites",
+   "The young men and the old",
+   "Day from night"
+  ],
+  "answer": 0,
+  "explanation": "The people could not discern the noise of the shout of joy from the noise of the weeping.",
+  "ref": "Ezra 3:13"
+ },
+ {
+  "id": "ezra-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Jeshua, who stood up with the priests to build the altar?",
+  "choices": [
+   "Shealtiel",
+   "Jozadak",
+   "Asaph",
+   "Henadad"
+  ],
+  "answer": 1,
+  "explanation": "Then stood up Jeshua the son of Jozadak, and his brethren the priests.",
+  "ref": "Ezra 3:2"
+ },
+ {
   "id": "old-ezra-4-1",
   "chapter": 4,
   "level": "beginner",
@@ -285,7 +1405,7 @@
   ],
   "answer": 3,
   "explanation": "They used intimidation and political opposition to hinder the work.",
-  "ref": "Ezra 4:4–5"
+  "ref": "Ezra 4:4\u20135"
  },
  {
   "id": "old-ezra-4-4",
@@ -301,7 +1421,7 @@
   ],
   "answer": 2,
   "explanation": "Artaxerxes commanded the work to cease.",
-  "ref": "Ezra 4:23–24"
+  "ref": "Ezra 4:23\u201324"
  },
  {
   "id": "old-ezra-4-5",
@@ -317,7 +1437,503 @@
   ],
   "answer": 0,
   "explanation": "The letter called Jerusalem a rebellious city and warned the king about its walls being set up.",
-  "ref": "Ezra 4:12–13"
+  "ref": "Ezra 4:12\u201313"
+ },
+ {
+  "id": "ezra-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the chancellor who wrote a letter against Jerusalem?",
+  "choices": [
+   "Rehum",
+   "Bishlam",
+   "Tabeel",
+   "Zerubbabel"
+  ],
+  "answer": 0,
+  "explanation": "Rehum the chancellor and Shimshai the scribe wrote a letter against Jerusalem to Artaxerxes the king.",
+  "ref": "Ezra 4:8"
+ },
+ {
+  "id": "ezra-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the scribe who wrote with Rehum against Jerusalem?",
+  "choices": [
+   "Mithredath",
+   "Shimshai",
+   "Asnapper",
+   "Jeshua"
+  ],
+  "answer": 1,
+  "explanation": "Rehum the chancellor and Shimshai the scribe wrote a letter.",
+  "ref": "Ezra 4:8"
+ },
+ {
+  "id": "ezra-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what tongue was the letter to Artaxerxes written?",
+  "choices": [
+   "Hebrew",
+   "Greek",
+   "Syrian",
+   "Egyptian"
+  ],
+  "answer": 2,
+  "explanation": "The writing of the letter was written in the Syrian tongue, and interpreted in the Syrian tongue.",
+  "ref": "Ezra 4:7"
+ },
+ {
+  "id": "ezra-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which leaders answered the adversaries, Ye have nothing to do with us?",
+  "choices": [
+   "Rehum and Shimshai",
+   "Bishlam and Tabeel",
+   "Haggai and Zechariah",
+   "Zerubbabel and Jeshua"
+  ],
+  "answer": 3,
+  "explanation": "Zerubbabel, and Jeshua, and the rest of the chief of the fathers said, Ye have nothing to do with us.",
+  "ref": "Ezra 4:3"
+ },
+ {
+  "id": "ezra-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king command about the city in his answer?",
+  "choices": [
+   "That the men cease and the city not be builded",
+   "That the walls be finished",
+   "That the temple be taxed",
+   "That the Jews be sent to Babylon"
+  ],
+  "answer": 0,
+  "explanation": "Cause these men to cease, and that this city be not builded, until another commandment shall be given.",
+  "ref": "Ezra 4:21"
+ },
+ {
+  "id": "ezra-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Rehum and Shimshai do when the king's letter was read before them?",
+  "choices": [
+   "They sent gifts to Jerusalem",
+   "Went up in haste and made the Jews cease by force",
+   "They wrote another letter",
+   "They went home in peace"
+  ],
+  "answer": 1,
+  "explanation": "They went up in haste to Jerusalem unto the Jews, and made them to cease by force and power.",
+  "ref": "Ezra 4:23"
+ },
+ {
+  "id": "ezra-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Until when did the work of the house of God cease?",
+  "choices": [
+   "The death of Artaxerxes",
+   "The reign of Cyrus",
+   "The second year of the reign of Darius",
+   "The seventh month"
+  ],
+  "answer": 2,
+  "explanation": "Then ceased the work of the house of God. So it ceased unto the second year of the reign of Darius king of Persia.",
+  "ref": "Ezra 4:24"
+ },
+ {
+  "id": "ezra-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose adversaries heard that the captives were building the temple?",
+  "choices": [
+   "Of Egypt and Tyre",
+   "Of Persia and Media",
+   "Of Moab and Ammon",
+   "Of Judah and Benjamin"
+  ],
+  "answer": 3,
+  "explanation": "The adversaries of Judah and Benjamin heard that the children of the captivity builded the temple.",
+  "ref": "Ezra 4:1"
+ },
+ {
+  "id": "ezra-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Since the days of which king did the adversaries say they had sacrificed to God?",
+  "choices": [
+   "Esar-haddon king of Assur",
+   "Nebuchadnezzar",
+   "Cyrus",
+   "Darius"
+  ],
+  "answer": 0,
+  "explanation": "We do sacrifice unto him since the days of Esar-haddon king of Assur, which brought us up hither.",
+  "ref": "Ezra 4:2"
+ },
+ {
+  "id": "ezra-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did the adversaries give for wanting to help build?",
+  "choices": [
+   "They were paid by the king",
+   "We seek your God, as ye do",
+   "They were Levites",
+   "They owned the land"
+  ],
+  "answer": 1,
+  "explanation": "Let us build with you: for we seek your God, as ye do.",
+  "ref": "Ezra 4:2"
+ },
+ {
+  "id": "ezra-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For how long did the hired counsellors work against the Jews?",
+  "choices": [
+   "Seven years",
+   "Forty years",
+   "All the days of Cyrus until the reign of Darius",
+   "Until the death of Zerubbabel"
+  ],
+  "answer": 2,
+  "explanation": "They hired counsellors against them all the days of Cyrus king of Persia, even until the reign of Darius.",
+  "ref": "Ezra 4:5"
+ },
+ {
+  "id": "ezra-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "To which king did they write an accusation at the start of his reign?",
+  "choices": [
+   "Cyrus",
+   "Darius",
+   "Artaxerxes",
+   "Ahasuerus"
+  ],
+  "answer": 3,
+  "explanation": "In the reign of Ahasuerus, in the beginning of his reign, wrote they unto him an accusation.",
+  "ref": "Ezra 4:6"
+ },
+ {
+  "id": "ezra-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who wrote to Artaxerxes with Mithredath and Tabeel?",
+  "choices": [
+   "Bishlam",
+   "Rehum",
+   "Shimshai",
+   "Asnapper"
+  ],
+  "answer": 0,
+  "explanation": "In the days of Artaxerxes wrote Bishlam, Mithredath, Tabeel, and the rest of their companions.",
+  "ref": "Ezra 4:7"
+ },
+ {
+  "id": "ezra-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What three payments did the letter say the Jews would stop paying?",
+  "choices": [
+   "Tithe, firstfruits and offering",
+   "Toll, tribute and custom",
+   "Silver, gold and grain",
+   "Tax, rent and dowry"
+  ],
+  "answer": 1,
+  "explanation": "If this city be builded, then will they not pay toll, tribute, and custom.",
+  "ref": "Ezra 4:13"
+ },
+ {
+  "id": "ezra-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the letter-writers say the king should search for proof?",
+  "choices": [
+   "In the temple at Jerusalem",
+   "In the treasury of Babylon",
+   "In the book of the records of his fathers",
+   "In the writings of Moses"
+  ],
+  "answer": 2,
+  "explanation": "That search may be made in the book of the records of thy fathers.",
+  "ref": "Ezra 4:15"
+ },
+ {
+  "id": "ezra-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the letter describe the city of Jerusalem?",
+  "choices": [
+   "Faithful and old",
+   "Holy and strong",
+   "Poor and small",
+   "Rebellious and bad"
+  ],
+  "answer": 3,
+  "explanation": "The Jews are come unto Jerusalem, building the rebellious and the bad city.",
+  "ref": "Ezra 4:12"
+ },
+ {
+  "id": "ezra-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king's search find about the city?",
+  "choices": [
+   "It had always paid tribute",
+   "It of old had made insurrection against kings",
+   "It had never had a king",
+   "It had been built by Persia"
+  ],
+  "answer": 1,
+  "explanation": "It is found that this city of old time hath made insurrection against kings.",
+  "ref": "Ezra 4:19"
+ },
+ {
+  "id": "ezra-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king say about the kings who once ruled over Jerusalem?",
+  "choices": [
+   "They were weak",
+   "They had ruled all countries beyond the river",
+   "They were Persians",
+   "They had served Babylon"
+  ],
+  "answer": 1,
+  "explanation": "There have been mighty kings also over Jerusalem, which have ruled over all countries beyond the river.",
+  "ref": "Ezra 4:20"
+ },
+ {
+  "id": "ezra-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did the writers give for sending word to the king?",
+  "choices": [
+   "They had maintenance from the king's palace",
+   "They feared the Jews",
+   "They were Jews",
+   "They wanted land"
+  ],
+  "answer": 0,
+  "explanation": "Because we have maintenance from the king's palace, and it was not meet for us to see the king's dishonour.",
+  "ref": "Ezra 4:14"
+ },
+ {
+  "id": "ezra-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who brought the nations over and set them in the cities of Samaria?",
+  "choices": [
+   "Esar-haddon",
+   "Cyrus",
+   "Asnapper",
+   "Rehum"
+  ],
+  "answer": 2,
+  "explanation": "The great and noble Asnapper brought them over, and set them in the cities of Samaria.",
+  "ref": "Ezra 4:10"
+ },
+ {
+  "id": "ezra-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these peoples is named among those who joined in writing the letter?",
+  "choices": [
+   "The Egyptians",
+   "The Hittites",
+   "The Philistines",
+   "The Babylonians"
+  ],
+  "answer": 3,
+  "explanation": "The Dinaites, the Apharsathchites, the Tarpelites, the Apharsites, the Archevites, the Babylonians, the Susanchites.",
+  "ref": "Ezra 4:9"
+ },
+ {
+  "id": "ezra-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the letter say the king would have no portion in, if the city were built?",
+  "choices": [
+   "The temple",
+   "This side the river",
+   "The tribute of Egypt",
+   "The land of Judah"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt have no portion on this side the river.",
+  "ref": "Ezra 4:16"
+ },
+ {
+  "id": "ezra-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the Jews set up and joined, according to the letter?",
+  "choices": [
+   "Altars and gates",
+   "Towers and bridges",
+   "The walls and the foundations",
+   "Houses and fields"
+  ],
+  "answer": 2,
+  "explanation": "They have set up the walls thereof, and joined the foundations.",
+  "ref": "Ezra 4:12"
+ },
+ {
+  "id": "ezra-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How had the king's letter been read, he said?",
+  "choices": [
+   "Plainly before him",
+   "In secret",
+   "In the Syrian tongue only",
+   "By the priests"
+  ],
+  "answer": 0,
+  "explanation": "The letter which ye sent unto us hath been plainly read before me.",
+  "ref": "Ezra 4:18"
+ },
+ {
+  "id": "ezra-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until what did the king say the building must not go on?",
+  "choices": [
+   "The next king arose",
+   "Another commandment is given from him",
+   "The Jews paid tribute",
+   "The walls were torn down"
+  ],
+  "answer": 1,
+  "explanation": "Let the city not be builded, until another commandment shall be given from me.",
+  "ref": "Ezra 4:21"
+ },
+ {
+  "id": "ezra-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king say he had commanded to be made?",
+  "choices": [
+   "A census",
+   "A decree to Babylon",
+   "A search",
+   "A gift"
+  ],
+  "answer": 2,
+  "explanation": "I commanded, and search hath been made, and it is found.",
+  "ref": "Ezra 4:19"
+ },
+ {
+  "id": "ezra-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the hired counsellors seek to frustrate?",
+  "choices": [
+   "The king's army",
+   "The temple tax",
+   "The Levites' service",
+   "Their purpose"
+  ],
+  "answer": 3,
+  "explanation": "They hired counsellors against them, to frustrate their purpose.",
+  "ref": "Ezra 4:5"
+ },
+ {
+  "id": "ezra-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did those the king addressed in his answer dwell?",
+  "choices": [
+   "Samaria",
+   "Babylon",
+   "Tyre",
+   "Susa"
+  ],
+  "answer": 0,
+  "explanation": "The king sent an answer unto Rehum and Shimshai and the rest of their companions that dwell in Samaria.",
+  "ref": "Ezra 4:17"
+ },
+ {
+  "id": "ezra-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the letter say the Jews had moved within the city of old time?",
+  "choices": [
+   "Sedition",
+   "A famine",
+   "Idolatry",
+   "A war with Egypt"
+  ],
+  "answer": 0,
+  "explanation": "They have moved sedition within the same of old time: for which cause was this city destroyed.",
+  "ref": "Ezra 4:15"
+ },
+ {
+  "id": "ezra-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What city did the letter say was destroyed because of rebellion?",
+  "choices": [
+   "Babylon",
+   "Jerusalem",
+   "Samaria",
+   "Susa"
+  ],
+  "answer": 1,
+  "explanation": "This city is rebellious and hurtful unto kings; for which cause was this city destroyed.",
+  "ref": "Ezra 4:15"
+ },
+ {
+  "id": "ezra-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did Zerubbabel and Jeshua say they were building as king Cyrus had commanded?",
+  "choices": [
+   "The God of heaven and earth",
+   "The LORD God of Israel",
+   "The king of Persia",
+   "Esar-haddon"
+  ],
+  "answer": 1,
+  "explanation": "We ourselves together will build unto the LORD God of Israel, as king Cyrus the king of Persia hath commanded us.",
+  "ref": "Ezra 4:3"
  },
  {
   "id": "old-ezra-5-1",
@@ -400,6 +2016,374 @@
   "ref": "Ezra 5:5"
  },
  {
+  "id": "ezra-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "To which king did Tatnai send his letter?",
+  "choices": [
+   "Cyrus",
+   "Artaxerxes",
+   "Darius",
+   "Nebuchadnezzar"
+  ],
+  "answer": 2,
+  "explanation": "They sent a letter unto Darius the king, all peace.",
+  "ref": "Ezra 5:6\u20137"
+ },
+ {
+  "id": "ezra-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Tatnai ask the Jews about the building?",
+  "choices": [
+   "Who hath commanded you to build this house",
+   "How long will it take",
+   "Where will you get timber",
+   "Why is it so small"
+  ],
+  "answer": 0,
+  "explanation": "Who hath commanded you to build this house, and to make up this wall?",
+  "ref": "Ezra 5:3"
+ },
+ {
+  "id": "ezra-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who destroyed the house of God and carried the people away to Babylon?",
+  "choices": [
+   "Cyrus",
+   "Nebuchadnezzar",
+   "Darius",
+   "Tatnai"
+  ],
+  "answer": 1,
+  "explanation": "God gave them into the hand of Nebuchadnezzar, who destroyed this house, and carried the people away into Babylon.",
+  "ref": "Ezra 5:12"
+ },
+ {
+  "id": "ezra-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king made a decree to build the house of God in his first year?",
+  "choices": [
+   "Darius",
+   "Artaxerxes",
+   "Cyrus",
+   "Ahasuerus"
+  ],
+  "answer": 2,
+  "explanation": "In the first year of Cyrus the same king Cyrus made a decree to build this house of God.",
+  "ref": "Ezra 5:13"
+ },
+ {
+  "id": "ezra-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the prophets of God do while the Jews began to build?",
+  "choices": [
+   "They stood by and watched",
+   "They helped them",
+   "They warned them to stop",
+   "They left Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "Then rose up Zerubbabel and Jeshua, and began to build; and with them were the prophets of God helping them.",
+  "ref": "Ezra 5:2"
+ },
+ {
+  "id": "ezra-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Zechariah the prophet?",
+  "choices": [
+   "Iddo",
+   "Shealtiel",
+   "Jozadak",
+   "Haggai"
+  ],
+  "answer": 0,
+  "explanation": "Haggai the prophet, and Zechariah the son of Iddo, prophesied unto the Jews.",
+  "ref": "Ezra 5:1"
+ },
+ {
+  "id": "ezra-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Who came with Tatnai, governor on this side the river?",
+  "choices": [
+   "Rehum",
+   "Shethar-boznai",
+   "Mithredath",
+   "Shimshai"
+  ],
+  "answer": 1,
+  "explanation": "Tatnai, governor on this side the river, and Shethar-boznai, and their companions.",
+  "ref": "Ezra 5:3"
+ },
+ {
+  "id": "ezra-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Tatnai report about the work as he saw it?",
+  "choices": [
+   "It was almost abandoned",
+   "It had no workmen",
+   "It goeth fast on, and prospereth",
+   "It was built of mud"
+  ],
+  "answer": 2,
+  "explanation": "This work goeth fast on, and prospereth in their hands.",
+  "ref": "Ezra 5:8"
+ },
+ {
+  "id": "ezra-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the elders say God gave their fathers into Nebuchadnezzar's hand?",
+  "choices": [
+   "They broke the sabbath",
+   "They paid no tribute",
+   "They hated Babylon",
+   "They had provoked the God of heaven to wrath"
+  ],
+  "answer": 3,
+  "explanation": "Our fathers had provoked the God of heaven unto wrath.",
+  "ref": "Ezra 5:12"
+ },
+ {
+  "id": "ezra-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Cyrus make governor and give the vessels to?",
+  "choices": [
+   "Sheshbazzar",
+   "Zerubbabel",
+   "Mithredath",
+   "Jeshua"
+  ],
+  "answer": 0,
+  "explanation": "The vessels were delivered unto one, whose name was Sheshbazzar, whom he had made governor.",
+  "ref": "Ezra 5:14"
+ },
+ {
+  "id": "ezra-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Cyrus tell Sheshbazzar to do with the vessels?",
+  "choices": [
+   "Sell them in Tyre",
+   "Carry them into the temple in Jerusalem",
+   "Keep them in Babylon",
+   "Melt them for the work"
+  ],
+  "answer": 1,
+  "explanation": "Take these vessels, go, carry them into the temple that is in Jerusalem.",
+  "ref": "Ezra 5:15"
+ },
+ {
+  "id": "ezra-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From where did Cyrus take the vessels that Nebuchadnezzar had taken?",
+  "choices": [
+   "The treasury of Persia",
+   "The house of the rolls",
+   "The temple of Babylon",
+   "The palace of Susa"
+  ],
+  "answer": 2,
+  "explanation": "Cyrus the king took them out of the temple of Babylon.",
+  "ref": "Ezra 5:14"
+ },
+ {
+  "id": "ezra-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Tatnai ask the king to search for Cyrus's decree?",
+  "choices": [
+   "In the temple at Jerusalem",
+   "In Achmetha",
+   "In Samaria",
+   "In the king's treasure house at Babylon"
+  ],
+  "answer": 3,
+  "explanation": "Let there be search made in the king's treasure house, which is there at Babylon.",
+  "ref": "Ezra 5:17"
+ },
+ {
+  "id": "ezra-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the elders say about the house they were building?",
+  "choices": [
+   "It was a new temple for Persia",
+   "It was built many years ago by a great king of Israel",
+   "It was meant for Cyrus",
+   "It was small and temporary"
+  ],
+  "answer": 1,
+  "explanation": "Build the house that was builded these many years ago, which a great king of Israel builded and set up.",
+  "ref": "Ezra 5:11"
+ },
+ {
+  "id": "ezra-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the house built with, according to Tatnai's report?",
+  "choices": [
+   "Cedar and gold",
+   "Great stones and timber in the walls",
+   "Bricks and clay",
+   "Marble pillars"
+  ],
+  "answer": 1,
+  "explanation": "The house of the great God is builded with great stones, and timber is laid in the walls.",
+  "ref": "Ezra 5:8"
+ },
+ {
+  "id": "ezra-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Into which province did Tatnai say they went?",
+  "choices": [
+   "Judea",
+   "Media",
+   "Samaria",
+   "Galilee"
+  ],
+  "answer": 0,
+  "explanation": "We went into the province of Judea, to the house of the great God.",
+  "ref": "Ezra 5:8"
+ },
+ {
+  "id": "ezra-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Tatnai ask for the names of the chief men?",
+  "choices": [
+   "To tax them",
+   "To arrest them",
+   "To certify the king",
+   "To honor them"
+  ],
+  "answer": 2,
+  "explanation": "We asked their names also, to certify thee, that we might write the names of the men that were the chief.",
+  "ref": "Ezra 5:10"
+ },
+ {
+  "id": "ezra-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the elders say of the house since Sheshbazzar laid its foundation?",
+  "choices": [
+   "It was finished",
+   "It had been abandoned",
+   "It was destroyed again",
+   "It was still in building and not finished"
+  ],
+  "answer": 3,
+  "explanation": "Since that time even until now hath it been in building, and yet it is not finished.",
+  "ref": "Ezra 5:16"
+ },
+ {
+  "id": "ezra-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Tatnai ask the king to have searched for?",
+  "choices": [
+   "Whether a decree was made of Cyrus",
+   "The names of the elders",
+   "A record of Nebuchadnezzar's wars",
+   "The temple's old plans"
+  ],
+  "answer": 0,
+  "explanation": "Whether it be so, that a decree was made of Cyrus the king to build this house of God.",
+  "ref": "Ezra 5:17"
+ },
+ {
+  "id": "ezra-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Tatnai's letter greet King Darius?",
+  "choices": [
+   "Long live the king",
+   "All peace",
+   "Hail, O king",
+   "God save the king"
+  ],
+  "answer": 1,
+  "explanation": "Unto Darius the king, all peace.",
+  "ref": "Ezra 5:7"
+ },
+ {
+  "id": "ezra-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What title does Cyrus have in the elders' reply?",
+  "choices": [
+   "King of Media",
+   "King of Assyria",
+   "King of Babylon",
+   "King of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "In the first year of Cyrus the king of Babylon the same king Cyrus made a decree.",
+  "ref": "Ezra 5:13"
+ },
+ {
+  "id": "ezra-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which group of people are named as companions of Tatnai and Shethar-boznai?",
+  "choices": [
+   "The Chaldeans",
+   "The Elamites",
+   "The Medes",
+   "The Apharsachites"
+  ],
+  "answer": 3,
+  "explanation": "Tatnai and Shethar-boznai and his companions the Apharsachites sent the letter.",
+  "ref": "Ezra 5:6"
+ },
+ {
+  "id": "ezra-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose name did Haggai and Zechariah prophesy?",
+  "choices": [
+   "The God of Israel",
+   "The king of Persia",
+   "Cyrus",
+   "The LORD of Babylon"
+  ],
+  "answer": 0,
+  "explanation": "They prophesied unto the Jews in the name of the God of Israel.",
+  "ref": "Ezra 5:1"
+ },
+ {
   "id": "old-ezra-6-1",
   "chapter": 6,
   "level": "beginner",
@@ -429,7 +2413,7 @@
   ],
   "answer": 1,
   "explanation": "Darius ordered the officials not to hinder the work.",
-  "ref": "Ezra 6:6–7"
+  "ref": "Ezra 6:6\u20137"
  },
  {
   "id": "old-ezra-6-3",
@@ -478,6 +2462,454 @@
   "answer": 3,
   "explanation": "They kept the Passover after the temple was completed.",
   "ref": "Ezra 6:19"
+ },
+ {
+  "id": "ezra-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king ordered a search to be made in the house of the rolls?",
+  "choices": [
+   "Cyrus",
+   "Darius",
+   "Artaxerxes",
+   "Nebuchadnezzar"
+  ],
+  "answer": 1,
+  "explanation": "Then Darius the king made a decree, and search was made in the house of the rolls.",
+  "ref": "Ezra 6:1"
+ },
+ {
+  "id": "ezra-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two prophets helped the elders prosper in the building?",
+  "choices": [
+   "Haggai and Zechariah",
+   "Isaiah and Jeremiah",
+   "Ezra and Nehemiah",
+   "Daniel and Ezekiel"
+  ],
+  "answer": 0,
+  "explanation": "The elders prospered through the prophesying of Haggai the prophet and Zechariah the son of Iddo.",
+  "ref": "Ezra 6:14"
+ },
+ {
+  "id": "ezra-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people keep the dedication of the house of God?",
+  "choices": [
+   "In silence",
+   "In fasting",
+   "With joy",
+   "With war"
+  ],
+  "answer": 2,
+  "explanation": "They kept the dedication of this house of God with joy.",
+  "ref": "Ezra 6:16"
+ },
+ {
+  "id": "ezra-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did they keep the feast of unleavened bread?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Twelve days",
+   "Forty days"
+  ],
+  "answer": 1,
+  "explanation": "They kept the feast of unleavened bread seven days with joy.",
+  "ref": "Ezra 6:22"
+ },
+ {
+  "id": "ezra-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who were purified together before the passover was killed?",
+  "choices": [
+   "The priests and the Levites",
+   "The elders and the prophets",
+   "The singers and the porters",
+   "The children only"
+  ],
+  "answer": 0,
+  "explanation": "The priests and the Levites were purified together, all of them were pure.",
+  "ref": "Ezra 6:20"
+ },
+ {
+  "id": "ezra-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Tatnai and his companions carry out Darius's decree?",
+  "choices": [
+   "Slowly and in secret",
+   "With complaints",
+   "Speedily",
+   "Not at all"
+  ],
+  "answer": 2,
+  "explanation": "According to that which Darius the king had sent, so they did speedily.",
+  "ref": "Ezra 6:13"
+ },
+ {
+  "id": "ezra-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How high and how broad did Cyrus's decree say the house should be?",
+  "choices": [
+   "Twenty cubits",
+   "Forty cubits",
+   "Fifty cubits",
+   "Threescore cubits"
+  ],
+  "answer": 3,
+  "explanation": "The height thereof threescore cubits, and the breadth thereof threescore cubits.",
+  "ref": "Ezra 6:3"
+ },
+ {
+  "id": "ezra-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the house to be built, according to Cyrus's decree?",
+  "choices": [
+   "Three rows of great stones and a row of new timber",
+   "Only of cedar",
+   "Of brick and clay",
+   "Of gold and silver plates"
+  ],
+  "answer": 0,
+  "explanation": "With three rows of great stones, and a row of new timber.",
+  "ref": "Ezra 6:4"
+ },
+ {
+  "id": "ezra-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done with the golden and silver vessels?",
+  "choices": [
+   "Melted into coins",
+   "Restored to the temple at Jerusalem",
+   "Given to the king's house",
+   "Kept in Babylon"
+  ],
+  "answer": 1,
+  "explanation": "Let the golden and silver vessels be restored, and brought again unto the temple at Jerusalem.",
+  "ref": "Ezra 6:5"
+ },
+ {
+  "id": "ezra-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the Jews to pray for as they offered sacrifices?",
+  "choices": [
+   "Rain for the land",
+   "Peace in Jerusalem",
+   "The life of the king and of his sons",
+   "The fall of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "That they may pray for the life of the king, and of his sons.",
+  "ref": "Ezra 6:10"
+ },
+ {
+  "id": "ezra-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to anyone who altered Darius's word?",
+  "choices": [
+   "He was fined heavily",
+   "He was sent to Babylon",
+   "He was banished",
+   "He would be hanged on timber pulled from his house"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever shall alter this word, let timber be pulled down from his house, and being set up, let him be hanged thereon.",
+  "ref": "Ezra 6:11"
+ },
+ {
+  "id": "ezra-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many bullocks were offered at the dedication of the house?",
+  "choices": [
+   "An hundred",
+   "Two hundred",
+   "Four hundred",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "They offered an hundred bullocks, two hundred rams, four hundred lambs.",
+  "ref": "Ezra 6:17"
+ },
+ {
+  "id": "ezra-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many he goats were offered as a sin offering for all Israel?",
+  "choices": [
+   "Seven",
+   "Twelve",
+   "Forty",
+   "Two hundred"
+  ],
+  "answer": 1,
+  "explanation": "For a sin offering for all Israel, twelve he goats, according to the number of the tribes of Israel.",
+  "ref": "Ezra 6:17"
+ },
+ {
+  "id": "ezra-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to which book were the priests set in their divisions and the Levites in their courses?",
+  "choices": [
+   "The book of Jeremiah",
+   "The book of the rolls",
+   "The book of Moses",
+   "The book of the kings"
+  ],
+  "answer": 2,
+  "explanation": "They set the priests in their divisions, and the Levites in their courses, as it is written in the book of Moses.",
+  "ref": "Ezra 6:18"
+ },
+ {
+  "id": "ezra-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what day of the first month did they keep the passover?",
+  "choices": [
+   "The first",
+   "The tenth",
+   "The twenty-first",
+   "The fourteenth"
+  ],
+  "answer": 3,
+  "explanation": "The children of the captivity kept the passover upon the fourteenth day of the first month.",
+  "ref": "Ezra 6:19"
+ },
+ {
+  "id": "ezra-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the LORD turn to strengthen their hands in the work?",
+  "choices": [
+   "The heart of the king of Assyria",
+   "The heart of Cyrus",
+   "The princes of Media",
+   "The governor Tatnai"
+  ],
+  "answer": 0,
+  "explanation": "The LORD had made them joyful, and turned the heart of the king of Assyria unto them.",
+  "ref": "Ezra 6:22"
+ },
+ {
+  "id": "ezra-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides bullocks, rams and lambs, what else was to be given day by day for the offerings?",
+  "choices": [
+   "Honey and figs",
+   "Wheat, salt, wine and oil",
+   "Doves and spices",
+   "Barley and olives"
+  ],
+  "answer": 1,
+  "explanation": "Wheat, salt, wine, and oil, according to the appointment of the priests, let it be given them day by day.",
+  "ref": "Ezra 6:9"
+ },
+ {
+  "id": "ezra-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what day of which month was the house finished?",
+  "choices": [
+   "The third day of Adar",
+   "The fourteenth day of the first month",
+   "The first day of the seventh month",
+   "The twenty-fourth day of the sixth month"
+  ],
+  "answer": 0,
+  "explanation": "This house was finished on the third day of the month Adar.",
+  "ref": "Ezra 6:15"
+ },
+ {
+  "id": "ezra-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Darius's reign was the house finished?",
+  "choices": [
+   "The second",
+   "The sixth",
+   "The tenth",
+   "The twentieth"
+  ],
+  "answer": 1,
+  "explanation": "It was finished in the sixth year of the reign of Darius the king.",
+  "ref": "Ezra 6:15"
+ },
+ {
+  "id": "ezra-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Darius's decree to make of the house of anyone who altered the word?",
+  "choices": [
+   "A ruin",
+   "A prison",
+   "A dunghill",
+   "A temple"
+  ],
+  "answer": 2,
+  "explanation": "Let his house be made a dunghill for this.",
+  "ref": "Ezra 6:11"
+ },
+ {
+  "id": "ezra-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "According to whose appointment was the daily supply to be given?",
+  "choices": [
+   "The governor's",
+   "The king's",
+   "The scribes'",
+   "The priests at Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "According to the appointment of the priests which are at Jerusalem.",
+  "ref": "Ezra 6:9"
+ },
+ {
+  "id": "ezra-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Which king is named with Cyrus and Darius in the commandments for finishing the house?",
+  "choices": [
+   "Ahasuerus",
+   "Nebuchadnezzar",
+   "Artaxerxes",
+   "Esar-haddon"
+  ],
+  "answer": 2,
+  "explanation": "They finished it, according to the commandment of Cyrus, and Darius, and Artaxerxes king of Persia.",
+  "ref": "Ezra 6:14"
+ },
+ {
+  "id": "ezra-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whom did the Levites kill the passover?",
+  "choices": [
+   "Only the priests",
+   "The exiles, their brethren the priests, and themselves",
+   "Only the children",
+   "Only the Levites"
+  ],
+  "answer": 1,
+  "explanation": "They killed the passover for all the children of the captivity, and for their brethren the priests, and for themselves.",
+  "ref": "Ezra 6:20"
+ },
+ {
+  "id": "ezra-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had those who joined the returned exiles done?",
+  "choices": [
+   "Separated themselves from the filthiness of the heathen",
+   "Come from Babylon",
+   "Paid tribute",
+   "Been born in Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "All such as had separated themselves unto them from the filthiness of the heathen of the land, to seek the LORD.",
+  "ref": "Ezra 6:21"
+ },
+ {
+  "id": "ezra-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Where in Babylon were treasures laid up when Darius ordered the search?",
+  "choices": [
+   "The king's palace",
+   "The house of the rolls",
+   "The temple of his gods",
+   "The river house"
+  ],
+  "answer": 1,
+  "explanation": "Search was made in the house of the rolls, where the treasures were laid up in Babylon.",
+  "ref": "Ezra 6:1"
+ },
+ {
+  "id": "ezra-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Darius call on God to do to kings and people who altered or destroyed the house?",
+  "choices": [
+   "Remove them",
+   "Forgive them",
+   "Destroy them",
+   "Strengthen them"
+  ],
+  "answer": 2,
+  "explanation": "The God that hath caused his name to dwell there destroy all kings and people, that shall put to their hand to alter and to destroy this house.",
+  "ref": "Ezra 6:12"
+ },
+ {
+  "id": "ezra-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why were the expenses to be given forthwith to the elders?",
+  "choices": [
+   "So that the king would be thanked",
+   "So the work would finish by winter",
+   "So the Jews would pay tax",
+   "That they be not hindered"
+  ],
+  "answer": 3,
+  "explanation": "Forthwith expenses be given unto these men, that they be not hindered.",
+  "ref": "Ezra 6:8"
+ },
+ {
+  "id": "ezra-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Darius say his decree should be carried out?",
+  "choices": [
+   "With speed",
+   "In secret",
+   "After a year",
+   "By the priests only"
+  ],
+  "answer": 0,
+  "explanation": "I Darius have made a decree; let it be done with speed.",
+  "ref": "Ezra 6:12"
  },
  {
   "id": "old-ezra-7-1",
@@ -637,7 +3069,7 @@
   ],
   "answer": 1,
   "explanation": "The treasures were carefully weighed into the temple's custody.",
-  "ref": "Ezra 8:33–34"
+  "ref": "Ezra 8:33\u201334"
  },
  {
   "id": "old-ezra-9-1",
@@ -653,7 +3085,7 @@
   ],
   "answer": 2,
   "explanation": "The chief issue was intermarriage with surrounding peoples.",
-  "ref": "Ezra 9:1–2"
+  "ref": "Ezra 9:1\u20132"
  },
  {
   "id": "old-ezra-9-2",
@@ -797,6 +3229,6 @@
   ],
   "answer": 3,
   "explanation": "The matter was examined carefully over time by appointed leaders.",
-  "ref": "Ezra 10:16–17"
+  "ref": "Ezra 10:16\u201317"
  }
 ]
