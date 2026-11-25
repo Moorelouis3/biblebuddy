@@ -5,7 +5,7 @@ is a landscape with no people. Audit of all live backgrounds on 2026-11-24:
 
 - **Correct (landscapes, keep):** Genesis 03-06 and 08-11, Exodus 02, 06, 07, 08,
   Deuteronomy 07, Joshua 08, Leviticus 01-10, 1 Chronicles 01-10, 1 Corinthians 01-10.
-- **Redo (people, faces or close-ups of objects): 77 boards**, listed below.
+- **Redo (people, faces or close-ups of objects): 77 boards**, plus 4 maps with people (1 Samuel, 2 Samuel, Leviticus, Numbers), listed below. Win screens keep their people.
 
 The PDF version is docs/match-prompts/Match-Style-Redo.pdf (with the pictures). Give it
 to ChatGPT one part at a time, so the style does not drift.
@@ -150,3 +150,17 @@ Before delivering, check every picture: if there is a single person in it, paint
 | `08-Across-the-Kidron` | The Kidron valley and the Mount of Olives seen from Jerusalem's walls, a path leading away east. |
 | `09-Back-Across-the-Jordan` | The fords of the Jordan at Gilgal, the river shining, the road back up to Jerusalem. |
 | `10-Araunahs-Threshing-Floor` | A threshing floor on a hilltop above Jerusalem, a newly built stone altar with smoke rising, the city below. |
+
+## Part 9: four maps (folder `00-<Book>-Map` in each book)
+
+The map is a landscape too: **no people anywhere** on it, like the Exodus map. Keep the same
+sand-coloured path exactly where it is now (it enters at the bottom 35-40% across, winds up
+and leaves at the top near the middle), because the game's level coins sit on it. Make
+**`map-phone.png` at 1080x4680** and **`map-desktop.png` at 1920x2160**, replacing the old files.
+
+| Map | What is wrong now | The landscape |
+|---|---|---|
+| `1 Samuel/00-1-Samuel-Map` | people at every stop | Shiloh's Tabernacle, the hills of Ephraim, Beth Shemesh's fields, the stone Ebenezer, Bethlehem, the Valley of Elah, the caves of En Gedi |
+| `2 Samuel/00-2-Samuel-Map` | the Ark carried by a crowd | Hebron, Jerusalem's walls, the road the Ark took (an empty road), the palace, the Kidron valley, the Jordan fords, the threshing floor |
+| `Leviticus/00-Leviticus-Map` | a priest and reapers | the camp at Sinai, the Tabernacle court and altar smoke, wheat fields, booths of branches, a hill for the ram's horn |
+| `Numbers/00-Numbers-Map` | people at the tents | the camp in rows, the cloud over the Tabernacle, the spies' view of Canaan's vineyards, the rock at Kadesh, the bronze serpent pole, the plains of Moab |

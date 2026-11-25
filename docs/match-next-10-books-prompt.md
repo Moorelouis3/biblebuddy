@@ -7,17 +7,17 @@ folder `00-<Book>-Map` plus 10 board folders `01-…` to `10-…`. One board = o
 **Do one book per ChatGPT chat** (or say "next book" in the same chat). Ten books at once is
 too much for it and the style drifts.
 
-**Before you paste, attach these 8 pictures from the Bible Match folder in Drive:**
+**Before you paste, attach these pictures from the Bible Match folder in Drive (the maps and backgrounds have no people):**
 
 | # | Drive file | Why |
 |---|---|---|
-| 1 | `Genesis/Production Art/map-phone.png` | map style |
-| 2 | `Exodus/00-Exodus-Map/map-phone.png` | map style |
-| 3 | `Genesis/07-Abraham-at-Beersheba/background-phone.png` | background style |
+| 1 | `Exodus/00-Exodus-Map/map-phone.png` | map style |
+| 2 | `1 Kings/00-1-Kings-Map/map-phone.png` | map style |
+| 3 | `Genesis/08-…/background-phone.png` (the well) | background style |
 | 4 | `Exodus/08-Mount-Sinai/background-phone.png` | background style |
-| 5 | `Joshua/08-…/background-phone.png` (the land) | background style |
-| 6 | `Genesis/08-…/background-phone.png` (the well) | background style |
-| 7 | any win screen from Exodus or 1 Samuel | win screen layout |
+| 5 | `1 Kings/09-Fire-on-Mount-Carmel/background-phone.png` | background style |
+| 6 | `1 Chronicles/03-The-Ark-Brought-Home/background-phone.png` | background style |
+| 7 | `1 Kings/09-Fire-on-Mount-Carmel/win-screen.png` | win screen layout |
 | 8 | any 3 tile PNGs from `Exodus/08-Mount-Sinai/` | tile style |
 
 Then copy everything below the line, and change **THIS BOOK** at the top to the book you want.
@@ -38,8 +38,10 @@ ask for the next one.
 
 ## Style rules (read these twice)
 
-1. **Board backgrounds are landscapes with NO people.** Nobody at all: no characters, no crowds,
-   no faces, no figures in the distance. Only the place where the story happens.
+1. **Board backgrounds and the map are landscapes with NO people.** Nobody at
+   all: no characters, no crowds, no faces, no figures in the distance. Only the places of this
+   book: its hills, rivers, cities, roads and sky. A busy picture makes the board hard to play.
+   (Win screens are the one exception: they tell the story, so they show its people.)
 2. **The middle of each background stays calm.** The game board covers the middle 60%. Keep
    it simple: ground, mist, plain sky. Put the interesting things in the top 20% and rocks or
    ground in the bottom 15%.
@@ -366,7 +368,7 @@ Board 10 button: **"Continue to Hosea"**.
 | 05 | `05-Like-Morning-Mist` | Like Morning Mist | Hosea 6:4 | Mist lifting off fields at sunrise |
 | 06 | `06-A-Silly-Dove` | A Silly Dove | Hosea 7:11 | A dove flying between two far-off kingdoms |
 | 07 | `07-Sow-Righteousness` | Sow Righteousness | Hosea 10:12 | A farmer plowing new ground, far away |
-| 08 | `08-When-Israel-Was-a-Child` | When Israel Was a Child | Hosea 11 | A path out of Egypt, a small child's footsteps |
+| 08 | `08-When-Israel-Was-a-Child` | When Israel Was a Child | Hosea 11 | A path out of Egypt, small footprints in the sand |
 | 09 | `09-Return-to-the-LORD` | Return to the LORD | Hosea 14:1–3 | A road home through olive groves |
 | 10 | `10-Like-the-Dew` | Like the Dew | Hosea 14:4–9 | Lilies, olive trees and cedars wet with dew |
 
@@ -478,7 +480,7 @@ Board 10 button: **"Continue to Habakkuk"**. Gentle: judgment shown as empty rui
 
 | # | Folder | Board name | Scripture | Scene |
 |---|---|---|---|---|
-| 01 | `01-How-Long-O-LORD` | How Long, O LORD? | Habakkuk 1:1–4 | A city at dusk, a prophet small on the wall |
+| 01 | `01-How-Long-O-LORD` | How Long, O LORD? | Habakkuk 1:1–4 | A city at dusk, an empty watchtower on the wall |
 | 02 | `02-Look-Among-the-Nations` | Look Among the Nations | Habakkuk 1:5–11 | Dust from horses far across the plain |
 | 03 | `03-Eyes-Too-Pure` | Eyes Too Pure | Habakkuk 1:12–17 | Fishing nets by a wide lake |
 | 04 | `04-On-the-Watchtower` | On the Watchtower | Habakkuk 2:1 | A tall watchtower at night, stars |
@@ -515,7 +517,7 @@ Board 10 button: **"Continue to Haggai"**.
 | 01 | `01-Paneled-Houses` | Paneled Houses | Haggai 1:1–4 | Fine wooden houses beside a ruined Temple |
 | 02 | `02-Consider-Your-Ways` | Consider Your Ways | Haggai 1:5–6 | Fields sown with little harvest, dry soil |
 | 03 | `03-Holes-in-the-Purse` | Holes in the Purse | Haggai 1:6 | A market stall, coins slipping away |
-| 04 | `04-Go-Up-and-Bring-Wood` | Go Up and Bring Wood | Haggai 1:8 | Workers far off carrying timber down a mountain |
+| 04 | `04-Go-Up-and-Bring-Wood` | Go Up and Bring Wood | Haggai 1:8 | Timber stacked at the foot of a forested mountain |
 | 05 | `05-The-People-Obey` | The People Obey | Haggai 1:12–15 | The Temple site with fresh-cut stones and timber at morning |
 | 06 | `06-Be-Strong` | Be Strong | Haggai 2:1–5 | The half-built Temple, a bright cloud above |
 | 07 | `07-The-Silver-and-the-Gold` | The Silver and the Gold | Haggai 2:6–9 | Treasure from many nations arriving at the Temple |
@@ -585,9 +587,9 @@ Board 10 button: **"Continue to Mark"**.
 | 03 | `03-The-Sower` | The Sower | Mark 4:1–20 | A field with rocky, thorny and good soil |
 | 04 | `04-Peace-Be-Still` | Peace, Be Still | Mark 4:35–41 | The Sea of Galilee going calm, a boat |
 | 05 | `05-Jairus-Daughter` | Jairus's Daughter | Mark 5:21–43 | A lakeside town, a house with morning light |
-| 06 | `06-Seeing-Clearly` | Seeing Clearly | Mark 8:22–26 | A village outside Bethsaida, trees like walking men |
+| 06 | `06-Seeing-Clearly` | Seeing Clearly | Mark 8:22–26 | A village outside Bethsaida among tall trees |
 | 07 | `07-The-Transfiguration` | The Transfiguration | Mark 9:2–8 | A high mountain glowing with white light |
-| 08 | `08-Let-the-Children-Come` | Let the Children Come | Mark 10:13–16 | A shady village square, children playing far off |
+| 08 | `08-Let-the-Children-Come` | Let the Children Come | Mark 10:13–16 | A shady village square with a well |
 | 09 | `09-Blind-Bartimaeus` | Blind Bartimaeus | Mark 10:46–52 | The road out of Jericho, palm trees |
 | 10 | `10-Go-into-All-the-World` | Go into All the World | Mark 16 | Roads leading out from Galilee across the world |
 
@@ -704,7 +706,7 @@ Board 10 button: **"Continue to Galatians"**.
 | 03 | `03-The-Right-Hand-of-Fellowship` | The Right Hand of Fellowship | Galatians 2:1–10 | Jerusalem houses at morning |
 | 04 | `04-Crucified-with-Christ` | Crucified with Christ | Galatians 2:20 | One cross far on a hill, sunrise behind |
 | 05 | `05-Children-of-Abraham` | Children of Abraham | Galatians 3:6–9 | Stars over the desert, tents below |
-| 06 | `06-No-Longer-Slaves` | No Longer Slaves | Galatians 4:1–7 | A family estate, a son coming home |
+| 06 | `06-No-Longer-Slaves` | No Longer Slaves | Galatians 4:1–7 | A family estate with the road home leading to its gate |
 | 07 | `07-Stand-Firm-in-Freedom` | Stand Firm in Freedom | Galatians 5:1 | Broken chains on a path to open country |
 | 08 | `08-The-Fruit-of-the-Spirit` | The Fruit of the Spirit | Galatians 5:22–23 | An orchard heavy with many kinds of fruit |
 | 09 | `09-Carry-Each-Others-Burdens` | Carry Each Other's Burdens | Galatians 6:2 | Travelers far off sharing loads on a road |
@@ -841,7 +843,7 @@ Board 10 button: **"Continue to Titus"**.
 | 04 | `04-Older-and-Younger` | Older and Younger | Titus 2:1–8 | A village square with benches and shade |
 | 05 | `05-Adorn-the-Teaching` | Adorn the Teaching | Titus 2:9–10 | A well-kept household courtyard |
 | 06 | `06-Grace-Has-Appeared` | Grace Has Appeared | Titus 2:11–14 | Sunrise breaking over the sea |
-| 07 | `07-Ready-for-Good-Works` | Ready for Good Works | Titus 3:1–2 | Workers mending a road, far off |
+| 07 | `07-Ready-for-Good-Works` | Ready for Good Works | Titus 3:1–2 | A road being mended, stones piled beside it |
 | 08 | `08-Washed-and-Renewed` | Washed and Renewed | Titus 3:4–7 | A waterfall into a clear pool |
 | 09 | `09-Avoid-Foolish-Arguments` | Avoid Foolish Arguments | Titus 3:9–11 | A quiet path leading away from a busy market |
 | 10 | `10-Come-to-Nicopolis` | Come to Nicopolis | Titus 3:12–15 | A harbor town in winter, ships at rest |
@@ -908,7 +910,7 @@ Board 10 button: **"Continue to 1 Peter"**.
 | 03 | `03-The-Grass-Withers` | The Grass Withers | 1 Peter 1:24–25 | A field of grass and flowers in wind, an open scroll |
 | 04 | `04-Living-Stones` | Living Stones | 1 Peter 2:4–8 | A house built of stones, the cornerstone shining |
 | 05 | `05-Called-out-of-Darkness` | Called out of Darkness | 1 Peter 2:9–10 | Dawn breaking over a dark land |
-| 06 | `06-Sheep-Gone-Astray` | Sheep Gone Astray | 1 Peter 2:24–25 | A shepherd far off bringing sheep home |
+| 06 | `06-Sheep-Gone-Astray` | Sheep Gone Astray | 1 Peter 2:24–25 | Sheep on a hillside path heading home at dusk |
 | 07 | `07-Saved-through-Water` | Saved through Water | 1 Peter 3:18–22 | Noah's ark resting after the flood, rainbow |
 | 08 | `08-Love-Covers` | Love Covers | 1 Peter 4:8–11 | A warm home with a table set for guests |
 | 09 | `09-Shepherd-the-Flock` | Shepherd the Flock | 1 Peter 5:1–4 | Green pastures with a flock and a crown of glory in light |
@@ -941,7 +943,7 @@ Board 10 button: **"Continue to 1 John"**.
 | 02 | `02-Walk-in-the-Light` | Walk in the Light | 1 John 1:5–7 | A path lit by sunrise through woods |
 | 03 | `03-Faithful-to-Forgive` | Faithful to Forgive | 1 John 1:8–2:2 | Clean water washing over stones |
 | 04 | `04-Do-Not-Love-the-World` | Do Not Love the World | 1 John 2:15–17 | A busy market at sunset, fading |
-| 05 | `05-Children-of-God` | Children of God | 1 John 3:1–3 | A family home with children playing far off |
+| 05 | `05-Children-of-God` | Children of God | 1 John 3:1–3 | A family home with a courtyard and a fig tree |
 | 06 | `06-Love-in-Action` | Love in Action | 1 John 3:16–18 | Bread shared at a doorway |
 | 07 | `07-Test-the-Spirits` | Test the Spirits | 1 John 4:1–6 | A crossroads with signposts |
 | 08 | `08-God-Is-Love` | God Is Love | 1 John 4:7–12 | A warm sunset over a peaceful village |
@@ -963,7 +965,7 @@ Board 10 button: **"Continue to 2 John"**.
 | 07 | `07-Watch-Yourselves` | Watch Yourselves | 2 John 7–8 | A watchtower over a vineyard |
 | 08 | `08-Stay-in-the-Teaching` | Stay in the Teaching | 2 John 9 | A sheepfold with the flock safe inside |
 | 09 | `09-Guard-the-Door` | Guard the Door | 2 John 10–11 | A house door at night, a lamp beside it |
-| 10 | `10-Face-to-Face` | Face to Face | 2 John 12–13 | A road leading to a house, someone arriving |
+| 10 | `10-Face-to-Face` | Face to Face | 2 John 12–13 | A road leading to a house with its door open |
 
 Board 10 button: **"Continue to 3 John"**.
 
@@ -1079,7 +1081,7 @@ Board 10 button: **"The End: Well Done!"**. Gentle: no beasts, dragons, plagues 
 Skip this for 2 Samuel if its map already exists.
 
 - **`map-phone.png`** at **1080×4680**, portrait: one tall painted landscape of the book's
-  world, **in the style of the attached maps.** Mostly scenery; people only small and far away.
+  world, **in the style of the attached maps.** Landscape only: **no people anywhere.**
 - **One clear sand-colored path** that enters at the **bottom edge, 35–40% across**, winds up
   with gentle curves, stays **at least 15% away from both side edges**, and leaves the **top
   edge near the middle**. Wide enough for 11 round level coins spaced evenly along it.
