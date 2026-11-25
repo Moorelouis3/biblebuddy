@@ -3680,6 +3680,662 @@
   "ref": "1 Kings 6:11–13"
  },
  {
+  "id": "1-kings-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was not heard in the house while it was being built?",
+  "choices": [
+   "Singing",
+   "Hammer, axe or any tool of iron",
+   "Trumpets",
+   "Any speech"
+  ],
+  "answer": 1,
+  "explanation": "There was neither hammer nor axe nor any tool of iron heard in the house, while it was in building.",
+  "ref": "1 Kings 6:7"
+ },
+ {
+  "id": "1-kings-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was the stone for the house prepared?",
+  "choices": [
+   "It was made ready before it was brought there",
+   "It was cut on the site",
+   "It was carried from Egypt",
+   "It was laid raw"
+  ],
+  "answer": 0,
+  "explanation": "The house was built of stone made ready before it was brought thither.",
+  "ref": "1 Kings 6:7"
+ },
+ {
+  "id": "1-kings-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Solomon prepare the oracle in the house?",
+  "choices": [
+   "To keep the king's treasure",
+   "To hold the altar of incense",
+   "To store the cedar",
+   "To set the ark of the covenant of the LORD there"
+  ],
+  "answer": 3,
+  "explanation": "The oracle he prepared in the house within, to set there the ark of the covenant of the LORD.",
+  "ref": "1 Kings 6:19"
+ },
+ {
+  "id": "1-kings-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the two cherubims in the oracle made of?",
+  "choices": [
+   "Cedar",
+   "Gold only",
+   "Olive tree",
+   "Fir"
+  ],
+  "answer": 2,
+  "explanation": "Within the oracle he made two cherubims of olive tree, each ten cubits high.",
+  "ref": "1 Kings 6:23"
+ },
+ {
+  "id": "1-kings-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was carved on the walls of the house round about?",
+  "choices": [
+   "Lions and oxen",
+   "Cherubims, palm trees and open flowers",
+   "Pomegranates and lilies",
+   "Angels and stars"
+  ],
+  "answer": 1,
+  "explanation": "He carved all the walls of the house round about with carved figures of cherubims and palm trees and open flowers.",
+  "ref": "1 Kings 6:29"
+ },
+ {
+  "id": "1-kings-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what did Solomon overlay the cherubims?",
+  "choices": [
+   "Gold",
+   "Silver",
+   "Brass",
+   "Ivory"
+  ],
+  "answer": 0,
+  "explanation": "He overlaid the cherubims with gold.",
+  "ref": "1 Kings 6:28"
+ },
+ {
+  "id": "1-kings-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what was the floor of the house overlaid, within and without?",
+  "choices": [
+   "Cedar",
+   "Stone",
+   "Silver",
+   "Gold"
+  ],
+  "answer": 3,
+  "explanation": "The floor of the house he overlaid with gold, within and without.",
+  "ref": "1 Kings 6:30"
+ },
+ {
+  "id": "1-kings-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was seen of stone inside the cedar house?",
+  "choices": [
+   "Only the floor stones",
+   "Only the doorposts",
+   "None",
+   "Only the foundation"
+  ],
+  "answer": 2,
+  "explanation": "All was cedar; there was no stone seen.",
+  "ref": "1 Kings 6:18"
+ },
+ {
+  "id": "1-kings-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the word of the LORD come to while the house was being built?",
+  "choices": [
+   "Nathan",
+   "Solomon",
+   "Hiram",
+   "Zadok"
+  ],
+  "answer": 1,
+  "explanation": "The word of the LORD came to Solomon, saying.",
+  "ref": "1 Kings 6:11"
+ },
+ {
+  "id": "1-kings-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the doors for the entering of the oracle made of?",
+  "choices": [
+   "Olive tree",
+   "Cedar",
+   "Fir",
+   "Gold only"
+  ],
+  "answer": 0,
+  "explanation": "For the entering of the oracle he made doors of olive tree.",
+  "ref": "1 Kings 6:31"
+ },
+ {
+  "id": "1-kings-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long after Israel left Egypt did Solomon begin to build?",
+  "choices": [
+   "Three hundred and eighty years",
+   "Five hundred years",
+   "Four hundred years",
+   "Four hundred and eighty years"
+  ],
+  "answer": 3,
+  "explanation": "In the four hundred and eightieth year after the children of Israel were come out of the land of Egypt.",
+  "ref": "1 Kings 6:1"
+ },
+ {
+  "id": "1-kings-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which month did Solomon begin to build, the second month?",
+  "choices": [
+   "Bul",
+   "Nisan",
+   "Zif",
+   "Ethanim"
+  ],
+  "answer": 2,
+  "explanation": "In the month Zif, which is the second month, that he began to build the house of the LORD.",
+  "ref": "1 Kings 6:1"
+ },
+ {
+  "id": "1-kings-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was the house?",
+  "choices": [
+   "Twenty cubits",
+   "Threescore cubits",
+   "Thirty cubits",
+   "Forty cubits"
+  ],
+  "answer": 1,
+  "explanation": "The length thereof was threescore cubits, and the breadth thereof twenty cubits, and the height thereof thirty cubits.",
+  "ref": "1 Kings 6:2"
+ },
+ {
+  "id": "1-kings-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How wide was the house?",
+  "choices": [
+   "Twenty cubits",
+   "Ten cubits",
+   "Thirty cubits",
+   "Sixty cubits"
+  ],
+  "answer": 0,
+  "explanation": "The breadth thereof twenty cubits.",
+  "ref": "1 Kings 6:2"
+ },
+ {
+  "id": "1-kings-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was the porch before the temple?",
+  "choices": [
+   "Ten cubits",
+   "Thirty cubits",
+   "Forty cubits",
+   "Twenty cubits"
+  ],
+  "answer": 3,
+  "explanation": "The porch before the temple of the house, twenty cubits was the length thereof.",
+  "ref": "1 Kings 6:3"
+ },
+ {
+  "id": "1-kings-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of windows did Solomon make for the house?",
+  "choices": [
+   "Round windows",
+   "Windows of gold",
+   "Windows of narrow lights",
+   "Windows of glass"
+  ],
+  "answer": 2,
+  "explanation": "For the house he made windows of narrow lights.",
+  "ref": "1 Kings 6:4"
+ },
+ {
+  "id": "1-kings-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How broad was the nethermost of the chambers around the house?",
+  "choices": [
+   "Six cubits",
+   "Five cubits",
+   "Seven cubits",
+   "Ten cubits"
+  ],
+  "answer": 1,
+  "explanation": "The nethermost chamber was five cubits broad, and the middle was six cubits broad, and the third was seven.",
+  "ref": "1 Kings 6:6"
+ },
+ {
+  "id": "1-kings-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did they go up into the middle chamber?",
+  "choices": [
+   "With winding stairs",
+   "By a ladder",
+   "By a ramp",
+   "Through a trapdoor"
+  ],
+  "answer": 0,
+  "explanation": "They went up with winding stairs into the middle chamber.",
+  "ref": "1 Kings 6:8"
+ },
+ {
+  "id": "1-kings-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did Solomon cover the house?",
+  "choices": [
+   "Plates of gold",
+   "Fir planks",
+   "Hewed stone",
+   "Beams and boards of cedar"
+  ],
+  "answer": 3,
+  "explanation": "He covered the house with beams and boards of cedar.",
+  "ref": "1 Kings 6:9"
+ },
+ {
+  "id": "1-kings-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD promise if Solomon walked in his statutes?",
+  "choices": [
+   "To give him more years",
+   "To send him a son",
+   "To perform the word he spake unto David",
+   "To lift the tax"
+  ],
+  "answer": 2,
+  "explanation": "If thou wilt walk in my statutes, then will I perform my word with thee, which I spake unto David thy father.",
+  "ref": "1 Kings 6:12"
+ },
+ {
+  "id": "1-kings-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was the temple before the oracle?",
+  "choices": [
+   "Twenty cubits",
+   "Forty cubits",
+   "Sixty cubits",
+   "Thirty cubits"
+  ],
+  "answer": 1,
+  "explanation": "The house, that is, the temple before it, was forty cubits long.",
+  "ref": "1 Kings 6:17"
+ },
+ {
+  "id": "1-kings-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the measures of the oracle?",
+  "choices": [
+   "Twenty cubits in length, breadth and height",
+   "Ten cubits each way",
+   "Thirty cubits each way",
+   "Twenty by ten by thirty"
+  ],
+  "answer": 0,
+  "explanation": "The oracle was twenty cubits in length, and twenty cubits in breadth, and twenty cubits in the height thereof.",
+  "ref": "1 Kings 6:20"
+ },
+ {
+  "id": "1-kings-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did Solomon overlay the oracle?",
+  "choices": [
+   "Beaten silver",
+   "Fine brass",
+   "Cedar boards",
+   "Pure gold"
+  ],
+  "answer": 3,
+  "explanation": "He overlaid it with pure gold.",
+  "ref": "1 Kings 6:20"
+ },
+ {
+  "id": "1-kings-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How high was each cherub?",
+  "choices": [
+   "Five cubits",
+   "Twenty cubits",
+   "Ten cubits",
+   "Thirty cubits"
+  ],
+  "answer": 2,
+  "explanation": "Each ten cubits high.",
+  "ref": "1 Kings 6:23"
+ },
+ {
+  "id": "1-kings-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was each wing of the cherub?",
+  "choices": [
+   "Ten cubits",
+   "Five cubits",
+   "Three cubits",
+   "Twenty cubits"
+  ],
+  "answer": 1,
+  "explanation": "Five cubits was the one wing of the cherub, and five cubits the other wing.",
+  "ref": "1 Kings 6:24"
+ },
+ {
+  "id": "1-kings-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month was the house finished?",
+  "choices": [
+   "Bul",
+   "Zif",
+   "Abib",
+   "Ethanim"
+  ],
+  "answer": 0,
+  "explanation": "In the eleventh year, in the month Bul, which is the eighth month, was the house finished.",
+  "ref": "1 Kings 6:38"
+ },
+ {
+  "id": "1-kings-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Solomon's reign was the house finished?",
+  "choices": [
+   "The seventh",
+   "The tenth",
+   "The twelfth",
+   "The eleventh"
+  ],
+  "answer": 3,
+  "explanation": "In the eleventh year, in the month Bul, was the house finished throughout all the parts thereof.",
+  "ref": "1 Kings 6:38"
+ },
+ {
+  "id": "1-kings-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the inner court built with?",
+  "choices": [
+   "Two rows of marble",
+   "Walls of cedar only",
+   "Three rows of hewed stone and a row of cedar beams",
+   "Bricks of clay"
+  ],
+  "answer": 2,
+  "explanation": "He built the inner court with three rows of hewed stone, and a row of cedar beams.",
+  "ref": "1 Kings 6:36"
+ },
+ {
+  "id": "1-kings-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Solomon make before the oracle?",
+  "choices": [
+   "A curtain of blue",
+   "A partition by chains of gold",
+   "A wall of cedar",
+   "A door of brass"
+  ],
+  "answer": 1,
+  "explanation": "He made a partition by the chains of gold before the oracle.",
+  "ref": "1 Kings 6:21"
+ },
+ {
+  "id": "1-kings-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the wings of the cherubims touch one another?",
+  "choices": [
+   "In the midst of the house",
+   "Over the ark",
+   "Above the door",
+   "At the altar"
+  ],
+  "answer": 0,
+  "explanation": "Their wings touched one another in the midst of the house.",
+  "ref": "1 Kings 6:27"
+ },
+ {
+  "id": "1-kings-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What part of the wall were the lintel and side posts of the oracle doors?",
+  "choices": [
+   "A fourth part",
+   "A third part",
+   "A half",
+   "A fifth part"
+  ],
+  "answer": 3,
+  "explanation": "The lintel and side posts were a fifth part of the wall.",
+  "ref": "1 Kings 6:31"
+ },
+ {
+  "id": "1-kings-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What part of the wall were the posts of the temple door?",
+  "choices": [
+   "A fifth part",
+   "A third part",
+   "A fourth part",
+   "A half"
+  ],
+  "answer": 2,
+  "explanation": "For the door of the temple posts of olive tree, a fourth part of the wall.",
+  "ref": "1 Kings 6:33"
+ },
+ {
+  "id": "1-kings-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the two doors of the temple made of?",
+  "choices": [
+   "Olive tree",
+   "Fir tree",
+   "Cedar",
+   "Gold"
+  ],
+  "answer": 1,
+  "explanation": "The two doors were of fir tree: the two leaves of the one door were folding.",
+  "ref": "1 Kings 6:34"
+ },
+ {
+  "id": "1-kings-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What covered the floor of the house?",
+  "choices": [
+   "Planks of fir",
+   "Planks of cedar",
+   "Stones of marble",
+   "Plates of brass"
+  ],
+  "answer": 0,
+  "explanation": "He covered the floor of the house with planks of fir.",
+  "ref": "1 Kings 6:15"
+ },
+ {
+  "id": "1-kings-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How high were the chambers built against the house?",
+  "choices": [
+   "Seven cubits",
+   "Ten cubits",
+   "Twenty cubits",
+   "Five cubits"
+  ],
+  "answer": 3,
+  "explanation": "He built chambers against all the house, five cubits high.",
+  "ref": "1 Kings 6:10"
+ },
+ {
+  "id": "1-kings-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why were narrowed rests made on the outside of the wall?",
+  "choices": [
+   "To hold the lamps",
+   "To keep out rain",
+   "So the beams would not be fastened in the walls",
+   "To carry the cherubims"
+  ],
+  "answer": 2,
+  "explanation": "He made narrowed rests round about, that the beams should not be fastened in the walls of the house.",
+  "ref": "1 Kings 6:6"
+ },
+ {
+  "id": "1-kings-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "On which side of the house was the door for the middle chamber?",
+  "choices": [
+   "The left side",
+   "The right side",
+   "The front",
+   "The rear"
+  ],
+  "answer": 1,
+  "explanation": "The door for the middle chamber was in the right side of the house.",
+  "ref": "1 Kings 6:8"
+ },
+ {
+  "id": "1-kings-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was carved on the cedar inside the house?",
+  "choices": [
+   "Knops and open flowers",
+   "Lions and bulls",
+   "Vines and grapes",
+   "Pomegranates and lilies"
+  ],
+  "answer": 0,
+  "explanation": "The cedar of the house within was carved with knops and open flowers.",
+  "ref": "1 Kings 6:18"
+ },
+ {
+  "id": "1-kings-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the altar by the oracle made of?",
+  "choices": [
+   "Brass",
+   "Stone",
+   "Olive wood",
+   "Cedar"
+  ],
+  "answer": 3,
+  "explanation": "He covered the altar which was of cedar; the whole altar that was by the oracle he overlaid with gold.",
+  "ref": "1 Kings 6:20–22"
+ },
+ {
+  "id": "1-kings-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Solomon set the cherubims?",
+  "choices": [
+   "Before the porch",
+   "In the inner court",
+   "Within the inner house",
+   "Beside the altar"
+  ],
+  "answer": 2,
+  "explanation": "He set the cherubims within the inner house.",
+  "ref": "1 Kings 6:27"
+ },
+ {
+  "id": "1-kings-6-h-16",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How high was the house?",
+  "choices": [
+   "Twenty cubits",
+   "Thirty cubits",
+   "Sixty cubits",
+   "Forty cubits"
+  ],
+  "answer": 1,
+  "explanation": "The height thereof thirty cubits.",
+  "ref": "1 Kings 6:2"
+ },
+ {
   "id": "old-1-kings-7-1",
   "chapter": 7,
   "level": "beginner",
