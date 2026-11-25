@@ -158,5 +158,805 @@
   "answer": 2,
   "explanation": "God sets Zerubbabel apart as a chosen servant, using the image of a signet ring to show honor and purpose.",
   "ref": "Haggai 2:23"
+ },
+ {
+  "id": "haggai-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Through which prophet did the word of the LORD come to Zerubbabel?",
+  "choices": [
+   "Malachi",
+   "Haggai",
+   "Zephaniah",
+   "Obadiah"
+  ],
+  "answer": 1,
+  "explanation": "The word of the LORD came by Haggai the prophet unto Zerubbabel.",
+  "ref": "Haggai 1:1"
+ },
+ {
+  "id": "haggai-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was governor of Judah when the word came?",
+  "choices": [
+   "Zerubbabel",
+   "Joshua",
+   "Darius",
+   "Shealtiel"
+  ],
+  "answer": 0,
+  "explanation": "Zerubbabel the son of Shealtiel, governor of Judah.",
+  "ref": "Haggai 1:1"
+ },
+ {
+  "id": "haggai-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the high priest to whom the word came?",
+  "choices": [
+   "Zerubbabel",
+   "Haggai",
+   "Josedech",
+   "Joshua"
+  ],
+  "answer": 3,
+  "explanation": "Joshua the son of Josedech, the high priest.",
+  "ref": "Haggai 1:1"
+ },
+ {
+  "id": "haggai-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "In whose second year as king did the word of the LORD come?",
+  "choices": [
+   "Cyrus",
+   "Artaxerxes",
+   "Darius",
+   "Nebuchadnezzar"
+  ],
+  "answer": 2,
+  "explanation": "In the second year of Darius the king, came the word of the LORD by Haggai.",
+  "ref": "Haggai 1:1"
+ },
+ {
+  "id": "haggai-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the one who earns wages do with them?",
+  "choices": [
+   "Gives them to the priests",
+   "Puts them in a bag with holes",
+   "Buries them in the field",
+   "Brings them to the storehouse"
+  ],
+  "answer": 1,
+  "explanation": "He that earneth wages earneth wages to put it into a bag with holes.",
+  "ref": "Haggai 1:6"
+ },
+ {
+  "id": "haggai-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD do to what the people brought home?",
+  "choices": [
+   "Blew upon it",
+   "Burned it",
+   "Gave it to the stranger",
+   "Doubled it"
+  ],
+  "answer": 0,
+  "explanation": "Ye brought it home, I did blow upon it.",
+  "ref": "Haggai 1:9"
+ },
+ {
+  "id": "haggai-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the LORD say He blew upon the people's harvest?",
+  "choices": [
+   "They had stopped keeping the Sabbath",
+   "They paid no tithes",
+   "They served other gods",
+   "His house lay waste while each ran to his own house"
+  ],
+  "answer": 3,
+  "explanation": "Because of mine house that is waste, and ye run every man unto his own house.",
+  "ref": "Haggai 1:9"
+ },
+ {
+  "id": "haggai-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD call for upon the land, the mountains and the corn?",
+  "choices": [
+   "A flood",
+   "A fire",
+   "A drought",
+   "A plague of locusts"
+  ],
+  "answer": 2,
+  "explanation": "I called for a drought upon the land, and upon the mountains, and upon the corn.",
+  "ref": "Haggai 1:11"
+ },
+ {
+  "id": "haggai-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who obeyed the voice of the LORD and the words of Haggai?",
+  "choices": [
+   "Only the priests",
+   "Zerubbabel, Joshua and the remnant of the people",
+   "The elders of Jerusalem",
+   "The king and his princes"
+  ],
+  "answer": 1,
+  "explanation": "Zerubbabel, and Joshua, with all the remnant of the people, obeyed the voice of the LORD their God.",
+  "ref": "Haggai 1:12"
+ },
+ {
+  "id": "haggai-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the people respond before the LORD when they obeyed?",
+  "choices": [
+   "They feared before the LORD",
+   "They wept aloud",
+   "They sang a psalm",
+   "They fasted"
+  ],
+  "answer": 0,
+  "explanation": "The people did fear before the LORD.",
+  "ref": "Haggai 1:12"
+ },
+ {
+  "id": "haggai-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD stir up in Zerubbabel, Joshua and the people?",
+  "choices": [
+   "Their anger",
+   "Their pride",
+   "Their memory",
+   "Their spirit"
+  ],
+  "answer": 3,
+  "explanation": "The LORD stirred up the spirit of Zerubbabel, and the spirit of Joshua, and the spirit of all the remnant of the people.",
+  "ref": "Haggai 1:14"
+ },
+ {
+  "id": "haggai-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month of Darius's second year did the word of the LORD first come?",
+  "choices": [
+   "The first",
+   "The seventh",
+   "The sixth",
+   "The ninth"
+  ],
+  "answer": 2,
+  "explanation": "It was in the sixth month, in the first day of the month.",
+  "ref": "Haggai 1:1"
+ },
+ {
+  "id": "haggai-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say of the people's clothes?",
+  "choices": [
+   "They are worn out",
+   "There is none warm",
+   "They are torn",
+   "They are sold"
+  ],
+  "answer": 1,
+  "explanation": "Ye clothe you, but there is none warm.",
+  "ref": "Haggai 1:6"
+ },
+ {
+  "id": "haggai-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "How is Haggai described when he spoke to the people?",
+  "choices": [
+   "The LORD's messenger",
+   "The LORD's shepherd",
+   "The LORD's watchman",
+   "The LORD's servant"
+  ],
+  "answer": 0,
+  "explanation": "Then spake Haggai the LORD's messenger in the LORD's message unto the people.",
+  "ref": "Haggai 1:13"
+ },
+ {
+  "id": "haggai-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day of the sixth month did the people come and work in the house of the LORD?",
+  "choices": [
+   "The first",
+   "The seventh",
+   "The twentieth",
+   "The four and twentieth"
+  ],
+  "answer": 3,
+  "explanation": "In the four and twentieth day of the sixth month, they came and did work in the house of the LORD of hosts.",
+  "ref": "Haggai 1:14–15"
+ },
+ {
+  "id": "haggai-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD tell the people to bring from the mountain?",
+  "choices": [
+   "Stones",
+   "Silver",
+   "Wood",
+   "Cedar from Lebanon"
+  ],
+  "answer": 2,
+  "explanation": "Go up to the mountain, and bring wood, and build the house.",
+  "ref": "Haggai 1:8"
+ },
+ {
+  "id": "haggai-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is stayed from dew?",
+  "choices": [
+   "The river",
+   "The heaven over the people",
+   "The valley",
+   "The sea"
+  ],
+  "answer": 1,
+  "explanation": "Therefore the heaven over you is stayed from dew, and the earth is stayed from her fruit.",
+  "ref": "Haggai 1:10"
+ },
+ {
+  "id": "haggai-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Zerubbabel is the son of whom?",
+  "choices": [
+   "Shealtiel",
+   "Josedech",
+   "Gedaliah",
+   "Cushi"
+  ],
+  "answer": 0,
+  "explanation": "Zerubbabel the son of Shealtiel, governor of Judah.",
+  "ref": "Haggai 1:1"
+ },
+ {
+  "id": "haggai-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Joshua the high priest is the son of whom?",
+  "choices": [
+   "Shealtiel",
+   "Amon",
+   "Hizkiah",
+   "Josedech"
+  ],
+  "answer": 3,
+  "explanation": "Joshua the son of Josedech, the high priest.",
+  "ref": "Haggai 1:1"
+ },
+ {
+  "id": "haggai-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say is His?",
+  "choices": [
+   "The cattle and the corn",
+   "The mountains and the sea",
+   "The silver and the gold",
+   "The wood and the stone"
+  ],
+  "answer": 2,
+  "explanation": "The silver is mine, and the gold is mine, saith the LORD of hosts.",
+  "ref": "Haggai 2:8"
+ },
+ {
+  "id": "haggai-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD fill with glory?",
+  "choices": [
+   "The earth",
+   "This house",
+   "The city",
+   "The mountain"
+  ],
+  "answer": 1,
+  "explanation": "I will fill this house with glory, saith the LORD of hosts.",
+  "ref": "Haggai 2:7"
+ },
+ {
+  "id": "haggai-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD give in this place?",
+  "choices": [
+   "Peace",
+   "Wealth",
+   "Rain",
+   "A king"
+  ],
+  "answer": 0,
+  "explanation": "In this place will I give peace, saith the LORD of hosts.",
+  "ref": "Haggai 2:9"
+ },
+ {
+  "id": "haggai-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say He will shake?",
+  "choices": [
+   "The walls of Jerusalem",
+   "The tents of Judah",
+   "The throne of Darius",
+   "The heavens and the earth"
+  ],
+  "answer": 3,
+  "explanation": "I will shake the heavens, and the earth, and the sea, and the dry land.",
+  "ref": "Haggai 2:6"
+ },
+ {
+  "id": "haggai-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD tell the people to do, because He is with them?",
+  "choices": [
+   "Fast",
+   "Wait",
+   "Work",
+   "Flee"
+  ],
+  "answer": 2,
+  "explanation": "Be strong, and work: for I am with you, saith the LORD of hosts.",
+  "ref": "Haggai 2:4"
+ },
+ {
+  "id": "haggai-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Haggai tell to ask concerning the law?",
+  "choices": [
+   "The elders",
+   "The priests",
+   "The scribes",
+   "The Levites' sons"
+  ],
+  "answer": 1,
+  "explanation": "Ask now the priests concerning the law.",
+  "ref": "Haggai 2:11"
+ },
+ {
+  "id": "haggai-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When had the LORD covenanted with the people, as His spirit remains among them?",
+  "choices": [
+   "When they came out of Egypt",
+   "When David built the altar",
+   "When Solomon dedicated the temple",
+   "When they crossed the Jordan"
+  ],
+  "answer": 0,
+  "explanation": "According to the word that I covenanted with you when ye came out of Egypt, so my spirit remaineth among you.",
+  "ref": "Haggai 2:5"
+ },
+ {
+  "id": "haggai-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How do the people see the temple in comparison with the first house?",
+  "choices": [
+   "As greater",
+   "As the same",
+   "As unfinished",
+   "As nothing"
+  ],
+  "answer": 3,
+  "explanation": "Is it not in your eyes in comparison of it as nothing?",
+  "ref": "Haggai 2:3"
+ },
+ {
+  "id": "haggai-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will come when the LORD shakes all nations?",
+  "choices": [
+   "The kings of Persia",
+   "The rain of heaven",
+   "The desire of all nations",
+   "The ark of the covenant"
+  ],
+  "answer": 2,
+  "explanation": "I will shake all nations, and the desire of all nations shall come.",
+  "ref": "Haggai 2:7"
+ },
+ {
+  "id": "haggai-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What remains among the people, so that they should not fear?",
+  "choices": [
+   "The LORD's glory",
+   "The LORD's spirit",
+   "The priests' law",
+   "The king's peace"
+  ],
+  "answer": 1,
+  "explanation": "My spirit remaineth among you: fear ye not.",
+  "ref": "Haggai 2:5"
+ },
+ {
+  "id": "haggai-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priests answer when asked if holy flesh in a skirt makes bread holy?",
+  "choices": [
+   "No",
+   "Yes",
+   "Only for a priest",
+   "Only on the Sabbath"
+  ],
+  "answer": 0,
+  "explanation": "The priests answered and said, No.",
+  "ref": "Haggai 2:12"
+ },
+ {
+  "id": "haggai-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priests answer about one unclean by a dead body touching these things?",
+  "choices": [
+   "It shall be burned",
+   "It shall be holy",
+   "It shall be washed",
+   "It shall be unclean"
+  ],
+  "answer": 3,
+  "explanation": "The priests answered and said, It shall be unclean.",
+  "ref": "Haggai 2:13"
+ },
+ {
+  "id": "haggai-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Haggai say of whatever this people offer?",
+  "choices": [
+   "It is accepted",
+   "It is holy",
+   "It is unclean",
+   "It is blemished"
+  ],
+  "answer": 2,
+  "explanation": "That which they offer there is unclean.",
+  "ref": "Haggai 2:14"
+ },
+ {
+  "id": "haggai-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD smite the labours of their hands with?",
+  "choices": [
+   "Fire and sword",
+   "Blasting, mildew and hail",
+   "Drought and locusts",
+   "Flood and wind"
+  ],
+  "answer": 1,
+  "explanation": "I smote you with blasting and with mildew and with hail in all the labours of your hands.",
+  "ref": "Haggai 2:17"
+ },
+ {
+  "id": "haggai-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD promise to do from the day the temple's foundation was laid?",
+  "choices": [
+   "Bless them",
+   "Judge them",
+   "Forgive them",
+   "Scatter them"
+  ],
+  "answer": 0,
+  "explanation": "From this day will I bless you.",
+  "ref": "Haggai 2:18–19"
+ },
+ {
+  "id": "haggai-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month did the second word of the LORD come to Haggai?",
+  "choices": [
+   "The sixth",
+   "The twelfth",
+   "The first",
+   "The seventh"
+  ],
+  "answer": 3,
+  "explanation": "In the seventh month, in the one and twentieth day of the month, came the word of the LORD by the prophet Haggai.",
+  "ref": "Haggai 2:1"
+ },
+ {
+  "id": "haggai-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD overthrow?",
+  "choices": [
+   "The temple of Samaria",
+   "The walls of Babylon",
+   "The throne of kingdoms",
+   "The altar of idols"
+  ],
+  "answer": 2,
+  "explanation": "I will overthrow the throne of kingdoms.",
+  "ref": "Haggai 2:22"
+ },
+ {
+  "id": "haggai-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How will the horses and their riders come down?",
+  "choices": [
+   "By fire from heaven",
+   "Every one by the sword of his brother",
+   "By a flood",
+   "By the hand of Judah"
+  ],
+  "answer": 1,
+  "explanation": "The horses and their riders shall come down, every one by the sword of his brother.",
+  "ref": "Haggai 2:22"
+ },
+ {
+  "id": "haggai-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "How does the LORD address Zerubbabel when He says He will take him?",
+  "choices": [
+   "My servant",
+   "My shepherd",
+   "My anointed",
+   "My priest"
+  ],
+  "answer": 0,
+  "explanation": "I will take thee, O Zerubbabel, my servant, the son of Shealtiel.",
+  "ref": "Haggai 2:23"
+ },
+ {
+  "id": "haggai-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When one came to an heap of twenty measures, how many were there?",
+  "choices": [
+   "Fifteen",
+   "Five",
+   "Thirty",
+   "Ten"
+  ],
+  "answer": 3,
+  "explanation": "When one came to an heap of twenty measures, there were but ten.",
+  "ref": "Haggai 2:16"
+ },
+ {
+  "id": "haggai-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day of the ninth month did the word of the LORD come?",
+  "choices": [
+   "The first",
+   "The twentieth",
+   "The four and twentieth",
+   "The seventh"
+  ],
+  "answer": 2,
+  "explanation": "In the four and twentieth day of the ninth month came the word of the LORD by Haggai.",
+  "ref": "Haggai 2:10"
+ },
+ {
+  "id": "haggai-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the heavens and the earth, what does the LORD say He will shake?",
+  "choices": [
+   "The mountains and the hills",
+   "The sea and the dry land",
+   "The cities and the towers",
+   "The temple and the altar"
+  ],
+  "answer": 1,
+  "explanation": "I will shake the heavens, and the earth, and the sea, and the dry land.",
+  "ref": "Haggai 2:6"
+ },
+ {
+  "id": "haggai-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the throne of kingdoms, what will the LORD overthrow?",
+  "choices": [
+   "The chariots and those that ride in them",
+   "The walls and the gates",
+   "The altars of the heathen",
+   "The cities of the plain"
+  ],
+  "answer": 0,
+  "explanation": "I will overthrow the chariots, and those that ride in them.",
+  "ref": "Haggai 2:22"
+ },
+ {
+  "id": "haggai-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the man in Haggai's question bear holy flesh?",
+  "choices": [
+   "In a basket",
+   "In his hand",
+   "In a golden vessel",
+   "In the skirt of his garment"
+  ],
+  "answer": 3,
+  "explanation": "If one bear holy flesh in the skirt of his garment.",
+  "ref": "Haggai 2:12"
+ },
+ {
+  "id": "haggai-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides Zerubbabel and Joshua, to whom was Haggai to speak?",
+  "choices": [
+   "The kings of the nations",
+   "The priests of Bethel",
+   "The residue of the people",
+   "The elders of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "Speak now to Zerubbabel, and to Joshua, and to the residue of the people.",
+  "ref": "Haggai 2:2"
+ },
+ {
+  "id": "haggai-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From before what does the LORD tell the people to consider their days?",
+  "choices": [
+   "The captivity began",
+   "A stone was laid upon a stone in the temple",
+   "The king reigned",
+   "The wall was built"
+  ],
+  "answer": 1,
+  "explanation": "Consider from this day and upward, from before a stone was laid upon a stone in the temple of the LORD.",
+  "ref": "Haggai 2:15"
+ },
+ {
+  "id": "haggai-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom was the last word to shake the heavens and the earth sent?",
+  "choices": [
+   "Zerubbabel",
+   "Joshua",
+   "Darius",
+   "Haggai"
+  ],
+  "answer": 0,
+  "explanation": "Speak to Zerubbabel, governor of Judah, saying, I will shake the heavens and the earth.",
+  "ref": "Haggai 2:21"
+ },
+ {
+  "id": "haggai-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How soon does the LORD say He will shake the heavens, the earth, the sea and the dry land?",
+  "choices": [
+   "Within a year",
+   "In the days of Darius",
+   "When the temple is finished",
+   "Yet once, a little while"
+  ],
+  "answer": 3,
+  "explanation": "Yet once, it is a little while, and I will shake the heavens, and the earth.",
+  "ref": "Haggai 2:6"
+ },
+ {
+  "id": "haggai-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD destroy, as well as overthrow the throne of kingdoms?",
+  "choices": [
+   "The cities of the plain",
+   "The gods of the earth",
+   "The strength of the kingdoms of the heathen",
+   "The walls of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "I will destroy the strength of the kingdoms of the heathen.",
+  "ref": "Haggai 2:22"
+ },
+ {
+  "id": "haggai-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tree is named with the vine, the fig tree and the pomegranate as not yet bringing forth?",
+  "choices": [
+   "The almond tree",
+   "The olive tree",
+   "The palm tree",
+   "The mulberry tree"
+  ],
+  "answer": 1,
+  "explanation": "The vine, and the fig tree, and the pomegranate, and the olive tree, hath not brought forth.",
+  "ref": "Haggai 2:19"
+ },
+ {
+  "id": "haggai-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides Zerubbabel and Joshua, who else is told to be strong?",
+  "choices": [
+   "All the people of the land",
+   "The kings of Persia",
+   "The elders of Judah",
+   "The prophets of Israel"
+  ],
+  "answer": 0,
+  "explanation": "Be strong, all ye people of the land, saith the LORD, and work.",
+  "ref": "Haggai 2:4"
  }
 ]

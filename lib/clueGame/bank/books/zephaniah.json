@@ -238,5 +238,1061 @@
   "answer": 2,
   "explanation": "The book ends with God promising full restoration, gathering, and honor for His people.",
   "ref": "Zephaniah 3:20"
+ },
+ {
+  "id": "zephaniah-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Zephaniah is the son of whom?",
+  "choices": [
+   "Josiah",
+   "Cushi",
+   "Amon",
+   "Gedaliah"
+  ],
+  "answer": 1,
+  "explanation": "The word of the LORD came unto Zephaniah the son of Cushi.",
+  "ref": "Zephaniah 1:1"
+ },
+ {
+  "id": "zephaniah-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD search Jerusalem with?",
+  "choices": [
+   "Candles",
+   "Swords",
+   "Trumpets",
+   "Watchmen"
+  ],
+  "answer": 0,
+  "explanation": "I will search Jerusalem with candles.",
+  "ref": "Zephaniah 1:12"
+ },
+ {
+  "id": "zephaniah-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has the LORD prepared, having bid His guests?",
+  "choices": [
+   "A feast of bread",
+   "A city of refuge",
+   "A great army",
+   "A sacrifice"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hath prepared a sacrifice, he hath bid his guests.",
+  "ref": "Zephaniah 1:7"
+ },
+ {
+  "id": "zephaniah-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How will men walk, because they have sinned against the LORD?",
+  "choices": [
+   "Like captives",
+   "Like the dead",
+   "Like blind men",
+   "Like strangers"
+  ],
+  "answer": 2,
+  "explanation": "I will bring distress upon men, that they shall walk like blind men, because they have sinned against the LORD.",
+  "ref": "Zephaniah 1:17"
+ },
+ {
+  "id": "zephaniah-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Josiah the king of Judah is the son of whom?",
+  "choices": [
+   "Hizkiah",
+   "Amon",
+   "Cushi",
+   "Amariah"
+  ],
+  "answer": 1,
+  "explanation": "In the days of Josiah the son of Amon, king of Judah.",
+  "ref": "Zephaniah 1:1"
+ },
+ {
+  "id": "zephaniah-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where do some worship the host of heaven?",
+  "choices": [
+   "Upon the housetops",
+   "In the groves",
+   "On the mountains",
+   "In the valleys"
+  ],
+  "answer": 0,
+  "explanation": "Them that worship the host of heaven upon the housetops.",
+  "ref": "Zephaniah 1:5"
+ },
+ {
+  "id": "zephaniah-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the LORD, by whom do some swear?",
+  "choices": [
+   "Baal",
+   "Molech",
+   "Chemosh",
+   "Malcham"
+  ],
+  "answer": 3,
+  "explanation": "Them that swear by the LORD, and that swear by Malcham.",
+  "ref": "Zephaniah 1:5"
+ },
+ {
+  "id": "zephaniah-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom will the LORD punish in the day of His sacrifice, besides princes and the king's children?",
+  "choices": [
+   "The priests of Levi",
+   "The prophets of Judah",
+   "All clothed with strange apparel",
+   "All the merchants of the city"
+  ],
+  "answer": 2,
+  "explanation": "I will punish the princes, and the king's children, and all such as are clothed with strange apparel.",
+  "ref": "Zephaniah 1:8"
+ },
+ {
+  "id": "zephaniah-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the men settled on their lees say in their heart?",
+  "choices": [
+   "The LORD will deliver Jerusalem",
+   "The LORD will not do good, neither will he do evil",
+   "The day of the LORD is far off",
+   "The LORD has forsaken us"
+  ],
+  "answer": 1,
+  "explanation": "They say in their heart, The LORD will not do good, neither will he do evil.",
+  "ref": "Zephaniah 1:12"
+ },
+ {
+  "id": "zephaniah-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will become of the goods and houses of those who are punished?",
+  "choices": [
+   "Their goods a booty and their houses a desolation",
+   "Their goods sent to Baal's priests",
+   "Their goods hid in the temple",
+   "Their houses given to the poor"
+  ],
+  "answer": 0,
+  "explanation": "Their goods shall become a booty, and their houses a desolation.",
+  "ref": "Zephaniah 1:13"
+ },
+ {
+  "id": "zephaniah-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who are cut down, those that bear silver?",
+  "choices": [
+   "The princes",
+   "The priests",
+   "The judges",
+   "The merchant people"
+  ],
+  "answer": 3,
+  "explanation": "All the merchant people are cut down; all they that bear silver are cut off.",
+  "ref": "Zephaniah 1:11"
+ },
+ {
+  "id": "zephaniah-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "From which gate will the noise of a cry come?",
+  "choices": [
+   "The east gate",
+   "The water gate",
+   "The fish gate",
+   "The valley gate"
+  ],
+  "answer": 2,
+  "explanation": "There shall be the noise of a cry from the fish gate.",
+  "ref": "Zephaniah 1:10"
+ },
+ {
+  "id": "zephaniah-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Against what is the day of the trumpet and alarm?",
+  "choices": [
+   "The tents of the shepherds",
+   "The fenced cities and the high towers",
+   "The vineyards of Judah",
+   "The ships of the sea"
+  ],
+  "answer": 1,
+  "explanation": "A day of the trumpet and alarm against the fenced cities, and against the high towers.",
+  "ref": "Zephaniah 1:16"
+ },
+ {
+  "id": "zephaniah-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Amariah, one of Zephaniah's ancestors?",
+  "choices": [
+   "Hizkiah",
+   "Gedaliah",
+   "Cushi",
+   "Josiah"
+  ],
+  "answer": 0,
+  "explanation": "The son of Cushi, the son of Gedaliah, the son of Amariah, the son of Hizkiah.",
+  "ref": "Zephaniah 1:1"
+ },
+ {
+  "id": "zephaniah-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does the LORD punish for leaping on the threshold?",
+  "choices": [
+   "The priests of Baal",
+   "Those who swear by Malcham",
+   "The merchants of the city",
+   "Those filling masters' houses with violence and deceit"
+  ],
+  "answer": 3,
+  "explanation": "I will punish all those that leap on the threshold, which fill their masters' houses with violence and deceit.",
+  "ref": "Zephaniah 1:9"
+ },
+ {
+  "id": "zephaniah-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will come from the hills in that day?",
+  "choices": [
+   "A great fire",
+   "A mighty wind",
+   "A great crashing",
+   "A cry of triumph"
+  ],
+  "answer": 2,
+  "explanation": "There shall be the noise of a cry from the fish gate, and a great crashing from the hills.",
+  "ref": "Zephaniah 1:10"
+ },
+ {
+  "id": "zephaniah-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the blood of men be poured out as?",
+  "choices": [
+   "Water",
+   "Dust",
+   "Wine",
+   "Rain"
+  ],
+  "answer": 1,
+  "explanation": "Their blood shall be poured out as dust, and their flesh as the dung.",
+  "ref": "Zephaniah 1:17"
+ },
+ {
+  "id": "zephaniah-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall devour the whole land?",
+  "choices": [
+   "The fire of the LORD's jealousy",
+   "A sword from the north",
+   "A great flood",
+   "A famine"
+  ],
+  "answer": 0,
+  "explanation": "The whole land shall be devoured by the fire of his jealousy.",
+  "ref": "Zephaniah 1:18"
+ },
+ {
+  "id": "zephaniah-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides man and beast, what does the LORD say He will consume?",
+  "choices": [
+   "The cities of the plain",
+   "The vineyards and olive trees",
+   "The mountains and the valleys",
+   "The fowls of the heaven and the fishes of the sea"
+  ],
+  "answer": 3,
+  "explanation": "I will consume the fowls of the heaven, and the fishes of the sea.",
+  "ref": "Zephaniah 1:3"
+ },
+ {
+  "id": "zephaniah-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the mighty man do in the great day of the LORD?",
+  "choices": [
+   "Flee to the hills",
+   "Stand and fight",
+   "Cry there bitterly",
+   "Lie in silence"
+  ],
+  "answer": 2,
+  "explanation": "The mighty man shall cry there bitterly.",
+  "ref": "Zephaniah 1:14"
+ },
+ {
+  "id": "zephaniah-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the people told to do at the presence of the Lord GOD?",
+  "choices": [
+   "Sing a psalm",
+   "Hold their peace",
+   "Bring an offering",
+   "Tear their garments"
+  ],
+  "answer": 1,
+  "explanation": "Hold thy peace at the presence of the Lord GOD: for the day of the LORD is at hand.",
+  "ref": "Zephaniah 1:7"
+ },
+ {
+  "id": "zephaniah-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "With whom will the LORD cut off the name of the Chemarims?",
+  "choices": [
+   "The priests",
+   "The prophets",
+   "The princes",
+   "The judges"
+  ],
+  "answer": 0,
+  "explanation": "I will cut off the name of the Chemarims with the priests.",
+  "ref": "Zephaniah 1:4"
+ },
+ {
+  "id": "zephaniah-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city will be forsaken?",
+  "choices": [
+   "Jerusalem",
+   "Nineveh",
+   "Gaza",
+   "Moab"
+  ],
+  "answer": 2,
+  "explanation": "Gaza shall be forsaken, and Ashkelon a desolation.",
+  "ref": "Zephaniah 2:4"
+ },
+ {
+  "id": "zephaniah-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By what will the Ethiopians be slain?",
+  "choices": [
+   "The hand of Judah",
+   "The LORD's sword",
+   "A great flood",
+   "Famine"
+  ],
+  "answer": 1,
+  "explanation": "Ye Ethiopians also, ye shall be slain by my sword.",
+  "ref": "Zephaniah 2:12"
+ },
+ {
+  "id": "zephaniah-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who will spoil Moab and Ammon?",
+  "choices": [
+   "The residue of the LORD's people",
+   "The Philistines",
+   "The Assyrians",
+   "The Ethiopians"
+  ],
+  "answer": 0,
+  "explanation": "The residue of my people shall spoil them, and the remnant of my people shall possess them.",
+  "ref": "Zephaniah 2:9"
+ },
+ {
+  "id": "zephaniah-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Which Philistine city will be rooted up?",
+  "choices": [
+   "Gaza",
+   "Ashdod",
+   "Ashkelon",
+   "Ekron"
+  ],
+  "answer": 3,
+  "explanation": "Ashdod shall be driven out at the noonday, and Ekron shall be rooted up.",
+  "ref": "Zephaniah 2:4"
+ },
+ {
+  "id": "zephaniah-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the sea coast become?",
+  "choices": [
+   "Fields of corn",
+   "Cities of refuge",
+   "Dwellings and folds for shepherds and flocks",
+   "A harbour for ships"
+  ],
+  "answer": 2,
+  "explanation": "The sea coast shall be dwellings and cottages for shepherds, and folds for flocks.",
+  "ref": "Zephaniah 2:6"
+ },
+ {
+  "id": "zephaniah-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "For whom shall the coast be?",
+  "choices": [
+   "The shepherds of Moab",
+   "The remnant of the house of Judah",
+   "The priests of Levi",
+   "The sons of Ammon"
+  ],
+  "answer": 1,
+  "explanation": "The coast shall be for the remnant of the house of Judah; they shall feed thereupon.",
+  "ref": "Zephaniah 2:7"
+ },
+ {
+  "id": "zephaniah-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Moab and Ammon done to the LORD's people?",
+  "choices": [
+   "Reproached His people and magnified themselves",
+   "Carried them captive",
+   "Burned their cities",
+   "Sold them as slaves"
+  ],
+  "answer": 0,
+  "explanation": "I have heard the reproach of Moab, and the revilings of the children of Ammon.",
+  "ref": "Zephaniah 2:8"
+ },
+ {
+  "id": "zephaniah-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do to all the gods of the earth?",
+  "choices": [
+   "Burn them",
+   "Cast them to the sea",
+   "Break them",
+   "Famish them"
+  ],
+  "answer": 3,
+  "explanation": "He will famish all the gods of the earth.",
+  "ref": "Zephaniah 2:11"
+ },
+ {
+  "id": "zephaniah-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who will worship the LORD, every one from his place?",
+  "choices": [
+   "The tribes of Israel",
+   "The priests of Judah",
+   "All the isles of the heathen",
+   "The kings of Assyria"
+  ],
+  "answer": 2,
+  "explanation": "Men shall worship him, every one from his place, even all the isles of the heathen.",
+  "ref": "Zephaniah 2:11"
+ },
+ {
+  "id": "zephaniah-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will lie down in the midst of Nineveh?",
+  "choices": [
+   "The armies of Babylon",
+   "Flocks and all the beasts of the nations",
+   "The princes of Assyria",
+   "The sons of Judah"
+  ],
+  "answer": 1,
+  "explanation": "Flocks shall lie down in the midst of her, all the beasts of the nations.",
+  "ref": "Zephaniah 2:14"
+ },
+ {
+  "id": "zephaniah-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the rejoicing city say in her heart?",
+  "choices": [
+   "I am, and there is none beside me",
+   "I will never be moved",
+   "The LORD is with me",
+   "My walls will stand"
+  ],
+  "answer": 0,
+  "explanation": "She said in her heart, I am, and there is none beside me.",
+  "ref": "Zephaniah 2:15"
+ },
+ {
+  "id": "zephaniah-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "The woe on the sea coast is addressed to which nation?",
+  "choices": [
+   "The Hittites",
+   "The Jebusites",
+   "The Amorites",
+   "The Cherethites"
+  ],
+  "answer": 3,
+  "explanation": "Woe unto the inhabitants of the sea coast, the nation of the Cherethites!",
+  "ref": "Zephaniah 2:5"
+ },
+ {
+  "id": "zephaniah-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are Moab and Ammon to be the breeding of?",
+  "choices": [
+   "Thorns and briers",
+   "Serpents and owls",
+   "Nettles and saltpits",
+   "Dust and stones"
+  ],
+  "answer": 2,
+  "explanation": "Moab shall be as Sodom, and Ammon as Gomorrah, even the breeding of nettles, and saltpits.",
+  "ref": "Zephaniah 2:9"
+ },
+ {
+  "id": "zephaniah-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before what does the LORD say the day passes?",
+  "choices": [
+   "As the dew",
+   "As the chaff",
+   "As a shadow",
+   "As the grass"
+  ],
+  "answer": 1,
+  "explanation": "Before the day pass as the chaff.",
+  "ref": "Zephaniah 2:2"
+ },
+ {
+  "id": "zephaniah-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What reason does the LORD give for the fate of Moab and Ammon?",
+  "choices": [
+   "Their pride",
+   "Their idols",
+   "Their greed",
+   "Their violence"
+  ],
+  "answer": 0,
+  "explanation": "This shall they have for their pride, because they have reproached and magnified themselves.",
+  "ref": "Zephaniah 2:10"
+ },
+ {
+  "id": "zephaniah-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city will be driven out at the noonday?",
+  "choices": [
+   "Gaza",
+   "Ekron",
+   "Ashkelon",
+   "Ashdod"
+  ],
+  "answer": 3,
+  "explanation": "They shall drive out Ashdod at the noonday.",
+  "ref": "Zephaniah 2:4"
+ },
+ {
+  "id": "zephaniah-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which birds lodge in the upper lintels of Nineveh?",
+  "choices": [
+   "The eagle and the raven",
+   "The owl and the sparrow",
+   "The cormorant and the bittern",
+   "The dove and the swallow"
+  ],
+  "answer": 2,
+  "explanation": "Both the cormorant and the bittern shall lodge in the upper lintels of it.",
+  "ref": "Zephaniah 2:14"
+ },
+ {
+  "id": "zephaniah-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What may happen to those who seek the LORD, righteousness and meekness?",
+  "choices": [
+   "They may inherit the coast",
+   "They may be hid in the day of the LORD's anger",
+   "They may be kings in Judah",
+   "They may see the temple built"
+  ],
+  "answer": 1,
+  "explanation": "Seek righteousness, seek meekness: it may be ye shall be hid in the day of the LORD's anger.",
+  "ref": "Zephaniah 2:3"
+ },
+ {
+  "id": "zephaniah-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will everyone passing by the rejoicing city do?",
+  "choices": [
+   "Hiss and wag his hand",
+   "Weep and mourn",
+   "Sing and rejoice",
+   "Flee in fear"
+  ],
+  "answer": 0,
+  "explanation": "Every one that passeth by her shall hiss, and wag his hand.",
+  "ref": "Zephaniah 2:15"
+ },
+ {
+  "id": "zephaniah-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the princes of Jerusalem compared to?",
+  "choices": [
+   "Wild oxen",
+   "Eagles",
+   "Serpents",
+   "Roaring lions"
+  ],
+  "answer": 3,
+  "explanation": "Her princes within her are roaring lions.",
+  "ref": "Zephaniah 3:3"
+ },
+ {
+  "id": "zephaniah-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How will the LORD joy over His people?",
+  "choices": [
+   "With trumpets",
+   "With silence",
+   "With singing",
+   "With a feast"
+  ],
+  "answer": 2,
+  "explanation": "He will joy over thee with singing.",
+  "ref": "Zephaniah 3:17"
+ },
+ {
+  "id": "zephaniah-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who has polluted the sanctuary?",
+  "choices": [
+   "Her judges",
+   "Her priests",
+   "Her princes",
+   "Her merchants"
+  ],
+  "answer": 1,
+  "explanation": "Her priests have polluted the sanctuary, they have done violence to the law.",
+  "ref": "Zephaniah 3:4"
+ },
+ {
+  "id": "zephaniah-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said to Jerusalem in that day?",
+  "choices": [
+   "Fear thou not",
+   "Flee to the hills",
+   "Be ashamed",
+   "Go into exile"
+  ],
+  "answer": 0,
+  "explanation": "In that day it shall be said to Jerusalem, Fear thou not.",
+  "ref": "Zephaniah 3:16"
+ },
+ {
+  "id": "zephaniah-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the remnant of Israel not speak?",
+  "choices": [
+   "Praise",
+   "Prophecy",
+   "Curses",
+   "Lies"
+  ],
+  "answer": 3,
+  "explanation": "The remnant of Israel shall not do iniquity, nor speak lies.",
+  "ref": "Zephaniah 3:13"
+ },
+ {
+  "id": "zephaniah-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the oppressing city not receive?",
+  "choices": [
+   "A king",
+   "A prophet",
+   "Correction",
+   "Water"
+  ],
+  "answer": 2,
+  "explanation": "She obeyed not the voice; she received not correction.",
+  "ref": "Zephaniah 3:2"
+ },
+ {
+  "id": "zephaniah-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "What are the prophets of the city called?",
+  "choices": [
+   "Wise and faithful men",
+   "Light and treacherous persons",
+   "Fearful and silent men",
+   "Proud and idle men"
+  ],
+  "answer": 1,
+  "explanation": "Her prophets are light and treacherous persons.",
+  "ref": "Zephaniah 3:4"
+ },
+ {
+  "id": "zephaniah-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the just LORD do every morning?",
+  "choices": [
+   "Bring His judgment to light",
+   "Send rain on the land",
+   "Raise up a prophet",
+   "Call the people to prayer"
+  ],
+  "answer": 0,
+  "explanation": "Every morning doth he bring his judgment to light, he faileth not.",
+  "ref": "Zephaniah 3:5"
+ },
+ {
+  "id": "zephaniah-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people do early, though the LORD hoped they would receive instruction?",
+  "choices": [
+   "Went up to the temple",
+   "Offered sacrifices",
+   "Fled the city",
+   "Corrupted all their doings"
+  ],
+  "answer": 3,
+  "explanation": "They rose early, and corrupted all their doings.",
+  "ref": "Zephaniah 3:7"
+ },
+ {
+  "id": "zephaniah-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD turn to the people?",
+  "choices": [
+   "A new king",
+   "A holy mountain",
+   "A pure language",
+   "A fruitful land"
+  ],
+  "answer": 2,
+  "explanation": "Then will I turn to the people a pure language.",
+  "ref": "Zephaniah 3:9"
+ },
+ {
+  "id": "zephaniah-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "From where will the LORD's suppliants bring His offering?",
+  "choices": [
+   "From the isles of the sea",
+   "From beyond the rivers of Ethiopia",
+   "From Assyria and Nineveh",
+   "From the cities of Moab"
+  ],
+  "answer": 1,
+  "explanation": "From beyond the rivers of Ethiopia my suppliants shall bring mine offering.",
+  "ref": "Zephaniah 3:10"
+ },
+ {
+  "id": "zephaniah-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom will the LORD take away from the midst of Zion?",
+  "choices": [
+   "Them that rejoice in her pride",
+   "The priests of Baal",
+   "The princes and judges",
+   "The merchants"
+  ],
+  "answer": 0,
+  "explanation": "I will take away out of the midst of thee them that rejoice in thy pride.",
+  "ref": "Zephaniah 3:11"
+ },
+ {
+  "id": "zephaniah-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD taken away and cast out?",
+  "choices": [
+   "Her king and her priests",
+   "Her walls and her gates",
+   "Her sorrow and her shame",
+   "Her judgments and her enemy"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hath taken away thy judgments, he hath cast out thine enemy.",
+  "ref": "Zephaniah 3:15"
+ },
+ {
+  "id": "zephaniah-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom will the LORD save and gather?",
+  "choices": [
+   "The princes of Jerusalem",
+   "The merchant people",
+   "Her that halteth and her that was driven out",
+   "The priests of Levi"
+  ],
+  "answer": 2,
+  "explanation": "I will save her that halteth, and gather her that was driven out.",
+  "ref": "Zephaniah 3:19"
+ },
+ {
+  "id": "zephaniah-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will the LORD gather the nations?",
+  "choices": [
+   "To make a covenant with them",
+   "To pour upon them His indignation",
+   "To build His house",
+   "To judge Judah"
+  ],
+  "answer": 1,
+  "explanation": "My determination is to gather the nations, that I may pour upon them mine indignation.",
+  "ref": "Zephaniah 3:8"
+ },
+ {
+  "id": "zephaniah-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the evening wolves not gnaw till the morrow?",
+  "choices": [
+   "The bones",
+   "The flesh",
+   "The sheep",
+   "The prey"
+  ],
+  "answer": 0,
+  "explanation": "Her judges are evening wolves; they gnaw not the bones till the morrow.",
+  "ref": "Zephaniah 3:3"
+ },
+ {
+  "id": "zephaniah-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the just LORD not do in the midst of the city?",
+  "choices": [
+   "Judgment",
+   "Mercy",
+   "Wrath",
+   "Iniquity"
+  ],
+  "answer": 3,
+  "explanation": "The just LORD is in the midst thereof; he will not do iniquity.",
+  "ref": "Zephaniah 3:5"
+ },
+ {
+  "id": "zephaniah-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does the LORD say He has cut off, with their towers desolate?",
+  "choices": [
+   "The priests",
+   "The princes",
+   "The nations",
+   "The shepherds"
+  ],
+  "answer": 2,
+  "explanation": "I have cut off the nations: their towers are desolate.",
+  "ref": "Zephaniah 3:6"
+ },
+ {
+  "id": "zephaniah-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom will the LORD gather: the sorrowful for what?",
+  "choices": [
+   "The temple",
+   "The solemn assembly",
+   "The harvest",
+   "The feast days"
+  ],
+  "answer": 1,
+  "explanation": "I will gather them that are sorrowful for the solemn assembly.",
+  "ref": "Zephaniah 3:18"
+ },
+ {
+  "id": "zephaniah-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do in His love?",
+  "choices": [
+   "Rest in it",
+   "Make it known",
+   "Show it to the nations",
+   "Prove it"
+  ],
+  "answer": 0,
+  "explanation": "He will rest in his love, he will joy over thee with singing.",
+  "ref": "Zephaniah 3:17"
+ },
+ {
+  "id": "zephaniah-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD tell the people to do until the day He rises up to the prey?",
+  "choices": [
+   "Pray at dawn",
+   "Flee the city",
+   "Build the walls",
+   "Wait upon Him"
+  ],
+  "answer": 3,
+  "explanation": "Wait ye upon me, saith the LORD, until the day that I rise up to the prey.",
+  "ref": "Zephaniah 3:8"
+ },
+ {
+  "id": "zephaniah-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall all the earth be devoured with?",
+  "choices": [
+   "A great flood",
+   "A sword from the north",
+   "The fire of the LORD's jealousy",
+   "A plague"
+  ],
+  "answer": 2,
+  "explanation": "All the earth shall be devoured with the fire of my jealousy.",
+  "ref": "Zephaniah 3:8"
+ },
+ {
+  "id": "zephaniah-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall Jerusalem not see any more?",
+  "choices": [
+   "War",
+   "Evil",
+   "Famine",
+   "Captivity"
+  ],
+  "answer": 1,
+  "explanation": "The king of Israel, even the LORD, is in the midst of thee: thou shalt not see evil any more.",
+  "ref": "Zephaniah 3:15"
+ },
+ {
+  "id": "zephaniah-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is Zion told about her hands?",
+  "choices": [
+   "Let them not be slack",
+   "Lift them to the LORD",
+   "Wash them clean",
+   "Hold them still"
+  ],
+  "answer": 0,
+  "explanation": "Let not thine hands be slack.",
+  "ref": "Zephaniah 3:16"
+ },
+ {
+  "id": "zephaniah-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the unjust know not?",
+  "choices": [
+   "Fear",
+   "Pity",
+   "Peace",
+   "Shame"
+  ],
+  "answer": 3,
+  "explanation": "The unjust knoweth no shame.",
+  "ref": "Zephaniah 3:5"
  }
 ]
