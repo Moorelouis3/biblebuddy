@@ -2336,6 +2336,262 @@
   "ref": "Esther 6:13"
  },
  {
+  "id": "esther-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king command to be read to him when he could not sleep?",
+  "choices": [
+   "The book of records of the chronicles",
+   "The law of Moses",
+   "A letter from Esther",
+   "The book of the covenant"
+  ],
+  "answer": 0,
+  "explanation": "The king commanded to bring the book of records of the chronicles; and they were read before the king.",
+  "ref": "Esther 6:1"
+ },
+ {
+  "id": "esther-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the king's chamberlains hurry to bring Haman at the end of the chapter?",
+  "choices": [
+   "To the banquet Esther had prepared",
+   "To the king's gate",
+   "To the gallows",
+   "To the inner court"
+  ],
+  "answer": 0,
+  "explanation": "The king's chamberlains hasted to bring Haman unto the banquet that Esther had prepared.",
+  "ref": "Esther 6:14"
+ },
+ {
+  "id": "esther-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why had Haman come into the outward court of the king's house?",
+  "choices": [
+   "To ask the king to hang Mordecai",
+   "To bring a gift to the king",
+   "To take Esther's message",
+   "To report on the Jews"
+  ],
+  "answer": 0,
+  "explanation": "Haman was come into the outward court to speak unto the king to hang Mordecai on the gallows that he had prepared for him.",
+  "ref": "Esther 6:4"
+ },
+ {
+  "id": "esther-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king's servants say had been done for Mordecai?",
+  "choices": [
+   "Nothing",
+   "He was made a prince",
+   "He was given gold",
+   "He was given a house"
+  ],
+  "answer": 0,
+  "explanation": "The king asked what honour had been done to Mordecai, and the servants answered, There is nothing done for him.",
+  "ref": "Esther 6:3"
+ },
+ {
+  "id": "esther-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which item did Haman say should be set on the head of the man the king honours?",
+  "choices": [
+   "The crown royal",
+   "A golden chain",
+   "A purple turban",
+   "A wreath of olive"
+  ],
+  "answer": 0,
+  "explanation": "Haman said to bring the royal apparel, the horse, and the crown royal which is set upon the king's head.",
+  "ref": "Esther 6:8"
+ },
+ {
+  "id": "esther-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Which man did the king tell Haman to honour as he had described?",
+  "choices": [
+   "Mordecai the Jew",
+   "Harbonah",
+   "Hegai",
+   "Bigthana"
+  ],
+  "answer": 0,
+  "explanation": "The king said, do even so to Mordecai the Jew, that sitteth at the king's gate.",
+  "ref": "Esther 6:10"
+ },
+ {
+  "id": "esther-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Haman to proclaim before the man the king honours?",
+  "choices": [
+   "Thus shall it be done to the man the king honours",
+   "Long live the king of Persia",
+   "Behold the saviour of the king",
+   "Make way for the king's friend"
+  ],
+  "answer": 0,
+  "explanation": "Haman proclaimed before Mordecai, Thus shall it be done unto the man whom the king delighteth to honour.",
+  "ref": "Esther 6:11"
+ },
+ {
+  "id": "esther-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Mordecai go back to after Haman paraded him through the city?",
+  "choices": [
+   "The king's gate",
+   "His own house",
+   "The inner court",
+   "The house of Esther"
+  ],
+  "answer": 0,
+  "explanation": "After the parade, Mordecai came again to the king's gate.",
+  "ref": "Esther 6:12"
+ },
+ {
+  "id": "esther-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did the king's servants say was standing in the court?",
+  "choices": [
+   "Haman",
+   "Mordecai",
+   "Harbonah",
+   "Hegai"
+  ],
+  "answer": 0,
+  "explanation": "The king's servants said, Behold, Haman standeth in the court.",
+  "ref": "Esther 6:5"
+ },
+ {
+  "id": "esther-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king ask after the book of records was read to him?",
+  "choices": [
+   "What honour had been done to Mordecai",
+   "Who had written the records",
+   "Why Haman was in the court",
+   "What reward Esther wanted"
+  ],
+  "answer": 0,
+  "explanation": "The king said, What honour and dignity hath been done to Mordecai for this?",
+  "ref": "Esther 6:3"
+ },
+ {
+  "id": "esther-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were Bigthana and Teresh, the two plotters, in the king's house?",
+  "choices": [
+   "Keepers of the door",
+   "Keepers of the treasury",
+   "Captains of the guard",
+   "Cupbearers of the king"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai had told of Bigthana and Teresh, two of the king's chamberlains, the keepers of the door.",
+  "ref": "Esther 6:2"
+ },
+ {
+  "id": "esther-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did Haman say the royal apparel and horse should be given?",
+  "choices": [
+   "One of the king's most noble princes",
+   "The queen's chamberlain",
+   "The captain of the guard",
+   "The man himself"
+  ],
+  "answer": 0,
+  "explanation": "Haman said the apparel and horse should be delivered to the hand of one of the king's most noble princes.",
+  "ref": "Esther 6:9"
+ },
+ {
+  "id": "esther-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "In which court was Haman standing when the king asked who was there?",
+  "choices": [
+   "The outward court",
+   "The inner court",
+   "The garden court",
+   "The women's court"
+  ],
+  "answer": 0,
+  "explanation": "Haman was come into the outward court of the king's house.",
+  "ref": "Esther 6:4"
+ },
+ {
+  "id": "esther-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Who took the apparel and horse and arrayed Mordecai?",
+  "choices": [
+   "Haman",
+   "Hegai",
+   "Harbonah",
+   "Zeresh"
+  ],
+  "answer": 0,
+  "explanation": "Then took Haman the apparel and the horse, and arrayed Mordecai, and brought him on horseback through the street.",
+  "ref": "Esther 6:11"
+ },
+ {
+  "id": "esther-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what state did Haman hurry to his house after honouring Mordecai?",
+  "choices": [
+   "Mourning, with his head covered",
+   "Rejoicing, with a song",
+   "Silent, with a veil",
+   "Weeping, in sackcloth"
+  ],
+  "answer": 0,
+  "explanation": "Haman hasted to his house mourning, and having his head covered.",
+  "ref": "Esther 6:12"
+ },
+ {
+  "id": "esther-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides Zeresh, who told Haman he would surely fall before Mordecai?",
+  "choices": [
+   "His wise men",
+   "His sons",
+   "The king's servants",
+   "The chamberlains"
+  ],
+  "answer": 0,
+  "explanation": "His wise men and Zeresh his wife said, thou shalt not prevail against him, but shalt surely fall before him.",
+  "ref": "Esther 6:13"
+ },
+ {
   "id": "old-esther-7-1",
   "chapter": 7,
   "level": "beginner",
