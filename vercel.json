@@ -156,6 +156,24 @@
       ]
     },
     {
+      "source": "/:path(.*\\.(?:webp|png|jpe?g|gif|svg|ico|avif|mp3|m4a|ogg|wav|woff2?|ttf|otf))",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/_next/image",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
       "source": "/bible-buddy-social-preview.png",
       "headers": [
         {
