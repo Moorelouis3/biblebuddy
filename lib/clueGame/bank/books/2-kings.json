@@ -12864,6 +12864,566 @@
   "ref": "2 Kings 21:19–23"
  },
  {
+  "id": "2-kings-21-e-01",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Manasseh reign in Jerusalem?",
+  "choices": [
+   "Fifty and five years",
+   "Twenty-two years",
+   "Thirty-one years",
+   "Two years"
+  ],
+  "answer": 0,
+  "explanation": "Manasseh reigned fifty and five years in Jerusalem.",
+  "ref": "2 Kings 21:1"
+ },
+ {
+  "id": "2-kings-21-e-02",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Manasseh's father?",
+  "choices": [
+   "Hezekiah",
+   "Ahaz",
+   "Josiah",
+   "Amon"
+  ],
+  "answer": 0,
+  "explanation": "He built up again the high places which Hezekiah his father had destroyed.",
+  "ref": "2 Kings 21:3"
+ },
+ {
+  "id": "2-kings-21-e-03",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Manasseh build altars for all the host of heaven?",
+  "choices": [
+   "In the courts of the house of the LORD",
+   "On the hills of Samaria",
+   "In the valley of Hinnom",
+   "On the roof of his palace"
+  ],
+  "answer": 0,
+  "explanation": "He built altars for all the host of heaven in the two courts of the house of the LORD.",
+  "ref": "2 Kings 21:5"
+ },
+ {
+  "id": "2-kings-21-e-04",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Manasseh do to his son?",
+  "choices": [
+   "Made him pass through the fire",
+   "Sent him to Egypt",
+   "Crowned him king",
+   "Gave him to the priests"
+  ],
+  "answer": 0,
+  "explanation": "He made his son pass through the fire.",
+  "ref": "2 Kings 21:6"
+ },
+ {
+  "id": "2-kings-21-e-05",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the LORD see Manasseh's reign?",
+  "choices": [
+   "He did right, like David",
+   "He did evil in the sight of the LORD",
+   "He did right, but ruled too long",
+   "He did evil only at first"
+  ],
+  "answer": 1,
+  "explanation": "He did that which was evil in the sight of the LORD.",
+  "ref": "2 Kings 21:2"
+ },
+ {
+  "id": "2-kings-21-e-06",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Manasseh shed very much of in Jerusalem?",
+  "choices": [
+   "Animal blood",
+   "Enemy blood",
+   "Priests' blood",
+   "Innocent blood"
+  ],
+  "answer": 3,
+  "explanation": "Manasseh shed innocent blood very much, till he had filled Jerusalem from one end to another.",
+  "ref": "2 Kings 21:16"
+ },
+ {
+  "id": "2-kings-21-e-07",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to King Amon?",
+  "choices": [
+   "His servants killed him in his own house",
+   "He died in battle",
+   "He was taken to Babylon",
+   "He died of a sickness"
+  ],
+  "answer": 0,
+  "explanation": "The servants of Amon conspired against him, and slew the king in his own house.",
+  "ref": "2 Kings 21:23"
+ },
+ {
+  "id": "2-kings-21-e-08",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the people of the land make king after Amon?",
+  "choices": [
+   "Josiah his son",
+   "Jehoiakim his son",
+   "Zedekiah his son",
+   "Hezekiah his son"
+  ],
+  "answer": 0,
+  "explanation": "The people of the land made Josiah his son king in his stead.",
+  "ref": "2 Kings 21:24"
+ },
+ {
+  "id": "2-kings-21-m-01",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "What was the name of Manasseh's mother?",
+  "choices": [
+   "Meshullemeth",
+   "Jedidah",
+   "Hephzi-bah",
+   "Abijah"
+  ],
+  "answer": 2,
+  "explanation": "His mother's name was Hephzi-bah.",
+  "ref": "2 Kings 21:1"
+ },
+ {
+  "id": "2-kings-21-m-02",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Which king of Israel did Manasseh copy in making a grove?",
+  "choices": [
+   "Jeroboam",
+   "Omri",
+   "Jehu",
+   "Ahab"
+  ],
+  "answer": 3,
+  "explanation": "He reared up altars for Baal, and made a grove, as did Ahab king of Israel.",
+  "ref": "2 Kings 21:3"
+ },
+ {
+  "id": "2-kings-21-m-03",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Manasseh worship and serve?",
+  "choices": [
+   "The golden calves",
+   "All the host of heaven",
+   "The brazen serpent",
+   "The sun chariot only"
+  ],
+  "answer": 1,
+  "explanation": "He worshipped all the host of heaven, and served them.",
+  "ref": "2 Kings 21:3"
+ },
+ {
+  "id": "2-kings-21-m-04",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With whom did Manasseh deal, besides using enchantments?",
+  "choices": [
+   "Familiar spirits and wizards",
+   "Egyptian priests",
+   "Kings of Assyria",
+   "False prophets of Baal"
+  ],
+  "answer": 0,
+  "explanation": "He used enchantments, and dealt with familiar spirits and wizards.",
+  "ref": "2 Kings 21:6"
+ },
+ {
+  "id": "2-kings-21-m-05",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say he would put in Jerusalem for ever?",
+  "choices": [
+   "His name",
+   "His ark",
+   "His throne",
+   "His law"
+  ],
+  "answer": 0,
+  "explanation": "In this house, and in Jerusalem, will I put my name for ever.",
+  "ref": "2 Kings 21:7"
+ },
+ {
+  "id": "2-kings-21-m-06",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD speak against Manasseh?",
+  "choices": [
+   "By a dream to the king",
+   "By fire from heaven",
+   "By his servants the prophets",
+   "By the high priest"
+  ],
+  "answer": 2,
+  "explanation": "The LORD spake by his servants the prophets.",
+  "ref": "2 Kings 21:10"
+ },
+ {
+  "id": "2-kings-21-m-07",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Manasseh did wickedly above all that which people had done?",
+  "choices": [
+   "The Amorites",
+   "The Philistines",
+   "The Egyptians",
+   "The Syrians"
+  ],
+  "answer": 0,
+  "explanation": "Manasseh hath done wickedly above all that the Amorites did.",
+  "ref": "2 Kings 21:11"
+ },
+ {
+  "id": "2-kings-21-m-08",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Whom did Manasseh make to sin with his idols?",
+  "choices": [
+   "Samaria",
+   "Judah",
+   "Edom",
+   "Egypt"
+  ],
+  "answer": 1,
+  "explanation": "He hath made Judah also to sin with his idols.",
+  "ref": "2 Kings 21:11"
+ },
+ {
+  "id": "2-kings-21-m-09",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to the ears of those who heard of the coming evil?",
+  "choices": [
+   "They would be deaf",
+   "They would be stopped",
+   "They would burn",
+   "They would tingle"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever heareth of it, both his ears shall tingle.",
+  "ref": "2 Kings 21:12"
+ },
+ {
+  "id": "2-kings-21-m-10",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose plummet would the LORD stretch over Jerusalem, with the line of Samaria?",
+  "choices": [
+   "The house of Ahab",
+   "The house of Omri",
+   "The house of Jeroboam",
+   "The house of Saul"
+  ],
+  "answer": 0,
+  "explanation": "I will stretch over Jerusalem the line of Samaria, and the plummet of the house of Ahab.",
+  "ref": "2 Kings 21:13"
+ },
+ {
+  "id": "2-kings-21-m-11",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Manasseh buried?",
+  "choices": [
+   "In the city of David",
+   "In the temple court",
+   "In a cave at Hebron",
+   "In the garden of his own house"
+  ],
+  "answer": 3,
+  "explanation": "Manasseh was buried in the garden of his own house, in the garden of Uzza.",
+  "ref": "2 Kings 21:18"
+ },
+ {
+  "id": "2-kings-21-m-12",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How old was Amon when he began to reign?",
+  "choices": [
+   "Twenty and two",
+   "Twelve",
+   "Eight",
+   "Twenty-five"
+  ],
+  "answer": 0,
+  "explanation": "Amon was twenty and two years old when he began to reign.",
+  "ref": "2 Kings 21:19"
+ },
+ {
+  "id": "2-kings-21-m-13",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Amon forsake?",
+  "choices": [
+   "The throne of David",
+   "The LORD God of his fathers",
+   "The city of Jerusalem",
+   "The house of Ahab"
+  ],
+  "answer": 1,
+  "explanation": "He forsook the LORD God of his fathers, and walked not in the way of the LORD.",
+  "ref": "2 Kings 21:22"
+ },
+ {
+  "id": "2-kings-21-m-14",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the people of the land kill after Amon's death?",
+  "choices": [
+   "The priests of Baal",
+   "Amon's sons",
+   "Those who conspired against him",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "The people of the land slew all them that had conspired against king Amon.",
+  "ref": "2 Kings 21:24"
+ },
+ {
+  "id": "2-kings-21-h-01",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say to David and Solomon about the house in Jerusalem?",
+  "choices": [
+   "He would dwell in it only a while",
+   "He would put his name there for ever",
+   "He would give it to the priests",
+   "He would build it a second time"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said to David, and to Solomon his son, In this house... will I put my name for ever.",
+  "ref": "2 Kings 21:7"
+ },
+ {
+  "id": "2-kings-21-h-02",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD promise not to make Israel's feet do, if they obeyed?",
+  "choices": [
+   "Walk in the wilderness",
+   "Stand before Egypt",
+   "Wander among the nations",
+   "Move out of the land"
+  ],
+  "answer": 3,
+  "explanation": "Neither will I make the feet of Israel move any more out of the land which I gave their fathers.",
+  "ref": "2 Kings 21:8"
+ },
+ {
+  "id": "2-kings-21-h-03",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD do to the remnant of his inheritance?",
+  "choices": [
+   "Deliver them into the hand of their enemies",
+   "Gather them to Samaria",
+   "Send them a new king",
+   "Spare them for David's sake"
+  ],
+  "answer": 0,
+  "explanation": "I will forsake the remnant of mine inheritance, and deliver them into the hand of their enemies.",
+  "ref": "2 Kings 21:14"
+ },
+ {
+  "id": "2-kings-21-h-04",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Since when had their fathers provoked the LORD to anger?",
+  "choices": [
+   "Since the days of the judges",
+   "Since Solomon built the temple",
+   "Since the day they came out of Egypt",
+   "Since the kingdom divided"
+  ],
+  "answer": 2,
+  "explanation": "They have provoked me to anger, since the day their fathers came forth out of Egypt.",
+  "ref": "2 Kings 21:15"
+ },
+ {
+  "id": "2-kings-21-h-05",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where are the rest of Manasseh's acts said to be written?",
+  "choices": [
+   "The book of Jasher",
+   "The book of the law",
+   "The book of the chronicles of the kings of Judah",
+   "The book of Isaiah"
+  ],
+  "answer": 2,
+  "explanation": "Are they not written in the book of the chronicles of the kings of Judah?",
+  "ref": "2 Kings 21:17"
+ },
+ {
+  "id": "2-kings-21-h-06",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose daughter was Meshullemeth, the mother of Amon?",
+  "choices": [
+   "Haruz",
+   "Uzza",
+   "Hephzibah",
+   "Shaphan"
+  ],
+  "answer": 0,
+  "explanation": "His mother's name was Meshullemeth, the daughter of Haruz of Jotbah.",
+  "ref": "2 Kings 21:19"
+ },
+ {
+  "id": "2-kings-21-h-07",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Meshullemeth's father Haruz came from which place?",
+  "choices": [
+   "Bethlehem",
+   "Jotbah",
+   "Libnah",
+   "Hebron"
+  ],
+  "answer": 1,
+  "explanation": "Meshullemeth, the daughter of Haruz of Jotbah.",
+  "ref": "2 Kings 21:19"
+ },
+ {
+  "id": "2-kings-21-h-08",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Amon reign in Jerusalem?",
+  "choices": [
+   "Five years",
+   "Twelve years",
+   "Fifty-five years",
+   "Two years"
+  ],
+  "answer": 3,
+  "explanation": "He reigned two years in Jerusalem.",
+  "ref": "2 Kings 21:19"
+ },
+ {
+  "id": "2-kings-21-h-09",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "In whose way did Amon walk?",
+  "choices": [
+   "All the way his father Manasseh walked in",
+   "The way of his grandfather Hezekiah",
+   "The way of David",
+   "The way of Ahab only"
+  ],
+  "answer": 0,
+  "explanation": "He walked in all the way that his father walked in.",
+  "ref": "2 Kings 21:21"
+ },
+ {
+  "id": "2-kings-21-h-10",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Amon serve and worship?",
+  "choices": [
+   "The idols his father served",
+   "The golden calves",
+   "The brazen serpent",
+   "The gods of Babylon"
+  ],
+  "answer": 0,
+  "explanation": "He served the idols that his father served, and worshipped them.",
+  "ref": "2 Kings 21:21"
+ },
+ {
+  "id": "2-kings-21-h-11",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Amon buried?",
+  "choices": [
+   "In the city of David",
+   "In his sepulchre in the garden of Uzza",
+   "In the garden of his own house",
+   "In the cave of Machpelah"
+  ],
+  "answer": 1,
+  "explanation": "He was buried in his sepulchre in the garden of Uzza.",
+  "ref": "2 Kings 21:26"
+ },
+ {
+  "id": "2-kings-21-h-12",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Manasseh's great wickedness meant to do to the LORD?",
+  "choices": [
+   "Provoke him to anger",
+   "Turn away his prophets",
+   "Shorten his own days",
+   "Hide his name"
+  ],
+  "answer": 0,
+  "explanation": "Manasseh wrought much wickedness in the sight of the LORD, to provoke him to anger.",
+  "ref": "2 Kings 21:6"
+ },
+ {
+  "id": "2-kings-21-h-13",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Judah become to all their enemies?",
+  "choices": [
+   "A prey and a spoil",
+   "A tribute and a servant",
+   "A wall and a tower",
+   "A friend and an ally"
+  ],
+  "answer": 0,
+  "explanation": "They shall become a prey and a spoil to all their enemies.",
+  "ref": "2 Kings 21:14"
+ },
+ {
   "id": "old-2-kings-22-1",
   "chapter": 22,
   "level": "beginner",
