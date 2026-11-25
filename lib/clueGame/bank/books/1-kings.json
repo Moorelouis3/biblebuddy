@@ -1520,6 +1520,646 @@
   "ref": "1 Kings 3:13"
  },
  {
+  "id": "1-kings-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the LORD appear to Solomon at Gibeon?",
+  "choices": [
+   "In a burning bush",
+   "In a dream by night",
+   "In a cloud of fire",
+   "By an angel at the altar"
+  ],
+  "answer": 1,
+  "explanation": "In Gibeon the LORD appeared to Solomon in a dream by night.",
+  "ref": "1 Kings 3:5"
+ },
+ {
+  "id": "1-kings-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say to Solomon in the dream?",
+  "choices": [
+   "Ask what I shall give thee",
+   "Build me an house",
+   "Go up against Egypt",
+   "Offer a thousand more offerings"
+  ],
+  "answer": 0,
+  "explanation": "God said, Ask what I shall give thee.",
+  "ref": "1 Kings 3:5"
+ },
+ {
+  "id": "1-kings-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon call himself when he spoke of his youth and inexperience?",
+  "choices": [
+   "A shepherd boy",
+   "A servant of Joab",
+   "A young prophet",
+   "A little child"
+  ],
+  "answer": 3,
+  "explanation": "Solomon said, I am but a little child: I know not how to go out or come in.",
+  "ref": "1 Kings 3:7"
+ },
+ {
+  "id": "1-kings-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Solomon stand to offer offerings after he woke from the dream?",
+  "choices": [
+   "On the altar at Gibeon",
+   "At the gate of the city",
+   "Before the ark of the covenant",
+   "On the wall of Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "He came to Jerusalem, and stood before the ark of the covenant of the LORD, and offered up burnt offerings.",
+  "ref": "1 Kings 3:15"
+ },
+ {
+  "id": "1-kings-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Solomon bring Pharaoh's daughter?",
+  "choices": [
+   "To Gibeon",
+   "Into the city of David",
+   "To Egypt",
+   "To Hebron"
+  ],
+  "answer": 1,
+  "explanation": "Solomon took Pharaoh's daughter, and brought her into the city of David.",
+  "ref": "1 Kings 3:1"
+ },
+ {
+  "id": "1-kings-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to one woman's child in the night?",
+  "choices": [
+   "It died because she overlaid it",
+   "It was stolen",
+   "It fell ill",
+   "It ran away"
+  ],
+  "answer": 0,
+  "explanation": "This woman's child died in the night; because she overlaid it.",
+  "ref": "1 Kings 3:19"
+ },
+ {
+  "id": "1-kings-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon ask for to settle the dispute?",
+  "choices": [
+   "A scale",
+   "The ark",
+   "A witness",
+   "A sword"
+  ],
+  "answer": 3,
+  "explanation": "The king said, Bring me a sword. And they brought a sword before the king.",
+  "ref": "1 Kings 3:24"
+ },
+ {
+  "id": "1-kings-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon command to be done with the living child?",
+  "choices": [
+   "Give it to the guards",
+   "Send it to the priest",
+   "Divide it in two",
+   "Raise it in the palace"
+  ],
+  "answer": 2,
+  "explanation": "The king said, Divide the living child in two, and give half to the one, and half to the other.",
+  "ref": "1 Kings 3:25"
+ },
+ {
+  "id": "1-kings-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which woman pleaded for the child's life?",
+  "choices": [
+   "The one who overlaid her son",
+   "The one whose child was alive",
+   "Both women",
+   "Neither woman"
+  ],
+  "answer": 1,
+  "explanation": "The woman whose the living child was spake, for her bowels yearned upon her son: O my lord, give her the living child, and in no wise slay it.",
+  "ref": "1 Kings 3:26"
+ },
+ {
+  "id": "1-kings-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did all Israel react to Solomon's judgment?",
+  "choices": [
+   "They feared the king",
+   "They rebelled",
+   "They doubted him",
+   "They asked for a new judge"
+  ],
+  "answer": 0,
+  "explanation": "All Israel heard of the judgment which the king had judged; and they feared the king.",
+  "ref": "1 Kings 3:28"
+ },
+ {
+  "id": "1-kings-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people sacrifice in high places in those days?",
+  "choices": [
+   "They did not know the law",
+   "They feared Egypt",
+   "The ark was lost",
+   "No house had been built to the name of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "The people sacrificed in high places, because there was no house built unto the name of the LORD.",
+  "ref": "1 Kings 3:2"
+ },
+ {
+  "id": "1-kings-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Solomon say David had walked before God?",
+  "choices": [
+   "In wisdom and riches",
+   "In strength and honour",
+   "In truth, righteousness and uprightness of heart",
+   "In peace and plenty"
+  ],
+  "answer": 2,
+  "explanation": "David walked before thee in truth, and in righteousness, and in uprightness of heart.",
+  "ref": "1 Kings 3:6"
+ },
+ {
+  "id": "1-kings-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon say God had given David as a great kindness?",
+  "choices": [
+   "A temple",
+   "A son to sit on his throne",
+   "A long life",
+   "A victory over Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast given him a son to sit on his throne, as it is this day.",
+  "ref": "1 Kings 3:6"
+ },
+ {
+  "id": "1-kings-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Solomon describe the people he was to judge?",
+  "choices": [
+   "A great people that cannot be numbered",
+   "A stiffnecked people",
+   "A small and weak people",
+   "A people of the plain"
+  ],
+  "answer": 0,
+  "explanation": "Thy people which thou hast chosen, a great people, that cannot be numbered nor counted for multitude.",
+  "ref": "1 Kings 3:8"
+ },
+ {
+  "id": "1-kings-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Solomon ask for an understanding heart?",
+  "choices": [
+   "To build a great house",
+   "To rule over Egypt",
+   "To win battles",
+   "To discern between good and bad"
+  ],
+  "answer": 3,
+  "explanation": "Give thy servant an understanding heart to judge thy people, that I may discern between good and bad.",
+  "ref": "1 Kings 3:9"
+ },
+ {
+  "id": "1-kings-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides long life and riches, what had Solomon not asked for?",
+  "choices": [
+   "A large army",
+   "A bigger kingdom",
+   "The life of his enemies",
+   "A new covenant"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast not asked long life; neither riches, nor the life of thine enemies.",
+  "ref": "1 Kings 3:11"
+ },
+ {
+  "id": "1-kings-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say about Solomon's wisdom compared with other kings?",
+  "choices": [
+   "He would be equal to David",
+   "None before or after would be like him",
+   "He would match Pharaoh",
+   "He would be second to Moses"
+  ],
+  "answer": 1,
+  "explanation": "There was none like thee before thee, neither after thee shall any arise like unto thee.",
+  "ref": "1 Kings 3:12"
+ },
+ {
+  "id": "1-kings-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What condition did God give for lengthening Solomon's days?",
+  "choices": [
+   "Walk in his ways and keep his statutes as David did",
+   "Build the temple quickly",
+   "Put away his wife",
+   "Offer a thousand offerings each year"
+  ],
+  "answer": 0,
+  "explanation": "If thou wilt walk in my ways, to keep my statutes and my commandments, as thy father David did walk, then I will lengthen thy days.",
+  "ref": "1 Kings 3:14"
+ },
+ {
+  "id": "1-kings-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon realise when he awoke?",
+  "choices": [
+   "The LORD had left him",
+   "The ark was gone",
+   "The altar was empty",
+   "It was a dream"
+  ],
+  "answer": 3,
+  "explanation": "Solomon awoke; and, behold, it was a dream.",
+  "ref": "1 Kings 3:15"
+ },
+ {
+  "id": "1-kings-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon make for all his servants after the dream?",
+  "choices": [
+   "A treaty",
+   "A holiday",
+   "A feast",
+   "A statue"
+  ],
+  "answer": 2,
+  "explanation": "He offered peace offerings, and made a feast to all his servants.",
+  "ref": "1 Kings 3:15"
+ },
+ {
+  "id": "1-kings-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How soon after the first woman did the other woman give birth?",
+  "choices": [
+   "The same day",
+   "The third day",
+   "The seventh day",
+   "A month later"
+  ],
+  "answer": 1,
+  "explanation": "The third day after that I was delivered, that this woman was delivered also.",
+  "ref": "1 Kings 3:18"
+ },
+ {
+  "id": "1-kings-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What time of night did the one woman take the other's son?",
+  "choices": [
+   "Midnight",
+   "Dusk",
+   "Dawn",
+   "The third watch"
+  ],
+  "answer": 0,
+  "explanation": "She arose at midnight, and took my son from beside me, while thine handmaid slept.",
+  "ref": "1 Kings 3:20"
+ },
+ {
+  "id": "1-kings-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the first woman know the dead child was not hers?",
+  "choices": [
+   "It wore different clothes",
+   "The midwife told her",
+   "A neighbor said so",
+   "She considered it in the morning"
+  ],
+  "answer": 3,
+  "explanation": "When I had considered it in the morning, behold, it was not my son, which I did bear.",
+  "ref": "1 Kings 3:21"
+ },
+ {
+  "id": "1-kings-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the other woman say when the sword was brought?",
+  "choices": [
+   "Give her the child",
+   "Spare the child",
+   "Let it be neither mine nor thine, but divide it",
+   "Bring the elders"
+  ],
+  "answer": 2,
+  "explanation": "The other said, Let it be neither mine nor thine, but divide it.",
+  "ref": "1 Kings 3:26"
+ },
+ {
+  "id": "1-kings-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon say the woman who wanted the child spared was?",
+  "choices": [
+   "The harlot of Gibeon",
+   "The mother thereof",
+   "A servant of the king",
+   "The wife of a captain"
+  ],
+  "answer": 1,
+  "explanation": "Give her the living child, and in no wise slay it: she is the mother thereof.",
+  "ref": "1 Kings 3:27"
+ },
+ {
+  "id": "1-kings-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until what was Pharaoh's daughter kept in the city of David?",
+  "choices": [
+   "He finished building the houses and the wall",
+   "Solomon returned from Gibeon",
+   "The ark was brought up",
+   "Pharaoh sent a dowry"
+  ],
+  "answer": 0,
+  "explanation": "Until he had made an end of building his own house, and the house of the LORD, and the wall of Jerusalem round about.",
+  "ref": "1 Kings 3:1"
+ },
+ {
+  "id": "1-kings-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "What does the chapter call Gibeon?",
+  "choices": [
+   "The holy mount",
+   "The tent of meeting",
+   "The city of David",
+   "The great high place"
+  ],
+  "answer": 3,
+  "explanation": "The king went to Gibeon to sacrifice there; for that was the great high place.",
+  "ref": "1 Kings 3:4"
+ },
+ {
+  "id": "1-kings-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the one fault noted of Solomon, who loved the LORD?",
+  "choices": [
+   "He married too many wives",
+   "He built too many houses",
+   "He sacrificed and burnt incense in high places",
+   "He neglected the ark"
+  ],
+  "answer": 2,
+  "explanation": "Solomon loved the LORD, walking in the statutes of David his father: only he sacrificed and burnt incense in high places.",
+  "ref": "1 Kings 3:3"
+ },
+ {
+  "id": "1-kings-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Solomon say he knew not how to do?",
+  "choices": [
+   "Judge or rule",
+   "Go out or come in",
+   "Build or plant",
+   "Speak or write"
+  ],
+  "answer": 1,
+  "explanation": "I am but a little child: I know not how to go out or come in.",
+  "ref": "1 Kings 3:7"
+ },
+ {
+  "id": "1-kings-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of women came to stand before the king?",
+  "choices": [
+   "Harlots",
+   "Widows",
+   "Servants",
+   "Priests' daughters"
+  ],
+  "answer": 0,
+  "explanation": "Then came there two women, that were harlots, unto the king, and stood before him.",
+  "ref": "1 Kings 3:16"
+ },
+ {
+  "id": "1-kings-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the other woman lay her dead child?",
+  "choices": [
+   "In the field",
+   "In the cradle",
+   "In the bed of the king",
+   "In the first woman's bosom"
+  ],
+  "answer": 3,
+  "explanation": "She took my son, and laid it in her bosom, and laid her dead child in my bosom.",
+  "ref": "1 Kings 3:20"
+ },
+ {
+  "id": "1-kings-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the first woman say she was when the child was swapped?",
+  "choices": [
+   "Away at market",
+   "In prayer",
+   "Asleep",
+   "Washing"
+  ],
+  "answer": 2,
+  "explanation": "She took my son from beside me, while thine handmaid slept.",
+  "ref": "1 Kings 3:20"
+ },
+ {
+  "id": "1-kings-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the two women dwell?",
+  "choices": [
+   "In Gibeon",
+   "In one house",
+   "At the palace",
+   "In the city of David"
+  ],
+  "answer": 1,
+  "explanation": "I and this woman dwell in one house.",
+  "ref": "1 Kings 3:17"
+ },
+ {
+  "id": "1-kings-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who else was in the house when the two women gave birth?",
+  "choices": [
+   "No stranger, only the two women",
+   "The midwife",
+   "Their husbands",
+   "A servant"
+  ],
+  "answer": 0,
+  "explanation": "There was no stranger with us in the house, save we two in the house.",
+  "ref": "1 Kings 3:18"
+ },
+ {
+  "id": "1-kings-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Solomon explain why the one woman should have the child?",
+  "choices": [
+   "She spoke first",
+   "She had witnesses",
+   "She was older",
+   "She is the mother thereof"
+  ],
+  "answer": 3,
+  "explanation": "Give her the living child, and in no wise slay it: she is the mother thereof.",
+  "ref": "1 Kings 3:27"
+ },
+ {
+  "id": "1-kings-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did all Israel see was in Solomon to do judgment?",
+  "choices": [
+   "The anger of God",
+   "The strength of David",
+   "The wisdom of God",
+   "The counsel of Nathan"
+  ],
+  "answer": 2,
+  "explanation": "They saw that the wisdom of God was in him, to do judgment.",
+  "ref": "1 Kings 3:28"
+ },
+ {
+  "id": "1-kings-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how long did God say no king would be like Solomon?",
+  "choices": [
+   "Seven years",
+   "All his days",
+   "Until the temple was built",
+   "Until David's return"
+  ],
+  "answer": 1,
+  "explanation": "There shall not be any among the kings like unto thee all thy days.",
+  "ref": "1 Kings 3:13"
+ },
+ {
+  "id": "1-kings-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of understanding had Solomon asked for himself?",
+  "choices": [
+   "To discern judgment",
+   "To build the temple",
+   "To number the people",
+   "To rule the nations"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast asked for thyself understanding to discern judgment.",
+  "ref": "1 Kings 3:11"
+ },
+ {
+  "id": "1-kings-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "In place of whom did Solomon say the LORD had made him king?",
+  "choices": [
+   "Saul",
+   "Adonijah",
+   "Joab",
+   "David his father"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast made thy servant king instead of David my father.",
+  "ref": "1 Kings 3:7"
+ },
+ {
+  "id": "1-kings-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the true mother tell the king to do with the child?",
+  "choices": [
+   "Give it to the guards",
+   "Keep it at the palace",
+   "Give it to the other woman",
+   "Send it to the priest"
+  ],
+  "answer": 2,
+  "explanation": "O my lord, give her the living child.",
+  "ref": "1 Kings 3:26"
+ },
+ {
   "id": "old-1-kings-4-1",
   "chapter": 4,
   "level": "beginner",
