@@ -16,22 +16,6 @@
   "ref": "Matthew 1:1"
  },
  {
-  "id": "old-matthew-1-2",
-  "chapter": 1,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How many generations does Matthew say were from Abraham to David?",
-  "choices": [
-   "Twelve",
-   "Ten",
-   "Seven",
-   "Fourteen"
-  ],
-  "answer": 3,
-  "explanation": "Matthew arranges the genealogy into groups of fourteen generations.",
-  "ref": "Matthew 1:17"
- },
- {
   "id": "old-matthew-1-3",
   "chapter": 1,
   "level": "beginner",
@@ -18654,5 +18638,181 @@
   "answer": 0,
   "explanation": "The harvest truly is plenteous, but the labourers are few.",
   "ref": "Matthew 9:37"
+ },
+ {
+  "id": "matthew-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the angel of the Lord appear to Joseph?",
+  "choices": [
+   "In the temple",
+   "In a dream",
+   "On the road",
+   "In the wilderness"
+  ],
+  "answer": 1,
+  "explanation": "The angel of the Lord appeared unto him in a dream.",
+  "ref": "Matthew 1:20"
+ },
+ {
+  "id": "matthew-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "The angel called Joseph the son of whom?",
+  "choices": [
+   "Abraham",
+   "Judas",
+   "David",
+   "Josias"
+  ],
+  "answer": 2,
+  "explanation": "The angel said, Joseph, thou son of David, fear not.",
+  "ref": "Matthew 1:20"
+ },
+ {
+  "id": "matthew-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the prophet say the virgin would do?",
+  "choices": [
+   "Flee into Egypt",
+   "Go up to Bethlehem",
+   "Raise up a king",
+   "Be with child and bring forth a son"
+  ],
+  "answer": 3,
+  "explanation": "A virgin shall be with child, and shall bring forth a son.",
+  "ref": "Matthew 1:23"
+ },
+ {
+  "id": "matthew-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When was Mary found with child?",
+  "choices": [
+   "Before she and Joseph came together",
+   "After Joseph took her as his wife",
+   "Before she was espoused",
+   "After her son was born"
+  ],
+  "answer": 0,
+  "explanation": "When Mary was espoused to Joseph, before they came together, she was found with child of the Holy Ghost.",
+  "ref": "Matthew 1:18"
+ },
+ {
+  "id": "matthew-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Joseph not willing to make of Mary?",
+  "choices": [
+   "A servant in his house",
+   "A publick example",
+   "A stranger to his family",
+   "A widow of the city"
+  ],
+  "answer": 1,
+  "explanation": "Joseph was not willing to make her a publick example.",
+  "ref": "Matthew 1:19"
+ },
+ {
+  "id": "matthew-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel tell Joseph not to fear to do?",
+  "choices": [
+   "Put Mary away privily",
+   "Go up to Bethlehem",
+   "Take Mary as his wife",
+   "Call the child Emmanuel"
+  ],
+  "answer": 2,
+  "explanation": "Joseph, thou son of David, fear not to take unto thee Mary thy wife.",
+  "ref": "Matthew 1:20"
+ },
+ {
+  "id": "matthew-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the angel tell to call the child JESUS?",
+  "choices": [
+   "Mary",
+   "David",
+   "Jacob",
+   "Joseph"
+  ],
+  "answer": 3,
+  "explanation": "She shall bring forth a son, and thou shalt call his name JESUS.",
+  "ref": "Matthew 1:21"
+ },
+ {
+  "id": "matthew-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Matthew say all this was done?",
+  "choices": [
+   "That it might be fulfilled which was spoken by the prophet",
+   "Because Herod commanded it",
+   "Because of the carrying away to Babylon",
+   "So Joseph would fear no more"
+  ],
+  "answer": 0,
+  "explanation": "All this was done, that it might be fulfilled which was spoken of the Lord by the prophet.",
+  "ref": "Matthew 1:22"
+ },
+ {
+  "id": "matthew-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Joseph doing when the angel appeared to him?",
+  "choices": [
+   "Praying in the temple",
+   "Thinking on these things",
+   "Travelling to Bethlehem",
+   "Speaking with Mary"
+  ],
+  "answer": 1,
+  "explanation": "While he thought on these things, behold, the angel of the Lord appeared unto him.",
+  "ref": "Matthew 1:20"
+ },
+ {
+  "id": "matthew-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph not do until Mary had brought forth her firstborn son?",
+  "choices": [
+   "Called his name Jesus",
+   "Left Bethlehem",
+   "Knew her not",
+   "Spoke of the angel"
+  ],
+  "answer": 2,
+  "explanation": "Joseph knew her not till she had brought forth her firstborn son.",
+  "ref": "Matthew 1:25"
+ },
+ {
+  "id": "matthew-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into how many groups of fourteen generations does Matthew sum up the list?",
+  "choices": [
+   "Two",
+   "Four",
+   "Five",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "Abraham to David, David to Babylon and Babylon to Christ are each fourteen generations.",
+  "ref": "Matthew 1:17"
  }
 ]
