@@ -2528,6 +2528,598 @@
   "ref": "2 Kings 5:27"
  },
  {
+  "id": "2-kings-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What disease did Naaman have?",
+  "choices": [
+   "Blindness",
+   "Leprosy",
+   "A fever",
+   "Palsy"
+  ],
+  "answer": 1,
+  "explanation": "Naaman was a mighty man in valour, but he was a leper.",
+  "ref": "2 Kings 5:1"
+ },
+ {
+  "id": "2-kings-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the king of Syria send a letter about Naaman?",
+  "choices": [
+   "The king of Israel",
+   "The prophet Elisha",
+   "The king of Judah",
+   "The high priest"
+  ],
+  "answer": 0,
+  "explanation": "I will send a letter unto the king of Israel.",
+  "ref": "2 Kings 5:5"
+ },
+ {
+  "id": "2-kings-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king of Israel do when he read the letter?",
+  "choices": [
+   "Burned the letter",
+   "Sent Naaman away at once",
+   "Called for Gehazi",
+   "Rent his clothes"
+  ],
+  "answer": 3,
+  "explanation": "The king of Israel had read the letter, that he rent his clothes.",
+  "ref": "2 Kings 5:7"
+ },
+ {
+  "id": "2-kings-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Naaman stand when he came to Elisha?",
+  "choices": [
+   "At the gate of Samaria",
+   "On the bank of Jordan",
+   "At the door of Elisha's house",
+   "In the temple"
+  ],
+  "answer": 2,
+  "explanation": "Naaman came with his horses and chariot, and stood at the door of the house of Elisha.",
+  "ref": "2 Kings 5:9"
+ },
+ {
+  "id": "2-kings-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who gave Naaman Elisha's message to wash in Jordan?",
+  "choices": [
+   "Gehazi himself",
+   "A messenger",
+   "The king of Israel",
+   "The little maid"
+  ],
+  "answer": 1,
+  "explanation": "Elisha sent a messenger unto him, saying, Go and wash in the Jordan seven times.",
+  "ref": "2 Kings 5:10"
+ },
+ {
+  "id": "2-kings-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which two rivers did Naaman say were better than Israel's waters?",
+  "choices": [
+   "Abana and Pharpar",
+   "Kishon and Arnon",
+   "Jabbok and Jordan",
+   "Nile and Euphrates"
+  ],
+  "answer": 0,
+  "explanation": "Are not Abana and Pharpar, rivers of Damascus, better than all the waters of Israel?",
+  "ref": "2 Kings 5:12"
+ },
+ {
+  "id": "2-kings-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who persuaded Naaman to obey Elisha?",
+  "choices": [
+   "His wife",
+   "The king of Syria",
+   "The little maid",
+   "His servants"
+  ],
+  "answer": 3,
+  "explanation": "His servants came near, and said, My father, if the prophet had bid thee do some great thing, wouldest thou not have done it?",
+  "ref": "2 Kings 5:13"
+ },
+ {
+  "id": "2-kings-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Naaman's flesh like after the seventh dip?",
+  "choices": [
+   "White as snow",
+   "Burnt and scarred",
+   "The flesh of a little child",
+   "Hard as stone"
+  ],
+  "answer": 2,
+  "explanation": "His flesh came again like unto the flesh of a little child, and he was clean.",
+  "ref": "2 Kings 5:14"
+ },
+ {
+  "id": "2-kings-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Gehazi take from Naaman by lying?",
+  "choices": [
+   "Oxen and sheep",
+   "Silver and changes of garments",
+   "Oil and wine",
+   "Land and a vineyard"
+  ],
+  "answer": 1,
+  "explanation": "He bound two talents of silver in two bags, with two changes of garments.",
+  "ref": "2 Kings 5:23"
+ },
+ {
+  "id": "2-kings-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Naaman take with him to Israel?",
+  "choices": [
+   "Silver, gold and changes of raiment",
+   "Horses and chariots only",
+   "Corn and oil",
+   "Slaves and cattle"
+  ],
+  "answer": 0,
+  "explanation": "He took with him ten talents of silver, and six thousand pieces of gold, and ten changes of raiment.",
+  "ref": "2 Kings 5:5"
+ },
+ {
+  "id": "2-kings-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king of Israel ask when he read the letter?",
+  "choices": [
+   "Who is this Naaman?",
+   "Where is Elisha?",
+   "Why hath Syria sent me gold?",
+   "Am I God, to kill and to make alive?"
+  ],
+  "answer": 3,
+  "explanation": "Am I God, to kill and to make alive, that this man doth send unto me to recover a man of his leprosy?",
+  "ref": "2 Kings 5:7"
+ },
+ {
+  "id": "2-kings-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha say Naaman would learn if he came to him?",
+  "choices": [
+   "That Syria would fall",
+   "That the king was a fool",
+   "That there is a prophet in Israel",
+   "That the Jordan was holy"
+  ],
+  "answer": 2,
+  "explanation": "Let him come now to me, and he shall know that there is a prophet in Israel.",
+  "ref": "2 Kings 5:8"
+ },
+ {
+  "id": "2-kings-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Naaman expected Elisha to do?",
+  "choices": [
+   "Pray for him in the temple",
+   "Come out, call on the LORD, and strike his hand",
+   "Send a sacrifice",
+   "Give him a potion"
+  ],
+  "answer": 1,
+  "explanation": "He will surely come out to me, and stand, and call on the name of the LORD his God.",
+  "ref": "2 Kings 5:11"
+ },
+ {
+  "id": "2-kings-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the servants say to persuade Naaman?",
+  "choices": [
+   "Wouldest thou not do some great thing he bade?",
+   "The king of Syria commands it",
+   "The river is near and shallow",
+   "Elisha will curse thee"
+  ],
+  "answer": 0,
+  "explanation": "If the prophet had bid thee do some great thing, wouldest thou not have done it? how much rather, Wash, and be clean?",
+  "ref": "2 Kings 5:13"
+ },
+ {
+  "id": "2-kings-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Naaman ask to take home from Israel?",
+  "choices": [
+   "A branch of the Jordan",
+   "A pot of water",
+   "An altar stone",
+   "Two mules' burden of earth"
+  ],
+  "answer": 3,
+  "explanation": "Shall there not be given to thy servant two mules' burden of earth?",
+  "ref": "2 Kings 5:17"
+ },
+ {
+  "id": "2-kings-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Naaman want the earth?",
+  "choices": [
+   "He would build a house for Elisha",
+   "He would plant a garden",
+   "He would offer sacrifice only to the LORD",
+   "He would honour the king"
+  ],
+  "answer": 2,
+  "explanation": "Thy servant will henceforth offer neither burnt offering nor sacrifice unto other gods, but unto the LORD.",
+  "ref": "2 Kings 5:17"
+ },
+ {
+  "id": "2-kings-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha say when Naaman urged him to take a blessing?",
+  "choices": [
+   "Take it to the poor",
+   "I will receive none",
+   "Give it to Gehazi",
+   "Leave it with the king"
+  ],
+  "answer": 1,
+  "explanation": "As the LORD liveth, before whom I stand, I will receive none.",
+  "ref": "2 Kings 5:16"
+ },
+ {
+  "id": "2-kings-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gehazi decide to do after Naaman left?",
+  "choices": [
+   "Run after him and take something",
+   "Pray for his return",
+   "Warn the king",
+   "Follow him to Syria"
+  ],
+  "answer": 0,
+  "explanation": "As the LORD liveth, I will run after him, and take somewhat of him.",
+  "ref": "2 Kings 5:20"
+ },
+ {
+  "id": "2-kings-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What story did Gehazi tell Naaman?",
+  "choices": [
+   "Elisha was in need of a house",
+   "The king had taken Elisha's field",
+   "Elisha had been robbed",
+   "Two young men of the prophets had come from mount Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "There be come to me from mount Ephraim two young men of the sons of the prophets.",
+  "ref": "2 Kings 5:22"
+ },
+ {
+  "id": "2-kings-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much silver did Naaman give Gehazi?",
+  "choices": [
+   "One talent",
+   "Ten talents",
+   "Two talents",
+   "Six thousand pieces"
+  ],
+  "answer": 2,
+  "explanation": "Naaman said, Be content, take two talents.",
+  "ref": "2 Kings 5:23"
+ },
+ {
+  "id": "2-kings-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gehazi answer when Elisha asked where he had been?",
+  "choices": [
+   "I went to the market",
+   "Thy servant went no whither",
+   "I went to Naaman",
+   "I was with the prophets"
+  ],
+  "answer": 1,
+  "explanation": "Elisha said, Whence comest thou, Gehazi? And he said, Thy servant went no whither.",
+  "ref": "2 Kings 5:25"
+ },
+ {
+  "id": "2-kings-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha say about his heart?",
+  "choices": [
+   "It went with Gehazi when Naaman turned from his chariot",
+   "It was heavy for Syria",
+   "It was grieved for the king",
+   "It rejoiced over Naaman"
+  ],
+  "answer": 0,
+  "explanation": "Went not mine heart with thee, when the man turned again from his chariot to meet thee?",
+  "ref": "2 Kings 5:26"
+ },
+ {
+  "id": "2-kings-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Naaman a great man with his master?",
+  "choices": [
+   "He was the king's brother",
+   "He built the temple of Rimmon",
+   "He won Israel's land",
+   "The LORD had given deliverance unto Syria by him"
+  ],
+  "answer": 3,
+  "explanation": "He was honourable, because by him the LORD had given deliverance unto Syria.",
+  "ref": "2 Kings 5:1"
+ },
+ {
+  "id": "2-kings-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Naaman say Elisha would do over the place?",
+  "choices": [
+   "Lay his staff upon it",
+   "Pour oil upon it",
+   "Strike his hand over it",
+   "Anoint it with water"
+  ],
+  "answer": 2,
+  "explanation": "He will stand, and call on the name of the LORD his God, and strike his hand over the place.",
+  "ref": "2 Kings 5:11"
+ },
+ {
+  "id": "2-kings-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "In which house did Naaman say his master bowed in worship?",
+  "choices": [
+   "The house of Baal",
+   "The house of Rimmon",
+   "The house of Dagon",
+   "The house of Chemosh"
+  ],
+  "answer": 1,
+  "explanation": "When my master goeth into the house of Rimmon to worship there, and he leaneth on my hand.",
+  "ref": "2 Kings 5:18"
+ },
+ {
+  "id": "2-kings-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elisha say to Naaman as he left?",
+  "choices": [
+   "Go in peace",
+   "Return in a year",
+   "Go and sin no more",
+   "Depart in the LORD"
+  ],
+  "answer": 0,
+  "explanation": "And he said unto him, Go in peace.",
+  "ref": "2 Kings 5:19"
+ },
+ {
+  "id": "2-kings-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Gehazi take the gifts from Naaman's servants?",
+  "choices": [
+   "At the gate of Samaria",
+   "At the river Jordan",
+   "At Elisha's door",
+   "At the tower"
+  ],
+  "answer": 3,
+  "explanation": "When he came to the tower, he took them from their hand, and bestowed them in the house.",
+  "ref": "2 Kings 5:24"
+ },
+ {
+  "id": "2-kings-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Gehazi look when he left Elisha's presence?",
+  "choices": [
+   "Pale and trembling",
+   "Bound in chains",
+   "A leper as white as snow",
+   "Covered with sackcloth"
+  ],
+  "answer": 2,
+  "explanation": "He went out from his presence a leper as white as snow.",
+  "ref": "2 Kings 5:27"
+ },
+ {
+  "id": "2-kings-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long would the leprosy cleave to Gehazi's family?",
+  "choices": [
+   "Seven years",
+   "For ever",
+   "Three generations",
+   "Until Elisha died"
+  ],
+  "answer": 1,
+  "explanation": "The leprosy of Naaman shall cleave unto thee, and unto thy seed for ever.",
+  "ref": "2 Kings 5:27"
+ },
+ {
+  "id": "2-kings-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the two talents carried before Gehazi?",
+  "choices": [
+   "Bound in two bags on two servants",
+   "In a cart with oxen",
+   "In a chest on an ass",
+   "In Naaman's chariot"
+  ],
+  "answer": 0,
+  "explanation": "He bound two talents of silver in two bags, and laid them upon two of his servants; and they bare them before him.",
+  "ref": "2 Kings 5:23"
+ },
+ {
+  "id": "2-kings-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Naaman do when he saw Gehazi running after him?",
+  "choices": [
+   "Called his servants to flee",
+   "Drew his sword",
+   "Threw him silver",
+   "Lighted down from the chariot"
+  ],
+  "answer": 3,
+  "explanation": "When Naaman saw him running after him, he lighted down from the chariot to meet him.",
+  "ref": "2 Kings 5:21"
+ },
+ {
+  "id": "2-kings-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did the little maid wait on?",
+  "choices": [
+   "The king of Syria",
+   "Naaman's mother",
+   "Naaman's wife",
+   "The king's daughter"
+  ],
+  "answer": 2,
+  "explanation": "She waited on Naaman's wife.",
+  "ref": "2 Kings 5:2"
+ },
+ {
+  "id": "2-kings-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many pieces of gold did Naaman take as a gift?",
+  "choices": [
+   "Ten thousand",
+   "Six thousand",
+   "Two thousand",
+   "Seven hundred"
+  ],
+  "answer": 1,
+  "explanation": "He took ten talents of silver, and six thousand pieces of gold.",
+  "ref": "2 Kings 5:5"
+ },
+ {
+  "id": "2-kings-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the little maid say Elisha could do for Naaman?",
+  "choices": [
+   "Recover him of his leprosy",
+   "Teach him the law",
+   "Pray for the king",
+   "Give him a house"
+  ],
+  "answer": 0,
+  "explanation": "She said, Would God my lord were with the prophet that is in Samaria! for he would recover him of his leprosy.",
+  "ref": "2 Kings 5:3"
+ },
+ {
+  "id": "2-kings-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elisha do when he heard the king of Israel rent his clothes?",
+  "choices": [
+   "Went to the palace himself",
+   "Fled to Jericho",
+   "Sent Gehazi to Syria",
+   "Sent to the king, asking why"
+  ],
+  "answer": 3,
+  "explanation": "Elisha heard that the king of Israel had rent his clothes, that he sent to the king.",
+  "ref": "2 Kings 5:8"
+ },
+ {
+  "id": "2-kings-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Gehazi say Elisha had spared Naaman by refusing?",
+  "choices": [
+   "Refusing to heal him",
+   "Sending him away",
+   "What Naaman brought as a gift",
+   "Taking half his gold"
+  ],
+  "answer": 2,
+  "explanation": "My master hath spared Naaman this Syrian, in not receiving at his hands that which he brought.",
+  "ref": "2 Kings 5:20"
+ },
+ {
+  "id": "2-kings-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Naaman leave Elisha's door at first?",
+  "choices": [
+   "In silence",
+   "In a rage",
+   "In prayer",
+   "In fear"
+  ],
+  "answer": 1,
+  "explanation": "He turned and went away in a rage.",
+  "ref": "2 Kings 5:12"
+ },
+ {
   "id": "old-2-kings-6-1",
   "chapter": 6,
   "level": "beginner",
