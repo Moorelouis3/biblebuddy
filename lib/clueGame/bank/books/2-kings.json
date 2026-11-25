@@ -1808,6 +1808,646 @@
   "ref": "2 Kings 4:42–44"
  },
  {
+  "id": "2-kings-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the widow have in her house?",
+  "choices": [
+   "A measure of flour",
+   "A pot of oil",
+   "A jar of wine",
+   "A bag of silver"
+  ],
+  "answer": 1,
+  "explanation": "Thine handmaid hath not any thing in the house, save a pot of oil.",
+  "ref": "2 Kings 4:2"
+ },
+ {
+  "id": "2-kings-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the creditor come to take from the widow?",
+  "choices": [
+   "Her two sons as bondmen",
+   "Her house",
+   "Her field",
+   "Her husband's sword"
+  ],
+  "answer": 0,
+  "explanation": "The creditor is come to take unto him my two sons to be bondmen.",
+  "ref": "2 Kings 4:1"
+ },
+ {
+  "id": "2-kings-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha tell the widow to borrow?",
+  "choices": [
+   "Silver from the elders",
+   "Wheat from the reapers",
+   "Lamps from the temple",
+   "Empty vessels from her neighbours"
+  ],
+  "answer": 3,
+  "explanation": "Go, borrow thee vessels abroad of all thy neighbours, even empty vessels.",
+  "ref": "2 Kings 4:3"
+ },
+ {
+  "id": "2-kings-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha tell her to do with the oil in the end?",
+  "choices": [
+   "Give it to the prophets",
+   "Pour it out on the ground",
+   "Sell it, pay her debt and live on the rest",
+   "Keep it for the temple"
+  ],
+  "answer": 2,
+  "explanation": "Go, sell the oil, and pay thy debt, and live thou and thy children of the rest.",
+  "ref": "2 Kings 4:7"
+ },
+ {
+  "id": "2-kings-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Elisha's servant who told him the Shunammite had no child?",
+  "choices": [
+   "Obadiah",
+   "Gehazi",
+   "Joash",
+   "Hazael"
+  ],
+  "answer": 1,
+  "explanation": "Gehazi answered, Verily she hath no child, and her husband is old.",
+  "ref": "2 Kings 4:12–14"
+ },
+ {
+  "id": "2-kings-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Shunammite's son cry out in the field?",
+  "choices": [
+   "My head, my head",
+   "My foot, my foot",
+   "My father, my father",
+   "Water, water"
+  ],
+  "answer": 0,
+  "explanation": "He said unto his father, My head, my head.",
+  "ref": "2 Kings 4:19"
+ },
+ {
+  "id": "2-kings-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did the Shunammite's son die?",
+  "choices": [
+   "At night, in the field",
+   "At dawn, on his bed",
+   "At evening, at the reapers",
+   "At noon, on his mother's knees"
+  ],
+  "answer": 3,
+  "explanation": "He sat on her knees till noon, and then died.",
+  "ref": "2 Kings 4:20"
+ },
+ {
+  "id": "2-kings-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which mountain did the Shunammite go to find the man of God?",
+  "choices": [
+   "Mount Sinai",
+   "Mount Gilboa",
+   "Mount Carmel",
+   "Mount Hermon"
+  ],
+  "answer": 2,
+  "explanation": "She came unto the man of God to mount Carmel.",
+  "ref": "2 Kings 4:25"
+ },
+ {
+  "id": "2-kings-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times did the child sneeze when he was revived?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Twelve",
+   "Forty"
+  ],
+  "answer": 1,
+  "explanation": "The child sneezed seven times, and the child opened his eyes.",
+  "ref": "2 Kings 4:35"
+ },
+ {
+  "id": "2-kings-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha cast into the pot of pottage to heal it?",
+  "choices": [
+   "Meal",
+   "Salt",
+   "Oil",
+   "Honey"
+  ],
+  "answer": 0,
+  "explanation": "Then bring meal. And he cast it into the pot... there was no harm in the pot.",
+  "ref": "2 Kings 4:41"
+ },
+ {
+  "id": "2-kings-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the widow say about her dead husband?",
+  "choices": [
+   "He was a captain",
+   "He owed the king",
+   "He served Elijah",
+   "He feared the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Thou knowest that thy servant did fear the LORD.",
+  "ref": "2 Kings 4:1"
+ },
+ {
+  "id": "2-kings-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha ask the widow?",
+  "choices": [
+   "Who is thy creditor?",
+   "How much dost thou owe?",
+   "What hast thou in the house?",
+   "Where is thy husband's house?"
+  ],
+  "answer": 2,
+  "explanation": "What shall I do for thee? tell me, what hast thou in the house?",
+  "ref": "2 Kings 4:2"
+ },
+ {
+  "id": "2-kings-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened when there was no vessel left to fill?",
+  "choices": [
+   "The oil spilled",
+   "The oil stayed",
+   "The oil turned to water",
+   "The oil was taken away"
+  ],
+  "answer": 1,
+  "explanation": "There is not a vessel more. And the oil stayed.",
+  "ref": "2 Kings 4:6"
+ },
+ {
+  "id": "2-kings-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Shunammite and her husband set in the little chamber?",
+  "choices": [
+   "A bed, a table, a stool and a candlestick",
+   "A harp and a scroll",
+   "A bed and a lamb",
+   "A table and an altar"
+  ],
+  "answer": 0,
+  "explanation": "Let us set for him there a bed, and a table, and a stool, and a candlestick.",
+  "ref": "2 Kings 4:10"
+ },
+ {
+  "id": "2-kings-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the Shunammite describe Elisha to her husband?",
+  "choices": [
+   "A wise judge of Israel",
+   "A teacher of the law",
+   "A friend of the king",
+   "An holy man of God"
+  ],
+  "answer": 3,
+  "explanation": "I perceive that this is an holy man of God, which passeth by us continually.",
+  "ref": "2 Kings 4:9"
+ },
+ {
+  "id": "2-kings-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha offer to do for the Shunammite?",
+  "choices": [
+   "Give her silver",
+   "Build her a house",
+   "Speak for her to the king or captain of the host",
+   "Heal her husband"
+  ],
+  "answer": 2,
+  "explanation": "Wouldest thou be spoken for to the king, or to the captain of the host?",
+  "ref": "2 Kings 4:13"
+ },
+ {
+  "id": "2-kings-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Shunammite answer to Elisha's offer?",
+  "choices": [
+   "I need nothing from the king",
+   "I dwell among mine own people",
+   "Give me a son",
+   "Send me to Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "And she answered, I dwell among mine own people.",
+  "ref": "2 Kings 4:13"
+ },
+ {
+  "id": "2-kings-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did she react when Elisha promised her a son?",
+  "choices": [
+   "Do not lie unto thine handmaid",
+   "She laughed to herself",
+   "She thanked him on her knees",
+   "She said nothing"
+  ],
+  "answer": 0,
+  "explanation": "She said, Nay, my lord, thou man of God, do not lie unto thine handmaid.",
+  "ref": "2 Kings 4:16"
+ },
+ {
+  "id": "2-kings-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the boy go when he was grown?",
+  "choices": [
+   "To Elisha at Carmel",
+   "To the temple",
+   "To the king",
+   "To his father with the reapers"
+  ],
+  "answer": 3,
+  "explanation": "He went out to his father to the reapers.",
+  "ref": "2 Kings 4:18"
+ },
+ {
+  "id": "2-kings-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did her husband say when she wanted to go to the man of God?",
+  "choices": [
+   "The roads are not safe",
+   "The boy needs thee",
+   "It is neither new moon nor sabbath",
+   "Elisha is not at home"
+  ],
+  "answer": 2,
+  "explanation": "Wherefore wilt thou go to him to day? it is neither new moon, nor sabbath.",
+  "ref": "2 Kings 4:23"
+ },
+ {
+  "id": "2-kings-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha tell Gehazi to take and lay on the child?",
+  "choices": [
+   "His mantle",
+   "His staff",
+   "His sandals",
+   "His cloak"
+  ],
+  "answer": 1,
+  "explanation": "Take my staff in thine hand, and lay my staff upon the face of the child.",
+  "ref": "2 Kings 4:29"
+ },
+ {
+  "id": "2-kings-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gehazi report after laying the staff on the child?",
+  "choices": [
+   "The child is not awaked",
+   "The child is cold",
+   "The child spoke",
+   "The child is gone"
+  ],
+  "answer": 0,
+  "explanation": "There was neither voice, nor hearing... The child is not awaked.",
+  "ref": "2 Kings 4:31"
+ },
+ {
+  "id": "2-kings-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha do after he shut the door upon himself and the child?",
+  "choices": [
+   "Called Gehazi",
+   "Anointed the child with oil",
+   "Wept before the woman",
+   "Prayed unto the LORD"
+  ],
+  "answer": 3,
+  "explanation": "He went in, shut the door upon them twain, and prayed unto the LORD.",
+  "ref": "2 Kings 4:33"
+ },
+ {
+  "id": "2-kings-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What came upon the land when Elisha returned to Gilgal?",
+  "choices": [
+   "A flood",
+   "A plague",
+   "A dearth",
+   "A war"
+  ],
+  "answer": 2,
+  "explanation": "Elisha came again to Gilgal: and there was a dearth in the land.",
+  "ref": "2 Kings 4:38"
+ },
+ {
+  "id": "2-kings-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the man from Baal-shalisha bring Elisha?",
+  "choices": [
+   "A lamb of the flock",
+   "Bread of the firstfruits",
+   "Silver for the prophets",
+   "Wine and honey"
+  ],
+  "answer": 1,
+  "explanation": "There came a man from Baal-shalisha, and brought the man of God bread of the firstfruits.",
+  "ref": "2 Kings 4:42"
+ },
+ {
+  "id": "2-kings-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Gehazi say about the Shunammite's husband?",
+  "choices": [
+   "He was old",
+   "He was sick",
+   "He was away",
+   "He was a reaper"
+  ],
+  "answer": 0,
+  "explanation": "Verily she hath no child, and her husband is old.",
+  "ref": "2 Kings 4:14"
+ },
+ {
+  "id": "2-kings-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Shunammite ask her husband to send with her?",
+  "choices": [
+   "Two oxen and a cart",
+   "A horse and a servant",
+   "A camel and a guide",
+   "One young man and one ass"
+  ],
+  "answer": 3,
+  "explanation": "Send me one of the young men, and one of the asses, that I may run to the man of God.",
+  "ref": "2 Kings 4:22"
+ },
+ {
+  "id": "2-kings-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Elisha say he did not know her trouble?",
+  "choices": [
+   "She had not told Gehazi",
+   "He was too far away",
+   "The LORD had hid it from him",
+   "He had not been told by Gehazi"
+  ],
+  "answer": 2,
+  "explanation": "Her soul is vexed within her: and the LORD hath hid it from me, and hath not told me.",
+  "ref": "2 Kings 4:27"
+ },
+ {
+  "id": "2-kings-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Elisha lay upon the child?",
+  "choices": [
+   "Head upon head, foot upon foot",
+   "Mouth upon mouth, eyes upon eyes, hands upon hands",
+   "Heart upon heart, hand upon hand",
+   "Face down on the child's back"
+  ],
+  "answer": 1,
+  "explanation": "He put his mouth upon his mouth, and his eyes upon his eyes, and his hands upon his hands.",
+  "ref": "2 Kings 4:34"
+ },
+ {
+  "id": "2-kings-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elisha do between his first and second stretching on the child?",
+  "choices": [
+   "Walked in the house to and fro",
+   "Went out to pray",
+   "Called for the mother",
+   "Slept on the bed"
+  ],
+  "answer": 0,
+  "explanation": "Then he returned, and walked in the house to and fro; and went up, and stretched himself upon him.",
+  "ref": "2 Kings 4:35"
+ },
+ {
+  "id": "2-kings-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who carried the sick boy to his mother?",
+  "choices": [
+   "His father",
+   "Gehazi",
+   "A reaper's wife",
+   "A lad"
+  ],
+  "answer": 3,
+  "explanation": "He said to a lad, Carry him to his mother.",
+  "ref": "2 Kings 4:19"
+ },
+ {
+  "id": "2-kings-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the mother lay her dead son?",
+  "choices": [
+   "On the floor of the field",
+   "In her own bed",
+   "On the bed of the man of God",
+   "In the little chamber's doorway"
+  ],
+  "answer": 2,
+  "explanation": "She went up, and laid him on the bed of the man of God, and shut the door upon him.",
+  "ref": "2 Kings 4:21"
+ },
+ {
+  "id": "2-kings-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man gather in his lap and put in the pot?",
+  "choices": [
+   "Bitter herbs",
+   "Wild gourds",
+   "Unripe figs",
+   "Poisonous roots"
+  ],
+  "answer": 1,
+  "explanation": "He found a wild vine, and gathered thereof wild gourds his lap full.",
+  "ref": "2 Kings 4:39"
+ },
+ {
+  "id": "2-kings-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the people would do with the bread?",
+  "choices": [
+   "Eat and leave thereof",
+   "Eat and be filled",
+   "Keep it for the prophets",
+   "Divide it among the poor"
+  ],
+  "answer": 0,
+  "explanation": "Thus saith the LORD, They shall eat, and shall leave thereof.",
+  "ref": "2 Kings 4:43"
+ },
+ {
+  "id": "2-kings-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the servitor doubt about the bread?",
+  "choices": [
+   "Whether it was fresh",
+   "Whether it was clean",
+   "Whether Elisha had ordered it",
+   "Whether it would feed a hundred men"
+  ],
+  "answer": 3,
+  "explanation": "What, should I set this before an hundred men?",
+  "ref": "2 Kings 4:43"
+ },
+ {
+  "id": "2-kings-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "From which place did the man who brought the firstfruits come?",
+  "choices": [
+   "Shunem",
+   "Gilgal",
+   "Baal-shalisha",
+   "Jericho"
+  ],
+  "answer": 2,
+  "explanation": "There came a man from Baal-shalisha, and brought the man of God bread of the firstfruits.",
+  "ref": "2 Kings 4:42"
+ },
+ {
+  "id": "2-kings-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Shunammite do when she took up her son again?",
+  "choices": [
+   "Wept and ran home",
+   "Fell at Elisha's feet and bowed to the ground",
+   "Kissed Gehazi's hand",
+   "Gave Elisha a gift"
+  ],
+  "answer": 1,
+  "explanation": "She went in, and fell at his feet, and bowed herself to the ground, and took up her son.",
+  "ref": "2 Kings 4:37"
+ },
+ {
+  "id": "2-kings-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did she tell her servant not to slack?",
+  "choices": [
+   "Her riding",
+   "His walking",
+   "The feeding of the ass",
+   "The carrying of the child"
+  ],
+  "answer": 0,
+  "explanation": "Drive, and go forward; slack not thy riding for me, except I bid thee.",
+  "ref": "2 Kings 4:24"
+ },
+ {
+  "id": "2-kings-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the Shunammite's answer when asked if it was well with the child?",
+  "choices": [
+   "He is dead",
+   "Pray for him",
+   "He sleeps",
+   "It is well"
+  ],
+  "answer": 3,
+  "explanation": "Is it well with the child? And she answered, It is well.",
+  "ref": "2 Kings 4:26"
+ },
+ {
+  "id": "2-kings-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Gehazi try to do to the woman when she caught Elisha's feet?",
+  "choices": [
+   "Call the young men",
+   "Carry her out",
+   "Thrust her away",
+   "Pour water on her"
+  ],
+  "answer": 2,
+  "explanation": "She caught him by the feet: but Gehazi came near to thrust her away.",
+  "ref": "2 Kings 4:27"
+ },
+ {
   "id": "old-2-kings-5-1",
   "chapter": 5,
   "level": "beginner",
@@ -1886,6 +2526,598 @@
   "answer": 1,
   "explanation": "Gehazi was struck with Naaman's leprosy.",
   "ref": "2 Kings 5:27"
+ },
+ {
+  "id": "2-kings-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What disease did Naaman have?",
+  "choices": [
+   "Blindness",
+   "Leprosy",
+   "A fever",
+   "Palsy"
+  ],
+  "answer": 1,
+  "explanation": "Naaman was a mighty man in valour, but he was a leper.",
+  "ref": "2 Kings 5:1"
+ },
+ {
+  "id": "2-kings-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the king of Syria send a letter about Naaman?",
+  "choices": [
+   "The king of Israel",
+   "The prophet Elisha",
+   "The king of Judah",
+   "The high priest"
+  ],
+  "answer": 0,
+  "explanation": "I will send a letter unto the king of Israel.",
+  "ref": "2 Kings 5:5"
+ },
+ {
+  "id": "2-kings-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king of Israel do when he read the letter?",
+  "choices": [
+   "Burned the letter",
+   "Sent Naaman away at once",
+   "Called for Gehazi",
+   "Rent his clothes"
+  ],
+  "answer": 3,
+  "explanation": "The king of Israel had read the letter, that he rent his clothes.",
+  "ref": "2 Kings 5:7"
+ },
+ {
+  "id": "2-kings-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Naaman stand when he came to Elisha?",
+  "choices": [
+   "At the gate of Samaria",
+   "On the bank of Jordan",
+   "At the door of Elisha's house",
+   "In the temple"
+  ],
+  "answer": 2,
+  "explanation": "Naaman came with his horses and chariot, and stood at the door of the house of Elisha.",
+  "ref": "2 Kings 5:9"
+ },
+ {
+  "id": "2-kings-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who gave Naaman Elisha's message to wash in Jordan?",
+  "choices": [
+   "Gehazi himself",
+   "A messenger",
+   "The king of Israel",
+   "The little maid"
+  ],
+  "answer": 1,
+  "explanation": "Elisha sent a messenger unto him, saying, Go and wash in the Jordan seven times.",
+  "ref": "2 Kings 5:10"
+ },
+ {
+  "id": "2-kings-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which two rivers did Naaman say were better than Israel's waters?",
+  "choices": [
+   "Abana and Pharpar",
+   "Kishon and Arnon",
+   "Jabbok and Jordan",
+   "Nile and Euphrates"
+  ],
+  "answer": 0,
+  "explanation": "Are not Abana and Pharpar, rivers of Damascus, better than all the waters of Israel?",
+  "ref": "2 Kings 5:12"
+ },
+ {
+  "id": "2-kings-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who persuaded Naaman to obey Elisha?",
+  "choices": [
+   "His wife",
+   "The king of Syria",
+   "The little maid",
+   "His servants"
+  ],
+  "answer": 3,
+  "explanation": "His servants came near, and said, My father, if the prophet had bid thee do some great thing, wouldest thou not have done it?",
+  "ref": "2 Kings 5:13"
+ },
+ {
+  "id": "2-kings-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Naaman's flesh like after the seventh dip?",
+  "choices": [
+   "White as snow",
+   "Burnt and scarred",
+   "The flesh of a little child",
+   "Hard as stone"
+  ],
+  "answer": 2,
+  "explanation": "His flesh came again like unto the flesh of a little child, and he was clean.",
+  "ref": "2 Kings 5:14"
+ },
+ {
+  "id": "2-kings-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Gehazi take from Naaman by lying?",
+  "choices": [
+   "Oxen and sheep",
+   "Silver and changes of garments",
+   "Oil and wine",
+   "Land and a vineyard"
+  ],
+  "answer": 1,
+  "explanation": "He bound two talents of silver in two bags, with two changes of garments.",
+  "ref": "2 Kings 5:23"
+ },
+ {
+  "id": "2-kings-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Naaman take with him to Israel?",
+  "choices": [
+   "Silver, gold and changes of raiment",
+   "Horses and chariots only",
+   "Corn and oil",
+   "Slaves and cattle"
+  ],
+  "answer": 0,
+  "explanation": "He took with him ten talents of silver, and six thousand pieces of gold, and ten changes of raiment.",
+  "ref": "2 Kings 5:5"
+ },
+ {
+  "id": "2-kings-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king of Israel ask when he read the letter?",
+  "choices": [
+   "Who is this Naaman?",
+   "Where is Elisha?",
+   "Why hath Syria sent me gold?",
+   "Am I God, to kill and to make alive?"
+  ],
+  "answer": 3,
+  "explanation": "Am I God, to kill and to make alive, that this man doth send unto me to recover a man of his leprosy?",
+  "ref": "2 Kings 5:7"
+ },
+ {
+  "id": "2-kings-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha say Naaman would learn if he came to him?",
+  "choices": [
+   "That Syria would fall",
+   "That the king was a fool",
+   "That there is a prophet in Israel",
+   "That the Jordan was holy"
+  ],
+  "answer": 2,
+  "explanation": "Let him come now to me, and he shall know that there is a prophet in Israel.",
+  "ref": "2 Kings 5:8"
+ },
+ {
+  "id": "2-kings-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Naaman expected Elisha to do?",
+  "choices": [
+   "Pray for him in the temple",
+   "Come out, call on the LORD, and strike his hand",
+   "Send a sacrifice",
+   "Give him a potion"
+  ],
+  "answer": 1,
+  "explanation": "He will surely come out to me, and stand, and call on the name of the LORD his God.",
+  "ref": "2 Kings 5:11"
+ },
+ {
+  "id": "2-kings-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the servants say to persuade Naaman?",
+  "choices": [
+   "Wouldest thou not do some great thing he bade?",
+   "The king of Syria commands it",
+   "The river is near and shallow",
+   "Elisha will curse thee"
+  ],
+  "answer": 0,
+  "explanation": "If the prophet had bid thee do some great thing, wouldest thou not have done it? how much rather, Wash, and be clean?",
+  "ref": "2 Kings 5:13"
+ },
+ {
+  "id": "2-kings-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Naaman ask to take home from Israel?",
+  "choices": [
+   "A branch of the Jordan",
+   "A pot of water",
+   "An altar stone",
+   "Two mules' burden of earth"
+  ],
+  "answer": 3,
+  "explanation": "Shall there not be given to thy servant two mules' burden of earth?",
+  "ref": "2 Kings 5:17"
+ },
+ {
+  "id": "2-kings-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Naaman want the earth?",
+  "choices": [
+   "He would build a house for Elisha",
+   "He would plant a garden",
+   "He would offer sacrifice only to the LORD",
+   "He would honour the king"
+  ],
+  "answer": 2,
+  "explanation": "Thy servant will henceforth offer neither burnt offering nor sacrifice unto other gods, but unto the LORD.",
+  "ref": "2 Kings 5:17"
+ },
+ {
+  "id": "2-kings-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha say when Naaman urged him to take a blessing?",
+  "choices": [
+   "Take it to the poor",
+   "I will receive none",
+   "Give it to Gehazi",
+   "Leave it with the king"
+  ],
+  "answer": 1,
+  "explanation": "As the LORD liveth, before whom I stand, I will receive none.",
+  "ref": "2 Kings 5:16"
+ },
+ {
+  "id": "2-kings-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gehazi decide to do after Naaman left?",
+  "choices": [
+   "Run after him and take something",
+   "Pray for his return",
+   "Warn the king",
+   "Follow him to Syria"
+  ],
+  "answer": 0,
+  "explanation": "As the LORD liveth, I will run after him, and take somewhat of him.",
+  "ref": "2 Kings 5:20"
+ },
+ {
+  "id": "2-kings-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What story did Gehazi tell Naaman?",
+  "choices": [
+   "Elisha was in need of a house",
+   "The king had taken Elisha's field",
+   "Elisha had been robbed",
+   "Two young men of the prophets had come from mount Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "There be come to me from mount Ephraim two young men of the sons of the prophets.",
+  "ref": "2 Kings 5:22"
+ },
+ {
+  "id": "2-kings-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much silver did Naaman give Gehazi?",
+  "choices": [
+   "One talent",
+   "Ten talents",
+   "Two talents",
+   "Six thousand pieces"
+  ],
+  "answer": 2,
+  "explanation": "Naaman said, Be content, take two talents.",
+  "ref": "2 Kings 5:23"
+ },
+ {
+  "id": "2-kings-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gehazi answer when Elisha asked where he had been?",
+  "choices": [
+   "I went to the market",
+   "Thy servant went no whither",
+   "I went to Naaman",
+   "I was with the prophets"
+  ],
+  "answer": 1,
+  "explanation": "Elisha said, Whence comest thou, Gehazi? And he said, Thy servant went no whither.",
+  "ref": "2 Kings 5:25"
+ },
+ {
+  "id": "2-kings-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha say about his heart?",
+  "choices": [
+   "It went with Gehazi when Naaman turned from his chariot",
+   "It was heavy for Syria",
+   "It was grieved for the king",
+   "It rejoiced over Naaman"
+  ],
+  "answer": 0,
+  "explanation": "Went not mine heart with thee, when the man turned again from his chariot to meet thee?",
+  "ref": "2 Kings 5:26"
+ },
+ {
+  "id": "2-kings-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Naaman a great man with his master?",
+  "choices": [
+   "He was the king's brother",
+   "He built the temple of Rimmon",
+   "He won Israel's land",
+   "The LORD had given deliverance unto Syria by him"
+  ],
+  "answer": 3,
+  "explanation": "He was honourable, because by him the LORD had given deliverance unto Syria.",
+  "ref": "2 Kings 5:1"
+ },
+ {
+  "id": "2-kings-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Naaman say Elisha would do over the place?",
+  "choices": [
+   "Lay his staff upon it",
+   "Pour oil upon it",
+   "Strike his hand over it",
+   "Anoint it with water"
+  ],
+  "answer": 2,
+  "explanation": "He will stand, and call on the name of the LORD his God, and strike his hand over the place.",
+  "ref": "2 Kings 5:11"
+ },
+ {
+  "id": "2-kings-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "In which house did Naaman say his master bowed in worship?",
+  "choices": [
+   "The house of Baal",
+   "The house of Rimmon",
+   "The house of Dagon",
+   "The house of Chemosh"
+  ],
+  "answer": 1,
+  "explanation": "When my master goeth into the house of Rimmon to worship there, and he leaneth on my hand.",
+  "ref": "2 Kings 5:18"
+ },
+ {
+  "id": "2-kings-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elisha say to Naaman as he left?",
+  "choices": [
+   "Go in peace",
+   "Return in a year",
+   "Go and sin no more",
+   "Depart in the LORD"
+  ],
+  "answer": 0,
+  "explanation": "And he said unto him, Go in peace.",
+  "ref": "2 Kings 5:19"
+ },
+ {
+  "id": "2-kings-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Gehazi take the gifts from Naaman's servants?",
+  "choices": [
+   "At the gate of Samaria",
+   "At the river Jordan",
+   "At Elisha's door",
+   "At the tower"
+  ],
+  "answer": 3,
+  "explanation": "When he came to the tower, he took them from their hand, and bestowed them in the house.",
+  "ref": "2 Kings 5:24"
+ },
+ {
+  "id": "2-kings-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Gehazi look when he left Elisha's presence?",
+  "choices": [
+   "Pale and trembling",
+   "Bound in chains",
+   "A leper as white as snow",
+   "Covered with sackcloth"
+  ],
+  "answer": 2,
+  "explanation": "He went out from his presence a leper as white as snow.",
+  "ref": "2 Kings 5:27"
+ },
+ {
+  "id": "2-kings-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long would the leprosy cleave to Gehazi's family?",
+  "choices": [
+   "Seven years",
+   "For ever",
+   "Three generations",
+   "Until Elisha died"
+  ],
+  "answer": 1,
+  "explanation": "The leprosy of Naaman shall cleave unto thee, and unto thy seed for ever.",
+  "ref": "2 Kings 5:27"
+ },
+ {
+  "id": "2-kings-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the two talents carried before Gehazi?",
+  "choices": [
+   "Bound in two bags on two servants",
+   "In a cart with oxen",
+   "In a chest on an ass",
+   "In Naaman's chariot"
+  ],
+  "answer": 0,
+  "explanation": "He bound two talents of silver in two bags, and laid them upon two of his servants; and they bare them before him.",
+  "ref": "2 Kings 5:23"
+ },
+ {
+  "id": "2-kings-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Naaman do when he saw Gehazi running after him?",
+  "choices": [
+   "Called his servants to flee",
+   "Drew his sword",
+   "Threw him silver",
+   "Lighted down from the chariot"
+  ],
+  "answer": 3,
+  "explanation": "When Naaman saw him running after him, he lighted down from the chariot to meet him.",
+  "ref": "2 Kings 5:21"
+ },
+ {
+  "id": "2-kings-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did the little maid wait on?",
+  "choices": [
+   "The king of Syria",
+   "Naaman's mother",
+   "Naaman's wife",
+   "The king's daughter"
+  ],
+  "answer": 2,
+  "explanation": "She waited on Naaman's wife.",
+  "ref": "2 Kings 5:2"
+ },
+ {
+  "id": "2-kings-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many pieces of gold did Naaman take as a gift?",
+  "choices": [
+   "Ten thousand",
+   "Six thousand",
+   "Two thousand",
+   "Seven hundred"
+  ],
+  "answer": 1,
+  "explanation": "He took ten talents of silver, and six thousand pieces of gold.",
+  "ref": "2 Kings 5:5"
+ },
+ {
+  "id": "2-kings-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the little maid say Elisha could do for Naaman?",
+  "choices": [
+   "Recover him of his leprosy",
+   "Teach him the law",
+   "Pray for the king",
+   "Give him a house"
+  ],
+  "answer": 0,
+  "explanation": "She said, Would God my lord were with the prophet that is in Samaria! for he would recover him of his leprosy.",
+  "ref": "2 Kings 5:3"
+ },
+ {
+  "id": "2-kings-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elisha do when he heard the king of Israel rent his clothes?",
+  "choices": [
+   "Went to the palace himself",
+   "Fled to Jericho",
+   "Sent Gehazi to Syria",
+   "Sent to the king, asking why"
+  ],
+  "answer": 3,
+  "explanation": "Elisha heard that the king of Israel had rent his clothes, that he sent to the king.",
+  "ref": "2 Kings 5:8"
+ },
+ {
+  "id": "2-kings-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Gehazi say Elisha had spared Naaman by refusing?",
+  "choices": [
+   "Refusing to heal him",
+   "Sending him away",
+   "What Naaman brought as a gift",
+   "Taking half his gold"
+  ],
+  "answer": 2,
+  "explanation": "My master hath spared Naaman this Syrian, in not receiving at his hands that which he brought.",
+  "ref": "2 Kings 5:20"
+ },
+ {
+  "id": "2-kings-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Naaman leave Elisha's door at first?",
+  "choices": [
+   "In silence",
+   "In a rage",
+   "In prayer",
+   "In fear"
+  ],
+  "answer": 1,
+  "explanation": "He turned and went away in a rage.",
+  "ref": "2 Kings 5:12"
  },
  {
   "id": "old-2-kings-6-1",
