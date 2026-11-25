@@ -10016,22 +10016,6 @@
   "ref": "Psalms 126:1"
  },
  {
-  "id": "old-psalms-126-2",
-  "chapter": 126,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What was their mouth filled with?",
-  "choices": [
-   "Silence",
-   "Dust",
-   "Fear",
-   "Laughter"
-  ],
-  "answer": 3,
-  "explanation": "Joy overflowed in laughter and singing.",
-  "ref": "Psalms 126:2"
- },
- {
   "id": "old-psalms-126-3",
   "chapter": 126,
   "level": "beginner",
@@ -10142,22 +10126,6 @@
   "answer": 2,
   "explanation": "They are compared to arrows in a warrior's hand.",
   "ref": "Psalms 127:4"
- },
- {
-  "id": "old-psalms-127-5",
-  "chapter": 127,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does the psalm call the man whose quiver is full of children?",
-  "choices": [
-   "Weary",
-   "Proud",
-   "Happy",
-   "Poor"
-  ],
-  "answer": 2,
-  "explanation": "Happy is the man that hath his quiver full of them.",
-  "ref": "Psalms 127:5"
  },
  {
   "id": "old-psalms-128-1",
@@ -10336,22 +10304,6 @@
   "ref": "Psalms 130:1"
  },
  {
-  "id": "old-psalms-130-2",
-  "chapter": 130,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does the psalmist ask the Lord to hear?",
-  "choices": [
-   "His vow",
-   "The sound of trumpets",
-   "The cry of nations",
-   "The voice of my supplications"
-  ],
-  "answer": 3,
-  "explanation": "He pleads for God to hear his supplications.",
-  "ref": "Psalms 130:2"
- },
- {
   "id": "old-psalms-130-3",
   "chapter": 130,
   "level": "beginner",
@@ -10398,86 +10350,6 @@
   "answer": 2,
   "explanation": "The psalm pictures eager waiting for the Lord.",
   "ref": "Psalms 130:6"
- },
- {
-  "id": "old-psalms-131-1",
-  "chapter": 131,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does David say his heart is not?",
-  "choices": [
-   "Joyful",
-   "Fearful",
-   "Haughty",
-   "Broken"
-  ],
-  "answer": 2,
-  "explanation": "David begins by rejecting pride and lofty ambition.",
-  "ref": "Psalms 131:1"
- },
- {
-  "id": "old-psalms-131-2",
-  "chapter": 131,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "To what does David compare his soul?",
-  "choices": [
-   "A lion at rest",
-   "A bird in flight",
-   "A weaned child with his mother",
-   "A river in drought"
-  ],
-  "answer": 2,
-  "explanation": "His soul is quieted like a contented weaned child.",
-  "ref": "Psalms 131:2"
- },
- {
-  "id": "old-psalms-131-3",
-  "chapter": 131,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What is Israel told to do?",
-  "choices": [
-   "Seek Egypt",
-   "Trust in horses",
-   "Hope in the Lord",
-   "Hide in Zion"
-  ],
-  "answer": 2,
-  "explanation": "The closing exhortation is for Israel to hope in the Lord.",
-  "ref": "Psalms 131:3"
- },
- {
-  "id": "old-psalms-131-4",
-  "chapter": 131,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does David say he does not exercise himself in?",
-  "choices": [
-   "Music",
-   "Great matters, or in things too high for me",
-   "War",
-   "Travel"
-  ],
-  "answer": 1,
-  "explanation": "He refuses to occupy himself with things beyond his place.",
-  "ref": "Psalms 131:1"
- },
- {
-  "id": "old-psalms-131-5",
-  "chapter": 131,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How long is Israel told to hope in the Lord?",
-  "choices": [
-   "For one day",
-   "Until harvest",
-   "During exile only",
-   "From henceforth and for ever"
-  ],
-  "answer": 3,
-  "explanation": "Hope in the Lord is lifelong and enduring.",
-  "ref": "Psalms 131:3"
  },
  {
   "id": "old-psalms-132-1",
@@ -10720,38 +10592,6 @@
   "ref": "Psalms 134:1"
  },
  {
-  "id": "old-psalms-135-1",
-  "chapter": 135,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What repeated call begins Psalm 135?",
-  "choices": [
-   "Hear, O Israel",
-   "Let the king rejoice",
-   "Praise ye the Lord",
-   "Sing a new song"
-  ],
-  "answer": 2,
-  "explanation": "The psalm begins with repeated calls to praise the Lord.",
-  "ref": "Psalms 135:1"
- },
- {
-  "id": "old-psalms-135-2",
-  "chapter": 135,
-  "level": "beginner",
-  "category": "place",
-  "question": "Where do the servants of the Lord stand?",
-  "choices": [
-   "In Pharaoh's court",
-   "By the river Jordan",
-   "On Mount Carmel",
-   "In the house of the Lord"
-  ],
-  "answer": 3,
-  "explanation": "The Lord's servants stand in His house and courts.",
-  "ref": "Psalms 135:2"
- },
- {
   "id": "old-psalms-135-3",
   "chapter": 135,
   "level": "beginner",
@@ -10800,22 +10640,6 @@
   "ref": "Psalms 135:15"
  },
  {
-  "id": "old-psalms-136-1",
-  "chapter": 136,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What repeated refrain fills Psalm 136?",
-  "choices": [
-   "The Lord reigneth",
-   "For his mercy endureth for ever",
-   "Blessed be Zion",
-   "Let Israel sing"
-  ],
-  "answer": 1,
-  "explanation": "Every verse repeats the refrain about enduring mercy.",
-  "ref": "Psalms 136:1"
- },
- {
   "id": "old-psalms-136-2",
   "chapter": 136,
   "level": "beginner",
@@ -10830,22 +10654,6 @@
   "answer": 1,
   "explanation": "The psalm calls Him the God of gods.",
   "ref": "Psalms 136:2"
- },
- {
-  "id": "old-psalms-136-3",
-  "chapter": 136,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "Besides God of gods, what title does the psalm give to God?",
-  "choices": [
-   "Prince of peace",
-   "Holy One of Israel",
-   "Ancient king",
-   "Lord of lords"
-  ],
-  "answer": 3,
-  "explanation": "He is also praised as Lord of lords.",
-  "ref": "Psalms 136:3"
  },
  {
   "id": "old-psalms-136-4",
@@ -10960,22 +10768,6 @@
   "ref": "Psalms 137:6"
  },
  {
-  "id": "old-psalms-138-1",
-  "chapter": 138,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "With what will David praise the Lord?",
-  "choices": [
-   "Half his strength",
-   "His whole heart",
-   "A borrowed song",
-   "Only in secret"
-  ],
-  "answer": 1,
-  "explanation": "David says he will praise with his whole heart.",
-  "ref": "Psalms 138:1"
- },
- {
   "id": "old-psalms-138-2",
   "chapter": 138,
   "level": "beginner",
@@ -11056,22 +10848,6 @@
   "ref": "Psalms 139:1"
  },
  {
-  "id": "old-psalms-139-2",
-  "chapter": 139,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does God know from afar off?",
-  "choices": [
-   "My city",
-   "My enemies",
-   "My flock",
-   "My thought"
-  ],
-  "answer": 3,
-  "explanation": "God understands thoughts from afar.",
-  "ref": "Psalms 139:2"
- },
- {
   "id": "old-psalms-139-3",
   "chapter": 139,
   "level": "beginner",
@@ -11134,22 +10910,6 @@
   "answer": 1,
   "explanation": "He asks to be delivered from evil and violent men.",
   "ref": "Psalms 140:1"
- },
- {
-  "id": "old-psalms-140-2",
-  "chapter": 140,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What do these men imagine in their heart?",
-  "choices": [
-   "Mischiefs",
-   "Peace",
-   "Mercy",
-   "Wisdom"
-  ],
-  "answer": 0,
-  "explanation": "Their hearts are full of mischief and strife.",
-  "ref": "Psalms 140:2"
  },
  {
   "id": "old-psalms-140-3",
@@ -11232,22 +10992,6 @@
   "ref": "Psalms 141:3"
  },
  {
-  "id": "old-psalms-141-3",
-  "chapter": 141,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does David ask God not to let his heart incline to?",
-  "choices": [
-   "Righteousness",
-   "Any evil thing",
-   "The law",
-   "The temple"
-  ],
-  "answer": 1,
-  "explanation": "He prays against being drawn into evil.",
-  "ref": "Psalms 141:4"
- },
- {
   "id": "old-psalms-141-4",
   "chapter": 141,
   "level": "beginner",
@@ -11278,22 +11022,6 @@
   "answer": 2,
   "explanation": "He fixes his eyes on God for refuge.",
   "ref": "Psalms 141:8"
- },
- {
-  "id": "old-psalms-142-1",
-  "chapter": 142,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "With what did David cry unto the Lord?",
-  "choices": [
-   "His sword",
-   "His tears only",
-   "His voice",
-   "A trumpet"
-  ],
-  "answer": 2,
-  "explanation": "He cried and made supplication with his voice.",
-  "ref": "Psalms 142:1"
  },
  {
   "id": "old-psalms-142-2",
@@ -11328,22 +11056,6 @@
   "ref": "Psalms 142:3"
  },
  {
-  "id": "old-psalms-142-4",
-  "chapter": 142,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What did David say no man did for his soul?",
-  "choices": [
-   "Sing",
-   "Fight",
-   "Build",
-   "Care"
-  ],
-  "answer": 3,
-  "explanation": "He lamented that no one cared for his soul.",
-  "ref": "Psalms 142:4"
- },
- {
   "id": "old-psalms-142-5",
   "chapter": 142,
   "level": "beginner",
@@ -11360,22 +11072,6 @@
   "ref": "Psalms 142:5"
  },
  {
-  "id": "old-psalms-143-1",
-  "chapter": 143,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does David ask God to hear?",
-  "choices": [
-   "My complaint only",
-   "My song",
-   "My prayer",
-   "My oath"
-  ],
-  "answer": 2,
-  "explanation": "The psalm opens with a plea for God to hear his prayer.",
-  "ref": "Psalms 143:1"
- },
- {
   "id": "old-psalms-143-2",
   "chapter": 143,
   "level": "beginner",
@@ -11390,22 +11086,6 @@
   "answer": 0,
   "explanation": "He admits no living person is righteous before God by merit.",
   "ref": "Psalms 143:2"
- },
- {
-  "id": "old-psalms-143-3",
-  "chapter": 143,
-  "level": "beginner",
-  "category": "place",
-  "question": "Where had the enemy smitten David's life down?",
-  "choices": [
-   "To the ground",
-   "To the palace",
-   "To the sea",
-   "To the sanctuary"
-  ],
-  "answer": 0,
-  "explanation": "The enemy had crushed his life to the ground.",
-  "ref": "Psalms 143:3"
  },
  {
   "id": "old-psalms-143-4",
@@ -11488,22 +11168,6 @@
   "ref": "Psalms 144:3"
  },
  {
-  "id": "old-psalms-144-4",
-  "chapter": 144,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "To what is man likened?",
-  "choices": [
-   "A cedar tree",
-   "A river",
-   "Vanity",
-   "A mountain"
-  ],
-  "answer": 2,
-  "explanation": "Man is likened to vanity and a passing shadow.",
-  "ref": "Psalms 144:4"
- },
- {
   "id": "old-psalms-144-5",
   "chapter": 144,
   "level": "beginner",
@@ -11568,22 +11232,6 @@
   "ref": "Psalms 145:4"
  },
  {
-  "id": "old-psalms-145-4",
-  "chapter": 145,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What is the Lord full of?",
-  "choices": [
-   "Wrath alone",
-   "Compassion",
-   "Silence",
-   "Mystery"
-  ],
-  "answer": 1,
-  "explanation": "The Lord is gracious, full of compassion, and slow to anger.",
-  "ref": "Psalms 145:8"
- },
- {
   "id": "old-psalms-145-5",
   "chapter": 145,
   "level": "beginner",
@@ -11598,22 +11246,6 @@
   "answer": 3,
   "explanation": "He upholds all who fall and raises those bowed down.",
   "ref": "Psalms 145:14"
- },
- {
-  "id": "old-psalms-146-1",
-  "chapter": 146,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What command opens Psalm 146?",
-  "choices": [
-   "Hear, O Israel",
-   "Remember the covenant",
-   "Sing at midnight",
-   "Praise ye the Lord"
-  ],
-  "answer": 3,
-  "explanation": "The psalm begins with praise ye the Lord.",
-  "ref": "Psalms 146:1"
  },
  {
   "id": "old-psalms-146-2",
@@ -11968,22 +11600,6 @@
   "ref": "Psalms 150:3"
  },
  {
-  "id": "old-psalms-150-4",
-  "chapter": 150,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What are loud cymbals paired with?",
-  "choices": [
-   "A silent harp",
-   "High sounding cymbals",
-   "A low flute",
-   "A hidden psaltery"
-  ],
-  "answer": 1,
-  "explanation": "Both loud and high sounding cymbals are named.",
-  "ref": "Psalms 150:5"
- },
- {
   "id": "old-psalms-150-5",
   "chapter": 150,
   "level": "beginner",
@@ -11998,5 +11614,6501 @@
   "answer": 1,
   "explanation": "The book ends by calling every breathing thing to praise the Lord.",
   "ref": "Psalms 150:6"
+ },
+ {
+  "id": "psalms-126-e-01",
+  "chapter": 126,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the one who goes forth weeping carry?",
+  "choices": [
+   "Sheaves of barley",
+   "A harp for the feast",
+   "Bread for the journey",
+   "Precious seed"
+  ],
+  "answer": 3,
+  "explanation": "\"He that goeth forth and weepeth, bearing precious seed.\"",
+  "ref": "Psalms 126:6"
+ },
+ {
+  "id": "psalms-126-m-01",
+  "chapter": 126,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the weeping sower bring with him when he comes again?",
+  "choices": [
+   "Spoils of war",
+   "Water from the streams",
+   "Sheaves",
+   "Bread and wine"
+  ],
+  "answer": 2,
+  "explanation": "He \"shall doubtless come again with rejoicing, bringing his sheaves with him.\"",
+  "ref": "Psalms 126:6"
+ },
+ {
+  "id": "psalms-126-m-02",
+  "chapter": 126,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What filled their mouth and tongue when the captivity was turned?",
+  "choices": [
+   "Silence and awe",
+   "Weeping and prayer",
+   "Laughter and singing",
+   "Shouting and war cries"
+  ],
+  "answer": 2,
+  "explanation": "\"Then was our mouth filled with laughter, and our tongue with singing.\"",
+  "ref": "Psalms 126:2"
+ },
+ {
+  "id": "psalms-126-m-03",
+  "chapter": 126,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the people say the LORD hath done for them, so that they are glad?",
+  "choices": [
+   "Healed all their sick",
+   "Rebuilt the temple",
+   "Great things",
+   "Given them a king"
+  ],
+  "answer": 2,
+  "explanation": "\"The LORD hath done great things for us; whereof we are glad.\"",
+  "ref": "Psalms 126:3"
+ },
+ {
+  "id": "psalms-126-m-04",
+  "chapter": 126,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do they ask the LORD to turn again, as the streams in the south?",
+  "choices": [
+   "Their famine",
+   "Their enemies",
+   "Their captivity",
+   "Their wars"
+  ],
+  "answer": 2,
+  "explanation": "\"Turn again our captivity, O LORD, as the streams in the south.\"",
+  "ref": "Psalms 126:4"
+ },
+ {
+  "id": "psalms-126-m-05",
+  "chapter": 126,
+  "level": "medium",
+  "category": "place",
+  "question": "Whose captivity did the LORD turn again?",
+  "choices": [
+   "Egypt",
+   "Edom",
+   "Zion",
+   "Moab"
+  ],
+  "answer": 2,
+  "explanation": "\"When the LORD turned again the captivity of Zion, we were like them that dream.\"",
+  "ref": "Psalms 126:1"
+ },
+ {
+  "id": "psalms-126-h-01",
+  "chapter": 126,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is promised to the one who goes forth weeping?",
+  "choices": [
+   "He shall return in silence",
+   "He shall come again with rejoicing",
+   "He shall go forth again to war",
+   "He shall lie down and sleep"
+  ],
+  "answer": 1,
+  "explanation": "He \"shall doubtless come again with rejoicing, bringing his sheaves with him.\"",
+  "ref": "Psalms 126:6"
+ },
+ {
+  "id": "psalms-126-h-02",
+  "chapter": 126,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who said among themselves that the LORD had done great things for the returned captives?",
+  "choices": [
+   "The priests of Zion",
+   "The heathen",
+   "The watchmen of the city",
+   "The elders of Israel"
+  ],
+  "answer": 1,
+  "explanation": "\"Then said they among the heathen, The LORD hath done great things for them.\"",
+  "ref": "Psalms 126:2"
+ },
+ {
+  "id": "psalms-126-h-03",
+  "chapter": 126,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the one who sows in tears promised?",
+  "choices": [
+   "To eat in silence",
+   "To reap in joy",
+   "To rest in peace",
+   "To dwell in safety"
+  ],
+  "answer": 1,
+  "explanation": "\"They that sow in tears shall reap in joy.\"",
+  "ref": "Psalms 126:5"
+ },
+ {
+  "id": "psalms-126-h-04",
+  "chapter": 126,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the returning captives’ experience like, as they first took it in?",
+  "choices": [
+   "Like a river in flood",
+   "Like them that dream",
+   "Like men waking from war",
+   "Like a child at play"
+  ],
+  "answer": 1,
+  "explanation": "\"We were like them that dream.\"",
+  "ref": "Psalms 126:1"
+ },
+ {
+  "id": "psalms-126-h-05",
+  "chapter": 126,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalm’s second prayer ask of the LORD after the people say they are glad?",
+  "choices": [
+   "That he send them rain",
+   "That he turn again their captivity",
+   "That he give them a king",
+   "That he rebuild the walls"
+  ],
+  "answer": 1,
+  "explanation": "\"Turn again our captivity, O LORD, as the streams in the south.\"",
+  "ref": "Psalms 126:4"
+ },
+ {
+  "id": "psalms-127-e-01",
+  "chapter": 127,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the man with a quiver full of children do at the gate?",
+  "choices": [
+   "Speak with his enemies",
+   "Sit in judgment over Israel",
+   "Sell grain to the nations",
+   "Keep watch through the night"
+  ],
+  "answer": 0,
+  "explanation": "\"They shall not be ashamed, but they shall speak with the enemies in the gate.\"",
+  "ref": "Psalms 127:5"
+ },
+ {
+  "id": "psalms-127-m-01",
+  "chapter": 127,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalm call the fruit of the womb?",
+  "choices": [
+   "His shame",
+   "His burden",
+   "His inheritance of land",
+   "His reward"
+  ],
+  "answer": 3,
+  "explanation": "\"The fruit of the womb is his reward.\"",
+  "ref": "Psalms 127:3"
+ },
+ {
+  "id": "psalms-127-m-02",
+  "chapter": 127,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalm say is vain for you to do?",
+  "choices": [
+   "Plant the field and gather the grain",
+   "Build the walls of the city",
+   "Offer sacrifice at the temple",
+   "Rise up early and sit up late"
+  ],
+  "answer": 3,
+  "explanation": "\"It is vain for you to rise up early, to sit up late, to eat the bread of sorrows.\"",
+  "ref": "Psalms 127:2"
+ },
+ {
+  "id": "psalms-127-m-03",
+  "chapter": 127,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of bread is eaten by those who toil in vain?",
+  "choices": [
+   "The bread of affliction",
+   "The bread of idleness",
+   "The bread of strangers",
+   "The bread of sorrows"
+  ],
+  "answer": 3,
+  "explanation": "\"To eat the bread of sorrows.\"",
+  "ref": "Psalms 127:2"
+ },
+ {
+  "id": "psalms-127-m-04",
+  "chapter": 127,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of the man with his quiver full of children?",
+  "choices": [
+   "He shall never be afraid",
+   "He shall be called mighty",
+   "He shall rule the city",
+   "They shall not be ashamed"
+  ],
+  "answer": 3,
+  "explanation": "\"Happy is the man that hath his quiver full of them: they shall not be ashamed.\"",
+  "ref": "Psalms 127:5"
+ },
+ {
+  "id": "psalms-127-m-05",
+  "chapter": 127,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Unless the LORD keeps the city, what does the watchman do in vain?",
+  "choices": [
+   "He builds",
+   "He fights",
+   "He prays",
+   "He waketh"
+  ],
+  "answer": 3,
+  "explanation": "\"Except the LORD keep the city, the watchman waketh but in vain.\"",
+  "ref": "Psalms 127:1"
+ },
+ {
+  "id": "psalms-127-h-01",
+  "chapter": 127,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Unless the LORD builds the house, what do those who build it do?",
+  "choices": [
+   "Build only for a season",
+   "Grow weary at the foundation",
+   "Labour in vain",
+   "Finish without a roof"
+  ],
+  "answer": 2,
+  "explanation": "\"Except the LORD build the house, they labour in vain that build it.\"",
+  "ref": "Psalms 127:1"
+ },
+ {
+  "id": "psalms-127-h-02",
+  "chapter": 127,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is given sleep, in the psalm’s words?",
+  "choices": [
+   "The faithful watchman",
+   "The weary builder",
+   "His beloved",
+   "The king of Zion"
+  ],
+  "answer": 2,
+  "explanation": "\"For so he giveth his beloved sleep.\"",
+  "ref": "Psalms 127:2"
+ },
+ {
+  "id": "psalms-127-h-03",
+  "chapter": 127,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which children are likened to arrows in a mighty man’s hand?",
+  "choices": [
+   "Children of the covenant",
+   "Children of the city",
+   "Children of the youth",
+   "Children of the temple"
+  ],
+  "answer": 2,
+  "explanation": "\"As arrows are in the hand of a mighty man; so are children of the youth.\"",
+  "ref": "Psalms 127:4"
+ },
+ {
+  "id": "psalms-127-h-04",
+  "chapter": 127,
+  "level": "hard",
+  "category": "place",
+  "question": "Where will the man with the full quiver speak with his enemies?",
+  "choices": [
+   "On the mountain",
+   "In the temple court",
+   "In the gate",
+   "By the river"
+  ],
+  "answer": 2,
+  "explanation": "\"They shall speak with the enemies in the gate.\"",
+  "ref": "Psalms 127:5"
+ },
+ {
+  "id": "psalms-127-h-05",
+  "chapter": 127,
+  "level": "hard",
+  "category": "person",
+  "question": "In whose hand are the arrows to which children are compared?",
+  "choices": [
+   "A shepherd",
+   "A watchman",
+   "A mighty man",
+   "A king"
+  ],
+  "answer": 2,
+  "explanation": "\"As arrows are in the hand of a mighty man.\"",
+  "ref": "Psalms 127:4"
+ },
+ {
+  "id": "psalms-128-m-01",
+  "chapter": 128,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of the one who fears the LORD and walks in his ways?",
+  "choices": [
+   "He is chosen as king",
+   "He is blessed",
+   "He is spared all labour",
+   "He is called a prophet"
+  ],
+  "answer": 1,
+  "explanation": "\"Blessed is every one that feareth the LORD; that walketh in his ways.\"",
+  "ref": "Psalms 128:1"
+ },
+ {
+  "id": "psalms-128-m-02",
+  "chapter": 128,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where is the wife placed in the picture of the fruitful vine?",
+  "choices": [
+   "In the vineyard gate",
+   "By the sides of the house",
+   "On the city wall",
+   "Beside the temple"
+  ],
+  "answer": 1,
+  "explanation": "\"Thy wife shall be as a fruitful vine by the sides of thine house.\"",
+  "ref": "Psalms 128:3"
+ },
+ {
+  "id": "psalms-128-m-03",
+  "chapter": 128,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where are the children as olive plants?",
+  "choices": [
+   "In the courts of the temple",
+   "Round about thy table",
+   "Along the city wall",
+   "At the gate"
+  ],
+  "answer": 1,
+  "explanation": "\"Thy children like olive plants round about thy table.\"",
+  "ref": "Psalms 128:3"
+ },
+ {
+  "id": "psalms-128-m-04",
+  "chapter": 128,
+  "level": "medium",
+  "category": "place",
+  "question": "From where shall the LORD bless the one who fears him?",
+  "choices": [
+   "Out of Egypt",
+   "Out of Zion",
+   "Out of Bethel",
+   "Out of Hebron"
+  ],
+  "answer": 1,
+  "explanation": "\"The LORD shall bless thee out of Zion.\"",
+  "ref": "Psalms 128:5"
+ },
+ {
+  "id": "psalms-128-m-05",
+  "chapter": 128,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the man see all the days of his life?",
+  "choices": [
+   "The fall of his enemies",
+   "The good of Jerusalem",
+   "The rebuilt temple",
+   "The return of the exiles"
+  ],
+  "answer": 1,
+  "explanation": "\"Thou shalt see the good of Jerusalem all the days of thy life.\"",
+  "ref": "Psalms 128:5"
+ },
+ {
+  "id": "psalms-128-h-01",
+  "chapter": 128,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the God-fearing man eat?",
+  "choices": [
+   "The labour of his hands",
+   "The bread of kings",
+   "The first-fruits of the temple",
+   "The spoil of his enemies"
+  ],
+  "answer": 0,
+  "explanation": "\"Thou shalt eat the labour of thine hands: happy shalt thou be, and it shall be well with thee.\"",
+  "ref": "Psalms 128:2"
+ },
+ {
+  "id": "psalms-128-h-02",
+  "chapter": 128,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who else will the blessed man see besides his children?",
+  "choices": [
+   "His children’s children",
+   "His enemies in chains",
+   "The kings of the nations",
+   "The priests of the temple"
+  ],
+  "answer": 0,
+  "explanation": "\"Yea, thou shalt see thy children’s children, and peace upon Israel.\"",
+  "ref": "Psalms 128:6"
+ },
+ {
+  "id": "psalms-128-h-03",
+  "chapter": 128,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tree does the psalm use for the children?",
+  "choices": [
+   "The olive",
+   "The cedar",
+   "The fig",
+   "The palm"
+  ],
+  "answer": 0,
+  "explanation": "\"Thy children like olive plants round about thy table.\"",
+  "ref": "Psalms 128:3"
+ },
+ {
+  "id": "psalms-128-h-04",
+  "chapter": 128,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the man who fears the LORD told to expect in his work?",
+  "choices": [
+   "It shall be well with him",
+   "It shall bring great riches",
+   "It shall be hard but holy",
+   "It shall be done by others"
+  ],
+  "answer": 0,
+  "explanation": "\"Happy shalt thou be, and it shall be well with thee.\"",
+  "ref": "Psalms 128:2"
+ },
+ {
+  "id": "psalms-128-h-05",
+  "chapter": 128,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the psalm sum up the blessing of the man who fears the LORD?",
+  "choices": [
+   "Thus shall the man be blessed",
+   "Thus shall the wicked be undone",
+   "Thus shall the nation be great",
+   "Thus shall Zion be built"
+  ],
+  "answer": 0,
+  "explanation": "\"Behold, that thus shall the man be blessed that feareth the LORD.\"",
+  "ref": "Psalms 128:4"
+ },
+ {
+  "id": "psalms-129-m-01",
+  "chapter": 129,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the plowers make long upon the psalmist’s back?",
+  "choices": [
+   "Their chains",
+   "Their wounds",
+   "Their furrows",
+   "Their shadows"
+  ],
+  "answer": 2,
+  "explanation": "\"The plowers plowed upon my back: they made long their furrows.\"",
+  "ref": "Psalms 129:3"
+ },
+ {
+  "id": "psalms-129-m-02",
+  "chapter": 129,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalm say of the LORD when he cuts the cords of the wicked?",
+  "choices": [
+   "He is slow to anger",
+   "He is a man of war",
+   "He is righteous",
+   "He is far off"
+  ],
+  "answer": 2,
+  "explanation": "\"The LORD is righteous: he hath cut asunder the cords of the wicked.\"",
+  "ref": "Psalms 129:4"
+ },
+ {
+  "id": "psalms-129-m-03",
+  "chapter": 129,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who is to be confounded and turned back?",
+  "choices": [
+   "All the kings of Babylon",
+   "All the nations of Canaan",
+   "All that hate Zion",
+   "All the proud of Israel"
+  ],
+  "answer": 2,
+  "explanation": "\"Let them all be confounded and turned back that hate Zion.\"",
+  "ref": "Psalms 129:5"
+ },
+ {
+  "id": "psalms-129-m-04",
+  "chapter": 129,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the grass on the housetops do before it grows up?",
+  "choices": [
+   "It burns",
+   "It is trampled",
+   "It withers",
+   "It is eaten"
+  ],
+  "answer": 2,
+  "explanation": "\"As the grass upon the housetops, which withereth afore it groweth up.\"",
+  "ref": "Psalms 129:6"
+ },
+ {
+  "id": "psalms-129-m-05",
+  "chapter": 129,
+  "level": "medium",
+  "category": "person",
+  "question": "Who may say how many times they have afflicted him from his youth?",
+  "choices": [
+   "The priests",
+   "David’s armies",
+   "Israel",
+   "The poor of the land"
+  ],
+  "answer": 2,
+  "explanation": "\"Many a time have they afflicted me from my youth, may Israel now say.\"",
+  "ref": "Psalms 129:1"
+ },
+ {
+  "id": "psalms-129-h-01",
+  "chapter": 129,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the mower not fill, in the picture of the withered grass?",
+  "choices": [
+   "His barn",
+   "His hand",
+   "His basket",
+   "His cart"
+  ],
+  "answer": 1,
+  "explanation": "\"Wherewith the mower filleth not his hand.\"",
+  "ref": "Psalms 129:7"
+ },
+ {
+  "id": "psalms-129-h-02",
+  "chapter": 129,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the one who binds sheaves not fill?",
+  "choices": [
+   "His arms",
+   "His bosom",
+   "His wagon",
+   "His basket"
+  ],
+  "answer": 1,
+  "explanation": "\"Nor he that bindeth sheaves his bosom.\"",
+  "ref": "Psalms 129:7"
+ },
+ {
+  "id": "psalms-129-h-03",
+  "chapter": 129,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What blessing is not spoken by those who go by?",
+  "choices": [
+   "Peace be within thy walls",
+   "The blessing of the LORD be upon you",
+   "God save the king",
+   "Go in peace to Zion"
+  ],
+  "answer": 1,
+  "explanation": "\"Neither do they which go by say, The blessing of the LORD be upon you.\"",
+  "ref": "Psalms 129:8"
+ },
+ {
+  "id": "psalms-129-h-04",
+  "chapter": 129,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose name do the speakers say \"we bless you\"?",
+  "choices": [
+   "Abraham’s",
+   "The LORD’s",
+   "Zion’s",
+   "The king’s"
+  ],
+  "answer": 1,
+  "explanation": "\"We bless you in the name of the LORD.\"",
+  "ref": "Psalms 129:8"
+ },
+ {
+  "id": "psalms-129-h-05",
+  "chapter": 129,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the outcome of the many afflictions Israel has suffered?",
+  "choices": [
+   "They have destroyed the city",
+   "They have not prevailed against him",
+   "They have scattered the tribes",
+   "They have silenced the song"
+  ],
+  "answer": 1,
+  "explanation": "\"Many a time have they afflicted me from my youth: yet they have not prevailed against me.\"",
+  "ref": "Psalms 129:2"
+ },
+ {
+  "id": "psalms-130-e-01",
+  "chapter": 130,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is told to hope in the LORD?",
+  "choices": [
+   "The priests",
+   "The kings",
+   "The nations",
+   "Israel"
+  ],
+  "answer": 3,
+  "explanation": "\"Let Israel hope in the LORD: for with the LORD there is mercy.\"",
+  "ref": "Psalms 130:7"
+ },
+ {
+  "id": "psalms-130-m-01",
+  "chapter": 130,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is there forgiveness with the LORD?",
+  "choices": [
+   "That he may be praised in Zion",
+   "That he may be obeyed by kings",
+   "That he may be feared",
+   "That he may be remembered"
+  ],
+  "answer": 2,
+  "explanation": "\"There is forgiveness with thee, that thou mayest be feared.\"",
+  "ref": "Psalms 130:4"
+ },
+ {
+  "id": "psalms-130-m-02",
+  "chapter": 130,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what does the psalmist say he hopes while he waits?",
+  "choices": [
+   "His temple",
+   "His servants",
+   "His word",
+   "His mountains"
+  ],
+  "answer": 2,
+  "explanation": "\"I wait for the LORD, my soul doth wait, and in his word do I hope.\"",
+  "ref": "Psalms 130:5"
+ },
+ {
+  "id": "psalms-130-m-03",
+  "chapter": 130,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is with the LORD, besides mercy?",
+  "choices": [
+   "Endless judgment",
+   "A shield of fire",
+   "Plenteous redemption",
+   "Treasure for the poor"
+  ],
+  "answer": 2,
+  "explanation": "\"With the LORD there is mercy, and with him is plenteous redemption.\"",
+  "ref": "Psalms 130:7"
+ },
+ {
+  "id": "psalms-130-m-04",
+  "chapter": 130,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From what shall the LORD redeem Israel?",
+  "choices": [
+   "All his enemies",
+   "All his captivity",
+   "All his iniquities",
+   "All his famines"
+  ],
+  "answer": 2,
+  "explanation": "\"He shall redeem Israel from all his iniquities.\"",
+  "ref": "Psalms 130:8"
+ },
+ {
+  "id": "psalms-130-m-05",
+  "chapter": 130,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalmist ask the LORD’s ears to be?",
+  "choices": [
+   "Closed to his enemies",
+   "Open to the temple",
+   "Attentive to his supplications",
+   "Turned to Zion"
+  ],
+  "answer": 2,
+  "explanation": "\"Let thine ears be attentive to the voice of my supplications.\"",
+  "ref": "Psalms 130:2"
+ },
+ {
+  "id": "psalms-130-h-01",
+  "chapter": 130,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does the psalmist say his soul waits more than?",
+  "choices": [
+   "They that keep the flock",
+   "They that watch for the morning",
+   "They that guard the gates",
+   "They that count the stars"
+  ],
+  "answer": 1,
+  "explanation": "\"My soul waiteth for the Lord more than they that watch for the morning.\"",
+  "ref": "Psalms 130:6"
+ },
+ {
+  "id": "psalms-130-h-02",
+  "chapter": 130,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would happen if the LORD should mark iniquities?",
+  "choices": [
+   "Only the priests would stand",
+   "No one could stand",
+   "Israel would be scattered",
+   "The enemies would fall"
+  ],
+  "answer": 1,
+  "explanation": "\"If thou, LORD, shouldest mark iniquities, O Lord, who shall stand?\"",
+  "ref": "Psalms 130:3"
+ },
+ {
+  "id": "psalms-130-h-03",
+  "chapter": 130,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalmist say of the watching for morning, twice over?",
+  "choices": [
+   "His eyes fail before the dawn",
+   "His soul waits more than they that watch",
+   "His enemies sleep before the dawn",
+   "His harp is silent until the dawn"
+  ],
+  "answer": 1,
+  "explanation": "\"More than they that watch for the morning: I say, more than they that watch for the morning.\"",
+  "ref": "Psalms 130:6"
+ },
+ {
+  "id": "psalms-130-h-04",
+  "chapter": 130,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalmist wait for, as his soul waits?",
+  "choices": [
+   "The morning sacrifice",
+   "The LORD",
+   "The return from exile",
+   "A word from the king"
+  ],
+  "answer": 1,
+  "explanation": "\"I wait for the LORD, my soul doth wait.\"",
+  "ref": "Psalms 130:5"
+ },
+ {
+  "id": "psalms-130-h-05",
+  "chapter": 130,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When he cries out of the depths, what does the psalmist ask the LORD to do?",
+  "choices": [
+   "Raise him up at once",
+   "Hear his voice",
+   "Judge his enemies",
+   "Send him a deliverer"
+  ],
+  "answer": 1,
+  "explanation": "\"Lord, hear my voice: let thine ears be attentive to the voice of my supplications.\"",
+  "ref": "Psalms 130:2"
+ },
+ {
+  "id": "psalms-131-e-01",
+  "chapter": 131,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does David say his heart is not?",
+  "choices": [
+   "Haughty",
+   "Weary",
+   "Hardened",
+   "Divided"
+  ],
+  "answer": 0,
+  "explanation": "\"LORD, my heart is not haughty.\"",
+  "ref": "Psalms 131:1"
+ },
+ {
+  "id": "psalms-131-e-02",
+  "chapter": 131,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does David say about his eyes?",
+  "choices": [
+   "They are not lofty",
+   "They are weary with weeping",
+   "They are fixed on the enemy",
+   "They are closed in sleep"
+  ],
+  "answer": 0,
+  "explanation": "\"Nor mine eyes lofty.\"",
+  "ref": "Psalms 131:1"
+ },
+ {
+  "id": "psalms-131-e-03",
+  "chapter": 131,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what does David compare his soul?",
+  "choices": [
+   "A weaned child",
+   "A lamb in the fold",
+   "A bird in the nest",
+   "A tree by the water"
+  ],
+  "answer": 0,
+  "explanation": "\"My soul is even as a weaned child.\"",
+  "ref": "Psalms 131:2"
+ },
+ {
+  "id": "psalms-131-e-04",
+  "chapter": 131,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is told to hope in the LORD?",
+  "choices": [
+   "Israel",
+   "The priests",
+   "The kings",
+   "The nations"
+  ],
+  "answer": 0,
+  "explanation": "\"Let Israel hope in the LORD from henceforth and for ever.\"",
+  "ref": "Psalms 131:3"
+ },
+ {
+  "id": "psalms-131-e-05",
+  "chapter": 131,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does David say he does not exercise himself in?",
+  "choices": [
+   "Great matters",
+   "Matters of war",
+   "Matters of trade",
+   "Matters of the law"
+  ],
+  "answer": 0,
+  "explanation": "\"Neither do I exercise myself in great matters.\"",
+  "ref": "Psalms 131:1"
+ },
+ {
+  "id": "psalms-131-m-01",
+  "chapter": 131,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of things are too high for David?",
+  "choices": [
+   "The mountains of Zion",
+   "The towers of the city",
+   "The thrones of kings",
+   "The things he does not exercise himself in"
+  ],
+  "answer": 3,
+  "explanation": "\"Or in things too high for me.\"",
+  "ref": "Psalms 131:1"
+ },
+ {
+  "id": "psalms-131-m-02",
+  "chapter": 131,
+  "level": "medium",
+  "category": "person",
+  "question": "Beside whom is the weaned child pictured as quiet?",
+  "choices": [
+   "His father",
+   "His nurse",
+   "His brother",
+   "His mother"
+  ],
+  "answer": 3,
+  "explanation": "\"As a child that is weaned of his mother.\"",
+  "ref": "Psalms 131:2"
+ },
+ {
+  "id": "psalms-131-m-03",
+  "chapter": 131,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For how long is Israel told to hope in the LORD?",
+  "choices": [
+   "Until the harvest",
+   "Until the exile ends",
+   "For seven years",
+   "From henceforth and for ever"
+  ],
+  "answer": 3,
+  "explanation": "\"Let Israel hope in the LORD from henceforth and for ever.\"",
+  "ref": "Psalms 131:3"
+ },
+ {
+  "id": "psalms-131-m-04",
+  "chapter": 131,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has David done with himself, like a child that is weaned?",
+  "choices": [
+   "Hidden and armed himself",
+   "Lifted and exalted himself",
+   "Fasted and mourned",
+   "Behaved and quieted himself"
+  ],
+  "answer": 3,
+  "explanation": "\"Surely I have behaved and quieted myself, as a child that is weaned of his mother.\"",
+  "ref": "Psalms 131:2"
+ },
+ {
+  "id": "psalms-131-m-05",
+  "chapter": 131,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is David’s soul like, in the closing line of his claim?",
+  "choices": [
+   "A fortress in battle",
+   "A river in drought",
+   "A tower on a hill",
+   "A weaned child"
+  ],
+  "answer": 3,
+  "explanation": "\"My soul is even as a weaned child.\"",
+  "ref": "Psalms 131:2"
+ },
+ {
+  "id": "psalms-131-h-01",
+  "chapter": 131,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two things does David say are not proud before the LORD?",
+  "choices": [
+   "His hands and his feet",
+   "His tongue and his ears",
+   "His heart and his eyes",
+   "His house and his flock"
+  ],
+  "answer": 2,
+  "explanation": "\"My heart is not haughty, nor mine eyes lofty.\"",
+  "ref": "Psalms 131:1"
+ },
+ {
+  "id": "psalms-131-h-02",
+  "chapter": 131,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Instead of great matters, what does David describe in himself?",
+  "choices": [
+   "A burning zeal",
+   "A restless watch",
+   "A quieted soul",
+   "A growing army"
+  ],
+  "answer": 2,
+  "explanation": "\"I have behaved and quieted myself.\"",
+  "ref": "Psalms 131:2"
+ },
+ {
+  "id": "psalms-131-h-03",
+  "chapter": 131,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whom is Israel to place hope?",
+  "choices": [
+   "The king in Zion",
+   "The fortress of the city",
+   "The LORD",
+   "The armies of the tribes"
+  ],
+  "answer": 2,
+  "explanation": "\"Let Israel hope in the LORD.\"",
+  "ref": "Psalms 131:3"
+ },
+ {
+  "id": "psalms-131-h-04",
+  "chapter": 131,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is David addressing when he speaks of his heart and eyes?",
+  "choices": [
+   "The priests",
+   "Israel",
+   "The LORD",
+   "The king"
+  ],
+  "answer": 2,
+  "explanation": "\"LORD, my heart is not haughty.\"",
+  "ref": "Psalms 131:1"
+ },
+ {
+  "id": "psalms-131-h-05",
+  "chapter": 131,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the weaned child’s condition in the psalm’s picture?",
+  "choices": [
+   "Crying in the night",
+   "Running at play",
+   "Quiet beside its mother",
+   "Asleep in the field"
+  ],
+  "answer": 2,
+  "explanation": "\"A child that is weaned of his mother.\"",
+  "ref": "Psalms 131:2"
+ },
+ {
+  "id": "psalms-132-e-01",
+  "chapter": 132,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did they say they heard of the ark?",
+  "choices": [
+   "Shiloh",
+   "Bethel",
+   "Ephratah",
+   "Hebron"
+  ],
+  "answer": 2,
+  "explanation": "\"Lo, we heard of it at Ephratah: we found it in the fields of the wood.\"",
+  "ref": "Psalms 132:6"
+ },
+ {
+  "id": "psalms-132-e-02",
+  "chapter": 132,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the LORD swear in truth that his fruit would sit on the throne?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "David",
+   "Solomon"
+  ],
+  "answer": 2,
+  "explanation": "\"The LORD hath sworn in truth unto David; he will not turn from it.\"",
+  "ref": "Psalms 132:11"
+ },
+ {
+  "id": "psalms-132-e-03",
+  "chapter": 132,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom will the LORD satisfy with bread?",
+  "choices": [
+   "Her priests",
+   "Her kings",
+   "Her poor",
+   "Her strangers"
+  ],
+  "answer": 2,
+  "explanation": "\"I will satisfy her poor with bread.\"",
+  "ref": "Psalms 132:15"
+ },
+ {
+  "id": "psalms-132-e-04",
+  "chapter": 132,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD clothe David’s enemies with?",
+  "choices": [
+   "Sackcloth",
+   "Chains of iron",
+   "Shame",
+   "Darkness"
+  ],
+  "answer": 2,
+  "explanation": "\"His enemies will I clothe with shame.\"",
+  "ref": "Psalms 132:18"
+ },
+ {
+  "id": "psalms-132-m-01",
+  "chapter": 132,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David vow not to give to his eyes?",
+  "choices": [
+   "Rest on the sabbath",
+   "Sleep",
+   "Food at the table",
+   "Sight of Zion"
+  ],
+  "answer": 1,
+  "explanation": "\"I will not give sleep to mine eyes, or slumber to mine eyelids.\"",
+  "ref": "Psalms 132:4"
+ },
+ {
+  "id": "psalms-132-m-02",
+  "chapter": 132,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was it found, according to the people?",
+  "choices": [
+   "In the house of Obed-edom",
+   "In the fields of the wood",
+   "In the wilderness of Judah",
+   "In the city of David"
+  ],
+  "answer": 1,
+  "explanation": "\"We found it in the fields of the wood.\"",
+  "ref": "Psalms 132:6"
+ },
+ {
+  "id": "psalms-132-m-03",
+  "chapter": 132,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where do the people say they will worship?",
+  "choices": [
+   "At the horns of the altar",
+   "At his footstool",
+   "Before the veil",
+   "On the high places"
+  ],
+  "answer": 1,
+  "explanation": "\"We will go into his tabernacles: we will worship at his footstool.\"",
+  "ref": "Psalms 132:7"
+ },
+ {
+  "id": "psalms-132-m-04",
+  "chapter": 132,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who is asked to arise into the LORD’s rest along with him?",
+  "choices": [
+   "The priests of Aaron",
+   "The ark of his strength",
+   "The sons of David",
+   "The host of heaven"
+  ],
+  "answer": 1,
+  "explanation": "\"Arise, O LORD, into thy rest; thou, and the ark of thy strength.\"",
+  "ref": "Psalms 132:8"
+ },
+ {
+  "id": "psalms-132-m-05",
+  "chapter": 132,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what are the priests asked to be clothed?",
+  "choices": [
+   "Linen and gold",
+   "Righteousness",
+   "Salvation",
+   "Joy and song"
+  ],
+  "answer": 1,
+  "explanation": "\"Let thy priests be clothed with righteousness.\"",
+  "ref": "Psalms 132:9"
+ },
+ {
+  "id": "psalms-132-m-06",
+  "chapter": 132,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what will the LORD clothe Zion’s priests?",
+  "choices": [
+   "Righteousness",
+   "Salvation",
+   "Shame",
+   "Fine linen"
+  ],
+  "answer": 1,
+  "explanation": "\"I will also clothe her priests with salvation.\"",
+  "ref": "Psalms 132:16"
+ },
+ {
+  "id": "psalms-132-m-07",
+  "chapter": 132,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will flourish upon David himself?",
+  "choices": [
+   "His horn of oil",
+   "His crown",
+   "His house of cedar",
+   "His tribe"
+  ],
+  "answer": 1,
+  "explanation": "\"But upon himself shall his crown flourish.\"",
+  "ref": "Psalms 132:18"
+ },
+ {
+  "id": "psalms-132-m-08",
+  "chapter": 132,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD ordained for his anointed?",
+  "choices": [
+   "A sword",
+   "A lamp",
+   "A throne of ivory",
+   "A shield"
+  ],
+  "answer": 1,
+  "explanation": "\"I have ordained a lamp for mine anointed.\"",
+  "ref": "Psalms 132:17"
+ },
+ {
+  "id": "psalms-132-m-09",
+  "chapter": 132,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD make to bud there?",
+  "choices": [
+   "The rod of Aaron",
+   "The horn of David",
+   "The branch of Jesse",
+   "The vine of Israel"
+  ],
+  "answer": 1,
+  "explanation": "\"There will I make the horn of David to bud.\"",
+  "ref": "Psalms 132:17"
+ },
+ {
+  "id": "psalms-132-h-01",
+  "chapter": 132,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two places did David vow not to enter or go up to until he found a place for the LORD?",
+  "choices": [
+   "His house and his bed",
+   "The city and the gate",
+   "The field and the vineyard",
+   "The palace and the throne"
+  ],
+  "answer": 0,
+  "explanation": "\"I will not come into the tabernacle of my house, nor go up into my bed.\"",
+  "ref": "Psalms 132:3"
+ },
+ {
+  "id": "psalms-132-h-02",
+  "chapter": 132,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD set upon David’s throne?",
+  "choices": [
+   "The fruit of his body",
+   "A priest after his order",
+   "A stranger from Egypt",
+   "A judge of the tribes"
+  ],
+  "answer": 0,
+  "explanation": "\"Of the fruit of thy body will I set upon thy throne.\"",
+  "ref": "Psalms 132:11"
+ },
+ {
+  "id": "psalms-132-h-03",
+  "chapter": 132,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must David’s children keep for their children to sit on the throne?",
+  "choices": [
+   "The covenant and the testimony",
+   "The feasts and the sabbaths",
+   "The ark and the altar",
+   "The law and the sacrifices"
+  ],
+  "answer": 0,
+  "explanation": "\"If thy children will keep my covenant and my testimony that I shall teach them.\"",
+  "ref": "Psalms 132:12"
+ },
+ {
+  "id": "psalms-132-h-04",
+  "chapter": 132,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say of Zion as his dwelling?",
+  "choices": [
+   "This is my rest for ever",
+   "This is my temple for a season",
+   "This is my footstool of stone",
+   "This is my house of prayer"
+  ],
+  "answer": 0,
+  "explanation": "\"This is my rest for ever: here will I dwell; for I have desired it.\"",
+  "ref": "Psalms 132:14"
+ },
+ {
+  "id": "psalms-132-h-05",
+  "chapter": 132,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whose sake is the LORD asked not to turn away the face of his anointed?",
+  "choices": [
+   "His servant David’s",
+   "His servant Moses’",
+   "His servant Aaron’s",
+   "His servant Israel’s"
+  ],
+  "answer": 0,
+  "explanation": "\"For thy servant David’s sake turn not away the face of thine anointed.\"",
+  "ref": "Psalms 132:10"
+ },
+ {
+  "id": "psalms-132-h-06",
+  "chapter": 132,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did David swear and vow?",
+  "choices": [
+   "The mighty God of Jacob",
+   "The God of Abraham’s covenant",
+   "The King of Zion’s gate",
+   "The Lord of the ark’s house"
+  ],
+  "answer": 0,
+  "explanation": "\"He sware unto the LORD, and vowed unto the mighty God of Jacob.\"",
+  "ref": "Psalms 132:2"
+ },
+ {
+  "id": "psalms-132-h-07",
+  "chapter": 132,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say he will do for Zion’s provision?",
+  "choices": [
+   "Abundantly bless it",
+   "Remove it for a time",
+   "Share it with the nations",
+   "Weigh it on a scale"
+  ],
+  "answer": 0,
+  "explanation": "\"I will abundantly bless her provision.\"",
+  "ref": "Psalms 132:15"
+ },
+ {
+  "id": "psalms-132-h-08",
+  "chapter": 132,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is to shout for joy when the priests are clothed?",
+  "choices": [
+   "The saints",
+   "The children",
+   "The kings",
+   "The watchmen"
+  ],
+  "answer": 0,
+  "explanation": "\"Let thy priests be clothed with righteousness; and let thy saints shout for joy.\"",
+  "ref": "Psalms 132:9"
+ },
+ {
+  "id": "psalms-132-h-09",
+  "chapter": 132,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say of his choice of Zion?",
+  "choices": [
+   "He desired it for his habitation",
+   "He found it by chance",
+   "He gave it to the priests",
+   "He will leave it for a time"
+  ],
+  "answer": 0,
+  "explanation": "\"For the LORD hath chosen Zion; he hath desired it for his habitation.\"",
+  "ref": "Psalms 132:13"
+ },
+ {
+  "id": "psalms-133-m-01",
+  "chapter": 133,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How far did the ointment go down?",
+  "choices": [
+   "To the hem of his sleeve",
+   "To the floor of the tabernacle",
+   "To the skirts of Aaron’s garments",
+   "To the altar below him"
+  ],
+  "answer": 2,
+  "explanation": "\"That ran down upon the beard, even Aaron’s beard: that went down to the skirts of his garments.\"",
+  "ref": "Psalms 133:2"
+ },
+ {
+  "id": "psalms-133-m-02",
+  "chapter": 133,
+  "level": "medium",
+  "category": "place",
+  "question": "On which mountains did the dew descend, besides Hermon?",
+  "choices": [
+   "The mountains of Gilboa",
+   "The mountains of Carmel",
+   "The mountains of Zion",
+   "The mountains of Ararat"
+  ],
+  "answer": 2,
+  "explanation": "\"As the dew of Hermon, and as the dew that descended upon the mountains of Zion.\"",
+  "ref": "Psalms 133:3"
+ },
+ {
+  "id": "psalms-133-m-03",
+  "chapter": 133,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is the ointment described?",
+  "choices": [
+   "Fragrant with spices",
+   "Sweet as honey",
+   "Precious",
+   "Hidden in a vessel"
+  ],
+  "answer": 2,
+  "explanation": "\"It is like the precious ointment upon the head.\"",
+  "ref": "Psalms 133:2"
+ },
+ {
+  "id": "psalms-133-m-04",
+  "chapter": 133,
+  "level": "medium",
+  "category": "person",
+  "question": "Who are told how good it is to dwell together in unity?",
+  "choices": [
+   "Priests and kings",
+   "Parents and children",
+   "Brethren",
+   "Servants and masters"
+  ],
+  "answer": 2,
+  "explanation": "\"How good and how pleasant it is for brethren to dwell together in unity!\"",
+  "ref": "Psalms 133:1"
+ },
+ {
+  "id": "psalms-133-m-05",
+  "chapter": 133,
+  "level": "medium",
+  "category": "person",
+  "question": "Who commanded the blessing there?",
+  "choices": [
+   "The high priest",
+   "The king",
+   "The LORD",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "\"For there the LORD commanded the blessing, even life for evermore.\"",
+  "ref": "Psalms 133:3"
+ },
+ {
+  "id": "psalms-133-h-01",
+  "chapter": 133,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the ointment first poured?",
+  "choices": [
+   "Upon the hands",
+   "Upon the head",
+   "Upon the feet",
+   "Upon the altar"
+  ],
+  "answer": 1,
+  "explanation": "\"The precious ointment upon the head, that ran down upon the beard.\"",
+  "ref": "Psalms 133:2"
+ },
+ {
+  "id": "psalms-133-h-02",
+  "chapter": 133,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two things is unity compared to in this psalm?",
+  "choices": [
+   "Rain and wind",
+   "Ointment and dew",
+   "Bread and wine",
+   "Gold and silver"
+  ],
+  "answer": 1,
+  "explanation": "Unity is likened to the precious ointment on Aaron’s beard and to the dew of Hermon.",
+  "ref": "Psalms 133:2–3"
+ },
+ {
+  "id": "psalms-133-h-03",
+  "chapter": 133,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalm say the LORD commanded there?",
+  "choices": [
+   "The gathering of the tribes",
+   "The blessing, even life for evermore",
+   "The building of the temple",
+   "The peace of the borders"
+  ],
+  "answer": 1,
+  "explanation": "\"There the LORD commanded the blessing, even life for evermore.\"",
+  "ref": "Psalms 133:3"
+ },
+ {
+  "id": "psalms-133-h-04",
+  "chapter": 133,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalm say it is for brethren to dwell together in unity?",
+  "choices": [
+   "Hard but needful",
+   "Good and pleasant",
+   "Rare in Israel",
+   "Costly and slow"
+  ],
+  "answer": 1,
+  "explanation": "\"How good and how pleasant it is for brethren to dwell together in unity!\"",
+  "ref": "Psalms 133:1"
+ },
+ {
+  "id": "psalms-133-h-05",
+  "chapter": 133,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the ointment run down upon after it was poured on the head?",
+  "choices": [
+   "The shoulders",
+   "The beard",
+   "The breastplate",
+   "The hands"
+  ],
+  "answer": 1,
+  "explanation": "\"That ran down upon the beard, even Aaron’s beard.\"",
+  "ref": "Psalms 133:2"
+ },
+ {
+  "id": "psalms-134-m-01",
+  "chapter": 134,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the servants of the LORD told to do in the sanctuary?",
+  "choices": [
+   "Bring a lamb and burn incense",
+   "Kneel and be silent",
+   "Sing and blow the trumpet",
+   "Lift up their hands and bless the LORD"
+  ],
+  "answer": 3,
+  "explanation": "\"Lift up your hands in the sanctuary, and bless the LORD.\"",
+  "ref": "Psalms 134:2"
+ },
+ {
+  "id": "psalms-134-m-02",
+  "chapter": 134,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom does the psalm call to bless the LORD?",
+  "choices": [
+   "The kings of the earth",
+   "The priests of Aaron only",
+   "The nations of Canaan",
+   "The servants who stand by night in his house"
+  ],
+  "answer": 3,
+  "explanation": "\"All ye servants of the LORD, which by night stand in the house of the LORD.\"",
+  "ref": "Psalms 134:1"
+ },
+ {
+  "id": "psalms-134-m-03",
+  "chapter": 134,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who is said to have made heaven and earth?",
+  "choices": [
+   "The God of the nations",
+   "The king of Zion",
+   "The host of heaven",
+   "The LORD who blesses out of Zion"
+  ],
+  "answer": 3,
+  "explanation": "\"The LORD that made heaven and earth bless thee out of Zion.\"",
+  "ref": "Psalms 134:3"
+ },
+ {
+  "id": "psalms-134-m-04",
+  "chapter": 134,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the closing line ask the LORD to do?",
+  "choices": [
+   "Judge thee in Zion",
+   "Lead thee into Zion",
+   "Hide thee in Zion",
+   "Bless thee out of Zion"
+  ],
+  "answer": 3,
+  "explanation": "\"The LORD that made heaven and earth bless thee out of Zion.\"",
+  "ref": "Psalms 134:3"
+ },
+ {
+  "id": "psalms-134-m-05",
+  "chapter": 134,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When do these servants stand in the house of the LORD?",
+  "choices": [
+   "At the morning sacrifice",
+   "On the feast day",
+   "At noon",
+   "By night"
+  ],
+  "answer": 3,
+  "explanation": "\"Which by night stand in the house of the LORD.\"",
+  "ref": "Psalms 134:1"
+ },
+ {
+  "id": "psalms-134-h-01",
+  "chapter": 134,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where are the servants told to lift up their hands?",
+  "choices": [
+   "On the mountain",
+   "In the gate",
+   "In the sanctuary",
+   "By the river"
+  ],
+  "answer": 2,
+  "explanation": "\"Lift up your hands in the sanctuary, and bless the LORD.\"",
+  "ref": "Psalms 134:2"
+ },
+ {
+  "id": "psalms-134-h-02",
+  "chapter": 134,
+  "level": "hard",
+  "category": "person",
+  "question": "What title does the psalm give to those it calls to bless the LORD?",
+  "choices": [
+   "Sons of Aaron",
+   "Watchmen of Zion",
+   "Servants of the LORD",
+   "Priests of the temple"
+  ],
+  "answer": 2,
+  "explanation": "\"Behold, bless ye the LORD, all ye servants of the LORD.\"",
+  "ref": "Psalms 134:1"
+ },
+ {
+  "id": "psalms-134-h-03",
+  "chapter": 134,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the servants of the LORD do for him by night?",
+  "choices": [
+   "Watch the city gates",
+   "Keep the sheep",
+   "Stand in his house",
+   "Guard the ark on the road"
+  ],
+  "answer": 2,
+  "explanation": "\"Which by night stand in the house of the LORD.\"",
+  "ref": "Psalms 134:1"
+ },
+ {
+  "id": "psalms-134-h-04",
+  "chapter": 134,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are all the servants of the LORD told to do first?",
+  "choices": [
+   "Behold, fear the LORD",
+   "Behold, build the LORD’s house",
+   "Behold, bless the LORD",
+   "Behold, fast before the LORD"
+  ],
+  "answer": 2,
+  "explanation": "\"Behold, bless ye the LORD, all ye servants of the LORD.\"",
+  "ref": "Psalms 134:1"
+ },
+ {
+  "id": "psalms-134-h-05",
+  "chapter": 134,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of which place does the blessing come?",
+  "choices": [
+   "Hermon",
+   "Bethel",
+   "Zion",
+   "Egypt"
+  ],
+  "answer": 2,
+  "explanation": "\"The LORD bless thee out of Zion.\"",
+  "ref": "Psalms 134:3"
+ },
+ {
+  "id": "psalms-135-e-01",
+  "chapter": 135,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom has the LORD chosen unto himself as his peculiar treasure?",
+  "choices": [
+   "Egypt",
+   "Edom",
+   "Moab",
+   "Israel"
+  ],
+  "answer": 3,
+  "explanation": "\"The LORD hath chosen Jacob unto himself, and Israel for his peculiar treasure.\"",
+  "ref": "Psalms 135:4"
+ },
+ {
+  "id": "psalms-135-e-02",
+  "chapter": 135,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is above all gods, according to the psalm?",
+  "choices": [
+   "The king of Egypt",
+   "The sun and moon",
+   "The angels",
+   "Our Lord"
+  ],
+  "answer": 3,
+  "explanation": "\"I know that the LORD is great, and that our Lord is above all gods.\"",
+  "ref": "Psalms 135:5"
+ },
+ {
+  "id": "psalms-135-e-03",
+  "chapter": 135,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD smite in Egypt?",
+  "choices": [
+   "The river and the fish",
+   "The crops and the cattle",
+   "The temples and the idols",
+   "The firstborn of man and beast"
+  ],
+  "answer": 3,
+  "explanation": "\"Who smote the firstborn of Egypt, both of man and beast.\"",
+  "ref": "Psalms 135:8"
+ },
+ {
+  "id": "psalms-135-m-01",
+  "chapter": 135,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two kings are named among those the LORD slew?",
+  "choices": [
+   "Pharaoh and Nebuchadnezzar",
+   "Sihon king of the Amorites and Og king of Bashan",
+   "Balak and Eglon",
+   "Jabin and Sisera"
+  ],
+  "answer": 1,
+  "explanation": "\"Sihon king of the Amorites, and Og king of Bashan, and all the kingdoms of Canaan.\"",
+  "ref": "Psalms 135:11"
+ },
+ {
+  "id": "psalms-135-m-02",
+  "chapter": 135,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD give Israel as an heritage?",
+  "choices": [
+   "The wealth of Egypt",
+   "The land of the nations he slew",
+   "The cities of Philistia",
+   "The mountains of Lebanon"
+  ],
+  "answer": 1,
+  "explanation": "\"And gave their land for an heritage, an heritage unto Israel his people.\"",
+  "ref": "Psalms 135:12"
+ },
+ {
+  "id": "psalms-135-m-03",
+  "chapter": 135,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD send into the midst of Egypt?",
+  "choices": [
+   "Plagues of fire",
+   "Tokens and wonders",
+   "Armies of angels",
+   "Bread from heaven"
+  ],
+  "answer": 1,
+  "explanation": "\"Who sent tokens and wonders into the midst of thee, O Egypt, upon Pharaoh.\"",
+  "ref": "Psalms 135:9"
+ },
+ {
+  "id": "psalms-135-m-04",
+  "chapter": 135,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD bring out of his treasuries?",
+  "choices": [
+   "The rain",
+   "The wind",
+   "The snow",
+   "The lightning"
+  ],
+  "answer": 1,
+  "explanation": "\"He bringeth the wind out of his treasuries.\"",
+  "ref": "Psalms 135:7"
+ },
+ {
+  "id": "psalms-135-m-05",
+  "chapter": 135,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whatsoever the LORD pleased, where did he do it?",
+  "choices": [
+   "In Zion and Jerusalem only",
+   "In heaven, in earth, in the seas, and all deep places",
+   "On the mountains of Israel",
+   "In the cities of the nations"
+  ],
+  "answer": 1,
+  "explanation": "\"Whatsoever the LORD pleased, that did he in heaven, and in earth, in the seas, and all deep places.\"",
+  "ref": "Psalms 135:6"
+ },
+ {
+  "id": "psalms-135-m-06",
+  "chapter": 135,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of the makers of idols?",
+  "choices": [
+   "They are wise as kings",
+   "They are like unto them",
+   "They are strong as warriors",
+   "They are blessed by the LORD"
+  ],
+  "answer": 1,
+  "explanation": "\"They that make them are like unto them: so is every one that trusteth in them.\"",
+  "ref": "Psalms 135:18"
+ },
+ {
+  "id": "psalms-135-h-01",
+  "chapter": 135,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD make for the rain?",
+  "choices": [
+   "Thunders",
+   "Clouds",
+   "Winds",
+   "Lightnings"
+  ],
+  "answer": 3,
+  "explanation": "\"He maketh lightnings for the rain.\"",
+  "ref": "Psalms 135:7"
+ },
+ {
+  "id": "psalms-135-h-02",
+  "chapter": 135,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the idols of the heathen made of?",
+  "choices": [
+   "Cedar and stone",
+   "Iron and clay",
+   "Brass and wood",
+   "Silver and gold, the work of men’s hands"
+  ],
+  "answer": 3,
+  "explanation": "\"The idols of the heathen are silver and gold, the work of men’s hands.\"",
+  "ref": "Psalms 135:15"
+ },
+ {
+  "id": "psalms-135-h-03",
+  "chapter": 135,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the idols have that cannot do anything?",
+  "choices": [
+   "Hands, feet and hearts that do not move",
+   "Crowns, thrones and swords that do not rule",
+   "Altars, lamps and veils that do not burn",
+   "Mouths, eyes and ears that do not speak, see or hear"
+  ],
+  "answer": 3,
+  "explanation": "\"They have mouths, but they speak not; eyes have they, but they see not.\"",
+  "ref": "Psalms 135:16–17"
+ },
+ {
+  "id": "psalms-135-h-04",
+  "chapter": 135,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do concerning his servants?",
+  "choices": [
+   "Scatter them among the nations",
+   "Give them a new king",
+   "Hide his face from them",
+   "Judge his people and repent himself"
+  ],
+  "answer": 3,
+  "explanation": "\"For the LORD will judge his people, and he will repent himself concerning his servants.\"",
+  "ref": "Psalms 135:14"
+ },
+ {
+  "id": "psalms-135-h-05",
+  "chapter": 135,
+  "level": "hard",
+  "category": "person",
+  "question": "Which houses are called to bless the LORD?",
+  "choices": [
+   "Judah, Benjamin and Dan",
+   "Reuben, Gad and Manasseh",
+   "Moses, Joshua and Caleb",
+   "Israel, Aaron and Levi"
+  ],
+  "answer": 3,
+  "explanation": "\"Bless the LORD, O house of Israel: bless the LORD, O house of Aaron: bless the LORD, O house of Levi.\"",
+  "ref": "Psalms 135:19–20"
+ },
+ {
+  "id": "psalms-135-h-06",
+  "chapter": 135,
+  "level": "hard",
+  "category": "place",
+  "question": "Where does the LORD dwell, according to the final verse?",
+  "choices": [
+   "At Hebron",
+   "At Shiloh",
+   "At Bethel",
+   "At Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "\"Blessed be the LORD out of Zion, which dwelleth at Jerusalem.\"",
+  "ref": "Psalms 135:21"
+ },
+ {
+  "id": "psalms-135-h-07",
+  "chapter": 135,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long does the LORD’s name endure?",
+  "choices": [
+   "Until the next king",
+   "For a thousand years",
+   "Until the temple falls",
+   "For ever"
+  ],
+  "answer": 3,
+  "explanation": "\"Thy name, O LORD, endureth for ever; and thy memorial throughout all generations.\"",
+  "ref": "Psalms 135:13"
+ },
+ {
+  "id": "psalms-135-h-08",
+  "chapter": 135,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalm say the LORD’s memorial endures throughout?",
+  "choices": [
+   "All the tribes",
+   "All the nations",
+   "All the feasts",
+   "All generations"
+  ],
+  "answer": 3,
+  "explanation": "\"Thy memorial, O LORD, throughout all generations.\"",
+  "ref": "Psalms 135:13"
+ },
+ {
+  "id": "psalms-135-h-09",
+  "chapter": 135,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why are the people called to praise the LORD at the start?",
+  "choices": [
+   "For he is hidden",
+   "For he is silent",
+   "For he is distant",
+   "For he is good"
+  ],
+  "answer": 3,
+  "explanation": "\"Praise the LORD; for the LORD is good: sing praises unto his name; for it is pleasant.\"",
+  "ref": "Psalms 135:3"
+ },
+ {
+  "id": "psalms-135-e-04",
+  "chapter": 135,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD cause to ascend from the ends of the earth?",
+  "choices": [
+   "Vapours",
+   "Smoke from altars",
+   "Clouds of fire",
+   "Dust from the plains"
+  ],
+  "answer": 0,
+  "explanation": "\"He causeth the vapours to ascend from the ends of the earth.\"",
+  "ref": "Psalms 135:7"
+ },
+ {
+  "id": "psalms-135-e-05",
+  "chapter": 135,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is not in the mouths of the idols?",
+  "choices": [
+   "Any breath",
+   "Any gold",
+   "Any song",
+   "Any water"
+  ],
+  "answer": 0,
+  "explanation": "\"Neither is there any breath in their mouths.\"",
+  "ref": "Psalms 135:17"
+ },
+ {
+  "id": "psalms-135-e-06",
+  "chapter": 135,
+  "level": "beginner",
+  "category": "person",
+  "question": "What did the LORD slay besides great nations?",
+  "choices": [
+   "Mighty kings",
+   "Strong lions",
+   "Proud priests",
+   "Young men"
+  ],
+  "answer": 0,
+  "explanation": "\"Who smote great nations, and slew mighty kings.\"",
+  "ref": "Psalms 135:10"
+ },
+ {
+  "id": "psalms-135-e-07",
+  "chapter": 135,
+  "level": "beginner",
+  "category": "place",
+  "question": "In what are those who stand in the house of the LORD told to praise?",
+  "choices": [
+   "The courts of the house of our God",
+   "The gates of Zion",
+   "The fields of Israel",
+   "The streets of Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "\"Ye that stand in the house of the LORD, in the courts of the house of our God, praise the LORD.\"",
+  "ref": "Psalms 135:2–3"
+ },
+ {
+  "id": "psalms-135-e-08",
+  "chapter": 135,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why is it good to sing praises unto the LORD’s name?",
+  "choices": [
+   "For it is pleasant",
+   "For it wins battles",
+   "For it brings rain",
+   "For it fills the barns"
+  ],
+  "answer": 0,
+  "explanation": "\"Sing praises unto his name; for it is pleasant.\"",
+  "ref": "Psalms 135:3"
+ },
+ {
+  "id": "psalms-135-m-07",
+  "chapter": 135,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On whom, besides Pharaoh, did the tokens and wonders fall?",
+  "choices": [
+   "All his armies",
+   "All his priests",
+   "All his horses",
+   "All his servants"
+  ],
+  "answer": 3,
+  "explanation": "\"Upon Pharaoh, and upon all his servants.\"",
+  "ref": "Psalms 135:9"
+ },
+ {
+  "id": "psalms-135-m-08",
+  "chapter": 135,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides Sihon and Og, which kingdoms did the LORD smite?",
+  "choices": [
+   "All the kingdoms of Egypt",
+   "All the kingdoms of Babylon",
+   "All the kingdoms of Assyria",
+   "All the kingdoms of Canaan"
+  ],
+  "answer": 3,
+  "explanation": "\"And all the kingdoms of Canaan.\"",
+  "ref": "Psalms 135:11"
+ },
+ {
+  "id": "psalms-135-m-09",
+  "chapter": 135,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into the midst of which land were tokens and wonders sent?",
+  "choices": [
+   "Babylon",
+   "Canaan",
+   "Moab",
+   "Egypt"
+  ],
+  "answer": 3,
+  "explanation": "\"Who sent tokens and wonders into the midst of thee, O Egypt.\"",
+  "ref": "Psalms 135:9"
+ },
+ {
+  "id": "psalms-135-m-10",
+  "chapter": 135,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalmist say he knows about the LORD?",
+  "choices": [
+   "That he is silent",
+   "That he is far off",
+   "That he is slow",
+   "That he is great"
+  ],
+  "answer": 3,
+  "explanation": "\"For I know that the LORD is great, and that our Lord is above all gods.\"",
+  "ref": "Psalms 135:5"
+ },
+ {
+  "id": "psalms-135-m-11",
+  "chapter": 135,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom does the psalm tell to bless the LORD, after Levi?",
+  "choices": [
+   "Ye kings of the earth",
+   "Ye priests of Zion",
+   "Ye armies of Israel",
+   "Ye that fear the LORD"
+  ],
+  "answer": 3,
+  "explanation": "\"Ye that fear the LORD, bless the LORD.\"",
+  "ref": "Psalms 135:20"
+ },
+ {
+  "id": "psalms-135-h-10",
+  "chapter": 135,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalm say about the LORD and the great nations?",
+  "choices": [
+   "He ignored them",
+   "He smote them",
+   "He taught them",
+   "He protected them"
+  ],
+  "answer": 1,
+  "explanation": "\"Who smote great nations, and slew mighty kings.\"",
+  "ref": "Psalms 135:10"
+ },
+ {
+  "id": "psalms-135-h-11",
+  "chapter": 135,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is told to praise the LORD at the very beginning?",
+  "choices": [
+   "The kings of Israel",
+   "The servants of the LORD",
+   "The nations of Canaan",
+   "The sons of Levi only"
+  ],
+  "answer": 1,
+  "explanation": "\"Praise ye the name of the LORD; praise him, O ye servants of the LORD.\"",
+  "ref": "Psalms 135:1"
+ },
+ {
+  "id": "psalms-136-e-01",
+  "chapter": 136,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD smite in Egypt?",
+  "choices": [
+   "Their firstborn",
+   "Their river",
+   "Their cattle only",
+   "Their idols"
+  ],
+  "answer": 0,
+  "explanation": "\"To him that smote Egypt in their firstborn.\"",
+  "ref": "Psalms 136:10"
+ },
+ {
+  "id": "psalms-136-e-02",
+  "chapter": 136,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the LORD bring out from among the Egyptians?",
+  "choices": [
+   "Israel",
+   "Judah only",
+   "The Levites",
+   "The Philistines"
+  ],
+  "answer": 0,
+  "explanation": "\"And brought out Israel from among them.\"",
+  "ref": "Psalms 136:11"
+ },
+ {
+  "id": "psalms-136-e-03",
+  "chapter": 136,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD do to Pharaoh and his host in the Red sea?",
+  "choices": [
+   "Overthrew them",
+   "Spared them",
+   "Led them across",
+   "Fed them"
+  ],
+  "answer": 0,
+  "explanation": "\"But overthrew Pharaoh and his host in the Red sea.\"",
+  "ref": "Psalms 136:15"
+ },
+ {
+  "id": "psalms-136-e-04",
+  "chapter": 136,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Through what did the LORD lead his people after the Red sea?",
+  "choices": [
+   "The wilderness",
+   "The mountains of Edom",
+   "The valley of Jordan",
+   "The land of Philistia"
+  ],
+  "answer": 0,
+  "explanation": "\"To him which led his people through the wilderness.\"",
+  "ref": "Psalms 136:16"
+ },
+ {
+  "id": "psalms-136-e-05",
+  "chapter": 136,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is set to rule by day?",
+  "choices": [
+   "The sun",
+   "The moon",
+   "The stars",
+   "The lightning"
+  ],
+  "answer": 0,
+  "explanation": "\"The sun to rule by day.\"",
+  "ref": "Psalms 136:8"
+ },
+ {
+  "id": "psalms-136-e-06",
+  "chapter": 136,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD make to rule by night?",
+  "choices": [
+   "The moon and stars",
+   "The clouds and wind",
+   "The fire and smoke",
+   "The sun and cloud"
+  ],
+  "answer": 0,
+  "explanation": "\"The moon and stars to rule by night.\"",
+  "ref": "Psalms 136:9"
+ },
+ {
+  "id": "psalms-136-e-07",
+  "chapter": 136,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of the Amorites did the LORD slay?",
+  "choices": [
+   "Sihon",
+   "Og",
+   "Balak",
+   "Jabin"
+  ],
+  "answer": 0,
+  "explanation": "\"Sihon king of the Amorites.\"",
+  "ref": "Psalms 136:19"
+ },
+ {
+  "id": "psalms-136-e-08",
+  "chapter": 136,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Bashan did the LORD slay?",
+  "choices": [
+   "Og",
+   "Sihon",
+   "Balak",
+   "Agag"
+  ],
+  "answer": 0,
+  "explanation": "\"And Og the king of Bashan.\"",
+  "ref": "Psalms 136:20"
+ },
+ {
+  "id": "psalms-136-e-09",
+  "chapter": 136,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD make by wisdom?",
+  "choices": [
+   "The heavens",
+   "The mountains",
+   "The seas",
+   "The cedars"
+  ],
+  "answer": 0,
+  "explanation": "\"To him that by wisdom made the heavens.\"",
+  "ref": "Psalms 136:5"
+ },
+ {
+  "id": "psalms-136-e-10",
+  "chapter": 136,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD give Israel as an heritage?",
+  "choices": [
+   "The land of the kings he slew",
+   "The wealth of Egypt",
+   "The cities of Tyre",
+   "The gold of Babylon"
+  ],
+  "answer": 0,
+  "explanation": "\"And gave their land for an heritage, even an heritage unto Israel his servant.\"",
+  "ref": "Psalms 136:21–22"
+ },
+ {
+  "id": "psalms-136-m-01",
+  "chapter": 136,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalm say the LORD alone does?",
+  "choices": [
+   "Great battles",
+   "Great judgments",
+   "Great journeys",
+   "Great wonders"
+  ],
+  "answer": 3,
+  "explanation": "\"To him who alone doeth great wonders.\"",
+  "ref": "Psalms 136:4"
+ },
+ {
+  "id": "psalms-136-m-02",
+  "chapter": 136,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD stretch out above the waters?",
+  "choices": [
+   "The heavens",
+   "The tabernacle",
+   "The clouds",
+   "The earth"
+  ],
+  "answer": 3,
+  "explanation": "\"To him that stretched out the earth above the waters.\"",
+  "ref": "Psalms 136:6"
+ },
+ {
+  "id": "psalms-136-m-03",
+  "chapter": 136,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD make to give light?",
+  "choices": [
+   "Great towers",
+   "Great pillars",
+   "Great fires",
+   "Great lights"
+  ],
+  "answer": 3,
+  "explanation": "\"To him that made great lights.\"",
+  "ref": "Psalms 136:7"
+ },
+ {
+  "id": "psalms-136-m-04",
+  "chapter": 136,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did the LORD bring Israel out?",
+  "choices": [
+   "A pillar of fire and a rod",
+   "A host of angels and a sword",
+   "A mighty wind and a flood",
+   "A strong hand and a stretched out arm"
+  ],
+  "answer": 3,
+  "explanation": "\"With a strong hand, and with a stretched out arm.\"",
+  "ref": "Psalms 136:12"
+ },
+ {
+  "id": "psalms-136-m-05",
+  "chapter": 136,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD make Israel do at the Red sea?",
+  "choices": [
+   "Wait on the shore",
+   "Build rafts",
+   "Walk around it",
+   "Pass through the midst of it"
+  ],
+  "answer": 3,
+  "explanation": "\"And made Israel to pass through the midst of it.\"",
+  "ref": "Psalms 136:14"
+ },
+ {
+  "id": "psalms-136-m-06",
+  "chapter": 136,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of kings did the LORD slay, besides great ones?",
+  "choices": [
+   "Foolish kings",
+   "Hidden kings",
+   "Cruel kings",
+   "Famous kings"
+  ],
+  "answer": 3,
+  "explanation": "\"Which smote great kings: and slew famous kings.\"",
+  "ref": "Psalms 136:17–18"
+ },
+ {
+  "id": "psalms-136-m-07",
+  "chapter": 136,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom does the LORD remember in their low estate?",
+  "choices": [
+   "The poor of Egypt",
+   "The kings of the earth",
+   "The nations of Canaan",
+   "Us, his people"
+  ],
+  "answer": 3,
+  "explanation": "\"Who remembered us in our low estate.\"",
+  "ref": "Psalms 136:23"
+ },
+ {
+  "id": "psalms-136-m-08",
+  "chapter": 136,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD done for us from our enemies?",
+  "choices": [
+   "Hidden us",
+   "Taught us",
+   "Enriched us",
+   "Redeemed us"
+  ],
+  "answer": 3,
+  "explanation": "\"And hath redeemed us from our enemies.\"",
+  "ref": "Psalms 136:24"
+ },
+ {
+  "id": "psalms-136-m-09",
+  "chapter": 136,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What title does the psalm give the LORD in the last verse?",
+  "choices": [
+   "The Lord of hosts",
+   "The Holy One of Israel",
+   "The Rock of Jacob",
+   "The God of heaven"
+  ],
+  "answer": 3,
+  "explanation": "\"O give thanks unto the God of heaven.\"",
+  "ref": "Psalms 136:26"
+ },
+ {
+  "id": "psalms-136-m-10",
+  "chapter": 136,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which title follows \"God of gods\" in the call to give thanks?",
+  "choices": [
+   "King of kings",
+   "Prince of peace",
+   "Ancient of days",
+   "Lord of lords"
+  ],
+  "answer": 3,
+  "explanation": "\"O give thanks to the Lord of lords.\"",
+  "ref": "Psalms 136:3"
+ },
+ {
+  "id": "psalms-136-m-11",
+  "chapter": 136,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom does the LORD give food?",
+  "choices": [
+   "The priests only",
+   "The poor only",
+   "The sons of Israel only",
+   "All flesh"
+  ],
+  "answer": 3,
+  "explanation": "\"Who giveth food to all flesh.\"",
+  "ref": "Psalms 136:25"
+ },
+ {
+  "id": "psalms-136-m-12",
+  "chapter": 136,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD divide into parts?",
+  "choices": [
+   "The Jordan",
+   "The Great sea",
+   "The river of Egypt",
+   "The Red sea"
+  ],
+  "answer": 3,
+  "explanation": "\"To him which divided the Red sea into parts.\"",
+  "ref": "Psalms 136:13"
+ },
+ {
+  "id": "psalms-136-h-01",
+  "chapter": 136,
+  "level": "hard",
+  "category": "person",
+  "question": "Over which people did Sihon rule?",
+  "choices": [
+   "The Philistines",
+   "The Moabites",
+   "The Hittites",
+   "The Amorites"
+  ],
+  "answer": 3,
+  "explanation": "\"Sihon king of the Amorites.\"",
+  "ref": "Psalms 136:19"
+ },
+ {
+  "id": "psalms-136-h-02",
+  "chapter": 136,
+  "level": "hard",
+  "category": "place",
+  "question": "Over which land did Og rule?",
+  "choices": [
+   "Gilead",
+   "Edom",
+   "Moab",
+   "Bashan"
+  ],
+  "answer": 3,
+  "explanation": "\"And Og the king of Bashan.\"",
+  "ref": "Psalms 136:20"
+ },
+ {
+  "id": "psalms-136-h-03",
+  "chapter": 136,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Above what is the earth said to be stretched?",
+  "choices": [
+   "The mountains",
+   "The heavens",
+   "The deep pit",
+   "The waters"
+  ],
+  "answer": 3,
+  "explanation": "\"To him that stretched out the earth above the waters.\"",
+  "ref": "Psalms 136:6"
+ },
+ {
+  "id": "psalms-136-h-04",
+  "chapter": 136,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what did the LORD make the heavens?",
+  "choices": [
+   "Power",
+   "Fire",
+   "A word",
+   "Wisdom"
+  ],
+  "answer": 3,
+  "explanation": "\"To him that by wisdom made the heavens.\"",
+  "ref": "Psalms 136:5"
+ },
+ {
+  "id": "psalms-136-h-05",
+  "chapter": 136,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the psalm describe Israel in the verse about the heritage?",
+  "choices": [
+   "His firstborn",
+   "His anointed",
+   "His treasure",
+   "His servant"
+  ],
+  "answer": 3,
+  "explanation": "\"Even an heritage unto Israel his servant.\"",
+  "ref": "Psalms 136:22"
+ },
+ {
+  "id": "psalms-136-h-06",
+  "chapter": 136,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What state were the people in when the LORD remembered them?",
+  "choices": [
+   "Their captivity in Babylon",
+   "Their wandering in Sinai",
+   "Their feasting at harvest",
+   "Their low estate"
+  ],
+  "answer": 3,
+  "explanation": "\"Who remembered us in our low estate.\"",
+  "ref": "Psalms 136:23"
+ },
+ {
+  "id": "psalms-136-m-13",
+  "chapter": 136,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who are named as the great and famous kings the LORD slew?",
+  "choices": [
+   "Pharaoh and Balak",
+   "Sihon and Og",
+   "Agag and Jabin",
+   "Eglon and Sisera"
+  ],
+  "answer": 1,
+  "explanation": "\"Sihon king of the Amorites: and Og the king of Bashan.\"",
+  "ref": "Psalms 136:19–20"
+ },
+ {
+  "id": "psalms-136-h-07",
+  "chapter": 136,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the sun, what rules by night, according to the psalm?",
+  "choices": [
+   "The clouds",
+   "The lightning",
+   "The moon and stars",
+   "The wind"
+  ],
+  "answer": 2,
+  "explanation": "\"The moon and stars to rule by night.\"",
+  "ref": "Psalms 136:9"
+ },
+ {
+  "id": "psalms-136-h-08",
+  "chapter": 136,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalm say the LORD did with Israel in the midst of the sea?",
+  "choices": [
+   "Left them to wait",
+   "Taught them to swim",
+   "Made them pass through",
+   "Sent them back"
+  ],
+  "answer": 2,
+  "explanation": "\"And made Israel to pass through the midst of it.\"",
+  "ref": "Psalms 136:14"
+ },
+ {
+  "id": "psalms-136-h-09",
+  "chapter": 136,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of the LORD’s works, which is told right after the Red sea?",
+  "choices": [
+   "Giving the land to Israel",
+   "Slaying Sihon and Og",
+   "Leading his people through the wilderness",
+   "Feeding all flesh"
+  ],
+  "answer": 2,
+  "explanation": "After the Red sea: \"To him which led his people through the wilderness.\"",
+  "ref": "Psalms 136:16"
+ },
+ {
+  "id": "psalms-136-h-10",
+  "chapter": 136,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which people does the psalm say the LORD brought out, with a strong hand?",
+  "choices": [
+   "The Philistines",
+   "The Moabites",
+   "Israel",
+   "The Edomites"
+  ],
+  "answer": 2,
+  "explanation": "\"And brought out Israel from among them. With a strong hand.\"",
+  "ref": "Psalms 136:11–12"
+ },
+ {
+  "id": "psalms-136-h-11",
+  "chapter": 136,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalm tell us the LORD gave to Israel after Sihon and Og were slain?",
+  "choices": [
+   "Their gold",
+   "Their horses",
+   "Their land",
+   "Their gods"
+  ],
+  "answer": 2,
+  "explanation": "\"And gave their land for an heritage.\"",
+  "ref": "Psalms 136:21"
+ },
+ {
+  "id": "psalms-136-h-12",
+  "chapter": 136,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what is the LORD called God and Lord, in the first verses?",
+  "choices": [
+   "Of kings and of priests",
+   "Of Israel and of Judah",
+   "Of gods and of lords",
+   "Of heaven and of hell"
+  ],
+  "answer": 2,
+  "explanation": "\"O give thanks unto the God of gods... to the Lord of lords.\"",
+  "ref": "Psalms 136:2–3"
+ },
+ {
+  "id": "psalms-136-h-13",
+  "chapter": 136,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What turn out to be the great lights the LORD made?",
+  "choices": [
+   "The lamps of the temple",
+   "The pillar of fire",
+   "The sun, moon and stars",
+   "The lightning and the thunder"
+  ],
+  "answer": 2,
+  "explanation": "The great lights are the sun to rule by day, and the moon and stars to rule by night.",
+  "ref": "Psalms 136:7–9"
+ },
+ {
+  "id": "psalms-137-m-01",
+  "chapter": 137,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the exiles do when they remembered Zion?",
+  "choices": [
+   "They sang",
+   "They fought",
+   "They wept",
+   "They fled"
+  ],
+  "answer": 2,
+  "explanation": "\"By the rivers of Babylon, there we sat down, yea, we wept, when we remembered Zion.\"",
+  "ref": "Psalms 137:1"
+ },
+ {
+  "id": "psalms-137-m-02",
+  "chapter": 137,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had carried the exiles away and asked them for mirth?",
+  "choices": [
+   "Their own priests",
+   "Visiting merchants",
+   "Their captors",
+   "The elders of Zion"
+  ],
+  "answer": 2,
+  "explanation": "\"They that carried us away captive required of us a song; and they that wasted us required of us mirth.\"",
+  "ref": "Psalms 137:3"
+ },
+ {
+  "id": "psalms-137-m-03",
+  "chapter": 137,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalmist say should happen to his right hand if he forgets Jerusalem?",
+  "choices": [
+   "It is cut off",
+   "It is bound",
+   "It forgets her cunning",
+   "It is lifted up"
+  ],
+  "answer": 2,
+  "explanation": "\"If I forget thee, O Jerusalem, let my right hand forget her cunning.\"",
+  "ref": "Psalms 137:5"
+ },
+ {
+  "id": "psalms-137-m-04",
+  "chapter": 137,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Above what does the psalmist say he must set Jerusalem?",
+  "choices": [
+   "His own house",
+   "His harp",
+   "His chief joy",
+   "His freedom"
+  ],
+  "answer": 2,
+  "explanation": "\"If I prefer not Jerusalem above my chief joy.\"",
+  "ref": "Psalms 137:6"
+ },
+ {
+  "id": "psalms-137-m-05",
+  "chapter": 137,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does the psalmist ask the LORD to remember for what they said in Jerusalem’s day?",
+  "choices": [
+   "The sons of Ammon",
+   "The kings of Assyria",
+   "The children of Edom",
+   "The people of Moab"
+  ],
+  "answer": 2,
+  "explanation": "\"Remember, O LORD, the children of Edom in the day of Jerusalem.\"",
+  "ref": "Psalms 137:7"
+ },
+ {
+  "id": "psalms-137-h-01",
+  "chapter": 137,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the children of Edom say about Jerusalem?",
+  "choices": [
+   "Keep it for a heritage",
+   "Rase it, even to the foundation",
+   "Spare it for a season",
+   "Build it again"
+  ],
+  "answer": 1,
+  "explanation": "\"Who said, Rase it, rase it, even to the foundation thereof.\"",
+  "ref": "Psalms 137:7"
+ },
+ {
+  "id": "psalms-137-h-02",
+  "chapter": 137,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is called \"daughter of Babylon\" and said to be destroyed?",
+  "choices": [
+   "Edom",
+   "Babylon",
+   "Egypt",
+   "Assyria"
+  ],
+  "answer": 1,
+  "explanation": "\"O daughter of Babylon, who art to be destroyed.\"",
+  "ref": "Psalms 137:8"
+ },
+ {
+  "id": "psalms-137-h-03",
+  "chapter": 137,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the exiles’ harps hung upon, in the midst of Babylon?",
+  "choices": [
+   "The city gates",
+   "The willows",
+   "The temple pillars",
+   "The tent poles"
+  ],
+  "answer": 1,
+  "explanation": "\"We hanged our harps upon the willows in the midst thereof.\"",
+  "ref": "Psalms 137:2"
+ },
+ {
+  "id": "psalms-137-h-04",
+  "chapter": 137,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the psalmist’s question about singing the LORD’s song?",
+  "choices": [
+   "Who will teach it to the young",
+   "How can he sing it in a strange land",
+   "When will the temple be rebuilt",
+   "Why do the captors ask"
+  ],
+  "answer": 1,
+  "explanation": "\"How shall we sing the LORD’S song in a strange land?\"",
+  "ref": "Psalms 137:4"
+ },
+ {
+  "id": "psalms-137-h-05",
+  "chapter": 137,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalm say should happen to the tongue if Jerusalem is not remembered?",
+  "choices": [
+   "It is cut out",
+   "It cleaves to the roof of the mouth",
+   "It speaks no truth",
+   "It praises Babylon"
+  ],
+  "answer": 1,
+  "explanation": "\"If I do not remember thee, let my tongue cleave to the roof of my mouth.\"",
+  "ref": "Psalms 137:6"
+ },
+ {
+  "id": "psalms-138-e-01",
+  "chapter": 138,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Toward what will David worship?",
+  "choices": [
+   "The ark of the covenant",
+   "The mountains of Zion",
+   "The altar of the court",
+   "His holy temple"
+  ],
+  "answer": 3,
+  "explanation": "\"I will worship toward thy holy temple.\"",
+  "ref": "Psalms 138:2"
+ },
+ {
+  "id": "psalms-138-m-01",
+  "chapter": 138,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what two things does David praise the LORD’s name?",
+  "choices": [
+   "Strength and glory",
+   "Mercy and judgment",
+   "Lovingkindness and truth",
+   "Power and wisdom"
+  ],
+  "answer": 2,
+  "explanation": "\"Praise thy name for thy lovingkindness and for thy truth.\"",
+  "ref": "Psalms 138:2"
+ },
+ {
+  "id": "psalms-138-m-02",
+  "chapter": 138,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD do for David in the day he cried?",
+  "choices": [
+   "Sent an angel and healed him",
+   "Hid him and fed him",
+   "Answered him and strengthened his soul",
+   "Gave him a crown and a sword"
+  ],
+  "answer": 2,
+  "explanation": "\"In the day when I cried thou answeredst me, and strengthenedst me with strength in my soul.\"",
+  "ref": "Psalms 138:3"
+ },
+ {
+  "id": "psalms-138-m-03",
+  "chapter": 138,
+  "level": "medium",
+  "category": "person",
+  "question": "Who will praise the LORD when they hear the words of his mouth?",
+  "choices": [
+   "All the priests of Israel",
+   "All the poor of the land",
+   "All the kings of the earth",
+   "All the elders of Zion"
+  ],
+  "answer": 2,
+  "explanation": "\"All the kings of the earth shall praise thee, O LORD, when they hear the words of thy mouth.\"",
+  "ref": "Psalms 138:4"
+ },
+ {
+  "id": "psalms-138-m-04",
+  "chapter": 138,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom does the LORD have respect unto, though he is high?",
+  "choices": [
+   "The mighty",
+   "The wise",
+   "The lowly",
+   "The rich"
+  ],
+  "answer": 2,
+  "explanation": "\"Though the LORD be high, yet hath he respect unto the lowly.\"",
+  "ref": "Psalms 138:6"
+ },
+ {
+  "id": "psalms-138-m-05",
+  "chapter": 138,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the LORD know the proud?",
+  "choices": [
+   "By their works",
+   "By their names",
+   "Afar off",
+   "By their prayers"
+  ],
+  "answer": 2,
+  "explanation": "\"But the proud he knoweth afar off.\"",
+  "ref": "Psalms 138:6"
+ },
+ {
+  "id": "psalms-138-h-01",
+  "chapter": 138,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom will David sing praise?",
+  "choices": [
+   "Before the kings",
+   "Before the gods",
+   "Before the priests",
+   "Before the people"
+  ],
+  "answer": 1,
+  "explanation": "\"Before the gods will I sing praise unto thee.\"",
+  "ref": "Psalms 138:1"
+ },
+ {
+  "id": "psalms-138-h-02",
+  "chapter": 138,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the LORD magnified above all his name?",
+  "choices": [
+   "His house",
+   "His word",
+   "His mercy",
+   "His power"
+  ],
+  "answer": 1,
+  "explanation": "\"Thou hast magnified thy word above all thy name.\"",
+  "ref": "Psalms 138:2"
+ },
+ {
+  "id": "psalms-138-h-03",
+  "chapter": 138,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD stretch forth against the wrath of David’s enemies?",
+  "choices": [
+   "His sword",
+   "His hand",
+   "His rod",
+   "His voice"
+  ],
+  "answer": 1,
+  "explanation": "\"Thou shalt stretch forth thine hand against the wrath of mine enemies, and thy right hand shall save me.\"",
+  "ref": "Psalms 138:7"
+ },
+ {
+  "id": "psalms-138-h-04",
+  "chapter": 138,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD perfect?",
+  "choices": [
+   "The walls of Zion",
+   "That which concerneth David",
+   "The land of Israel",
+   "The throne of the kingdom"
+  ],
+  "answer": 1,
+  "explanation": "\"The LORD will perfect that which concerneth me.\"",
+  "ref": "Psalms 138:8"
+ },
+ {
+  "id": "psalms-138-h-05",
+  "chapter": 138,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David ask the LORD not to forsake?",
+  "choices": [
+   "The house of David",
+   "The works of his own hands",
+   "The city of Zion",
+   "The temple courts"
+  ],
+  "answer": 1,
+  "explanation": "\"Forsake not the works of thine own hands.\"",
+  "ref": "Psalms 138:8"
+ },
+ {
+  "id": "psalms-139-e-01",
+  "chapter": 139,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the psalmist say God knows of his words?",
+  "choices": [
+   "Every word before it is on his tongue",
+   "Only the words he writes",
+   "Only his prayers",
+   "Only his songs"
+  ],
+  "answer": 0,
+  "explanation": "\"There is not a word in my tongue, but, lo, O LORD, thou knowest it altogether.\"",
+  "ref": "Psalms 139:4"
+ },
+ {
+  "id": "psalms-139-e-02",
+  "chapter": 139,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If the psalmist ascends up into heaven, who is there?",
+  "choices": [
+   "The LORD",
+   "An angel",
+   "His enemies",
+   "No one"
+  ],
+  "answer": 0,
+  "explanation": "\"If I ascend up into heaven, thou art there.\"",
+  "ref": "Psalms 139:8"
+ },
+ {
+  "id": "psalms-139-e-03",
+  "chapter": 139,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If the psalmist takes the wings of the morning, where will God’s hand lead him?",
+  "choices": [
+   "Even in the uttermost parts of the sea",
+   "Back to Zion",
+   "Over the mountains",
+   "Into the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "\"If I take the wings of the morning, and dwell in the uttermost parts of the sea; even there shall thy hand lead me.\"",
+  "ref": "Psalms 139:9–10"
+ },
+ {
+  "id": "psalms-139-e-04",
+  "chapter": 139,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the psalmist say of the darkness and light with God?",
+  "choices": [
+   "They are both alike to him",
+   "Darkness hides him from enemies",
+   "Light is stronger than night",
+   "Darkness is stronger than light"
+  ],
+  "answer": 0,
+  "explanation": "\"The darkness and the light are both alike to thee.\"",
+  "ref": "Psalms 139:12"
+ },
+ {
+  "id": "psalms-139-e-05",
+  "chapter": 139,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the night do for God?",
+  "choices": [
+   "It shines as the day",
+   "It hides his face",
+   "It brings him rest",
+   "It covers the earth"
+  ],
+  "answer": 0,
+  "explanation": "\"The night shineth as the day.\"",
+  "ref": "Psalms 139:12"
+ },
+ {
+  "id": "psalms-139-e-06",
+  "chapter": 139,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God cover in the psalmist’s mother’s womb?",
+  "choices": [
+   "The psalmist himself",
+   "The unborn tribes of Israel",
+   "The bones of his fathers",
+   "The seed of David"
+  ],
+  "answer": 0,
+  "explanation": "\"Thou hast covered me in my mother’s womb.\"",
+  "ref": "Psalms 139:13"
+ },
+ {
+  "id": "psalms-139-e-07",
+  "chapter": 139,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many are God’s thoughts compared to?",
+  "choices": [
+   "More than the sand",
+   "More than the stars",
+   "More than the waves",
+   "More than the leaves"
+  ],
+  "answer": 0,
+  "explanation": "\"If I should count them, they are more in number than the sand.\"",
+  "ref": "Psalms 139:18"
+ },
+ {
+  "id": "psalms-139-e-08",
+  "chapter": 139,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the psalmist ask God to do with his heart?",
+  "choices": [
+   "Search it and know it",
+   "Break it and heal it",
+   "Harden it and keep it",
+   "Fill it and rule it"
+  ],
+  "answer": 0,
+  "explanation": "\"Search me, O God, and know my heart.\"",
+  "ref": "Psalms 139:23"
+ },
+ {
+  "id": "psalms-139-m-01",
+  "chapter": 139,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalmist say God knows, besides his downsitting?",
+  "choices": [
+   "His uprising",
+   "His wealth",
+   "His kingdom",
+   "His songs"
+  ],
+  "answer": 0,
+  "explanation": "\"Thou knowest my downsitting and mine uprising.\"",
+  "ref": "Psalms 139:2"
+ },
+ {
+  "id": "psalms-139-m-02",
+  "chapter": 139,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God compass?",
+  "choices": [
+   "His path and his lying down",
+   "His house and his field",
+   "His tent and his flock",
+   "His throne and his city"
+  ],
+  "answer": 0,
+  "explanation": "\"Thou compassest my path and my lying down.\"",
+  "ref": "Psalms 139:3"
+ },
+ {
+  "id": "psalms-139-m-03",
+  "chapter": 139,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How has God set the psalmist about?",
+  "choices": [
+   "Behind and before, with his hand upon him",
+   "Above and below, with his shield",
+   "Within and without, with his fire",
+   "Left and right, with his sword"
+  ],
+  "answer": 0,
+  "explanation": "\"Thou hast beset me behind and before, and laid thine hand upon me.\"",
+  "ref": "Psalms 139:5"
+ },
+ {
+  "id": "psalms-139-m-04",
+  "chapter": 139,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalmist say of such knowledge?",
+  "choices": [
+   "It is too wonderful for him",
+   "It is hidden by the priests",
+   "It is given only to kings",
+   "It is written in the law"
+  ],
+  "answer": 0,
+  "explanation": "\"Such knowledge is too wonderful for me; it is high, I cannot attain unto it.\"",
+  "ref": "Psalms 139:6"
+ },
+ {
+  "id": "psalms-139-m-05",
+  "chapter": 139,
+  "level": "medium",
+  "category": "place",
+  "question": "Where else is God, if the psalmist makes his bed in hell?",
+  "choices": [
+   "He is there",
+   "He is far from there",
+   "He is silent there",
+   "He is hidden there"
+  ],
+  "answer": 0,
+  "explanation": "\"If I make my bed in hell, behold, thou art there.\"",
+  "ref": "Psalms 139:8"
+ },
+ {
+  "id": "psalms-139-m-06",
+  "chapter": 139,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalmist say if he says, Surely the darkness shall cover me?",
+  "choices": [
+   "The night shall be light about him",
+   "The darkness shall hide him",
+   "The night shall pass",
+   "The stars shall guide him"
+  ],
+  "answer": 0,
+  "explanation": "\"Surely the darkness shall cover me; even the night shall be light about me.\"",
+  "ref": "Psalms 139:11"
+ },
+ {
+  "id": "psalms-139-m-07",
+  "chapter": 139,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalmist say God possessed?",
+  "choices": [
+   "His reins",
+   "His crown",
+   "His flock",
+   "His house"
+  ],
+  "answer": 0,
+  "explanation": "\"For thou hast possessed my reins.\"",
+  "ref": "Psalms 139:13"
+ },
+ {
+  "id": "psalms-139-m-08",
+  "chapter": 139,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the psalmist praise God?",
+  "choices": [
+   "He is fearfully and wonderfully made",
+   "He was given a throne",
+   "He was healed of sickness",
+   "He was freed from his enemies"
+  ],
+  "answer": 0,
+  "explanation": "\"I will praise thee; for I am fearfully and wonderfully made.\"",
+  "ref": "Psalms 139:14"
+ },
+ {
+  "id": "psalms-139-m-09",
+  "chapter": 139,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not hid from God when the psalmist was made in secret?",
+  "choices": [
+   "His substance",
+   "His name",
+   "His sins",
+   "His enemies"
+  ],
+  "answer": 0,
+  "explanation": "\"My substance was not hid from thee, when I was made in secret.\"",
+  "ref": "Psalms 139:15"
+ },
+ {
+  "id": "psalms-139-m-10",
+  "chapter": 139,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the psalmist curiously wrought?",
+  "choices": [
+   "In the lowest parts of the earth",
+   "In the house of his father",
+   "In the courts of the temple",
+   "In the cities of Judah"
+  ],
+  "answer": 0,
+  "explanation": "\"Curiously wrought in the lowest parts of the earth.\"",
+  "ref": "Psalms 139:15"
+ },
+ {
+  "id": "psalms-139-m-11",
+  "chapter": 139,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalmist say of God’s thoughts?",
+  "choices": [
+   "They are precious to him",
+   "They are hidden from him",
+   "They are too hard for him",
+   "They are against him"
+  ],
+  "answer": 0,
+  "explanation": "\"How precious also are thy thoughts unto me, O God!\"",
+  "ref": "Psalms 139:17"
+ },
+ {
+  "id": "psalms-139-m-12",
+  "chapter": 139,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the psalmist still doing when he awakes?",
+  "choices": [
+   "Still with God",
+   "Still counting his thoughts",
+   "Still in his enemies’ hands",
+   "Still seeking a king"
+  ],
+  "answer": 0,
+  "explanation": "\"When I awake, I am still with thee.\"",
+  "ref": "Psalms 139:18"
+ },
+ {
+  "id": "psalms-139-h-01",
+  "chapter": 139,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God see of the psalmist, being yet unperfect?",
+  "choices": [
+   "His substance",
+   "His strength",
+   "His tears",
+   "His house"
+  ],
+  "answer": 0,
+  "explanation": "\"Thine eyes did see my substance, yet being unperfect.\"",
+  "ref": "Psalms 139:16"
+ },
+ {
+  "id": "psalms-139-h-02",
+  "chapter": 139,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what are all the psalmist’s members written?",
+  "choices": [
+   "God’s book",
+   "The book of the law",
+   "A scroll of the prophets",
+   "The records of the kings"
+  ],
+  "answer": 0,
+  "explanation": "\"In thy book all my members were written, which in continuance were fashioned.\"",
+  "ref": "Psalms 139:16"
+ },
+ {
+  "id": "psalms-139-h-03",
+  "chapter": 139,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does the psalmist tell to depart from him?",
+  "choices": [
+   "Bloody men",
+   "Proud priests",
+   "False prophets",
+   "Foolish kings"
+  ],
+  "answer": 0,
+  "explanation": "\"Depart from me therefore, ye bloody men.\"",
+  "ref": "Psalms 139:19"
+ },
+ {
+  "id": "psalms-139-h-04",
+  "chapter": 139,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do God’s enemies do with his name?",
+  "choices": [
+   "Take it in vain",
+   "Hide it in the temple",
+   "Write it on stones",
+   "Sing it in the street"
+  ],
+  "answer": 0,
+  "explanation": "\"Thine enemies take thy name in vain.\"",
+  "ref": "Psalms 139:20"
+ },
+ {
+  "id": "psalms-139-h-05",
+  "chapter": 139,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalmist say of God’s enemies, whom he counts as his own?",
+  "choices": [
+   "He hates them with perfect hatred",
+   "He fears them with perfect fear",
+   "He serves them with perfect service",
+   "He loves them with perfect love"
+  ],
+  "answer": 0,
+  "explanation": "\"I hate them with perfect hatred: I count them mine enemies.\"",
+  "ref": "Psalms 139:22"
+ },
+ {
+  "id": "psalms-139-h-06",
+  "chapter": 139,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalmist ask God to see in him?",
+  "choices": [
+   "Any wicked way",
+   "Any hidden gold",
+   "Any unpaid vow",
+   "Any lost sheep"
+  ],
+  "answer": 0,
+  "explanation": "\"See if there be any wicked way in me.\"",
+  "ref": "Psalms 139:24"
+ },
+ {
+  "id": "psalms-139-h-07",
+  "chapter": 139,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into what way does the psalmist ask to be led?",
+  "choices": [
+   "The way everlasting",
+   "The way of kings",
+   "The way of the temple",
+   "The way of Zion"
+  ],
+  "answer": 0,
+  "explanation": "\"And lead me in the way everlasting.\"",
+  "ref": "Psalms 139:24"
+ },
+ {
+  "id": "psalms-139-h-08",
+  "chapter": 139,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalmist say God understands from afar?",
+  "choices": [
+   "His thought",
+   "His songs",
+   "His sorrows",
+   "His plans"
+  ],
+  "answer": 0,
+  "explanation": "\"Thou understandest my thought afar off.\"",
+  "ref": "Psalms 139:2"
+ },
+ {
+  "id": "psalms-139-h-09",
+  "chapter": 139,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalmist ask God to do, besides search him?",
+  "choices": [
+   "Try him",
+   "Teach him",
+   "Heal him",
+   "Crown him"
+  ],
+  "answer": 0,
+  "explanation": "\"Search me, O God, and know my heart: try me, and know my thoughts.\"",
+  "ref": "Psalms 139:23"
+ },
+ {
+  "id": "psalms-139-h-10",
+  "chapter": 139,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalmist say he is grieved with?",
+  "choices": [
+   "Those that rise up against God",
+   "Those who forget the sabbath",
+   "Those who flatter the king",
+   "Those who leave Zion"
+  ],
+  "answer": 0,
+  "explanation": "\"Am not I grieved with those that rise up against thee?\"",
+  "ref": "Psalms 139:21"
+ },
+ {
+  "id": "psalms-139-h-11",
+  "chapter": 139,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question opens the psalmist’s thought about fleeing?",
+  "choices": [
+   "Whither shall I flee from thy presence?",
+   "Who shall lead me out of trouble?",
+   "Where is my help in the night?",
+   "What shall I render to the LORD?"
+  ],
+  "answer": 0,
+  "explanation": "\"Whither shall I go from thy spirit? or whither shall I flee from thy presence?\"",
+  "ref": "Psalms 139:7"
+ },
+ {
+  "id": "psalms-139-h-12",
+  "chapter": 139,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will God do to the wicked, in the psalmist’s words?",
+  "choices": [
+   "Slay them",
+   "Forgive them",
+   "Teach them",
+   "Hide them"
+  ],
+  "answer": 0,
+  "explanation": "\"Surely thou wilt slay the wicked, O God.\"",
+  "ref": "Psalms 139:19"
+ },
+ {
+  "id": "psalms-140-e-01",
+  "chapter": 140,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is under the lips of the evil men?",
+  "choices": [
+   "Honey and oil",
+   "Adders’ poison",
+   "Ashes and dust",
+   "Fire and ice"
+  ],
+  "answer": 1,
+  "explanation": "\"They have sharpened their tongues like a serpent; adders’ poison is under their lips.\"",
+  "ref": "Psalms 140:3"
+ },
+ {
+  "id": "psalms-140-e-02",
+  "chapter": 140,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD cover for David in the day of battle?",
+  "choices": [
+   "His house",
+   "His head",
+   "His camp",
+   "His city"
+  ],
+  "answer": 1,
+  "explanation": "\"Thou hast covered my head in the day of battle.\"",
+  "ref": "Psalms 140:7"
+ },
+ {
+  "id": "psalms-140-e-03",
+  "chapter": 140,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose cause does David know the LORD will maintain?",
+  "choices": [
+   "The kings and the priests",
+   "The afflicted and the poor",
+   "The strong and the proud",
+   "The wise and the rich"
+  ],
+  "answer": 1,
+  "explanation": "\"I know that the LORD will maintain the cause of the afflicted, and the right of the poor.\"",
+  "ref": "Psalms 140:12"
+ },
+ {
+  "id": "psalms-140-m-01",
+  "chapter": 140,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what are the evil men continually gathered together?",
+  "choices": [
+   "For feasting",
+   "For judgment",
+   "For war",
+   "For trade"
+  ],
+  "answer": 2,
+  "explanation": "\"Continually are they gathered together for war.\"",
+  "ref": "Psalms 140:2"
+ },
+ {
+  "id": "psalms-140-m-02",
+  "chapter": 140,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the proud spread by the wayside?",
+  "choices": [
+   "A feast",
+   "A banner",
+   "A net",
+   "A table"
+  ],
+  "answer": 2,
+  "explanation": "\"They have spread a net by the wayside.\"",
+  "ref": "Psalms 140:5"
+ },
+ {
+  "id": "psalms-140-m-03",
+  "chapter": 140,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David ask the LORD not to grant the wicked?",
+  "choices": [
+   "Their bread",
+   "Their rest",
+   "Their desires",
+   "Their land"
+  ],
+  "answer": 2,
+  "explanation": "\"Grant not, O LORD, the desires of the wicked.\"",
+  "ref": "Psalms 140:8"
+ },
+ {
+  "id": "psalms-140-m-04",
+  "chapter": 140,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David ask to cover the head of those who compass him about?",
+  "choices": [
+   "The wrath of the king",
+   "The darkness of the night",
+   "The mischief of their own lips",
+   "The waters of the flood"
+  ],
+  "answer": 2,
+  "explanation": "\"Let the mischief of their own lips cover them.\"",
+  "ref": "Psalms 140:9"
+ },
+ {
+  "id": "psalms-140-m-05",
+  "chapter": 140,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David ask to fall upon the wicked?",
+  "choices": [
+   "Hailstones",
+   "A great sword",
+   "Burning coals",
+   "A heavy rain"
+  ],
+  "answer": 2,
+  "explanation": "\"Let burning coals fall upon them.\"",
+  "ref": "Psalms 140:10"
+ },
+ {
+  "id": "psalms-140-m-06",
+  "chapter": 140,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David say about the evil speaker?",
+  "choices": [
+   "He should be made a judge",
+   "He should be given a throne",
+   "He should not be established in the earth",
+   "He should be sent away"
+  ],
+  "answer": 2,
+  "explanation": "\"Let not an evil speaker be established in the earth.\"",
+  "ref": "Psalms 140:11"
+ },
+ {
+  "id": "psalms-140-m-07",
+  "chapter": 140,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David say to the LORD in his prayer, apart from asking for help?",
+  "choices": [
+   "Thou art my king",
+   "Thou art my shepherd",
+   "Thou art my God",
+   "Thou art my rock"
+  ],
+  "answer": 2,
+  "explanation": "\"I said unto the LORD, Thou art my God.\"",
+  "ref": "Psalms 140:6"
+ },
+ {
+  "id": "psalms-140-h-01",
+  "chapter": 140,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which sort of men does David ask to be preserved from?",
+  "choices": [
+   "The foolish man",
+   "The rich man",
+   "The idle man",
+   "The violent man"
+  ],
+  "answer": 3,
+  "explanation": "\"Preserve me from the violent man.\"",
+  "ref": "Psalms 140:1"
+ },
+ {
+  "id": "psalms-140-h-02",
+  "chapter": 140,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What have the proud set for David, besides the snare and the net?",
+  "choices": [
+   "Fires",
+   "Spears",
+   "Waters",
+   "Gins"
+  ],
+  "answer": 3,
+  "explanation": "\"They have set gins for me.\"",
+  "ref": "Psalms 140:5"
+ },
+ {
+  "id": "psalms-140-h-03",
+  "chapter": 140,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into what are the wicked asked to be cast?",
+  "choices": [
+   "The sea and the sand",
+   "The desert and the cave",
+   "The river and the pit of Sheol",
+   "Fire and deep pits"
+  ],
+  "answer": 3,
+  "explanation": "\"Let them be cast into the fire; into deep pits, that they rise not up again.\"",
+  "ref": "Psalms 140:10"
+ },
+ {
+  "id": "psalms-140-h-04",
+  "chapter": 140,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall hunt the violent man to overthrow him?",
+  "choices": [
+   "The righteous",
+   "The law",
+   "The sword",
+   "Evil"
+  ],
+  "answer": 3,
+  "explanation": "\"Evil shall hunt the violent man to overthrow him.\"",
+  "ref": "Psalms 140:11"
+ },
+ {
+  "id": "psalms-140-h-05",
+  "chapter": 140,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who shall give thanks unto the LORD’s name?",
+  "choices": [
+   "The kings of the earth",
+   "The priests of Zion",
+   "The strangers in the land",
+   "The righteous"
+  ],
+  "answer": 3,
+  "explanation": "\"Surely the righteous shall give thanks unto thy name.\"",
+  "ref": "Psalms 140:13"
+ },
+ {
+  "id": "psalms-140-h-06",
+  "chapter": 140,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David call the LORD, in his prayer for protection in battle?",
+  "choices": [
+   "The lamp of his path",
+   "The rock of his refuge",
+   "The horn of his salvation",
+   "The strength of his salvation"
+  ],
+  "answer": 3,
+  "explanation": "\"O GOD the Lord, the strength of my salvation.\"",
+  "ref": "Psalms 140:7"
+ },
+ {
+  "id": "psalms-140-h-07",
+  "chapter": 140,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where shall the upright dwell?",
+  "choices": [
+   "In the land of Israel",
+   "In the city of David",
+   "In the courts of the temple",
+   "In the LORD’s presence"
+  ],
+  "answer": 3,
+  "explanation": "\"The upright shall dwell in thy presence.\"",
+  "ref": "Psalms 140:13"
+ },
+ {
+  "id": "psalms-141-e-01",
+  "chapter": 141,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does David say the lifting up of his hands is like?",
+  "choices": [
+   "The morning offering",
+   "A feast of trumpets",
+   "The evening sacrifice",
+   "A song of ascents"
+  ],
+  "answer": 2,
+  "explanation": "\"Let my prayer be set forth before thee as incense; and the lifting up of my hands as the evening sacrifice.\"",
+  "ref": "Psalms 141:2"
+ },
+ {
+  "id": "psalms-141-m-01",
+  "chapter": 141,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David ask the LORD to keep?",
+  "choices": [
+   "The gate of his house",
+   "The door of his lips",
+   "The key of his tent",
+   "The way of his feet"
+  ],
+  "answer": 1,
+  "explanation": "\"Set a watch, O LORD, before my mouth; keep the door of my lips.\"",
+  "ref": "Psalms 141:3"
+ },
+ {
+  "id": "psalms-141-m-02",
+  "chapter": 141,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David ask not to eat?",
+  "choices": [
+   "Bread without salt",
+   "The dainties of the wicked",
+   "Meat from the altar",
+   "Fruit of the vineyard"
+  ],
+  "answer": 1,
+  "explanation": "\"Let me not eat of their dainties.\"",
+  "ref": "Psalms 141:4"
+ },
+ {
+  "id": "psalms-141-m-03",
+  "chapter": 141,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what does David say his prayer shall also be?",
+  "choices": [
+   "Their feasts",
+   "Their calamities",
+   "Their camps",
+   "Their houses"
+  ],
+  "answer": 1,
+  "explanation": "\"For yet my prayer also shall be in their calamities.\"",
+  "ref": "Psalms 141:5"
+ },
+ {
+  "id": "psalms-141-m-04",
+  "chapter": 141,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David say a righteous man’s reproof shall be like?",
+  "choices": [
+   "A bitter herb",
+   "An excellent oil",
+   "A sharp sword",
+   "A heavy yoke"
+  ],
+  "answer": 1,
+  "explanation": "\"Let him reprove me; it shall be an excellent oil, which shall not break my head.\"",
+  "ref": "Psalms 141:5"
+ },
+ {
+  "id": "psalms-141-m-05",
+  "chapter": 141,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are scattered at the grave’s mouth?",
+  "choices": [
+   "Our tents",
+   "Our bones",
+   "Our flocks",
+   "Our names"
+  ],
+  "answer": 1,
+  "explanation": "\"Our bones are scattered at the grave’s mouth.\"",
+  "ref": "Psalms 141:7"
+ },
+ {
+  "id": "psalms-141-h-01",
+  "chapter": 141,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what is the scattering of bones compared?",
+  "choices": [
+   "Cutting and cleaving wood",
+   "Reaping a field",
+   "Threshing grain",
+   "Casting seed"
+  ],
+  "answer": 0,
+  "explanation": "\"As when one cutteth and cleaveth wood upon the earth.\"",
+  "ref": "Psalms 141:7"
+ },
+ {
+  "id": "psalms-141-h-02",
+  "chapter": 141,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David say shall be heard when their judges are overthrown in stony places?",
+  "choices": [
+   "His words, for they are sweet",
+   "The trumpet of war",
+   "The cry of the poor",
+   "The song of the temple"
+  ],
+  "answer": 0,
+  "explanation": "\"They shall hear my words; for they are sweet.\"",
+  "ref": "Psalms 141:6"
+ },
+ {
+  "id": "psalms-141-h-03",
+  "chapter": 141,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David say about the wicked and their nets?",
+  "choices": [
+   "Let them fall into their own nets",
+   "Let them be scattered like chaff",
+   "Let them be bound in chains",
+   "Let them be cut off in the night"
+  ],
+  "answer": 0,
+  "explanation": "\"Let the wicked fall into their own nets, whilst that I withal escape.\"",
+  "ref": "Psalms 141:10"
+ },
+ {
+  "id": "psalms-141-h-04",
+  "chapter": 141,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David ask not to be left?",
+  "choices": [
+   "Destitute",
+   "Alone",
+   "Unheard",
+   "Unforgiven"
+  ],
+  "answer": 0,
+  "explanation": "\"In thee is my trust; leave not my soul destitute.\"",
+  "ref": "Psalms 141:8"
+ },
+ {
+  "id": "psalms-141-h-05",
+  "chapter": 141,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what does David ask to be kept, laid by the workers of iniquity?",
+  "choices": [
+   "Snares and gins",
+   "Wars and plagues",
+   "Storms and floods",
+   "Famines and thirst"
+  ],
+  "answer": 0,
+  "explanation": "\"Keep me from the snares which they have laid for me, and the gins of the workers of iniquity.\"",
+  "ref": "Psalms 141:9"
+ },
+ {
+  "id": "psalms-142-e-01",
+  "chapter": 142,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had been privily laid for David in the way he walked?",
+  "choices": [
+   "A feast",
+   "A crown",
+   "A snare",
+   "A stone"
+  ],
+  "answer": 2,
+  "explanation": "\"In the way wherein I walked have they privily laid a snare for me.\"",
+  "ref": "Psalms 142:3"
+ },
+ {
+  "id": "psalms-142-e-02",
+  "chapter": 142,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did David look and find no man who would know him?",
+  "choices": [
+   "Behind him",
+   "Toward the city",
+   "On his right hand",
+   "Over the wall"
+  ],
+  "answer": 2,
+  "explanation": "\"I looked on my right hand, and beheld, but there was no man that would know me.\"",
+  "ref": "Psalms 142:4"
+ },
+ {
+  "id": "psalms-142-m-01",
+  "chapter": 142,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What failed David, when no man cared for his soul?",
+  "choices": [
+   "Food",
+   "Refuge",
+   "Strength",
+   "Sight"
+  ],
+  "answer": 1,
+  "explanation": "\"Refuge failed me; no man cared for my soul.\"",
+  "ref": "Psalms 142:4"
+ },
+ {
+  "id": "psalms-142-m-02",
+  "chapter": 142,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David say his persecutors are?",
+  "choices": [
+   "Fewer than he is",
+   "Stronger than he is",
+   "Wiser than he is",
+   "Weaker than he is"
+  ],
+  "answer": 1,
+  "explanation": "\"Deliver me from my persecutors; for they are stronger than I.\"",
+  "ref": "Psalms 142:6"
+ },
+ {
+  "id": "psalms-142-m-03",
+  "chapter": 142,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David ask the LORD to bring his soul out of?",
+  "choices": [
+   "Egypt",
+   "Prison",
+   "The cave",
+   "The wilderness"
+  ],
+  "answer": 1,
+  "explanation": "\"Bring my soul out of prison, that I may praise thy name.\"",
+  "ref": "Psalms 142:7"
+ },
+ {
+  "id": "psalms-142-m-04",
+  "chapter": 142,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the righteous do when the LORD deals bountifully with David?",
+  "choices": [
+   "Rejoice in the temple",
+   "Compass him about",
+   "Flee from the city",
+   "Bring him gifts"
+  ],
+  "answer": 1,
+  "explanation": "\"The righteous shall compass me about; for thou shalt deal bountifully with me.\"",
+  "ref": "Psalms 142:7"
+ },
+ {
+  "id": "psalms-142-h-01",
+  "chapter": 142,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David say to the LORD about the land of the living?",
+  "choices": [
+   "Thou art my healer",
+   "Thou art my portion",
+   "Thou art my king",
+   "Thou art my guide"
+  ],
+  "answer": 1,
+  "explanation": "\"Thou art my refuge and my portion in the land of the living.\"",
+  "ref": "Psalms 142:5"
+ },
+ {
+  "id": "psalms-142-m-05",
+  "chapter": 142,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David say he is brought?",
+  "choices": [
+   "Very low",
+   "Into the cave",
+   "Before the king",
+   "Away from the city"
+  ],
+  "answer": 0,
+  "explanation": "\"Attend unto my cry; for I am brought very low.\"",
+  "ref": "Psalms 142:6"
+ },
+ {
+  "id": "psalms-142-h-02",
+  "chapter": 142,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David show before the LORD, besides his complaint?",
+  "choices": [
+   "His trouble",
+   "His wounds",
+   "His wealth",
+   "His sins"
+  ],
+  "answer": 0,
+  "explanation": "\"I poured out my complaint before him; I shewed before him my trouble.\"",
+  "ref": "Psalms 142:2"
+ },
+ {
+  "id": "psalms-142-h-03",
+  "chapter": 142,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was overwhelmed within David when the LORD knew his path?",
+  "choices": [
+   "His spirit",
+   "His army",
+   "His house",
+   "His city"
+  ],
+  "answer": 0,
+  "explanation": "\"When my spirit was overwhelmed within me, then thou knewest my path.\"",
+  "ref": "Psalms 142:3"
+ },
+ {
+  "id": "psalms-142-h-04",
+  "chapter": 142,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what reason does David ask to be brought out of prison?",
+  "choices": [
+   "That he may praise the LORD’s name",
+   "That he may rebuild the city",
+   "That he may see his family",
+   "That he may reign as king"
+  ],
+  "answer": 0,
+  "explanation": "\"Bring my soul out of prison, that I may praise thy name.\"",
+  "ref": "Psalms 142:7"
+ },
+ {
+  "id": "psalms-142-h-05",
+  "chapter": 142,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does David say he cried and made his supplication to the LORD?",
+  "choices": [
+   "With his voice",
+   "With a sacrifice",
+   "With a song on the harp",
+   "With a written scroll"
+  ],
+  "answer": 0,
+  "explanation": "\"I cried unto the LORD with my voice; with my voice unto the LORD did I make my supplication.\"",
+  "ref": "Psalms 142:1"
+ },
+ {
+  "id": "psalms-143-e-01",
+  "chapter": 143,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the psalmist say the enemy made him dwell in?",
+  "choices": [
+   "A cave of the rock",
+   "A tent of the wilderness",
+   "A pit of the earth",
+   "Darkness, as those long dead"
+  ],
+  "answer": 3,
+  "explanation": "\"He hath made me to dwell in darkness, as those that have been long dead.\"",
+  "ref": "Psalms 143:3"
+ },
+ {
+  "id": "psalms-143-e-02",
+  "chapter": 143,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what does the psalmist compare his soul, stretching forth his hands?",
+  "choices": [
+   "A weary traveller",
+   "A drying river",
+   "A hungry flock",
+   "A thirsty land"
+  ],
+  "answer": 3,
+  "explanation": "\"I stretch forth my hands unto thee: my soul thirsteth after thee, as a thirsty land.\"",
+  "ref": "Psalms 143:6"
+ },
+ {
+  "id": "psalms-143-m-01",
+  "chapter": 143,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalmist ask the LORD not to do with his face?",
+  "choices": [
+   "Turn it to his enemies",
+   "Show it to the nations",
+   "Hide it",
+   "Cover it with a cloud"
+  ],
+  "answer": 2,
+  "explanation": "\"Hide not thy face from me, lest I be like unto them that go down into the pit.\"",
+  "ref": "Psalms 143:7"
+ },
+ {
+  "id": "psalms-143-m-02",
+  "chapter": 143,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalmist ask to hear in the morning?",
+  "choices": [
+   "The LORD’s trumpet",
+   "The LORD’s judgments",
+   "The LORD’s lovingkindness",
+   "The LORD’s decree"
+  ],
+  "answer": 2,
+  "explanation": "\"Cause me to hear thy lovingkindness in the morning.\"",
+  "ref": "Psalms 143:8"
+ },
+ {
+  "id": "psalms-143-m-03",
+  "chapter": 143,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalmist remember and muse upon?",
+  "choices": [
+   "The kings of Israel",
+   "The words of the prophets",
+   "The days of old and the LORD’s works",
+   "The feasts of the year"
+  ],
+  "answer": 2,
+  "explanation": "\"I remember the days of old; I meditate on all thy works.\"",
+  "ref": "Psalms 143:5"
+ },
+ {
+  "id": "psalms-143-m-04",
+  "chapter": 143,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does the psalmist flee to hide himself?",
+  "choices": [
+   "Into the wilderness",
+   "To the mountains",
+   "Unto the LORD",
+   "Into the city"
+  ],
+  "answer": 2,
+  "explanation": "\"Deliver me, O LORD, from mine enemies: I flee unto thee to hide me.\"",
+  "ref": "Psalms 143:9"
+ },
+ {
+  "id": "psalms-143-m-05",
+  "chapter": 143,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into what land does the psalmist ask the LORD to lead him?",
+  "choices": [
+   "The land of promise",
+   "The land of milk and honey",
+   "The land of uprightness",
+   "The land of Zion"
+  ],
+  "answer": 2,
+  "explanation": "\"Thy spirit is good; lead me into the land of uprightness.\"",
+  "ref": "Psalms 143:10"
+ },
+ {
+  "id": "psalms-143-h-01",
+  "chapter": 143,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whose sake does he ask the LORD to quicken him?",
+  "choices": [
+   "For David’s sake",
+   "For his name’s sake",
+   "For Israel’s sake",
+   "For the temple’s sake"
+  ],
+  "answer": 1,
+  "explanation": "\"Quicken me, O LORD, for thy name’s sake.\"",
+  "ref": "Psalms 143:11"
+ },
+ {
+  "id": "psalms-143-h-02",
+  "chapter": 143,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does the psalmist say he is the LORD’s servant, when asking for his enemies to be cut off?",
+  "choices": [
+   "Because he is the king",
+   "Because he is thy servant",
+   "Because he is a priest",
+   "Because he is a prophet"
+  ],
+  "answer": 1,
+  "explanation": "\"Destroy all them that afflict my soul: for I am thy servant.\"",
+  "ref": "Psalms 143:12"
+ },
+ {
+  "id": "psalms-143-h-03",
+  "chapter": 143,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalmist ask the LORD not to enter into with him?",
+  "choices": [
+   "Covenant",
+   "Judgment",
+   "Battle",
+   "Council"
+  ],
+  "answer": 1,
+  "explanation": "\"Enter not into judgment with thy servant: for in thy sight shall no man living be justified.\"",
+  "ref": "Psalms 143:2"
+ },
+ {
+  "id": "psalms-143-h-04",
+  "chapter": 143,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the state of the psalmist’s heart?",
+  "choices": [
+   "Proud",
+   "Desolate",
+   "Joyful",
+   "Hardened"
+  ],
+  "answer": 1,
+  "explanation": "\"My spirit is overwhelmed within me; my heart within me is desolate.\"",
+  "ref": "Psalms 143:4"
+ },
+ {
+  "id": "psalms-143-h-05",
+  "chapter": 143,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the enemy do to his soul?",
+  "choices": [
+   "Healed it",
+   "Persecuted it",
+   "Taught it",
+   "Raised it"
+  ],
+  "answer": 1,
+  "explanation": "\"For the enemy hath persecuted my soul.\"",
+  "ref": "Psalms 143:3"
+ },
+ {
+  "id": "psalms-143-e-03",
+  "chapter": 143,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what two things does the psalmist ask the LORD to answer him?",
+  "choices": [
+   "Mercy and truth",
+   "Faithfulness and righteousness",
+   "Power and might",
+   "Wisdom and counsel"
+  ],
+  "answer": 1,
+  "explanation": "\"In thy faithfulness answer me, and in thy righteousness.\"",
+  "ref": "Psalms 143:1"
+ },
+ {
+  "id": "psalms-143-m-06",
+  "chapter": 143,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalmist ask the LORD to do speedily, as his spirit faileth?",
+  "choices": [
+   "Hear him",
+   "Heal him",
+   "Bring him home",
+   "Raise him up"
+  ],
+  "answer": 0,
+  "explanation": "\"Hear me speedily, O LORD: my spirit faileth.\"",
+  "ref": "Psalms 143:7"
+ },
+ {
+  "id": "psalms-143-h-06",
+  "chapter": 143,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For the sake of his righteousness, what does the psalmist ask the LORD to bring his soul out of?",
+  "choices": [
+   "Prison",
+   "Captivity",
+   "Sickness",
+   "Trouble"
+  ],
+  "answer": 3,
+  "explanation": "\"For thy righteousness’ sake bring my soul out of trouble.\"",
+  "ref": "Psalms 143:11"
+ },
+ {
+  "id": "psalms-144-e-01",
+  "chapter": 144,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will David sing unto God?",
+  "choices": [
+   "A song of ascents",
+   "A new song",
+   "A psalm of lament",
+   "A song of the harvest"
+  ],
+  "answer": 1,
+  "explanation": "\"I will sing a new song unto thee, O God.\"",
+  "ref": "Psalms 144:9"
+ },
+ {
+  "id": "psalms-144-e-02",
+  "chapter": 144,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what instrument of ten strings will David sing praises?",
+  "choices": [
+   "A trumpet",
+   "A psaltery",
+   "A pipe",
+   "A timbrel"
+  ],
+  "answer": 1,
+  "explanation": "\"Upon a psaltery and an instrument of ten strings will I sing praises unto thee.\"",
+  "ref": "Psalms 144:9"
+ },
+ {
+  "id": "psalms-144-e-03",
+  "chapter": 144,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are man’s days compared to?",
+  "choices": [
+   "A flower of the field",
+   "A shadow that passeth away",
+   "A river in flood",
+   "A tent in the wind"
+  ],
+  "answer": 1,
+  "explanation": "\"Man is like to vanity: his days are as a shadow that passeth away.\"",
+  "ref": "Psalms 144:4"
+ },
+ {
+  "id": "psalms-144-e-04",
+  "chapter": 144,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does the LORD deliver from the hurtful sword?",
+  "choices": [
+   "Moses his servant",
+   "David his servant",
+   "Aaron the priest",
+   "Saul the king"
+  ],
+  "answer": 1,
+  "explanation": "\"It is he that giveth salvation unto kings: who delivereth David his servant from the hurtful sword.\"",
+  "ref": "Psalms 144:10"
+ },
+ {
+  "id": "psalms-144-m-01",
+  "chapter": 144,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David call the LORD, besides his fortress?",
+  "choices": [
+   "His rock and his lamp",
+   "His high tower and his shield",
+   "His crown and his throne",
+   "His banner and his sword"
+  ],
+  "answer": 1,
+  "explanation": "\"My high tower, and my deliverer; my shield, and he in whom I trust.\"",
+  "ref": "Psalms 144:2"
+ },
+ {
+  "id": "psalms-144-m-02",
+  "chapter": 144,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David ask the LORD to bow?",
+  "choices": [
+   "The mountains",
+   "The heavens",
+   "The cedars",
+   "The seas"
+  ],
+  "answer": 1,
+  "explanation": "\"Bow thy heavens, O LORD, and come down.\"",
+  "ref": "Psalms 144:5"
+ },
+ {
+  "id": "psalms-144-m-03",
+  "chapter": 144,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will smoke when the LORD touches them?",
+  "choices": [
+   "The cedars",
+   "The mountains",
+   "The seas",
+   "The cities"
+  ],
+  "answer": 1,
+  "explanation": "\"Touch the mountains, and they shall smoke.\"",
+  "ref": "Psalms 144:5"
+ },
+ {
+  "id": "psalms-144-m-04",
+  "chapter": 144,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David ask the LORD to cast forth?",
+  "choices": [
+   "Fire from the altar",
+   "Lightning",
+   "A flood of waters",
+   "A trumpet blast"
+  ],
+  "answer": 1,
+  "explanation": "\"Cast forth lightning, and scatter them: shoot out thine arrows, and destroy them.\"",
+  "ref": "Psalms 144:6"
+ },
+ {
+  "id": "psalms-144-m-05",
+  "chapter": 144,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From what does David ask to be delivered, besides the hand of strange children?",
+  "choices": [
+   "Great famine",
+   "Great waters",
+   "Great darkness",
+   "Great pits"
+  ],
+  "answer": 1,
+  "explanation": "\"Rid me, and deliver me out of great waters, from the hand of strange children.\"",
+  "ref": "Psalms 144:7"
+ },
+ {
+  "id": "psalms-144-m-06",
+  "chapter": 144,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of the right hand of the strange children?",
+  "choices": [
+   "A right hand of violence",
+   "A right hand of falsehood",
+   "A right hand of idols",
+   "A right hand of gold"
+  ],
+  "answer": 1,
+  "explanation": "\"Whose mouth speaketh vanity, and their right hand is a right hand of falsehood.\"",
+  "ref": "Psalms 144:8"
+ },
+ {
+  "id": "psalms-144-m-07",
+  "chapter": 144,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David ask that his daughters may be?",
+  "choices": [
+   "As lamps in the temple",
+   "As corner stones, polished after a palace",
+   "As vines by the wall",
+   "As lilies of the field"
+  ],
+  "answer": 1,
+  "explanation": "\"That our daughters may be as corner stones, polished after the similitude of a palace.\"",
+  "ref": "Psalms 144:12"
+ },
+ {
+  "id": "psalms-144-m-08",
+  "chapter": 144,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David ask that his sons may be as?",
+  "choices": [
+   "Cedars of Lebanon",
+   "Plants grown up in their youth",
+   "Arrows in the quiver",
+   "Olive trees in the field"
+  ],
+  "answer": 1,
+  "explanation": "\"That our sons may be as plants grown up in their youth.\"",
+  "ref": "Psalms 144:12"
+ },
+ {
+  "id": "psalms-144-h-01",
+  "chapter": 144,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David ask for the garners?",
+  "choices": [
+   "That they be hidden from enemies",
+   "That they be full of all manner of store",
+   "That they be guarded by priests",
+   "That they be shared with the poor"
+  ],
+  "answer": 1,
+  "explanation": "\"That our garners may be full, affording all manner of store.\"",
+  "ref": "Psalms 144:13"
+ },
+ {
+  "id": "psalms-144-h-02",
+  "chapter": 144,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many may the sheep bring forth in the streets?",
+  "choices": [
+   "Hundreds and thousands",
+   "Thousands and ten thousands",
+   "Tens and twenties",
+   "Seven times seven"
+  ],
+  "answer": 1,
+  "explanation": "\"That our sheep may bring forth thousands and ten thousands in our streets.\"",
+  "ref": "Psalms 144:13"
+ },
+ {
+  "id": "psalms-144-h-03",
+  "chapter": 144,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David ask for the oxen?",
+  "choices": [
+   "That they be fat for the feast",
+   "That they be strong to labour",
+   "That they be offered at the altar",
+   "That they be kept in the stall"
+  ],
+  "answer": 1,
+  "explanation": "\"That our oxen may be strong to labour.\"",
+  "ref": "Psalms 144:14"
+ },
+ {
+  "id": "psalms-144-h-04",
+  "chapter": 144,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David ask not to be heard in the streets?",
+  "choices": [
+   "Mourning",
+   "Complaining",
+   "War cries",
+   "Singing"
+  ],
+  "answer": 1,
+  "explanation": "\"That there be no complaining in our streets.\"",
+  "ref": "Psalms 144:14"
+ },
+ {
+  "id": "psalms-144-h-05",
+  "chapter": 144,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David say the LORD does to his people under him?",
+  "choices": [
+   "He divides them",
+   "He subdueth them",
+   "He teaches them",
+   "He scatters them"
+  ],
+  "answer": 1,
+  "explanation": "\"Who subdueth my people under me.\"",
+  "ref": "Psalms 144:2"
+ },
+ {
+  "id": "psalms-144-h-06",
+  "chapter": 144,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David ask not to be in the city, besides going out?",
+  "choices": [
+   "Fire",
+   "Breaking in",
+   "Hunger",
+   "Judgment"
+  ],
+  "answer": 1,
+  "explanation": "\"That there be no breaking in, nor going out.\"",
+  "ref": "Psalms 144:14"
+ },
+ {
+  "id": "psalms-144-h-07",
+  "chapter": 144,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose mouth speaketh vanity, according to David?",
+  "choices": [
+   "The priests of Zion",
+   "The strange children",
+   "The kings of Israel",
+   "The wise of the city"
+  ],
+  "answer": 1,
+  "explanation": "\"From the hand of strange children; whose mouth speaketh vanity.\"",
+  "ref": "Psalms 144:7–8"
+ },
+ {
+  "id": "psalms-144-h-08",
+  "chapter": 144,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David say the LORD gives unto kings?",
+  "choices": [
+   "Crowns",
+   "Salvation",
+   "Wisdom",
+   "Armies"
+  ],
+  "answer": 1,
+  "explanation": "\"It is he that giveth salvation unto kings.\"",
+  "ref": "Psalms 144:10"
+ },
+ {
+  "id": "psalms-145-e-01",
+  "chapter": 145,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the LORD’s greatness stand, according to the psalm?",
+  "choices": [
+   "It is hidden",
+   "It is brief",
+   "It is unsearchable",
+   "It is silent"
+  ],
+  "answer": 2,
+  "explanation": "\"Great is the LORD, and greatly to be praised; and his greatness is unsearchable.\"",
+  "ref": "Psalms 145:3"
+ },
+ {
+  "id": "psalms-145-e-02",
+  "chapter": 145,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the LORD described: slow to what?",
+  "choices": [
+   "Slow to hear",
+   "Slow to judge",
+   "Slow to anger",
+   "Slow to act"
+  ],
+  "answer": 2,
+  "explanation": "\"The LORD is gracious, and full of compassion; slow to anger, and of great mercy.\"",
+  "ref": "Psalms 145:8"
+ },
+ {
+  "id": "psalms-145-e-03",
+  "chapter": 145,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom is the LORD good?",
+  "choices": [
+   "To Israel only",
+   "To the righteous only",
+   "To all",
+   "To the kings only"
+  ],
+  "answer": 2,
+  "explanation": "\"The LORD is good to all: and his tender mercies are over all his works.\"",
+  "ref": "Psalms 145:9"
+ },
+ {
+  "id": "psalms-145-e-04",
+  "chapter": 145,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of kingdom does the LORD have?",
+  "choices": [
+   "A kingdom of Zion alone",
+   "A kingdom of angels only",
+   "An everlasting kingdom",
+   "A kingdom for a season"
+  ],
+  "answer": 2,
+  "explanation": "\"Thy kingdom is an everlasting kingdom, and thy dominion endureth throughout all generations.\"",
+  "ref": "Psalms 145:13"
+ },
+ {
+  "id": "psalms-145-e-05",
+  "chapter": 145,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD raise up?",
+  "choices": [
+   "The proud and mighty",
+   "The kings of the earth",
+   "Those that are bowed down",
+   "The idols of the nations"
+  ],
+  "answer": 2,
+  "explanation": "\"The LORD upholdeth all that fall, and raiseth up all those that be bowed down.\"",
+  "ref": "Psalms 145:14"
+ },
+ {
+  "id": "psalms-145-e-06",
+  "chapter": 145,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD give to those who wait on him, in due season?",
+  "choices": [
+   "Their harvest",
+   "Their rest",
+   "Their meat",
+   "Their rain"
+  ],
+  "answer": 2,
+  "explanation": "\"The eyes of all wait upon thee; and thou givest them their meat in due season.\"",
+  "ref": "Psalms 145:15"
+ },
+ {
+  "id": "psalms-145-e-07",
+  "chapter": 145,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom does the LORD satisfy when he opens his hand?",
+  "choices": [
+   "Only the kings of Israel",
+   "Only the temple priests",
+   "The desire of every living thing",
+   "Only the poor of Zion"
+  ],
+  "answer": 2,
+  "explanation": "\"Thou openest thine hand, and satisfiest the desire of every living thing.\"",
+  "ref": "Psalms 145:16"
+ },
+ {
+  "id": "psalms-145-m-01",
+  "chapter": 145,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David say he will extol, calling him king?",
+  "choices": [
+   "The law",
+   "The temple",
+   "The city",
+   "His God"
+  ],
+  "answer": 3,
+  "explanation": "\"I will extol thee, my God, O king.\"",
+  "ref": "Psalms 145:1"
+ },
+ {
+  "id": "psalms-145-m-02",
+  "chapter": 145,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall one generation do to another?",
+  "choices": [
+   "Teach the law of Moses",
+   "Rebuild the temple",
+   "Keep the feast days",
+   "Praise the LORD’s works"
+  ],
+  "answer": 3,
+  "explanation": "\"One generation shall praise thy works to another, and shall declare thy mighty acts.\"",
+  "ref": "Psalms 145:4"
+ },
+ {
+  "id": "psalms-145-m-03",
+  "chapter": 145,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will men speak of, regarding the LORD’s terrible acts?",
+  "choices": [
+   "His wrath",
+   "His secrets",
+   "His silence",
+   "His might"
+  ],
+  "answer": 3,
+  "explanation": "\"Men shall speak of the might of thy terrible acts.\"",
+  "ref": "Psalms 145:6"
+ },
+ {
+  "id": "psalms-145-m-04",
+  "chapter": 145,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will they abundantly utter?",
+  "choices": [
+   "The names of the kings",
+   "The words of the law",
+   "The cries of the poor",
+   "The memory of the LORD’s great goodness"
+  ],
+  "answer": 3,
+  "explanation": "\"They shall abundantly utter the memory of thy great goodness.\"",
+  "ref": "Psalms 145:7"
+ },
+ {
+  "id": "psalms-145-m-05",
+  "chapter": 145,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who shall bless the LORD, besides all his works?",
+  "choices": [
+   "His kings",
+   "His angels",
+   "His priests",
+   "His saints"
+  ],
+  "answer": 3,
+  "explanation": "\"All thy works shall praise thee, O LORD; and thy saints shall bless thee.\"",
+  "ref": "Psalms 145:10"
+ },
+ {
+  "id": "psalms-145-m-06",
+  "chapter": 145,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall they speak of and talk of, regarding the LORD’s kingdom?",
+  "choices": [
+   "Its borders and its walls",
+   "Its law and its king",
+   "Its wealth and its feasts",
+   "Its glory and his power"
+  ],
+  "answer": 3,
+  "explanation": "\"They shall speak of the glory of thy kingdom, and talk of thy power.\"",
+  "ref": "Psalms 145:11"
+ },
+ {
+  "id": "psalms-145-m-07",
+  "chapter": 145,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do they make known his mighty acts to the sons of men?",
+  "choices": [
+   "To warn the nations",
+   "To win a battle",
+   "To fill the temple",
+   "To declare the glorious majesty of his kingdom"
+  ],
+  "answer": 3,
+  "explanation": "\"To make known to the sons of men his mighty acts, and the glorious majesty of his kingdom.\"",
+  "ref": "Psalms 145:12"
+ },
+ {
+  "id": "psalms-145-m-08",
+  "chapter": 145,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is the LORD in all his ways, and in all his works?",
+  "choices": [
+   "Hidden in ways, secret in works",
+   "Strong in ways, gentle in works",
+   "Swift in ways, patient in works",
+   "Righteous in ways, holy in works"
+  ],
+  "answer": 3,
+  "explanation": "\"The LORD is righteous in all his ways, and holy in all his works.\"",
+  "ref": "Psalms 145:17"
+ },
+ {
+  "id": "psalms-145-m-09",
+  "chapter": 145,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom is the LORD nigh?",
+  "choices": [
+   "All the priests of Israel",
+   "All the kings of earth",
+   "All the poor of Zion",
+   "All that call upon him in truth"
+  ],
+  "answer": 3,
+  "explanation": "\"The LORD is nigh unto all them that call upon him, to all that call upon him in truth.\"",
+  "ref": "Psalms 145:18"
+ },
+ {
+  "id": "psalms-145-h-01",
+  "chapter": 145,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will David do to the LORD’s name every day, and for ever and ever?",
+  "choices": [
+   "Build it a house",
+   "Write it on stones",
+   "Praise it",
+   "Swear by it"
+  ],
+  "answer": 2,
+  "explanation": "\"Every day will I bless thee; and I will praise thy name for ever and ever.\"",
+  "ref": "Psalms 145:2"
+ },
+ {
+  "id": "psalms-145-h-02",
+  "chapter": 145,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD fulfil for them that fear him?",
+  "choices": [
+   "Their wars",
+   "Their journeys",
+   "Their desire",
+   "Their hunger"
+  ],
+  "answer": 2,
+  "explanation": "\"He will fulfil the desire of them that fear him: he also will hear their cry, and will save them.\"",
+  "ref": "Psalms 145:19"
+ },
+ {
+  "id": "psalms-145-h-03",
+  "chapter": 145,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do with all the wicked?",
+  "choices": [
+   "Forgive them",
+   "Teach them",
+   "Destroy them",
+   "Scatter them"
+  ],
+  "answer": 2,
+  "explanation": "\"The LORD preserveth all them that love him: but all the wicked will he destroy.\"",
+  "ref": "Psalms 145:20"
+ },
+ {
+  "id": "psalms-145-h-04",
+  "chapter": 145,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does the LORD preserve?",
+  "choices": [
+   "All the kings of earth",
+   "All the strangers",
+   "All them that love him",
+   "All the princes"
+  ],
+  "answer": 2,
+  "explanation": "\"The LORD preserveth all them that love him.\"",
+  "ref": "Psalms 145:20"
+ },
+ {
+  "id": "psalms-145-h-05",
+  "chapter": 145,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is told to bless the LORD’s holy name at the end?",
+  "choices": [
+   "All the priests",
+   "All the angels",
+   "All flesh",
+   "All the princes"
+  ],
+  "answer": 2,
+  "explanation": "\"Let all flesh bless his holy name for ever and ever.\"",
+  "ref": "Psalms 145:21"
+ },
+ {
+  "id": "psalms-145-h-06",
+  "chapter": 145,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David say his mouth shall speak?",
+  "choices": [
+   "The law of the LORD",
+   "The judgments of the LORD",
+   "The praise of the LORD",
+   "The wrath of the LORD"
+  ],
+  "answer": 2,
+  "explanation": "\"My mouth shall speak the praise of the LORD.\"",
+  "ref": "Psalms 145:21"
+ },
+ {
+  "id": "psalms-145-m-10",
+  "chapter": 145,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will David declare, besides the LORD’s majesty?",
+  "choices": [
+   "His wrath",
+   "His greatness",
+   "His judgments",
+   "His secrets"
+  ],
+  "answer": 1,
+  "explanation": "\"And men shall speak of the might of thy terrible acts: and I will declare thy greatness.\"",
+  "ref": "Psalms 145:6"
+ },
+ {
+  "id": "psalms-145-m-11",
+  "chapter": 145,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David say he will speak of, regarding the LORD’s honour?",
+  "choices": [
+   "The days of his wrath",
+   "The glorious honour of his majesty",
+   "The names of his priests",
+   "The walls of his city"
+  ],
+  "answer": 1,
+  "explanation": "\"I will speak of the glorious honour of thy majesty, and of thy wondrous works.\"",
+  "ref": "Psalms 145:5"
+ },
+ {
+  "id": "psalms-145-h-07",
+  "chapter": 145,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what are the LORD’s tender mercies said to be over?",
+  "choices": [
+   "All his works",
+   "All his kings",
+   "All his priests",
+   "All his people only"
+  ],
+  "answer": 0,
+  "explanation": "\"His tender mercies are over all his works.\"",
+  "ref": "Psalms 145:9"
+ },
+ {
+  "id": "psalms-145-h-08",
+  "chapter": 145,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long does David say he will bless the LORD’s name?",
+  "choices": [
+   "For ever and ever",
+   "Until he dies",
+   "For seven years",
+   "Until the feast"
+  ],
+  "answer": 0,
+  "explanation": "\"I will bless thy name for ever and ever.\"",
+  "ref": "Psalms 145:1"
+ },
+ {
+  "id": "psalms-145-h-09",
+  "chapter": 145,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalm say endureth throughout all generations?",
+  "choices": [
+   "The LORD’s dominion",
+   "The temple of stone",
+   "The throne of David",
+   "The land of Israel"
+  ],
+  "answer": 0,
+  "explanation": "\"Thy dominion endureth throughout all generations.\"",
+  "ref": "Psalms 145:13"
+ },
+ {
+  "id": "psalms-145-h-10",
+  "chapter": 145,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who does the psalm say wait upon the LORD?",
+  "choices": [
+   "The eyes of all",
+   "The kings of the earth",
+   "The priests of Zion",
+   "The sons of Israel"
+  ],
+  "answer": 0,
+  "explanation": "\"The eyes of all wait upon thee.\"",
+  "ref": "Psalms 145:15"
+ },
+ {
+  "id": "psalms-145-h-11",
+  "chapter": 145,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD hear and do, for those who fear him?",
+  "choices": [
+   "Hear their cry and save them",
+   "Ignore their cry and test them",
+   "Hide their cry and teach them",
+   "Answer their cry and judge them"
+  ],
+  "answer": 0,
+  "explanation": "\"He also will hear their cry, and will save them.\"",
+  "ref": "Psalms 145:19"
+ },
+ {
+  "id": "psalms-146-e-01",
+  "chapter": 146,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD open?",
+  "choices": [
+   "The doors of the prison",
+   "The gates of the city",
+   "The windows of heaven",
+   "The eyes of the blind"
+  ],
+  "answer": 3,
+  "explanation": "\"The LORD openeth the eyes of the blind.\"",
+  "ref": "Psalms 146:8"
+ },
+ {
+  "id": "psalms-146-m-01",
+  "chapter": 146,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the psalm say about the son of man?",
+  "choices": [
+   "He is the LORD’s servant",
+   "He is the keeper of truth",
+   "There is no help in him",
+   "He is the judge of the earth"
+  ],
+  "answer": 2,
+  "explanation": "\"Put not your trust in princes, nor in the son of man, in whom there is no help.\"",
+  "ref": "Psalms 146:3"
+ },
+ {
+  "id": "psalms-146-m-02",
+  "chapter": 146,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does man’s breath go when it goeth forth?",
+  "choices": [
+   "He rises to the heavens",
+   "He goes down to the sea",
+   "He returns to his earth",
+   "He is gathered to the fathers"
+  ],
+  "answer": 2,
+  "explanation": "\"His breath goeth forth, he returneth to his earth.\"",
+  "ref": "Psalms 146:4"
+ },
+ {
+  "id": "psalms-146-m-03",
+  "chapter": 146,
+  "level": "medium",
+  "category": "person",
+  "question": "Who is happy, according to the psalm?",
+  "choices": [
+   "He that is a prince in Zion",
+   "He that hath many sons",
+   "He that hath the God of Jacob for his help",
+   "He that keepeth the sabbath"
+  ],
+  "answer": 2,
+  "explanation": "\"Happy is he that hath the God of Jacob for his help, whose hope is in the LORD his God.\"",
+  "ref": "Psalms 146:5"
+ },
+ {
+  "id": "psalms-146-m-04",
+  "chapter": 146,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD execute for the oppressed?",
+  "choices": [
+   "Vengeance",
+   "Mercy",
+   "Judgment",
+   "Peace"
+  ],
+  "answer": 2,
+  "explanation": "\"Which executeth judgment for the oppressed: which giveth food to the hungry.\"",
+  "ref": "Psalms 146:7"
+ },
+ {
+  "id": "psalms-146-m-05",
+  "chapter": 146,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD give to the hungry?",
+  "choices": [
+   "Land",
+   "Rest",
+   "Food",
+   "Gold"
+  ],
+  "answer": 2,
+  "explanation": "\"Which giveth food to the hungry.\"",
+  "ref": "Psalms 146:7"
+ },
+ {
+  "id": "psalms-146-h-01",
+  "chapter": 146,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD do for the prisoners?",
+  "choices": [
+   "Hides them",
+   "Looseth them",
+   "Feeds them",
+   "Visits them"
+  ],
+  "answer": 1,
+  "explanation": "\"The LORD looseth the prisoners.\"",
+  "ref": "Psalms 146:7"
+ },
+ {
+  "id": "psalms-146-h-02",
+  "chapter": 146,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does the LORD preserve and relieve?",
+  "choices": [
+   "The priests, kings and prophets",
+   "The strangers, the fatherless and widow",
+   "The rich, the proud and the strong",
+   "The sons of Zion and their captors"
+  ],
+  "answer": 1,
+  "explanation": "\"The LORD preserveth the strangers; he relieveth the fatherless and widow.\"",
+  "ref": "Psalms 146:9"
+ },
+ {
+  "id": "psalms-146-h-03",
+  "chapter": 146,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD love?",
+  "choices": [
+   "The rich",
+   "The righteous",
+   "The kings",
+   "The strong"
+  ],
+  "answer": 1,
+  "explanation": "\"The LORD loveth the righteous.\"",
+  "ref": "Psalms 146:8"
+ },
+ {
+  "id": "psalms-146-h-04",
+  "chapter": 146,
+  "level": "hard",
+  "category": "place",
+  "question": "To whom is it said the LORD shall reign for ever?",
+  "choices": [
+   "O Egypt",
+   "Thy God, O Zion",
+   "O Babylon",
+   "O Jacob"
+  ],
+  "answer": 1,
+  "explanation": "\"The LORD shall reign for ever, even thy God, O Zion, unto all generations.\"",
+  "ref": "Psalms 146:10"
+ },
+ {
+  "id": "psalms-146-h-05",
+  "chapter": 146,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD keep for ever?",
+  "choices": [
+   "Peace",
+   "Truth",
+   "Mercy",
+   "Silence"
+  ],
+  "answer": 1,
+  "explanation": "\"Which made heaven, and earth, the sea, and all that therein is: which keepeth truth for ever.\"",
+  "ref": "Psalms 146:6"
+ },
+ {
+  "id": "psalms-147-e-01",
+  "chapter": 147,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD gather together?",
+  "choices": [
+   "The nations of Canaan",
+   "The outcasts of Israel",
+   "The kings of the earth",
+   "The stars of heaven"
+  ],
+  "answer": 1,
+  "explanation": "\"The LORD doth build up Jerusalem: he gathereth together the outcasts of Israel.\"",
+  "ref": "Psalms 147:2"
+ },
+ {
+  "id": "psalms-147-e-02",
+  "chapter": 147,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD give to the beast and to the young ravens?",
+  "choices": [
+   "Their rest",
+   "Their food",
+   "Their young",
+   "Their water"
+  ],
+  "answer": 1,
+  "explanation": "\"He giveth to the beast his food, and to the young ravens which cry.\"",
+  "ref": "Psalms 147:9"
+ },
+ {
+  "id": "psalms-147-e-03",
+  "chapter": 147,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD give like wool?",
+  "choices": [
+   "Rain",
+   "Snow",
+   "Dew",
+   "Hail"
+  ],
+  "answer": 1,
+  "explanation": "\"He giveth snow like wool: he scattereth the hoar frost like ashes.\"",
+  "ref": "Psalms 147:16"
+ },
+ {
+  "id": "psalms-147-e-04",
+  "chapter": 147,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD fill Jerusalem with?",
+  "choices": [
+   "The best of the wine",
+   "The finest of the wheat",
+   "The fat of the land",
+   "The oil of the olive"
+  ],
+  "answer": 1,
+  "explanation": "\"He maketh peace in thy borders, and filleth thee with the finest of the wheat.\"",
+  "ref": "Psalms 147:14"
+ },
+ {
+  "id": "psalms-147-e-05",
+  "chapter": 147,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom does the LORD show his word and statutes?",
+  "choices": [
+   "Egypt and Pharaoh",
+   "Jacob and Israel",
+   "Babylon and Assyria",
+   "Edom and Moab"
+  ],
+  "answer": 1,
+  "explanation": "\"He sheweth his word unto Jacob, his statutes and his judgments unto Israel.\"",
+  "ref": "Psalms 147:19"
+ },
+ {
+  "id": "psalms-147-m-01",
+  "chapter": 147,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD do with the meek, and with the wicked?",
+  "choices": [
+   "Hides the meek and raises the wicked",
+   "Teaches the meek and burns the wicked",
+   "Feeds the meek and drives out the wicked",
+   "Lifts up the meek and casts the wicked down"
+  ],
+  "answer": 3,
+  "explanation": "\"The LORD lifteth up the meek: he casteth the wicked down to the ground.\"",
+  "ref": "Psalms 147:6"
+ },
+ {
+  "id": "psalms-147-m-02",
+  "chapter": 147,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD cover the heaven with?",
+  "choices": [
+   "Stars",
+   "Fire",
+   "Smoke",
+   "Clouds"
+  ],
+  "answer": 3,
+  "explanation": "\"Who covereth the heaven with clouds, who prepareth rain for the earth.\"",
+  "ref": "Psalms 147:8"
+ },
+ {
+  "id": "psalms-147-m-03",
+  "chapter": 147,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD make to grow upon the mountains?",
+  "choices": [
+   "Cedars",
+   "Vines",
+   "Barley",
+   "Grass"
+  ],
+  "answer": 3,
+  "explanation": "\"Who maketh grass to grow upon the mountains.\"",
+  "ref": "Psalms 147:8"
+ },
+ {
+  "id": "psalms-147-m-04",
+  "chapter": 147,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the strength of the horse, in what does the LORD take no pleasure?",
+  "choices": [
+   "The wisdom of the wise",
+   "The wealth of kings",
+   "The towers of a city",
+   "The legs of a man"
+  ],
+  "answer": 3,
+  "explanation": "\"He taketh not pleasure in the legs of a man.\"",
+  "ref": "Psalms 147:10"
+ },
+ {
+  "id": "psalms-147-m-05",
+  "chapter": 147,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whom does the LORD take pleasure?",
+  "choices": [
+   "Them that are strong in battle",
+   "Them that are rich in cattle",
+   "Them that build great houses",
+   "Them that fear him and hope in his mercy"
+  ],
+  "answer": 3,
+  "explanation": "\"The LORD taketh pleasure in them that fear him, in those that hope in his mercy.\"",
+  "ref": "Psalms 147:11"
+ },
+ {
+  "id": "psalms-147-m-06",
+  "chapter": 147,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD strengthened in Jerusalem?",
+  "choices": [
+   "The walls of her temple",
+   "The towers of her palace",
+   "The stones of her streets",
+   "The bars of her gates"
+  ],
+  "answer": 3,
+  "explanation": "\"For he hath strengthened the bars of thy gates; he hath blessed thy children within thee.\"",
+  "ref": "Psalms 147:13"
+ },
+ {
+  "id": "psalms-147-m-07",
+  "chapter": 147,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD send forth upon earth?",
+  "choices": [
+   "His fire",
+   "His flood",
+   "His angel",
+   "His commandment"
+  ],
+  "answer": 3,
+  "explanation": "\"He sendeth forth his commandment upon earth: his word runneth very swiftly.\"",
+  "ref": "Psalms 147:15"
+ },
+ {
+  "id": "psalms-147-m-08",
+  "chapter": 147,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD scatter like ashes?",
+  "choices": [
+   "The snow",
+   "The hail",
+   "The dew",
+   "The hoar frost"
+  ],
+  "answer": 3,
+  "explanation": "\"He scattereth the hoar frost like ashes.\"",
+  "ref": "Psalms 147:16"
+ },
+ {
+  "id": "psalms-147-m-09",
+  "chapter": 147,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD cast forth like morsels?",
+  "choices": [
+   "His hail",
+   "His snow",
+   "His fire",
+   "His ice"
+  ],
+  "answer": 3,
+  "explanation": "\"He casteth forth his ice like morsels: who can stand before his cold?\"",
+  "ref": "Psalms 147:17"
+ },
+ {
+  "id": "psalms-147-m-10",
+  "chapter": 147,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What melts the ice when the LORD sends it out?",
+  "choices": [
+   "His fire and sun",
+   "His rain and flood",
+   "His angels and lightning",
+   "His word and his wind"
+  ],
+  "answer": 3,
+  "explanation": "\"He sendeth out his word, and melteth them: he causeth his wind to blow, and the waters flow.\"",
+  "ref": "Psalms 147:18"
+ },
+ {
+  "id": "psalms-147-h-01",
+  "chapter": 147,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD call all the stars?",
+  "choices": [
+   "By their numbers",
+   "By their names",
+   "By their colours",
+   "By their seasons"
+  ],
+  "answer": 1,
+  "explanation": "\"He telleth the number of the stars; he calleth them all by their names.\"",
+  "ref": "Psalms 147:4"
+ },
+ {
+  "id": "psalms-147-h-02",
+  "chapter": 147,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of the LORD’s understanding?",
+  "choices": [
+   "It is hidden",
+   "It is infinite",
+   "It is brief",
+   "It is silent"
+  ],
+  "answer": 1,
+  "explanation": "\"Great is our Lord, and of great power: his understanding is infinite.\"",
+  "ref": "Psalms 147:5"
+ },
+ {
+  "id": "psalms-147-h-03",
+  "chapter": 147,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what is the LORD’s praise to be sung?",
+  "choices": [
+   "Trumpets and cymbals",
+   "Thanksgiving and the harp",
+   "Dance and timbrel",
+   "Psaltery and organs"
+  ],
+  "answer": 1,
+  "explanation": "\"Sing unto the LORD with thanksgiving; sing praise upon the harp unto our God.\"",
+  "ref": "Psalms 147:7"
+ },
+ {
+  "id": "psalms-147-h-04",
+  "chapter": 147,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD make in Jerusalem’s borders?",
+  "choices": [
+   "War",
+   "Peace",
+   "Wealth",
+   "Walls"
+  ],
+  "answer": 1,
+  "explanation": "\"He maketh peace in thy borders.\"",
+  "ref": "Psalms 147:14"
+ },
+ {
+  "id": "psalms-147-h-05",
+  "chapter": 147,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD not do with any other nation?",
+  "choices": [
+   "Give them the finest wheat",
+   "Deal as he did with Israel",
+   "Send them snow and ice",
+   "Speak to them by the stars"
+  ],
+  "answer": 1,
+  "explanation": "\"He hath not dealt so with any nation: and as for his judgments, they have not known them.\"",
+  "ref": "Psalms 147:20"
+ },
+ {
+  "id": "psalms-147-h-06",
+  "chapter": 147,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who may not know the LORD’s judgments, according to the psalm?",
+  "choices": [
+   "The priests of Zion",
+   "Other nations",
+   "The kings of Israel",
+   "The children of Jacob"
+  ],
+  "answer": 1,
+  "explanation": "\"As for his judgments, they have not known them.\"",
+  "ref": "Psalms 147:20"
+ },
+ {
+  "id": "psalms-147-h-07",
+  "chapter": 147,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is the LORD’s word said to run?",
+  "choices": [
+   "Very slowly",
+   "Very swiftly",
+   "Very quietly",
+   "Very secretly"
+  ],
+  "answer": 1,
+  "explanation": "\"His word runneth very swiftly.\"",
+  "ref": "Psalms 147:15"
+ },
+ {
+  "id": "psalms-147-h-08",
+  "chapter": 147,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD prepare for the earth?",
+  "choices": [
+   "Snow",
+   "Rain",
+   "Dew",
+   "Wind"
+  ],
+  "answer": 1,
+  "explanation": "\"Who prepareth rain for the earth.\"",
+  "ref": "Psalms 147:8"
+ },
+ {
+  "id": "psalms-147-h-09",
+  "chapter": 147,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalm say it is to praise, besides good?",
+  "choices": [
+   "Costly and rare",
+   "Pleasant and comely",
+   "Hidden and holy",
+   "Hard and long"
+  ],
+  "answer": 1,
+  "explanation": "\"It is good to sing praises unto our God; for it is pleasant; and praise is comely.\"",
+  "ref": "Psalms 147:1"
+ },
+ {
+  "id": "psalms-147-h-10",
+  "chapter": 147,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom has the LORD blessed within Jerusalem?",
+  "choices": [
+   "Her priests",
+   "Her children",
+   "Her kings",
+   "Her watchmen"
+  ],
+  "answer": 1,
+  "explanation": "\"He hath strengthened the bars of thy gates; he hath blessed thy children within thee.\"",
+  "ref": "Psalms 147:13"
+ },
+ {
+  "id": "psalms-148-e-01",
+  "chapter": 148,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which waters are told to praise the LORD?",
+  "choices": [
+   "The waters of the Red sea",
+   "The rivers of Eden",
+   "The waters above the heavens",
+   "The waters of Jordan"
+  ],
+  "answer": 2,
+  "explanation": "\"Praise him, ye heavens of heavens, and ye waters that be above the heavens.\"",
+  "ref": "Psalms 148:4"
+ },
+ {
+  "id": "psalms-148-e-02",
+  "chapter": 148,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which creatures are told to praise the LORD from the earth, along with the deeps?",
+  "choices": [
+   "Lions",
+   "Eagles",
+   "Dragons",
+   "Serpents of the field"
+  ],
+  "answer": 2,
+  "explanation": "\"Praise the LORD from the earth, ye dragons, and all deeps.\"",
+  "ref": "Psalms 148:7"
+ },
+ {
+  "id": "psalms-148-m-01",
+  "chapter": 148,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which weather is named, fulfilling his word?",
+  "choices": [
+   "Gentle breeze",
+   "Morning dew",
+   "Spring rain",
+   "Stormy wind"
+  ],
+  "answer": 3,
+  "explanation": "\"Fire, and hail; snow, and vapours; stormy wind fulfilling his word.\"",
+  "ref": "Psalms 148:8"
+ },
+ {
+  "id": "psalms-148-m-02",
+  "chapter": 148,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which trees are told to praise the LORD?",
+  "choices": [
+   "Olives and palms",
+   "Figs and sycamores",
+   "Oaks and terebinths",
+   "Fruitful trees and all cedars"
+  ],
+  "answer": 3,
+  "explanation": "\"Mountains, and all hills; fruitful trees, and all cedars.\"",
+  "ref": "Psalms 148:9"
+ },
+ {
+  "id": "psalms-148-m-03",
+  "chapter": 148,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which creatures does the psalm call on, besides beasts and cattle?",
+  "choices": [
+   "Fish and whales",
+   "Lions and bears",
+   "Sheep and goats",
+   "Creeping things and flying fowl"
+  ],
+  "answer": 3,
+  "explanation": "\"Beasts, and all cattle; creeping things, and flying fowl.\"",
+  "ref": "Psalms 148:10"
+ },
+ {
+  "id": "psalms-148-m-04",
+  "chapter": 148,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does the psalm call on from every age, besides old men?",
+  "choices": [
+   "Priests and kings",
+   "Judges and elders",
+   "Shepherds and farmers",
+   "Young men, maidens and children"
+  ],
+  "answer": 3,
+  "explanation": "\"Both young men, and maidens; old men, and children.\"",
+  "ref": "Psalms 148:12"
+ },
+ {
+  "id": "psalms-148-m-05",
+  "chapter": 148,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD made, which shall not pass?",
+  "choices": [
+   "A covenant",
+   "A feast",
+   "A throne",
+   "A decree"
+  ],
+  "answer": 3,
+  "explanation": "\"He hath made a decree which shall not pass.\"",
+  "ref": "Psalms 148:6"
+ },
+ {
+  "id": "psalms-148-h-01",
+  "chapter": 148,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why is the LORD’s name alone to be praised?",
+  "choices": [
+   "It is the oldest name",
+   "It is hidden in the temple",
+   "It alone is excellent",
+   "It was given to Moses"
+  ],
+  "answer": 2,
+  "explanation": "\"Let them praise the name of the LORD: for his name alone is excellent; his glory is above the earth and heaven.\"",
+  "ref": "Psalms 148:13"
+ },
+ {
+  "id": "psalms-148-h-02",
+  "chapter": 148,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD exalt, for the praise of all his saints?",
+  "choices": [
+   "The throne of the king",
+   "The walls of Zion",
+   "The horn of his people",
+   "The altar of the temple"
+  ],
+  "answer": 2,
+  "explanation": "\"He also exalteth the horn of his people, the praise of all his saints.\"",
+  "ref": "Psalms 148:14"
+ },
+ {
+  "id": "psalms-148-h-03",
+  "chapter": 148,
+  "level": "hard",
+  "category": "person",
+  "question": "Which people is described as near unto the LORD?",
+  "choices": [
+   "The kings of Tyre",
+   "The sons of Aaron only",
+   "The children of Israel",
+   "The nations of Canaan"
+  ],
+  "answer": 2,
+  "explanation": "\"Even of the children of Israel, a people near unto him.\"",
+  "ref": "Psalms 148:14"
+ },
+ {
+  "id": "psalms-148-h-04",
+  "chapter": 148,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the heavens do, from the first verse, in the heights?",
+  "choices": [
+   "Hide the LORD",
+   "Judge the LORD’s people",
+   "Praise the LORD",
+   "Fill the temple"
+  ],
+  "answer": 2,
+  "explanation": "\"Praise ye the LORD from the heavens: praise him in the heights.\"",
+  "ref": "Psalms 148:1"
+ },
+ {
+  "id": "psalms-148-h-05",
+  "chapter": 148,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which \"hosts\" does the psalm tell to praise him, along with the angels?",
+  "choices": [
+   "All the tribes",
+   "All the Levites",
+   "All his hosts",
+   "All the kings"
+  ],
+  "answer": 2,
+  "explanation": "\"Praise ye him, all his angels: praise ye him, all his hosts.\"",
+  "ref": "Psalms 148:2"
+ },
+ {
+  "id": "psalms-148-h-06",
+  "chapter": 148,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalm say the LORD did, so that they were created?",
+  "choices": [
+   "Spoke a parable",
+   "Sent a flood",
+   "Commanded",
+   "Wrote a book"
+  ],
+  "answer": 2,
+  "explanation": "\"For he commanded, and they were created.\"",
+  "ref": "Psalms 148:5"
+ },
+ {
+  "id": "psalms-148-m-06",
+  "chapter": 148,
+  "level": "medium",
+  "category": "person",
+  "question": "Which rulers are told to praise the LORD, besides the kings of the earth?",
+  "choices": [
+   "Priests and all prophets of Israel",
+   "Princes and all judges of the earth",
+   "Elders and all scribes of the land",
+   "Captains and all watchmen of the city"
+  ],
+  "answer": 1,
+  "explanation": "\"Kings of the earth, and all people; princes, and all judges of the earth.\"",
+  "ref": "Psalms 148:11"
+ },
+ {
+  "id": "psalms-148-m-07",
+  "chapter": 148,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is above the earth and heaven?",
+  "choices": [
+   "The LORD’s throne",
+   "The LORD’s glory",
+   "The LORD’s temple",
+   "The LORD’s city"
+  ],
+  "answer": 1,
+  "explanation": "\"His glory is above the earth and heaven.\"",
+  "ref": "Psalms 148:13"
+ },
+ {
+  "id": "psalms-148-h-07",
+  "chapter": 148,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which high places of the earth are told to praise the LORD?",
+  "choices": [
+   "Mountains and all hills",
+   "Zion and Hermon only",
+   "The cities of Judah",
+   "The cliffs of the sea"
+  ],
+  "answer": 0,
+  "explanation": "\"Mountains, and all hills; fruitful trees, and all cedars.\"",
+  "ref": "Psalms 148:9"
+ },
+ {
+  "id": "psalms-149-m-01",
+  "chapter": 149,
+  "level": "medium",
+  "category": "place",
+  "question": "Where is the LORD’s praise to be sung?",
+  "choices": [
+   "In the courts of kings",
+   "On the high places",
+   "In the congregation of saints",
+   "At the city gates"
+  ],
+  "answer": 2,
+  "explanation": "\"Sing unto the LORD a new song, and his praise in the congregation of saints.\"",
+  "ref": "Psalms 149:1"
+ },
+ {
+  "id": "psalms-149-m-02",
+  "chapter": 149,
+  "level": "medium",
+  "category": "person",
+  "question": "Who are to be joyful in their King?",
+  "choices": [
+   "The priests of Aaron",
+   "The sons of Levi",
+   "The children of Zion",
+   "The nations of the earth"
+  ],
+  "answer": 2,
+  "explanation": "\"Let the children of Zion be joyful in their King.\"",
+  "ref": "Psalms 149:2"
+ },
+ {
+  "id": "psalms-149-m-03",
+  "chapter": 149,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How are they to praise his name, besides with timbrel and harp?",
+  "choices": [
+   "In silence",
+   "With sacrifice",
+   "In the dance",
+   "With fasting"
+  ],
+  "answer": 2,
+  "explanation": "\"Let them praise his name in the dance: let them sing praises unto him with the timbrel and harp.\"",
+  "ref": "Psalms 149:3"
+ },
+ {
+  "id": "psalms-149-m-04",
+  "chapter": 149,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does the psalm say the saints are to sing aloud?",
+  "choices": [
+   "In the fields",
+   "At the gates",
+   "Upon their beds",
+   "On the mountains"
+  ],
+  "answer": 2,
+  "explanation": "\"Let the saints be joyful in glory: let them sing aloud upon their beds.\"",
+  "ref": "Psalms 149:5"
+ },
+ {
+  "id": "psalms-149-m-05",
+  "chapter": 149,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD take pleasure in?",
+  "choices": [
+   "Burnt offerings",
+   "The strength of horses",
+   "His people",
+   "The courts of kings"
+  ],
+  "answer": 2,
+  "explanation": "\"For the LORD taketh pleasure in his people: he will beautify the meek with salvation.\"",
+  "ref": "Psalms 149:4"
+ },
+ {
+  "id": "psalms-149-h-01",
+  "chapter": 149,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the kings of the heathen to be bound with?",
+  "choices": [
+   "Cords of purple",
+   "Chains",
+   "Bands of linen",
+   "Ropes of grass"
+  ],
+  "answer": 1,
+  "explanation": "\"To bind their kings with chains, and their nobles with fetters of iron.\"",
+  "ref": "Psalms 149:8"
+ },
+ {
+  "id": "psalms-149-h-02",
+  "chapter": 149,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the nobles to be bound with?",
+  "choices": [
+   "Bars of brass",
+   "Fetters of iron",
+   "Chains of gold",
+   "Cords of flax"
+  ],
+  "answer": 1,
+  "explanation": "\"And their nobles with fetters of iron.\"",
+  "ref": "Psalms 149:8"
+ },
+ {
+  "id": "psalms-149-h-03",
+  "chapter": 149,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is to be executed upon the heathen, and what does the psalm call it?",
+  "choices": [
+   "The sentence of kings",
+   "The judgment written",
+   "The law of Moses",
+   "The lot of the tribes"
+  ],
+  "answer": 1,
+  "explanation": "\"To execute upon them the judgment written: this honour have all his saints.\"",
+  "ref": "Psalms 149:9"
+ },
+ {
+  "id": "psalms-149-h-04",
+  "chapter": 149,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom do the saints execute vengeance upon, with a twoedged sword?",
+  "choices": [
+   "The priests of Baal",
+   "The heathen",
+   "The kings of Israel",
+   "The elders of Zion"
+  ],
+  "answer": 1,
+  "explanation": "\"A twoedged sword in their hand; to execute vengeance upon the heathen, and punishments upon the people.\"",
+  "ref": "Psalms 149:6–7"
+ },
+ {
+  "id": "psalms-149-h-05",
+  "chapter": 149,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do all his saints have, by this?",
+  "choices": [
+   "This wealth",
+   "This honour",
+   "This land",
+   "This rest"
+  ],
+  "answer": 1,
+  "explanation": "\"This honour have all his saints.\"",
+  "ref": "Psalms 149:9"
+ },
+ {
+  "id": "psalms-150-e-01",
+  "chapter": 150,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the psalm tell us to praise God with alongside the psaltery?",
+  "choices": [
+   "The pipe",
+   "The horn",
+   "The lute",
+   "The harp"
+  ],
+  "answer": 3,
+  "explanation": "\"Praise him with the sound of the trumpet: praise him with the psaltery and harp.\"",
+  "ref": "Psalms 150:3"
+ },
+ {
+  "id": "psalms-150-m-01",
+  "chapter": 150,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What instruments are named with the timbrel?",
+  "choices": [
+   "Trumpet, harp and psaltery",
+   "Cymbals loud and high",
+   "Dance, stringed instruments and organs",
+   "Flutes and horns"
+  ],
+  "answer": 2,
+  "explanation": "\"Praise him with the timbrel and dance: praise him with stringed instruments and organs.\"",
+  "ref": "Psalms 150:4"
+ },
+ {
+  "id": "psalms-150-m-02",
+  "chapter": 150,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Upon what are we told to praise him, twice over?",
+  "choices": [
+   "Harps and psalteries",
+   "Timbrels and pipes",
+   "Loud cymbals and high sounding cymbals",
+   "Organs and trumpets"
+  ],
+  "answer": 2,
+  "explanation": "\"Praise him upon the loud cymbals: praise him upon the high sounding cymbals.\"",
+  "ref": "Psalms 150:5"
+ },
+ {
+  "id": "psalms-150-m-03",
+  "chapter": 150,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what is God to be praised, besides his sanctuary?",
+  "choices": [
+   "The temple of Zion",
+   "The courts of kings",
+   "The firmament of his power",
+   "The mountains of Israel"
+  ],
+  "answer": 2,
+  "explanation": "\"Praise God in his sanctuary: praise him in the firmament of his power.\"",
+  "ref": "Psalms 150:1"
+ },
+ {
+  "id": "psalms-150-m-04",
+  "chapter": 150,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to what is he to be praised, besides his mighty acts?",
+  "choices": [
+   "His ancient name",
+   "His holy law",
+   "His excellent greatness",
+   "His many gifts"
+  ],
+  "answer": 2,
+  "explanation": "\"Praise him for his mighty acts: praise him according to his excellent greatness.\"",
+  "ref": "Psalms 150:2"
+ },
+ {
+  "id": "psalms-150-m-05",
+  "chapter": 150,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the very last call of the psalm?",
+  "choices": [
+   "Bless the LORD, O my soul",
+   "Sing a new song",
+   "Praise ye the LORD",
+   "Give thanks unto the LORD"
+  ],
+  "answer": 2,
+  "explanation": "\"Let every thing that hath breath praise the LORD. Praise ye the LORD.\"",
+  "ref": "Psalms 150:6"
+ },
+ {
+  "id": "psalms-150-h-01",
+  "chapter": 150,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which three instruments open the call to praise with sound?",
+  "choices": [
+   "The timbrel and the pipe",
+   "The trumpet, the psaltery and harp",
+   "The cymbals and the organ",
+   "The lute and the flute"
+  ],
+  "answer": 1,
+  "explanation": "\"Praise him with the sound of the trumpet: praise him with the psaltery and harp.\"",
+  "ref": "Psalms 150:3"
+ },
+ {
+  "id": "psalms-150-h-02",
+  "chapter": 150,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalm say of those who may praise, in a phrase?",
+  "choices": [
+   "Every king in Zion",
+   "Every thing that hath breath",
+   "Every priest of Levi",
+   "Every child of Israel"
+  ],
+  "answer": 1,
+  "explanation": "\"Let every thing that hath breath praise the LORD.\"",
+  "ref": "Psalms 150:6"
+ },
+ {
+  "id": "psalms-150-h-03",
+  "chapter": 150,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what does the psalm say God is to be praised?",
+  "choices": [
+   "His walls of Zion",
+   "His mighty acts",
+   "The gifts to Israel",
+   "The fruit of the field"
+  ],
+  "answer": 1,
+  "explanation": "\"Praise him for his mighty acts.\"",
+  "ref": "Psalms 150:2"
+ },
+ {
+  "id": "psalms-150-h-04",
+  "chapter": 150,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the psalm pair with the timbrel and dance?",
+  "choices": [
+   "Silver trumpets and pipes",
+   "Stringed instruments and organs",
+   "Rams’ horns and drums",
+   "Bells and lamps"
+  ],
+  "answer": 1,
+  "explanation": "\"Praise him with the timbrel and dance: praise him with stringed instruments and organs.\"",
+  "ref": "Psalms 150:4"
+ },
+ {
+  "id": "psalms-150-h-05",
+  "chapter": 150,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What instrument does the psalm name along with dance?",
+  "choices": [
+   "The trumpet",
+   "The timbrel",
+   "The harp",
+   "The pipe"
+  ],
+  "answer": 1,
+  "explanation": "\"Praise him with the timbrel and dance.\"",
+  "ref": "Psalms 150:4"
  }
 ]
