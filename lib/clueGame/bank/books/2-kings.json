@@ -512,6 +512,550 @@
   "ref": "2 Kings 2:19–22"
  },
  {
+  "id": "2-kings-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went with Elijah from Gilgal?",
+  "choices": [
+   "Gehazi",
+   "Elisha",
+   "Obadiah",
+   "Micaiah"
+  ],
+  "answer": 1,
+  "explanation": "Elijah went with Elisha from Gilgal when the LORD would take him up.",
+  "ref": "2 Kings 2:1"
+ },
+ {
+  "id": "2-kings-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elijah use to divide the waters of Jordan?",
+  "choices": [
+   "His mantle, wrapped together",
+   "His staff",
+   "A rod of iron",
+   "A cup of oil"
+  ],
+  "answer": 0,
+  "explanation": "Elijah took his mantle, wrapped it together, and smote the waters, and they were divided.",
+  "ref": "2 Kings 2:8"
+ },
+ {
+  "id": "2-kings-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Elijah say the LORD had sent him after Gilgal?",
+  "choices": [
+   "Hebron",
+   "Shiloh",
+   "Samaria",
+   "Bethel"
+  ],
+  "answer": 3,
+  "explanation": "Elijah said, Tarry here; for the LORD hath sent me to Bethel.",
+  "ref": "2 Kings 2:2"
+ },
+ {
+  "id": "2-kings-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha say whenever Elijah told him to stay behind?",
+  "choices": [
+   "I will return to Gilgal",
+   "I will follow after a day",
+   "I will not leave thee",
+   "I will ask the prophets"
+  ],
+  "answer": 2,
+  "explanation": "Elisha said, As the LORD liveth, and as thy soul liveth, I will not leave thee.",
+  "ref": "2 Kings 2:2"
+ },
+ {
+  "id": "2-kings-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha cry as Elijah went up?",
+  "choices": [
+   "Lord, take me too",
+   "My father, my father, the chariot of Israel",
+   "Hosanna in the highest",
+   "Fire, fire from heaven"
+  ],
+  "answer": 1,
+  "explanation": "He cried, My father, my father, the chariot of Israel, and the horsemen thereof.",
+  "ref": "2 Kings 2:12"
+ },
+ {
+  "id": "2-kings-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha say as he smote the Jordan with Elijah's mantle?",
+  "choices": [
+   "Where is the LORD God of Elijah?",
+   "Part, O river, by the LORD",
+   "The LORD is my shepherd",
+   "Behold, I am here"
+  ],
+  "answer": 0,
+  "explanation": "He smote the waters, and said, Where is the LORD God of Elijah?",
+  "ref": "2 Kings 2:14"
+ },
+ {
+  "id": "2-kings-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who mocked Elisha as he went up to Bethel?",
+  "choices": [
+   "The sons of the prophets",
+   "The men of Jericho",
+   "Soldiers of Samaria",
+   "Little children"
+  ],
+  "answer": 3,
+  "explanation": "There came forth little children out of the city, and mocked him.",
+  "ref": "2 Kings 2:23"
+ },
+ {
+  "id": "2-kings-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What came out of the wood after Elisha cursed the children?",
+  "choices": [
+   "Two lions",
+   "A wolf",
+   "Two she bears",
+   "A leopard"
+  ],
+  "answer": 2,
+  "explanation": "There came forth two she bears out of the wood, and tare forty and two children of them.",
+  "ref": "2 Kings 2:24"
+ },
+ {
+  "id": "2-kings-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the sons of the prophets ask Elisha?",
+  "choices": [
+   "Wilt thou be our master?",
+   "Knowest thou that the LORD will take away thy master today?",
+   "Where is Elijah going?",
+   "Hast thou asked for a sign?"
+  ],
+  "answer": 1,
+  "explanation": "Knowest thou that the LORD will take away thy master from thy head to day?",
+  "ref": "2 Kings 2:3"
+ },
+ {
+  "id": "2-kings-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Elisha answer the sons of the prophets?",
+  "choices": [
+   "Yea, I know it; hold ye your peace",
+   "It is not yet time",
+   "Ask Elijah yourselves",
+   "I do not know"
+  ],
+  "answer": 0,
+  "explanation": "He said, Yea, I know it; hold ye your peace.",
+  "ref": "2 Kings 2:3"
+ },
+ {
+  "id": "2-kings-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many sons of the prophets stood afar off to view?",
+  "choices": [
+   "Seven",
+   "Twelve",
+   "One hundred",
+   "Fifty"
+  ],
+  "answer": 3,
+  "explanation": "Fifty men of the sons of the prophets went, and stood to view afar off.",
+  "ref": "2 Kings 2:7"
+ },
+ {
+  "id": "2-kings-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah call Elisha's request for a double portion?",
+  "choices": [
+   "A foolish thing",
+   "An easy thing",
+   "A hard thing",
+   "A holy thing"
+  ],
+  "answer": 2,
+  "explanation": "He said, Thou hast asked a hard thing.",
+  "ref": "2 Kings 2:10"
+ },
+ {
+  "id": "2-kings-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what condition would Elisha receive what he asked?",
+  "choices": [
+   "If he fasted three days",
+   "If he saw Elijah taken from him",
+   "If he crossed Jordan again",
+   "If he stayed at Gilgal"
+  ],
+  "answer": 1,
+  "explanation": "If thou see me when I am taken from thee, it shall be so unto thee.",
+  "ref": "2 Kings 2:10"
+ },
+ {
+  "id": "2-kings-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the sons of the prophets at Jericho say when they saw Elisha?",
+  "choices": [
+   "The spirit of Elijah doth rest on Elisha",
+   "Where is our master Elijah?",
+   "Elisha is a false prophet",
+   "Blessed be the LORD of Israel"
+  ],
+  "answer": 0,
+  "explanation": "They said, The spirit of Elijah doth rest on Elisha.",
+  "ref": "2 Kings 2:15"
+ },
+ {
+  "id": "2-kings-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the sons of the prophets want to send men to seek Elijah?",
+  "choices": [
+   "He might have been captured by Syria",
+   "He might have fallen sick",
+   "He might have gone back to Gilgal",
+   "The Spirit might have cast him on a mountain or valley"
+  ],
+  "answer": 3,
+  "explanation": "Lest peradventure the Spirit of the LORD hath taken him up, and cast him upon some mountain, or into some valley.",
+  "ref": "2 Kings 2:16"
+ },
+ {
+  "id": "2-kings-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the fifty men search for Elijah?",
+  "choices": [
+   "One day",
+   "Seven days",
+   "Three days",
+   "Forty days"
+  ],
+  "answer": 2,
+  "explanation": "They sought three days, but found him not.",
+  "ref": "2 Kings 2:17"
+ },
+ {
+  "id": "2-kings-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was wrong with Jericho according to its men?",
+  "choices": [
+   "The walls were broken",
+   "The water was naught and the ground barren",
+   "The gates were burnt",
+   "The people were sick"
+  ],
+  "answer": 1,
+  "explanation": "The situation of this city is pleasant, but the water is naught, and the ground barren.",
+  "ref": "2 Kings 2:19"
+ },
+ {
+  "id": "2-kings-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha ask the men to bring him?",
+  "choices": [
+   "A new cruse with salt in it",
+   "A bowl of oil",
+   "A basket of bread",
+   "A bucket of earth"
+  ],
+  "answer": 0,
+  "explanation": "He said, Bring me a new cruse, and put salt therein.",
+  "ref": "2 Kings 2:20"
+ },
+ {
+  "id": "2-kings-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Elisha cast the salt?",
+  "choices": [
+   "Into the river Jordan",
+   "Onto the barren ground",
+   "Into the city gate",
+   "Into the spring of the waters"
+  ],
+  "answer": 3,
+  "explanation": "He went forth unto the spring of the waters, and cast the salt in there.",
+  "ref": "2 Kings 2:21"
+ },
+ {
+  "id": "2-kings-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the children say to Elisha?",
+  "choices": [
+   "Go back, thou false prophet",
+   "Where is Elijah?",
+   "Go up, thou bald head",
+   "Call down fire"
+  ],
+  "answer": 2,
+  "explanation": "They said unto him, Go up, thou bald head; go up, thou bald head.",
+  "ref": "2 Kings 2:23"
+ },
+ {
+  "id": "2-kings-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha say when the men came back empty-handed?",
+  "choices": [
+   "The LORD hath hid him",
+   "Did I not say unto you, Go not?",
+   "Seek him again",
+   "Blessed be the LORD"
+  ],
+  "answer": 1,
+  "explanation": "He said unto them, Did I not say unto you, Go not?",
+  "ref": "2 Kings 2:18"
+ },
+ {
+  "id": "2-kings-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elisha do to his clothes when Elijah was gone?",
+  "choices": [
+   "Rent them in two pieces",
+   "Wrapped them in a mantle",
+   "Cast them to the ground",
+   "Burned them"
+  ],
+  "answer": 0,
+  "explanation": "He took hold of his own clothes, and rent them in two pieces.",
+  "ref": "2 Kings 2:12"
+ },
+ {
+  "id": "2-kings-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the ground like when Elijah and Elisha crossed Jordan?",
+  "choices": [
+   "Shallow mud",
+   "Covered in ice",
+   "Narrow stones",
+   "Dry ground"
+  ],
+  "answer": 3,
+  "explanation": "The waters were divided so that they two went over on dry ground.",
+  "ref": "2 Kings 2:8"
+ },
+ {
+  "id": "2-kings-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What made Elisha finally agree to send the fifty men?",
+  "choices": [
+   "Elijah appeared to him",
+   "A prophet gave a sign",
+   "They urged him till he was ashamed",
+   "The men offered gifts"
+  ],
+  "answer": 2,
+  "explanation": "When they urged him till he was ashamed, he said, Send.",
+  "ref": "2 Kings 2:17"
+ },
+ {
+  "id": "2-kings-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say would no more come from the healed waters?",
+  "choices": [
+   "Salt or bitterness",
+   "Death or barren land",
+   "Sickness or hunger",
+   "Flood or drought"
+  ],
+  "answer": 1,
+  "explanation": "There shall not be from thence any more death or barren land.",
+  "ref": "2 Kings 2:21"
+ },
+ {
+  "id": "2-kings-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose name did Elisha curse the children?",
+  "choices": [
+   "The name of the LORD",
+   "The name of Elijah",
+   "The name of Israel",
+   "The name of the prophets"
+  ],
+  "answer": 0,
+  "explanation": "He turned back, and looked on them, and cursed them in the name of the LORD.",
+  "ref": "2 Kings 2:24"
+ },
+ {
+  "id": "2-kings-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many children did the she bears tear?",
+  "choices": [
+   "Twelve",
+   "Twenty and four",
+   "Seventy",
+   "Forty and two"
+  ],
+  "answer": 3,
+  "explanation": "Two she bears tare forty and two children of them.",
+  "ref": "2 Kings 2:24"
+ },
+ {
+  "id": "2-kings-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Elisha go after Bethel, before he returned to Samaria?",
+  "choices": [
+   "Mount Sinai",
+   "Mount Ebal",
+   "Mount Carmel",
+   "Mount Hermon"
+  ],
+  "answer": 2,
+  "explanation": "He went from thence to mount Carmel, and from thence he returned to Samaria.",
+  "ref": "2 Kings 2:25"
+ },
+ {
+  "id": "2-kings-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city did Elijah name between Bethel and Jordan?",
+  "choices": [
+   "Gilgal",
+   "Jericho",
+   "Shiloh",
+   "Beersheba"
+  ],
+  "answer": 1,
+  "explanation": "Elijah said, Tarry here; for the LORD hath sent me to Jericho.",
+  "ref": "2 Kings 2:4"
+ },
+ {
+  "id": "2-kings-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elisha first say to the sons of the prophets who offered to send men?",
+  "choices": [
+   "Ye shall not send",
+   "Go and find him",
+   "Wait until morning",
+   "Ask the king"
+  ],
+  "answer": 0,
+  "explanation": "And he said, Ye shall not send.",
+  "ref": "2 Kings 2:16"
+ },
+ {
+  "id": "2-kings-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Elisha stay while the fifty men searched?",
+  "choices": [
+   "At Bethel",
+   "At Gilgal",
+   "At Jordan",
+   "At Jericho"
+  ],
+  "answer": 3,
+  "explanation": "For he tarried at Jericho.",
+  "ref": "2 Kings 2:18"
+ },
+ {
+  "id": "2-kings-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did the text say the healed waters have stayed healed?",
+  "choices": [
+   "For seven years",
+   "Until Elisha died",
+   "Unto this day",
+   "For forty days"
+  ],
+  "answer": 2,
+  "explanation": "So the waters were healed unto this day, according to the saying of Elisha.",
+  "ref": "2 Kings 2:22"
+ },
+ {
+  "id": "2-kings-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Elisha stand before he smote the waters with the mantle?",
+  "choices": [
+   "On the hill of Gilgal",
+   "By the bank of Jordan",
+   "At the gate of Jericho",
+   "On Mount Carmel"
+  ],
+  "answer": 1,
+  "explanation": "He went back, and stood by the bank of Jordan.",
+  "ref": "2 Kings 2:13"
+ },
+ {
+  "id": "2-kings-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When Elisha smote the Jordan the second time, what happened?",
+  "choices": [
+   "The waters parted and he went over",
+   "The waters stood as a heap",
+   "The river dried up for a day",
+   "Nothing happened"
+  ],
+  "answer": 0,
+  "explanation": "When he also had smitten the waters, they parted hither and thither: and Elisha went over.",
+  "ref": "2 Kings 2:14"
+ },
+ {
   "id": "old-2-kings-3-1",
   "chapter": 3,
   "level": "beginner",
