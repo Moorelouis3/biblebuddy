@@ -10176,6 +10176,646 @@
   "ref": "1 Kings 15:5"
  },
  {
+  "id": "1-kings-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Judah after Abijam died?",
+  "choices": [
+   "Jehoshaphat",
+   "Rehoboam",
+   "Asa his son",
+   "Nadab"
+  ],
+  "answer": 2,
+  "explanation": "Abijam slept with his fathers, and Asa his son reigned in his stead.",
+  "ref": "1 Kings 15:8"
+ },
+ {
+  "id": "1-kings-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did Abijam reign in Jerusalem?",
+  "choices": [
+   "Seven years",
+   "Three years",
+   "Twelve years",
+   "Twenty years"
+  ],
+  "answer": 1,
+  "explanation": "Three years reigned he in Jerusalem.",
+  "ref": "1 Kings 15:2"
+ },
+ {
+  "id": "1-kings-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Israel went up against Judah and built Ramah?",
+  "choices": [
+   "Baasha",
+   "Nadab",
+   "Jeroboam",
+   "Elah"
+  ],
+  "answer": 0,
+  "explanation": "Baasha king of Israel went up against Judah, and built Ramah.",
+  "ref": "1 Kings 15:17"
+ },
+ {
+  "id": "1-kings-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "To which king of Syria did Asa send silver and gold?",
+  "choices": [
+   "Hazael",
+   "Hiram",
+   "Shishak",
+   "Ben-hadad"
+  ],
+  "answer": 3,
+  "explanation": "Asa sent them to Ben-hadad, the son of Tabrimon, king of Syria, that dwelt at Damascus.",
+  "ref": "1 Kings 15:18"
+ },
+ {
+  "id": "1-kings-15-e-05",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Asa remove from being queen?",
+  "choices": [
+   "Naamah",
+   "Abishag",
+   "Maachah his mother",
+   "Jezebel"
+  ],
+  "answer": 2,
+  "explanation": "Maachah his mother, even her he removed from being queen, because she had made an idol in a grove.",
+  "ref": "1 Kings 15:13"
+ },
+ {
+  "id": "1-kings-15-e-06",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Baasha do to the house of Jeroboam when he reigned?",
+  "choices": [
+   "He made peace with it",
+   "He destroyed it and left none alive",
+   "He drove it out of Israel",
+   "He made it serve him"
+  ],
+  "answer": 1,
+  "explanation": "Baasha smote all the house of Jeroboam; he left not any that breathed.",
+  "ref": "1 Kings 15:29"
+ },
+ {
+  "id": "1-kings-15-e-07",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Nadab's father?",
+  "choices": [
+   "Jeroboam",
+   "Baasha",
+   "Asa",
+   "Rehoboam"
+  ],
+  "answer": 0,
+  "explanation": "Nadab the son of Jeroboam began to reign over Israel.",
+  "ref": "1 Kings 15:25"
+ },
+ {
+  "id": "1-kings-15-e-08",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was wrong with Asa in the time of his old age?",
+  "choices": [
+   "He lost his sight",
+   "He was sick in his heart",
+   "He could not walk at all",
+   "He was diseased in his feet"
+  ],
+  "answer": 3,
+  "explanation": "In the time of his old age he was diseased in his feet.",
+  "ref": "1 Kings 15:23"
+ },
+ {
+  "id": "1-kings-15-e-09",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Judah after Asa?",
+  "choices": [
+   "Abijam",
+   "Rehoboam",
+   "Jehoshaphat his son",
+   "Nadab"
+  ],
+  "answer": 2,
+  "explanation": "Asa slept with his fathers, and Jehoshaphat his son reigned in his stead.",
+  "ref": "1 Kings 15:24"
+ },
+ {
+  "id": "1-kings-15-e-10",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did Asa reign in Jerusalem?",
+  "choices": [
+   "Three years",
+   "Forty and one years",
+   "Twenty and four years",
+   "Twelve years"
+  ],
+  "answer": 1,
+  "explanation": "Forty and one years reigned he in Jerusalem.",
+  "ref": "1 Kings 15:10"
+ },
+ {
+  "id": "1-kings-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Abijam's mother?",
+  "choices": [
+   "Maachah, the daughter of Abishalom",
+   "Naamah an Ammonitess",
+   "Jezebel the daughter of Ethbaal",
+   "Abishag the Shunammite"
+  ],
+  "answer": 0,
+  "explanation": "His mother's name was Maachah, the daughter of Abishalom.",
+  "ref": "1 Kings 15:2"
+ },
+ {
+  "id": "1-kings-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD give Abijam's house a lamp in Jerusalem?",
+  "choices": [
+   "Because Abijam repented",
+   "Because of Rehoboam's prayer",
+   "Because of Maachah's gifts",
+   "For David's sake"
+  ],
+  "answer": 3,
+  "explanation": "For David's sake did the LORD his God give him a lamp in Jerusalem, to set up his son after him.",
+  "ref": "1 Kings 15:4"
+ },
+ {
+  "id": "1-kings-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Asa remove his mother Maachah from being queen?",
+  "choices": [
+   "She had plotted with Baasha",
+   "She had refused to serve the LORD's house",
+   "She had made an idol in a grove",
+   "She had taken the king's treasure"
+  ],
+  "answer": 2,
+  "explanation": "Asa removed Maachah his mother from being queen, because she had made an idol in a grove.",
+  "ref": "1 Kings 15:13"
+ },
+ {
+  "id": "1-kings-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Asa burn the idol of his mother?",
+  "choices": [
+   "At Ramah",
+   "By the brook Kidron",
+   "In Samaria",
+   "At Geba"
+  ],
+  "answer": 1,
+  "explanation": "Asa destroyed her idol, and burnt it by the brook Kidron.",
+  "ref": "1 Kings 15:13"
+ },
+ {
+  "id": "1-kings-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not removed in the days of Asa?",
+  "choices": [
+   "The high places",
+   "The idols of Maachah",
+   "The groves of Samaria",
+   "The altars of Baal"
+  ],
+  "answer": 0,
+  "explanation": "But the high places were not removed: nevertheless Asa's heart was perfect with the LORD all his days.",
+  "ref": "1 Kings 15:14"
+ },
+ {
+  "id": "1-kings-15-m-06",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Baasha build Ramah?",
+  "choices": [
+   "To guard the road to Tirzah",
+   "To fight the Syrians",
+   "To make a home for his sons",
+   "So that no one could go out or come in to Asa"
+  ],
+  "answer": 3,
+  "explanation": "Baasha built Ramah, that he might not suffer any to go out or come in to Asa king of Judah.",
+  "ref": "1 Kings 15:17"
+ },
+ {
+  "id": "1-kings-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Asa get the silver and gold he sent to Ben-hadad?",
+  "choices": [
+   "The spoil of Ramah",
+   "The tribute of Edom",
+   "The treasures of the house of the LORD and the king's house",
+   "The tax of the people of Judah"
+  ],
+  "answer": 2,
+  "explanation": "Asa took all the silver and the gold that were left in the treasures of the house of the LORD, and the treasures of the king's house.",
+  "ref": "1 Kings 15:18"
+ },
+ {
+  "id": "1-kings-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Asa ask Ben-hadad to do?",
+  "choices": [
+   "Send soldiers to Ramah",
+   "Break his league with Baasha",
+   "Marry his daughter to Asa's son",
+   "Give Judah the city of Dan"
+  ],
+  "answer": 1,
+  "explanation": "Asa said, Come and break thy league with Baasha king of Israel, that he may depart from me.",
+  "ref": "1 Kings 15:19"
+ },
+ {
+  "id": "1-kings-15-m-09",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Which land did Ben-hadad's captains smite along with Ijon, Dan and Abel-beth-maachah?",
+  "choices": [
+   "The land of Naphtali",
+   "The land of Judah",
+   "The land of Benjamin",
+   "The land of Gilead"
+  ],
+  "answer": 0,
+  "explanation": "They smote Ijon, and Dan, and Abel-beth-maachah, and all Cinneroth, with all the land of Naphtali.",
+  "ref": "1 Kings 15:20"
+ },
+ {
+  "id": "1-kings-15-m-10",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Baasha go to live when he stopped building Ramah?",
+  "choices": [
+   "Samaria",
+   "Shiloh",
+   "Gibbethon",
+   "Tirzah"
+  ],
+  "answer": 3,
+  "explanation": "When Baasha heard thereof, he left off building of Ramah, and dwelt in Tirzah.",
+  "ref": "1 Kings 15:21"
+ },
+ {
+  "id": "1-kings-15-m-11",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "What did Asa build with the stones and timber of Ramah?",
+  "choices": [
+   "Dan and Ijon",
+   "Tirzah and Samaria",
+   "Geba of Benjamin and Mizpah",
+   "Gibbethon and Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "King Asa built with them Geba of Benjamin, and Mizpah.",
+  "ref": "1 Kings 15:22"
+ },
+ {
+  "id": "1-kings-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Baasha strike down Nadab?",
+  "choices": [
+   "Tirzah",
+   "Gibbethon",
+   "Ramah",
+   "Samaria"
+  ],
+  "answer": 1,
+  "explanation": "Baasha smote him at Gibbethon, which belonged to the Philistines.",
+  "ref": "1 Kings 15:27"
+ },
+ {
+  "id": "1-kings-15-m-13",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of which tribe's house was Baasha the son of Ahijah?",
+  "choices": [
+   "Issachar",
+   "Judah",
+   "Naphtali",
+   "Benjamin"
+  ],
+  "answer": 0,
+  "explanation": "Baasha the son of Ahijah, of the house of Issachar, conspired against him.",
+  "ref": "1 Kings 15:27"
+ },
+ {
+  "id": "1-kings-15-m-14",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Nadab reign over Israel?",
+  "choices": [
+   "Seven days",
+   "Twelve years",
+   "Twenty and four years",
+   "Two years"
+  ],
+  "answer": 3,
+  "explanation": "Nadab reigned over Israel two years.",
+  "ref": "1 Kings 15:25"
+ },
+ {
+  "id": "1-kings-15-m-15",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Baasha reign over Israel in Tirzah?",
+  "choices": [
+   "Two years",
+   "Seventeen years",
+   "Twenty and four years",
+   "Forty and one years"
+  ],
+  "answer": 2,
+  "explanation": "Baasha began to reign over all Israel in Tirzah, twenty and four years.",
+  "ref": "1 Kings 15:33"
+ },
+ {
+  "id": "1-kings-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Jeroboam did Abijam begin to reign over Judah?",
+  "choices": [
+   "The second year",
+   "The eighteenth year",
+   "The twentieth year",
+   "The twenty-second year"
+  ],
+  "answer": 1,
+  "explanation": "In the eighteenth year of king Jeroboam the son of Nebat reigned Abijam over Judah.",
+  "ref": "1 Kings 15:1"
+ },
+ {
+  "id": "1-kings-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Jeroboam did Asa begin to reign over Judah?",
+  "choices": [
+   "The twentieth year",
+   "The eighteenth year",
+   "The first year",
+   "The third year"
+  ],
+  "answer": 0,
+  "explanation": "In the twentieth year of Jeroboam king of Israel reigned Asa over Judah.",
+  "ref": "1 Kings 15:9"
+ },
+ {
+  "id": "1-kings-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is Asa's heart described all his days?",
+  "choices": [
+   "Divided between two gods",
+   "Hardened against Baasha",
+   "Turned to the high places",
+   "Perfect with the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Asa's heart was perfect with the LORD all his days.",
+  "ref": "1 Kings 15:14"
+ },
+ {
+  "id": "1-kings-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Ben-hadad king of Syria?",
+  "choices": [
+   "Hezion's",
+   "Hazael's",
+   "Tabrimon's",
+   "Hiram's"
+  ],
+  "answer": 2,
+  "explanation": "Ben-hadad, the son of Tabrimon, the son of Hezion, king of Syria.",
+  "ref": "1 Kings 15:18"
+ },
+ {
+  "id": "1-kings-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "In which city did Ben-hadad king of Syria dwell?",
+  "choices": [
+   "Samaria",
+   "Damascus",
+   "Tirzah",
+   "Dan"
+  ],
+  "answer": 1,
+  "explanation": "Ben-hadad, king of Syria, dwelt at Damascus.",
+  "ref": "1 Kings 15:18"
+ },
+ {
+  "id": "1-kings-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Asa bring into the house of the LORD?",
+  "choices": [
+   "Silver, gold and vessels",
+   "Spoil from Ramah",
+   "Sacrifices of oxen and sheep",
+   "Idols of his mother"
+  ],
+  "answer": 0,
+  "explanation": "He brought in the things which his father had dedicated, and which himself had dedicated: silver, and gold, and vessels.",
+  "ref": "1 Kings 15:15"
+ },
+ {
+  "id": "1-kings-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who was exempted when Asa proclaimed that the stones of Ramah be taken away?",
+  "choices": [
+   "The priests",
+   "The men of Benjamin",
+   "The old men",
+   "No one"
+  ],
+  "answer": 3,
+  "explanation": "King Asa made a proclamation throughout all Judah; none was exempted.",
+  "ref": "1 Kings 15:22"
+ },
+ {
+  "id": "1-kings-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "By the word of which prophet was Baasha's destruction of Jeroboam's house fulfilled?",
+  "choices": [
+   "Elijah the Tishbite",
+   "Jehu the son of Hanani",
+   "Ahijah the Shilonite",
+   "Shemaiah the man of God"
+  ],
+  "answer": 2,
+  "explanation": "Baasha destroyed him according unto the saying of the LORD, which he spake by his servant Ahijah the Shilonite.",
+  "ref": "1 Kings 15:29"
+ },
+ {
+  "id": "1-kings-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Asa did Nadab begin to reign over Israel?",
+  "choices": [
+   "The first year",
+   "The second year",
+   "The third year",
+   "The twentieth year"
+  ],
+  "answer": 1,
+  "explanation": "Nadab the son of Jeroboam began to reign over Israel in the second year of Asa king of Judah.",
+  "ref": "1 Kings 15:25"
+ },
+ {
+  "id": "1-kings-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Asa did Baasha slay Nadab?",
+  "choices": [
+   "The third year",
+   "The second year",
+   "The fifth year",
+   "The twentieth year"
+  ],
+  "answer": 0,
+  "explanation": "Even in the third year of Asa king of Judah did Baasha slay him, and reigned in his stead.",
+  "ref": "1 Kings 15:28"
+ },
+ {
+  "id": "1-kings-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was there between Asa and Baasha all their days?",
+  "choices": [
+   "A league",
+   "A marriage treaty",
+   "Trade",
+   "War"
+  ],
+  "answer": 3,
+  "explanation": "There was war between Asa and Baasha king of Israel all their days.",
+  "ref": "1 Kings 15:16"
+ },
+ {
+  "id": "1-kings-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "With whom was there war in the days of Abijam?",
+  "choices": [
+   "Baasha",
+   "Ben-hadad",
+   "Jeroboam",
+   "Shishak"
+  ],
+  "answer": 2,
+  "explanation": "There was war between Abijam and Jeroboam.",
+  "ref": "1 Kings 15:7"
+ },
+ {
+  "id": "1-kings-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Asa buried?",
+  "choices": [
+   "In Tirzah",
+   "In the city of David his father",
+   "In Samaria",
+   "At Ramah"
+  ],
+  "answer": 1,
+  "explanation": "Asa slept with his fathers, and was buried with his fathers in the city of David his father.",
+  "ref": "1 Kings 15:24"
+ },
+ {
+  "id": "1-kings-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "In whose way did Baasha walk, making Israel sin?",
+  "choices": [
+   "Jeroboam's",
+   "Nadab's",
+   "Asa's",
+   "Rehoboam's"
+  ],
+  "answer": 0,
+  "explanation": "He did evil in the sight of the LORD, and walked in the way of Jeroboam, and in his sin wherewith he made Israel to sin.",
+  "ref": "1 Kings 15:34"
+ },
+ {
+  "id": "1-kings-15-h-15",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "With whom does the text compare Asa for doing right in the eyes of the LORD?",
+  "choices": [
+   "Solomon his grandfather",
+   "Rehoboam his grandfather",
+   "Abijam his father",
+   "David his father"
+  ],
+  "answer": 3,
+  "explanation": "Asa did that which was right in the eyes of the LORD, as did David his father.",
+  "ref": "1 Kings 15:11"
+ },
+ {
   "id": "old-1-kings-16-1",
   "chapter": 16,
   "level": "beginner",
