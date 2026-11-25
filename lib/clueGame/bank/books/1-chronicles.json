@@ -14339,16 +14339,656 @@
   "id": "old-1-chronicles-24-5",
   "chapter": 24,
   "level": "beginner",
-  "category": "keyword",
-  "question": "What does this chapter mainly show about worship?",
+  "category": "person",
+  "question": "The governors of the sanctuary came from the sons of which two men?",
   "choices": [
-   "It was random",
-   "It was ordered and carefully structured",
-   "It belonged only to kings",
-   "It had ended"
+   "Nadab and Abihu",
+   "Eleazar and Ithamar",
+   "Zadok and Abiathar",
+   "Gershon and Kohath"
   ],
   "answer": 1,
-  "explanation": "The chronicler emphasizes ordered service before God.",
+  "explanation": "The governors of the sanctuary, and governors of the house of God, were of the sons of Eleazar, and of the sons of Ithamar.",
+  "ref": "1 Chronicles 24:5"
+ },
+ {
+  "id": "1-chronicles-24-e-01",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two sons of Aaron executed the priest's office?",
+  "choices": [
+   "Nadab and Abihu",
+   "Eleazar and Ithamar",
+   "Gershom and Eliezer",
+   "Zadok and Ahimelech"
+  ],
+  "answer": 1,
+  "explanation": "Nadab and Abihu died before their father, therefore Eleazar and Ithamar executed the priest's office.",
+  "ref": "1 Chronicles 24:2"
+ },
+ {
+  "id": "1-chronicles-24-e-02",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which priest of the sons of Eleazar did David distribute?",
+  "choices": [
+   "Abiathar",
+   "Shemaiah",
+   "Zadok",
+   "Nathan"
+  ],
+  "answer": 2,
+  "explanation": "David distributed them, both Zadok of the sons of Eleazar, and Ahimelech of the sons of Ithamar.",
+  "ref": "1 Chronicles 24:3"
+ },
+ {
+  "id": "1-chronicles-24-e-03",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two sons of Aaron died before their father?",
+  "choices": [
+   "Eleazar and Ithamar",
+   "Gershom and Eliezer",
+   "Mahli and Mushi",
+   "Nadab and Abihu"
+  ],
+  "answer": 3,
+  "explanation": "Nadab and Abihu died before their father, and had no children.",
+  "ref": "1 Chronicles 24:2"
+ },
+ {
+  "id": "1-chronicles-24-e-04",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many chief men were among the sons of Ithamar?",
+  "choices": [
+   "Eight",
+   "Sixteen",
+   "Twelve",
+   "Twenty-four"
+  ],
+  "answer": 0,
+  "explanation": "Among the sons of Eleazar there were sixteen chief men, and eight among the sons of Ithamar.",
+  "ref": "1 Chronicles 24:4"
+ },
+ {
+  "id": "1-chronicles-24-e-05",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the scribe who wrote the divisions before the king and the princes?",
+  "choices": [
+   "Zadok",
+   "Shemaiah",
+   "Ahimelech",
+   "Jehdeiah"
+  ],
+  "answer": 1,
+  "explanation": "Shemaiah the son of Nethaneel the scribe, one of the Levites, wrote them before the king.",
+  "ref": "1 Chronicles 24:6"
+ },
+ {
+  "id": "1-chronicles-24-e-06",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which family received the first lot?",
+  "choices": [
+   "Jedaiah",
+   "Harim",
+   "Jehoiarib",
+   "Abijah"
+  ],
+  "answer": 2,
+  "explanation": "The first lot came forth to Jehoiarib.",
+  "ref": "1 Chronicles 24:7"
+ },
+ {
+  "id": "1-chronicles-24-e-07",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Under whom did the priests come into the house of the LORD in their service?",
+  "choices": [
+   "Moses",
+   "Eleazar",
+   "Zadok",
+   "Aaron their father"
+  ],
+  "answer": 3,
+  "explanation": "They served in the house of the LORD, according to their manner, under Aaron their father, as the LORD God of Israel had commanded him.",
+  "ref": "1 Chronicles 24:19"
+ },
+ {
+  "id": "1-chronicles-24-e-08",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king was present when the Levites cast lots over against their brethren?",
+  "choices": [
+   "David",
+   "Solomon",
+   "Saul",
+   "Hezekiah"
+  ],
+  "answer": 0,
+  "explanation": "They cast lots in the presence of David the king, and Zadok, and Ahimelech.",
+  "ref": "1 Chronicles 24:31"
+ },
+ {
+  "id": "1-chronicles-24-e-09",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came of Mahli and had no sons?",
+  "choices": [
+   "Kish",
+   "Eleazar",
+   "Jerahmeel",
+   "Beno"
+  ],
+  "answer": 1,
+  "explanation": "Of Mahli came Eleazar, who had no sons.",
+  "ref": "1 Chronicles 24:28"
+ },
+ {
+  "id": "1-chronicles-24-e-10",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were the sons of Eleazar and Ithamar divided into their courses?",
+  "choices": [
+   "By age",
+   "By tribe",
+   "By lot",
+   "By sword"
+  ],
+  "answer": 2,
+  "explanation": "They were divided by lot, one sort with another.",
+  "ref": "1 Chronicles 24:5"
+ },
+ {
+  "id": "1-chronicles-24-m-01",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Which priest of the sons of Ithamar did David distribute with Zadok?",
+  "choices": [
+   "Abiathar",
+   "Shemaiah",
+   "Jehdeiah",
+   "Ahimelech"
+  ],
+  "answer": 3,
+  "explanation": "David distributed them, both Zadok of the sons of Eleazar, and Ahimelech of the sons of Ithamar.",
+  "ref": "1 Chronicles 24:3"
+ },
+ {
+  "id": "1-chronicles-24-m-02",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Of which line were more chief men found?",
+  "choices": [
+   "The sons of Eleazar",
+   "The sons of Ithamar",
+   "The sons of Nadab",
+   "The sons of Abihu"
+  ],
+  "answer": 0,
+  "explanation": "There were more chief men found of the sons of Eleazar than of the sons of Ithamar.",
+  "ref": "1 Chronicles 24:4"
+ },
+ {
+  "id": "1-chronicles-24-m-03",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Shemaiah the scribe?",
+  "choices": [
+   "Abiathar",
+   "Nethaneel",
+   "Zadok",
+   "Shubael"
+  ],
+  "answer": 1,
+  "explanation": "Shemaiah the son of Nethaneel the scribe.",
+  "ref": "1 Chronicles 24:6"
+ },
+ {
+  "id": "1-chronicles-24-m-04",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Ahimelech, who stood before the king?",
+  "choices": [
+   "Zadok",
+   "Nethaneel",
+   "Abiathar",
+   "Eleazar"
+  ],
+  "answer": 2,
+  "explanation": "Ahimelech the son of Abiathar.",
+  "ref": "1 Chronicles 24:6"
+ },
+ {
+  "id": "1-chronicles-24-m-05",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who had commanded the manner of the priests' service under Aaron?",
+  "choices": [
+   "David the king",
+   "Zadok the priest",
+   "Shemaiah the scribe",
+   "The LORD God of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Under Aaron their father, as the LORD God of Israel had commanded him.",
+  "ref": "1 Chronicles 24:19"
+ },
+ {
+  "id": "1-chronicles-24-m-06",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Over against whom did the Levites cast lots in the presence of David?",
+  "choices": [
+   "Their brethren the sons of Aaron",
+   "The princes of Israel",
+   "The Philistines",
+   "The porters"
+  ],
+  "answer": 0,
+  "explanation": "They cast lots over against their brethren the sons of Aaron in the presence of David the king.",
+  "ref": "1 Chronicles 24:31"
+ },
+ {
+  "id": "1-chronicles-24-m-07",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Which priest stood with the king and the princes when the divisions were written?",
+  "choices": [
+   "Abiathar",
+   "Zadok",
+   "Eli",
+   "Hilkiah"
+  ],
+  "answer": 1,
+  "explanation": "Shemaiah wrote them before the king, and the princes, and Zadok the priest.",
+  "ref": "1 Chronicles 24:6"
+ },
+ {
+  "id": "1-chronicles-24-m-08",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Shemaiah the scribe was one of which group?",
+  "choices": [
+   "The princes",
+   "The porters",
+   "The Levites",
+   "The judges"
+  ],
+  "answer": 2,
+  "explanation": "Shemaiah the son of Nethaneel the scribe, one of the Levites.",
+  "ref": "1 Chronicles 24:6"
+ },
+ {
+  "id": "1-chronicles-24-m-09",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Shubael was of the sons of which man?",
+  "choices": [
+   "Izhar",
+   "Hebron",
+   "Uzziel",
+   "Amram"
+  ],
+  "answer": 3,
+  "explanation": "Of the sons of Amram; Shubael.",
+  "ref": "1 Chronicles 24:20"
+ },
+ {
+  "id": "1-chronicles-24-m-10",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Which Izharite is named in this chapter?",
+  "choices": [
+   "Shelomoth",
+   "Shamir",
+   "Jaaziah",
+   "Eder"
+  ],
+  "answer": 0,
+  "explanation": "Of the Izharites; Shelomoth: of the sons of Shelomoth; Jahath.",
+  "ref": "1 Chronicles 24:22"
+ },
+ {
+  "id": "1-chronicles-24-m-11",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Which son of Uzziel is named in this chapter?",
+  "choices": [
+   "Mahli",
+   "Michah",
+   "Jeriah",
+   "Beno"
+  ],
+  "answer": 1,
+  "explanation": "Of the sons of Uzziel; Michah.",
+  "ref": "1 Chronicles 24:24"
+ },
+ {
+  "id": "1-chronicles-24-m-12",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Of whom came Eleazar, who had no sons?",
+  "choices": [
+   "Mushi",
+   "Kish",
+   "Mahli",
+   "Jaaziah"
+  ],
+  "answer": 2,
+  "explanation": "Of Mahli came Eleazar, who had no sons.",
+  "ref": "1 Chronicles 24:28"
+ },
+ {
+  "id": "1-chronicles-24-m-13",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the first of the sons of Hebron?",
+  "choices": [
+   "Amariah",
+   "Jahaziel",
+   "Jekameam",
+   "Jeriah"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Hebron; Jeriah the first, Amariah the second.",
+  "ref": "1 Chronicles 24:23"
+ },
+ {
+  "id": "1-chronicles-24-m-14",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the son of Isshiah, the brother of Michah?",
+  "choices": [
+   "Zechariah",
+   "Shamir",
+   "Beno",
+   "Jahath"
+  ],
+  "answer": 0,
+  "explanation": "The brother of Michah was Isshiah: of the sons of Isshiah; Zechariah.",
+  "ref": "1 Chronicles 24:25"
+ },
+ {
+  "id": "1-chronicles-24-m-15",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the son of Michah?",
+  "choices": [
+   "Zechariah",
+   "Shamir",
+   "Zaccur",
+   "Ibri"
+  ],
+  "answer": 1,
+  "explanation": "Of the sons of Michah; Shamir.",
+  "ref": "1 Chronicles 24:24"
+ },
+ {
+  "id": "1-chronicles-24-h-01",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Which family received the twenty-fourth and last lot?",
+  "choices": [
+   "Hezir",
+   "Immer",
+   "Maaziah",
+   "Delaiah"
+  ],
+  "answer": 2,
+  "explanation": "The four and twentieth to Maaziah.",
+  "ref": "1 Chronicles 24:18"
+ },
+ {
+  "id": "1-chronicles-24-h-02",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Which family received the second lot?",
+  "choices": [
+   "Jehoiarib",
+   "Harim",
+   "Hakkoz",
+   "Jedaiah"
+  ],
+  "answer": 3,
+  "explanation": "The first lot came forth to Jehoiarib, the second to Jedaiah.",
+  "ref": "1 Chronicles 24:7"
+ },
+ {
+  "id": "1-chronicles-24-h-03",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Which family received the third lot?",
+  "choices": [
+   "Harim",
+   "Seorim",
+   "Mijamin",
+   "Huppah"
+  ],
+  "answer": 0,
+  "explanation": "The third to Harim.",
+  "ref": "1 Chronicles 24:8"
+ },
+ {
+  "id": "1-chronicles-24-h-04",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Which family received the seventh lot?",
+  "choices": [
+   "Malchijah",
+   "Hakkoz",
+   "Abijah",
+   "Jeshua"
+  ],
+  "answer": 1,
+  "explanation": "The seventh to Hakkoz.",
+  "ref": "1 Chronicles 24:10"
+ },
+ {
+  "id": "1-chronicles-24-h-05",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Which family received the eighth lot?",
+  "choices": [
+   "Hakkoz",
+   "Jeshua",
+   "Abijah",
+   "Eliashib"
+  ],
+  "answer": 2,
+  "explanation": "The eighth to Abijah.",
+  "ref": "1 Chronicles 24:10"
+ },
+ {
+  "id": "1-chronicles-24-h-06",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Which family received the sixteenth lot?",
+  "choices": [
+   "Bilgah",
+   "Hezir",
+   "Aphses",
+   "Immer"
+  ],
+  "answer": 3,
+  "explanation": "The fifteenth to Bilgah, the sixteenth to Immer.",
+  "ref": "1 Chronicles 24:14"
+ },
+ {
+  "id": "1-chronicles-24-h-07",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the son of Shubael?",
+  "choices": [
+   "Jehdeiah",
+   "Isshiah",
+   "Shamir",
+   "Zechariah"
+  ],
+  "answer": 0,
+  "explanation": "Of the sons of Amram; Shubael: of the sons of Shubael; Jehdeiah.",
+  "ref": "1 Chronicles 24:20"
+ },
+ {
+  "id": "1-chronicles-24-h-08",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the first of the sons of Rehabiah?",
+  "choices": [
+   "Jehdeiah",
+   "Isshiah",
+   "Shelomoth",
+   "Jerahmeel"
+  ],
+  "answer": 1,
+  "explanation": "Of the sons of Rehabiah, the first was Isshiah.",
+  "ref": "1 Chronicles 24:21"
+ },
+ {
+  "id": "1-chronicles-24-h-09",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the son of Shelomoth?",
+  "choices": [
+   "Shamir",
+   "Beno",
+   "Jahath",
+   "Ibri"
+  ],
+  "answer": 2,
+  "explanation": "Of the sons of Shelomoth; Jahath.",
+  "ref": "1 Chronicles 24:22"
+ },
+ {
+  "id": "1-chronicles-24-h-10",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the brother of Michah?",
+  "choices": [
+   "Shamir",
+   "Shoham",
+   "Jeriah",
+   "Isshiah"
+  ],
+  "answer": 3,
+  "explanation": "The brother of Michah was Isshiah.",
+  "ref": "1 Chronicles 24:25"
+ },
+ {
+  "id": "1-chronicles-24-h-11",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son of Jaaziah is named first?",
+  "choices": [
+   "Beno",
+   "Zaccur",
+   "Ibri",
+   "Shoham"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Merari by Jaaziah; Beno, and Shoham, and Zaccur, and Ibri.",
+  "ref": "1 Chronicles 24:27"
+ },
+ {
+  "id": "1-chronicles-24-h-12",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons of Merari by Jaaziah are named?",
+  "choices": [
+   "Two",
+   "Four",
+   "Three",
+   "Five"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Merari by Jaaziah; Beno, and Shoham, and Zaccur, and Ibri.",
+  "ref": "1 Chronicles 24:27"
+ },
+ {
+  "id": "1-chronicles-24-h-13",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the son of Kish?",
+  "choices": [
+   "Eleazar",
+   "Mahli",
+   "Jerahmeel",
+   "Eder"
+  ],
+  "answer": 2,
+  "explanation": "Concerning Kish: the son of Kish was Jerahmeel.",
+  "ref": "1 Chronicles 24:29"
+ },
+ {
+  "id": "1-chronicles-24-h-14",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Mushi?",
+  "choices": [
+   "Beno",
+   "Shamir",
+   "Zaccur",
+   "Eder"
+  ],
+  "answer": 3,
+  "explanation": "The sons also of Mushi; Mahli, and Eder, and Jerimoth.",
+  "ref": "1 Chronicles 24:30"
+ },
+ {
+  "id": "1-chronicles-24-h-15",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons of Aaron are named at the start of the chapter?",
+  "choices": [
+   "Four",
+   "Two",
+   "Three",
+   "Five"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Aaron; Nadab, and Abihu, Eleazar, and Ithamar.",
   "ref": "1 Chronicles 24:1"
  },
  {
