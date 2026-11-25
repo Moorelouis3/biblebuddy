@@ -10944,6 +10944,454 @@
   "ref": "2 Chronicles 23:16"
  },
  {
+  "id": "2-chronicles-23-e-01",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did they slay Athaliah?",
+  "choices": [
+   "At the horse gate by the king's house",
+   "In the house of Baal",
+   "On the altar",
+   "In the house of God"
+  ],
+  "answer": 0,
+  "explanation": "They laid hands on her; and when she was come to the entering of the horse gate by the king's house, they slew her there.",
+  "ref": "2 Chronicles 23:15"
+ },
+ {
+  "id": "2-chronicles-23-e-02",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose house did all the people go and break down?",
+  "choices": [
+   "Dagon",
+   "Baal",
+   "Molech",
+   "Chemosh"
+  ],
+  "answer": 1,
+  "explanation": "All the people went to the house of Baal, and brake it down, and brake his altars and his images in pieces.",
+  "ref": "2 Chronicles 23:17"
+ },
+ {
+  "id": "2-chronicles-23-e-03",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was slain before the altars of Baal?",
+  "choices": [
+   "Mattan the priest of Baal",
+   "Jehoiada",
+   "Jehu",
+   "Azariah"
+  ],
+  "answer": 0,
+  "explanation": "They slew Mattan the priest of Baal before the altars.",
+  "ref": "2 Chronicles 23:17"
+ },
+ {
+  "id": "2-chronicles-23-e-04",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did they put upon the king's son when they made him king?",
+  "choices": [
+   "A ring",
+   "The crown",
+   "A purple robe",
+   "A breastplate"
+  ],
+  "answer": 1,
+  "explanation": "They brought out the king's son, and put upon him the crown, and gave him the testimony, and made him king.",
+  "ref": "2 Chronicles 23:11"
+ },
+ {
+  "id": "2-chronicles-23-e-05",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Athaliah do to her clothes when she saw the king?",
+  "choices": [
+   "Tore them",
+   "Washed them",
+   "Gave them away",
+   "Covered her face with them"
+  ],
+  "answer": 0,
+  "explanation": "Then Athaliah rent her clothes, and said, Treason, Treason.",
+  "ref": "2 Chronicles 23:13"
+ },
+ {
+  "id": "2-chronicles-23-e-06",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did all the people of the land do when the king was crowned?",
+  "choices": [
+   "Rejoiced and sounded trumpets",
+   "Fled the city",
+   "Fasted and wept",
+   "Gathered weapons"
+  ],
+  "answer": 0,
+  "explanation": "All the people of the land rejoiced, and sounded with trumpets.",
+  "ref": "2 Chronicles 23:13"
+ },
+ {
+  "id": "2-chronicles-23-m-01",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Jehoiada take into covenant with him in the seventh year?",
+  "choices": [
+   "The captains of hundreds",
+   "The elders of Israel",
+   "The prophets",
+   "The porters"
+  ],
+  "answer": 0,
+  "explanation": "Jehoiada strengthened himself, and took the captains of hundreds into covenant with him.",
+  "ref": "2 Chronicles 23:1"
+ },
+ {
+  "id": "2-chronicles-23-m-02",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did they gather out of all the cities of Judah to Jerusalem?",
+  "choices": [
+   "The Levites",
+   "The singers",
+   "The princes of Judah",
+   "The sons of Asaph"
+  ],
+  "answer": 0,
+  "explanation": "They gathered the Levites out of all the cities of Judah, and the chief of the fathers of Israel.",
+  "ref": "2 Chronicles 23:2"
+ },
+ {
+  "id": "2-chronicles-23-m-03",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who alone were allowed to go into the house of the LORD?",
+  "choices": [
+   "All the captains",
+   "The priests and the Levites who ministered",
+   "The princes",
+   "The singers and trumpeters"
+  ],
+  "answer": 1,
+  "explanation": "None were to come into the house of the LORD, save the priests, and they that minister of the Levites.",
+  "ref": "2 Chronicles 23:6"
+ },
+ {
+  "id": "2-chronicles-23-m-04",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to anyone else who came into the house?",
+  "choices": [
+   "He would be put to death",
+   "He would be fined",
+   "He would be driven out",
+   "He would be bound"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever else cometh into the house, he shall be put to death.",
+  "ref": "2 Chronicles 23:7"
+ },
+ {
+  "id": "2-chronicles-23-m-05",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose spears, bucklers and shields did Jehoiada give to the captains?",
+  "choices": [
+   "Saul's",
+   "Solomon's",
+   "King David's",
+   "Jehoshaphat's"
+  ],
+  "answer": 2,
+  "explanation": "Jehoiada delivered to the captains spears, and bucklers, and shields, that had been king David's.",
+  "ref": "2 Chronicles 23:9"
+ },
+ {
+  "id": "2-chronicles-23-m-06",
+  "chapter": 23,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the priest say Athaliah must not be slain?",
+  "choices": [
+   "In the house of the LORD",
+   "At the horse gate",
+   "In the king's house",
+   "In the house of Baal"
+  ],
+  "answer": 0,
+  "explanation": "For the priest said, Slay her not in the house of the LORD.",
+  "ref": "2 Chronicles 23:14"
+ },
+ {
+  "id": "2-chronicles-23-m-07",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what ground did Jehoiada say the king's son shall reign?",
+  "choices": [
+   "As the LORD hath said of the sons of David",
+   "Because the people chose him",
+   "Because Athaliah was dead",
+   "As Jehoshaphat had decreed"
+  ],
+  "answer": 0,
+  "explanation": "Behold, the king's son shall reign, as the LORD hath said of the sons of David.",
+  "ref": "2 Chronicles 23:3"
+ },
+ {
+  "id": "2-chronicles-23-m-08",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Who anointed Joash king?",
+  "choices": [
+   "Jehoiada and his sons",
+   "Azariah and the captains",
+   "The Levites and the singers",
+   "Mattan"
+  ],
+  "answer": 0,
+  "explanation": "Jehoiada and his sons anointed him, and said, God save the king.",
+  "ref": "2 Chronicles 23:11"
+ },
+ {
+  "id": "2-chronicles-23-m-09",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to happen to those who followed Athaliah out of the temple?",
+  "choices": [
+   "They would be slain with the sword",
+   "They would be scattered",
+   "They would be taken captive",
+   "They would be pardoned"
+  ],
+  "answer": 0,
+  "explanation": "Whoso followeth her, let him be slain with the sword.",
+  "ref": "2 Chronicles 23:14"
+ },
+ {
+  "id": "2-chronicles-23-m-10",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Jehoiada set at the gates so none unclean might enter?",
+  "choices": [
+   "The porters",
+   "The captains",
+   "The singers",
+   "The princes"
+  ],
+  "answer": 0,
+  "explanation": "He set the porters at the gates of the house of the LORD, that none which was unclean in any thing should enter in.",
+  "ref": "2 Chronicles 23:19"
+ },
+ {
+  "id": "2-chronicles-23-m-11",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into how many parts was the priests' and Levites' sabbath duty divided?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "A third part entered as porters of the doors, a third part at the king's house, and a third part at the gate of the foundation.",
+  "ref": "2 Chronicles 23:4–5"
+ },
+ {
+  "id": "2-chronicles-23-h-01",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Maaseiah, one of the captains Jehoiada took into covenant?",
+  "choices": [
+   "Adaiah",
+   "Obed",
+   "Jeroham",
+   "Zichri"
+  ],
+  "answer": 0,
+  "explanation": "Maaseiah the son of Adaiah was one of the captains of hundreds.",
+  "ref": "2 Chronicles 23:1"
+ },
+ {
+  "id": "2-chronicles-23-h-02",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the third part of the guard stationed, besides the doors and the king's house?",
+  "choices": [
+   "At the gate of the foundation",
+   "At the horse gate",
+   "At the high gate",
+   "In the courts of Baal"
+  ],
+  "answer": 0,
+  "explanation": "A third part shall be at the gate of the foundation.",
+  "ref": "2 Chronicles 23:5"
+ },
+ {
+  "id": "2-chronicles-23-h-03",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were all the people told to keep?",
+  "choices": [
+   "The sabbath feast",
+   "The watch of the LORD",
+   "The king's house",
+   "The altar fire"
+  ],
+  "answer": 1,
+  "explanation": "All the people shall keep the watch of the LORD.",
+  "ref": "2 Chronicles 23:6"
+ },
+ {
+  "id": "2-chronicles-23-h-04",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What brought Athaliah into the house of the LORD?",
+  "choices": [
+   "A summons from Jehoiada",
+   "The noise of the people running and praising the king",
+   "A message from a captain",
+   "Her wish to pray"
+  ],
+  "answer": 1,
+  "explanation": "Athaliah heard the noise of the people running and praising the king, and she came to the people into the house of the LORD.",
+  "ref": "2 Chronicles 23:12"
+ },
+ {
+  "id": "2-chronicles-23-h-05",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Athaliah see the king standing?",
+  "choices": [
+   "On the throne",
+   "At his pillar at the entering in",
+   "By the altar",
+   "Upon the wall"
+  ],
+  "answer": 1,
+  "explanation": "She looked, and, behold, the king stood at his pillar at the entering in.",
+  "ref": "2 Chronicles 23:13"
+ },
+ {
+  "id": "2-chronicles-23-h-06",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they give Joash when they made him king, besides the crown?",
+  "choices": [
+   "The testimony",
+   "A golden sceptre",
+   "A signet ring",
+   "A sword"
+  ],
+  "answer": 0,
+  "explanation": "They put upon him the crown, and gave him the testimony, and made him king.",
+  "ref": "2 Chronicles 23:11"
+ },
+ {
+  "id": "2-chronicles-23-h-07",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Through which gate did they bring the king into the king's house?",
+  "choices": [
+   "The horse gate",
+   "The high gate",
+   "The gate of the foundation",
+   "The east gate"
+  ],
+  "answer": 1,
+  "explanation": "They came through the high gate into the king's house, and set the king upon the throne of the kingdom.",
+  "ref": "2 Chronicles 23:20"
+ },
+ {
+  "id": "2-chronicles-23-h-08",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to which law were the burnt offerings of the LORD offered?",
+  "choices": [
+   "The law of Moses",
+   "The law of Joash",
+   "The words of Jehoiada",
+   "The law of Athaliah"
+  ],
+  "answer": 0,
+  "explanation": "To offer the burnt offerings of the LORD, as it is written in the law of Moses.",
+  "ref": "2 Chronicles 23:18"
+ },
+ {
+  "id": "2-chronicles-23-h-09",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Along by what did Jehoiada set the people, from the right side of the temple to the left?",
+  "choices": [
+   "The gate and the wall",
+   "The altar and the temple",
+   "The pillar and the porch",
+   "The horse gate"
+  ],
+  "answer": 1,
+  "explanation": "He set all the people from the right side of the temple to the left side of the temple, along by the altar and the temple.",
+  "ref": "2 Chronicles 23:10"
+ },
+ {
+  "id": "2-chronicles-23-h-10",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year did Jehoiada strengthen himself and take the captains into covenant?",
+  "choices": [
+   "The third year",
+   "The fifth year",
+   "The seventh year",
+   "The tenth year"
+  ],
+  "answer": 2,
+  "explanation": "In the seventh year Jehoiada strengthened himself, and took the captains of hundreds into covenant with him.",
+  "ref": "2 Chronicles 23:1"
+ },
+ {
+  "id": "2-chronicles-23-h-11",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is the city described after Athaliah was slain with the sword?",
+  "choices": [
+   "Quiet",
+   "Burning",
+   "Divided",
+   "Mourning"
+  ],
+  "answer": 0,
+  "explanation": "All the people of the land rejoiced: and the city was quiet, after that they had slain Athaliah with the sword.",
+  "ref": "2 Chronicles 23:21"
+ },
+ {
   "id": "old-2-chronicles-24-1",
   "chapter": 24,
   "level": "beginner",
