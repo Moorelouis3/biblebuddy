@@ -14608,6 +14608,646 @@
   "ref": "2 Samuel 21:19"
  },
  {
+  "id": "2-samuel-21-e-01",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did the famine last in the days of David?",
+  "choices": [
+   "One year",
+   "Three years",
+   "Seven years",
+   "Forty days"
+  ],
+  "answer": 1,
+  "explanation": "There was a famine in the days of David three years, year after year.",
+  "ref": "2 Samuel 21:1"
+ },
+ {
+  "id": "2-samuel-21-e-02",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say the famine was for?",
+  "choices": [
+   "David's census",
+   "Saul and his bloody house",
+   "The priests' sin",
+   "The Philistines"
+  ],
+  "answer": 1,
+  "explanation": "The LORD answered, It is for Saul, and for his bloody house, because he slew the Gibeonites.",
+  "ref": "2 Samuel 21:1"
+ },
+ {
+  "id": "2-samuel-21-e-03",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David call to ask what he should do?",
+  "choices": [
+   "The Philistines",
+   "The Gibeonites",
+   "The elders of Judah",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "The king called the Gibeonites, and said unto them, What shall I do for you?",
+  "ref": "2 Samuel 21:2"
+ },
+ {
+  "id": "2-samuel-21-e-04",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David spare because of the LORD's oath?",
+  "choices": [
+   "Armoni",
+   "Mephibosheth son of Jonathan",
+   "Adriel",
+   "Ishbi-benob"
+  ],
+  "answer": 1,
+  "explanation": "The king spared Mephibosheth, the son of Jonathan, because of the LORD'S oath between David and Jonathan.",
+  "ref": "2 Samuel 21:7"
+ },
+ {
+  "id": "2-samuel-21-e-05",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sons of Saul's house were delivered to the Gibeonites?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Twelve",
+   "Two"
+  ],
+  "answer": 1,
+  "explanation": "Let seven men of his sons be delivered unto us.",
+  "ref": "2 Samuel 21:6"
+ },
+ {
+  "id": "2-samuel-21-e-06",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Rizpah spread upon the rock?",
+  "choices": [
+   "A tent",
+   "Sackcloth",
+   "Her veil",
+   "A mat of reeds"
+  ],
+  "answer": 1,
+  "explanation": "Rizpah took sackcloth, and spread it for her upon the rock.",
+  "ref": "2 Samuel 21:10"
+ },
+ {
+  "id": "2-samuel-21-e-07",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Rizpah keep away from the bodies?",
+  "choices": [
+   "The rain",
+   "The birds by day and the beasts by night",
+   "The soldiers",
+   "The dogs only"
+  ],
+  "answer": 1,
+  "explanation": "She suffered neither the birds of the air to rest on them by day, nor the beasts of the field by night.",
+  "ref": "2 Samuel 21:10"
+ },
+ {
+  "id": "2-samuel-21-e-08",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David bury the bones of Saul and Jonathan?",
+  "choices": [
+   "In Hebron",
+   "In Zelah, in the sepulchre of Kish",
+   "In Gilboa",
+   "In Jabesh-gilead"
+  ],
+  "answer": 1,
+  "explanation": "They buried them in the country of Benjamin in Zelah, in the sepulchre of Kish his father.",
+  "ref": "2 Samuel 21:14"
+ },
+ {
+  "id": "2-samuel-21-e-09",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened after David did all that the king commanded?",
+  "choices": [
+   "The famine grew worse",
+   "God was intreated for the land",
+   "The Philistines fled",
+   "Rain fell that day"
+  ],
+  "answer": 1,
+  "explanation": "After that God was intreated for the land.",
+  "ref": "2 Samuel 21:14"
+ },
+ {
+  "id": "2-samuel-21-e-10",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who saved David when the giant's son thought to slay him?",
+  "choices": [
+   "Joab",
+   "Abishai",
+   "Elhanan",
+   "Sibbechai"
+  ],
+  "answer": 1,
+  "explanation": "Abishai the son of Zeruiah succoured him, and smote the Philistine, and killed him.",
+  "ref": "2 Samuel 21:17"
+ },
+ {
+  "id": "2-samuel-21-m-01",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who were the Gibeonites, not being of the children of Israel?",
+  "choices": [
+   "Philistines",
+   "Moabites",
+   "Canaanites of Gath",
+   "A remnant of the Amorites"
+  ],
+  "answer": 3,
+  "explanation": "The Gibeonites were not of the children of Israel, but of the remnant of the Amorites.",
+  "ref": "2 Samuel 21:2"
+ },
+ {
+  "id": "2-samuel-21-m-02",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Israel done toward the Gibeonites?",
+  "choices": [
+   "Hired them",
+   "Made them captains",
+   "Given them land",
+   "Sworn unto them"
+  ],
+  "answer": 3,
+  "explanation": "The children of Israel had sworn unto them.",
+  "ref": "2 Samuel 21:2"
+ },
+ {
+  "id": "2-samuel-21-m-03",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Saul seek to slay the Gibeonites?",
+  "choices": [
+   "They had rebelled",
+   "They had stolen cattle",
+   "They worshipped idols",
+   "In his zeal for Israel and Judah"
+  ],
+  "answer": 3,
+  "explanation": "Saul sought to slay them in his zeal to the children of Israel and Judah.",
+  "ref": "2 Samuel 21:2"
+ },
+ {
+  "id": "2-samuel-21-m-04",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Gibeonites say they would not take?",
+  "choices": [
+   "Any land",
+   "Any sheep",
+   "Any servants",
+   "Silver nor gold of Saul"
+  ],
+  "answer": 3,
+  "explanation": "We will have no silver nor gold of Saul, nor of his house.",
+  "ref": "2 Samuel 21:4"
+ },
+ {
+  "id": "2-samuel-21-m-05",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David ask would be made to bless the inheritance of the LORD?",
+  "choices": [
+   "A feast",
+   "A treaty",
+   "A tithe",
+   "Atonement"
+  ],
+  "answer": 3,
+  "explanation": "Wherewith shall I make the atonement, that ye may bless the inheritance of the LORD?",
+  "ref": "2 Samuel 21:3"
+ },
+ {
+  "id": "2-samuel-21-m-06",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the Gibeonites say they would hang the men?",
+  "choices": [
+   "In Gibeon",
+   "In Jerusalem",
+   "In Hebron",
+   "In Gibeah of Saul"
+  ],
+  "answer": 3,
+  "explanation": "We will hang them up unto the LORD in Gibeah of Saul, whom the LORD did choose.",
+  "ref": "2 Samuel 21:6"
+ },
+ {
+  "id": "2-samuel-21-m-07",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose sons were Armoni and Mephibosheth, taken by the king?",
+  "choices": [
+   "Michal daughter of Saul",
+   "Abigail",
+   "Bathsheba",
+   "Rizpah daughter of Aiah"
+  ],
+  "answer": 3,
+  "explanation": "The king took the two sons of Rizpah the daughter of Aiah, Armoni and Mephibosheth.",
+  "ref": "2 Samuel 21:8"
+ },
+ {
+  "id": "2-samuel-21-m-08",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many sons of Michal did the king take?",
+  "choices": [
+   "Two",
+   "Seven",
+   "Three",
+   "Five"
+  ],
+  "answer": 3,
+  "explanation": "The five sons of Michal the daughter of Saul, whom she brought up for Adriel.",
+  "ref": "2 Samuel 21:8"
+ },
+ {
+  "id": "2-samuel-21-m-09",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When were the seven put to death?",
+  "choices": [
+   "At the Passover",
+   "In midwinter",
+   "At the feast of tabernacles",
+   "In the beginning of barley harvest"
+  ],
+  "answer": 3,
+  "explanation": "They were put to death in the days of harvest, in the beginning of barley harvest.",
+  "ref": "2 Samuel 21:9"
+ },
+ {
+  "id": "2-samuel-21-m-10",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did Rizpah keep watch?",
+  "choices": [
+   "For seven days",
+   "Until David came",
+   "For three years",
+   "From harvest until water dropped from heaven"
+  ],
+  "answer": 3,
+  "explanation": "Rizpah stayed from the beginning of harvest until water dropped upon them out of heaven.",
+  "ref": "2 Samuel 21:10"
+ },
+ {
+  "id": "2-samuel-21-m-11",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From whom did David take the bones of Saul and Jonathan?",
+  "choices": [
+   "The Philistines",
+   "The Gibeonites",
+   "The men of Zelah",
+   "The men of Jabesh-gilead"
+  ],
+  "answer": 3,
+  "explanation": "David took the bones from the men of Jabesh-gilead, which had stolen them.",
+  "ref": "2 Samuel 21:12"
+ },
+ {
+  "id": "2-samuel-21-m-12",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Where had the Philistines hanged the bodies of Saul and Jonathan?",
+  "choices": [
+   "Gilboa",
+   "Gath",
+   "Ashdod",
+   "The street of Beth-shan"
+  ],
+  "answer": 3,
+  "explanation": "They had been stolen from the street of Beth-shan, where the Philistines had hanged them.",
+  "ref": "2 Samuel 21:12"
+ },
+ {
+  "id": "2-samuel-21-m-13",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of David say to Abishai's rescue about David?",
+  "choices": [
+   "Rest in Hebron",
+   "Be our captain",
+   "Bring us the sword",
+   "Thou shalt go no more out with us to battle"
+  ],
+  "answer": 3,
+  "explanation": "The men of David sware unto David, Thou shalt go no more out with us to battle.",
+  "ref": "2 Samuel 21:17"
+ },
+ {
+  "id": "2-samuel-21-m-14",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would David's going out to battle quench, said his men?",
+  "choices": [
+   "The hope of Judah",
+   "The fire of the altar",
+   "The honour of the king",
+   "The light of Israel"
+  ],
+  "answer": 3,
+  "explanation": "They said, that thou quench not the light of Israel.",
+  "ref": "2 Samuel 21:17"
+ },
+ {
+  "id": "2-samuel-21-m-15",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was there a battle in which Sibbechai the Hushathite slew Saph?",
+  "choices": [
+   "Gath",
+   "Gibeon",
+   "Gilboa",
+   "Gob"
+  ],
+  "answer": 3,
+  "explanation": "There was again a battle with the Philistines at Gob: then Sibbechai the Hushathite slew Saph.",
+  "ref": "2 Samuel 21:18"
+ },
+ {
+  "id": "2-samuel-21-h-01",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the spear of Ishbi-benob weigh?",
+  "choices": [
+   "Three hundred shekels of brass",
+   "Two hundred shekels of iron",
+   "Six hundred shekels",
+   "One hundred shekels"
+  ],
+  "answer": 0,
+  "explanation": "The weight of whose spear weighed three hundred shekels of brass.",
+  "ref": "2 Samuel 21:16"
+ },
+ {
+  "id": "2-samuel-21-h-02",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Ishbi-benob girded with?",
+  "choices": [
+   "A new sword",
+   "A coat of mail",
+   "A girdle of bronze",
+   "A shield of gold"
+  ],
+  "answer": 0,
+  "explanation": "He being girded with a new sword, thought to have slain David.",
+  "ref": "2 Samuel 21:16"
+ },
+ {
+  "id": "2-samuel-21-h-03",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did David feel in the battle that Ishbi-benob joined?",
+  "choices": [
+   "He waxed faint",
+   "He grew angry",
+   "He was wounded",
+   "He was afraid"
+  ],
+  "answer": 0,
+  "explanation": "David went down, and fought against the Philistines: and David waxed faint.",
+  "ref": "2 Samuel 21:15"
+ },
+ {
+  "id": "2-samuel-21-h-04",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Elhanan the son of?",
+  "choices": [
+   "Jaare-oregim, a Bethlehemite",
+   "Shimeah",
+   "Zeruiah",
+   "Adriel"
+  ],
+  "answer": 0,
+  "explanation": "Elhanan the son of Jaare-oregim, a Bethlehemite, slew the brother of Goliath the Gittite.",
+  "ref": "2 Samuel 21:19"
+ },
+ {
+  "id": "2-samuel-21-h-05",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the staff of the spear like, of the brother of Goliath?",
+  "choices": [
+   "A weaver's beam",
+   "A tree trunk",
+   "A mast",
+   "An iron rod"
+  ],
+  "answer": 0,
+  "explanation": "The staff of whose spear was like a weaver's beam.",
+  "ref": "2 Samuel 21:19"
+ },
+ {
+  "id": "2-samuel-21-h-06",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the battle with the man with six fingers and six toes?",
+  "choices": [
+   "Gath",
+   "Gob",
+   "Gibeon",
+   "Gilboa"
+  ],
+  "answer": 0,
+  "explanation": "There was yet a battle in Gath, where was a man of great stature.",
+  "ref": "2 Samuel 21:20"
+ },
+ {
+  "id": "2-samuel-21-h-07",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many fingers and toes did the man of great stature have in all?",
+  "choices": [
+   "Four and twenty",
+   "Twelve",
+   "Eighteen",
+   "Thirty"
+  ],
+  "answer": 0,
+  "explanation": "On every hand six fingers, and on every foot six toes, four and twenty in number.",
+  "ref": "2 Samuel 21:20"
+ },
+ {
+  "id": "2-samuel-21-h-08",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Who slew the man with the six fingers after he defied Israel?",
+  "choices": [
+   "Jonathan the son of Shimeah",
+   "Abishai",
+   "Sibbechai",
+   "Elhanan"
+  ],
+  "answer": 0,
+  "explanation": "When he defied Israel, Jonathan the son of Shimeah the brother of David slew him.",
+  "ref": "2 Samuel 21:21"
+ },
+ {
+  "id": "2-samuel-21-h-09",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose brother was Jonathan the son of Shimeah?",
+  "choices": [
+   "David's",
+   "Joab's",
+   "Saul's",
+   "Goliath's"
+  ],
+  "answer": 0,
+  "explanation": "Jonathan the son of Shimeah the brother of David slew him.",
+  "ref": "2 Samuel 21:21"
+ },
+ {
+  "id": "2-samuel-21-h-10",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were born to the giant in Gath, falling by David and his servants?",
+  "choices": [
+   "Four",
+   "Two",
+   "Seven",
+   "Three"
+  ],
+  "answer": 0,
+  "explanation": "These four were born to the giant in Gath, and fell by the hand of David, and by the hand of his servants.",
+  "ref": "2 Samuel 21:22"
+ },
+ {
+  "id": "2-samuel-21-h-11",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Adriel, for whom Michal brought up five sons?",
+  "choices": [
+   "The son of Barzillai the Meholathite",
+   "The son of Kish",
+   "A Gibeonite",
+   "A Philistine"
+  ],
+  "answer": 0,
+  "explanation": "The five sons of Michal, whom she brought up for Adriel the son of Barzillai the Meholathite.",
+  "ref": "2 Samuel 21:8"
+ },
+ {
+  "id": "2-samuel-21-h-12",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David do to the bones of those who were hanged?",
+  "choices": [
+   "Gathered them",
+   "Left them",
+   "Burned them",
+   "Buried them in Gibeah"
+  ],
+  "answer": 0,
+  "explanation": "They gathered the bones of them that were hanged.",
+  "ref": "2 Samuel 21:13"
+ },
+ {
+  "id": "2-samuel-21-h-13",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the hanging of the seven take place?",
+  "choices": [
+   "In the hill before the LORD",
+   "In the valley of Jezreel",
+   "At Gibeon's gate",
+   "On Mount Gilboa"
+  ],
+  "answer": 0,
+  "explanation": "The Gibeonites hanged them in the hill before the LORD.",
+  "ref": "2 Samuel 21:9"
+ },
+ {
+  "id": "2-samuel-21-h-14",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "What was Rizpah's relationship to Saul?",
+  "choices": [
+   "His concubine",
+   "His sister",
+   "His daughter",
+   "His servant"
+  ],
+  "answer": 0,
+  "explanation": "It was told David what Rizpah the daughter of Aiah, the concubine of Saul, had done.",
+  "ref": "2 Samuel 21:11"
+ },
+ {
+  "id": "2-samuel-21-h-15",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Of whom was Ishbi-benob one of the sons?",
+  "choices": [
+   "The giant",
+   "Anak",
+   "Goliath's brother",
+   "Saul"
+  ],
+  "answer": 0,
+  "explanation": "Ishbi-benob was of the sons of the giant.",
+  "ref": "2 Samuel 21:16"
+ },
+ {
   "id": "old-2-samuel-22-1",
   "chapter": 22,
   "level": "beginner",
