@@ -10896,6 +10896,630 @@
   "ref": "1 Kings 16:24"
  },
  {
+  "id": "1-kings-16-e-01",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned over Israel after Baasha?",
+  "choices": [
+   "Zimri",
+   "Omri",
+   "Nadab",
+   "Elah his son"
+  ],
+  "answer": 3,
+  "explanation": "Baasha slept with his fathers, and was buried in Tirzah: and Elah his son reigned in his stead.",
+  "ref": "1 Kings 16:6"
+ },
+ {
+  "id": "1-kings-16-e-02",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did all Israel make king in the camp?",
+  "choices": [
+   "Tibni the son of Ginath",
+   "Zimri",
+   "Omri, the captain of the host",
+   "Ahab"
+  ],
+  "answer": 2,
+  "explanation": "All Israel made Omri, the captain of the host, king over Israel that day in the camp.",
+  "ref": "1 Kings 16:16"
+ },
+ {
+  "id": "1-kings-16-e-03",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Ahab take to wife?",
+  "choices": [
+   "Naamah",
+   "Jezebel",
+   "Maachah",
+   "Abishag"
+  ],
+  "answer": 1,
+  "explanation": "Ahab took to wife Jezebel the daughter of Ethbaal king of the Zidonians.",
+  "ref": "1 Kings 16:31"
+ },
+ {
+  "id": "1-kings-16-e-04",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Ahab's father?",
+  "choices": [
+   "Omri",
+   "Baasha",
+   "Jeroboam",
+   "Zimri"
+  ],
+  "answer": 0,
+  "explanation": "Ahab the son of Omri began to reign over Israel.",
+  "ref": "1 Kings 16:29"
+ },
+ {
+  "id": "1-kings-16-e-05",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which god did Ahab serve and worship?",
+  "choices": [
+   "Molech",
+   "Dagon",
+   "Chemosh",
+   "Baal"
+  ],
+  "answer": 3,
+  "explanation": "Ahab went and served Baal, and worshipped him.",
+  "ref": "1 Kings 16:31"
+ },
+ {
+  "id": "1-kings-16-e-06",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who built Jericho in the days of Ahab?",
+  "choices": [
+   "Omri",
+   "Joshua",
+   "Hiel the Bethelite",
+   "Shemer"
+  ],
+  "answer": 2,
+  "explanation": "In his days did Hiel the Bethelite build Jericho.",
+  "ref": "1 Kings 16:34"
+ },
+ {
+  "id": "1-kings-16-e-07",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did half the people follow to make him king instead of Omri?",
+  "choices": [
+   "Zimri",
+   "Tibni the son of Ginath",
+   "Ahab",
+   "Elah"
+  ],
+  "answer": 1,
+  "explanation": "Half of the people followed Tibni the son of Ginath, to make him king; and half followed Omri.",
+  "ref": "1 Kings 16:21"
+ },
+ {
+  "id": "1-kings-16-e-08",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned over Israel after Omri?",
+  "choices": [
+   "Ahab his son",
+   "Elah",
+   "Zimri",
+   "Tibni"
+  ],
+  "answer": 0,
+  "explanation": "Omri slept with his fathers, and was buried in Samaria: and Ahab his son reigned in his stead.",
+  "ref": "1 Kings 16:28"
+ },
+ {
+  "id": "1-kings-16-e-09",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did Ahab reign over Israel in Samaria?",
+  "choices": [
+   "Seven days",
+   "Twelve years",
+   "Twenty and four years",
+   "Twenty and two years"
+  ],
+  "answer": 3,
+  "explanation": "Ahab the son of Omri reigned over Israel in Samaria twenty and two years.",
+  "ref": "1 Kings 16:29"
+ },
+ {
+  "id": "1-kings-16-e-10",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ahab rear up for Baal in Samaria?",
+  "choices": [
+   "A golden calf",
+   "A tower of cedar",
+   "An altar in the house of Baal",
+   "A pillar of stone"
+  ],
+  "answer": 2,
+  "explanation": "He reared up an altar for Baal in the house of Baal, which he had built in Samaria.",
+  "ref": "1 Kings 16:32"
+ },
+ {
+  "id": "1-kings-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "person",
+  "question": "In whose house was Elah drinking himself drunk when he was killed?",
+  "choices": [
+   "Zimri",
+   "Arza, steward of his house",
+   "Omri",
+   "Baasha"
+  ],
+  "answer": 1,
+  "explanation": "Elah was in Tirzah, drinking himself drunk in the house of Arza steward of his house in Tirzah.",
+  "ref": "1 Kings 16:9"
+ },
+ {
+  "id": "1-kings-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Zimri's position under Elah?",
+  "choices": [
+   "Captain of half his chariots",
+   "Steward of his house",
+   "Captain of the host",
+   "Keeper of the gates"
+  ],
+  "answer": 0,
+  "explanation": "His servant Zimri, captain of half his chariots, conspired against him.",
+  "ref": "1 Kings 16:9"
+ },
+ {
+  "id": "1-kings-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Zimri do to the house of Baasha when he began to reign?",
+  "choices": [
+   "Drove it out of Tirzah",
+   "Made peace with it",
+   "Took it into his own house",
+   "Slew all of it"
+  ],
+  "answer": 3,
+  "explanation": "Zimri slew all the house of Baasha.",
+  "ref": "1 Kings 16:11"
+ },
+ {
+  "id": "1-kings-16-m-04",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to whose word did Zimri destroy the house of Baasha?",
+  "choices": [
+   "The word of Elijah",
+   "The command of Omri",
+   "The word of the LORD by Jehu the prophet",
+   "The decree of the people"
+  ],
+  "answer": 2,
+  "explanation": "Zimri destroyed all the house of Baasha, according to the word of the LORD, which he spake against Baasha by Jehu the prophet.",
+  "ref": "1 Kings 16:12"
+ },
+ {
+  "id": "1-kings-16-m-05",
+  "chapter": 16,
+  "level": "medium",
+  "category": "person",
+  "question": "What was Omri's office before he was made king?",
+  "choices": [
+   "Steward of the house",
+   "Captain of the host",
+   "Captain of half the chariots",
+   "Governor of Samaria"
+  ],
+  "answer": 1,
+  "explanation": "All Israel made Omri, the captain of the host, king over Israel.",
+  "ref": "1 Kings 16:16"
+ },
+ {
+  "id": "1-kings-16-m-06",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Omri and all Israel do after he went up from Gibbethon?",
+  "choices": [
+   "They besieged Tirzah",
+   "They went to Samaria",
+   "They attacked Judah",
+   "They fought Tibni"
+  ],
+  "answer": 0,
+  "explanation": "Omri went up from Gibbethon, and all Israel with him, and they besieged Tirzah.",
+  "ref": "1 Kings 16:17"
+ },
+ {
+  "id": "1-kings-16-m-07",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to Tibni?",
+  "choices": [
+   "He fled to Judah",
+   "He was made king over Judah",
+   "He was taken by Zimri",
+   "He died, and Omri reigned"
+  ],
+  "answer": 3,
+  "explanation": "The people that followed Omri prevailed against the people that followed Tibni: so Tibni died, and Omri reigned.",
+  "ref": "1 Kings 16:22"
+ },
+ {
+  "id": "1-kings-16-m-08",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much silver did Omri pay for the hill Samaria?",
+  "choices": [
+   "Ten talents",
+   "Twelve shekels",
+   "Two talents",
+   "A hundred talents"
+  ],
+  "answer": 2,
+  "explanation": "He bought the hill Samaria of Shemer for two talents of silver.",
+  "ref": "1 Kings 16:24"
+ },
+ {
+  "id": "1-kings-16-m-09",
+  "chapter": 16,
+  "level": "medium",
+  "category": "person",
+  "question": "Who owned the hill that Omri bought?",
+  "choices": [
+   "Hiel",
+   "Shemer",
+   "Arza",
+   "Ginath"
+  ],
+  "answer": 1,
+  "explanation": "Omri called the name of the city which he built, after the name of Shemer, owner of the hill, Samaria.",
+  "ref": "1 Kings 16:24"
+ },
+ {
+  "id": "1-kings-16-m-10",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Omri reign over Israel?",
+  "choices": [
+   "Twelve years",
+   "Twenty and two years",
+   "Seven days",
+   "Twenty and four years"
+  ],
+  "answer": 0,
+  "explanation": "Omri began to reign over Israel, twelve years: six years reigned he in Tirzah.",
+  "ref": "1 Kings 16:23"
+ },
+ {
+  "id": "1-kings-16-m-11",
+  "chapter": 16,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the father of Jezebel?",
+  "choices": [
+   "Hiram king of Tyre",
+   "Ben-hadad king of Syria",
+   "Shemer of Samaria",
+   "Ethbaal king of the Zidonians"
+  ],
+  "answer": 3,
+  "explanation": "Ahab took to wife Jezebel the daughter of Ethbaal king of the Zidonians.",
+  "ref": "1 Kings 16:31"
+ },
+ {
+  "id": "1-kings-16-m-12",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ahab make besides the altar for Baal?",
+  "choices": [
+   "A brasen sea",
+   "A golden image of a calf",
+   "A grove",
+   "A fortress"
+  ],
+  "answer": 2,
+  "explanation": "Ahab made a grove; and Ahab did more to provoke the LORD God of Israel to anger than all the kings of Israel that were before him.",
+  "ref": "1 Kings 16:33"
+ },
+ {
+  "id": "1-kings-16-m-13",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of Hiel's sons did he lose when he laid the foundation of Jericho?",
+  "choices": [
+   "Segub his youngest",
+   "Abiram his firstborn",
+   "Shemer his eldest",
+   "Ginath his second"
+  ],
+  "answer": 1,
+  "explanation": "He laid the foundation thereof in Abiram his firstborn.",
+  "ref": "1 Kings 16:34"
+ },
+ {
+  "id": "1-kings-16-m-14",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Omri do in the eyes of the LORD?",
+  "choices": [
+   "Worse than all that were before him",
+   "He turned back to David's ways",
+   "He did as Asa had done",
+   "He did good but tolerated idols"
+  ],
+  "answer": 0,
+  "explanation": "Omri wrought evil in the eyes of the LORD, and did worse than all that were before him.",
+  "ref": "1 Kings 16:25"
+ },
+ {
+  "id": "1-kings-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Asa did Elah begin to reign over Israel?",
+  "choices": [
+   "The third year",
+   "The thirty and first year",
+   "The thirty and eighth year",
+   "The twenty and sixth year"
+  ],
+  "answer": 3,
+  "explanation": "In the twenty and sixth year of Asa king of Judah began Elah the son of Baasha to reign over Israel in Tirzah, two years.",
+  "ref": "1 Kings 16:8"
+ },
+ {
+  "id": "1-kings-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Elah reign?",
+  "choices": [
+   "Seven days",
+   "Twelve years",
+   "Two years",
+   "Twenty and four years"
+  ],
+  "answer": 2,
+  "explanation": "Elah the son of Baasha began to reign over Israel in Tirzah, two years.",
+  "ref": "1 Kings 16:8"
+ },
+ {
+  "id": "1-kings-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Asa did Zimri kill Elah?",
+  "choices": [
+   "The third year",
+   "The twenty and seventh year",
+   "The twenty and sixth year",
+   "The thirty and first year"
+  ],
+  "answer": 1,
+  "explanation": "Zimri went in and smote him, and killed him, in the twenty and seventh year of Asa king of Judah.",
+  "ref": "1 Kings 16:10"
+ },
+ {
+  "id": "1-kings-16-h-04",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would eat those of Baasha's house who died in the city?",
+  "choices": [
+   "The dogs",
+   "The lions",
+   "The fowls of the air",
+   "The wild boars"
+  ],
+  "answer": 0,
+  "explanation": "Him that dieth of Baasha in the city shall the dogs eat.",
+  "ref": "1 Kings 16:4"
+ },
+ {
+  "id": "1-kings-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Baasha buried?",
+  "choices": [
+   "Samaria",
+   "Jericho",
+   "Gibbethon",
+   "Tirzah"
+  ],
+  "answer": 3,
+  "explanation": "Baasha slept with his fathers, and was buried in Tirzah.",
+  "ref": "1 Kings 16:6"
+ },
+ {
+  "id": "1-kings-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose house did the LORD say Baasha's house would be made like?",
+  "choices": [
+   "The house of Saul",
+   "The house of Omri",
+   "The house of Jeroboam the son of Nebat",
+   "The house of Rehoboam"
+  ],
+  "answer": 2,
+  "explanation": "I will make thy house like the house of Jeroboam the son of Nebat.",
+  "ref": "1 Kings 16:3"
+ },
+ {
+  "id": "1-kings-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of what did the LORD say he had exalted Baasha?",
+  "choices": [
+   "The sea",
+   "The dust",
+   "The field",
+   "The wilderness"
+  ],
+  "answer": 1,
+  "explanation": "I exalted thee out of the dust, and made thee prince over my people Israel.",
+  "ref": "1 Kings 16:2"
+ },
+ {
+  "id": "1-kings-16-h-08",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of Omri's twelve years did he reign in Tirzah?",
+  "choices": [
+   "Six years",
+   "Two years",
+   "Seven days",
+   "Twelve years"
+  ],
+  "answer": 0,
+  "explanation": "Omri began to reign twelve years: six years reigned he in Tirzah.",
+  "ref": "1 Kings 16:23"
+ },
+ {
+  "id": "1-kings-16-h-09",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Asa did Omri begin to reign?",
+  "choices": [
+   "The twenty and seventh year",
+   "The third year",
+   "The thirty and eighth year",
+   "The thirty and first year"
+  ],
+  "answer": 3,
+  "explanation": "In the thirty and first year of Asa king of Judah began Omri to reign over Israel.",
+  "ref": "1 Kings 16:23"
+ },
+ {
+  "id": "1-kings-16-h-10",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Asa did Ahab begin to reign?",
+  "choices": [
+   "The thirty and first year",
+   "The twenty and seventh year",
+   "The thirty and eighth year",
+   "The fortieth year"
+  ],
+  "answer": 2,
+  "explanation": "In the thirty and eighth year of Asa king of Judah began Ahab the son of Omri to reign over Israel.",
+  "ref": "1 Kings 16:29"
+ },
+ {
+  "id": "1-kings-16-h-11",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Omri buried?",
+  "choices": [
+   "Tirzah",
+   "Samaria",
+   "Jericho",
+   "Gibbethon"
+  ],
+  "answer": 1,
+  "explanation": "Omri slept with his fathers, and was buried in Samaria.",
+  "ref": "1 Kings 16:28"
+ },
+ {
+  "id": "1-kings-16-h-12",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ahab do as if walking in Jeroboam's sins had been a light thing?",
+  "choices": [
+   "Took Jezebel to wife and served Baal",
+   "Built a house of ivory",
+   "Made a league with Syria",
+   "Burned his firstborn"
+  ],
+  "answer": 0,
+  "explanation": "As if it had been a light thing for him to walk in the sins of Jeroboam, he took to wife Jezebel and went and served Baal.",
+  "ref": "1 Kings 16:31"
+ },
+ {
+  "id": "1-kings-16-h-13",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of Hiel's sons did he lose when he set up the gates of Jericho?",
+  "choices": [
+   "Abiram his firstborn",
+   "Shemer his second",
+   "Ginath his eldest",
+   "Segub his youngest"
+  ],
+  "answer": 3,
+  "explanation": "He set up the gates thereof in his youngest son Segub.",
+  "ref": "1 Kings 16:34"
+ },
+ {
+  "id": "1-kings-16-h-14",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "By whom had the LORD spoken the word that came true in Hiel's rebuilding of Jericho?",
+  "choices": [
+   "Moses",
+   "Samuel",
+   "Joshua the son of Nun",
+   "Elijah"
+  ],
+  "answer": 2,
+  "explanation": "According to the word of the LORD, which he spake by Joshua the son of Nun.",
+  "ref": "1 Kings 16:34"
+ },
+ {
+  "id": "1-kings-16-h-15",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Baasha had done that made him guilty besides walking in Jeroboam's way?",
+  "choices": [
+   "He burned the house of the LORD",
+   "He killed the house of Jeroboam",
+   "He made a league with Syria",
+   "He took the wife of Nadab"
+  ],
+  "answer": 1,
+  "explanation": "The word of the LORD came against Baasha, being like the house of Jeroboam; and because he killed him.",
+  "ref": "1 Kings 16:7"
+ },
+ {
   "id": "old-1-kings-17-1",
   "chapter": 17,
   "level": "beginner",
