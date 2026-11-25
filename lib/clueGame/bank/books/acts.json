@@ -11054,5 +11054,4341 @@
   "answer": 0,
   "explanation": "The day following Paul went in with us unto James; and all the elders were present.",
   "ref": "Acts 21:18"
+ },
+ {
+  "id": "acts-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which city did Cornelius live?",
+  "choices": [
+   "Joppa",
+   "Caesarea",
+   "Antioch",
+   "Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "There was a certain man in Caesarea called Cornelius, a centurion.",
+  "ref": "Acts 10:1"
+ },
+ {
+  "id": "acts-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who appeared to Cornelius in a vision about the ninth hour?",
+  "choices": [
+   "An angel of God",
+   "The Spirit",
+   "Peter",
+   "Philip"
+  ],
+  "answer": 0,
+  "explanation": "He saw in a vision an angel of God coming in to him, and saying unto him, Cornelius.",
+  "ref": "Acts 10:3"
+ },
+ {
+  "id": "acts-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did the angel tell Cornelius to send men?",
+  "choices": [
+   "Caesarea",
+   "Lydda",
+   "Damascus",
+   "Joppa"
+  ],
+  "answer": 3,
+  "explanation": "Send men to Joppa, and call for one Simon, whose surname is Peter.",
+  "ref": "Acts 10:5"
+ },
+ {
+  "id": "acts-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where was Peter when he fell into a trance?",
+  "choices": [
+   "At the city gate",
+   "In the synagogue",
+   "On the housetop praying",
+   "On a ship"
+  ],
+  "answer": 2,
+  "explanation": "Peter went up upon the housetop to pray about the sixth hour, and he fell into a trance.",
+  "ref": "Acts 10:9–10"
+ },
+ {
+  "id": "acts-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter answer when the voice told him to kill and eat?",
+  "choices": [
+   "Let it be as thou wilt",
+   "Not so, Lord",
+   "Here am I",
+   "I will obey"
+  ],
+  "answer": 1,
+  "explanation": "Peter said, Not so, Lord; for I have never eaten any thing that is common or unclean.",
+  "ref": "Acts 10:14"
+ },
+ {
+  "id": "acts-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times was the sheet vision done?",
+  "choices": [
+   "Three times",
+   "Once",
+   "Twice",
+   "Seven times"
+  ],
+  "answer": 0,
+  "explanation": "This was done thrice: and the vessel was received up again into heaven.",
+  "ref": "Acts 10:16"
+ },
+ {
+  "id": "acts-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter say when Cornelius fell down at his feet and worshipped him?",
+  "choices": [
+   "Worship God only, not me",
+   "Rise, for I am but a servant",
+   "Get thee behind me",
+   "Stand up; I myself also am a man"
+  ],
+  "answer": 3,
+  "explanation": "Peter took him up, saying, Stand up; I myself also am a man.",
+  "ref": "Acts 10:25–26"
+ },
+ {
+  "id": "acts-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter say he perceived about God?",
+  "choices": [
+   "That God hears only Israel",
+   "That God loves the poor",
+   "That God is no respecter of persons",
+   "That God judges quickly"
+  ],
+  "answer": 2,
+  "explanation": "Of a truth I perceive that God is no respecter of persons.",
+  "ref": "Acts 10:34"
+ },
+ {
+  "id": "acts-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Gentiles do when the Holy Ghost fell on them?",
+  "choices": [
+   "Fell silent in awe",
+   "Spoke with tongues and magnified God",
+   "Fled from the house",
+   "Prophesied against Israel"
+  ],
+  "answer": 1,
+  "explanation": "They heard them speak with tongues, and magnify God.",
+  "ref": "Acts 10:46"
+ },
+ {
+  "id": "acts-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter command the Gentiles to be done to them?",
+  "choices": [
+   "Baptized in the name of the Lord",
+   "Circumcised",
+   "Anointed with oil",
+   "Taught the law"
+  ],
+  "answer": 0,
+  "explanation": "He commanded them to be baptized in the name of the Lord.",
+  "ref": "Acts 10:48"
+ },
+ {
+  "id": "acts-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the chapter describe Cornelius?",
+  "choices": [
+   "A rich man who ruled Caesarea",
+   "A Jew who kept the law",
+   "A soldier who hated the Jews",
+   "Devout, God-fearing, gave much alms and prayed alway"
+  ],
+  "answer": 3,
+  "explanation": "He was a devout man, and one that feared God with all his house, which gave much alms to the people, and prayed to God alway.",
+  "ref": "Acts 10:2"
+ },
+ {
+  "id": "acts-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel say had come up for a memorial before God?",
+  "choices": [
+   "His fasting and sacrifice",
+   "His house and servants",
+   "Cornelius's prayers and alms",
+   "His name and fame"
+  ],
+  "answer": 2,
+  "explanation": "Thy prayers and thine alms are come up for a memorial before God.",
+  "ref": "Acts 10:4"
+ },
+ {
+  "id": "acts-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the house of Simon the tanner, where Peter lodged?",
+  "choices": [
+   "Near the gate of Joppa",
+   "By the sea side",
+   "Beside the synagogue",
+   "On the road to Caesarea"
+  ],
+  "answer": 1,
+  "explanation": "He lodgeth with one Simon a tanner, whose house is by the sea side.",
+  "ref": "Acts 10:6"
+ },
+ {
+  "id": "acts-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Cornelius send to Joppa?",
+  "choices": [
+   "Two household servants and a devout soldier",
+   "Three centurions",
+   "His kinsmen and friends",
+   "Two soldiers and a scribe"
+  ],
+  "answer": 0,
+  "explanation": "He called two of his household servants, and a devout soldier of them that waited on him continually.",
+  "ref": "Acts 10:7–8"
+ },
+ {
+  "id": "acts-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was in the great sheet Peter saw?",
+  "choices": [
+   "Only clean beasts and fish",
+   "Bread, wine, and fruit",
+   "Lambs and doves",
+   "Fourfooted beasts, wild beasts, creeping things, fowls"
+  ],
+  "answer": 3,
+  "explanation": "Wherein were all manner of fourfooted beasts of the earth, and wild beasts, and creeping things, and fowls of the air.",
+  "ref": "Acts 10:12"
+ },
+ {
+  "id": "acts-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Peter refuse to kill and eat?",
+  "choices": [
+   "He was fasting",
+   "He was not yet hungry",
+   "He had never eaten anything common or unclean",
+   "He feared the Jews"
+  ],
+  "answer": 2,
+  "explanation": "I have never eaten any thing that is common or unclean.",
+  "ref": "Acts 10:14"
+ },
+ {
+  "id": "acts-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the voice say the second time?",
+  "choices": [
+   "Kill and eat, for I have spoken",
+   "What God hath cleansed, that call not thou common",
+   "Be not afraid, I am with thee",
+   "Go and preach to every nation"
+  ],
+  "answer": 1,
+  "explanation": "The voice spake unto him again the second time, What God hath cleansed, that call not thou common.",
+  "ref": "Acts 10:15"
+ },
+ {
+  "id": "acts-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men did the Spirit say were seeking Peter?",
+  "choices": [
+   "Three",
+   "Two",
+   "Four",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "While Peter thought on the vision, the Spirit said unto him, Behold, three men seek thee.",
+  "ref": "Acts 10:19"
+ },
+ {
+  "id": "acts-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Spirit tell Peter about going with the men?",
+  "choices": [
+   "Go with them only if they ask",
+   "Go and tell them to wait",
+   "Go with them after three days",
+   "Go with them, doubting nothing, for I have sent them"
+  ],
+  "answer": 3,
+  "explanation": "Arise therefore, and get thee down, and go with them, doubting nothing: for I have sent them.",
+  "ref": "Acts 10:20"
+ },
+ {
+  "id": "acts-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who went with Peter from Joppa?",
+  "choices": [
+   "The two apostles John and James",
+   "Simon the tanner",
+   "Certain brethren from Joppa",
+   "Philip"
+  ],
+  "answer": 2,
+  "explanation": "On the morrow Peter went away with them, and certain brethren from Joppa accompanied him.",
+  "ref": "Acts 10:23"
+ },
+ {
+  "id": "acts-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom had Cornelius called together to wait for Peter?",
+  "choices": [
+   "The elders of Caesarea",
+   "His kinsmen and near friends",
+   "The soldiers of his band",
+   "The rulers of the synagogue"
+  ],
+  "answer": 1,
+  "explanation": "Cornelius waited for them, and had called together his kinsmen and near friends.",
+  "ref": "Acts 10:24"
+ },
+ {
+  "id": "acts-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Peter say was unlawful for a Jew?",
+  "choices": [
+   "To keep company with or come unto one of another nation",
+   "To enter a Roman house",
+   "To eat with a centurion",
+   "To pray with Gentiles"
+  ],
+  "answer": 0,
+  "explanation": "It is an unlawful thing for a man that is a Jew to keep company, or come unto one of another nation.",
+  "ref": "Acts 10:28"
+ },
+ {
+  "id": "acts-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Cornelius doing four days before, until the ninth hour?",
+  "choices": [
+   "Giving alms to the poor",
+   "Reading the prophets",
+   "Journeying to Joppa",
+   "Fasting, then praying in his house"
+  ],
+  "answer": 3,
+  "explanation": "Four days ago I was fasting until this hour; and at the ninth hour I prayed in my house.",
+  "ref": "Acts 10:30"
+ },
+ {
+  "id": "acts-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Peter say is accepted with God in every nation?",
+  "choices": [
+   "He that is circumcised",
+   "He that keepeth the sabbath",
+   "He that feareth him and worketh righteousness",
+   "He that offereth sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "In every nation he that feareth him, and worketh righteousness, is accepted with him.",
+  "ref": "Acts 10:35"
+ },
+ {
+  "id": "acts-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Peter describe Jesus of Nazareth's ministry?",
+  "choices": [
+   "He taught in every synagogue of Judaea",
+   "He went about doing good, healing the oppressed",
+   "He fed the multitudes in the wilderness",
+   "He walked among the poor of Galilee"
+  ],
+  "answer": 1,
+  "explanation": "God anointed Jesus of Nazareth with the Holy Ghost and with power: who went about doing good, and healing all that were oppressed of the devil.",
+  "ref": "Acts 10:38"
+ },
+ {
+  "id": "acts-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of which band was Cornelius a centurion?",
+  "choices": [
+   "The Italian band",
+   "The Roman band",
+   "The Caesarean band",
+   "The imperial band"
+  ],
+  "answer": 0,
+  "explanation": "A centurion of the band called the Italian band.",
+  "ref": "Acts 10:1"
+ },
+ {
+  "id": "acts-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "About what hour did Peter go up on the housetop to pray?",
+  "choices": [
+   "The third hour",
+   "The ninth hour",
+   "The eleventh hour",
+   "The sixth hour"
+  ],
+  "answer": 3,
+  "explanation": "Peter went up upon the housetop to pray about the sixth hour.",
+  "ref": "Acts 10:9"
+ },
+ {
+  "id": "acts-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the great sheet held as it came down?",
+  "choices": [
+   "Tied with a rope",
+   "Held by angels",
+   "Knit at the four corners",
+   "Spread on a pole"
+  ],
+  "answer": 2,
+  "explanation": "A certain vessel descending unto him, as it had been a great sheet knit at the four corners, and let down to the earth.",
+  "ref": "Acts 10:11"
+ },
+ {
+  "id": "acts-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the men from Cornelius describe him to Peter?",
+  "choices": [
+   "A ruler who loved the Jews",
+   "A just man of good report among all the nation of the Jews",
+   "A Roman who built a synagogue",
+   "A prophet from Caesarea"
+  ],
+  "answer": 1,
+  "explanation": "Cornelius the centurion, a just man, and one that feareth God, and of good report among all the nation of the Jews.",
+  "ref": "Acts 10:22"
+ },
+ {
+  "id": "acts-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Cornelius describe the one who stood before him?",
+  "choices": [
+   "A man in bright clothing",
+   "A man with a drawn sword",
+   "A man in white linen",
+   "A man with a golden girdle"
+  ],
+  "answer": 0,
+  "explanation": "At the ninth hour I prayed in my house, and, behold, a man stood before me in bright clothing.",
+  "ref": "Acts 10:30"
+ },
+ {
+  "id": "acts-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Peter said Jesus was slain and hanged on what?",
+  "choices": [
+   "A cross of wood",
+   "A hill outside the city",
+   "A gate of the temple",
+   "A tree"
+  ],
+  "answer": 3,
+  "explanation": "Whom they slew and hanged on a tree.",
+  "ref": "Acts 10:39"
+ },
+ {
+  "id": "acts-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day did Peter say God raised Jesus up?",
+  "choices": [
+   "The first day",
+   "The seventh day",
+   "The third day",
+   "The fortieth day"
+  ],
+  "answer": 2,
+  "explanation": "Him God raised up the third day, and shewed him openly.",
+  "ref": "Acts 10:40"
+ },
+ {
+  "id": "acts-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did God show the risen Jesus, according to Peter?",
+  "choices": [
+   "All the people of Jerusalem",
+   "Witnesses chosen before of God, who ate and drank with him",
+   "The twelve disciples alone",
+   "The Pharisees and the priests"
+  ],
+  "answer": 1,
+  "explanation": "Not to all the people, but unto witnesses chosen before of God, who did eat and drink with him after he rose from the dead.",
+  "ref": "Acts 10:41"
+ },
+ {
+  "id": "acts-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Peter say Jesus was ordained of God to be?",
+  "choices": [
+   "The Judge of quick and dead",
+   "The King of Israel",
+   "The Redeemer of the nations",
+   "The High Priest forever"
+  ],
+  "answer": 0,
+  "explanation": "It is he which was ordained of God to be the Judge of quick and dead.",
+  "ref": "Acts 10:42"
+ },
+ {
+  "id": "acts-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Peter say the prophets witness about those who believe in Jesus?",
+  "choices": [
+   "They shall inherit the land",
+   "They shall see the kingdom",
+   "They shall be made priests",
+   "They shall receive remission of sins"
+  ],
+  "answer": 3,
+  "explanation": "To him give all the prophets witness, that through his name whosoever believeth in him shall receive remission of sins.",
+  "ref": "Acts 10:43"
+ },
+ {
+  "id": "acts-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who were astonished when the Holy Ghost fell on the Gentiles?",
+  "choices": [
+   "The soldiers of Cornelius",
+   "The servants of Cornelius",
+   "The circumcision who believed, as many as came with Peter",
+   "The brethren of Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "They of the circumcision which believed were astonished, as many as came with Peter.",
+  "ref": "Acts 10:45"
+ },
+ {
+  "id": "acts-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why were they of the circumcision astonished?",
+  "choices": [
+   "The Gentiles spoke in Hebrew",
+   "The Holy Ghost was poured out on the Gentiles also",
+   "Peter baptized without water",
+   "Cornelius was raised up"
+  ],
+  "answer": 1,
+  "explanation": "Because that on the Gentiles also was poured out the gift of the Holy Ghost.",
+  "ref": "Acts 10:45"
+ },
+ {
+  "id": "acts-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Peter ask about water for those who received the Holy Ghost?",
+  "choices": [
+   "Can any man forbid water, that these should not be baptized?",
+   "Who will baptize them?",
+   "Shall we wait until they are taught?",
+   "Is there water near?"
+  ],
+  "answer": 0,
+  "explanation": "Can any man forbid water, that these should not be baptized, which have received the Holy Ghost as well as we?",
+  "ref": "Acts 10:47"
+ },
+ {
+  "id": "acts-10-h-14",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Where, according to Peter, did the word begin that was published throughout Judaea?",
+  "choices": [
+   "From Jerusalem at Pentecost",
+   "From Bethlehem at the birth",
+   "From Nazareth in the synagogue",
+   "From Galilee, after the baptism John preached"
+  ],
+  "answer": 3,
+  "explanation": "That word was published throughout all Judaea, and began from Galilee, after the baptism which John preached.",
+  "ref": "Acts 10:37"
+ },
+ {
+  "id": "acts-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Cornelius's household ask Peter to do after they were baptized?",
+  "choices": [
+   "Teach the law",
+   "Return to Jerusalem",
+   "Tarry certain days",
+   "Lay hands on them"
+  ],
+  "answer": 2,
+  "explanation": "They prayed him to tarry certain days.",
+  "ref": "Acts 10:48"
+ },
+ {
+  "id": "acts-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the apostles and brethren in Judaea hear at the start of the chapter?",
+  "choices": [
+   "That Stephen had been killed",
+   "That the Gentiles had also received the word of God",
+   "That Saul had been converted",
+   "That Herod had died"
+  ],
+  "answer": 1,
+  "explanation": "The apostles and brethren in Judaea heard that the Gentiles had also received the word of God.",
+  "ref": "Acts 11:1"
+ },
+ {
+  "id": "acts-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who contended with Peter when he came up to Jerusalem?",
+  "choices": [
+   "They that were of the circumcision",
+   "The scribes",
+   "The Sadducees",
+   "The elders of Antioch"
+  ],
+  "answer": 0,
+  "explanation": "When Peter was come up to Jerusalem, they that were of the circumcision contended with him.",
+  "ref": "Acts 11:2"
+ },
+ {
+  "id": "acts-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter tell them he saw let down from heaven in a trance?",
+  "choices": [
+   "A golden vessel",
+   "A burning torch",
+   "A great net",
+   "A great sheet"
+  ],
+  "answer": 3,
+  "explanation": "In a trance I saw a vision, A certain vessel descend, as it had been a great sheet, let down from heaven by four corners.",
+  "ref": "Acts 11:5"
+ },
+ {
+  "id": "acts-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What fell on the Gentiles as Peter began to speak?",
+  "choices": [
+   "A great fear",
+   "A bright light",
+   "The Holy Ghost",
+   "A rushing wind"
+  ],
+  "answer": 2,
+  "explanation": "As I began to speak, the Holy Ghost fell on them, as on us at the beginning.",
+  "ref": "Acts 11:15"
+ },
+ {
+  "id": "acts-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the believers at Jerusalem do after hearing Peter's account?",
+  "choices": [
+   "Sent Peter away",
+   "Held their peace and glorified God",
+   "Asked for proof",
+   "Demanded the Gentiles be circumcised"
+  ],
+  "answer": 1,
+  "explanation": "When they heard these things, they held their peace, and glorified God.",
+  "ref": "Acts 11:18"
+ },
+ {
+  "id": "acts-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom at Antioch did men of Cyprus and Cyrene preach the Lord Jesus?",
+  "choices": [
+   "The Grecians",
+   "The Samaritans",
+   "The Romans",
+   "The Pharisees"
+  ],
+  "answer": 0,
+  "explanation": "Some of them were men of Cyprus and Cyrene, which spake unto the Grecians, preaching the Lord Jesus.",
+  "ref": "Acts 11:20"
+ },
+ {
+  "id": "acts-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the church at Jerusalem send to Antioch?",
+  "choices": [
+   "Peter",
+   "Agabus",
+   "Saul",
+   "Barnabas"
+  ],
+  "answer": 3,
+  "explanation": "They sent forth Barnabas, that he should go as far as Antioch.",
+  "ref": "Acts 11:22"
+ },
+ {
+  "id": "acts-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Barnabas feel when he saw the grace of God at Antioch?",
+  "choices": [
+   "He was afraid",
+   "He was grieved",
+   "He was glad",
+   "He was angry"
+  ],
+  "answer": 2,
+  "explanation": "When he came, and had seen the grace of God, was glad, and exhorted them all.",
+  "ref": "Acts 11:23"
+ },
+ {
+  "id": "acts-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who signified by the spirit that a great dearth was coming?",
+  "choices": [
+   "Barnabas",
+   "Agabus",
+   "Silas",
+   "Simeon"
+  ],
+  "answer": 1,
+  "explanation": "There stood up one of them named Agabus, and signified by the spirit that there should be great dearth throughout all the world.",
+  "ref": "Acts 11:28"
+ },
+ {
+  "id": "acts-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "By whose hands did the disciples send relief to the elders?",
+  "choices": [
+   "Barnabas and Saul",
+   "Peter and John",
+   "Silas and Paul",
+   "Agabus and Barnabas"
+  ],
+  "answer": 0,
+  "explanation": "They sent it to the elders by the hands of Barnabas and Saul.",
+  "ref": "Acts 11:30"
+ },
+ {
+  "id": "acts-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the voice from heaven say to Peter the second time, as he told it?",
+  "choices": [
+   "Rise, Peter, and go",
+   "Fear not, for I am with thee",
+   "Take and eat, for it is clean",
+   "What God hath cleansed, that call not thou common"
+  ],
+  "answer": 3,
+  "explanation": "The voice answered me again from heaven, What God hath cleansed, that call not thou common.",
+  "ref": "Acts 11:9"
+ },
+ {
+  "id": "acts-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "In which city was Peter praying when he saw the vision?",
+  "choices": [
+   "Caesarea",
+   "Antioch",
+   "Joppa",
+   "Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "I was in the city of Joppa praying: and in a trance I saw a vision.",
+  "ref": "Acts 11:5"
+ },
+ {
+  "id": "acts-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men had already come to the house where Peter was?",
+  "choices": [
+   "Two, sent from Jerusalem",
+   "Three, sent from Caesarea",
+   "Six, sent from Antioch",
+   "Four, sent from Lydda"
+  ],
+  "answer": 1,
+  "explanation": "Immediately there were three men already come unto the house where I was, sent from Caesarea unto me.",
+  "ref": "Acts 11:11"
+ },
+ {
+  "id": "acts-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many brethren accompanied Peter into the man's house?",
+  "choices": [
+   "Six",
+   "Three",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "Moreover these six brethren accompanied me, and we entered into the man's house.",
+  "ref": "Acts 11:12"
+ },
+ {
+  "id": "acts-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel tell Cornelius Peter's words would bring?",
+  "choices": [
+   "Healing for his servants",
+   "A reward for his alms",
+   "Peace for the city",
+   "Salvation for him and all his house"
+  ],
+  "answer": 3,
+  "explanation": "Peter shall tell thee words, whereby thou and all thy house shall be saved.",
+  "ref": "Acts 11:13–14"
+ },
+ {
+  "id": "acts-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Peter say he could not do, since God gave the Gentiles the like gift?",
+  "choices": [
+   "Forbid the water",
+   "Deny the Spirit",
+   "Withstand God",
+   "Refuse the apostles"
+  ],
+  "answer": 2,
+  "explanation": "Forasmuch then as God gave them the like gift, what was I, that I could withstand God?",
+  "ref": "Acts 11:17"
+ },
+ {
+  "id": "acts-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Jerusalem believers say God had granted the Gentiles?",
+  "choices": [
+   "Peace with Israel",
+   "Repentance unto life",
+   "A place in the temple",
+   "The law of Moses"
+  ],
+  "answer": 1,
+  "explanation": "Then hath God also to the Gentiles granted repentance unto life.",
+  "ref": "Acts 11:18"
+ },
+ {
+  "id": "acts-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom did the scattered believers preach as far as Phenice, Cyprus, and Antioch?",
+  "choices": [
+   "To none but the Jews only",
+   "To the Gentiles only",
+   "To the Samaritans",
+   "To the Romans"
+  ],
+  "answer": 0,
+  "explanation": "They travelled as far as Phenice, and Cyprus, and Antioch, preaching the word to none but unto the Jews only.",
+  "ref": "Acts 11:19"
+ },
+ {
+  "id": "acts-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened because the hand of the Lord was with the men at Antioch?",
+  "choices": [
+   "Many were healed",
+   "The synagogue was closed",
+   "Many were baptized in Jerusalem",
+   "A great number believed and turned to the Lord"
+  ],
+  "answer": 3,
+  "explanation": "The hand of the Lord was with them: and a great number believed, and turned unto the Lord.",
+  "ref": "Acts 11:21"
+ },
+ {
+  "id": "acts-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Barnabas exhort them all to do?",
+  "choices": [
+   "Return to Jerusalem",
+   "Give all they had to the poor",
+   "With purpose of heart cleave unto the Lord",
+   "Keep the law of Moses"
+  ],
+  "answer": 2,
+  "explanation": "He exhorted them all, that with purpose of heart they would cleave unto the Lord.",
+  "ref": "Acts 11:23"
+ },
+ {
+  "id": "acts-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is Barnabas described?",
+  "choices": [
+   "A wise man, full of wisdom and zeal",
+   "A good man, full of the Holy Ghost and of faith",
+   "A rich man, full of alms",
+   "A strong man, full of courage"
+  ],
+  "answer": 1,
+  "explanation": "For he was a good man, and full of the Holy Ghost and of faith: and much people was added unto the Lord.",
+  "ref": "Acts 11:24"
+ },
+ {
+  "id": "acts-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the prophets who came to Antioch come from?",
+  "choices": [
+   "Jerusalem",
+   "Cyprus",
+   "Cyrene",
+   "Tarsus"
+  ],
+  "answer": 0,
+  "explanation": "In these days came prophets from Jerusalem unto Antioch.",
+  "ref": "Acts 11:27"
+ },
+ {
+  "id": "acts-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "In whose days did the great dearth come to pass?",
+  "choices": [
+   "Herod the king",
+   "Augustus Caesar",
+   "Tiberius Caesar",
+   "Claudius Caesar"
+  ],
+  "answer": 3,
+  "explanation": "There should be great dearth throughout all the world: which came to pass in the days of Claudius Caesar.",
+  "ref": "Acts 11:28"
+ },
+ {
+  "id": "acts-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did each disciple decide to give relief to the brethren in Judaea?",
+  "choices": [
+   "A tenth of his goods",
+   "Equal to the next man",
+   "According to his ability",
+   "All that he had"
+  ],
+  "answer": 2,
+  "explanation": "The disciples, every man according to his ability, determined to send relief unto the brethren which dwelt in Judaea.",
+  "ref": "Acts 11:29"
+ },
+ {
+  "id": "acts-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord say Peter remembered about the baptism of John?",
+  "choices": [
+   "John baptized unto repentance, but I unto forgiveness",
+   "John baptized with water; ye with the Holy Ghost",
+   "John baptized the few, but I baptize all nations",
+   "John baptized with water, but I with fire"
+  ],
+  "answer": 1,
+  "explanation": "Then remembered I the word of the Lord, how that he said, John indeed baptized with water; but ye shall be baptized with the Holy Ghost.",
+  "ref": "Acts 11:16"
+ },
+ {
+  "id": "acts-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Holy Ghost fell on the Gentiles as on the believers at what point?",
+  "choices": [
+   "At the beginning",
+   "At Pentecost in Jerusalem",
+   "At the baptism of Jesus",
+   "At the casting of lots"
+  ],
+  "answer": 0,
+  "explanation": "The Holy Ghost fell on them, as on us at the beginning.",
+  "ref": "Acts 11:15"
+ },
+ {
+  "id": "acts-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the voice command Peter in the vision, as he told it?",
+  "choices": [
+   "Rise, Peter, and preach",
+   "Rise, Peter, and go down",
+   "Rise, Peter, and pray",
+   "Arise, Peter; slay and eat"
+  ],
+  "answer": 3,
+  "explanation": "I heard a voice saying unto me, Arise, Peter; slay and eat.",
+  "ref": "Acts 11:7"
+ },
+ {
+  "id": "acts-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Peter say had never entered his mouth?",
+  "choices": [
+   "Any meat from a Gentile",
+   "Any unwashed bread",
+   "Anything common or unclean",
+   "Any strong drink"
+  ],
+  "answer": 2,
+  "explanation": "Not so, Lord: for nothing common or unclean hath at any time entered into my mouth.",
+  "ref": "Acts 11:8"
+ },
+ {
+  "id": "acts-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times was the sheet vision repeated, as Peter told it?",
+  "choices": [
+   "Once",
+   "Three times",
+   "Twice",
+   "Seven times"
+  ],
+  "answer": 1,
+  "explanation": "This was done three times: and all were drawn up again into heaven.",
+  "ref": "Acts 11:10"
+ },
+ {
+  "id": "acts-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Spirit bid Peter do concerning the men?",
+  "choices": [
+   "Go with them, nothing doubting",
+   "Wait for them in Joppa",
+   "Send them away",
+   "Ask for their letters"
+  ],
+  "answer": 0,
+  "explanation": "The spirit bade me go with them, nothing doubting.",
+  "ref": "Acts 11:12"
+ },
+ {
+  "id": "acts-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where had Cornelius seen the angel stand?",
+  "choices": [
+   "In the temple",
+   "On the road",
+   "In a vision on the sea",
+   "In his house"
+  ],
+  "answer": 3,
+  "explanation": "He shewed us how he had seen an angel in his house, which stood and said unto him, Send men to Joppa.",
+  "ref": "Acts 11:13"
+ },
+ {
+  "id": "acts-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Peter explain the matter to the believers at Jerusalem?",
+  "choices": [
+   "By letter from Cornelius",
+   "Through the six brethren",
+   "From the beginning, by order",
+   "In the temple court"
+  ],
+  "answer": 2,
+  "explanation": "Peter rehearsed the matter from the beginning, and expounded it by order unto them.",
+  "ref": "Acts 11:4"
+ },
+ {
+  "id": "acts-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the believers scattered after Stephen travel as far as?",
+  "choices": [
+   "Samaria, Galilee, and Damascus",
+   "Phenice, Cyprus, and Antioch",
+   "Joppa, Lydda, and Caesarea",
+   "Cyrene, Egypt, and Rome"
+  ],
+  "answer": 1,
+  "explanation": "They which were scattered travelled as far as Phenice, and Cyprus, and Antioch.",
+  "ref": "Acts 11:19"
+ },
+ {
+  "id": "acts-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Which two places were the men from who spoke to the Grecians?",
+  "choices": [
+   "Cyprus and Cyrene",
+   "Phenice and Antioch",
+   "Tarsus and Cyprus",
+   "Judaea and Cyrene"
+  ],
+  "answer": 0,
+  "explanation": "Some of them were men of Cyprus and Cyrene, which, when they were come to Antioch, spake unto the Grecians.",
+  "ref": "Acts 11:20"
+ },
+ {
+  "id": "acts-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was added unto the Lord through Barnabas's work at Antioch?",
+  "choices": [
+   "Many elders",
+   "Many priests",
+   "A few rulers",
+   "Much people"
+  ],
+  "answer": 3,
+  "explanation": "He was a good man, and full of the Holy Ghost and of faith: and much people was added unto the Lord.",
+  "ref": "Acts 11:24"
+ },
+ {
+  "id": "acts-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Barnabas and Saul assemble with the church at Antioch?",
+  "choices": [
+   "Forty days",
+   "Three months",
+   "A whole year",
+   "Seven years"
+  ],
+  "answer": 2,
+  "explanation": "A whole year they assembled themselves with the church, and taught much people.",
+  "ref": "Acts 11:26"
+ },
+ {
+  "id": "acts-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what did Agabus signify the coming dearth?",
+  "choices": [
+   "By a dream",
+   "By the spirit",
+   "By an angel",
+   "By the law"
+  ],
+  "answer": 1,
+  "explanation": "Agabus signified by the spirit that there should be great dearth throughout all the world.",
+  "ref": "Acts 11:28"
+ },
+ {
+  "id": "acts-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did Barnabas and Saul carry the relief?",
+  "choices": [
+   "The elders",
+   "The apostles",
+   "The synagogue rulers",
+   "The widows"
+  ],
+  "answer": 0,
+  "explanation": "They sent it to the elders by the hands of Barnabas and Saul.",
+  "ref": "Acts 11:30"
+ },
+ {
+  "id": "acts-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When Peter fastened his eyes on the sheet, what did he do first?",
+  "choices": [
+   "He prayed",
+   "He fled",
+   "He called the others",
+   "He considered it"
+  ],
+  "answer": 3,
+  "explanation": "Upon the which when I had fastened mine eyes, I considered, and saw fourfooted beasts of the earth.",
+  "ref": "Acts 11:6"
+ },
+ {
+  "id": "acts-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the sheet drawn up again?",
+  "choices": [
+   "Into the house",
+   "Into a cloud",
+   "Into heaven",
+   "Into the sea"
+  ],
+  "answer": 2,
+  "explanation": "This was done three times: and all were drawn up again into heaven.",
+  "ref": "Acts 11:10"
+ },
+ {
+  "id": "acts-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king stretched forth his hands to vex certain of the church?",
+  "choices": [
+   "Agrippa",
+   "Herod",
+   "Felix",
+   "Claudius"
+  ],
+  "answer": 1,
+  "explanation": "Herod the king stretched forth his hands to vex certain of the church.",
+  "ref": "Acts 12:1"
+ },
+ {
+  "id": "acts-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the church do for Peter while he was kept in prison?",
+  "choices": [
+   "Prayer was made without ceasing",
+   "They fasted for forty days",
+   "They sent a petition to Herod",
+   "They hid his friends"
+  ],
+  "answer": 0,
+  "explanation": "Peter was kept in prison: but prayer was made without ceasing of the church unto God for him.",
+  "ref": "Acts 12:5"
+ },
+ {
+  "id": "acts-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the angel wake Peter?",
+  "choices": [
+   "He called his name",
+   "He touched his eyes",
+   "He lifted his hand",
+   "He smote him on the side"
+  ],
+  "answer": 3,
+  "explanation": "The angel smote Peter on the side, and raised him up, saying, Arise up quickly.",
+  "ref": "Acts 12:7"
+ },
+ {
+  "id": "acts-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What fell off Peter's hands when the angel came?",
+  "choices": [
+   "His sandals",
+   "His garment",
+   "His chains",
+   "The prison locks"
+  ],
+  "answer": 2,
+  "explanation": "A light shined in the prison, and his chains fell off from his hands.",
+  "ref": "Acts 12:7"
+ },
+ {
+  "id": "acts-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whose house did Peter go after he was freed?",
+  "choices": [
+   "Rhoda's master",
+   "Mary the mother of John Mark",
+   "James the brother of John",
+   "Simon a tanner"
+  ],
+  "answer": 1,
+  "explanation": "He came to the house of Mary the mother of John, whose surname was Mark; where many were gathered together praying.",
+  "ref": "Acts 12:12"
+ },
+ {
+  "id": "acts-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Rhoda do when she knew Peter's voice?",
+  "choices": [
+   "Ran in and told them, without opening the gate",
+   "Opened the gate and embraced him",
+   "Hid from the soldiers",
+   "Fainted at the door"
+  ],
+  "answer": 0,
+  "explanation": "She opened not the gate for gladness, but ran in, and told how Peter stood before the gate.",
+  "ref": "Acts 12:14"
+ },
+ {
+  "id": "acts-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people shout at Herod's oration?",
+  "choices": [
+   "Long live the king",
+   "He is the Son of God",
+   "Behold the deliverer of Israel",
+   "It is the voice of a god, and not of a man"
+  ],
+  "answer": 3,
+  "explanation": "The people gave a shout, saying, It is the voice of a god, and not of a man.",
+  "ref": "Acts 12:22"
+ },
+ {
+  "id": "acts-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Herod die?",
+  "choices": [
+   "He was slain by the sword",
+   "He fell from his throne",
+   "He was eaten of worms",
+   "He was stoned"
+  ],
+  "answer": 2,
+  "explanation": "The angel of the Lord smote him: and he was eaten of worms, and gave up the ghost.",
+  "ref": "Acts 12:23"
+ },
+ {
+  "id": "acts-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Herod proceed to take Peter after killing James?",
+  "choices": [
+   "Peter had defied him",
+   "He saw it pleased the Jews",
+   "The priests demanded it",
+   "Peter had healed on the sabbath"
+  ],
+  "answer": 1,
+  "explanation": "Because he saw it pleased the Jews, he proceeded further to take Peter also.",
+  "ref": "Acts 12:3"
+ },
+ {
+  "id": "acts-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To how many groups of soldiers did Herod deliver Peter to keep him?",
+  "choices": [
+   "Four quaternions",
+   "Two quaternions",
+   "Seven watches",
+   "Twelve guards"
+  ],
+  "answer": 0,
+  "explanation": "He put him in prison, and delivered him to four quaternions of soldiers to keep him.",
+  "ref": "Acts 12:4"
+ },
+ {
+  "id": "acts-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "During which days was Peter taken?",
+  "choices": [
+   "The feast of tabernacles",
+   "The days of Pentecost",
+   "The sabbath of the new moon",
+   "The days of unleavened bread"
+  ],
+  "answer": 3,
+  "explanation": "He proceeded further to take Peter also. (Then were the days of unleavened bread.)",
+  "ref": "Acts 12:3"
+ },
+ {
+  "id": "acts-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel tell Peter to do before following him?",
+  "choices": [
+   "Take his staff and a scrip",
+   "Wake the other prisoners",
+   "Gird himself, bind on sandals, cast his garment about him",
+   "Wash and pray"
+  ],
+  "answer": 2,
+  "explanation": "Gird thyself, and bind on thy sandals. Cast thy garment about thee, and follow me.",
+  "ref": "Acts 12:8"
+ },
+ {
+  "id": "acts-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Peter think as he followed the angel out?",
+  "choices": [
+   "That he was dying",
+   "That he saw a vision",
+   "That Herod had set him free",
+   "That the guards were asleep"
+  ],
+  "answer": 1,
+  "explanation": "He wist not that it was true which was done by the angel; but thought he saw a vision.",
+  "ref": "Acts 12:9"
+ },
+ {
+  "id": "acts-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What opened of its own accord for Peter and the angel?",
+  "choices": [
+   "The iron gate that leadeth unto the city",
+   "The door of the prison cell",
+   "The gate of the temple",
+   "The gate of Mary's house"
+  ],
+  "answer": 0,
+  "explanation": "They came unto the iron gate that leadeth unto the city; which opened to them of his own accord.",
+  "ref": "Acts 12:10"
+ },
+ {
+  "id": "acts-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Peter say when he came to himself?",
+  "choices": [
+   "I am set free by Herod's pardon",
+   "The Lord has forsaken Herod",
+   "Truly this was a dream",
+   "Now I know of a surety, that the Lord hath sent his angel"
+  ],
+  "answer": 3,
+  "explanation": "Now I know of a surety, that the Lord hath sent his angel, and hath delivered me out of the hand of Herod.",
+  "ref": "Acts 12:11"
+ },
+ {
+  "id": "acts-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did those praying at Mary's house first say to Rhoda?",
+  "choices": [
+   "Thou art deceived",
+   "Go and look again",
+   "Thou art mad",
+   "Peace be with thee"
+  ],
+  "answer": 2,
+  "explanation": "They said unto her, Thou art mad. But she constantly affirmed that it was even so.",
+  "ref": "Acts 12:15"
+ },
+ {
+  "id": "acts-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did Peter tell them to carry word of his deliverance?",
+  "choices": [
+   "John and the apostles",
+   "James and the brethren",
+   "Barnabas and Saul",
+   "The church at Antioch"
+  ],
+  "answer": 1,
+  "explanation": "Go shew these things unto James, and to the brethren.",
+  "ref": "Acts 12:17"
+ },
+ {
+  "id": "acts-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Herod command after he could not find Peter?",
+  "choices": [
+   "That the keepers be put to death",
+   "That the prison be searched",
+   "That Peter be hunted",
+   "That the church be burned"
+  ],
+  "answer": 0,
+  "explanation": "He examined the keepers, and commanded that they should be put to death.",
+  "ref": "Acts 12:19"
+ },
+ {
+  "id": "acts-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "To which city did Herod go down from Judaea to abide?",
+  "choices": [
+   "Jerusalem",
+   "Joppa",
+   "Antioch",
+   "Caesarea"
+  ],
+  "answer": 3,
+  "explanation": "He went down from Judaea to Caesarea, and there abode.",
+  "ref": "Acts 12:19"
+ },
+ {
+  "id": "acts-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "With whom was Herod highly displeased?",
+  "choices": [
+   "Them of Samaria",
+   "Them of Antioch",
+   "Them of Tyre and Sidon",
+   "Them of Cyprus"
+  ],
+  "answer": 2,
+  "explanation": "Herod was highly displeased with them of Tyre and Sidon.",
+  "ref": "Acts 12:20"
+ },
+ {
+  "id": "acts-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the word of God do after Herod's death?",
+  "choices": [
+   "It was hidden",
+   "It grew and multiplied",
+   "It was spread by the apostles only",
+   "It was brought to Rome"
+  ],
+  "answer": 1,
+  "explanation": "But the word of God grew and multiplied.",
+  "ref": "Acts 12:24"
+ },
+ {
+  "id": "acts-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After what did Herod intend to bring Peter forth to the people?",
+  "choices": [
+   "Easter",
+   "The sabbath",
+   "Pentecost",
+   "The new moon"
+  ],
+  "answer": 0,
+  "explanation": "Intending after Easter to bring him forth to the people.",
+  "ref": "Acts 12:4"
+ },
+ {
+  "id": "acts-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was Peter bound the night before Herod would bring him forth?",
+  "choices": [
+   "In stocks in the inner prison",
+   "With one chain to a keeper",
+   "In a pit under the door",
+   "Sleeping between two soldiers with two chains"
+  ],
+  "answer": 3,
+  "explanation": "Peter was sleeping between two soldiers, bound with two chains.",
+  "ref": "Acts 12:6"
+ },
+ {
+  "id": "acts-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the keepers do before the prison door?",
+  "choices": [
+   "Slept at their post",
+   "Watched the street",
+   "Kept the prison",
+   "Prayed for Peter"
+  ],
+  "answer": 2,
+  "explanation": "The keepers before the door kept the prison.",
+  "ref": "Acts 12:6"
+ },
+ {
+  "id": "acts-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How far did Peter and the angel go before the angel departed?",
+  "choices": [
+   "Past the second ward only",
+   "Through one street",
+   "To the house of Mary",
+   "To the edge of the city"
+  ],
+  "answer": 1,
+  "explanation": "They went out, and passed on through one street; and forthwith the angel departed from him.",
+  "ref": "Acts 12:10"
+ },
+ {
+  "id": "acts-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the many gathered at Mary's house doing?",
+  "choices": [
+   "Praying",
+   "Feasting",
+   "Singing",
+   "Fasting only"
+  ],
+  "answer": 0,
+  "explanation": "Mary the mother of John, whose surname was Mark; where many were gathered together praying.",
+  "ref": "Acts 12:12"
+ },
+ {
+  "id": "acts-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Peter ask those at the door to be quiet?",
+  "choices": [
+   "Speaking in a whisper",
+   "Raising his voice",
+   "Knocking on the door",
+   "Beckoning with the hand to hold their peace"
+  ],
+  "answer": 3,
+  "explanation": "He, beckoning unto them with the hand to hold their peace, declared unto them how the Lord had brought him out of the prison.",
+  "ref": "Acts 12:17"
+ },
+ {
+  "id": "acts-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Peter do after telling them his story?",
+  "choices": [
+   "Went to Caesarea",
+   "Returned to the prison",
+   "Departed and went into another place",
+   "Stayed with Mary"
+  ],
+  "answer": 2,
+  "explanation": "He departed, and went into another place.",
+  "ref": "Acts 12:17"
+ },
+ {
+  "id": "acts-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "What was Blastus to the king?",
+  "choices": [
+   "His captain",
+   "His chamberlain",
+   "His scribe",
+   "His physician"
+  ],
+  "answer": 1,
+  "explanation": "Having made Blastus the king's chamberlain their friend, desired peace.",
+  "ref": "Acts 12:20"
+ },
+ {
+  "id": "acts-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Tyre and Sidon desire peace with Herod?",
+  "choices": [
+   "Their country was nourished by the king's country",
+   "They feared his armies",
+   "They owed him tribute",
+   "They needed his help against Rome"
+  ],
+  "answer": 0,
+  "explanation": "They desired peace; because their country was nourished by the king's country.",
+  "ref": "Acts 12:20"
+ },
+ {
+  "id": "acts-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was Herod dressed when he made his oration?",
+  "choices": [
+   "In armour, before his army",
+   "In linen, at the temple",
+   "In purple, at the gate",
+   "In royal apparel, upon his throne"
+  ],
+  "answer": 3,
+  "explanation": "Upon a set day Herod, arrayed in royal apparel, sat upon his throne, and made an oration unto them.",
+  "ref": "Acts 12:21"
+ },
+ {
+  "id": "acts-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Barnabas and Saul take with them from Jerusalem?",
+  "choices": [
+   "Silas",
+   "Timotheus",
+   "John, whose surname was Mark",
+   "Titus"
+  ],
+  "answer": 2,
+  "explanation": "Barnabas and Saul returned from Jerusalem, and took with them John, whose surname was Mark.",
+  "ref": "Acts 12:25"
+ },
+ {
+  "id": "acts-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what did Peter say the Lord had delivered him?",
+  "choices": [
+   "The prison and the chains",
+   "The hand of Herod and all the expectation of the Jews",
+   "The sword and the soldiers",
+   "The priests and the council"
+  ],
+  "answer": 1,
+  "explanation": "The Lord hath delivered me out of the hand of Herod, and from all the expectation of the people of the Jews.",
+  "ref": "Acts 12:11"
+ },
+ {
+  "id": "acts-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When Rhoda kept affirming it was Peter, what did the household say?",
+  "choices": [
+   "It is his angel",
+   "It is a spirit",
+   "It is a soldier",
+   "It is Herod"
+  ],
+  "answer": 0,
+  "explanation": "They said unto her, Thou art mad. But she constantly affirmed that it was even so. Then said they, It is his angel.",
+  "ref": "Acts 12:15"
+ },
+ {
+  "id": "acts-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which city were the prophets and teachers who were told to separate Barnabas and Saul?",
+  "choices": [
+   "Jerusalem",
+   "Antioch",
+   "Tarsus",
+   "Damascus"
+  ],
+  "answer": 1,
+  "explanation": "There were in the church that was at Antioch certain prophets and teachers; as Barnabas and Saul.",
+  "ref": "Acts 13:1"
+ },
+ {
+  "id": "acts-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which island did Barnabas and Saul sail first?",
+  "choices": [
+   "Cyprus",
+   "Crete",
+   "Patmos",
+   "Malta"
+  ],
+  "answer": 0,
+  "explanation": "They departed unto Seleucia; and from thence they sailed to Cyprus.",
+  "ref": "Acts 13:4"
+ },
+ {
+  "id": "acts-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who withstood Barnabas and Saul at Paphos, seeking to turn the deputy from the faith?",
+  "choices": [
+   "Simon the sorcerer",
+   "Sergius Paulus",
+   "Manaen",
+   "Elymas the sorcerer"
+  ],
+  "answer": 3,
+  "explanation": "Elymas the sorcerer withstood them, seeking to turn away the deputy from the faith.",
+  "ref": "Acts 13:8"
+ },
+ {
+  "id": "acts-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the deputy of the country who desired to hear the word of God?",
+  "choices": [
+   "Bar-jesus",
+   "Lucius",
+   "Sergius Paulus",
+   "Manaen"
+  ],
+  "answer": 2,
+  "explanation": "The sorcerer was with the deputy of the country, Sergius Paulus, a prudent man, who desired to hear the word of God.",
+  "ref": "Acts 13:7"
+ },
+ {
+  "id": "acts-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul and Barnabas do against those who expelled them from Antioch in Pisidia?",
+  "choices": [
+   "Cursed their city",
+   "Shook off the dust of their feet",
+   "Prayed for them",
+   "Wrote a letter of rebuke"
+  ],
+  "answer": 1,
+  "explanation": "They shook off the dust of their feet against them, and came unto Iconium.",
+  "ref": "Acts 13:51"
+ },
+ {
+  "id": "acts-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Paul speak on the sabbath at Antioch in Pisidia?",
+  "choices": [
+   "In the synagogue",
+   "By the riverside",
+   "In the market",
+   "In a private house"
+  ],
+  "answer": 0,
+  "explanation": "They went into the synagogue on the sabbath day, and sat down.",
+  "ref": "Acts 13:14"
+ },
+ {
+  "id": "acts-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did God raise up to be king, to whom he gave testimony as a man after his own heart?",
+  "choices": [
+   "Samuel",
+   "Saul",
+   "Solomon",
+   "David"
+  ],
+  "answer": 3,
+  "explanation": "I have found David the son of Jesse, a man after mine own heart, which shall fulfil all my will.",
+  "ref": "Acts 13:22"
+ },
+ {
+  "id": "acts-13-e-08",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul say God did to Jesus after they laid him in a sepulchre?",
+  "choices": [
+   "Took him up to heaven at once",
+   "Hid his body",
+   "Raised him from the dead",
+   "Sent angels to guard him"
+  ],
+  "answer": 2,
+  "explanation": "They took him down from the tree, and laid him in a sepulchre. But God raised him from the dead.",
+  "ref": "Acts 13:29–30"
+ },
+ {
+  "id": "acts-13-e-09",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Gentiles ask of Paul and Barnabas as the Jews left the synagogue?",
+  "choices": [
+   "That they stay in their houses",
+   "That these words be preached to them the next sabbath",
+   "That they be baptized at once",
+   "That they give them letters"
+  ],
+  "answer": 1,
+  "explanation": "The Gentiles besought that these words might be preached to them the next sabbath.",
+  "ref": "Acts 13:42"
+ },
+ {
+  "id": "acts-13-e-10",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what were the disciples filled at the end of the chapter?",
+  "choices": [
+   "Joy and the Holy Ghost",
+   "Fear and wonder",
+   "Peace and rest",
+   "Praise and tongues"
+  ],
+  "answer": 0,
+  "explanation": "The disciples were filled with joy, and with the Holy Ghost.",
+  "ref": "Acts 13:52"
+ },
+ {
+  "id": "acts-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of the prophets and teachers had been brought up with Herod the tetrarch?",
+  "choices": [
+   "Lucius of Cyrene",
+   "Simeon called Niger",
+   "Barnabas",
+   "Manaen"
+  ],
+  "answer": 3,
+  "explanation": "Manaen, which had been brought up with Herod the tetrarch.",
+  "ref": "Acts 13:1"
+ },
+ {
+  "id": "acts-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the prophets and teachers doing when the Holy Ghost spoke?",
+  "choices": [
+   "Preaching in the synagogue",
+   "Praying on the sea shore",
+   "Ministering to the Lord and fasting",
+   "Teaching the Gentiles"
+  ],
+  "answer": 2,
+  "explanation": "As they ministered to the Lord, and fasted, the Holy Ghost said, Separate me Barnabas and Saul.",
+  "ref": "Acts 13:2"
+ },
+ {
+  "id": "acts-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they do before sending Barnabas and Saul away?",
+  "choices": [
+   "Gave them gifts and letters",
+   "Fasted, prayed, and laid their hands on them",
+   "Cast lots for the journey",
+   "Anointed them with oil"
+  ],
+  "answer": 1,
+  "explanation": "When they had fasted and prayed, and laid their hands on them, they sent them away.",
+  "ref": "Acts 13:3"
+ },
+ {
+  "id": "acts-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who went with Barnabas and Saul as their minister at Salamis?",
+  "choices": [
+   "John",
+   "Silas",
+   "Timotheus",
+   "Lucius"
+  ],
+  "answer": 0,
+  "explanation": "They preached the word of God in the synagogues of the Jews: and they had also John to their minister.",
+  "ref": "Acts 13:5"
+ },
+ {
+  "id": "acts-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul call Elymas?",
+  "choices": [
+   "A servant of the false prophets",
+   "A son of Belial",
+   "A stranger to the law",
+   "A child of the devil and enemy of all righteousness"
+  ],
+  "answer": 3,
+  "explanation": "O full of all subtilty and all mischief, thou child of the devil, thou enemy of all righteousness.",
+  "ref": "Acts 13:10"
+ },
+ {
+  "id": "acts-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What came on Elymas when Paul spoke?",
+  "choices": [
+   "A fever",
+   "A deep sleep",
+   "A mist and a darkness",
+   "A pestilence"
+  ],
+  "answer": 2,
+  "explanation": "Immediately there fell on him a mist and a darkness; and he went about seeking some to lead him by the hand.",
+  "ref": "Acts 13:11"
+ },
+ {
+  "id": "acts-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the rulers of the synagogue ask Paul and Barnabas for?",
+  "choices": [
+   "A reading from the law",
+   "A word of exhortation for the people",
+   "A sign from heaven",
+   "The letters of the apostles"
+  ],
+  "answer": 1,
+  "explanation": "If ye have any word of exhortation for the people, say on.",
+  "ref": "Acts 13:15"
+ },
+ {
+  "id": "acts-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did John the Baptist say he was not worthy to do?",
+  "choices": [
+   "Loose the shoes of his feet",
+   "Baptize the people",
+   "Carry the Lord's staff",
+   "Wash his feet"
+  ],
+  "answer": 0,
+  "explanation": "There cometh one after me, whose shoes of his feet I am not worthy to loose.",
+  "ref": "Acts 13:25"
+ },
+ {
+  "id": "acts-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the rulers at Jerusalem condemn Jesus, according to Paul?",
+  "choices": [
+   "They feared the Romans",
+   "They envied his miracles",
+   "They were bribed by Judas",
+   "They knew him not, nor the voices of the prophets"
+  ],
+  "answer": 3,
+  "explanation": "Because they knew him not, nor yet the voices of the prophets which are read every sabbath day, they have fulfilled them.",
+  "ref": "Acts 13:27"
+ },
+ {
+  "id": "acts-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say was preached to them through Jesus?",
+  "choices": [
+   "The kingdom of David",
+   "The law of Moses",
+   "The forgiveness of sins",
+   "The year of jubilee"
+  ],
+  "answer": 2,
+  "explanation": "Through this man is preached unto you the forgiveness of sins.",
+  "ref": "Acts 13:38"
+ },
+ {
+  "id": "acts-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What filled the Jews when they saw the multitudes the next sabbath?",
+  "choices": [
+   "Fear",
+   "Envy",
+   "Joy",
+   "Pity"
+  ],
+  "answer": 1,
+  "explanation": "When the Jews saw the multitudes, they were filled with envy, and spake against those things which were spoken by Paul.",
+  "ref": "Acts 13:45"
+ },
+ {
+  "id": "acts-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul and Barnabas say was necessary?",
+  "choices": [
+   "That the word of God first be spoken to the Jews",
+   "That the Gentiles be circumcised",
+   "That they leave the city",
+   "That they ask the rulers' leave"
+  ],
+  "answer": 0,
+  "explanation": "It was necessary that the word of God should first have been spoken to you.",
+  "ref": "Acts 13:46"
+ },
+ {
+  "id": "acts-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say the Lord had commanded: I have set thee to be what?",
+  "choices": [
+   "A shepherd of Israel",
+   "A watchman of the nations",
+   "A teacher of the law",
+   "A light of the Gentiles"
+  ],
+  "answer": 3,
+  "explanation": "I have set thee to be a light of the Gentiles, that thou shouldest be for salvation unto the ends of the earth.",
+  "ref": "Acts 13:47"
+ },
+ {
+  "id": "acts-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the Gentiles respond when they heard it?",
+  "choices": [
+   "They threw out the Jews",
+   "They asked for baptism at once",
+   "They were glad and glorified the word of the Lord",
+   "They fell silent"
+  ],
+  "answer": 2,
+  "explanation": "When the Gentiles heard this, they were glad, and glorified the word of the Lord.",
+  "ref": "Acts 13:48"
+ },
+ {
+  "id": "acts-13-m-15",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did the Jews stir up to persecute Paul and Barnabas?",
+  "choices": [
+   "The Roman soldiers",
+   "Devout and honourable women and the chief men",
+   "The rulers of the synagogue only",
+   "The Gentile priests"
+  ],
+  "answer": 1,
+  "explanation": "The Jews stirred up the devout and honourable women, and the chief men of the city.",
+  "ref": "Acts 13:50"
+ },
+ {
+  "id": "acts-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "From which city did Paul's company come to Antioch in Pisidia?",
+  "choices": [
+   "Perga in Pamphylia",
+   "Salamis",
+   "Paphos",
+   "Iconium"
+  ],
+  "answer": 0,
+  "explanation": "When they departed from Perga, they came to Antioch in Pisidia.",
+  "ref": "Acts 13:14"
+ },
+ {
+  "id": "acts-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "From which port did they sail to Cyprus?",
+  "choices": [
+   "Salamis",
+   "Paphos",
+   "Attalia",
+   "Seleucia"
+  ],
+  "answer": 3,
+  "explanation": "They departed unto Seleucia; and from thence they sailed to Cyprus.",
+  "ref": "Acts 13:4"
+ },
+ {
+  "id": "acts-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did God suffer the manners of Israel in the wilderness?",
+  "choices": [
+   "About four hundred years",
+   "About seven years",
+   "About forty years",
+   "About twelve years"
+  ],
+  "answer": 2,
+  "explanation": "About the time of forty years suffered he their manners in the wilderness.",
+  "ref": "Acts 13:18"
+ },
+ {
+  "id": "acts-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many nations did God destroy in the land of Chanaan?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "When he had destroyed seven nations in the land of Chanaan, he divided their land to them by lot.",
+  "ref": "Acts 13:19"
+ },
+ {
+  "id": "acts-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For about how long did God give Israel judges until Samuel?",
+  "choices": [
+   "About four hundred and fifty years",
+   "About one hundred years",
+   "About two hundred years",
+   "About one thousand years"
+  ],
+  "answer": 0,
+  "explanation": "He gave unto them judges about the space of four hundred and fifty years, until Samuel the prophet.",
+  "ref": "Acts 13:20"
+ },
+ {
+  "id": "acts-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Of which tribe was Saul the son of Cis, the king God gave Israel?",
+  "choices": [
+   "Judah",
+   "Levi",
+   "Ephraim",
+   "Benjamin"
+  ],
+  "answer": 3,
+  "explanation": "God gave unto them Saul the son of Cis, a man of the tribe of Benjamin, by the space of forty years.",
+  "ref": "Acts 13:21"
+ },
+ {
+  "id": "acts-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which psalm is Thou art my Son, this day have I begotten thee, written?",
+  "choices": [
+   "The first psalm",
+   "The twenty-third psalm",
+   "The second psalm",
+   "The hundred and tenth psalm"
+  ],
+  "answer": 2,
+  "explanation": "As it is also written in the second psalm, Thou art my Son, this day have I begotten thee.",
+  "ref": "Acts 13:33"
+ },
+ {
+  "id": "acts-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say he would give, concerning Jesus raised from the dead?",
+  "choices": [
+   "The throne of David",
+   "The sure mercies of David",
+   "The keys of David",
+   "The tabernacle of David"
+  ],
+  "answer": 1,
+  "explanation": "He said on this wise, I will give you the sure mercies of David.",
+  "ref": "Acts 13:34"
+ },
+ {
+  "id": "acts-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to David, in Paul's argument, that did not happen to Jesus?",
+  "choices": [
+   "David saw corruption",
+   "David was taken into heaven",
+   "David was raised the third day",
+   "David was hidden from his enemies"
+  ],
+  "answer": 0,
+  "explanation": "David fell on sleep, and was laid unto his fathers, and saw corruption: but he, whom God raised again, saw no corruption.",
+  "ref": "Acts 13:36–37"
+ },
+ {
+  "id": "acts-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how many days was the risen Jesus seen of those who came up with him from Galilee?",
+  "choices": [
+   "Forty days",
+   "Three days",
+   "Seven days",
+   "Many days"
+  ],
+  "answer": 3,
+  "explanation": "He was seen many days of them which came up with him from Galilee to Jerusalem.",
+  "ref": "Acts 13:31"
+ },
+ {
+  "id": "acts-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what did Paul say all that believe are justified by Jesus, which the law of Moses could not?",
+  "choices": [
+   "The curse",
+   "Idolatry",
+   "All things",
+   "The sins of Israel"
+  ],
+  "answer": 2,
+  "explanation": "By him all that believe are justified from all things, from which ye could not be justified by the law of Moses.",
+  "ref": "Acts 13:39"
+ },
+ {
+  "id": "acts-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul warn the despisers they would do, quoting the prophets?",
+  "choices": [
+   "Weep and flee",
+   "Wonder and perish",
+   "Fast and repent",
+   "Turn and be healed"
+  ],
+  "answer": 1,
+  "explanation": "Behold, ye despisers, and wonder, and perish: for I work a work in your days.",
+  "ref": "Acts 13:41"
+ },
+ {
+  "id": "acts-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did many Jews and religious proselytes do after the congregation broke up?",
+  "choices": [
+   "Followed Paul and Barnabas",
+   "Threw them out",
+   "Reported them to the rulers",
+   "Stayed in the synagogue"
+  ],
+  "answer": 0,
+  "explanation": "Many of the Jews and religious proselytes followed Paul and Barnabas, persuading them to continue in the grace of God.",
+  "ref": "Acts 13:43"
+ },
+ {
+  "id": "acts-13-h-14",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much of the city came together the next sabbath day?",
+  "choices": [
+   "A great multitude of Jews",
+   "The synagogue rulers only",
+   "The Roman soldiers",
+   "Almost the whole city"
+  ],
+  "answer": 3,
+  "explanation": "The next sabbath day came almost the whole city together to hear the word of God.",
+  "ref": "Acts 13:44"
+ },
+ {
+  "id": "acts-13-h-15",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Paul and Barnabas go after being expelled from Antioch in Pisidia?",
+  "choices": [
+   "Perga",
+   "Lystra",
+   "Iconium",
+   "Derbe"
+  ],
+  "answer": 2,
+  "explanation": "They shook off the dust of their feet against them, and came unto Iconium.",
+  "ref": "Acts 13:51"
+ },
+ {
+  "id": "acts-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Paul and Barnabas speak at Iconium?",
+  "choices": [
+   "In the market",
+   "In the synagogue of the Jews",
+   "By the river",
+   "In a house"
+  ],
+  "answer": 1,
+  "explanation": "In Iconium they went both together into the synagogue of the Jews, and so spake that a great multitude believed.",
+  "ref": "Acts 14:1"
+ },
+ {
+  "id": "acts-14-e-02",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which cities did Paul and Barnabas flee from Iconium?",
+  "choices": [
+   "Lystra and Derbe",
+   "Antioch and Perga",
+   "Tarsus and Attalia",
+   "Troas and Philippi"
+  ],
+  "answer": 0,
+  "explanation": "They fled unto Lystra and Derbe, cities of Lycaonia.",
+  "ref": "Acts 14:6"
+ },
+ {
+  "id": "acts-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long had the man at Lystra been unable to walk?",
+  "choices": [
+   "Since a fall",
+   "For eight years",
+   "For forty years",
+   "From his mother's womb"
+  ],
+  "answer": 3,
+  "explanation": "There sat a certain man at Lystra, impotent in his feet, being a cripple from his mother's womb, who never had walked.",
+  "ref": "Acts 14:8"
+ },
+ {
+  "id": "acts-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul say with a loud voice to the cripple?",
+  "choices": [
+   "Take up thy bed",
+   "Be thou whole",
+   "Stand upright on thy feet",
+   "Arise and follow me"
+  ],
+  "answer": 2,
+  "explanation": "Paul said with a loud voice, Stand upright on thy feet. And he leaped and walked.",
+  "ref": "Acts 14:10"
+ },
+ {
+  "id": "acts-14-e-05",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people of Lystra say when they saw what Paul had done?",
+  "choices": [
+   "A great prophet has risen among us",
+   "The gods are come down to us in the likeness of men",
+   "This is the Son of God",
+   "Let us bring them to the priest of Israel"
+  ],
+  "answer": 1,
+  "explanation": "They lifted up their voices, saying in the speech of Lycaonia, The gods are come down to us in the likeness of men.",
+  "ref": "Acts 14:11"
+ },
+ {
+  "id": "acts-14-e-06",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priest of Jupiter bring to the gates?",
+  "choices": [
+   "Oxen and garlands",
+   "Doves and wine",
+   "Gold and incense",
+   "Lambs and bread"
+  ],
+  "answer": 0,
+  "explanation": "The priest of Jupiter brought oxen and garlands unto the gates, and would have done sacrifice with the people.",
+  "ref": "Acts 14:13"
+ },
+ {
+  "id": "acts-14-e-07",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Barnabas and Paul do when they heard they were to be sacrificed to?",
+  "choices": [
+   "Fled the city",
+   "Called down fire",
+   "Hid in a house",
+   "Rent their clothes and ran in among the people"
+  ],
+  "answer": 3,
+  "explanation": "The apostles, Barnabas and Paul, rent their clothes, and ran in among the people, crying out.",
+  "ref": "Acts 14:14"
+ },
+ {
+  "id": "acts-14-e-08",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Jews who stoned Paul suppose?",
+  "choices": [
+   "That he was a god",
+   "That he was a prophet",
+   "That he was dead",
+   "That he would not return"
+  ],
+  "answer": 2,
+  "explanation": "Having stoned Paul, drew him out of the city, supposing he had been dead.",
+  "ref": "Acts 14:19"
+ },
+ {
+  "id": "acts-14-e-09",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which city did the people try to sacrifice to Paul and Barnabas?",
+  "choices": [
+   "Iconium",
+   "Lystra",
+   "Derbe",
+   "Antioch"
+  ],
+  "answer": 1,
+  "explanation": "There sat a certain man at Lystra, and the priest of Jupiter, which was before their city, would have done sacrifice with the people.",
+  "ref": "Acts 14:8–13"
+ },
+ {
+  "id": "acts-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened when Paul and Barnabas spoke in the synagogue at Iconium?",
+  "choices": [
+   "A great multitude of Jews and Greeks believed",
+   "The synagogue ruler was healed",
+   "They were driven out at once",
+   "Only the Greeks believed"
+  ],
+  "answer": 0,
+  "explanation": "They so spake, that a great multitude both of the Jews and also of the Greeks believed.",
+  "ref": "Acts 14:1"
+ },
+ {
+  "id": "acts-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "Who stirred up the Gentiles against the brethren at Iconium?",
+  "choices": [
+   "The Roman governor",
+   "The priests of Jupiter",
+   "The synagogue rulers",
+   "The unbelieving Jews"
+  ],
+  "answer": 3,
+  "explanation": "The unbelieving Jews stirred up the Gentiles, and made their minds evil affected against the brethren.",
+  "ref": "Acts 14:2"
+ },
+ {
+  "id": "acts-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord grant to be done by their hands at Iconium?",
+  "choices": [
+   "Visions and dreams",
+   "Tongues and healing",
+   "Signs and wonders",
+   "Fire and wind"
+  ],
+  "answer": 2,
+  "explanation": "Long time abode they speaking boldly in the Lord, which granted signs and wonders to be done by their hands.",
+  "ref": "Acts 14:3"
+ },
+ {
+  "id": "acts-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the multitude of the city at Iconium?",
+  "choices": [
+   "United against them",
+   "Divided",
+   "Silent",
+   "Fearful"
+  ],
+  "answer": 1,
+  "explanation": "The multitude of the city was divided: and part held with the Jews, and part with the apostles.",
+  "ref": "Acts 14:4"
+ },
+ {
+  "id": "acts-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul and Barnabas do when they were ware of the assault to stone them?",
+  "choices": [
+   "Fled",
+   "Stood and preached",
+   "Appealed to the rulers",
+   "Hid in the synagogue"
+  ],
+  "answer": 0,
+  "explanation": "They were ware of it, and fled unto Lystra and Derbe.",
+  "ref": "Acts 14:5–6"
+ },
+ {
+  "id": "acts-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul perceive about the cripple at Lystra?",
+  "choices": [
+   "That he was a sinner",
+   "That he was a Jew",
+   "That he was a beggar",
+   "That he had faith to be healed"
+  ],
+  "answer": 3,
+  "explanation": "Paul stedfastly beholding him, and perceiving that he had faith to be healed.",
+  "ref": "Acts 14:9"
+ },
+ {
+  "id": "acts-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what speech did the people cry out?",
+  "choices": [
+   "Greek",
+   "Hebrew",
+   "The speech of Lycaonia",
+   "Latin"
+  ],
+  "answer": 2,
+  "explanation": "They lifted up their voices, saying in the speech of Lycaonia.",
+  "ref": "Acts 14:11"
+ },
+ {
+  "id": "acts-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Paul called Mercurius?",
+  "choices": [
+   "Because he healed the man",
+   "Because he was the chief speaker",
+   "Because he was the elder",
+   "Because he wore fine clothes"
+  ],
+  "answer": 1,
+  "explanation": "They called Barnabas, Jupiter; and Paul, Mercurius, because he was the chief speaker.",
+  "ref": "Acts 14:12"
+ },
+ {
+  "id": "acts-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul and Barnabas say about themselves?",
+  "choices": [
+   "We also are men of like passions with you",
+   "We are servants of Jupiter",
+   "We are angels from heaven",
+   "We are prophets of Israel"
+  ],
+  "answer": 0,
+  "explanation": "We also are men of like passions with you, and preach unto you that ye should turn from these vanities.",
+  "ref": "Acts 14:15"
+ },
+ {
+  "id": "acts-14-m-10",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Unto whom did they tell the people to turn from vanities?",
+  "choices": [
+   "The God of Israel's fathers",
+   "The Lord of hosts",
+   "The unknown God",
+   "The living God"
+  ],
+  "answer": 3,
+  "explanation": "Turn from these vanities unto the living God, which made heaven, and earth, and the sea.",
+  "ref": "Acts 14:15"
+ },
+ {
+  "id": "acts-14-m-11",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God give as a witness that he did good?",
+  "choices": [
+   "Fire and cloud",
+   "Manna and quails",
+   "Rain from heaven and fruitful seasons",
+   "Sun and stars"
+  ],
+  "answer": 2,
+  "explanation": "He left not himself without witness, in that he did good, and gave us rain from heaven, and fruitful seasons.",
+  "ref": "Acts 14:17"
+ },
+ {
+  "id": "acts-14-m-12",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How hard was it to restrain the people from sacrificing?",
+  "choices": [
+   "They were easily turned away",
+   "They were scarce restrained",
+   "They would not be restrained",
+   "They left in anger"
+  ],
+  "answer": 1,
+  "explanation": "With these sayings scarce restrained they the people, that they had not done sacrifice unto them.",
+  "ref": "Acts 14:18"
+ },
+ {
+  "id": "acts-14-m-13",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened when the disciples stood round about Paul after the stoning?",
+  "choices": [
+   "He rose up and came into the city",
+   "He was carried away",
+   "He was healed in the night",
+   "He fell asleep"
+  ],
+  "answer": 0,
+  "explanation": "As the disciples stood round about him, he rose up, and came into the city.",
+  "ref": "Acts 14:20"
+ },
+ {
+  "id": "acts-14-m-14",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say we must go through to enter the kingdom of God?",
+  "choices": [
+   "Great fasting",
+   "Long prayer",
+   "Fire and water",
+   "Much tribulation"
+  ],
+  "answer": 3,
+  "explanation": "That we must through much tribulation enter into the kingdom of God.",
+  "ref": "Acts 14:22"
+ },
+ {
+  "id": "acts-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "To which city did Paul and Barnabas go the day after Paul was stoned?",
+  "choices": [
+   "Iconium",
+   "Perga",
+   "Derbe",
+   "Antioch"
+  ],
+  "answer": 2,
+  "explanation": "The next day he departed with Barnabas to Derbe.",
+  "ref": "Acts 14:20"
+ },
+ {
+  "id": "acts-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "In which region did Lystra and Derbe lie?",
+  "choices": [
+   "Pisidia",
+   "Lycaonia",
+   "Pamphylia",
+   "Galatia"
+  ],
+  "answer": 1,
+  "explanation": "They fled unto Lystra and Derbe, cities of Lycaonia.",
+  "ref": "Acts 14:6"
+ },
+ {
+  "id": "acts-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "From where did the Jews come who persuaded the people against Paul?",
+  "choices": [
+   "Antioch and Iconium",
+   "Jerusalem and Antioch",
+   "Derbe and Iconium",
+   "Perga and Lystra"
+  ],
+  "answer": 0,
+  "explanation": "There came thither certain Jews from Antioch and Iconium, who persuaded the people.",
+  "ref": "Acts 14:19"
+ },
+ {
+  "id": "acts-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul and Barnabas do for the souls of the disciples on the return?",
+  "choices": [
+   "Sent letters to Jerusalem",
+   "Taught the law again",
+   "Baptized them anew",
+   "Confirmed them and exhorted them to continue in the faith"
+  ],
+  "answer": 3,
+  "explanation": "Confirming the souls of the disciples, and exhorting them to continue in the faith.",
+  "ref": "Acts 14:22"
+ },
+ {
+  "id": "acts-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did they commend the elders to the Lord?",
+  "choices": [
+   "With laying on of hands only",
+   "With a feast",
+   "With prayer and fasting",
+   "With anointing"
+  ],
+  "answer": 2,
+  "explanation": "When they had ordained them elders in every church, and had prayed with fasting, they commended them to the Lord.",
+  "ref": "Acts 14:23"
+ },
+ {
+  "id": "acts-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "After Pisidia, to which region did they come?",
+  "choices": [
+   "Cilicia",
+   "Pamphylia",
+   "Phrygia",
+   "Lycaonia"
+  ],
+  "answer": 1,
+  "explanation": "After they had passed throughout Pisidia, they came to Pamphylia.",
+  "ref": "Acts 14:24"
+ },
+ {
+  "id": "acts-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did they go down to after preaching in Perga?",
+  "choices": [
+   "Attalia",
+   "Seleucia",
+   "Paphos",
+   "Salamis"
+  ],
+  "answer": 0,
+  "explanation": "When they had preached the word in Perga, they went down into Attalia.",
+  "ref": "Acts 14:25"
+ },
+ {
+  "id": "acts-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Antioch to Paul and Barnabas, as they sailed back?",
+  "choices": [
+   "The place of their birth",
+   "The place they were stoned",
+   "The place they had fled to",
+   "Where they were recommended to the grace of God"
+  ],
+  "answer": 3,
+  "explanation": "Thence sailed to Antioch, from whence they had been recommended to the grace of God for the work which they fulfilled.",
+  "ref": "Acts 14:26"
+ },
+ {
+  "id": "acts-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did they abide with the disciples at Antioch?",
+  "choices": [
+   "Three days",
+   "One year",
+   "A long time",
+   "Seven days"
+  ],
+  "answer": 2,
+  "explanation": "There they abode long time with the disciples.",
+  "ref": "Acts 14:28"
+ },
+ {
+  "id": "acts-14-h-10",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they say God had opened to the Gentiles?",
+  "choices": [
+   "The gates of the city",
+   "The door of faith",
+   "The way of life",
+   "The book of the law"
+  ],
+  "answer": 1,
+  "explanation": "They rehearsed all that God had done with them, and how he had opened the door of faith unto the Gentiles.",
+  "ref": "Acts 14:27"
+ },
+ {
+  "id": "acts-14-h-11",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God in times past suffer all nations to do?",
+  "choices": [
+   "Walk in their own ways",
+   "Serve their idols",
+   "Dwell in the land",
+   "Offer sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "Who in times past suffered all nations to walk in their own ways.",
+  "ref": "Acts 14:16"
+ },
+ {
+  "id": "acts-14-h-12",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what did God fill our hearts, according to Paul and Barnabas?",
+  "choices": [
+   "Fear and wonder",
+   "Peace and rest",
+   "Wine and oil",
+   "Food and gladness"
+  ],
+  "answer": 3,
+  "explanation": "He did good, and gave us rain from heaven, and fruitful seasons, filling our hearts with food and gladness.",
+  "ref": "Acts 14:17"
+ },
+ {
+  "id": "acts-14-h-13",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who made an assault to use Paul and Barnabas despitefully at Iconium?",
+  "choices": [
+   "Only the priests of Jupiter",
+   "Only the Jews",
+   "Gentiles and Jews, with their rulers",
+   "The Roman soldiers"
+  ],
+  "answer": 2,
+  "explanation": "An assault was made both of the Gentiles, and also of the Jews with their rulers, to use them despitefully, and to stone them.",
+  "ref": "Acts 14:5"
+ },
+ {
+  "id": "acts-14-h-14",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "To which cities did they return after preaching in Derbe?",
+  "choices": [
+   "Perga, Attalia, and Antioch",
+   "Lystra, Iconium, and Antioch",
+   "Tarsus, Lystra, and Derbe",
+   "Iconium, Perga, and Pamphylia"
+  ],
+  "answer": 1,
+  "explanation": "When they had preached the gospel to that city, they returned again to Lystra, and to Iconium, and Antioch.",
+  "ref": "Acts 14:21"
+ },
+ {
+  "id": "acts-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was consenting to Stephen's death?",
+  "choices": [
+   "Philip",
+   "Saul",
+   "Peter",
+   "Simon"
+  ],
+  "answer": 1,
+  "explanation": "Saul was consenting unto his death.",
+  "ref": "Acts 8:1"
+ },
+ {
+  "id": "acts-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stayed in Jerusalem when the church was scattered abroad?",
+  "choices": [
+   "The apostles",
+   "The deacons",
+   "The elders",
+   "The Samaritans"
+  ],
+  "answer": 0,
+  "explanation": "They were all scattered abroad throughout Judaea and Samaria, except the apostles.",
+  "ref": "Acts 8:1"
+ },
+ {
+  "id": "acts-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was in the city of Samaria after Philip's preaching and miracles?",
+  "choices": [
+   "Great fear",
+   "Great silence",
+   "Great anger",
+   "Great joy"
+  ],
+  "answer": 3,
+  "explanation": "Unclean spirits came out, the lame were healed, and there was great joy in that city.",
+  "ref": "Acts 8:7–8"
+ },
+ {
+  "id": "acts-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the apostles at Jerusalem send to Samaria?",
+  "choices": [
+   "James and Andrew",
+   "Barnabas and Saul",
+   "Peter and John",
+   "Stephen and Philip"
+  ],
+  "answer": 2,
+  "explanation": "The apostles heard that Samaria had received the word of God, and sent unto them Peter and John.",
+  "ref": "Acts 8:14"
+ },
+ {
+  "id": "acts-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Simon offer Peter and John for the power to give the Holy Ghost?",
+  "choices": [
+   "A sacrifice",
+   "Money",
+   "His sorcery books",
+   "His house"
+  ],
+  "answer": 1,
+  "explanation": "When Simon saw the Holy Ghost given, he offered them money.",
+  "ref": "Acts 8:18"
+ },
+ {
+  "id": "acts-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the eunuch from, whom Philip met on the road?",
+  "choices": [
+   "Ethiopia",
+   "Egypt",
+   "Samaria",
+   "Cyprus"
+  ],
+  "answer": 0,
+  "explanation": "Behold, a man of Ethiopia, an eunuch of great authority under Candace queen of the Ethiopians.",
+  "ref": "Acts 8:27"
+ },
+ {
+  "id": "acts-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the eunuch sitting in while he read Esaias the prophet?",
+  "choices": [
+   "A boat",
+   "A tent",
+   "A litter",
+   "A chariot"
+  ],
+  "answer": 3,
+  "explanation": "He was returning, and sitting in his chariot read Esaias the prophet.",
+  "ref": "Acts 8:28"
+ },
+ {
+  "id": "acts-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question did Philip ask the eunuch as he heard him read?",
+  "choices": [
+   "Whence comest thou?",
+   "Who is thy master?",
+   "Understandest thou what thou readest?",
+   "Believest thou the prophets?"
+  ],
+  "answer": 2,
+  "explanation": "Philip ran to him, heard him read the prophet Esaias, and said, Understandest thou what thou readest?",
+  "ref": "Acts 8:30"
+ },
+ {
+  "id": "acts-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the eunuch ask when they came to a certain water?",
+  "choices": [
+   "Where shall I wash?",
+   "What doth hinder me to be baptized?",
+   "Who will baptize me?",
+   "Is this water clean?"
+  ],
+  "answer": 1,
+  "explanation": "The eunuch said, See, here is water; what doth hinder me to be baptized?",
+  "ref": "Acts 8:36"
+ },
+ {
+  "id": "acts-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Philip when they came up out of the water?",
+  "choices": [
+   "The Spirit of the Lord caught him away",
+   "He returned to Jerusalem",
+   "He was arrested",
+   "He fell asleep"
+  ],
+  "answer": 0,
+  "explanation": "The Spirit of the Lord caught away Philip, that the eunuch saw him no more.",
+  "ref": "Acts 8:39"
+ },
+ {
+  "id": "acts-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who carried Stephen to his burial and made great lamentation over him?",
+  "choices": [
+   "The apostles",
+   "The Pharisees",
+   "Saul and his friends",
+   "Devout men"
+  ],
+  "answer": 3,
+  "explanation": "Devout men carried Stephen to his burial, and made great lamentation over him.",
+  "ref": "Acts 8:2"
+ },
+ {
+  "id": "acts-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul do to men and women when he entered every house?",
+  "choices": [
+   "Drove them out of the city",
+   "Put them to the sword",
+   "Haled them and committed them to prison",
+   "Fined them heavily"
+  ],
+  "answer": 2,
+  "explanation": "He made havock of the church, entering into every house, and haling men and women committed them to prison.",
+  "ref": "Acts 8:3"
+ },
+ {
+  "id": "acts-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did those who were scattered abroad do wherever they went?",
+  "choices": [
+   "Hid in the desert",
+   "Went every where preaching the word",
+   "Gathered at Antioch",
+   "Wrote letters to Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "Therefore they that were scattered abroad went every where preaching the word.",
+  "ref": "Acts 8:4"
+ },
+ {
+  "id": "acts-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people of Samaria say of Simon the sorcerer?",
+  "choices": [
+   "This man is the great power of God",
+   "This man is a prophet of Samaria",
+   "This man is our king",
+   "This man is sent from heaven"
+  ],
+  "answer": 0,
+  "explanation": "They all gave heed, from the least to the greatest, saying, This man is the great power of God.",
+  "ref": "Acts 8:10"
+ },
+ {
+  "id": "acts-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people of Samaria have regard to Simon?",
+  "choices": [
+   "He healed their sick",
+   "He gave them food",
+   "He was their ruler",
+   "He had long bewitched them with sorceries"
+  ],
+  "answer": 3,
+  "explanation": "To him they had regard, because that of long time he had bewitched them with sorceries.",
+  "ref": "Acts 8:11"
+ },
+ {
+  "id": "acts-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Peter and John pray for the believers in Samaria?",
+  "choices": [
+   "That they might be healed",
+   "That they might be delivered from Simon",
+   "That they might receive the Holy Ghost",
+   "That they might be sent out to preach"
+  ],
+  "answer": 2,
+  "explanation": "They prayed for them, that they might receive the Holy Ghost.",
+  "ref": "Acts 8:15"
+ },
+ {
+  "id": "acts-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had been done to the Samaritans before Peter and John came?",
+  "choices": [
+   "They had been anointed with oil",
+   "They were only baptized in the name of the Lord Jesus",
+   "They had been taught the law",
+   "They had been circumcised"
+  ],
+  "answer": 1,
+  "explanation": "As yet he was fallen upon none of them: only they were baptized in the name of the Lord Jesus.",
+  "ref": "Acts 8:16"
+ },
+ {
+  "id": "acts-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Peter say Simon's money would perish with him?",
+  "choices": [
+   "He thought the gift of God could be purchased with money",
+   "He had stolen it",
+   "He had gained it by sorcery",
+   "He had promised it to the poor"
+  ],
+  "answer": 0,
+  "explanation": "Thy money perish with thee, because thou hast thought that the gift of God may be purchased with money.",
+  "ref": "Acts 8:20"
+ },
+ {
+  "id": "acts-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Which way did the angel tell Philip to go?",
+  "choices": [
+   "Toward the north, to Damascus",
+   "Toward the east, to Babylon",
+   "Toward the west, to Joppa",
+   "Toward the south, the way from Jerusalem unto Gaza"
+  ],
+  "answer": 3,
+  "explanation": "Arise, and go toward the south unto the way that goeth down from Jerusalem unto Gaza, which is desert.",
+  "ref": "Acts 8:26"
+ },
+ {
+  "id": "acts-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Ethiopian eunuch have charge of under Candace?",
+  "choices": [
+   "All her armies",
+   "Her household servants",
+   "All her treasure",
+   "Her royal library"
+  ],
+  "answer": 2,
+  "explanation": "He had the charge of all her treasure.",
+  "ref": "Acts 8:27"
+ },
+ {
+  "id": "acts-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why had the eunuch come to Jerusalem?",
+  "choices": [
+   "To trade",
+   "To worship",
+   "To bring tribute",
+   "To seek a physician"
+  ],
+  "answer": 1,
+  "explanation": "He had come to Jerusalem for to worship.",
+  "ref": "Acts 8:27"
+ },
+ {
+  "id": "acts-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Spirit say to Philip about the chariot?",
+  "choices": [
+   "Go near, and join thyself to this chariot",
+   "Wait until the chariot passes",
+   "Turn back to Samaria",
+   "Stop the chariot and pray"
+  ],
+  "answer": 0,
+  "explanation": "The Spirit said unto Philip, Go near, and join thyself to this chariot.",
+  "ref": "Acts 8:29"
+ },
+ {
+  "id": "acts-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the eunuch answer when Philip asked if he understood what he read?",
+  "choices": [
+   "I have read it many times",
+   "I need no teacher",
+   "Only the priests can tell me",
+   "How can I, except some man should guide me?"
+  ],
+  "answer": 3,
+  "explanation": "He said, How can I, except some man should guide me? And he desired Philip to come up and sit with him.",
+  "ref": "Acts 8:31"
+ },
+ {
+  "id": "acts-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the eunuch ask about the prophet's words?",
+  "choices": [
+   "Whether they were fulfilled in his day",
+   "Whether they were written by Moses",
+   "Whether he spoke of himself or of some other man",
+   "Whether they spoke of a king"
+  ],
+  "answer": 2,
+  "explanation": "He asked, of whom speaketh the prophet this? of himself, or of some other man?",
+  "ref": "Acts 8:34"
+ },
+ {
+  "id": "acts-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Philip begin when he preached Jesus to the eunuch?",
+  "choices": [
+   "At the law of Moses",
+   "At the same scripture",
+   "At the book of Genesis",
+   "At the Psalms of David"
+  ],
+  "answer": 1,
+  "explanation": "Philip opened his mouth, and began at the same scripture, and preached unto him Jesus.",
+  "ref": "Acts 8:35"
+ },
+ {
+  "id": "acts-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In the eunuch's passage, what is the one that is dumb before his shearer compared to?",
+  "choices": [
+   "A lamb",
+   "A dove",
+   "A goat",
+   "A lion"
+  ],
+  "answer": 0,
+  "explanation": "He was led as a sheep to the slaughter; and like a lamb dumb before his shearer, so opened he not his mouth.",
+  "ref": "Acts 8:32"
+ },
+ {
+  "id": "acts-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Peter said Simon was in the gall of bitterness and in the bond of what?",
+  "choices": [
+   "Sorcery",
+   "Pride",
+   "Darkness",
+   "Iniquity"
+  ],
+  "answer": 3,
+  "explanation": "Peter said, I perceive that thou art in the gall of bitterness, and in the bond of iniquity.",
+  "ref": "Acts 8:23"
+ },
+ {
+  "id": "acts-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Peter say Simon had neither of in this matter?",
+  "choices": [
+   "Faith nor works",
+   "Wisdom nor power",
+   "Part nor lot",
+   "Repentance nor mercy"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast neither part nor lot in this matter: for thy heart is not right in the sight of God.",
+  "ref": "Acts 8:21"
+ },
+ {
+  "id": "acts-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What reason did Peter give for saying Simon had no part in the matter?",
+  "choices": [
+   "He was not baptized",
+   "His heart was not right in the sight of God",
+   "He was not of Israel",
+   "He had not fasted"
+  ],
+  "answer": 1,
+  "explanation": "Thy heart is not right in the sight of God.",
+  "ref": "Acts 8:21"
+ },
+ {
+  "id": "acts-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Peter tell Simon to do?",
+  "choices": [
+   "Repent and pray God",
+   "Return to Samaria",
+   "Give his money to the poor",
+   "Leave the city"
+  ],
+  "answer": 0,
+  "explanation": "Repent therefore of this thy wickedness, and pray God, if perhaps the thought of thine heart may be forgiven thee.",
+  "ref": "Acts 8:22"
+ },
+ {
+  "id": "acts-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Simon ask Peter and John to do after Peter's rebuke?",
+  "choices": [
+   "Forgive him publicly",
+   "Teach him the gift",
+   "Lay hands on him",
+   "Pray to the Lord for him"
+  ],
+  "answer": 3,
+  "explanation": "Simon said, Pray ye to the Lord for me, that none of these things which ye have spoken come upon me.",
+  "ref": "Acts 8:24"
+ },
+ {
+  "id": "acts-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Simon do after he believed and was baptized?",
+  "choices": [
+   "He returned to his sorceries",
+   "He went to Jerusalem",
+   "He continued with Philip",
+   "He taught the people"
+  ],
+  "answer": 2,
+  "explanation": "Simon himself believed also: and when he was baptized, he continued with Philip, and wondered, beholding the miracles and signs.",
+  "ref": "Acts 8:13"
+ },
+ {
+  "id": "acts-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What came out of many possessed people, crying with loud voice?",
+  "choices": [
+   "Fevers",
+   "Unclean spirits",
+   "Wild beasts",
+   "Dumb spirits"
+  ],
+  "answer": 1,
+  "explanation": "Unclean spirits, crying with loud voice, came out of many that were possessed with them.",
+  "ref": "Acts 8:7"
+ },
+ {
+  "id": "acts-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the eunuch say he believed before Philip baptized him?",
+  "choices": [
+   "That Jesus Christ is the Son of God",
+   "That Jesus rose again",
+   "That Jesus is the Lamb of God",
+   "That Jesus is King of Israel"
+  ],
+  "answer": 0,
+  "explanation": "He answered, I believe that Jesus Christ is the Son of God.",
+  "ref": "Acts 8:37"
+ },
+ {
+  "id": "acts-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Philip found after the Spirit caught him away?",
+  "choices": [
+   "Gaza",
+   "Samaria",
+   "Joppa",
+   "Azotus"
+  ],
+  "answer": 3,
+  "explanation": "But Philip was found at Azotus.",
+  "ref": "Acts 8:40"
+ },
+ {
+  "id": "acts-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Philip preached in all the cities until he came to where?",
+  "choices": [
+   "Damascus",
+   "Antioch",
+   "Caesarea",
+   "Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Passing through he preached in all the cities, till he came to Caesarea.",
+  "ref": "Acts 8:40"
+ },
+ {
+  "id": "acts-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Peter and John preach on their way back to Jerusalem?",
+  "choices": [
+   "In the cities of Judaea",
+   "In many villages of the Samaritans",
+   "In Gaza and Azotus",
+   "In the synagogues of Damascus"
+  ],
+  "answer": 1,
+  "explanation": "They returned to Jerusalem, and preached the gospel in many villages of the Samaritans.",
+  "ref": "Acts 8:25"
+ },
+ {
+  "id": "acts-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Into which regions were the believers scattered after Stephen's death?",
+  "choices": [
+   "Judaea and Samaria",
+   "Galilee and Syria",
+   "Samaria and Cyprus",
+   "Judaea and Egypt"
+  ],
+  "answer": 0,
+  "explanation": "They were all scattered abroad throughout the regions of Judaea and Samaria, except the apostles.",
+  "ref": "Acts 8:1"
+ },
+ {
+  "id": "acts-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who first told Philip to go toward the south?",
+  "choices": [
+   "The Spirit",
+   "Peter",
+   "An apostle at Jerusalem",
+   "The angel of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "And the angel of the Lord spake unto Philip, saying, Arise, and go toward the south.",
+  "ref": "Acts 8:26"
+ },
+ {
+  "id": "acts-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the eunuch go on his way after Philip was gone?",
+  "choices": [
+   "Weeping",
+   "In silence",
+   "Rejoicing",
+   "In haste"
+  ],
+  "answer": 2,
+  "explanation": "The eunuch saw him no more: and he went on his way rejoicing.",
+  "ref": "Acts 8:39"
+ },
+ {
+  "id": "acts-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul ask the high priest for before going to Damascus?",
+  "choices": [
+   "An armed guard",
+   "Letters to the synagogues",
+   "A written pardon",
+   "A chariot"
+  ],
+  "answer": 1,
+  "explanation": "Saul desired of him letters to Damascus to the synagogues, that he might bring any of this way bound unto Jerusalem.",
+  "ref": "Acts 9:1–2"
+ },
+ {
+  "id": "acts-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shined round about Saul as he came near Damascus?",
+  "choices": [
+   "A light from heaven",
+   "A burning bush",
+   "A pillar of cloud",
+   "A star"
+  ],
+  "answer": 0,
+  "explanation": "Suddenly there shined round about him a light from heaven.",
+  "ref": "Acts 9:3"
+ },
+ {
+  "id": "acts-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the voice from heaven say to Saul?",
+  "choices": [
+   "Saul, Saul, where is thy brother?",
+   "Saul, Saul, return unto Jerusalem",
+   "Saul, Saul, fear not",
+   "Saul, Saul, why persecutest thou me?"
+  ],
+  "answer": 3,
+  "explanation": "He heard a voice saying unto him, Saul, Saul, why persecutest thou me?",
+  "ref": "Acts 9:4"
+ },
+ {
+  "id": "acts-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the voice say he was?",
+  "choices": [
+   "Stephen",
+   "An angel of the Lord",
+   "Jesus",
+   "Michael"
+  ],
+  "answer": 2,
+  "explanation": "The Lord said, I am Jesus whom thou persecutest.",
+  "ref": "Acts 9:5"
+ },
+ {
+  "id": "acts-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who led Saul by the hand into Damascus?",
+  "choices": [
+   "Ananias",
+   "The men who journeyed with him",
+   "Judas",
+   "Barnabas"
+  ],
+  "answer": 1,
+  "explanation": "When his eyes were opened he saw no man: but they led him by the hand, and brought him into Damascus.",
+  "ref": "Acts 9:8"
+ },
+ {
+  "id": "acts-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What fell from Saul's eyes when Ananias laid hands on him?",
+  "choices": [
+   "Scales",
+   "Ashes",
+   "Clay",
+   "Dust"
+  ],
+  "answer": 0,
+  "explanation": "Immediately there fell from his eyes as it had been scales: and he received sight forthwith.",
+  "ref": "Acts 9:18"
+ },
+ {
+  "id": "acts-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took Saul to the apostles at Jerusalem?",
+  "choices": [
+   "Peter",
+   "Ananias",
+   "Philip",
+   "Barnabas"
+  ],
+  "answer": 3,
+  "explanation": "But Barnabas took him, and brought him to the apostles.",
+  "ref": "Acts 9:27"
+ },
+ {
+  "id": "acts-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the disciples help Saul escape Damascus?",
+  "choices": [
+   "They hid him in a house",
+   "They sent him out in a cart",
+   "They let him down by the wall in a basket",
+   "They opened the gates by night"
+  ],
+  "answer": 2,
+  "explanation": "The disciples took him by night, and let him down by the wall in a basket.",
+  "ref": "Acts 9:25"
+ },
+ {
+  "id": "acts-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sickness did Aeneas have, whom Peter healed at Lydda?",
+  "choices": [
+   "Leprosy",
+   "The palsy",
+   "Blindness",
+   "A fever"
+  ],
+  "answer": 1,
+  "explanation": "Peter found a certain man named Aeneas, which had kept his bed eight years, and was sick of the palsy.",
+  "ref": "Acts 9:33"
+ },
+ {
+  "id": "acts-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was raised from the dead at Joppa?",
+  "choices": [
+   "Tabitha, called Dorcas",
+   "Lydia",
+   "Rhoda",
+   "Eunice"
+  ],
+  "answer": 0,
+  "explanation": "Peter said, Tabitha, arise. And she opened her eyes: and when she saw Peter, she sat up.",
+  "ref": "Acts 9:36–40"
+ },
+ {
+  "id": "acts-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Saul's purpose in going to Damascus?",
+  "choices": [
+   "To preach in the synagogues",
+   "To visit the high priest",
+   "To find Barnabas",
+   "To bring any of the way bound to Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "If he found any of this way, whether men or women, he might bring them bound unto Jerusalem.",
+  "ref": "Acts 9:2"
+ },
+ {
+  "id": "acts-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord say was hard for Saul?",
+  "choices": [
+   "To believe without seeing",
+   "To forsake the law",
+   "To kick against the pricks",
+   "To bear the light"
+  ],
+  "answer": 2,
+  "explanation": "It is hard for thee to kick against the pricks.",
+  "ref": "Acts 9:5"
+ },
+ {
+  "id": "acts-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men travelling with Saul do when the voice spoke?",
+  "choices": [
+   "Fell to the earth beside him",
+   "Stood speechless, hearing a voice but seeing no man",
+   "Ran away in fear",
+   "Answered the voice"
+  ],
+  "answer": 1,
+  "explanation": "The men which journeyed with him stood speechless, hearing a voice, but seeing no man.",
+  "ref": "Acts 9:7"
+ },
+ {
+  "id": "acts-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides being without sight, what else did Saul go without for three days?",
+  "choices": [
+   "Eating and drinking",
+   "Speaking",
+   "Sleeping",
+   "Prayer"
+  ],
+  "answer": 0,
+  "explanation": "He was three days without sight, and neither did eat nor drink.",
+  "ref": "Acts 9:9"
+ },
+ {
+  "id": "acts-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the Lord tell Ananias to find Saul?",
+  "choices": [
+   "In the synagogue of Damascus",
+   "In the house of Simon a tanner",
+   "At the city gate",
+   "In the street called Straight, in the house of Judas"
+  ],
+  "answer": 3,
+  "explanation": "Arise, and go into the street which is called Straight, and enquire in the house of Judas for one called Saul, of Tarsus.",
+  "ref": "Acts 9:11"
+ },
+ {
+  "id": "acts-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Saul doing when the Lord sent Ananias to him?",
+  "choices": [
+   "Fasting at the gate",
+   "Preaching",
+   "Praying",
+   "Sleeping"
+  ],
+  "answer": 2,
+  "explanation": "Behold, he prayeth, and hath seen in a vision a man named Ananias coming in.",
+  "ref": "Acts 9:11"
+ },
+ {
+  "id": "acts-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Ananias afraid to go to Saul?",
+  "choices": [
+   "He did not know where Saul lived",
+   "He knew the evil Saul did to the saints",
+   "Saul was a Roman",
+   "He had been told Saul was dead"
+  ],
+  "answer": 1,
+  "explanation": "Lord, I have heard by many of this man, how much evil he hath done to thy saints at Jerusalem.",
+  "ref": "Acts 9:13"
+ },
+ {
+  "id": "acts-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord call Saul when he sent Ananias?",
+  "choices": [
+   "A chosen vessel",
+   "A faithful servant",
+   "A mighty man",
+   "A burning light"
+  ],
+  "answer": 0,
+  "explanation": "Go thy way: for he is a chosen vessel unto me, to bear my name.",
+  "ref": "Acts 9:15"
+ },
+ {
+  "id": "acts-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Ananias say the Lord sent him?",
+  "choices": [
+   "That Saul might be forgiven by the high priest",
+   "That Saul might be taken to Jerusalem",
+   "That Saul might be baptized by John",
+   "That he might see and be filled with the Holy Ghost"
+  ],
+  "answer": 3,
+  "explanation": "The Lord hath sent me, that thou mightest receive thy sight, and be filled with the Holy Ghost.",
+  "ref": "Acts 9:17"
+ },
+ {
+  "id": "acts-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did those who heard Saul preach at Damascus react?",
+  "choices": [
+   "They stoned him",
+   "They believed at once",
+   "They were amazed",
+   "They drove him out"
+  ],
+  "answer": 2,
+  "explanation": "All that heard him were amazed, and said, Is not this he that destroyed them which called on this name in Jerusalem?",
+  "ref": "Acts 9:21"
+ },
+ {
+  "id": "acts-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Jews at Damascus do after many days were fulfilled?",
+  "choices": [
+   "Cast him into prison",
+   "Took counsel to kill Saul",
+   "Sent him to the high priest",
+   "Drove out the disciples"
+  ],
+  "answer": 1,
+  "explanation": "After that many days were fulfilled, the Jews took counsel to kill him.",
+  "ref": "Acts 9:23"
+ },
+ {
+  "id": "acts-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the disciples at Jerusalem receive Saul at first?",
+  "choices": [
+   "They feared him and doubted he was a disciple",
+   "They welcomed him as a brother",
+   "They sent him to the apostles",
+   "They asked him to preach"
+  ],
+  "answer": 0,
+  "explanation": "They were all afraid of him, and believed not that he was a disciple.",
+  "ref": "Acts 9:26"
+ },
+ {
+  "id": "acts-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Barnabas tell the apostles about Saul?",
+  "choices": [
+   "That he had been healed by Ananias",
+   "That he had left the high priest",
+   "That he came with letters from Damascus",
+   "That he saw the Lord and preached boldly at Damascus"
+  ],
+  "answer": 3,
+  "explanation": "Barnabas declared how he had seen the Lord in the way, and how he had preached boldly at Damascus.",
+  "ref": "Acts 9:27"
+ },
+ {
+  "id": "acts-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long had Aeneas kept his bed?",
+  "choices": [
+   "Three years",
+   "Twelve years",
+   "Eight years",
+   "Forty days"
+  ],
+  "answer": 2,
+  "explanation": "Peter found a man named Aeneas, which had kept his bed eight years, and was sick of the palsy.",
+  "ref": "Acts 9:33"
+ },
+ {
+  "id": "acts-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Tabitha full of?",
+  "choices": [
+   "Faith and prayer",
+   "Good works and almsdeeds",
+   "Wisdom and zeal",
+   "Songs and praise"
+  ],
+  "answer": 1,
+  "explanation": "This woman was full of good works and almsdeeds which she did.",
+  "ref": "Acts 9:36"
+ },
+ {
+  "id": "acts-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom did the Lord say Saul would bear his name?",
+  "choices": [
+   "Gentiles, kings, and the children of Israel",
+   "Priests, rulers, and the Romans",
+   "Greeks, scribes, and Pharisees",
+   "Kings, prophets, and the Samaritans"
+  ],
+  "answer": 0,
+  "explanation": "He is a chosen vessel unto me, to bear my name before the Gentiles, and kings, and the children of Israel.",
+  "ref": "Acts 9:15"
+ },
+ {
+  "id": "acts-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What authority did Ananias say Saul had from the chief priests?",
+  "choices": [
+   "To judge the synagogues",
+   "To collect the temple tax",
+   "To cast out the apostles",
+   "To bind all that call on the Lord's name"
+  ],
+  "answer": 3,
+  "explanation": "Here he hath authority from the chief priests to bind all that call on thy name.",
+  "ref": "Acts 9:14"
+ },
+ {
+  "id": "acts-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Saul seen in a vision before Ananias came?",
+  "choices": [
+   "An angel with a sword",
+   "A great light over Judas' house",
+   "A man named Ananias coming in and putting his hand on him",
+   "A basket let down from a wall"
+  ],
+  "answer": 2,
+  "explanation": "He hath seen in a vision a man named Ananias coming in, and putting his hand on him, that he might receive his sight.",
+  "ref": "Acts 9:12"
+ },
+ {
+  "id": "acts-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord say he would show Saul?",
+  "choices": [
+   "How great a church he would build",
+   "How great things he must suffer for his name's sake",
+   "Where he should preach next",
+   "Which kings would hear him"
+  ],
+  "answer": 1,
+  "explanation": "I will shew him how great things he must suffer for my name's sake.",
+  "ref": "Acts 9:16"
+ },
+ {
+  "id": "acts-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul do right after he received his sight?",
+  "choices": [
+   "Arose and was baptized",
+   "Went up to Jerusalem",
+   "Preached in the synagogue",
+   "Fasted three more days"
+  ],
+  "answer": 0,
+  "explanation": "He received sight forthwith, and arose, and was baptized.",
+  "ref": "Acts 9:18"
+ },
+ {
+  "id": "acts-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul's enemies watch day and night to kill him?",
+  "choices": [
+   "The synagogue",
+   "The house of Judas",
+   "The road to Tarsus",
+   "The gates"
+  ],
+  "answer": 3,
+  "explanation": "They watched the gates day and night to kill him.",
+  "ref": "Acts 9:24"
+ },
+ {
+  "id": "acts-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whom did Saul dispute at Jerusalem, so that they went about to slay him?",
+  "choices": [
+   "The Pharisees",
+   "The Sadducees",
+   "The Grecians",
+   "The chief priests"
+  ],
+  "answer": 2,
+  "explanation": "He spake boldly in the name of the Lord Jesus, and disputed against the Grecians: but they went about to slay him.",
+  "ref": "Acts 9:29"
+ },
+ {
+  "id": "acts-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the brethren send Saul from Caesarea?",
+  "choices": [
+   "Antioch",
+   "Tarsus",
+   "Damascus",
+   "Joppa"
+  ],
+  "answer": 1,
+  "explanation": "They brought him down to Caesarea, and sent him forth to Tarsus.",
+  "ref": "Acts 9:30"
+ },
+ {
+  "id": "acts-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "At which town did Peter find Aeneas?",
+  "choices": [
+   "Lydda",
+   "Joppa",
+   "Caesarea",
+   "Samaria"
+  ],
+  "answer": 0,
+  "explanation": "Peter came down also to the saints which dwelt at Lydda.",
+  "ref": "Acts 9:32"
+ },
+ {
+  "id": "acts-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Peter say to Aeneas?",
+  "choices": [
+   "Take up thy bed and walk",
+   "Be thou clean",
+   "Go in peace, thy faith hath saved thee",
+   "Jesus Christ maketh thee whole: arise, and make thy bed"
+  ],
+  "answer": 3,
+  "explanation": "Peter said unto him, Aeneas, Jesus Christ maketh thee whole: arise, and make thy bed. And he arose immediately.",
+  "ref": "Acts 9:34"
+ },
+ {
+  "id": "acts-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did they lay Tabitha after they had washed her?",
+  "choices": [
+   "In a tomb",
+   "In the temple",
+   "In an upper chamber",
+   "In the house of Simon"
+  ],
+  "answer": 2,
+  "explanation": "She was sick, and died: whom when they had washed, they laid her in an upper chamber.",
+  "ref": "Acts 9:37"
+ },
+ {
+  "id": "acts-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men did the disciples send to Peter, asking him not to delay?",
+  "choices": [
+   "Three",
+   "Two",
+   "Four",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "They sent unto him two men, desiring him that he would not delay to come to them.",
+  "ref": "Acts 9:38"
+ },
+ {
+  "id": "acts-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the widows show Peter, standing by weeping?",
+  "choices": [
+   "Coats and garments Dorcas had made",
+   "Alms she had given",
+   "Letters of thanks",
+   "Her burial linen"
+  ],
+  "answer": 0,
+  "explanation": "All the widows stood by him weeping, and shewing the coats and garments which Dorcas made.",
+  "ref": "Acts 9:39"
+ },
+ {
+  "id": "acts-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Peter do before he said, Tabitha, arise?",
+  "choices": [
+   "Anointed her with oil",
+   "Took her by the hand",
+   "Called for the widows to pray",
+   "Put them all forth, knelt down, and prayed"
+  ],
+  "answer": 3,
+  "explanation": "Peter put them all forth, and kneeled down, and prayed; and turning him to the body said, Tabitha, arise.",
+  "ref": "Acts 9:40"
+ },
+ {
+  "id": "acts-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "With whom did Peter stay many days in Joppa?",
+  "choices": [
+   "Judas",
+   "Cornelius",
+   "Simon a tanner",
+   "Barnabas"
+  ],
+  "answer": 2,
+  "explanation": "He tarried many days in Joppa with one Simon a tanner.",
+  "ref": "Acts 9:43"
  }
 ]
