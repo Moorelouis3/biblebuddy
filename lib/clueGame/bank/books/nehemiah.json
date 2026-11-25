@@ -4711,9 +4711,9 @@
   "question": "What kinds of temple-related workers are also named in this chapter?",
   "choices": [
    "Priests, Levites, porters, and singers",
-   "Prophets only",
-   "Soldiers only",
-   "Merchants only"
+   "Prophets, judges, scribes, and kings",
+   "Soldiers, merchants, and shepherds",
+   "Princes, governors, and Persian guards"
   ],
   "answer": 0,
   "explanation": "The chapter includes several groups serving around the temple.",
@@ -4726,14 +4726,174 @@
   "category": "place",
   "question": "Where did many of the rest of Israel, the priests, and Levites live?",
   "choices": [
-   "Only in Persia",
-   "Inside the temple",
    "In the cities of Judah, everyone in his inheritance",
-   "In Egypt"
+   "In the villages of Samaria",
+   "In Babylon with the exiles",
+   "In the cities of Tyre"
   ],
   "answer": 2,
   "explanation": "Many others remained distributed in Judah's towns.",
   "ref": "Nehemiah 11:20"
+ },
+ {
+  "id": "nehemiah-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who dwelt at Jerusalem first, before the rest of the people cast lots?",
+  "choices": [
+   "The priests and Levites",
+   "The porters",
+   "The singers",
+   "The rulers of the people"
+  ],
+  "answer": 3,
+  "explanation": "The rulers of the people dwelt at Jerusalem; the rest cast lots to bring one of ten to dwell in the holy city.",
+  "ref": "Nehemiah 11:1"
+ },
+ {
+  "id": "nehemiah-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the ruler of the house of God among the priests?",
+  "choices": [
+   "Mattaniah",
+   "Uzzi",
+   "Seraiah",
+   "Joel the son of Zichri"
+  ],
+  "answer": 2,
+  "explanation": "Seraiah the son of Hilkiah was the ruler of the house of God.",
+  "ref": "Nehemiah 11:11"
+ },
+ {
+  "id": "nehemiah-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the singers receive a certain portion every day?",
+  "choices": [
+   "It was a gift from the priests",
+   "It was the king’s commandment concerning them",
+   "The people took a vote",
+   "Nehemiah paid them from his own pocket"
+  ],
+  "answer": 1,
+  "explanation": "It was the king’s commandment concerning them, that a certain portion should be for the singers, due for every day.",
+  "ref": "Nehemiah 11:23"
+ },
+ {
+  "id": "nehemiah-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the Nethinims dwell?",
+  "choices": [
+   "Ophel",
+   "Kirjath-arba",
+   "Beer-sheba",
+   "Bethel"
+  ],
+  "answer": 0,
+  "explanation": "The Nethinims dwelt in Ophel, with Ziha and Gispa over them.",
+  "ref": "Nehemiah 11:21"
+ },
+ {
+  "id": "nehemiah-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the principal to begin the thanksgiving in prayer?",
+  "choices": [
+   "Bakbukiah",
+   "Abda",
+   "Shemaiah",
+   "Mattaniah"
+  ],
+  "answer": 3,
+  "explanation": "Mattaniah the son of Micha was the principal to begin the thanksgiving in prayer.",
+  "ref": "Nehemiah 11:17"
+ },
+ {
+  "id": "nehemiah-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many valiant men of the sons of Perez dwelt at Jerusalem?",
+  "choices": [
+   "Two hundred forty and two",
+   "One hundred seventy and two",
+   "Four hundred threescore and eight",
+   "Nine hundred twenty and eight"
+  ],
+  "answer": 2,
+  "explanation": "All the sons of Perez that dwelt at Jerusalem were four hundred threescore and eight valiant men.",
+  "ref": "Nehemiah 11:6"
+ },
+ {
+  "id": "nehemiah-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Levites were in the holy city in all?",
+  "choices": [
+   "Four hundred threescore and eight",
+   "Two hundred fourscore and four",
+   "One hundred seventy and two",
+   "Eight hundred twenty and two"
+  ],
+  "answer": 1,
+  "explanation": "All the Levites in the holy city were two hundred fourscore and four.",
+  "ref": "Nehemiah 11:18"
+ },
+ {
+  "id": "nehemiah-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many porters, Akkub and Talmon and their brethren, kept the gates?",
+  "choices": [
+   "An hundred seventy and two",
+   "Two hundred fourscore and four",
+   "Nine hundred twenty and eight",
+   "Two hundred forty and two"
+  ],
+  "answer": 0,
+  "explanation": "The porters, Akkub, Talmon, and their brethren that kept the gates, were an hundred seventy and two.",
+  "ref": "Nehemiah 11:19"
+ },
+ {
+  "id": "nehemiah-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was at the king’s hand in all matters concerning the people?",
+  "choices": [
+   "Seraiah",
+   "Zabdiel",
+   "Judah the son of Senuah",
+   "Pethahiah"
+  ],
+  "answer": 3,
+  "explanation": "Pethahiah the son of Meshezabeel was at the king’s hand in all matters concerning the people.",
+  "ref": "Nehemiah 11:24"
+ },
+ {
+  "id": "nehemiah-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Judah dwelt in the villages from Beer-sheba unto which valley?",
+  "choices": [
+   "The valley of Ono",
+   "The valley of Jezreel",
+   "The valley of Hinnom",
+   "The valley of craftsmen"
+  ],
+  "answer": 2,
+  "explanation": "Those of Judah dwelt from Beer-sheba unto the valley of Hinnom.",
+  "ref": "Nehemiah 11:30"
  },
  {
   "id": "old-nehemiah-12-1",
