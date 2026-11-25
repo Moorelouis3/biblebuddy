@@ -67,6 +67,11 @@ jobs:
       - name: Generate the iOS project
         run: npx cap add ios
 
+      # The offline screen is a Bible reader, and this is its text. Must run
+      # before the sync below, which copies native/www into the app.
+      - name: Pack the offline Bible into the app
+        run: node scripts/native-offline-bible.mjs
+
       - name: Sync web assets and plugins
         run: npx cap sync ios
 
