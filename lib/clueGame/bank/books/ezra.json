@@ -3664,6 +3664,646 @@
   "ref": "Ezra 8:33\u201334"
  },
  {
+  "id": "ezra-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "At which river did Ezra gather the returning people?",
+  "choices": [
+   "Ahava",
+   "Chebar",
+   "Jordan",
+   "Euphrates"
+  ],
+  "answer": 0,
+  "explanation": "I gathered them together to the river that runneth to Ahava; and there abode we in tents three days.",
+  "ref": "Ezra 8:15"
+ },
+ {
+  "id": "ezra-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Ezra find none of among the people at Ahava?",
+  "choices": [
+   "The priests",
+   "The princes",
+   "The singers",
+   "The sons of Levi"
+  ],
+  "answer": 3,
+  "explanation": "Ezra viewed the people and the priests, and found there none of the sons of Levi.",
+  "ref": "Ezra 8:15"
+ },
+ {
+  "id": "ezra-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra proclaim at the river of Ahava?",
+  "choices": [
+   "A feast",
+   "A battle",
+   "A fast",
+   "A census"
+  ],
+  "answer": 2,
+  "explanation": "Then I proclaimed a fast there, at the river of Ahava, that we might afflict ourselves before our God.",
+  "ref": "Ezra 8:21"
+ },
+ {
+  "id": "ezra-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra refuse to ask the king for on the journey?",
+  "choices": [
+   "Gold and silver",
+   "Soldiers and horsemen",
+   "Food and water",
+   "A letter of safe passage"
+  ],
+  "answer": 1,
+  "explanation": "Ezra was ashamed to require of the king a band of soldiers and horsemen to help against the enemy.",
+  "ref": "Ezra 8:22"
+ },
+ {
+  "id": "ezra-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many of the chief priests did Ezra separate to guard the treasure?",
+  "choices": [
+   "Twelve",
+   "Three",
+   "Seven",
+   "Twenty"
+  ],
+  "answer": 0,
+  "explanation": "Then I separated twelve of the chief of the priests.",
+  "ref": "Ezra 8:24"
+ },
+ {
+  "id": "ezra-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What delivered the people from the enemy and from those who lay in wait?",
+  "choices": [
+   "Soldiers from the king",
+   "The speed of their horses",
+   "A cloud by day",
+   "The hand of their God"
+  ],
+  "answer": 3,
+  "explanation": "The hand of our God was upon us, and he delivered us from the hand of the enemy.",
+  "ref": "Ezra 8:31"
+ },
+ {
+  "id": "ezra-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the returned captives offer to the God of Israel in Jerusalem?",
+  "choices": [
+   "Incense only",
+   "Wave sheaves",
+   "Burnt offerings",
+   "First fruits of the harvest"
+  ],
+  "answer": 2,
+  "explanation": "The children of the captivity offered burnt offerings unto the God of Israel.",
+  "ref": "Ezra 8:35"
+ },
+ {
+  "id": "ezra-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra tell the twelve priests about the vessels?",
+  "choices": [
+   "They belong to the king",
+   "They are holy unto the LORD",
+   "They must be hidden",
+   "They are cursed"
+  ],
+  "answer": 1,
+  "explanation": "Ezra said, Ye are holy unto the LORD; the vessels are holy also.",
+  "ref": "Ezra 8:28"
+ },
+ {
+  "id": "ezra-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which place did Ezra send men to get ministers for the house of God?",
+  "choices": [
+   "Casiphia",
+   "Babylon",
+   "Susa",
+   "Shushan"
+  ],
+  "answer": 0,
+  "explanation": "Ezra sent them with commandment unto Iddo the chief at the place Casiphia.",
+  "ref": "Ezra 8:17"
+ },
+ {
+  "id": "ezra-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the silver, gold and vessels finally weighed?",
+  "choices": [
+   "At the river Ahava",
+   "In the king's palace",
+   "In the tents of the priests",
+   "In the house of God at Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "On the fourth day the silver and the gold and the vessels were weighed in the house of our God.",
+  "ref": "Ezra 8:33"
+ },
+ {
+  "id": "ezra-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the people camp in tents at Ahava?",
+  "choices": [
+   "One day",
+   "Seven days",
+   "Three days",
+   "Forty days"
+  ],
+  "answer": 2,
+  "explanation": "There abode we in tents three days.",
+  "ref": "Ezra 8:15"
+ },
+ {
+  "id": "ezra-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Ezra ashamed to ask the king for soldiers?",
+  "choices": [
+   "The king had already refused",
+   "He had told the king God's hand is on those who seek him",
+   "The way was safe",
+   "He feared the king's anger"
+  ],
+  "answer": 1,
+  "explanation": "They had said, The hand of our God is upon all them for good that seek him.",
+  "ref": "Ezra 8:22"
+ },
+ {
+  "id": "ezra-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did Ezra send for ministers at Casiphia?",
+  "choices": [
+   "Iddo the chief",
+   "Meremoth the priest",
+   "Sherebiah",
+   "Shemaiah"
+  ],
+  "answer": 0,
+  "explanation": "Ezra sent them with commandment unto Iddo the chief at the place Casiphia.",
+  "ref": "Ezra 8:17"
+ },
+ {
+  "id": "ezra-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezra ask God for through the fast at Ahava?",
+  "choices": [
+   "Rain for the journey",
+   "Victory over Persia",
+   "Wealth for the temple",
+   "A right way for them, their little ones and their goods"
+  ],
+  "answer": 3,
+  "explanation": "The fast was to seek of God a right way for us, and for our little ones, and for all our substance.",
+  "ref": "Ezra 8:21"
+ },
+ {
+  "id": "ezra-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what day of the first month did they leave the river of Ahava?",
+  "choices": [
+   "The first day",
+   "The fifteenth day",
+   "The twelfth day",
+   "The twentieth day"
+  ],
+  "answer": 2,
+  "explanation": "We departed from the river of Ahava on the twelfth day of the first month.",
+  "ref": "Ezra 8:31"
+ },
+ {
+  "id": "ezra-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day in Jerusalem were the silver, gold and vessels weighed?",
+  "choices": [
+   "The first day",
+   "The fourth day",
+   "The third day",
+   "The seventh day"
+  ],
+  "answer": 1,
+  "explanation": "We came to Jerusalem, and abode there three days. Now on the fourth day was the silver and the gold weighed.",
+  "ref": "Ezra 8:32\u201333"
+ },
+ {
+  "id": "ezra-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many bullocks did they offer for all Israel?",
+  "choices": [
+   "Twelve",
+   "Seven",
+   "Ninety-six",
+   "Seventy-seven"
+  ],
+  "answer": 0,
+  "explanation": "They offered twelve bullocks for all Israel.",
+  "ref": "Ezra 8:35"
+ },
+ {
+  "id": "ezra-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the twelve he goats offered as?",
+  "choices": [
+   "A peace offering",
+   "A thank offering",
+   "A drink offering",
+   "A sin offering"
+  ],
+  "answer": 3,
+  "explanation": "They offered twelve he goats for a sin offering.",
+  "ref": "Ezra 8:35"
+ },
+ {
+  "id": "ezra-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did they deliver the king's commissions?",
+  "choices": [
+   "The priests and Levites",
+   "The princes of Judah",
+   "The king's lieutenants and governors",
+   "The elders of Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "They delivered the king's commissions unto the king's lieutenants, and to the governors on this side the river.",
+  "ref": "Ezra 8:36"
+ },
+ {
+  "id": "ezra-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king's lieutenants and governors do for the people and the house of God?",
+  "choices": [
+   "They taxed them",
+   "They furthered them",
+   "They hindered them",
+   "They ignored them"
+  ],
+  "answer": 1,
+  "explanation": "They furthered the people, and the house of God.",
+  "ref": "Ezra 8:36"
+ },
+ {
+  "id": "ezra-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long were the twelve priests to keep watch over the treasure?",
+  "choices": [
+   "Until it was weighed in Jerusalem",
+   "Until the king's return",
+   "Until the first month ended",
+   "Until the temple was finished"
+  ],
+  "answer": 0,
+  "explanation": "Watch ye, and keep them, until ye weigh them before the chief of the priests and the Levites at Jerusalem.",
+  "ref": "Ezra 8:29"
+ },
+ {
+  "id": "ezra-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Ezra's men ask Iddo and his brethren to bring?",
+  "choices": [
+   "Soldiers for the road",
+   "Singers for the feast",
+   "Builders for the walls",
+   "Ministers for the house of God"
+  ],
+  "answer": 3,
+  "explanation": "They were to bring unto us ministers for the house of our God.",
+  "ref": "Ezra 8:17"
+ },
+ {
+  "id": "ezra-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Ezra told the king about those who forsake God?",
+  "choices": [
+   "They would be sent to Persia",
+   "They would be forgiven",
+   "His power and wrath is against them",
+   "They would lose their land"
+  ],
+  "answer": 2,
+  "explanation": "His power and his wrath is against all them that forsake him.",
+  "ref": "Ezra 8:22"
+ },
+ {
+  "id": "ezra-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had offered the silver, gold and vessels for the house of God?",
+  "choices": [
+   "Only the priests",
+   "The king, his lords and all Israel present",
+   "The people of Babylon",
+   "The governors beyond the river"
+  ],
+  "answer": 1,
+  "explanation": "The offering was that which the king, and his counsellors, and his lords, and all Israel there present, had offered.",
+  "ref": "Ezra 8:25"
+ },
+ {
+  "id": "ezra-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two named priests were among the twelve Ezra separated?",
+  "choices": [
+   "Sherebiah and Hashabiah",
+   "Meremoth and Eleazar",
+   "Iddo and Zechariah",
+   "Jozabad and Noadiah"
+  ],
+  "answer": 0,
+  "explanation": "Ezra separated twelve of the chief of the priests, Sherebiah, Hashabiah, and ten of their brethren.",
+  "ref": "Ezra 8:24"
+ },
+ {
+  "id": "ezra-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of silver did Ezra weigh into the hands of the priests?",
+  "choices": [
+   "One hundred",
+   "Two hundred and twenty",
+   "Three hundred",
+   "Six hundred and fifty"
+  ],
+  "answer": 3,
+  "explanation": "I even weighed unto their hand six hundred and fifty talents of silver.",
+  "ref": "Ezra 8:26"
+ },
+ {
+  "id": "ezra-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents were the silver vessels?",
+  "choices": [
+   "Fifty",
+   "Six hundred",
+   "An hundred",
+   "Twenty"
+  ],
+  "answer": 2,
+  "explanation": "Ezra weighed silver vessels an hundred talents.",
+  "ref": "Ezra 8:26"
+ },
+ {
+  "id": "ezra-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many basons of gold were weighed out?",
+  "choices": [
+   "Twelve",
+   "Twenty",
+   "Seventy",
+   "One hundred"
+  ],
+  "answer": 1,
+  "explanation": "Ezra also weighed twenty basons of gold, of a thousand drams.",
+  "ref": "Ezra 8:27"
+ },
+ {
+  "id": "ezra-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The two vessels of fine copper were as precious as what?",
+  "choices": [
+   "Gold",
+   "Silver",
+   "Jewels",
+   "Ivory"
+  ],
+  "answer": 0,
+  "explanation": "Two vessels of fine copper, precious as gold.",
+  "ref": "Ezra 8:27"
+ },
+ {
+  "id": "ezra-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many rams were offered as a burnt offering?",
+  "choices": [
+   "Twelve",
+   "Seventy and seven",
+   "Two hundred",
+   "Ninety and six"
+  ],
+  "answer": 3,
+  "explanation": "They offered ninety and six rams.",
+  "ref": "Ezra 8:35"
+ },
+ {
+  "id": "ezra-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many lambs were offered as a burnt offering?",
+  "choices": [
+   "Ninety and six",
+   "Twelve",
+   "Seventy and seven",
+   "Fifty"
+  ],
+  "answer": 2,
+  "explanation": "They offered seventy and seven lambs.",
+  "ref": "Ezra 8:35"
+ },
+ {
+  "id": "ezra-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who came with eighteen sons and brethren as ministers from Casiphia?",
+  "choices": [
+   "Hashabiah",
+   "Sherebiah",
+   "Iddo",
+   "Elnathan"
+  ],
+  "answer": 1,
+  "explanation": "They brought a man of understanding, and Sherebiah, with his sons and his brethren, eighteen.",
+  "ref": "Ezra 8:18"
+ },
+ {
+  "id": "ezra-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who came with twenty of his brethren and their sons, of the sons of Merari?",
+  "choices": [
+   "Hashabiah",
+   "Sherebiah",
+   "Jeshaiah",
+   "Meshullam"
+  ],
+  "answer": 0,
+  "explanation": "Hashabiah, and with him Jeshaiah of the sons of Merari, his brethren and their sons, twenty.",
+  "ref": "Ezra 8:19"
+ },
+ {
+  "id": "ezra-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Nethinims, appointed by David and the princes, came to serve the Levites?",
+  "choices": [
+   "Eighteen",
+   "Twenty",
+   "Six hundred and fifty",
+   "Two hundred and twenty"
+  ],
+  "answer": 3,
+  "explanation": "Of the Nethinims, whom David and the princes had appointed, two hundred and twenty.",
+  "ref": "Ezra 8:20"
+ },
+ {
+  "id": "ezra-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the priest, son of Uriah, by whose hand the treasure was weighed?",
+  "choices": [
+   "Eleazar",
+   "Jozabad",
+   "Meremoth",
+   "Noadiah"
+  ],
+  "answer": 2,
+  "explanation": "The silver was weighed by the hand of Meremoth the son of Uriah the priest.",
+  "ref": "Ezra 8:33"
+ },
+ {
+  "id": "ezra-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Which Levite, son of Binnui, was with those who weighed the treasure?",
+  "choices": [
+   "Jozabad",
+   "Noadiah",
+   "Eleazar",
+   "Meremoth"
+  ],
+  "answer": 1,
+  "explanation": "With them was Jozabad the son of Jeshua, and Noadiah the son of Binnui, Levites.",
+  "ref": "Ezra 8:33"
+ },
+ {
+  "id": "ezra-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son of Phinehas was named of those who went up?",
+  "choices": [
+   "Gershom",
+   "Daniel",
+   "Hattush",
+   "Zechariah"
+  ],
+  "answer": 0,
+  "explanation": "Of the sons of Phinehas; Gershom.",
+  "ref": "Ezra 8:2"
+ },
+ {
+  "id": "ezra-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many males went up with Zechariah of the sons of Pharosh?",
+  "choices": [
+   "Fifty",
+   "Two hundred",
+   "Seventy",
+   "An hundred and fifty"
+  ],
+  "answer": 3,
+  "explanation": "Zechariah, and with him were reckoned by genealogy of the males an hundred and fifty.",
+  "ref": "Ezra 8:3"
+ },
+ {
+  "id": "ezra-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many males went with Obadiah the son of Jehiel, of the sons of Joab?",
+  "choices": [
+   "Eighty",
+   "Seventy",
+   "Two hundred and eighteen",
+   "One hundred and ten"
+  ],
+  "answer": 2,
+  "explanation": "Obadiah the son of Jehiel, and with him two hundred and eighteen males.",
+  "ref": "Ezra 8:9"
+ },
+ {
+  "id": "ezra-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Eleazar, who helped weigh the treasure, was the son of whom?",
+  "choices": [
+   "Meremoth",
+   "Phinehas",
+   "Uriah",
+   "Jeshua"
+  ],
+  "answer": 1,
+  "explanation": "With Meremoth was Eleazar the son of Phinehas.",
+  "ref": "Ezra 8:33"
+ },
+ {
   "id": "old-ezra-9-1",
   "chapter": 9,
   "level": "beginner",
