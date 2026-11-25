@@ -12144,6 +12144,598 @@
   "ref": "2 Chronicles 25:22"
  },
  {
+  "id": "2-chronicles-25-e-01",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Amaziah's father?",
+  "choices": [
+   "Jehoiada",
+   "Joash",
+   "Jehoram",
+   "Uzziah"
+  ],
+  "answer": 1,
+  "explanation": "Amaziah the son of Joash king of Judah.",
+  "ref": "2 Chronicles 25:23"
+ },
+ {
+  "id": "2-chronicles-25-e-02",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Amaziah defeat in the valley of salt?",
+  "choices": [
+   "The Syrians",
+   "The Philistines",
+   "The children of Seir",
+   "The Ammonites"
+  ],
+  "answer": 2,
+  "explanation": "Amaziah went to the valley of salt, and smote of the children of Seir ten thousand.",
+  "ref": "2 Chronicles 25:11"
+ },
+ {
+  "id": "2-chronicles-25-e-03",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Amaziah do with the gods of the children of Seir?",
+  "choices": [
+   "Set them up to be his gods",
+   "Burned them",
+   "Sent them to Egypt",
+   "Gave them to the priests"
+  ],
+  "answer": 0,
+  "explanation": "He brought the gods of the children of Seir, and set them up to be his gods, and bowed down himself before them.",
+  "ref": "2 Chronicles 25:14"
+ },
+ {
+  "id": "2-chronicles-25-e-04",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did Amaziah send, saying, Come, let us see one another in the face?",
+  "choices": [
+   "Hazael",
+   "Joash king of Israel",
+   "Jehu",
+   "Ben-hadad"
+  ],
+  "answer": 1,
+  "explanation": "Amaziah sent to Joash, the son of Jehoahaz, king of Israel, saying, Come, let us see one another in the face.",
+  "ref": "2 Chronicles 25:17"
+ },
+ {
+  "id": "2-chronicles-25-e-05",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Amaziah flee when a conspiracy was made against him?",
+  "choices": [
+   "Samaria",
+   "Lachish",
+   "Hebron",
+   "Beer-sheba"
+  ],
+  "answer": 1,
+  "explanation": "He fled to Lachish: but they sent to Lachish after him, and slew him there.",
+  "ref": "2 Chronicles 25:27"
+ },
+ {
+  "id": "2-chronicles-25-e-06",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Joash and Amaziah meet face to face?",
+  "choices": [
+   "Beth-shemesh",
+   "Bethel",
+   "Gibeon",
+   "Jezreel"
+  ],
+  "answer": 0,
+  "explanation": "They saw one another in the face, at Beth-shemesh, which belongeth to Judah.",
+  "ref": "2 Chronicles 25:21"
+ },
+ {
+  "id": "2-chronicles-25-e-07",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joash king of Israel break down in Jerusalem?",
+  "choices": [
+   "The temple doors",
+   "The wall",
+   "The king's house",
+   "The altar"
+  ],
+  "answer": 1,
+  "explanation": "He brake down the wall of Jerusalem from the gate of Ephraim to the corner gate.",
+  "ref": "2 Chronicles 25:23"
+ },
+ {
+  "id": "2-chronicles-25-e-08",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Joash king of Israel return after taking the treasures?",
+  "choices": [
+   "Jezreel",
+   "Tirzah",
+   "Samaria",
+   "Shechem"
+  ],
+  "answer": 2,
+  "explanation": "He took all the gold and the silver, and all the vessels, and returned to Samaria.",
+  "ref": "2 Chronicles 25:24"
+ },
+ {
+  "id": "2-chronicles-25-e-09",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Amaziah do with the hired army of Israel?",
+  "choices": [
+   "Sent them home again",
+   "Put them in front of the battle",
+   "Made them captains",
+   "Gave them cities"
+  ],
+  "answer": 0,
+  "explanation": "Amaziah separated them, to wit, the army that was come to him out of Ephraim, to go home again.",
+  "ref": "2 Chronicles 25:10"
+ },
+ {
+  "id": "2-chronicles-25-m-01",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How old was Amaziah when he began to reign?",
+  "choices": [
+   "Sixteen",
+   "Twenty and five",
+   "Thirty and two",
+   "Forty"
+  ],
+  "answer": 1,
+  "explanation": "Amaziah was twenty and five years old when he began to reign.",
+  "ref": "2 Chronicles 25:1"
+ },
+ {
+  "id": "2-chronicles-25-m-02",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Amaziah slay when his kingdom was established to him?",
+  "choices": [
+   "His brothers",
+   "The princes of Edom",
+   "His servants that had killed the king his father",
+   "The priests of Baal"
+  ],
+  "answer": 2,
+  "explanation": "He slew his servants that had killed the king his father.",
+  "ref": "2 Chronicles 25:3"
+ },
+ {
+  "id": "2-chronicles-25-m-03",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many choice men did Amaziah find when he numbered Judah and Benjamin?",
+  "choices": [
+   "Three hundred thousand",
+   "One hundred thousand",
+   "Eight hundred thousand",
+   "Ten thousand"
+  ],
+  "answer": 0,
+  "explanation": "He numbered them from twenty years old and above, and found them three hundred thousand choice men.",
+  "ref": "2 Chronicles 25:5"
+ },
+ {
+  "id": "2-chronicles-25-m-04",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much silver did Amaziah pay for a hundred thousand men out of Israel?",
+  "choices": [
+   "Ten talents",
+   "A hundred talents",
+   "A thousand talents",
+   "Three talents"
+  ],
+  "answer": 1,
+  "explanation": "He hired also an hundred thousand mighty men of valour out of Israel for an hundred talents of silver.",
+  "ref": "2 Chronicles 25:6"
+ },
+ {
+  "id": "2-chronicles-25-m-05",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the man of God say about the hundred talents Amaziah had given?",
+  "choices": [
+   "It would be returned",
+   "The LORD is able to give thee much more than this",
+   "It was lost for good",
+   "It should be given to the temple"
+  ],
+  "answer": 1,
+  "explanation": "The man of God answered, The LORD is able to give thee much more than this.",
+  "ref": "2 Chronicles 25:9"
+ },
+ {
+  "id": "2-chronicles-25-m-06",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the sent-home Israelite army return home?",
+  "choices": [
+   "In great anger",
+   "In peace",
+   "With gifts",
+   "In shame and silence"
+  ],
+  "answer": 0,
+  "explanation": "Their anger was greatly kindled against Judah, and they returned home in great anger.",
+  "ref": "2 Chronicles 25:10"
+ },
+ {
+  "id": "2-chronicles-25-m-07",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many of the children of Seir did Amaziah smite?",
+  "choices": [
+   "Three thousand",
+   "Ten thousand",
+   "Thirty thousand",
+   "A hundred thousand"
+  ],
+  "answer": 1,
+  "explanation": "He smote of the children of Seir ten thousand.",
+  "ref": "2 Chronicles 25:11"
+ },
+ {
+  "id": "2-chronicles-25-m-08",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done to the ten thousand captives of Seir?",
+  "choices": [
+   "They were made servants",
+   "They were cast down from the top of the rock",
+   "They were sold to Egypt",
+   "They were set free"
+  ],
+  "answer": 1,
+  "explanation": "They cast them down from the top of the rock, that they all were broken in pieces.",
+  "ref": "2 Chronicles 25:12"
+ },
+ {
+  "id": "2-chronicles-25-m-09",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men of Judah did the sent-home soldiers smite?",
+  "choices": [
+   "Three thousand",
+   "Ten thousand",
+   "Four hundred",
+   "Seven thousand"
+  ],
+  "answer": 0,
+  "explanation": "They fell upon the cities of Judah, from Samaria even unto Beth-horon, and smote three thousand of them, and took much spoil.",
+  "ref": "2 Chronicles 25:13"
+ },
+ {
+  "id": "2-chronicles-25-m-10",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the prophet say the gods of the people could not do?",
+  "choices": [
+   "Speak",
+   "Deliver their own people out of his hand",
+   "Give rain",
+   "Heal the sick"
+  ],
+  "answer": 1,
+  "explanation": "Why hast thou sought after the gods of the people, which could not deliver their own people out of thine hand?",
+  "ref": "2 Chronicles 25:15"
+ },
+ {
+  "id": "2-chronicles-25-m-11",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In Joash's message, what did the thistle ask of the cedar?",
+  "choices": [
+   "Water for his roots",
+   "Give thy daughter to my son to wife",
+   "A place in the forest",
+   "Shelter from the wild beast"
+  ],
+  "answer": 1,
+  "explanation": "The thistle sent to the cedar, saying, Give thy daughter to my son to wife.",
+  "ref": "2 Chronicles 25:18"
+ },
+ {
+  "id": "2-chronicles-25-m-12",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joash say Amaziah's heart did after he smote the Edomites?",
+  "choices": [
+   "Lifted him up to boast",
+   "Made him afraid",
+   "Turned him to God",
+   "Made him merciful"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast smitten the Edomites; and thine heart lifteth thee up to boast.",
+  "ref": "2 Chronicles 25:19"
+ },
+ {
+  "id": "2-chronicles-25-m-13",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would Amaziah not hear Joash?",
+  "choices": [
+   "He was too proud to listen to Israel",
+   "It came of God, because they sought after the gods of Edom",
+   "His servants forbade him",
+   "He had not received the message"
+  ],
+  "answer": 1,
+  "explanation": "Amaziah would not hear; for it came of God, that he might deliver them into the hand of their enemies, because they sought after the gods of Edom.",
+  "ref": "2 Chronicles 25:20"
+ },
+ {
+  "id": "2-chronicles-25-m-14",
+  "chapter": 25,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Amaziah buried?",
+  "choices": [
+   "With his fathers in the city of Judah",
+   "In the field of Lachish",
+   "In Samaria",
+   "In the house of God"
+  ],
+  "answer": 0,
+  "explanation": "They brought him upon horses, and buried him with his fathers in the city of Judah.",
+  "ref": "2 Chronicles 25:28"
+ },
+ {
+  "id": "2-chronicles-25-h-01",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Amaziah reign in Jerusalem?",
+  "choices": [
+   "Sixteen",
+   "Twenty and nine",
+   "Forty",
+   "Fifty-two"
+  ],
+  "answer": 1,
+  "explanation": "He reigned twenty and nine years in Jerusalem.",
+  "ref": "2 Chronicles 25:1"
+ },
+ {
+  "id": "2-chronicles-25-h-02",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Amaziah's mother?",
+  "choices": [
+   "Jehoaddan of Jerusalem",
+   "Zibiah of Beer-sheba",
+   "Athaliah",
+   "Jecholiah of Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "His mother's name was Jehoaddan of Jerusalem.",
+  "ref": "2 Chronicles 25:1"
+ },
+ {
+  "id": "2-chronicles-25-h-03",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tribe did the man of God say the LORD was not with?",
+  "choices": [
+   "Ephraim",
+   "Judah",
+   "Benjamin",
+   "Manasseh"
+  ],
+  "answer": 0,
+  "explanation": "The LORD is not with Israel, to wit, with all the children of Ephraim.",
+  "ref": "2 Chronicles 25:7"
+ },
+ {
+  "id": "2-chronicles-25-h-04",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man of God say God has power to do?",
+  "choices": [
+   "Help, and to cast down",
+   "Make rich and make poor",
+   "Heal and to kill",
+   "Plant and to pluck up"
+  ],
+  "answer": 0,
+  "explanation": "God hath power to help, and to cast down.",
+  "ref": "2 Chronicles 25:8"
+ },
+ {
+  "id": "2-chronicles-25-h-05",
+  "chapter": 25,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Amaziah smite the children of Seir?",
+  "choices": [
+   "The valley of salt",
+   "The wilderness of Edom",
+   "Mount Seir",
+   "The plain of Jordan"
+  ],
+  "answer": 0,
+  "explanation": "He went to the valley of salt, and smote of the children of Seir ten thousand.",
+  "ref": "2 Chronicles 25:11"
+ },
+ {
+  "id": "2-chronicles-25-h-06",
+  "chapter": 25,
+  "level": "hard",
+  "category": "place",
+  "question": "The soldiers sent home raided Judah's cities from Samaria to where?",
+  "choices": [
+   "Beth-horon",
+   "Lachish",
+   "Beth-shemesh",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "They fell upon the cities of Judah, from Samaria even unto Beth-horon.",
+  "ref": "2 Chronicles 25:13"
+ },
+ {
+  "id": "2-chronicles-25-h-07",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Joash king of Israel?",
+  "choices": [
+   "Jehu",
+   "Jehoahaz",
+   "Omri",
+   "Ahab"
+  ],
+  "answer": 1,
+  "explanation": "Joash the son of Jehoahaz king of Israel.",
+  "ref": "2 Chronicles 25:17"
+ },
+ {
+  "id": "2-chronicles-25-h-08",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits of Jerusalem's wall did Joash break down?",
+  "choices": [
+   "Two hundred",
+   "Three hundred",
+   "Four hundred",
+   "Five hundred"
+  ],
+  "answer": 2,
+  "explanation": "He brake down the wall of Jerusalem from the gate of Ephraim to the corner gate, four hundred cubits.",
+  "ref": "2 Chronicles 25:23"
+ },
+ {
+  "id": "2-chronicles-25-h-09",
+  "chapter": 25,
+  "level": "hard",
+  "category": "place",
+  "question": "The wall was broken down from the gate of Ephraim to which gate?",
+  "choices": [
+   "The horse gate",
+   "The corner gate",
+   "The high gate",
+   "The sheep gate"
+  ],
+  "answer": 1,
+  "explanation": "He brake down the wall from the gate of Ephraim to the corner gate.",
+  "ref": "2 Chronicles 25:23"
+ },
+ {
+  "id": "2-chronicles-25-h-10",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "With whom were the vessels of the house of God found that Joash took?",
+  "choices": [
+   "Obed-edom",
+   "Jehoiada",
+   "Zechariah",
+   "Azariah"
+  ],
+  "answer": 0,
+  "explanation": "He took all the vessels that were found in the house of God with Obed-edom.",
+  "ref": "2 Chronicles 25:24"
+ },
+ {
+  "id": "2-chronicles-25-h-11",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Amaziah live after the death of Joash king of Israel?",
+  "choices": [
+   "Five",
+   "Ten",
+   "Fifteen",
+   "Twenty"
+  ],
+  "answer": 2,
+  "explanation": "Amaziah lived after the death of Joash son of Jehoahaz king of Israel fifteen years.",
+  "ref": "2 Chronicles 25:25"
+ },
+ {
+  "id": "2-chronicles-25-h-12",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men of Judah do when they were put to the worse?",
+  "choices": [
+   "Fled every man to his tent",
+   "Hid in the temple",
+   "Fled to Lachish",
+   "Surrendered their arms"
+  ],
+  "answer": 0,
+  "explanation": "Judah was put to the worse before Israel, and they fled every man to his tent.",
+  "ref": "2 Chronicles 25:22"
+ },
+ {
+  "id": "2-chronicles-25-h-13",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joash of Israel tell Amaziah to do?",
+  "choices": [
+   "Abide now at home",
+   "Pay tribute",
+   "Give his daughter",
+   "Flee to Lachish"
+  ],
+  "answer": 0,
+  "explanation": "Abide now at home; why shouldest thou meddle to thine hurt?",
+  "ref": "2 Chronicles 25:19"
+ },
+ {
+  "id": "2-chronicles-25-h-14",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was Amaziah brought back after he was slain?",
+  "choices": [
+   "Upon horses",
+   "In a chariot",
+   "On a bier",
+   "By ship"
+  ],
+  "answer": 0,
+  "explanation": "They brought him upon horses, and buried him with his fathers.",
+  "ref": "2 Chronicles 25:28"
+ },
+ {
   "id": "old-2-chronicles-26-1",
   "chapter": 26,
   "level": "beginner",
