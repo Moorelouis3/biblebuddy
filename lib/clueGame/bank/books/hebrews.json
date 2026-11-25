@@ -2878,5 +2878,1573 @@
   "answer": 3,
   "explanation": "Marriage is honourable in all, and the bed undefiled.",
   "ref": "Hebrews 13:4"
+ },
+ {
+  "id": "hebrews-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are all the angels of God told to do to the firstbegotten?",
+  "choices": [
+   "Serve him",
+   "Worship him",
+   "Fear him",
+   "Follow him"
+  ],
+  "answer": 1,
+  "explanation": "God says, \"Let all the angels of God worship him.\"",
+  "ref": "Hebrews 1:6"
+ },
+ {
+  "id": "hebrews-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has God appointed his Son to be heir of?",
+  "choices": [
+   "All things",
+   "The angels",
+   "The earth",
+   "The house of David"
+  ],
+  "answer": 0,
+  "explanation": "God hath appointed his Son heir of all things, by whom also he made the worlds.",
+  "ref": "Hebrews 1:2"
+ },
+ {
+  "id": "hebrews-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Son uphold all things by?",
+  "choices": [
+   "The strength of his arm",
+   "The breath of his mouth",
+   "The word of his power",
+   "The counsel of his will"
+  ],
+  "answer": 2,
+  "explanation": "The Son is upholding all things by the word of his power.",
+  "ref": "Hebrews 1:3"
+ },
+ {
+  "id": "hebrews-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the Son obtained by inheritance that is more excellent than the angels have?",
+  "choices": [
+   "A greater throne",
+   "A wider kingdom",
+   "A higher priesthood",
+   "A more excellent name"
+  ],
+  "answer": 3,
+  "explanation": "He hath by inheritance obtained a more excellent name than the angels.",
+  "ref": "Hebrews 1:4"
+ },
+ {
+  "id": "hebrews-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God make his ministers, in what is said of the angels?",
+  "choices": [
+   "A flame of fire",
+   "A rushing wind",
+   "A pillar of cloud",
+   "A burning bush"
+  ],
+  "answer": 0,
+  "explanation": "Of the angels he saith, Who maketh his angels spirits, and his ministers a flame of fire.",
+  "ref": "Hebrews 1:7"
+ },
+ {
+  "id": "hebrews-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of the Son's throne?",
+  "choices": [
+   "It lasts a thousand years",
+   "It is for ever and ever",
+   "It stands until the last day",
+   "It stands until his enemies are put down"
+  ],
+  "answer": 1,
+  "explanation": "Unto the Son he saith, Thy throne, O God, is for ever and ever.",
+  "ref": "Hebrews 1:8"
+ },
+ {
+  "id": "hebrews-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why has God anointed the Son with the oil of gladness above his fellows?",
+  "choices": [
+   "He was born of the fathers",
+   "He suffered for the prophets",
+   "He loved righteousness and hated iniquity",
+   "He made the angels spirits"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast loved righteousness, and hated iniquity; therefore God hath anointed thee with the oil of gladness above thy fellows.",
+  "ref": "Hebrews 1:9"
+ },
+ {
+  "id": "hebrews-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the heavens called in the words spoken to the Lord?",
+  "choices": [
+   "The pillars of the earth",
+   "The tents of the Lord",
+   "The glory of the Majesty",
+   "The works of thine hands"
+  ],
+  "answer": 3,
+  "explanation": "Thou, Lord, in the beginning hast laid the foundation of the earth; and the heavens are the works of thine hands.",
+  "ref": "Hebrews 1:10"
+ },
+ {
+  "id": "hebrews-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why are the angels sent forth to minister?",
+  "choices": [
+   "For them who shall be heirs of salvation",
+   "To carry the prophets to the fathers",
+   "To guard the throne of the Majesty",
+   "To worship the firstbegotten"
+  ],
+  "answer": 0,
+  "explanation": "They are all ministering spirits, sent forth to minister for them who shall be heirs of salvation.",
+  "ref": "Hebrews 1:14"
+ },
+ {
+  "id": "hebrews-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The heavens and the earth shall wax old as doth what?",
+  "choices": [
+   "A flower",
+   "A garment",
+   "A tent",
+   "A candle"
+  ],
+  "answer": 1,
+  "explanation": "They all shall wax old as doth a garment.",
+  "ref": "Hebrews 1:11"
+ },
+ {
+  "id": "hebrews-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the Son do to the heavens, as a vesture?",
+  "choices": [
+   "Tear them down",
+   "Roll them away",
+   "Fold them up",
+   "Set them on fire"
+  ],
+  "answer": 2,
+  "explanation": "As a vesture shalt thou fold them up, and they shall be changed.",
+  "ref": "Hebrews 1:12"
+ },
+ {
+  "id": "hebrews-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will God make of the Son's enemies?",
+  "choices": [
+   "His footstool",
+   "His sword",
+   "His crown",
+   "His servants"
+  ],
+  "answer": 0,
+  "explanation": "Sit on my right hand, until I make thine enemies thy footstool.",
+  "ref": "Hebrews 1:13"
+ },
+ {
+  "id": "hebrews-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Son is called the express image of what?",
+  "choices": [
+   "His throne",
+   "His house",
+   "His name",
+   "His person"
+  ],
+  "answer": 3,
+  "explanation": "The Son is the brightness of his glory, and the express image of his person.",
+  "ref": "Hebrews 1:3"
+ },
+ {
+  "id": "hebrews-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did God speak in time past by the prophets?",
+  "choices": [
+   "The angels",
+   "The fathers",
+   "The Gentiles",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "God spake in time past unto the fathers by the prophets.",
+  "ref": "Hebrews 1:1"
+ },
+ {
+  "id": "hebrews-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the sceptre of the Son's kingdom called?",
+  "choices": [
+   "A sceptre of righteousness",
+   "A sceptre of peace",
+   "A sceptre of mercy",
+   "A sceptre of truth"
+  ],
+  "answer": 0,
+  "explanation": "A sceptre of righteousness is the sceptre of thy kingdom.",
+  "ref": "Hebrews 1:8"
+ },
+ {
+  "id": "hebrews-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "While the heavens perish, what is said of the Son?",
+  "choices": [
+   "Thou shalt be changed",
+   "Thou shalt wax old",
+   "Thou art the same",
+   "Thou shalt be folded up"
+  ],
+  "answer": 2,
+  "explanation": "They shall be changed: but thou art the same, and thy years shall not fail.",
+  "ref": "Hebrews 1:12"
+ },
+ {
+  "id": "hebrews-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "The Son took on him the seed of whom?",
+  "choices": [
+   "Adam",
+   "David",
+   "Moses",
+   "Abraham"
+  ],
+  "answer": 3,
+  "explanation": "He took not on him the nature of angels; but he took on him the seed of Abraham.",
+  "ref": "Hebrews 2:16"
+ },
+ {
+  "id": "hebrews-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus taste for every man?",
+  "choices": [
+   "Death",
+   "Hunger",
+   "Sorrow",
+   "Judgment"
+  ],
+  "answer": 0,
+  "explanation": "Jesus was made a little lower than the angels that he by the grace of God should taste death for every man.",
+  "ref": "Hebrews 2:9"
+ },
+ {
+  "id": "hebrews-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why is Jesus able to help those who are tempted?",
+  "choices": [
+   "He was never tempted",
+   "He himself suffered being tempted",
+   "He is higher than the angels",
+   "He sat down on the right hand"
+  ],
+  "answer": 1,
+  "explanation": "In that he himself hath suffered being tempted, he is able to succour them that are tempted.",
+  "ref": "Hebrews 2:18"
+ },
+ {
+  "id": "hebrews-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus call those he sanctifies?",
+  "choices": [
+   "Servants",
+   "Friends",
+   "Brethren",
+   "Sheep"
+  ],
+  "answer": 2,
+  "explanation": "He is not ashamed to call them brethren.",
+  "ref": "Hebrews 2:11"
+ },
+ {
+  "id": "hebrews-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did every transgression and disobedience receive under the word spoken by angels?",
+  "choices": [
+   "A just recompence of reward",
+   "A heavy tax",
+   "Exile from the land",
+   "A pardon"
+  ],
+  "answer": 0,
+  "explanation": "The word spoken by angels was stedfast, and every transgression and disobedience received a just recompence of reward.",
+  "ref": "Hebrews 2:2"
+ },
+ {
+  "id": "hebrews-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who first began to speak the great salvation?",
+  "choices": [
+   "Moses",
+   "The Lord",
+   "The angels",
+   "The prophets"
+  ],
+  "answer": 1,
+  "explanation": "It at the first began to be spoken by the Lord.",
+  "ref": "Hebrews 2:3"
+ },
+ {
+  "id": "hebrews-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "By whom was the salvation confirmed unto us?",
+  "choices": [
+   "The angels",
+   "The prophets",
+   "Them that heard him",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "It was confirmed unto us by them that heard him.",
+  "ref": "Hebrews 2:3"
+ },
+ {
+  "id": "hebrews-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God bear witness with, along with signs and wonders?",
+  "choices": [
+   "Divers miracles and gifts of the Holy Ghost",
+   "Fire from heaven and thunder",
+   "Dreams and visions",
+   "The law and the prophets"
+  ],
+  "answer": 0,
+  "explanation": "God also bearing them witness, both with signs and wonders, and with divers miracles, and gifts of the Holy Ghost.",
+  "ref": "Hebrews 2:4"
+ },
+ {
+  "id": "hebrews-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God set man over, in the words quoted from the Psalm?",
+  "choices": [
+   "The host of heaven",
+   "The kings of the earth",
+   "The house of God",
+   "The works of thy hands"
+  ],
+  "answer": 3,
+  "explanation": "Thou crownedst him with glory and honour, and didst set him over the works of thy hands.",
+  "ref": "Hebrews 2:7"
+ },
+ {
+  "id": "hebrews-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Through fear of what were people all their lifetime subject to bondage?",
+  "choices": [
+   "Death",
+   "Judgment",
+   "Famine",
+   "Exile"
+  ],
+  "answer": 0,
+  "explanation": "Jesus delivers them who through fear of death were all their lifetime subject to bondage.",
+  "ref": "Hebrews 2:15"
+ },
+ {
+  "id": "hebrews-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the captain of their salvation made perfect?",
+  "choices": [
+   "Through the law",
+   "Through sufferings",
+   "Through sacrifice of bulls",
+   "Through teaching"
+  ],
+  "answer": 1,
+  "explanation": "It became God to make the captain of their salvation perfect through sufferings.",
+  "ref": "Hebrews 2:10"
+ },
+ {
+  "id": "hebrews-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Son say he will do in the midst of the church?",
+  "choices": [
+   "Offer sacrifice",
+   "Read the law",
+   "Sing praise",
+   "Make intercession"
+  ],
+  "answer": 2,
+  "explanation": "In the midst of the church will I sing praise unto thee.",
+  "ref": "Hebrews 2:12"
+ },
+ {
+  "id": "hebrews-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do we not yet see?",
+  "choices": [
+   "All things put under him",
+   "Jesus crowned with glory",
+   "The world to come",
+   "The devil destroyed"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast put all things in subjection under his feet... But now we see not yet all things put under him.",
+  "ref": "Hebrews 2:8"
+ },
+ {
+  "id": "hebrews-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The words quoted from the Psalm ask what is man that thou visitest whom?",
+  "choices": [
+   "The servant of the Lord",
+   "The son of man",
+   "The firstborn",
+   "The seed of David"
+  ],
+  "answer": 1,
+  "explanation": "What is man, that thou art mindful of him? or the son of man, that thou visitest him?",
+  "ref": "Hebrews 2:6"
+ },
+ {
+  "id": "hebrews-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is man crowned with, in the quoted words?",
+  "choices": [
+   "Gold and silver",
+   "Wisdom and strength",
+   "Glory and honour",
+   "Power and dominion"
+  ],
+  "answer": 2,
+  "explanation": "Thou madest him a little lower than the angels; thou crownedst him with glory and honour.",
+  "ref": "Hebrews 2:7"
+ },
+ {
+  "id": "hebrews-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Son say he will put in God?",
+  "choices": [
+   "His trust",
+   "His hope",
+   "His sword",
+   "His name"
+  ],
+  "answer": 0,
+  "explanation": "And again, I will put my trust in him.",
+  "ref": "Hebrews 2:13"
+ },
+ {
+  "id": "hebrews-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did God not put the world to come in subjection?",
+  "choices": [
+   "The kings",
+   "The priests",
+   "The prophets",
+   "The angels"
+  ],
+  "answer": 3,
+  "explanation": "Unto the angels hath he not put in subjection the world to come, whereof we speak.",
+  "ref": "Hebrews 2:5"
+ },
+ {
+  "id": "hebrews-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did it behove Jesus to be made like in all things?",
+  "choices": [
+   "His brethren",
+   "The angels",
+   "The prophets",
+   "Aaron"
+  ],
+  "answer": 0,
+  "explanation": "In all things it behoved him to be made like unto his brethren.",
+  "ref": "Hebrews 2:17"
+ },
+ {
+  "id": "hebrews-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Son say he will declare unto his brethren?",
+  "choices": [
+   "Thy law",
+   "Thy name",
+   "Thy glory",
+   "Thy judgments"
+  ],
+  "answer": 1,
+  "explanation": "I will declare thy name unto my brethren.",
+  "ref": "Hebrews 2:12"
+ },
+ {
+  "id": "hebrews-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what are the children partakers?",
+  "choices": [
+   "Flesh and blood",
+   "Glory and honour",
+   "The law and the prophets",
+   "Signs and wonders"
+  ],
+  "answer": 0,
+  "explanation": "The children are partakers of flesh and blood, he also himself likewise took part of the same.",
+  "ref": "Hebrews 2:14"
+ },
+ {
+  "id": "hebrews-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jesus was made a merciful and faithful high priest to make what for the sins of the people?",
+  "choices": [
+   "Atonement",
+   "Intercession",
+   "Reconciliation",
+   "Restitution"
+  ],
+  "answer": 2,
+  "explanation": "He was made like his brethren to make reconciliation for the sins of the people.",
+  "ref": "Hebrews 2:17"
+ },
+ {
+  "id": "hebrews-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who has given the children to the Son?",
+  "choices": [
+   "The angels",
+   "Abraham",
+   "The church",
+   "God"
+  ],
+  "answer": 3,
+  "explanation": "Behold I and the children which God hath given me.",
+  "ref": "Hebrews 2:13"
+ },
+ {
+  "id": "hebrews-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was faithful to him that appointed him, as Moses was faithful in all his house?",
+  "choices": [
+   "Christ Jesus",
+   "Aaron",
+   "Joshua",
+   "Abraham"
+  ],
+  "answer": 0,
+  "explanation": "Christ Jesus was faithful to him that appointed him, as also Moses was faithful in all his house.",
+  "ref": "Hebrews 3:1–2"
+ },
+ {
+  "id": "hebrews-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For how long did the fathers see God's works in the wilderness?",
+  "choices": [
+   "Seven years",
+   "Three years",
+   "Forty years",
+   "Twelve years"
+  ],
+  "answer": 2,
+  "explanation": "Your fathers tempted me, proved me, and saw my works forty years.",
+  "ref": "Hebrews 3:9"
+ },
+ {
+  "id": "hebrews-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the carcases of those who sinned fall?",
+  "choices": [
+   "In the wilderness",
+   "In Egypt",
+   "On the mountain",
+   "By the sea"
+  ],
+  "answer": 0,
+  "explanation": "God was grieved with them that had sinned, whose carcases fell in the wilderness.",
+  "ref": "Hebrews 3:17"
+ },
+ {
+  "id": "hebrews-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who led the people out of Egypt in this chapter?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Joshua",
+   "Caleb"
+  ],
+  "answer": 1,
+  "explanation": "Not all that came out of Egypt by Moses provoked God.",
+  "ref": "Hebrews 3:16"
+ },
+ {
+  "id": "hebrews-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose house are we, if we hold fast the confidence and rejoicing of the hope?",
+  "choices": [
+   "Moses'",
+   "Aaron's",
+   "David'",
+   "Christ's"
+  ],
+  "answer": 3,
+  "explanation": "Christ is a son over his own house; whose house are we, if we hold fast the confidence and the rejoicing of the hope firm unto the end.",
+  "ref": "Hebrews 3:6"
+ },
+ {
+  "id": "hebrews-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who built all things?",
+  "choices": [
+   "God",
+   "Moses",
+   "The angels",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "Every house is builded by some man; but he that built all things is God.",
+  "ref": "Hebrews 3:4"
+ },
+ {
+  "id": "hebrews-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Christ counted worthy of more glory than Moses?",
+  "choices": [
+   "He lived longer than Moses",
+   "He led more people out of Egypt",
+   "He who built the house has more honour than the house",
+   "He was born in a greater house"
+  ],
+  "answer": 2,
+  "explanation": "He who hath builded the house hath more honour than the house.",
+  "ref": "Hebrews 3:3"
+ },
+ {
+  "id": "hebrews-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Christ over his own house?",
+  "choices": [
+   "A servant",
+   "A son",
+   "A steward",
+   "A builder of tents"
+  ],
+  "answer": 1,
+  "explanation": "Moses was faithful as a servant, but Christ as a son over his own house.",
+  "ref": "Hebrews 3:5–6"
+ },
+ {
+  "id": "hebrews-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say they do alway err in?",
+  "choices": [
+   "Their heart",
+   "Their ways",
+   "Their worship",
+   "Their speech"
+  ],
+  "answer": 0,
+  "explanation": "They do alway err in their heart; and they have not known my ways.",
+  "ref": "Hebrews 3:10"
+ },
+ {
+  "id": "hebrews-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God swear in his wrath?",
+  "choices": [
+   "They shall wander forty years",
+   "They shall not enter into my rest",
+   "They shall be scattered",
+   "They shall not see the land of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "So I sware in my wrath, They shall not enter into my rest.",
+  "ref": "Hebrews 3:11"
+ },
+ {
+  "id": "hebrews-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of heart are the brethren warned against, departing from the living God?",
+  "choices": [
+   "A proud heart of stone",
+   "A heart of fear",
+   "A divided heart",
+   "An evil heart of unbelief"
+  ],
+  "answer": 3,
+  "explanation": "Take heed, brethren, lest there be in any of you an evil heart of unbelief, in departing from the living God.",
+  "ref": "Hebrews 3:12"
+ },
+ {
+  "id": "hebrews-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How often are the brethren to exhort one another?",
+  "choices": [
+   "Daily",
+   "Weekly",
+   "Every sabbath",
+   "Every morning and evening"
+  ],
+  "answer": 0,
+  "explanation": "Exhort one another daily, while it is called To day.",
+  "ref": "Hebrews 3:13"
+ },
+ {
+  "id": "hebrews-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What may harden any of you if you do not exhort one another?",
+  "choices": [
+   "The fear of man",
+   "The love of the world",
+   "The deceitfulness of sin",
+   "The cares of life"
+  ],
+  "answer": 2,
+  "explanation": "Exhort one another daily; lest any of you be hardened through the deceitfulness of sin.",
+  "ref": "Hebrews 3:13"
+ },
+ {
+  "id": "hebrews-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "With whom was God grieved forty years?",
+  "choices": [
+   "Them that had sinned",
+   "The priests of Egypt",
+   "The prophets",
+   "The kings of Israel"
+  ],
+  "answer": 0,
+  "explanation": "But with whom was he grieved forty years? was it not with them that had sinned?",
+  "ref": "Hebrews 3:17"
+ },
+ {
+  "id": "hebrews-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did God swear that they should not enter into his rest?",
+  "choices": [
+   "The Levites",
+   "Them that believed not",
+   "The mixed multitude",
+   "Moses and Aaron"
+  ],
+  "answer": 1,
+  "explanation": "To whom sware he that they should not enter into his rest, but to them that believed not?",
+  "ref": "Hebrews 3:18"
+ },
+ {
+  "id": "hebrews-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Of whom are we made partakers, if we hold our confidence stedfast unto the end?",
+  "choices": [
+   "Christ",
+   "Moses",
+   "Abraham",
+   "The angels"
+  ],
+  "answer": 0,
+  "explanation": "We are made partakers of Christ, if we hold the beginning of our confidence stedfast unto the end.",
+  "ref": "Hebrews 3:14"
+ },
+ {
+  "id": "hebrews-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses was faithful as a servant for a testimony of what?",
+  "choices": [
+   "The sins of the fathers",
+   "The days of Egypt",
+   "The works of the angels",
+   "Those things which were to be spoken after"
+  ],
+  "answer": 3,
+  "explanation": "Moses was faithful as a servant, for a testimony of those things which were to be spoken after.",
+  "ref": "Hebrews 3:5"
+ },
+ {
+  "id": "hebrews-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what calling are the holy brethren partakers?",
+  "choices": [
+   "The heavenly calling",
+   "The royal calling",
+   "The holy calling",
+   "The eternal calling"
+  ],
+  "answer": 0,
+  "explanation": "Holy brethren, partakers of the heavenly calling, consider the Apostle and High Priest.",
+  "ref": "Hebrews 3:1"
+ },
+ {
+  "id": "hebrews-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In the day of what, in the wilderness, were hearts hardened?",
+  "choices": [
+   "Judgment",
+   "Temptation",
+   "Famine",
+   "Battle"
+  ],
+  "answer": 1,
+  "explanation": "Harden not your hearts, as in the provocation, in the day of temptation in the wilderness.",
+  "ref": "Hebrews 3:8"
+ },
+ {
+  "id": "hebrews-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the fathers see while they tempted and proved God?",
+  "choices": [
+   "His works",
+   "His glory",
+   "His face",
+   "His angels"
+  ],
+  "answer": 0,
+  "explanation": "Your fathers tempted me, proved me, and saw my works forty years.",
+  "ref": "Hebrews 3:9"
+ },
+ {
+  "id": "hebrews-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did some who heard do, though not all who came out of Egypt did it?",
+  "choices": [
+   "Flee",
+   "Bow down",
+   "Provoke",
+   "Fast"
+  ],
+  "answer": 2,
+  "explanation": "For some, when they had heard, did provoke: howbeit not all that came out of Egypt by Moses.",
+  "ref": "Hebrews 3:16"
+ },
+ {
+  "id": "hebrews-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say of that generation, besides that they err in their heart?",
+  "choices": [
+   "They have not known my ways",
+   "They have not kept my name",
+   "They have not heard my law",
+   "They have not seen my glory"
+  ],
+  "answer": 0,
+  "explanation": "They do alway err in their heart; and they have not known my ways.",
+  "ref": "Hebrews 3:10"
+ },
+ {
+  "id": "hebrews-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "By whom is every house built?",
+  "choices": [
+   "The angels",
+   "Some man",
+   "A prophet",
+   "Moses"
+  ],
+  "answer": 1,
+  "explanation": "For every house is builded by some man; but he that built all things is God.",
+  "ref": "Hebrews 3:4"
+ },
+ {
+  "id": "hebrews-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom is the evil heart of unbelief departing?",
+  "choices": [
+   "The living God",
+   "The Holy One",
+   "The Lord of hosts",
+   "The God of Abraham"
+  ],
+  "answer": 0,
+  "explanation": "An evil heart of unbelief, in departing from the living God.",
+  "ref": "Hebrews 3:12"
+ },
+ {
+  "id": "hebrews-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must we hold fast firm unto the end?",
+  "choices": [
+   "The law of Moses",
+   "The sabbath day",
+   "The first covenant",
+   "The confidence and the rejoicing of the hope"
+  ],
+  "answer": 3,
+  "explanation": "Hold fast the confidence and the rejoicing of the hope firm unto the end.",
+  "ref": "Hebrews 3:6"
+ },
+ {
+  "id": "hebrews-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On which day did God rest from all his works?",
+  "choices": [
+   "The seventh",
+   "The first",
+   "The third",
+   "The sixth"
+  ],
+  "answer": 0,
+  "explanation": "God did rest the seventh day from all his works.",
+  "ref": "Hebrews 4:4"
+ },
+ {
+  "id": "hebrews-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the word of God sharper than?",
+  "choices": [
+   "Any spear",
+   "Any twoedged sword",
+   "Any arrow",
+   "Any razor"
+  ],
+  "answer": 1,
+  "explanation": "The word of God is quick, and powerful, and sharper than any twoedged sword.",
+  "ref": "Hebrews 4:12"
+ },
+ {
+  "id": "hebrews-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was our high priest tempted?",
+  "choices": [
+   "In all points like as we are",
+   "Only in the wilderness",
+   "Only in the garden",
+   "Not at all"
+  ],
+  "answer": 0,
+  "explanation": "He was in all points tempted like as we are, yet without sin.",
+  "ref": "Hebrews 4:15"
+ },
+ {
+  "id": "hebrews-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the word of God a discerner of?",
+  "choices": [
+   "The sins of the nations",
+   "The thoughts and intents of the heart",
+   "The days and seasons",
+   "The deeds of the law"
+  ],
+  "answer": 1,
+  "explanation": "The word of God is a discerner of the thoughts and intents of the heart.",
+  "ref": "Hebrews 4:12"
+ },
+ {
+  "id": "hebrews-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Through whom did God limit a certain day, saying \"To day\"?",
+  "choices": [
+   "David",
+   "Moses",
+   "Joshua",
+   "Aaron"
+  ],
+  "answer": 0,
+  "explanation": "He limiteth a certain day, saying in David, To day, after so long a time.",
+  "ref": "Hebrews 4:7"
+ },
+ {
+  "id": "hebrews-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do we who have believed do?",
+  "choices": [
+   "Enter into rest",
+   "Go up to Jerusalem",
+   "Offer the first fruits",
+   "Keep the feasts"
+  ],
+  "answer": 0,
+  "explanation": "We which have believed do enter into rest.",
+  "ref": "Hebrews 4:3"
+ },
+ {
+  "id": "hebrews-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What may we obtain and find at the throne of grace?",
+  "choices": [
+   "Gold and silver",
+   "Judgment and vengeance",
+   "Peace and a kingdom",
+   "Mercy and grace to help in time of need"
+  ],
+  "answer": 3,
+  "explanation": "Let us come boldly unto the throne of grace, that we may obtain mercy, and find grace to help in time of need.",
+  "ref": "Hebrews 4:16"
+ },
+ {
+  "id": "hebrews-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is true of all things in his sight?",
+  "choices": [
+   "They are naked and opened",
+   "They are hidden and sealed",
+   "They are weighed and measured",
+   "They are written in a book"
+  ],
+  "answer": 0,
+  "explanation": "All things are naked and opened unto the eyes of him with whom we have to do.",
+  "ref": "Hebrews 4:13"
+ },
+ {
+  "id": "hebrews-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "We have not a high priest who cannot be touched with the feeling of what?",
+  "choices": [
+   "Our sorrows",
+   "Our sacrifices",
+   "Our infirmities",
+   "Our weariness"
+  ],
+  "answer": 2,
+  "explanation": "We have not an high priest which cannot be touched with the feeling of our infirmities.",
+  "ref": "Hebrews 4:15"
+ },
+ {
+  "id": "hebrews-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has he done who is entered into his rest?",
+  "choices": [
+   "Given up his sacrifices",
+   "Ceased from his own works",
+   "Left the land of promise",
+   "Come out of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "He that is entered into his rest hath ceased from his own works, as God did from his.",
+  "ref": "Hebrews 4:10"
+ },
+ {
+  "id": "hebrews-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are we told to labour to do?",
+  "choices": [
+   "Enter into that rest",
+   "Build the temple",
+   "Offer sacrifices",
+   "Keep the law"
+  ],
+  "answer": 0,
+  "explanation": "Let us labour therefore to enter into that rest, lest any man fall after the same example of unbelief.",
+  "ref": "Hebrews 4:11"
+ },
+ {
+  "id": "hebrews-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If Jesus had given them rest, what would not have been spoken afterward?",
+  "choices": [
+   "Another day",
+   "Another covenant",
+   "Another temple",
+   "Another law"
+  ],
+  "answer": 0,
+  "explanation": "If Jesus had given them rest, then would he not afterward have spoken of another day.",
+  "ref": "Hebrews 4:8"
+ },
+ {
+  "id": "hebrews-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Since when were God's works finished?",
+  "choices": [
+   "The foundation of the world",
+   "The days of Noah",
+   "The time of Moses",
+   "The days of David"
+  ],
+  "answer": 0,
+  "explanation": "The works were finished from the foundation of the world.",
+  "ref": "Hebrews 4:3"
+ },
+ {
+  "id": "hebrews-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom remaineth a rest?",
+  "choices": [
+   "The sons of Levi",
+   "The people of God",
+   "The house of David",
+   "The elders of Israel"
+  ],
+  "answer": 1,
+  "explanation": "There remaineth therefore a rest to the people of God.",
+  "ref": "Hebrews 4:9"
+ },
+ {
+  "id": "hebrews-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God swear in his wrath about those who did not believe?",
+  "choices": [
+   "They should not enter into his rest",
+   "They should not see the land",
+   "They should die in the wilderness",
+   "They should be scattered"
+  ],
+  "answer": 0,
+  "explanation": "As I have sworn in my wrath, if they shall enter into my rest.",
+  "ref": "Hebrews 4:3"
+ },
+ {
+  "id": "hebrews-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What example are we warned not to fall after?",
+  "choices": [
+   "Unbelief",
+   "Idolatry",
+   "Pride",
+   "Murmuring"
+  ],
+  "answer": 0,
+  "explanation": "Lest any man fall after the same example of unbelief.",
+  "ref": "Hebrews 4:11"
+ },
+ {
+  "id": "hebrews-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are we told to hold fast, since we have a great high priest?",
+  "choices": [
+   "Our profession",
+   "Our inheritance",
+   "Our covenant",
+   "Our offerings"
+  ],
+  "answer": 0,
+  "explanation": "Seeing then that we have a great high priest, Jesus the Son of God, let us hold fast our profession.",
+  "ref": "Hebrews 4:14"
+ },
+ {
+  "id": "hebrews-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are we told to fear, since a promise of entering his rest is left us?",
+  "choices": [
+   "That any should come short of it",
+   "That the temple should fall",
+   "That the law should be lost",
+   "That the day should not come"
+  ],
+  "answer": 0,
+  "explanation": "Let us therefore fear, lest any of you should seem to come short of it.",
+  "ref": "Hebrews 4:1"
+ },
+ {
+  "id": "hebrews-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where has our great high priest passed into?",
+  "choices": [
+   "The heavens",
+   "The holy of holies",
+   "The temple",
+   "Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "We have a great high priest, that is passed into the heavens, Jesus the Son of God.",
+  "ref": "Hebrews 4:14"
+ },
+ {
+  "id": "hebrews-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was called of God as a high priest, in this chapter?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Levi",
+   "Eli"
+  ],
+  "answer": 0,
+  "explanation": "No man taketh this honour unto himself, but he that is called of God, as was Aaron.",
+  "ref": "Hebrews 5:4"
+ },
+ {
+  "id": "hebrews-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus offer up with strong crying and tears?",
+  "choices": [
+   "Gifts and incense",
+   "Prayers and supplications",
+   "Bulls and goats",
+   "Firstfruits"
+  ],
+  "answer": 1,
+  "explanation": "In the days of his flesh he offered up prayers and supplications with strong crying and tears.",
+  "ref": "Hebrews 5:7"
+ },
+ {
+  "id": "hebrews-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why can a high priest have compassion on the ignorant?",
+  "choices": [
+   "He himself is compassed with infirmity",
+   "He is taken from the angels",
+   "He is anointed with oil",
+   "He has seen the heavens"
+  ],
+  "answer": 0,
+  "explanation": "He can have compassion because he himself also is compassed with infirmity.",
+  "ref": "Hebrews 5:2"
+ },
+ {
+  "id": "hebrews-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "For whom must the high priest offer for sins, besides the people?",
+  "choices": [
+   "Himself",
+   "His sons",
+   "The angels",
+   "The Gentiles"
+  ],
+  "answer": 0,
+  "explanation": "By reason hereof he ought, as for the people, so also for himself, to offer for sins.",
+  "ref": "Hebrews 5:3"
+ },
+ {
+  "id": "hebrews-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did not glorify himself to be made a high priest?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Christ",
+   "Melchisedec"
+  ],
+  "answer": 2,
+  "explanation": "Christ glorified not himself to be made an high priest; but he that said unto him, Thou art my Son.",
+  "ref": "Hebrews 5:5"
+ },
+ {
+  "id": "hebrews-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "He that useth milk is unskilful in what?",
+  "choices": [
+   "The word of righteousness",
+   "The law of Moses",
+   "The way of peace",
+   "The book of life"
+  ],
+  "answer": 0,
+  "explanation": "Every one that useth milk is unskilful in the word of righteousness: for he is a babe.",
+  "ref": "Hebrews 5:13"
+ },
+ {
+  "id": "hebrews-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they need to be taught again, when they ought to be teachers?",
+  "choices": [
+   "The law of Moses",
+   "The order of Aaron",
+   "The days of the feasts",
+   "The first principles of the oracles of God"
+  ],
+  "answer": 3,
+  "explanation": "Ye have need that one teach you again which be the first principles of the oracles of God.",
+  "ref": "Hebrews 5:12"
+ },
+ {
+  "id": "hebrews-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus become, once made perfect, to all that obey him?",
+  "choices": [
+   "The author of eternal salvation",
+   "The keeper of the law",
+   "The judge of the nations",
+   "The king of Israel"
+  ],
+  "answer": 0,
+  "explanation": "Being made perfect, he became the author of eternal salvation unto all them that obey him.",
+  "ref": "Hebrews 5:9"
+ },
+ {
+  "id": "hebrews-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why are many things hard to be uttered about Melchisedec?",
+  "choices": [
+   "The scriptures are sealed",
+   "Ye are dull of hearing",
+   "He lived long ago",
+   "The people are strangers"
+  ],
+  "answer": 1,
+  "explanation": "Of whom we have many things to say, and hard to be uttered, seeing ye are dull of hearing.",
+  "ref": "Hebrews 5:11"
+ },
+ {
+  "id": "hebrews-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long is Christ a priest, in the words from another place?",
+  "choices": [
+   "For ever",
+   "Seven years",
+   "Until the temple falls",
+   "Until he returns"
+  ],
+  "answer": 0,
+  "explanation": "Thou art a priest for ever after the order of Melchisedec.",
+  "ref": "Hebrews 5:6"
+ },
+ {
+  "id": "hebrews-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do those of full age discern by use of their senses?",
+  "choices": [
+   "Friend and enemy",
+   "Clean and unclean",
+   "Both good and evil",
+   "Prophets and kings"
+  ],
+  "answer": 2,
+  "explanation": "Their senses exercised to discern both good and evil.",
+  "ref": "Hebrews 5:14"
+ },
+ {
+  "id": "hebrews-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what was Jesus heard, when he prayed to him that was able to save him from death?",
+  "choices": [
+   "That he feared",
+   "That he was faithful",
+   "That he was holy",
+   "That he was a priest"
+  ],
+  "answer": 0,
+  "explanation": "He offered up prayers... unto him that was able to save him from death, and was heard in that he feared.",
+  "ref": "Hebrews 5:7"
+ },
+ {
+  "id": "hebrews-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "What ought the readers already to be, by reason of the time?",
+  "choices": [
+   "Teachers",
+   "Priests",
+   "Elders",
+   "Prophets"
+  ],
+  "answer": 0,
+  "explanation": "For when for the time ye ought to be teachers, ye have need that one teach you again.",
+  "ref": "Hebrews 5:12"
+ },
+ {
+  "id": "hebrews-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom is Christ the author of eternal salvation?",
+  "choices": [
+   "All the children of Abraham",
+   "All them that obey him",
+   "All who are priests",
+   "All who are of full age"
+  ],
+  "answer": 1,
+  "explanation": "He became the author of eternal salvation unto all them that obey him.",
+  "ref": "Hebrews 5:9"
+ },
+ {
+  "id": "hebrews-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "On whom can the high priest have compassion?",
+  "choices": [
+   "The ignorant and them that are out of the way",
+   "The kings and rulers",
+   "The angels of God",
+   "The strangers in the land"
+  ],
+  "answer": 0,
+  "explanation": "Who can have compassion on the ignorant, and on them that are out of the way.",
+  "ref": "Hebrews 5:2"
+ },
+ {
+  "id": "hebrews-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "In things pertaining to whom is every high priest ordained for men?",
+  "choices": [
+   "God",
+   "The king",
+   "The law",
+   "The temple"
+  ],
+  "answer": 0,
+  "explanation": "Every high priest taken from among men is ordained for men in things pertaining to God.",
+  "ref": "Hebrews 5:1"
  }
 ]
