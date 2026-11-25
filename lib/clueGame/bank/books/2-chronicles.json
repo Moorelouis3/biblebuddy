@@ -1140,16 +1140,16 @@
   "chapter": 3,
   "level": "medium",
   "category": "keyword",
-  "question": "What did Solomon make of blue, purple, crimson and fine linen, with cherubims on it?",
+  "question": "Where did Solomon put the chains he made, as in the oracle?",
   "choices": [
-   "The ephod",
-   "The veil",
-   "The curtains of the court",
-   "The roof"
+   "On the heads of the pillars",
+   "Around the altar",
+   "On the veil",
+   "On the cherubims' wings"
   ],
-  "answer": 1,
-  "explanation": "He made the vail of blue, and purple, and crimson, and fine linen, and wrought cherubims thereon.",
-  "ref": "2 Chronicles 3:14"
+  "answer": 0,
+  "explanation": "He made chains, as in the oracle, and put them on the heads of the pillars.",
+  "ref": "2 Chronicles 3:16"
  },
  {
   "id": "2-chronicles-3-h-01",
@@ -1300,7 +1300,7 @@
   "chapter": 4,
   "level": "beginner",
   "category": "keyword",
-  "question": "What large square object for sacrifices is mentioned first in this chapter?",
+  "question": "What large square object for sacrifices did Solomon make of brass, twenty cubits long?",
   "choices": [
    "The laver",
    "The ark",
@@ -1374,6 +1374,454 @@
   "answer": 2,
   "explanation": "Huram made the pots, shovels, and basons and finished his work for king Solomon.",
   "ref": "2 Chronicles 4:11"
+ },
+ {
+  "id": "2-chronicles-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the doors of the priests' court and the great court overlaid with?",
+  "choices": [
+   "Gold",
+   "Brass",
+   "Silver",
+   "Cedar only"
+  ],
+  "answer": 1,
+  "explanation": "Solomon made the court of the priests, and the great court, and overlaid the doors of them with brass.",
+  "ref": "2 Chronicles 4:9"
+ },
+ {
+  "id": "2-chronicles-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What could not be found out because there was so much of it?",
+  "choices": [
+   "The number of priests",
+   "The weight of the gold",
+   "The weight of the brass",
+   "The size of the court"
+  ],
+  "answer": 2,
+  "explanation": "Solomon made all these vessels in great abundance: for the weight of the brass could not be found out.",
+  "ref": "2 Chronicles 4:18"
+ },
+ {
+  "id": "2-chronicles-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was set on the golden tables Solomon made?",
+  "choices": [
+   "The incense",
+   "The lamps",
+   "The ark",
+   "The shewbread"
+  ],
+  "answer": 3,
+  "explanation": "Solomon made the golden altar also, and the tables whereon the shewbread was set.",
+  "ref": "2 Chronicles 4:19"
+ },
+ {
+  "id": "2-chronicles-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides the great court, which court did Solomon make?",
+  "choices": [
+   "The court of the priests",
+   "The court of the women",
+   "The court of the Gentiles",
+   "The court of the king"
+  ],
+  "answer": 0,
+  "explanation": "Furthermore he made the court of the priests, and the great court.",
+  "ref": "2 Chronicles 4:9"
+ },
+ {
+  "id": "2-chronicles-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the inner doors to the most holy place made of?",
+  "choices": [
+   "Brass",
+   "Gold",
+   "Cedar",
+   "Iron"
+  ],
+  "answer": 1,
+  "explanation": "The inner doors thereof for the most holy place were of gold.",
+  "ref": "2 Chronicles 4:22"
+ },
+ {
+  "id": "2-chronicles-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What metal were the hundred basons Solomon made?",
+  "choices": [
+   "Brass",
+   "Silver",
+   "Gold",
+   "Iron"
+  ],
+  "answer": 2,
+  "explanation": "He made also ten tables, and an hundred basons of gold.",
+  "ref": "2 Chronicles 4:8"
+ },
+ {
+  "id": "2-chronicles-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How wide was the molten sea from brim to brim?",
+  "choices": [
+   "Five cubits",
+   "Twenty cubits",
+   "Thirty cubits",
+   "Ten cubits"
+  ],
+  "answer": 3,
+  "explanation": "He made a molten sea of ten cubits from brim to brim, round in compass.",
+  "ref": "2 Chronicles 4:2"
+ },
+ {
+  "id": "2-chronicles-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the ten lavers placed?",
+  "choices": [
+   "Five on the right and five on the left",
+   "All on the right",
+   "In the court of the priests",
+   "Around the sea"
+  ],
+  "answer": 0,
+  "explanation": "He made ten lavers, and put five on the right hand, and five on the left.",
+  "ref": "2 Chronicles 4:6"
+ },
+ {
+  "id": "2-chronicles-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the lavers used for?",
+  "choices": [
+   "Washing the priests",
+   "Washing what was offered for the burnt offering",
+   "Holding the oil",
+   "Catching the blood"
+  ],
+  "answer": 1,
+  "explanation": "The things they offered for the burnt offering they washed in them; but the sea was for the priests to wash in.",
+  "ref": "2 Chronicles 4:6"
+ },
+ {
+  "id": "2-chronicles-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the king cast the brass vessels?",
+  "choices": [
+   "In Jerusalem",
+   "In Lebanon",
+   "In the plain of Jordan",
+   "At Joppa"
+  ],
+  "answer": 2,
+  "explanation": "In the plain of Jordan did the king cast them, in the clay ground.",
+  "ref": "2 Chronicles 4:17"
+ },
+ {
+  "id": "2-chronicles-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the sea set?",
+  "choices": [
+   "Before the veil",
+   "At the west end",
+   "In the great court gate",
+   "On the right side of the east end, over against the south"
+  ],
+  "answer": 3,
+  "explanation": "He set the sea on the right side of the east end, over against the south.",
+  "ref": "2 Chronicles 4:10"
+ },
+ {
+  "id": "2-chronicles-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many tables did Solomon make and place in the temple?",
+  "choices": [
+   "Ten",
+   "Five",
+   "Twelve",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "He made also ten tables, and placed them in the temple, five on the right side, and five on the left.",
+  "ref": "2 Chronicles 4:8"
+ },
+ {
+  "id": "2-chronicles-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the brim of the sea like?",
+  "choices": [
+   "A crown of gold",
+   "The brim of a cup with flowers of lilies",
+   "A row of oxen",
+   "A circle of palms"
+  ],
+  "answer": 1,
+  "explanation": "The brim of it was like the work of the brim of a cup, with flowers of lilies.",
+  "ref": "2 Chronicles 4:5"
+ },
+ {
+  "id": "2-chronicles-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many rows of oxen were cast under the sea?",
+  "choices": [
+   "One row",
+   "Three rows",
+   "Two rows",
+   "Four rows"
+  ],
+  "answer": 2,
+  "explanation": "Two rows of oxen were cast, when it was cast.",
+  "ref": "2 Chronicles 4:3"
+ },
+ {
+  "id": "2-chronicles-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these were made of pure gold?",
+  "choices": [
+   "The pots",
+   "The shovels",
+   "The fleshhooks",
+   "The spoons and censers"
+  ],
+  "answer": 3,
+  "explanation": "The snuffers, and the basons, and the spoons, and the censers, were of pure gold.",
+  "ref": "2 Chronicles 4:22"
+ },
+ {
+  "id": "2-chronicles-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Huram make for the tops of the two pillars?",
+  "choices": [
+   "Pommels, chapiters and wreaths",
+   "Chains and bells",
+   "Crowns of gold",
+   "Cherubims"
+  ],
+  "answer": 0,
+  "explanation": "Huram made the two pillars, and the pommels, and the chapiters, and the two wreaths to cover the pommels.",
+  "ref": "2 Chronicles 4:11–12"
+ },
+ {
+  "id": "2-chronicles-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the golden candlesticks divided in the temple?",
+  "choices": [
+   "Seven in a row",
+   "Five on the right and five on the left",
+   "All before the veil",
+   "Two on each side"
+  ],
+  "answer": 1,
+  "explanation": "He made ten candlesticks of gold, and set them in the temple, five on the right hand, and five on the left.",
+  "ref": "2 Chronicles 4:7"
+ },
+ {
+  "id": "2-chronicles-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How high was the brass altar?",
+  "choices": [
+   "Twenty cubits",
+   "Five cubits",
+   "Ten cubits",
+   "Thirty cubits"
+  ],
+  "answer": 2,
+  "explanation": "He made an altar of brass, twenty cubits the length, twenty cubits the breadth, and ten cubits the height.",
+  "ref": "2 Chronicles 4:1"
+ },
+ {
+  "id": "2-chronicles-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How high was the molten sea?",
+  "choices": [
+   "Ten cubits",
+   "Three cubits",
+   "Thirty cubits",
+   "Five cubits"
+  ],
+  "answer": 3,
+  "explanation": "He made a molten sea of ten cubits from brim to brim, and five cubits the height thereof.",
+  "ref": "2 Chronicles 4:2"
+ },
+ {
+  "id": "2-chronicles-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was the line that compassed the sea round about?",
+  "choices": [
+   "Thirty cubits",
+   "Ten cubits",
+   "Five cubits",
+   "Twenty cubits"
+  ],
+  "answer": 0,
+  "explanation": "A line of thirty cubits did compass it round about.",
+  "ref": "2 Chronicles 4:2"
+ },
+ {
+  "id": "2-chronicles-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many baths did the sea receive and hold?",
+  "choices": [
+   "Two thousand",
+   "Three thousand",
+   "Twelve thousand",
+   "Three hundred"
+  ],
+  "answer": 1,
+  "explanation": "It received and held three thousand baths.",
+  "ref": "2 Chronicles 4:5"
+ },
+ {
+  "id": "2-chronicles-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How thick was the sea?",
+  "choices": [
+   "A cubit",
+   "A span",
+   "A handbreadth",
+   "A finger"
+  ],
+  "answer": 2,
+  "explanation": "The thickness of it was an handbreadth.",
+  "ref": "2 Chronicles 4:5"
+ },
+ {
+  "id": "2-chronicles-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many pomegranates were on the two wreaths?",
+  "choices": [
+   "One hundred",
+   "Two hundred",
+   "Twelve",
+   "Four hundred"
+  ],
+  "answer": 3,
+  "explanation": "Huram made four hundred pomegranates on the two wreaths.",
+  "ref": "2 Chronicles 4:13"
+ },
+ {
+  "id": "2-chronicles-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many rows of pomegranates covered each wreath?",
+  "choices": [
+   "Two rows",
+   "One row",
+   "Three rows",
+   "Four rows"
+  ],
+  "answer": 0,
+  "explanation": "There were two rows of pomegranates on each wreath, to cover the two pommels.",
+  "ref": "2 Chronicles 4:13"
+ },
+ {
+  "id": "2-chronicles-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "The vessels were cast between which two places?",
+  "choices": [
+   "Joppa and Gaza",
+   "Succoth and Zeredathah",
+   "Hebron and Gibeon",
+   "Dan and Bethel"
+  ],
+  "answer": 1,
+  "explanation": "The king cast them in the clay ground between Succoth and Zeredathah.",
+  "ref": "2 Chronicles 4:17"
+ },
+ {
+  "id": "2-chronicles-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many oxen faced each of the four directions under the sea?",
+  "choices": [
+   "Two",
+   "Four",
+   "Three",
+   "Six"
+  ],
+  "answer": 2,
+  "explanation": "It stood upon twelve oxen, three looking toward the north, and three toward the west, and three toward the south, and three toward the east.",
+  "ref": "2 Chronicles 4:4"
+ },
+ {
+  "id": "2-chronicles-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many oxen were there to a cubit round about the sea?",
+  "choices": [
+   "Three",
+   "Twelve",
+   "Two",
+   "Ten"
+  ],
+  "answer": 3,
+  "explanation": "Under it was the similitude of oxen, which did compass it round about: ten in a cubit.",
+  "ref": "2 Chronicles 4:3"
+ },
+ {
+  "id": "2-chronicles-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of brass were the pots, shovels and fleshhooks made of?",
+  "choices": [
+   "Bright brass",
+   "Beaten brass",
+   "Burnished iron",
+   "Gilded brass"
+  ],
+  "answer": 0,
+  "explanation": "Huram made the pots, and the shovels, and the fleshhooks, of bright brass.",
+  "ref": "2 Chronicles 4:16"
  },
  {
   "id": "old-2-chronicles-5-1",
