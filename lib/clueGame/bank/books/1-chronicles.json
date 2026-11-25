@@ -11632,6 +11632,406 @@
   "ref": "1 Chronicles 19:13"
  },
  {
+  "id": "1-chronicles-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in the stead of Nahash king of the Ammonites?",
+  "choices": [
+   "Hanun his son",
+   "Shophach",
+   "Tou",
+   "Hadarezer"
+  ],
+  "answer": 0,
+  "explanation": "Nahash died, and his son reigned in his stead; David said, I will shew kindness unto Hanun the son of Nahash.",
+  "ref": "1 Chronicles 19:1–2"
+ },
+ {
+  "id": "1-chronicles-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did David want to show kindness to Hanun?",
+  "choices": [
+   "His father had shewed kindness to David",
+   "Hanun was his brother",
+   "Hanun had joined Israel",
+   "Hanun sent gifts"
+  ],
+  "answer": 0,
+  "explanation": "I will shew kindness unto Hanun the son of Nahash, because his father shewed kindness to me.",
+  "ref": "1 Chronicles 19:2"
+ },
+ {
+  "id": "1-chronicles-19-e-03",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David send to Hanun?",
+  "choices": [
+   "An army",
+   "Messengers to comfort him",
+   "Gifts of gold",
+   "A letter of peace"
+  ],
+  "answer": 1,
+  "explanation": "David sent messengers to comfort him concerning his father.",
+  "ref": "1 Chronicles 19:2"
+ },
+ {
+  "id": "1-chronicles-19-e-04",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who led Israel's army against the Ammonites, sent by David?",
+  "choices": [
+   "Shophach",
+   "Abishai",
+   "Benaiah",
+   "Joab"
+  ],
+  "answer": 3,
+  "explanation": "When David heard of it, he sent Joab, and all the host of the mighty men.",
+  "ref": "1 Chronicles 19:8"
+ },
+ {
+  "id": "1-chronicles-19-e-05",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Syrians do when David's army fought them?",
+  "choices": [
+   "They took Jericho",
+   "They sent peace gifts",
+   "They fled",
+   "They held the field"
+  ],
+  "answer": 2,
+  "explanation": "Joab and the people drew nigh before the Syrians unto the battle; and they fled before him.",
+  "ref": "1 Chronicles 19:14"
+ },
+ {
+  "id": "1-chronicles-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the princes of Ammon say David's servants had come to do?",
+  "choices": [
+   "Ask for help",
+   "Bring tribute",
+   "Search, overthrow and spy out the land",
+   "Demand a ransom"
+  ],
+  "answer": 2,
+  "explanation": "Are not his servants come unto thee for to search, and to overthrow, and to spy out the land?",
+  "ref": "1 Chronicles 19:3"
+ },
+ {
+  "id": "1-chronicles-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hanun do to David's servants?",
+  "choices": [
+   "Put them in prison",
+   "Shaved them and cut off their garments in the midst",
+   "Sent them home with gifts",
+   "Took their weapons only"
+  ],
+  "answer": 1,
+  "explanation": "Hanun took David's servants, and shaved them, and cut off their garments in the midst, and sent them away.",
+  "ref": "1 Chronicles 19:4"
+ },
+ {
+  "id": "1-chronicles-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David respond to the men when he heard how they were served?",
+  "choices": [
+   "Made them captains",
+   "Sent them away to Zobah",
+   "Told them to tarry at Jericho till beards grew",
+   "Sent them to Hanun again"
+  ],
+  "answer": 2,
+  "explanation": "The king said, Tarry at Jericho until your beards be grown, and then return.",
+  "ref": "1 Chronicles 19:5"
+ },
+ {
+  "id": "1-chronicles-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ammon realize before they hired the Syrians?",
+  "choices": [
+   "They had made themselves odious to David",
+   "They had no gold",
+   "They were few",
+   "Hanun was dead"
+  ],
+  "answer": 0,
+  "explanation": "When the children of Ammon saw that they had made themselves odious to David...",
+  "ref": "1 Chronicles 19:6"
+ },
+ {
+  "id": "1-chronicles-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much silver did Ammon send to hire chariots and horsemen?",
+  "choices": [
+   "Seven hundred pieces",
+   "Ten thousand shekels",
+   "A thousand talents",
+   "Two thousand talents"
+  ],
+  "answer": 2,
+  "explanation": "Hanun and the children of Ammon sent a thousand talents of silver.",
+  "ref": "1 Chronicles 19:6"
+ },
+ {
+  "id": "1-chronicles-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the hired Syrian army pitch their camp?",
+  "choices": [
+   "By the Euphrates",
+   "At Jericho",
+   "At Hamath",
+   "Before Medeba"
+  ],
+  "answer": 3,
+  "explanation": "The king of Maachah and his people came and pitched before Medeba.",
+  "ref": "1 Chronicles 19:7"
+ },
+ {
+  "id": "1-chronicles-19-m-07",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the Ammonites put their battle in array?",
+  "choices": [
+   "In the valley of salt",
+   "On a mountain",
+   "Before the gate of the city",
+   "By the river"
+  ],
+  "answer": 2,
+  "explanation": "The children of Ammon came out, and put the battle in array before the gate of the city.",
+  "ref": "1 Chronicles 19:9"
+ },
+ {
+  "id": "1-chronicles-19-m-08",
+  "chapter": 19,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Joab put in charge of the rest of the people against Ammon?",
+  "choices": [
+   "Hadoram",
+   "Benaiah",
+   "Abishai his brother",
+   "Shavsha"
+  ],
+  "answer": 2,
+  "explanation": "The rest of the people he delivered unto the hand of Abishai his brother.",
+  "ref": "1 Chronicles 19:11"
+ },
+ {
+  "id": "1-chronicles-19-m-09",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joab say to Abishai if the Syrians proved too strong?",
+  "choices": [
+   "Thou shalt help me",
+   "Return to Jerusalem",
+   "Sound the trumpet",
+   "Flee"
+  ],
+  "answer": 0,
+  "explanation": "If the Syrians be too strong for me, then thou shalt help me: but if the children of Ammon be too strong for thee, then I will help thee.",
+  "ref": "1 Chronicles 19:12"
+ },
+ {
+  "id": "1-chronicles-19-m-10",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joab say Israel was fighting valiantly for?",
+  "choices": [
+   "The ark",
+   "The king's honour",
+   "Their people and the cities of their God",
+   "The gold"
+  ],
+  "answer": 2,
+  "explanation": "Let us behave ourselves valiantly for our people, and for the cities of our God.",
+  "ref": "1 Chronicles 19:13"
+ },
+ {
+  "id": "1-chronicles-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many chariots did they hire from the Syrians?",
+  "choices": [
+   "Twelve thousand",
+   "Seven thousand",
+   "Thirty and two thousand",
+   "A thousand"
+  ],
+  "answer": 2,
+  "explanation": "They hired thirty and two thousand chariots, and the king of Maachah and his people.",
+  "ref": "1 Chronicles 19:7"
+ },
+ {
+  "id": "1-chronicles-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joab chose out of the choice of Israel to fight against which people?",
+  "choices": [
+   "The Syrians",
+   "The Ammonites",
+   "The Edomites",
+   "The Philistines"
+  ],
+  "answer": 0,
+  "explanation": "Joab chose out of all the choice of Israel, and put them in array against the Syrians.",
+  "ref": "1 Chronicles 19:10"
+ },
+ {
+  "id": "1-chronicles-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After the Ammonites saw the Syrians flee, where did they flee?",
+  "choices": [
+   "To Medeba",
+   "Into the city",
+   "To Jericho",
+   "Across Jordan"
+  ],
+  "answer": 1,
+  "explanation": "The children of Ammon likewise fled before Abishai his brother, and entered into the city.",
+  "ref": "1 Chronicles 19:15"
+ },
+ {
+  "id": "1-chronicles-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the captain of the host of Hadarezer?",
+  "choices": [
+   "Shophach",
+   "Tou",
+   "Hanun",
+   "Hadoram"
+  ],
+  "answer": 0,
+  "explanation": "Shophach the captain of the host of Hadarezer went before them.",
+  "ref": "1 Chronicles 19:16"
+ },
+ {
+  "id": "1-chronicles-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What river did David pass over to come upon the Syrians?",
+  "choices": [
+   "Euphrates",
+   "Jordan",
+   "Jabbok",
+   "Arnon"
+  ],
+  "answer": 1,
+  "explanation": "David gathered all Israel, and passed over Jordan, and came upon them.",
+  "ref": "1 Chronicles 19:17"
+ },
+ {
+  "id": "1-chronicles-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Syrian chariot fighters did David slay?",
+  "choices": [
+   "Seven thousand",
+   "Thirty-two thousand",
+   "Forty thousand",
+   "A thousand"
+  ],
+  "answer": 0,
+  "explanation": "David slew of the Syrians seven thousand men which fought in chariots, and forty thousand footmen.",
+  "ref": "1 Chronicles 19:18"
+ },
+ {
+  "id": "1-chronicles-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Syrian footmen did David slay?",
+  "choices": [
+   "Two and twenty thousand",
+   "Seven thousand",
+   "Twenty thousand",
+   "Forty thousand"
+  ],
+  "answer": 3,
+  "explanation": "David slew seven thousand chariot men and forty thousand footmen.",
+  "ref": "1 Chronicles 19:18"
+ },
+ {
+  "id": "1-chronicles-19-h-08",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the servants of Hadarezer do after being put to the worse?",
+  "choices": [
+   "Burned their chariots",
+   "Fled to Zobah",
+   "Hired more horsemen",
+   "Made peace with David and became his servants"
+  ],
+  "answer": 3,
+  "explanation": "They made peace with David, and became his servants.",
+  "ref": "1 Chronicles 19:19"
+ },
+ {
+  "id": "1-chronicles-19-h-09",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the Syrians no longer do after their defeat?",
+  "choices": [
+   "Help the Ammonites",
+   "Send messengers to David",
+   "Enter Medeba",
+   "Pay silver"
+  ],
+  "answer": 0,
+  "explanation": "Neither would the Syrians help the children of Ammon any more.",
+  "ref": "1 Chronicles 19:19"
+ },
+ {
+  "id": "1-chronicles-19-h-10",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Joab go after the Ammonites entered their city?",
+  "choices": [
+   "Jerusalem",
+   "Jericho",
+   "Medeba",
+   "Zobah"
+  ],
+  "answer": 0,
+  "explanation": "Then Joab came to Jerusalem.",
+  "ref": "1 Chronicles 19:15"
+ },
+ {
   "id": "old-1-chronicles-20-1",
   "chapter": 20,
   "level": "beginner",
