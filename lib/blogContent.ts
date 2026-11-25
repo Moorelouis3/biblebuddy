@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-30-explained",
+    title: "1 Samuel 30 Explained: Ziklag Burned and David's Rescue",
+    description:
+      "1 Samuel 30 explained verse by verse: Ziklag burns, David's family is taken captive, and he recovers everyone after asking God first.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-30-explained",
+    publishedAt: "2026-11-25",
+    readTime: "15 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 30 Explained 📖",
+      content:
+        "David comes home to a burned town.\nHis own men talk about stoning him.\n\n📌 The first move in a crisis sets the direction for every move after.\n\n📖 Ziklag is raided while David's men are away.\n📖 David asks God before he chases the raiders.\n📖 He recovers every missing person, nothing lost.\n\nNew article on:\n🟢 the near mutiny inside **David's** own camp\n🟢 the abandoned slave who **led the rescue**\n🟢 the rule David made that **outlived him**\n\nHave you ever steadied yourself in God before you had any idea what to do next? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-29-explained",
     title: "1 Samuel 29 Explained: Sent Home Before the Battle",
     description:
