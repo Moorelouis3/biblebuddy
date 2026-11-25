@@ -4656,6 +4656,406 @@
   "ref": "2 Chronicles 10:15"
  },
  {
+  "id": "2-chronicles-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who returned from Egypt when he heard Rehoboam was being made king?",
+  "choices": [
+   "Jeroboam the son of Nebat",
+   "Hadoram",
+   "Ahijah",
+   "Shemaiah"
+  ],
+  "answer": 0,
+  "explanation": "Jeroboam the son of Nebat, who was in Egypt, heard it, and returned out of Egypt.",
+  "ref": "2 Chronicles 10:2"
+ },
+ {
+  "id": "2-chronicles-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did king Rehoboam flee after Hadoram was stoned?",
+  "choices": [
+   "Hebron",
+   "Jerusalem",
+   "Shechem",
+   "Egypt"
+  ],
+  "answer": 1,
+  "explanation": "King Rehoboam made speed to get him up to his chariot, to flee to Jerusalem.",
+  "ref": "2 Chronicles 10:18"
+ },
+ {
+  "id": "2-chronicles-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Over whom did Rehoboam still reign after Israel went to their tents?",
+  "choices": [
+   "The people of Shechem",
+   "The old men",
+   "Children of Israel in the cities of Judah",
+   "The tribe of Ephraim"
+  ],
+  "answer": 2,
+  "explanation": "Of the children of Israel that dwelt in the cities of Judah, Rehoboam reigned over them.",
+  "ref": "2 Chronicles 10:17"
+ },
+ {
+  "id": "2-chronicles-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Against whose house did Israel rebel?",
+  "choices": [
+   "The house of Saul",
+   "The house of Jeroboam",
+   "The house of Ahijah",
+   "The house of David"
+  ],
+  "answer": 3,
+  "explanation": "Israel rebelled against the house of David unto this day.",
+  "ref": "2 Chronicles 10:19"
+ },
+ {
+  "id": "2-chronicles-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After how many days did Rehoboam tell the people to come again to him?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Ten",
+   "Two"
+  ],
+  "answer": 0,
+  "explanation": "He said unto them, Come again unto me after three days.",
+  "ref": "2 Chronicles 10:5"
+ },
+ {
+  "id": "2-chronicles-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the old men say the people would be if Rehoboam was kind and pleased them?",
+  "choices": [
+   "His enemies",
+   "His servants for ever",
+   "His soldiers",
+   "His priests"
+  ],
+  "answer": 1,
+  "explanation": "If thou be kind to this people, and please them, they will be thy servants for ever.",
+  "ref": "2 Chronicles 10:7"
+ },
+ {
+  "id": "2-chronicles-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did Rehoboam say he would chastise the people?",
+  "choices": [
+   "Rods",
+   "Chains",
+   "Scorpions",
+   "Whips"
+  ],
+  "answer": 2,
+  "explanation": "My father chastised you with whips, but I will chastise you with scorpions.",
+  "ref": "2 Chronicles 10:14"
+ },
+ {
+  "id": "2-chronicles-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who spoke the word to Jeroboam that the LORD performed through Rehoboam's refusal?",
+  "choices": [
+   "Shemaiah",
+   "Nathan",
+   "Iddo",
+   "Ahijah the Shilonite"
+  ],
+  "answer": 3,
+  "explanation": "The LORD might perform his word, which he spake by the hand of Ahijah the Shilonite to Jeroboam.",
+  "ref": "2 Chronicles 10:15"
+ },
+ {
+  "id": "2-chronicles-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "In whom did the people say they had no inheritance?",
+  "choices": [
+   "The son of Jesse",
+   "The son of Nebat",
+   "The son of Solomon",
+   "The son of Hadoram"
+  ],
+  "answer": 0,
+  "explanation": "The people said, We have none inheritance in the son of Jesse.",
+  "ref": "2 Chronicles 10:16"
+ },
+ {
+  "id": "2-chronicles-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Rehoboam consult after he forsook the old men's counsel?",
+  "choices": [
+   "The prophets",
+   "Young men brought up with him",
+   "The priests",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "He took counsel with the young men that were brought up with him, that stood before him.",
+  "ref": "2 Chronicles 10:8"
+ },
+ {
+  "id": "2-chronicles-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Hadoram over, when Rehoboam sent him?",
+  "choices": [
+   "The temple",
+   "The cities of Judah",
+   "The tribute",
+   "The army"
+  ],
+  "answer": 2,
+  "explanation": "King Rehoboam sent Hadoram that was over the tribute.",
+  "ref": "2 Chronicles 10:18"
+ },
+ {
+  "id": "2-chronicles-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the king answer the people on the third day?",
+  "choices": [
+   "Kindly",
+   "With silence",
+   "With a promise",
+   "Roughly"
+  ],
+  "answer": 3,
+  "explanation": "The king answered them roughly; and king Rehoboam forsook the counsel of the old men.",
+  "ref": "2 Chronicles 10:13"
+ },
+ {
+  "id": "2-chronicles-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did all Israel go when the king would not hearken unto them?",
+  "choices": [
+   "To their tents",
+   "To Egypt",
+   "To Jerusalem",
+   "To Shechem"
+  ],
+  "answer": 0,
+  "explanation": "So all Israel went to their tents.",
+  "ref": "2 Chronicles 10:16"
+ },
+ {
+  "id": "2-chronicles-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people promise if Rehoboam would ease the yoke of his father?",
+  "choices": [
+   "We will go to war",
+   "We will serve thee",
+   "We will make thee priest",
+   "We will pay tribute double"
+  ],
+  "answer": 1,
+  "explanation": "Ease thou somewhat the grievous servitude of thy father, and we will serve thee.",
+  "ref": "2 Chronicles 10:4"
+ },
+ {
+  "id": "2-chronicles-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Rehoboam ask the old men and the young men to advise him about?",
+  "choices": [
+   "How to build cities",
+   "Whether to fight Jeroboam",
+   "How to answer the people",
+   "Whether to flee to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "He asked, What counsel give ye me to return answer to this people?",
+  "ref": "2 Chronicles 10:6"
+ },
+ {
+  "id": "2-chronicles-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what did the young men say Solomon had chastised the people?",
+  "choices": [
+   "Scorpions",
+   "Rods",
+   "Chains",
+   "Whips"
+  ],
+  "answer": 3,
+  "explanation": "My father chastised you with whips, but I will chastise you with scorpions.",
+  "ref": "2 Chronicles 10:11"
+ },
+ {
+  "id": "2-chronicles-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did Rehoboam make speed to flee to Jerusalem?",
+  "choices": [
+   "His chariot",
+   "A ship",
+   "A mule",
+   "A tent"
+  ],
+  "answer": 0,
+  "explanation": "King Rehoboam made speed to get him up to his chariot, to flee to Jerusalem.",
+  "ref": "2 Chronicles 10:18"
+ },
+ {
+  "id": "2-chronicles-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the old men say Rehoboam should speak to the people?",
+  "choices": [
+   "Nothing",
+   "Good words",
+   "Strong words",
+   "A decree"
+  ],
+  "answer": 1,
+  "explanation": "If thou be kind to this people, and please them, and speak good words to them.",
+  "ref": "2 Chronicles 10:7"
+ },
+ {
+  "id": "2-chronicles-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people say David should see to?",
+  "choices": [
+   "His own tribute",
+   "His own flock",
+   "His own house",
+   "His own tent"
+  ],
+  "answer": 2,
+  "explanation": "Now, David, see to thine own house.",
+  "ref": "2 Chronicles 10:16"
+ },
+ {
+  "id": "2-chronicles-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was the Jeroboam who was in Egypt?",
+  "choices": [
+   "Jesse",
+   "Hadoram",
+   "Solomon",
+   "Nebat"
+  ],
+  "answer": 3,
+  "explanation": "Jeroboam the son of Nebat, who was in Egypt.",
+  "ref": "2 Chronicles 10:2"
+ },
+ {
+  "id": "2-chronicles-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who stoned Hadoram so that he died?",
+  "choices": [
+   "The children of Israel",
+   "The old men",
+   "The Levites",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel stoned him with stones, that he died.",
+  "ref": "2 Chronicles 10:18"
+ },
+ {
+  "id": "2-chronicles-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom had Jeroboam fled to Egypt?",
+  "choices": [
+   "Ahijah",
+   "Solomon the king",
+   "Rehoboam",
+   "Hadoram"
+  ],
+  "answer": 1,
+  "explanation": "Jeroboam had fled from the presence of Solomon the king.",
+  "ref": "2 Chronicles 10:2"
+ },
+ {
+  "id": "2-chronicles-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who came with Jeroboam to speak to Rehoboam?",
+  "choices": [
+   "The priests",
+   "The Levites",
+   "All Israel",
+   "The old men"
+  ],
+  "answer": 2,
+  "explanation": "Jeroboam and all Israel came and spake to Rehoboam.",
+  "ref": "2 Chronicles 10:3"
+ },
+ {
+  "id": "2-chronicles-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who sent for Jeroboam and called him back?",
+  "choices": [
+   "Rehoboam",
+   "Solomon",
+   "Ahijah",
+   "All Israel (the people)"
+  ],
+  "answer": 3,
+  "explanation": "They sent and called him. So Jeroboam and all Israel came and spake to Rehoboam.",
+  "ref": "2 Chronicles 10:3"
+ },
+ {
+  "id": "2-chronicles-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were the old men and the young men said to have stood?",
+  "choices": [
+   "Before Solomon and before Rehoboam",
+   "At the gate of Shechem",
+   "In the temple",
+   "On the walls of Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "The old men stood before Solomon; the young men were brought up with Rehoboam and stood before him.",
+  "ref": "2 Chronicles 10:6–8"
+ },
+ {
   "id": "old-2-chronicles-11-1",
   "chapter": 11,
   "level": "beginner",
