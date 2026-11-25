@@ -6112,6 +6112,454 @@
   "ref": "2 Chronicles 13:18"
  },
  {
+  "id": "2-chronicles-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "Over which kingdom did Abijah begin to reign?",
+  "choices": [
+   "Judah",
+   "Israel",
+   "Edom",
+   "Egypt"
+  ],
+  "answer": 0,
+  "explanation": "In the eighteenth year of king Jeroboam began Abijah to reign over Judah.",
+  "ref": "2 Chronicles 13:1"
+ },
+ {
+  "id": "2-chronicles-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did Abijah reign in Jerusalem?",
+  "choices": [
+   "Eighteen",
+   "Three",
+   "Seventeen",
+   "Forty"
+  ],
+  "answer": 1,
+  "explanation": "He reigned three years in Jerusalem.",
+  "ref": "2 Chronicles 13:2"
+ },
+ {
+  "id": "2-chronicles-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what mount did Abijah speak to Jeroboam and all Israel?",
+  "choices": [
+   "Mount Gilboa",
+   "Mount Moriah",
+   "Mount Zemaraim",
+   "Mount Carmel"
+  ],
+  "answer": 2,
+  "explanation": "Abijah stood up upon mount Zemaraim, which is in mount Ephraim.",
+  "ref": "2 Chronicles 13:4"
+ },
+ {
+  "id": "2-chronicles-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jeroboam make that Abijah called 'gods'?",
+  "choices": [
+   "A brass serpent",
+   "An ark",
+   "A tabernacle",
+   "Golden calves"
+  ],
+  "answer": 3,
+  "explanation": "There are with you golden calves, which Jeroboam made you for gods.",
+  "ref": "2 Chronicles 13:8"
+ },
+ {
+  "id": "2-chronicles-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did God smite before Abijah and Judah?",
+  "choices": [
+   "Jeroboam and all Israel",
+   "The Egyptians",
+   "The Philistines",
+   "The Ethiopians"
+  ],
+  "answer": 0,
+  "explanation": "God smote Jeroboam and all Israel before Abijah and Judah.",
+  "ref": "2 Chronicles 13:15"
+ },
+ {
+  "id": "2-chronicles-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city did Abijah take from Jeroboam, along with its towns?",
+  "choices": [
+   "Hebron",
+   "Bethel",
+   "Jericho",
+   "Shechem"
+  ],
+  "answer": 1,
+  "explanation": "Abijah took cities from him, Bethel with the towns thereof, and Jeshanah, and Ephrain.",
+  "ref": "2 Chronicles 13:19"
+ },
+ {
+  "id": "2-chronicles-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Abijah's mother?",
+  "choices": [
+   "Naamah",
+   "Mahalath",
+   "Michaiah the daughter of Uriel",
+   "Maachah the daughter of Absalom"
+  ],
+  "answer": 2,
+  "explanation": "His mother's name also was Michaiah the daughter of Uriel of Gibeah.",
+  "ref": "2 Chronicles 13:2"
+ },
+ {
+  "id": "2-chronicles-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many chosen men did Abijah set in array?",
+  "choices": [
+   "Eight hundred thousand",
+   "Five hundred thousand",
+   "Two hundred thousand",
+   "Four hundred thousand"
+  ],
+  "answer": 3,
+  "explanation": "Abijah set the battle in array with four hundred thousand chosen men.",
+  "ref": "2 Chronicles 13:3"
+ },
+ {
+  "id": "2-chronicles-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many chosen men did Jeroboam set in array?",
+  "choices": [
+   "Eight hundred thousand",
+   "Four hundred thousand",
+   "Five hundred thousand",
+   "Twelve hundred"
+  ],
+  "answer": 0,
+  "explanation": "Jeroboam set the battle in array against him with eight hundred thousand chosen men.",
+  "ref": "2 Chronicles 13:3"
+ },
+ {
+  "id": "2-chronicles-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abijah call the covenant by which God gave the kingdom to David?",
+  "choices": [
+   "A covenant of oil",
+   "A covenant of salt",
+   "A covenant of peace",
+   "A covenant of the rainbow"
+  ],
+  "answer": 1,
+  "explanation": "The LORD God of Israel gave the kingdom over Israel to David for ever, by a covenant of salt.",
+  "ref": "2 Chronicles 13:5"
+ },
+ {
+  "id": "2-chronicles-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abijah call the men gathered to Jeroboam?",
+  "choices": [
+   "Priests of the calves",
+   "Mighty men of Gibeah",
+   "Vain men, the children of Belial",
+   "Valiant men of Ephraim"
+  ],
+  "answer": 2,
+  "explanation": "There are gathered unto him vain men, the children of Belial.",
+  "ref": "2 Chronicles 13:7"
+ },
+ {
+  "id": "2-chronicles-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Which priests had Jeroboam cast out?",
+  "choices": [
+   "The sons of Zadok",
+   "The sons of Eli",
+   "The sons of Korah",
+   "The sons of Aaron and the Levites"
+  ],
+  "answer": 3,
+  "explanation": "Have ye not cast out the priests of the LORD, the sons of Aaron, and the Levites?",
+  "ref": "2 Chronicles 13:9"
+ },
+ {
+  "id": "2-chronicles-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What offering made a man a priest of Jeroboam's gods?",
+  "choices": [
+   "A young bullock and seven rams",
+   "A lamb and a goat",
+   "Two turtledoves",
+   "A ram and a ephah of flour"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever cometh to consecrate himself with a young bullock and seven rams may be a priest of them that are no gods.",
+  "ref": "2 Chronicles 13:9"
+ },
+ {
+  "id": "2-chronicles-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jeroboam cause to come about behind Judah?",
+  "choices": [
+   "Chariots of Egypt",
+   "An ambushment",
+   "A flood",
+   "A plague"
+  ],
+  "answer": 1,
+  "explanation": "Jeroboam caused an ambushment to come about behind them.",
+  "ref": "2 Chronicles 13:13"
+ },
+ {
+  "id": "2-chronicles-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many chosen men of Israel fell slain?",
+  "choices": [
+   "Eight hundred thousand",
+   "Eighteen thousand",
+   "Five hundred thousand",
+   "Four hundred thousand"
+  ],
+  "answer": 2,
+  "explanation": "There fell down slain of Israel five hundred thousand chosen men.",
+  "ref": "2 Chronicles 13:17"
+ },
+ {
+  "id": "2-chronicles-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many wives did Abijah marry?",
+  "choices": [
+   "Eighteen",
+   "Twelve",
+   "Twenty and two",
+   "Fourteen"
+  ],
+  "answer": 3,
+  "explanation": "Abijah waxed mighty, and married fourteen wives, and begat twenty and two sons, and sixteen daughters.",
+  "ref": "2 Chronicles 13:21"
+ },
+ {
+  "id": "2-chronicles-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Judah do when they looked back and saw the battle before and behind?",
+  "choices": [
+   "Cried unto the LORD",
+   "Fled to Jerusalem",
+   "Laid down their arms",
+   "Sent for Asa"
+  ],
+  "answer": 0,
+  "explanation": "When Judah looked back, the battle was before and behind: and they cried unto the LORD.",
+  "ref": "2 Chronicles 13:14"
+ },
+ {
+  "id": "2-chronicles-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose servant was Jeroboam the son of Nebat, said Abijah?",
+  "choices": [
+   "Saul's",
+   "Solomon's",
+   "David's",
+   "Rehoboam's"
+  ],
+  "answer": 1,
+  "explanation": "Jeroboam the son of Nebat, the servant of Solomon the son of David, is risen up, and hath rebelled against his lord.",
+  "ref": "2 Chronicles 13:6"
+ },
+ {
+  "id": "2-chronicles-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abijah say Rehoboam was when he could not withstand them?",
+  "choices": [
+   "Proud and stiffnecked",
+   "Sick and weak",
+   "Young and tenderhearted",
+   "Old and weary"
+  ],
+  "answer": 2,
+  "explanation": "Rehoboam was young and tenderhearted, and could not withstand them.",
+  "ref": "2 Chronicles 13:7"
+ },
+ {
+  "id": "2-chronicles-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priests of Judah burn every morning and every evening?",
+  "choices": [
+   "Bullocks and rams",
+   "Spices and oil",
+   "Corn and wine",
+   "Burnt sacrifices and sweet incense"
+  ],
+  "answer": 3,
+  "explanation": "They burn unto the LORD every morning and every evening burnt sacrifices and sweet incense.",
+  "ref": "2 Chronicles 13:11"
+ },
+ {
+  "id": "2-chronicles-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what table did Judah set the shewbread in order?",
+  "choices": [
+   "The pure table",
+   "The table of brass",
+   "The table of ivory",
+   "The table of cedar"
+  ],
+  "answer": 0,
+  "explanation": "The shewbread also set they in order upon the pure table.",
+  "ref": "2 Chronicles 13:11"
+ },
+ {
+  "id": "2-chronicles-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abijah say God had for a captain, with sounding trumpets?",
+  "choices": [
+   "The sons of Aaron only",
+   "God himself, and his priests",
+   "The ark",
+   "Abijah the king"
+  ],
+  "answer": 1,
+  "explanation": "God himself is with us for our captain, and his priests with sounding trumpets to cry alarm.",
+  "ref": "2 Chronicles 13:12"
+ },
+ {
+  "id": "2-chronicles-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men of Judah do when God smote Israel?",
+  "choices": [
+   "They fell on their faces",
+   "They sang a psalm",
+   "They gave a shout",
+   "They offered sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "The men of Judah gave a shout: and as they shouted, God smote Jeroboam and all Israel.",
+  "ref": "2 Chronicles 13:15"
+ },
+ {
+  "id": "2-chronicles-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these did Abijah take from Jeroboam?",
+  "choices": [
+   "Shiloh",
+   "Gilgal",
+   "Beersheba",
+   "Jeshanah"
+  ],
+  "answer": 3,
+  "explanation": "Abijah took Bethel, and Jeshanah, and Ephrain, each with the towns thereof.",
+  "ref": "2 Chronicles 13:19"
+ },
+ {
+  "id": "2-chronicles-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to Jeroboam in the days of Abijah?",
+  "choices": [
+   "The LORD struck him, and he died",
+   "He fled to Egypt",
+   "He repented",
+   "Abijah slew him in battle"
+  ],
+  "answer": 0,
+  "explanation": "Neither did Jeroboam recover strength again in the days of Abijah: and the LORD struck him, and he died.",
+  "ref": "2 Chronicles 13:20"
+ },
+ {
+  "id": "2-chronicles-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons did Abijah beget?",
+  "choices": [
+   "Twenty and eight",
+   "Twenty and two",
+   "Fourteen",
+   "Sixteen"
+  ],
+  "answer": 1,
+  "explanation": "Abijah begat twenty and two sons, and sixteen daughters.",
+  "ref": "2 Chronicles 13:21"
+ },
+ {
+  "id": "2-chronicles-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose story records the rest of the acts of Abijah?",
+  "choices": [
+   "The prophet Shemaiah",
+   "The prophet Ahijah",
+   "The prophet Iddo",
+   "The prophet Nathan"
+  ],
+  "answer": 2,
+  "explanation": "The rest of the acts of Abijah are written in the story of the prophet Iddo.",
+  "ref": "2 Chronicles 13:22"
+ },
+ {
+  "id": "2-chronicles-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Jeroboam did Abijah begin to reign?",
+  "choices": [
+   "The first",
+   "The tenth",
+   "The twentieth",
+   "The eighteenth"
+  ],
+  "answer": 3,
+  "explanation": "In the eighteenth year of king Jeroboam began Abijah to reign over Judah.",
+  "ref": "2 Chronicles 13:1"
+ },
+ {
   "id": "old-2-chronicles-14-1",
   "chapter": 14,
   "level": "beginner",
