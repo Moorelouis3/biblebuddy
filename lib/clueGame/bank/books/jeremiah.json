@@ -160,38 +160,6 @@
   "ref": "Jeremiah 2:31"
  },
  {
-  "id": "old-jeremiah-3-1",
-  "chapter": 3,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What word does God repeatedly use to invite His people back?",
-  "choices": [
-   "Fight",
-   "Return",
-   "Hide",
-   "Build"
-  ],
-  "answer": 1,
-  "explanation": "The chapter centers on God's appeal for His unfaithful people to return.",
-  "ref": "Jeremiah 3:12–14"
- },
- {
-  "id": "old-jeremiah-3-2",
-  "chapter": 3,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How is Israel described?",
-  "choices": [
-   "As a righteous remnant",
-   "As a wise nation",
-   "As a royal priesthood",
-   "As a backsliding people"
-  ],
-  "answer": 3,
-  "explanation": "Israel is called backsliding because of repeated covenant unfaithfulness.",
-  "ref": "Jeremiah 3:6"
- },
- {
   "id": "old-jeremiah-3-3",
   "chapter": 3,
   "level": "beginner",
@@ -254,22 +222,6 @@
   "answer": 3,
   "explanation": "The people are urged to prepare their hearts like uncultivated ground being broken up.",
   "ref": "Jeremiah 4:3"
- },
- {
-  "id": "old-jeremiah-4-2",
-  "chapter": 4,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What is Jerusalem told to wash its heart clean of?",
-  "choices": [
-   "Fear",
-   "Wickedness",
-   "Tears",
-   "Poverty"
-  ],
-  "answer": 1,
-  "explanation": "The call is for inward cleansing, not mere outward reform.",
-  "ref": "Jeremiah 4:14"
  },
  {
   "id": "old-jeremiah-4-3",
@@ -336,22 +288,6 @@
   "ref": "Jeremiah 5:1"
  },
  {
-  "id": "old-jeremiah-5-2",
-  "chapter": 5,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What had the people done with the yoke and bonds?",
-  "choices": [
-   "Strengthened them",
-   "Hidden them",
-   "Offered them",
-   "Broken them"
-  ],
-  "answer": 3,
-  "explanation": "The people had deliberately thrown off God's restraint.",
-  "ref": "Jeremiah 5:5"
- },
- {
   "id": "old-jeremiah-5-3",
   "chapter": 5,
   "level": "beginner",
@@ -366,22 +302,6 @@
   "answer": 1,
   "explanation": "Predatory animals symbolize judgment for multiplied sins.",
   "ref": "Jeremiah 5:6"
- },
- {
-  "id": "old-jeremiah-5-4",
-  "chapter": 5,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How are the prophets described by the scoffers?",
-  "choices": [
-   "Men of wisdom",
-   "Faithful watchmen",
-   "Wind",
-   "Messengers of peace"
-  ],
-  "answer": 2,
-  "explanation": "The people dismissed the prophets as empty wind.",
-  "ref": "Jeremiah 5:13"
  },
  {
   "id": "old-jeremiah-5-5",
@@ -656,38 +576,6 @@
   "ref": "Jeremiah 9:1"
  },
  {
-  "id": "old-jeremiah-9-2",
-  "chapter": 9,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What sin is especially highlighted?",
-  "choices": [
-   "Neglect of sacrifice",
-   "Failure in battle",
-   "Deceit and lies",
-   "Refusing to farm"
-  ],
-  "answer": 2,
-  "explanation": "The people had become skilled in falsehood rather than truth.",
-  "ref": "Jeremiah 9:3"
- },
- {
-  "id": "old-jeremiah-9-3",
-  "chapter": 9,
-  "level": "beginner",
-  "category": "person",
-  "question": "Who are the people warned not to trust?",
-  "choices": [
-   "The temple singers",
-   "The harvesters",
-   "The gatekeepers",
-   "Any brother"
-  ],
-  "answer": 3,
-  "explanation": "Social trust had collapsed because deceit was so widespread.",
-  "ref": "Jeremiah 9:4"
- },
- {
   "id": "old-jeremiah-9-4",
   "chapter": 9,
   "level": "beginner",
@@ -766,22 +654,6 @@
   "answer": 3,
   "explanation": "The living God is contrasted with dead idols.",
   "ref": "Jeremiah 10:10"
- },
- {
-  "id": "old-jeremiah-10-4",
-  "chapter": 10,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What had God made by His power?",
-  "choices": [
-   "Only Jerusalem",
-   "The temple furniture",
-   "Babylon's walls",
-   "The earth"
-  ],
-  "answer": 3,
-  "explanation": "Creation itself testifies to God's incomparable power.",
-  "ref": "Jeremiah 10:12"
  },
  {
   "id": "old-jeremiah-10-5",
@@ -23694,5 +23566,6405 @@
   "answer": 1,
   "explanation": "How gracious shalt thou be when pangs come upon thee, the pain as of a woman in travail!",
   "ref": "Jeremiah 22:23"
+ },
+ {
+  "id": "jeremiah-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son was Jeremiah?",
+  "choices": [
+   "Amon",
+   "Josiah",
+   "Hilkiah",
+   "Zedekiah"
+  ],
+  "answer": 2,
+  "explanation": "The words of Jeremiah the son of Hilkiah, of the priests that were in Anathoth.",
+  "ref": "Jeremiah 1:1"
+ },
+ {
+  "id": "jeremiah-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which town did Jeremiah's priestly family live?",
+  "choices": [
+   "Shiloh",
+   "Bethel",
+   "Anathoth",
+   "Hebron"
+  ],
+  "answer": 2,
+  "explanation": "Jeremiah was of the priests that were in Anathoth in the land of Benjamin.",
+  "ref": "Jeremiah 1:1"
+ },
+ {
+  "id": "jeremiah-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "In the days of which king did the word of the LORD first come to Jeremiah?",
+  "choices": [
+   "Jehoiakim",
+   "Zedekiah",
+   "Josiah",
+   "Amon"
+  ],
+  "answer": 2,
+  "explanation": "The word of the LORD came in the days of Josiah the son of Amon king of Judah.",
+  "ref": "Jeremiah 1:2"
+ },
+ {
+  "id": "jeremiah-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God ordain Jeremiah to be?",
+  "choices": [
+   "A king over Judah",
+   "A priest in the temple",
+   "A prophet unto the nations",
+   "A judge of Israel"
+  ],
+  "answer": 2,
+  "explanation": "I ordained thee a prophet unto the nations.",
+  "ref": "Jeremiah 1:5"
+ },
+ {
+  "id": "jeremiah-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God promise Jeremiah when he tells him not to be afraid?",
+  "choices": [
+   "I will make thee king",
+   "I will give thee many sons",
+   "I am with thee to deliver thee",
+   "I will make thee rich"
+  ],
+  "answer": 2,
+  "explanation": "Be not afraid of their faces: for I am with thee to deliver thee, saith the LORD.",
+  "ref": "Jeremiah 1:8"
+ },
+ {
+  "id": "jeremiah-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Jeremiah set over, to root out and pull down?",
+  "choices": [
+   "The nations and the kingdoms",
+   "The temple and the priests",
+   "The tribes of Benjamin",
+   "The armies of Judah"
+  ],
+  "answer": 0,
+  "explanation": "I have this day set thee over the nations and over the kingdoms, to root out, and to pull down.",
+  "ref": "Jeremiah 1:10"
+ },
+ {
+  "id": "jeremiah-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about his word after Jeremiah saw the almond rod?",
+  "choices": [
+   "I will hasten my word to perform it",
+   "It shall return void",
+   "It shall be sealed up",
+   "It shall wait many years"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast well seen: for I will hasten my word to perform it.",
+  "ref": "Jeremiah 1:11–12"
+ },
+ {
+  "id": "jeremiah-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom will God call to come against Jerusalem?",
+  "choices": [
+   "All the families of the kingdoms of the north",
+   "The kings of Egypt",
+   "The tribes of Benjamin",
+   "The sons of Ammon"
+  ],
+  "answer": 0,
+  "explanation": "I will call all the families of the kingdoms of the north.",
+  "ref": "Jeremiah 1:15"
+ },
+ {
+  "id": "jeremiah-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where will the northern kings set their thrones?",
+  "choices": [
+   "At the entering of the gates of Jerusalem",
+   "On the mount of Olives",
+   "In the house of the LORD",
+   "In the land of Benjamin"
+  ],
+  "answer": 0,
+  "explanation": "They shall set every one his throne at the entering of the gates of Jerusalem.",
+  "ref": "Jeremiah 1:15"
+ },
+ {
+  "id": "jeremiah-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will God utter his judgments against Judah?",
+  "choices": [
+   "They forsook him and burned incense to other gods",
+   "They broke the sabbath",
+   "They shed innocent blood",
+   "They robbed the poor"
+  ],
+  "answer": 0,
+  "explanation": "They have forsaken me, and have burned incense unto other gods.",
+  "ref": "Jeremiah 1:16"
+ },
+ {
+  "id": "jeremiah-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God say the people worshipped?",
+  "choices": [
+   "The works of their own hands",
+   "The host of heaven",
+   "The golden calf",
+   "The brazen serpent"
+  ],
+  "answer": 0,
+  "explanation": "They worshipped the works of their own hands.",
+  "ref": "Jeremiah 1:16"
+ },
+ {
+  "id": "jeremiah-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God make Jeremiah this day, against the whole land?",
+  "choices": [
+   "A defenced city, an iron pillar, and brasen walls",
+   "A flaming sword and a shield",
+   "A watchman and a shepherd",
+   "A fountain and a tower"
+  ],
+  "answer": 0,
+  "explanation": "I have made thee this day a defenced city, and an iron pillar, and brasen walls against the whole land.",
+  "ref": "Jeremiah 1:18"
+ },
+ {
+  "id": "jeremiah-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who will fight against Jeremiah?",
+  "choices": [
+   "The kings, princes, priests and people of the land",
+   "Only the false prophets",
+   "Only the king of Babylon",
+   "His own brethren"
+  ],
+  "answer": 0,
+  "explanation": "Against the kings of Judah, against the princes, against the priests, and against the people of the land.",
+  "ref": "Jeremiah 1:18–19"
+ },
+ {
+  "id": "jeremiah-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom was Jeremiah told he must go to?",
+  "choices": [
+   "All that God shall send him to",
+   "Only the king of Judah",
+   "Only the priests",
+   "Only the northern kingdoms"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt go to all that I shall send thee, and whatsoever I command thee thou shalt speak.",
+  "ref": "Jeremiah 1:7"
+ },
+ {
+  "id": "jeremiah-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "In which land was Anathoth?",
+  "choices": [
+   "Benjamin",
+   "Judah",
+   "Ephraim",
+   "Manasseh"
+  ],
+  "answer": 0,
+  "explanation": "Anathoth was in the land of Benjamin.",
+  "ref": "Jeremiah 1:1"
+ },
+ {
+  "id": "jeremiah-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides rooting out, pulling down, destroying and throwing down, what else was Jeremiah set to do?",
+  "choices": [
+   "Heal and gather",
+   "Judge and rule",
+   "Build and plant",
+   "Teach and bless"
+  ],
+  "answer": 2,
+  "explanation": "He was set over the nations to root out, pull down, destroy, throw down, to build, and to plant.",
+  "ref": "Jeremiah 1:10"
+ },
+ {
+  "id": "jeremiah-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Jeremiah to do with his loins?",
+  "choices": [
+   "Wash them",
+   "Bind them in sackcloth",
+   "Gird them up",
+   "Cover them with ashes"
+  ],
+  "answer": 2,
+  "explanation": "Thou therefore gird up thy loins, and arise, and speak unto them all that I command thee.",
+  "ref": "Jeremiah 1:17"
+ },
+ {
+  "id": "jeremiah-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God warn he would do if Jeremiah were dismayed at their faces?",
+  "choices": [
+   "Take his words away",
+   "Send him back to Anathoth",
+   "Confound him before them",
+   "Strike him dumb"
+  ],
+  "answer": 2,
+  "explanation": "Be not dismayed at their faces, lest I confound thee before them.",
+  "ref": "Jeremiah 1:17"
+ },
+ {
+  "id": "jeremiah-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose eleventh year ended the time the word came to Jeremiah, when Jerusalem was carried away?",
+  "choices": [
+   "Josiah",
+   "Jehoiakim",
+   "Zedekiah",
+   "Jehoiachin"
+  ],
+  "answer": 2,
+  "explanation": "It came unto the end of the eleventh year of Zedekiah the son of Josiah king of Judah.",
+  "ref": "Jeremiah 1:3"
+ },
+ {
+  "id": "jeremiah-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the father of King Josiah?",
+  "choices": [
+   "Hilkiah",
+   "Manasseh",
+   "Amon",
+   "Jehoiakim"
+  ],
+  "answer": 2,
+  "explanation": "Josiah the son of Amon king of Judah.",
+  "ref": "Jeremiah 1:2"
+ },
+ {
+  "id": "jeremiah-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which king, a son of Josiah, is named in the days the word came?",
+  "choices": [
+   "Jehoahaz",
+   "Jehoiachin",
+   "Jehoiakim",
+   "Hezekiah"
+  ],
+  "answer": 2,
+  "explanation": "It came also in the days of Jehoiakim the son of Josiah king of Judah.",
+  "ref": "Jeremiah 1:3"
+ },
+ {
+  "id": "jeremiah-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Upon whom did God say the evil out of the north would break forth?",
+  "choices": [
+   "Only the king of Judah",
+   "Only the priests of Anathoth",
+   "All the inhabitants of the land",
+   "The kings of the north"
+  ],
+  "answer": 2,
+  "explanation": "Out of the north an evil shall break forth upon all the inhabitants of the land.",
+  "ref": "Jeremiah 1:14"
+ },
+ {
+  "id": "jeremiah-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Against what will the northern kings set themselves, besides the gates of Jerusalem?",
+  "choices": [
+   "The temple treasures",
+   "The wilderness of Benjamin",
+   "Its walls round about and all the cities of Judah",
+   "The ships of Tarshish"
+  ],
+  "answer": 2,
+  "explanation": "Against all the walls thereof round about, and against all the cities of Judah.",
+  "ref": "Jeremiah 1:15"
+ },
+ {
+  "id": "jeremiah-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question did the LORD ask Jeremiah before each of his two visions?",
+  "choices": [
+   "What hearest thou?",
+   "Where goest thou?",
+   "What seest thou?",
+   "Who sent thee?"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said, Jeremiah, what seest thou?",
+  "ref": "Jeremiah 1:11"
+ },
+ {
+  "id": "jeremiah-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say he had done to Jeremiah before he came out of the womb?",
+  "choices": [
+   "Anointed him",
+   "Healed him",
+   "Sanctified him",
+   "Named him king"
+  ],
+  "answer": 2,
+  "explanation": "Before thou camest forth out of the womb I sanctified thee.",
+  "ref": "Jeremiah 1:5"
+ },
+ {
+  "id": "jeremiah-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the workman use to cut a tree out of the forest for an idol?",
+  "choices": [
+   "A saw",
+   "A sword",
+   "A chisel",
+   "An axe"
+  ],
+  "answer": 3,
+  "explanation": "One cutteth a tree out of the forest, the work of the hands of the workman, with the axe.",
+  "ref": "Jeremiah 10:3"
+ },
+ {
+  "id": "jeremiah-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How do they fasten the decked idol, that it move not?",
+  "choices": [
+   "With cords and ropes",
+   "With iron chains",
+   "With stones",
+   "With nails and hammers"
+  ],
+  "answer": 3,
+  "explanation": "They deck it with silver and with gold; they fasten it with nails and with hammers, that it move not.",
+  "ref": "Jeremiah 10:4"
+ },
+ {
+  "id": "jeremiah-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what are the idols compared, which speak not?",
+  "choices": [
+   "A cedar of Lebanon",
+   "A mountain",
+   "A pillar of stone",
+   "The palm tree"
+  ],
+  "answer": 3,
+  "explanation": "They are upright as the palm tree, but speak not.",
+  "ref": "Jeremiah 10:5"
+ },
+ {
+  "id": "jeremiah-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "From where is silver spread into plates brought?",
+  "choices": [
+   "Sheba",
+   "Egypt",
+   "Lebanon",
+   "Tarshish"
+  ],
+  "answer": 3,
+  "explanation": "Silver spread into plates is brought from Tarshish, and gold from Uphaz.",
+  "ref": "Jeremiah 10:9"
+ },
+ {
+  "id": "jeremiah-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall happen to the gods that have not made the heavens and the earth?",
+  "choices": [
+   "They shall rule",
+   "They shall wait",
+   "They shall be hidden",
+   "They shall perish"
+  ],
+  "answer": 3,
+  "explanation": "The gods that have not made the heavens and the earth, even they shall perish from the earth, and from under these heavens.",
+  "ref": "Jeremiah 10:11"
+ },
+ {
+  "id": "jeremiah-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD make with rain, when he utters his voice?",
+  "choices": [
+   "Rainbows",
+   "Frost",
+   "Rivers",
+   "Lightnings"
+  ],
+  "answer": 3,
+  "explanation": "He maketh lightnings with rain, and bringeth forth the wind out of his treasures.",
+  "ref": "Jeremiah 10:13"
+ },
+ {
+  "id": "jeremiah-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who have become brutish and not sought the LORD?",
+  "choices": [
+   "The kings",
+   "The prophets",
+   "The scribes",
+   "The pastors"
+  ],
+  "answer": 3,
+  "explanation": "The pastors are become brutish, and have not sought the LORD: therefore they shall not prosper.",
+  "ref": "Jeremiah 10:21"
+ },
+ {
+  "id": "jeremiah-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is spoiled, with all its cords broken?",
+  "choices": [
+   "The temple of the LORD",
+   "The king's palace",
+   "The walls of Jerusalem",
+   "Jeremiah's tabernacle"
+  ],
+  "answer": 3,
+  "explanation": "My tabernacle is spoiled, and all my cords are broken.",
+  "ref": "Jeremiah 10:20"
+ },
+ {
+  "id": "jeremiah-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Upon whom does Jeremiah ask the LORD to pour his fury?",
+  "choices": [
+   "The kings of Judah",
+   "The priests of the temple",
+   "The prophets of Baal",
+   "The heathen that know him not"
+  ],
+  "answer": 3,
+  "explanation": "Pour out thy fury upon the heathen that know thee not, and upon the families that call not on thy name.",
+  "ref": "Jeremiah 10:25"
+ },
+ {
+  "id": "jeremiah-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say about the customs of the people?",
+  "choices": [
+   "They are ancient",
+   "They are vain",
+   "They are holy",
+   "They are wise"
+  ],
+  "answer": 1,
+  "explanation": "The customs of the people are vain: for one cutteth a tree out of the forest.",
+  "ref": "Jeremiah 10:3"
+ },
+ {
+  "id": "jeremiah-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What can the idols not do, so they are not to be feared?",
+  "choices": [
+   "Speak or hear",
+   "Evil or good",
+   "See or smell",
+   "Eat or drink"
+  ],
+  "answer": 1,
+  "explanation": "Be not afraid of them; for they cannot do evil, neither also is it in them to do good.",
+  "ref": "Jeremiah 10:5"
+ },
+ {
+  "id": "jeremiah-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jeremiah call the LORD, as there is none like him?",
+  "choices": [
+   "King of Israel",
+   "King of nations",
+   "Lord of the harvest",
+   "Shepherd of Jacob"
+  ],
+  "answer": 1,
+  "explanation": "Who would not fear thee, O King of nations? there is none like unto thee.",
+  "ref": "Jeremiah 10:7"
+ },
+ {
+  "id": "jeremiah-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD call the stock, in being brutish and foolish?",
+  "choices": [
+   "A treasure of the nations",
+   "A doctrine of vanities",
+   "A work of wonder",
+   "A sign from heaven"
+  ],
+  "answer": 1,
+  "explanation": "They are altogether brutish and foolish: the stock is a doctrine of vanities.",
+  "ref": "Jeremiah 10:8"
+ },
+ {
+  "id": "jeremiah-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens at the LORD's wrath?",
+  "choices": [
+   "The sea dries up",
+   "The earth trembles",
+   "The sun is darkened",
+   "The temple falls"
+  ],
+  "answer": 1,
+  "explanation": "At his wrath the earth shall tremble, and the nations shall not be able to abide his indignation.",
+  "ref": "Jeremiah 10:10"
+ },
+ {
+  "id": "jeremiah-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what has the LORD stretched out the heavens?",
+  "choices": [
+   "His anger",
+   "His discretion",
+   "His angels",
+   "His word of fire"
+  ],
+  "answer": 1,
+  "explanation": "He hath stretched out the heavens by his discretion.",
+  "ref": "Jeremiah 10:12"
+ },
+ {
+  "id": "jeremiah-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who is confounded by the graven image?",
+  "choices": [
+   "Every priest",
+   "Every founder",
+   "Every king",
+   "Every prophet"
+  ],
+  "answer": 1,
+  "explanation": "Every founder is confounded by the graven image: for his molten image is falsehood.",
+  "ref": "Jeremiah 10:14"
+ },
+ {
+  "id": "jeremiah-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is there not in the molten images?",
+  "choices": [
+   "Gold",
+   "Breath",
+   "Wisdom",
+   "Weight"
+  ],
+  "answer": 1,
+  "explanation": "His molten image is falsehood, and there is no breath in them.",
+  "ref": "Jeremiah 10:14"
+ },
+ {
+  "id": "jeremiah-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of the portion of Jacob?",
+  "choices": [
+   "He is hidden from the nations",
+   "He is the former of all things",
+   "He is a rock in a weary land",
+   "He is the shield of kings"
+  ],
+  "answer": 1,
+  "explanation": "The portion of Jacob is not like them: for he is the former of all things.",
+  "ref": "Jeremiah 10:16"
+ },
+ {
+  "id": "jeremiah-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do to the inhabitants of the land at this once?",
+  "choices": [
+   "Gather them and bless them",
+   "Sling them out and distress them",
+   "Heal them and plant them",
+   "Hide them in the rocks"
+  ],
+  "answer": 1,
+  "explanation": "I will sling out the inhabitants of the land at this once, and will distress them.",
+  "ref": "Jeremiah 10:18"
+ },
+ {
+  "id": "jeremiah-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jeremiah say there is none to do for his tent, now his children are gone?",
+  "choices": [
+   "Guard it and defend it",
+   "Stretch it forth and set up his curtains",
+   "Sell it and divide it",
+   "Burn it and bury it"
+  ],
+  "answer": 1,
+  "explanation": "There is none to stretch forth my tent any more, and to set up my curtains.",
+  "ref": "Jeremiah 10:20"
+ },
+ {
+  "id": "jeremiah-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jeremiah say about the way of man?",
+  "choices": [
+   "It is guided by the wise",
+   "It is not in himself to direct his steps",
+   "It is hidden from God",
+   "It is in the stars"
+  ],
+  "answer": 1,
+  "explanation": "The way of man is not in himself: it is not in man that walketh to direct his steps.",
+  "ref": "Jeremiah 10:23"
+ },
+ {
+  "id": "jeremiah-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the commotion out of the north country do?",
+  "choices": [
+   "Heal the cities of Judah",
+   "Make the cities of Judah desolate, a den of dragons",
+   "Fill the cities with grain",
+   "Build the walls of Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "A great commotion out of the north country, to make the cities of Judah desolate, and a den of dragons.",
+  "ref": "Jeremiah 10:22"
+ },
+ {
+  "id": "jeremiah-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At what are the heathen dismayed, which Israel must not fear?",
+  "choices": [
+   "The signs of heaven",
+   "The armies of Babylon",
+   "The voice of the prophets",
+   "The idols of gold"
+  ],
+  "answer": 0,
+  "explanation": "Be not dismayed at the signs of heaven; for the heathen are dismayed at them.",
+  "ref": "Jeremiah 10:2"
+ },
+ {
+  "id": "jeremiah-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "From where does the gold come?",
+  "choices": [
+   "Uphaz",
+   "Ophir",
+   "Havilah",
+   "Sheba"
+  ],
+  "answer": 0,
+  "explanation": "Silver is brought from Tarshish, and gold from Uphaz.",
+  "ref": "Jeremiah 10:9"
+ },
+ {
+  "id": "jeremiah-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What colours are the idols' clothing?",
+  "choices": [
+   "Blue and purple",
+   "White and gold",
+   "Red and scarlet",
+   "Green and silver"
+  ],
+  "answer": 0,
+  "explanation": "Blue and purple is their clothing: they are all the work of cunning men.",
+  "ref": "Jeremiah 10:9"
+ },
+ {
+  "id": "jeremiah-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the idols called, which shall perish in their visitation?",
+  "choices": [
+   "Vanity and the work of errors",
+   "Dust and the work of sin",
+   "Stone and the work of fools",
+   "Fire and the work of kings"
+  ],
+  "answer": 0,
+  "explanation": "They are vanity, and the work of errors: in the time of their visitation they shall perish.",
+  "ref": "Jeremiah 10:15"
+ },
+ {
+  "id": "jeremiah-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is Israel called in his relation to the LORD?",
+  "choices": [
+   "The rod of his inheritance",
+   "The apple of his eye",
+   "The throne of his glory",
+   "The shield of his people"
+  ],
+  "answer": 0,
+  "explanation": "Israel is the rod of his inheritance: The LORD of hosts is his name.",
+  "ref": "Jeremiah 10:16"
+ },
+ {
+  "id": "jeremiah-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is told to gather up wares out of the land?",
+  "choices": [
+   "The inhabitant of the fortress",
+   "The prophet of Judah",
+   "The king of Zion",
+   "The shepherd of the flock"
+  ],
+  "answer": 0,
+  "explanation": "Gather up thy wares out of the land, O inhabitant of the fortress.",
+  "ref": "Jeremiah 10:17"
+ },
+ {
+  "id": "jeremiah-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jeremiah say of his grievous wound?",
+  "choices": [
+   "Truly this is a grief, and I must bear it",
+   "It shall soon be healed",
+   "It is a gift from God",
+   "It shall not last"
+  ],
+  "answer": 0,
+  "explanation": "Woe is me for my hurt! my wound is grievous: but I said, Truly this is a grief, and I must bear it.",
+  "ref": "Jeremiah 10:19"
+ },
+ {
+  "id": "jeremiah-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall be scattered because the pastors have not sought the LORD?",
+  "choices": [
+   "All their flocks",
+   "All their cities",
+   "All their houses",
+   "All their children"
+  ],
+  "answer": 0,
+  "explanation": "The pastors have not sought the LORD: therefore they shall not prosper, and all their flocks shall be scattered.",
+  "ref": "Jeremiah 10:21"
+ },
+ {
+  "id": "jeremiah-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Jeremiah fear the LORD's anger might bring him to?",
+  "choices": [
+   "Nothing",
+   "Death",
+   "Exile",
+   "Silence"
+  ],
+  "answer": 0,
+  "explanation": "O LORD, correct me, but with judgment; not in thine anger, lest thou bring me to nothing.",
+  "ref": "Jeremiah 10:24"
+ },
+ {
+  "id": "jeremiah-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the families that devoured Jacob not do?",
+  "choices": [
+   "Call on his name",
+   "Honour his law",
+   "Know his people",
+   "Fear his temple"
+  ],
+  "answer": 0,
+  "explanation": "Pour out thy fury upon the families that call not on thy name: for they have eaten up Jacob.",
+  "ref": "Jeremiah 10:25"
+ },
+ {
+  "id": "jeremiah-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD cause to ascend from the ends of the earth?",
+  "choices": [
+   "Vapors",
+   "Fire",
+   "Birds",
+   "Dust"
+  ],
+  "answer": 0,
+  "explanation": "He causeth the vapors to ascend from the ends of the earth.",
+  "ref": "Jeremiah 10:13"
+ },
+ {
+  "id": "jeremiah-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of what does the LORD bring forth the wind?",
+  "choices": [
+   "His treasures",
+   "The north",
+   "The sea",
+   "The mountains"
+  ],
+  "answer": 0,
+  "explanation": "He bringeth forth the wind out of his treasures.",
+  "ref": "Jeremiah 10:13"
+ },
+ {
+  "id": "jeremiah-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what has the LORD established the world?",
+  "choices": [
+   "His wisdom",
+   "His anger",
+   "His covenant",
+   "His oath"
+  ],
+  "answer": 0,
+  "explanation": "He hath established the world by his wisdom.",
+  "ref": "Jeremiah 10:12"
+ },
+ {
+  "id": "jeremiah-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the LORD's name for Judah, fair and of goodly fruit?",
+  "choices": [
+   "A green olive tree",
+   "A fruitful vine",
+   "A cedar of Lebanon",
+   "A fig tree"
+  ],
+  "answer": 0,
+  "explanation": "The LORD called thy name, A green olive tree, fair, and of goodly fruit.",
+  "ref": "Jeremiah 11:16"
+ },
+ {
+  "id": "jeremiah-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what does Jeremiah compare himself, as he did not know of the plots?",
+  "choices": [
+   "A lamb or an ox brought to the slaughter",
+   "A sparrow in a snare",
+   "A sheep among wolves",
+   "A lion in a pit"
+  ],
+  "answer": 0,
+  "explanation": "I was like a lamb or an ox that is brought to the slaughter; and I knew not that they had devised devices against me.",
+  "ref": "Jeremiah 11:19"
+ },
+ {
+  "id": "jeremiah-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "What kind of land did the LORD swear to give the fathers?",
+  "choices": [
+   "A land flowing with milk and honey",
+   "A land of rivers and mountains",
+   "A land of gold and spices",
+   "A land of corn and wine"
+  ],
+  "answer": 0,
+  "explanation": "To give them a land flowing with milk and honey, as it is this day.",
+  "ref": "Jeremiah 11:5"
+ },
+ {
+  "id": "jeremiah-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what did the LORD bring the fathers forth, out of the land of Egypt?",
+  "choices": [
+   "The iron furnace",
+   "The house of bondage",
+   "The red sea",
+   "The brick pits"
+  ],
+  "answer": 0,
+  "explanation": "I brought them forth out of the land of Egypt, from the iron furnace.",
+  "ref": "Jeremiah 11:4"
+ },
+ {
+  "id": "jeremiah-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the men of Anathoth say to Jeremiah, that he die not by their hand?",
+  "choices": [
+   "Prophesy not in the name of the LORD",
+   "Leave the land of Benjamin",
+   "Pray for the city",
+   "Serve the king"
+  ],
+  "answer": 0,
+  "explanation": "Prophesy not in the name of the LORD, that thou die not by our hand.",
+  "ref": "Jeremiah 11:21"
+ },
+ {
+  "id": "jeremiah-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How shall the young men and the sons and daughters of Anathoth die?",
+  "choices": [
+   "The young men by the sword, sons and daughters by famine",
+   "All by the plague",
+   "All in captivity",
+   "All by fire"
+  ],
+  "answer": 0,
+  "explanation": "The young men shall die by the sword; their sons and their daughters shall die by famine.",
+  "ref": "Jeremiah 11:22"
+ },
+ {
+  "id": "jeremiah-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say matched the number of Judah's cities?",
+  "choices": [
+   "The number of her gods",
+   "The number of her prophets",
+   "The number of her kings",
+   "The number of her feasts"
+  ],
+  "answer": 0,
+  "explanation": "According to the number of thy cities were thy gods, O Judah.",
+  "ref": "Jeremiah 11:13"
+ },
+ {
+  "id": "jeremiah-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say the fathers would be if they obeyed his voice?",
+  "choices": [
+   "His people, and he their God",
+   "His priests and kings",
+   "His soldiers and servants",
+   "His heirs and sons"
+  ],
+  "answer": 0,
+  "explanation": "Obey my voice, and do them: so shall ye be my people, and I will be your God.",
+  "ref": "Jeremiah 11:4"
+ },
+ {
+  "id": "jeremiah-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Jeremiah to proclaim the words of the covenant?",
+  "choices": [
+   "In the cities of Judah and the streets of Jerusalem",
+   "In the temple court",
+   "At the gate of Anathoth",
+   "On the mount of Olives"
+  ],
+  "answer": 0,
+  "explanation": "Proclaim all these words in the cities of Judah, and in the streets of Jerusalem.",
+  "ref": "Jeremiah 11:6"
+ },
+ {
+  "id": "jeremiah-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD earnestly protest to the fathers?",
+  "choices": [
+   "Rising early and protesting",
+   "By the sword",
+   "By a dream",
+   "By a great sign"
+  ],
+  "answer": 0,
+  "explanation": "I earnestly protested unto your fathers, rising early and protesting, saying, Obey my voice.",
+  "ref": "Jeremiah 11:7"
+ },
+ {
+  "id": "jeremiah-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say was found among the men of Judah?",
+  "choices": [
+   "A conspiracy",
+   "A treasure",
+   "A prophet",
+   "A secret"
+  ],
+  "answer": 0,
+  "explanation": "A conspiracy is found among the men of Judah, and among the inhabitants of Jerusalem.",
+  "ref": "Jeremiah 11:9"
+ },
+ {
+  "id": "jeremiah-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "To whose iniquities had they turned back?",
+  "choices": [
+   "Their forefathers'",
+   "The Egyptians'",
+   "The Assyrians'",
+   "Their prophets'"
+  ],
+  "answer": 0,
+  "explanation": "They are turned back to the iniquities of their forefathers, which refused to hear my words.",
+  "ref": "Jeremiah 11:10"
+ },
+ {
+  "id": "jeremiah-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do, though they cry unto him in trouble?",
+  "choices": [
+   "He will not hearken",
+   "He will hear at once",
+   "He will send a prophet",
+   "He will forgive them"
+  ],
+  "answer": 0,
+  "explanation": "I will bring evil upon them, which they shall not be able to escape; and though they shall cry unto me, I will not hearken.",
+  "ref": "Jeremiah 11:11"
+ },
+ {
+  "id": "jeremiah-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom shall the cities of Judah cry, who shall not save them?",
+  "choices": [
+   "The gods to whom they offer incense",
+   "The kings of Egypt",
+   "The priests of the temple",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "Cry unto the gods unto whom they offer incense: but they shall not save them at all in the time of their trouble.",
+  "ref": "Jeremiah 11:12"
+ },
+ {
+  "id": "jeremiah-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was kindled upon the olive tree?",
+  "choices": [
+   "Fire, and its branches are broken",
+   "A lamp, and its leaves are bright",
+   "A flood, and its roots are rotten",
+   "A wind, and its fruit is shaken"
+  ],
+  "answer": 0,
+  "explanation": "With the noise of a great tumult he hath kindled fire upon it, and the branches of it are broken.",
+  "ref": "Jeremiah 11:16"
+ },
+ {
+  "id": "jeremiah-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jeremiah ask the LORD, who tries the reins and the heart, to let him see?",
+  "choices": [
+   "His vengeance on them",
+   "His mercy on them",
+   "His glory in the temple",
+   "His peace in the land"
+  ],
+  "answer": 0,
+  "explanation": "O LORD of hosts, that judgest righteously, that triest the reins and the heart, let me see thy vengeance on them.",
+  "ref": "Jeremiah 11:20"
+ },
+ {
+  "id": "jeremiah-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say he will bring upon the men of Anathoth?",
+  "choices": [
+   "Evil, in the year of their visitation",
+   "Peace, in the year of jubilee",
+   "Rain, in the year of drought",
+   "Exile, in the year of the king"
+  ],
+  "answer": 0,
+  "explanation": "I will bring evil upon the men of Anathoth, even the year of their visitation.",
+  "ref": "Jeremiah 11:23"
+ },
+ {
+  "id": "jeremiah-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD ask about his beloved in his house?",
+  "choices": [
+   "What hath she to do there, having wrought lewdness?",
+   "Why has she come back?",
+   "Who has sent her?",
+   "Where is her husband?"
+  ],
+  "answer": 0,
+  "explanation": "What hath my beloved to do in mine house, seeing she hath wrought lewdness with many?",
+  "ref": "Jeremiah 11:15"
+ },
+ {
+  "id": "jeremiah-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of Judah do after other gods, breaking the covenant?",
+  "choices": [
+   "Served them",
+   "Feared them",
+   "Cursed them",
+   "Ignored them"
+  ],
+  "answer": 0,
+  "explanation": "They went after other gods to serve them: the house of Israel and the house of Judah have broken my covenant.",
+  "ref": "Jeremiah 11:10"
+ },
+ {
+  "id": "jeremiah-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jeremiah answer when the LORD spoke of the oath of the land?",
+  "choices": [
+   "So be it, O LORD",
+   "I am not worthy",
+   "Send another",
+   "I am but a child"
+  ],
+  "answer": 0,
+  "explanation": "Then answered I, and said, So be it, O LORD.",
+  "ref": "Jeremiah 11:5"
+ },
+ {
+  "id": "jeremiah-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jeremiah know the plots against him?",
+  "choices": [
+   "The LORD gave him knowledge and showed him their doings",
+   "A friend warned him",
+   "He heard it in the temple",
+   "He saw it in a dream"
+  ],
+  "answer": 0,
+  "explanation": "The LORD hath given me knowledge of it, and I know it: then thou shewedst me their doings.",
+  "ref": "Jeremiah 11:18"
+ },
+ {
+  "id": "jeremiah-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the plotters say they wanted for his name?",
+  "choices": [
+   "That it be no more remembered",
+   "That it be written in a book",
+   "That it be changed",
+   "That it be sung"
+  ],
+  "answer": 0,
+  "explanation": "Let us cut him off from the land of the living, that his name may be no more remembered.",
+  "ref": "Jeremiah 11:19"
+ },
+ {
+  "id": "jeremiah-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jeremiah say he had revealed to the LORD?",
+  "choices": [
+   "His cause",
+   "His secret",
+   "His dream",
+   "His sin"
+  ],
+  "answer": 0,
+  "explanation": "Unto thee have I revealed my cause.",
+  "ref": "Jeremiah 11:20"
+ },
+ {
+  "id": "jeremiah-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has passed from Judah, as the LORD asked about his beloved?",
+  "choices": [
+   "The holy flesh",
+   "The holy city",
+   "The holy oil",
+   "The holy law"
+  ],
+  "answer": 0,
+  "explanation": "The holy flesh is passed from thee? when thou doest evil, then thou rejoicest.",
+  "ref": "Jeremiah 11:15"
+ },
+ {
+  "id": "jeremiah-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Judah do when she does evil?",
+  "choices": [
+   "Rejoices",
+   "Mourns",
+   "Repents",
+   "Hides"
+  ],
+  "answer": 0,
+  "explanation": "When thou doest evil, then thou rejoicest.",
+  "ref": "Jeremiah 11:15"
+ },
+ {
+  "id": "jeremiah-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the LORD who planted Judah pronounce evil against her?",
+  "choices": [
+   "For the evil done in offering incense unto Baal",
+   "For breaking the sabbath",
+   "For shedding blood",
+   "For despising the king"
+  ],
+  "answer": 0,
+  "explanation": "The LORD of hosts, that planted thee, hath pronounced evil against thee, for the evil of the house of Israel and Judah in offering incense unto Baal.",
+  "ref": "Jeremiah 11:17"
+ },
+ {
+  "id": "jeremiah-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Where have they set up altars to the shameful thing, according to the number of what?",
+  "choices": [
+   "The streets of Jerusalem",
+   "The hills of Judah",
+   "The gates of Anathoth",
+   "The courts of the temple"
+  ],
+  "answer": 0,
+  "explanation": "According to the number of the streets of Jerusalem have ye set up altars to that shameful thing, even altars to burn incense unto Baal.",
+  "ref": "Jeremiah 11:13"
+ },
+ {
+  "id": "jeremiah-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom have the houses of Israel and Judah broken the covenant with?",
+  "choices": [
+   "The LORD, made with their fathers",
+   "The king of Egypt",
+   "The priests of Baal",
+   "The nations of Canaan"
+  ],
+  "answer": 0,
+  "explanation": "The house of Israel and the house of Judah have broken my covenant which I made with their fathers.",
+  "ref": "Jeremiah 11:10"
+ },
+ {
+  "id": "jeremiah-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD bring upon them because they did not do the covenant?",
+  "choices": [
+   "All the words of the covenant",
+   "All the plagues of Egypt",
+   "All the curses of the law",
+   "All the armies of the north"
+  ],
+  "answer": 0,
+  "explanation": "I will bring upon them all the words of this covenant, which I commanded them to do; but they did them not.",
+  "ref": "Jeremiah 11:8"
+ },
+ {
+  "id": "jeremiah-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom was Jeremiah told to speak the words of the covenant?",
+  "choices": [
+   "The men of Judah and the inhabitants of Jerusalem",
+   "The priests and the Levites",
+   "The elders and the princes",
+   "The kings of Israel"
+  ],
+  "answer": 0,
+  "explanation": "Hear ye the words of this covenant, and speak unto the men of Judah, and to the inhabitants of Jerusalem.",
+  "ref": "Jeremiah 11:2"
+ },
+ {
+  "id": "jeremiah-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Jeremiah say the LORD of hosts judges?",
+  "choices": [
+   "Righteously",
+   "Quickly",
+   "Secretly",
+   "Mercifully"
+  ],
+  "answer": 0,
+  "explanation": "O LORD of hosts, that judgest righteously, that triest the reins and the heart.",
+  "ref": "Jeremiah 11:20"
+ },
+ {
+  "id": "jeremiah-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Israel follow the LORD in her youth?",
+  "choices": [
+   "In the land of Goshen",
+   "On the plains of Moab",
+   "In the valley of Hinnom",
+   "In the wilderness, in a land not sown"
+  ],
+  "answer": 3,
+  "explanation": "Thou wentest after me in the wilderness, in a land that was not sown.",
+  "ref": "Jeremiah 2:2"
+ },
+ {
+  "id": "jeremiah-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to the LORD in the beginning?",
+  "choices": [
+   "A servant and a slave",
+   "A mighty army",
+   "A tower and a fortress",
+   "Holiness and the firstfruits of his increase"
+  ],
+  "answer": 3,
+  "explanation": "Israel was holiness unto the LORD, and the firstfruits of his increase.",
+  "ref": "Jeremiah 2:3"
+ },
+ {
+  "id": "jeremiah-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does God say walked after vanity and became vain?",
+  "choices": [
+   "Their kings",
+   "The Egyptians",
+   "The Assyrians",
+   "Their fathers"
+  ],
+  "answer": 3,
+  "explanation": "What iniquity have your fathers found in me, that they have walked after vanity, and are become vain?",
+  "ref": "Jeremiah 2:5"
+ },
+ {
+  "id": "jeremiah-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what land had the LORD brought his people up?",
+  "choices": [
+   "Assyria",
+   "Babylon",
+   "Chittim",
+   "Egypt"
+  ],
+  "answer": 3,
+  "explanation": "Where is the LORD that brought us up out of the land of Egypt?",
+  "ref": "Jeremiah 2:6"
+ },
+ {
+  "id": "jeremiah-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into what kind of country did God bring them?",
+  "choices": [
+   "A land of deserts and pits",
+   "A land of darkness",
+   "A land of drought",
+   "A plentiful country"
+  ],
+  "answer": 3,
+  "explanation": "I brought you into a plentiful country, to eat the fruit thereof and the goodness thereof.",
+  "ref": "Jeremiah 2:7"
+ },
+ {
+  "id": "jeremiah-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "By which god did the prophets prophesy?",
+  "choices": [
+   "Molech",
+   "Dagon",
+   "Chemosh",
+   "Baal"
+  ],
+  "answer": 3,
+  "explanation": "The prophets prophesied by Baal, and walked after things that do not profit.",
+  "ref": "Jeremiah 2:8"
+ },
+ {
+  "id": "jeremiah-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had God planted Israel as?",
+  "choices": [
+   "A cedar of Lebanon",
+   "A fig tree",
+   "A green olive tree",
+   "A noble vine"
+  ],
+  "answer": 3,
+  "explanation": "I had planted thee a noble vine, wholly a right seed.",
+  "ref": "Jeremiah 2:21"
+ },
+ {
+  "id": "jeremiah-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the young lions do to Israel?",
+  "choices": [
+   "Guarded his cities",
+   "Carried him to Egypt",
+   "Fled from his land",
+   "Roared upon him and made his land waste"
+  ],
+  "answer": 3,
+  "explanation": "The young lions roared upon him, and yelled, and they made his land waste.",
+  "ref": "Jeremiah 2:15"
+ },
+ {
+  "id": "jeremiah-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do to God's land when they entered it?",
+  "choices": [
+   "Divided it equally",
+   "Planted it with vines",
+   "Walled it round",
+   "Defiled it"
+  ],
+  "answer": 3,
+  "explanation": "When ye entered, ye defiled my land, and made mine heritage an abomination.",
+  "ref": "Jeremiah 2:7"
+ },
+ {
+  "id": "jeremiah-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has God's people forgotten days without number?",
+  "choices": [
+   "The law of Moses",
+   "Their ornaments",
+   "The way to Egypt",
+   "Him"
+  ],
+  "answer": 3,
+  "explanation": "My people have forgotten me days without number.",
+  "ref": "Jeremiah 2:32"
+ },
+ {
+  "id": "jeremiah-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "To which two places does God say to send and see if any nation changed its gods?",
+  "choices": [
+   "The isles of Chittim and Kedar",
+   "Egypt and Assyria",
+   "Tyre and Sidon",
+   "Sihor and Noph"
+  ],
+  "answer": 0,
+  "explanation": "Pass over the isles of Chittim, and send unto Kedar, and see if there be such a thing.",
+  "ref": "Jeremiah 2:10"
+ },
+ {
+  "id": "jeremiah-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God say of the gods the nations will not change?",
+  "choices": [
+   "They are yet no gods",
+   "They are gods of stone",
+   "They are mighty gods",
+   "They are gods of the hills"
+  ],
+  "answer": 0,
+  "explanation": "Hath a nation changed their gods, which are yet no gods?",
+  "ref": "Jeremiah 2:11"
+ },
+ {
+  "id": "jeremiah-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priests fail to say?",
+  "choices": [
+   "Where is the LORD?",
+   "Hear the law of Moses",
+   "Let us offer sacrifice",
+   "Peace be unto you"
+  ],
+  "answer": 0,
+  "explanation": "The priests said not, Where is the LORD? and they that handle the law knew me not.",
+  "ref": "Jeremiah 2:8"
+ },
+ {
+  "id": "jeremiah-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom does God say he will plead with besides his people?",
+  "choices": [
+   "Their children's children",
+   "The kings of the north",
+   "The nations of Chittim",
+   "The prophets of Baal"
+  ],
+  "answer": 0,
+  "explanation": "I will yet plead with you, and with your children's children will I plead.",
+  "ref": "Jeremiah 2:9"
+ },
+ {
+  "id": "jeremiah-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom does God call to be astonished at Israel's sin?",
+  "choices": [
+   "The heavens",
+   "The mountains",
+   "The kings of the earth",
+   "The isles of the sea"
+  ],
+  "answer": 0,
+  "explanation": "Be astonished, O ye heavens, at this, and be horribly afraid.",
+  "ref": "Jeremiah 2:12"
+ },
+ {
+  "id": "jeremiah-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "What river's waters does God ask Israel what she has to do with, in the way of Egypt?",
+  "choices": [
+   "Sihor",
+   "Jordan",
+   "Kishon",
+   "Chebar"
+  ],
+  "answer": 0,
+  "explanation": "What hast thou to do in the way of Egypt, to drink the waters of Sihor?",
+  "ref": "Jeremiah 2:18"
+ },
+ {
+  "id": "jeremiah-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God say shall correct and reprove Israel?",
+  "choices": [
+   "Her own wickedness and backslidings",
+   "The sword of Babylon",
+   "The words of the priests",
+   "The famine in the land"
+  ],
+  "answer": 0,
+  "explanation": "Thine own wickedness shall correct thee, and thy backslidings shall reprove thee.",
+  "ref": "Jeremiah 2:19"
+ },
+ {
+  "id": "jeremiah-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had God broken of old, so that Israel said she would not transgress?",
+  "choices": [
+   "Her yoke and her bands",
+   "Her idols",
+   "Her walls",
+   "Her chariots"
+  ],
+  "answer": 0,
+  "explanation": "Of old time I have broken thy yoke, and burst thy bands.",
+  "ref": "Jeremiah 2:20"
+ },
+ {
+  "id": "jeremiah-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Israel wander, playing the harlot?",
+  "choices": [
+   "Upon every high hill and under every green tree",
+   "In the temple courts",
+   "By the rivers of Egypt",
+   "On the roofs of Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Upon every high hill and under every green tree thou wanderest, playing the harlot.",
+  "ref": "Jeremiah 2:20"
+ },
+ {
+  "id": "jeremiah-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into what had the noble vine turned?",
+  "choices": [
+   "The degenerate plant of a strange vine",
+   "A withered fig tree",
+   "A barren wilderness",
+   "A tree of thorns"
+  ],
+  "answer": 0,
+  "explanation": "How then art thou turned into the degenerate plant of a strange vine unto me?",
+  "ref": "Jeremiah 2:21"
+ },
+ {
+  "id": "jeremiah-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom is Israel's shame compared when he is found out?",
+  "choices": [
+   "A thief",
+   "A hireling",
+   "A widow",
+   "A shepherd"
+  ],
+  "answer": 0,
+  "explanation": "As the thief is ashamed when he is found, so is the house of Israel ashamed.",
+  "ref": "Jeremiah 2:26"
+ },
+ {
+  "id": "jeremiah-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God say matches the number of Judah's gods?",
+  "choices": [
+   "The number of her cities",
+   "The number of her tribes",
+   "The days of the year",
+   "The stars of heaven"
+  ],
+  "answer": 0,
+  "explanation": "According to the number of thy cities are thy gods, O Judah.",
+  "ref": "Jeremiah 2:28"
+ },
+ {
+  "id": "jeremiah-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What devoured Judah's prophets, like a destroying lion?",
+  "choices": [
+   "Their own sword",
+   "The king of Egypt",
+   "The famine",
+   "A wild beast"
+  ],
+  "answer": 0,
+  "explanation": "Your own sword hath devoured your prophets, like a destroying lion.",
+  "ref": "Jeremiah 2:30"
+ },
+ {
+  "id": "jeremiah-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What comparison shows how strange it is that his people forgot God?",
+  "choices": [
+   "A maid forgetting her ornaments",
+   "A shepherd forgetting his flock",
+   "A mother forgetting her child",
+   "A king forgetting his crown"
+  ],
+  "answer": 0,
+  "explanation": "Can a maid forget her ornaments, or a bride her attire? yet my people have forgotten me.",
+  "ref": "Jeremiah 2:32"
+ },
+ {
+  "id": "jeremiah-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is found in the skirts of Israel?",
+  "choices": [
+   "The blood of the poor innocents",
+   "The dust of Egypt",
+   "The ashes of the altar",
+   "The spoil of Assyria"
+  ],
+  "answer": 0,
+  "explanation": "In thy skirts is found the blood of the souls of the poor innocents.",
+  "ref": "Jeremiah 2:34"
+ },
+ {
+  "id": "jeremiah-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Which two places' children broke the crown of Israel's head?",
+  "choices": [
+   "Kedar and Chittim",
+   "Noph and Tahapanes",
+   "Tyre and Sidon",
+   "Ashdod and Gaza"
+  ],
+  "answer": 1,
+  "explanation": "The children of Noph and Tahapanes have broken the crown of thy head.",
+  "ref": "Jeremiah 2:16"
+ },
+ {
+  "id": "jeremiah-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two things might Israel use to wash, yet her iniquity is still marked?",
+  "choices": [
+   "Oil and wine",
+   "Nitre and sope",
+   "Water and salt",
+   "Hyssop and blood"
+  ],
+  "answer": 1,
+  "explanation": "Though thou wash thee with nitre, and take thee much sope, yet thine iniquity is marked before me.",
+  "ref": "Jeremiah 2:22"
+ },
+ {
+  "id": "jeremiah-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel claim, though she had gone after Baalim?",
+  "choices": [
+   "I am a priest",
+   "I am not polluted",
+   "I am a servant",
+   "I am a stranger"
+  ],
+  "answer": 1,
+  "explanation": "How canst thou say, I am not polluted, I have not gone after Baalim?",
+  "ref": "Jeremiah 2:23"
+ },
+ {
+  "id": "jeremiah-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel say when told to turn from thirst and going unshod?",
+  "choices": [
+   "I will return to the LORD",
+   "There is no hope; I have loved strangers",
+   "I will go to Egypt",
+   "I have been wronged"
+  ],
+  "answer": 1,
+  "explanation": "Thou saidst, There is no hope: no; for I have loved strangers, and after them will I go.",
+  "ref": "Jeremiah 2:25"
+ },
+ {
+  "id": "jeremiah-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the people say to the LORD in the time of their trouble?",
+  "choices": [
+   "Forgive us, O LORD",
+   "Arise, and save us",
+   "Where is our king?",
+   "Hide us from our enemies"
+  ],
+  "answer": 1,
+  "explanation": "In the time of their trouble they will say, Arise, and save us.",
+  "ref": "Jeremiah 2:27"
+ },
+ {
+  "id": "jeremiah-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall Israel do with her hands as she goes forth from Egypt?",
+  "choices": [
+   "Lift them to heaven",
+   "Put them upon her head",
+   "Bind them with cords",
+   "Wash them in the river"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt go forth from him, and thine hands upon thine head.",
+  "ref": "Jeremiah 2:37"
+ },
+ {
+  "id": "jeremiah-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Of what nation will Israel be ashamed, as she was ashamed of Assyria?",
+  "choices": [
+   "Babylon",
+   "Egypt",
+   "Edom",
+   "Moab"
+  ],
+  "answer": 1,
+  "explanation": "Thou also shalt be ashamed of Egypt, as thou wast ashamed of Assyria.",
+  "ref": "Jeremiah 2:36"
+ },
+ {
+  "id": "jeremiah-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did God say he found the blood on Israel's skirts?",
+  "choices": [
+   "By the testimony of two witnesses",
+   "Not by secret search, but upon all these",
+   "By the word of the prophets",
+   "By a dream"
+  ],
+  "answer": 1,
+  "explanation": "I have not found it by secret search, but upon all these.",
+  "ref": "Jeremiah 2:34"
+ },
+ {
+  "id": "jeremiah-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the children God smote?",
+  "choices": [
+   "They turned and repented",
+   "They received no correction",
+   "They fled into Egypt",
+   "They were carried captive"
+  ],
+  "answer": 1,
+  "explanation": "In vain have I smitten your children; they received no correction.",
+  "ref": "Jeremiah 2:30"
+ },
+ {
+  "id": "jeremiah-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people say, forsaking the LORD?",
+  "choices": [
+   "We are the LORD's inheritance",
+   "We are lords; we will come no more unto thee",
+   "We will serve Baal",
+   "We will return to Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore say my people, We are lords; we will come no more unto thee?",
+  "ref": "Jeremiah 2:31"
+ },
+ {
+  "id": "jeremiah-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Which leaders of Israel are named as transgressing, besides priests and prophets?",
+  "choices": [
+   "The elders",
+   "The pastors",
+   "The judges",
+   "The scribes"
+  ],
+  "answer": 1,
+  "explanation": "The pastors also transgressed against me, and the prophets prophesied by Baal.",
+  "ref": "Jeremiah 2:8"
+ },
+ {
+  "id": "jeremiah-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel say would happen to God's anger because she was innocent?",
+  "choices": [
+   "It would fall on Egypt",
+   "It would turn from her",
+   "It would pass in a year",
+   "It would be quenched by sacrifice"
+  ],
+  "answer": 1,
+  "explanation": "Because I am innocent, surely his anger shall turn from me.",
+  "ref": "Jeremiah 2:35"
+ },
+ {
+  "id": "jeremiah-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of land did the LORD lead them through where no man dwelt?",
+  "choices": [
+   "A land flowing with milk",
+   "A land that no man passed through",
+   "A land of many rivers",
+   "A land of high mountains"
+  ],
+  "answer": 1,
+  "explanation": "Through a land that no man passed through, and where no man dwelt.",
+  "ref": "Jeremiah 2:6"
+ },
+ {
+  "id": "jeremiah-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the LORD done to the confidences Israel trusted in?",
+  "choices": [
+   "Strengthened them",
+   "Rejected them",
+   "Hidden them",
+   "Healed them"
+  ],
+  "answer": 1,
+  "explanation": "The LORD hath rejected thy confidences, and thou shalt not prosper in them.",
+  "ref": "Jeremiah 2:37"
+ },
+ {
+  "id": "jeremiah-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God say is not in Israel, now she has forsaken him?",
+  "choices": [
+   "His law",
+   "His fear",
+   "His temple",
+   "His peace"
+  ],
+  "answer": 1,
+  "explanation": "It is an evil thing and bitter, that thou hast forsaken the LORD thy God, and that my fear is not in thee.",
+  "ref": "Jeremiah 2:19"
+ },
+ {
+  "id": "jeremiah-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had been withholden because of Judah's whoredoms?",
+  "choices": [
+   "The showers and the latter rain",
+   "The firstfruits",
+   "The morning dew",
+   "The harvest"
+  ],
+  "answer": 0,
+  "explanation": "The showers have been withholden, and there hath been no latter rain.",
+  "ref": "Jeremiah 3:3"
+ },
+ {
+  "id": "jeremiah-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In the opening picture, what happens to the wife put away by her husband?",
+  "choices": [
+   "She goes and becomes another man's",
+   "She returns to her father",
+   "She is stoned",
+   "She is sold as a slave"
+  ],
+  "answer": 0,
+  "explanation": "If a man put away his wife, and she go from him, and become another man's, shall he return unto her again?",
+  "ref": "Jeremiah 3:1"
+ },
+ {
+  "id": "jeremiah-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had God given backsliding Israel when he put her away?",
+  "choices": [
+   "A bill of divorce",
+   "A crown of gold",
+   "A scroll of the law",
+   "A hundred sheep"
+  ],
+  "answer": 0,
+  "explanation": "I had put her away, and given her a bill of divorce.",
+  "ref": "Jeremiah 3:8"
+ },
+ {
+  "id": "jeremiah-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is called Israel's treacherous sister?",
+  "choices": [
+   "Judah",
+   "Samaria",
+   "Egypt",
+   "Edom"
+  ],
+  "answer": 0,
+  "explanation": "Her treacherous sister Judah saw it.",
+  "ref": "Jeremiah 3:7"
+ },
+ {
+  "id": "jeremiah-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "In the days of which king did the LORD speak to Jeremiah about backsliding Israel?",
+  "choices": [
+   "Josiah",
+   "Hezekiah",
+   "Jehoiakim",
+   "Zedekiah"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said also unto me in the days of Josiah the king, Hast thou seen that which backsliding Israel hath done?",
+  "ref": "Jeremiah 3:6"
+ },
+ {
+  "id": "jeremiah-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what did Israel commit adultery?",
+  "choices": [
+   "Stones and stocks",
+   "Silver and gold",
+   "Rams and bulls",
+   "Fire and incense"
+  ],
+  "answer": 0,
+  "explanation": "She defiled the land, and committed adultery with stones and with stocks.",
+  "ref": "Jeremiah 3:9"
+ },
+ {
+  "id": "jeremiah-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Toward which direction was Jeremiah to proclaim the call to return?",
+  "choices": [
+   "The north",
+   "The south",
+   "The east",
+   "The sea"
+  ],
+  "answer": 0,
+  "explanation": "Go and proclaim these words toward the north, and say, Return, thou backsliding Israel.",
+  "ref": "Jeremiah 3:12"
+ },
+ {
+  "id": "jeremiah-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why will God not keep his anger for ever?",
+  "choices": [
+   "He is merciful",
+   "He is weary",
+   "He has forgotten",
+   "He is far away"
+  ],
+  "answer": 0,
+  "explanation": "I will not cause mine anger to fall upon you: for I am merciful, saith the LORD.",
+  "ref": "Jeremiah 3:12"
+ },
+ {
+  "id": "jeremiah-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "To where will God bring those who return?",
+  "choices": [
+   "Zion",
+   "Egypt",
+   "Bethel",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "I will take you one of a city, and two of a family, and I will bring you to Zion.",
+  "ref": "Jeremiah 3:14"
+ },
+ {
+  "id": "jeremiah-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will God do for backsliding children who return?",
+  "choices": [
+   "Heal their backslidings",
+   "Give them kings",
+   "Make them rich",
+   "Destroy their enemies"
+  ],
+  "answer": 0,
+  "explanation": "Return, ye backsliding children, and I will heal your backslidings.",
+  "ref": "Jeremiah 3:22"
+ },
+ {
+  "id": "jeremiah-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom is Israel compared, as she sat in the ways waiting for lovers?",
+  "choices": [
+   "A shepherd on the hills",
+   "The Arabian in the wilderness",
+   "A king on his throne",
+   "A watchman on the wall"
+  ],
+  "answer": 1,
+  "explanation": "In the ways hast thou sat for them, as the Arabian in the wilderness.",
+  "ref": "Jeremiah 3:2"
+ },
+ {
+  "id": "jeremiah-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel have that refused to be ashamed?",
+  "choices": [
+   "A hardened heart",
+   "A whore's forehead",
+   "A proud tongue",
+   "A stiff neck"
+  ],
+  "answer": 1,
+  "explanation": "Thou hadst a whore's forehead, thou refusedst to be ashamed.",
+  "ref": "Jeremiah 3:3"
+ },
+ {
+  "id": "jeremiah-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God ask Israel to cry to him, as the guide of her youth?",
+  "choices": [
+   "My shepherd",
+   "My father",
+   "My king",
+   "My rock"
+  ],
+  "answer": 1,
+  "explanation": "Wilt thou not from this time cry unto me, My father, thou art the guide of my youth?",
+  "ref": "Jeremiah 3:4"
+ },
+ {
+  "id": "jeremiah-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God say of backsliding Israel compared with treacherous Judah?",
+  "choices": [
+   "She is worse than Judah",
+   "She has justified herself more than Judah",
+   "She is wiser than Judah",
+   "She is stronger than Judah"
+  ],
+  "answer": 1,
+  "explanation": "The backsliding Israel hath justified herself more than treacherous Judah.",
+  "ref": "Jeremiah 3:11"
+ },
+ {
+  "id": "jeremiah-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must Israel acknowledge?",
+  "choices": [
+   "Her king's victory",
+   "Her iniquity against the LORD",
+   "Her priests' wisdom",
+   "Her fathers' wars"
+  ],
+  "answer": 1,
+  "explanation": "Only acknowledge thine iniquity, that thou hast transgressed against the LORD thy God.",
+  "ref": "Jeremiah 3:13"
+ },
+ {
+  "id": "jeremiah-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many will God take from a city and from a family?",
+  "choices": [
+   "Ten of a city and one of a family",
+   "One of a city and two of a family",
+   "Two of a city and ten of a family",
+   "All of a city and half a family"
+  ],
+  "answer": 1,
+  "explanation": "I will take you one of a city, and two of a family.",
+  "ref": "Jeremiah 3:14"
+ },
+ {
+  "id": "jeremiah-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will they say no more when they are multiplied in the land?",
+  "choices": [
+   "The tabernacle of David",
+   "The ark of the covenant of the LORD",
+   "The law of Moses",
+   "The feasts of the LORD"
+  ],
+  "answer": 1,
+  "explanation": "They shall say no more, The ark of the covenant of the LORD.",
+  "ref": "Jeremiah 3:16"
+ },
+ {
+  "id": "jeremiah-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who will walk together with the house of Israel in those days?",
+  "choices": [
+   "The nations of the north",
+   "The house of Judah",
+   "The sons of Edom",
+   "The priests of Anathoth"
+  ],
+  "answer": 1,
+  "explanation": "The house of Judah shall walk with the house of Israel.",
+  "ref": "Jeremiah 3:18"
+ },
+ {
+  "id": "jeremiah-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What comparison does God use for the house of Israel dealing with him?",
+  "choices": [
+   "A servant leaving his master",
+   "A wife departing treacherously from her husband",
+   "A sheep straying from the flock",
+   "A son leaving his father"
+  ],
+  "answer": 1,
+  "explanation": "As a wife treacherously departeth from her husband, so have ye dealt treacherously with me.",
+  "ref": "Jeremiah 3:20"
+ },
+ {
+  "id": "jeremiah-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What voice was heard upon the high places?",
+  "choices": [
+   "Singing of the priests",
+   "Weeping and supplications of the children of Israel",
+   "Trumpets of war",
+   "Laughter of the harlots"
+  ],
+  "answer": 1,
+  "explanation": "A voice was heard upon the high places, weeping and supplications of the children of Israel.",
+  "ref": "Jeremiah 3:21"
+ },
+ {
+  "id": "jeremiah-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whom, and not the hills, is the salvation of Israel?",
+  "choices": [
+   "The king of Judah",
+   "The LORD our God",
+   "The temple",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "In vain is salvation hoped for from the hills: truly in the LORD our God is the salvation of Israel.",
+  "ref": "Jeremiah 3:23"
+ },
+ {
+  "id": "jeremiah-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has shame devoured from the youth of the fathers?",
+  "choices": [
+   "Their cities and walls",
+   "Their flocks, herds, sons and daughters",
+   "Their gold and silver",
+   "Their vineyards"
+  ],
+  "answer": 1,
+  "explanation": "Shame hath devoured the labour of our fathers from our youth; their flocks and their herds, their sons and their daughters.",
+  "ref": "Jeremiah 3:24"
+ },
+ {
+  "id": "jeremiah-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "From where will Judah and Israel come together to the land given to their fathers?",
+  "choices": [
+   "The land of Egypt",
+   "The land of the north",
+   "The isles of the sea",
+   "The wilderness"
+  ],
+  "answer": 1,
+  "explanation": "They shall come together out of the land of the north to the land that I have given for an inheritance unto your fathers.",
+  "ref": "Jeremiah 3:18"
+ },
+ {
+  "id": "jeremiah-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who saw what Israel had done and yet feared not?",
+  "choices": [
+   "Her treacherous sister Judah",
+   "Her prophets",
+   "The kings of Assyria",
+   "The priests of Baal"
+  ],
+  "answer": 0,
+  "explanation": "Her treacherous sister Judah feared not, but went and played the harlot also.",
+  "ref": "Jeremiah 3:8"
+ },
+ {
+  "id": "jeremiah-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Where had backsliding Israel gone up and played the harlot?",
+  "choices": [
+   "On every high mountain and under every green tree",
+   "In the valley of Hinnom",
+   "In the courts of the temple",
+   "By the rivers of Babylon"
+  ],
+  "answer": 0,
+  "explanation": "She is gone up upon every high mountain and under every green tree, and there hath played the harlot.",
+  "ref": "Jeremiah 3:6"
+ },
+ {
+  "id": "jeremiah-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the lightness of her whoredom do to the land?",
+  "choices": [
+   "She defiled it",
+   "She emptied it",
+   "She divided it",
+   "She sold it"
+  ],
+  "answer": 0,
+  "explanation": "Through the lightness of her whoredom, she defiled the land.",
+  "ref": "Jeremiah 3:9"
+ },
+ {
+  "id": "jeremiah-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say Israel had done, in her speech and deeds, as much as she could?",
+  "choices": [
+   "Spoken and done evil things",
+   "Offered many sacrifices",
+   "Kept the law",
+   "Sent for prophets"
+  ],
+  "answer": 0,
+  "explanation": "Behold, thou hast spoken and done evil things as thou couldest.",
+  "ref": "Jeremiah 3:5"
+ },
+ {
+  "id": "jeremiah-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will be given to the shepherds God promises, who feed the people?",
+  "choices": [
+   "Knowledge and understanding",
+   "Gold and silver",
+   "Law and judgment",
+   "Bread and wine"
+  ],
+  "answer": 0,
+  "explanation": "I will give you pastors according to mine heart, which shall feed you with knowledge and understanding.",
+  "ref": "Jeremiah 3:15"
+ },
+ {
+  "id": "jeremiah-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will they call Jerusalem, and who will be gathered to it?",
+  "choices": [
+   "The throne of the LORD, and all the nations",
+   "The city of David, and all the tribes",
+   "The holy hill, and all the priests",
+   "The city of peace, and the kings"
+  ],
+  "answer": 0,
+  "explanation": "They shall call Jerusalem the throne of the LORD; and all the nations shall be gathered unto it.",
+  "ref": "Jeremiah 3:17"
+ },
+ {
+  "id": "jeremiah-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will they no longer walk after?",
+  "choices": [
+   "The imagination of their evil heart",
+   "The gods of the nations",
+   "The counsel of the wicked",
+   "The paths of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Neither shall they walk any more after the imagination of their evil heart.",
+  "ref": "Jeremiah 3:17"
+ },
+ {
+  "id": "jeremiah-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the returning children say, \"for thou art the LORD our God\"?",
+  "choices": [
+   "Behold, we come unto thee",
+   "We have found peace",
+   "We will build thy house",
+   "We have been healed"
+  ],
+  "answer": 0,
+  "explanation": "Behold, we come unto thee; for thou art the LORD our God.",
+  "ref": "Jeremiah 3:22"
+ },
+ {
+  "id": "jeremiah-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What covers the people as they lie down in their shame?",
+  "choices": [
+   "Their confusion",
+   "Their sackcloth",
+   "Their ashes",
+   "Their tears"
+  ],
+  "answer": 0,
+  "explanation": "We lie down in our shame, and our confusion covereth us.",
+  "ref": "Jeremiah 3:25"
+ },
+ {
+  "id": "jeremiah-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long have the people and their fathers not obeyed the LORD?",
+  "choices": [
+   "From their youth unto this day",
+   "Since the days of Moses",
+   "Since the fall of Samaria",
+   "Since the days of David"
+  ],
+  "answer": 0,
+  "explanation": "We have sinned, we and our fathers, from our youth even unto this day.",
+  "ref": "Jeremiah 3:25"
+ },
+ {
+  "id": "jeremiah-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God ask how he would give Israel among the children?",
+  "choices": [
+   "A pleasant land, a goodly heritage",
+   "A great king",
+   "A mighty army",
+   "A temple of gold"
+  ],
+  "answer": 0,
+  "explanation": "How shall I put thee among the children, and give thee a pleasant land, a goodly heritage of the hosts of nations?",
+  "ref": "Jeremiah 3:19"
+ },
+ {
+  "id": "jeremiah-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Israel told to lift her eyes to see where she had been defiled?",
+  "choices": [
+   "Unto the high places",
+   "Unto the temple",
+   "Unto the mountains of Zion",
+   "Unto the heavens"
+  ],
+  "answer": 0,
+  "explanation": "Lift up thine eyes unto the high places, and see where thou hast not been lien with.",
+  "ref": "Jeremiah 3:2"
+ },
+ {
+  "id": "jeremiah-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the land be, if a man took back the wife who had gone to another man?",
+  "choices": [
+   "Greatly polluted",
+   "Greatly blessed",
+   "Left desolate",
+   "Filled with strangers"
+  ],
+  "answer": 0,
+  "explanation": "Shall he return unto her again? shall not that land be greatly polluted?",
+  "ref": "Jeremiah 3:1"
+ },
+ {
+  "id": "jeremiah-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the people told to blow in the land?",
+  "choices": [
+   "The shofar of jubilee",
+   "The trumpet",
+   "The silver trumpets of the temple",
+   "The ram's horn of Gideon"
+  ],
+  "answer": 1,
+  "explanation": "Blow ye the trumpet in the land: cry, gather together.",
+  "ref": "Jeremiah 4:5"
+ },
+ {
+  "id": "jeremiah-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Among what should the men of Judah not sow?",
+  "choices": [
+   "Stones",
+   "Thorns",
+   "Weeds",
+   "Sand"
+  ],
+  "answer": 1,
+  "explanation": "Break up your fallow ground, and sow not among thorns.",
+  "ref": "Jeremiah 4:3"
+ },
+ {
+  "id": "jeremiah-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the people told to gird themselves with, and lament?",
+  "choices": [
+   "Fine linen",
+   "Sackcloth",
+   "Armour",
+   "Purple"
+  ],
+  "answer": 1,
+  "explanation": "Gird you with sackcloth, lament and howl: for the fierce anger of the LORD is not turned back.",
+  "ref": "Jeremiah 4:8"
+ },
+ {
+  "id": "jeremiah-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which direction will the LORD bring evil and great destruction?",
+  "choices": [
+   "The south",
+   "The north",
+   "The east",
+   "The west"
+  ],
+  "answer": 1,
+  "explanation": "I will bring evil from the north, and a great destruction.",
+  "ref": "Jeremiah 4:6"
+ },
+ {
+  "id": "jeremiah-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where do the voices come from that publish affliction?",
+  "choices": [
+   "Hebron and Bethel",
+   "Dan and mount Ephraim",
+   "Zion and Carmel",
+   "Shiloh and Gilgal"
+  ],
+  "answer": 1,
+  "explanation": "A voice declareth from Dan, and publisheth affliction from mount Ephraim.",
+  "ref": "Jeremiah 4:15"
+ },
+ {
+  "id": "jeremiah-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the people been told, which Jeremiah says has deceived them?",
+  "choices": [
+   "Ye shall have a king",
+   "Ye shall have peace",
+   "Ye shall be rich",
+   "Ye shall have no famine"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast greatly deceived this people, saying, Ye shall have peace; whereas the sword reacheth unto the soul.",
+  "ref": "Jeremiah 4:10"
+ },
+ {
+  "id": "jeremiah-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are the invader's horses described?",
+  "choices": [
+   "Stronger than lions",
+   "Swifter than eagles",
+   "White as snow",
+   "Numberless as locusts"
+  ],
+  "answer": 1,
+  "explanation": "His chariots shall be as a whirlwind: his horses are swifter than eagles.",
+  "ref": "Jeremiah 4:13"
+ },
+ {
+  "id": "jeremiah-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had fled when Jeremiah beheld, and there was no man?",
+  "choices": [
+   "All the cattle of the field",
+   "All the birds of the heavens",
+   "All the fish of the sea",
+   "All the kings of the earth"
+  ],
+  "answer": 1,
+  "explanation": "I beheld, and, lo, there was no man, and all the birds of the heavens were fled.",
+  "ref": "Jeremiah 4:25"
+ },
+ {
+  "id": "jeremiah-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say he will not make of the land's desolation?",
+  "choices": [
+   "A new beginning",
+   "A full end",
+   "A promise",
+   "A covenant"
+  ],
+  "answer": 1,
+  "explanation": "The whole land shall be desolate; yet will I not make a full end.",
+  "ref": "Jeremiah 4:27"
+ },
+ {
+  "id": "jeremiah-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what does Jeremiah compare the voice of the daughter of Zion?",
+  "choices": [
+   "A mourning widow",
+   "A woman in travail",
+   "A lost shepherd",
+   "A weeping child"
+  ],
+  "answer": 1,
+  "explanation": "I have heard a voice as of a woman in travail, the voice of the daughter of Zion.",
+  "ref": "Jeremiah 4:31"
+ },
+ {
+  "id": "jeremiah-4-e-11",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the mountains do when Jeremiah beheld them?",
+  "choices": [
+   "They burned",
+   "They trembled",
+   "They fell into the sea",
+   "They wept"
+  ],
+  "answer": 1,
+  "explanation": "I beheld the mountains, and, lo, they trembled, and all the hills moved lightly.",
+  "ref": "Jeremiah 4:24"
+ },
+ {
+  "id": "jeremiah-4-e-12",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where were the people told to go when the trumpet sounded?",
+  "choices": [
+   "Into the wilderness",
+   "Into the defenced cities",
+   "Into Egypt",
+   "Up to the temple"
+  ],
+  "answer": 1,
+  "explanation": "Assemble yourselves, and let us go into the defenced cities.",
+  "ref": "Jeremiah 4:5"
+ },
+ {
+  "id": "jeremiah-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must Israel swear if she returns?",
+  "choices": [
+   "In truth, in judgment, and in righteousness",
+   "I will not return again",
+   "The temple of the LORD",
+   "We are the people of the LORD"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt swear, The LORD liveth, in truth, in judgment, and in righteousness.",
+  "ref": "Jeremiah 4:2"
+ },
+ {
+  "id": "jeremiah-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD's fury do if they do not circumcise their hearts?",
+  "choices": [
+   "Come forth like fire that none can quench",
+   "Fall like hail from heaven",
+   "Flood the land like a river",
+   "Pass over them in the night"
+  ],
+  "answer": 0,
+  "explanation": "Lest my fury come forth like fire, and burn that none can quench, because of the evil of your doings.",
+  "ref": "Jeremiah 4:4"
+ },
+ {
+  "id": "jeremiah-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the priests and the prophets do at that day?",
+  "choices": [
+   "The priests shall be astonished, the prophets shall wonder",
+   "They shall lead the people in prayer",
+   "They shall flee to Egypt",
+   "They shall build the walls"
+  ],
+  "answer": 0,
+  "explanation": "The priests shall be astonished, and the prophets shall wonder.",
+  "ref": "Jeremiah 4:9"
+ },
+ {
+  "id": "jeremiah-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of wind is spoken of, not to fan nor cleanse?",
+  "choices": [
+   "A dry wind of the high places in the wilderness",
+   "A cold wind from the sea",
+   "A wind of the east",
+   "A gentle wind of the morning"
+  ],
+  "answer": 0,
+  "explanation": "A dry wind of the high places in the wilderness toward the daughter of my people, not to fan, nor to cleanse.",
+  "ref": "Jeremiah 4:11"
+ },
+ {
+  "id": "jeremiah-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the invader's chariots compared to?",
+  "choices": [
+   "A whirlwind",
+   "A flood",
+   "A flame",
+   "A cloud of dust"
+  ],
+  "answer": 0,
+  "explanation": "His chariots shall be as a whirlwind.",
+  "ref": "Jeremiah 4:13"
+ },
+ {
+  "id": "jeremiah-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD ask will lodge within Jerusalem?",
+  "choices": [
+   "Vain thoughts",
+   "Wicked priests",
+   "Foreign armies",
+   "Stolen goods"
+  ],
+  "answer": 0,
+  "explanation": "How long shall thy vain thoughts lodge within thee?",
+  "ref": "Jeremiah 4:14"
+ },
+ {
+  "id": "jeremiah-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who will come from a far country against the cities of Judah?",
+  "choices": [
+   "Watchers",
+   "Merchants",
+   "Ambassadors",
+   "Shepherds"
+  ],
+  "answer": 0,
+  "explanation": "Watchers come from a far country, and give out their voice against the cities of Judah.",
+  "ref": "Jeremiah 4:16"
+ },
+ {
+  "id": "jeremiah-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the watchers compared to as they surround Jerusalem?",
+  "choices": [
+   "Keepers of a field",
+   "Wolves in the night",
+   "Locusts on the land",
+   "Shepherds of a flock"
+  ],
+  "answer": 0,
+  "explanation": "As keepers of a field, are they against her round about; because she hath been rebellious against me.",
+  "ref": "Jeremiah 4:17"
+ },
+ {
+  "id": "jeremiah-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say has procured these things for Judah?",
+  "choices": [
+   "Her own way and her doings",
+   "The sins of her fathers",
+   "The king of Babylon",
+   "The wrath of the nations"
+  ],
+  "answer": 0,
+  "explanation": "Thy way and thy doings have procured these things unto thee.",
+  "ref": "Jeremiah 4:18"
+ },
+ {
+  "id": "jeremiah-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jeremiah cry about his bowels and his heart?",
+  "choices": [
+   "He was pained and could not hold his peace",
+   "He was glad and sang",
+   "He was silent and fasted",
+   "He was strong and unafraid"
+  ],
+  "answer": 0,
+  "explanation": "My bowels, my bowels! I am pained at my very heart; I cannot hold my peace.",
+  "ref": "Jeremiah 4:19"
+ },
+ {
+  "id": "jeremiah-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jeremiah say was spoiled in a moment?",
+  "choices": [
+   "His tents and his curtains",
+   "His house and his field",
+   "His flocks and his herds",
+   "His scrolls and his pen"
+  ],
+  "answer": 0,
+  "explanation": "Suddenly are my tents spoiled, and my curtains in a moment.",
+  "ref": "Jeremiah 4:20"
+ },
+ {
+  "id": "jeremiah-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the heavens have when Jeremiah beheld them?",
+  "choices": [
+   "No light",
+   "Many stars",
+   "Dark clouds",
+   "A rainbow"
+  ],
+  "answer": 0,
+  "explanation": "I beheld the earth, and, lo, it was without form, and void; and the heavens, and they had no light.",
+  "ref": "Jeremiah 4:23"
+ },
+ {
+  "id": "jeremiah-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the earth do and the heavens become, because the LORD has spoken?",
+  "choices": [
+   "The earth shall mourn, the heavens be black",
+   "The earth shall rejoice, the heavens be bright",
+   "The earth shall shake, the heavens fall",
+   "The earth shall sleep, the heavens be still"
+  ],
+  "answer": 0,
+  "explanation": "For this shall the earth mourn, and the heavens above be black: because I have spoken it, I have purposed it.",
+  "ref": "Jeremiah 4:28"
+ },
+ {
+  "id": "jeremiah-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will Jerusalem's lovers do, though she decks herself?",
+  "choices": [
+   "Despise her and seek her life",
+   "Defend her walls",
+   "Bring her gifts",
+   "Mourn for her"
+  ],
+  "answer": 0,
+  "explanation": "In vain shalt thou make thyself fair; thy lovers will despise thee, they will seek thy life.",
+  "ref": "Jeremiah 4:30"
+ },
+ {
+  "id": "jeremiah-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say about his people's knowledge?",
+  "choices": [
+   "They have not known him",
+   "They know him too well",
+   "They fear him greatly",
+   "They sought him early"
+  ],
+  "answer": 0,
+  "explanation": "My people is foolish, they have not known me.",
+  "ref": "Jeremiah 4:22"
+ },
+ {
+  "id": "jeremiah-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the nations do in the LORD, if Israel swears truly?",
+  "choices": [
+   "Fear and flee from him",
+   "Bless themselves and glory in him",
+   "Bring tribute to him",
+   "Fight against him"
+  ],
+  "answer": 1,
+  "explanation": "The nations shall bless themselves in him, and in him shall they glory.",
+  "ref": "Jeremiah 4:2"
+ },
+ {
+  "id": "jeremiah-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose hearts shall perish at that day?",
+  "choices": [
+   "The priests and the prophets",
+   "The king and the princes",
+   "The elders and the judges",
+   "The mighty men"
+  ],
+  "answer": 1,
+  "explanation": "The heart of the king shall perish, and the heart of the princes.",
+  "ref": "Jeremiah 4:9"
+ },
+ {
+  "id": "jeremiah-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jeremiah say reached unto the soul?",
+  "choices": [
+   "The famine",
+   "The sword",
+   "The flood",
+   "The plague"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall have peace; whereas the sword reacheth unto the soul.",
+  "ref": "Jeremiah 4:10"
+ },
+ {
+  "id": "jeremiah-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall come unto the LORD, who will give sentence against them?",
+  "choices": [
+   "A rain from the north",
+   "A full wind from the high places",
+   "A fire from the temple",
+   "A flood from the river"
+  ],
+  "answer": 1,
+  "explanation": "A full wind from those places shall come unto me: now also will I give sentence against them.",
+  "ref": "Jeremiah 4:12"
+ },
+ {
+  "id": "jeremiah-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the fruitful place become?",
+  "choices": [
+   "A garden",
+   "A wilderness",
+   "A pasture",
+   "A vineyard"
+  ],
+  "answer": 1,
+  "explanation": "The fruitful place was a wilderness, and all the cities thereof were broken down at the presence of the LORD.",
+  "ref": "Jeremiah 4:26"
+ },
+ {
+  "id": "jeremiah-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where shall the people go when the city flees for the noise of horsemen and bowmen?",
+  "choices": [
+   "Into the temple",
+   "Into thickets and up upon the rocks",
+   "Over the Jordan",
+   "Into the sea"
+  ],
+  "answer": 1,
+  "explanation": "They shall go into thickets, and climb up upon the rocks.",
+  "ref": "Jeremiah 4:29"
+ },
+ {
+  "id": "jeremiah-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jerusalem do to her face, though in vain?",
+  "choices": [
+   "Covered it with ashes",
+   "Rent it with painting",
+   "Washed it with oil",
+   "Veiled it with silk"
+  ],
+  "answer": 1,
+  "explanation": "Though thou rentest thy face with painting, in vain shalt thou make thyself fair.",
+  "ref": "Jeremiah 4:30"
+ },
+ {
+  "id": "jeremiah-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Because of whom does the daughter of Zion say her soul is wearied?",
+  "choices": [
+   "Thieves",
+   "Murderers",
+   "Strangers",
+   "Liars"
+  ],
+  "answer": 1,
+  "explanation": "Woe is me now! for my soul is wearied because of murderers.",
+  "ref": "Jeremiah 4:31"
+ },
+ {
+  "id": "jeremiah-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say to Israel about her abominations?",
+  "choices": [
+   "Burn them with fire",
+   "Put them away from his sight",
+   "Offer them in the temple",
+   "Hide them in the earth"
+  ],
+  "answer": 1,
+  "explanation": "If thou wilt put away thine abominations out of my sight, then shalt thou not remove.",
+  "ref": "Jeremiah 4:1"
+ },
+ {
+  "id": "jeremiah-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of the destroyer of the Gentiles?",
+  "choices": [
+   "He is gone back to his place",
+   "He is on his way to make the land desolate",
+   "He has been defeated",
+   "He has made a covenant"
+  ],
+  "answer": 1,
+  "explanation": "The destroyer of the Gentiles is on his way; he is gone forth from his place to make thy land desolate.",
+  "ref": "Jeremiah 4:7"
+ },
+ {
+  "id": "jeremiah-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the people told to set up toward Zion?",
+  "choices": [
+   "The altar",
+   "The standard",
+   "The ark",
+   "The banner of David"
+  ],
+  "answer": 1,
+  "explanation": "Set up the standard toward Zion: retire, stay not.",
+  "ref": "Jeremiah 4:6"
+ },
+ {
+  "id": "jeremiah-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is not turned back from the people?",
+  "choices": [
+   "The sword of Babylon",
+   "The fierce anger of the LORD",
+   "The plague",
+   "The drought"
+  ],
+  "answer": 1,
+  "explanation": "The fierce anger of the LORD is not turned back from us.",
+  "ref": "Jeremiah 4:8"
+ },
+ {
+  "id": "jeremiah-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Jerusalem cry when the invader comes up as clouds?",
+  "choices": [
+   "Peace be with us",
+   "Woe unto us! for we are spoiled",
+   "The LORD is our king",
+   "Let us fight"
+  ],
+  "answer": 1,
+  "explanation": "Behold, he shall come up as clouds. Woe unto us! for we are spoiled.",
+  "ref": "Jeremiah 4:13"
+ },
+ {
+  "id": "jeremiah-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD not do about what he has purposed?",
+  "choices": [
+   "Delay it a year",
+   "Repent or turn back from it",
+   "Tell the prophets",
+   "Remember it"
+  ],
+  "answer": 1,
+  "explanation": "I have spoken it, I have purposed it, and will not repent, neither will I turn back from it.",
+  "ref": "Jeremiah 4:28"
+ },
+ {
+  "id": "jeremiah-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the daughter of Zion do as she bewailed herself?",
+  "choices": [
+   "Rent her garments",
+   "Spread her hands",
+   "Covered her head",
+   "Fell on her face"
+  ],
+  "answer": 1,
+  "explanation": "The daughter of Zion, that bewaileth herself, that spreadeth her hands.",
+  "ref": "Jeremiah 4:31"
+ },
+ {
+  "id": "jeremiah-4-m-16",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the men of Judah told to take away, with circumcision?",
+  "choices": [
+   "The idols of their houses",
+   "The foreskins of their heart",
+   "The thorns of their field",
+   "The silver of their treasures"
+  ],
+  "answer": 1,
+  "explanation": "Circumcise yourselves to the LORD, and take away the foreskins of your heart.",
+  "ref": "Jeremiah 4:4"
+ },
+ {
+  "id": "jeremiah-4-h-16",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Against which city were the nations told to publish that watchers were coming?",
+  "choices": [
+   "Jerusalem",
+   "Samaria",
+   "Babylon",
+   "Tyre"
+  ],
+  "answer": 0,
+  "explanation": "Make ye mention to the nations; behold, publish against Jerusalem, that watchers come from a far country.",
+  "ref": "Jeremiah 4:16"
+ },
+ {
+  "id": "jeremiah-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were people told to run to and fro to find a man?",
+  "choices": [
+   "Along the walls of Babylon",
+   "Through the valley of Hinnom",
+   "Through the streets of Jerusalem",
+   "Around the temple courts"
+  ],
+  "answer": 2,
+  "explanation": "Run ye to and fro through the streets of Jerusalem, and see now, and know.",
+  "ref": "Jeremiah 5:1"
+ },
+ {
+  "id": "jeremiah-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would God do if one man who seeks the truth were found?",
+  "choices": [
+   "Destroy the city",
+   "Send a prophet",
+   "Pardon the city",
+   "Raise up a king"
+  ],
+  "answer": 2,
+  "explanation": "If ye can find a man, that executeth judgment, that seeketh the truth; and I will pardon it.",
+  "ref": "Jeremiah 5:1"
+ },
+ {
+  "id": "jeremiah-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What have the people made harder than a rock?",
+  "choices": [
+   "Their hearts of stone",
+   "Their walls",
+   "Their faces",
+   "Their words"
+  ],
+  "answer": 2,
+  "explanation": "They have made their faces harder than a rock; they have refused to return.",
+  "ref": "Jeremiah 5:3"
+ },
+ {
+  "id": "jeremiah-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did Jeremiah say he would go, after thinking the poor were foolish?",
+  "choices": [
+   "The priests",
+   "The prophets",
+   "The great men",
+   "The king"
+  ],
+  "answer": 2,
+  "explanation": "I will get me unto the great men, and will speak unto them.",
+  "ref": "Jeremiah 5:5"
+ },
+ {
+  "id": "jeremiah-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By whom had the children of Judah sworn?",
+  "choices": [
+   "The God of Abraham",
+   "The sun and the moon",
+   "Them that are no gods",
+   "The temple of the LORD"
+  ],
+  "answer": 2,
+  "explanation": "Thy children have forsaken me, and sworn by them that are no gods.",
+  "ref": "Jeremiah 5:7"
+ },
+ {
+  "id": "jeremiah-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "As what animals does God describe the men neighing after their neighbours' wives?",
+  "choices": [
+   "Wild asses",
+   "Young lions",
+   "Fed horses",
+   "Wandering sheep"
+  ],
+  "answer": 2,
+  "explanation": "They were as fed horses in the morning: every one neighed after his neighbour's wife.",
+  "ref": "Jeremiah 5:8"
+ },
+ {
+  "id": "jeremiah-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two houses have dealt very treacherously against the LORD?",
+  "choices": [
+   "Judah and Edom",
+   "Israel and Egypt",
+   "Israel and Judah",
+   "Benjamin and Ephraim"
+  ],
+  "answer": 2,
+  "explanation": "The house of Israel and the house of Judah have dealt very treacherously against me.",
+  "ref": "Jeremiah 5:11"
+ },
+ {
+  "id": "jeremiah-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will God make his words in Jeremiah's mouth, and the people?",
+  "choices": [
+   "Water, and the people stones",
+   "A sword, and the people grain",
+   "Fire, and the people wood",
+   "Honey, and the people salt"
+  ],
+  "answer": 2,
+  "explanation": "I will make my words in thy mouth fire, and this people wood, and it shall devour them.",
+  "ref": "Jeremiah 5:14"
+ },
+ {
+  "id": "jeremiah-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of nation will God bring from far?",
+  "choices": [
+   "A small nation of shepherds",
+   "A nation of their own brothers",
+   "A mighty, ancient nation whose language they know not",
+   "A nation of the sea"
+  ],
+  "answer": 2,
+  "explanation": "It is a mighty nation, it is an ancient nation, a nation whose language thou knowest not.",
+  "ref": "Jeremiah 5:15"
+ },
+ {
+  "id": "jeremiah-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has God placed as the bound of the sea?",
+  "choices": [
+   "A wall of stone",
+   "A mountain",
+   "The sand",
+   "A river"
+  ],
+  "answer": 2,
+  "explanation": "I have placed the sand for the bound of the sea by a perpetual decree.",
+  "ref": "Jeremiah 5:22"
+ },
+ {
+  "id": "jeremiah-5-e-11",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the wicked men among God's people set to catch men?",
+  "choices": [
+   "A net of gold",
+   "A sword and spear",
+   "A trap and snares",
+   "A pit of fire"
+  ],
+  "answer": 2,
+  "explanation": "They lay wait, as he that setteth snares; they set a trap, they catch men.",
+  "ref": "Jeremiah 5:26"
+ },
+ {
+  "id": "jeremiah-5-e-12",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is compared to a cage full of birds?",
+  "choices": [
+   "Their barns full of corn",
+   "Their temples full of idols",
+   "Their houses full of deceit",
+   "Their cities full of children"
+  ],
+  "answer": 2,
+  "explanation": "As a cage is full of birds, so are their houses full of deceit.",
+  "ref": "Jeremiah 5:27"
+ },
+ {
+  "id": "jeremiah-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do they say that is false, though they say it?",
+  "choices": [
+   "The LORD is king",
+   "The LORD liveth",
+   "The LORD is one",
+   "The LORD is my shepherd"
+  ],
+  "answer": 1,
+  "explanation": "Though they say, The LORD liveth; surely they swear falsely.",
+  "ref": "Jeremiah 5:2"
+ },
+ {
+  "id": "jeremiah-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jeremiah first think the people were foolish?",
+  "choices": [
+   "They were too poor to learn",
+   "They know not the way of the LORD",
+   "They would not hear the priests",
+   "They had no kings"
+  ],
+  "answer": 1,
+  "explanation": "Surely these are poor; they are foolish: for they know not the way of the LORD, nor the judgment of their God.",
+  "ref": "Jeremiah 5:4"
+ },
+ {
+  "id": "jeremiah-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the people assemble by troops, after God fed them to the full?",
+  "choices": [
+   "The high places",
+   "The harlots' houses",
+   "The gates of the city",
+   "The house of Baal"
+  ],
+  "answer": 1,
+  "explanation": "When I had fed them to the full, they committed adultery, and assembled themselves by troops in the harlots' houses.",
+  "ref": "Jeremiah 5:7"
+ },
+ {
+  "id": "jeremiah-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be taken away from Jerusalem's walls, because they are not the LORD's?",
+  "choices": [
+   "Her gates",
+   "Her battlements",
+   "Her towers",
+   "Her stones"
+  ],
+  "answer": 1,
+  "explanation": "Take away her battlements; for they are not the LORD'S.",
+  "ref": "Jeremiah 5:10"
+ },
+ {
+  "id": "jeremiah-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the invaders' quiver compared to?",
+  "choices": [
+   "A bed of fire",
+   "An open sepulchre",
+   "A hollow tree",
+   "A deep well"
+  ],
+  "answer": 1,
+  "explanation": "Their quiver is as an open sepulchre, they are all mighty men.",
+  "ref": "Jeremiah 5:16"
+ },
+ {
+  "id": "jeremiah-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the invaders do to the fenced cities in which Judah trusted?",
+  "choices": [
+   "Spare them",
+   "Impoverish them with the sword",
+   "Burn them with fire",
+   "Build them up"
+  ],
+  "answer": 1,
+  "explanation": "They shall impoverish thy fenced cities, wherein thou trustedst, with the sword.",
+  "ref": "Jeremiah 5:17"
+ },
+ {
+  "id": "jeremiah-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God promise in those days, even with the judgment?",
+  "choices": [
+   "I will restore the kingdom",
+   "I will not make a full end with you",
+   "I will send a king",
+   "I will heal the land"
+  ],
+  "answer": 1,
+  "explanation": "Nevertheless in those days, saith the LORD, I will not make a full end with you.",
+  "ref": "Jeremiah 5:18"
+ },
+ {
+  "id": "jeremiah-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD ask the people if they do not fear him?",
+  "choices": [
+   "Where is your king?",
+   "Will ye not tremble at my presence?",
+   "Who made you a nation?",
+   "Will ye not return?"
+  ],
+  "answer": 1,
+  "explanation": "Fear ye not me? saith the LORD: will ye not tremble at my presence?",
+  "ref": "Jeremiah 5:22"
+ },
+ {
+  "id": "jeremiah-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of heart does this people have?",
+  "choices": [
+   "A broken and a contrite heart",
+   "A revolting and a rebellious heart",
+   "A hardened and a stony heart",
+   "A wise and a faithful heart"
+  ],
+  "answer": 1,
+  "explanation": "This people hath a revolting and a rebellious heart; they are revolted and gone.",
+  "ref": "Jeremiah 5:23"
+ },
+ {
+  "id": "jeremiah-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God give in its season, which the people do not fear him for?",
+  "choices": [
+   "Manna and quail",
+   "Rain, the former and the latter",
+   "Dew and frost",
+   "Snow and wind"
+  ],
+  "answer": 1,
+  "explanation": "Let us now fear the LORD our God, that giveth rain, both the former and the latter, in his season.",
+  "ref": "Jeremiah 5:24"
+ },
+ {
+  "id": "jeremiah-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What have the people's iniquities and sins done?",
+  "choices": [
+   "Brought them gold",
+   "Turned away good things from them",
+   "Made them wise",
+   "Healed their land"
+  ],
+  "answer": 1,
+  "explanation": "Your iniquities have turned away these things, and your sins have withholden good things from you.",
+  "ref": "Jeremiah 5:25"
+ },
+ {
+  "id": "jeremiah-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the wicked men become great and rich?",
+  "choices": [
+   "Through war",
+   "Through deceit",
+   "Through trade",
+   "Through gifts"
+  ],
+  "answer": 1,
+  "explanation": "So are their houses full of deceit: therefore they are become great, and waxen rich.",
+  "ref": "Jeremiah 5:27"
+ },
+ {
+  "id": "jeremiah-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose cause do the wicked not judge, though they prosper?",
+  "choices": [
+   "The widow",
+   "The fatherless",
+   "The stranger",
+   "The king"
+  ],
+  "answer": 1,
+  "explanation": "They judge not the cause, the cause of the fatherless, yet they prosper.",
+  "ref": "Jeremiah 5:28"
+ },
+ {
+  "id": "jeremiah-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the people love, as the prophets prophesy falsely?",
+  "choices": [
+   "To hear the law",
+   "To have it so",
+   "To seek the LORD",
+   "To offer sacrifice"
+  ],
+  "answer": 1,
+  "explanation": "The prophets prophesy falsely, and the priests bear rule by their means; and my people love to have it so.",
+  "ref": "Jeremiah 5:31"
+ },
+ {
+  "id": "jeremiah-5-m-15",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the LORD stricken them to, yet they had not?",
+  "choices": [
+   "Repented; they turned back",
+   "Grieved; they refused to receive correction",
+   "Fled; they came home",
+   "Prayed; they were heard"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast stricken them, but they have not grieved; thou hast consumed them, but they have refused to receive correction.",
+  "ref": "Jeremiah 5:3"
+ },
+ {
+  "id": "jeremiah-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to every one that goes out of the cities?",
+  "choices": [
+   "He shall be carried to Babylon",
+   "He shall find peace",
+   "He shall be torn in pieces",
+   "He shall be healed"
+  ],
+  "answer": 2,
+  "explanation": "Every one that goeth out thence shall be torn in pieces.",
+  "ref": "Jeremiah 5:6"
+ },
+ {
+  "id": "jeremiah-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God say is increased?",
+  "choices": [
+   "Their flocks",
+   "Their enemies",
+   "Their backslidings",
+   "Their fasts"
+  ],
+  "answer": 2,
+  "explanation": "Their transgressions are many, and their backslidings are increased.",
+  "ref": "Jeremiah 5:6"
+ },
+ {
+  "id": "jeremiah-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD ask he will not do for such a nation?",
+  "choices": [
+   "Forget",
+   "Spare",
+   "Be avenged",
+   "Forgive"
+  ],
+  "answer": 2,
+  "explanation": "Shall I not visit for these things? shall not my soul be avenged on such a nation as this?",
+  "ref": "Jeremiah 5:9"
+ },
+ {
+  "id": "jeremiah-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say they would not understand, of the nation he brings?",
+  "choices": [
+   "Their law",
+   "Their gods",
+   "What they say",
+   "Their names"
+  ],
+  "answer": 2,
+  "explanation": "A nation whose language thou knowest not, neither understandest what they say.",
+  "ref": "Jeremiah 5:15"
+ },
+ {
+  "id": "jeremiah-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the invaders eat up besides harvest and bread?",
+  "choices": [
+   "Oil and wine",
+   "Gold and silver",
+   "Flocks, herds, vines and fig trees",
+   "Houses and fields"
+  ],
+  "answer": 2,
+  "explanation": "They shall eat up thy flocks and thine herds: they shall eat up thy vines and thy fig trees.",
+  "ref": "Jeremiah 5:17"
+ },
+ {
+  "id": "jeremiah-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the answer when the people ask why the LORD does all these things?",
+  "choices": [
+   "They broke the sabbath",
+   "They shed innocent blood",
+   "They forsook him and served strange gods",
+   "They rejected the king"
+  ],
+  "answer": 2,
+  "explanation": "Like as ye have forsaken me, and served strange gods in your land, so shall ye serve strangers.",
+  "ref": "Jeremiah 5:19"
+ },
+ {
+  "id": "jeremiah-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the waves of the sea do, yet cannot pass the sand?",
+  "choices": [
+   "Wait and rest",
+   "Rise and fall",
+   "Toss and roar",
+   "Flow and ebb"
+  ],
+  "answer": 2,
+  "explanation": "Though the waves thereof toss themselves, yet can they not prevail; though they roar, yet can they not pass over it.",
+  "ref": "Jeremiah 5:22"
+ },
+ {
+  "id": "jeremiah-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God reserve for his people, which they do not thank him for?",
+  "choices": [
+   "The days of the feasts",
+   "The years of rest",
+   "The appointed weeks of the harvest",
+   "The firstfruits of the field"
+  ],
+  "answer": 2,
+  "explanation": "He reserveth unto us the appointed weeks of the harvest.",
+  "ref": "Jeremiah 5:24"
+ },
+ {
+  "id": "jeremiah-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose right do the wicked not judge?",
+  "choices": [
+   "The rich",
+   "The priests",
+   "The needy",
+   "The strangers"
+  ],
+  "answer": 2,
+  "explanation": "The right of the needy do they not judge.",
+  "ref": "Jeremiah 5:28"
+ },
+ {
+  "id": "jeremiah-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people do after God had fed them to the full?",
+  "choices": [
+   "Gave thanks",
+   "Offered peace offerings",
+   "Committed adultery",
+   "Built houses"
+  ],
+  "answer": 2,
+  "explanation": "When I had fed them to the full, they then committed adultery.",
+  "ref": "Jeremiah 5:7"
+ },
+ {
+  "id": "jeremiah-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the great men do, as the LORD said of them?",
+  "choices": [
+   "They had taught the people the law",
+   "They had fled from the city",
+   "They had known the way of the LORD, yet broken the yoke",
+   "They had been faithful priests"
+  ],
+  "answer": 2,
+  "explanation": "They have known the way of the LORD, but these have altogether broken the yoke, and burst the bonds.",
+  "ref": "Jeremiah 5:5"
+ },
+ {
+  "id": "jeremiah-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of people are those that have eyes and see not?",
+  "choices": [
+   "Wise elders of the land",
+   "Blind men of the city",
+   "Foolish people without understanding",
+   "Prophets of Baal"
+  ],
+  "answer": 2,
+  "explanation": "Hear now this, O foolish people, and without understanding; which have eyes, and see not.",
+  "ref": "Jeremiah 5:21"
+ },
+ {
+  "id": "jeremiah-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Jeremiah told to publish the message?",
+  "choices": [
+   "In Egypt and Assyria",
+   "In Dan and Ephraim",
+   "In the house of Jacob and in Judah",
+   "In Babylon and Tyre"
+  ],
+  "answer": 2,
+  "explanation": "Declare this in the house of Jacob, and publish it in Judah.",
+  "ref": "Jeremiah 5:20"
+ },
+ {
+  "id": "jeremiah-5-e-13",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall a lion out of the forest do to them?",
+  "choices": [
+   "Guard them",
+   "Feed them",
+   "Slay them",
+   "Lead them"
+  ],
+  "answer": 2,
+  "explanation": "A lion out of the forest shall slay them, and a wolf of the evenings shall spoil them.",
+  "ref": "Jeremiah 5:6"
+ },
+ {
+  "id": "jeremiah-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which animal shall watch over their cities?",
+  "choices": [
+   "A bear",
+   "A leopard",
+   "A jackal",
+   "A serpent"
+  ],
+  "answer": 1,
+  "explanation": "A leopard shall watch over their cities: every one that goeth out thence shall be torn in pieces.",
+  "ref": "Jeremiah 5:6"
+ },
+ {
+  "id": "jeremiah-5-h-15",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides the streets, where were they to seek for a man?",
+  "choices": [
+   "In the temple courts",
+   "In the broad places of Jerusalem",
+   "On the hills of Judah",
+   "In the gates of the king"
+  ],
+  "answer": 1,
+  "explanation": "Seek in the broad places thereof, if ye can find a man.",
+  "ref": "Jeremiah 5:1"
+ },
+ {
+  "id": "jeremiah-5-h-16",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose food shall the invaders eat up?",
+  "choices": [
+   "The food of the priests",
+   "That which their sons and daughters should eat",
+   "The offerings of the altar",
+   "The spoil of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "They shall eat up thine harvest, and thy bread, which thy sons and thy daughters should eat.",
+  "ref": "Jeremiah 5:17"
+ },
+ {
+  "id": "jeremiah-5-m-16",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say is not in the prophets, who become wind?",
+  "choices": [
+   "The word",
+   "The law",
+   "The Spirit",
+   "The fear"
+  ],
+  "answer": 0,
+  "explanation": "The prophets shall become wind, and the word is not in them: thus shall it be done unto them.",
+  "ref": "Jeremiah 5:13"
+ },
+ {
+  "id": "jeremiah-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the children of Benjamin told to blow the trumpet?",
+  "choices": [
+   "In Hebron",
+   "In Bethel",
+   "In Shiloh",
+   "In Tekoa"
+  ],
+  "answer": 3,
+  "explanation": "Blow the trumpet in Tekoa, and set up a sign of fire in Beth-haccerem.",
+  "ref": "Jeremiah 6:1"
+ },
+ {
+  "id": "jeremiah-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom does the LORD liken the daughter of Zion?",
+  "choices": [
+   "A mighty warrior",
+   "A watered garden",
+   "A fruitful vine",
+   "A comely and delicate woman"
+  ],
+  "answer": 3,
+  "explanation": "I have likened the daughter of Zion to a comely and delicate woman.",
+  "ref": "Jeremiah 6:2"
+ },
+ {
+  "id": "jeremiah-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall come unto the daughter of Zion and pitch their tents round about?",
+  "choices": [
+   "The kings of the north",
+   "The priests of Baal",
+   "The men of Benjamin",
+   "The shepherds with their flocks"
+  ],
+  "answer": 3,
+  "explanation": "The shepherds with their flocks shall come unto her; they shall pitch their tents against her round about.",
+  "ref": "Jeremiah 6:3"
+ },
+ {
+  "id": "jeremiah-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the LORD set over the people, saying, Hearken to the sound of the trumpet?",
+  "choices": [
+   "Judges",
+   "Elders",
+   "Priests",
+   "Watchmen"
+  ],
+  "answer": 3,
+  "explanation": "I set watchmen over you, saying, Hearken to the sound of the trumpet. But they said, We will not hearken.",
+  "ref": "Jeremiah 6:17"
+ },
+ {
+  "id": "jeremiah-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What comes to the LORD from Sheba, though not acceptable?",
+  "choices": [
+   "Gold",
+   "Spices for the king",
+   "Horses",
+   "Incense"
+  ],
+  "answer": 3,
+  "explanation": "To what purpose cometh there to me incense from Sheba, and the sweet cane from a far country?",
+  "ref": "Jeremiah 6:20"
+ },
+ {
+  "id": "jeremiah-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the people from the north lay hold on?",
+  "choices": [
+   "Sword and shield",
+   "Sling and stone",
+   "Chariot and rope",
+   "Bow and spear"
+  ],
+  "answer": 3,
+  "explanation": "They shall lay hold on bow and spear; they are cruel, and have no mercy.",
+  "ref": "Jeremiah 6:23"
+ },
+ {
+  "id": "jeremiah-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Jerusalem told to put on and wallow in, as for an only son?",
+  "choices": [
+   "Fine linen and oil",
+   "Purple and gold",
+   "Crimson and silk",
+   "Sackcloth and ashes"
+  ],
+  "answer": 3,
+  "explanation": "Gird thee with sackcloth, and wallow thyself in ashes: make thee mourning, as for an only son.",
+  "ref": "Jeremiah 6:26"
+ },
+ {
+  "id": "jeremiah-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD set Jeremiah for among his people?",
+  "choices": [
+   "A shepherd and a king",
+   "A judge and a priest",
+   "A wall and a gate",
+   "A tower and a fortress"
+  ],
+  "answer": 3,
+  "explanation": "I have set thee for a tower and a fortress among my people, that thou mayest know and try their way.",
+  "ref": "Jeremiah 6:27"
+ },
+ {
+  "id": "jeremiah-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is uncircumcised in the people, so that they cannot hearken?",
+  "choices": [
+   "Their heart",
+   "Their lips",
+   "Their hands",
+   "Their ear"
+  ],
+  "answer": 3,
+  "explanation": "Their ear is uncircumcised, and they cannot hearken.",
+  "ref": "Jeremiah 6:10"
+ },
+ {
+  "id": "jeremiah-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was a sign of fire to be set up?",
+  "choices": [
+   "Tekoa",
+   "Beth-haccerem",
+   "Anathoth",
+   "Mizpah"
+  ],
+  "answer": 1,
+  "explanation": "Blow the trumpet in Tekoa, and set up a sign of fire in Beth-haccerem.",
+  "ref": "Jeremiah 6:1"
+ },
+ {
+  "id": "jeremiah-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the attackers told to do to the trees, against Jerusalem?",
+  "choices": [
+   "Burn them for fuel",
+   "Hew them down and cast a mount against the city",
+   "Plant them as a wall",
+   "Carry them to Babylon"
+  ],
+  "answer": 1,
+  "explanation": "Hew ye down trees, and cast a mount against Jerusalem.",
+  "ref": "Jeremiah 6:6"
+ },
+ {
+  "id": "jeremiah-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say Jerusalem is wholly full of in her midst?",
+  "choices": [
+   "Idols",
+   "Oppression",
+   "Gold",
+   "Weeping"
+  ],
+  "answer": 1,
+  "explanation": "This is the city to be visited; she is wholly oppression in the midst of her.",
+  "ref": "Jeremiah 6:6"
+ },
+ {
+  "id": "jeremiah-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say he will do if Jerusalem is not instructed?",
+  "choices": [
+   "He will send prophets",
+   "His soul will depart and he will make her desolate",
+   "He will give her a new king",
+   "He will give her rain"
+  ],
+  "answer": 1,
+  "explanation": "Be thou instructed, O Jerusalem, lest my soul depart from thee; lest I make thee desolate.",
+  "ref": "Jeremiah 6:8"
+ },
+ {
+  "id": "jeremiah-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "As what shall the remnant of Israel be gleaned?",
+  "choices": [
+   "As a field of barley",
+   "As a vine",
+   "As a flock of sheep",
+   "As a fig tree"
+  ],
+  "answer": 1,
+  "explanation": "They shall throughly glean the remnant of Israel as a vine.",
+  "ref": "Jeremiah 6:9"
+ },
+ {
+  "id": "jeremiah-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the word of the LORD to the people, who have no delight in it?",
+  "choices": [
+   "A comfort",
+   "A reproach",
+   "A mystery",
+   "A treasure"
+  ],
+  "answer": 1,
+  "explanation": "The word of the LORD is unto them a reproach; they have no delight in it.",
+  "ref": "Jeremiah 6:10"
+ },
+ {
+  "id": "jeremiah-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jeremiah say he is full of, and weary with holding in?",
+  "choices": [
+   "The sorrow of the people",
+   "The fury of the LORD",
+   "The joy of the harvest",
+   "The words of the king"
+  ],
+  "answer": 1,
+  "explanation": "I am full of the fury of the LORD; I am weary with holding in.",
+  "ref": "Jeremiah 6:11"
+ },
+ {
+  "id": "jeremiah-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall happen to their houses, fields and wives?",
+  "choices": [
+   "They shall be burned",
+   "They shall be turned unto others",
+   "They shall be hidden",
+   "They shall be inherited by their sons"
+  ],
+  "answer": 1,
+  "explanation": "Their houses shall be turned unto others, with their fields and wives together.",
+  "ref": "Jeremiah 6:12"
+ },
+ {
+  "id": "jeremiah-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is every one given to, from the least to the greatest?",
+  "choices": [
+   "Idolatry",
+   "Covetousness",
+   "Drunkenness",
+   "Violence"
+  ],
+  "answer": 1,
+  "explanation": "From the least of them even unto the greatest of them every one is given to covetousness.",
+  "ref": "Jeremiah 6:13"
+ },
+ {
+  "id": "jeremiah-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What could the people not do after committing abomination?",
+  "choices": [
+   "Pray; they were not heard",
+   "Blush; they were not ashamed",
+   "Weep; they were not moved",
+   "Hide; they were not found"
+  ],
+  "answer": 1,
+  "explanation": "Were they ashamed when they had committed abomination? nay, they were not at all ashamed, neither could they blush.",
+  "ref": "Jeremiah 6:15"
+ },
+ {
+  "id": "jeremiah-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD call evil, the fruit of what?",
+  "choices": [
+   "The fruit of their fields",
+   "The fruit of their thoughts",
+   "The fruit of their fathers",
+   "The fruit of their labour"
+  ],
+  "answer": 1,
+  "explanation": "I will bring evil upon this people, even the fruit of their thoughts, because they have not hearkened unto my words.",
+  "ref": "Jeremiah 6:19"
+ },
+ {
+  "id": "jeremiah-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say was not acceptable to him?",
+  "choices": [
+   "Their feasts and fasts",
+   "Their burnt offerings and sacrifices",
+   "Their songs and prayers",
+   "Their tithes and firstfruits"
+  ],
+  "answer": 1,
+  "explanation": "Your burnt offerings are not acceptable, nor your sacrifices sweet unto me.",
+  "ref": "Jeremiah 6:20"
+ },
+ {
+  "id": "jeremiah-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD lay before this people, so that fathers and sons fall?",
+  "choices": [
+   "Walls",
+   "Stumblingblocks",
+   "Snares",
+   "Pits"
+  ],
+  "answer": 1,
+  "explanation": "I will lay stumblingblocks before this people, and the fathers and the sons together shall fall upon them.",
+  "ref": "Jeremiah 6:21"
+ },
+ {
+  "id": "jeremiah-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the roar of the northern people like?",
+  "choices": [
+   "A lion",
+   "The sea",
+   "Thunder",
+   "A flood of rivers"
+  ],
+  "answer": 1,
+  "explanation": "Their voice roareth like the sea; and they ride upon horses.",
+  "ref": "Jeremiah 6:23"
+ },
+ {
+  "id": "jeremiah-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were the people told not to go forth, because of the sword of the enemy?",
+  "choices": [
+   "Into the city",
+   "Into the field or by the way",
+   "Up to the temple",
+   "Down to Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Go not forth into the field, nor walk by the way; for the sword of the enemy and fear is on every side.",
+  "ref": "Jeremiah 6:25"
+ },
+ {
+  "id": "jeremiah-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the attackers say, Arise, and let us destroy her palaces?",
+  "choices": [
+   "At dawn",
+   "At noon",
+   "By night",
+   "At the new moon"
+  ],
+  "answer": 2,
+  "explanation": "Arise, and let us go by night, and let us destroy her palaces.",
+  "ref": "Jeremiah 6:5"
+ },
+ {
+  "id": "jeremiah-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where does the grapegatherer turn back his hand?",
+  "choices": [
+   "Into the winepress",
+   "Into the vineyard",
+   "Into the baskets",
+   "Into the barn"
+  ],
+  "answer": 2,
+  "explanation": "Turn back thine hand as a grapegatherer into the baskets.",
+  "ref": "Jeremiah 6:9"
+ },
+ {
+  "id": "jeremiah-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who shall be taken, the husband with the wife and the aged with whom?",
+  "choices": [
+   "The young child",
+   "The shepherd",
+   "Him that is full of days",
+   "The priest"
+  ],
+  "answer": 2,
+  "explanation": "Even the husband with the wife shall be taken, the aged with him that is full of days.",
+  "ref": "Jeremiah 6:11"
+ },
+ {
+  "id": "jeremiah-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to the shameless when the LORD visits them?",
+  "choices": [
+   "They shall be carried captive",
+   "They shall be healed",
+   "They shall fall among them that fall",
+   "They shall flee to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "They shall fall among them that fall: at the time that I visit them they shall be cast down.",
+  "ref": "Jeremiah 6:15"
+ },
+ {
+  "id": "jeremiah-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the people done to the LORD's law?",
+  "choices": [
+   "Hidden it",
+   "Copied it",
+   "Rejected it",
+   "Taught it"
+  ],
+  "answer": 2,
+  "explanation": "They have not hearkened unto my words, nor to my law, but rejected it.",
+  "ref": "Jeremiah 6:19"
+ },
+ {
+  "id": "jeremiah-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say came from a far country along with the incense?",
+  "choices": [
+   "The white linen",
+   "The fine gold",
+   "The sweet cane",
+   "The cedar wood"
+  ],
+  "answer": 2,
+  "explanation": "Incense from Sheba, and the sweet cane from a far country.",
+  "ref": "Jeremiah 6:20"
+ },
+ {
+  "id": "jeremiah-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "From where shall a great nation be raised?",
+  "choices": [
+   "The coasts of Tyre",
+   "The wilderness of Kedar",
+   "The sides of the earth",
+   "The isles of Chittim"
+  ],
+  "answer": 2,
+  "explanation": "A people cometh from the north country, and a great nation shall be raised from the sides of the earth.",
+  "ref": "Jeremiah 6:22"
+ },
+ {
+  "id": "jeremiah-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the pain of the people compared to when they hear the fame of the invaders?",
+  "choices": [
+   "A man in fire",
+   "A child in sickness",
+   "A woman in travail",
+   "A sheep in the wolf's mouth"
+  ],
+  "answer": 2,
+  "explanation": "Our hands wax feeble: anguish hath taken hold of us, and pain, as of a woman in travail.",
+  "ref": "Jeremiah 6:24"
+ },
+ {
+  "id": "jeremiah-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the people called, who are all corrupters?",
+  "choices": [
+   "Gold and silver",
+   "Iron and clay",
+   "Brass and iron",
+   "Lead and tin"
+  ],
+  "answer": 2,
+  "explanation": "They are all grievous revolters, walking with slanders: they are brass and iron; they are all corrupters.",
+  "ref": "Jeremiah 6:28"
+ },
+ {
+  "id": "jeremiah-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the bellows and the lead do in the founder's fire?",
+  "choices": [
+   "They refine the silver",
+   "They shine like gold",
+   "They are burned and consumed, and the founder melts in vain",
+   "They cool the metal"
+  ],
+  "answer": 2,
+  "explanation": "The bellows are burned, the lead is consumed of the fire; the founder melteth in vain: for the wicked are not plucked away.",
+  "ref": "Jeremiah 6:29"
+ },
+ {
+  "id": "jeremiah-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What stretched out at the time of the attack's hurry?",
+  "choices": [
+   "The armies of the night",
+   "The walls of the city",
+   "The shadows of the evening",
+   "The tents of Kedar"
+  ],
+  "answer": 2,
+  "explanation": "Woe unto us! for the day goeth away, for the shadows of the evening are stretched out.",
+  "ref": "Jeremiah 6:4"
+ },
+ {
+  "id": "jeremiah-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say is heard in Jerusalem, as a fountain casts out her waters?",
+  "choices": [
+   "Prayer and singing",
+   "Violence and spoil",
+   "Mourning and weeping",
+   "War and trumpets"
+  ],
+  "answer": 1,
+  "explanation": "As a fountain casteth out her waters, so she casteth out her wickedness: violence and spoil is heard in her.",
+  "ref": "Jeremiah 6:7"
+ },
+ {
+  "id": "jeremiah-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was Jeremiah set as a tower and a fortress?",
+  "choices": [
+   "That he may rule the people",
+   "That he may know and try their way",
+   "That he may defend the city",
+   "That he may gather the flocks"
+  ],
+  "answer": 1,
+  "explanation": "I have set thee for a tower and a fortress among my people, that thou mayest know and try their way.",
+  "ref": "Jeremiah 6:27"
+ },
+ {
+  "id": "jeremiah-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the nations, whom does the LORD call to hear?",
+  "choices": [
+   "The mountains",
+   "The earth",
+   "The heavens",
+   "The sea"
+  ],
+  "answer": 1,
+  "explanation": "Hear ye nations, and know, O congregation. Hear, O earth: behold, I will bring evil upon this people.",
+  "ref": "Jeremiah 6:18–19"
+ },
+ {
+  "id": "jeremiah-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Who shall perish together with the fathers and the sons?",
+  "choices": [
+   "The priests and prophets",
+   "The neighbour and his friend",
+   "The king and his sons",
+   "The widow and the orphan"
+  ],
+  "answer": 1,
+  "explanation": "The fathers and the sons together shall fall upon them; the neighbour and his friend shall perish.",
+  "ref": "Jeremiah 6:21"
+ },
+ {
+  "id": "jeremiah-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Upon whom will the LORD pour out his fury?",
+  "choices": [
+   "The kings and the princes",
+   "The children abroad and the assembly of young men",
+   "The priests alone",
+   "The strangers in the land"
+  ],
+  "answer": 1,
+  "explanation": "I will pour it out upon the children abroad, and upon the assembly of young men together.",
+  "ref": "Jeremiah 6:11"
+ },
+ {
+  "id": "jeremiah-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say Judah must do so he would let them dwell in this place?",
+  "choices": [
+   "Amend their ways and their doings",
+   "Rebuild the temple walls",
+   "Offer a thousand rams",
+   "Send gifts to the king"
+  ],
+  "answer": 0,
+  "explanation": "Amend your ways and your doings, and I will cause you to dwell in this place.",
+  "ref": "Jeremiah 7:3"
+ },
+ {
+  "id": "jeremiah-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom were they not to oppress?",
+  "choices": [
+   "The stranger, the fatherless and the widow",
+   "The priests and the Levites",
+   "The kings and the princes",
+   "The soldiers and the scribes"
+  ],
+  "answer": 0,
+  "explanation": "If ye oppress not the stranger, the fatherless, and the widow, and shed not innocent blood in this place.",
+  "ref": "Jeremiah 7:6"
+ },
+ {
+  "id": "jeremiah-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the women make cakes?",
+  "choices": [
+   "The queen of heaven",
+   "The god of the harvest",
+   "The goddess of the sea",
+   "The host of the stars"
+  ],
+  "answer": 0,
+  "explanation": "The women knead their dough, to make cakes to the queen of heaven.",
+  "ref": "Jeremiah 7:18"
+ },
+ {
+  "id": "jeremiah-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom had the LORD cast out of his sight before Judah?",
+  "choices": [
+   "The whole seed of Ephraim",
+   "The house of Saul",
+   "The men of Moab",
+   "The sons of Edom"
+  ],
+  "answer": 0,
+  "explanation": "I will cast you out of my sight, as I have cast out all your brethren, even the whole seed of Ephraim.",
+  "ref": "Jeremiah 7:15"
+ },
+ {
+  "id": "jeremiah-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Jeremiah told not to do for this people?",
+  "choices": [
+   "Pray for them",
+   "Preach to them",
+   "Visit them",
+   "Feed them"
+  ],
+  "answer": 0,
+  "explanation": "Pray not thou for this people, neither lift up cry nor prayer for them: for I will not hear thee.",
+  "ref": "Jeremiah 7:16"
+ },
+ {
+  "id": "jeremiah-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did they build the high places to burn their sons and daughters?",
+  "choices": [
+   "Tophet, in the valley of the son of Hinnom",
+   "The mount of Olives",
+   "The vale of Siddim",
+   "The plain of Jordan"
+  ],
+  "answer": 0,
+  "explanation": "They have built the high places of Tophet, which is in the valley of the son of Hinnom, to burn their sons and their daughters in the fire.",
+  "ref": "Jeremiah 7:31"
+ },
+ {
+  "id": "jeremiah-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "What name will the valley of Hinnom be called?",
+  "choices": [
+   "The valley of slaughter",
+   "The valley of tears",
+   "The valley of peace",
+   "The valley of bones"
+  ],
+  "answer": 0,
+  "explanation": "It shall no more be called Tophet, nor the valley of the son of Hinnom, but the valley of slaughter.",
+  "ref": "Jeremiah 7:32"
+ },
+ {
+  "id": "jeremiah-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall the carcases of this people be meat for?",
+  "choices": [
+   "The fowls of the heaven and the beasts of the earth",
+   "The dogs of the city",
+   "The wolves of the forest",
+   "The lions of the thicket"
+  ],
+  "answer": 0,
+  "explanation": "The carcases of this people shall be meat for the fowls of the heaven, and for the beasts of the earth.",
+  "ref": "Jeremiah 7:33"
+ },
+ {
+  "id": "jeremiah-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which voices will the LORD cause to cease from Jerusalem's streets?",
+  "choices": [
+   "Mirth, gladness, the bridegroom and the bride",
+   "Prayer and praise",
+   "Trumpets and drums",
+   "Teaching and prophecy"
+  ],
+  "answer": 0,
+  "explanation": "I will cause to cease the voice of mirth, and the voice of gladness, the voice of the bridegroom, and the voice of the bride.",
+  "ref": "Jeremiah 7:34"
+ },
+ {
+  "id": "jeremiah-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the LORD send daily, rising up early?",
+  "choices": [
+   "All his servants the prophets",
+   "His angels",
+   "The priests",
+   "Moses and Aaron"
+  ],
+  "answer": 0,
+  "explanation": "I have even sent unto you all my servants the prophets, daily rising up early and sending them.",
+  "ref": "Jeremiah 7:25"
+ },
+ {
+  "id": "jeremiah-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God say the lying words cannot do?",
+  "choices": [
+   "Save",
+   "Profit",
+   "Heal",
+   "Last"
+  ],
+  "answer": 1,
+  "explanation": "Behold, ye trust in lying words, that cannot profit.",
+  "ref": "Jeremiah 7:8"
+ },
+ {
+  "id": "jeremiah-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the people say as they stand before the LORD in his house?",
+  "choices": [
+   "We have kept the law",
+   "We are delivered to do all these abominations",
+   "We are the LORD's people",
+   "We will return to the LORD"
+  ],
+  "answer": 1,
+  "explanation": "Come and stand before me in this house, and say, We are delivered to do all these abominations?",
+  "ref": "Jeremiah 7:10"
+ },
+ {
+  "id": "jeremiah-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD speak to the people before the temple's fate, though they heard not?",
+  "choices": [
+   "Through a whirlwind",
+   "Rising up early and speaking",
+   "By his angel",
+   "In dreams at night"
+  ],
+  "answer": 1,
+  "explanation": "I spake unto you, rising up early and speaking, but ye heard not; and I called you, but ye answered not.",
+  "ref": "Jeremiah 7:13"
+ },
+ {
+  "id": "jeremiah-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall happen to the LORD's anger and fury poured out upon this place?",
+  "choices": [
+   "It shall pass in a day",
+   "It shall burn and not be quenched",
+   "It shall turn to mercy",
+   "It shall fall on Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Mine anger and my fury shall be poured out upon this place; and it shall burn, and shall not be quenched.",
+  "ref": "Jeremiah 7:20"
+ },
+ {
+  "id": "jeremiah-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD tell them to do with their burnt offerings and sacrifices?",
+  "choices": [
+   "Burn them all on the altar",
+   "Put them together and eat flesh",
+   "Carry them to Shiloh",
+   "Give them to the poor"
+  ],
+  "answer": 1,
+  "explanation": "Put your burnt offerings unto your sacrifices, and eat flesh.",
+  "ref": "Jeremiah 7:21"
+ },
+ {
+  "id": "jeremiah-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD not command their fathers when he brought them out of Egypt?",
+  "choices": [
+   "The sabbath",
+   "Burnt offerings or sacrifices",
+   "The feasts",
+   "The tithe"
+  ],
+  "answer": 1,
+  "explanation": "I spake not unto your fathers, nor commanded them concerning burnt offerings or sacrifices.",
+  "ref": "Jeremiah 7:22"
+ },
+ {
+  "id": "jeremiah-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the people walk, instead of forward?",
+  "choices": [
+   "In circles",
+   "Backward",
+   "In haste",
+   "In darkness"
+  ],
+  "answer": 1,
+  "explanation": "They walked in the counsels and in the imagination of their evil heart, and went backward, and not forward.",
+  "ref": "Jeremiah 7:24"
+ },
+ {
+  "id": "jeremiah-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people do with their necks?",
+  "choices": [
+   "Bowed them in prayer",
+   "Hardened them, doing worse than their fathers",
+   "Stretched them to listen",
+   "Hid them in sackcloth"
+  ],
+  "answer": 1,
+  "explanation": "They hearkened not, but hardened their neck: they did worse than their fathers.",
+  "ref": "Jeremiah 7:26"
+ },
+ {
+  "id": "jeremiah-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say is perished and cut off from their mouth?",
+  "choices": [
+   "Prayer",
+   "Truth",
+   "Praise",
+   "Peace"
+  ],
+  "answer": 1,
+  "explanation": "This is a nation that obeyeth not the voice of the LORD their God: truth is perished, and is cut off from their mouth.",
+  "ref": "Jeremiah 7:28"
+ },
+ {
+  "id": "jeremiah-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Jerusalem told to cut off and cast away?",
+  "choices": [
+   "Her walls",
+   "Her hair",
+   "Her idols",
+   "Her crown"
+  ],
+  "answer": 1,
+  "explanation": "Cut off thine hair, O Jerusalem, and cast it away, and take up a lamentation on high places.",
+  "ref": "Jeremiah 7:29"
+ },
+ {
+  "id": "jeremiah-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the children of Judah set in the house called by his name?",
+  "choices": [
+   "Their idols of gold",
+   "Their abominations",
+   "Their altars of brass",
+   "Their offerings of grain"
+  ],
+  "answer": 1,
+  "explanation": "They have set their abominations in the house which is called by my name, to pollute it.",
+  "ref": "Jeremiah 7:30"
+ },
+ {
+  "id": "jeremiah-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how long will God let them dwell in the land he gave their fathers, if they amend?",
+  "choices": [
+   "For seventy years",
+   "Until the king dies",
+   "For ever and ever",
+   "Till the third generation"
+  ],
+  "answer": 2,
+  "explanation": "Then will I cause you to dwell in this place, in the land that I gave to your fathers, for ever and ever.",
+  "ref": "Jeremiah 7:7"
+ },
+ {
+  "id": "jeremiah-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who knead the dough for the cakes?",
+  "choices": [
+   "The priests",
+   "The children",
+   "The women",
+   "The fathers"
+  ],
+  "answer": 2,
+  "explanation": "The women knead their dough, to make cakes to the queen of heaven.",
+  "ref": "Jeremiah 7:18"
+ },
+ {
+  "id": "jeremiah-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who kindle the fire, while the children gather wood?",
+  "choices": [
+   "The mothers",
+   "The priests",
+   "The fathers",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "The children gather wood, and the fathers kindle the fire.",
+  "ref": "Jeremiah 7:18"
+ },
+ {
+  "id": "jeremiah-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To the confusion of whose faces do the people provoke themselves?",
+  "choices": [
+   "The prophets'",
+   "The kings'",
+   "Their own",
+   "The nations'"
+  ],
+  "answer": 2,
+  "explanation": "Do they not provoke themselves to the confusion of their own faces?",
+  "ref": "Jeremiah 7:19"
+ },
+ {
+  "id": "jeremiah-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say about the burning of sons and daughters in the fire?",
+  "choices": [
+   "He allowed it for a season",
+   "He commanded it in the law",
+   "He commanded it not, neither came it into his heart",
+   "He forgave it"
+  ],
+  "answer": 2,
+  "explanation": "To burn their sons and their daughters in the fire; which I commanded them not, neither came it into my heart.",
+  "ref": "Jeremiah 7:31"
+ },
+ {
+  "id": "jeremiah-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Where does the LORD say to take up a lamentation?",
+  "choices": [
+   "In the valley",
+   "Within the temple",
+   "On high places",
+   "At the gates"
+  ],
+  "answer": 2,
+  "explanation": "Take up a lamentation on high places; for the LORD hath rejected and forsaken the generation of his wrath.",
+  "ref": "Jeremiah 7:29"
+ },
+ {
+  "id": "jeremiah-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say he hath done to the generation of his wrath?",
+  "choices": [
+   "Healed it",
+   "Taught it",
+   "Rejected and forsaken it",
+   "Raised it up"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hath rejected and forsaken the generation of his wrath.",
+  "ref": "Jeremiah 7:29"
+ },
+ {
+  "id": "jeremiah-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD promise if they walked in all the ways he commanded?",
+  "choices": [
+   "They shall be kings",
+   "They shall have no enemies",
+   "It shall be well unto them",
+   "They shall live a thousand years"
+  ],
+  "answer": 2,
+  "explanation": "Walk ye in all the ways that I have commanded you, that it may be well unto you.",
+  "ref": "Jeremiah 7:23"
+ },
+ {
+  "id": "jeremiah-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "What do the people burn incense to, when they steal, murder and commit adultery?",
+  "choices": [
+   "Molech",
+   "The queen of heaven",
+   "Baal",
+   "The sun"
+  ],
+  "answer": 2,
+  "explanation": "Will ye steal, murder, and commit adultery, and swear falsely, and burn incense unto Baal?",
+  "ref": "Jeremiah 7:9"
+ },
+ {
+  "id": "jeremiah-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Between whom must they throughly execute judgment?",
+  "choices": [
+   "A king and his people",
+   "A priest and a prophet",
+   "A man and his neighbour",
+   "A father and his son"
+  ],
+  "answer": 2,
+  "explanation": "If ye throughly execute judgment between a man and his neighbour.",
+  "ref": "Jeremiah 7:5"
+ },
+ {
+  "id": "jeremiah-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What blood must they not shed in this place?",
+  "choices": [
+   "The blood of bulls",
+   "The blood of goats",
+   "Innocent blood",
+   "The blood of strangers"
+  ],
+  "answer": 2,
+  "explanation": "Shed not innocent blood in this place, neither walk after other gods to your hurt.",
+  "ref": "Jeremiah 7:6"
+ },
+ {
+  "id": "jeremiah-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will they do when Jeremiah calls to them?",
+  "choices": [
+   "They will weep",
+   "They will run to him",
+   "They will not answer",
+   "They will come to the temple"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt also call unto them; but they will not answer thee.",
+  "ref": "Jeremiah 7:27"
+ },
+ {
+  "id": "jeremiah-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many times do the people repeat, The temple of the LORD?",
+  "choices": [
+   "Twice",
+   "Seven times",
+   "Three times",
+   "Ten times"
+  ],
+  "answer": 2,
+  "explanation": "Saying, The temple of the LORD, The temple of the LORD, The temple of the LORD, are these.",
+  "ref": "Jeremiah 7:4"
+ },
+ {
+  "id": "jeremiah-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where does the LORD ask Jeremiah to see what the people do?",
+  "choices": [
+   "In the courts of the temple",
+   "In the fields of Anathoth",
+   "In the cities of Judah and the streets of Jerusalem",
+   "In the valley of Hinnom"
+  ],
+  "answer": 2,
+  "explanation": "Seest thou not what they do in the cities of Judah and in the streets of Jerusalem?",
+  "ref": "Jeremiah 7:17"
+ },
+ {
+  "id": "jeremiah-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which sins are named alongside stealing?",
+  "choices": [
+   "Drunkenness, pride and theft of tithes",
+   "Violence, lying and eating blood",
+   "Murder, adultery, false oaths and Baal",
+   "Idleness, gossip and greed"
+  ],
+  "answer": 2,
+  "explanation": "Will ye steal, murder, and commit adultery, and swear falsely, and burn incense unto Baal?",
+  "ref": "Jeremiah 7:9"
+ },
+ {
+  "id": "jeremiah-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did the people walk, instead of hearkening?",
+  "choices": [
+   "The ways of their fathers",
+   "The statutes of the law",
+   "The counsels and imagination of their evil heart",
+   "The paths of the wilderness"
+  ],
+  "answer": 2,
+  "explanation": "They walked in the counsels and in the imagination of their evil heart.",
+  "ref": "Jeremiah 7:24"
+ },
+ {
+  "id": "jeremiah-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Since when had the LORD sent his prophets daily?",
+  "choices": [
+   "Since the days of Josiah",
+   "Since the building of the temple",
+   "Since the day the fathers came out of Egypt",
+   "Since the fall of Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "Since the day that your fathers came forth out of the land of Egypt unto this day I have even sent unto you all my servants the prophets.",
+  "ref": "Jeremiah 7:25"
+ },
+ {
+  "id": "jeremiah-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people pour out to other gods?",
+  "choices": [
+   "Oil",
+   "Blood",
+   "Drink offerings",
+   "Milk"
+  ],
+  "answer": 2,
+  "explanation": "They pour out drink offerings unto other gods, that they may provoke me to anger.",
+  "ref": "Jeremiah 7:18"
+ },
+ {
+  "id": "jeremiah-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why will the voices of mirth cease in Jerusalem?",
+  "choices": [
+   "The people shall be at war",
+   "The king shall die",
+   "The land shall be desolate",
+   "The harvest shall fail"
+  ],
+  "answer": 2,
+  "explanation": "I will cause to cease the voice of mirth: for the land shall be desolate.",
+  "ref": "Jeremiah 7:34"
+ },
+ {
+  "id": "jeremiah-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD send among them that will not be charmed?",
+  "choices": [
+   "Locusts",
+   "Serpents, cockatrices",
+   "Wild beasts",
+   "Scorpions"
+  ],
+  "answer": 1,
+  "explanation": "I will send serpents, cockatrices, among you, which will not be charmed, and they shall bite you.",
+  "ref": "Jeremiah 8:17"
+ },
+ {
+  "id": "jeremiah-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the people's cry say is past and ended, while they are not saved?",
+  "choices": [
+   "The winter and the rain",
+   "The harvest and the summer",
+   "The war and the siege",
+   "The feast and the sabbath"
+  ],
+  "answer": 1,
+  "explanation": "The harvest is past, the summer is ended, and we are not saved.",
+  "ref": "Jeremiah 8:20"
+ },
+ {
+  "id": "jeremiah-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "From where was the snorting of the invader's horses heard?",
+  "choices": [
+   "Hebron",
+   "Dan",
+   "Bethel",
+   "Gilead"
+  ],
+  "answer": 1,
+  "explanation": "The snorting of his horses was heard from Dan: the whole land trembled.",
+  "ref": "Jeremiah 8:16"
+ },
+ {
+  "id": "jeremiah-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall not be found on the vine and the fig tree?",
+  "choices": [
+   "Leaves and branches",
+   "Grapes and figs",
+   "Roots and stems",
+   "Water and dew"
+  ],
+  "answer": 1,
+  "explanation": "There shall be no grapes on the vine, nor figs on the fig tree, and the leaf shall fade.",
+  "ref": "Jeremiah 8:13"
+ },
+ {
+  "id": "jeremiah-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what is each one's turning to his own course compared?",
+  "choices": [
+   "A river running to the sea",
+   "A horse rushing into the battle",
+   "A bird flying home",
+   "A sheep going astray"
+  ],
+  "answer": 1,
+  "explanation": "Every one turned to his course, as the horse rusheth into the battle.",
+  "ref": "Jeremiah 8:6"
+ },
+ {
+  "id": "jeremiah-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which heavenly bodies will the bones be spread before?",
+  "choices": [
+   "The mountains and the hills",
+   "The sun, the moon, and the host of heaven",
+   "The temple and the altar",
+   "The gates and the walls"
+  ],
+  "answer": 1,
+  "explanation": "They shall spread them before the sun, and the moon, and all the host of heaven.",
+  "ref": "Jeremiah 8:2"
+ },
+ {
+  "id": "jeremiah-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the bones be for upon the face of the earth?",
+  "choices": [
+   "A sign",
+   "A memorial",
+   "Dung",
+   "A warning"
+  ],
+  "answer": 2,
+  "explanation": "They shall not be gathered, nor be buried; they shall be for dung upon the face of the earth.",
+  "ref": "Jeremiah 8:2"
+ },
+ {
+  "id": "jeremiah-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall be chosen rather than life by the residue of this evil family?",
+  "choices": [
+   "Exile",
+   "Silence",
+   "Death",
+   "Slavery"
+  ],
+  "answer": 2,
+  "explanation": "Death shall be chosen rather than life by all the residue of them that remain of this evil family.",
+  "ref": "Jeremiah 8:3"
+ },
+ {
+  "id": "jeremiah-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What questions does the LORD ask about those who fall and turn away?",
+  "choices": [
+   "Shall they pray and not be heard?",
+   "Shall they build and not dwell?",
+   "Shall they fall and not arise?",
+   "Shall they plant and not reap?"
+  ],
+  "answer": 2,
+  "explanation": "Shall they fall, and not arise? shall he turn away, and not return?",
+  "ref": "Jeremiah 8:4"
+ },
+ {
+  "id": "jeremiah-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did no man say when he repented of his wickedness?",
+  "choices": [
+   "Where is the LORD?",
+   "Who will save me?",
+   "What have I done?",
+   "How long, O LORD?"
+  ],
+  "answer": 2,
+  "explanation": "No man repented him of his wickedness, saying, What have I done?",
+  "ref": "Jeremiah 8:6"
+ },
+ {
+  "id": "jeremiah-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is in vain, according to the LORD, though the scribes made it?",
+  "choices": [
+   "The law of Moses",
+   "The sacrifice of the priests",
+   "The pen of the scribes",
+   "The prophet's vision"
+  ],
+  "answer": 2,
+  "explanation": "Lo, certainly in vain made he it; the pen of the scribes is in vain.",
+  "ref": "Jeremiah 8:8"
+ },
+ {
+  "id": "jeremiah-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the wise men, who have rejected the word of the LORD?",
+  "choices": [
+   "They are honoured",
+   "They are sent to Babylon",
+   "They are ashamed, dismayed and taken",
+   "They are made kings"
+  ],
+  "answer": 2,
+  "explanation": "The wise men are ashamed, they are dismayed and taken: lo, they have rejected the word of the LORD.",
+  "ref": "Jeremiah 8:9"
+ },
+ {
+  "id": "jeremiah-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the people say they will do, entering the defenced cities?",
+  "choices": [
+   "Pray there",
+   "Fight there",
+   "Be silent there",
+   "Feast there"
+  ],
+  "answer": 2,
+  "explanation": "Let us enter into the defenced cities, and let us be silent there: for the LORD our God hath put us to silence.",
+  "ref": "Jeremiah 8:14"
+ },
+ {
+  "id": "jeremiah-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people look for, but no good came?",
+  "choices": [
+   "A king",
+   "Rain",
+   "Peace",
+   "Help from Egypt"
+  ],
+  "answer": 2,
+  "explanation": "We looked for peace, but no good came; and for a time of health, and behold trouble!",
+  "ref": "Jeremiah 8:15"
+ },
+ {
+  "id": "jeremiah-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What questions does the LORD ask about Zion, in reply to the far country's cry?",
+  "choices": [
+   "Where is the ark? Where is the priest?",
+   "Who built the walls? Who holds the keys?",
+   "Is not the LORD in Zion? Is not her king in her?",
+   "Has Zion no children? Has Zion no gates?"
+  ],
+  "answer": 2,
+  "explanation": "Is not the LORD in Zion? is not her king in her?",
+  "ref": "Jeremiah 8:19"
+ },
+ {
+  "id": "jeremiah-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jeremiah say of himself in the hurt of his people?",
+  "choices": [
+   "I am strong; I will deliver them",
+   "I am glad; the LORD is near",
+   "I am black; astonishment hath taken hold on me",
+   "I am silent; I will wait"
+  ],
+  "answer": 2,
+  "explanation": "For the hurt of the daughter of my people am I hurt; I am black; astonishment hath taken hold on me.",
+  "ref": "Jeremiah 8:21"
+ },
+ {
+  "id": "jeremiah-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is Jerusalem's backsliding described?",
+  "choices": [
+   "A short wandering",
+   "A secret sin",
+   "A perpetual backsliding, holding fast deceit",
+   "A sudden fall"
+  ],
+  "answer": 2,
+  "explanation": "Why then is this people of Jerusalem slidden back by a perpetual backsliding? they hold fast deceit, they refuse to return.",
+  "ref": "Jeremiah 8:5"
+ },
+ {
+  "id": "jeremiah-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the turtle, the crane and the swallow said to do?",
+  "choices": [
+   "Sing in the morning",
+   "Build in the temple",
+   "Flee to the south",
+   "Observe the time of their coming"
+  ],
+  "answer": 3,
+  "explanation": "The turtle and the crane and the swallow observe the time of their coming; but my people know not the judgment of the LORD.",
+  "ref": "Jeremiah 8:7"
+ },
+ {
+  "id": "jeremiah-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom will the LORD give their wives and fields?",
+  "choices": [
+   "The priests",
+   "The king of Egypt",
+   "The poor",
+   "Others, who shall inherit them"
+  ],
+  "answer": 3,
+  "explanation": "I will give their wives unto others, and their fields to them that shall inherit them.",
+  "ref": "Jeremiah 8:10"
+ },
+ {
+  "id": "jeremiah-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the LORD given them to drink because they have sinned?",
+  "choices": [
+   "Wine of wrath",
+   "Bitter herbs",
+   "The cup of trembling",
+   "Water of gall"
+  ],
+  "answer": 3,
+  "explanation": "The LORD our God hath put us to silence, and given us water of gall to drink, because we have sinned against the LORD.",
+  "ref": "Jeremiah 8:14"
+ },
+ {
+  "id": "jeremiah-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who does the cry of the daughter of my people come from?",
+  "choices": [
+   "The kings of Egypt",
+   "The princes of Judah",
+   "The prophets of Baal",
+   "Them that dwell in a far country"
+  ],
+  "answer": 3,
+  "explanation": "Behold the voice of the cry of the daughter of my people because of them that dwell in a far country.",
+  "ref": "Jeremiah 8:19"
+ },
+ {
+  "id": "jeremiah-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is faint in Jeremiah when he would comfort himself against sorrow?",
+  "choices": [
+   "His eyes",
+   "His hands",
+   "His voice",
+   "His heart"
+  ],
+  "answer": 3,
+  "explanation": "When I would comfort myself against sorrow, my heart is faint in me.",
+  "ref": "Jeremiah 8:18"
+ },
+ {
+  "id": "jeremiah-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what have they provoked the LORD to anger?",
+  "choices": [
+   "Burnt offerings and incense",
+   "Tall towers and walls",
+   "Songs and feasts",
+   "Graven images and strange vanities"
+  ],
+  "answer": 3,
+  "explanation": "Why have they provoked me to anger with their graven images, and with strange vanities?",
+  "ref": "Jeremiah 8:19"
+ },
+ {
+  "id": "jeremiah-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What trembled at the neighing of the invader's strong ones?",
+  "choices": [
+   "The mountains",
+   "The cities of Judah",
+   "The kings",
+   "The whole land"
+  ],
+  "answer": 3,
+  "explanation": "The snorting of his horses was heard from Dan: the whole land trembled at the sound of the neighing of his strong ones.",
+  "ref": "Jeremiah 8:16"
+ },
+ {
+  "id": "jeremiah-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the invaders devour?",
+  "choices": [
+   "The temple only",
+   "The fields only",
+   "The kings only",
+   "The land, the city and those that dwell therein"
+  ],
+  "answer": 3,
+  "explanation": "They are come, and have devoured the land, and all that is in it; the city, and those that dwell therein.",
+  "ref": "Jeremiah 8:16"
+ },
+ {
+  "id": "jeremiah-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the bones of kings and princes, whose bones are brought out?",
+  "choices": [
+   "The Levites and the singers",
+   "The elders and the judges",
+   "The soldiers and the scribes",
+   "The priests, the prophets and the inhabitants of Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "The bones of the priests, and the bones of the prophets, and the bones of the inhabitants of Jerusalem, out of their graves.",
+  "ref": "Jeremiah 8:1"
+ },
+ {
+  "id": "jeremiah-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides balm, what does Jeremiah ask is lacking in Gilead?",
+  "choices": [
+   "A prophet",
+   "A shepherd",
+   "A king",
+   "A physician"
+  ],
+  "answer": 3,
+  "explanation": "Is there no balm in Gilead; is there no physician there?",
+  "ref": "Jeremiah 8:22"
+ },
+ {
+  "id": "jeremiah-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the people done with the host of heaven?",
+  "choices": [
+   "Feared and fled from it",
+   "Counted and named it",
+   "Cursed and hated it",
+   "Loved, served and worshipped it"
+  ],
+  "answer": 3,
+  "explanation": "The host of heaven, whom they have loved, and whom they have served, and after whom they have walked, and whom they have worshipped.",
+  "ref": "Jeremiah 8:2"
+ },
+ {
+  "id": "jeremiah-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "What did Jeremiah wish he had in the wilderness?",
+  "choices": [
+   "A fountain of water",
+   "A tent of his own",
+   "A lodging place of wayfaring men",
+   "A cave in the rocks"
+  ],
+  "answer": 2,
+  "explanation": "Oh that I had in the wilderness a lodging place of wayfaring men; that I might leave my people!",
+  "ref": "Jeremiah 9:2"
+ },
+ {
+  "id": "jeremiah-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the people bend like a bow for lies?",
+  "choices": [
+   "Their hands",
+   "Their knees",
+   "Their tongues",
+   "Their words of prayer"
+  ],
+  "answer": 2,
+  "explanation": "They bend their tongues like their bow for lies.",
+  "ref": "Jeremiah 9:3"
+ },
+ {
+  "id": "jeremiah-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "What does the LORD say he will make Jerusalem?",
+  "choices": [
+   "A garden and a vineyard",
+   "A tower and a fortress",
+   "Heaps and a den of dragons",
+   "A city of refuge"
+  ],
+  "answer": 2,
+  "explanation": "I will make Jerusalem heaps, and a den of dragons.",
+  "ref": "Jeremiah 9:11"
+ },
+ {
+  "id": "jeremiah-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD feed this people with, and give them to drink?",
+  "choices": [
+   "Bread and water of affliction",
+   "Locusts and wild honey",
+   "Wormwood and water of gall",
+   "Ashes and tears"
+  ],
+  "answer": 2,
+  "explanation": "I will feed them, even this people, with wormwood, and give them water of gall to drink.",
+  "ref": "Jeremiah 9:15"
+ },
+ {
+  "id": "jeremiah-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom were the people told to call for, to take up a wailing?",
+  "choices": [
+   "The elders of the city",
+   "The priests and Levites",
+   "The mourning women",
+   "The shepherds"
+  ],
+  "answer": 2,
+  "explanation": "Call for the mourning women, that they may come; and send for cunning women.",
+  "ref": "Jeremiah 9:17"
+ },
+ {
+  "id": "jeremiah-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where has death come up and entered?",
+  "choices": [
+   "Into the temple and the altar",
+   "Into the fields and vineyards",
+   "Into the windows and the palaces",
+   "Into the gates and the walls"
+  ],
+  "answer": 2,
+  "explanation": "Death is come up into our windows, and is entered into our palaces.",
+  "ref": "Jeremiah 9:21"
+ },
+ {
+  "id": "jeremiah-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall the carcases of men fall as, upon the open field?",
+  "choices": [
+   "Stones",
+   "Leaves",
+   "Dung",
+   "Chaff"
+  ],
+  "answer": 2,
+  "explanation": "The carcases of men shall fall as dung upon the open field, and none shall gather them.",
+  "ref": "Jeremiah 9:22"
+ },
+ {
+  "id": "jeremiah-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what things does the LORD say he delights, exercising them in the earth?",
+  "choices": [
+   "Sacrifice, incense and feasts",
+   "Wisdom, might and riches",
+   "Lovingkindness, judgment and righteousness",
+   "Silver, gold and cedar"
+  ],
+  "answer": 2,
+  "explanation": "I am the LORD which exercise lovingkindness, judgment, and righteousness, in the earth: for in these things I delight.",
+  "ref": "Jeremiah 9:24"
+ },
+ {
+  "id": "jeremiah-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which nations does the LORD list with Judah as uncircumcised?",
+  "choices": [
+   "Assyria, Babylon and Tyre",
+   "Philistia, Syria and Sidon",
+   "Egypt, Edom, Ammon and Moab",
+   "Kedar, Sheba and Midian"
+  ],
+  "answer": 2,
+  "explanation": "Egypt, and Judah, and Edom, and the children of Ammon, and Moab.",
+  "ref": "Jeremiah 9:26"
+ },
+ {
+  "id": "jeremiah-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Among whom will the LORD scatter them?",
+  "choices": [
+   "The tribes of Israel",
+   "The cities of Judah",
+   "The heathen, whom neither they nor their fathers have known",
+   "The kings of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "I will scatter them also among the heathen, whom neither they nor their fathers have known.",
+  "ref": "Jeremiah 9:16"
+ },
+ {
+  "id": "jeremiah-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Of whom must every one take heed, trusting no brother?",
+  "choices": [
+   "The priests",
+   "The prophets",
+   "The king",
+   "His neighbour"
+  ],
+  "answer": 3,
+  "explanation": "Take ye heed every one of his neighbour, and trust ye not in any brother.",
+  "ref": "Jeremiah 9:4"
+ },
+ {
+  "id": "jeremiah-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say the people's habitation is in the midst of?",
+  "choices": [
+   "Violence",
+   "Idols",
+   "Darkness",
+   "Deceit"
+  ],
+  "answer": 3,
+  "explanation": "Thine habitation is in the midst of deceit; through deceit they refuse to know me.",
+  "ref": "Jeremiah 9:6"
+ },
+ {
+  "id": "jeremiah-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say he will do to them?",
+  "choices": [
+   "Drown them and bury them",
+   "Scatter them and forget them",
+   "Sell them and spoil them",
+   "Melt them and try them"
+  ],
+  "answer": 3,
+  "explanation": "Behold, I will melt them, and try them; for how shall I do for the daughter of my people?",
+  "ref": "Jeremiah 9:7"
+ },
+ {
+  "id": "jeremiah-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the people's tongue compared to, speaking deceit?",
+  "choices": [
+   "A sword drawn",
+   "A sharp razor",
+   "A burning coal",
+   "An arrow shot out"
+  ],
+  "answer": 3,
+  "explanation": "Their tongue is as an arrow shot out; it speaketh deceit.",
+  "ref": "Jeremiah 9:8"
+ },
+ {
+  "id": "jeremiah-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does one do who speaks peaceably to his neighbour with his mouth?",
+  "choices": [
+   "In his heart he prays for him",
+   "In his heart he forgives him",
+   "In his heart he flees from him",
+   "In his heart he lays his wait"
+  ],
+  "answer": 3,
+  "explanation": "One speaketh peaceably to his neighbour with his mouth, but in heart he layeth his wait.",
+  "ref": "Jeremiah 9:8"
+ },
+ {
+  "id": "jeremiah-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD take up for the mountains and wilderness habitations?",
+  "choices": [
+   "A song of joy",
+   "A sacrifice of praise",
+   "A silence",
+   "A weeping, wailing and lamentation"
+  ],
+  "answer": 3,
+  "explanation": "For the mountains will I take up a weeping and wailing, and for the habitations of the wilderness a lamentation.",
+  "ref": "Jeremiah 9:10"
+ },
+ {
+  "id": "jeremiah-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the land perish, according to the LORD?",
+  "choices": [
+   "They broke the sabbath",
+   "They shed blood",
+   "They refused to pay tithes",
+   "They forsook his law and did not obey his voice"
+  ],
+  "answer": 3,
+  "explanation": "Because they have forsaken my law which I set before them, and have not obeyed my voice, neither walked therein.",
+  "ref": "Jeremiah 9:13"
+ },
+ {
+  "id": "jeremiah-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "After whom did the people walk, whom their fathers taught them?",
+  "choices": [
+   "Molech",
+   "Dagon",
+   "Ashtaroth",
+   "Baalim"
+  ],
+  "answer": 3,
+  "explanation": "They have walked after the imagination of their own heart, and after Baalim, which their fathers taught them.",
+  "ref": "Jeremiah 9:14"
+ },
+ {
+  "id": "jeremiah-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do they say how are we spoiled in the voice of wailing from Zion?",
+  "choices": [
+   "They lost the temple",
+   "They lost their king",
+   "They lost the harvest",
+   "They have forsaken the land"
+  ],
+  "answer": 3,
+  "explanation": "How are we spoiled! we are greatly confounded, because we have forsaken the land, because our dwellings have cast us out.",
+  "ref": "Jeremiah 9:19"
+ },
+ {
+  "id": "jeremiah-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the women told to teach their daughters?",
+  "choices": [
+   "Prayer",
+   "The law",
+   "Weaving",
+   "Wailing"
+  ],
+  "answer": 3,
+  "explanation": "Teach your daughters wailing, and every one her neighbour lamentation.",
+  "ref": "Jeremiah 9:20"
+ },
+ {
+  "id": "jeremiah-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What cannot be heard in the burned-up habitations of the wilderness?",
+  "choices": [
+   "The voice of the shepherd",
+   "The voice of the cattle",
+   "The voice of the bridegroom",
+   "The voice of the trumpet"
+  ],
+  "answer": 1,
+  "explanation": "None can pass through them; neither can men hear the voice of the cattle.",
+  "ref": "Jeremiah 9:10"
+ },
+ {
+  "id": "jeremiah-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD send after them till he has consumed them?",
+  "choices": [
+   "A plague",
+   "A sword",
+   "A famine",
+   "A fire"
+  ],
+  "answer": 1,
+  "explanation": "I will send a sword after them, till I have consumed them.",
+  "ref": "Jeremiah 9:16"
+ },
+ {
+  "id": "jeremiah-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall gush out with waters as they wail?",
+  "choices": [
+   "Their hands",
+   "Their eyelids",
+   "Their gates",
+   "Their rivers"
+  ],
+  "answer": 1,
+  "explanation": "Take up a wailing for us, that our eyes may run down with tears, and our eyelids gush out with waters.",
+  "ref": "Jeremiah 9:18"
+ },
+ {
+  "id": "jeremiah-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does death cut off from without, and whom from the streets?",
+  "choices": [
+   "The kings and the princes",
+   "The children and the young men",
+   "The priests and the prophets",
+   "The old men and women"
+  ],
+  "answer": 1,
+  "explanation": "To cut off the children from without, and the young men from the streets.",
+  "ref": "Jeremiah 9:21"
+ },
+ {
+  "id": "jeremiah-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom will the LORD punish together with the uncircumcised?",
+  "choices": [
+   "All the priests",
+   "All them which are circumcised",
+   "All the kings",
+   "All the Levites"
+  ],
+  "answer": 1,
+  "explanation": "I will punish all them which are circumcised with the uncircumcised.",
+  "ref": "Jeremiah 9:25"
+ },
+ {
+  "id": "jeremiah-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who dwell in the utmost corners, and are among the uncircumcised nations?",
+  "choices": [
+   "The kings of the sea",
+   "Those in the wilderness",
+   "The tribes of the north",
+   "The people of the plain"
+  ],
+  "answer": 1,
+  "explanation": "All that are in the utmost corners, that dwell in the wilderness: for all these nations are uncircumcised.",
+  "ref": "Jeremiah 9:26"
+ },
+ {
+  "id": "jeremiah-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what are all the house of Israel uncircumcised?",
+  "choices": [
+   "In the flesh",
+   "In the heart",
+   "In the lips",
+   "In the ears"
+  ],
+  "answer": 1,
+  "explanation": "All these nations are uncircumcised, and all the house of Israel are uncircumcised in the heart.",
+  "ref": "Jeremiah 9:26"
+ },
+ {
+  "id": "jeremiah-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "What does the LORD ask who may understand why the land perisheth?",
+  "choices": [
+   "The mighty man",
+   "The wise man",
+   "The king",
+   "The prophet"
+  ],
+  "answer": 1,
+  "explanation": "Who is the wise man, that may understand this? and who is he to whom the mouth of the LORD hath spoken?",
+  "ref": "Jeremiah 9:12"
+ },
+ {
+  "id": "jeremiah-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the brothers do, and neighbours walk with?",
+  "choices": [
+   "Plunder, and walk with idols",
+   "Supplant, and walk with slanders",
+   "Flee, and walk with swords",
+   "Pray, and walk with priests"
+  ],
+  "answer": 1,
+  "explanation": "Every brother will utterly supplant, and every neighbour will walk with slanders.",
+  "ref": "Jeremiah 9:4"
+ },
+ {
+  "id": "jeremiah-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the fallen carcases compared to, with none to gather them?",
+  "choices": [
+   "The grain on the threshing floor",
+   "The grapes in the winepress",
+   "The handful after the harvestman",
+   "The sheaves in the barn"
+  ],
+  "answer": 2,
+  "explanation": "The carcases of men shall fall as dung upon the open field, and as the handful after the harvestman, and none shall gather them.",
+  "ref": "Jeremiah 9:22"
+ },
+ {
+  "id": "jeremiah-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whom did Jeremiah wish to weep day and night?",
+  "choices": [
+   "The kings of Judah",
+   "The priests of the temple",
+   "The slain of the daughter of his people",
+   "The children of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Oh that my head were waters, that I might weep day and night for the slain of the daughter of my people!",
+  "ref": "Jeremiah 9:1"
+ },
+ {
+  "id": "jeremiah-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jeremiah wish to leave his people and go from them?",
+  "choices": [
+   "They had driven him out",
+   "They had stolen his lodging",
+   "They were all adulterers, an assembly of treacherous men",
+   "They would not feed him"
+  ],
+  "answer": 2,
+  "explanation": "That I might leave my people, and go from them! for they be all adulterers, an assembly of treacherous men.",
+  "ref": "Jeremiah 9:2"
+ },
+ {
+  "id": "jeremiah-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the people not valiant for upon the earth?",
+  "choices": [
+   "The war",
+   "The law",
+   "The truth",
+   "The king"
+  ],
+  "answer": 2,
+  "explanation": "They are not valiant for the truth upon the earth.",
+  "ref": "Jeremiah 9:3"
+ },
+ {
+  "id": "jeremiah-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the people weary themselves to do?",
+  "choices": [
+   "Build high places",
+   "Gather riches",
+   "Commit iniquity",
+   "Offer sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "They have taught their tongue to speak lies, and weary themselves to commit iniquity.",
+  "ref": "Jeremiah 9:5"
+ },
+ {
+  "id": "jeremiah-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does the LORD call to hear his word and teach wailing?",
+  "choices": [
+   "The priests",
+   "The elders",
+   "The women",
+   "The kings"
+  ],
+  "answer": 2,
+  "explanation": "Hear the word of the LORD, O ye women, and let your ear receive the word of his mouth.",
+  "ref": "Jeremiah 9:20"
+ },
+ {
+  "id": "jeremiah-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the women told to teach every one her neighbour?",
+  "choices": [
+   "A psalm",
+   "A proverb",
+   "Lamentation",
+   "A blessing"
+  ],
+  "answer": 2,
+  "explanation": "Teach your daughters wailing, and every one her neighbour lamentation.",
+  "ref": "Jeremiah 9:20"
  }
 ]
