@@ -3920,6 +3920,662 @@
   "ref": "2 Chronicles 9:23"
  },
  {
+  "id": "2-chronicles-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which queen came to Jerusalem to test Solomon?",
+  "choices": [
+   "The queen of Sheba",
+   "The queen of Egypt",
+   "The queen of Tyre",
+   "The queen of Edom"
+  ],
+  "answer": 0,
+  "explanation": "The queen of Sheba heard of the fame of Solomon and came to Jerusalem.",
+  "ref": "2 Chronicles 9:1"
+ },
+ {
+  "id": "2-chronicles-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the queen of Sheba bring with her on camels?",
+  "choices": [
+   "Horses and chariots",
+   "Spices, gold and precious stones",
+   "Wheat and barley",
+   "Cedar and iron"
+  ],
+  "answer": 1,
+  "explanation": "She came with camels that bare spices, and gold in abundance, and precious stones.",
+  "ref": "2 Chronicles 9:1"
+ },
+ {
+  "id": "2-chronicles-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Did Solomon have an answer for all the queen's questions?",
+  "choices": [
+   "No, he sent for Nathan",
+   "Only half of them",
+   "Yes, nothing was hid from him",
+   "No, he asked for time"
+  ],
+  "answer": 2,
+  "explanation": "Solomon told her all her questions: there was nothing hid from Solomon which he told her not.",
+  "ref": "2 Chronicles 9:2"
+ },
+ {
+  "id": "2-chronicles-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the queen of Sheba bless for setting Solomon on the throne?",
+  "choices": [
+   "Huram",
+   "David",
+   "Pharaoh",
+   "The LORD thy God"
+  ],
+  "answer": 3,
+  "explanation": "She said, Blessed be the LORD thy God, which delighted in thee to set thee on his throne.",
+  "ref": "2 Chronicles 9:8"
+ },
+ {
+  "id": "2-chronicles-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon give the queen of Sheba before she left?",
+  "choices": [
+   "All her desire, whatsoever she asked",
+   "A ship of Tarshish",
+   "A hundred horses",
+   "A golden throne"
+  ],
+  "answer": 0,
+  "explanation": "King Solomon gave to the queen of Sheba all her desire, whatsoever she asked.",
+  "ref": "2 Chronicles 9:12"
+ },
+ {
+  "id": "2-chronicles-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king of Israel make of ivory and overlay with pure gold?",
+  "choices": [
+   "A great table",
+   "A great throne",
+   "A great altar",
+   "A great gate"
+  ],
+  "answer": 1,
+  "explanation": "The king made a great throne of ivory, and overlaid it with pure gold.",
+  "ref": "2 Chronicles 9:17"
+ },
+ {
+  "id": "2-chronicles-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did Solomon reign in Jerusalem over all Israel?",
+  "choices": [
+   "Thirty",
+   "Fifty",
+   "Forty",
+   "Twenty"
+  ],
+  "answer": 2,
+  "explanation": "Solomon reigned in Jerusalem over all Israel forty years.",
+  "ref": "2 Chronicles 9:30"
+ },
+ {
+  "id": "2-chronicles-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Solomon's stead after he died?",
+  "choices": [
+   "Jeroboam",
+   "Abijah",
+   "Nathan",
+   "Rehoboam"
+  ],
+  "answer": 3,
+  "explanation": "Solomon slept with his fathers, and Rehoboam his son reigned in his stead.",
+  "ref": "2 Chronicles 9:31"
+ },
+ {
+  "id": "2-chronicles-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Solomon buried?",
+  "choices": [
+   "In the city of David his father",
+   "At Gibeon",
+   "In Lebanon",
+   "At Tarshish"
+  ],
+  "answer": 0,
+  "explanation": "He was buried in the city of David his father.",
+  "ref": "2 Chronicles 9:31"
+ },
+ {
+  "id": "2-chronicles-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who surpassed all the kings of the earth in riches and wisdom?",
+  "choices": [
+   "Rehoboam",
+   "Solomon",
+   "David",
+   "Huram"
+  ],
+  "answer": 1,
+  "explanation": "King Solomon passed all the kings of the earth in riches and wisdom.",
+  "ref": "2 Chronicles 9:22"
+ },
+ {
+  "id": "2-chronicles-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the queen of Sheba finally believe the report about Solomon?",
+  "choices": [
+   "Huram sent word",
+   "Solomon's letter came",
+   "Her own eyes had seen it",
+   "A prophet told her"
+  ],
+  "answer": 2,
+  "explanation": "She said, I believed not their words, until I came, and mine eyes had seen it.",
+  "ref": "2 Chronicles 9:6"
+ },
+ {
+  "id": "2-chronicles-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the queen of Sheba call Solomon's servants who stood before him?",
+  "choices": [
+   "Wicked",
+   "Idle",
+   "Faithless",
+   "Happy"
+  ],
+  "answer": 3,
+  "explanation": "She said, Happy are thy men, and happy are these thy servants, which stand continually before thee.",
+  "ref": "2 Chronicles 9:7"
+ },
+ {
+  "id": "2-chronicles-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the queen say God made Solomon king over Israel?",
+  "choices": [
+   "To do judgment and justice",
+   "To build a navy",
+   "To conquer Egypt",
+   "To raise an army"
+  ],
+  "answer": 0,
+  "explanation": "Because God loved Israel, he made Solomon king over them, to do judgment and justice.",
+  "ref": "2 Chronicles 9:8"
+ },
+ {
+  "id": "2-chronicles-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many talents of gold did the queen give the king?",
+  "choices": [
+   "Two hundred",
+   "One hundred and twenty",
+   "Four hundred and fifty",
+   "Six hundred and sixty-six"
+  ],
+  "answer": 1,
+  "explanation": "She gave the king an hundred and twenty talents of gold, and spices, and precious stones.",
+  "ref": "2 Chronicles 9:9"
+ },
+ {
+  "id": "2-chronicles-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of trees did the servants of Huram and Solomon bring from Ophir?",
+  "choices": [
+   "Fig trees",
+   "Palm trees",
+   "Algum trees",
+   "Olive trees"
+  ],
+  "answer": 2,
+  "explanation": "The servants also of Huram brought algum trees and precious stones.",
+  "ref": "2 Chronicles 9:10"
+ },
+ {
+  "id": "2-chronicles-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king make of the algum trees for singers?",
+  "choices": [
+   "Trumpets",
+   "Cymbals",
+   "Pipes",
+   "Harps and psalteries"
+  ],
+  "answer": 3,
+  "explanation": "He made terraces, and harps and psalteries for singers of the algum trees.",
+  "ref": "2 Chronicles 9:11"
+ },
+ {
+  "id": "2-chronicles-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many talents of gold came to Solomon in one year?",
+  "choices": [
+   "Six hundred and sixty-six",
+   "One hundred and twenty",
+   "Four hundred and fifty",
+   "Three hundred"
+  ],
+  "answer": 0,
+  "explanation": "The weight of gold that came to Solomon in one year was six hundred and threescore and six talents.",
+  "ref": "2 Chronicles 9:13"
+ },
+ {
+  "id": "2-chronicles-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many targets of beaten gold did king Solomon make?",
+  "choices": [
+   "Twelve",
+   "Two hundred",
+   "Three hundred",
+   "Six hundred"
+  ],
+  "answer": 1,
+  "explanation": "King Solomon made two hundred targets of beaten gold.",
+  "ref": "2 Chronicles 9:15"
+ },
+ {
+  "id": "2-chronicles-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the king put the targets and shields of gold?",
+  "choices": [
+   "The city of David",
+   "The palace at Gibeon",
+   "House of the forest of Lebanon",
+   "The temple treasury"
+  ],
+  "answer": 2,
+  "explanation": "The king put the shields in the house of the forest of Lebanon.",
+  "ref": "2 Chronicles 9:16"
+ },
+ {
+  "id": "2-chronicles-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many lions stood on the six steps of the throne?",
+  "choices": [
+   "Two",
+   "Six",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 3,
+  "explanation": "Twelve lions stood there on the one side and on the other upon the six steps.",
+  "ref": "2 Chronicles 9:19"
+ },
+ {
+  "id": "2-chronicles-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How often did the ships of Tarshish return bringing gold and silver?",
+  "choices": [
+   "Every three years",
+   "Every year",
+   "Every seven years",
+   "Every ten years"
+  ],
+  "answer": 0,
+  "explanation": "Every three years once came the ships of Tarshish bringing gold, and silver, ivory, and apes, and peacocks.",
+  "ref": "2 Chronicles 9:21"
+ },
+ {
+  "id": "2-chronicles-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many horsemen did Solomon have?",
+  "choices": [
+   "Forty thousand",
+   "Twelve thousand",
+   "Four thousand",
+   "Six hundred"
+  ],
+  "answer": 1,
+  "explanation": "Solomon had four thousand stalls for horses and chariots, and twelve thousand horsemen.",
+  "ref": "2 Chronicles 9:25"
+ },
+ {
+  "id": "2-chronicles-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose apparel did the queen of Sheba see besides the ministers'?",
+  "choices": [
+   "The priests'",
+   "The singers'",
+   "The cupbearers'",
+   "The porters'"
+  ],
+  "answer": 2,
+  "explanation": "She saw his ministers and their apparel; his cupbearers also, and their apparel.",
+  "ref": "2 Chronicles 9:4"
+ },
+ {
+  "id": "2-chronicles-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which animals did the kings bring as presents year by year, along with horses?",
+  "choices": [
+   "Camels",
+   "Oxen",
+   "Asses",
+   "Mules"
+  ],
+  "answer": 3,
+  "explanation": "They brought every man his present, raiment, harness, spices, horses, and mules, a rate year by year.",
+  "ref": "2 Chronicles 9:24"
+ },
+ {
+  "id": "2-chronicles-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was brought along with the gold, silver and ivory by the ships of Tarshish?",
+  "choices": [
+   "Apes and peacocks",
+   "Camels and asses",
+   "Wine and oil",
+   "Iron and brass"
+  ],
+  "answer": 0,
+  "explanation": "The ships brought gold, and silver, ivory, and apes, and peacocks.",
+  "ref": "2 Chronicles 9:21"
+ },
+ {
+  "id": "2-chronicles-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shekels of beaten gold went to each target?",
+  "choices": [
+   "One hundred",
+   "Six hundred",
+   "Three hundred",
+   "Two hundred"
+  ],
+  "answer": 1,
+  "explanation": "Six hundred shekels of beaten gold went to one target.",
+  "ref": "2 Chronicles 9:15"
+ },
+ {
+  "id": "2-chronicles-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shields of beaten gold did he make, and how many shekels for each?",
+  "choices": [
+   "Three hundred and six hundred",
+   "Twelve and three hundred",
+   "Three hundred and three hundred",
+   "Two hundred and six hundred"
+  ],
+  "answer": 2,
+  "explanation": "Three hundred shields made he of beaten gold: three hundred shekels of gold went to one shield.",
+  "ref": "2 Chronicles 9:16"
+ },
+ {
+  "id": "2-chronicles-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many steps led up to Solomon's throne?",
+  "choices": [
+   "Twelve",
+   "Seven",
+   "Three",
+   "Six"
+  ],
+  "answer": 3,
+  "explanation": "There were six steps to the throne, with a footstool of gold.",
+  "ref": "2 Chronicles 9:18"
+ },
+ {
+  "id": "2-chronicles-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What stood by the stays on each side of the sitting place of the throne?",
+  "choices": [
+   "Two lions",
+   "Two eagles",
+   "Two oxen",
+   "Two cherubims"
+  ],
+  "answer": 0,
+  "explanation": "There were stays on each side of the sitting place, and two lions standing by the stays.",
+  "ref": "2 Chronicles 9:18"
+ },
+ {
+  "id": "2-chronicles-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of silver in the days of Solomon?",
+  "choices": [
+   "It was sent to Egypt",
+   "It was not accounted any thing",
+   "It was rare and precious",
+   "It was forbidden"
+  ],
+  "answer": 1,
+  "explanation": "None were of silver; it was not any thing accounted of in the days of Solomon.",
+  "ref": "2 Chronicles 9:20"
+ },
+ {
+  "id": "2-chronicles-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king make silver in Jerusalem as plentiful as?",
+  "choices": [
+   "Grass",
+   "Dust",
+   "Stones",
+   "Sand"
+  ],
+  "answer": 2,
+  "explanation": "The king made silver in Jerusalem as stones.",
+  "ref": "2 Chronicles 9:27"
+ },
+ {
+  "id": "2-chronicles-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Cedar trees were made as plentiful as what other trees in the low plains?",
+  "choices": [
+   "Olive trees",
+   "Fig trees",
+   "Palm trees",
+   "Sycomore trees"
+  ],
+  "answer": 3,
+  "explanation": "Cedar trees made he as the sycomore trees that are in the low plains in abundance.",
+  "ref": "2 Chronicles 9:27"
+ },
+ {
+  "id": "2-chronicles-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "From where did they bring Solomon horses, besides all lands?",
+  "choices": [
+   "Egypt",
+   "Tyre",
+   "Arabia",
+   "Ophir"
+  ],
+  "answer": 0,
+  "explanation": "They brought unto Solomon horses out of Egypt, and out of all lands.",
+  "ref": "2 Chronicles 9:28"
+ },
+ {
+  "id": "2-chronicles-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Which prophet's book is named as recording the acts of Solomon?",
+  "choices": [
+   "Isaiah",
+   "Nathan",
+   "Samuel",
+   "Elijah"
+  ],
+  "answer": 1,
+  "explanation": "The rest of the acts of Solomon are written in the book of Nathan the prophet.",
+  "ref": "2 Chronicles 9:29"
+ },
+ {
+  "id": "2-chronicles-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Jeroboam, against whom Iddo the seer saw visions?",
+  "choices": [
+   "Rehoboam",
+   "Nathan",
+   "Nebat",
+   "Solomon"
+  ],
+  "answer": 2,
+  "explanation": "The visions of Iddo the seer were against Jeroboam the son of Nebat.",
+  "ref": "2 Chronicles 9:29"
+ },
+ {
+  "id": "2-chronicles-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "His rule stretched from the river to the land of whom, and the border of Egypt?",
+  "choices": [
+   "The Moabites",
+   "The Edomites",
+   "The Syrians",
+   "The Philistines"
+  ],
+  "answer": 3,
+  "explanation": "He reigned over all the kings from the river even unto the land of the Philistines, and to the border of Egypt.",
+  "ref": "2 Chronicles 9:26"
+ },
+ {
+  "id": "2-chronicles-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the queen of Sheba say of the greatness of his wisdom that was told her?",
+  "choices": [
+   "Only the one half",
+   "The whole",
+   "One tenth",
+   "Nothing"
+  ],
+  "answer": 0,
+  "explanation": "Behold, the one half of the greatness of thy wisdom was not told me.",
+  "ref": "2 Chronicles 9:6"
+ },
+ {
+  "id": "2-chronicles-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many stalls for horses and chariots did Solomon have?",
+  "choices": [
+   "Forty thousand",
+   "Four thousand",
+   "Twelve thousand",
+   "Six thousand"
+  ],
+  "answer": 1,
+  "explanation": "Solomon had four thousand stalls for horses and chariots.",
+  "ref": "2 Chronicles 9:25"
+ },
+ {
+  "id": "2-chronicles-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Solomon's ascent, which the queen saw, used to go up into?",
+  "choices": [
+   "The house of the forest of Lebanon",
+   "The city of David",
+   "The house of the LORD",
+   "The palace"
+  ],
+  "answer": 2,
+  "explanation": "The queen saw his ascent by which he went up into the house of the LORD.",
+  "ref": "2 Chronicles 9:4"
+ },
+ {
+  "id": "2-chronicles-9-h-16",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the footstool fastened to Solomon's throne made of?",
+  "choices": [
+   "Ivory",
+   "Silver",
+   "Cedar",
+   "Gold"
+  ],
+  "answer": 3,
+  "explanation": "There were six steps to the throne, with a footstool of gold, which were fastened to the throne.",
+  "ref": "2 Chronicles 9:18"
+ },
+ {
+  "id": "2-chronicles-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides chapmen and merchants, who brought gold and silver to Solomon?",
+  "choices": [
+   "Kings of Arabia and governors",
+   "Kings of Egypt",
+   "The Philistines",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "All the kings of Arabia and governors of the country brought gold and silver to Solomon.",
+  "ref": "2 Chronicles 9:14"
+ },
+ {
   "id": "old-2-chronicles-10-1",
   "chapter": 10,
   "level": "beginner",
