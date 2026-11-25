@@ -3712,6 +3712,646 @@
   "ref": "2 Samuel 6:16"
  },
  {
+  "id": "2-samuel-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did they set the ark of God on to carry it?",
+  "choices": [
+   "A new cart",
+   "A wooden sled",
+   "The priests' shoulders",
+   "A camel's back"
+  ],
+  "answer": 0,
+  "explanation": "They set the ark of God upon a new cart.",
+  "ref": "2 Samuel 6:3"
+ },
+ {
+  "id": "2-samuel-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two sons of Abinadab drove the new cart?",
+  "choices": [
+   "Nadab and Abihu",
+   "Hophni and Phinehas",
+   "Joab and Abishai",
+   "Uzzah and Ahio"
+  ],
+  "answer": 3,
+  "explanation": "Uzzah and Ahio, the sons of Abinadab, drave the new cart.",
+  "ref": "2 Samuel 6:3"
+ },
+ {
+  "id": "2-samuel-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Uzzah after he took hold of the ark?",
+  "choices": [
+   "He was healed of a sickness",
+   "He fled from the people",
+   "God smote him and he died",
+   "He was made a priest"
+  ],
+  "answer": 2,
+  "explanation": "God smote him there for his error; and there he died by the ark of God.",
+  "ref": "2 Samuel 6:7"
+ },
+ {
+  "id": "2-samuel-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David feel after the LORD struck Uzzah?",
+  "choices": [
+   "Glad and thankful",
+   "Displeased and afraid",
+   "Proud",
+   "Ready for war"
+  ],
+  "answer": 1,
+  "explanation": "David was displeased, because the LORD had made a breach upon Uzzah; and David was afraid of the LORD that day.",
+  "ref": "2 Samuel 6:8–9"
+ },
+ {
+  "id": "2-samuel-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Obed-edom and his household while the ark was with them?",
+  "choices": [
+   "The LORD blessed them",
+   "They were struck with plague",
+   "They lost their flocks",
+   "They fled the city"
+  ],
+  "answer": 0,
+  "explanation": "The LORD blessed Obed-edom, and all his household.",
+  "ref": "2 Samuel 6:11"
+ },
+ {
+  "id": "2-samuel-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David wear as he danced before the LORD?",
+  "choices": [
+   "A purple robe",
+   "Armour",
+   "A crown",
+   "A linen ephod"
+  ],
+  "answer": 3,
+  "explanation": "David danced before the LORD with all his might; and David was girded with a linen ephod.",
+  "ref": "2 Samuel 6:14"
+ },
+ {
+  "id": "2-samuel-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what sound did Israel bring up the ark?",
+  "choices": [
+   "Silence and prayer",
+   "A psalm of Asaph",
+   "Shouting and the sound of the trumpet",
+   "Beating of drums only"
+  ],
+  "answer": 2,
+  "explanation": "David and all the house of Israel brought up the ark of the LORD with shouting, and with the sound of the trumpet.",
+  "ref": "2 Samuel 6:15"
+ },
+ {
+  "id": "2-samuel-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Into which city was the ark finally brought?",
+  "choices": [
+   "Gibeah",
+   "The city of David",
+   "Gath",
+   "Shiloh"
+  ],
+  "answer": 1,
+  "explanation": "They brought in the ark of the LORD into the city of David.",
+  "ref": "2 Samuel 6:12–17"
+ },
+ {
+  "id": "2-samuel-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David offer before the LORD once the ark was set in its place?",
+  "choices": [
+   "Burnt offerings and peace offerings",
+   "A sin offering only",
+   "Incense",
+   "A grain offering only"
+  ],
+  "answer": 0,
+  "explanation": "David offered burnt offerings and peace offerings before the LORD.",
+  "ref": "2 Samuel 6:17"
+ },
+ {
+  "id": "2-samuel-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was true of Michal for the rest of her life?",
+  "choices": [
+   "She ruled in Jerusalem",
+   "She married again",
+   "She went to Gibeah",
+   "She had no child"
+  ],
+  "answer": 3,
+  "explanation": "Michal the daughter of Saul had no child unto the day of her death.",
+  "ref": "2 Samuel 6:23"
+ },
+ {
+  "id": "2-samuel-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many chosen men of Israel did David gather?",
+  "choices": [
+   "Ten thousand",
+   "Forty thousand",
+   "Thirty thousand",
+   "Three thousand"
+  ],
+  "answer": 2,
+  "explanation": "David gathered together all the chosen men of Israel, thirty thousand.",
+  "ref": "2 Samuel 6:1"
+ },
+ {
+  "id": "2-samuel-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "From which place did David go to bring up the ark?",
+  "choices": [
+   "Shiloh",
+   "Baale of Judah",
+   "Ziklag",
+   "Bethlehem"
+  ],
+  "answer": 1,
+  "explanation": "David went from Baale of Judah to bring up from thence the ark of God.",
+  "ref": "2 Samuel 6:2"
+ },
+ {
+  "id": "2-samuel-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose sons drove the new cart?",
+  "choices": [
+   "Abinadab",
+   "Obed-edom",
+   "Nachon",
+   "Ahimelech"
+  ],
+  "answer": 0,
+  "explanation": "Uzzah and Ahio were the sons of Abinadab.",
+  "ref": "2 Samuel 6:3"
+ },
+ {
+  "id": "2-samuel-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Uzzah put forth his hand to the ark?",
+  "choices": [
+   "It began to fall from the cart",
+   "A priest told him to",
+   "The people pressed against it",
+   "The oxen shook it"
+  ],
+  "answer": 3,
+  "explanation": "Uzzah put forth his hand to the ark of God, and took hold of it; for the oxen shook it.",
+  "ref": "2 Samuel 6:6"
+ },
+ {
+  "id": "2-samuel-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "What did David name the place where the LORD broke out on Uzzah?",
+  "choices": [
+   "Baal-perazim",
+   "Gibeah",
+   "Perez-uzzah",
+   "Nachon"
+  ],
+  "answer": 2,
+  "explanation": "He called the name of the place Perez-uzzah to this day.",
+  "ref": "2 Samuel 6:8"
+ },
+ {
+  "id": "2-samuel-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say in his fear after Uzzah died?",
+  "choices": [
+   "Where is the God of Israel?",
+   "How shall the ark of the LORD come to me?",
+   "Who is able to stand before this holy LORD?",
+   "Let the ark go back to Gibeah."
+  ],
+  "answer": 1,
+  "explanation": "David said, How shall the ark of the LORD come to me?",
+  "ref": "2 Samuel 6:9"
+ },
+ {
+  "id": "2-samuel-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David bring the ark from Obed-edom's house?",
+  "choices": [
+   "It was told him the LORD had blessed Obed-edom",
+   "The ark was in danger",
+   "Obed-edom asked him to",
+   "The people demanded it"
+  ],
+  "answer": 0,
+  "explanation": "It was told king David, The LORD hath blessed the house of Obed-edom because of the ark of God.",
+  "ref": "2 Samuel 6:12"
+ },
+ {
+  "id": "2-samuel-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David sacrifice when the bearers had gone six paces?",
+  "choices": [
+   "Lambs and doves",
+   "Rams and goats",
+   "Bulls only",
+   "Oxen and fatlings"
+  ],
+  "answer": 3,
+  "explanation": "When they that bare the ark of the LORD had gone six paces, he sacrificed oxen and fatlings.",
+  "ref": "2 Samuel 6:13"
+ },
+ {
+  "id": "2-samuel-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Who looked through a window and despised David in her heart?",
+  "choices": [
+   "Abigail, Nabal's widow",
+   "Bathsheba",
+   "Michal, Saul's daughter",
+   "Rizpah"
+  ],
+  "answer": 2,
+  "explanation": "Michal Saul's daughter looked through a window, and saw king David leaping and dancing before the LORD.",
+  "ref": "2 Samuel 6:16"
+ },
+ {
+  "id": "2-samuel-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whose name did David bless the people?",
+  "choices": [
+   "The God of Abraham",
+   "The LORD of hosts",
+   "The God of Israel",
+   "The Holy One"
+  ],
+  "answer": 1,
+  "explanation": "He blessed the people in the name of the LORD of hosts.",
+  "ref": "2 Samuel 6:18"
+ },
+ {
+  "id": "2-samuel-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Michal say to David when he returned to bless his household?",
+  "choices": [
+   "How glorious was the king of Israel today",
+   "You have shamed the king",
+   "Where is the ark now",
+   "God was with you today"
+  ],
+  "answer": 0,
+  "explanation": "Michal said, How glorious was the king of Israel today!",
+  "ref": "2 Samuel 6:20"
+ },
+ {
+  "id": "2-samuel-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did David say the LORD had chosen before Michal's father?",
+  "choices": [
+   "Jonathan",
+   "Abner",
+   "Solomon",
+   "David himself"
+  ],
+  "answer": 3,
+  "explanation": "It was before the LORD, which chose me before thy father, and before all his house.",
+  "ref": "2 Samuel 6:21"
+ },
+ {
+  "id": "2-samuel-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Over whom did David say the LORD appointed him ruler?",
+  "choices": [
+   "The tribe of Judah",
+   "The cities of Philistia",
+   "The people of the LORD, over Israel",
+   "The house of Saul"
+  ],
+  "answer": 2,
+  "explanation": "The LORD appointed me ruler over the people of the LORD, over Israel.",
+  "ref": "2 Samuel 6:21"
+ },
+ {
+  "id": "2-samuel-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the ark stay in Obed-edom's house?",
+  "choices": [
+   "Seven days",
+   "Three months",
+   "One year",
+   "Forty days"
+  ],
+  "answer": 1,
+  "explanation": "The ark of the LORD continued in the house of Obed-edom the Gittite three months.",
+  "ref": "2 Samuel 6:11"
+ },
+ {
+  "id": "2-samuel-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "At whose threshingfloor did Uzzah take hold of the ark?",
+  "choices": [
+   "Nachon's",
+   "Araunah's",
+   "Boaz's",
+   "Ornan's"
+  ],
+  "answer": 0,
+  "explanation": "When they came to Nachon's threshingfloor, Uzzah put forth his hand.",
+  "ref": "2 Samuel 6:6"
+ },
+ {
+  "id": "2-samuel-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "What was Obed-edom called?",
+  "choices": [
+   "The Jebusite",
+   "The Beerothite",
+   "The Carmelite",
+   "The Gittite"
+  ],
+  "answer": 3,
+  "explanation": "David carried it aside into the house of Obed-edom the Gittite.",
+  "ref": "2 Samuel 6:10"
+ },
+ {
+  "id": "2-samuel-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the instruments played before the LORD made of?",
+  "choices": [
+   "Cedar",
+   "Olive wood",
+   "Fir wood",
+   "Brass"
+  ],
+  "answer": 2,
+  "explanation": "They played on all manner of instruments made of fir wood.",
+  "ref": "2 Samuel 6:5"
+ },
+ {
+  "id": "2-samuel-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Between what does the LORD of hosts dwell, according to the chapter?",
+  "choices": [
+   "The pillars",
+   "The cherubims",
+   "The curtains",
+   "The altars"
+  ],
+  "answer": 1,
+  "explanation": "The ark of God is called by the name of the LORD of hosts that dwelleth between the cherubims.",
+  "ref": "2 Samuel 6:2"
+ },
+ {
+  "id": "2-samuel-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did they set the ark when they brought it in?",
+  "choices": [
+   "In the tabernacle David had pitched",
+   "In the house of cedar",
+   "In the house of Abinadab",
+   "On the threshingfloor"
+  ],
+  "answer": 0,
+  "explanation": "They set it in his place, in the midst of the tabernacle that David had pitched for it.",
+  "ref": "2 Samuel 6:17"
+ },
+ {
+  "id": "2-samuel-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What three things did David give to every person?",
+  "choices": [
+   "A loaf, a fish, a cup of milk",
+   "A cake, a fig, a jar of oil",
+   "A bread, an apple, a cup of water",
+   "A cake of bread, a piece of flesh, a flagon of wine"
+  ],
+  "answer": 3,
+  "explanation": "He dealt to every one a cake of bread, and a good piece of flesh, and a flagon of wine.",
+  "ref": "2 Samuel 6:19"
+ },
+ {
+  "id": "2-samuel-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did Michal compare David when she mocked him?",
+  "choices": [
+   "The servants of Saul",
+   "A shepherd boy",
+   "One of the vain fellows",
+   "A common soldier"
+  ],
+  "answer": 2,
+  "explanation": "Michal said, as one of the vain fellows shamelessly uncovereth himself!",
+  "ref": "2 Samuel 6:20"
+ },
+ {
+  "id": "2-samuel-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say he would be yet more than that?",
+  "choices": [
+   "Bold",
+   "Vile",
+   "Loud",
+   "Humble"
+  ],
+  "answer": 1,
+  "explanation": "I will yet be more vile than thus, and will be base in mine own sight.",
+  "ref": "2 Samuel 6:22"
+ },
+ {
+  "id": "2-samuel-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "In which town was Abinadab's house, where the ark had been?",
+  "choices": [
+   "Gibeah",
+   "Hebron",
+   "Gittaim",
+   "Baale"
+  ],
+  "answer": 0,
+  "explanation": "They brought it out of the house of Abinadab which was at Gibeah.",
+  "ref": "2 Samuel 6:4"
+ },
+ {
+  "id": "2-samuel-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By whom did David say he would be held in honour?",
+  "choices": [
+   "The maidservants Michal spoke of",
+   "The elders of Israel",
+   "The Philistine lords",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "David said, of the maidservants which thou hast spoken of, of them shall I be had in honour.",
+  "ref": "2 Samuel 6:22"
+ },
+ {
+  "id": "2-samuel-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of Abinadab's sons went before the ark?",
+  "choices": [
+   "Uzzah",
+   "Obed",
+   "Ahio",
+   "Eleazar"
+  ],
+  "answer": 2,
+  "explanation": "Ahio went before the ark.",
+  "ref": "2 Samuel 6:4"
+ },
+ {
+  "id": "2-samuel-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did David bless the people in the name of the LORD?",
+  "choices": [
+   "Before the offerings began",
+   "As soon as he finished the offerings",
+   "When the ark left Gibeah",
+   "When he reached Obed-edom's house"
+  ],
+  "answer": 1,
+  "explanation": "As soon as David had made an end of offering burnt offerings and peace offerings, he blessed the people.",
+  "ref": "2 Samuel 6:18"
+ },
+ {
+  "id": "2-samuel-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Michal despise David?",
+  "choices": [
+   "In her heart",
+   "Before the people",
+   "In the court",
+   "To his face"
+  ],
+  "answer": 0,
+  "explanation": "She despised him in her heart.",
+  "ref": "2 Samuel 6:16"
+ },
+ {
+  "id": "2-samuel-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did David return to bless after the feast?",
+  "choices": [
+   "The elders",
+   "The priests",
+   "The army",
+   "His household"
+  ],
+  "answer": 3,
+  "explanation": "Then David returned to bless his household.",
+  "ref": "2 Samuel 6:20"
+ },
+ {
+  "id": "2-samuel-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David tell Michal he would do before the LORD?",
+  "choices": [
+   "Play before the LORD",
+   "Fast before the LORD",
+   "Build for the LORD",
+   "Hide from the LORD"
+  ],
+  "answer": 0,
+  "explanation": "David said, It was before the LORD: therefore will I play before the LORD.",
+  "ref": "2 Samuel 6:21"
+ },
+ {
+  "id": "2-samuel-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides David, who played on instruments before the LORD?",
+  "choices": [
+   "All the house of Israel",
+   "The priests only",
+   "The men of Judah only",
+   "The Levites of Gibeah"
+  ],
+  "answer": 0,
+  "explanation": "David and all the house of Israel played before the LORD on all manner of instruments made of fir wood.",
+  "ref": "2 Samuel 6:5"
+ },
+ {
   "id": "old-2-samuel-7-1",
   "chapter": 7,
   "level": "beginner",
