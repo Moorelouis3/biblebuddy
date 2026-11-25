@@ -15795,17 +15795,657 @@
   "id": "old-1-chronicles-26-5",
   "chapter": 26,
   "level": "beginner",
-  "category": "keyword",
-  "question": "What does this detailed chapter emphasize about the house of God?",
+  "category": "person",
+  "question": "Which Levite was over the treasures of the house of God?",
   "choices": [
-   "It ran without planning",
-   "Even practical duties were sacred and ordered",
-   "Only priests mattered",
-   "No one guarded it"
+   "Shelomith",
+   "Ahijah",
+   "Chenaniah",
+   "Hashabiah"
   ],
   "answer": 1,
-  "explanation": "The chronicler shows careful structure in every aspect of service.",
+  "explanation": "Of the Levites, Ahijah was over the treasures of the house of God, and over the treasures of the dedicated things.",
+  "ref": "1 Chronicles 26:20"
+ },
+ {
+  "id": "1-chronicles-26-e-01",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Of whom does the text say, \"God blessed him\"?",
+  "choices": [
+   "Meshelemiah",
+   "Obed-edom",
+   "Hosah",
+   "Shelemiah"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Obed-edom, for God blessed him.",
+  "ref": "1 Chronicles 26:4–5"
+ },
+ {
+  "id": "1-chronicles-26-e-02",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sons of Obed-edom are named?",
+  "choices": [
+   "Seven",
+   "Twelve",
+   "Eight",
+   "Thirteen"
+  ],
+  "answer": 2,
+  "explanation": "Shemaiah the firstborn, Jehozabad, Joah, Sacar, Nethaneel, Ammiel, Issachar, Peulthai the eighth: for God blessed him.",
+  "ref": "1 Chronicles 26:4–5"
+ },
+ {
+  "id": "1-chronicles-26-e-03",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the firstborn son of Meshelemiah?",
+  "choices": [
+   "Jediael",
+   "Zebadiah",
+   "Elam",
+   "Zechariah"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Meshelemiah were, Zechariah the firstborn, Jediael the second.",
+  "ref": "1 Chronicles 26:2"
+ },
+ {
+  "id": "1-chronicles-26-e-04",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Toward which direction did the lot fall to Shelemiah?",
+  "choices": [
+   "East",
+   "North",
+   "South",
+   "West"
+  ],
+  "answer": 0,
+  "explanation": "The lot eastward fell to Shelemiah.",
+  "ref": "1 Chronicles 26:14"
+ },
+ {
+  "id": "1-chronicles-26-e-05",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "How is Zechariah, whose lot came out northward, described?",
+  "choices": [
+   "A mighty warrior",
+   "A wise counsellor",
+   "A faithful judge",
+   "A skilful singer"
+  ],
+  "answer": 1,
+  "explanation": "For Zechariah his son, a wise counsellor, they cast lots; and his lot came out northward.",
+  "ref": "1 Chronicles 26:14"
+ },
+ {
+  "id": "1-chronicles-26-e-06",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who made Simri the chief though he was not the firstborn?",
+  "choices": [
+   "David",
+   "Obed-edom",
+   "His father Hosah",
+   "Kore"
+  ],
+  "answer": 2,
+  "explanation": "Hosah had sons; Simri the chief, for though he was not the firstborn, yet his father made him the chief.",
+  "ref": "1 Chronicles 26:10"
+ },
+ {
+  "id": "1-chronicles-26-e-07",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what did they dedicate gifts to maintain the house of the LORD?",
+  "choices": [
+   "Tithes of grain",
+   "Taxes on the poor",
+   "Temple offerings",
+   "Spoils won in battles"
+  ],
+  "answer": 3,
+  "explanation": "Out of the spoils won in battles did they dedicate to maintain the house of the LORD.",
+  "ref": "1 Chronicles 26:27"
+ },
+ {
+  "id": "1-chronicles-26-e-08",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which seer is named among those who had dedicated things?",
+  "choices": [
+   "Samuel",
+   "Nathan",
+   "Gad",
+   "Elijah"
+  ],
+  "answer": 0,
+  "explanation": "All that Samuel the seer, and Saul the son of Kish, and Abner the son of Ner, and Joab the son of Zeruiah, had dedicated.",
+  "ref": "1 Chronicles 26:28"
+ },
+ {
+  "id": "1-chronicles-26-e-09",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In which year of David's reign were the Hebronites sought out?",
+  "choices": [
+   "The twentieth",
+   "The fortieth",
+   "The thirtieth",
+   "The tenth"
+  ],
+  "answer": 1,
+  "explanation": "In the fortieth year of the reign of David they were sought for.",
+  "ref": "1 Chronicles 26:31"
+ },
+ {
+  "id": "1-chronicles-26-e-10",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Shebuel the ruler of the treasures was the son of Gershom, the son of whom?",
+  "choices": [
+   "Aaron",
+   "Levi",
+   "Moses",
+   "Kore"
+  ],
+  "answer": 2,
+  "explanation": "Shebuel the son of Gershom, the son of Moses, was ruler of the treasures.",
+  "ref": "1 Chronicles 26:24"
+ },
+ {
+  "id": "1-chronicles-26-m-01",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many able men of Obed-edom, with sons and brethren, served the gates?",
+  "choices": [
+   "Eighteen",
+   "Thirteen",
+   "Seventeen hundred",
+   "Threescore and two"
+  ],
+  "answer": 3,
+  "explanation": "They and their sons and their brethren, able men for strength for the service, were threescore and two of Obed-edom.",
+  "ref": "1 Chronicles 26:8"
+ },
+ {
+  "id": "1-chronicles-26-m-02",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many strong men were Meshelemiah's sons and brethren?",
+  "choices": [
+   "Eighteen",
+   "Thirteen",
+   "Sixty-two",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "Meshelemiah had sons and brethren, strong men, eighteen.",
+  "ref": "1 Chronicles 26:9"
+ },
+ {
+  "id": "1-chronicles-26-m-03",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many were all the sons and brethren of Hosah?",
+  "choices": [
+   "Eighteen",
+   "Thirteen",
+   "Sixty-two",
+   "Twenty-four"
+  ],
+  "answer": 1,
+  "explanation": "All the sons and brethren of Hosah were thirteen.",
+  "ref": "1 Chronicles 26:11"
+ },
+ {
+  "id": "1-chronicles-26-m-04",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Toward which direction did the lot fall to Obed-edom?",
+  "choices": [
+   "North",
+   "East",
+   "South",
+   "West"
+  ],
+  "answer": 2,
+  "explanation": "To Obed-edom southward; and to his sons the house of Asuppim.",
+  "ref": "1 Chronicles 26:15"
+ },
+ {
+  "id": "1-chronicles-26-m-05",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Toward which direction did the lot fall to Shuppim and Hosah?",
+  "choices": [
+   "East",
+   "North",
+   "South",
+   "West"
+  ],
+  "answer": 3,
+  "explanation": "To Shuppim and Hosah the lot came forth westward, with the gate Shallecheth.",
+  "ref": "1 Chronicles 26:16"
+ },
+ {
+  "id": "1-chronicles-26-m-06",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who received the house of Asuppim?",
+  "choices": [
+   "The sons of Obed-edom",
+   "The sons of Hosah",
+   "The sons of Shelemiah",
+   "The sons of Kore"
+  ],
+  "answer": 0,
+  "explanation": "To Obed-edom southward; and to his sons the house of Asuppim.",
+  "ref": "1 Chronicles 26:15"
+ },
+ {
+  "id": "1-chronicles-26-m-07",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many Levites were posted eastward?",
+  "choices": [
+   "Four",
+   "Six",
+   "Two",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Eastward were six Levites, northward four a day, southward four a day.",
+  "ref": "1 Chronicles 26:17"
+ },
+ {
+  "id": "1-chronicles-26-m-08",
+  "chapter": 26,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was over all the treasures of the dedicated things?",
+  "choices": [
+   "Ahijah",
+   "Chenaniah",
+   "Shelomith",
+   "Jehieli"
+  ],
+  "answer": 2,
+  "explanation": "Shelomith and his brethren were over all the treasures of the dedicated things.",
+  "ref": "1 Chronicles 26:26"
+ },
+ {
+  "id": "1-chronicles-26-m-09",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were Zetham and Joel, the sons of Jehieli, over?",
+  "choices": [
+   "The gates",
+   "The singers",
+   "The officers",
+   "The treasures of the house of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Jehieli; Zetham, and Joel his brother, which were over the treasures of the house of the LORD.",
+  "ref": "1 Chronicles 26:22"
+ },
+ {
+  "id": "1-chronicles-26-m-10",
+  "chapter": 26,
+  "level": "medium",
+  "category": "person",
+  "question": "What was the work of Chenaniah and his sons among the Izharites?",
+  "choices": [
+   "Outward business over Israel, as officers and judges",
+   "Guarding the east gate",
+   "Leading the singers",
+   "Keeping the treasures"
+  ],
+  "answer": 0,
+  "explanation": "Of the Izharites, Chenaniah and his sons were for the outward business over Israel, for officers and judges.",
+  "ref": "1 Chronicles 26:29"
+ },
+ {
+  "id": "1-chronicles-26-m-11",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men of valour were Hashabiah and his brethren?",
+  "choices": [
+   "1,700",
+   "2,700",
+   "62",
+   "18"
+  ],
+  "answer": 0,
+  "explanation": "Hashabiah and his brethren, men of valour, a thousand and seven hundred, were officers among them of Israel on this side Jordan westward.",
+  "ref": "1 Chronicles 26:30"
+ },
+ {
+  "id": "1-chronicles-26-m-12",
+  "chapter": 26,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were mighty men of valour found among the Hebronites?",
+  "choices": [
+   "Hebron",
+   "Jazer of Gilead",
+   "Shiloh",
+   "Bethlehem"
+  ],
+  "answer": 1,
+  "explanation": "They were sought for, and there were found among them mighty men of valour at Jazer of Gilead.",
+  "ref": "1 Chronicles 26:31"
+ },
+ {
+  "id": "1-chronicles-26-m-13",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Over which tribes did David make 2,700 chief fathers rulers?",
+  "choices": [
+   "Judah and Benjamin",
+   "Ephraim and Dan",
+   "Reubenites, Gadites and half tribe of Manasseh",
+   "Simeon and Levi"
+  ],
+  "answer": 2,
+  "explanation": "King David made them rulers over the Reubenites, the Gadites, and the half tribe of Manasseh.",
+  "ref": "1 Chronicles 26:32"
+ },
+ {
+  "id": "1-chronicles-26-m-14",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what did the porters cast lots, according to the house of their fathers?",
+  "choices": [
+   "Their tents",
+   "The treasures",
+   "The singing courses",
+   "Every gate"
+  ],
+  "answer": 3,
+  "explanation": "They cast lots, as well the small as the great, according to the house of their fathers, for every gate.",
+  "ref": "1 Chronicles 26:13"
+ },
+ {
+  "id": "1-chronicles-26-m-15",
+  "chapter": 26,
+  "level": "medium",
+  "category": "person",
+  "question": "Besides David, who had dedicated things for the house of the LORD?",
+  "choices": [
+   "The chief fathers and captains of thousands and hundreds",
+   "Only the priests",
+   "The merchants of Tyre",
+   "The Philistine kings"
+  ],
+  "answer": 0,
+  "explanation": "David the king, and the chief fathers, the captains over thousands and hundreds, and the captains of the host, had dedicated.",
+  "ref": "1 Chronicles 26:26"
+ },
+ {
+  "id": "1-chronicles-26-h-01",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Meshelemiah was the son of whom?",
+  "choices": [
+   "Obed-edom",
+   "Kore",
+   "Hosah",
+   "Asaph"
+  ],
+  "answer": 1,
+  "explanation": "Of the Korhites was Meshelemiah the son of Kore.",
   "ref": "1 Chronicles 26:1"
+ },
+ {
+  "id": "1-chronicles-26-h-02",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Hosah was of the children of which son of Levi?",
+  "choices": [
+   "Gershon",
+   "Kohath",
+   "Merari",
+   "Aaron"
+  ],
+  "answer": 2,
+  "explanation": "Hosah, of the children of Merari, had sons.",
+  "ref": "1 Chronicles 26:10"
+ },
+ {
+  "id": "1-chronicles-26-h-03",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the second son of Hosah?",
+  "choices": [
+   "Simri",
+   "Tebaliah",
+   "Zechariah",
+   "Hilkiah"
+  ],
+  "answer": 3,
+  "explanation": "Hilkiah the second, Tebaliah the third, Zechariah the fourth.",
+  "ref": "1 Chronicles 26:11"
+ },
+ {
+  "id": "1-chronicles-26-h-04",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the fourth son of Obed-edom?",
+  "choices": [
+   "Sacar",
+   "Joah",
+   "Ammiel",
+   "Nethaneel"
+  ],
+  "answer": 0,
+  "explanation": "Shemaiah the firstborn, Jehozabad the second, Joah the third, and Sacar the fourth.",
+  "ref": "1 Chronicles 26:4"
+ },
+ {
+  "id": "1-chronicles-26-h-05",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the seventh son of Obed-edom?",
+  "choices": [
+   "Ammiel",
+   "Issachar",
+   "Peulthai",
+   "Jehozabad"
+  ],
+  "answer": 1,
+  "explanation": "Ammiel the sixth, Issachar the seventh, Peulthai the eighth.",
+  "ref": "1 Chronicles 26:5"
+ },
+ {
+  "id": "1-chronicles-26-h-06",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the seventh son of Meshelemiah?",
+  "choices": [
+   "Jehohanan",
+   "Elam",
+   "Elioenai",
+   "Jathniel"
+  ],
+  "answer": 2,
+  "explanation": "Elam the fifth, Jehohanan the sixth, Elioenai the seventh.",
+  "ref": "1 Chronicles 26:3"
+ },
+ {
+  "id": "1-chronicles-26-h-07",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Levites were posted northward each day?",
+  "choices": [
+   "Six",
+   "Two",
+   "Twelve",
+   "Four"
+  ],
+  "answer": 3,
+  "explanation": "Eastward were six Levites, northward four a day, southward four a day.",
+  "ref": "1 Chronicles 26:17"
+ },
+ {
+  "id": "1-chronicles-26-h-08",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Levites were at Parbar itself?",
+  "choices": [
+   "Two",
+   "Four",
+   "Six",
+   "Eight"
+  ],
+  "answer": 0,
+  "explanation": "At Parbar westward, four at the causeway, and two at Parbar.",
+  "ref": "1 Chronicles 26:18"
+ },
+ {
+  "id": "1-chronicles-26-h-09",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two sons of Jehieli were over the treasures of the house of the LORD?",
+  "choices": [
+   "Shebuel and Rehabiah",
+   "Zetham and Joel",
+   "Jeshaiah and Joram",
+   "Hilkiah and Simri"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Jehieli; Zetham, and Joel his brother.",
+  "ref": "1 Chronicles 26:22"
+ },
+ {
+  "id": "1-chronicles-26-h-10",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Jehieli was a son of which Gershonite?",
+  "choices": [
+   "Kore",
+   "Shimei",
+   "Laadan",
+   "Merari"
+  ],
+  "answer": 2,
+  "explanation": "The sons of the Gershonite Laadan, chief fathers, were Jehieli.",
+  "ref": "1 Chronicles 26:21"
+ },
+ {
+  "id": "1-chronicles-26-h-11",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Saul, who had dedicated things, was the son of whom?",
+  "choices": [
+   "Ner",
+   "Zeruiah",
+   "Abner",
+   "Kish"
+  ],
+  "answer": 3,
+  "explanation": "Saul the son of Kish.",
+  "ref": "1 Chronicles 26:28"
+ },
+ {
+  "id": "1-chronicles-26-h-12",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Abner, who had dedicated things, was the son of whom?",
+  "choices": [
+   "Ner",
+   "Kish",
+   "Zeruiah",
+   "Kore"
+  ],
+  "answer": 0,
+  "explanation": "Abner the son of Ner.",
+  "ref": "1 Chronicles 26:28"
+ },
+ {
+  "id": "1-chronicles-26-h-13",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Joab, who had dedicated things, was the son of whom?",
+  "choices": [
+   "Ner",
+   "Kish",
+   "Zeruiah",
+   "Jehieli"
+  ],
+  "answer": 2,
+  "explanation": "Joab the son of Zeruiah.",
+  "ref": "1 Chronicles 26:28"
+ },
+ {
+  "id": "1-chronicles-26-h-14",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the chief among the Hebronites, according to the generations of his fathers?",
+  "choices": [
+   "Hashabiah",
+   "Jerijah",
+   "Chenaniah",
+   "Shelemiah"
+  ],
+  "answer": 1,
+  "explanation": "Among the Hebronites was Jerijah the chief, according to the generations of his fathers.",
+  "ref": "1 Chronicles 26:31"
+ },
+ {
+  "id": "1-chronicles-26-h-15",
+  "chapter": 26,
+  "level": "hard",
+  "category": "place",
+  "question": "Which gate lay by the causeway of the going up, westward?",
+  "choices": [
+   "Shallecheth",
+   "Parbar",
+   "Asuppim",
+   "Jazer"
+  ],
+  "answer": 0,
+  "explanation": "To Shuppim and Hosah the lot came forth westward, with the gate Shallecheth, by the causeway of the going up.",
+  "ref": "1 Chronicles 26:16"
  },
  {
   "id": "old-1-chronicles-27-1",
