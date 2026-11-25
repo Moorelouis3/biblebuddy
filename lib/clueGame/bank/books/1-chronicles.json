@@ -8240,6 +8240,262 @@
   "ref": "1 Chronicles 13:12"
  },
  {
+  "id": "1-chronicles-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which place did David bring up the ark?",
+  "choices": [
+   "Shiloh",
+   "Kirjath-jearim",
+   "Hebron",
+   "Bethel"
+  ],
+  "answer": 1,
+  "explanation": "David went up to Baalah, that is, to Kirjath-jearim, to bring up thence the ark of God.",
+  "ref": "1 Chronicles 13:5–6"
+ },
+ {
+  "id": "1-chronicles-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did the ark stay in the house of Obed-edom?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Three months",
+   "One year"
+  ],
+  "answer": 2,
+  "explanation": "The ark of God remained with the family of Obed-edom in his house three months.",
+  "ref": "1 Chronicles 13:14"
+ },
+ {
+  "id": "1-chronicles-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David want the ark brought again?",
+  "choices": [
+   "The Philistines had returned it",
+   "Samuel had commanded it",
+   "They enquired not at it in the days of Saul",
+   "It had been stolen"
+  ],
+  "answer": 2,
+  "explanation": "Let us bring again the ark of our God to us: for we enquired not at it in the days of Saul.",
+  "ref": "1 Chronicles 13:3"
+ },
+ {
+  "id": "1-chronicles-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Out of whose house did they carry the ark in a new cart?",
+  "choices": [
+   "Obed-edom",
+   "Uzza",
+   "Ahio",
+   "Abinadab"
+  ],
+  "answer": 3,
+  "explanation": "They carried the ark of God in a new cart out of the house of Abinadab.",
+  "ref": "1 Chronicles 13:7"
+ },
+ {
+  "id": "1-chronicles-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who drave the new cart?",
+  "choices": [
+   "Uzza and Ahio",
+   "Abinadab and Uzza",
+   "David and Joab",
+   "Obed-edom and Ahio"
+  ],
+  "answer": 0,
+  "explanation": "Uzza and Ahio drave the cart.",
+  "ref": "1 Chronicles 13:7"
+ },
+ {
+  "id": "1-chronicles-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "At whose threshingfloor did Uzza put forth his hand to hold the ark?",
+  "choices": [
+   "Ornan",
+   "Chidon",
+   "Perez",
+   "Nachon"
+  ],
+  "answer": 1,
+  "explanation": "When they came unto the threshingfloor of Chidon, Uzza put forth his hand to hold the ark.",
+  "ref": "1 Chronicles 13:9"
+ },
+ {
+  "id": "1-chronicles-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Uzza put forth his hand to hold the ark?",
+  "choices": [
+   "The cart broke",
+   "A crowd pressed in",
+   "The oxen stumbled",
+   "The ark began to fall in a river"
+  ],
+  "answer": 2,
+  "explanation": "Uzza put forth his hand to hold the ark; for the oxen stumbled.",
+  "ref": "1 Chronicles 13:9"
+ },
+ {
+  "id": "1-chronicles-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "What was the place called where the LORD made a breach upon Uzza?",
+  "choices": [
+   "Baal-perazim",
+   "Kirjath-jearim",
+   "Baalah",
+   "Perez-uzza"
+  ],
+  "answer": 3,
+  "explanation": "The LORD had made a breach upon Uzza: wherefore that place is called Perez-uzza to this day.",
+  "ref": "1 Chronicles 13:11"
+ },
+ {
+  "id": "1-chronicles-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did all the congregation say about David's plan to bring the ark?",
+  "choices": [
+   "The thing was right in their eyes",
+   "It was too costly",
+   "It should wait for Solomon",
+   "It was against the law"
+  ],
+  "answer": 0,
+  "explanation": "All the congregation said that they would do so: for the thing was right in the eyes of all the people.",
+  "ref": "1 Chronicles 13:4"
+ },
+ {
+  "id": "1-chronicles-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "David gathered all Israel from Shihor of Egypt to where?",
+  "choices": [
+   "The Jordan",
+   "Mount Carmel",
+   "The Great Sea",
+   "The entering of Hemath"
+  ],
+  "answer": 3,
+  "explanation": "David gathered all Israel together, from Shihor of Egypt even unto the entering of Hemath.",
+  "ref": "1 Chronicles 13:5"
+ },
+ {
+  "id": "1-chronicles-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The ark's name was called on it as the LORD that dwelleth between what?",
+  "choices": [
+   "The cherubims",
+   "The pillars",
+   "The altars",
+   "The curtains"
+  ],
+  "answer": 0,
+  "explanation": "The ark of God the LORD, that dwelleth between the cherubims, whose name is called on it.",
+  "ref": "1 Chronicles 13:6"
+ },
+ {
+  "id": "1-chronicles-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "David first consulted with the captains of what?",
+  "choices": [
+   "Tens and fifties",
+   "Thousands and hundreds",
+   "The tribes and the priests",
+   "Judah and Benjamin"
+  ],
+  "answer": 1,
+  "explanation": "David consulted with the captains of thousands and hundreds, and with every leader.",
+  "ref": "1 Chronicles 13:1"
+ },
+ {
+  "id": "1-chronicles-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides all Israel, whom did David want sent for in their cities and suburbs?",
+  "choices": [
+   "The elders of Judah",
+   "The prophets",
+   "The priests and Levites",
+   "The singers and porters"
+  ],
+  "answer": 2,
+  "explanation": "Let us send abroad also to the priests and Levites which are in their cities and suburbs.",
+  "ref": "1 Chronicles 13:2"
+ },
+ {
+  "id": "1-chronicles-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "The ark was carried aside into the house of which man?",
+  "choices": [
+   "Abinadab the Levite",
+   "Ahio the Gibeonite",
+   "Chidon the Hittite",
+   "Obed-edom the Gittite"
+  ],
+  "answer": 3,
+  "explanation": "David carried it aside into the house of Obed-edom the Gittite.",
+  "ref": "1 Chronicles 13:13"
+ },
+ {
+  "id": "1-chronicles-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do for the house of Obed-edom?",
+  "choices": [
+   "Blessed it and all that he had",
+   "Gave it a son",
+   "Made it king",
+   "Healed it"
+  ],
+  "answer": 0,
+  "explanation": "The LORD blessed the house of Obed-edom, and all that he had.",
+  "ref": "1 Chronicles 13:14"
+ },
+ {
+  "id": "1-chronicles-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did David feel after Uzza died, and what did he ask?",
+  "choices": [
+   "Angry; Why did Uzza do this?",
+   "Afraid; How shall I bring the ark home to me?",
+   "Joyful; Shall we try again?",
+   "Silent; he asked nothing"
+  ],
+  "answer": 1,
+  "explanation": "David was afraid of God that day, saying, How shall I bring the ark of God home to me?",
+  "ref": "1 Chronicles 13:12"
+ },
+ {
   "id": "old-1-chronicles-14-1",
   "chapter": 14,
   "level": "beginner",
