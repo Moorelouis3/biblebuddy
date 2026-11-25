@@ -2272,6 +2272,646 @@
   "ref": "2 Samuel 4:12"
  },
  {
+  "id": "2-samuel-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were Baanah and Rechab in Ish-bosheth's house?",
+  "choices": [
+   "Captains of bands",
+   "Priests",
+   "Scribes",
+   "Porters"
+  ],
+  "answer": 0,
+  "explanation": "Saul's son had two men that were captains of bands: Baanah and Rechab.",
+  "ref": "2 Samuel 4:2"
+ },
+ {
+  "id": "2-samuel-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did Baanah and Rechab bring the head of Ish-bosheth?",
+  "choices": [
+   "Jerusalem",
+   "Gibeah",
+   "Ziklag",
+   "Hebron"
+  ],
+  "answer": 3,
+  "explanation": "They brought the head of Ish-bosheth unto David to Hebron.",
+  "ref": "2 Samuel 4:8"
+ },
+ {
+  "id": "2-samuel-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son was Ish-bosheth?",
+  "choices": [
+   "Jonathan",
+   "Abner",
+   "Saul",
+   "Rimmon"
+  ],
+  "answer": 2,
+  "explanation": "Baanah and Rechab brought the head of Ish-bosheth the son of Saul.",
+  "ref": "2 Samuel 4:8"
+ },
+ {
+  "id": "2-samuel-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the two men do to Ish-bosheth's body after they killed him?",
+  "choices": [
+   "Burned it",
+   "Beheaded him",
+   "Hid it in a well",
+   "Hanged it on a tree"
+  ],
+  "answer": 1,
+  "explanation": "They smote him, and slew him, and beheaded him.",
+  "ref": "2 Samuel 4:7"
+ },
+ {
+  "id": "2-samuel-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Ish-bosheth's head buried?",
+  "choices": [
+   "In Abner's tomb in Hebron",
+   "In Saul's tomb in Gibeah",
+   "By the pool in Hebron",
+   "In a cave at Gittaim"
+  ],
+  "answer": 0,
+  "explanation": "They took the head of Ish-bosheth, and buried it in the sepulchre of Abner in Hebron.",
+  "ref": "2 Samuel 4:12"
+ },
+ {
+  "id": "2-samuel-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did the two killers say the LORD had avenged David upon?",
+  "choices": [
+   "Abner and Joab",
+   "The Philistines",
+   "Michal's house",
+   "Saul and his seed"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hath avenged my lord the king this day of Saul, and of his seed.",
+  "ref": "2 Samuel 4:8"
+ },
+ {
+  "id": "2-samuel-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of person did David say Ish-bosheth was?",
+  "choices": [
+   "A faithful servant",
+   "A mighty man",
+   "A righteous person",
+   "An enemy of God"
+  ],
+  "answer": 2,
+  "explanation": "Wicked men have slain a righteous person in his own house upon his bed.",
+  "ref": "2 Samuel 4:11"
+ },
+ {
+  "id": "2-samuel-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took Mephibosheth up and fled when he was a child?",
+  "choices": [
+   "His mother",
+   "His nurse",
+   "Abner",
+   "Ziba"
+  ],
+  "answer": 1,
+  "explanation": "His nurse took him up, and fled.",
+  "ref": "2 Samuel 4:4"
+ },
+ {
+  "id": "2-samuel-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jonathan's young son become lame?",
+  "choices": [
+   "He fell as his nurse hurried to flee",
+   "He was struck in battle",
+   "He was born that way",
+   "A horse fell on him"
+  ],
+  "answer": 0,
+  "explanation": "As she made haste to flee, he fell, and became lame.",
+  "ref": "2 Samuel 4:4"
+ },
+ {
+  "id": "2-samuel-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did all the Israelites feel when they heard Abner was dead?",
+  "choices": [
+   "Joyful",
+   "Angry at David",
+   "Ready for war",
+   "Troubled"
+  ],
+  "answer": 3,
+  "explanation": "When Saul's son heard that Abner was dead in Hebron, all the Israelites were troubled.",
+  "ref": "2 Samuel 4:1"
+ },
+ {
+  "id": "2-samuel-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose sons were Baanah and Rechab?",
+  "choices": [
+   "Ner",
+   "Ahilud",
+   "Rimmon",
+   "Barzillai"
+  ],
+  "answer": 2,
+  "explanation": "Baanah and Rechab were the sons of Rimmon a Beerothite.",
+  "ref": "2 Samuel 4:2"
+ },
+ {
+  "id": "2-samuel-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of which tribe were Baanah and Rechab?",
+  "choices": [
+   "Judah",
+   "Benjamin",
+   "Ephraim",
+   "Manasseh"
+  ],
+  "answer": 1,
+  "explanation": "They were of the children of Benjamin.",
+  "ref": "2 Samuel 4:2"
+ },
+ {
+  "id": "2-samuel-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How old was Mephibosheth when the news of Saul and Jonathan came?",
+  "choices": [
+   "Five years old",
+   "Two years old",
+   "Ten years old",
+   "Twelve years old"
+  ],
+  "answer": 0,
+  "explanation": "He was five years old when the tidings came of Saul and Jonathan.",
+  "ref": "2 Samuel 4:4"
+ },
+ {
+  "id": "2-samuel-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "At what time of day did the two men come to Ish-bosheth's house?",
+  "choices": [
+   "At dawn",
+   "At dusk",
+   "In the dead of night",
+   "About the heat of the day"
+  ],
+  "answer": 3,
+  "explanation": "They came about the heat of the day to the house of Ish-bosheth, who lay on a bed at noon.",
+  "ref": "2 Samuel 4:5"
+ },
+ {
+  "id": "2-samuel-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the two men pretend to be fetching when they entered the house?",
+  "choices": [
+   "Water",
+   "A message",
+   "Wheat",
+   "Barley"
+  ],
+  "answer": 2,
+  "explanation": "They came into the midst of the house, as though they would have fetched wheat.",
+  "ref": "2 Samuel 4:6"
+ },
+ {
+  "id": "2-samuel-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the two men strike Ish-bosheth?",
+  "choices": [
+   "In the neck",
+   "Under the fifth rib",
+   "In the back",
+   "Under the arm"
+  ],
+  "answer": 1,
+  "explanation": "They smote him under the fifth rib.",
+  "ref": "2 Samuel 4:6"
+ },
+ {
+  "id": "2-samuel-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the two men travel through the plain with Ish-bosheth's head?",
+  "choices": [
+   "All night",
+   "Two days",
+   "Until noon",
+   "Three nights"
+  ],
+  "answer": 0,
+  "explanation": "They took his head, and gat them away through the plain all night.",
+  "ref": "2 Samuel 4:7"
+ },
+ {
+  "id": "2-samuel-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the killers describe Ish-bosheth to David?",
+  "choices": [
+   "The traitor of Israel",
+   "A friend of Abner",
+   "A coward who fled",
+   "The son of Saul, thine enemy, which sought thy life"
+  ],
+  "answer": 3,
+  "explanation": "Behold the head of Ish-bosheth the son of Saul thine enemy, which sought thy life.",
+  "ref": "2 Samuel 4:8"
+ },
+ {
+  "id": "2-samuel-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did David say had redeemed his soul out of all adversity?",
+  "choices": [
+   "Joab",
+   "Abner",
+   "The LORD",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "David said, As the LORD liveth, who hath redeemed my soul out of all adversity.",
+  "ref": "2 Samuel 4:9"
+ },
+ {
+  "id": "2-samuel-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say the man who told him Saul was dead expected?",
+  "choices": [
+   "A feast",
+   "A reward",
+   "A captain's rank",
+   "Safe passage"
+  ],
+  "answer": 1,
+  "explanation": "He thought that I would have given him a reward for his tidings.",
+  "ref": "2 Samuel 4:10"
+ },
+ {
+  "id": "2-samuel-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say he would require of Rechab and Baanah?",
+  "choices": [
+   "Ish-bosheth's blood",
+   "Their silver",
+   "Their service",
+   "Their oath"
+  ],
+  "answer": 0,
+  "explanation": "Shall I not therefore now require his blood of your hand, and take you away from the earth?",
+  "ref": "2 Samuel 4:11"
+ },
+ {
+  "id": "2-samuel-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done to the killers' hands and feet?",
+  "choices": [
+   "They were bound",
+   "They were branded",
+   "They were washed",
+   "They were cut off"
+  ],
+  "answer": 3,
+  "explanation": "David's young men slew them, and cut off their hands and their feet.",
+  "ref": "2 Samuel 4:12"
+ },
+ {
+  "id": "2-samuel-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were the killers' bodies hanged up?",
+  "choices": [
+   "On the gate of Gibeah",
+   "By the well of Sirah",
+   "Over the pool in Hebron",
+   "On the wall of Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "They hanged them up over the pool in Hebron.",
+  "ref": "2 Samuel 4:12"
+ },
+ {
+  "id": "2-samuel-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who carried out David's command against the two killers?",
+  "choices": [
+   "Joab and Abishai",
+   "His young men",
+   "The Cherethites",
+   "Benaiah"
+  ],
+  "answer": 1,
+  "explanation": "David commanded his young men, and they slew them.",
+  "ref": "2 Samuel 4:12"
+ },
+ {
+  "id": "2-samuel-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where in his house did Ish-bosheth lie when he was killed?",
+  "choices": [
+   "In his bedchamber",
+   "On the roof",
+   "In the court",
+   "In the porch"
+  ],
+  "answer": 0,
+  "explanation": "He lay on his bed in his bedchamber, and they smote him.",
+  "ref": "2 Samuel 4:7"
+ },
+ {
+  "id": "2-samuel-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the Beerothites flee and live as sojourners?",
+  "choices": [
+   "Gath",
+   "Gibeon",
+   "Gilgal",
+   "Gittaim"
+  ],
+  "answer": 3,
+  "explanation": "The Beerothites fled to Gittaim, and were sojourners there until this day.",
+  "ref": "2 Samuel 4:3"
+ },
+ {
+  "id": "2-samuel-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Out of which place did the tidings of Saul and Jonathan come?",
+  "choices": [
+   "Gilboa",
+   "Hebron",
+   "Jezreel",
+   "Ziklag"
+  ],
+  "answer": 2,
+  "explanation": "The tidings came of Saul and Jonathan out of Jezreel.",
+  "ref": "2 Samuel 4:4"
+ },
+ {
+  "id": "2-samuel-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "In which town had David slain the man who brought news that Saul was dead?",
+  "choices": [
+   "Hebron",
+   "Ziklag",
+   "Gibeah",
+   "Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "David took hold of him, and slew him in Ziklag.",
+  "ref": "2 Samuel 4:10"
+ },
+ {
+  "id": "2-samuel-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men did Ish-bosheth have as captains of bands?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "Saul's son had two men that were captains of bands.",
+  "ref": "2 Samuel 4:2"
+ },
+ {
+  "id": "2-samuel-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "What was Rechab's relation to Baanah?",
+  "choices": [
+   "His father",
+   "His servant",
+   "His cousin",
+   "His brother"
+  ],
+  "answer": 3,
+  "explanation": "Rechab and Baanah his brother escaped.",
+  "ref": "2 Samuel 4:6"
+ },
+ {
+  "id": "2-samuel-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Which town was reckoned to Benjamin?",
+  "choices": [
+   "Gittaim",
+   "Hebron",
+   "Beeroth",
+   "Jezreel"
+  ],
+  "answer": 2,
+  "explanation": "Beeroth also was reckoned to Benjamin.",
+  "ref": "2 Samuel 4:2"
+ },
+ {
+  "id": "2-samuel-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say the LORD had done for his soul?",
+  "choices": [
+   "Anointed it above his brothers",
+   "Redeemed it out of all adversity",
+   "Kept it from the sword",
+   "Made it strong in battle"
+  ],
+  "answer": 1,
+  "explanation": "As the LORD liveth, who hath redeemed my soul out of all adversity.",
+  "ref": "2 Samuel 4:9"
+ },
+ {
+  "id": "2-samuel-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did David say the righteous person was slain?",
+  "choices": [
+   "In his own house upon his bed",
+   "In the field at noon",
+   "At the gate of the city",
+   "In the house of Saul"
+  ],
+  "answer": 0,
+  "explanation": "Wicked men have slain a righteous person in his own house upon his bed.",
+  "ref": "2 Samuel 4:11"
+ },
+ {
+  "id": "2-samuel-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose deaths were the tidings out of Jezreel about?",
+  "choices": [
+   "Saul and Abner",
+   "Jonathan and Asahel",
+   "Abner and Ish-bosheth",
+   "Saul and Jonathan"
+  ],
+  "answer": 3,
+  "explanation": "His nurse fled when the tidings came of Saul and Jonathan out of Jezreel.",
+  "ref": "2 Samuel 4:4"
+ },
+ {
+  "id": "2-samuel-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "In whose tomb was Ish-bosheth's head buried?",
+  "choices": [
+   "Saul's",
+   "Jonathan's",
+   "Abner's",
+   "Rimmon's"
+  ],
+  "answer": 2,
+  "explanation": "They buried it in the sepulchre of Abner in Hebron.",
+  "ref": "2 Samuel 4:12"
+ },
+ {
+  "id": "2-samuel-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of men did David say had slain the righteous person?",
+  "choices": [
+   "Foolish men",
+   "Wicked men",
+   "Foreign men",
+   "Hired men"
+  ],
+  "answer": 1,
+  "explanation": "David said, When wicked men have slain a righteous person in his own house.",
+  "ref": "2 Samuel 4:11"
+ },
+ {
+  "id": "2-samuel-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man who told David of Saul's death think he was bringing?",
+  "choices": [
+   "Good tidings",
+   "A warning",
+   "A challenge",
+   "A crown"
+  ],
+  "answer": 0,
+  "explanation": "One told me, Behold, Saul is dead, thinking to have brought good tidings.",
+  "ref": "2 Samuel 4:10"
+ },
+ {
+  "id": "2-samuel-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say he would take the killers away from?",
+  "choices": [
+   "The land of Judah",
+   "The king's table",
+   "The city of Hebron",
+   "The earth"
+  ],
+  "answer": 3,
+  "explanation": "Shall I not now require his blood of your hand, and take you away from the earth?",
+  "ref": "2 Samuel 4:11"
+ },
+ {
+  "id": "2-samuel-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did David begin his answer to Rechab and Baanah?",
+  "choices": [
+   "Blessed be the LORD",
+   "Hear, O Israel",
+   "As the LORD liveth",
+   "Woe unto you"
+  ],
+  "answer": 2,
+  "explanation": "David answered, As the LORD liveth, who hath redeemed my soul out of all adversity.",
+  "ref": "2 Samuel 4:9"
+ },
+ {
+  "id": "2-samuel-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which part of Jonathan's son was lame?",
+  "choices": [
+   "His feet",
+   "His hands",
+   "His eyes",
+   "His back"
+  ],
+  "answer": 0,
+  "explanation": "Jonathan had a son that was lame of his feet.",
+  "ref": "2 Samuel 4:4"
+ },
+ {
   "id": "old-2-samuel-5-1",
   "chapter": 5,
   "level": "beginner",
