@@ -1136,6 +1136,598 @@
   "ref": "2 Kings 3:22–23"
  },
  {
+  "id": "2-kings-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which nation rebelled against Israel after Ahab died?",
+  "choices": [
+   "Edom",
+   "Moab",
+   "Syria",
+   "Ammon"
+  ],
+  "answer": 1,
+  "explanation": "When Ahab was dead, the king of Moab rebelled against the king of Israel.",
+  "ref": "2 Kings 3:5"
+ },
+ {
+  "id": "2-kings-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king joined Israel and Judah on the march against Moab?",
+  "choices": [
+   "The king of Edom",
+   "The king of Syria",
+   "The king of Egypt",
+   "The king of Tyre"
+  ],
+  "answer": 0,
+  "explanation": "The king of Israel went, and the king of Judah, and the king of Edom.",
+  "ref": "2 Kings 3:9"
+ },
+ {
+  "id": "2-kings-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the army lack on the way?",
+  "choices": [
+   "Bread",
+   "Horses",
+   "Weapons",
+   "Water"
+  ],
+  "answer": 3,
+  "explanation": "There was no water for the host, and for the cattle that followed them.",
+  "ref": "2 Kings 3:9"
+ },
+ {
+  "id": "2-kings-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jehoshaphat ask for when the army was in trouble?",
+  "choices": [
+   "A king's counsel",
+   "A sign from heaven",
+   "A prophet of the LORD",
+   "A sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "Jehoshaphat said, Is there not here a prophet of the LORD, that we may enquire of the LORD by him?",
+  "ref": "2 Kings 3:11"
+ },
+ {
+  "id": "2-kings-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophet did the kings go down to see?",
+  "choices": [
+   "Micaiah the son of Imlah",
+   "Elisha the son of Shaphat",
+   "Elijah the Tishbite",
+   "Obadiah"
+  ],
+  "answer": 1,
+  "explanation": "Here is Elisha the son of Shaphat, which poured water on the hands of Elijah.",
+  "ref": "2 Kings 3:11"
+ },
+ {
+  "id": "2-kings-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell the kings to make in the valley?",
+  "choices": [
+   "Ditches",
+   "Altars",
+   "Walls",
+   "Wells of stone"
+  ],
+  "answer": 0,
+  "explanation": "Thus saith the LORD, Make this valley full of ditches.",
+  "ref": "2 Kings 3:16"
+ },
+ {
+  "id": "2-kings-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What filled the country in the morning?",
+  "choices": [
+   "A great rain from the north",
+   "A flood from Jordan",
+   "Dew from heaven",
+   "Water by the way of Edom"
+  ],
+  "answer": 3,
+  "explanation": "There came water by the way of Edom, and the country was filled with water.",
+  "ref": "2 Kings 3:20"
+ },
+ {
+  "id": "2-kings-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Israelites do when the Moabites came to their camp?",
+  "choices": [
+   "Fled into the wilderness",
+   "Made a treaty",
+   "Rose up and smote them",
+   "Hid in the ditches"
+  ],
+  "answer": 2,
+  "explanation": "The Israelites rose up and smote the Moabites, so that they fled before them.",
+  "ref": "2 Kings 3:24"
+ },
+ {
+  "id": "2-kings-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king of Moab do with his eldest son?",
+  "choices": [
+   "Sent him to the king of Edom",
+   "Offered him as a burnt offering on the wall",
+   "Made him king at once",
+   "Hid him in Kir-haraseth"
+  ],
+  "answer": 1,
+  "explanation": "He took his eldest son and offered him for a burnt offering upon the wall.",
+  "ref": "2 Kings 3:27"
+ },
+ {
+  "id": "2-kings-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Mesha king of Moab pay Israel before he rebelled?",
+  "choices": [
+   "A hundred thousand lambs and rams with the wool",
+   "Ten thousand shekels of silver",
+   "A thousand oxen",
+   "Gold and spices"
+  ],
+  "answer": 0,
+  "explanation": "He rendered an hundred thousand lambs, and an hundred thousand rams, with the wool.",
+  "ref": "2 Kings 3:4"
+ },
+ {
+  "id": "2-kings-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoram do when he went out of Samaria?",
+  "choices": [
+   "Offered a sacrifice to Baal",
+   "Hired Syrian soldiers",
+   "Sent for Elisha",
+   "Numbered all Israel"
+  ],
+  "answer": 3,
+  "explanation": "King Jehoram went out of Samaria, and numbered all Israel.",
+  "ref": "2 Kings 3:6"
+ },
+ {
+  "id": "2-kings-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "Which way did they choose to go up against Moab?",
+  "choices": [
+   "By the plain of Jordan",
+   "By the sea coast",
+   "Through the wilderness of Edom",
+   "Through Gilead"
+  ],
+  "answer": 2,
+  "explanation": "The way through the wilderness of Edom.",
+  "ref": "2 Kings 3:8"
+ },
+ {
+  "id": "2-kings-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was the journey the kings took round?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Ten days",
+   "Forty days"
+  ],
+  "answer": 1,
+  "explanation": "They fetched a compass of seven days' journey.",
+  "ref": "2 Kings 3:9"
+ },
+ {
+  "id": "2-kings-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Elisha known for doing for Elijah?",
+  "choices": [
+   "Pouring water on his hands",
+   "Carrying his mantle",
+   "Cooking his meals",
+   "Guarding his house"
+  ],
+  "answer": 0,
+  "explanation": "Elisha the son of Shaphat, which poured water on the hands of Elijah.",
+  "ref": "2 Kings 3:11"
+ },
+ {
+  "id": "2-kings-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Where did Elisha tell the king of Israel to go?",
+  "choices": [
+   "To the priests of Jerusalem",
+   "To the sons of the prophets",
+   "To the elders of Samaria",
+   "To the prophets of his father and mother"
+  ],
+  "answer": 3,
+  "explanation": "Get thee to the prophets of thy father, and to the prophets of thy mother.",
+  "ref": "2 Kings 3:13"
+ },
+ {
+  "id": "2-kings-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Elisha agree to help the kings?",
+  "choices": [
+   "The king of Israel begged him",
+   "Elijah had told him to",
+   "He regarded the presence of Jehoshaphat",
+   "The LORD had forbidden him to refuse"
+  ],
+  "answer": 2,
+  "explanation": "Were it not that I regard the presence of Jehoshaphat the king of Judah, I would not look toward thee.",
+  "ref": "2 Kings 3:14"
+ },
+ {
+  "id": "2-kings-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say they would not see, yet the valley would fill?",
+  "choices": [
+   "Clouds or lightning",
+   "Wind or rain",
+   "Fire or smoke",
+   "Snow or hail"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall not see wind, neither shall ye see rain; yet that valley shall be filled with water.",
+  "ref": "2 Kings 3:17"
+ },
+ {
+  "id": "2-kings-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD describe giving water and defeating Moab?",
+  "choices": [
+   "A light thing in His sight",
+   "A hard thing",
+   "A sign for Moab",
+   "A work of seven days"
+  ],
+  "answer": 0,
+  "explanation": "This is but a light thing in the sight of the LORD.",
+  "ref": "2 Kings 3:18"
+ },
+ {
+  "id": "2-kings-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the water come?",
+  "choices": [
+   "At midnight",
+   "When the trumpets blew",
+   "When the minstrel stopped",
+   "When the meat offering was offered"
+  ],
+  "answer": 3,
+  "explanation": "In the morning, when the meat offering was offered, there came water.",
+  "ref": "2 Kings 3:20"
+ },
+ {
+  "id": "2-kings-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Moabites conclude when they saw the red water?",
+  "choices": [
+   "The LORD had judged Israel",
+   "Moab had won the battle",
+   "The kings had slain one another",
+   "The river had turned"
+  ],
+  "answer": 2,
+  "explanation": "This is blood: the kings are surely slain, and they have smitten one another.",
+  "ref": "2 Kings 3:23"
+ },
+ {
+  "id": "2-kings-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoshaphat say about his people and horses?",
+  "choices": [
+   "They were few and weak",
+   "They were as the king of Israel's",
+   "They were at home in Judah",
+   "They belonged to Edom"
+  ],
+  "answer": 1,
+  "explanation": "I am as thou art, my people as thy people, and my horses as thy horses.",
+  "ref": "2 Kings 3:7"
+ },
+ {
+  "id": "2-kings-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king of Moab try to do with seven hundred men?",
+  "choices": [
+   "Break through to the king of Edom",
+   "Escape to Egypt",
+   "Capture Elisha",
+   "Burn the ditches"
+  ],
+  "answer": 0,
+  "explanation": "He took seven hundred men that drew swords, to break through even unto the king of Edom: but they could not.",
+  "ref": "2 Kings 3:26"
+ },
+ {
+  "id": "2-kings-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened after the great indignation against Israel?",
+  "choices": [
+   "They took Kir-haraseth",
+   "They made peace with Moab",
+   "They crowned Mesha",
+   "They departed and returned to their own land"
+  ],
+  "answer": 3,
+  "explanation": "There was great indignation against Israel: and they departed from him, and returned to their own land.",
+  "ref": "2 Kings 3:27"
+ },
+ {
+  "id": "2-kings-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king of Israel cry when the army was without water?",
+  "choices": [
+   "The LORD hath forsaken us",
+   "Alas! the LORD hath called these three kings together",
+   "Where is Elisha?",
+   "Let us turn back to Samaria"
+  ],
+  "answer": 1,
+  "explanation": "Alas! that the LORD hath called these three kings together, to deliver them into the hand of Moab!",
+  "ref": "2 Kings 3:10"
+ },
+ {
+  "id": "2-kings-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Jehoram son of Ahab reign?",
+  "choices": [
+   "Twelve",
+   "Two",
+   "Twenty-two",
+   "Forty"
+  ],
+  "answer": 0,
+  "explanation": "Jehoram began to reign over Israel in Samaria, and reigned twelve years.",
+  "ref": "2 Kings 3:1"
+ },
+ {
+  "id": "2-kings-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Jehoshaphat did Jehoram begin to reign?",
+  "choices": [
+   "The first",
+   "The seventeenth",
+   "The twenty-fifth",
+   "The eighteenth"
+  ],
+  "answer": 3,
+  "explanation": "Jehoram began to reign in Samaria the eighteenth year of Jehoshaphat king of Judah.",
+  "ref": "2 Kings 3:1"
+ },
+ {
+  "id": "2-kings-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "What was Mesha king of Moab, according to the chapter?",
+  "choices": [
+   "A captain of horse",
+   "A worshipper of Baal",
+   "A sheepmaster",
+   "A son of Ahab"
+  ],
+  "answer": 2,
+  "explanation": "Mesha king of Moab was a sheepmaster.",
+  "ref": "2 Kings 3:4"
+ },
+ {
+  "id": "2-kings-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose sins did Jehoram cling to without departing?",
+  "choices": [
+   "Baasha",
+   "Jeroboam the son of Nebat",
+   "Omri",
+   "Ahab"
+  ],
+  "answer": 1,
+  "explanation": "He cleaved unto the sins of Jeroboam the son of Nebat, which made Israel to sin.",
+  "ref": "2 Kings 3:3"
+ },
+ {
+  "id": "2-kings-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What made the water look red to the Moabites?",
+  "choices": [
+   "The sun shone upon it",
+   "Blood from the battle",
+   "Red earth in the ditches",
+   "Fire from heaven"
+  ],
+  "answer": 0,
+  "explanation": "The sun shone upon the water, and the Moabites saw the water on the other side as red as blood.",
+  "ref": "2 Kings 3:22"
+ },
+ {
+  "id": "2-kings-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did the Moabites gather to stand at the border?",
+  "choices": [
+   "Only the king's guard",
+   "Every man of Kir-haraseth",
+   "Only the slingers",
+   "All able to put on armour, and upward"
+  ],
+  "answer": 3,
+  "explanation": "They gathered all that were able to put on armour, and upward, and stood in the border.",
+  "ref": "2 Kings 3:21"
+ },
+ {
+  "id": "2-kings-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city was left with its stones while the rest was ruined?",
+  "choices": [
+   "Samaria",
+   "Bozrah",
+   "Kir-haraseth",
+   "Heshbon"
+  ],
+  "answer": 2,
+  "explanation": "Only in Kir-haraseth left they the stones thereof.",
+  "ref": "2 Kings 3:25"
+ },
+ {
+  "id": "2-kings-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who went about Kir-haraseth and smote it?",
+  "choices": [
+   "The archers",
+   "The slingers",
+   "The chariots",
+   "The Edomites"
+  ],
+  "answer": 1,
+  "explanation": "The slingers went about it, and smote it.",
+  "ref": "2 Kings 3:25"
+ },
+ {
+  "id": "2-kings-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Elisha describe the LORD of hosts when he swore?",
+  "choices": [
+   "The LORD before whom he stood",
+   "The LORD who dwelt on Carmel",
+   "The LORD of Elijah's mantle",
+   "The LORD of the covenant"
+  ],
+  "answer": 0,
+  "explanation": "As the LORD of hosts liveth, before whom I stand.",
+  "ref": "2 Kings 3:14"
+ },
+ {
+  "id": "2-kings-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "What was Mesha's eldest son meant to do?",
+  "choices": [
+   "Lead the army",
+   "Marry the king of Edom's daughter",
+   "Serve at the temple",
+   "Reign in his stead"
+  ],
+  "answer": 3,
+  "explanation": "His eldest son that should have reigned in his stead.",
+  "ref": "2 Kings 3:27"
+ },
+ {
+  "id": "2-kings-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who answered that Elisha was nearby?",
+  "choices": [
+   "Jehoshaphat himself",
+   "The king of Edom",
+   "One of the king of Israel's servants",
+   "A captain of Judah"
+  ],
+  "answer": 2,
+  "explanation": "One of the king of Israel's servants answered, Here is Elisha the son of Shaphat.",
+  "ref": "2 Kings 3:11"
+ },
+ {
+  "id": "2-kings-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jehoshaphat say about Elisha?",
+  "choices": [
+   "He is a man of peace",
+   "The word of the LORD is with him",
+   "He was a friend of Elijah",
+   "He is a seer from Gilead"
+  ],
+  "answer": 1,
+  "explanation": "Jehoshaphat said, The word of the LORD is with him.",
+  "ref": "2 Kings 3:12"
+ },
+ {
+  "id": "2-kings-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was to be done to every good piece of land in Moab?",
+  "choices": [
+   "Marred with stones",
+   "Sown with salt",
+   "Burned with fire",
+   "Given to Edom"
+  ],
+  "answer": 0,
+  "explanation": "Mar every good piece of land with stones.",
+  "ref": "2 Kings 3:19"
+ },
+ {
   "id": "old-2-kings-4-1",
   "chapter": 4,
   "level": "beginner",
