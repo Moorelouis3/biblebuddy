@@ -5136,6 +5136,646 @@
   "ref": "1 Kings 8:63"
  },
  {
+  "id": "1-kings-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Out of which city was the ark brought up to the temple?",
+  "choices": [
+   "Shiloh",
+   "Bethel",
+   "The city of David",
+   "Hebron"
+  ],
+  "answer": 2,
+  "explanation": "They brought up the ark of the covenant of the Lord out of the city of David, which is Zion.",
+  "ref": "1 Kings 8:1"
+ },
+ {
+  "id": "1-kings-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took up the ark when all the elders of Israel came?",
+  "choices": [
+   "The priests",
+   "The elders",
+   "The soldiers",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "And all the elders of Israel came, and the priests took up the ark.",
+  "ref": "1 Kings 8:3"
+ },
+ {
+  "id": "1-kings-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was in the ark?",
+  "choices": [
+   "Aaron's rod and manna",
+   "The book of the law",
+   "Two tables of stone",
+   "Nothing at all"
+  ],
+  "answer": 2,
+  "explanation": "There was nothing in the ark save the two tables of stone, which Moses put there at Horeb.",
+  "ref": "1 Kings 8:9"
+ },
+ {
+  "id": "1-kings-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Toward what did Solomon spread forth his hands as he prayed?",
+  "choices": [
+   "The ark",
+   "The altar",
+   "The people",
+   "Heaven"
+  ],
+  "answer": 3,
+  "explanation": "Solomon stood before the altar of the Lord, and spread forth his hands toward heaven.",
+  "ref": "1 Kings 8:22"
+ },
+ {
+  "id": "1-kings-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did the king turn his face about and bless?",
+  "choices": [
+   "The congregation of Israel",
+   "The priests only",
+   "The elders only",
+   "Hiram's workmen"
+  ],
+  "answer": 0,
+  "explanation": "The king turned his face about, and blessed all the congregation of Israel.",
+  "ref": "1 Kings 8:14"
+ },
+ {
+  "id": "1-kings-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the Lord say would build the house for his name, rather than David?",
+  "choices": [
+   "Nathan",
+   "David's son",
+   "Hiram",
+   "Zadok"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not build the house; but thy son that shall come forth out of thy loins, he shall build the house unto my name.",
+  "ref": "1 Kings 8:19"
+ },
+ {
+  "id": "1-kings-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the Lord choose to be over his people Israel?",
+  "choices": [
+   "Saul",
+   "Solomon",
+   "David",
+   "Samuel"
+  ],
+  "answer": 2,
+  "explanation": "I chose no city to build an house, but I chose David to be over my people Israel.",
+  "ref": "1 Kings 8:16"
+ },
+ {
+  "id": "1-kings-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people go to their tents after the feast?",
+  "choices": [
+   "Weary and silent",
+   "Joyful and glad of heart",
+   "Afraid and trembling",
+   "Proud and boasting"
+  ],
+  "answer": 1,
+  "explanation": "They blessed the king, and went unto their tents joyful and glad of heart for all the goodness that the Lord had done.",
+  "ref": "1 Kings 8:66"
+ },
+ {
+  "id": "1-kings-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Solomon said there had not failed one word of the Lord's what?",
+  "choices": [
+   "Good promise",
+   "Great judgment",
+   "Holy law",
+   "Mighty works"
+  ],
+  "answer": 0,
+  "explanation": "There hath not failed one word of all his good promise, which he promised by the hand of Moses his servant.",
+  "ref": "1 Kings 8:56"
+ },
+ {
+  "id": "1-kings-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what did Solomon say the Lord would dwell?",
+  "choices": [
+   "Pure light",
+   "Thick darkness",
+   "A pillar of fire",
+   "A golden house"
+  ],
+  "answer": 1,
+  "explanation": "Then spake Solomon, The Lord said that he would dwell in thick darkness.",
+  "ref": "1 Kings 8:12"
+ },
+ {
+  "id": "1-kings-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month did the men of Israel assemble at the feast?",
+  "choices": [
+   "Abib",
+   "Zif",
+   "Ethanim",
+   "Bul"
+  ],
+  "answer": 2,
+  "explanation": "They assembled at the feast in the month Ethanim, which is the seventh month.",
+  "ref": "1 Kings 8:2"
+ },
+ {
+  "id": "1-kings-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the ark, what did the priests and Levites bring up?",
+  "choices": [
+   "The tabernacle of the congregation and the holy vessels",
+   "The brasen altar and the laver",
+   "The twelve oxen and the bases",
+   "The pillars and the chapiters"
+  ],
+  "answer": 0,
+  "explanation": "They brought up the ark, and the tabernacle of the congregation, and all the holy vessels that were in the tabernacle.",
+  "ref": "1 Kings 8:4"
+ },
+ {
+  "id": "1-kings-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Under what did the priests set the ark in the most holy place?",
+  "choices": [
+   "The cedar beams",
+   "The golden candlesticks",
+   "The wings of the cherubims",
+   "The molten sea"
+  ],
+  "answer": 2,
+  "explanation": "The priests brought in the ark into the oracle of the house, even under the wings of the cherubims.",
+  "ref": "1 Kings 8:6"
+ },
+ {
+  "id": "1-kings-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were seen out in the holy place before the oracle?",
+  "choices": [
+   "The ends of the staves",
+   "The tables of stone",
+   "The lamps",
+   "The cherubims' faces"
+  ],
+  "answer": 0,
+  "explanation": "They drew out the staves, that the ends of the staves were seen out in the holy place before the oracle.",
+  "ref": "1 Kings 8:8"
+ },
+ {
+  "id": "1-kings-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Moses put the two tables of stone in the ark?",
+  "choices": [
+   "Zion",
+   "Horeb",
+   "Gilgal",
+   "Shiloh"
+  ],
+  "answer": 1,
+  "explanation": "The two tables of stone, which Moses put there at Horeb, when the Lord made a covenant with the children of Israel.",
+  "ref": "1 Kings 8:9"
+ },
+ {
+  "id": "1-kings-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why could the priests not stand to minister?",
+  "choices": [
+   "The ground shook",
+   "A fire fell on the altar",
+   "The glory of the Lord had filled the house",
+   "The noise was too great"
+  ],
+  "answer": 2,
+  "explanation": "The priests could not stand to minister because of the cloud: for the glory of the Lord had filled the house.",
+  "ref": "1 Kings 8:11"
+ },
+ {
+  "id": "1-kings-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord say David did well to have in his heart?",
+  "choices": [
+   "To build an house for his name",
+   "To go to war with Hiram",
+   "To anoint Solomon king",
+   "To number the people"
+  ],
+  "answer": 0,
+  "explanation": "Whereas it was in thine heart to build an house unto my name, thou didst well that it was in thine heart.",
+  "ref": "1 Kings 8:18"
+ },
+ {
+  "id": "1-kings-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Solomon stand when he prayed with his hands spread toward heaven?",
+  "choices": [
+   "In the most holy place",
+   "Before the altar of the Lord",
+   "On the brasen sea",
+   "In the porch of judgment"
+  ],
+  "answer": 1,
+  "explanation": "Solomon stood before the altar of the Lord in the presence of all the congregation of Israel.",
+  "ref": "1 Kings 8:22"
+ },
+ {
+  "id": "1-kings-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In Solomon's prayer, what is missing when heaven is shut up?",
+  "choices": [
+   "Dew",
+   "Sun",
+   "Rain",
+   "Wind"
+  ],
+  "answer": 2,
+  "explanation": "When heaven is shut up, and there is no rain, because they have sinned against thee.",
+  "ref": "1 Kings 8:35"
+ },
+ {
+  "id": "1-kings-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Solomon ask God to hear when he came from a far country and prayed toward the house?",
+  "choices": [
+   "A stranger",
+   "A priest",
+   "A captive",
+   "A king"
+  ],
+  "answer": 0,
+  "explanation": "Concerning a stranger, that is not of thy people Israel, but cometh out of a far country for thy name's sake.",
+  "ref": "1 Kings 8:41–43"
+ },
+ {
+  "id": "1-kings-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Solomon called Egypt the furnace of what?",
+  "choices": [
+   "Brass",
+   "Iron",
+   "Clay",
+   "Fire"
+  ],
+  "answer": 1,
+  "explanation": "Thine inheritance, which thou broughtest forth out of Egypt, from the midst of the furnace of iron.",
+  "ref": "1 Kings 8:51"
+ },
+ {
+  "id": "1-kings-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the Lord given unto his people Israel, according to Solomon's blessing?",
+  "choices": [
+   "Plenty",
+   "Victory",
+   "Wisdom",
+   "Rest"
+  ],
+  "answer": 3,
+  "explanation": "Blessed be the Lord, that hath given rest unto his people Israel, according to all that he promised.",
+  "ref": "1 Kings 8:56"
+ },
+ {
+  "id": "1-kings-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king hallow on the same day to offer burnt offerings?",
+  "choices": [
+   "The middle of the court",
+   "The porch of the temple",
+   "The top of Zion",
+   "The house of the forest"
+  ],
+  "answer": 0,
+  "explanation": "The same day did the king hallow the middle of the court that was before the house of the Lord.",
+  "ref": "1 Kings 8:64"
+ },
+ {
+  "id": "1-kings-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Solomon offer sacrifices in the middle of the court?",
+  "choices": [
+   "The priests refused",
+   "The brasen altar was too little",
+   "The altar was unclean",
+   "The altar was broken"
+  ],
+  "answer": 1,
+  "explanation": "The brasen altar that was before the Lord was too little to receive the burnt offerings, and meat offerings, and the fat of the peace offerings.",
+  "ref": "1 Kings 8:64"
+ },
+ {
+  "id": "1-kings-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "The great congregation came from the entering in of Hamath to which river?",
+  "choices": [
+   "Jordan",
+   "Euphrates",
+   "The river of Egypt",
+   "Kishon"
+  ],
+  "answer": 2,
+  "explanation": "A great congregation, from the entering in of Hamath unto the river of Egypt.",
+  "ref": "1 Kings 8:65"
+ },
+ {
+  "id": "1-kings-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sheep did Solomon offer as peace offerings?",
+  "choices": [
+   "Twelve thousand",
+   "Twenty-two thousand",
+   "Two thousand",
+   "A hundred and twenty thousand"
+  ],
+  "answer": 3,
+  "explanation": "Solomon offered two and twenty thousand oxen, and an hundred and twenty thousand sheep.",
+  "ref": "1 Kings 8:63"
+ },
+ {
+  "id": "1-kings-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many days in all did Solomon hold the feast?",
+  "choices": [
+   "Seven",
+   "Eight",
+   "Fourteen",
+   "Twenty-one"
+  ],
+  "answer": 2,
+  "explanation": "Solomon held a feast, seven days and seven days, even fourteen days.",
+  "ref": "1 Kings 8:65"
+ },
+ {
+  "id": "1-kings-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day did Solomon send the people away?",
+  "choices": [
+   "The third",
+   "The seventh",
+   "The eighth",
+   "The fourteenth"
+  ],
+  "answer": 2,
+  "explanation": "On the eighth day he sent the people away.",
+  "ref": "1 Kings 8:66"
+ },
+ {
+  "id": "1-kings-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the cherubims cover above?",
+  "choices": [
+   "The ark and the staves",
+   "The altar and the laver",
+   "The table and candlesticks",
+   "The doors of the oracle"
+  ],
+  "answer": 0,
+  "explanation": "The cherubims covered the ark and the staves thereof above.",
+  "ref": "1 Kings 8:7"
+ },
+ {
+  "id": "1-kings-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what condition would a man not fail to sit on the throne of Israel?",
+  "choices": [
+   "That Israel keep the feast every year",
+   "That David's children take heed to their way",
+   "That the temple be overlaid with gold",
+   "That the ark never leave the house"
+  ],
+  "answer": 1,
+  "explanation": "There shall not fail thee a man to sit on the throne of Israel; so that thy children take heed to their way.",
+  "ref": "1 Kings 8:25"
+ },
+ {
+  "id": "1-kings-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these troubles did Solomon name in his prayer?",
+  "choices": [
+   "Flood",
+   "Earthquake",
+   "Mildew",
+   "Fire from heaven"
+  ],
+  "answer": 2,
+  "explanation": "If there be in the land famine, if there be pestilence, blasting, mildew, locust, or if there be caterpiller.",
+  "ref": "1 Kings 8:37"
+ },
+ {
+  "id": "1-kings-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Solomon say God only knows?",
+  "choices": [
+   "The hearts of all the children of men",
+   "The day the temple would fall",
+   "The number of the sacrifices",
+   "The weight of the brass"
+  ],
+  "answer": 0,
+  "explanation": "Thou, even thou only, knowest the hearts of all the children of men.",
+  "ref": "1 Kings 8:39"
+ },
+ {
+  "id": "1-kings-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When Israel went out to battle, toward what were they to pray?",
+  "choices": [
+   "The ark of the covenant",
+   "The chosen city and the house built for his name",
+   "The brasen altar",
+   "The mount of Horeb"
+  ],
+  "answer": 1,
+  "explanation": "They shall pray unto the Lord toward the city which thou hast chosen, and toward the house that I have built for thy name.",
+  "ref": "1 Kings 8:44"
+ },
+ {
+  "id": "1-kings-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were captives to return to the Lord in the land of their enemies?",
+  "choices": [
+   "With the ark in front of them",
+   "With a sacrifice of oxen",
+   "With all their heart, and with all their soul",
+   "With all their silver and gold"
+  ],
+  "answer": 2,
+  "explanation": "And so return unto thee with all their heart, and with all their soul, in the land of their enemies.",
+  "ref": "1 Kings 8:48"
+ },
+ {
+  "id": "1-kings-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "By the hand of whom had the Lord spoken that Israel be his inheritance?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "David",
+   "Samuel"
+  ],
+  "answer": 1,
+  "explanation": "Thou didst separate them to be thine inheritance, as thou spakest by the hand of Moses thy servant.",
+  "ref": "1 Kings 8:53"
+ },
+ {
+  "id": "1-kings-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the sheep and oxen sacrificed before the ark described?",
+  "choices": [
+   "They were without blemish",
+   "They were brought from Tyre",
+   "They could not be told nor numbered for multitude",
+   "They were all firstborn"
+  ],
+  "answer": 2,
+  "explanation": "Sacrificing sheep and oxen, that could not be told nor numbered for multitude.",
+  "ref": "1 Kings 8:5"
+ },
+ {
+  "id": "1-kings-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose fat did Solomon offer in the middle of the court?",
+  "choices": [
+   "Sin offerings",
+   "Peace offerings",
+   "Trespass offerings",
+   "Wave offerings"
+  ],
+  "answer": 1,
+  "explanation": "There he offered burnt offerings, and meat offerings, and the fat of the peace offerings.",
+  "ref": "1 Kings 8:64"
+ },
+ {
+  "id": "1-kings-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Solomon said he had risen up in the room of whom?",
+  "choices": [
+   "Saul",
+   "David his father",
+   "Nathan",
+   "Hiram"
+  ],
+  "answer": 1,
+  "explanation": "I am risen up in the room of David my father, and sit on the throne of Israel, as the Lord promised.",
+  "ref": "1 Kings 8:20"
+ },
+ {
+  "id": "1-kings-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what position did Solomon arise after he finished praying?",
+  "choices": [
+   "Lying on his face",
+   "Sitting on the throne",
+   "Standing in the porch",
+   "Kneeling on his knees"
+  ],
+  "answer": 3,
+  "explanation": "He arose from before the altar of the Lord, from kneeling on his knees with his hands spread up to heaven.",
+  "ref": "1 Kings 8:54"
+ },
+ {
+  "id": "1-kings-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the elders, whom did Solomon assemble in Jerusalem?",
+  "choices": [
+   "The prophets",
+   "The heads of the tribes",
+   "The Levites only",
+   "The captains of the host"
+  ],
+  "answer": 1,
+  "explanation": "Solomon assembled the elders of Israel, and all the heads of the tribes, the chief of the fathers.",
+  "ref": "1 Kings 8:1"
+ },
+ {
   "id": "old-1-kings-9-1",
   "chapter": 9,
   "level": "beginner",
