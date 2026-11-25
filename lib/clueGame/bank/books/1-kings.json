@@ -13056,6 +13056,646 @@
   "ref": "1 Kings 19:16"
  },
  {
+  "id": "1-kings-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Jezebel all that Elijah had done?",
+  "choices": [
+   "Obadiah",
+   "Ben-hadad",
+   "Ahab",
+   "Elisha"
+  ],
+  "answer": 2,
+  "explanation": "Ahab told Jezebel all that Elijah had done, and withal how he had slain all the prophets with the sword.",
+  "ref": "1 Kings 19:1"
+ },
+ {
+  "id": "1-kings-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Elijah leave his servant?",
+  "choices": [
+   "Horeb",
+   "Beer-sheba",
+   "Jezreel",
+   "Damascus"
+  ],
+  "answer": 1,
+  "explanation": "He came to Beer-sheba, which belongeth to Judah, and left his servant there.",
+  "ref": "1 Kings 19:3"
+ },
+ {
+  "id": "1-kings-19-e-03",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What woke Elijah as he slept under the juniper tree?",
+  "choices": [
+   "An angel touched him",
+   "A great wind",
+   "A voice from heaven",
+   "His servant"
+  ],
+  "answer": 0,
+  "explanation": "Behold, then an angel touched him, and said unto him, Arise and eat.",
+  "ref": "1 Kings 19:5"
+ },
+ {
+  "id": "1-kings-19-e-04",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elijah find baked on the coals at his head?",
+  "choices": [
+   "A fish",
+   "A loaf of barley",
+   "A honeycomb",
+   "A cake"
+  ],
+  "answer": 3,
+  "explanation": "There was a cake baken on the coals, and a cruse of water at his head.",
+  "ref": "1 Kings 19:6"
+ },
+ {
+  "id": "1-kings-19-e-05",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which mount of God did Elijah go?",
+  "choices": [
+   "Carmel",
+   "Sinai in Judah",
+   "Horeb",
+   "Gilboa"
+  ],
+  "answer": 2,
+  "explanation": "He went in the strength of that meat forty days and forty nights unto Horeb the mount of God.",
+  "ref": "1 Kings 19:8"
+ },
+ {
+  "id": "1-kings-19-e-06",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Elijah lodge at Horeb?",
+  "choices": [
+   "In a tent",
+   "In a cave",
+   "In a city",
+   "Under a juniper tree"
+  ],
+  "answer": 1,
+  "explanation": "He came thither unto a cave, and lodged there.",
+  "ref": "1 Kings 19:9"
+ },
+ {
+  "id": "1-kings-19-e-07",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question did the LORD ask Elijah at the cave?",
+  "choices": [
+   "What doest thou here, Elijah?",
+   "Why hast thou fled?",
+   "Where is thy servant?",
+   "Wilt thou go back to Ahab?"
+  ],
+  "answer": 0,
+  "explanation": "The word of the LORD came to him, and he said unto him, What doest thou here, Elijah?",
+  "ref": "1 Kings 19:9"
+ },
+ {
+  "id": "1-kings-19-e-08",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom was Elijah told to anoint king over Syria?",
+  "choices": [
+   "Ben-hadad",
+   "Jehu",
+   "Elisha",
+   "Hazael"
+  ],
+  "answer": 3,
+  "explanation": "Anoint Hazael to be king over Syria.",
+  "ref": "1 Kings 19:15"
+ },
+ {
+  "id": "1-kings-19-e-09",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom was Elijah told to anoint king over Israel?",
+  "choices": [
+   "Hazael",
+   "Elisha",
+   "Jehu the son of Nimshi",
+   "Omri"
+  ],
+  "answer": 2,
+  "explanation": "Jehu the son of Nimshi shalt thou anoint to be king over Israel.",
+  "ref": "1 Kings 19:16"
+ },
+ {
+  "id": "1-kings-19-e-10",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Elisha doing when Elijah found him?",
+  "choices": [
+   "Tending sheep",
+   "Plowing with twelve yoke of oxen",
+   "Sowing barley",
+   "Building an altar"
+  ],
+  "answer": 1,
+  "explanation": "He found Elisha the son of Shaphat, who was plowing with twelve yoke of oxen before him.",
+  "ref": "1 Kings 19:19"
+ },
+ {
+  "id": "1-kings-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Ahab told Jezebel besides what Elijah had done?",
+  "choices": [
+   "That he had slain all the prophets with the sword",
+   "That rain had come",
+   "That the people had followed Baal",
+   "That Obadiah had hidden prophets"
+  ],
+  "answer": 0,
+  "explanation": "Ahab told Jezebel all that Elijah had done, and withal how he had slain all the prophets with the sword.",
+  "ref": "1 Kings 19:1"
+ },
+ {
+  "id": "1-kings-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jezebel send her threat to Elijah?",
+  "choices": [
+   "By a letter",
+   "By Ahab himself",
+   "By the prophets of Baal",
+   "By a messenger"
+  ],
+  "answer": 3,
+  "explanation": "Then Jezebel sent a messenger unto Elijah.",
+  "ref": "1 Kings 19:2"
+ },
+ {
+  "id": "1-kings-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How far into the wilderness did Elijah go before sitting down?",
+  "choices": [
+   "Seven days",
+   "Forty days",
+   "A day's journey",
+   "A hundred furlongs"
+  ],
+  "answer": 2,
+  "explanation": "He himself went a day's journey into the wilderness, and came and sat down under a juniper tree.",
+  "ref": "1 Kings 19:4"
+ },
+ {
+  "id": "1-kings-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Elijah say he wanted to die?",
+  "choices": [
+   "He had failed to bring rain",
+   "He was not better than his fathers",
+   "His servant had left him",
+   "He was afraid of the angel"
+  ],
+  "answer": 1,
+  "explanation": "It is enough; now, O LORD, take away my life; for I am not better than my fathers.",
+  "ref": "1 Kings 19:4"
+ },
+ {
+  "id": "1-kings-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the angel wake Elijah a second time?",
+  "choices": [
+   "The journey was too great for him",
+   "The cake had burned",
+   "Jezebel was near",
+   "The LORD wished to speak"
+  ],
+  "answer": 0,
+  "explanation": "The angel of the LORD came again the second time, and said, Arise and eat; because the journey is too great for thee.",
+  "ref": "1 Kings 19:7"
+ },
+ {
+  "id": "1-kings-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah say he had been for the LORD God of hosts?",
+  "choices": [
+   "Very faithful",
+   "Very silent",
+   "Very weary",
+   "Very jealous"
+  ],
+  "answer": 3,
+  "explanation": "I have been very jealous for the LORD God of hosts.",
+  "ref": "1 Kings 19:10"
+ },
+ {
+  "id": "1-kings-19-m-07",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah say the children of Israel had done to the LORD's altars?",
+  "choices": [
+   "Hidden them",
+   "Covered them with gold",
+   "Thrown them down",
+   "Moved them to Samaria"
+  ],
+  "answer": 2,
+  "explanation": "The children of Israel have forsaken thy covenant, thrown down thine altars, and slain thy prophets with the sword.",
+  "ref": "1 Kings 19:10"
+ },
+ {
+  "id": "1-kings-19-m-08",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah say about himself among the LORD's prophets?",
+  "choices": [
+   "Obadiah and I are left",
+   "I, even I only, am left",
+   "A hundred remain with me",
+   "Elisha stands with me"
+  ],
+  "answer": 1,
+  "explanation": "I, even I only, am left; and they seek my life, to take it away.",
+  "ref": "1 Kings 19:10"
+ },
+ {
+  "id": "1-kings-19-m-09",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah do when he heard the still small voice?",
+  "choices": [
+   "Wrapped his face in his mantle",
+   "Fell on his face before the LORD",
+   "Ran down the mountain",
+   "Called for fire from heaven"
+  ],
+  "answer": 0,
+  "explanation": "He wrapped his face in his mantle, and went out, and stood in the entering in of the cave.",
+  "ref": "1 Kings 19:13"
+ },
+ {
+  "id": "1-kings-19-m-10",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Elisha the son of Shaphat from?",
+  "choices": [
+   "Beer-sheba",
+   "Zarephath",
+   "Gilead",
+   "Abel-meholah"
+  ],
+  "answer": 3,
+  "explanation": "Elisha the son of Shaphat of Abel-meholah shalt thou anoint to be prophet in thy room.",
+  "ref": "1 Kings 19:16"
+ },
+ {
+  "id": "1-kings-19-m-11",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many people in Israel had the LORD left who had not bowed to Baal?",
+  "choices": [
+   "Four hundred and fifty",
+   "One hundred",
+   "Seven thousand",
+   "Twelve thousand"
+  ],
+  "answer": 2,
+  "explanation": "Yet I have left me seven thousand in Israel, all the knees which have not bowed unto Baal.",
+  "ref": "1 Kings 19:18"
+ },
+ {
+  "id": "1-kings-19-m-12",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah do when he passed by Elisha?",
+  "choices": [
+   "Gave him bread",
+   "Cast his mantle upon him",
+   "Laid hands on his head",
+   "Spoke the LORD's name over him"
+  ],
+  "answer": 1,
+  "explanation": "Elijah passed by him, and cast his mantle upon him.",
+  "ref": "1 Kings 19:19"
+ },
+ {
+  "id": "1-kings-19-m-13",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha ask permission to do before following Elijah?",
+  "choices": [
+   "Kiss his father and mother",
+   "Sell his oxen",
+   "Bury his father",
+   "Gather his servants"
+  ],
+  "answer": 0,
+  "explanation": "Let me, I pray thee, kiss my father and my mother, and then I will follow thee.",
+  "ref": "1 Kings 19:20"
+ },
+ {
+  "id": "1-kings-19-m-14",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha do with his yoke of oxen?",
+  "choices": [
+   "Gave them to Elijah",
+   "Sold them for silver",
+   "Led them to the altar",
+   "Slew them and boiled their flesh for the people"
+  ],
+  "answer": 3,
+  "explanation": "He took a yoke of oxen, and slew them, and boiled their flesh with the instruments of the oxen, and gave unto the people, and they did eat.",
+  "ref": "1 Kings 19:21"
+ },
+ {
+  "id": "1-kings-19-m-15",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel say the first time he touched Elijah?",
+  "choices": [
+   "Fear not",
+   "Go to Horeb",
+   "Arise and eat",
+   "Return to Samaria"
+  ],
+  "answer": 2,
+  "explanation": "An angel touched him, and said unto him, Arise and eat.",
+  "ref": "1 Kings 19:5"
+ },
+ {
+  "id": "1-kings-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To which kingdom did Beer-sheba belong?",
+  "choices": [
+   "Israel",
+   "Judah",
+   "Syria",
+   "Edom"
+  ],
+  "answer": 1,
+  "explanation": "He came to Beer-sheba, which belongeth to Judah.",
+  "ref": "1 Kings 19:3"
+ },
+ {
+  "id": "1-kings-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elijah say when he asked that he might die?",
+  "choices": [
+   "It is enough",
+   "I have finished",
+   "I am weary of Israel",
+   "Let me sleep"
+  ],
+  "answer": 0,
+  "explanation": "It is enough; now, O LORD, take away my life.",
+  "ref": "1 Kings 19:4"
+ },
+ {
+  "id": "1-kings-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the cruse of water when Elijah found it?",
+  "choices": [
+   "Beside the fire",
+   "In the cave",
+   "On the juniper tree",
+   "At his head"
+  ],
+  "answer": 3,
+  "explanation": "There was a cake baken on the coals, and a cruse of water at his head.",
+  "ref": "1 Kings 19:6"
+ },
+ {
+  "id": "1-kings-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the great and strong wind do before the LORD?",
+  "choices": [
+   "Blew down the cave",
+   "Scattered the people",
+   "Rent the mountains and brake the rocks in pieces",
+   "Dried up the brook"
+  ],
+  "answer": 2,
+  "explanation": "A great and strong wind rent the mountains, and brake in pieces the rocks before the LORD.",
+  "ref": "1 Kings 19:11"
+ },
+ {
+  "id": "1-kings-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What came after the fire?",
+  "choices": [
+   "A great rain",
+   "A still small voice",
+   "A thunderbolt",
+   "An angel"
+  ],
+  "answer": 1,
+  "explanation": "After the fire a still small voice.",
+  "ref": "1 Kings 19:12"
+ },
+ {
+  "id": "1-kings-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Elijah to go to anoint Hazael?",
+  "choices": [
+   "The wilderness of Damascus",
+   "The wilderness of Judah",
+   "The mount of Carmel",
+   "The plain of Jezreel"
+  ],
+  "answer": 0,
+  "explanation": "Go, return on thy way to the wilderness of Damascus: and when thou comest, anoint Hazael.",
+  "ref": "1 Kings 19:15"
+ },
+ {
+  "id": "1-kings-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Who would slay him that escaped the sword of Hazael?",
+  "choices": [
+   "Elisha",
+   "Ahab",
+   "Elijah",
+   "Jehu"
+  ],
+  "answer": 3,
+  "explanation": "Him that escapeth the sword of Hazael shall Jehu slay.",
+  "ref": "1 Kings 19:17"
+ },
+ {
+  "id": "1-kings-19-h-08",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Who would slay him that escaped the sword of Jehu?",
+  "choices": [
+   "Hazael",
+   "Elijah",
+   "Elisha",
+   "Obadiah"
+  ],
+  "answer": 2,
+  "explanation": "Him that escapeth from the sword of Jehu shall Elisha slay.",
+  "ref": "1 Kings 19:17"
+ },
+ {
+  "id": "1-kings-19-h-09",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Jehu, whom Elijah was told to anoint?",
+  "choices": [
+   "Shaphat's",
+   "Nimshi's",
+   "Hanani's",
+   "Ahijah's"
+  ],
+  "answer": 1,
+  "explanation": "Jehu the son of Nimshi shalt thou anoint to be king over Israel.",
+  "ref": "1 Kings 19:16"
+ },
+ {
+  "id": "1-kings-19-h-10",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which yoke of oxen was Elisha with when Elijah found him?",
+  "choices": [
+   "The twelfth",
+   "The first",
+   "The seventh",
+   "The third"
+  ],
+  "answer": 0,
+  "explanation": "Elisha was plowing with twelve yoke of oxen before him, and he with the twelfth.",
+  "ref": "1 Kings 19:19"
+ },
+ {
+  "id": "1-kings-19-h-11",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the mouths of the seven thousand not done to Baal?",
+  "choices": [
+   "Praised him",
+   "Called on his name",
+   "Sworn by him",
+   "Kissed him"
+  ],
+  "answer": 3,
+  "explanation": "Seven thousand, all the knees which have not bowed unto Baal, and every mouth which hath not kissed him.",
+  "ref": "1 Kings 19:18"
+ },
+ {
+  "id": "1-kings-19-h-12",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Elijah answer when Elisha asked to kiss his parents?",
+  "choices": [
+   "Follow me now",
+   "Let the dead bury the dead",
+   "Go back again: for what have I done to thee?",
+   "Bring thy father with thee"
+  ],
+  "answer": 2,
+  "explanation": "He said unto him, Go back again: for what have I done to thee?",
+  "ref": "1 Kings 19:20"
+ },
+ {
+  "id": "1-kings-19-h-13",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Elisha minister to after he went after Elijah?",
+  "choices": [
+   "Ahab",
+   "Elijah",
+   "Jehu",
+   "Hazael"
+  ],
+  "answer": 1,
+  "explanation": "Then he arose, and went after Elijah, and ministered unto him.",
+  "ref": "1 Kings 19:21"
+ },
+ {
+  "id": "1-kings-19-h-14",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elisha use to boil the flesh of the oxen?",
+  "choices": [
+   "The instruments of the oxen",
+   "Wood from Carmel",
+   "A copper pot from Horeb",
+   "Stones from the altar"
+  ],
+  "answer": 0,
+  "explanation": "Boiled their flesh with the instruments of the oxen.",
+  "ref": "1 Kings 19:21"
+ },
+ {
+  "id": "1-kings-19-h-15",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elijah say the people of Israel sought to take away?",
+  "choices": [
+   "His mantle",
+   "His servant",
+   "His altar",
+   "His life"
+  ],
+  "answer": 3,
+  "explanation": "They seek my life, to take it away.",
+  "ref": "1 Kings 19:10"
+ },
+ {
   "id": "old-1-kings-20-1",
   "chapter": 20,
   "level": "beginner",
