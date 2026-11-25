@@ -15214,5 +15214,645 @@
   "answer": 3,
   "explanation": "The random shot mortally wounded Ahab.",
   "ref": "1 Kings 22:34"
+ },
+ {
+  "id": "1-kings-22-e-01",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Judah came down to visit the king of Israel?",
+  "choices": [
+   "Asa",
+   "Jehoshaphat",
+   "Jehoram",
+   "Hezekiah"
+  ],
+  "answer": 1,
+  "explanation": "In the third year Jehoshaphat the king of Judah came down to the king of Israel.",
+  "ref": "1 Kings 22:2"
+ },
+ {
+  "id": "1-kings-22-e-02",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did Ahab say was holding Ramoth in Gilead?",
+  "choices": [
+   "The king of Syria",
+   "The king of Moab",
+   "The king of Edom",
+   "The king of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Ahab said, Ramoth in Gilead is ours, and we take it not out of the hand of the king of Syria.",
+  "ref": "1 Kings 22:3"
+ },
+ {
+  "id": "1-kings-22-e-03",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jehoshaphat ask Ahab to do before going to battle?",
+  "choices": [
+   "Offer a sacrifice to Baal",
+   "Gather a bigger army",
+   "Make a treaty with Syria",
+   "Enquire at the word of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Jehoshaphat said, Enquire, I pray thee, at the word of the LORD to day.",
+  "ref": "1 Kings 22:5"
+ },
+ {
+  "id": "1-kings-22-e-04",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophet of the LORD did Ahab hate?",
+  "choices": [
+   "Elijah the Tishbite",
+   "Zedekiah the son of Chenaanah",
+   "Micaiah the son of Imlah",
+   "Elisha the son of Shaphat"
+  ],
+  "answer": 2,
+  "explanation": "Ahab said of Micaiah the son of Imlah, I hate him; for he doth not prophesy good concerning me.",
+  "ref": "1 Kings 22:8"
+ },
+ {
+  "id": "1-kings-22-e-05",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Zedekiah make to show Ahab would defeat the Syrians?",
+  "choices": [
+   "A sword of bronze",
+   "Horns of iron",
+   "A golden calf",
+   "An altar of stone"
+  ],
+  "answer": 1,
+  "explanation": "Zedekiah made him horns of iron and said, With these shalt thou push the Syrians.",
+  "ref": "1 Kings 22:11"
+ },
+ {
+  "id": "1-kings-22-e-06",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the four hundred prophets tell Ahab?",
+  "choices": [
+   "Go up, for the LORD will deliver it",
+   "Stay home and forbear",
+   "Make peace with Syria",
+   "Wait three more years"
+  ],
+  "answer": 0,
+  "explanation": "They said, Go up; for the Lord shall deliver it into the hand of the king.",
+  "ref": "1 Kings 22:6"
+ },
+ {
+  "id": "1-kings-22-e-07",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Micaiah say he saw about Israel on the hills?",
+  "choices": [
+   "A flock of wolves",
+   "Tents without men",
+   "A great fire",
+   "Sheep that have not a shepherd"
+  ],
+  "answer": 3,
+  "explanation": "I saw all Israel scattered upon the hills, as sheep that have not a shepherd.",
+  "ref": "1 Kings 22:17"
+ },
+ {
+  "id": "1-kings-22-e-08",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Israel died in the battle at Ramoth-gilead?",
+  "choices": [
+   "Jehu",
+   "Omri",
+   "Ahab",
+   "Ahaziah"
+  ],
+  "answer": 2,
+  "explanation": "The king of Israel was stayed up in his chariot against the Syrians, and died at even.",
+  "ref": "1 Kings 22:35"
+ },
+ {
+  "id": "1-kings-22-e-09",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Ahab buried?",
+  "choices": [
+   "In Jezreel",
+   "In Samaria",
+   "In Tirzah",
+   "In Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "So the king died, and was brought to Samaria; and they buried the king in Samaria.",
+  "ref": "1 Kings 22:37"
+ },
+ {
+  "id": "1-kings-22-e-10",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Ahab's place after he died?",
+  "choices": [
+   "Ahaziah his son",
+   "Jehoram his brother",
+   "Jehu his captain",
+   "Joash his son"
+  ],
+  "answer": 0,
+  "explanation": "Ahab slept with his fathers; and Ahaziah his son reigned in his stead.",
+  "ref": "1 Kings 22:40"
+ },
+ {
+  "id": "1-kings-22-m-01",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoshaphat answer when Ahab asked him to go to battle?",
+  "choices": [
+   "I will go if the LORD says go",
+   "I will send my sons instead",
+   "I must first ask my father Asa",
+   "I am as thou art, my people as thy people"
+  ],
+  "answer": 3,
+  "explanation": "Jehoshaphat said, I am as thou art, my people as thy people, my horses as thy horses.",
+  "ref": "1 Kings 22:4"
+ },
+ {
+  "id": "1-kings-22-m-02",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Ahab hate Micaiah?",
+  "choices": [
+   "He had mocked the prophets of Baal",
+   "He had refused to eat with Ahab",
+   "He prophesied evil, never good, about Ahab",
+   "He had fled from Samaria"
+  ],
+  "answer": 2,
+  "explanation": "He doth not prophesy good concerning me, but evil.",
+  "ref": "1 Kings 22:8"
+ },
+ {
+  "id": "1-kings-22-m-03",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Zedekiah say the iron horns would do?",
+  "choices": [
+   "Break the walls of Ramoth-gilead",
+   "Push the Syrians until they were consumed",
+   "Open the gates of Damascus",
+   "Drive away the chariots of Syria"
+  ],
+  "answer": 1,
+  "explanation": "With these shalt thou push the Syrians, until thou have consumed them.",
+  "ref": "1 Kings 22:11"
+ },
+ {
+  "id": "1-kings-22-m-04",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the messenger urge Micaiah to do?",
+  "choices": [
+   "Speak good like the other prophets",
+   "Run away to Judah",
+   "Pray for Ahab",
+   "Offer Ahab a gift"
+  ],
+  "answer": 0,
+  "explanation": "Let thy word be like the word of one of them, and speak that which is good.",
+  "ref": "1 Kings 22:13"
+ },
+ {
+  "id": "1-kings-22-m-05",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Micaiah answer the messenger?",
+  "choices": [
+   "He would say what the king wished",
+   "He would stay silent",
+   "He would ask Ahab for money",
+   "He would speak only what the LORD said"
+  ],
+  "answer": 3,
+  "explanation": "As the LORD liveth, what the LORD saith unto me, that will I speak.",
+  "ref": "1 Kings 22:14"
+ },
+ {
+  "id": "1-kings-22-m-06",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Micaiah first tell the king when asked if they should go?",
+  "choices": [
+   "Do not go up",
+   "Wait for Elijah",
+   "Go, and prosper",
+   "Go up and be defeated"
+  ],
+  "answer": 2,
+  "explanation": "He answered him, Go, and prosper: for the LORD shall deliver it into the hand of the king.",
+  "ref": "1 Kings 22:15"
+ },
+ {
+  "id": "1-kings-22-m-07",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Micaiah see in his second vision?",
+  "choices": [
+   "A man of fire on a mountain",
+   "The LORD on His throne with the host of heaven",
+   "A flaming chariot over Samaria",
+   "An angel with a drawn sword"
+  ],
+  "answer": 1,
+  "explanation": "I saw the LORD sitting on his throne, and all the host of heaven standing by him.",
+  "ref": "1 Kings 22:19"
+ },
+ {
+  "id": "1-kings-22-m-08",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the spirit say he would be in the mouth of the prophets?",
+  "choices": [
+   "A lying spirit",
+   "A silent spirit",
+   "A spirit of fear",
+   "A spirit of slumber"
+  ],
+  "answer": 0,
+  "explanation": "I will go forth, and I will be a lying spirit in the mouth of all his prophets.",
+  "ref": "1 Kings 22:22"
+ },
+ {
+  "id": "1-kings-22-m-09",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Zedekiah do to Micaiah?",
+  "choices": [
+   "Spat on his robe",
+   "Bound him with cords",
+   "Cast him into a pit",
+   "Smote him on the cheek"
+  ],
+  "answer": 3,
+  "explanation": "Zedekiah went near, and smote Micaiah on the cheek.",
+  "ref": "1 Kings 22:24"
+ },
+ {
+  "id": "1-kings-22-m-10",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What food was Micaiah to be fed in prison?",
+  "choices": [
+   "Barley and olives",
+   "Only water",
+   "Bread and water of affliction",
+   "Bread and figs"
+  ],
+  "answer": 2,
+  "explanation": "Feed him with bread of affliction and with water of affliction, until I come in peace.",
+  "ref": "1 Kings 22:27"
+ },
+ {
+  "id": "1-kings-22-m-11",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Micaiah say would prove the LORD had not spoken by him?",
+  "choices": [
+   "If it rained that week",
+   "If Ahab returned at all in peace",
+   "If the Syrians fled",
+   "If Jehoshaphat was wounded"
+  ],
+  "answer": 1,
+  "explanation": "If thou return at all in peace, the LORD hath not spoken by me.",
+  "ref": "1 Kings 22:28"
+ },
+ {
+  "id": "1-kings-22-m-12",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ahab tell Jehoshaphat to wear into battle?",
+  "choices": [
+   "His robes",
+   "A borrowed helmet",
+   "Plain sackcloth",
+   "The armour of Ahab"
+  ],
+  "answer": 0,
+  "explanation": "I will disguise myself; but put thou on thy robes.",
+  "ref": "1 Kings 22:30"
+ },
+ {
+  "id": "1-kings-22-m-13",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the king of Syria order his captains to fight?",
+  "choices": [
+   "Only Jehoshaphat",
+   "All the men of Judah",
+   "The prophets of Samaria",
+   "Only the king of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Fight neither with small nor great, save only with the king of Israel.",
+  "ref": "1 Kings 22:31"
+ },
+ {
+  "id": "1-kings-22-m-14",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Syrian captains turn back from chasing Jehoshaphat?",
+  "choices": [
+   "His horses outran them",
+   "Night had fallen",
+   "They saw he was not the king of Israel",
+   "The LORD blinded them"
+  ],
+  "answer": 2,
+  "explanation": "When they perceived that it was not the king of Israel, they turned back from pursuing him.",
+  "ref": "1 Kings 22:32–33"
+ },
+ {
+  "id": "1-kings-22-m-15",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoshaphat refuse to let Ahaziah do?",
+  "choices": [
+   "Marry his daughter",
+   "Send his servants with Jehoshaphat's in the ships",
+   "Ride in his chariot",
+   "Enter the temple"
+  ],
+  "answer": 1,
+  "explanation": "Ahaziah said, Let my servants go with thy servants in the ships. But Jehoshaphat would not.",
+  "ref": "1 Kings 22:49"
+ },
+ {
+  "id": "1-kings-22-h-01",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Zedekiah, the prophet with the iron horns?",
+  "choices": [
+   "Chenaanah",
+   "Imlah",
+   "Nebat",
+   "Shilhi"
+  ],
+  "answer": 0,
+  "explanation": "Zedekiah the son of Chenaanah made him horns of iron.",
+  "ref": "1 Kings 22:11"
+ },
+ {
+  "id": "1-kings-22-h-02",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did the king command Micaiah be carried back?",
+  "choices": [
+   "Obadiah and Jehu",
+   "Zedekiah and Amon",
+   "Joash and the captain of the guard",
+   "Amon the governor and Joash the king's son"
+  ],
+  "answer": 3,
+  "explanation": "Carry him back unto Amon the governor of the city, and to Joash the king's son.",
+  "ref": "1 Kings 22:26"
+ },
+ {
+  "id": "1-kings-22-h-03",
+  "chapter": 22,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the two kings sit while the prophets prophesied?",
+  "choices": [
+   "In the house of the LORD",
+   "On the hill of Ramoth-gilead",
+   "In a void place at the entrance of the gate of Samaria",
+   "In the palace of ivory"
+  ],
+  "answer": 2,
+  "explanation": "They sat each on his throne in a void place in the entrance of the gate of Samaria.",
+  "ref": "1 Kings 22:10"
+ },
+ {
+  "id": "1-kings-22-h-04",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Syria and Israel continue without war?",
+  "choices": [
+   "One year",
+   "Three years",
+   "Seven years",
+   "Ten years"
+  ],
+  "answer": 1,
+  "explanation": "They continued three years without war between Syria and Israel.",
+  "ref": "1 Kings 22:1"
+ },
+ {
+  "id": "1-kings-22-h-05",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many captains over his chariots did the king of Syria have?",
+  "choices": [
+   "Thirty and two",
+   "Seventy",
+   "Twelve",
+   "Two hundred"
+  ],
+  "answer": 0,
+  "explanation": "The king of Syria commanded his thirty and two captains that had rule over his chariots.",
+  "ref": "1 Kings 22:31"
+ },
+ {
+  "id": "1-kings-22-h-06",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jehoshaphat react when the chariot captains turned on him?",
+  "choices": [
+   "He fled to Judah",
+   "He threw down his robes",
+   "He drew his sword",
+   "He cried out"
+  ],
+  "answer": 3,
+  "explanation": "They turned aside to fight against him: and Jehoshaphat cried out.",
+  "ref": "1 Kings 22:32"
+ },
+ {
+  "id": "1-kings-22-h-07",
+  "chapter": 22,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Ahab's chariot washed?",
+  "choices": [
+   "In the river Jordan",
+   "At the brook Kishon",
+   "In the pool of Samaria",
+   "At the well of Jezreel"
+  ],
+  "answer": 2,
+  "explanation": "One washed the chariot in the pool of Samaria; and the dogs licked up his blood.",
+  "ref": "1 Kings 22:38"
+ },
+ {
+  "id": "1-kings-22-h-08",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of house did Ahab make, besides cities he built?",
+  "choices": [
+   "A cedar house",
+   "An ivory house",
+   "A house of brass",
+   "A house of stone"
+  ],
+  "answer": 1,
+  "explanation": "The ivory house which he made, and all the cities that he built.",
+  "ref": "1 Kings 22:39"
+ },
+ {
+  "id": "1-kings-22-h-09",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Jehoshaphat when he began to reign?",
+  "choices": [
+   "Thirty and five",
+   "Twenty and five",
+   "Forty",
+   "Sixteen"
+  ],
+  "answer": 0,
+  "explanation": "Jehoshaphat was thirty and five years old when he began to reign.",
+  "ref": "1 Kings 22:42"
+ },
+ {
+  "id": "1-kings-22-h-10",
+  "chapter": 22,
+  "level": "hard",
+  "category": "place",
+  "question": "What did the text say of Edom in Jehoshaphat's time?",
+  "choices": [
+   "Edom was ruled by Ahab",
+   "Edom had a boy king",
+   "Edom was at war with Judah",
+   "There was no king; a deputy was king"
+  ],
+  "answer": 3,
+  "explanation": "There was then no king in Edom: a deputy was king.",
+  "ref": "1 Kings 22:47"
+ },
+ {
+  "id": "1-kings-22-h-11",
+  "chapter": 22,
+  "level": "hard",
+  "category": "place",
+  "question": "Where were Jehoshaphat's ships of Tharshish broken?",
+  "choices": [
+   "Joppa",
+   "Tyre",
+   "Ezion-geber",
+   "Eloth"
+  ],
+  "answer": 2,
+  "explanation": "Jehoshaphat made ships to go to Ophir for gold: but the ships were broken at Ezion-geber.",
+  "ref": "1 Kings 22:48"
+ },
+ {
+  "id": "1-kings-22-h-12",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Who reigned after Jehoshaphat died?",
+  "choices": [
+   "Ahaziah his son",
+   "Jehoram his son",
+   "Asa his son",
+   "Joash his son"
+  ],
+  "answer": 1,
+  "explanation": "Jehoshaphat slept with his fathers; and Jehoram his son reigned in his stead.",
+  "ref": "1 Kings 22:50"
+ },
+ {
+  "id": "1-kings-22-h-13",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Ahaziah son of Ahab reign over Israel?",
+  "choices": [
+   "Two years",
+   "Twelve years",
+   "Twenty-two years",
+   "Seven years"
+  ],
+  "answer": 0,
+  "explanation": "Ahaziah the son of Ahab reigned two years over Israel.",
+  "ref": "1 Kings 22:51"
+ },
+ {
+  "id": "1-kings-22-h-14",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people still do in the high places in Jehoshaphat's days?",
+  "choices": [
+   "Sacrificed to Baal",
+   "Held feasts to Moloch",
+   "Set up Asherim",
+   "Offered and burnt incense"
+  ],
+  "answer": 3,
+  "explanation": "The high places were not taken away; the people offered and burnt incense yet in the high places.",
+  "ref": "1 Kings 22:43"
+ },
+ {
+  "id": "1-kings-22-h-15",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the blood that ran from Ahab's wound?",
+  "choices": [
+   "It fell on the ground of Ramoth",
+   "It was caught in a basin",
+   "It ran into the midst of the chariot",
+   "It stained Jehoshaphat's robes"
+  ],
+  "answer": 2,
+  "explanation": "The blood ran out of the wound into the midst of the chariot.",
+  "ref": "1 Kings 22:35"
  }
 ]
