@@ -1,4 +1,4 @@
-﻿import { getBibleReaderStudySections } from "./bibleReaderStudyNotes";
+﻿import { peekBibleReaderStudySections as getBibleReaderStudySections } from "./bibleReaderStudyNotesLazy";
 import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 
 export const BIBLE_YEAR_DAY_FOUR_DEEP_NOTES = `Genesis 8-10 shows life after the flood.

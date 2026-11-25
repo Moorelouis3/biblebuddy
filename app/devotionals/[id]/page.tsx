@@ -501,7 +501,119 @@ type DevotionalDetailPageProps = {
   }) => void;
 };
 
-export default function DevotionalDetailPage({ devotionalIdOverride, embedded = false, initialDayNumber = null, onInitialDayHandled, onBack, onChapterSelect }: DevotionalDetailPageProps = {}) {
+/**
+ * The address /devotionals/<id> (and /bible-studies/<id>) is only a door.
+ *
+ * A study is read inside the app, on the Plans screen, so reached as a route
+ * this hands off to /plan. It used to do that from inside the study itself:
+ * the whole component mounted, started every one of its database requests,
+ * drew nothing, went to /dashboard, which drew nothing and went to /plan,
+ * which then loaded the study a second time. Three blank screens and the
+ * work done twice (docs/SPEED_REPORT_2026-11-25.md, causes 3 and 5).
+ *
+ * Now the door is this small component: no requests, one hop, straight to
+ * /plan. next.config.ts does the same hop on the server for the usual
+ * uuid address, so most people never even download this.
+ *
+ * ?day=N is carried across, as before.
+ */
+function DevotionalRouteDoor() {
+  const params = useParams();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const devotionalId = params.id as string;
+
+  useEffect(() => {
+    if (!devotionalId) return;
+    const requestedDay = Number.parseInt(searchParams.get("day") || "", 10);
+    const daySuffix = requestedDay > 0 ? `&day=${requestedDay}` : "";
+    router.replace(`/plan?view=bible_studies&study=${encodeURIComponent(devotionalId)}${daySuffix}`);
+  }, [devotionalId, router, searchParams]);
+
+  return null;
+}
+
+export default function DevotionalDetailPage(props: DevotionalDetailPageProps = {}) {
+  if (!props.embedded) return <DevotionalRouteDoor />;
+  return <DevotionalDetailView {...props} />;
+}
+
+/**
+ * What the reader's phone remembers about a study between visits.
+ *
+ * The study's text (the devotional row and its days) is the same for
+ * everybody and changes only when a study is edited; the progress is this
+ * reader's own. Both are shown from here the instant the study opens, and
+ * the fresh copy from the database replaces them a moment later. Before
+ * this, every open was "Loading plan..." until a dozen requests had come
+ * back one after another.
+ *
+ * Kept small on purpose: the two most recent studies, and nothing at all if
+ * a study is too big to fit or the phone refuses the write.
+ */
+const STUDY_CACHE_PREFIX = "bb:study-cache:v1:";
+const STUDY_CACHE_MAX_CHARS = 1_500_000;
+const STUDY_CACHE_KEEP = 2;
+
+type StudyCache = {
+  savedAt: number;
+  devotional: Devotional;
+  days: DevotionalDay[];
+  progress: DayProgress[];
+  taskProgress: Array<[number, ChapterTaskProgress]>;
+  triviaDays: number[];
+  discussionDays: number[];
+};
+
+function studyCacheKey(userId: string | null, devotionalId: string) {
+  return `${STUDY_CACHE_PREFIX}${userId || "anon"}:${devotionalId}`;
+}
+
+function readStudyCache(userId: string | null, devotionalId: string): StudyCache | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(studyCacheKey(userId, devotionalId));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as StudyCache;
+    if (!parsed?.devotional || !Array.isArray(parsed.days) || parsed.days.length === 0) return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function writeStudyCache(userId: string | null, devotionalId: string, value: Omit<StudyCache, "savedAt">) {
+  if (typeof window === "undefined") return;
+  try {
+    const key = studyCacheKey(userId, devotionalId);
+    const raw = JSON.stringify({ ...value, savedAt: Date.now() });
+    if (raw.length > STUDY_CACHE_MAX_CHARS) return;
+
+    // Make room first: keep only the most recent other studies.
+    const others: Array<{ key: string; savedAt: number }> = [];
+    for (let i = 0; i < window.localStorage.length; i += 1) {
+      const existingKey = window.localStorage.key(i);
+      if (!existingKey || !existingKey.startsWith(STUDY_CACHE_PREFIX) || existingKey === key) continue;
+      let savedAt = 0;
+      try {
+        savedAt = Number(JSON.parse(window.localStorage.getItem(existingKey) || "{}").savedAt) || 0;
+      } catch {
+        savedAt = 0;
+      }
+      others.push({ key: existingKey, savedAt });
+    }
+    others
+      .sort((a, b) => b.savedAt - a.savedAt)
+      .slice(STUDY_CACHE_KEEP - 1)
+      .forEach((entry) => window.localStorage.removeItem(entry.key));
+
+    window.localStorage.setItem(key, raw);
+  } catch {
+    // Full or blocked storage: the study still loads from the database.
+  }
+}
+
+function DevotionalDetailView({ devotionalIdOverride, embedded = false, initialDayNumber = null, onInitialDayHandled, onBack, onChapterSelect }: DevotionalDetailPageProps) {
   const params = useParams();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -518,6 +630,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const [markingReaderChapter, setMarkingReaderChapter] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
+  /** True once we know who is signed in (or that nobody is). The study waits for this, so it loads once, not twice. */
+  const [authResolved, setAuthResolved] = useState(false);
+  const signedInUserRef = useRef<{ id: string; email?: string | null; user_metadata?: any } | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [profileStats, setProfileStats] = useState<any>(null);
   const [currentPlan, setCurrentPlan] = useState<{ mode: string | null; devotionalId: string | null } | null>(null);
@@ -566,9 +681,19 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
 
   useEffect(() => {
     async function loadUserAndProfile() {
-      const { data: { user } } = await supabase.auth.getUser();
+      // Read from the phone: no request, so the study can start loading at
+      // once instead of waiting a round trip to learn who is asking.
+      let user: { id: string; email?: string | null; user_metadata?: any } | null = null;
+      try {
+        const { data } = await supabase.auth.getSession();
+        user = data.session?.user ?? null;
+      } catch {
+        user = null;
+      }
+      signedInUserRef.current = user;
       setUserId(user?.id || null);
       setUserEmail(user?.email || null);
+      setAuthResolved(true);
       if (user?.id) {
         const { data: stats } = await supabase
           .from("profile_stats")
@@ -626,60 +751,56 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     setFeatureTours(nextTours);
   }
 
+  /**
+   * Loads the study.
+   *
+   * What this used to be: twelve requests in a row, with the study hidden
+   * behind "Loading plan..." until the last one answered. The devotional,
+   * then a network sign-in check, then its days, then four requests for the
+   * people who have started it, then this reader's progress, then their
+   * actions. And all of it twice, once before the sign-in was known and
+   * again after (docs/SPEED_REPORT_2026-11-25.md, cause 5).
+   *
+   * Now:
+   *   1. Whatever the phone remembers of this study is shown at once.
+   *   2. The devotional, its days and this reader's progress are asked for
+   *      together, then the task ticks together: two round trips.
+   *   3. Who else has started the study loads behind, and holds nothing up.
+   *
+   * It waits for authResolved so it runs once.
+   */
   useEffect(() => {
-    async function loadDevotional() {
+    if (!devotionalId || !authResolved) return;
+    let cancelled = false;
+
+    const cached = readStudyCache(userId, devotionalId);
+    // What the screen shows before the database answers. Kept by reference so
+    // the fresh answer can tell "still showing what I put there" apart from
+    // "the reader has ticked something since".
+    const baseline = {
+      progress: new Map<number, DayProgress>((cached?.progress || []).map((p) => [p.day_number, p])),
+      taskProgress: new Map<number, ChapterTaskProgress>(cached?.taskProgress || []),
+      triviaDays: new Set<number>(cached?.triviaDays || []),
+      discussionDays: new Set<number>(cached?.discussionDays || []),
+    };
+    let shownDaysJson: string | null = null;
+
+    setProgress(baseline.progress);
+    setChapterTaskProgress(baseline.taskProgress);
+    setCompletedTriviaDayNumbers(baseline.triviaDays);
+    setCompletedDiscussionDayNumbers(baseline.discussionDays);
+    if (cached) {
+      setDevotional(cached.devotional);
+      setDays(cached.days);
+      shownDaysJson = JSON.stringify(cached.days);
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+
+    /** Who else has started this study. Never holds the study up. */
+    async function loadStarterBuddies(devotionalTitle: string) {
       try {
-        // Load devotional
-        const { data: devotionalData, error: devotionalError } = await supabase
-          .from("devotionals")
-          .select("*")
-          .eq("id", devotionalId)
-          .single();
-
-        if (devotionalError || !devotionalData) {
-          console.error("Error loading devotional:", devotionalError);
-          if (embedded) {
-            onBack?.();
-          } else {
-            router.push("/plans");
-          }
-          return;
-        }
-
-        setDevotional(devotionalData);
-
-        if (userId) {
-          const { data: authData } = await supabase.auth.getUser();
-          const meta: any = authData.user?.user_metadata || {};
-          const username =
-            meta.firstName ||
-            meta.first_name ||
-            (authData.user?.email ? authData.user.email.split("@")[0] : null) ||
-            null;
-
-          void trackNavigationActionOnce({
-            userId,
-            username,
-            actionType: ACTION_TYPE.devotional_opened,
-            actionLabel: devotionalData.title,
-            dedupeKey: `devotional-viewed:${devotionalId}`,
-          }).catch((error) => console.error("[NAV] Failed to track devotional detail view:", error));
-        }
-
-        // Load days
-        const { data: daysData, error: daysError } = await supabase
-          .from("devotional_days")
-          .select("*")
-          .eq("devotional_id", devotionalId)
-          .order("day_number", { ascending: true });
-
-        if (daysError) {
-          console.error("Error loading days:", daysError);
-          return;
-        }
-
-        setDays(daysData || []);
-
         const [starterProgressRes, starterActionRes, starterProfileChoiceRes] = await Promise.all([
           supabase
             .from("devotional_progress")
@@ -696,7 +817,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               ACTION_TYPE.devotional_day_completed,
               ACTION_TYPE.devotional_bible_reading_opened,
             ])
-            .ilike("action_label", `${devotionalData.title}%`)
+            .ilike("action_label", `${devotionalTitle}%`)
             .order("created_at", { ascending: false })
             .limit(STARTER_ROW_LIMIT),
           supabase
@@ -736,163 +857,284 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           ].filter((value): value is string => Boolean(value)),
         )];
 
-        if (starterIds.length > 0) {
-          const { data: starterProfiles, error: starterProfilesError } = await supabase
-            .from("profile_stats")
-            .select("user_id, display_name, username, profile_image_url")
-            .in("user_id", starterIds);
-
-          if (starterProfilesError) {
-            console.warn("[DEVOTIONAL] Starter profiles query failed:", starterProfilesError.message);
-            setStarterBuddies(
-              starterIds.map((starterId) => ({
-                user_id: starterId,
-                display_name: "Buddy",
-                profile_image_url: null,
-                completed_day_number: completedDayMap.get(starterId) || 0,
-              })),
-            );
-          } else {
-            const starterProfileMap = new Map(
-              (starterProfiles || []).map((profile: any) => [profile.user_id, profile]),
-            );
-
-            setStarterBuddies(
-              starterIds
-                .map((starterId) => {
-                  const profile = starterProfileMap.get(starterId);
-                  return {
-                    user_id: starterId,
-                    display_name: profile?.display_name || profile?.username || "Buddy",
-                    profile_image_url: profile?.profile_image_url || null,
-                    completed_day_number: completedDayMap.get(starterId) || 0,
-                  };
-                }),
-            );
-          }
-        } else {
-          setStarterBuddies([]);
+        if (starterIds.length === 0) {
+          if (!cancelled) setStarterBuddies([]);
+          return;
         }
 
-        // Load progress if user is logged in
-        if (userId) {
-          const progressMap = new Map<number, DayProgress>();
-          const { data: progressData, error: progressError } = await supabase
-            .from("devotional_progress")
+        const { data: starterProfiles, error: starterProfilesError } = await supabase
+          .from("profile_stats")
+          .select("user_id, display_name, username, profile_image_url")
+          .in("user_id", starterIds);
+        if (cancelled) return;
+
+        if (starterProfilesError) {
+          console.warn("[DEVOTIONAL] Starter profiles query failed:", starterProfilesError.message);
+          setStarterBuddies(
+            starterIds.map((starterId) => ({
+              user_id: starterId,
+              display_name: "Buddy",
+              profile_image_url: null,
+              completed_day_number: completedDayMap.get(starterId) || 0,
+            })),
+          );
+          return;
+        }
+
+        const starterProfileMap = new Map(
+          (starterProfiles || []).map((profile: any) => [profile.user_id, profile]),
+        );
+        setStarterBuddies(
+          starterIds.map((starterId) => {
+            const profile = starterProfileMap.get(starterId);
+            return {
+              user_id: starterId,
+              display_name: profile?.display_name || profile?.username || "Buddy",
+              profile_image_url: profile?.profile_image_url || null,
+              completed_day_number: completedDayMap.get(starterId) || 0,
+            };
+          }),
+        );
+      } catch (error) {
+        console.warn("[DEVOTIONAL] Could not load who has started this study:", error);
+      }
+    }
+
+    async function loadDevotional() {
+      try {
+        const [devotionalRes, daysRes, progressRes] = await Promise.all([
+          supabase.from("devotionals").select("*").eq("id", devotionalId).single(),
+          supabase
+            .from("devotional_days")
             .select("*")
-            .eq("user_id", userId)
-            .eq("devotional_id", devotionalId);
+            .eq("devotional_id", devotionalId)
+            .order("day_number", { ascending: true }),
+          userId
+            ? supabase.from("devotional_progress").select("*").eq("user_id", userId).eq("devotional_id", devotionalId)
+            : Promise.resolve({ data: [], error: null } as any),
+        ]);
+        if (cancelled) return;
 
-          if (!progressError && progressData) {
-            progressData.forEach((p) => {
-              progressMap.set(p.day_number, {
-                day_number: p.day_number,
-                is_completed: p.is_completed,
-                reading_completed: p.reading_completed,
-                reflection_text: p.reflection_text,
-              });
-            });
-            setProgress(progressMap);
-          }
-
-          if (isChapterJourneyStudyTitle(devotionalData.title)) {
-            const loadedDays = daysData || [];
-            const reflectionSlugs = loadedDays.map((day) => chapterSlug(day.bible_reading_book, day.bible_reading_chapter));
-            const [actionsRes, reflectionsRes, eventDiscussedDays] = await Promise.all([
-              supabase
-                .from("master_actions")
-                .select("action_type, action_label")
-                .eq("user_id", userId)
-                .in("action_type", [
-                  ACTION_TYPE.chapter_notes_reviewed,
-                  ACTION_TYPE.chapter_notes_viewed,
-                  ACTION_TYPE.trivia_chapter_completed,
-                  ACTION_TYPE.scrambled_chapter_completed,
-                ]),
-              reflectionSlugs.length > 0
-                ? supabase
-                    .from("article_comments")
-                    .select("article_slug")
-                    .eq("user_id", userId)
-                    .eq("is_deleted", false)
-                    .in("article_slug", reflectionSlugs)
-                : Promise.resolve({ data: [], error: null } as any),
-              // Community event days: replying in the day's group thread also counts.
-              getDevotionalEventDayPostMap(supabase, devotionalId)
-                .then((dayPosts) => getEventDiscussedDayNumbers(supabase, dayPosts, userId))
-                .catch(() => new Set<number>()),
-            ]);
-
-            const actions = actionsRes.data || [];
-            const reflectionSet = new Set((reflectionsRes.data || []).map((row: any) => row.article_slug));
-            const taskProgressMap = new Map<number, ChapterTaskProgress>();
-            const triviaDaySet = new Set<number>();
-            const discussionDaySet = new Set<number>();
-
-            loadedDays.forEach((day) => {
-              const dayProgress = progressMap.get(day.day_number);
-              const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
-              const chapterLabelLower = chapterLabel.toLowerCase();
-              const noteLabel = notesActionLabel(day.bible_reading_book, day.bible_reading_chapter);
-              const hasNotes = actions.some((row: any) =>
-                (row.action_type === ACTION_TYPE.chapter_notes_reviewed || row.action_type === ACTION_TYPE.chapter_notes_viewed) &&
-                row.action_label === noteLabel
-              );
-              const hasTrivia = actions.some((row: any) =>
-                row.action_type === ACTION_TYPE.trivia_chapter_completed &&
-                String(row.action_label || "").toLowerCase().startsWith(chapterLabelLower)
-              );
-              const hasScrambled = actions.some((row: any) =>
-                row.action_type === ACTION_TYPE.scrambled_chapter_completed &&
-                String(row.action_label || "").toLowerCase().startsWith(chapterLabelLower)
-              );
-              const hasReflection =
-                reflectionSet.has(chapterSlug(day.bible_reading_book, day.bible_reading_chapter)) ||
-                eventDiscussedDays.has(day.day_number);
-              if (hasTrivia) triviaDaySet.add(day.day_number);
-              if (hasReflection) discussionDaySet.add(day.day_number);
-              const completed = isModernStudyPlanTitle(devotionalData.title)
-                ? [
-                    dayProgress?.is_completed === true,
-                    dayProgress?.reading_completed === true,
-                    hasTrivia,
-                    hasReflection,
-                  ].filter(Boolean).length
-                : [
-                    dayProgress?.is_completed === true,
-                    dayProgress?.reading_completed === true,
-                    hasNotes,
-                    hasTrivia,
-                    hasScrambled,
-                    hasReflection,
-                  ].filter(Boolean).length;
-
-              taskProgressMap.set(day.day_number, {
-                completed,
-                total: getStudyPlanTaskTotal(devotionalData.title),
-              });
-            });
-
-            setChapterTaskProgress(taskProgressMap);
-            setCompletedTriviaDayNumbers(triviaDaySet);
-            setCompletedDiscussionDayNumbers(discussionDaySet);
+        const devotionalData = devotionalRes.data;
+        if (devotionalRes.error || !devotionalData) {
+          console.error("Error loading devotional:", devotionalRes.error);
+          // A failed read is not a missing study. With a copy on the phone,
+          // keep showing it rather than throwing the reader out.
+          if (cached) return;
+          if (embedded) {
+            onBack?.();
           } else {
-            setChapterTaskProgress(new Map());
-            setCompletedTriviaDayNumbers(new Set());
-            setCompletedDiscussionDayNumbers(new Set());
+            router.push("/plans");
           }
+          return;
+        }
+
+        setDevotional(devotionalData);
+
+        if (userId) {
+          const signedIn = signedInUserRef.current;
+          const meta: any = signedIn?.user_metadata || {};
+          const username =
+            meta.firstName ||
+            meta.first_name ||
+            (signedIn?.email ? signedIn.email.split("@")[0] : null) ||
+            null;
+
+          void trackNavigationActionOnce({
+            userId,
+            username,
+            actionType: ACTION_TYPE.devotional_opened,
+            actionLabel: devotionalData.title,
+            dedupeKey: `devotional-viewed:${devotionalId}`,
+          }).catch((error) => console.error("[NAV] Failed to track devotional detail view:", error));
+        }
+
+        void loadStarterBuddies(devotionalData.title);
+
+        if (daysRes.error) {
+          console.error("Error loading days:", daysRes.error);
+          return;
+        }
+
+        const daysData: DevotionalDay[] = daysRes.data || [];
+        // Same days as the phone already showed: leave them alone, so nothing
+        // that hangs off `days` asks the database for the same thing twice.
+        if (JSON.stringify(daysData) !== shownDaysJson) setDays(daysData);
+
+        if (!userId) {
+          writeStudyCache(userId, devotionalId, {
+            devotional: devotionalData,
+            days: daysData,
+            progress: [],
+            taskProgress: [],
+            triviaDays: [],
+            discussionDays: [],
+          });
+          return;
+        }
+
+        // Did any read of this reader's progress fail? Then the fresh answer
+        // is only allowed to add ticks, never take one away.
+        let partial = Boolean(progressRes.error);
+
+        const progressMap = new Map<number, DayProgress>();
+        (progressRes.data || []).forEach((p: any) => {
+          progressMap.set(p.day_number, {
+            day_number: p.day_number,
+            is_completed: p.is_completed,
+            reading_completed: p.reading_completed,
+            reflection_text: p.reflection_text,
+          });
+        });
+
+        const taskProgressMap = new Map<number, ChapterTaskProgress>();
+        const triviaDaySet = new Set<number>();
+        const discussionDaySet = new Set<number>();
+
+        if (isChapterJourneyStudyTitle(devotionalData.title)) {
+          const reflectionSlugs = daysData.map((day) => chapterSlug(day.bible_reading_book, day.bible_reading_chapter));
+          let eventReadFailed = false;
+          const [actionsRes, reflectionsRes, eventDiscussedDays] = await Promise.all([
+            supabase
+              .from("master_actions")
+              .select("action_type, action_label")
+              .eq("user_id", userId)
+              .in("action_type", [
+                ACTION_TYPE.chapter_notes_reviewed,
+                ACTION_TYPE.chapter_notes_viewed,
+                ACTION_TYPE.trivia_chapter_completed,
+                ACTION_TYPE.scrambled_chapter_completed,
+              ]),
+            reflectionSlugs.length > 0
+              ? supabase
+                  .from("article_comments")
+                  .select("article_slug")
+                  .eq("user_id", userId)
+                  .eq("is_deleted", false)
+                  .in("article_slug", reflectionSlugs)
+              : Promise.resolve({ data: [], error: null } as any),
+            // Community event days: replying in the day's group thread also counts.
+            getDevotionalEventDayPostMap(supabase, devotionalId)
+              .then((dayPosts) => getEventDiscussedDayNumbers(supabase, dayPosts, userId))
+              .catch(() => {
+                eventReadFailed = true;
+                return new Set<number>();
+              }),
+          ]);
+          if (cancelled) return;
+          if (actionsRes.error || reflectionsRes.error || eventReadFailed) partial = true;
+
+          const actions = actionsRes.data || [];
+          const reflectionSet = new Set((reflectionsRes.data || []).map((row: any) => row.article_slug));
+
+          daysData.forEach((day) => {
+            const dayProgress = progressMap.get(day.day_number);
+            const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
+            const chapterLabelLower = chapterLabel.toLowerCase();
+            const noteLabel = notesActionLabel(day.bible_reading_book, day.bible_reading_chapter);
+            const hasNotes = actions.some((row: any) =>
+              (row.action_type === ACTION_TYPE.chapter_notes_reviewed || row.action_type === ACTION_TYPE.chapter_notes_viewed) &&
+              row.action_label === noteLabel
+            );
+            const hasTrivia = actions.some((row: any) =>
+              row.action_type === ACTION_TYPE.trivia_chapter_completed &&
+              String(row.action_label || "").toLowerCase().startsWith(chapterLabelLower)
+            );
+            const hasScrambled = actions.some((row: any) =>
+              row.action_type === ACTION_TYPE.scrambled_chapter_completed &&
+              String(row.action_label || "").toLowerCase().startsWith(chapterLabelLower)
+            );
+            const hasReflection =
+              reflectionSet.has(chapterSlug(day.bible_reading_book, day.bible_reading_chapter)) ||
+              eventDiscussedDays.has(day.day_number);
+            if (hasTrivia) triviaDaySet.add(day.day_number);
+            if (hasReflection) discussionDaySet.add(day.day_number);
+            const completed = isModernStudyPlanTitle(devotionalData.title)
+              ? [
+                  dayProgress?.is_completed === true,
+                  dayProgress?.reading_completed === true,
+                  hasTrivia,
+                  hasReflection,
+                ].filter(Boolean).length
+              : [
+                  dayProgress?.is_completed === true,
+                  dayProgress?.reading_completed === true,
+                  hasNotes,
+                  hasTrivia,
+                  hasScrambled,
+                  hasReflection,
+                ].filter(Boolean).length;
+
+            taskProgressMap.set(day.day_number, {
+              completed,
+              total: getStudyPlanTaskTotal(devotionalData.title),
+            });
+          });
+        }
+        if (cancelled) return;
+
+        // Put the fresh answer on screen. If the reader has already ticked
+        // something since the study appeared (the state is no longer the
+        // object this effect put there), or a read failed, only move forward.
+        setProgress((prev) => {
+          if (prev === baseline.progress && !partial) return progressMap;
+          const merged = new Map(prev);
+          progressMap.forEach((fresh, dayNumber) => {
+            const current = merged.get(dayNumber);
+            merged.set(dayNumber, {
+              day_number: dayNumber,
+              is_completed: current?.is_completed === true || fresh.is_completed === true,
+              reading_completed: current?.reading_completed === true || fresh.reading_completed === true,
+              reflection_text: current?.reflection_text ?? fresh.reflection_text,
+            });
+          });
+          return merged;
+        });
+        setChapterTaskProgress((prev) => {
+          if (prev === baseline.taskProgress && !partial) return taskProgressMap;
+          const merged = new Map(prev);
+          taskProgressMap.forEach((fresh, dayNumber) => {
+            const current = merged.get(dayNumber);
+            merged.set(dayNumber, {
+              completed: Math.max(current?.completed ?? 0, fresh.completed),
+              total: fresh.total,
+            });
+          });
+          return merged;
+        });
+        setCompletedTriviaDayNumbers((prev) =>
+          prev === baseline.triviaDays && !partial ? triviaDaySet : new Set([...prev, ...triviaDaySet]),
+        );
+        setCompletedDiscussionDayNumbers((prev) =>
+          prev === baseline.discussionDays && !partial ? discussionDaySet : new Set([...prev, ...discussionDaySet]),
+        );
+
+        // Only a complete answer is worth remembering.
+        if (!partial) {
+          writeStudyCache(userId, devotionalId, {
+            devotional: devotionalData,
+            days: daysData,
+            progress: Array.from(progressMap.values()),
+            taskProgress: Array.from(taskProgressMap.entries()),
+            triviaDays: Array.from(triviaDaySet),
+            discussionDays: Array.from(discussionDaySet),
+          });
         }
       } catch (err) {
         console.error("Error loading devotional:", err);
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     }
 
-    if (devotionalId) {
-      loadDevotional();
-    }
-  }, [devotionalId, userId, router]);
+    void loadDevotional();
+
+    return () => {
+      cancelled = true;
+    };
+    // onBack is a fresh closure each render; the study and the reader are what matter.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [devotionalId, userId, authResolved, router]);
 
   // How busy each day's thread is (Louis, 2026-10-17). Comments hang off the
   // day's chapter, and the count is everything live on it - top-level and

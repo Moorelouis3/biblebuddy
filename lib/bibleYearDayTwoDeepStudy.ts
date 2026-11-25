@@ -1,4 +1,4 @@
-import { getBibleReaderStudySections } from "./bibleReaderStudyNotes";
+import { peekBibleReaderStudySections as getBibleReaderStudySections } from "./bibleReaderStudyNotesLazy";
 import type { BibleYearDeepStudySection } from "./bibleYearDayOneDeepStudy";
 
 function buildSectionMarkdown(section: {

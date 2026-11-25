@@ -112,3 +112,36 @@ export const supabase = createBrowserClient(supabaseUrl, supabaseAnonKey, {
     secure: process.env.NODE_ENV === "production",
   },
 });
+
+/**
+ * "Who is signed in?" is answered from the phone, not the server.
+ *
+ * supabase.auth.getUser() is a network request every time it is called, and
+ * about 150 places call it, usually as the first line of a screen's load.
+ * It also holds the auth lock while it waits, so every other Supabase
+ * request on the screen queues behind it. On a phone that was up to a second
+ * of nothing before any data could even be asked for (docs/SPEED_REPORT_
+ * 2026-11-25.md, cause 6).
+ *
+ * getSession() reads the same user out of the stored session with no
+ * request, and refreshes the token by itself when it has expired. The
+ * database still checks the token on every query, so this changes how fast
+ * the screen learns the answer and nothing about what a person may read.
+ *
+ * Signed out (no stored session), and any call that passes its own token,
+ * still go to the original.
+ */
+const getUserFromServer = supabase.auth.getUser.bind(supabase.auth);
+supabase.auth.getUser = (async (jwt?: string) => {
+  if (!jwt) {
+    try {
+      const { data, error } = await supabase.auth.getSession();
+      if (!error && data.session?.user) {
+        return { data: { user: data.session.user }, error: null };
+      }
+    } catch {
+      // Fall through to the real check.
+    }
+  }
+  return getUserFromServer(jwt);
+}) as typeof supabase.auth.getUser;

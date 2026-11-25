@@ -490,7 +490,9 @@ import { BIBLE_YEAR_DAY_NINE_DEEP_NOTES, BIBLE_YEAR_DAY_NINE_DEEP_STUDY_SECTIONS
 import { BIBLE_YEAR_DAY_TWO_DEEP_NOTES } from "./fallOfManDeepNotes";
 import { BIBLE_YEAR_DAY_TWO_DEEP_STUDY_SECTIONS } from "./bibleYearDayTwoDeepStudy";
 import type { GenesisBibleYearDay } from "./bibleInOneYearPlan";
-import { getBibleReaderStudySections } from "./bibleReaderStudyNotes";
+// The lazy module, not the aggregator: this file is imported by the Plans
+// screen, and the aggregator is every note in the Bible (about 33 MB).
+import { getBibleReaderStudySections } from "./bibleReaderStudyNotesLazy";
 
 export type BibleYearSummaryContent = {
   intro: string[];
@@ -2706,8 +2708,15 @@ export function getBibleYearDayContent(day: GenesisBibleYearDay): BibleYearDayCo
   return {
     lesson: content?.lesson ?? null,
     audio: content?.audio ?? fallbackAudio(day),
-    studyNotesMarkdown: getReaderAlignedStudyMarkdown(day, content?.studyNotesMarkdown),
-    studyNotesSections: getReaderAlignedStudySections(day, content?.studyNotesSections),
+    // Getters, so a day's notes are only looked up by code that reads them.
+    // In the browser a lookup downloads that day's chapters, and this
+    // function is also called just to get a day's lesson or audio.
+    get studyNotesMarkdown() {
+      return getReaderAlignedStudyMarkdown(day, content?.studyNotesMarkdown);
+    },
+    get studyNotesSections() {
+      return getReaderAlignedStudySections(day, content?.studyNotesSections);
+    },
     summary: content?.summary ?? buildFallbackSummary(day),
     discussionPrompt: content?.discussionPrompt ?? `What stood out to you from ${day.title}?`,
   };
