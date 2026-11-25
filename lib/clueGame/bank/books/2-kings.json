@@ -14736,6 +14736,438 @@
   "ref": "2 Kings 24:17"
  },
  {
+  "id": "2-kings-24-e-01",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Judah served Nebuchadnezzar and then rebelled?",
+  "choices": [
+   "Josiah",
+   "Jehoahaz",
+   "Hezekiah",
+   "Jehoiakim"
+  ],
+  "answer": 3,
+  "explanation": "Jehoiakim became his servant three years: then he turned and rebelled against him.",
+  "ref": "2 Kings 24:1"
+ },
+ {
+  "id": "2-kings-24-e-02",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned after Jehoiakim?",
+  "choices": [
+   "Zedekiah his son",
+   "Mattaniah his son",
+   "Jehoiachin his son",
+   "Josiah his son"
+  ],
+  "answer": 2,
+  "explanation": "Jehoiakim slept with his fathers: and Jehoiachin his son reigned in his stead.",
+  "ref": "2 Kings 24:6"
+ },
+ {
+  "id": "2-kings-24-e-03",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Jehoiachin reign in Jerusalem?",
+  "choices": [
+   "Three months",
+   "Three years",
+   "Eleven years",
+   "Eighteen years"
+  ],
+  "answer": 0,
+  "explanation": "Jehoiachin reigned in Jerusalem three months.",
+  "ref": "2 Kings 24:8"
+ },
+ {
+  "id": "2-kings-24-e-04",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went out to the king of Babylon, and was taken?",
+  "choices": [
+   "Zedekiah",
+   "Jehoiakim",
+   "Josiah",
+   "Jehoiachin the king of Judah"
+  ],
+  "answer": 3,
+  "explanation": "Jehoiachin the king of Judah went out to the king of Babylon, and the king of Babylon took him.",
+  "ref": "2 Kings 24:12"
+ },
+ {
+  "id": "2-kings-24-e-05",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Zedekiah do against the king of Babylon?",
+  "choices": [
+   "He rebelled",
+   "He paid tribute",
+   "He fled to Egypt",
+   "He made a treaty"
+  ],
+  "answer": 0,
+  "explanation": "Zedekiah rebelled against the king of Babylon.",
+  "ref": "2 Kings 24:20"
+ },
+ {
+  "id": "2-kings-24-m-01",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was Jehoiakim Nebuchadnezzar's servant before he rebelled?",
+  "choices": [
+   "One year",
+   "Three years",
+   "Seven years",
+   "Eleven years"
+  ],
+  "answer": 1,
+  "explanation": "Jehoiakim became his servant three years: then he turned and rebelled.",
+  "ref": "2 Kings 24:1"
+ },
+ {
+  "id": "2-kings-24-m-02",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "For whose sins did this come upon Judah, to remove them out of his sight?",
+  "choices": [
+   "Jehoiakim's",
+   "Ahab's",
+   "Manasseh's",
+   "Jeroboam's"
+  ],
+  "answer": 2,
+  "explanation": "At the commandment of the LORD came this upon Judah, for the sins of Manasseh.",
+  "ref": "2 Kings 24:3"
+ },
+ {
+  "id": "2-kings-24-m-03",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD refuse to pardon?",
+  "choices": [
+   "The burned temple",
+   "The broken covenant",
+   "The idols of Ahab",
+   "The innocent blood Manasseh had shed"
+  ],
+  "answer": 3,
+  "explanation": "He filled Jerusalem with innocent blood; which the LORD would not pardon.",
+  "ref": "2 Kings 24:4"
+ },
+ {
+  "id": "2-kings-24-m-04",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the king of Egypt not come out of his land any more?",
+  "choices": [
+   "Egypt had no army left",
+   "Pharaoh had died",
+   "Egypt made peace with Judah",
+   "Babylon had taken all that was his, up to the Euphrates"
+  ],
+  "answer": 3,
+  "explanation": "The king of Babylon had taken from the river of Egypt unto the river Euphrates all that pertained to the king of Egypt.",
+  "ref": "2 Kings 24:7"
+ },
+ {
+  "id": "2-kings-24-m-05",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "What was the name of Jehoiachin's mother?",
+  "choices": [
+   "Hamutal",
+   "Zebudah",
+   "Jedidah",
+   "Nehushta"
+  ],
+  "answer": 3,
+  "explanation": "His mother's name was Nehushta, the daughter of Elnathan of Jerusalem.",
+  "ref": "2 Kings 24:8"
+ },
+ {
+  "id": "2-kings-24-m-06",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year of his reign did the king of Babylon take Jehoiachin?",
+  "choices": [
+   "The eighth",
+   "The first",
+   "The ninth",
+   "The nineteenth"
+  ],
+  "answer": 0,
+  "explanation": "The king of Babylon took him in the eighth year of his reign.",
+  "ref": "2 Kings 24:12"
+ },
+ {
+  "id": "2-kings-24-m-07",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nebuchadnezzar cut in pieces?",
+  "choices": [
+   "The walls of Jerusalem",
+   "The pillars of the gate",
+   "The vessels of gold Solomon had made",
+   "The altar of burnt offering"
+  ],
+  "answer": 2,
+  "explanation": "He cut in pieces all the vessels of gold which Solomon king of Israel had made in the temple of the LORD.",
+  "ref": "2 Kings 24:13"
+ },
+ {
+  "id": "2-kings-24-m-08",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was left in the land after the captivity?",
+  "choices": [
+   "The poorest sort of the people",
+   "The priests",
+   "The princes",
+   "The craftsmen"
+  ],
+  "answer": 0,
+  "explanation": "None remained, save the poorest sort of the people of the land.",
+  "ref": "2 Kings 24:14"
+ },
+ {
+  "id": "2-kings-24-m-09",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "How was Mattaniah related to Jehoiachin?",
+  "choices": [
+   "His son",
+   "His cousin",
+   "His father's brother",
+   "His grandson"
+  ],
+  "answer": 2,
+  "explanation": "The king of Babylon made Mattaniah his father's brother king in his stead.",
+  "ref": "2 Kings 24:17"
+ },
+ {
+  "id": "2-kings-24-m-10",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How old was Zedekiah when he began to reign?",
+  "choices": [
+   "Eighteen",
+   "Twenty and one",
+   "Twenty-five",
+   "Eight"
+  ],
+  "answer": 1,
+  "explanation": "Zedekiah was twenty and one years old when he began to reign.",
+  "ref": "2 Kings 24:18"
+ },
+ {
+  "id": "2-kings-24-m-11",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which nations did the LORD send bands from against Jehoiakim, besides the Chaldees?",
+  "choices": [
+   "Egyptians, Philistines and Edomites",
+   "Assyrians, Medes and Persians",
+   "Hittites, Amorites and Jebusites",
+   "Syrians, Moabites and Ammonites"
+  ],
+  "answer": 3,
+  "explanation": "The LORD sent bands of the Chaldees, and bands of the Syrians, and of the Moabites, and of the children of Ammon.",
+  "ref": "2 Kings 24:2"
+ },
+ {
+  "id": "2-kings-24-h-01",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose daughter was Nehushta?",
+  "choices": [
+   "Haruz's",
+   "Pedaiah's",
+   "Adaiah's",
+   "Elnathan's"
+  ],
+  "answer": 3,
+  "explanation": "Nehushta, the daughter of Elnathan of Jerusalem.",
+  "ref": "2 Kings 24:8"
+ },
+ {
+  "id": "2-kings-24-h-02",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many captives did Nebuchadnezzar carry away, including princes and mighty men?",
+  "choices": [
+   "Ten thousand",
+   "Seven thousand",
+   "One thousand",
+   "Three thousand"
+  ],
+  "answer": 0,
+  "explanation": "He carried away all Jerusalem... even ten thousand captives.",
+  "ref": "2 Kings 24:14"
+ },
+ {
+  "id": "2-kings-24-h-03",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of might were brought captive to Babylon?",
+  "choices": [
+   "Ten thousand",
+   "One thousand",
+   "Eight thousand",
+   "Seven thousand"
+  ],
+  "answer": 3,
+  "explanation": "All the men of might, even seven thousand, and craftsmen and smiths a thousand.",
+  "ref": "2 Kings 24:16"
+ },
+ {
+  "id": "2-kings-24-h-04",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many craftsmen and smiths were carried into captivity?",
+  "choices": [
+   "Seven thousand",
+   "Ten thousand",
+   "A thousand",
+   "Five hundred"
+  ],
+  "answer": 2,
+  "explanation": "Craftsmen and smiths a thousand, all that were strong and apt for war.",
+  "ref": "2 Kings 24:16"
+ },
+ {
+  "id": "2-kings-24-h-05",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was carried to Babylon with Jehoiachin, besides his officers?",
+  "choices": [
+   "The king's mother and wives",
+   "The prophet Jeremiah",
+   "The high priest",
+   "Zedekiah and his sons"
+  ],
+  "answer": 0,
+  "explanation": "He carried away Jehoiachin to Babylon, and the king's mother, and the king's wives, and his officers.",
+  "ref": "2 Kings 24:15"
+ },
+ {
+  "id": "2-kings-24-h-06",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Zedekiah reign in Jerusalem?",
+  "choices": [
+   "Three months",
+   "Two years",
+   "Thirty-one years",
+   "Eleven years"
+  ],
+  "answer": 3,
+  "explanation": "He reigned eleven years in Jerusalem.",
+  "ref": "2 Kings 24:18"
+ },
+ {
+  "id": "2-kings-24-h-07",
+  "chapter": 24,
+  "level": "hard",
+  "category": "place",
+  "question": "Which town was Zedekiah's mother Hamutal's father from?",
+  "choices": [
+   "Libnah",
+   "Rumah",
+   "Jotbah",
+   "Boscath"
+  ],
+  "answer": 0,
+  "explanation": "His mother's name was Hamutal, the daughter of Jeremiah of Libnah.",
+  "ref": "2 Kings 24:18"
+ },
+ {
+  "id": "2-kings-24-h-08",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "According to whose deeds did Zedekiah do evil?",
+  "choices": [
+   "Manasseh's",
+   "Jehoiachin's",
+   "Jehoiakim's",
+   "Ahab's"
+  ],
+  "answer": 2,
+  "explanation": "He did that which was evil in the sight of the LORD, according to all that Jehoiakim had done.",
+  "ref": "2 Kings 24:19"
+ },
+ {
+  "id": "2-kings-24-h-09",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Through whose anger did it all come to pass in Jerusalem and Judah?",
+  "choices": [
+   "Nebuchadnezzar's",
+   "Pharaoh's",
+   "The LORD's",
+   "Zedekiah's"
+  ],
+  "answer": 2,
+  "explanation": "Through the anger of the LORD it came to pass in Jerusalem and Judah, until he had cast them out from his presence.",
+  "ref": "2 Kings 24:20"
+ },
+ {
+  "id": "2-kings-24-h-10",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By whom had the LORD spoken the word that the bands fulfilled?",
+  "choices": [
+   "His servants the prophets",
+   "The priests of Jerusalem",
+   "Nebuchadnezzar's captains",
+   "The elders of Judah"
+  ],
+  "answer": 0,
+  "explanation": "The LORD sent them against Judah, according to the word of the LORD, which he spake by his servants the prophets.",
+  "ref": "2 Kings 24:2"
+ },
+ {
+  "id": "2-kings-24-h-11",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Who besieged Jerusalem at that time, before Nebuchadnezzar himself came?",
+  "choices": [
+   "The army of Pharaoh",
+   "The servants of Nebuchadnezzar",
+   "The bands of the Syrians",
+   "The princes of Moab"
+  ],
+  "answer": 1,
+  "explanation": "At that time the servants of Nebuchadnezzar king of Babylon came up against Jerusalem, and the city was besieged.",
+  "ref": "2 Kings 24:10"
+ },
+ {
   "id": "old-2-kings-25-1",
   "chapter": 25,
   "level": "beginner",
