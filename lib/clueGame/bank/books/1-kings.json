@@ -5856,6 +5856,646 @@
   "ref": "1 Kings 9:26–28"
  },
  {
+  "id": "1-kings-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where had the Lord appeared to Solomon the first time?",
+  "choices": [
+   "Gibeon",
+   "Bethel",
+   "Shiloh",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "The Lord appeared to Solomon the second time, as he had appeared unto him at Gibeon.",
+  "ref": "1 Kings 9:2"
+ },
+ {
+  "id": "1-kings-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord say he had put in the house for ever?",
+  "choices": [
+   "His throne",
+   "His name",
+   "His glory",
+   "His law"
+  ],
+  "answer": 1,
+  "explanation": "I have hallowed this house, which thou hast built, to put my name there for ever.",
+  "ref": "1 Kings 9:3"
+ },
+ {
+  "id": "1-kings-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Hiram was the king of which city?",
+  "choices": [
+   "Sidon",
+   "Tyre",
+   "Gebal",
+   "Damascus"
+  ],
+  "answer": 1,
+  "explanation": "Hiram the king of Tyre had furnished Solomon with cedar trees and fir trees, and with gold.",
+  "ref": "1 Kings 9:11"
+ },
+ {
+  "id": "1-kings-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What metal did Hiram send to the king?",
+  "choices": [
+   "Silver",
+   "Brass",
+   "Gold",
+   "Iron"
+  ],
+  "answer": 2,
+  "explanation": "And Hiram sent to the king sixscore talents of gold.",
+  "ref": "1 Kings 9:14"
+ },
+ {
+  "id": "1-kings-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "From where did Solomon's navy fetch gold?",
+  "choices": [
+   "Ophir",
+   "Tarshish",
+   "Sheba",
+   "Havilah"
+  ],
+  "answer": 0,
+  "explanation": "And they came to Ophir, and fetched from thence gold, and brought it to king Solomon.",
+  "ref": "1 Kings 9:28"
+ },
+ {
+  "id": "1-kings-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who had gone up, taken Gezer, and burnt it with fire?",
+  "choices": [
+   "Hiram",
+   "Pharaoh king of Egypt",
+   "Joab",
+   "The king of Tyre"
+  ],
+  "answer": 1,
+  "explanation": "Pharaoh king of Egypt had gone up, and taken Gezer, and burnt it with fire.",
+  "ref": "1 Kings 9:16"
+ },
+ {
+  "id": "1-kings-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Ezion-geber was on the shore of which sea?",
+  "choices": [
+   "The Great sea",
+   "The Salt sea",
+   "The sea of Galilee",
+   "The Red sea"
+  ],
+  "answer": 3,
+  "explanation": "Solomon made a navy of ships in Ezion-geber, on the shore of the Red sea, in the land of Edom.",
+  "ref": "1 Kings 9:26"
+ },
+ {
+  "id": "1-kings-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon burn upon the altar that was before the Lord?",
+  "choices": [
+   "Incense",
+   "Spices",
+   "Frankincense and myrrh",
+   "Cedar wood"
+  ],
+  "answer": 0,
+  "explanation": "He burnt incense upon the altar that was before the Lord.",
+  "ref": "1 Kings 9:25"
+ },
+ {
+  "id": "1-kings-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who had furnished Solomon with cedar trees, fir trees, and gold?",
+  "choices": [
+   "Pharaoh",
+   "Hiram",
+   "David",
+   "The queen of Sheba"
+  ],
+  "answer": 1,
+  "explanation": "Hiram the king of Tyre had furnished Solomon with cedar trees and fir trees, and with gold, according to all his desire.",
+  "ref": "1 Kings 9:11"
+ },
+ {
+  "id": "1-kings-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose example in walking did the Lord tell Solomon to follow?",
+  "choices": [
+   "Moses",
+   "Samuel",
+   "David his father",
+   "Abraham"
+  ],
+  "answer": 2,
+  "explanation": "If thou wilt walk before me, as David thy father walked, in integrity of heart, and in uprightness.",
+  "ref": "1 Kings 9:4"
+ },
+ {
+  "id": "1-kings-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the Lord say David had walked before him?",
+  "choices": [
+   "In integrity of heart, and in uprightness",
+   "In fasting and prayer",
+   "In wealth and wisdom",
+   "In war and victory"
+  ],
+  "answer": 0,
+  "explanation": "As David thy father walked, in integrity of heart, and in uprightness.",
+  "ref": "1 Kings 9:4"
+ },
+ {
+  "id": "1-kings-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the Lord establish upon Israel for ever if Solomon obeyed?",
+  "choices": [
+   "The temple walls",
+   "The throne of his kingdom",
+   "The cities of store",
+   "The altar of incense"
+  ],
+  "answer": 1,
+  "explanation": "Then I will establish the throne of thy kingdom upon Israel for ever.",
+  "ref": "1 Kings 9:5"
+ },
+ {
+  "id": "1-kings-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would everyone who passed by the house do?",
+  "choices": [
+   "Weep and mourn",
+   "Bring offerings",
+   "Be astonished, and hiss",
+   "Pray toward it"
+  ],
+  "answer": 2,
+  "explanation": "At this house, which is high, every one that passeth by it shall be astonished, and shall hiss.",
+  "ref": "1 Kings 9:8"
+ },
+ {
+  "id": "1-kings-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason would people give for the evil that came on the land?",
+  "choices": [
+   "They forsook the Lord their God",
+   "They did not keep the feasts",
+   "They made a league with Egypt",
+   "They robbed the temple"
+  ],
+  "answer": 0,
+  "explanation": "Because they forsook the Lord their God, who brought forth their fathers out of the land of Egypt.",
+  "ref": "1 Kings 9:9"
+ },
+ {
+  "id": "1-kings-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hiram think of the cities Solomon gave him?",
+  "choices": [
+   "They pleased him greatly",
+   "They pleased him not",
+   "They were too far from Tyre",
+   "They were already his"
+  ],
+  "answer": 1,
+  "explanation": "Hiram came out from Tyre to see the cities which Solomon had given him; and they pleased him not.",
+  "ref": "1 Kings 9:12"
+ },
+ {
+  "id": "1-kings-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hiram call Solomon when he saw the cities?",
+  "choices": [
+   "My lord",
+   "My son",
+   "My brother",
+   "My friend"
+  ],
+  "answer": 2,
+  "explanation": "And he said, What cities are these which thou hast given me, my brother?",
+  "ref": "1 Kings 9:13"
+ },
+ {
+  "id": "1-kings-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "What did Hiram call the land of the cities Solomon gave him?",
+  "choices": [
+   "The land of Cabul",
+   "The land of Tyre",
+   "The land of Galilee",
+   "The land of Ophir"
+  ],
+  "answer": 0,
+  "explanation": "He called them the land of Cabul unto this day.",
+  "ref": "1 Kings 9:13"
+ },
+ {
+  "id": "1-kings-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "The levy was raised to build the house of the Lord, Solomon's house, Millo, and the wall of which city?",
+  "choices": [
+   "Tyre",
+   "Jerusalem",
+   "Jericho",
+   "Hebron"
+  ],
+  "answer": 1,
+  "explanation": "The levy which king Solomon raised; for to build the house of the Lord, and his own house, and Millo, and the wall of Jerusalem.",
+  "ref": "1 Kings 9:15"
+ },
+ {
+  "id": "1-kings-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides Jerusalem and Lebanon, where did Solomon build all that he desired?",
+  "choices": [
+   "In Egypt",
+   "In Edom",
+   "In all the land of his dominion",
+   "In Tyre"
+  ],
+  "answer": 2,
+  "explanation": "That which Solomon desired to build in Jerusalem, and in Lebanon, and in all the land of his dominion.",
+  "ref": "1 Kings 9:19"
+ },
+ {
+  "id": "1-kings-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Solomon make no bondmen of?",
+  "choices": [
+   "The children of Israel",
+   "The Hivites",
+   "The Hittites",
+   "Hiram's servants"
+  ],
+  "answer": 0,
+  "explanation": "But of the children of Israel did Solomon make no bondmen.",
+  "ref": "1 Kings 9:22"
+ },
+ {
+  "id": "1-kings-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord say to Solomon when he appeared the second time?",
+  "choices": [
+   "Build me a greater house",
+   "I have heard thy prayer and thy supplication",
+   "Go down to Egypt",
+   "Ask what I shall give thee"
+  ],
+  "answer": 1,
+  "explanation": "I have heard thy prayer and thy supplication, that thou hast made before me.",
+  "ref": "1 Kings 9:3"
+ },
+ {
+  "id": "1-kings-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "What did Solomon build after Pharaoh's daughter came up to her house?",
+  "choices": [
+   "Hazor",
+   "Megiddo",
+   "Millo",
+   "Tadmor"
+  ],
+  "answer": 2,
+  "explanation": "Pharaoh's daughter came up out of the city of David unto her house: then did he build Millo.",
+  "ref": "1 Kings 9:24"
+ },
+ {
+  "id": "1-kings-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Ezion-geber was beside which place?",
+  "choices": [
+   "Eloth",
+   "Ophir",
+   "Tarshish",
+   "Joppa"
+  ],
+  "answer": 0,
+  "explanation": "Solomon made a navy of ships in Ezion-geber, which is beside Eloth.",
+  "ref": "1 Kings 9:26"
+ },
+ {
+  "id": "1-kings-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "In which land was Ezion-geber?",
+  "choices": [
+   "Moab",
+   "Egypt",
+   "Edom",
+   "Ammon"
+  ],
+  "answer": 2,
+  "explanation": "Ezion-geber, which is beside Eloth, on the shore of the Red sea, in the land of Edom.",
+  "ref": "1 Kings 9:26"
+ },
+ {
+  "id": "1-kings-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did Pharaoh give Gezer as a present?",
+  "choices": [
+   "Hiram",
+   "His daughter, Solomon's wife",
+   "Solomon's servants",
+   "His chief officers"
+  ],
+  "answer": 1,
+  "explanation": "Pharaoh gave Gezer for a present unto his daughter, Solomon's wife.",
+  "ref": "1 Kings 9:16"
+ },
+ {
+  "id": "1-kings-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of gold did Hiram send to the king?",
+  "choices": [
+   "Sixscore",
+   "Four hundred and twenty",
+   "Five hundred and fifty",
+   "Twenty"
+  ],
+  "answer": 0,
+  "explanation": "And Hiram sent to the king sixscore talents of gold.",
+  "ref": "1 Kings 9:14"
+ },
+ {
+  "id": "1-kings-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of gold did Solomon's men bring from Ophir?",
+  "choices": [
+   "Sixscore",
+   "Four hundred and twenty",
+   "Five hundred and fifty",
+   "Twenty"
+  ],
+  "answer": 1,
+  "explanation": "They came to Ophir, and fetched from thence gold, four hundred and twenty talents.",
+  "ref": "1 Kings 9:28"
+ },
+ {
+  "id": "1-kings-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many chief officers were over Solomon's work?",
+  "choices": [
+   "Sixscore",
+   "Four hundred and twenty",
+   "Five hundred and fifty",
+   "Twenty"
+  ],
+  "answer": 2,
+  "explanation": "These were the chief of the officers that were over Solomon's work, five hundred and fifty.",
+  "ref": "1 Kings 9:23"
+ },
+ {
+  "id": "1-kings-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times in a year did Solomon offer on the altar he built?",
+  "choices": [
+   "Once",
+   "Twice",
+   "Seven times",
+   "Three times"
+  ],
+  "answer": 3,
+  "explanation": "Three times in a year did Solomon offer burnt offerings and peace offerings upon the altar which he built unto the Lord.",
+  "ref": "1 Kings 9:25"
+ },
+ {
+  "id": "1-kings-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At the end of how many years did Solomon give Hiram the cities?",
+  "choices": [
+   "Seven",
+   "Thirteen",
+   "Twenty",
+   "Forty"
+  ],
+  "answer": 2,
+  "explanation": "At the end of twenty years, when Solomon had built the two houses, king Solomon gave Hiram twenty cities.",
+  "ref": "1 Kings 9:10–11"
+ },
+ {
+  "id": "1-kings-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh do to the Canaanites who lived in Gezer?",
+  "choices": [
+   "Made them bondmen",
+   "Slew them",
+   "Drove them to Tyre",
+   "Carried them captive"
+  ],
+  "answer": 1,
+  "explanation": "Pharaoh had taken Gezer, and burnt it with fire, and slain the Canaanites that dwelt in the city.",
+  "ref": "1 Kings 9:16"
+ },
+ {
+  "id": "1-kings-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city in the wilderness did Solomon build?",
+  "choices": [
+   "Tadmor",
+   "Hazor",
+   "Megiddo",
+   "Gezer"
+  ],
+  "answer": 0,
+  "explanation": "And Solomon built Gezer, and Beth-horon the nether, and Baalath, and Tadmor in the wilderness.",
+  "ref": "1 Kings 9:17–18"
+ },
+ {
+  "id": "1-kings-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Solomon built Gezer and which nether town?",
+  "choices": [
+   "Bethel",
+   "Beth-shemesh",
+   "Beth-horon",
+   "Bethlehem"
+  ],
+  "answer": 2,
+  "explanation": "And Solomon built Gezer, and Beth-horon the nether.",
+  "ref": "1 Kings 9:17"
+ },
+ {
+  "id": "1-kings-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the shipmen sent by Hiram have knowledge of?",
+  "choices": [
+   "The sea",
+   "The stars",
+   "The desert roads",
+   "Building ships"
+  ],
+  "answer": 0,
+  "explanation": "Hiram sent in the navy his servants, shipmen that had knowledge of the sea.",
+  "ref": "1 Kings 9:27"
+ },
+ {
+  "id": "1-kings-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord say his eyes and heart would be in the house?",
+  "choices": [
+   "Quickly",
+   "Perpetually",
+   "Only in feasts",
+   "By day"
+  ],
+  "answer": 1,
+  "explanation": "Mine eyes and mine heart shall be there perpetually.",
+  "ref": "1 Kings 9:3"
+ },
+ {
+  "id": "1-kings-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If Israel served other gods, what would the Lord cast out of his sight?",
+  "choices": [
+   "The altar",
+   "The ark",
+   "This house hallowed for his name",
+   "The throne"
+  ],
+  "answer": 2,
+  "explanation": "This house, which I have hallowed for my name, will I cast out of my sight.",
+  "ref": "1 Kings 9:7"
+ },
+ {
+  "id": "1-kings-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of tribute did Solomon levy on the peoples left in the land?",
+  "choices": [
+   "Bondservice",
+   "Silver",
+   "Grain",
+   "Gold"
+  ],
+  "answer": 0,
+  "explanation": "Upon those did Solomon levy a tribute of bondservice unto this day.",
+  "ref": "1 Kings 9:21"
+ },
+ {
+  "id": "1-kings-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Amorites, Hittites, Perizzites, Hivites, and whom were left in the land?",
+  "choices": [
+   "Philistines",
+   "Jebusites",
+   "Edomites",
+   "Ammonites"
+  ],
+  "answer": 1,
+  "explanation": "All the people that were left of the Amorites, Hittites, Perizzites, Hivites, and Jebusites.",
+  "ref": "1 Kings 9:20"
+ },
+ {
+  "id": "1-kings-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides cities of store, what cities did Solomon have?",
+  "choices": [
+   "Cities of refuge",
+   "Cities of the Levites",
+   "Cities for his chariots and horsemen",
+   "Cities of the plain"
+  ],
+  "answer": 2,
+  "explanation": "All the cities of store, and cities for his chariots, and cities for his horsemen.",
+  "ref": "1 Kings 9:19"
+ },
+ {
+  "id": "1-kings-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "From which city did Hiram come out to see the cities?",
+  "choices": [
+   "Tyre",
+   "Sidon",
+   "Jerusalem",
+   "Gezer"
+  ],
+  "answer": 0,
+  "explanation": "And Hiram came out from Tyre to see the cities which Solomon had given him.",
+  "ref": "1 Kings 9:12"
+ },
+ {
   "id": "old-1-kings-10-1",
   "chapter": 10,
   "level": "beginner",
