@@ -6432,6 +6432,262 @@
   "ref": "1 Chronicles 10:14"
  },
  {
+  "id": "1-chronicles-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who died together with Saul on mount Gilboa?",
+  "choices": [
+   "His two brothers",
+   "His three sons",
+   "Abner and Joab",
+   "Samuel the prophet"
+  ],
+  "answer": 1,
+  "explanation": "So Saul died, and his three sons, and all his house died together.",
+  "ref": "1 Chronicles 10:6"
+ },
+ {
+  "id": "1-chronicles-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul do when his armourbearer would not kill him?",
+  "choices": [
+   "He fled to Jabesh",
+   "He called for David",
+   "He fell upon his own sword",
+   "He yielded to the Philistines"
+  ],
+  "answer": 2,
+  "explanation": "Saul took a sword, and fell upon it.",
+  "ref": "1 Chronicles 10:4"
+ },
+ {
+  "id": "1-chronicles-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would Saul's armourbearer not thrust him through?",
+  "choices": [
+   "He loved Saul too little",
+   "Saul had forbidden it",
+   "He was sore afraid",
+   "He had lost his sword"
+  ],
+  "answer": 2,
+  "explanation": "But his armourbearer would not; for he was sore afraid.",
+  "ref": "1 Chronicles 10:4"
+ },
+ {
+  "id": "1-chronicles-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Saul want to be thrust through with a sword?",
+  "choices": [
+   "Lest David find him",
+   "To end his long illness",
+   "Lest his sons be taken",
+   "Lest the uncircumcised abuse him"
+  ],
+  "answer": 3,
+  "explanation": "Saul said, Draw thy sword, and thrust me through therewith; lest these uncircumcised come and abuse me.",
+  "ref": "1 Chronicles 10:4"
+ },
+ {
+  "id": "1-chronicles-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "What did the armourbearer do when he saw that Saul was dead?",
+  "choices": [
+   "He fell likewise on the sword and died",
+   "He fled to David",
+   "He buried Saul",
+   "He carried the body away"
+  ],
+  "answer": 0,
+  "explanation": "When his armourbearer saw that Saul was dead, he fell likewise on the sword, and died.",
+  "ref": "1 Chronicles 10:5"
+ },
+ {
+  "id": "1-chronicles-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the Philistines put Saul's armour?",
+  "choices": [
+   "On mount Gilboa",
+   "In the house of their gods",
+   "In Jabesh",
+   "In the camp at Gath"
+  ],
+  "answer": 1,
+  "explanation": "They put his armour in the house of their gods, and fastened his head in the temple of Dagon.",
+  "ref": "1 Chronicles 10:10"
+ },
+ {
+  "id": "1-chronicles-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whose temple did the Philistines fasten Saul's head?",
+  "choices": [
+   "Baal",
+   "Ashtaroth",
+   "Dagon",
+   "Molech"
+  ],
+  "answer": 2,
+  "explanation": "They fastened his head in the temple of Dagon.",
+  "ref": "1 Chronicles 10:10"
+ },
+ {
+  "id": "1-chronicles-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "Whose valiant men took away the bodies of Saul and his sons?",
+  "choices": [
+   "Gibeah",
+   "Hebron",
+   "Bethlehem",
+   "Jabesh-gilead"
+  ],
+  "answer": 3,
+  "explanation": "When all Jabesh-gilead heard, all the valiant men took away the body of Saul and the bodies of his sons.",
+  "ref": "1 Chronicles 10:11–12"
+ },
+ {
+  "id": "1-chronicles-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the men of Jabesh bury the bones of Saul and his sons?",
+  "choices": [
+   "Under the oak in Jabesh",
+   "In a cave at Gilboa",
+   "In the tomb of Kish",
+   "Beside the wall of Jabesh"
+  ],
+  "answer": 0,
+  "explanation": "They buried their bones under the oak in Jabesh.",
+  "ref": "1 Chronicles 10:12"
+ },
+ {
+  "id": "1-chronicles-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these sons of Saul is NOT named among those the Philistines slew?",
+  "choices": [
+   "Jonathan",
+   "Abinadab",
+   "Malchi-shua",
+   "Esh-baal"
+  ],
+  "answer": 3,
+  "explanation": "The Philistines slew Jonathan, and Abinadab, and Malchi-shua, the sons of Saul.",
+  "ref": "1 Chronicles 10:2"
+ },
+ {
+  "id": "1-chronicles-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who wounded Saul in the battle?",
+  "choices": [
+   "The archers",
+   "The chariots",
+   "A Philistine giant",
+   "His own men"
+  ],
+  "answer": 0,
+  "explanation": "The battle went sore against Saul, and the archers hit him, and he was wounded of the archers.",
+  "ref": "1 Chronicles 10:3"
+ },
+ {
+  "id": "1-chronicles-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Philistines do after Israel's men forsook their cities?",
+  "choices": [
+   "They burned them",
+   "They came and dwelt in them",
+   "They gave them to Jabesh",
+   "They left them empty"
+  ],
+  "answer": 1,
+  "explanation": "They forsook their cities, and fled: and the Philistines came and dwelt in them.",
+  "ref": "1 Chronicles 10:7"
+ },
+ {
+  "id": "1-chronicles-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the Philistines find Saul and his sons fallen?",
+  "choices": [
+   "That same night",
+   "After seven days",
+   "On the morrow, when they came to strip the slain",
+   "When they chased David"
+  ],
+  "answer": 2,
+  "explanation": "On the morrow, when the Philistines came to strip the slain, they found Saul and his sons fallen in mount Gilboa.",
+  "ref": "1 Chronicles 10:8"
+ },
+ {
+  "id": "1-chronicles-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did the Philistines send Saul's head and armour round about?",
+  "choices": [
+   "To the king of Gath",
+   "To David",
+   "To Jabesh-gilead",
+   "To their idols and the people"
+  ],
+  "answer": 3,
+  "explanation": "They took his head, and his armour, and sent into the land of the Philistines round about, to carry tidings unto their idols, and to the people.",
+  "ref": "1 Chronicles 10:9"
+ },
+ {
+  "id": "1-chronicles-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how long did the men of Jabesh fast?",
+  "choices": [
+   "Seven days",
+   "One day",
+   "Three days",
+   "Forty days"
+  ],
+  "answer": 0,
+  "explanation": "They buried their bones under the oak in Jabesh, and fasted seven days.",
+  "ref": "1 Chronicles 10:12"
+ },
+ {
+  "id": "1-chronicles-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the familiar spirit, what did Saul not keep, for which he died?",
+  "choices": [
+   "His vow to Jonathan",
+   "The word of the LORD",
+   "The sabbath",
+   "The covenant of Gibeon"
+  ],
+  "answer": 1,
+  "explanation": "Saul died for his transgression against the LORD, even against the word of the LORD, which he kept not.",
+  "ref": "1 Chronicles 10:13"
+ },
+ {
   "id": "old-1-chronicles-11-1",
   "chapter": 11,
   "level": "beginner",
