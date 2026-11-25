@@ -1038,5 +1038,2501 @@
   "answer": 2,
   "explanation": "Paul ends with a Trinitarian blessing of grace, love, and fellowship.",
   "ref": "2 Corinthians 13:14"
+ },
+ {
+  "id": "2-corinthians-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "By whose meekness and gentleness does Paul beseech the Corinthians?",
+  "choices": [
+   "Moses",
+   "Titus",
+   "Christ",
+   "Abraham"
+  ],
+  "answer": 2,
+  "explanation": "Now I Paul myself beseech you by the meekness and gentleness of Christ.",
+  "ref": "2 Corinthians 10:1"
+ },
+ {
+  "id": "2-corinthians-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do his critics say about Paul's bodily presence?",
+  "choices": [
+   "It is proud",
+   "It is fierce",
+   "It is tall",
+   "It is weak"
+  ],
+  "answer": 3,
+  "explanation": "His letters, say they, are weighty and powerful; but his bodily presence is weak.",
+  "ref": "2 Corinthians 10:10"
+ },
+ {
+  "id": "2-corinthians-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Though Paul walks in the flesh, what does he not do?",
+  "choices": [
+   "War after the flesh",
+   "Preach the gospel",
+   "Write letters",
+   "Boast of Christ"
+  ],
+  "answer": 0,
+  "explanation": "Though we walk in the flesh, we do not war after the flesh.",
+  "ref": "2 Corinthians 10:3"
+ },
+ {
+  "id": "2-corinthians-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is approved, says Paul?",
+  "choices": [
+   "He that commendeth himself",
+   "Whom the Lord commendeth",
+   "He that is richest",
+   "He that is eldest"
+  ],
+  "answer": 1,
+  "explanation": "Not he that commendeth himself is approved, but whom the Lord commendeth.",
+  "ref": "2 Corinthians 10:18"
+ },
+ {
+  "id": "2-corinthians-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How do Paul's critics describe his letters?",
+  "choices": [
+   "Short and harsh",
+   "Long and dull",
+   "Weighty and powerful",
+   "Secret and strange"
+  ],
+  "answer": 2,
+  "explanation": "His letters, say they, are weighty and powerful.",
+  "ref": "2 Corinthians 10:10"
+ },
+ {
+  "id": "2-corinthians-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says in presence he is base among them, but absent he is what?",
+  "choices": [
+   "Silent",
+   "Afraid",
+   "Absent",
+   "Bold toward them"
+  ],
+  "answer": 3,
+  "explanation": "Who in presence am base among you, but being absent am bold toward you.",
+  "ref": "2 Corinthians 10:1"
+ },
+ {
+  "id": "2-corinthians-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul casts down every high thing that exalteth itself against what?",
+  "choices": [
+   "The knowledge of God",
+   "The kings of the earth",
+   "The law of Moses",
+   "The temple"
+  ],
+  "answer": 0,
+  "explanation": "Every high thing that exalteth itself against the knowledge of God.",
+  "ref": "2 Corinthians 10:5"
+ },
+ {
+  "id": "2-corinthians-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul is ready to revenge all disobedience when what is fulfilled?",
+  "choices": [
+   "Their gift",
+   "Their obedience",
+   "Their prayer",
+   "Their fast"
+  ],
+  "answer": 1,
+  "explanation": "Having in a readiness to revenge all disobedience, when your obedience is fulfilled.",
+  "ref": "2 Corinthians 10:6"
+ },
+ {
+  "id": "2-corinthians-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul asks whether they look on things after what?",
+  "choices": [
+   "The ancient law",
+   "The common report",
+   "The outward appearance",
+   "The elders' word"
+  ],
+  "answer": 2,
+  "explanation": "Do ye look on things after the outward appearance?",
+  "ref": "2 Corinthians 10:7"
+ },
+ {
+  "id": "2-corinthians-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The authority the Lord gave Paul was for edification and not for what?",
+  "choices": [
+   "Their riches",
+   "Their travel",
+   "Their silence",
+   "Their destruction"
+  ],
+  "answer": 3,
+  "explanation": "Our authority, which the Lord hath given us for edification, and not for your destruction.",
+  "ref": "2 Corinthians 10:8"
+ },
+ {
+  "id": "2-corinthians-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will Paul be in deed when present, as he is in letters when absent?",
+  "choices": [
+   "Such as he is in word",
+   "Weaker than in word",
+   "Silent",
+   "A stranger"
+  ],
+  "answer": 0,
+  "explanation": "Such as we are in word by letters when we are absent, such will we be also in deed when we are present.",
+  "ref": "2 Corinthians 10:11"
+ },
+ {
+  "id": "2-corinthians-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say of those who measure themselves among themselves?",
+  "choices": [
+   "They are blessed",
+   "They are not wise",
+   "They are rich",
+   "They are chosen"
+  ],
+  "answer": 1,
+  "explanation": "They measuring themselves by themselves, and comparing themselves among themselves, are not wise.",
+  "ref": "2 Corinthians 10:12"
+ },
+ {
+  "id": "2-corinthians-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "What does Paul say he could boast somewhat more of, and not be ashamed?",
+  "choices": [
+   "Their wealth",
+   "Their visions",
+   "Their authority",
+   "Their numbers"
+  ],
+  "answer": 2,
+  "explanation": "Though I should boast somewhat more of our authority, I should not be ashamed.",
+  "ref": "2 Corinthians 10:8"
+ },
+ {
+  "id": "2-corinthians-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How far does Paul say God's measure reached?",
+  "choices": [
+   "Only to Macedonia",
+   "To the ends of Rome",
+   "Only to Jerusalem",
+   "Even unto the Corinthians"
+  ],
+  "answer": 3,
+  "explanation": "According to the measure of the rule which God hath distributed to us, a measure to reach even unto you.",
+  "ref": "2 Corinthians 10:13"
+ },
+ {
+  "id": "2-corinthians-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Where does Paul hope to preach when their faith is increased?",
+  "choices": [
+   "The regions beyond Corinth",
+   "In Jerusalem",
+   "In Rome",
+   "In the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "To preach the gospel in the regions beyond you.",
+  "ref": "2 Corinthians 10:15–16"
+ },
+ {
+  "id": "2-corinthians-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say to a man who trusts that he is Christ's?",
+  "choices": [
+   "He should boast more",
+   "As he is Christ's, so are we",
+   "He should be silent",
+   "He should judge Paul"
+  ],
+  "answer": 1,
+  "explanation": "As he is Christ's, even so are we Christ's.",
+  "ref": "2 Corinthians 10:7"
+ },
+ {
+  "id": "2-corinthians-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say he does not want to seem to do by letters?",
+  "choices": [
+   "Praise them",
+   "Teach them",
+   "Terrify them",
+   "Sell to them"
+  ],
+  "answer": 2,
+  "explanation": "That I may not seem as if I would terrify you by letters.",
+  "ref": "2 Corinthians 10:9"
+ },
+ {
+  "id": "2-corinthians-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul hopes to be enlarged by them when what is increased?",
+  "choices": [
+   "Their wealth",
+   "Their number",
+   "Their fame",
+   "Their faith"
+  ],
+  "answer": 3,
+  "explanation": "Having hope, when your faith is increased, that we shall be enlarged by you.",
+  "ref": "2 Corinthians 10:15"
+ },
+ {
+  "id": "2-corinthians-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says he came as far as Corinth by doing what?",
+  "choices": [
+   "Preaching the gospel of Christ",
+   "Raising an army",
+   "Building a temple",
+   "Sending letters"
+  ],
+  "answer": 0,
+  "explanation": "We are come as far as to you also in preaching the gospel of Christ.",
+  "ref": "2 Corinthians 10:14"
+ },
+ {
+  "id": "2-corinthians-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do critics say of Paul's speech?",
+  "choices": [
+   "It is too long",
+   "It is contemptible",
+   "It is too loud",
+   "It is in riddles"
+  ],
+  "answer": 1,
+  "explanation": "His bodily presence is weak, and his speech contemptible.",
+  "ref": "2 Corinthians 10:10"
+ },
+ {
+  "id": "2-corinthians-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does Paul say they dare not compare themselves with?",
+  "choices": [
+   "The chief priests",
+   "The Roman rulers",
+   "Some that commend themselves",
+   "The twelve apostles"
+  ],
+  "answer": 2,
+  "explanation": "We dare not compare ourselves with some that commend themselves.",
+  "ref": "2 Corinthians 10:12"
+ },
+ {
+  "id": "2-corinthians-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do some think of Paul and his companions?",
+  "choices": [
+   "That they love money",
+   "That they are false prophets",
+   "That they are cowards",
+   "That they walk according to the flesh"
+  ],
+  "answer": 3,
+  "explanation": "Some, which think of us as if we walked according to the flesh.",
+  "ref": "2 Corinthians 10:2"
+ },
+ {
+  "id": "2-corinthians-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom has Paul espoused the Corinthians, to present as a chaste virgin?",
+  "choices": [
+   "Christ",
+   "Moses",
+   "Titus",
+   "The Spirit alone"
+  ],
+  "answer": 0,
+  "explanation": "I have espoused you to one husband, that I may present you as a chaste virgin to Christ.",
+  "ref": "2 Corinthians 11:2"
+ },
+ {
+  "id": "2-corinthians-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times was Paul beaten with rods?",
+  "choices": [
+   "Once",
+   "Thrice",
+   "Five times",
+   "Forty times"
+  ],
+  "answer": 1,
+  "explanation": "Thrice was I beaten with rods.",
+  "ref": "2 Corinthians 11:25"
+ },
+ {
+  "id": "2-corinthians-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say happened to him once?",
+  "choices": [
+   "He was shipwrecked",
+   "He was beheaded",
+   "He was stoned",
+   "He was exiled"
+  ],
+  "answer": 2,
+  "explanation": "Once was I stoned.",
+  "ref": "2 Corinthians 11:25"
+ },
+ {
+  "id": "2-corinthians-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "How did Paul escape from Damascus?",
+  "choices": [
+   "Hidden in a cart",
+   "Led out in disguise",
+   "Freed by an angel",
+   "Let down in a basket through a window"
+  ],
+  "answer": 3,
+  "explanation": "Through a window in a basket was I let down by the wall, and escaped his hands.",
+  "ref": "2 Corinthians 11:33"
+ },
+ {
+  "id": "2-corinthians-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What comes upon Paul daily besides the things without?",
+  "choices": [
+   "The care of all the churches",
+   "The fear of Rome",
+   "The weight of chains",
+   "The burden of travel"
+  ],
+  "answer": 0,
+  "explanation": "That which cometh upon me daily, the care of all the churches.",
+  "ref": "2 Corinthians 11:28"
+ },
+ {
+  "id": "2-corinthians-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Paul says he is the seed of whom?",
+  "choices": [
+   "Moses",
+   "Abraham",
+   "David",
+   "Jacob"
+  ],
+  "answer": 1,
+  "explanation": "Are they the seed of Abraham? so am I.",
+  "ref": "2 Corinthians 11:22"
+ },
+ {
+  "id": "2-corinthians-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was Paul in the deep?",
+  "choices": [
+   "Three days",
+   "An hour",
+   "A night and a day",
+   "Seven days"
+  ],
+  "answer": 2,
+  "explanation": "A night and a day I have been in the deep.",
+  "ref": "2 Corinthians 11:25"
+ },
+ {
+  "id": "2-corinthians-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "What does Paul call those who transform themselves into apostles of Christ?",
+  "choices": [
+   "True prophets",
+   "Faithful servants",
+   "Wise teachers",
+   "False apostles"
+  ],
+  "answer": 3,
+  "explanation": "Such are false apostles, deceitful workers, transforming themselves into the apostles of Christ.",
+  "ref": "2 Corinthians 11:13"
+ },
+ {
+  "id": "2-corinthians-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Paul rob by taking wages to serve the Corinthians?",
+  "choices": [
+   "Other churches",
+   "The Romans",
+   "The Jews",
+   "The Corinthians"
+  ],
+  "answer": 0,
+  "explanation": "I robbed other churches, taking wages of them, to do you service.",
+  "ref": "2 Corinthians 11:8"
+ },
+ {
+  "id": "2-corinthians-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times did Paul suffer shipwreck?",
+  "choices": [
+   "Once",
+   "Thrice",
+   "Twice",
+   "Seven times"
+  ],
+  "answer": 1,
+  "explanation": "Thrice I suffered shipwreck.",
+  "ref": "2 Corinthians 11:25"
+ },
+ {
+  "id": "2-corinthians-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who supplied what Paul lacked while he was with the Corinthians?",
+  "choices": [
+   "The Corinthians",
+   "The Philippians",
+   "The brethren from Macedonia",
+   "The Romans"
+  ],
+  "answer": 2,
+  "explanation": "That which was lacking to me the brethren which came from Macedonia supplied.",
+  "ref": "2 Corinthians 11:9"
+ },
+ {
+  "id": "2-corinthians-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "No man shall stop Paul's boasting in the regions of where?",
+  "choices": [
+   "Galatia",
+   "Asia",
+   "Macedonia",
+   "Achaia"
+  ],
+  "answer": 3,
+  "explanation": "No man shall stop me of this boasting in the regions of Achaia.",
+  "ref": "2 Corinthians 11:10"
+ },
+ {
+  "id": "2-corinthians-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Paul keep doing as he does about wages?",
+  "choices": [
+   "To cut off occasion from those who desire it",
+   "To save money",
+   "To please Peter",
+   "To avoid travel"
+  ],
+  "answer": 0,
+  "explanation": "That I may cut off occasion from them which desire occasion.",
+  "ref": "2 Corinthians 11:12"
+ },
+ {
+  "id": "2-corinthians-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Paul supposes he was not a whit behind whom?",
+  "choices": [
+   "The Roman governors",
+   "The very chiefest apostles",
+   "The Pharisees",
+   "The elders of Corinth"
+  ],
+  "answer": 1,
+  "explanation": "I suppose I was not a whit behind the very chiefest apostles.",
+  "ref": "2 Corinthians 11:5"
+ },
+ {
+  "id": "2-corinthians-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul admits he is rude in speech, but not in what?",
+  "choices": [
+   "Prayer",
+   "Courage",
+   "Knowledge",
+   "Wisdom of men"
+  ],
+  "answer": 2,
+  "explanation": "Though I be rude in speech, yet not in knowledge.",
+  "ref": "2 Corinthians 11:6"
+ },
+ {
+  "id": "2-corinthians-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If a man preaches another Jesus, what might the Corinthians well do?",
+  "choices": [
+   "Drive him out",
+   "Pray for him",
+   "Report him to Paul",
+   "Bear with him"
+  ],
+  "answer": 3,
+  "explanation": "If he that cometh preacheth another Jesus, ye might well bear with him.",
+  "ref": "2 Corinthians 11:4"
+ },
+ {
+  "id": "2-corinthians-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say the Corinthians suffer gladly, seeing they are wise?",
+  "choices": [
+   "Fools",
+   "Prophets",
+   "Enemies",
+   "Soldiers"
+  ],
+  "answer": 0,
+  "explanation": "For ye suffer fools gladly, seeing ye yourselves are wise.",
+  "ref": "2 Corinthians 11:19"
+ },
+ {
+  "id": "2-corinthians-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to what shall the end of Satan's ministers be?",
+  "choices": [
+   "Their words",
+   "Their works",
+   "Their numbers",
+   "Their wealth"
+  ],
+  "answer": 1,
+  "explanation": "Whose end shall be according to their works.",
+  "ref": "2 Corinthians 11:15"
+ },
+ {
+  "id": "2-corinthians-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Under which king was the governor in Damascus who sought Paul?",
+  "choices": [
+   "Herod",
+   "Agrippa",
+   "Aretas",
+   "Caesar"
+  ],
+  "answer": 2,
+  "explanation": "In Damascus the governor under Aretas the king kept the city.",
+  "ref": "2 Corinthians 11:32"
+ },
+ {
+  "id": "2-corinthians-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which does Paul list among his perils?",
+  "choices": [
+   "Perils in the mountains",
+   "Perils by fire",
+   "Perils in the palace",
+   "Perils by his own countrymen"
+  ],
+  "answer": 3,
+  "explanation": "In perils by mine own countrymen, in perils by the heathen, in perils in the city.",
+  "ref": "2 Corinthians 11:26"
+ },
+ {
+  "id": "2-corinthians-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul say he speaks in this boasting?",
+  "choices": [
+   "Foolishly, not after the Lord",
+   "As the Lord commanded",
+   "In secret",
+   "In sorrow"
+  ],
+  "answer": 0,
+  "explanation": "That which I speak, I speak it not after the Lord, but as it were foolishly.",
+  "ref": "2 Corinthians 11:17"
+ },
+ {
+  "id": "2-corinthians-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says many glory after what?",
+  "choices": [
+   "The law",
+   "The flesh",
+   "The Spirit",
+   "The apostles"
+  ],
+  "answer": 1,
+  "explanation": "Seeing that many glory after the flesh, I will glory also.",
+  "ref": "2 Corinthians 11:18"
+ },
+ {
+  "id": "2-corinthians-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says he is more than the ministers of Christ in what?",
+  "choices": [
+   "Riches and honours",
+   "Visions and tongues",
+   "Labours, stripes, prisons and deaths",
+   "Gifts and miracles"
+  ],
+  "answer": 2,
+  "explanation": "In labours more abundant, in stripes above measure, in prisons more frequent, in deaths oft.",
+  "ref": "2 Corinthians 11:23"
+ },
+ {
+  "id": "2-corinthians-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul describe his stripes?",
+  "choices": [
+   "Few in number",
+   "Without pain",
+   "Forgotten",
+   "Above measure"
+  ],
+  "answer": 3,
+  "explanation": "In stripes above measure.",
+  "ref": "2 Corinthians 11:23"
+ },
+ {
+  "id": "2-corinthians-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say he will keep himself from being to the Corinthians?",
+  "choices": [
+   "Burdensome",
+   "Silent",
+   "Absent",
+   "Poor"
+  ],
+  "answer": 0,
+  "explanation": "In all things I have kept myself from being burdensome unto you, and so will I keep myself.",
+  "ref": "2 Corinthians 11:9"
+ },
+ {
+  "id": "2-corinthians-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Paul asks if he refuses support because he loves them not. Who knows?",
+  "choices": [
+   "Titus",
+   "God",
+   "The Corinthians",
+   "The brethren"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore? because I love you not? God knoweth.",
+  "ref": "2 Corinthians 11:11"
+ },
+ {
+  "id": "2-corinthians-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which does Paul say the Corinthians endure from a man?",
+  "choices": [
+   "Being taxed twice",
+   "Being sent to prison",
+   "Being smitten on the face",
+   "Being driven out"
+  ],
+  "answer": 2,
+  "explanation": "If a man smite you on the face.",
+  "ref": "2 Corinthians 11:20"
+ },
+ {
+  "id": "2-corinthians-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which hardships does Paul list together at the end of the list?",
+  "choices": [
+   "Fire and sword",
+   "Plague and famine",
+   "Exile and scorn",
+   "Cold and nakedness"
+  ],
+  "answer": 3,
+  "explanation": "In fastings often, in cold and nakedness.",
+  "ref": "2 Corinthians 11:27"
+ },
+ {
+  "id": "2-corinthians-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does Paul call blessed for evermore?",
+  "choices": [
+   "The God and Father of our Lord Jesus Christ",
+   "The apostle Peter",
+   "The Holy Spirit alone",
+   "The chiefest apostles"
+  ],
+  "answer": 0,
+  "explanation": "The God and Father of our Lord Jesus Christ, which is blessed for evermore, knoweth that I lie not.",
+  "ref": "2 Corinthians 11:31"
+ },
+ {
+  "id": "2-corinthians-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul want to present the Corinthians as to Christ?",
+  "choices": [
+   "A holy temple",
+   "A chaste virgin",
+   "A faithful bride of Moses",
+   "A burnt offering"
+  ],
+  "answer": 1,
+  "explanation": "That I may present you as a chaste virgin to Christ.",
+  "ref": "2 Corinthians 11:2"
+ },
+ {
+  "id": "2-corinthians-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If men think Paul a fool, what does he ask of them?",
+  "choices": [
+   "To stone him",
+   "To send him away",
+   "To receive him as a fool",
+   "To pray for him"
+  ],
+  "answer": 2,
+  "explanation": "Let no man think me a fool; if otherwise, yet as a fool receive me, that I may boast myself a little.",
+  "ref": "2 Corinthians 11:16"
+ },
+ {
+  "id": "2-corinthians-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say was often his portion besides labours and stripes?",
+  "choices": [
+   "Feasts",
+   "Honours",
+   "Rewards",
+   "Deaths"
+  ],
+  "answer": 3,
+  "explanation": "In prisons more frequent, in deaths oft.",
+  "ref": "2 Corinthians 11:23"
+ },
+ {
+  "id": "2-corinthians-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul ask the Corinthians to bear with him in?",
+  "choices": [
+   "His folly",
+   "His absence",
+   "His wages",
+   "His letters"
+  ],
+  "answer": 0,
+  "explanation": "Would to God ye could bear with me a little in my folly.",
+  "ref": "2 Corinthians 11:1"
+ },
+ {
+  "id": "2-corinthians-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the governor keep the city of the Damascenes with?",
+  "choices": [
+   "A wall of fire",
+   "A garrison",
+   "A gate of iron",
+   "A watchtower only"
+  ],
+  "answer": 1,
+  "explanation": "The governor kept the city of the Damascenes with a garrison.",
+  "ref": "2 Corinthians 11:32"
+ },
+ {
+  "id": "2-corinthians-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does Paul say he abased himself?",
+  "choices": [
+   "That he might be paid",
+   "That he might avoid Rome",
+   "That the Corinthians might be exalted",
+   "That he might be humble"
+  ],
+  "answer": 2,
+  "explanation": "Have I committed an offence in abasing myself that ye might be exalted?",
+  "ref": "2 Corinthians 11:7"
+ },
+ {
+  "id": "2-corinthians-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Paul say he is jealous over the Corinthians?",
+  "choices": [
+   "With bitter anger",
+   "With secret envy",
+   "With proud zeal",
+   "With godly jealousy"
+  ],
+  "answer": 3,
+  "explanation": "I am jealous over you with godly jealousy.",
+  "ref": "2 Corinthians 11:2"
+ },
+ {
+  "id": "2-corinthians-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "False ministers are transformed as the ministers of what?",
+  "choices": [
+   "Righteousness",
+   "Wisdom",
+   "Peace",
+   "Fire"
+  ],
+  "answer": 0,
+  "explanation": "His ministers also be transformed as the ministers of righteousness.",
+  "ref": "2 Corinthians 11:15"
+ },
+ {
+  "id": "2-corinthians-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What might a false preacher bring that Paul says they had not accepted?",
+  "choices": [
+   "Another law",
+   "Another gospel",
+   "Another temple",
+   "Another baptism"
+  ],
+  "answer": 1,
+  "explanation": "Or another gospel, which ye have not accepted.",
+  "ref": "2 Corinthians 11:4"
+ },
+ {
+  "id": "2-corinthians-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which hardships does Paul list with fastings often?",
+  "choices": [
+   "Flood and fire",
+   "Pride and envy",
+   "Hunger and thirst",
+   "Prison and exile"
+  ],
+  "answer": 2,
+  "explanation": "In hunger and thirst, in fastings often.",
+  "ref": "2 Corinthians 11:27"
+ },
+ {
+  "id": "2-corinthians-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which three claims does Paul match against the false apostles?",
+  "choices": [
+   "Priest, prophet and king",
+   "Roman, Greek and Jew",
+   "Levite, scribe and judge",
+   "Hebrew, Israelite and seed of Abraham"
+  ],
+  "answer": 3,
+  "explanation": "Are they Hebrews? so am I. Are they Israelites? so am I. Are they the seed of Abraham? so am I.",
+  "ref": "2 Corinthians 11:22"
+ },
+ {
+  "id": "2-corinthians-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the man caught up into paradise hear?",
+  "choices": [
+   "Unspeakable words",
+   "A trumpet",
+   "Songs of Moses",
+   "The voice of the law"
+  ],
+  "answer": 0,
+  "explanation": "He heard unspeakable words, which it is not lawful for a man to utter.",
+  "ref": "2 Corinthians 12:4"
+ },
+ {
+  "id": "2-corinthians-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul call the thorn in the flesh?",
+  "choices": [
+   "The gift of God",
+   "The messenger of Satan",
+   "The sign of an apostle",
+   "The sword of Rome"
+  ],
+  "answer": 1,
+  "explanation": "A thorn in the flesh, the messenger of Satan to buffet me.",
+  "ref": "2 Corinthians 12:7"
+ },
+ {
+  "id": "2-corinthians-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does Paul gladly glory in his infirmities?",
+  "choices": [
+   "That others may pity him",
+   "That he may be paid",
+   "That the power of Christ may rest upon him",
+   "That he may be silent"
+  ],
+  "answer": 2,
+  "explanation": "Most gladly therefore will I rather glory in my infirmities, that the power of Christ may rest upon me.",
+  "ref": "2 Corinthians 12:9"
+ },
+ {
+  "id": "2-corinthians-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The Lord said his strength is made perfect in what?",
+  "choices": [
+   "Wealth",
+   "Wisdom",
+   "Waiting",
+   "Weakness"
+  ],
+  "answer": 3,
+  "explanation": "My strength is made perfect in weakness.",
+  "ref": "2 Corinthians 12:9"
+ },
+ {
+  "id": "2-corinthians-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Paul desire to go to Corinth, with a brother?",
+  "choices": [
+   "Titus",
+   "Timothy",
+   "Silas",
+   "Barnabas"
+  ],
+  "answer": 0,
+  "explanation": "I desired Titus, and with him I sent a brother.",
+  "ref": "2 Corinthians 12:18"
+ },
+ {
+  "id": "2-corinthians-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say he seeks from the Corinthians?",
+  "choices": [
+   "Their gold",
+   "Not theirs, but them",
+   "Their tithe",
+   "Their service"
+  ],
+  "answer": 1,
+  "explanation": "I seek not yours, but you.",
+  "ref": "2 Corinthians 12:14"
+ },
+ {
+  "id": "2-corinthians-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Whether the man was in the body or out, who knoweth?",
+  "choices": [
+   "Paul",
+   "Titus",
+   "God",
+   "The angels"
+  ],
+  "answer": 2,
+  "explanation": "Whether in the body, I cannot tell; or whether out of the body, I cannot tell: God knoweth.",
+  "ref": "2 Corinthians 12:2"
+ },
+ {
+  "id": "2-corinthians-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Into what was the man also caught up?",
+  "choices": [
+   "The wilderness",
+   "The temple",
+   "Mount Zion",
+   "Paradise"
+  ],
+  "answer": 3,
+  "explanation": "He was caught up into paradise, and heard unspeakable words.",
+  "ref": "2 Corinthians 12:4"
+ },
+ {
+  "id": "2-corinthians-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of himself Paul will not glory, but in what?",
+  "choices": [
+   "His infirmities",
+   "His visions",
+   "His labours",
+   "His letters"
+  ],
+  "answer": 0,
+  "explanation": "Of myself I will not glory, but in mine infirmities.",
+  "ref": "2 Corinthians 12:5"
+ },
+ {
+  "id": "2-corinthians-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Paul forbear to glory?",
+  "choices": [
+   "Lest Titus be hurt",
+   "Lest any man think of him above what he seeth",
+   "Lest he be arrested",
+   "Lest he be forgotten"
+  ],
+  "answer": 1,
+  "explanation": "I forbear, lest any man should think of me above that which he seeth me to be.",
+  "ref": "2 Corinthians 12:6"
+ },
+ {
+  "id": "2-corinthians-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Who does Paul say compelled him to glory like a fool?",
+  "choices": [
+   "Titus",
+   "The chief apostles",
+   "The Corinthians",
+   "Satan"
+  ],
+  "answer": 2,
+  "explanation": "I am become a fool in glorying; ye have compelled me.",
+  "ref": "2 Corinthians 12:11"
+ },
+ {
+  "id": "2-corinthians-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was wrought among the Corinthians as the signs of an apostle?",
+  "choices": [
+   "Letters and sermons",
+   "Fasts and vigils",
+   "Gifts and tithes",
+   "Signs, wonders and mighty deeds"
+  ],
+  "answer": 3,
+  "explanation": "The signs of an apostle were wrought among you in signs, and wonders, and mighty deeds.",
+  "ref": "2 Corinthians 12:12"
+ },
+ {
+  "id": "2-corinthians-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what were the Corinthians inferior to other churches?",
+  "choices": [
+   "Paul was not burdensome to them",
+   "They had no elders",
+   "They gave less",
+   "They had no letters"
+  ],
+  "answer": 0,
+  "explanation": "Wherein were ye inferior to other churches, except it be that I myself was not burdensome to you?",
+  "ref": "2 Corinthians 12:13"
+ },
+ {
+  "id": "2-corinthians-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many times is Paul ready to come to them?",
+  "choices": [
+   "The first time",
+   "The third time",
+   "The seventh time",
+   "The tenth time"
+  ],
+  "answer": 1,
+  "explanation": "Behold, the third time I am ready to come to you.",
+  "ref": "2 Corinthians 12:14"
+ },
+ {
+  "id": "2-corinthians-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Who ought to lay up for whom, says Paul?",
+  "choices": [
+   "Children for the parents",
+   "Rulers for the poor",
+   "Parents for the children",
+   "Elders for the church"
+  ],
+  "answer": 2,
+  "explanation": "The children ought not to lay up for the parents, but the parents for the children.",
+  "ref": "2 Corinthians 12:14"
+ },
+ {
+  "id": "2-corinthians-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will Paul very gladly do for them?",
+  "choices": [
+   "Rest and be fed",
+   "Write and be read",
+   "Stay and be silent",
+   "Spend and be spent"
+  ],
+  "answer": 3,
+  "explanation": "I will very gladly spend and be spent for you.",
+  "ref": "2 Corinthians 12:15"
+ },
+ {
+  "id": "2-corinthians-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul asks if he and Titus walked in the same what?",
+  "choices": [
+   "Spirit and steps",
+   "Chains and prisons",
+   "Ships and roads",
+   "Words and letters"
+  ],
+  "answer": 0,
+  "explanation": "Walked we not in the same spirit? walked we not in the same steps?",
+  "ref": "2 Corinthians 12:18"
+ },
+ {
+  "id": "2-corinthians-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long ago was the man caught up to the third heaven?",
+  "choices": [
+   "Above three years ago",
+   "Above fourteen years ago",
+   "Above forty years ago",
+   "Above seven years ago"
+  ],
+  "answer": 1,
+  "explanation": "I knew a man in Christ above fourteen years ago.",
+  "ref": "2 Corinthians 12:2"
+ },
+ {
+  "id": "2-corinthians-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says they do all things for their what?",
+  "choices": [
+   "Honour",
+   "Wealth",
+   "Edifying",
+   "Comfort alone"
+  ],
+  "answer": 2,
+  "explanation": "We do all things, dearly beloved, for your edifying.",
+  "ref": "2 Corinthians 12:19"
+ },
+ {
+  "id": "2-corinthians-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which does Paul fear to find among the Corinthians?",
+  "choices": [
+   "Idolatry and drunkenness",
+   "Lawsuits and theft",
+   "Fasting and vigils",
+   "Debates, envyings, wraths and strifes"
+  ],
+  "answer": 3,
+  "explanation": "Lest there be debates, envyings, wraths, strifes, backbitings, whisperings, swellings, tumults.",
+  "ref": "2 Corinthians 12:20"
+ },
+ {
+  "id": "2-corinthians-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what had many not repented?",
+  "choices": [
+   "Uncleanness, fornication and lasciviousness",
+   "Idolatry and murder",
+   "Theft and lies",
+   "Pride and envy"
+  ],
+  "answer": 0,
+  "explanation": "Many which have sinned already, and have not repented of the uncleanness and fornication and lasciviousness.",
+  "ref": "2 Corinthians 12:21"
+ },
+ {
+  "id": "2-corinthians-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Who does Paul fear will humble him among them when he comes again?",
+  "choices": [
+   "The Corinthians",
+   "His God",
+   "Titus",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "When I come again, my God will humble me among you.",
+  "ref": "2 Corinthians 12:21"
+ },
+ {
+  "id": "2-corinthians-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did some say of Paul, being crafty?",
+  "choices": [
+   "That he hid money",
+   "That he feared men",
+   "That he caught them with guile",
+   "That he fled"
+  ],
+  "answer": 2,
+  "explanation": "Being crafty, I caught you with guile.",
+  "ref": "2 Corinthians 12:16"
+ },
+ {
+  "id": "2-corinthians-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens the more abundantly Paul loves them?",
+  "choices": [
+   "The more he is feared",
+   "The more he is paid",
+   "The less he writes",
+   "The less he is loved"
+  ],
+  "answer": 3,
+  "explanation": "The more abundantly I love you, the less I be loved.",
+  "ref": "2 Corinthians 12:15"
+ },
+ {
+  "id": "2-corinthians-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Paul will come to visions and revelations of whom?",
+  "choices": [
+   "The Lord",
+   "The angels",
+   "Satan",
+   "The apostles"
+  ],
+  "answer": 0,
+  "explanation": "I will come to visions and revelations of the Lord.",
+  "ref": "2 Corinthians 12:1"
+ },
+ {
+  "id": "2-corinthians-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "For whose sake does Paul take pleasure in infirmities?",
+  "choices": [
+   "The church's",
+   "Christ's",
+   "Titus's",
+   "The saints'"
+  ],
+  "answer": 1,
+  "explanation": "I take pleasure in infirmities, in reproaches, in necessities, in persecutions, in distresses for Christ's sake.",
+  "ref": "2 Corinthians 12:10"
+ },
+ {
+  "id": "2-corinthians-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "How does Paul describe the one who was caught up to the third heaven?",
+  "choices": [
+   "A priest of the temple",
+   "A prophet of old",
+   "A man in Christ",
+   "A man of Macedonia"
+  ],
+  "answer": 2,
+  "explanation": "I knew a man in Christ above fourteen years ago.",
+  "ref": "2 Corinthians 12:2"
+ },
+ {
+  "id": "2-corinthians-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Before whom does Paul say they speak, not excusing themselves?",
+  "choices": [
+   "The Roman court",
+   "The elders",
+   "The brethren",
+   "God in Christ"
+  ],
+  "answer": 3,
+  "explanation": "Think ye that we excuse ourselves unto you? we speak before God in Christ.",
+  "ref": "2 Corinthians 12:19"
+ },
+ {
+  "id": "2-corinthians-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Christ was crucified through weakness, yet he liveth by what?",
+  "choices": [
+   "The power of God",
+   "The will of Caesar",
+   "The prayers of men",
+   "The law"
+  ],
+  "answer": 0,
+  "explanation": "Though he was crucified through weakness, yet he liveth by the power of God.",
+  "ref": "2 Corinthians 13:4"
+ },
+ {
+  "id": "2-corinthians-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul tell them to greet one another?",
+  "choices": [
+   "With a feast",
+   "With an holy kiss",
+   "With a blessing of oil",
+   "With a bow"
+  ],
+  "answer": 1,
+  "explanation": "Greet one another with an holy kiss.",
+  "ref": "2 Corinthians 13:12"
+ },
+ {
+  "id": "2-corinthians-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many times is Paul coming to them?",
+  "choices": [
+   "The first time",
+   "The fifth time",
+   "The third time",
+   "The seventh time"
+  ],
+  "answer": 2,
+  "explanation": "This is the third time I am coming to you.",
+  "ref": "2 Corinthians 13:1"
+ },
+ {
+  "id": "2-corinthians-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Corinthians seek proof of?",
+  "choices": [
+   "Paul's wealth",
+   "Paul's travels",
+   "The resurrection",
+   "Christ speaking in Paul"
+  ],
+  "answer": 3,
+  "explanation": "Since ye seek a proof of Christ speaking in me.",
+  "ref": "2 Corinthians 13:3"
+ },
+ {
+  "id": "2-corinthians-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul warn he will not do if he comes again?",
+  "choices": [
+   "Spare them",
+   "Praise them",
+   "Teach them",
+   "Stay long"
+  ],
+  "answer": 0,
+  "explanation": "If I come again, I will not spare.",
+  "ref": "2 Corinthians 13:2"
+ },
+ {
+  "id": "2-corinthians-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Christ is in them, says Paul, unless they be what?",
+  "choices": [
+   "Weak",
+   "Reprobates",
+   "Fasting",
+   "Learned"
+  ],
+  "answer": 1,
+  "explanation": "Know ye not that Jesus Christ is in you, except ye be reprobates?",
+  "ref": "2 Corinthians 13:5"
+ },
+ {
+  "id": "2-corinthians-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say they can do nothing against?",
+  "choices": [
+   "The law",
+   "The church",
+   "The truth",
+   "The Romans"
+  ],
+  "answer": 2,
+  "explanation": "We can do nothing against the truth, but for the truth.",
+  "ref": "2 Corinthians 13:8"
+ },
+ {
+  "id": "2-corinthians-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Paul write these things while absent?",
+  "choices": [
+   "So the letter will be longer",
+   "So Titus can read it",
+   "So he can rest",
+   "So he need not use sharpness when present"
+  ],
+  "answer": 3,
+  "explanation": "I write these things being absent, lest being present I should use sharpness.",
+  "ref": "2 Corinthians 13:10"
+ },
+ {
+  "id": "2-corinthians-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "What will be with them if they live in peace?",
+  "choices": [
+   "The God of love and peace",
+   "The elders of Corinth",
+   "The angel of the Lord",
+   "The apostles"
+  ],
+  "answer": 0,
+  "explanation": "Live in peace; and the God of love and peace shall be with you.",
+  "ref": "2 Corinthians 13:11"
+ },
+ {
+  "id": "2-corinthians-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul prays they do no evil, not that they should appear what?",
+  "choices": [
+   "Wealthy",
+   "Approved",
+   "Wise",
+   "Loved"
+  ],
+  "answer": 1,
+  "explanation": "I pray to God that ye do no evil; not that we should appear approved.",
+  "ref": "2 Corinthians 13:7"
+ },
+ {
+  "id": "2-corinthians-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say he wishes for the Corinthians?",
+  "choices": [
+   "Their silence",
+   "Their wealth",
+   "Their perfection",
+   "Their absence"
+  ],
+  "answer": 2,
+  "explanation": "This also we wish, even your perfection.",
+  "ref": "2 Corinthians 13:9"
+ },
+ {
+  "id": "2-corinthians-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Who salute the Corinthians?",
+  "choices": [
+   "The elders",
+   "The Macedonians",
+   "Titus alone",
+   "All the saints"
+  ],
+  "answer": 3,
+  "explanation": "All the saints salute you.",
+  "ref": "2 Corinthians 13:13"
+ },
+ {
+  "id": "2-corinthians-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul trust they will know about him?",
+  "choices": [
+   "That they are not reprobates",
+   "That he is rich",
+   "That he is a prophet",
+   "That he is coming soon"
+  ],
+  "answer": 0,
+  "explanation": "I trust that ye shall know that we are not reprobates.",
+  "ref": "2 Corinthians 13:6"
+ },
+ {
+  "id": "2-corinthians-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul warns he will not spare those who have what?",
+  "choices": [
+   "Mocked him",
+   "Sinned heretofore",
+   "Left the church",
+   "Taken his gift"
+  ],
+  "answer": 1,
+  "explanation": "I write to them which heretofore have sinned, and to all other, that, if I come again, I will not spare.",
+  "ref": "2 Corinthians 13:2"
+ },
+ {
+  "id": "2-corinthians-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When are Paul and his companions glad?",
+  "choices": [
+   "When they are rich",
+   "When they travel",
+   "When they are weak and the Corinthians strong",
+   "When they are praised"
+  ],
+  "answer": 2,
+  "explanation": "We are glad, when we are weak, and ye are strong.",
+  "ref": "2 Corinthians 13:9"
+ },
+ {
+  "id": "2-corinthians-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says the power the Lord gave him is for edification and not for what?",
+  "choices": [
+   "Division",
+   "Silence",
+   "Taxation",
+   "Destruction"
+  ],
+  "answer": 3,
+  "explanation": "The power which the Lord hath given me to edification, and not to destruction.",
+  "ref": "2 Corinthians 13:10"
+ },
+ {
+  "id": "2-corinthians-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In their deep poverty, the Macedonians abounded unto the riches of what?",
+  "choices": [
+   "Their liberality",
+   "Their harvest",
+   "Their wisdom",
+   "Their praise"
+  ],
+  "answer": 0,
+  "explanation": "The abundance of their joy and their deep poverty abounded unto the riches of their liberality.",
+  "ref": "2 Corinthians 8:2"
+ },
+ {
+  "id": "2-corinthians-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "The gift Paul collected was for the ministering to whom?",
+  "choices": [
+   "The priests",
+   "The saints",
+   "The Romans",
+   "The Macedonians"
+  ],
+  "answer": 1,
+  "explanation": "The Macedonians prayed Paul to take upon him the fellowship of the ministering to the saints.",
+  "ref": "2 Corinthians 8:4"
+ },
+ {
+  "id": "2-corinthians-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul says he speaks of giving to prove what of the Corinthians?",
+  "choices": [
+   "The size of their wealth",
+   "Their loyalty to Rome",
+   "The sincerity of their love",
+   "Their knowledge of the law"
+  ],
+  "answer": 2,
+  "explanation": "Paul writes to prove the sincerity of their love.",
+  "ref": "2 Corinthians 8:8"
+ },
+ {
+  "id": "2-corinthians-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul urges those who abound in faith and knowledge to abound in what also?",
+  "choices": [
+   "The grace of fasting",
+   "The grace of preaching",
+   "The grace of travel",
+   "The grace of giving"
+  ],
+  "answer": 3,
+  "explanation": "As ye abound in every thing, see that ye abound in this grace also.",
+  "ref": "2 Corinthians 8:7"
+ },
+ {
+  "id": "2-corinthians-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How far did the Macedonians give, by Paul's record?",
+  "choices": [
+   "Even beyond their power",
+   "Only a tenth",
+   "Only from their surplus",
+   "Only when asked twice"
+  ],
+  "answer": 0,
+  "explanation": "To their power, I bear record, yea, and beyond their power they were willing of themselves.",
+  "ref": "2 Corinthians 8:3"
+ },
+ {
+  "id": "2-corinthians-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul ask the Corinthians to show to the messengers and the churches?",
+  "choices": [
+   "A written pledge",
+   "The proof of their love",
+   "Their city walls",
+   "A tenth of their grain"
+  ],
+  "answer": 1,
+  "explanation": "Shew ye to them, and before the churches, the proof of your love.",
+  "ref": "2 Corinthians 8:24"
+ },
+ {
+  "id": "2-corinthians-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "How does Paul describe Titus to the Corinthians?",
+  "choices": [
+   "My servant and scribe",
+   "My rival and critic",
+   "My partner and fellowhelper",
+   "My guard and guide"
+  ],
+  "answer": 2,
+  "explanation": "Titus is my partner and fellowhelper concerning you.",
+  "ref": "2 Corinthians 8:23"
+ },
+ {
+  "id": "2-corinthians-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Macedonians pray Paul with much intreaty to do?",
+  "choices": [
+   "Return to Macedonia",
+   "Send Titus away",
+   "Stop collecting",
+   "Receive the gift"
+  ],
+  "answer": 3,
+  "explanation": "They prayed us with much intreaty that we would receive the gift and take upon us the fellowship of the ministering to the saints.",
+  "ref": "2 Corinthians 8:4"
+ },
+ {
+  "id": "2-corinthians-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "What did Paul desire Titus to do among the Corinthians, as he had begun?",
+  "choices": [
+   "Finish the same grace",
+   "Rebuke the church",
+   "Appoint elders",
+   "Return to Paul"
+  ],
+  "answer": 0,
+  "explanation": "We desired Titus, that as he had begun, so he would also finish in you the same grace also.",
+  "ref": "2 Corinthians 8:6"
+ },
+ {
+  "id": "2-corinthians-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul wants their readiness to will matched by what?",
+  "choices": [
+   "A loan from other churches",
+   "A performance out of what they have",
+   "A vow before the elders",
+   "A gift from Paul"
+  ],
+  "answer": 1,
+  "explanation": "As there was a readiness to will, so there may be a performance also out of that which ye have.",
+  "ref": "2 Corinthians 8:11"
+ },
+ {
+  "id": "2-corinthians-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say he wants between the Corinthians and the saints in need?",
+  "choices": [
+   "Rivalry",
+   "Silence",
+   "Equality",
+   "Obedience"
+  ],
+  "answer": 2,
+  "explanation": "Your abundance may be a supply for their want, that there may be equality.",
+  "ref": "2 Corinthians 8:13–14"
+ },
+ {
+  "id": "2-corinthians-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which things does Paul say the Corinthians already abound in?",
+  "choices": [
+   "Wealth and power",
+   "Miracles and healing",
+   "Patience and silence",
+   "Faith and knowledge"
+  ],
+  "answer": 3,
+  "explanation": "Ye abound in every thing, in faith, and utterance, and knowledge, and in all diligence.",
+  "ref": "2 Corinthians 8:7"
+ },
+ {
+  "id": "2-corinthians-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "How is the brother sent with Titus described?",
+  "choices": [
+   "His praise is in the gospel in all the churches",
+   "He is a fellow prisoner",
+   "He is an elder of Jerusalem",
+   "He is a kinsman of Titus"
+  ],
+  "answer": 0,
+  "explanation": "The brother whose praise is in the gospel throughout all the churches.",
+  "ref": "2 Corinthians 8:18"
+ },
+ {
+  "id": "2-corinthians-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul want to avoid in handling the abundance?",
+  "choices": [
+   "That the gift be spent",
+   "That any man should blame him",
+   "That Titus be delayed",
+   "That the saints refuse it"
+  ],
+  "answer": 1,
+  "explanation": "Avoiding this, that no man should blame us in this abundance which is administered by us.",
+  "ref": "2 Corinthians 8:20"
+ },
+ {
+  "id": "2-corinthians-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What occasion led Paul to speak of giving to the Corinthians?",
+  "choices": [
+   "A famine in Corinth",
+   "A command from the apostles",
+   "The forwardness of others",
+   "A dream"
+  ],
+  "answer": 2,
+  "explanation": "I speak not by commandment, but by occasion of the forwardness of others.",
+  "ref": "2 Corinthians 8:8"
+ },
+ {
+  "id": "2-corinthians-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the gift, as Paul administers it, declare about the Corinthians?",
+  "choices": [
+   "Their great wealth",
+   "Their long journey",
+   "Their fear of Paul",
+   "Their ready mind"
+  ],
+  "answer": 3,
+  "explanation": "The grace administered by us is to the glory of the same Lord, and declaration of your ready mind.",
+  "ref": "2 Corinthians 8:19"
+ },
+ {
+  "id": "2-corinthians-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does Paul call the messengers of the churches?",
+  "choices": [
+   "The brethren with Titus",
+   "The elders of Corinth",
+   "The Macedonian rulers",
+   "The saints in need"
+  ],
+  "answer": 0,
+  "explanation": "The brethren are the messengers of the churches, and the glory of Christ.",
+  "ref": "2 Corinthians 8:23"
+ },
+ {
+  "id": "2-corinthians-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "How did Titus go to Corinth?",
+  "choices": [
+   "Under compulsion",
+   "Of his own accord",
+   "By lot",
+   "In chains"
+  ],
+  "answer": 1,
+  "explanation": "Being more forward, of his own accord he went unto you.",
+  "ref": "2 Corinthians 8:17"
+ },
+ {
+  "id": "2-corinthians-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who put the same earnest care for the Corinthians into Titus's heart?",
+  "choices": [
+   "Paul",
+   "The Macedonians",
+   "God",
+   "The brother"
+  ],
+  "answer": 2,
+  "explanation": "Thanks be to God, which put the same earnest care into the heart of Titus for you.",
+  "ref": "2 Corinthians 8:16"
+ },
+ {
+  "id": "2-corinthians-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long ago had the Corinthians begun to be forward in this?",
+  "choices": [
+   "Three months ago",
+   "Seven years ago",
+   "Forty days ago",
+   "A year ago"
+  ],
+  "answer": 3,
+  "explanation": "Who have begun before, not only to do, but also to be forward a year ago.",
+  "ref": "2 Corinthians 8:10"
+ },
+ {
+  "id": "2-corinthians-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Scripture say of him that had gathered much?",
+  "choices": [
+   "He had nothing over",
+   "He had too little",
+   "He had to give it away",
+   "He lost it all"
+  ],
+  "answer": 0,
+  "explanation": "He that had gathered much had nothing over; and he that had gathered little had no lack.",
+  "ref": "2 Corinthians 8:15"
+ },
+ {
+  "id": "2-corinthians-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who chose the brother to travel with Paul with this grace?",
+  "choices": [
+   "Titus",
+   "The churches",
+   "The Macedonian rulers",
+   "The apostles"
+  ],
+  "answer": 1,
+  "explanation": "The brother was also chosen of the churches to travel with us with this grace.",
+  "ref": "2 Corinthians 8:19"
+ },
+ {
+  "id": "2-corinthians-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides in the sight of the Lord, in whose sight does Paul provide honest things?",
+  "choices": [
+   "In the sight of angels",
+   "In the sight of Titus",
+   "In the sight of men",
+   "In the sight of rulers"
+  ],
+  "answer": 2,
+  "explanation": "Providing for honest things, not only in the sight of the Lord, but also in the sight of men.",
+  "ref": "2 Corinthians 8:21"
+ },
+ {
+  "id": "2-corinthians-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Why was the second brother much more diligent in this matter?",
+  "choices": [
+   "Fear of the churches",
+   "A reward from Paul",
+   "A command of Titus",
+   "Great confidence Paul had in the Corinthians"
+  ],
+  "answer": 3,
+  "explanation": "Much more diligent, upon the great confidence which I have in you.",
+  "ref": "2 Corinthians 8:22"
+ },
+ {
+  "id": "2-corinthians-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose abundance may later be a supply for the Corinthians' want?",
+  "choices": [
+   "The saints' abundance",
+   "Rome's abundance",
+   "Paul's abundance",
+   "Titus's abundance"
+  ],
+  "answer": 0,
+  "explanation": "Their abundance also may be a supply for your want.",
+  "ref": "2 Corinthians 8:14"
+ },
+ {
+  "id": "2-corinthians-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul asks them to show proof of their love and of what?",
+  "choices": [
+   "His wounds",
+   "His boasting on their behalf",
+   "His labour",
+   "His authority"
+  ],
+  "answer": 1,
+  "explanation": "Shew ye the proof of your love, and of our boasting on your behalf.",
+  "ref": "2 Corinthians 8:24"
+ },
+ {
+  "id": "2-corinthians-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul tells of the grace of God bestowed on which churches?",
+  "choices": [
+   "The churches of Galatia",
+   "The churches of Judea",
+   "The churches of Macedonia",
+   "The churches of Asia"
+  ],
+  "answer": 2,
+  "explanation": "We do you to wit of the grace of God bestowed on the churches of Macedonia.",
+  "ref": "2 Corinthians 8:1"
+ },
+ {
+  "id": "2-corinthians-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did the Macedonians' abundance of joy abound?",
+  "choices": [
+   "A time of peace",
+   "A season of harvest",
+   "A feast at Jerusalem",
+   "A great trial of affliction"
+  ],
+  "answer": 3,
+  "explanation": "In a great trial of affliction the abundance of their joy abounded.",
+  "ref": "2 Corinthians 8:2"
+ },
+ {
+  "id": "2-corinthians-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the Lord, to whom did the Macedonians give themselves, by God's will?",
+  "choices": [
+   "Paul and his companions",
+   "The Corinthians",
+   "The poor of Judea",
+   "Titus alone"
+  ],
+  "answer": 0,
+  "explanation": "They first gave their own selves to the Lord, and unto us by the will of God.",
+  "ref": "2 Corinthians 8:5"
+ },
+ {
+  "id": "2-corinthians-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say he does NOT mean by the collection?",
+  "choices": [
+   "That the saints be refused",
+   "That others be eased and the Corinthians burdened",
+   "That Paul be paid",
+   "That the churches be taxed"
+  ],
+  "answer": 1,
+  "explanation": "I mean not that other men be eased, and ye burdened.",
+  "ref": "2 Corinthians 8:13"
+ },
+ {
+  "id": "2-corinthians-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "What had Paul often proved about the third man he sent?",
+  "choices": [
+   "He was slow to travel",
+   "He was bold in speech",
+   "He was diligent in many things",
+   "He was rich in goods"
+  ],
+  "answer": 2,
+  "explanation": "Our brother, whom we have oftentimes proved diligent in many things.",
+  "ref": "2 Corinthians 8:22"
+ },
+ {
+  "id": "2-corinthians-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall he which soweth sparingly reap?",
+  "choices": [
+   "Bountifully",
+   "Nothing at all",
+   "Double",
+   "Sparingly"
+  ],
+  "answer": 3,
+  "explanation": "He which soweth sparingly shall reap also sparingly.",
+  "ref": "2 Corinthians 9:6"
+ },
+ {
+  "id": "2-corinthians-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul thank God for at the close of the chapter?",
+  "choices": [
+   "His unspeakable gift",
+   "His great harvest",
+   "His holy temple",
+   "His long patience"
+  ],
+  "answer": 0,
+  "explanation": "Thanks be unto God for his unspeakable gift.",
+  "ref": "2 Corinthians 9:15"
+ },
+ {
+  "id": "2-corinthians-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Paul send ahead to Corinth?",
+  "choices": [
+   "The Macedonians",
+   "The brethren",
+   "The elders",
+   "The Romans"
+  ],
+  "answer": 1,
+  "explanation": "Yet have I sent the brethren, lest our boasting of you should be in vain.",
+  "ref": "2 Corinthians 9:3"
+ },
+ {
+  "id": "2-corinthians-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did Paul boast that Achaia was ready a year ago?",
+  "choices": [
+   "The Galatians",
+   "The Romans",
+   "Them of Macedonia",
+   "The Jerusalem apostles"
+  ],
+  "answer": 2,
+  "explanation": "I boast of you to them of Macedonia, that Achaia was ready a year ago.",
+  "ref": "2 Corinthians 9:2"
+ },
+ {
+  "id": "2-corinthians-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul send the brethren ahead?",
+  "choices": [
+   "To collect the tithe early",
+   "To judge their sin",
+   "To carry letters to Rome",
+   "So the Corinthians would be ready"
+  ],
+  "answer": 3,
+  "explanation": "Lest our boasting of you should be in vain, that ye may be ready.",
+  "ref": "2 Corinthians 9:3"
+ },
+ {
+  "id": "2-corinthians-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul fear if the Macedonians found Corinth unprepared?",
+  "choices": [
+   "That they would be ashamed",
+   "That the gift would be lost",
+   "That Titus would leave",
+   "That the saints would starve"
+  ],
+  "answer": 0,
+  "explanation": "If they of Macedonia find you unprepared, we should be ashamed.",
+  "ref": "2 Corinthians 9:4"
+ },
+ {
+  "id": "2-corinthians-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul wanted the bounty ready as bounty, and not as of what?",
+  "choices": [
+   "Pride",
+   "Covetousness",
+   "Necessity",
+   "Fear"
+  ],
+  "answer": 1,
+  "explanation": "That the same might be ready, as a matter of bounty, and not as of covetousness.",
+  "ref": "2 Corinthians 9:5"
+ },
+ {
+  "id": "2-corinthians-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What remaineth for ever, as it is written of him who gives to the poor?",
+  "choices": [
+   "His riches",
+   "His name",
+   "His righteousness",
+   "His harvest"
+  ],
+  "answer": 2,
+  "explanation": "He hath given to the poor: his righteousness remaineth for ever.",
+  "ref": "2 Corinthians 9:9"
+ },
+ {
+  "id": "2-corinthians-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "God makes grace abound so they may abound to what?",
+  "choices": [
+   "Every feast",
+   "Every city",
+   "Every harvest",
+   "Every good work"
+  ],
+  "answer": 3,
+  "explanation": "That ye, always having all sufficiency in all things, may abound to every good work.",
+  "ref": "2 Corinthians 9:8"
+ },
+ {
+  "id": "2-corinthians-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "God will multiply their seed sown and increase what?",
+  "choices": [
+   "The fruits of their righteousness",
+   "The size of their fields",
+   "The number of their flocks",
+   "The days of their lives"
+  ],
+  "answer": 0,
+  "explanation": "He multiplieth your seed sown, and increaseth the fruits of your righteousness.",
+  "ref": "2 Corinthians 9:10"
+ },
+ {
+  "id": "2-corinthians-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides causing thanksgivings, what does this service supply?",
+  "choices": [
+   "The needs of the Romans",
+   "The want of the saints",
+   "The debts of Paul",
+   "The cost of the journey"
+  ],
+  "answer": 1,
+  "explanation": "The administration of this service not only supplieth the want of the saints.",
+  "ref": "2 Corinthians 9:12"
+ },
+ {
+  "id": "2-corinthians-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what do the saints glorify God because of this ministration?",
+  "choices": [
+   "Their wealth",
+   "Their fasting",
+   "The Corinthians' professed subjection to the gospel",
+   "Their long journey"
+  ],
+  "answer": 2,
+  "explanation": "They glorify God for your professed subjection unto the gospel of Christ.",
+  "ref": "2 Corinthians 9:13"
+ },
+ {
+  "id": "2-corinthians-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the saints do for the Corinthians, longing after them?",
+  "choices": [
+   "They write to them",
+   "They send gifts",
+   "They visit them",
+   "They pray for them"
+  ],
+  "answer": 3,
+  "explanation": "By their prayer for you, which long after you for the exceeding grace of God in you.",
+  "ref": "2 Corinthians 9:14"
+ },
+ {
+  "id": "2-corinthians-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long ago had Achaia been ready, as Paul boasted?",
+  "choices": [
+   "A year ago",
+   "A month ago",
+   "Ten years ago",
+   "Three days ago"
+  ],
+  "answer": 0,
+  "explanation": "I boast of you to them of Macedonia, that Achaia was ready a year ago.",
+  "ref": "2 Corinthians 9:2"
+ },
+ {
+  "id": "2-corinthians-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the Corinthians' zeal done to very many?",
+  "choices": [
+   "Hindered them",
+   "Provoked them",
+   "Frightened them",
+   "Enriched them"
+  ],
+  "answer": 1,
+  "explanation": "Your zeal hath provoked very many.",
+  "ref": "2 Corinthians 9:2"
+ },
+ {
+  "id": "2-corinthians-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the saints, to whom does the Corinthians' liberal distribution reach?",
+  "choices": [
+   "All Macedonians",
+   "The Romans",
+   "All men",
+   "Their enemies only"
+  ],
+  "answer": 2,
+  "explanation": "For your liberal distribution unto them, and unto all men.",
+  "ref": "2 Corinthians 9:13"
+ },
+ {
+  "id": "2-corinthians-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul fears being ashamed in what, if they are unprepared?",
+  "choices": [
+   "This long journey",
+   "This heavy tax",
+   "This great feast",
+   "This same confident boasting"
+  ],
+  "answer": 3,
+  "explanation": "We should be ashamed in this same confident boasting.",
+  "ref": "2 Corinthians 9:4"
+ },
+ {
+  "id": "2-corinthians-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say he knows about the Corinthians?",
+  "choices": [
+   "The forwardness of their mind",
+   "The size of their gift",
+   "The names of their elders",
+   "The depth of their poverty"
+  ],
+  "answer": 0,
+  "explanation": "For I know the forwardness of your mind.",
+  "ref": "2 Corinthians 9:2"
+ },
+ {
+  "id": "2-corinthians-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say about writing to them of the ministering to the saints?",
+  "choices": [
+   "It is forbidden",
+   "It is superfluous",
+   "It is urgent",
+   "It is secret"
+  ],
+  "answer": 1,
+  "explanation": "As touching the ministering to the saints, it is superfluous for me to write to you.",
+  "ref": "2 Corinthians 9:1"
  }
 ]
