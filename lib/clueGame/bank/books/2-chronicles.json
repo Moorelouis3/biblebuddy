@@ -16944,6 +16944,550 @@
   "ref": "2 Chronicles 33:23"
  },
  {
+  "id": "2-chronicles-33-e-01",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Manasseh when he began to reign?",
+  "choices": [
+   "Twelve",
+   "Sixteen",
+   "Twenty-five",
+   "Eight"
+  ],
+  "answer": 0,
+  "explanation": "Manasseh was twelve years old when he began to reign.",
+  "ref": "2 Chronicles 33:1"
+ },
+ {
+  "id": "2-chronicles-33-e-02",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Manasseh's father?",
+  "choices": [
+   "Ahaz",
+   "Hezekiah",
+   "Josiah",
+   "Amon"
+  ],
+  "answer": 1,
+  "explanation": "He built again the high places which Hezekiah his father had broken down.",
+  "ref": "2 Chronicles 33:3"
+ },
+ {
+  "id": "2-chronicles-33-e-03",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whom did Manasseh rear up altars and make groves?",
+  "choices": [
+   "Molech",
+   "Dagon",
+   "Baalim",
+   "Chemosh"
+  ],
+  "answer": 2,
+  "explanation": "He reared up altars for Baalim, and made groves.",
+  "ref": "2 Chronicles 33:3"
+ },
+ {
+  "id": "2-chronicles-33-e-04",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Manasseh set a carved image that he had made?",
+  "choices": [
+   "In the king's palace",
+   "On the high place at Gibeon",
+   "In the valley of Hinnom",
+   "In the house of God"
+  ],
+  "answer": 3,
+  "explanation": "He set a carved image, the idol which he had made, in the house of God.",
+  "ref": "2 Chronicles 33:7"
+ },
+ {
+  "id": "2-chronicles-33-e-05",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which valley did Manasseh cause his children to pass through the fire?",
+  "choices": [
+   "The valley of the son of Hinnom",
+   "The valley of Jehoshaphat",
+   "The valley of Elah",
+   "The valley of Achor"
+  ],
+  "answer": 0,
+  "explanation": "He caused his children to pass through the fire in the valley of the son of Hinnom.",
+  "ref": "2 Chronicles 33:6"
+ },
+ {
+  "id": "2-chronicles-33-e-06",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Manasseh know after the LORD brought him back to Jerusalem?",
+  "choices": [
+   "That Assyria was weak",
+   "That the LORD he was God",
+   "That Hezekiah was right",
+   "That he would be king for ever"
+  ],
+  "answer": 1,
+  "explanation": "Then Manasseh knew that the LORD he was God.",
+  "ref": "2 Chronicles 33:13"
+ },
+ {
+  "id": "2-chronicles-33-e-07",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned after Manasseh?",
+  "choices": [
+   "Josiah",
+   "Jotham",
+   "Amon",
+   "Hezekiah"
+  ],
+  "answer": 2,
+  "explanation": "Manasseh slept with his fathers, and Amon his son reigned in his stead.",
+  "ref": "2 Chronicles 33:20"
+ },
+ {
+  "id": "2-chronicles-33-e-08",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the people of the land make king after Amon was slain?",
+  "choices": [
+   "Jehoiakim",
+   "Zedekiah",
+   "Manasseh",
+   "Josiah"
+  ],
+  "answer": 3,
+  "explanation": "The people of the land made Josiah his son king in his stead.",
+  "ref": "2 Chronicles 33:25"
+ },
+ {
+  "id": "2-chronicles-33-m-01",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Manasseh reign in Jerusalem?",
+  "choices": [
+   "Fifty and five",
+   "Twenty-nine",
+   "Thirty-one",
+   "Forty"
+  ],
+  "answer": 0,
+  "explanation": "He reigned fifty and five years in Jerusalem.",
+  "ref": "2 Chronicles 33:1"
+ },
+ {
+  "id": "2-chronicles-33-m-02",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Manasseh did evil like unto the abominations of whom?",
+  "choices": [
+   "The Philistines",
+   "The heathen the LORD had cast out",
+   "The Egyptians",
+   "The Assyrians"
+  ],
+  "answer": 1,
+  "explanation": "He did that which was evil, like unto the abominations of the heathen, whom the LORD had cast out before the children of Israel.",
+  "ref": "2 Chronicles 33:2"
+ },
+ {
+  "id": "2-chronicles-33-m-03",
+  "chapter": 33,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Manasseh build altars for all the host of heaven?",
+  "choices": [
+   "On the roof of the palace",
+   "At the fish gate",
+   "In the two courts of the house of the LORD",
+   "On the mount of Olives"
+  ],
+  "answer": 2,
+  "explanation": "He built altars for all the host of heaven in the two courts of the house of the LORD.",
+  "ref": "2 Chronicles 33:5"
+ },
+ {
+  "id": "2-chronicles-33-m-04",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the LORD said about Jerusalem when Manasseh built altars in the temple?",
+  "choices": [
+   "Jerusalem shall be a desolation",
+   "Jerusalem shall fall to Assyria",
+   "In Jerusalem shall a king reign for ever",
+   "In Jerusalem shall my name be for ever"
+  ],
+  "answer": 3,
+  "explanation": "In Jerusalem shall my name be for ever.",
+  "ref": "2 Chronicles 33:4"
+ },
+ {
+  "id": "2-chronicles-33-m-05",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With whom did Manasseh deal, besides using enchantments and witchcraft?",
+  "choices": [
+   "A familiar spirit and wizards",
+   "The priests of Baal",
+   "The prophets of Samaria",
+   "The kings of Assyria"
+  ],
+  "answer": 0,
+  "explanation": "He used enchantments, and used witchcraft, and dealt with a familiar spirit, and with wizards.",
+  "ref": "2 Chronicles 33:6"
+ },
+ {
+  "id": "2-chronicles-33-m-06",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Manasseh and his people respond when the LORD spoke to them?",
+  "choices": [
+   "They repented",
+   "They would not hearken",
+   "They offered sacrifices",
+   "They fled"
+  ],
+  "answer": 1,
+  "explanation": "The LORD spake to Manasseh, and to his people: but they would not hearken.",
+  "ref": "2 Chronicles 33:10"
+ },
+ {
+  "id": "2-chronicles-33-m-07",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the captains of Assyria use to bind Manasseh?",
+  "choices": [
+   "Cords of flax",
+   "Chains of brass",
+   "Fetters",
+   "A yoke"
+  ],
+  "answer": 2,
+  "explanation": "Which took Manasseh among the thorns, and bound him with fetters, and carried him to Babylon.",
+  "ref": "2 Chronicles 33:11"
+ },
+ {
+  "id": "2-chronicles-33-m-08",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Manasseh do when he was in affliction?",
+  "choices": [
+   "Called on the gods of Assyria",
+   "Sent gifts to the king",
+   "Tore his clothes and fled",
+   "Besought the LORD and humbled himself greatly"
+  ],
+  "answer": 3,
+  "explanation": "When he was in affliction, he besought the LORD his God, and humbled himself greatly.",
+  "ref": "2 Chronicles 33:12"
+ },
+ {
+  "id": "2-chronicles-33-m-09",
+  "chapter": 33,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Manasseh build a wall after returning to Jerusalem?",
+  "choices": [
+   "On the west side of Gihon, in the valley",
+   "On the mount of Olives",
+   "Around the temple court",
+   "Beside the river"
+  ],
+  "answer": 0,
+  "explanation": "He built a wall without the city of David, on the west side of Gihon, in the valley.",
+  "ref": "2 Chronicles 33:14"
+ },
+ {
+  "id": "2-chronicles-33-m-10",
+  "chapter": 33,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Manasseh put in all the fenced cities of Judah?",
+  "choices": [
+   "Priests of the courses",
+   "Captains of war",
+   "Judges of the gates",
+   "Seers"
+  ],
+  "answer": 1,
+  "explanation": "He put captains of war in all the fenced cities of Judah.",
+  "ref": "2 Chronicles 33:14"
+ },
+ {
+  "id": "2-chronicles-33-m-11",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Manasseh take away from the house of the LORD?",
+  "choices": [
+   "The gold vessels",
+   "The shewbread table",
+   "The strange gods and the idol",
+   "The ark"
+  ],
+  "answer": 2,
+  "explanation": "He took away the strange gods, and the idol out of the house of the LORD.",
+  "ref": "2 Chronicles 33:15"
+ },
+ {
+  "id": "2-chronicles-33-m-12",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Manasseh sacrifice on the repaired altar of the LORD?",
+  "choices": [
+   "Sin offerings only",
+   "Firstfruits",
+   "Bullocks and he goats",
+   "Peace offerings and thank offerings"
+  ],
+  "answer": 3,
+  "explanation": "He repaired the altar of the LORD, and sacrificed thereon peace offerings and thank offerings.",
+  "ref": "2 Chronicles 33:16"
+ },
+ {
+  "id": "2-chronicles-33-m-13",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom did the people still sacrifice in the high places?",
+  "choices": [
+   "The LORD their God only",
+   "The host of heaven",
+   "Baalim",
+   "Their own idols"
+  ],
+  "answer": 0,
+  "explanation": "The people did sacrifice still in the high places, yet unto the LORD their God only.",
+  "ref": "2 Chronicles 33:17"
+ },
+ {
+  "id": "2-chronicles-33-h-01",
+  "chapter": 33,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom had God said that he would put his name in this house for ever?",
+  "choices": [
+   "Moses and Aaron",
+   "David and Solomon",
+   "Samuel and Eli",
+   "Hezekiah and Isaiah"
+  ],
+  "answer": 1,
+  "explanation": "God had said to David and to Solomon his son, In this house, and in Jerusalem, will I put my name for ever.",
+  "ref": "2 Chronicles 33:7"
+ },
+ {
+  "id": "2-chronicles-33-h-02",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say he would not do any more if Israel took heed to the law?",
+  "choices": [
+   "Send Assyria against them",
+   "Close the heavens",
+   "Remove the foot of Israel from the land",
+   "Break the covenant of David"
+  ],
+  "answer": 2,
+  "explanation": "Neither will I any more remove the foot of Israel from out of the land which I have appointed for your fathers.",
+  "ref": "2 Chronicles 33:8"
+ },
+ {
+  "id": "2-chronicles-33-h-03",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Manasseh make Judah do?",
+  "choices": [
+   "Forget the sabbath",
+   "Pay tribute to Assyria",
+   "Flee to Egypt",
+   "Err and do worse than the heathen"
+  ],
+  "answer": 3,
+  "explanation": "Manasseh made Judah and the inhabitants of Jerusalem to err, and to do worse than the heathen.",
+  "ref": "2 Chronicles 33:9"
+ },
+ {
+  "id": "2-chronicles-33-h-04",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place did Manasseh compass about with his wall?",
+  "choices": [
+   "Ophel",
+   "Zion",
+   "Millo",
+   "Moriah"
+  ],
+  "answer": 0,
+  "explanation": "He compassed about Ophel, and raised it up a very great height.",
+  "ref": "2 Chronicles 33:14"
+ },
+ {
+  "id": "2-chronicles-33-h-05",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "His wall reached to the entering in at which gate?",
+  "choices": [
+   "The sheep gate",
+   "The fish gate",
+   "The horse gate",
+   "The valley gate"
+  ],
+  "answer": 1,
+  "explanation": "He built a wall even to the entering in at the fish gate.",
+  "ref": "2 Chronicles 33:14"
+ },
+ {
+  "id": "2-chronicles-33-h-06",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Manasseh buried?",
+  "choices": [
+   "In the sepulchres of David",
+   "In the garden of Uzza",
+   "In his own house",
+   "In Hebron"
+  ],
+  "answer": 2,
+  "explanation": "Manasseh slept with his fathers, and they buried him in his own house.",
+  "ref": "2 Chronicles 33:20"
+ },
+ {
+  "id": "2-chronicles-33-h-07",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Amon when he began to reign?",
+  "choices": [
+   "Twelve",
+   "Eight",
+   "Thirty-two",
+   "Twenty-two"
+  ],
+  "answer": 3,
+  "explanation": "Amon was two and twenty years old when he began to reign.",
+  "ref": "2 Chronicles 33:21"
+ },
+ {
+  "id": "2-chronicles-33-h-08",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Amon reign in Jerusalem?",
+  "choices": [
+   "Two years",
+   "Fifty-five years",
+   "Twelve years",
+   "Eight years"
+  ],
+  "answer": 0,
+  "explanation": "Amon reigned two years in Jerusalem.",
+  "ref": "2 Chronicles 33:21"
+ },
+ {
+  "id": "2-chronicles-33-h-09",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what did Amon sacrifice?",
+  "choices": [
+   "The host of heaven only",
+   "The carved images Manasseh had made",
+   "The altar of Baal at Samaria",
+   "The gods of Assyria"
+  ],
+  "answer": 1,
+  "explanation": "Amon sacrificed unto all the carved images which Manasseh his father had made.",
+  "ref": "2 Chronicles 33:22"
+ },
+ {
+  "id": "2-chronicles-33-h-10",
+  "chapter": 33,
+  "level": "hard",
+  "category": "person",
+  "question": "Who conspired against Amon and slew him in his own house?",
+  "choices": [
+   "His sons",
+   "The priests",
+   "His servants",
+   "The princes of Judah"
+  ],
+  "answer": 2,
+  "explanation": "His servants conspired against him, and slew him in his own house.",
+  "ref": "2 Chronicles 33:24"
+ },
+ {
+  "id": "2-chronicles-33-h-11",
+  "chapter": 33,
+  "level": "hard",
+  "category": "person",
+  "question": "Who slew all those who had conspired against King Amon?",
+  "choices": [
+   "Josiah",
+   "The captains of war",
+   "The priests",
+   "The people of the land"
+  ],
+  "answer": 3,
+  "explanation": "The people of the land slew all them that had conspired against king Amon.",
+  "ref": "2 Chronicles 33:25"
+ },
+ {
+  "id": "2-chronicles-33-h-12",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were the places Manasseh built high places and groves written?",
+  "choices": [
+   "Among the sayings of the seers",
+   "In the book of Jasher",
+   "In the vision of Isaiah",
+   "On the temple walls"
+  ],
+  "answer": 0,
+  "explanation": "The places wherein he built high places, and set up groves and graven images, are written among the sayings of the seers.",
+  "ref": "2 Chronicles 33:19"
+ },
+ {
+  "id": "2-chronicles-33-h-13",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Manasseh cast the strange gods and altars he took away?",
+  "choices": [
+   "Into the brook Kidron",
+   "Out of the city",
+   "Into the sea",
+   "Into the fire in Hinnom"
+  ],
+  "answer": 1,
+  "explanation": "He took away all the altars that he had built, and cast them out of the city.",
+  "ref": "2 Chronicles 33:15"
+ },
+ {
   "id": "old-2-chronicles-34-1",
   "chapter": 34,
   "level": "beginner",
