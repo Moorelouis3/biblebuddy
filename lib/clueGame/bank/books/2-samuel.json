@@ -12416,6 +12416,662 @@
   "ref": "2 Samuel 18:33"
  },
  {
+  "id": "2-samuel-18-e-01",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who were the three captains David sent forth, each over a third of the people?",
+  "choices": [
+   "Joab, Abner and Amasa",
+   "Joab, Abishai and Ittai",
+   "Abishai, Hushai and Zadok",
+   "Ittai, Ahimaaz and Cushi"
+  ],
+  "answer": 1,
+  "explanation": "David sent a third under Joab, a third under Abishai, and a third under Ittai the Gittite.",
+  "ref": "2 Samuel 18:2"
+ },
+ {
+  "id": "2-samuel-18-e-02",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say David was worth?",
+  "choices": [
+   "A thousand of us",
+   "Ten thousand of us",
+   "Twenty thousand of us",
+   "All of Israel"
+  ],
+  "answer": 1,
+  "explanation": "The people said, Thou art worth ten thousand of us.",
+  "ref": "2 Samuel 18:3"
+ },
+ {
+  "id": "2-samuel-18-e-03",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Absalom's mule?",
+  "choices": [
+   "It threw him in a river",
+   "It went away from under him",
+   "It was killed in battle",
+   "It ran into the camp"
+  ],
+  "answer": 1,
+  "explanation": "The mule went under the thick boughs of a great oak, and went away from under Absalom.",
+  "ref": "2 Samuel 18:9"
+ },
+ {
+  "id": "2-samuel-18-e-04",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Absalom hanging between?",
+  "choices": [
+   "Two oaks",
+   "Heaven and the earth",
+   "The wall and the gate",
+   "Two mules"
+  ],
+  "answer": 1,
+  "explanation": "He was taken up between the heaven and the earth.",
+  "ref": "2 Samuel 18:9"
+ },
+ {
+  "id": "2-samuel-18-e-05",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joab thrust through Absalom's heart?",
+  "choices": [
+   "A sword",
+   "Three darts",
+   "A spear",
+   "Two arrows"
+  ],
+  "answer": 1,
+  "explanation": "Joab took three darts in his hand, and thrust them through the heart of Absalom.",
+  "ref": "2 Samuel 18:14"
+ },
+ {
+  "id": "2-samuel-18-e-06",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joab do to stop the people pursuing Israel?",
+  "choices": [
+   "Sent a messenger",
+   "Blew the trumpet",
+   "Closed the gate",
+   "Lit a fire"
+  ],
+  "answer": 1,
+  "explanation": "Joab blew the trumpet, and the people returned from pursuing after Israel.",
+  "ref": "2 Samuel 18:16"
+ },
+ {
+  "id": "2-samuel-18-e-07",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Absalom's body put?",
+  "choices": [
+   "In his father's tomb",
+   "In a great pit under a heap of stones",
+   "In a cave in Hebron",
+   "In the king's dale"
+  ],
+  "answer": 1,
+  "explanation": "They cast him into a great pit in the wood, and laid a very great heap of stones upon him.",
+  "ref": "2 Samuel 18:17"
+ },
+ {
+  "id": "2-samuel-18-e-08",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who ran to bring the king tidings and overran Cushi?",
+  "choices": [
+   "Jonathan",
+   "Ahimaaz",
+   "Ittai",
+   "Zadok"
+  ],
+  "answer": 1,
+  "explanation": "Ahimaaz ran by the way of the plain, and overran Cushi.",
+  "ref": "2 Samuel 18:23"
+ },
+ {
+  "id": "2-samuel-18-e-09",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David ask both messengers about Absalom?",
+  "choices": [
+   "Where is Absalom buried?",
+   "Is the young man Absalom safe?",
+   "Did Joab obey me?",
+   "Who killed Absalom?"
+  ],
+  "answer": 1,
+  "explanation": "The king asked both Ahimaaz and Cushi, Is the young man Absalom safe?",
+  "ref": "2 Samuel 18:29"
+ },
+ {
+  "id": "2-samuel-18-e-10",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David go to weep for Absalom?",
+  "choices": [
+   "The wood of Ephraim",
+   "The chamber over the gate",
+   "The king's dale",
+   "Absalom's pillar"
+  ],
+  "answer": 1,
+  "explanation": "The king went up to the chamber over the gate, and wept.",
+  "ref": "2 Samuel 18:33"
+ },
+ {
+  "id": "2-samuel-18-m-01",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people say David should not go out to battle?",
+  "choices": [
+   "He was too old",
+   "The priests forbade it",
+   "He had no armour",
+   "He was worth ten thousand of them"
+  ],
+  "answer": 3,
+  "explanation": "They said he was worth ten thousand of them and it was better that he succour them out of the city.",
+  "ref": "2 Samuel 18:3"
+ },
+ {
+  "id": "2-samuel-18-m-02",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did David stand as the people came out by hundreds and thousands?",
+  "choices": [
+   "On the wall",
+   "On a hill",
+   "In the wood",
+   "By the gate side"
+  ],
+  "answer": 3,
+  "explanation": "The king stood by the gate side, and all the people came out.",
+  "ref": "2 Samuel 18:4"
+ },
+ {
+  "id": "2-samuel-18-m-03",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Abishai, one of the captains, the son of?",
+  "choices": [
+   "Abigail",
+   "Nahash",
+   "Zadok",
+   "Zeruiah"
+  ],
+  "answer": 3,
+  "explanation": "Abishai the son of Zeruiah, Joab's brother.",
+  "ref": "2 Samuel 18:2"
+ },
+ {
+  "id": "2-samuel-18-m-04",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Ittai, the third captain, from?",
+  "choices": [
+   "Gilead",
+   "Hebron",
+   "Rabbah",
+   "Gath"
+  ],
+  "answer": 3,
+  "explanation": "The third part was under the hand of Ittai the Gittite.",
+  "ref": "2 Samuel 18:2"
+ },
+ {
+  "id": "2-samuel-18-m-05",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men of Israel were slain in the battle?",
+  "choices": [
+   "Ten thousand",
+   "Twelve thousand",
+   "Forty thousand",
+   "Twenty thousand"
+  ],
+  "answer": 3,
+  "explanation": "There was a great slaughter that day of twenty thousand men.",
+  "ref": "2 Samuel 18:7"
+ },
+ {
+  "id": "2-samuel-18-m-06",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What devoured more people that day than the sword?",
+  "choices": [
+   "The river",
+   "The famine",
+   "The pit",
+   "The wood"
+  ],
+  "answer": 3,
+  "explanation": "The wood devoured more people that day than the sword devoured.",
+  "ref": "2 Samuel 18:8"
+ },
+ {
+  "id": "2-samuel-18-m-07",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joab say he would have given the man who saw Absalom hanging?",
+  "choices": [
+   "A thousand shekels",
+   "A captaincy",
+   "A field",
+   "Ten shekels of silver and a girdle"
+  ],
+  "answer": 3,
+  "explanation": "Joab said he would have given ten shekels of silver, and a girdle.",
+  "ref": "2 Samuel 18:11"
+ },
+ {
+  "id": "2-samuel-18-m-08",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the man not put forth his hand against Absalom?",
+  "choices": [
+   "He feared Joab",
+   "He was too weak",
+   "He did not know Absalom",
+   "The king charged them not to touch him"
+  ],
+  "answer": 3,
+  "explanation": "In our hearing the king charged thee and Abishai and Ittai, Beware that none touch the young man Absalom.",
+  "ref": "2 Samuel 18:12"
+ },
+ {
+  "id": "2-samuel-18-m-09",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many young men who bare Joab's armour smote Absalom?",
+  "choices": [
+   "Three",
+   "Twelve",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 3,
+  "explanation": "Ten young men that bare Joab's armour compassed about and smote Absalom, and slew him.",
+  "ref": "2 Samuel 18:15"
+ },
+ {
+  "id": "2-samuel-18-m-10",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Absalom raise up a pillar for himself?",
+  "choices": [
+   "He won a battle",
+   "David commanded it",
+   "To mark his grave",
+   "He had no son to keep his name"
+  ],
+  "answer": 3,
+  "explanation": "He said, I have no son to keep my name in remembrance.",
+  "ref": "2 Samuel 18:18"
+ },
+ {
+  "id": "2-samuel-18-m-11",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joab tell Ahimaaz when he asked to run?",
+  "choices": [
+   "He should run at once",
+   "He should wait for David",
+   "He should follow Cushi",
+   "He would bear tidings another day"
+  ],
+  "answer": 3,
+  "explanation": "Joab said, Thou shalt not bear tidings this day, but thou shalt bear tidings another day.",
+  "ref": "2 Samuel 18:20"
+ },
+ {
+  "id": "2-samuel-18-m-12",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Joab tell to go tell the king what he had seen?",
+  "choices": [
+   "Ahimaaz",
+   "Ittai",
+   "Abishai",
+   "Cushi"
+  ],
+  "answer": 3,
+  "explanation": "Joab said to Cushi, Go tell the king what thou hast seen.",
+  "ref": "2 Samuel 18:21"
+ },
+ {
+  "id": "2-samuel-18-m-13",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did David sit while he waited for news?",
+  "choices": [
+   "On the wall",
+   "In the wood",
+   "At Mahanaim's tower",
+   "Between the two gates"
+  ],
+  "answer": 3,
+  "explanation": "David sat between the two gates.",
+  "ref": "2 Samuel 18:24"
+ },
+ {
+  "id": "2-samuel-18-m-14",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "Who first saw a man running alone toward the king?",
+  "choices": [
+   "Joab",
+   "The porter",
+   "Ahimaaz",
+   "The watchman"
+  ],
+  "answer": 3,
+  "explanation": "The watchman went up to the roof over the gate and saw a man running alone.",
+  "ref": "2 Samuel 18:24"
+ },
+ {
+  "id": "2-samuel-18-m-15",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say of a man running alone?",
+  "choices": [
+   "He is a spy",
+   "He brings evil",
+   "He is an enemy",
+   "There is tidings in his mouth"
+  ],
+  "answer": 3,
+  "explanation": "The king said, If he be alone, there is tidings in his mouth.",
+  "ref": "2 Samuel 18:25"
+ },
+ {
+  "id": "2-samuel-18-h-01",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ahimaaz say when he reached David?",
+  "choices": [
+   "All is well",
+   "The king lives",
+   "Absalom is safe",
+   "The battle is lost"
+  ],
+  "answer": 0,
+  "explanation": "Ahimaaz called, and said unto the king, All is well.",
+  "ref": "2 Samuel 18:28"
+ },
+ {
+  "id": "2-samuel-18-h-02",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ahimaaz say he saw when Joab sent him?",
+  "choices": [
+   "A great tumult",
+   "A great fire",
+   "An army fleeing",
+   "A hanging man"
+  ],
+  "answer": 0,
+  "explanation": "I saw a great tumult, but I knew not what it was.",
+  "ref": "2 Samuel 18:29"
+ },
+ {
+  "id": "2-samuel-18-h-03",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David tell Ahimaaz to do when Cushi came?",
+  "choices": [
+   "Turn aside and stand there",
+   "Go back to Joab",
+   "Run to the gate",
+   "Fall on his face"
+  ],
+  "answer": 0,
+  "explanation": "The king said, Turn aside, and stand here. And he turned aside, and stood still.",
+  "ref": "2 Samuel 18:30"
+ },
+ {
+  "id": "2-samuel-18-h-04",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Cushi say the LORD had done?",
+  "choices": [
+   "Avenged the king of all who rose up against him",
+   "Delivered Absalom",
+   "Sent the rain",
+   "Scattered the host"
+  ],
+  "answer": 0,
+  "explanation": "Cushi said, The LORD hath avenged thee this day of all them that rose up against thee.",
+  "ref": "2 Samuel 18:31"
+ },
+ {
+  "id": "2-samuel-18-h-05",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Cushi answer when David asked about Absalom?",
+  "choices": [
+   "Enemies of the king be as that young man is",
+   "He is safe",
+   "He is taken",
+   "He fled to Geshur"
+  ],
+  "answer": 0,
+  "explanation": "The enemies of my lord the king, and all that rise against thee to do thee hurt, be as that young man is.",
+  "ref": "2 Samuel 18:32"
+ },
+ {
+  "id": "2-samuel-18-h-06",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was David's cry for Absalom, as he went?",
+  "choices": [
+   "Would God I had died for thee",
+   "I will avenge thee",
+   "Why hast thou left me",
+   "Return, my son"
+  ],
+  "answer": 0,
+  "explanation": "Would God I had died for thee, O Absalom, my son, my son!",
+  "ref": "2 Samuel 18:33"
+ },
+ {
+  "id": "2-samuel-18-h-07",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Ahimaaz?",
+  "choices": [
+   "Zadok",
+   "Abiathar",
+   "Joab",
+   "Ittai"
+  ],
+  "answer": 0,
+  "explanation": "Ahimaaz the son of Zadok asked to run and bear the king tidings.",
+  "ref": "2 Samuel 18:19"
+ },
+ {
+  "id": "2-samuel-18-h-08",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ahimaaz say the LORD had done to the king's enemies?",
+  "choices": [
+   "Avenged him",
+   "Judged them",
+   "Broken them",
+   "Taken them captive"
+  ],
+  "answer": 0,
+  "explanation": "Let me now run, and bear the king tidings, how that the LORD hath avenged him of his enemies.",
+  "ref": "2 Samuel 18:19"
+ },
+ {
+  "id": "2-samuel-18-h-09",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Absalom's pillar?",
+  "choices": [
+   "In the king's dale",
+   "In Hebron",
+   "In Gilead",
+   "Near the gate"
+  ],
+  "answer": 0,
+  "explanation": "He reared up a pillar which is in the king's dale, and called it Absalom's place.",
+  "ref": "2 Samuel 18:18"
+ },
+ {
+  "id": "2-samuel-18-h-10",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Ahimaaz run to overtake Cushi?",
+  "choices": [
+   "By the way of the plain",
+   "Through the wood",
+   "By the Jordan",
+   "By the city wall"
+  ],
+  "answer": 0,
+  "explanation": "Ahimaaz ran by the way of the plain, and overran Cushi.",
+  "ref": "2 Samuel 18:23"
+ },
+ {
+  "id": "2-samuel-18-h-11",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David do after numbering the people?",
+  "choices": [
+   "Set captains of thousands and hundreds",
+   "Divided them in two",
+   "Sent them home",
+   "Gave them armour"
+  ],
+  "answer": 0,
+  "explanation": "David numbered the people and set captains of thousands and captains of hundreds over them.",
+  "ref": "2 Samuel 18:1"
+ },
+ {
+  "id": "2-samuel-18-h-12",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "What did the watchman say of the foremost runner?",
+  "choices": [
+   "He runs like Ahimaaz the son of Zadok",
+   "He is Cushi",
+   "He is Joab",
+   "He is a stranger"
+  ],
+  "answer": 0,
+  "explanation": "The running of the foremost is like the running of Ahimaaz the son of Zadok.",
+  "ref": "2 Samuel 18:27"
+ },
+ {
+  "id": "2-samuel-18-h-13",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say of Ahimaaz when the watchman named him?",
+  "choices": [
+   "He is a good man, and cometh with good tidings",
+   "He is a fool",
+   "He is Zadok's rival",
+   "He comes too late"
+  ],
+  "answer": 0,
+  "explanation": "The king said, He is a good man, and cometh with good tidings.",
+  "ref": "2 Samuel 18:27"
+ },
+ {
+  "id": "2-samuel-18-h-14",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "Who did the watchman call to about the second runner?",
+  "choices": [
+   "The porter",
+   "Joab",
+   "David",
+   "The captain"
+  ],
+  "answer": 0,
+  "explanation": "The watchman called unto the porter, Behold another man running alone.",
+  "ref": "2 Samuel 18:26"
+ },
+ {
+  "id": "2-samuel-18-h-15",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Ahimaaz bow before David?",
+  "choices": [
+   "Fell on his face to the earth",
+   "Kneeled and kissed his hand",
+   "Stood with bowed head",
+   "Bowed to the gate"
+  ],
+  "answer": 0,
+  "explanation": "He fell down to the earth upon his face before the king.",
+  "ref": "2 Samuel 18:28"
+ },
+ {
+  "id": "2-samuel-18-h-16",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joab say to Ahimaaz when he asked to run after Cushi?",
+  "choices": [
+   "Why run, seeing thou hast no tidings ready",
+   "Run, my son",
+   "Go with Cushi",
+   "Stay at the gate"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore wilt thou run, my son, seeing that thou hast no tidings ready?",
+  "ref": "2 Samuel 18:22"
+ },
+ {
   "id": "old-2-samuel-19-1",
   "chapter": 19,
   "level": "beginner",
