@@ -478,5 +478,3125 @@
   "answer": 1,
   "explanation": "Paul says he will glory only in the cross of Christ.",
   "ref": "Galatians 6:14"
+ },
+ {
+  "id": "galatians-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Paul say raised Jesus Christ from the dead?",
+  "choices": [
+   "God the Father",
+   "The Holy Spirit",
+   "Peter",
+   "James"
+  ],
+  "answer": 0,
+  "explanation": "Paul is an apostle by Jesus Christ, and God the Father, who raised him from the dead.",
+  "ref": "Galatians 1:1"
+ },
+ {
+  "id": "galatians-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "To whom is Paul's letter addressed?",
+  "choices": [
+   "The churches of Galatia",
+   "The church at Ephesus",
+   "The church at Corinth",
+   "The saints in Rome"
+  ],
+  "answer": 0,
+  "explanation": "Paul and all the brethren with him write unto the churches of Galatia.",
+  "ref": "Galatians 1:2"
+ },
+ {
+  "id": "galatians-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Paul go up to Jerusalem to see after three years?",
+  "choices": [
+   "Peter",
+   "John",
+   "Barnabas",
+   "Titus"
+  ],
+  "answer": 0,
+  "explanation": "After three years Paul went up to Jerusalem to see Peter and abode with him fifteen days.",
+  "ref": "Galatians 1:18"
+ },
+ {
+  "id": "galatians-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which other apostle did Paul see, besides Peter?",
+  "choices": [
+   "James the Lord's brother",
+   "John",
+   "Andrew",
+   "Barnabas"
+  ],
+  "answer": 0,
+  "explanation": "Other of the apostles saw I none, save James the Lord's brother.",
+  "ref": "Galatians 1:19"
+ },
+ {
+  "id": "galatians-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul do to the church of God in his former life in the Jews' religion?",
+  "choices": [
+   "Persecuted it and wasted it",
+   "Taught it the law",
+   "Fed it and defended it",
+   "Ignored it"
+  ],
+  "answer": 0,
+  "explanation": "Paul says beyond measure he persecuted the church of God, and wasted it.",
+  "ref": "Galatians 1:13"
+ },
+ {
+  "id": "galatians-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "After his time in Arabia, where did Paul return?",
+  "choices": [
+   "Damascus",
+   "Antioch",
+   "Jerusalem",
+   "Tarsus"
+  ],
+  "answer": 0,
+  "explanation": "Paul went into Arabia, and returned again unto Damascus.",
+  "ref": "Galatians 1:17"
+ },
+ {
+  "id": "galatians-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the churches of Judaea respond when they heard about Paul?",
+  "choices": [
+   "They glorified God in him",
+   "They doubted him",
+   "They sent him away",
+   "They asked him to preach"
+  ],
+  "answer": 0,
+  "explanation": "They had heard that the former persecutor now preached the faith, and they glorified God in Paul.",
+  "ref": "Galatians 1:23–24"
+ },
+ {
+  "id": "galatians-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says even who, if he preached another gospel, would be accursed?",
+  "choices": [
+   "Peter",
+   "An angel from heaven",
+   "The elders of Jerusalem",
+   "An emperor"
+  ],
+  "answer": 1,
+  "explanation": "Though we, or an angel from heaven, preach any other gospel, let him be accursed.",
+  "ref": "Galatians 1:8"
+ },
+ {
+  "id": "galatians-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Paul more exceedingly zealous of before he was called?",
+  "choices": [
+   "The temple offerings",
+   "The traditions of his fathers",
+   "The Roman peace",
+   "The writings of the prophets"
+  ],
+  "answer": 1,
+  "explanation": "Paul profited in the Jews' religion above many of his equals, being more exceedingly zealous of the traditions of his fathers.",
+  "ref": "Galatians 1:14"
+ },
+ {
+  "id": "galatians-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says if he still pleased men, what would he not be?",
+  "choices": [
+   "An apostle to the Jews",
+   "The servant of Christ",
+   "A preacher among the heathen",
+   "A friend of Peter"
+  ],
+  "answer": 1,
+  "explanation": "For if I yet pleased men, I should not be the servant of Christ.",
+  "ref": "Galatians 1:10"
+ },
+ {
+  "id": "galatians-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who separated Paul from his mother's womb and called him by his grace?",
+  "choices": [
+   "Peter",
+   "God",
+   "Barnabas",
+   "The Jerusalem apostles"
+  ],
+  "answer": 1,
+  "explanation": "It pleased God, who separated Paul from his mother's womb, and called him by his grace.",
+  "ref": "Galatians 1:15"
+ },
+ {
+  "id": "galatians-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the churches of Judaea heard about Paul?",
+  "choices": [
+   "He had gone to Rome",
+   "He now preached the faith he once destroyed",
+   "He taught the traditions of the fathers",
+   "He had been put in prison"
+  ],
+  "answer": 1,
+  "explanation": "They had heard only that he which persecuted them now preacheth the faith which once he destroyed.",
+  "ref": "Galatians 1:23"
+ },
+ {
+  "id": "galatians-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people troubling the Galatians want to do to the gospel of Christ?",
+  "choices": [
+   "Hide it",
+   "Pervert it",
+   "Translate it",
+   "Sell it"
+  ],
+  "answer": 1,
+  "explanation": "There be some that trouble you, and would pervert the gospel of Christ.",
+  "ref": "Galatians 1:7"
+ },
+ {
+  "id": "galatians-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says that, before God, he does what in the things he writes?",
+  "choices": [
+   "He does not boast",
+   "He does not lie",
+   "He hides nothing",
+   "He doubts nothing"
+  ],
+  "answer": 1,
+  "explanation": "Now the things which I write unto you, behold, before God, I lie not.",
+  "ref": "Galatians 1:20"
+ },
+ {
+  "id": "galatians-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Paul asks whether he now seeks to persuade men or whom?",
+  "choices": [
+   "The apostles",
+   "God",
+   "The churches of Judaea",
+   "The Galatians"
+  ],
+  "answer": 1,
+  "explanation": "For do I now persuade men, or God? or do I seek to please men?",
+  "ref": "Galatians 1:10"
+ },
+ {
+  "id": "galatians-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When God called him, with whom did Paul not immediately confer?",
+  "choices": [
+   "The churches of Judaea",
+   "Flesh and blood",
+   "The brethren in Damascus",
+   "Barnabas"
+  ],
+  "answer": 1,
+  "explanation": "Immediately I conferred not with flesh and blood.",
+  "ref": "Galatians 1:16"
+ },
+ {
+  "id": "galatians-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From what does Paul say Christ gave himself to deliver us?",
+  "choices": [
+   "The wrath of Rome",
+   "This present evil world",
+   "The curse of the prophets",
+   "The cities of Galatia"
+  ],
+  "answer": 1,
+  "explanation": "Jesus gave himself for our sins, that he might deliver us from this present evil world.",
+  "ref": "Galatians 1:4"
+ },
+ {
+  "id": "galatians-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says the gospel he preached is not after whom?",
+  "choices": [
+   "Peter",
+   "Man",
+   "The law",
+   "The Gentiles"
+  ],
+  "answer": 1,
+  "explanation": "The gospel which was preached of me is not after man.",
+  "ref": "Galatians 1:11"
+ },
+ {
+  "id": "galatians-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Paul wishes grace and peace from God the Father and from whom?",
+  "choices": [
+   "The churches of Judaea",
+   "Our Lord Jesus Christ",
+   "The apostles in Jerusalem",
+   "The brethren with him"
+  ],
+  "answer": 1,
+  "explanation": "Grace be to you and peace from God the Father, and from our Lord Jesus Christ.",
+  "ref": "Galatians 1:3"
+ },
+ {
+  "id": "galatians-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After how many years did Paul go up to Jerusalem to see Peter?",
+  "choices": [
+   "Seven",
+   "Three",
+   "Fourteen",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "Then after three years I went up to Jerusalem to see Peter.",
+  "ref": "Galatians 1:18"
+ },
+ {
+  "id": "galatians-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Paul stay with Peter in Jerusalem?",
+  "choices": [
+   "Three days",
+   "Fifteen days",
+   "Forty days",
+   "One year"
+  ],
+  "answer": 1,
+  "explanation": "Paul went up to see Peter, and abode with him fifteen days.",
+  "ref": "Galatians 1:18"
+ },
+ {
+  "id": "galatians-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the churches of Judaea acquainted with Paul?",
+  "choices": [
+   "As a teacher",
+   "Unknown by face",
+   "As a neighbour",
+   "As a prisoner"
+  ],
+  "answer": 1,
+  "explanation": "Paul was unknown by face unto the churches of Judaea which were in Christ.",
+  "ref": "Galatians 1:22"
+ },
+ {
+  "id": "galatians-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Above whom does Paul say he profited in the Jews' religion?",
+  "choices": [
+   "The apostles before him",
+   "Many of his equals in his own nation",
+   "The elders of Galatia",
+   "The churches of Judaea"
+  ],
+  "answer": 1,
+  "explanation": "Paul profited in the Jews' religion above many his equals in his own nation.",
+  "ref": "Galatians 1:14"
+ },
+ {
+  "id": "galatians-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who does Paul say are with him as he writes to the churches?",
+  "choices": [
+   "Barnabas and Titus",
+   "All the brethren",
+   "James and Peter",
+   "Silas and Timothy"
+  ],
+  "answer": 1,
+  "explanation": "Paul writes with all the brethren which are with me, unto the churches of Galatia.",
+  "ref": "Galatians 1:2"
+ },
+ {
+  "id": "galatians-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom does Paul say be glory for ever and ever?",
+  "choices": [
+   "The Galatians",
+   "God and our Father",
+   "Peter",
+   "The Lord's brother"
+  ],
+  "answer": 1,
+  "explanation": "According to the will of God and our Father, to whom be glory for ever and ever. Amen.",
+  "ref": "Galatians 1:4–5"
+ },
+ {
+  "id": "galatians-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul marvelled that the Galatians were removed from him that called them into what?",
+  "choices": [
+   "The faith of Abraham",
+   "The grace of Christ",
+   "The law of Moses",
+   "The fellowship of Peter"
+  ],
+  "answer": 1,
+  "explanation": "I marvel that ye are so soon removed from him that called you into the grace of Christ unto another gospel.",
+  "ref": "Galatians 1:6"
+ },
+ {
+  "id": "galatians-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what does Paul say God called him?",
+  "choices": [
+   "His law",
+   "His grace",
+   "His angels",
+   "His prophets"
+  ],
+  "answer": 1,
+  "explanation": "God separated me from my mother's womb, and called me by his grace.",
+  "ref": "Galatians 1:15"
+ },
+ {
+  "id": "galatians-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose religion does Paul say the Galatians had heard about his former conversation?",
+  "choices": [
+   "The Greeks' religion",
+   "The Jews' religion",
+   "The Romans' religion",
+   "The Pharisees' tradition"
+  ],
+  "answer": 1,
+  "explanation": "Ye have heard of my conversation in time past in the Jews' religion.",
+  "ref": "Galatians 1:13"
+ },
+ {
+  "id": "galatians-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "To which regions did Paul come after his visit to Peter?",
+  "choices": [
+   "Macedonia and Achaia",
+   "Syria and Cilicia",
+   "Egypt and Libya",
+   "Asia and Phrygia"
+  ],
+  "answer": 1,
+  "explanation": "Afterwards I came into the regions of Syria and Cilicia.",
+  "ref": "Galatians 1:21"
+ },
+ {
+  "id": "galatians-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul went neither up to Jerusalem to whom, nor conferred with flesh and blood?",
+  "choices": [
+   "The churches of Judaea",
+   "Them which were apostles before him",
+   "The brethren of Damascus",
+   "Peter and John"
+  ],
+  "answer": 1,
+  "explanation": "Neither went I up to Jerusalem to them which were apostles before me.",
+  "ref": "Galatians 1:17"
+ },
+ {
+  "id": "galatians-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Among whom did God call Paul to preach his Son?",
+  "choices": [
+   "The Samaritans",
+   "The heathen",
+   "The Romans",
+   "The Pharisees"
+  ],
+  "answer": 1,
+  "explanation": "God revealed his Son in me, that I might preach him among the heathen.",
+  "ref": "Galatians 1:16"
+ },
+ {
+  "id": "galatians-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went up to Jerusalem with Paul, along with Titus?",
+  "choices": [
+   "Barnabas",
+   "Silas",
+   "Timothy",
+   "Peter"
+  ],
+  "answer": 0,
+  "explanation": "Paul went up again to Jerusalem with Barnabas, and took Titus with him also.",
+  "ref": "Galatians 2:1"
+ },
+ {
+  "id": "galatians-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "To which apostle was the gospel of the circumcision committed?",
+  "choices": [
+   "Peter",
+   "James",
+   "John",
+   "Barnabas"
+  ],
+  "answer": 0,
+  "explanation": "The gospel of the circumcision was unto Peter.",
+  "ref": "Galatians 2:7"
+ },
+ {
+  "id": "galatians-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did James, Cephas and John give to Paul and Barnabas?",
+  "choices": [
+   "The right hands of fellowship",
+   "Gifts of silver",
+   "A letter of commendation",
+   "A seat at the table"
+  ],
+  "answer": 0,
+  "explanation": "They gave to me and Barnabas the right hands of fellowship.",
+  "ref": "Galatians 2:9"
+ },
+ {
+  "id": "galatians-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Jerusalem leaders ask Paul and Barnabas to remember?",
+  "choices": [
+   "The poor",
+   "The law of Moses",
+   "The feasts",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "Only they would that we should remember the poor.",
+  "ref": "Galatians 2:10"
+ },
+ {
+  "id": "galatians-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was carried away with the other Jews' dissimulation?",
+  "choices": [
+   "Barnabas",
+   "Titus",
+   "John",
+   "Silas"
+  ],
+  "answer": 0,
+  "explanation": "The other Jews dissembled likewise with Peter, insomuch that Barnabas also was carried away.",
+  "ref": "Galatians 2:13"
+ },
+ {
+  "id": "galatians-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Before certain came from James, what did Peter do at Antioch?",
+  "choices": [
+   "Ate with the Gentiles",
+   "Preached in the synagogue",
+   "Fasted alone",
+   "Built an altar"
+  ],
+  "answer": 0,
+  "explanation": "Before that certain came from James, he did eat with the Gentiles.",
+  "ref": "Galatians 2:12"
+ },
+ {
+  "id": "galatians-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Peter withdraw and separate himself from the Gentiles?",
+  "choices": [
+   "He was sick",
+   "He was called to Jerusalem",
+   "He feared them of the circumcision",
+   "He wanted to teach"
+  ],
+  "answer": 2,
+  "explanation": "He withdrew and separated himself, fearing them which were of the circumcision.",
+  "ref": "Galatians 2:12"
+ },
+ {
+  "id": "galatians-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Which three men seemed to be pillars?",
+  "choices": [
+   "Peter, Barnabas and Titus",
+   "James, Paul and Silas",
+   "James, Cephas and John",
+   "John, Titus and Barnabas"
+  ],
+  "answer": 2,
+  "explanation": "James, Cephas, and John, who seemed to be pillars, gave Paul and Barnabas the right hands of fellowship.",
+  "ref": "Galatians 2:9"
+ },
+ {
+  "id": "galatians-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say to Peter before them all?",
+  "choices": [
+   "Why did you leave Jerusalem?",
+   "Why did you deny Christ?",
+   "Why do you compel the Gentiles to live as Jews?",
+   "Why do you fear Rome?"
+  ],
+  "answer": 2,
+  "explanation": "If thou, being a Jew, livest after the manner of Gentiles, why compellest thou the Gentiles to live as do the Jews?",
+  "ref": "Galatians 2:14"
+ },
+ {
+  "id": "galatians-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what did Paul say he went up again to Jerusalem?",
+  "choices": [
+   "A letter",
+   "A vow",
+   "Revelation",
+   "The elders' call"
+  ],
+  "answer": 2,
+  "explanation": "And I went up by revelation.",
+  "ref": "Galatians 2:2"
+ },
+ {
+  "id": "galatians-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul asks if Christ is the minister of sin. What is his answer?",
+  "choices": [
+   "It is so",
+   "Perhaps",
+   "God forbid",
+   "Let the elders decide"
+  ],
+  "answer": 2,
+  "explanation": "Is therefore Christ the minister of sin? God forbid.",
+  "ref": "Galatians 2:17"
+ },
+ {
+  "id": "galatians-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says he through the law is dead to the law, that he might live unto whom?",
+  "choices": [
+   "The church",
+   "The apostles",
+   "God",
+   "The fathers"
+  ],
+  "answer": 2,
+  "explanation": "For I through the law am dead to the law, that I might live unto God.",
+  "ref": "Galatians 2:19"
+ },
+ {
+  "id": "galatians-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says if righteousness comes by the law, then what follows?",
+  "choices": [
+   "The law is perfected",
+   "The Gentiles are lost",
+   "Christ is dead in vain",
+   "Peter is blessed"
+  ],
+  "answer": 2,
+  "explanation": "If righteousness come by the law, then Christ is dead in vain.",
+  "ref": "Galatians 2:21"
+ },
+ {
+  "id": "galatians-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul withstand Peter to the face?",
+  "choices": [
+   "He was a false brother",
+   "He had gone to Rome",
+   "He was to be blamed",
+   "He denied Titus"
+  ],
+  "answer": 2,
+  "explanation": "I withstood him to the face, because he was to be blamed.",
+  "ref": "Galatians 2:11"
+ },
+ {
+  "id": "galatians-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did those of reputation add to Paul in conference?",
+  "choices": [
+   "A commandment",
+   "Titus",
+   "Nothing",
+   "A letter"
+  ],
+  "answer": 2,
+  "explanation": "For they who seemed to be somewhat in conference added nothing to me.",
+  "ref": "Galatians 2:6"
+ },
+ {
+  "id": "galatians-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul not give place to the false brethren, even for an hour?",
+  "choices": [
+   "Peter would be spared",
+   "The poor would be remembered",
+   "The truth of the gospel would continue with them",
+   "Titus would be accepted"
+  ],
+  "answer": 2,
+  "explanation": "We gave place by subjection, no, not for an hour; that the truth of the gospel might continue with you.",
+  "ref": "Galatians 2:5"
+ },
+ {
+  "id": "galatians-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "He that wrought effectually in Peter was mighty in Paul toward whom?",
+  "choices": [
+   "The Greeks only",
+   "The poor",
+   "The Gentiles",
+   "The false brethren"
+  ],
+  "answer": 2,
+  "explanation": "He that wrought effectually in Peter to the apostleship of the circumcision, the same was mighty in me toward the Gentiles.",
+  "ref": "Galatians 2:8"
+ },
+ {
+  "id": "galatians-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years after did Paul go up again to Jerusalem?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Twenty",
+   "Fourteen"
+  ],
+  "answer": 3,
+  "explanation": "Then fourteen years after I went up again to Jerusalem.",
+  "ref": "Galatians 2:1"
+ },
+ {
+  "id": "galatians-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did Paul privately communicate the gospel he preached among the Gentiles?",
+  "choices": [
+   "The churches of Judaea",
+   "False brethren",
+   "The elders of Antioch",
+   "Them which were of reputation"
+  ],
+  "answer": 3,
+  "explanation": "I communicated unto them that gospel which I preach among the Gentiles, but privately to them which were of reputation.",
+  "ref": "Galatians 2:2"
+ },
+ {
+  "id": "galatians-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul went privately lest by any means he should do what?",
+  "choices": [
+   "Be arrested",
+   "Offend Peter",
+   "Lose Titus",
+   "Run in vain"
+  ],
+  "answer": 3,
+  "explanation": "Lest by any means I should run, or had run, in vain.",
+  "ref": "Galatians 2:2"
+ },
+ {
+  "id": "galatians-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how long did Paul give place by subjection to the false brethren?",
+  "choices": [
+   "Three days",
+   "A year",
+   "A season",
+   "Not for an hour"
+  ],
+  "answer": 3,
+  "explanation": "To whom we gave place by subjection, no, not for an hour.",
+  "ref": "Galatians 2:5"
+ },
+ {
+  "id": "galatians-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom did certain come to Antioch?",
+  "choices": [
+   "Barnabas",
+   "Titus",
+   "Peter",
+   "James"
+  ],
+  "answer": 3,
+  "explanation": "Before that certain came from James, he did eat with the Gentiles.",
+  "ref": "Galatians 2:12"
+ },
+ {
+  "id": "galatians-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The pillars agreed that Paul and Barnabas should go unto whom, and they unto the circumcision?",
+  "choices": [
+   "The Samaritans",
+   "The Romans",
+   "The Pharisees",
+   "The heathen"
+  ],
+  "answer": 3,
+  "explanation": "That we should go unto the heathen, and they unto the circumcision.",
+  "ref": "Galatians 2:9"
+ },
+ {
+  "id": "galatians-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say he makes himself if he builds again the things he destroyed?",
+  "choices": [
+   "A prophet",
+   "A pillar",
+   "A servant",
+   "A transgressor"
+  ],
+  "answer": 3,
+  "explanation": "For if I build again the things which I destroyed, I make myself a transgressor.",
+  "ref": "Galatians 2:18"
+ },
+ {
+  "id": "galatians-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says we who are Jews by nature are not what?",
+  "choices": [
+   "Sons of Abraham",
+   "Under the law",
+   "Servants of Christ",
+   "Sinners of the Gentiles"
+  ],
+  "answer": 3,
+  "explanation": "We who are Jews by nature, and not sinners of the Gentiles.",
+  "ref": "Galatians 2:15"
+ },
+ {
+  "id": "galatians-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say he does not frustrate?",
+  "choices": [
+   "The law of Moses",
+   "The pillars",
+   "The council",
+   "The grace of God"
+  ],
+  "answer": 3,
+  "explanation": "I do not frustrate the grace of God.",
+  "ref": "Galatians 2:21"
+ },
+ {
+  "id": "galatians-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did James, Cephas and John perceive before giving Paul the right hands of fellowship?",
+  "choices": [
+   "His letters",
+   "His zeal for the law",
+   "His gifts for the poor",
+   "The grace that was given to him"
+  ],
+  "answer": 3,
+  "explanation": "When James, Cephas, and John perceived the grace that was given unto me, they gave me and Barnabas the right hands of fellowship.",
+  "ref": "Galatians 2:9"
+ },
+ {
+  "id": "galatians-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who does Paul say loved him and gave himself for him?",
+  "choices": [
+   "Peter",
+   "Barnabas",
+   "James",
+   "The Son of God"
+  ],
+  "answer": 3,
+  "explanation": "I live by the faith of the Son of God, who loved me, and gave himself for me.",
+  "ref": "Galatians 2:20"
+ },
+ {
+  "id": "galatians-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul address the Galatians at the start of the chapter?",
+  "choices": [
+   "O faithful Galatians",
+   "O beloved Galatians",
+   "O weary Galatians",
+   "O foolish Galatians"
+  ],
+  "answer": 3,
+  "explanation": "Paul opens with: O foolish Galatians, who hath bewitched you?",
+  "ref": "Galatians 3:1"
+ },
+ {
+  "id": "galatians-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides ministering the Spirit, what does God work among the Galatians?",
+  "choices": [
+   "Famine",
+   "Dreams",
+   "Judgments",
+   "Miracles"
+  ],
+  "answer": 3,
+  "explanation": "He that ministereth to you the Spirit, and worketh miracles among you.",
+  "ref": "Galatians 3:5"
+ },
+ {
+  "id": "galatians-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Abraham believed God, and it was accounted to him for what?",
+  "choices": [
+   "Wealth",
+   "A land",
+   "A son",
+   "Righteousness"
+  ],
+  "answer": 3,
+  "explanation": "Even as Abraham believed God, and it was accounted to him for righteousness.",
+  "ref": "Galatians 3:6"
+ },
+ {
+  "id": "galatians-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Paul says those who are of faith are the children of whom?",
+  "choices": [
+   "Moses",
+   "David",
+   "Noah",
+   "Abraham"
+  ],
+  "answer": 3,
+  "explanation": "Know ye therefore that they which are of faith, the same are the children of Abraham.",
+  "ref": "Galatians 3:7"
+ },
+ {
+  "id": "galatians-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "The scripture said to Abraham, In thee shall all what be blessed?",
+  "choices": [
+   "Families of Israel",
+   "Priests",
+   "Cities",
+   "Nations"
+  ],
+  "answer": 3,
+  "explanation": "Preached before the gospel unto Abraham, saying, In thee shall all nations be blessed.",
+  "ref": "Galatians 3:8"
+ },
+ {
+  "id": "galatians-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul quotes that the just shall live by what?",
+  "choices": [
+   "The law",
+   "Works",
+   "Sacrifice",
+   "Faith"
+  ],
+  "answer": 3,
+  "explanation": "No man is justified by the law in the sight of God: for, The just shall live by faith.",
+  "ref": "Galatians 3:11"
+ },
+ {
+  "id": "galatians-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Paul says the promise to Abraham's seed points to which one Person?",
+  "choices": [
+   "Isaac",
+   "Moses",
+   "David",
+   "Christ"
+  ],
+  "answer": 3,
+  "explanation": "He saith not, And to seeds, as of many; but as of one, And to thy seed, which is Christ.",
+  "ref": "Galatians 3:16"
+ },
+ {
+  "id": "galatians-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Those baptized into Christ have done what?",
+  "choices": [
+   "Kept the law",
+   "Become priests",
+   "Left the world",
+   "Put on Christ"
+  ],
+  "answer": 3,
+  "explanation": "As many of you as have been baptized into Christ have put on Christ.",
+  "ref": "Galatians 3:27"
+ },
+ {
+  "id": "galatians-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In Christ Jesus, what does Paul say all believers are?",
+  "choices": [
+   "All priests",
+   "All apostles",
+   "All elders",
+   "All one"
+  ],
+  "answer": 3,
+  "explanation": "There is neither Jew nor Greek, bond nor free, male nor female: for ye are all one in Christ Jesus.",
+  "ref": "Galatians 3:28"
+ },
+ {
+  "id": "galatians-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By what are all believers the children of God?",
+  "choices": [
+   "Keeping the law",
+   "Circumcision",
+   "Their fathers",
+   "Faith in Christ Jesus"
+  ],
+  "answer": 3,
+  "explanation": "For ye are all the children of God by faith in Christ Jesus.",
+  "ref": "Galatians 3:26"
+ },
+ {
+  "id": "galatians-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had been evidently set forth before the Galatians' eyes?",
+  "choices": [
+   "The law written on stone",
+   "Jesus Christ crucified",
+   "Abraham's altar",
+   "The ark of the covenant"
+  ],
+  "answer": 1,
+  "explanation": "Before whose eyes Jesus Christ hath been evidently set forth, crucified among you.",
+  "ref": "Galatians 3:1"
+ },
+ {
+  "id": "galatians-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Having begun in the Spirit, by what does Paul ask if they are now made perfect?",
+  "choices": [
+   "The law",
+   "The flesh",
+   "Fasting",
+   "Their fathers"
+  ],
+  "answer": 1,
+  "explanation": "Are ye so foolish? having begun in the Spirit, are ye now made perfect by the flesh?",
+  "ref": "Galatians 3:3"
+ },
+ {
+  "id": "galatians-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul ask about the many things the Galatians have suffered?",
+  "choices": [
+   "Whether Peter knew",
+   "Whether they were in vain",
+   "Whether the law required it",
+   "Whether they were reward"
+  ],
+  "answer": 1,
+  "explanation": "Have ye suffered so many things in vain? if it be yet in vain.",
+  "ref": "Galatians 3:4"
+ },
+ {
+  "id": "galatians-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who does Paul say are under the curse?",
+  "choices": [
+   "All who are uncircumcised",
+   "As many as are of the works of the law",
+   "The Gentiles only",
+   "Those who hang on a tree"
+  ],
+  "answer": 1,
+  "explanation": "For as many as are of the works of the law are under the curse.",
+  "ref": "Galatians 3:10"
+ },
+ {
+  "id": "galatians-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the law say about the man who does its commands?",
+  "choices": [
+   "He shall be blessed",
+   "He shall live in them",
+   "He shall be justified",
+   "He shall be cursed"
+  ],
+  "answer": 1,
+  "explanation": "The law is not of faith: but, The man that doeth them shall live in them.",
+  "ref": "Galatians 3:12"
+ },
+ {
+  "id": "galatians-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Even a man's covenant, once confirmed, can no man do what?",
+  "choices": [
+   "Hide it",
+   "Disannul it or add to it",
+   "Teach it",
+   "Sell it"
+  ],
+  "answer": 1,
+  "explanation": "Though it be but a man's covenant, yet if it be confirmed, no man disannulleth, or addeth thereto.",
+  "ref": "Galatians 3:15"
+ },
+ {
+  "id": "galatians-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what basis did God give the inheritance to Abraham?",
+  "choices": [
+   "By the law",
+   "By promise",
+   "By works",
+   "By circumcision"
+  ],
+  "answer": 1,
+  "explanation": "If the inheritance be of the law, it is no more of promise: but God gave it to Abraham by promise.",
+  "ref": "Galatians 3:18"
+ },
+ {
+  "id": "galatians-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when was the law added because of transgressions?",
+  "choices": [
+   "Till the temple was built",
+   "Till the seed should come",
+   "Till Moses died",
+   "Till the Gentiles believed"
+  ],
+  "answer": 1,
+  "explanation": "It was added because of transgressions, till the seed should come to whom the promise was made.",
+  "ref": "Galatians 3:19"
+ },
+ {
+  "id": "galatians-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the scripture concluded all under?",
+  "choices": [
+   "The law",
+   "Sin",
+   "Judgment",
+   "Death"
+  ],
+  "answer": 1,
+  "explanation": "But the scripture hath concluded all under sin.",
+  "ref": "Galatians 3:22"
+ },
+ {
+  "id": "galatians-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says a mediator is not a mediator of whom?",
+  "choices": [
+   "The Gentiles",
+   "One",
+   "The angels",
+   "The Jews"
+  ],
+  "answer": 1,
+  "explanation": "Now a mediator is not a mediator of one, but God is one.",
+  "ref": "Galatians 3:20"
+ },
+ {
+  "id": "galatians-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "After faith is come, Paul says we are no longer under what?",
+  "choices": [
+   "A curse",
+   "A schoolmaster",
+   "A covenant",
+   "A king"
+  ],
+  "answer": 1,
+  "explanation": "But after that faith is come, we are no longer under a schoolmaster.",
+  "ref": "Galatians 3:25"
+ },
+ {
+  "id": "galatians-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If we are Christ's, then Paul says we are whose seed and heirs?",
+  "choices": [
+   "David's",
+   "Abraham's",
+   "Moses'",
+   "Isaac's"
+  ],
+  "answer": 1,
+  "explanation": "If ye be Christ's, then are ye Abraham's seed, and heirs according to the promise.",
+  "ref": "Galatians 3:29"
+ },
+ {
+  "id": "galatians-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul asks if the law is against the promises of God. What is his answer?",
+  "choices": [
+   "Yes, for a time",
+   "God forbid",
+   "It is",
+   "It replaced them"
+  ],
+  "answer": 1,
+  "explanation": "Is the law then against the promises of God? God forbid.",
+  "ref": "Galatians 3:21"
+ },
+ {
+  "id": "galatians-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Before faith came, we were kept under the law, shut up unto what?",
+  "choices": [
+   "The curse of the law",
+   "The faith which should afterwards be revealed",
+   "The land of promise",
+   "The covenant of Moses"
+  ],
+  "answer": 1,
+  "explanation": "Before faith came, we were kept under the law, shut up unto the faith which should afterwards be revealed.",
+  "ref": "Galatians 3:23"
+ },
+ {
+  "id": "galatians-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Through Jesus Christ, the blessing of Abraham might come on whom?",
+  "choices": [
+   "The Levites",
+   "The Gentiles",
+   "The Samaritans",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "That the blessing of Abraham might come on the Gentiles through Jesus Christ.",
+  "ref": "Galatians 3:14"
+ },
+ {
+  "id": "galatians-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "To Abraham and whom were the promises made?",
+  "choices": [
+   "His servants",
+   "His brethren",
+   "His seed",
+   "His fathers"
+  ],
+  "answer": 2,
+  "explanation": "Now to Abraham and his seed were the promises made.",
+  "ref": "Galatians 3:16"
+ },
+ {
+  "id": "galatians-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years after the covenant was the law given?",
+  "choices": [
+   "Four hundred",
+   "Three hundred and fifty",
+   "Four hundred and thirty",
+   "Six hundred"
+  ],
+  "answer": 2,
+  "explanation": "The law, which was four hundred and thirty years after, cannot disannul the covenant.",
+  "ref": "Galatians 3:17"
+ },
+ {
+  "id": "galatians-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By whom does Paul say the law was ordained, in the hand of a mediator?",
+  "choices": [
+   "Priests",
+   "Elders",
+   "Angels",
+   "Prophets"
+  ],
+  "answer": 2,
+  "explanation": "The law was ordained by angels in the hand of a mediator.",
+  "ref": "Galatians 3:19"
+ },
+ {
+  "id": "galatians-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In speaking about a covenant, how does Paul say he speaks?",
+  "choices": [
+   "After the manner of angels",
+   "In a parable",
+   "After the manner of men",
+   "In a vision"
+  ],
+  "answer": 2,
+  "explanation": "Brethren, I speak after the manner of men.",
+  "ref": "Galatians 3:15"
+ },
+ {
+  "id": "galatians-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whom was the covenant confirmed before of God?",
+  "choices": [
+   "Moses",
+   "David",
+   "Christ",
+   "Abraham alone"
+  ],
+  "answer": 2,
+  "explanation": "The covenant, that was confirmed before of God in Christ, the law cannot disannul.",
+  "ref": "Galatians 3:17"
+ },
+ {
+  "id": "galatians-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who foresaw that God would justify the heathen through faith?",
+  "choices": [
+   "Moses",
+   "Isaiah",
+   "The scripture",
+   "The angels"
+  ],
+  "answer": 2,
+  "explanation": "The scripture, foreseeing that God would justify the heathen through faith, preached before the gospel unto Abraham.",
+  "ref": "Galatians 3:8"
+ },
+ {
+  "id": "galatians-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which pair does Paul name with Jew nor Greek and bond nor free?",
+  "choices": [
+   "Neither rich nor poor",
+   "Neither priest nor king",
+   "Neither male nor female",
+   "Neither near nor far"
+  ],
+  "answer": 2,
+  "explanation": "There is neither Jew nor Greek, there is neither bond nor free, there is neither male nor female.",
+  "ref": "Galatians 3:28"
+ },
+ {
+  "id": "galatians-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If a law could have given life, what would have been by the law?",
+  "choices": [
+   "Peace",
+   "The Spirit",
+   "Righteousness",
+   "The inheritance of the land"
+  ],
+  "answer": 2,
+  "explanation": "If there had been a law given which could have given life, verily righteousness should have been by the law.",
+  "ref": "Galatians 3:21"
+ },
+ {
+  "id": "galatians-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Cursed is everyone who does not continue in all things written in what?",
+  "choices": [
+   "The prophets",
+   "The promise to Abraham",
+   "The book of the law",
+   "The covenant of the fathers"
+  ],
+  "answer": 2,
+  "explanation": "Cursed is every one that continueth not in all things which are written in the book of the law to do them.",
+  "ref": "Galatians 3:10"
+ },
+ {
+  "id": "galatians-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Those who are of faith are blessed with which Abraham?",
+  "choices": [
+   "Wealthy Abraham",
+   "Aged Abraham",
+   "Faithful Abraham",
+   "Righteous Abraham"
+  ],
+  "answer": 2,
+  "explanation": "So then they which be of faith are blessed with faithful Abraham.",
+  "ref": "Galatians 3:9"
+ },
+ {
+  "id": "galatians-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Cursed is every one that hangeth on what?",
+  "choices": [
+   "A cross",
+   "A wall",
+   "A tree",
+   "A hill"
+  ],
+  "answer": 2,
+  "explanation": "Christ hath redeemed us from the curse of the law, being made a curse for us: for it is written, Cursed is every one that hangeth on a tree.",
+  "ref": "Galatians 3:13"
+ },
+ {
+  "id": "galatians-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says the law is not of what?",
+  "choices": [
+   "Moses",
+   "Angels",
+   "Faith",
+   "Promise"
+  ],
+  "answer": 2,
+  "explanation": "And the law is not of faith: but, The man that doeth them shall live in them.",
+  "ref": "Galatians 3:12"
+ },
+ {
+  "id": "galatians-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Christ made for us, according to Paul?",
+  "choices": [
+   "A servant",
+   "A priest",
+   "A curse",
+   "A lamb"
+  ],
+  "answer": 2,
+  "explanation": "Christ hath redeemed us from the curse of the law, being made a curse for us.",
+  "ref": "Galatians 3:13"
+ },
+ {
+  "id": "galatians-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Through what do we receive the promise of the Spirit?",
+  "choices": [
+   "The law",
+   "Circumcision",
+   "Faith",
+   "Works"
+  ],
+  "answer": 2,
+  "explanation": "That we might receive the promise of the Spirit through faith.",
+  "ref": "Galatians 3:14"
+ },
+ {
+  "id": "galatians-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom was the promise by faith of Jesus Christ given?",
+  "choices": [
+   "The circumcised",
+   "The firstborn",
+   "Them that believe",
+   "The Israelites only"
+  ],
+  "answer": 2,
+  "explanation": "That the promise by faith of Jesus Christ might be given to them that believe.",
+  "ref": "Galatians 3:22"
+ },
+ {
+  "id": "galatians-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does Paul say mount Sinai is?",
+  "choices": [
+   "In Egypt",
+   "In Judaea",
+   "In Arabia",
+   "In Galatia"
+  ],
+  "answer": 2,
+  "explanation": "This Agar is mount Sinai in Arabia.",
+  "ref": "Galatians 4:25"
+ },
+ {
+  "id": "galatians-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which Jerusalem does Paul call the mother of us all?",
+  "choices": [
+   "Jerusalem which now is",
+   "The city of David",
+   "Jerusalem which is above",
+   "Jerusalem of the law"
+  ],
+  "answer": 2,
+  "explanation": "Jerusalem which is above is free, which is the mother of us all.",
+  "ref": "Galatians 4:26"
+ },
+ {
+  "id": "galatians-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "How did the Galatians receive Paul at the first?",
+  "choices": [
+   "As a prophet",
+   "As a stranger",
+   "As an angel of God",
+   "As a teacher of the law"
+  ],
+  "answer": 2,
+  "explanation": "Ye despised not my temptation, but received me as an angel of God, even as Christ Jesus.",
+  "ref": "Galatians 4:14"
+ },
+ {
+  "id": "galatians-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the Galatians have done for Paul, if it had been possible?",
+  "choices": [
+   "Given him their houses",
+   "Sent him to Jerusalem",
+   "Plucked out their own eyes and given them to him",
+   "Fasted for him"
+  ],
+  "answer": 2,
+  "explanation": "Ye would have plucked out your own eyes, and have given them to me.",
+  "ref": "Galatians 4:15"
+ },
+ {
+  "id": "galatians-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul says that if you are a son, you are no more a servant, but what?",
+  "choices": [
+   "A priest of the temple",
+   "A teacher of the law",
+   "An heir of God through Christ",
+   "A friend of Moses"
+  ],
+  "answer": 2,
+  "explanation": "Thou art no more a servant, but a son; and if a son, then an heir of God through Christ.",
+  "ref": "Galatians 4:7"
+ },
+ {
+  "id": "galatians-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the scripture say to do with the bondwoman and her son?",
+  "choices": [
+   "Teach them",
+   "Feed them",
+   "Cast them out",
+   "Send them to Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Cast out the bondwoman and her son.",
+  "ref": "Galatians 4:30"
+ },
+ {
+  "id": "galatians-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Paul ask if he had become the Galatians' enemy?",
+  "choices": [
+   "Because he left them",
+   "Because he preached the law",
+   "Because he told them the truth",
+   "Because he taught circumcision"
+  ],
+  "answer": 2,
+  "explanation": "Am I therefore become your enemy, because I tell you the truth?",
+  "ref": "Galatians 4:16"
+ },
+ {
+  "id": "galatians-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Abraham had two sons, one by a bondmaid. The other was by whom?",
+  "choices": [
+   "A servant of Pharaoh",
+   "A woman of Damascus",
+   "A freewoman",
+   "A widow"
+  ],
+  "answer": 2,
+  "explanation": "Abraham had two sons, the one by a bondmaid, the other by a freewoman.",
+  "ref": "Galatians 4:22"
+ },
+ {
+  "id": "galatians-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "He that was born after the flesh persecuted him that was born after what?",
+  "choices": [
+   "The law",
+   "The promise of Egypt",
+   "The Spirit",
+   "The covenant"
+  ],
+  "answer": 2,
+  "explanation": "He that was born after the flesh persecuted him that was born after the Spirit, even so it is now.",
+  "ref": "Galatians 4:29"
+ },
+ {
+  "id": "galatians-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul travails in birth again until what is formed in the Galatians?",
+  "choices": [
+   "The law",
+   "Faith in Abraham",
+   "Christ",
+   "A new covenant"
+  ],
+  "answer": 2,
+  "explanation": "My little children, of whom I travail in birth again until Christ be formed in you.",
+  "ref": "Galatians 4:19"
+ },
+ {
+  "id": "galatians-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says an heir, while a child, differs nothing from a servant, though he be what?",
+  "choices": [
+   "Lord of all",
+   "A king's son",
+   "An elder",
+   "A priest"
+  ],
+  "answer": 0,
+  "explanation": "The heir, as long as he is a child, differeth nothing from a servant, though he be lord of all.",
+  "ref": "Galatians 4:1"
+ },
+ {
+  "id": "galatians-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Under whom is the heir until the time appointed of the father?",
+  "choices": [
+   "Tutors and governors",
+   "Priests and elders",
+   "Judges and kings",
+   "Angels and prophets"
+  ],
+  "answer": 0,
+  "explanation": "But is under tutors and governors until the time appointed of the father.",
+  "ref": "Galatians 4:2"
+ },
+ {
+  "id": "galatians-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the Galatians serve when they knew not God?",
+  "choices": [
+   "Them which by nature are no gods",
+   "The angels of heaven",
+   "The elders of Jerusalem",
+   "The Roman emperor"
+  ],
+  "answer": 0,
+  "explanation": "When ye knew not God, ye did service unto them which by nature are no gods.",
+  "ref": "Galatians 4:8"
+ },
+ {
+  "id": "galatians-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul call the things the Galatians turn back to?",
+  "choices": [
+   "Weak and beggarly elements",
+   "Strong and stern teachers",
+   "Old and holy customs",
+   "Wise and ancient laws"
+  ],
+  "answer": 0,
+  "explanation": "How turn ye again to the weak and beggarly elements, whereunto ye desire again to be in bondage?",
+  "ref": "Galatians 4:9"
+ },
+ {
+  "id": "galatians-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say the Galatians observe?",
+  "choices": [
+   "Days, and months, and times, and years",
+   "Altars and feasts",
+   "Priests and sacrifices",
+   "Sabbaths only"
+  ],
+  "answer": 0,
+  "explanation": "Ye observe days, and months, and times, and years.",
+  "ref": "Galatians 4:10"
+ },
+ {
+  "id": "galatians-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say the Galatians have not done to him?",
+  "choices": [
+   "Injured him at all",
+   "Prayed for him",
+   "Visited him",
+   "Written to him"
+  ],
+  "answer": 0,
+  "explanation": "Brethren, I beseech you, be as I am; for I am as ye are: ye have not injured me at all.",
+  "ref": "Galatians 4:12"
+ },
+ {
+  "id": "galatians-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Through what did Paul preach the gospel to the Galatians at the first?",
+  "choices": [
+   "Infirmity of the flesh",
+   "A vision",
+   "A letter",
+   "A great crowd"
+  ],
+  "answer": 0,
+  "explanation": "Ye know how through infirmity of the flesh I preached the gospel unto you at the first.",
+  "ref": "Galatians 4:13"
+ },
+ {
+  "id": "galatians-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul describe those who zealously affect the Galatians?",
+  "choices": [
+   "They affect them, but not well",
+   "They love them faithfully",
+   "They teach them the law",
+   "They fear them"
+  ],
+  "answer": 0,
+  "explanation": "They zealously affect you, but not well; yea, they would exclude you.",
+  "ref": "Galatians 4:17"
+ },
+ {
+  "id": "galatians-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the son of the freewoman born?",
+  "choices": [
+   "By promise",
+   "By the law",
+   "By a vow",
+   "By an angel"
+  ],
+  "answer": 0,
+  "explanation": "He who was of the bondwoman was born after the flesh; but he of the freewoman was by promise.",
+  "ref": "Galatians 4:23"
+ },
+ {
+  "id": "galatians-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the covenant from mount Sinai gender to?",
+  "choices": [
+   "Bondage",
+   "Freedom",
+   "Peace",
+   "Faith"
+  ],
+  "answer": 0,
+  "explanation": "These are the two covenants; the one from the mount Sinai, which gendereth to bondage, which is Agar.",
+  "ref": "Galatians 4:24"
+ },
+ {
+  "id": "galatians-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Mount Sinai in Arabia answers to which place?",
+  "choices": [
+   "Jerusalem which now is",
+   "Jerusalem which is above",
+   "Damascus",
+   "Antioch"
+  ],
+  "answer": 0,
+  "explanation": "This Agar is mount Sinai in Arabia, and answereth to Jerusalem which now is, and is in bondage with her children.",
+  "ref": "Galatians 4:25"
+ },
+ {
+  "id": "galatians-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The scripture says, Rejoice, thou what?",
+  "choices": [
+   "Barren",
+   "Fruitful",
+   "Faithful",
+   "Free"
+  ],
+  "answer": 0,
+  "explanation": "Rejoice, thou barren that bearest not; break forth and cry, thou that travailest not.",
+  "ref": "Galatians 4:27"
+ },
+ {
+  "id": "galatians-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The son of the bondwoman shall not be what with the son of the free woman?",
+  "choices": [
+   "Heir",
+   "Servant",
+   "Judge",
+   "Brother"
+  ],
+  "answer": 0,
+  "explanation": "The son of the bondwoman shall not be heir with the son of the free woman.",
+  "ref": "Galatians 4:30"
+ },
+ {
+  "id": "galatians-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "God sent his Son, made under the law, to redeem whom?",
+  "choices": [
+   "Them that were under the law",
+   "The Gentiles only",
+   "The poor",
+   "Abraham's servants"
+  ],
+  "answer": 0,
+  "explanation": "God sent forth his Son, made under the law, to redeem them that were under the law.",
+  "ref": "Galatians 4:4–5"
+ },
+ {
+  "id": "galatians-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say Jerusalem which is above is?",
+  "choices": [
+   "Free",
+   "Barren",
+   "In bondage",
+   "Desolate"
+  ],
+  "answer": 0,
+  "explanation": "But Jerusalem which is above is free, which is the mother of us all.",
+  "ref": "Galatians 4:26"
+ },
+ {
+  "id": "galatians-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jerusalem which now is, Paul says, is in bondage with whom?",
+  "choices": [
+   "The Gentiles",
+   "Her children",
+   "The prophets",
+   "Her kings"
+  ],
+  "answer": 1,
+  "explanation": "Agar answereth to Jerusalem which now is, and is in bondage with her children.",
+  "ref": "Galatians 4:25"
+ },
+ {
+  "id": "galatians-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God sent his Son made of a woman, made under what?",
+  "choices": [
+   "The prophets",
+   "The law",
+   "The temple",
+   "A curse"
+  ],
+  "answer": 1,
+  "explanation": "God sent forth his Son, made of a woman, made under the law.",
+  "ref": "Galatians 4:4"
+ },
+ {
+  "id": "galatians-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when is the heir under tutors and governors?",
+  "choices": [
+   "The year of jubilee",
+   "The time appointed of the father",
+   "The day of atonement",
+   "The death of the elders"
+  ],
+  "answer": 1,
+  "explanation": "But is under tutors and governors until the time appointed of the father.",
+  "ref": "Galatians 4:2"
+ },
+ {
+  "id": "galatians-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When we were children, we were in bondage under what?",
+  "choices": [
+   "The kings of Egypt",
+   "The elements of the world",
+   "The priests of Israel",
+   "The judges"
+  ],
+  "answer": 1,
+  "explanation": "Even so we, when we were children, were in bondage under the elements of the world.",
+  "ref": "Galatians 4:3"
+ },
+ {
+  "id": "galatians-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did God send forth his Son to redeem them that were under the law?",
+  "choices": [
+   "That the law might be kept",
+   "That we might receive the adoption of sons",
+   "That the temple might stand",
+   "That Israel might be cleansed"
+  ],
+  "answer": 1,
+  "explanation": "That we might receive the adoption of sons.",
+  "ref": "Galatians 4:5"
+ },
+ {
+  "id": "galatians-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why has God sent the Spirit of his Son into your hearts?",
+  "choices": [
+   "Because ye keep the law",
+   "Because ye are sons",
+   "Because ye were circumcised",
+   "Because ye prayed"
+  ],
+  "answer": 1,
+  "explanation": "Because ye are sons, God hath sent forth the Spirit of his Son into your hearts, crying, Abba, Father.",
+  "ref": "Galatians 4:6"
+ },
+ {
+  "id": "galatians-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What of Paul's did the Galatians not despise?",
+  "choices": [
+   "His letters",
+   "His temptation which was in his flesh",
+   "His teaching of the law",
+   "His fasting"
+  ],
+  "answer": 1,
+  "explanation": "My temptation which was in my flesh ye despised not, nor rejected.",
+  "ref": "Galatians 4:14"
+ },
+ {
+  "id": "galatians-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After knowing God, Paul says rather they are what?",
+  "choices": [
+   "Called by Moses",
+   "Known of God",
+   "Taught by Peter",
+   "Tested by angels"
+  ],
+  "answer": 1,
+  "explanation": "After that ye have known God, or rather are known of God.",
+  "ref": "Galatians 4:9"
+ },
+ {
+  "id": "galatians-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says it is good to be zealously affected always in a good thing, not only when what?",
+  "choices": [
+   "The law is read",
+   "He is present with them",
+   "The feasts come",
+   "They are persecuted"
+  ],
+  "answer": 1,
+  "explanation": "It is good to be zealously affected always in a good thing, and not only when I am present with you.",
+  "ref": "Galatians 4:18"
+ },
+ {
+  "id": "galatians-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why do those zealous men want to exclude the Galatians?",
+  "choices": [
+   "That the Galatians might keep the feasts",
+   "That the Galatians might affect them",
+   "That Paul might be silenced",
+   "That the law might be taught"
+  ],
+  "answer": 1,
+  "explanation": "They would exclude you, that ye might affect them.",
+  "ref": "Galatians 4:17"
+ },
+ {
+  "id": "galatians-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul asks those who desire to be under the law: do ye not hear what?",
+  "choices": [
+   "The prophets",
+   "The law",
+   "The apostles",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Tell me, ye that desire to be under the law, do ye not hear the law?",
+  "ref": "Galatians 4:21"
+ },
+ {
+  "id": "galatians-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The desolate hath many more children than whom?",
+  "choices": [
+   "She which dwells in Jerusalem",
+   "She which hath an husband",
+   "She which keeps the law",
+   "She which is a servant"
+  ],
+  "answer": 1,
+  "explanation": "The desolate hath many more children than she which hath an husband.",
+  "ref": "Galatians 4:27"
+ },
+ {
+  "id": "galatians-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does Paul say he wants to change his voice?",
+  "choices": [
+   "He is ill",
+   "He stands in doubt of them",
+   "He is angry at Peter",
+   "He is far from Antioch"
+  ],
+  "answer": 1,
+  "explanation": "I desire to be present with you now, and to change my voice; for I stand in doubt of you.",
+  "ref": "Galatians 4:20"
+ },
+ {
+  "id": "galatians-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul ask about the blessedness the Galatians once spoke of?",
+  "choices": [
+   "Who took it away",
+   "Where it is now",
+   "When it will return",
+   "Whether it was true"
+  ],
+  "answer": 1,
+  "explanation": "Where is then the blessedness ye spake of?",
+  "ref": "Galatians 4:15"
+ },
+ {
+  "id": "galatians-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul call the Galatians as he travails over them?",
+  "choices": [
+   "My sons in the law",
+   "My little children",
+   "My fellow elders",
+   "My brethren in bonds"
+  ],
+  "answer": 1,
+  "explanation": "My little children, of whom I travail in birth again until Christ be formed in you.",
+  "ref": "Galatians 4:19"
+ },
+ {
+  "id": "galatians-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say a little leaven does?",
+  "choices": [
+   "Spoils the feast",
+   "Leavens the whole lump",
+   "Fills the house",
+   "Rises in the oven"
+  ],
+  "answer": 1,
+  "explanation": "A little leaven leaveneth the whole lump.",
+  "ref": "Galatians 5:9"
+ },
+ {
+  "id": "galatians-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In which one word does Paul say all the law is fulfilled?",
+  "choices": [
+   "Honour thy father",
+   "Love thy neighbour as thyself",
+   "Keep the sabbath",
+   "Do no murder"
+  ],
+  "answer": 1,
+  "explanation": "All the law is fulfilled in one word, even in this; Thou shalt love thy neighbour as thyself.",
+  "ref": "Galatians 5:14"
+ },
+ {
+  "id": "galatians-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul says that if you are circumcised, Christ shall profit you what?",
+  "choices": [
+   "Little",
+   "Nothing",
+   "Much",
+   "Only in part"
+  ],
+  "answer": 1,
+  "explanation": "If ye be circumcised, Christ shall profit you nothing.",
+  "ref": "Galatians 5:2"
+ },
+ {
+  "id": "galatians-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Those who do the works of the flesh shall not inherit what?",
+  "choices": [
+   "The land of promise",
+   "The kingdom of God",
+   "The temple",
+   "The earth"
+  ],
+  "answer": 1,
+  "explanation": "They that do such things shall not inherit the kingdom of God.",
+  "ref": "Galatians 5:21"
+ },
+ {
+  "id": "galatians-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The flesh lusteth against what?",
+  "choices": [
+   "The law",
+   "The Spirit",
+   "The prophets",
+   "The church"
+  ],
+  "answer": 1,
+  "explanation": "For the flesh lusteth against the Spirit, and the Spirit against the flesh.",
+  "ref": "Galatians 5:17"
+ },
+ {
+  "id": "galatians-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which of these does Paul list among the works of the flesh?",
+  "choices": [
+   "Meekness",
+   "Idolatry",
+   "Temperance",
+   "Longsuffering"
+  ],
+  "answer": 1,
+  "explanation": "The works of the flesh include idolatry, witchcraft, hatred, variance.",
+  "ref": "Galatians 5:20"
+ },
+ {
+  "id": "galatians-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul says use not liberty for an occasion to the flesh, but by love do what?",
+  "choices": [
+   "Fear the law",
+   "Serve one another",
+   "Keep the feasts",
+   "Judge one another"
+  ],
+  "answer": 1,
+  "explanation": "Use not liberty for an occasion to the flesh, but by love serve one another.",
+  "ref": "Galatians 5:13"
+ },
+ {
+  "id": "galatians-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If they bite and devour one another, what does Paul warn will happen?",
+  "choices": [
+   "They will be cast out",
+   "They will be consumed of one another",
+   "They will be cursed",
+   "They will fall from grace"
+  ],
+  "answer": 1,
+  "explanation": "If ye bite and devour one another, take heed that ye be not consumed one of another.",
+  "ref": "Galatians 5:15"
+ },
+ {
+  "id": "galatians-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what yoke does Paul say not to be entangled again?",
+  "choices": [
+   "The yoke of oxen",
+   "The yoke of bondage",
+   "The yoke of Moses",
+   "The yoke of Christ"
+  ],
+  "answer": 1,
+  "explanation": "Be not entangled again with the yoke of bondage.",
+  "ref": "Galatians 5:1"
+ },
+ {
+  "id": "galatians-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what is every circumcised man a debtor?",
+  "choices": [
+   "To pay tithes",
+   "To do the whole law",
+   "To serve the Gentiles",
+   "To teach the Galatians"
+  ],
+  "answer": 1,
+  "explanation": "I testify again to every man that is circumcised, that he is a debtor to do the whole law.",
+  "ref": "Galatians 5:3"
+ },
+ {
+  "id": "galatians-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to Christ for those who are justified by the law?",
+  "choices": [
+   "He judges them",
+   "He becomes of no effect to them",
+   "He forgets them",
+   "He teaches them"
+  ],
+  "answer": 1,
+  "explanation": "Christ is become of no effect unto you, whosoever of you are justified by the law.",
+  "ref": "Galatians 5:4"
+ },
+ {
+  "id": "galatians-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says we wait for the hope of what, through the Spirit?",
+  "choices": [
+   "Eternal rest",
+   "Righteousness by faith",
+   "The promised land",
+   "A new temple"
+  ],
+  "answer": 1,
+  "explanation": "For we through the Spirit wait for the hope of righteousness by faith.",
+  "ref": "Galatians 5:5"
+ },
+ {
+  "id": "galatians-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says this persuasion cometh not of whom?",
+  "choices": [
+   "The apostles",
+   "Him that calleth you",
+   "The law",
+   "Peter"
+  ],
+  "answer": 1,
+  "explanation": "This persuasion cometh not of him that calleth you.",
+  "ref": "Galatians 5:8"
+ },
+ {
+  "id": "galatians-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will he that troubleth the Galatians bear?",
+  "choices": [
+   "His shame",
+   "His judgment",
+   "His fast",
+   "His cross"
+  ],
+  "answer": 1,
+  "explanation": "He that troubleth you shall bear his judgment, whosoever he be.",
+  "ref": "Galatians 5:10"
+ },
+ {
+  "id": "galatians-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul asks why he still suffers persecution if he yet preaches what?",
+  "choices": [
+   "The law",
+   "Circumcision",
+   "Fasting",
+   "The Spirit"
+  ],
+  "answer": 1,
+  "explanation": "If I yet preach circumcision, why do I yet suffer persecution?",
+  "ref": "Galatians 5:11"
+ },
+ {
+  "id": "galatians-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If ye be led of the Spirit, Paul says you are not under what?",
+  "choices": [
+   "The curse",
+   "The law",
+   "The world",
+   "The flesh"
+  ],
+  "answer": 1,
+  "explanation": "But if ye be led of the Spirit, ye are not under the law.",
+  "ref": "Galatians 5:18"
+ },
+ {
+  "id": "galatians-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why can the Galatians not do the things that they would?",
+  "choices": [
+   "The law forbids it",
+   "The flesh and the Spirit are contrary to each other",
+   "The elders forbid it",
+   "They have no strength"
+  ],
+  "answer": 1,
+  "explanation": "These are contrary the one to the other: so that ye cannot do the things that ye would.",
+  "ref": "Galatians 5:17"
+ },
+ {
+  "id": "galatians-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says against the fruit of the Spirit there is no what?",
+  "choices": [
+   "Enemy",
+   "Law",
+   "Hindrance",
+   "Judgment"
+  ],
+  "answer": 1,
+  "explanation": "The fruit of the Spirit is love, joy, peace... against such there is no law.",
+  "ref": "Galatians 5:23"
+ },
+ {
+  "id": "galatians-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If we live in the Spirit, what does Paul say we should also do?",
+  "choices": [
+   "Keep the law",
+   "Walk in the Spirit",
+   "Fast",
+   "Rest"
+  ],
+  "answer": 1,
+  "explanation": "If we live in the Spirit, let us also walk in the Spirit.",
+  "ref": "Galatians 5:25"
+ },
+ {
+  "id": "galatians-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what does Paul say the Galatians have been called?",
+  "choices": [
+   "The law",
+   "Liberty",
+   "Fasting",
+   "The priesthood"
+  ],
+  "answer": 1,
+  "explanation": "For, brethren, ye have been called unto liberty.",
+  "ref": "Galatians 5:13"
+ },
+ {
+  "id": "galatians-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say not to be desirous of?",
+  "choices": [
+   "Wealth",
+   "Vain glory",
+   "Honour from the law",
+   "Silence"
+  ],
+  "answer": 1,
+  "explanation": "Let us not be desirous of vain glory, provoking one another, envying one another.",
+  "ref": "Galatians 5:26"
+ },
+ {
+  "id": "galatians-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say would cease if he still preached circumcision?",
+  "choices": [
+   "The offence of the cross",
+   "The persecution of the Jews",
+   "The Galatians' letters",
+   "The work of the Spirit"
+  ],
+  "answer": 0,
+  "explanation": "Then is the offence of the cross ceased.",
+  "ref": "Galatians 5:11"
+ },
+ {
+  "id": "galatians-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul wish would happen to those who trouble the Galatians?",
+  "choices": [
+   "They would be cut off",
+   "They would be silenced",
+   "They would be taught",
+   "They would be forgiven"
+  ],
+  "answer": 0,
+  "explanation": "I would they were even cut off which trouble you.",
+  "ref": "Galatians 5:12"
+ },
+ {
+  "id": "galatians-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these is among the works of the flesh that Paul lists?",
+  "choices": [
+   "Witchcraft",
+   "Gentleness",
+   "Faith",
+   "Goodness"
+  ],
+  "answer": 0,
+  "explanation": "Idolatry, witchcraft, hatred, variance, emulations, wrath, strife.",
+  "ref": "Galatians 5:20"
+ },
+ {
+  "id": "galatians-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which work of the flesh does Paul name along with revellings?",
+  "choices": [
+   "Drunkenness",
+   "Peace",
+   "Meekness",
+   "Temperance"
+  ],
+  "answer": 0,
+  "explanation": "Envyings, murders, drunkenness, revellings, and such like.",
+  "ref": "Galatians 5:21"
+ },
+ {
+  "id": "galatians-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these does Paul list as Spirit fruit alongside goodness and faith?",
+  "choices": [
+   "Meekness",
+   "Wrath",
+   "Strife",
+   "Hatred"
+  ],
+  "answer": 0,
+  "explanation": "But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, temperance.",
+  "ref": "Galatians 5:22–23"
+ },
+ {
+  "id": "galatians-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul names meekness and which other fruit of the Spirit?",
+  "choices": [
+   "Temperance",
+   "Variance",
+   "Heresies",
+   "Revellings"
+  ],
+  "answer": 0,
+  "explanation": "Meekness, temperance: against such there is no law.",
+  "ref": "Galatians 5:23"
+ },
+ {
+  "id": "galatians-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul ask about the Galatians who ran well?",
+  "choices": [
+   "Who did hinder them from obeying the truth",
+   "Who taught them the law",
+   "Who sent them to Antioch",
+   "Who kept them in prison"
+  ],
+  "answer": 0,
+  "explanation": "Ye did run well; who did hinder you that ye should not obey the truth?",
+  "ref": "Galatians 5:7"
+ },
+ {
+  "id": "galatians-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Through whom does Paul say he has confidence in the Galatians?",
+  "choices": [
+   "The Lord",
+   "Peter",
+   "Barnabas",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "I have confidence in you through the Lord, that ye will be none otherwise minded.",
+  "ref": "Galatians 5:10"
+ },
+ {
+  "id": "galatians-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Use not liberty for an occasion to what?",
+  "choices": [
+   "The flesh",
+   "The law",
+   "The world",
+   "The brethren"
+  ],
+  "answer": 0,
+  "explanation": "Use not liberty for an occasion to the flesh.",
+  "ref": "Galatians 5:13"
+ },
+ {
+  "id": "galatians-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In Jesus Christ, what does Paul say availeth nothing?",
+  "choices": [
+   "Circumcision and uncircumcision",
+   "Faith",
+   "Love",
+   "Hope"
+  ],
+  "answer": 0,
+  "explanation": "In Jesus Christ neither circumcision availeth any thing, nor uncircumcision; but faith which worketh by love.",
+  "ref": "Galatians 5:6"
+ },
+ {
+  "id": "galatians-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says not to be desirous of vain glory, provoking one another and doing what else?",
+  "choices": [
+   "Envying one another",
+   "Judging one another",
+   "Leaving one another",
+   "Teaching one another"
+  ],
+  "answer": 0,
+  "explanation": "Let us not be desirous of vain glory, provoking one another, envying one another.",
+  "ref": "Galatians 5:26"
+ },
+ {
+  "id": "galatians-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Those justified by the law are fallen from what?",
+  "choices": [
+   "Grace",
+   "The covenant",
+   "Faith",
+   "Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Ye are fallen from grace.",
+  "ref": "Galatians 5:4"
+ },
+ {
+  "id": "galatians-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these is a work of the flesh Paul names with seditions?",
+  "choices": [
+   "Heresies",
+   "Gentleness",
+   "Faith",
+   "Peace"
+  ],
+  "answer": 0,
+  "explanation": "Wrath, strife, seditions, heresies.",
+  "ref": "Galatians 5:20"
+ },
+ {
+  "id": "galatians-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom should we do good especially, as we have opportunity?",
+  "choices": [
+   "Our kinsmen",
+   "The elders",
+   "The household of faith",
+   "The poor of Judaea"
+  ],
+  "answer": 2,
+  "explanation": "Let us do good unto all men, especially unto them who are of the household of faith.",
+  "ref": "Galatians 6:10"
+ },
+ {
+  "id": "galatians-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "We shall reap in due season, if we do what?",
+  "choices": [
+   "Fast often",
+   "Give tithes",
+   "Faint not",
+   "Keep the law"
+  ],
+  "answer": 2,
+  "explanation": "In due season we shall reap, if we faint not.",
+  "ref": "Galatians 6:9"
+ },
+ {
+  "id": "galatians-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul write with his own hand?",
+  "choices": [
+   "A scroll of the law",
+   "A list of names",
+   "A large letter",
+   "A song"
+  ],
+  "answer": 2,
+  "explanation": "Ye see how large a letter I have written unto you with mine own hand.",
+  "ref": "Galatians 6:11"
+ },
+ {
+  "id": "galatians-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say he bears in his body?",
+  "choices": [
+   "The cares of the churches",
+   "The sins of the Galatians",
+   "The marks of the Lord Jesus",
+   "The mark of the law"
+  ],
+  "answer": 2,
+  "explanation": "I bear in my body the marks of the Lord Jesus.",
+  "ref": "Galatians 6:17"
+ },
+ {
+  "id": "galatians-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the person who restores another told to consider?",
+  "choices": [
+   "His own righteousness",
+   "The law of Moses",
+   "Himself, lest he also be tempted",
+   "The offender's sin"
+  ],
+  "answer": 2,
+  "explanation": "Restore such an one in the spirit of meekness; considering thyself, lest thou also be tempted.",
+  "ref": "Galatians 6:1"
+ },
+ {
+  "id": "galatians-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If a man thinks himself to be something when he is nothing, what does he do?",
+  "choices": [
+   "Honours God",
+   "Brings peace",
+   "Deceives himself",
+   "Hurts others"
+  ],
+  "answer": 2,
+  "explanation": "If a man think himself to be something, when he is nothing, he deceiveth himself.",
+  "ref": "Galatians 6:3"
+ },
+ {
+  "id": "galatians-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should every man prove?",
+  "choices": [
+   "His neighbour's work",
+   "The law",
+   "His own work",
+   "The Spirit"
+  ],
+  "answer": 2,
+  "explanation": "But let every man prove his own work, and then shall he have rejoicing in himself alone.",
+  "ref": "Galatians 6:4"
+ },
+ {
+  "id": "galatians-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who shall bear his own burden?",
+  "choices": [
+   "The elders",
+   "The teacher",
+   "Every man",
+   "The strong"
+  ],
+  "answer": 2,
+  "explanation": "For every man shall bear his own burden.",
+  "ref": "Galatians 6:5"
+ },
+ {
+  "id": "galatians-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say he that is taught should do for him that teacheth?",
+  "choices": [
+   "Pay him a tithe",
+   "Obey him",
+   "Communicate unto him in all good things",
+   "Honour him in the temple"
+  ],
+  "answer": 2,
+  "explanation": "Let him that is taught in the word communicate unto him that teacheth in all good things.",
+  "ref": "Galatians 6:6"
+ },
+ {
+  "id": "galatians-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do those who make a fair shew in the flesh constrain you to be circumcised?",
+  "choices": [
+   "To please the elders",
+   "To keep the feast",
+   "Lest they suffer persecution for the cross of Christ",
+   "To fulfil the prophets"
+  ],
+  "answer": 2,
+  "explanation": "They constrain you to be circumcised; only lest they should suffer persecution for the cross of Christ.",
+  "ref": "Galatians 6:12"
+ },
+ {
+  "id": "galatians-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the circumcised themselves fail to do?",
+  "choices": [
+   "Fear God",
+   "Love their neighbours",
+   "Keep the law",
+   "Pray"
+  ],
+  "answer": 2,
+  "explanation": "For neither they themselves who are circumcised keep the law.",
+  "ref": "Galatians 6:13"
+ },
+ {
+  "id": "galatians-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In Christ Jesus, neither circumcision nor uncircumcision avails; what does?",
+  "choices": [
+   "The law",
+   "Faith in the fathers",
+   "A new creature",
+   "Meekness"
+  ],
+  "answer": 2,
+  "explanation": "In Christ Jesus neither circumcision availeth any thing, nor uncircumcision, but a new creature.",
+  "ref": "Galatians 6:15"
+ },
+ {
+  "id": "galatians-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is the law of Christ fulfilled?",
+  "choices": [
+   "By keeping the feasts",
+   "By circumcision",
+   "By bearing one another's burdens",
+   "By fasting"
+  ],
+  "answer": 2,
+  "explanation": "Bear ye one another's burdens, and so fulfil the law of Christ.",
+  "ref": "Galatians 6:2"
+ },
+ {
+  "id": "galatians-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Who are told to restore a man overtaken in a fault?",
+  "choices": [
+   "The elders",
+   "Ye which are spiritual",
+   "The teachers",
+   "The apostles"
+  ],
+  "answer": 1,
+  "explanation": "Brethren, if a man be overtaken in a fault, ye which are spiritual, restore such an one in the spirit of meekness.",
+  "ref": "Galatians 6:1"
+ },
+ {
+  "id": "galatians-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do those who desire a fair shew in the flesh constrain the Galatians to be?",
+  "choices": [
+   "Baptized",
+   "Circumcised",
+   "Silent",
+   "Scattered"
+  ],
+  "answer": 1,
+  "explanation": "As many as desire to make a fair shew in the flesh, they constrain you to be circumcised.",
+  "ref": "Galatians 6:12"
+ },
+ {
+  "id": "galatians-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says as we have what, let us do good unto all men?",
+  "choices": [
+   "Wealth",
+   "Opportunity",
+   "Time",
+   "Strength"
+  ],
+  "answer": 1,
+  "explanation": "As we have therefore opportunity, let us do good unto all men.",
+  "ref": "Galatians 6:10"
+ },
+ {
+  "id": "galatians-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If a man proves his own work, he shall have rejoicing in himself alone and not in whom?",
+  "choices": [
+   "The law",
+   "Another",
+   "The Spirit",
+   "His teacher"
+  ],
+  "answer": 1,
+  "explanation": "Then shall he have rejoicing in himself alone, and not in another.",
+  "ref": "Galatians 6:4"
+ },
+ {
+  "id": "galatians-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Peace and mercy are wished upon those who walk by this rule, and upon whom?",
+  "choices": [
+   "The churches of Judaea",
+   "The Israel of God",
+   "The poor",
+   "The apostles"
+  ],
+  "answer": 1,
+  "explanation": "As many as walk according to this rule, peace be on them, and mercy, and upon the Israel of God.",
+  "ref": "Galatians 6:16"
+ },
+ {
+  "id": "galatians-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul prays that the grace of our Lord Jesus Christ be with your what?",
+  "choices": [
+   "House",
+   "Spirit",
+   "Church",
+   "Hearts"
+  ],
+  "answer": 1,
+  "explanation": "Brethren, the grace of our Lord Jesus Christ be with your spirit. Amen.",
+  "ref": "Galatians 6:18"
+ },
+ {
+  "id": "galatians-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says the world is crucified unto him. What is he to the world?",
+  "choices": [
+   "Dead",
+   "Crucified",
+   "A stranger",
+   "A teacher"
+  ],
+  "answer": 1,
+  "explanation": "By whom the world is crucified unto me, and I unto the world.",
+  "ref": "Galatians 6:14"
+ },
+ {
+  "id": "galatians-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why do they want the Galatians circumcised?",
+  "choices": [
+   "That they may avoid the law",
+   "That they may glory in your flesh",
+   "That they may please Rome",
+   "That they may save Peter"
+  ],
+  "answer": 1,
+  "explanation": "Desire to have you circumcised, that they may glory in your flesh.",
+  "ref": "Galatians 6:13"
+ },
+ {
+  "id": "galatians-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say to let no man do to him, because of the marks he bears?",
+  "choices": [
+   "Judge him",
+   "Trouble him",
+   "Teach him",
+   "Doubt him"
+  ],
+  "answer": 1,
+  "explanation": "From henceforth let no man trouble me: for I bear in my body the marks of the Lord Jesus.",
+  "ref": "Galatians 6:17"
  }
 ]
