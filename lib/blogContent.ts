@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-1-explained",
+    title: "2 Samuel 1 Explained: The Amalekite's Lie and David's Lament",
+    description:
+      "2 Samuel 1 explained verse by verse: the Amalekite's false report of Saul's death, his execution, and David's lament for Saul and Jonathan.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-1-explained",
+    publishedAt: "2026-11-25",
+    readTime: "15 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 1 Explained 📖",
+      content:
+        "A stranger brings David news of Saul's death.\nHe claims he killed him himself.\n\n📌 What you say about yourself can still convict you.\n\n📖 David mourns Saul before he questions the messenger.\n📖 The man is executed for his own boast.\n📖 David writes a lament and teaches it to a nation.\n\nNew article on:\n🟢 the **Amalekite's** story and what it leaves out\n🟢 why touching **the LORD's anointed** mattered so much\n🟢 the Song of the Bow, David's lament for **Jonathan**\n\nHave you ever had to grieve someone before you could judge what happened to them? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-31-explained",
     title: "1 Samuel 31 Explained: The Death of Saul",
     description:
