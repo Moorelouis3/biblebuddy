@@ -45,7 +45,9 @@ how many of each level to write. For each chapter, in order:
 4. **Write the missing questions** until the chapter has its target of each
    level: **15, or half the chapter's number of verses (rounded up) if that
    is smaller, never under 5**. A 30-verse chapter gets 15 per level, a
-   14-verse chapter 7. `next` and `check` print the target. A short chapter
+   14-verse chapter 7. Genealogy and list chapters (Matthew 1, 1 Chronicles
+   1-9, Ezra 2, Nehemiah 7 and 10-12; scripts/trivia-target.ts) need only 5,
+   asked about the people and events that matter, never "who begat whom". `next` and `check` print the target. A short chapter
    (Revelation 15 has 8 verses, Psalm 117 has 2) gets fewer, better
    questions, never filler: Louis, "20 to 25 good real questions are
    enough" (2026-11-25). Filler means asking different blanks of the same

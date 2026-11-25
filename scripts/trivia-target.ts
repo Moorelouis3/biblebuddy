@@ -29,4 +29,18 @@ export function versesIn(book: string, chapter: number): number {
 // Half the verse count per level (about 1.5 questions per verse in all),
 // between 5 and 15: a 30-verse chapter gets 15, a 14-verse letter gets 7.
 // Tightened on 2026-11-25 after one per verse still forced repeats in 2 and 3 John.
-export const targetFor = (book: string, chapter: number) => Math.min(15, Math.max(5, Math.ceil(versesIn(book, chapter) / 2)));
+/**
+ * Chapters that are mostly a genealogy or a list of names and numbers: the
+ * verse count overstates what a reader remembers, and filling them means
+ * "who begat whom" lookups. They get the minimum, asked about the story parts
+ * (2026-11-25, after Matthew 1 needed ten genealogy questions to reach 13).
+ */
+const LIST_CHAPTERS = new Set([
+  "matthew:1",
+  "1-chronicles:1", "1-chronicles:2", "1-chronicles:3", "1-chronicles:4", "1-chronicles:5",
+  "1-chronicles:6", "1-chronicles:7", "1-chronicles:8", "1-chronicles:9",
+  "ezra:2", "nehemiah:7", "nehemiah:10", "nehemiah:11", "nehemiah:12",
+]);
+
+export const targetFor = (book: string, chapter: number) =>
+  LIST_CHAPTERS.has(`${book}:${chapter}`) ? 5 : Math.min(15, Math.max(5, Math.ceil(versesIn(book, chapter) / 2)));
