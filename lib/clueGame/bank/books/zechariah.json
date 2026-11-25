@@ -1118,5 +1118,4165 @@
   "answer": 2,
   "explanation": "Even ordinary things bear the mark of consecration under God's final rule.",
   "ref": "Zechariah 14:20"
+ },
+ {
+  "id": "zechariah-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who received the word of the LORD in the second year of Darius?",
+  "choices": [
+   "Berechiah",
+   "Zechariah",
+   "Iddo",
+   "Darius"
+  ],
+  "answer": 1,
+  "explanation": "In the eighth month of the second year of Darius the word of the LORD came unto Zechariah.",
+  "ref": "Zechariah 1:1"
+ },
+ {
+  "id": "zechariah-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the man among the myrtle trees riding?",
+  "choices": [
+   "A white horse",
+   "A red horse",
+   "A speckled horse",
+   "An ass"
+  ],
+  "answer": 1,
+  "explanation": "Zechariah saw a man riding upon a red horse, and he stood among the myrtle trees.",
+  "ref": "Zechariah 1:8"
+ },
+ {
+  "id": "zechariah-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the riders say about all the earth?",
+  "choices": [
+   "It is full of war",
+   "It sitteth still, and is at rest",
+   "It lies in ruins",
+   "It is waiting for rain"
+  ],
+  "answer": 1,
+  "explanation": "They said, All the earth sitteth still, and is at rest.",
+  "ref": "Zechariah 1:11"
+ },
+ {
+  "id": "zechariah-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the LORD say he felt about Jerusalem and Zion?",
+  "choices": [
+   "Weary of them",
+   "Jealous with a great jealousy",
+   "Ashamed of them",
+   "Indifferent to them"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said, I am jealous for Jerusalem and for Zion with a great jealousy.",
+  "ref": "Zechariah 1:14"
+ },
+ {
+  "id": "zechariah-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city did the LORD say he would yet choose?",
+  "choices": [
+   "Babylon",
+   "Jerusalem",
+   "Samaria",
+   "Bethel"
+  ],
+  "answer": 1,
+  "explanation": "The LORD shall yet comfort Zion, and shall yet choose Jerusalem.",
+  "ref": "Zechariah 1:17"
+ },
+ {
+  "id": "zechariah-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD show Zechariah after the four horns?",
+  "choices": [
+   "Four chariots",
+   "Four carpenters",
+   "Four winds",
+   "Four shepherds"
+  ],
+  "answer": 1,
+  "explanation": "After the horns the LORD shewed Zechariah four carpenters.",
+  "ref": "Zechariah 1:20"
+ },
+ {
+  "id": "zechariah-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Zechariah?",
+  "choices": [
+   "Iddo",
+   "Darius",
+   "Joshua",
+   "Berechiah"
+  ],
+  "answer": 3,
+  "explanation": "Zechariah was the son of Berechiah, the son of Iddo the prophet.",
+  "ref": "Zechariah 1:1"
+ },
+ {
+  "id": "zechariah-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD promise if the people would turn to him?",
+  "choices": [
+   "I will rebuild your walls",
+   "I will send you a king",
+   "I will end your fast",
+   "I will turn unto you"
+  ],
+  "answer": 3,
+  "explanation": "Turn ye unto me, saith the LORD of hosts, and I will turn unto you.",
+  "ref": "Zechariah 1:3"
+ },
+ {
+  "id": "zechariah-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What colours were the horses behind the man on the red horse?",
+  "choices": [
+   "Black, red, and grey",
+   "White, bay, and black",
+   "Red, brown, and grey",
+   "Red, speckled, and white"
+  ],
+  "answer": 3,
+  "explanation": "Behind him were there red horses, speckled, and white.",
+  "ref": "Zechariah 1:8"
+ },
+ {
+  "id": "zechariah-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who explained that the riders were sent by the LORD to walk through the earth?",
+  "choices": [
+   "Zechariah",
+   "The prophet Iddo",
+   "Joshua the high priest",
+   "The man among the myrtle trees"
+  ],
+  "answer": 3,
+  "explanation": "The man that stood among the myrtle trees answered, These are they whom the LORD hath sent to walk to and fro through the earth.",
+  "ref": "Zechariah 1:10"
+ },
+ {
+  "id": "zechariah-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who asked the LORD of hosts how long he would withhold mercy from Jerusalem?",
+  "choices": [
+   "Zechariah",
+   "The man on the red horse",
+   "Darius",
+   "The angel of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "The angel of the LORD asked, how long wilt thou not have mercy on Jerusalem and on the cities of Judah?",
+  "ref": "Zechariah 1:12"
+ },
+ {
+  "id": "zechariah-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With whom was the LORD very sore displeased?",
+  "choices": [
+   "The prophets of old",
+   "The priests of Jerusalem",
+   "The men of Judah",
+   "The heathen that are at ease"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said, I am very sore displeased with the heathen that are at ease.",
+  "ref": "Zechariah 1:15"
+ },
+ {
+  "id": "zechariah-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the LORD very sore displeased with the heathen?",
+  "choices": [
+   "They would not listen to the prophets",
+   "They had burned the temple",
+   "They had refused to pay tribute",
+   "They helped forward the affliction"
+  ],
+  "answer": 3,
+  "explanation": "He was but a little displeased, and they helped forward the affliction.",
+  "ref": "Zechariah 1:15"
+ },
+ {
+  "id": "zechariah-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD ask about the prophets?",
+  "choices": [
+   "Did they not weep for the people?",
+   "Were they not sent to the nations?",
+   "Did they not build the house?",
+   "Do they live for ever?"
+  ],
+  "answer": 3,
+  "explanation": "The LORD asked, Your fathers, where are they? and the prophets, do they live for ever?",
+  "ref": "Zechariah 1:5"
+ },
+ {
+  "id": "zechariah-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the four carpenters come to do?",
+  "choices": [
+   "Build the house of the LORD",
+   "Measure the walls of Jerusalem",
+   "Gather the scattered exiles",
+   "Fray the horns and cast out the horns of the Gentiles"
+  ],
+  "answer": 3,
+  "explanation": "They are come to fray them, to cast out the horns of the Gentiles.",
+  "ref": "Zechariah 1:21"
+ },
+ {
+  "id": "zechariah-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say would happen to his cities through prosperity?",
+  "choices": [
+   "They shall be made small",
+   "They shall be left empty",
+   "They shall be walled",
+   "They shall yet be spread abroad"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said, My cities through prosperity shall yet be spread abroad.",
+  "ref": "Zechariah 1:17"
+ },
+ {
+  "id": "zechariah-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD answer the angel that talked with Zechariah?",
+  "choices": [
+   "With a rebuke",
+   "With silence",
+   "With a sign in the sky",
+   "With good words and comfortable words"
+  ],
+  "answer": 3,
+  "explanation": "The LORD answered the angel with good words and comfortable words.",
+  "ref": "Zechariah 1:13"
+ },
+ {
+  "id": "zechariah-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month did the word of the LORD first come to Zechariah?",
+  "choices": [
+   "The eighth month",
+   "The first month",
+   "The fourth month",
+   "The eleventh month"
+  ],
+  "answer": 0,
+  "explanation": "In the eighth month, in the second year of Darius, came the word of the LORD unto Zechariah.",
+  "ref": "Zechariah 1:1"
+ },
+ {
+  "id": "zechariah-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is named as the prophet and the grandfather of Zechariah?",
+  "choices": [
+   "Iddo",
+   "Berechiah",
+   "Darius",
+   "Joshua"
+  ],
+  "answer": 0,
+  "explanation": "Zechariah was the son of Berechiah, the son of Iddo the prophet.",
+  "ref": "Zechariah 1:1"
+ },
+ {
+  "id": "zechariah-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how many years had the LORD had indignation against Jerusalem and Judah?",
+  "choices": [
+   "Threescore and ten",
+   "Forty",
+   "A hundred",
+   "Twenty"
+  ],
+  "answer": 0,
+  "explanation": "The angel spoke of the indignation these threescore and ten years.",
+  "ref": "Zechariah 1:12"
+ },
+ {
+  "id": "zechariah-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the eleventh month called?",
+  "choices": [
+   "Sebat",
+   "Chisleu",
+   "Elul",
+   "Nisan"
+  ],
+  "answer": 0,
+  "explanation": "The four and twentieth day of the eleventh month, which is the month Sebat.",
+  "ref": "Zechariah 1:7"
+ },
+ {
+  "id": "zechariah-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Zechariah see the man riding on a red horse?",
+  "choices": [
+   "By night",
+   "At noon",
+   "At the dawn",
+   "At the evening sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "Zechariah said, I saw by night, and behold a man riding upon a red horse.",
+  "ref": "Zechariah 1:8"
+ },
+ {
+  "id": "zechariah-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose horns did the carpenters come to cast out?",
+  "choices": [
+   "The Gentiles",
+   "The priests",
+   "The kings of Israel",
+   "The Philistines"
+  ],
+  "answer": 0,
+  "explanation": "They came to cast out the horns of the Gentiles, which lifted up their horn over the land of Judah.",
+  "ref": "Zechariah 1:21"
+ },
+ {
+  "id": "zechariah-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say would be stretched forth upon Jerusalem?",
+  "choices": [
+   "A line",
+   "A tent",
+   "A covering",
+   "A banner"
+  ],
+  "answer": 0,
+  "explanation": "A line shall be stretched forth upon Jerusalem.",
+  "ref": "Zechariah 1:16"
+ },
+ {
+  "id": "zechariah-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what did the LORD say he was returned to Jerusalem?",
+  "choices": [
+   "Mercies",
+   "Judgments",
+   "An army",
+   "Fire"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, I am returned to Jerusalem with mercies: my house shall be built in it.",
+  "ref": "Zechariah 1:16"
+ },
+ {
+  "id": "zechariah-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did the LORD tell the people not to be like?",
+  "choices": [
+   "Their fathers",
+   "The heathen",
+   "The false prophets",
+   "The Gentiles"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Be ye not as your fathers, unto whom the former prophets have cried.",
+  "ref": "Zechariah 1:4"
+ },
+ {
+  "id": "zechariah-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the fathers say when they returned?",
+  "choices": [
+   "He had dealt with them as their ways deserved",
+   "The LORD had forgotten them",
+   "The prophets had deceived them",
+   "The LORD had sent them away"
+  ],
+  "answer": 0,
+  "explanation": "They said, Like as the LORD of hosts thought to do unto us, so hath he dealt with us.",
+  "ref": "Zechariah 1:6"
+ },
+ {
+  "id": "zechariah-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Darius did the word of the LORD come on the four and twentieth day of the eleventh month?",
+  "choices": [
+   "The second year",
+   "The first year",
+   "The fourth year",
+   "The sixth year"
+  ],
+  "answer": 0,
+  "explanation": "The word came in the second year of Darius.",
+  "ref": "Zechariah 1:7"
+ },
+ {
+  "id": "zechariah-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the LORD give to every one in the field?",
+  "choices": [
+   "Corn",
+   "Grass",
+   "Flax",
+   "Fruit"
+  ],
+  "answer": 1,
+  "explanation": "The LORD shall make bright clouds, and give them showers of rain, to every one grass in the field.",
+  "ref": "Zechariah 10:1"
+ },
+ {
+  "id": "zechariah-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the diviners tell?",
+  "choices": [
+   "False dreams",
+   "True visions",
+   "Old prophecies",
+   "Hidden songs"
+  ],
+  "answer": 0,
+  "explanation": "The diviners have seen a lie, and have told false dreams; they comfort in vain.",
+  "ref": "Zechariah 10:2"
+ },
+ {
+  "id": "zechariah-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the people troubled?",
+  "choices": [
+   "There was no shepherd",
+   "There was no rain",
+   "There was no king",
+   "There was no temple"
+  ],
+  "answer": 0,
+  "explanation": "They went their way as a flock, they were troubled, because there was no shepherd.",
+  "ref": "Zechariah 10:2"
+ },
+ {
+  "id": "zechariah-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the LORD say he punished?",
+  "choices": [
+   "The goats",
+   "The lambs",
+   "The rams",
+   "The oxen"
+  ],
+  "answer": 0,
+  "explanation": "Mine anger was kindled against the shepherds, and I punished the goats.",
+  "ref": "Zechariah 10:3"
+ },
+ {
+  "id": "zechariah-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the mighty men tread down in the mire of the streets?",
+  "choices": [
+   "Their enemies",
+   "Their idols",
+   "Their altars",
+   "Their chariots"
+  ],
+  "answer": 0,
+  "explanation": "They shall be as mighty men, which tread down their enemies in the mire of the streets in the battle.",
+  "ref": "Zechariah 10:5"
+ },
+ {
+  "id": "zechariah-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say he would do because he had redeemed them?",
+  "choices": [
+   "Hiss for them and gather them",
+   "Send them a king",
+   "Give them rest",
+   "Break their chains"
+  ],
+  "answer": 0,
+  "explanation": "I will hiss for them, and gather them; for I have redeemed them.",
+  "ref": "Zechariah 10:8"
+ },
+ {
+  "id": "zechariah-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where would they remember the LORD, after being sown among the people?",
+  "choices": [
+   "In far countries",
+   "In the temple",
+   "In Jerusalem",
+   "On the mountains"
+  ],
+  "answer": 0,
+  "explanation": "I will sow them among the people: and they shall remember me in far countries.",
+  "ref": "Zechariah 10:9"
+ },
+ {
+  "id": "zechariah-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did the LORD say he would save besides the house of Judah?",
+  "choices": [
+   "The house of Levi",
+   "The house of Benjamin",
+   "The house of Joseph",
+   "The house of Dan"
+  ],
+  "answer": 2,
+  "explanation": "I will strengthen the house of Judah, and I will save the house of Joseph.",
+  "ref": "Zechariah 10:6"
+ },
+ {
+  "id": "zechariah-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose heart would rejoice as through wine?",
+  "choices": [
+   "Judah",
+   "Joseph",
+   "Ephraim",
+   "Gilead"
+  ],
+  "answer": 2,
+  "explanation": "They of Ephraim shall be like a mighty man, and their heart shall rejoice as through wine.",
+  "ref": "Zechariah 10:7"
+ },
+ {
+  "id": "zechariah-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Into which lands would the LORD bring them?",
+  "choices": [
+   "Egypt and Assyria",
+   "Shinar and Hadrach",
+   "Gilead and Lebanon",
+   "Moab and Edom"
+  ],
+  "answer": 2,
+  "explanation": "I will bring them into the land of Gilead and Lebanon.",
+  "ref": "Zechariah 10:10"
+ },
+ {
+  "id": "zechariah-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would depart away from Egypt?",
+  "choices": [
+   "The river",
+   "The chariots",
+   "The sceptre",
+   "The gods"
+  ],
+  "answer": 2,
+  "explanation": "The pride of Assyria shall be brought down, and the sceptre of Egypt shall depart away.",
+  "ref": "Zechariah 10:11"
+ },
+ {
+  "id": "zechariah-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where would the LORD say they would walk up and down?",
+  "choices": [
+   "In his courts",
+   "In his land",
+   "In his name",
+   "In his paths"
+  ],
+  "answer": 2,
+  "explanation": "I will strengthen them in the LORD; and they shall walk up and down in his name.",
+  "ref": "Zechariah 10:12"
+ },
+ {
+  "id": "zechariah-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who would be confounded because the LORD is with his people?",
+  "choices": [
+   "The kings of Assyria",
+   "The idol priests",
+   "The riders on horses",
+   "The shepherds"
+  ],
+  "answer": 2,
+  "explanation": "They shall fight, because the LORD is with them, and the riders on horses shall be confounded.",
+  "ref": "Zechariah 10:5"
+ },
+ {
+  "id": "zechariah-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Zechariah told to feed?",
+  "choices": [
+   "The flock of the temple",
+   "The flock of the slaughter",
+   "The sheep of Bashan",
+   "The lambs of Judah"
+  ],
+  "answer": 1,
+  "explanation": "Thus saith the LORD my God; Feed the flock of the slaughter.",
+  "ref": "Zechariah 11:4"
+ },
+ {
+  "id": "zechariah-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many shepherds did the LORD cut off in one month?",
+  "choices": [
+   "Two",
+   "Three",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Three shepherds also I cut off in one month.",
+  "ref": "Zechariah 11:8"
+ },
+ {
+  "id": "zechariah-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Zechariah do with the staff called Bands?",
+  "choices": [
+   "Gave it to the priest",
+   "Cut it asunder",
+   "Cast it into the river",
+   "Hung it in the temple"
+  ],
+  "answer": 1,
+  "explanation": "Then I cut asunder mine other staff, even Bands.",
+  "ref": "Zechariah 11:14"
+ },
+ {
+  "id": "zechariah-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Upon whom is woe pronounced?",
+  "choices": [
+   "The potter in the house of the LORD",
+   "The idol shepherd that leaveth the flock",
+   "The poor of the flock",
+   "The prophets of Bashan"
+  ],
+  "answer": 1,
+  "explanation": "Woe to the idol shepherd that leaveth the flock!",
+  "ref": "Zechariah 11:17"
+ },
+ {
+  "id": "zechariah-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Lebanon’s doors open for?",
+  "choices": [
+   "That the king may enter",
+   "That the fire may devour her cedars",
+   "That the flock may pass",
+   "That the rain may come"
+  ],
+  "answer": 1,
+  "explanation": "Open thy doors, O Lebanon, that the fire may devour thy cedars.",
+  "ref": "Zechariah 11:1"
+ },
+ {
+  "id": "zechariah-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did those who sell the flock say?",
+  "choices": [
+   "The LORD hath forsaken us",
+   "Blessed be the LORD; for I am rich",
+   "Let us feed the flock",
+   "We are no longer guilty"
+  ],
+  "answer": 1,
+  "explanation": "They that sell them say, Blessed be the LORD; for I am rich.",
+  "ref": "Zechariah 11:5"
+ },
+ {
+  "id": "zechariah-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the LORD say he would feed, even you?",
+  "choices": [
+   "The idol shepherds",
+   "The poor of the flock",
+   "The rich merchants",
+   "The priests of Judah"
+  ],
+  "answer": 1,
+  "explanation": "I will feed the flock of slaughter, even you, O poor of the flock.",
+  "ref": "Zechariah 11:7"
+ },
+ {
+  "id": "zechariah-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Zechariah cut the staff Beauty asunder?",
+  "choices": [
+   "To break the brotherhood between Judah and Israel",
+   "To break the covenant made with all the people",
+   "To punish the idol shepherd",
+   "To cast it to the potter"
+  ],
+  "answer": 1,
+  "explanation": "I took my staff, even Beauty, and cut it asunder, that I might break my covenant which I had made with all the people.",
+  "ref": "Zechariah 11:10"
+ },
+ {
+  "id": "zechariah-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Zechariah cut the staff Bands asunder?",
+  "choices": [
+   "To break the covenant with all the people",
+   "To break the brotherhood between Judah and Israel",
+   "To cut off the three shepherds",
+   "To make a crown"
+  ],
+  "answer": 1,
+  "explanation": "I cut asunder mine other staff, even Bands, that I might break the brotherhood between Judah and Israel.",
+  "ref": "Zechariah 11:14"
+ },
+ {
+  "id": "zechariah-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Zechariah say to them about his price?",
+  "choices": [
+   "Pay me double or forbear",
+   "If ye think good, give me my price; if not, forbear",
+   "Give me my price in gold",
+   "Send me my price by the potter"
+  ],
+  "answer": 1,
+  "explanation": "And I said unto them, If ye think good, give me my price; and if not, forbear.",
+  "ref": "Zechariah 11:12"
+ },
+ {
+  "id": "zechariah-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD describe the price at which he was prised?",
+  "choices": [
+   "A small price",
+   "A goodly price",
+   "A hidden price",
+   "A bitter price"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said, Cast it unto the potter: a goodly price that I was prised at of them.",
+  "ref": "Zechariah 11:13"
+ },
+ {
+  "id": "zechariah-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who knew that the breaking of the staff was the word of the LORD?",
+  "choices": [
+   "The three shepherds",
+   "The poor of the flock that waited upon him",
+   "The idol shepherd",
+   "The potter"
+  ],
+  "answer": 1,
+  "explanation": "The poor of the flock that waited upon me knew that it was the word of the LORD.",
+  "ref": "Zechariah 11:11"
+ },
+ {
+  "id": "zechariah-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Zechariah told to take up yet again?",
+  "choices": [
+   "The staff of a king",
+   "The instruments of a foolish shepherd",
+   "The sword of a captain",
+   "The crown of silver"
+  ],
+  "answer": 1,
+  "explanation": "Take unto thee yet the instruments of a foolish shepherd.",
+  "ref": "Zechariah 11:15"
+ },
+ {
+  "id": "zechariah-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Whose oaks were told to howl?",
+  "choices": [
+   "Bashan",
+   "Lebanon",
+   "Jordan",
+   "Carmel"
+  ],
+  "answer": 0,
+  "explanation": "Howl, O ye oaks of Bashan; for the forest of the vintage is come down.",
+  "ref": "Zechariah 11:2"
+ },
+ {
+  "id": "zechariah-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Whose pride was spoiled, according to the voice of the roaring of young lions?",
+  "choices": [
+   "Jordan",
+   "Lebanon",
+   "Bashan",
+   "Carmel"
+  ],
+  "answer": 0,
+  "explanation": "There is a voice of the roaring of young lions; for the pride of Jordan is spoiled.",
+  "ref": "Zechariah 11:3"
+ },
+ {
+  "id": "zechariah-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the possessors of the flock do after slaying them?",
+  "choices": [
+   "Held themselves not guilty",
+   "Mourned for them",
+   "Gave to the poor",
+   "Sold them at once"
+  ],
+  "answer": 0,
+  "explanation": "Whose possessors slay them, and hold themselves not guilty.",
+  "ref": "Zechariah 11:5"
+ },
+ {
+  "id": "zechariah-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into whose hand would the LORD deliver the men, besides their neighbour’s?",
+  "choices": [
+   "The hand of his king",
+   "The hand of the priest",
+   "The hand of the shepherd",
+   "The hand of the potter"
+  ],
+  "answer": 0,
+  "explanation": "I will deliver the men every one into his neighbour’s hand, and into the hand of his king.",
+  "ref": "Zechariah 11:6"
+ },
+ {
+  "id": "zechariah-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Zechariah say should happen to that which dieth?",
+  "choices": [
+   "Let it die",
+   "Let it be fed",
+   "Let it be buried",
+   "Let it be healed"
+  ],
+  "answer": 0,
+  "explanation": "I will not feed you: that that dieth, let it die; and that that is to be cut off, let it be cut off.",
+  "ref": "Zechariah 11:9"
+ },
+ {
+  "id": "zechariah-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did he say the rest would do?",
+  "choices": [
+   "Eat every one the flesh of another",
+   "Flee into the mountains",
+   "Cry unto the LORD",
+   "Gather the flock"
+  ],
+  "answer": 0,
+  "explanation": "Let the rest eat every one the flesh of another.",
+  "ref": "Zechariah 11:9"
+ },
+ {
+  "id": "zechariah-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the raised-up shepherd not do?",
+  "choices": [
+   "Heal that which is broken",
+   "Eat the flesh of the fat",
+   "Tear their claws in pieces",
+   "Raise a sword"
+  ],
+  "answer": 0,
+  "explanation": "He shall not visit those that be cut off, nor seek the young one, nor heal that that is broken.",
+  "ref": "Zechariah 11:16"
+ },
+ {
+  "id": "zechariah-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be utterly darkened on the idol shepherd?",
+  "choices": [
+   "His right eye",
+   "His left eye",
+   "His tongue",
+   "His right hand"
+  ],
+  "answer": 0,
+  "explanation": "His arm shall be clean dried up, and his right eye shall be utterly darkened.",
+  "ref": "Zechariah 11:17"
+ },
+ {
+  "id": "zechariah-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did not pity the flock of the slaughter?",
+  "choices": [
+   "Their own shepherds",
+   "The buyers",
+   "The king",
+   "The potter"
+  ],
+  "answer": 0,
+  "explanation": "Their own shepherds pity them not.",
+  "ref": "Zechariah 11:5"
+ },
+ {
+  "id": "zechariah-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say he forms within man?",
+  "choices": [
+   "The heart",
+   "The spirit",
+   "The mind",
+   "The soul alone"
+  ],
+  "answer": 1,
+  "explanation": "The LORD stretcheth forth the heavens, and formeth the spirit of man within him.",
+  "ref": "Zechariah 12:1"
+ },
+ {
+  "id": "zechariah-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "As whom would they mourn for the one they pierced?",
+  "choices": [
+   "As one mourneth for a king",
+   "As one mourneth for his only son",
+   "As one mourneth for a prophet",
+   "As one mourneth for a brother"
+  ],
+  "answer": 1,
+  "explanation": "They shall mourn for him, as one mourneth for his only son.",
+  "ref": "Zechariah 12:10"
+ },
+ {
+  "id": "zechariah-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD smite every horse with?",
+  "choices": [
+   "Fire",
+   "Fear",
+   "Plague",
+   "Astonishment"
+  ],
+  "answer": 3,
+  "explanation": "I will smite every horse with astonishment, and his rider with madness.",
+  "ref": "Zechariah 12:4"
+ },
+ {
+  "id": "zechariah-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the governors of Judah say in their heart?",
+  "choices": [
+   "The king shall be our shield",
+   "The temple shall be our stronghold",
+   "The mountain shall be our wall",
+   "Jerusalem2019s people shall be my strength in the LORD"
+  ],
+  "answer": 3,
+  "explanation": "The governors of Judah shall say in their heart, The inhabitants of Jerusalem shall be my strength in the LORD of hosts their God.",
+  "ref": "Zechariah 12:5"
+ },
+ {
+  "id": "zechariah-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the LORD save the tents of Judah first?",
+  "choices": [
+   "So the temple would be finished first",
+   "So the enemy would not find them",
+   "So the priests would be spared",
+   "So David’s glory would not magnify itself over Judah"
+  ],
+  "answer": 3,
+  "explanation": "The LORD also shall save the tents of Judah first, that the glory of the house of David do not magnify themselves against Judah.",
+  "ref": "Zechariah 12:7"
+ },
+ {
+  "id": "zechariah-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who among the inhabitants of Jerusalem would be as David?",
+  "choices": [
+   "He that is young",
+   "He that is a priest",
+   "He that is a governor",
+   "He that is feeble"
+  ],
+  "answer": 3,
+  "explanation": "He that is feeble among them at that day shall be as David.",
+  "ref": "Zechariah 12:8"
+ },
+ {
+  "id": "zechariah-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say he would seek to do to the nations?",
+  "choices": [
+   "Gather them to Jerusalem",
+   "Scatter them to the sea",
+   "Teach them his law",
+   "Destroy all that come against Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "I will seek to destroy all the nations that come against Jerusalem.",
+  "ref": "Zechariah 12:9"
+ },
+ {
+  "id": "zechariah-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whom would they be in bitterness?",
+  "choices": [
+   "As one in bitterness for a king",
+   "As one in bitterness for a friend",
+   "As one in bitterness for a prophet",
+   "As one in bitterness for his firstborn"
+  ],
+  "answer": 3,
+  "explanation": "They shall be in bitterness for him, as one that is in bitterness for his firstborn.",
+  "ref": "Zechariah 12:10"
+ },
+ {
+  "id": "zechariah-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How would the land mourn?",
+  "choices": [
+   "All together in the temple",
+   "By the gates",
+   "In the valley at night",
+   "Every family apart"
+  ],
+  "answer": 3,
+  "explanation": "The land shall mourn, every family apart, and their wives apart.",
+  "ref": "Zechariah 12:12"
+ },
+ {
+  "id": "zechariah-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD smite every horse of the people with?",
+  "choices": [
+   "Blindness",
+   "Madness",
+   "Astonishment",
+   "Fear"
+  ],
+  "answer": 0,
+  "explanation": "I will smite every horse of the people with blindness.",
+  "ref": "Zechariah 12:4"
+ },
+ {
+  "id": "zechariah-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Which family house is named apart besides David’s?",
+  "choices": [
+   "The house of Nathan",
+   "The house of Aaron",
+   "The house of Zadok",
+   "The house of Joshua"
+  ],
+  "answer": 0,
+  "explanation": "The family of the house of Nathan apart, and their wives apart.",
+  "ref": "Zechariah 12:12"
+ },
+ {
+  "id": "zechariah-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Which family, besides David, Nathan and Levi, is named apart?",
+  "choices": [
+   "Shimei",
+   "Hadadrimmon",
+   "Josedech",
+   "Zerubbabel"
+  ],
+  "answer": 0,
+  "explanation": "The family of the house of Levi apart; the family of Shimei apart.",
+  "ref": "Zechariah 12:13"
+ },
+ {
+  "id": "zechariah-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would happen to all who burden themselves with Jerusalem?",
+  "choices": [
+   "They shall be cut in pieces",
+   "They shall be scattered",
+   "They shall be astonished",
+   "They shall be shamed"
+  ],
+  "answer": 0,
+  "explanation": "All that burden themselves with it shall be cut in pieces.",
+  "ref": "Zechariah 12:3"
+ },
+ {
+  "id": "zechariah-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As whom would the house of David be, before them?",
+  "choices": [
+   "As God, as the angel of the LORD",
+   "As the priests of the LORD",
+   "As the shepherd of Israel",
+   "As a rock in a weary land"
+  ],
+  "answer": 0,
+  "explanation": "The house of David shall be as God, as the angel of the LORD before them.",
+  "ref": "Zechariah 12:8"
+ },
+ {
+  "id": "zechariah-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "The great mourning in Jerusalem is compared to the mourning of Hadadrimmon in what valley?",
+  "choices": [
+   "The valley of Megiddon",
+   "The valley of Jehoshaphat",
+   "The valley of Hinnom",
+   "The valley of Jezreel"
+  ],
+  "answer": 0,
+  "explanation": "A great mourning in Jerusalem, as the mourning of Hadadrimmon in the valley of Megiddon.",
+  "ref": "Zechariah 12:11"
+ },
+ {
+  "id": "zechariah-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the governors of Judah be like among the wood?",
+  "choices": [
+   "A hearth of fire",
+   "A forest",
+   "A river",
+   "A hedge"
+  ],
+  "answer": 0,
+  "explanation": "I will make the governors of Judah like an hearth of fire among the wood.",
+  "ref": "Zechariah 12:6"
+ },
+ {
+  "id": "zechariah-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the prophet say of himself?",
+  "choices": [
+   "I am a shepherd of the flock",
+   "I am no prophet, I am an husbandman",
+   "I am a priest of the LORD",
+   "I am a watchman of the city"
+  ],
+  "answer": 1,
+  "explanation": "He shall say, I am no prophet, I am an husbandman; for man taught me to keep cattle from my youth.",
+  "ref": "Zechariah 13:5"
+ },
+ {
+  "id": "zechariah-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would be asked about the wounds in his hands?",
+  "choices": [
+   "Who hath smitten thee?",
+   "What are these wounds in thine hands?",
+   "Wherefore art thou bound?",
+   "Whence is this blood?"
+  ],
+  "answer": 1,
+  "explanation": "One shall say unto him, What are these wounds in thine hands?",
+  "ref": "Zechariah 13:6"
+ },
+ {
+  "id": "zechariah-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How would he answer about his wounds?",
+  "choices": [
+   "Those with which I was wounded in the battle",
+   "Those with which I was wounded in the house of my friends",
+   "Those I received from the idol shepherd",
+   "Those I gave myself for my sin"
+  ],
+  "answer": 1,
+  "explanation": "Then he shall answer, Those with which I was wounded in the house of my friends.",
+  "ref": "Zechariah 13:6"
+ },
+ {
+  "id": "zechariah-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to two parts of the land?",
+  "choices": [
+   "They shall be sown",
+   "They shall be cut off and die",
+   "They shall be carried captive",
+   "They shall be made fruitful"
+  ],
+  "answer": 1,
+  "explanation": "Two parts therein shall be cut off and die; but the third shall be left therein.",
+  "ref": "Zechariah 13:8"
+ },
+ {
+  "id": "zechariah-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How would the LORD refine the third part?",
+  "choices": [
+   "As iron is beaten",
+   "As silver is refined and gold is tried",
+   "As bread is baked",
+   "As wool is washed"
+  ],
+  "answer": 1,
+  "explanation": "I will refine them as silver is refined, and will try them as gold is tried.",
+  "ref": "Zechariah 13:9"
+ },
+ {
+  "id": "zechariah-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the father and mother do when their child prophesied?",
+  "choices": [
+   "Thrust him through",
+   "Cast him out",
+   "Weep over him",
+   "Bind him"
+  ],
+  "answer": 0,
+  "explanation": "His father and his mother that begat him shall thrust him through when he prophesieth.",
+  "ref": "Zechariah 13:3"
+ },
+ {
+  "id": "zechariah-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the prophets no longer wear to deceive?",
+  "choices": [
+   "A rough garment",
+   "A white robe",
+   "A linen ephod",
+   "A crown"
+  ],
+  "answer": 0,
+  "explanation": "Neither shall they wear a rough garment to deceive.",
+  "ref": "Zechariah 13:4"
+ },
+ {
+  "id": "zechariah-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the husbandman say he was taught from his youth?",
+  "choices": [
+   "To keep cattle",
+   "To plant vines",
+   "To build walls",
+   "To write"
+  ],
+  "answer": 0,
+  "explanation": "Man taught me to keep cattle from my youth.",
+  "ref": "Zechariah 13:5"
+ },
+ {
+  "id": "zechariah-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Upon whom would the LORD turn his hand after the shepherd is smitten?",
+  "choices": [
+   "The little ones",
+   "The priests",
+   "The idol shepherds",
+   "The nations"
+  ],
+  "answer": 0,
+  "explanation": "Smite the shepherd, and the sheep shall be scattered: and I will turn mine hand upon the little ones.",
+  "ref": "Zechariah 13:7"
+ },
+ {
+  "id": "zechariah-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the LORD describe the shepherd the sword awakes against?",
+  "choices": [
+   "The man that is my fellow",
+   "The man that is my servant",
+   "The man that is my son",
+   "The man that is my priest"
+  ],
+  "answer": 0,
+  "explanation": "Awake, O sword, against my shepherd, and against the man that is my fellow, saith the LORD of hosts.",
+  "ref": "Zechariah 13:7"
+ },
+ {
+  "id": "zechariah-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did the LORD say he would gather against Jerusalem to battle?",
+  "choices": [
+   "The Philistines",
+   "All nations",
+   "The kings of Egypt",
+   "The tribes of Israel"
+  ],
+  "answer": 1,
+  "explanation": "I will gather all nations against Jerusalem to battle.",
+  "ref": "Zechariah 14:2"
+ },
+ {
+  "id": "zechariah-14-e-02",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say would happen at evening time in that day?",
+  "choices": [
+   "It shall be dark",
+   "It shall be light",
+   "It shall rain",
+   "It shall be silent"
+  ],
+  "answer": 1,
+  "explanation": "It shall come to pass, that at evening time it shall be light.",
+  "ref": "Zechariah 14:7"
+ },
+ {
+  "id": "zechariah-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which feast must the nations go up to keep?",
+  "choices": [
+   "The feast of trumpets",
+   "The feast of tabernacles",
+   "The passover",
+   "The feast of weeks"
+  ],
+  "answer": 1,
+  "explanation": "Every one that is left of all the nations shall go up to keep the feast of tabernacles.",
+  "ref": "Zechariah 14:16"
+ },
+ {
+  "id": "zechariah-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would be upon the bells of the horses?",
+  "choices": [
+   "Peace unto Jerusalem",
+   "Holiness unto the LORD",
+   "Glory to the king",
+   "The name of David"
+  ],
+  "answer": 1,
+  "explanation": "In that day shall there be upon the bells of the horses, HOLINESS UNTO THE LORD.",
+  "ref": "Zechariah 14:20"
+ },
+ {
+  "id": "zechariah-14-e-05",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say about the nations when he went forth?",
+  "choices": [
+   "He would teach them",
+   "He would fight against them",
+   "He would feed them",
+   "He would ignore them"
+  ],
+  "answer": 1,
+  "explanation": "Then shall the LORD go forth, and fight against those nations, as when he fought in the day of battle.",
+  "ref": "Zechariah 14:3"
+ },
+ {
+  "id": "zechariah-14-e-06",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would be one in that day?",
+  "choices": [
+   "The king and his people",
+   "The LORD, and his name",
+   "The temple and its altar",
+   "The city and its walls"
+  ],
+  "answer": 1,
+  "explanation": "In that day shall there be one LORD, and his name one.",
+  "ref": "Zechariah 14:9"
+ },
+ {
+  "id": "zechariah-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to half of the city?",
+  "choices": [
+   "It shall be burned",
+   "It shall be rebuilt",
+   "It shall be scattered to Egypt",
+   "It shall go forth into captivity"
+  ],
+  "answer": 3,
+  "explanation": "Half of the city shall go forth into captivity, and the residue of the people shall not be cut off from the city.",
+  "ref": "Zechariah 14:2"
+ },
+ {
+  "id": "zechariah-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which directions would half the mountain remove toward?",
+  "choices": [
+   "East and west",
+   "North and east",
+   "South and west",
+   "North and south"
+  ],
+  "answer": 3,
+  "explanation": "Half of the mountain shall remove toward the north, and half of it toward the south.",
+  "ref": "Zechariah 14:4"
+ },
+ {
+  "id": "zechariah-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "place",
+  "question": "Where would they flee?",
+  "choices": [
+   "To the mount of Olives",
+   "To Egypt",
+   "To the sea",
+   "To the valley of the mountains"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall flee to the valley of the mountains.",
+  "ref": "Zechariah 14:5"
+ },
+ {
+  "id": "zechariah-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How would the day be known?",
+  "choices": [
+   "As a day of rain",
+   "As a day of silence",
+   "As a day of darkness",
+   "As one day known to the LORD, not day nor night"
+  ],
+  "answer": 3,
+  "explanation": "It shall be one day which shall be known to the LORD, not day, nor night.",
+  "ref": "Zechariah 14:7"
+ },
+ {
+  "id": "zechariah-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where would the living waters go?",
+  "choices": [
+   "All toward the Jordan",
+   "Half to Egypt, half to Babylon",
+   "All toward the south",
+   "Half toward the former sea, half toward the hinder sea"
+  ],
+  "answer": 3,
+  "explanation": "Living waters shall go out from Jerusalem; half toward the former sea, and half toward the hinder sea.",
+  "ref": "Zechariah 14:8"
+ },
+ {
+  "id": "zechariah-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to the flesh of the people that fought against Jerusalem?",
+  "choices": [
+   "It shall be healed",
+   "It shall be burned in fire",
+   "It shall be eaten by beasts",
+   "It shall consume away while they stand"
+  ],
+  "answer": 3,
+  "explanation": "Their flesh shall consume away while they stand upon their feet.",
+  "ref": "Zechariah 14:12"
+ },
+ {
+  "id": "zechariah-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the great tumult from the LORD make each man do?",
+  "choices": [
+   "Flee from the city",
+   "Pray to the LORD",
+   "Lay down his arms",
+   "Lift his hand against his neighbour"
+  ],
+  "answer": 3,
+  "explanation": "They shall lay hold every one on the hand of his neighbour, and his hand shall rise up against the hand of his neighbour.",
+  "ref": "Zechariah 14:13"
+ },
+ {
+  "id": "zechariah-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would be gathered in great abundance?",
+  "choices": [
+   "Corn, wine and oil",
+   "Cattle, sheep and goats",
+   "Spice, cedar and brass",
+   "Gold, silver and apparel"
+  ],
+  "answer": 3,
+  "explanation": "The wealth of all the heathen round about shall be gathered together, gold, and silver, and apparel, in great abundance.",
+  "ref": "Zechariah 14:14"
+ },
+ {
+  "id": "zechariah-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would be the punishment of Egypt if it did not go up to keep the feast?",
+  "choices": [
+   "A flood",
+   "Captivity",
+   "Darkness",
+   "No rain and the plague"
+  ],
+  "answer": 3,
+  "explanation": "If the family of Egypt go not up, that have no rain; there shall be the plague.",
+  "ref": "Zechariah 14:18"
+ },
+ {
+  "id": "zechariah-14-m-10",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the pots in the LORD’s house be like?",
+  "choices": [
+   "The vessels of gold",
+   "The cups of the king",
+   "The baskets of the poor",
+   "The bowls before the altar"
+  ],
+  "answer": 3,
+  "explanation": "The pots in the LORD’S house shall be like the bowls before the altar.",
+  "ref": "Zechariah 14:20"
+ },
+ {
+  "id": "zechariah-14-m-11",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who would be no more in the house of the LORD of hosts?",
+  "choices": [
+   "The stranger",
+   "The Egyptian",
+   "The unclean priest",
+   "The Canaanite"
+  ],
+  "answer": 3,
+  "explanation": "In that day there shall be no more the Canaanite in the house of the LORD of hosts.",
+  "ref": "Zechariah 14:21"
+ },
+ {
+  "id": "zechariah-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "To which place would the valley of the mountains reach?",
+  "choices": [
+   "Azal",
+   "Rimmon",
+   "Geba",
+   "Megiddon"
+  ],
+  "answer": 0,
+  "explanation": "The valley of the mountains shall reach unto Azal.",
+  "ref": "Zechariah 14:5"
+ },
+ {
+  "id": "zechariah-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "In the days of which king of Judah was the earthquake they fled from?",
+  "choices": [
+   "Uzziah",
+   "Josiah",
+   "Hezekiah",
+   "Jotham"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall flee, like as ye fled from before the earthquake in the days of Uzziah king of Judah.",
+  "ref": "Zechariah 14:5"
+ },
+ {
+  "id": "zechariah-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who would come with the LORD my God?",
+  "choices": [
+   "All the saints",
+   "The angels of Michael",
+   "The house of David",
+   "The nations"
+  ],
+  "answer": 0,
+  "explanation": "The LORD my God shall come, and all the saints with thee.",
+  "ref": "Zechariah 14:5"
+ },
+ {
+  "id": "zechariah-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "The land would be turned as a plain from Geba to where?",
+  "choices": [
+   "Rimmon",
+   "Azal",
+   "Hananeel",
+   "Megiddon"
+  ],
+  "answer": 0,
+  "explanation": "All the land shall be turned as a plain from Geba to Rimmon south of Jerusalem.",
+  "ref": "Zechariah 14:10"
+ },
+ {
+  "id": "zechariah-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "From which gate would Jerusalem be inhabited in her place?",
+  "choices": [
+   "Benjamin’s gate",
+   "The corner gate",
+   "The first gate",
+   "The east gate"
+  ],
+  "answer": 0,
+  "explanation": "Inhabited in her place, from Benjamin’s gate unto the place of the first gate, unto the corner gate.",
+  "ref": "Zechariah 14:10"
+ },
+ {
+  "id": "zechariah-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "Which tower is named in the extent of Jerusalem?",
+  "choices": [
+   "The tower of Hananeel",
+   "The tower of Babel",
+   "The tower of Siloam",
+   "The tower of David"
+  ],
+  "answer": 0,
+  "explanation": "From the tower of Hananeel unto the king’s winepresses.",
+  "ref": "Zechariah 14:10"
+ },
+ {
+  "id": "zechariah-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which beasts would be struck with the plague?",
+  "choices": [
+   "The horse, the mule, the camel, and the ass",
+   "The lion, the bear and the wolf",
+   "The ox, the sheep and the goat",
+   "The horse, the dog and the swine"
+  ],
+  "answer": 0,
+  "explanation": "The plague of the horse, of the mule, of the camel, and of the ass.",
+  "ref": "Zechariah 14:15"
+ },
+ {
+  "id": "zechariah-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would no more happen to Jerusalem?",
+  "choices": [
+   "Utter destruction",
+   "Famine",
+   "Captivity",
+   "Mourning"
+  ],
+  "answer": 0,
+  "explanation": "There shall be no more utter destruction; but Jerusalem shall be safely inhabited.",
+  "ref": "Zechariah 14:11"
+ },
+ {
+  "id": "zechariah-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would fall on any family that would not come up to worship?",
+  "choices": [
+   "No rain",
+   "No light",
+   "No peace",
+   "No sons"
+  ],
+  "answer": 0,
+  "explanation": "Whoso will not come up unto Jerusalem to worship the King, even upon them shall be no rain.",
+  "ref": "Zechariah 14:17"
+ },
+ {
+  "id": "zechariah-14-h-10",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would those who sacrifice do with the pots?",
+  "choices": [
+   "Take of them and seethe therein",
+   "Lay them upon the altar",
+   "Fill them with oil",
+   "Break them"
+  ],
+  "answer": 0,
+  "explanation": "All they that sacrifice shall come and take of them, and seethe therein.",
+  "ref": "Zechariah 14:21"
+ },
+ {
+  "id": "zechariah-14-h-11",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which way would the mount of Olives cleave?",
+  "choices": [
+   "Toward the east and toward the west",
+   "Toward the north and south",
+   "Toward the sea",
+   "Toward Bethany"
+  ],
+  "answer": 0,
+  "explanation": "The mount of Olives shall cleave in the midst thereof toward the east and toward the west.",
+  "ref": "Zechariah 14:4"
+ },
+ {
+  "id": "zechariah-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "What was the man with the measuring line going to measure?",
+  "choices": [
+   "The temple",
+   "Jerusalem",
+   "Babylon",
+   "The land of Judah"
+  ],
+  "answer": 1,
+  "explanation": "He said, To measure Jerusalem, to see what is the breadth thereof, and what is the length thereof.",
+  "ref": "Zechariah 2:2"
+ },
+ {
+  "id": "zechariah-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say all flesh should be before him?",
+  "choices": [
+   "Joyful",
+   "Silent",
+   "Afraid",
+   "Humble"
+  ],
+  "answer": 1,
+  "explanation": "Be silent, O all flesh, before the LORD: for he is raised up out of his holy habitation.",
+  "ref": "Zechariah 2:13"
+ },
+ {
+  "id": "zechariah-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who went out to meet the angel that talked with Zechariah?",
+  "choices": [
+   "The man on the red horse",
+   "Joshua the high priest",
+   "Zerubbabel",
+   "Another angel"
+  ],
+  "answer": 3,
+  "explanation": "The angel that talked with me went forth, and another angel went out to meet him.",
+  "ref": "Zechariah 2:3"
+ },
+ {
+  "id": "zechariah-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "From which land were the people told to flee?",
+  "choices": [
+   "The land of Egypt",
+   "The land of Persia",
+   "The land of the south",
+   "The land of the north"
+  ],
+  "answer": 3,
+  "explanation": "Ho, ho, come forth, and flee from the land of the north, saith the LORD.",
+  "ref": "Zechariah 2:6"
+ },
+ {
+  "id": "zechariah-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what did the LORD compare how he had spread his people abroad?",
+  "choices": [
+   "The sands of the sea",
+   "The stars of the heaven",
+   "The waters of a flood",
+   "The four winds of the heaven"
+  ],
+  "answer": 3,
+  "explanation": "I have spread you abroad as the four winds of the heaven, saith the LORD.",
+  "ref": "Zechariah 2:6"
+ },
+ {
+  "id": "zechariah-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Who was told to deliver herself, as one dwelling with the daughter of Babylon?",
+  "choices": [
+   "Judah",
+   "Samaria",
+   "Jerusalem’s priests",
+   "Zion"
+  ],
+  "answer": 3,
+  "explanation": "Deliver thyself, O Zion, that dwellest with the daughter of Babylon.",
+  "ref": "Zechariah 2:7"
+ },
+ {
+  "id": "zechariah-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say he would be in the midst of Jerusalem?",
+  "choices": [
+   "The judge",
+   "The shepherd",
+   "The teacher",
+   "The glory"
+  ],
+  "answer": 3,
+  "explanation": "I, saith the LORD, will be unto her a wall of fire round about, and will be the glory in the midst of her.",
+  "ref": "Zechariah 2:5"
+ },
+ {
+  "id": "zechariah-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom had the LORD sent the speaker to after the glory?",
+  "choices": [
+   "The kings of Judah",
+   "The priests of Jerusalem",
+   "The captives in Babylon",
+   "The nations which spoiled you"
+  ],
+  "answer": 3,
+  "explanation": "After the glory hath he sent me unto the nations which spoiled you.",
+  "ref": "Zechariah 2:8"
+ },
+ {
+  "id": "zechariah-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD inherit as his portion in the holy land?",
+  "choices": [
+   "Israel",
+   "Zion",
+   "The nations",
+   "Judah"
+  ],
+  "answer": 3,
+  "explanation": "The LORD shall inherit Judah his portion in the holy land, and shall choose Jerusalem again.",
+  "ref": "Zechariah 2:12"
+ },
+ {
+  "id": "zechariah-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two measures did the man want to see for Jerusalem?",
+  "choices": [
+   "Its breadth and its length",
+   "Its height and its depth",
+   "Its walls and its gates",
+   "Its houses and its streets"
+  ],
+  "answer": 0,
+  "explanation": "He said, To measure Jerusalem, to see what is the breadth thereof, and what is the length thereof.",
+  "ref": "Zechariah 2:2"
+ },
+ {
+  "id": "zechariah-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say he would shake upon the nations?",
+  "choices": [
+   "His hand",
+   "His sword",
+   "His rod",
+   "His voice"
+  ],
+  "answer": 0,
+  "explanation": "Behold, I will shake mine hand upon them, and they shall be a spoil to their servants.",
+  "ref": "Zechariah 2:9"
+ },
+ {
+  "id": "zechariah-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the spoiling nations would become to their servants?",
+  "choices": [
+   "A spoil",
+   "A judge",
+   "A refuge",
+   "A burden"
+  ],
+  "answer": 0,
+  "explanation": "They shall be a spoil to their servants.",
+  "ref": "Zechariah 2:9"
+ },
+ {
+  "id": "zechariah-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "What did the LORD say he would do to Jerusalem again?",
+  "choices": [
+   "Choose it",
+   "Rebuild it",
+   "Bless it",
+   "Judge it"
+  ],
+  "answer": 0,
+  "explanation": "The LORD shall inherit Judah his portion in the holy land, and shall choose Jerusalem again.",
+  "ref": "Zechariah 2:12"
+ },
+ {
+  "id": "zechariah-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where is the LORD raised up?",
+  "choices": [
+   "His holy habitation",
+   "His throne in Zion",
+   "The midst of the temple",
+   "The heavens above the cloud"
+  ],
+  "answer": 0,
+  "explanation": "Be silent, O all flesh, before the LORD: for he is raised up out of his holy habitation.",
+  "ref": "Zechariah 2:13"
+ },
+ {
+  "id": "zechariah-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question did Zechariah ask the man with the measuring line?",
+  "choices": [
+   "Whither goest thou?",
+   "Who sent thee?",
+   "What is thy name?",
+   "What is in thy hand?"
+  ],
+  "answer": 0,
+  "explanation": "Then said I, Whither goest thou? And he said unto me, To measure Jerusalem.",
+  "ref": "Zechariah 2:2"
+ },
+ {
+  "id": "zechariah-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say he would do in the midst of the daughter of Zion?",
+  "choices": [
+   "Dwell",
+   "Rule",
+   "Judge",
+   "Rest"
+  ],
+  "answer": 0,
+  "explanation": "Sing and rejoice, O daughter of Zion: for, lo, I come, and I will dwell in the midst of thee.",
+  "ref": "Zechariah 2:10"
+ },
+ {
+  "id": "zechariah-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD call Joshua when he rebuked Satan?",
+  "choices": [
+   "A vessel of honour",
+   "A brand plucked out of the fire",
+   "A watchman on the wall",
+   "A rock in the field"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said, is not this a brand plucked out of the fire?",
+  "ref": "Zechariah 3:2"
+ },
+ {
+  "id": "zechariah-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say to Satan?",
+  "choices": [
+   "Get thee behind me",
+   "The LORD rebuke thee",
+   "Depart from the house",
+   "Thou shalt not stand"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said unto Satan, The LORD rebuke thee, O Satan.",
+  "ref": "Zechariah 3:2"
+ },
+ {
+  "id": "zechariah-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say he had done with Joshua’s iniquity?",
+  "choices": [
+   "Written it in a book",
+   "Caused it to pass from him",
+   "Laid it upon the altar",
+   "Hidden it from the angel"
+  ],
+  "answer": 1,
+  "explanation": "Behold, I have caused thine iniquity to pass from thee, and I will clothe thee with change of raiment.",
+  "ref": "Zechariah 3:4"
+ },
+ {
+  "id": "zechariah-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was set upon Joshua’s head?",
+  "choices": [
+   "A crown of gold",
+   "A fair mitre",
+   "A turban of linen",
+   "A wreath of olive"
+  ],
+  "answer": 1,
+  "explanation": "They set a fair mitre upon his head.",
+  "ref": "Zechariah 3:5"
+ },
+ {
+  "id": "zechariah-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say Joshua would do if he walked in his ways and kept his charge?",
+  "choices": [
+   "Wear a crown",
+   "Judge his house and keep his courts",
+   "Rule over Judah",
+   "Build the walls"
+  ],
+  "answer": 1,
+  "explanation": "If thou wilt walk in my ways, and keep my charge, then thou shalt also judge my house, and shalt also keep my courts.",
+  "ref": "Zechariah 3:7"
+ },
+ {
+  "id": "zechariah-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who asked that a fair mitre be set upon Joshua’s head?",
+  "choices": [
+   "Zechariah",
+   "The angel of the LORD",
+   "Zerubbabel",
+   "Joshua himself"
+  ],
+  "answer": 0,
+  "explanation": "Zechariah said, Let them set a fair mitre upon his head.",
+  "ref": "Zechariah 3:5"
+ },
+ {
+  "id": "zechariah-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many eyes were upon the one stone laid before Joshua?",
+  "choices": [
+   "Seven",
+   "Four",
+   "Twelve",
+   "Two"
+  ],
+  "answer": 0,
+  "explanation": "Upon one stone shall be seven eyes.",
+  "ref": "Zechariah 3:9"
+ },
+ {
+  "id": "zechariah-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Under what two things would every man call his neighbour in that day?",
+  "choices": [
+   "The vine and the fig tree",
+   "The olive and the palm",
+   "The cedar and the oak",
+   "The vine and the pomegranate"
+  ],
+  "answer": 0,
+  "explanation": "In that day shall ye call every man his neighbour under the vine and under the fig tree.",
+  "ref": "Zechariah 3:10"
+ },
+ {
+  "id": "zechariah-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say he would give Joshua if he kept his charge?",
+  "choices": [
+   "Places to walk among those that stand by",
+   "A house of cedar",
+   "A portion in the land",
+   "A seat among the kings"
+  ],
+  "answer": 0,
+  "explanation": "I will give thee places to walk among these that stand by.",
+  "ref": "Zechariah 3:7"
+ },
+ {
+  "id": "zechariah-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who are called men wondered at, sitting before Joshua?",
+  "choices": [
+   "His fellows",
+   "The elders of Judah",
+   "The priests of Persia",
+   "The men of Zion"
+  ],
+  "answer": 0,
+  "explanation": "Hear now, O Joshua, thou, and thy fellows that sit before thee: for they are men wondered at.",
+  "ref": "Zechariah 3:8"
+ },
+ {
+  "id": "zechariah-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the candlestick made of?",
+  "choices": [
+   "Silver",
+   "All of gold",
+   "Brass",
+   "Wood overlaid with gold"
+  ],
+  "answer": 1,
+  "explanation": "Zechariah saw a candlestick all of gold, with a bowl upon the top of it.",
+  "ref": "Zechariah 4:2"
+ },
+ {
+  "id": "zechariah-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What stood by the candlestick?",
+  "choices": [
+   "Two angels",
+   "Two olive trees",
+   "Two priests",
+   "Two altars"
+  ],
+  "answer": 1,
+  "explanation": "Zechariah saw two olive trees by it, one upon the right side of the bowl, and the other upon the left.",
+  "ref": "Zechariah 4:3"
+ },
+ {
+  "id": "zechariah-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who would bring forth the headstone with shoutings?",
+  "choices": [
+   "Joshua",
+   "Zechariah",
+   "The angel",
+   "Zerubbabel"
+  ],
+  "answer": 3,
+  "explanation": "Before Zerubbabel thou shalt become a plain: and he shall bring forth the headstone thereof with shoutings.",
+  "ref": "Zechariah 4:7"
+ },
+ {
+  "id": "zechariah-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would be cried when the headstone was brought forth?",
+  "choices": [
+   "Holy, holy, holy",
+   "Peace be upon it",
+   "Hosanna to the LORD",
+   "Grace, grace unto it"
+  ],
+  "answer": 3,
+  "explanation": "He shall bring forth the headstone thereof with shoutings, crying, Grace, grace unto it.",
+  "ref": "Zechariah 4:7"
+ },
+ {
+  "id": "zechariah-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD ask about the day of small things?",
+  "choices": [
+   "Who will remember it?",
+   "Who will count it?",
+   "Who will forget it?",
+   "Who hath despised it?"
+  ],
+  "answer": 3,
+  "explanation": "For who hath despised the day of small things?",
+  "ref": "Zechariah 4:10"
+ },
+ {
+  "id": "zechariah-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would they see in the hand of Zerubbabel?",
+  "choices": [
+   "The rod",
+   "The sceptre",
+   "The measuring line",
+   "The plummet"
+  ],
+  "answer": 3,
+  "explanation": "They shall rejoice, and shall see the plummet in the hand of Zerubbabel with those seven.",
+  "ref": "Zechariah 4:10"
+ },
+ {
+  "id": "zechariah-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose eyes are the seven that run to and fro through the whole earth?",
+  "choices": [
+   "The eyes of the angels",
+   "The eyes of the priests",
+   "The eyes of Zerubbabel",
+   "The eyes of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "They are the eyes of the LORD, which run to and fro through the whole earth.",
+  "ref": "Zechariah 4:10"
+ },
+ {
+  "id": "zechariah-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What came out of the two olive branches through the two golden pipes?",
+  "choices": [
+   "Pure water",
+   "Fine wine",
+   "Fire",
+   "Golden oil"
+  ],
+  "answer": 3,
+  "explanation": "The two olive branches through the two golden pipes empty the golden oil out of themselves.",
+  "ref": "Zechariah 4:12"
+ },
+ {
+  "id": "zechariah-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Zechariah answer when the angel asked, Knowest thou not what these be?",
+  "choices": [
+   "They are the lamps",
+   "They are the priests",
+   "They are thy servants",
+   "No, my lord"
+  ],
+  "answer": 3,
+  "explanation": "The angel asked, Knowest thou not what these be? And I said, No, my lord.",
+  "ref": "Zechariah 4:5"
+ },
+ {
+  "id": "zechariah-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was Zechariah waked by the angel?",
+  "choices": [
+   "As a man wakened out of his sleep",
+   "As one struck by a rod",
+   "As one called by name",
+   "As a watchman at dawn"
+  ],
+  "answer": 0,
+  "explanation": "The angel came again, and waked me, as a man that is wakened out of his sleep.",
+  "ref": "Zechariah 4:1"
+ },
+ {
+  "id": "zechariah-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many pipes were there to the seven lamps?",
+  "choices": [
+   "Seven",
+   "Two",
+   "Twelve",
+   "Four"
+  ],
+  "answer": 0,
+  "explanation": "Zechariah saw seven lamps, and seven pipes to the seven lamps.",
+  "ref": "Zechariah 4:2"
+ },
+ {
+  "id": "zechariah-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Zechariah see upon the top of the candlestick?",
+  "choices": [
+   "A bowl",
+   "A crown",
+   "A flame",
+   "A cluster of grapes"
+  ],
+  "answer": 0,
+  "explanation": "A candlestick all of gold, with a bowl upon the top of it, and his seven lamps thereon.",
+  "ref": "Zechariah 4:2"
+ },
+ {
+  "id": "zechariah-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what did the LORD say, Who art thou?",
+  "choices": [
+   "The great mountain",
+   "The deep sea",
+   "The high wall",
+   "The strong city"
+  ],
+  "answer": 0,
+  "explanation": "Who art thou, O great mountain? before Zerubbabel thou shalt become a plain.",
+  "ref": "Zechariah 4:7"
+ },
+ {
+  "id": "zechariah-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where do the two anointed ones stand?",
+  "choices": [
+   "By the LORD of the whole earth",
+   "Before the altar of incense",
+   "At the gate of the temple",
+   "Upon the great mountain"
+  ],
+  "answer": 0,
+  "explanation": "These are the two anointed ones, that stand by the LORD of the whole earth.",
+  "ref": "Zechariah 4:14"
+ },
+ {
+  "id": "zechariah-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Zerubbabel’s finished work cause Zechariah to know?",
+  "choices": [
+   "That the LORD of hosts hath sent him",
+   "That the people would obey",
+   "That the nations would fear",
+   "That the exile was over"
+  ],
+  "answer": 0,
+  "explanation": "His hands shall also finish it; and thou shalt know that the LORD of hosts hath sent me unto you.",
+  "ref": "Zechariah 4:9"
+ },
+ {
+  "id": "zechariah-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which sides of the bowl were the two olive trees?",
+  "choices": [
+   "One on the right and one on the left",
+   "Both on the right",
+   "Both on the left",
+   "One in front and one behind"
+  ],
+  "answer": 0,
+  "explanation": "Two olive trees by it, one upon the right side of the bowl, and the other upon the left side.",
+  "ref": "Zechariah 4:3"
+ },
+ {
+  "id": "zechariah-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who lifted up the ephah between the earth and the heaven?",
+  "choices": [
+   "Two angels",
+   "Two women",
+   "Two horsemen",
+   "Two priests"
+  ],
+  "answer": 1,
+  "explanation": "There came out two women, and they lifted up the ephah between the earth and the heaven.",
+  "ref": "Zechariah 5:9"
+ },
+ {
+  "id": "zechariah-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose house would the curse enter, besides the thief’s?",
+  "choices": [
+   "The one who sweareth falsely by the LORD’s name",
+   "The one who bears false witness",
+   "The one who oppresses the poor",
+   "The one who despises the priests"
+  ],
+  "answer": 0,
+  "explanation": "It shall enter into the house of the thief, and into the house of him that sweareth falsely by my name.",
+  "ref": "Zechariah 5:4"
+ },
+ {
+  "id": "zechariah-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the curse do to the house it entered?",
+  "choices": [
+   "Consume it with its timber and stones",
+   "Leave it empty",
+   "Scatter its people",
+   "Turn it to ashes at once"
+  ],
+  "answer": 0,
+  "explanation": "It shall remain in the midst of his house, and shall consume it with the timber thereof and the stones thereof.",
+  "ref": "Zechariah 5:4"
+ },
+ {
+  "id": "zechariah-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel do with wickedness?",
+  "choices": [
+   "Cast it into the midst of the ephah",
+   "Burned it with fire",
+   "Bound it with a chain",
+   "Carried it to the temple"
+  ],
+  "answer": 0,
+  "explanation": "He said, This is wickedness. And he cast it into the midst of the ephah.",
+  "ref": "Zechariah 5:8"
+ },
+ {
+  "id": "zechariah-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was cast upon the mouth of the ephah?",
+  "choices": [
+   "The weight of lead",
+   "A stone",
+   "A cloth",
+   "A seal"
+  ],
+  "answer": 0,
+  "explanation": "He cast the weight of lead upon the mouth thereof.",
+  "ref": "Zechariah 5:8"
+ },
+ {
+  "id": "zechariah-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of wings did the two women have?",
+  "choices": [
+   "Wings like the wings of a stork",
+   "Wings like the wings of an eagle",
+   "Wings like the wings of a dove",
+   "Wings like the wings of a hawk"
+  ],
+  "answer": 0,
+  "explanation": "They had wings like the wings of a stork.",
+  "ref": "Zechariah 5:9"
+ },
+ {
+  "id": "zechariah-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be built in the land of Shinar?",
+  "choices": [
+   "An house for the ephah",
+   "A tower",
+   "A wall",
+   "A temple"
+  ],
+  "answer": 0,
+  "explanation": "The angel said, To build it an house in the land of Shinar.",
+  "ref": "Zechariah 5:11"
+ },
+ {
+  "id": "zechariah-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was the flying roll?",
+  "choices": [
+   "Ten cubits",
+   "Thirty cubits",
+   "Twenty cubits",
+   "Forty cubits"
+  ],
+  "answer": 2,
+  "explanation": "The length thereof is twenty cubits, and the breadth thereof ten cubits.",
+  "ref": "Zechariah 5:2"
+ },
+ {
+  "id": "zechariah-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was in the wings of the two women?",
+  "choices": [
+   "Fire",
+   "Light",
+   "The wind",
+   "Dust"
+  ],
+  "answer": 2,
+  "explanation": "The wind was in their wings.",
+  "ref": "Zechariah 5:9"
+ },
+ {
+  "id": "zechariah-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Between what two places did the women lift up the ephah?",
+  "choices": [
+   "Between two mountains",
+   "Between the north and the south",
+   "Between the earth and the heaven",
+   "Between the river and the sea"
+  ],
+  "answer": 2,
+  "explanation": "They lifted up the ephah between the earth and the heaven.",
+  "ref": "Zechariah 5:9"
+ },
+ {
+  "id": "zechariah-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Upon what would the ephah be set in Shinar?",
+  "choices": [
+   "A tower of brick",
+   "The temple floor",
+   "Her own base",
+   "A rock"
+  ],
+  "answer": 2,
+  "explanation": "It shall be established, and set there upon her own base.",
+  "ref": "Zechariah 5:11"
+ },
+ {
+  "id": "zechariah-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the angel say the ephah was through all the earth?",
+  "choices": [
+   "Their burden",
+   "Their judgment",
+   "Their resemblance",
+   "Their measure"
+  ],
+  "answer": 2,
+  "explanation": "This is an ephah that goeth forth. This is their resemblance through all the earth.",
+  "ref": "Zechariah 5:6"
+ },
+ {
+  "id": "zechariah-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Zechariah ask the angel about the ephah?",
+  "choices": [
+   "Who sent it?",
+   "What is in it?",
+   "Whither do these bear it?",
+   "Who shall open it?"
+  ],
+  "answer": 2,
+  "explanation": "Then said I to the angel that talked with me, Whither do these bear the ephah?",
+  "ref": "Zechariah 5:10"
+ },
+ {
+  "id": "zechariah-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the two mountains made of?",
+  "choices": [
+   "Iron",
+   "Brass",
+   "Stone",
+   "Gold"
+  ],
+  "answer": 1,
+  "explanation": "There came four chariots out from between two mountains; and the mountains were mountains of brass.",
+  "ref": "Zechariah 6:1"
+ },
+ {
+  "id": "zechariah-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What colour were the horses in the first chariot?",
+  "choices": [
+   "Black",
+   "Red",
+   "White",
+   "Bay"
+  ],
+  "answer": 1,
+  "explanation": "In the first chariot were red horses.",
+  "ref": "Zechariah 6:2"
+ },
+ {
+  "id": "zechariah-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Zechariah told to make into crowns?",
+  "choices": [
+   "Brass and iron",
+   "Silver and gold",
+   "Cedar and gold",
+   "Silver and brass"
+  ],
+  "answer": 1,
+  "explanation": "Then take silver and gold, and make crowns, and set them upon the head of Joshua.",
+  "ref": "Zechariah 6:11"
+ },
+ {
+  "id": "zechariah-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the black horses go forth?",
+  "choices": [
+   "Into the south country",
+   "Into the east country",
+   "Into the north country",
+   "Into the land of Shinar"
+  ],
+  "answer": 2,
+  "explanation": "The black horses go forth into the north country.",
+  "ref": "Zechariah 6:6"
+ },
+ {
+  "id": "zechariah-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the grisled horses go forth?",
+  "choices": [
+   "Into the north country",
+   "Toward the east",
+   "Toward the south country",
+   "Toward the sea"
+  ],
+  "answer": 2,
+  "explanation": "The grisled go forth toward the south country.",
+  "ref": "Zechariah 6:6"
+ },
+ {
+  "id": "zechariah-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the horses going toward the north country do for the LORD?",
+  "choices": [
+   "Brought back the captives",
+   "Burned the cities",
+   "Quieted his spirit in the north country",
+   "Carried the crowns"
+  ],
+  "answer": 2,
+  "explanation": "These that go toward the north country have quieted my spirit in the north country.",
+  "ref": "Zechariah 6:8"
+ },
+ {
+  "id": "zechariah-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was told to the bay horses that sought to go?",
+  "choices": [
+   "Go into the north country",
+   "Stand before the LORD",
+   "Walk to and fro through the earth",
+   "Return to the mountains"
+  ],
+  "answer": 2,
+  "explanation": "He said, Get you hence, walk to and fro through the earth. So they walked to and fro through the earth.",
+  "ref": "Zechariah 6:7"
+ },
+ {
+  "id": "zechariah-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Into whose house was Zechariah told to go?",
+  "choices": [
+   "Joshua the son of Josedech",
+   "Heldai",
+   "Josiah the son of Zephaniah",
+   "Tobijah"
+  ],
+  "answer": 2,
+  "explanation": "Go into the house of Josiah the son of Zephaniah.",
+  "ref": "Zechariah 6:10"
+ },
+ {
+  "id": "zechariah-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say the BRANCH would do out of his place?",
+  "choices": [
+   "Rule the nations",
+   "Gather the captives",
+   "Grow up",
+   "Cut down the mountains"
+  ],
+  "answer": 2,
+  "explanation": "Behold the man whose name is The BRANCH; and he shall grow up out of his place.",
+  "ref": "Zechariah 6:12"
+ },
+ {
+  "id": "zechariah-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who would come and build in the temple of the LORD?",
+  "choices": [
+   "The priests of Judah",
+   "The men of Babylon",
+   "They that are far off",
+   "The kings of Persia"
+  ],
+  "answer": 2,
+  "explanation": "They that are far off shall come and build in the temple of the LORD.",
+  "ref": "Zechariah 6:15"
+ },
+ {
+  "id": "zechariah-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what condition would these things come to pass?",
+  "choices": [
+   "If ye fast in the fifth month",
+   "If ye build the wall",
+   "If ye will diligently obey the voice of the LORD",
+   "If ye bring the tithes"
+  ],
+  "answer": 2,
+  "explanation": "This shall come to pass, if ye will diligently obey the voice of the LORD your God.",
+  "ref": "Zechariah 6:15"
+ },
+ {
+  "id": "zechariah-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What colour were the horses in the third chariot?",
+  "choices": [
+   "Red",
+   "Black",
+   "White",
+   "Grisled"
+  ],
+  "answer": 2,
+  "explanation": "In the third chariot white horses.",
+  "ref": "Zechariah 6:3"
+ },
+ {
+  "id": "zechariah-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of horses were in the fourth chariot?",
+  "choices": [
+   "Red and black",
+   "White and speckled",
+   "Grisled and bay",
+   "Black and white"
+  ],
+  "answer": 2,
+  "explanation": "In the fourth chariot grisled and bay horses.",
+  "ref": "Zechariah 6:3"
+ },
+ {
+  "id": "zechariah-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man was among those of the captivity who came from Babylon?",
+  "choices": [
+   "Josedech",
+   "Zephaniah",
+   "Heldai",
+   "Josiah"
+  ],
+  "answer": 2,
+  "explanation": "Take of them of the captivity, even of Heldai, of Tobijah, and of Jedaiah.",
+  "ref": "Zechariah 6:10"
+ },
+ {
+  "id": "zechariah-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "From where had the men of the captivity come?",
+  "choices": [
+   "Egypt",
+   "Assyria",
+   "Babylon",
+   "Tyre"
+  ],
+  "answer": 2,
+  "explanation": "They are come from Babylon.",
+  "ref": "Zechariah 6:10"
+ },
+ {
+  "id": "zechariah-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what were the crowns to be a memorial?",
+  "choices": [
+   "On the head of Joshua",
+   "In the house of Josiah",
+   "In the temple of the LORD",
+   "Among the captives"
+  ],
+  "answer": 2,
+  "explanation": "The crowns shall be for a memorial in the temple of the LORD.",
+  "ref": "Zechariah 6:14"
+ },
+ {
+  "id": "zechariah-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom had the four spirits stood?",
+  "choices": [
+   "The high priest",
+   "The king of Persia",
+   "The Lord of all the earth",
+   "The angel of the LORD"
+  ],
+  "answer": 2,
+  "explanation": "These are the four spirits of the heavens, which go forth from standing before the Lord of all the earth.",
+  "ref": "Zechariah 6:5"
+ },
+ {
+  "id": "zechariah-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son is Hen?",
+  "choices": [
+   "Josedech",
+   "Berechiah",
+   "Zephaniah",
+   "Josiah"
+  ],
+  "answer": 2,
+  "explanation": "The crowns shall be to Helem, and to Tobijah, and to Jedaiah, and to Hen the son of Zephaniah.",
+  "ref": "Zechariah 6:14"
+ },
+ {
+  "id": "zechariah-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the BRANCH would bear?",
+  "choices": [
+   "The sceptre",
+   "The key",
+   "The glory",
+   "The crown"
+  ],
+  "answer": 2,
+  "explanation": "He shall bear the glory, and shall sit and rule upon his throne.",
+  "ref": "Zechariah 6:13"
+ },
+ {
+  "id": "zechariah-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say the people did when they ate and drank?",
+  "choices": [
+   "Gave thanks to the LORD",
+   "Ate and drank for themselves",
+   "Shared with the poor",
+   "Offered the first fruits"
+  ],
+  "answer": 1,
+  "explanation": "Did not ye eat for yourselves, and drink for yourselves?",
+  "ref": "Zechariah 7:6"
+ },
+ {
+  "id": "zechariah-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the LORD say not to oppress?",
+  "choices": [
+   "The priest",
+   "The widow",
+   "The king",
+   "The merchant"
+  ],
+  "answer": 1,
+  "explanation": "Oppress not the widow, nor the fatherless, the stranger, nor the poor.",
+  "ref": "Zechariah 7:10"
+ },
+ {
+  "id": "zechariah-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were sent to the house of God to pray before the LORD?",
+  "choices": [
+   "Heldai and Tobijah",
+   "Joshua and Zerubbabel",
+   "Haggai and Iddo",
+   "Sherezer and Regem-melech"
+  ],
+  "answer": 3,
+  "explanation": "They had sent unto the house of God Sherezer and Regem-melech, and their men, to pray before the LORD.",
+  "ref": "Zechariah 7:2"
+ },
+ {
+  "id": "zechariah-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say they had made their hearts?",
+  "choices": [
+   "As hard iron",
+   "As dry dust",
+   "As deep water",
+   "As an adamant stone"
+  ],
+  "answer": 3,
+  "explanation": "They made their hearts as an adamant stone, lest they should hear the law.",
+  "ref": "Zechariah 7:12"
+ },
+ {
+  "id": "zechariah-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What came from the LORD because they would not hear?",
+  "choices": [
+   "A famine",
+   "A plague of locusts",
+   "A drought",
+   "A great wrath"
+  ],
+  "answer": 3,
+  "explanation": "Therefore came a great wrath from the LORD of hosts.",
+  "ref": "Zechariah 7:12"
+ },
+ {
+  "id": "zechariah-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD scatter them among the nations?",
+  "choices": [
+   "With a sword",
+   "With a flood",
+   "With a fire",
+   "With a whirlwind"
+  ],
+  "answer": 3,
+  "explanation": "I scattered them with a whirlwind among all the nations whom they knew not.",
+  "ref": "Zechariah 7:14"
+ },
+ {
+  "id": "zechariah-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they do when told to hear the prophets?",
+  "choices": [
+   "Wept and fasted",
+   "Cast the prophets out",
+   "Went up to the house of God",
+   "Pulled away the shoulder and stopped their ears"
+  ],
+  "answer": 3,
+  "explanation": "They refused to hearken, and pulled away the shoulder, and stopped their ears.",
+  "ref": "Zechariah 7:11"
+ },
+ {
+  "id": "zechariah-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say none of them should imagine in their heart?",
+  "choices": [
+   "Pride before the LORD",
+   "Wealth for themselves",
+   "Peace with the nations",
+   "Evil against his brother"
+  ],
+  "answer": 3,
+  "explanation": "Let none of you imagine evil against his brother in your heart.",
+  "ref": "Zechariah 7:10"
+ },
+ {
+  "id": "zechariah-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say when they cried and he would not hear?",
+  "choices": [
+   "He would hear them in the morning",
+   "He would answer by the prophets",
+   "He would send them a king",
+   "He would not hear them, as they would not hear him"
+  ],
+  "answer": 3,
+  "explanation": "As he cried, and they would not hear; so they cried, and I would not hear.",
+  "ref": "Zechariah 7:13"
+ },
+ {
+  "id": "zechariah-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of King Darius did the word come to Zechariah?",
+  "choices": [
+   "The fourth year",
+   "The second year",
+   "The sixth year",
+   "The first year"
+  ],
+  "answer": 0,
+  "explanation": "It came to pass in the fourth year of king Darius.",
+  "ref": "Zechariah 7:1"
+ },
+ {
+  "id": "zechariah-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month, called Chisleu, did the word come on the fourth day?",
+  "choices": [
+   "The ninth month",
+   "The fifth month",
+   "The seventh month",
+   "The eleventh month"
+  ],
+  "answer": 0,
+  "explanation": "The word came in the fourth day of the ninth month, even in Chisleu.",
+  "ref": "Zechariah 7:1"
+ },
+ {
+  "id": "zechariah-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how many years had they fasted and mourned in the fifth and seventh month?",
+  "choices": [
+   "Seventy years",
+   "Forty years",
+   "Fifty years",
+   "A hundred years"
+  ],
+  "answer": 0,
+  "explanation": "Did ye at all fast unto me, even those seventy years?",
+  "ref": "Zechariah 7:5"
+ },
+ {
+  "id": "zechariah-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which two months had they fasted and mourned?",
+  "choices": [
+   "The fifth and the seventh",
+   "The first and the fourth",
+   "The third and the ninth",
+   "The seventh and the tenth"
+  ],
+  "answer": 0,
+  "explanation": "When ye fasted and mourned in the fifth and seventh month.",
+  "ref": "Zechariah 7:5"
+ },
+ {
+  "id": "zechariah-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "What two places did men inhabit when Jerusalem was in prosperity?",
+  "choices": [
+   "The south and the plain",
+   "The north and the sea",
+   "The valley and the hill",
+   "The east and the west"
+  ],
+  "answer": 0,
+  "explanation": "When men inhabited the south and the plain.",
+  "ref": "Zechariah 7:7"
+ },
+ {
+  "id": "zechariah-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom was Zechariah told to speak about their fasting?",
+  "choices": [
+   "All the people of the land and the priests",
+   "The elders of Babylon",
+   "Only the king",
+   "The prophets alone"
+  ],
+  "answer": 0,
+  "explanation": "Speak unto all the people of the land, and to the priests.",
+  "ref": "Zechariah 7:5"
+ },
+ {
+  "id": "zechariah-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say happened to the land after them?",
+  "choices": [
+   "No man passed through nor returned",
+   "It was given to strangers",
+   "It was divided by lot",
+   "It was filled with the heathen"
+  ],
+  "answer": 0,
+  "explanation": "The land was desolate after them, that no man passed through nor returned.",
+  "ref": "Zechariah 7:14"
+ },
+ {
+  "id": "zechariah-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "What shall Jerusalem be called?",
+  "choices": [
+   "A city of peace",
+   "A city of truth",
+   "A city of refuge",
+   "A city of gold"
+  ],
+  "answer": 1,
+  "explanation": "Jerusalem shall be called a city of truth.",
+  "ref": "Zechariah 8:3"
+ },
+ {
+  "id": "zechariah-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "What shall the mountain of the LORD of hosts be called?",
+  "choices": [
+   "The high mountain",
+   "The holy mountain",
+   "The mountain of peace",
+   "The mountain of joy"
+  ],
+  "answer": 1,
+  "explanation": "The mountain of the LORD of hosts the holy mountain.",
+  "ref": "Zechariah 8:3"
+ },
+ {
+  "id": "zechariah-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say about his people and himself?",
+  "choices": [
+   "They shall serve me, and I will serve them",
+   "They shall be my people, and I will be their God",
+   "They shall fear me, and I will forgive them",
+   "They shall build for me, and I will build for them"
+  ],
+  "answer": 1,
+  "explanation": "They shall be my people, and I will be their God, in truth and in righteousness.",
+  "ref": "Zechariah 8:8"
+ },
+ {
+  "id": "zechariah-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the people told to speak to their neighbour?",
+  "choices": [
+   "A blessing",
+   "The truth",
+   "A prayer",
+   "A warning"
+  ],
+  "answer": 1,
+  "explanation": "Speak ye every man the truth to his neighbour.",
+  "ref": "Zechariah 8:16"
+ },
+ {
+  "id": "zechariah-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say the house of Judah and Israel would be, after being a curse among the heathen?",
+  "choices": [
+   "A kingdom",
+   "A blessing",
+   "A watchman",
+   "A shepherd"
+  ],
+  "answer": 1,
+  "explanation": "As ye were a curse among the heathen, so will I save you, and ye shall be a blessing.",
+  "ref": "Zechariah 8:13"
+ },
+ {
+  "id": "zechariah-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say he hates?",
+  "choices": [
+   "Feasts and fasts",
+   "Evil imagined against a neighbour and a false oath",
+   "Silver and gold",
+   "The old men of the city"
+  ],
+  "answer": 1,
+  "explanation": "Let none of you imagine evil against his neighbour; and love no false oath: for all these are things that I hate.",
+  "ref": "Zechariah 8:17"
+ },
+ {
+  "id": "zechariah-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell the people to love, because the fasts would be turned to joy?",
+  "choices": [
+   "Silver and gold",
+   "The truth and peace",
+   "Fasting and weeping",
+   "The temple and the altar"
+  ],
+  "answer": 1,
+  "explanation": "The fasts shall be joy and gladness, and cheerful feasts; therefore love the truth and peace.",
+  "ref": "Zechariah 8:19"
+ },
+ {
+  "id": "zechariah-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the LORD say he would dwell?",
+  "choices": [
+   "On the mountain of Samaria",
+   "In the land of Gilead",
+   "In the midst of Jerusalem",
+   "In the valley of Jezreel"
+  ],
+  "answer": 2,
+  "explanation": "I am returned unto Zion, and will dwell in the midst of Jerusalem.",
+  "ref": "Zechariah 8:3"
+ },
+ {
+  "id": "zechariah-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD ask about what seemed marvellous to the remnant?",
+  "choices": [
+   "Who will believe it?",
+   "Why should it be hidden?",
+   "Should it also be marvellous in mine eyes?",
+   "How long shall it be?"
+  ],
+  "answer": 2,
+  "explanation": "If it be marvellous in the eyes of the remnant, should it also be marvellous in mine eyes?",
+  "ref": "Zechariah 8:6"
+ },
+ {
+  "id": "zechariah-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the people who heard the prophets told to do?",
+  "choices": [
+   "Fear and tremble",
+   "Fast and pray",
+   "Let your hands be strong",
+   "Sit and wait"
+  ],
+  "answer": 2,
+  "explanation": "Let your hands be strong, ye that hear in these days these words by the mouth of the prophets.",
+  "ref": "Zechariah 8:9"
+ },
+ {
+  "id": "zechariah-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was there no peace before these days?",
+  "choices": [
+   "The Persians had closed the roads",
+   "The land had no rain",
+   "The LORD set all men every one against his neighbour",
+   "The temple lay in ruins"
+  ],
+  "answer": 2,
+  "explanation": "There was no peace because of the affliction: for I set all men every one against his neighbour.",
+  "ref": "Zechariah 8:10"
+ },
+ {
+  "id": "zechariah-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say the heavens would give?",
+  "choices": [
+   "Their fire",
+   "Their stars",
+   "Their dew",
+   "Their rain only in winter"
+  ],
+  "answer": 2,
+  "explanation": "The seed shall be prosperous; the heavens shall give their dew.",
+  "ref": "Zechariah 8:12"
+ },
+ {
+  "id": "zechariah-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the inhabitants of one city say to another?",
+  "choices": [
+   "Let us go up to the war",
+   "Let us build a wall",
+   "Let us go speedily to pray before the LORD",
+   "Let us flee to the mountains"
+  ],
+  "answer": 2,
+  "explanation": "The inhabitants of one city shall go to another, saying, Let us go speedily to pray before the LORD.",
+  "ref": "Zechariah 8:21"
+ },
+ {
+  "id": "zechariah-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where would many people and strong nations come to seek the LORD of hosts?",
+  "choices": [
+   "In Babylon",
+   "In Samaria",
+   "In Jerusalem",
+   "On Mount Carmel"
+  ],
+  "answer": 2,
+  "explanation": "Many people and strong nations shall come to seek the LORD of hosts in Jerusalem.",
+  "ref": "Zechariah 8:22"
+ },
+ {
+  "id": "zechariah-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose skirt would ten men take hold of?",
+  "choices": [
+   "The high priest",
+   "The governor",
+   "Him that is a Jew",
+   "The prophet"
+  ],
+  "answer": 2,
+  "explanation": "Ten men shall take hold of the skirt of him that is a Jew.",
+  "ref": "Zechariah 8:23"
+ },
+ {
+  "id": "zechariah-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the ten men say, We will go with you?",
+  "choices": [
+   "They had been defeated in war",
+   "They wanted the temple gold",
+   "They had heard that God is with you",
+   "They had been commanded by their king"
+  ],
+  "answer": 2,
+  "explanation": "We will go with you: for we have heard that God is with you.",
+  "ref": "Zechariah 8:23"
+ },
+ {
+  "id": "zechariah-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say to Jerusalem and Judah, for he thought to do them good?",
+  "choices": [
+   "Be ashamed",
+   "Prepare for war",
+   "Fear ye not",
+   "Wait in silence"
+  ],
+  "answer": 2,
+  "explanation": "So again have I thought in these days to do well unto Jerusalem and to the house of Judah: fear ye not.",
+  "ref": "Zechariah 8:15"
+ },
+ {
+  "id": "zechariah-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say he would cause the remnant to do with all these things?",
+  "choices": [
+   "Sell them",
+   "Share them with the nations",
+   "Possess them",
+   "Give them to the priests"
+  ],
+  "answer": 2,
+  "explanation": "I will cause the remnant of this people to possess all these things.",
+  "ref": "Zechariah 8:12"
+ },
+ {
+  "id": "zechariah-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD say he had been jealous for Zion, besides great jealousy?",
+  "choices": [
+   "With great sorrow",
+   "With great silence",
+   "With great fury",
+   "With great patience"
+  ],
+  "answer": 2,
+  "explanation": "I was jealous for her with great fury.",
+  "ref": "Zechariah 8:2"
+ },
+ {
+  "id": "zechariah-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did every old man have in his hand?",
+  "choices": [
+   "His sword",
+   "A scroll",
+   "His staff",
+   "A rod of iron"
+  ],
+  "answer": 2,
+  "explanation": "Old men and old women dwell in the streets of Jerusalem, and every man with his staff in his hand for very age.",
+  "ref": "Zechariah 8:4"
+ },
+ {
+  "id": "zechariah-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men would take hold out of all languages of the nations?",
+  "choices": [
+   "Seven",
+   "Twelve",
+   "Ten",
+   "Four"
+  ],
+  "answer": 2,
+  "explanation": "Ten men shall take hold out of all languages of the nations.",
+  "ref": "Zechariah 8:23"
+ },
+ {
+  "id": "zechariah-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what had there been no hire before these days?",
+  "choices": [
+   "Servants and kings",
+   "Priests and prophets",
+   "Man and beast",
+   "Field and vineyard"
+  ],
+  "answer": 2,
+  "explanation": "Before these days there was no hire for man, nor any hire for beast.",
+  "ref": "Zechariah 8:10"
+ },
+ {
+  "id": "zechariah-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When was the word spoken by the prophets heard?",
+  "choices": [
+   "The day the walls were finished",
+   "The day the exiles left Babylon",
+   "The day the foundation of the LORD’s house was laid",
+   "The day Darius became king"
+  ],
+  "answer": 2,
+  "explanation": "Words by the mouth of the prophets, in the day that the foundation of the house of the LORD of hosts was laid.",
+  "ref": "Zechariah 8:9"
+ },
+ {
+  "id": "zechariah-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say he did not do when he punished their fathers?",
+  "choices": [
+   "Forgive",
+   "Warn",
+   "Repent",
+   "Delay"
+  ],
+  "answer": 2,
+  "explanation": "As I thought to punish you, when your fathers provoked me to wrath, and I repented not.",
+  "ref": "Zechariah 8:14"
+ },
+ {
+  "id": "zechariah-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the vine would give?",
+  "choices": [
+   "Her shade",
+   "Her leaves",
+   "Her fruit",
+   "Her wine only"
+  ],
+  "answer": 2,
+  "explanation": "The seed shall be prosperous; the vine shall give her fruit.",
+  "ref": "Zechariah 8:12"
+ },
+ {
+  "id": "zechariah-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the LORD say to execute the judgment of truth and peace?",
+  "choices": [
+   "In the temple",
+   "In the streets",
+   "In your gates",
+   "In the courts of the king"
+  ],
+  "answer": 2,
+  "explanation": "Execute the judgment of truth and peace in your gates.",
+  "ref": "Zechariah 8:16"
+ },
+ {
+  "id": "zechariah-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The fast of which month is named last among the four fasts?",
+  "choices": [
+   "The fourth",
+   "The fifth",
+   "The tenth",
+   "The seventh"
+  ],
+  "answer": 2,
+  "explanation": "The fast of the fourth month, and the fifth, and the seventh, and the tenth, shall be to the house of Judah joy and gladness.",
+  "ref": "Zechariah 8:19"
+ },
+ {
+  "id": "zechariah-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did each man add when he said, Let us go speedily to pray?",
+  "choices": [
+   "Come and see",
+   "Follow me",
+   "I will go also",
+   "Let us go together"
+  ],
+  "answer": 2,
+  "explanation": "Let us go speedily to pray before the LORD, and to seek the LORD of hosts: I will go also.",
+  "ref": "Zechariah 8:21"
+ },
+ {
+  "id": "zechariah-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say he would not be to the residue of this people?",
+  "choices": [
+   "A shepherd",
+   "A stranger",
+   "As in the former days",
+   "A refuge"
+  ],
+  "answer": 2,
+  "explanation": "But now I will not be unto the residue of this people as in the former days.",
+  "ref": "Zechariah 8:11"
+ },
+ {
+  "id": "zechariah-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the fathers do to the LORD when he thought to punish them?",
+  "choices": [
+   "Forsook his altar",
+   "Hid from his prophets",
+   "Provoked him to wrath",
+   "Slew his messengers"
+  ],
+  "answer": 2,
+  "explanation": "Your fathers provoked me to wrath, saith the LORD of hosts, and I repented not.",
+  "ref": "Zechariah 8:14"
+ },
+ {
+  "id": "zechariah-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the ground would give?",
+  "choices": [
+   "Her gold",
+   "Her water",
+   "Her increase",
+   "Her rest"
+  ],
+  "answer": 2,
+  "explanation": "The ground shall give her increase.",
+  "ref": "Zechariah 8:12"
+ },
+ {
+  "id": "zechariah-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How far did the LORD say the coming king’s dominion would reach?",
+  "choices": [
+   "From Dan to Beersheba",
+   "From sea to sea, and from the river to the ends of the earth",
+   "From Egypt to Babylon",
+   "From Jerusalem to Damascus"
+  ],
+  "answer": 1,
+  "explanation": "His dominion shall be from sea even to sea, and from river even to the ends of the earth.",
+  "ref": "Zechariah 9:10"
+ },
+ {
+  "id": "zechariah-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city heaped up silver as the dust?",
+  "choices": [
+   "Damascus",
+   "Tyrus",
+   "Gaza",
+   "Zidon"
+  ],
+  "answer": 1,
+  "explanation": "Tyrus did build herself a strong hold, and heaped up silver as the dust.",
+  "ref": "Zechariah 9:3"
+ },
+ {
+  "id": "zechariah-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say he would cut off from Ephraim?",
+  "choices": [
+   "The sword",
+   "The chariot",
+   "The crown",
+   "The altar"
+  ],
+  "answer": 1,
+  "explanation": "I will cut off the chariot from Ephraim, and the horse from Jerusalem.",
+  "ref": "Zechariah 9:10"
+ },
+ {
+  "id": "zechariah-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the LORD say he would save them in that day?",
+  "choices": [
+   "As a warrior in battle",
+   "As the flock of his people",
+   "As a rock in the sea",
+   "As a fire among the thorns"
+  ],
+  "answer": 1,
+  "explanation": "The LORD their God shall save them in that day as the flock of his people.",
+  "ref": "Zechariah 9:16"
+ },
+ {
+  "id": "zechariah-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Tyrus heap up as the mire of the streets?",
+  "choices": [
+   "Brass",
+   "Fine gold",
+   "Silver",
+   "Corn"
+  ],
+  "answer": 1,
+  "explanation": "Tyrus heaped up silver as the dust, and fine gold as the mire of the streets.",
+  "ref": "Zechariah 9:3"
+ },
+ {
+  "id": "zechariah-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the Lord do to Tyrus’s power?",
+  "choices": [
+   "Build it up",
+   "Smite it in the sea",
+   "Hide it",
+   "Carry it to Babylon"
+  ],
+  "answer": 1,
+  "explanation": "The Lord will cast her out, and he will smite her power in the sea.",
+  "ref": "Zechariah 9:4"
+ },
+ {
+  "id": "zechariah-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD cut off from the Philistines?",
+  "choices": [
+   "Their cities",
+   "Their pride",
+   "Their gods",
+   "Their children"
+  ],
+  "answer": 1,
+  "explanation": "I will cut off the pride of the Philistines.",
+  "ref": "Zechariah 9:6"
+ },
+ {
+  "id": "zechariah-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the LORD encamp about his house?",
+  "choices": [
+   "Because of the Philistines",
+   "Because of the army and those passing by",
+   "Because of the famine",
+   "Because of the idols"
+  ],
+  "answer": 1,
+  "explanation": "I will encamp about mine house because of the army, because of him that passeth by, and because of him that returneth.",
+  "ref": "Zechariah 9:8"
+ },
+ {
+  "id": "zechariah-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the prisoners told to turn to?",
+  "choices": [
+   "The mountains",
+   "The strong hold",
+   "The temple",
+   "The river"
+  ],
+  "answer": 1,
+  "explanation": "Turn you to the strong hold, ye prisoners of hope.",
+  "ref": "Zechariah 9:12"
+ },
+ {
+  "id": "zechariah-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD declare he would render to them?",
+  "choices": [
+   "Peace",
+   "Double",
+   "Rest",
+   "A king"
+  ],
+  "answer": 1,
+  "explanation": "Even to day do I declare that I will render double unto thee.",
+  "ref": "Zechariah 9:12"
+ },
+ {
+  "id": "zechariah-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Against whose sons were the sons of Zion raised up?",
+  "choices": [
+   "The sons of Egypt",
+   "The sons of Greece",
+   "The sons of Babylon",
+   "The sons of Moab"
+  ],
+  "answer": 1,
+  "explanation": "I have raised up thy sons, O Zion, against thy sons, O Greece.",
+  "ref": "Zechariah 9:13"
+ },
+ {
+  "id": "zechariah-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say his people would be like in his land?",
+  "choices": [
+   "The stars of heaven",
+   "The stones of a crown, lifted up as an ensign",
+   "The sand of the sea",
+   "The cedars of Lebanon"
+  ],
+  "answer": 1,
+  "explanation": "They shall be as the stones of a crown, lifted up as an ensign upon his land.",
+  "ref": "Zechariah 9:16"
+ },
+ {
+  "id": "zechariah-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall make the young men cheerful and the maids?",
+  "choices": [
+   "Oil and honey",
+   "Corn and new wine",
+   "Bread and milk",
+   "Silver and gold"
+  ],
+  "answer": 1,
+  "explanation": "Corn shall make the young men cheerful, and new wine the maids.",
+  "ref": "Zechariah 9:17"
+ },
+ {
+  "id": "zechariah-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "In which land is the burden of the word of the LORD first placed?",
+  "choices": [
+   "Hadrach",
+   "Hamath",
+   "Ashdod",
+   "Gilead"
+  ],
+  "answer": 0,
+  "explanation": "The burden of the word of the LORD in the land of Hadrach.",
+  "ref": "Zechariah 9:1"
+ },
+ {
+  "id": "zechariah-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city was said to be very wise?",
+  "choices": [
+   "Zidon",
+   "Gaza",
+   "Ekron",
+   "Ashkelon"
+  ],
+  "answer": 0,
+  "explanation": "Tyrus, and Zidon, though it be very wise.",
+  "ref": "Zechariah 9:2"
+ },
+ {
+  "id": "zechariah-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "From which city shall the king perish?",
+  "choices": [
+   "Gaza",
+   "Damascus",
+   "Hamath",
+   "Ashdod"
+  ],
+  "answer": 0,
+  "explanation": "The king shall perish from Gaza, and Ashkelon shall not be inhabited.",
+  "ref": "Zechariah 9:5"
+ },
+ {
+  "id": "zechariah-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what shall the LORD GOD go forth?",
+  "choices": [
+   "Whirlwinds of the south",
+   "Fire from heaven",
+   "The sound of a trumpet only",
+   "Chariots of fire"
+  ],
+  "answer": 0,
+  "explanation": "The LORD GOD shall blow the trumpet, and shall go with whirlwinds of the south.",
+  "ref": "Zechariah 9:14"
+ },
+ {
+  "id": "zechariah-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say they would subdue with?",
+  "choices": [
+   "Sling stones",
+   "Swords",
+   "Arrows",
+   "Spears"
+  ],
+  "answer": 0,
+  "explanation": "They shall devour, and subdue with sling stones.",
+  "ref": "Zechariah 9:15"
+ },
+ {
+  "id": "zechariah-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say he would cut off from Jerusalem?",
+  "choices": [
+   "The horse",
+   "The wall",
+   "The gate",
+   "The priest"
+  ],
+  "answer": 0,
+  "explanation": "I will cut off the chariot from Ephraim, and the horse from Jerusalem, and the battle bow shall be cut off.",
+  "ref": "Zechariah 9:10"
+ },
+ {
+  "id": "zechariah-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD’s arrow be like when it went forth?",
+  "choices": [
+   "The lightning",
+   "The sun",
+   "The wind",
+   "The flood"
+  ],
+  "answer": 0,
+  "explanation": "His arrow shall go forth as the lightning.",
+  "ref": "Zechariah 9:14"
+ },
+ {
+  "id": "zechariah-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say should no more pass through them?",
+  "choices": [
+   "An oppressor",
+   "A stranger",
+   "An army",
+   "A merchant"
+  ],
+  "answer": 0,
+  "explanation": "No oppressor shall pass through them any more: for now have I seen with mine eyes.",
+  "ref": "Zechariah 9:8"
+ },
+ {
+  "id": "zechariah-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Which Philistine city would see it and fear, along with Gaza and Ekron?",
+  "choices": [
+   "Ashkelon",
+   "Tyrus",
+   "Damascus",
+   "Hamath"
+  ],
+  "answer": 0,
+  "explanation": "Ashkelon shall see it, and fear; Gaza also shall see it, and be very sorrowful, and Ekron.",
+  "ref": "Zechariah 9:5"
  }
 ]
