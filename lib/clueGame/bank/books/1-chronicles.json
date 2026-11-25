@@ -4099,16 +4099,16 @@
   "id": "old-1-chronicles-7-1",
   "chapter": 7,
   "level": "beginner",
-  "category": "keyword",
-  "question": "Which tribes are represented in this chapter's genealogy set?",
+  "category": "person",
+  "question": "Which of these was a son of Issachar?",
   "choices": [
-   "Issachar, Benjamin, Naphtali, Manasseh, Ephraim, and Asher",
-   "Only Judah and Levi",
-   "Only Benjamin and Judah",
-   "Only Dan and Simeon"
+   "Tola",
+   "Bela",
+   "Jahziel",
+   "Imnah"
   ],
   "answer": 0,
-  "explanation": "The chapter surveys multiple tribes, especially in northern and central Israel.",
+  "explanation": "The sons of Issachar were, Tola, and Puah, Jashub, and Shimrom, four.",
   "ref": "1 Chronicles 7:1"
  },
  {
@@ -4116,15 +4116,15 @@
   "chapter": 7,
   "level": "beginner",
   "category": "keyword",
-  "question": "What repeated feature appears in many of these tribal notices?",
+  "question": "How were the heads of Tola's father's house described?",
   "choices": [
-   "Temple blueprints",
-   "Valiant men of might and genealogical numbers",
-   "Laws of sacrifice",
-   "Prophetic oracles"
+   "Valiant men of might",
+   "Wise judges",
+   "Faithful priests",
+   "Skilful craftsmen"
   ],
-  "answer": 1,
-  "explanation": "The chronicler often notes the number of mighty men within the tribes.",
+  "answer": 0,
+  "explanation": "They were valiant men of might in their generations; whose number was in the days of David two and twenty thousand and six hundred.",
   "ref": "1 Chronicles 7:2"
  },
  {
@@ -4164,16 +4164,656 @@
   "chapter": 7,
   "level": "beginner",
   "category": "keyword",
-  "question": "What overall purpose do these genealogies serve in Chronicles?",
+  "question": "What did Zelophehad, a son of Manasseh, have?",
   "choices": [
-   "To entertain only",
-   "To preserve tribal identity and continuity",
-   "To replace the law",
-   "To deny the exile"
+   "Daughters",
+   "Twelve sons",
+   "A city",
+   "No children"
+  ],
+  "answer": 0,
+  "explanation": "The name of the second was Zelophehad: and Zelophehad had daughters.",
+  "ref": "1 Chronicles 7:15"
+ },
+ {
+  "id": "1-chronicles-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which men slew Ezer and Elead, sons of Ephraim?",
+  "choices": [
+   "The men of Gath",
+   "The men of Bethel",
+   "The men of Gaza",
+   "The men of Dor"
+  ],
+  "answer": 0,
+  "explanation": "Ezer, and Elead, whom the men of Gath that were born in that land slew.",
+  "ref": "1 Chronicles 7:21"
+ },
+ {
+  "id": "1-chronicles-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the men of Gath slay Ezer and Elead?",
+  "choices": [
+   "They had stolen a city",
+   "They came down to take away their cattle",
+   "They worshipped other gods",
+   "They refused to pay tribute"
   ],
   "answer": 1,
-  "explanation": "These lists preserve the structure and memory of Israel's tribes.",
-  "ref": "1 Chronicles 7:1"
+  "explanation": "They came down to take away their cattle.",
+  "ref": "1 Chronicles 7:21"
+ },
+ {
+  "id": "1-chronicles-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to comfort Ephraim when he mourned?",
+  "choices": [
+   "His brethren",
+   "His daughter Sherah",
+   "The men of Gath",
+   "Machir"
+  ],
+  "answer": 0,
+  "explanation": "Ephraim their father mourned many days, and his brethren came to comfort him.",
+  "ref": "1 Chronicles 7:22"
+ },
+ {
+  "id": "1-chronicles-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "What did Ephraim's daughter Sherah build?",
+  "choices": [
+   "Bethel and Gezer",
+   "Shechem and Gaza",
+   "Beth-horon the nether and the upper",
+   "Megiddo and Dor"
+  ],
+  "answer": 2,
+  "explanation": "His daughter was Sherah, who built Beth-horon the nether, and the upper, and Uzzen-sherah.",
+  "ref": "1 Chronicles 7:24"
+ },
+ {
+  "id": "1-chronicles-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these was a son of Benjamin?",
+  "choices": [
+   "Guni",
+   "Tola",
+   "Bela",
+   "Imnah"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Benjamin; Bela, and Becher, and Jediael, three.",
+  "ref": "1 Chronicles 7:6"
+ },
+ {
+  "id": "1-chronicles-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Naphtali's sons were the sons of which woman?",
+  "choices": [
+   "Sherah",
+   "Maachah",
+   "Hammoleketh",
+   "Bilhah"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Naphtali; Jahziel, and Guni, and Jezer, and Shallum, the sons of Bilhah.",
+  "ref": "1 Chronicles 7:13"
+ },
+ {
+  "id": "1-chronicles-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Machir is called the father of whom?",
+  "choices": [
+   "Gilead",
+   "Beriah",
+   "Bilhan",
+   "Ulam"
+  ],
+  "answer": 0,
+  "explanation": "His concubine the Aramitess bare Machir the father of Gilead.",
+  "ref": "1 Chronicles 7:14"
+ },
+ {
+  "id": "1-chronicles-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city is named first among the possessions of the children of Joseph?",
+  "choices": [
+   "Dor",
+   "Megiddo",
+   "Gaza",
+   "Bethel"
+  ],
+  "answer": 3,
+  "explanation": "Their possessions and habitations were, Bethel and the towns thereof.",
+  "ref": "1 Chronicles 7:28"
+ },
+ {
+  "id": "1-chronicles-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Serah?",
+  "choices": [
+   "The sister of the sons of Asher",
+   "The wife of Machir",
+   "The mother of Beriah",
+   "The daughter of Ephraim"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Asher; Imnah, and Isuah, and Ishuai, and Beriah, and Serah their sister.",
+  "ref": "1 Chronicles 7:30"
+ },
+ {
+  "id": "1-chronicles-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these was a son of Asher?",
+  "choices": [
+   "Imnah",
+   "Jahziel",
+   "Tola",
+   "Becher"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Asher; Imnah, and Isuah, and Ishuai, and Beriah.",
+  "ref": "1 Chronicles 7:30"
+ },
+ {
+  "id": "1-chronicles-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who bare Machir the father of Gilead?",
+  "choices": [
+   "Hammoleketh",
+   "Maachah",
+   "Bilhah",
+   "Manasseh's concubine the Aramitess"
+  ],
+  "answer": 3,
+  "explanation": "His concubine the Aramitess bare Machir the father of Gilead.",
+  "ref": "1 Chronicles 7:14"
+ },
+ {
+  "id": "1-chronicles-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the wife of Machir?",
+  "choices": [
+   "Maachah",
+   "Sherah",
+   "Serah",
+   "Bilhah"
+  ],
+  "answer": 0,
+  "explanation": "Machir took to wife the sister of Huppim and Shuppim, whose sister's name was Maachah.",
+  "ref": "1 Chronicles 7:15"
+ },
+ {
+  "id": "1-chronicles-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose sons were Peresh and Sheresh?",
+  "choices": [
+   "Sherah's",
+   "Maachah's",
+   "Bilhah's",
+   "Hammoleketh's"
+  ],
+  "answer": 1,
+  "explanation": "Maachah the wife of Machir bare a son, and she called his name Peresh; and the name of his brother was Sheresh.",
+  "ref": "1 Chronicles 7:16"
+ },
+ {
+  "id": "1-chronicles-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a child of Hammoleketh?",
+  "choices": [
+   "Shuthelah",
+   "Bedan",
+   "Abiezer",
+   "Ahian"
+  ],
+  "answer": 2,
+  "explanation": "His sister Hammoleketh bare Ishod, and Abiezer, and Mahalah.",
+  "ref": "1 Chronicles 7:18"
+ },
+ {
+  "id": "1-chronicles-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two sons of Ephraim were slain by the men of Gath?",
+  "choices": [
+   "Rephah and Resheph",
+   "Zabad and Shuthelah",
+   "Bered and Tahath",
+   "Ezer and Elead"
+  ],
+  "answer": 3,
+  "explanation": "Ezer, and Elead, whom the men of Gath slew.",
+  "ref": "1 Chronicles 7:21"
+ },
+ {
+  "id": "1-chronicles-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Besides Beth-horon, what did Sherah build?",
+  "choices": [
+   "Gezer",
+   "Naaran",
+   "Uzzen-sherah",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "Who built Beth-horon the nether, and the upper, and Uzzen-sherah.",
+  "ref": "1 Chronicles 7:24"
+ },
+ {
+  "id": "1-chronicles-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For how long did Ephraim mourn?",
+  "choices": [
+   "Forty days",
+   "Seven days",
+   "Thirty days",
+   "Many days"
+  ],
+  "answer": 3,
+  "explanation": "Ephraim their father mourned many days.",
+  "ref": "1 Chronicles 7:22"
+ },
+ {
+  "id": "1-chronicles-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Ephraim call his son Beriah?",
+  "choices": [
+   "Because he was the firstborn",
+   "Because he was born in Bethel",
+   "Because he was strong",
+   "Because it went evil with his house"
+  ],
+  "answer": 3,
+  "explanation": "He called his name Beriah, because it went evil with his house.",
+  "ref": "1 Chronicles 7:23"
+ },
+ {
+  "id": "1-chronicles-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Which place lay eastward of the possessions of Joseph's children?",
+  "choices": [
+   "Gezer",
+   "Gaza",
+   "Naaran",
+   "Dor"
+  ],
+  "answer": 2,
+  "explanation": "Eastward Naaran, and westward Gezer.",
+  "ref": "1 Chronicles 7:28"
+ },
+ {
+  "id": "1-chronicles-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Their possessions stretched unto which city?",
+  "choices": [
+   "Tyre",
+   "Gaza",
+   "Hebron",
+   "Jericho"
+  ],
+  "answer": 1,
+  "explanation": "Shechem also and the towns thereof, unto Gaza and the towns thereof.",
+  "ref": "1 Chronicles 7:28"
+ },
+ {
+  "id": "1-chronicles-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city lay by the borders of the children of Manasseh?",
+  "choices": [
+   "Gezer",
+   "Bethel",
+   "Naaran",
+   "Megiddo"
+  ],
+  "answer": 3,
+  "explanation": "By the borders of the children of Manasseh, Beth-shean, Taanach, Megiddo, and Dor.",
+  "ref": "1 Chronicles 7:29"
+ },
+ {
+  "id": "1-chronicles-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Malchiel, a son of Beriah, is called the father of whom?",
+  "choices": [
+   "Japhlet",
+   "Shomer",
+   "Birzavith",
+   "Heber"
+  ],
+  "answer": 2,
+  "explanation": "Heber, and Malchiel, who is the father of Birzavith.",
+  "ref": "1 Chronicles 7:31"
+ },
+ {
+  "id": "1-chronicles-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the sister of Japhlet, Shomer and Hotham?",
+  "choices": [
+   "Serah",
+   "Shua",
+   "Sherah",
+   "Maachah"
+  ],
+  "answer": 1,
+  "explanation": "Heber begat Japhlet, and Shomer, and Hotham, and Shua their sister.",
+  "ref": "1 Chronicles 7:32"
+ },
+ {
+  "id": "1-chronicles-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Jether?",
+  "choices": [
+   "Arah",
+   "Jephunneh",
+   "Pasach",
+   "Imna"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Jether; Jephunneh, and Pispah, and Ara.",
+  "ref": "1 Chronicles 7:38"
+ },
+ {
+  "id": "1-chronicles-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Ulla?",
+  "choices": [
+   "Haniel",
+   "Zophah",
+   "Pispah",
+   "Shamer"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Ulla; Arah, and Haniel, and Rezia.",
+  "ref": "1 Chronicles 7:39"
+ },
+ {
+  "id": "1-chronicles-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many valiant men of Tola's house were counted in the days of David?",
+  "choices": [
+   "Two and twenty thousand and six hundred",
+   "Twenty-six thousand",
+   "Eighty-seven thousand",
+   "Thirty-six thousand"
+  ],
+  "answer": 0,
+  "explanation": "Whose number was in the days of David two and twenty thousand and six hundred.",
+  "ref": "1 Chronicles 7:2"
+ },
+ {
+  "id": "1-chronicles-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Issachar have six and thirty thousand soldiers?",
+  "choices": [
+   "They had many wives and sons",
+   "They had won many wars",
+   "They had a great king",
+   "They had many horses"
+  ],
+  "answer": 0,
+  "explanation": "There were bands of soldiers for war, six and thirty thousand men: for they had many wives and sons.",
+  "ref": "1 Chronicles 7:4"
+ },
+ {
+  "id": "1-chronicles-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many valiant men were reckoned among all the families of Issachar?",
+  "choices": [
+   "Twenty-two thousand",
+   "Fourscore and seven thousand",
+   "Seventeen thousand",
+   "Thirty-six thousand"
+  ],
+  "answer": 1,
+  "explanation": "Reckoned in all by their genealogies fourscore and seven thousand.",
+  "ref": "1 Chronicles 7:5"
+ },
+ {
+  "id": "1-chronicles-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men were reckoned in the house of Bela?",
+  "choices": [
+   "Twenty thousand and two hundred",
+   "Twenty and two thousand and thirty and four",
+   "Twenty-six thousand",
+   "Seventeen thousand and two hundred"
+  ],
+  "answer": 1,
+  "explanation": "Bela's heads were reckoned by their genealogies twenty and two thousand and thirty and four.",
+  "ref": "1 Chronicles 7:7"
+ },
+ {
+  "id": "1-chronicles-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many mighty men were counted in the house of Becher?",
+  "choices": [
+   "Twenty-two thousand",
+   "Twenty-six thousand",
+   "Seventeen thousand and two hundred",
+   "Twenty thousand and two hundred"
+  ],
+  "answer": 3,
+  "explanation": "The number of them, heads of the house of the fathers, was twenty thousand and two hundred.",
+  "ref": "1 Chronicles 7:9"
+ },
+ {
+  "id": "1-chronicles-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many soldiers were counted in the house of Jediael?",
+  "choices": [
+   "Twenty-two thousand",
+   "Twenty thousand and two hundred",
+   "Seventeen thousand and two hundred",
+   "Thirty-six thousand"
+  ],
+  "answer": 2,
+  "explanation": "All these the sons of Jediael were seventeen thousand and two hundred soldiers.",
+  "ref": "1 Chronicles 7:11"
+ },
+ {
+  "id": "1-chronicles-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of Asher were apt to the war and to battle?",
+  "choices": [
+   "Seventeen thousand",
+   "Twenty thousand",
+   "Fourscore and seven thousand",
+   "Twenty and six thousand"
+  ],
+  "answer": 3,
+  "explanation": "The number of them that were apt to the war and to battle was twenty and six thousand men.",
+  "ref": "1 Chronicles 7:40"
+ },
+ {
+  "id": "1-chronicles-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Bilhan was the son of whom?",
+  "choices": [
+   "Jediael",
+   "Zophah",
+   "Bela",
+   "Becher"
+  ],
+  "answer": 0,
+  "explanation": "The sons also of Jediael; Bilhan.",
+  "ref": "1 Chronicles 7:10"
+ },
+ {
+  "id": "1-chronicles-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the son of Telah, in Ephraim's line?",
+  "choices": [
+   "Tahan",
+   "Resheph",
+   "Laadan",
+   "Non"
+  ],
+  "answer": 0,
+  "explanation": "Rephah was his son, also Resheph, and Telah his son, and Tahan his son.",
+  "ref": "1 Chronicles 7:25"
+ },
+ {
+  "id": "1-chronicles-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the son of Ulam?",
+  "choices": [
+   "Bedan",
+   "Peresh",
+   "Machir",
+   "Rakem"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Ulam; Bedan.",
+  "ref": "1 Chronicles 7:17"
+ },
+ {
+  "id": "1-chronicles-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the son of Non, in Ephraim's line?",
+  "choices": [
+   "Tahan",
+   "Ammihud",
+   "Elishama",
+   "Jehoshuah"
+  ],
+  "answer": 3,
+  "explanation": "Non his son, Jehoshuah his son.",
+  "ref": "1 Chronicles 7:27"
+ },
+ {
+  "id": "1-chronicles-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose sons were Ulam and Rakem?",
+  "choices": [
+   "Machir",
+   "Peresh",
+   "Sheresh",
+   "Gilead"
+  ],
+  "answer": 1,
+  "explanation": "His sons were Ulam and Rakem.",
+  "ref": "1 Chronicles 7:16"
+ },
+ {
+  "id": "1-chronicles-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Naphtali?",
+  "choices": [
+   "Bilhan",
+   "Shuppim",
+   "Ezbon",
+   "Jahziel"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Naphtali; Jahziel, and Guni, and Jezer, and Shallum.",
+  "ref": "1 Chronicles 7:13"
+ },
+ {
+  "id": "1-chronicles-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons of Izrahiah are named, all chief men?",
+  "choices": [
+   "Three",
+   "Four",
+   "Five",
+   "Six"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Izrahiah; Michael, and Obadiah, and Joel, Ishiah, five: all of them chief men.",
+  "ref": "1 Chronicles 7:3"
+ },
+ {
+  "id": "1-chronicles-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Tola?",
+  "choices": [
+   "Zophah",
+   "Ehud",
+   "Jeriel",
+   "Bilhan"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Tola; Uzzi, and Rephaiah, and Jeriel, and Jahmai.",
+  "ref": "1 Chronicles 7:2"
  },
  {
   "id": "old-1-chronicles-8-1",
