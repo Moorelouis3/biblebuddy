@@ -8800,6 +8800,646 @@
   "ref": "2 Samuel 13:28–29"
  },
  {
+  "id": "2-samuel-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose home did Tamar go to live in as a desolate woman?",
+  "choices": [
+   "Jonadab's",
+   "Absalom's",
+   "Joab's",
+   "Amnon's"
+  ],
+  "answer": 1,
+  "explanation": "Tamar remained desolate in her brother Absalom's house.",
+  "ref": "2 Samuel 13:20"
+ },
+ {
+  "id": "2-samuel-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Amnon pretend to do so that Tamar would come to him?",
+  "choices": [
+   "Make himself sick",
+   "Leave for war",
+   "Fast for three days",
+   "Send for Jonadab"
+  ],
+  "answer": 0,
+  "explanation": "Amnon lay down, and made himself sick: and when the king was come to see him, Amnon asked for Tamar.",
+  "ref": "2 Samuel 13:6"
+ },
+ {
+  "id": "2-samuel-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What food did Amnon ask Tamar to make in his sight?",
+  "choices": [
+   "Stew",
+   "Honey and bread",
+   "Roast lamb",
+   "Cakes"
+  ],
+  "answer": 3,
+  "explanation": "Amnon said, let my sister Tamar come, and make me a couple of cakes in my sight.",
+  "ref": "2 Samuel 13:6"
+ },
+ {
+  "id": "2-samuel-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Tamar do with the garment she wore after what Amnon had done?",
+  "choices": [
+   "Gave it to Absalom",
+   "Hid it in the house",
+   "Rent it and put ashes on her head",
+   "Washed it at the well"
+  ],
+  "answer": 2,
+  "explanation": "Tamar put ashes on her head, and rent her garment of divers colours.",
+  "ref": "2 Samuel 13:19"
+ },
+ {
+  "id": "2-samuel-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Absalom invite to his sheepshearing?",
+  "choices": [
+   "Only Amnon",
+   "All the king's sons",
+   "All the priests",
+   "The elders of Judah"
+  ],
+  "answer": 1,
+  "explanation": "Absalom had sheepshearers in Baal-hazor and invited all the king's sons.",
+  "ref": "2 Samuel 13:23"
+ },
+ {
+  "id": "2-samuel-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Absalom's servants do at his command?",
+  "choices": [
+   "Killed Amnon",
+   "Seized David",
+   "Sent Tamar away",
+   "Burned Amnon's house"
+  ],
+  "answer": 0,
+  "explanation": "The servants of Absalom did unto Amnon as Absalom had commanded.",
+  "ref": "2 Samuel 13:29"
+ },
+ {
+  "id": "2-samuel-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do when he heard that all the king's sons were slain?",
+  "choices": [
+   "Sent Joab to war",
+   "Fled Jerusalem",
+   "Called for Absalom",
+   "Tore his garments and lay on the earth"
+  ],
+  "answer": 3,
+  "explanation": "The king arose, and tare his garments, and lay on the earth.",
+  "ref": "2 Samuel 13:31"
+ },
+ {
+  "id": "2-samuel-13-e-08",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which land did Absalom flee after Amnon's death?",
+  "choices": [
+   "Hebron",
+   "Rabbah",
+   "Geshur",
+   "Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Absalom fled, and went to Talmai, the son of Ammihud, king of Geshur.",
+  "ref": "2 Samuel 13:37"
+ },
+ {
+  "id": "2-samuel-13-e-09",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was Absalom in Geshur?",
+  "choices": [
+   "Two years",
+   "Three years",
+   "One year",
+   "Seven years"
+  ],
+  "answer": 1,
+  "explanation": "So Absalom fled, and went to Geshur, and was there three years.",
+  "ref": "2 Samuel 13:38"
+ },
+ {
+  "id": "2-samuel-13-e-10",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose children were Amnon, Absalom and Tamar?",
+  "choices": [
+   "David's",
+   "Joab's",
+   "Nathan's",
+   "Jonadab's"
+  ],
+  "answer": 0,
+  "explanation": "Absalom the son of David had a fair sister, whose name was Tamar; and Amnon the son of David loved her.",
+  "ref": "2 Samuel 13:1"
+ },
+ {
+  "id": "2-samuel-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is Jonadab described in the chapter?",
+  "choices": [
+   "A mighty warrior",
+   "A faithful priest",
+   "A foolish young man",
+   "A very subtil man"
+  ],
+  "answer": 3,
+  "explanation": "Jonadab was a very subtil man.",
+  "ref": "2 Samuel 13:3"
+ },
+ {
+  "id": "2-samuel-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jonadab tell Amnon to do?",
+  "choices": [
+   "Go to war with Absalom",
+   "Fast and pray",
+   "Lie on his bed and make himself sick",
+   "Speak to Tamar openly"
+  ],
+  "answer": 2,
+  "explanation": "Jonadab said, Lay thee down on thy bed, and make thyself sick.",
+  "ref": "2 Samuel 13:5"
+ },
+ {
+  "id": "2-samuel-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who sent Tamar to Amnon's house?",
+  "choices": [
+   "Absalom",
+   "David",
+   "Jonadab",
+   "Joab"
+  ],
+  "answer": 1,
+  "explanation": "David sent home to Tamar, saying, Go now to thy brother Amnon's house, and dress him meat.",
+  "ref": "2 Samuel 13:7"
+ },
+ {
+  "id": "2-samuel-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Amnon say to clear the room before eating?",
+  "choices": [
+   "Have out all men from me",
+   "Bring more wine",
+   "Close the gate",
+   "Call my servant"
+  ],
+  "answer": 0,
+  "explanation": "Amnon said, Have out all men from me. And they went out every man from him.",
+  "ref": "2 Samuel 13:9"
+ },
+ {
+  "id": "2-samuel-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Tamar say Amnon would be like in Israel if he did this?",
+  "choices": [
+   "A prince of Judah",
+   "A friend of Absalom",
+   "The next king",
+   "One of the fools in Israel"
+  ],
+  "answer": 3,
+  "explanation": "As for thee, thou shalt be as one of the fools in Israel.",
+  "ref": "2 Samuel 13:13"
+ },
+ {
+  "id": "2-samuel-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Tamar say Amnon should speak to?",
+  "choices": [
+   "Absalom",
+   "Jonadab",
+   "The king",
+   "Joab"
+  ],
+  "answer": 2,
+  "explanation": "Speak unto the king; for he will not withhold me from thee.",
+  "ref": "2 Samuel 13:13"
+ },
+ {
+  "id": "2-samuel-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Amnon feel toward Tamar afterward?",
+  "choices": [
+   "He loved her more",
+   "He hated her exceedingly",
+   "He felt great sorrow",
+   "He felt nothing"
+  ],
+  "answer": 1,
+  "explanation": "Amnon hated her exceedingly; the hatred was greater than the love wherewith he had loved her.",
+  "ref": "2 Samuel 13:15"
+ },
+ {
+  "id": "2-samuel-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of garment did Tamar wear as the king's virgin daughter?",
+  "choices": [
+   "A garment of divers colours",
+   "A white linen robe",
+   "A scarlet veil",
+   "A sackcloth coat"
+  ],
+  "answer": 0,
+  "explanation": "She had a garment of divers colours upon her: for with such robes were the king's daughters that were virgins apparelled.",
+  "ref": "2 Samuel 13:18"
+ },
+ {
+  "id": "2-samuel-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Absalom tell Tamar after she told him?",
+  "choices": [
+   "Go to David at once",
+   "Leave Israel",
+   "Curse Amnon openly",
+   "Hold thy peace; he is thy brother"
+  ],
+  "answer": 3,
+  "explanation": "Absalom said, hold now thy peace, my sister: he is thy brother; regard not this thing.",
+  "ref": "2 Samuel 13:20"
+ },
+ {
+  "id": "2-samuel-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did King David respond when he heard of these things?",
+  "choices": [
+   "He banished Amnon",
+   "He wept silently",
+   "He was very wroth",
+   "He rejoiced"
+  ],
+  "answer": 2,
+  "explanation": "When king David heard of all these things, he was very wroth.",
+  "ref": "2 Samuel 13:21"
+ },
+ {
+  "id": "2-samuel-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Absalom speak to Amnon in the following years?",
+  "choices": [
+   "With flattery",
+   "Neither good nor bad",
+   "With threats",
+   "Only through Jonadab"
+  ],
+  "answer": 1,
+  "explanation": "Absalom spake unto his brother Amnon neither good nor bad: for Absalom hated Amnon.",
+  "ref": "2 Samuel 13:22"
+ },
+ {
+  "id": "2-samuel-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Absalom's sheepshearing held?",
+  "choices": [
+   "Baal-hazor beside Ephraim",
+   "Rabbah of Ammon",
+   "Hebron near Judah",
+   "Geshur"
+  ],
+  "answer": 0,
+  "explanation": "Absalom had sheepshearers in Baal-hazor, which is beside Ephraim.",
+  "ref": "2 Samuel 13:23"
+ },
+ {
+  "id": "2-samuel-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Absalom tell his servants to strike Amnon?",
+  "choices": [
+   "When Amnon slept",
+   "When David left",
+   "When Amnon went to pray",
+   "When Amnon's heart was merry with wine"
+  ],
+  "answer": 3,
+  "explanation": "Mark ye now when Amnon's heart is merry with wine, and when I say unto you, Smite Amnon; then kill him.",
+  "ref": "2 Samuel 13:28"
+ },
+ {
+  "id": "2-samuel-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What report first reached David about his sons?",
+  "choices": [
+   "Only Amnon was hurt",
+   "The Ammonites had attacked",
+   "Absalom had slain all the king's sons",
+   "Absalom was dead"
+  ],
+  "answer": 2,
+  "explanation": "Tidings came to David, saying, Absalom hath slain all the king's sons, and there is not one of them left.",
+  "ref": "2 Samuel 13:30"
+ },
+ {
+  "id": "2-samuel-13-m-15",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who told David that only Amnon was dead?",
+  "choices": [
+   "Joab",
+   "Jonadab",
+   "Nathan",
+   "Talmai"
+  ],
+  "answer": 1,
+  "explanation": "Jonadab said, Let not my lord suppose that they have slain all the young men; for Amnon only is dead.",
+  "ref": "2 Samuel 13:32"
+ },
+ {
+  "id": "2-samuel-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Jonadab's father?",
+  "choices": [
+   "Shimeah",
+   "Talmai",
+   "Ammihud",
+   "Eliam"
+  ],
+  "answer": 0,
+  "explanation": "Jonadab was the son of Shimeah David's brother.",
+  "ref": "2 Samuel 13:3"
+ },
+ {
+  "id": "2-samuel-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Who ministered to Amnon and bolted the door after Tamar?",
+  "choices": [
+   "Jonadab",
+   "Absalom",
+   "A porter of the king",
+   "His servant"
+  ],
+  "answer": 3,
+  "explanation": "Then he called his servant that ministered unto him, and said, Put now this woman out from me, and bolt the door after her.",
+  "ref": "2 Samuel 13:17"
+ },
+ {
+  "id": "2-samuel-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did David say he would not go to Absalom's sheepshearing?",
+  "choices": [
+   "He was ill",
+   "He feared Amnon",
+   "Lest they be chargeable to Absalom",
+   "He had war to attend"
+  ],
+  "answer": 2,
+  "explanation": "The king said, Nay, my son, let us not all now go, lest we be chargeable unto thee.",
+  "ref": "2 Samuel 13:25"
+ },
+ {
+  "id": "2-samuel-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David do when Absalom pressed him to come?",
+  "choices": [
+   "Went with him",
+   "Blessed him",
+   "Sent Joab",
+   "Cursed him"
+  ],
+  "answer": 1,
+  "explanation": "He pressed him: howbeit he would not go, but blessed him.",
+  "ref": "2 Samuel 13:25"
+ },
+ {
+  "id": "2-samuel-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Absalom ask the king to let go with him?",
+  "choices": [
+   "Amnon",
+   "Joab",
+   "Jonadab",
+   "Solomon"
+  ],
+  "answer": 0,
+  "explanation": "Then said Absalom, If not, I pray thee, let my brother Amnon go with us.",
+  "ref": "2 Samuel 13:26"
+ },
+ {
+  "id": "2-samuel-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say when Absalom asked for Amnon to go?",
+  "choices": [
+   "He may go",
+   "Take Joab also",
+   "Wait one more year",
+   "Why should he go with thee?"
+  ],
+  "answer": 3,
+  "explanation": "The king said unto him, Why should he go with thee?",
+  "ref": "2 Samuel 13:26"
+ },
+ {
+  "id": "2-samuel-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king's sons ride when they fled?",
+  "choices": [
+   "Horses",
+   "Camels",
+   "Mules",
+   "Chariots"
+  ],
+  "answer": 2,
+  "explanation": "Every man gat him up upon his mule, and fled.",
+  "ref": "2 Samuel 13:29"
+ },
+ {
+  "id": "2-samuel-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the watchman see come by the hill side?",
+  "choices": [
+   "A single messenger",
+   "Much people",
+   "A chariot",
+   "Absalom alone"
+  ],
+  "answer": 1,
+  "explanation": "The young man that kept the watch looked, and, behold, there came much people by the way of the hill side behind him.",
+  "ref": "2 Samuel 13:34"
+ },
+ {
+  "id": "2-samuel-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Talmai?",
+  "choices": [
+   "The son of Ammihud, king of Geshur",
+   "A captain of Joab",
+   "The brother of Jonadab",
+   "A priest of Baal-hazor"
+  ],
+  "answer": 0,
+  "explanation": "Absalom went to Talmai, the son of Ammihud, king of Geshur.",
+  "ref": "2 Samuel 13:37"
+ },
+ {
+  "id": "2-samuel-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How often did David mourn for his son?",
+  "choices": [
+   "Once a year",
+   "Seven days",
+   "Three years",
+   "Every day"
+  ],
+  "answer": 3,
+  "explanation": "David mourned for his son every day.",
+  "ref": "2 Samuel 13:37"
+ },
+ {
+  "id": "2-samuel-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David's soul long to do?",
+  "choices": [
+   "Return to Hebron",
+   "Make Amnon king",
+   "Go forth unto Absalom",
+   "Build a house for Tamar"
+  ],
+  "answer": 2,
+  "explanation": "The soul of king David longed to go forth unto Absalom: for he was comforted concerning Amnon.",
+  "ref": "2 Samuel 13:39"
+ },
+ {
+  "id": "2-samuel-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king's sons do when they came in?",
+  "choices": [
+   "Accused Absalom",
+   "Lifted up their voice and wept",
+   "Hid in the house",
+   "Asked for justice"
+  ],
+  "answer": 1,
+  "explanation": "The king's sons came, and lifted up their voice and wept: and the king also and all his servants wept very sore.",
+  "ref": "2 Samuel 13:36"
+ },
+ {
+  "id": "2-samuel-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Jonadab say Amnon's death had been determined?",
+  "choices": [
+   "From the day Amnon forced Tamar",
+   "From Absalom's youth",
+   "From the sheepshearing",
+   "From David's anointing"
+  ],
+  "answer": 0,
+  "explanation": "By the appointment of Absalom this hath been determined from the day that he forced his sister Tamar.",
+  "ref": "2 Samuel 13:32"
+ },
+ {
+  "id": "2-samuel-13-h-14",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose uncle, according to the chapter, was David?",
+  "choices": [
+   "Talmai's",
+   "Joab's",
+   "Ammihud's",
+   "Jonadab's"
+  ],
+  "answer": 3,
+  "explanation": "Jonadab, the son of Shimeah David's brother.",
+  "ref": "2 Samuel 13:3"
+ },
+ {
+  "id": "2-samuel-13-h-15",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jonadab ask Amnon about his appearance?",
+  "choices": [
+   "Why he was angry",
+   "Why he did not eat",
+   "Why he was lean from day to day",
+   "Why he did not sleep"
+  ],
+  "answer": 2,
+  "explanation": "Why art thou, being the king's son, lean from day to day? wilt thou not tell me?",
+  "ref": "2 Samuel 13:4"
+ },
+ {
   "id": "old-2-samuel-14-1",
   "chapter": 14,
   "level": "beginner",
