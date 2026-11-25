@@ -478,5 +478,3173 @@
   "answer": 3,
   "explanation": "Believers are to pray always with all prayer and supplication in the Spirit.",
   "ref": "Ephesians 6:18"
+ },
+ {
+  "id": "ephesians-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "To whom does Paul address the letter, besides the faithful in Christ Jesus?",
+  "choices": [
+   "The saints at Corinth",
+   "The saints at Rome",
+   "The saints at Philippi",
+   "The saints at Ephesus"
+  ],
+  "answer": 3,
+  "explanation": "Paul writes to the saints which are at Ephesus, and to the faithful in Christ Jesus.",
+  "ref": "Ephesians 1:1"
+ },
+ {
+  "id": "ephesians-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By whose will was Paul an apostle of Jesus Christ?",
+  "choices": [
+   "The will of the church",
+   "The will of the other apostles",
+   "The will of God",
+   "His own will"
+  ],
+  "answer": 2,
+  "explanation": "Paul says he is an apostle of Jesus Christ by the will of God.",
+  "ref": "Ephesians 1:1"
+ },
+ {
+  "id": "ephesians-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did God raise from the dead, according to Paul?",
+  "choices": [
+   "Lazarus",
+   "Christ",
+   "Moses",
+   "Paul"
+  ],
+  "answer": 1,
+  "explanation": "God wrought his mighty power in Christ, when he raised him from the dead.",
+  "ref": "Ephesians 1:20"
+ },
+ {
+  "id": "ephesians-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul pray God would give the Ephesians?",
+  "choices": [
+   "The spirit of wisdom and revelation",
+   "The gift of tongues",
+   "Riches and honour",
+   "A long life"
+  ],
+  "answer": 0,
+  "explanation": "Paul asks that God may give them the spirit of wisdom and revelation in the knowledge of him.",
+  "ref": "Ephesians 1:17"
+ },
+ {
+  "id": "ephesians-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say he does for the Ephesians in his prayers?",
+  "choices": [
+   "Fasts for them",
+   "Sends gifts to them",
+   "Rebukes them",
+   "Gives thanks for them"
+  ],
+  "answer": 3,
+  "explanation": "Paul says he cease not to give thanks for them, making mention of them in his prayers.",
+  "ref": "Ephesians 1:16"
+ },
+ {
+  "id": "ephesians-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Christ given to be over all things to the church?",
+  "choices": [
+   "The door",
+   "The judge",
+   "The head",
+   "The shepherd"
+  ],
+  "answer": 2,
+  "explanation": "God gave him to be the head over all things to the church.",
+  "ref": "Ephesians 1:22"
+ },
+ {
+  "id": "ephesians-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things does Paul wish the Ephesians from God our Father and the Lord Jesus Christ?",
+  "choices": [
+   "Joy and hope",
+   "Grace and peace",
+   "Mercy and truth",
+   "Faith and love"
+  ],
+  "answer": 1,
+  "explanation": "Paul writes, Grace be to you, and peace, from God our Father, and from the Lord Jesus Christ.",
+  "ref": "Ephesians 1:2"
+ },
+ {
+  "id": "ephesians-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did God choose us in him before the foundation of the world?",
+  "choices": [
+   "That we should be holy and without blame before him in love",
+   "That we should rule the nations",
+   "That we should build the temple",
+   "That we should keep the law"
+  ],
+  "answer": 0,
+  "explanation": "He chose us that we should be holy and without blame before him in love.",
+  "ref": "Ephesians 1:4"
+ },
+ {
+  "id": "ephesians-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Through whom did God predestinate us unto the adoption of children?",
+  "choices": [
+   "Abraham",
+   "Moses",
+   "The apostles",
+   "Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "He predestinated us unto the adoption of children by Jesus Christ to himself.",
+  "ref": "Ephesians 1:5"
+ },
+ {
+  "id": "ephesians-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do we have through his blood, along with redemption?",
+  "choices": [
+   "The gift of tongues",
+   "The promise of long life",
+   "The forgiveness of sins",
+   "The right to rule"
+  ],
+  "answer": 2,
+  "explanation": "In him we have redemption through his blood, the forgiveness of sins.",
+  "ref": "Ephesians 1:7"
+ },
+ {
+  "id": "ephesians-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has God made us in the beloved?",
+  "choices": [
+   "Free",
+   "Accepted",
+   "Rulers",
+   "Teachers"
+  ],
+  "answer": 1,
+  "explanation": "He hath made us accepted in the beloved.",
+  "ref": "Ephesians 1:6"
+ },
+ {
+  "id": "ephesians-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to what are we redeemed and forgiven?",
+  "choices": [
+   "The riches of his grace",
+   "The keeping of the law",
+   "The greatness of our faith",
+   "The words of the prophets"
+  ],
+  "answer": 0,
+  "explanation": "We have redemption and forgiveness according to the riches of his grace.",
+  "ref": "Ephesians 1:7"
+ },
+ {
+  "id": "ephesians-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has God made known to us according to his good pleasure?",
+  "choices": [
+   "The day of the Lord",
+   "The hour of judgement",
+   "The name of the beloved",
+   "The mystery of his will"
+  ],
+  "answer": 3,
+  "explanation": "He hath made known unto us the mystery of his will, according to his good pleasure.",
+  "ref": "Ephesians 1:9"
+ },
+ {
+  "id": "ephesians-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In the dispensation of the fulness of times, what will God gather together in one in Christ?",
+  "choices": [
+   "All the saints of Israel",
+   "All the nations of the Gentiles",
+   "All things in heaven and on earth",
+   "All the apostles and prophets"
+  ],
+  "answer": 2,
+  "explanation": "He will gather together in one all things in Christ, both which are in heaven, and which are on earth.",
+  "ref": "Ephesians 1:10"
+ },
+ {
+  "id": "ephesians-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Paul give thanks for the Ephesians?",
+  "choices": [
+   "They sent him gifts",
+   "They heard of their faith and love to all saints",
+   "They worked miracles",
+   "They suffered for his sake"
+  ],
+  "answer": 1,
+  "explanation": "Paul says he heard of their faith in the Lord Jesus, and love unto all the saints.",
+  "ref": "Ephesians 1:15"
+ },
+ {
+  "id": "ephesians-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The Holy Spirit of promise is the earnest of what?",
+  "choices": [
+   "Our inheritance",
+   "Our forgiveness",
+   "Our baptism",
+   "Our peace"
+  ],
+  "answer": 0,
+  "explanation": "The Spirit is the earnest of our inheritance until the redemption of the purchased possession.",
+  "ref": "Ephesians 1:14"
+ },
+ {
+  "id": "ephesians-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the Ephesians heard before they believed and were sealed?",
+  "choices": [
+   "The law of Moses",
+   "The voice of John the Baptist",
+   "The prophecy of Isaiah",
+   "The word of truth, the gospel of their salvation"
+  ],
+  "answer": 3,
+  "explanation": "After they heard the word of truth, the gospel of their salvation, and believed, they were sealed.",
+  "ref": "Ephesians 1:13"
+ },
+ {
+  "id": "ephesians-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Christ is set above every name that is named in this world and in what else?",
+  "choices": [
+   "The age of the law",
+   "The days of Moses",
+   "That which is to come",
+   "The time of the prophets"
+  ],
+  "answer": 2,
+  "explanation": "Christ is far above every name that is named, not only in this world, but also in that which is to come.",
+  "ref": "Ephesians 1:21"
+ },
+ {
+  "id": "ephesians-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has God put under Christ’s feet?",
+  "choices": [
+   "Only the nations",
+   "All things",
+   "Only the angels",
+   "Only the powers of darkness"
+  ],
+  "answer": 1,
+  "explanation": "God hath put all things under his feet.",
+  "ref": "Ephesians 1:22"
+ },
+ {
+  "id": "ephesians-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul prays their eyes be enlightened so they may know what?",
+  "choices": [
+   "The day of Christ’s return",
+   "The hope of his calling",
+   "The names of the angels",
+   "The way to Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "He prays that they may know what is the hope of his calling.",
+  "ref": "Ephesians 1:18"
+ },
+ {
+  "id": "ephesians-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The riches of the glory of God’s inheritance are in whom?",
+  "choices": [
+   "The saints",
+   "The angels",
+   "Israel",
+   "The apostles"
+  ],
+  "answer": 0,
+  "explanation": "Paul prays they may know the riches of the glory of his inheritance in the saints.",
+  "ref": "Ephesians 1:18"
+ },
+ {
+  "id": "ephesians-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God works all things after what?",
+  "choices": [
+   "The counsel of the elders",
+   "The desire of man",
+   "The works of the law",
+   "The counsel of his own will"
+  ],
+  "answer": 3,
+  "explanation": "God worketh all things after the counsel of his own will.",
+  "ref": "Ephesians 1:11"
+ },
+ {
+  "id": "ephesians-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The exceeding greatness of God’s power is directed toward whom?",
+  "choices": [
+   "All the nations",
+   "Israel alone",
+   "Us who believe",
+   "The angels"
+  ],
+  "answer": 2,
+  "explanation": "Paul speaks of the exceeding greatness of his power to us-ward who believe.",
+  "ref": "Ephesians 1:19"
+ },
+ {
+  "id": "ephesians-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When were the Ephesians sealed with that holy Spirit of promise?",
+  "choices": [
+   "Before they heard the gospel",
+   "After they believed",
+   "When Paul first arrived",
+   "When they were baptized"
+  ],
+  "answer": 1,
+  "explanation": "After that ye believed, ye were sealed with that holy Spirit of promise.",
+  "ref": "Ephesians 1:13"
+ },
+ {
+  "id": "ephesians-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul call the church, the fulness of him that filleth all in all?",
+  "choices": [
+   "His body",
+   "His bride",
+   "His temple",
+   "His kingdom"
+  ],
+  "answer": 0,
+  "explanation": "The church is his body, the fulness of him that filleth all in all.",
+  "ref": "Ephesians 1:23"
+ },
+ {
+  "id": "ephesians-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Our acceptance in the beloved is to the praise of the glory of what?",
+  "choices": [
+   "His law",
+   "His power",
+   "His name",
+   "His grace"
+  ],
+  "answer": 3,
+  "explanation": "He made us accepted in the beloved, to the praise of the glory of his grace.",
+  "ref": "Ephesians 1:6"
+ },
+ {
+  "id": "ephesians-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what has God abounded toward us?",
+  "choices": [
+   "All silver and gold",
+   "All signs and wonders",
+   "All wisdom and prudence",
+   "All strength and courage"
+  ],
+  "answer": 2,
+  "explanation": "He hath abounded toward us in all wisdom and prudence.",
+  "ref": "Ephesians 1:8"
+ },
+ {
+  "id": "ephesians-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did God purpose his good pleasure concerning the mystery of his will?",
+  "choices": [
+   "In the heavens",
+   "In himself",
+   "In the prophets",
+   "In the law"
+  ],
+  "answer": 1,
+  "explanation": "He made known the mystery according to his good pleasure which he hath purposed in himself.",
+  "ref": "Ephesians 1:9"
+ },
+ {
+  "id": "ephesians-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the saints at Ephesus, to whom does Paul write?",
+  "choices": [
+   "The faithful in Christ Jesus",
+   "The elders of Asia",
+   "The Jews of Ephesus",
+   "The churches of Galatia"
+  ],
+  "answer": 0,
+  "explanation": "Paul writes to the saints which are at Ephesus, and to the faithful in Christ Jesus.",
+  "ref": "Ephesians 1:1"
+ },
+ {
+  "id": "ephesians-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Spirit is the earnest of our inheritance until what?",
+  "choices": [
+   "The day of Pentecost",
+   "The end of the law",
+   "The building of the temple",
+   "The redemption of the purchased possession"
+  ],
+  "answer": 3,
+  "explanation": "He is the earnest of our inheritance until the redemption of the purchased possession.",
+  "ref": "Ephesians 1:14"
+ },
+ {
+  "id": "ephesians-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul call the God of our Lord Jesus Christ?",
+  "choices": [
+   "The Father of lights",
+   "The Father of mercies",
+   "The Father of glory",
+   "The Father of spirits"
+  ],
+  "answer": 2,
+  "explanation": "Paul prays that the God of our Lord Jesus Christ, the Father of glory, may give them wisdom.",
+  "ref": "Ephesians 1:17"
+ },
+ {
+  "id": "ephesians-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul says salvation is not of ourselves. What is it?",
+  "choices": [
+   "A reward for obedience",
+   "A wage earned by works",
+   "A debt God owes",
+   "The gift of God"
+  ],
+  "answer": 3,
+  "explanation": "By grace are ye saved through faith; and that not of yourselves: it is the gift of God.",
+  "ref": "Ephesians 2:8"
+ },
+ {
+  "id": "ephesians-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does Paul say salvation is not of works?",
+  "choices": [
+   "Because the law forbids it",
+   "Because works are too hard",
+   "Lest any man should boast",
+   "Because angels keep the record"
+  ],
+  "answer": 2,
+  "explanation": "Salvation is not of works, lest any man should boast.",
+  "ref": "Ephesians 2:9"
+ },
+ {
+  "id": "ephesians-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God do for us even when we were dead in sins?",
+  "choices": [
+   "Sent us the law",
+   "Quickened us together with Christ",
+   "Gave us a new temple",
+   "Withheld his mercy"
+  ],
+  "answer": 1,
+  "explanation": "Even when we were dead in sins, God hath quickened us together with Christ.",
+  "ref": "Ephesians 2:5"
+ },
+ {
+  "id": "ephesians-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has Christ broken down between us?",
+  "choices": [
+   "The middle wall of partition",
+   "The veil of the temple",
+   "The walls of Jericho",
+   "The gates of death"
+  ],
+  "answer": 0,
+  "explanation": "He is our peace, who hath made both one, and hath broken down the middle wall of partition between us.",
+  "ref": "Ephesians 2:14"
+ },
+ {
+  "id": "ephesians-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is the chief corner stone of the building?",
+  "choices": [
+   "Peter",
+   "Moses",
+   "John",
+   "Jesus Christ himself"
+  ],
+  "answer": 3,
+  "explanation": "The building is upon the foundation of the apostles and prophets, Jesus Christ himself being the chief corner stone.",
+  "ref": "Ephesians 2:20"
+ },
+ {
+  "id": "ephesians-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say the Gentile believers are no more?",
+  "choices": [
+   "Servants and slaves",
+   "Children and heirs",
+   "Strangers and foreigners",
+   "Priests and kings"
+  ],
+  "answer": 2,
+  "explanation": "Now therefore ye are no more strangers and foreigners, but fellowcitizens with the saints.",
+  "ref": "Ephesians 2:19"
+ },
+ {
+  "id": "ephesians-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to what did the Ephesians walk in time past?",
+  "choices": [
+   "The course of this world",
+   "The law of Moses",
+   "The counsel of the elders",
+   "The voice of the prophets"
+  ],
+  "answer": 0,
+  "explanation": "In time past ye walked according to the course of this world.",
+  "ref": "Ephesians 2:2"
+ },
+ {
+  "id": "ephesians-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The prince of the power of the air works in whom?",
+  "choices": [
+   "The saints",
+   "The apostles",
+   "The elders",
+   "The children of disobedience"
+  ],
+  "answer": 3,
+  "explanation": "He is the spirit that now worketh in the children of disobedience.",
+  "ref": "Ephesians 2:2"
+ },
+ {
+  "id": "ephesians-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were we by nature, even as others?",
+  "choices": [
+   "Children of promise",
+   "Children of light",
+   "Children of wrath",
+   "Children of the free woman"
+  ],
+  "answer": 2,
+  "explanation": "We were by nature the children of wrath, even as others.",
+  "ref": "Ephesians 2:3"
+ },
+ {
+  "id": "ephesians-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul describe God, who loved us when we were dead in sins?",
+  "choices": [
+   "Quick to judge",
+   "Rich in mercy",
+   "Silent in trouble",
+   "Far above the world"
+  ],
+  "answer": 1,
+  "explanation": "But God, who is rich in mercy, for his great love wherewith he loved us.",
+  "ref": "Ephesians 2:4"
+ },
+ {
+  "id": "ephesians-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did God raise us up and make us sit together in heavenly places in Christ Jesus?",
+  "choices": [
+   "To shew the exceeding riches of his grace in ages to come",
+   "That we might judge the angels",
+   "That we might rebuild the temple",
+   "That we might keep the law better"
+  ],
+  "answer": 0,
+  "explanation": "That in the ages to come he might shew the exceeding riches of his grace in his kindness toward us.",
+  "ref": "Ephesians 2:6–7"
+ },
+ {
+  "id": "ephesians-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what name are the Gentiles called by those called the Circumcision?",
+  "choices": [
+   "Idolaters",
+   "The unclean",
+   "The lost sheep",
+   "Uncircumcision"
+  ],
+  "answer": 3,
+  "explanation": "Ye Gentiles are called Uncircumcision by that which is called the Circumcision in the flesh.",
+  "ref": "Ephesians 2:11"
+ },
+ {
+  "id": "ephesians-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "At that time the Gentiles were without whom, having no hope?",
+  "choices": [
+   "Moses",
+   "Abraham",
+   "Christ",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "At that time ye were without Christ, having no hope, and without God in the world.",
+  "ref": "Ephesians 2:12"
+ },
+ {
+  "id": "ephesians-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what are those who were far off made nigh?",
+  "choices": [
+   "The law of Moses",
+   "The blood of Christ",
+   "Circumcision",
+   "The temple sacrifices"
+  ],
+  "answer": 1,
+  "explanation": "Ye who sometimes were far off are made nigh by the blood of Christ.",
+  "ref": "Ephesians 2:13"
+ },
+ {
+  "id": "ephesians-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Christ abolish in his flesh?",
+  "choices": [
+   "The enmity",
+   "The sabbath",
+   "The temple",
+   "The promise"
+  ],
+  "answer": 0,
+  "explanation": "Having abolished in his flesh the enmity, even the law of commandments contained in ordinances.",
+  "ref": "Ephesians 2:15"
+ },
+ {
+  "id": "ephesians-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom did Christ preach peace?",
+  "choices": [
+   "Only the Jews",
+   "Only the Gentiles",
+   "Only the apostles",
+   "Those who were afar off and those who were nigh"
+  ],
+  "answer": 3,
+  "explanation": "He came and preached peace to you which were afar off, and to them that were nigh.",
+  "ref": "Ephesians 2:17"
+ },
+ {
+  "id": "ephesians-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what do both Jew and Gentile have access unto the Father?",
+  "choices": [
+   "One law",
+   "One temple",
+   "One Spirit",
+   "One priesthood"
+  ],
+  "answer": 2,
+  "explanation": "Through him we both have access by one Spirit unto the Father.",
+  "ref": "Ephesians 2:18"
+ },
+ {
+  "id": "ephesians-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Christ reconcile both unto God, having slain the enmity?",
+  "choices": [
+   "By the temple sacrifices",
+   "In one body by the cross",
+   "By the law of commandments",
+   "By the keeping of the sabbath"
+  ],
+  "answer": 1,
+  "explanation": "He reconciled both unto God in one body by the cross, having slain the enmity thereby.",
+  "ref": "Ephesians 2:16"
+ },
+ {
+  "id": "ephesians-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of the two, Christ made in himself one what?",
+  "choices": [
+   "New man",
+   "New nation",
+   "New temple",
+   "New priesthood"
+  ],
+  "answer": 0,
+  "explanation": "He made in himself of twain one new man, so making peace.",
+  "ref": "Ephesians 2:15"
+ },
+ {
+  "id": "ephesians-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has God before ordained that we should walk in?",
+  "choices": [
+   "The old paths",
+   "The ways of the law",
+   "The commandments of the elders",
+   "Good works"
+  ],
+  "answer": 3,
+  "explanation": "We are created in Christ Jesus unto good works, which God hath before ordained that we should walk in them.",
+  "ref": "Ephesians 2:10"
+ },
+ {
+  "id": "ephesians-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Believers are fellowcitizens with the saints and of whose household?",
+  "choices": [
+   "Abraham",
+   "Moses",
+   "God",
+   "The apostles"
+  ],
+  "answer": 2,
+  "explanation": "Ye are fellowcitizens with the saints, and of the household of God.",
+  "ref": "Ephesians 2:19"
+ },
+ {
+  "id": "ephesians-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "The household of God is built upon the foundation of whom?",
+  "choices": [
+   "The elders and priests",
+   "The apostles and prophets",
+   "The kings and judges",
+   "The scribes and Pharisees"
+  ],
+  "answer": 1,
+  "explanation": "Ye are built upon the foundation of the apostles and prophets, Jesus Christ himself being the chief corner stone.",
+  "ref": "Ephesians 2:20"
+ },
+ {
+  "id": "ephesians-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into what does the whole building fitly framed together grow?",
+  "choices": [
+   "An holy temple in the Lord",
+   "A mighty kingdom",
+   "A great nation",
+   "An heavenly city"
+  ],
+  "answer": 0,
+  "explanation": "In whom all the building fitly framed together groweth unto an holy temple in the Lord.",
+  "ref": "Ephesians 2:21"
+ },
+ {
+  "id": "ephesians-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Gentiles were once aliens from what?",
+  "choices": [
+   "The temple of Solomon",
+   "The land of Canaan",
+   "The nation of Egypt",
+   "The commonwealth of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Ye were aliens from the commonwealth of Israel, and strangers from the covenants of promise.",
+  "ref": "Ephesians 2:12"
+ },
+ {
+  "id": "ephesians-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In time past, we fulfilled the desires of what?",
+  "choices": [
+   "The eyes and the heart",
+   "The world and the devil",
+   "The flesh and of the mind",
+   "The rich and the proud"
+  ],
+  "answer": 2,
+  "explanation": "We had our conversation in the lusts of our flesh, fulfilling the desires of the flesh and of the mind.",
+  "ref": "Ephesians 2:3"
+ },
+ {
+  "id": "ephesians-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has God done with us together in heavenly places in Christ Jesus?",
+  "choices": [
+   "Made us judge the nations",
+   "Made us sit together",
+   "Made us rebuild the temple",
+   "Made us fight the powers of the air"
+  ],
+  "answer": 1,
+  "explanation": "He hath raised us up together, and made us sit together in heavenly places in Christ Jesus.",
+  "ref": "Ephesians 2:6"
+ },
+ {
+  "id": "ephesians-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul tell the Gentile believers to do about their past?",
+  "choices": [
+   "Remember it",
+   "Forget it",
+   "Confess it",
+   "Rejoice in it"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore remember, that ye being in time past Gentiles in the flesh.",
+  "ref": "Ephesians 2:11"
+ },
+ {
+  "id": "ephesians-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "In whom are we created unto good works?",
+  "choices": [
+   "Moses",
+   "Abraham",
+   "The apostles",
+   "Christ Jesus"
+  ],
+  "answer": 3,
+  "explanation": "We are his workmanship, created in Christ Jesus unto good works.",
+  "ref": "Ephesians 2:10"
+ },
+ {
+  "id": "ephesians-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul describe himself at the start of the chapter?",
+  "choices": [
+   "The apostle of the Jews",
+   "The elder of Ephesus",
+   "A servant of Caesar",
+   "The prisoner of Jesus Christ for you Gentiles"
+  ],
+  "answer": 3,
+  "explanation": "Paul calls himself the prisoner of Jesus Christ for you Gentiles.",
+  "ref": "Ephesians 3:1"
+ },
+ {
+  "id": "ephesians-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul describe himself among the saints?",
+  "choices": [
+   "First among the saints",
+   "Equal to the apostles",
+   "Less than the least of all saints",
+   "The greatest of the apostles"
+  ],
+  "answer": 2,
+  "explanation": "Paul says he is less than the least of all saints.",
+  "ref": "Ephesians 3:8"
+ },
+ {
+  "id": "ephesians-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say he does before the Father of our Lord Jesus Christ?",
+  "choices": [
+   "Lifts his hands",
+   "Bows his knees",
+   "Fasts",
+   "Lays down his life"
+  ],
+  "answer": 1,
+  "explanation": "Paul says, I bow my knees unto the Father of our Lord Jesus Christ.",
+  "ref": "Ephesians 3:14"
+ },
+ {
+  "id": "ephesians-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul desire that the Ephesians not do at his tribulations?",
+  "choices": [
+   "Faint",
+   "Grieve",
+   "Pray",
+   "Boast"
+  ],
+  "answer": 0,
+  "explanation": "I desire that ye faint not at my tribulations for you, which is your glory.",
+  "ref": "Ephesians 3:13"
+ },
+ {
+  "id": "ephesians-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "By whom did God create all things?",
+  "choices": [
+   "Moses",
+   "The angels",
+   "The apostles",
+   "Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "God created all things by Jesus Christ.",
+  "ref": "Ephesians 3:9"
+ },
+ {
+  "id": "ephesians-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With whom does Paul pray they may comprehend the breadth, length, depth and height?",
+  "choices": [
+   "All the angels",
+   "The apostles",
+   "All saints",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "He prays that ye may be able to comprehend with all saints what is the breadth, and length, and depth, and height.",
+  "ref": "Ephesians 3:18"
+ },
+ {
+  "id": "ephesians-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom was the mystery revealed by the Spirit?",
+  "choices": [
+   "His holy apostles and prophets",
+   "The scribes and Pharisees",
+   "The kings of the earth",
+   "The priests of the temple"
+  ],
+  "answer": 0,
+  "explanation": "The mystery is now revealed unto his holy apostles and prophets by the Spirit.",
+  "ref": "Ephesians 3:5"
+ },
+ {
+  "id": "ephesians-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Paul receive the mystery?",
+  "choices": [
+   "By the tradition of the elders",
+   "By study of the scriptures",
+   "By the teaching of Peter",
+   "By revelation"
+  ],
+  "answer": 3,
+  "explanation": "By revelation he made known unto me the mystery.",
+  "ref": "Ephesians 3:3"
+ },
+ {
+  "id": "ephesians-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How are the Gentiles partakers of God’s promise in Christ?",
+  "choices": [
+   "By the law",
+   "By circumcision",
+   "By the gospel",
+   "By the temple"
+  ],
+  "answer": 2,
+  "explanation": "The Gentiles are partakers of his promise in Christ by the gospel.",
+  "ref": "Ephesians 3:6"
+ },
+ {
+  "id": "ephesians-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of what was Paul made a minister, which makes the Gentiles fellowheirs?",
+  "choices": [
+   "The law",
+   "The gospel",
+   "The temple",
+   "The covenant of circumcision"
+  ],
+  "answer": 1,
+  "explanation": "The Gentiles are fellowheirs by the gospel, whereof I was made a minister.",
+  "ref": "Ephesians 3:6–7"
+ },
+ {
+  "id": "ephesians-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whom had the mystery been hid from the beginning of the world?",
+  "choices": [
+   "God",
+   "The prophets",
+   "The law",
+   "The temple"
+  ],
+  "answer": 0,
+  "explanation": "The mystery from the beginning of the world hath been hid in God, who created all things by Jesus Christ.",
+  "ref": "Ephesians 3:9"
+ },
+ {
+  "id": "ephesians-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom is the manifold wisdom of God made known by the church?",
+  "choices": [
+   "The kings of the earth",
+   "The Gentile nations",
+   "The scribes and Pharisees",
+   "The principalities and powers in heavenly places"
+  ],
+  "answer": 3,
+  "explanation": "Unto the principalities and powers in heavenly places might be known by the church the manifold wisdom of God.",
+  "ref": "Ephesians 3:10"
+ },
+ {
+  "id": "ephesians-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to what did God do this in Christ Jesus our Lord?",
+  "choices": [
+   "The law of Moses",
+   "The counsel of men",
+   "His eternal purpose",
+   "The prayers of the saints"
+  ],
+  "answer": 2,
+  "explanation": "It is according to the eternal purpose which he purposed in Christ Jesus our Lord.",
+  "ref": "Ephesians 3:11"
+ },
+ {
+  "id": "ephesians-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do believers have in Christ by faith?",
+  "choices": [
+   "Wealth and honour",
+   "Boldness and access with confidence",
+   "Long life and peace",
+   "Rule over the nations"
+  ],
+  "answer": 1,
+  "explanation": "In whom we have boldness and access with confidence by the faith of him.",
+  "ref": "Ephesians 3:12"
+ },
+ {
+  "id": "ephesians-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say his tribulations for the Ephesians are?",
+  "choices": [
+   "Their glory",
+   "Their shame",
+   "Their punishment",
+   "Their reward"
+  ],
+  "answer": 0,
+  "explanation": "I desire that ye faint not at my tribulations for you, which is your glory.",
+  "ref": "Ephesians 3:13"
+ },
+ {
+  "id": "ephesians-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does Paul pray they will be strengthened with might by his Spirit?",
+  "choices": [
+   "In their houses",
+   "In the temple",
+   "In the church",
+   "In the inner man"
+  ],
+  "answer": 3,
+  "explanation": "That he would grant you to be strengthened with might by his Spirit in the inner man.",
+  "ref": "Ephesians 3:16"
+ },
+ {
+  "id": "ephesians-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say about the love of Christ?",
+  "choices": [
+   "It is hid in the law",
+   "It is for Jews only",
+   "It passeth knowledge",
+   "It faileth in trouble"
+  ],
+  "answer": 2,
+  "explanation": "To know the love of Christ, which passeth knowledge.",
+  "ref": "Ephesians 3:19"
+ },
+ {
+  "id": "ephesians-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what are the Ephesians to be rooted and grounded?",
+  "choices": [
+   "Faith",
+   "Love",
+   "Truth",
+   "Hope"
+  ],
+  "answer": 1,
+  "explanation": "That Christ may dwell in your hearts by faith; that ye, being rooted and grounded in love.",
+  "ref": "Ephesians 3:17"
+ },
+ {
+  "id": "ephesians-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what does Paul pray they will be filled?",
+  "choices": [
+   "All the fulness of God",
+   "The fulness of the Spirit",
+   "The fulness of times",
+   "The fulness of joy"
+  ],
+  "answer": 0,
+  "explanation": "That ye might be filled with all the fulness of God.",
+  "ref": "Ephesians 3:19"
+ },
+ {
+  "id": "ephesians-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is named of the Father of our Lord Jesus Christ?",
+  "choices": [
+   "The twelve tribes of Israel",
+   "The holy angels alone",
+   "The seed of Abraham",
+   "The whole family in heaven and earth"
+  ],
+  "answer": 3,
+  "explanation": "Of whom the whole family in heaven and earth is named.",
+  "ref": "Ephesians 3:14–15"
+ },
+ {
+  "id": "ephesians-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In other ages the mystery was not made known unto whom?",
+  "choices": [
+   "The angels",
+   "The priests",
+   "The sons of men",
+   "The Gentiles"
+  ],
+  "answer": 2,
+  "explanation": "Which in other ages was not made known unto the sons of men.",
+  "ref": "Ephesians 3:5"
+ },
+ {
+  "id": "ephesians-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul was given grace to make all men see what?",
+  "choices": [
+   "The reward of the law",
+   "The fellowship of the mystery",
+   "The order of the church",
+   "The end of the age"
+  ],
+  "answer": 1,
+  "explanation": "To make all men see what is the fellowship of the mystery, which from the beginning of the world hath been hid in God.",
+  "ref": "Ephesians 3:9"
+ },
+ {
+  "id": "ephesians-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God is able to do exceeding abundantly according to what?",
+  "choices": [
+   "The power that worketh in us",
+   "The works we have done",
+   "The merit of our prayers",
+   "The law of Moses"
+  ],
+  "answer": 0,
+  "explanation": "He is able to do exceeding abundantly above all that we ask or think, according to the power that worketh in us.",
+  "ref": "Ephesians 3:20"
+ },
+ {
+  "id": "ephesians-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how long is glory to be given to God in the church by Christ Jesus?",
+  "choices": [
+   "Until Christ returns",
+   "For a thousand years",
+   "Until the Gentiles are gathered",
+   "Throughout all ages, world without end"
+  ],
+  "answer": 3,
+  "explanation": "Unto him be glory in the church by Christ Jesus throughout all ages, world without end.",
+  "ref": "Ephesians 3:21"
+ },
+ {
+  "id": "ephesians-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to what does Paul ask God to grant them strength?",
+  "choices": [
+   "The power of angels",
+   "The law of the Spirit",
+   "The riches of his glory",
+   "The treasures of the temple"
+  ],
+  "answer": 2,
+  "explanation": "That he would grant you, according to the riches of his glory, to be strengthened.",
+  "ref": "Ephesians 3:16"
+ },
+ {
+  "id": "ephesians-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When the Ephesians read, they may understand Paul’s knowledge in what?",
+  "choices": [
+   "The law of Moses",
+   "The mystery of Christ",
+   "The wisdom of the Greeks",
+   "The ways of the prophets"
+  ],
+  "answer": 1,
+  "explanation": "Whereby, when ye read, ye may understand my knowledge in the mystery of Christ.",
+  "ref": "Ephesians 3:4"
+ },
+ {
+  "id": "ephesians-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "By whom is glory given to God in the church?",
+  "choices": [
+   "Christ Jesus",
+   "The apostles",
+   "The Spirit",
+   "Paul"
+  ],
+  "answer": 0,
+  "explanation": "Unto him be glory in the church by Christ Jesus throughout all ages.",
+  "ref": "Ephesians 3:21"
+ },
+ {
+  "id": "ephesians-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what was the gift of the grace of God given to Paul?",
+  "choices": [
+   "The laying on of hands",
+   "The counsel of the apostles",
+   "The prayers of the church",
+   "The effectual working of his power"
+  ],
+  "answer": 3,
+  "explanation": "The gift of the grace of God was given unto me by the effectual working of his power.",
+  "ref": "Ephesians 3:7"
+ },
+ {
+  "id": "ephesians-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "As the prisoner of the Lord, what does Paul beseech them to do?",
+  "choices": [
+   "Return to the law of Moses",
+   "Give up their possessions",
+   "Send help to Jerusalem",
+   "Walk worthy of the vocation wherewith they are called"
+  ],
+  "answer": 3,
+  "explanation": "I therefore, the prisoner of the Lord, beseech you that ye walk worthy of the vocation wherewith ye are called.",
+  "ref": "Ephesians 4:1"
+ },
+ {
+  "id": "ephesians-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who is above all, and through all, and in you all?",
+  "choices": [
+   "The Holy Spirit alone",
+   "The apostles",
+   "One God and Father of all",
+   "The church"
+  ],
+  "answer": 2,
+  "explanation": "There is one God and Father of all, who is above all, and through all, and in you all.",
+  "ref": "Ephesians 4:6"
+ },
+ {
+  "id": "ephesians-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When Christ ascended up on high, what did he do?",
+  "choices": [
+   "Judged the nations",
+   "Led captivity captive and gave gifts unto men",
+   "Rebuilt the temple",
+   "Sealed the heavens"
+  ],
+  "answer": 1,
+  "explanation": "When he ascended up on high, he led captivity captive, and gave gifts unto men.",
+  "ref": "Ephesians 4:8"
+ },
+ {
+  "id": "ephesians-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say should not go down upon your wrath?",
+  "choices": [
+   "The sun",
+   "The moon",
+   "The night",
+   "The Sabbath"
+  ],
+  "answer": 0,
+  "explanation": "Be ye angry, and sin not: let not the sun go down upon your wrath.",
+  "ref": "Ephesians 4:26"
+ },
+ {
+  "id": "ephesians-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should he that stole do instead of stealing?",
+  "choices": [
+   "Pay a sacrifice",
+   "Flee the city",
+   "Leave his master",
+   "Labour, working with his hands"
+  ],
+  "answer": 3,
+  "explanation": "Let him that stole steal no more: but rather let him labour, working with his hands the thing which is good.",
+  "ref": "Ephesians 4:28"
+ },
+ {
+  "id": "ephesians-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should not proceed out of the mouth of believers?",
+  "choices": [
+   "Songs of praise",
+   "Words of prayer",
+   "Corrupt communication",
+   "Words of thanks"
+  ],
+  "answer": 2,
+  "explanation": "Let no corrupt communication proceed out of your mouth.",
+  "ref": "Ephesians 4:29"
+ },
+ {
+  "id": "ephesians-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should believers not grieve?",
+  "choices": [
+   "Their parents",
+   "The holy Spirit of God",
+   "Their masters",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Grieve not the holy Spirit of God, whereby ye are sealed unto the day of redemption.",
+  "ref": "Ephesians 4:30"
+ },
+ {
+  "id": "ephesians-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Putting away lying, what is every man to speak with his neighbour?",
+  "choices": [
+   "Truth",
+   "Comfort",
+   "Wisdom",
+   "Counsel"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore putting away lying, speak every man truth with his neighbour.",
+  "ref": "Ephesians 4:25"
+ },
+ {
+  "id": "ephesians-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should believers not give to the devil?",
+  "choices": [
+   "Their wealth",
+   "Their time",
+   "Their names",
+   "Place"
+  ],
+  "answer": 3,
+  "explanation": "Neither give place to the devil.",
+  "ref": "Ephesians 4:27"
+ },
+ {
+  "id": "ephesians-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Believers must no longer walk as other Gentiles walk, in what?",
+  "choices": [
+   "The fear of the law",
+   "The pride of their wealth",
+   "The vanity of their mind",
+   "The customs of their fathers"
+  ],
+  "answer": 2,
+  "explanation": "Walk not as other Gentiles walk, in the vanity of their mind.",
+  "ref": "Ephesians 4:17"
+ },
+ {
+  "id": "ephesians-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what are believers to forbear one another?",
+  "choices": [
+   "Love",
+   "Silence",
+   "Fear",
+   "Haste"
+  ],
+  "answer": 0,
+  "explanation": "With all lowliness and meekness, with longsuffering, forbearing one another in love.",
+  "ref": "Ephesians 4:2"
+ },
+ {
+  "id": "ephesians-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom is grace given according to the measure of the gift of Christ?",
+  "choices": [
+   "Only the apostles",
+   "Only the elders",
+   "Only the Jews",
+   "Every one of us"
+  ],
+  "answer": 3,
+  "explanation": "Unto every one of us is given grace according to the measure of the gift of Christ.",
+  "ref": "Ephesians 4:7"
+ },
+ {
+  "id": "ephesians-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Before he ascended, where did Christ first descend?",
+  "choices": [
+   "Into the wilderness",
+   "Into the river Jordan",
+   "Into the lower parts of the earth",
+   "Into the temple"
+  ],
+  "answer": 2,
+  "explanation": "He ascended, and also descended first into the lower parts of the earth.",
+  "ref": "Ephesians 4:9"
+ },
+ {
+  "id": "ephesians-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Christ ascend far above all heavens?",
+  "choices": [
+   "That he might judge the earth",
+   "That he might fill all things",
+   "That he might rule the nations",
+   "That he might hide from the world"
+  ],
+  "answer": 1,
+  "explanation": "He ascended up far above all heavens, that he might fill all things.",
+  "ref": "Ephesians 4:10"
+ },
+ {
+  "id": "ephesians-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Christ gave apostles, prophets, evangelists, pastors and teachers for what?",
+  "choices": [
+   "The perfecting of the saints",
+   "The punishing of sinners",
+   "The keeping of the law",
+   "The building of the temple"
+  ],
+  "answer": 0,
+  "explanation": "He gave them for the perfecting of the saints, for the work of the ministry.",
+  "ref": "Ephesians 4:11–12"
+ },
+ {
+  "id": "ephesians-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Till we all come in the unity of the faith and the knowledge of whom?",
+  "choices": [
+   "The apostles",
+   "The prophets",
+   "The Father",
+   "The Son of God"
+  ],
+  "answer": 3,
+  "explanation": "Till we all come in the unity of the faith, and of the knowledge of the Son of God.",
+  "ref": "Ephesians 4:13"
+ },
+ {
+  "id": "ephesians-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say believers should be no more?",
+  "choices": [
+   "Servants of the law",
+   "Strangers and foreigners",
+   "Children tossed to and fro",
+   "Fishermen"
+  ],
+  "answer": 2,
+  "explanation": "That we henceforth be no more children, tossed to and fro.",
+  "ref": "Ephesians 4:14"
+ },
+ {
+  "id": "ephesians-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Children are carried about with every wind of what?",
+  "choices": [
+   "Fear",
+   "Doctrine",
+   "Trouble",
+   "Persecution"
+  ],
+  "answer": 1,
+  "explanation": "Children are tossed to and fro, and carried about with every wind of doctrine.",
+  "ref": "Ephesians 4:14"
+ },
+ {
+  "id": "ephesians-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Into whom are believers to grow up in all things?",
+  "choices": [
+   "Christ",
+   "The apostles",
+   "The Father",
+   "The Spirit"
+  ],
+  "answer": 0,
+  "explanation": "May grow up into him in all things, which is the head, even Christ.",
+  "ref": "Ephesians 4:15"
+ },
+ {
+  "id": "ephesians-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul describe the understanding of the Gentiles who walk in the vanity of their mind?",
+  "choices": [
+   "Strengthened",
+   "Satisfied",
+   "Divided",
+   "Darkened"
+  ],
+  "answer": 3,
+  "explanation": "Having the understanding darkened, being alienated from the life of God.",
+  "ref": "Ephesians 4:18"
+ },
+ {
+  "id": "ephesians-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From what are those Gentiles alienated?",
+  "choices": [
+   "The law of Moses",
+   "The temple",
+   "The life of God",
+   "The covenant"
+  ],
+  "answer": 2,
+  "explanation": "Being alienated from the life of God through the ignorance that is in them.",
+  "ref": "Ephesians 4:18"
+ },
+ {
+  "id": "ephesians-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Those past feeling have given themselves over to work what with greediness?",
+  "choices": [
+   "All the works of the law",
+   "All uncleanness",
+   "All manner of trade",
+   "All kinds of labour"
+  ],
+  "answer": 1,
+  "explanation": "Past feeling, they have given themselves over unto lasciviousness, to work all uncleanness with greediness.",
+  "ref": "Ephesians 4:19"
+ },
+ {
+  "id": "ephesians-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to what is the old man corrupt?",
+  "choices": [
+   "The deceitful lusts",
+   "The law of Moses",
+   "The traditions of men",
+   "The wisdom of the world"
+  ],
+  "answer": 0,
+  "explanation": "The old man, which is corrupt according to the deceitful lusts.",
+  "ref": "Ephesians 4:22"
+ },
+ {
+  "id": "ephesians-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what are believers to be renewed?",
+  "choices": [
+   "The works of your hands",
+   "The strength of your body",
+   "The fear of the law",
+   "The spirit of your mind"
+  ],
+  "answer": 3,
+  "explanation": "And be renewed in the spirit of your mind.",
+  "ref": "Ephesians 4:23"
+ },
+ {
+  "id": "ephesians-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why are believers to speak truth to their neighbour?",
+  "choices": [
+   "The law commands it",
+   "It will make them rich",
+   "We are members one of another",
+   "The elders require it"
+  ],
+  "answer": 2,
+  "explanation": "Speak every man truth with his neighbour: for we are members one of another.",
+  "ref": "Ephesians 4:25"
+ },
+ {
+  "id": "ephesians-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what is the new man created after God?",
+  "choices": [
+   "Wisdom and understanding",
+   "Righteousness and true holiness",
+   "Power and might",
+   "Faith and hope"
+  ],
+  "answer": 1,
+  "explanation": "The new man, which after God is created in righteousness and true holiness.",
+  "ref": "Ephesians 4:24"
+ },
+ {
+  "id": "ephesians-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Through what does the whole body, fitly joined together, make increase?",
+  "choices": [
+   "That which every joint supplieth",
+   "The commands of the law",
+   "The wisdom of the elders",
+   "The gifts of the Gentiles"
+  ],
+  "answer": 0,
+  "explanation": "The whole body fitly joined together by that which every joint supplieth maketh increase of the body.",
+  "ref": "Ephesians 4:16"
+ },
+ {
+  "id": "ephesians-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The body makes increase unto the edifying of itself in what?",
+  "choices": [
+   "Faith",
+   "Truth",
+   "Hope",
+   "Love"
+  ],
+  "answer": 3,
+  "explanation": "The body maketh increase of the body unto the edifying of itself in love.",
+  "ref": "Ephesians 4:16"
+ },
+ {
+  "id": "ephesians-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How do deceivers lie in wait to deceive?",
+  "choices": [
+   "By open violence",
+   "By the law",
+   "By cunning craftiness",
+   "By signs and wonders"
+  ],
+  "answer": 2,
+  "explanation": "Carried about by the sleight of men, and cunning craftiness, whereby they lie in wait to deceive.",
+  "ref": "Ephesians 4:14"
+ },
+ {
+  "id": "ephesians-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul give as the cause of the Gentiles’ ignorance?",
+  "choices": [
+   "The pride of their rulers",
+   "The blindness of their heart",
+   "The lack of the law",
+   "The teaching of false prophets"
+  ],
+  "answer": 1,
+  "explanation": "The ignorance that is in them, because of the blindness of their heart.",
+  "ref": "Ephesians 4:18"
+ },
+ {
+  "id": "ephesians-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why should the former thief work with his hands?",
+  "choices": [
+   "That he may have to give to him that needeth",
+   "That he may pay his debt",
+   "That he may buy his freedom",
+   "That he may escape suspicion"
+  ],
+  "answer": 0,
+  "explanation": "Let him labour, that he may have to give to him that needeth.",
+  "ref": "Ephesians 4:28"
+ },
+ {
+  "id": "ephesians-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What should good words minister to the hearers?",
+  "choices": [
+   "Fear",
+   "Wisdom",
+   "Comfort",
+   "Grace"
+  ],
+  "answer": 3,
+  "explanation": "That which is good to the use of edifying, that it may minister grace unto the hearers.",
+  "ref": "Ephesians 4:29"
+ },
+ {
+  "id": "ephesians-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Holy Spirit seals believers unto what?",
+  "choices": [
+   "The day of atonement",
+   "The day of Pentecost",
+   "The day of redemption",
+   "The day of the Lord"
+  ],
+  "answer": 2,
+  "explanation": "Grieve not the holy Spirit of God, whereby ye are sealed unto the day of redemption.",
+  "ref": "Ephesians 4:30"
+ },
+ {
+  "id": "ephesians-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Wrath, anger, clamour and evil speaking are to be put away with all what?",
+  "choices": [
+   "Pride",
+   "Malice",
+   "Envy",
+   "Strife"
+  ],
+  "answer": 1,
+  "explanation": "Let all bitterness, and wrath, and anger, and clamour, and evil speaking, be put away from you, with all malice.",
+  "ref": "Ephesians 4:31"
+ },
+ {
+  "id": "ephesians-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Believers come to a perfect man, to the measure of the stature of the fulness of whom?",
+  "choices": [
+   "Christ",
+   "The apostles",
+   "Moses",
+   "The Father"
+  ],
+  "answer": 0,
+  "explanation": "Unto a perfect man, unto the measure of the stature of the fulness of Christ.",
+  "ref": "Ephesians 4:13"
+ },
+ {
+  "id": "ephesians-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom is the whole body fitly joined together and compacted?",
+  "choices": [
+   "The apostles",
+   "The Spirit",
+   "The Father",
+   "Christ, the head"
+  ],
+  "answer": 3,
+  "explanation": "Into him which is the head, even Christ: from whom the whole body fitly joined together and compacted.",
+  "ref": "Ephesians 4:15–16"
+ },
+ {
+  "id": "ephesians-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "As the truth is in whom have the Ephesians been taught?",
+  "choices": [
+   "Moses",
+   "Paul",
+   "Jesus",
+   "John"
+  ],
+  "answer": 2,
+  "explanation": "If so be that ye have heard him, and have been taught by him, as the truth is in Jesus.",
+  "ref": "Ephesians 4:21"
+ },
+ {
+  "id": "ephesians-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The gifts are given for the edifying of the body of whom?",
+  "choices": [
+   "The apostles",
+   "Christ",
+   "The elders",
+   "The Gentiles"
+  ],
+  "answer": 1,
+  "explanation": "For the perfecting of the saints, for the work of the ministry, for the edifying of the body of Christ.",
+  "ref": "Ephesians 4:12"
+ },
+ {
+  "id": "ephesians-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How far did Christ ascend, that he might fill all things?",
+  "choices": [
+   "Far above all heavens",
+   "To the mount of Olives",
+   "To the clouds",
+   "To the temple"
+  ],
+  "answer": 0,
+  "explanation": "He that descended is the same also that ascended up far above all heavens.",
+  "ref": "Ephesians 4:10"
+ },
+ {
+  "id": "ephesians-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "For whose sake has God forgiven believers?",
+  "choices": [
+   "Abraham’s",
+   "David’s",
+   "The church’s",
+   "Christ’s"
+  ],
+  "answer": 3,
+  "explanation": "Forgiving one another, even as God for Christ’s sake hath forgiven you.",
+  "ref": "Ephesians 4:32"
+ },
+ {
+  "id": "ephesians-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Christ give himself for us?",
+  "choices": [
+   "As a king and a judge",
+   "As a teacher and a prophet",
+   "As a priest of the temple",
+   "As an offering and a sacrifice to God"
+  ],
+  "answer": 3,
+  "explanation": "Christ hath given himself for us an offering and a sacrifice to God for a sweetsmelling savour.",
+  "ref": "Ephesians 5:2"
+ },
+ {
+  "id": "ephesians-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul call a covetous man?",
+  "choices": [
+   "A thief",
+   "A hypocrite",
+   "An idolater",
+   "A false prophet"
+  ],
+  "answer": 2,
+  "explanation": "No whoremonger, nor unclean person, nor covetous man, who is an idolater, hath any inheritance.",
+  "ref": "Ephesians 5:5"
+ },
+ {
+  "id": "ephesians-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the Ephesians once, before they were light in the Lord?",
+  "choices": [
+   "Slaves",
+   "Darkness",
+   "Strangers",
+   "Captives"
+  ],
+  "answer": 1,
+  "explanation": "For ye were sometimes darkness, but now are ye light in the Lord.",
+  "ref": "Ephesians 5:8"
+ },
+ {
+  "id": "ephesians-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Christ promise to the one who awakes and arises from the dead?",
+  "choices": [
+   "Christ shall give thee light",
+   "Christ shall give thee peace",
+   "Christ shall give thee a crown",
+   "Christ shall give thee rest"
+  ],
+  "answer": 0,
+  "explanation": "Awake thou that sleepest, and arise from the dead, and Christ shall give thee light.",
+  "ref": "Ephesians 5:14"
+ },
+ {
+  "id": "ephesians-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul say believers should walk?",
+  "choices": [
+   "Quickly, as soldiers",
+   "Silently, as servants",
+   "Boldly, as kings",
+   "Circumspectly, not as fools, but as wise"
+  ],
+  "answer": 3,
+  "explanation": "See then that ye walk circumspectly, not as fools, but as wise.",
+  "ref": "Ephesians 5:15"
+ },
+ {
+  "id": "ephesians-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does Paul say believers should redeem the time?",
+  "choices": [
+   "Because the end is near",
+   "Because the law demands it",
+   "Because the days are evil",
+   "Because the temple is closing"
+  ],
+  "answer": 2,
+  "explanation": "Redeeming the time, because the days are evil.",
+  "ref": "Ephesians 5:16"
+ },
+ {
+  "id": "ephesians-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "The husband is the head of the wife, even as who is the head of the church?",
+  "choices": [
+   "Peter",
+   "Christ",
+   "The apostles",
+   "The Spirit"
+  ],
+  "answer": 1,
+  "explanation": "The husband is the head of the wife, even as Christ is the head of the church.",
+  "ref": "Ephesians 5:23"
+ },
+ {
+  "id": "ephesians-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say the wife should see that she does toward her husband?",
+  "choices": [
+   "Reverence him",
+   "Command him",
+   "Instruct him",
+   "Avoid him"
+  ],
+  "answer": 0,
+  "explanation": "The wife see that she reverence her husband.",
+  "ref": "Ephesians 5:33"
+ },
+ {
+  "id": "ephesians-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Men ought to love their wives as their own what?",
+  "choices": [
+   "Houses",
+   "Children",
+   "Servants",
+   "Bodies"
+  ],
+  "answer": 3,
+  "explanation": "So ought men to love their wives as their own bodies.",
+  "ref": "Ephesians 5:28"
+ },
+ {
+  "id": "ephesians-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall a man leave, to be joined unto his wife?",
+  "choices": [
+   "His house and land",
+   "His brothers and sisters",
+   "His father and mother",
+   "His work and master"
+  ],
+  "answer": 2,
+  "explanation": "For this cause shall a man leave his father and mother, and shall be joined unto his wife.",
+  "ref": "Ephesians 5:31"
+ },
+ {
+  "id": "ephesians-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should not be once named among saints, as becometh saints?",
+  "choices": [
+   "Fornication, uncleanness and covetousness",
+   "Doubt and fear",
+   "Hunger and poverty",
+   "Suffering and trial"
+  ],
+  "answer": 0,
+  "explanation": "But fornication, and all uncleanness, or covetousness, let it not be once named among you, as becometh saints.",
+  "ref": "Ephesians 5:3"
+ },
+ {
+  "id": "ephesians-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say should be rather than filthiness, foolish talking and jesting?",
+  "choices": [
+   "Silence",
+   "Fasting",
+   "Teaching",
+   "Giving of thanks"
+  ],
+  "answer": 3,
+  "explanation": "Neither filthiness, nor foolish talking, nor jesting: but rather giving of thanks.",
+  "ref": "Ephesians 5:4"
+ },
+ {
+  "id": "ephesians-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Because of these things, the wrath of God comes upon whom?",
+  "choices": [
+   "The children of promise",
+   "The children of light",
+   "The children of disobedience",
+   "The children of Abraham"
+  ],
+  "answer": 2,
+  "explanation": "Because of these things cometh the wrath of God upon the children of disobedience.",
+  "ref": "Ephesians 5:6"
+ },
+ {
+  "id": "ephesians-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what is the fruit of the Spirit, according to Paul?",
+  "choices": [
+   "All love, joy and peace",
+   "All goodness and righteousness and truth",
+   "All wisdom and knowledge",
+   "All power and might"
+  ],
+  "answer": 1,
+  "explanation": "The fruit of the Spirit is in all goodness and righteousness and truth.",
+  "ref": "Ephesians 5:9"
+ },
+ {
+  "id": "ephesians-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say it is a shame even to do?",
+  "choices": [
+   "Speak of the things done in secret",
+   "Speak with Gentiles",
+   "Eat with sinners",
+   "Sing in the temple"
+  ],
+  "answer": 0,
+  "explanation": "It is a shame even to speak of those things which are done of them in secret.",
+  "ref": "Ephesians 5:12"
+ },
+ {
+  "id": "ephesians-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are believers to be proving?",
+  "choices": [
+   "What is lawful for the priests",
+   "What the rulers command",
+   "What the prophets foretold",
+   "What is acceptable unto the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Proving what is acceptable unto the Lord.",
+  "ref": "Ephesians 5:10"
+ },
+ {
+  "id": "ephesians-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what are believers to have no fellowship?",
+  "choices": [
+   "The law of Moses",
+   "The saints of old",
+   "The unfruitful works of darkness",
+   "The children of light"
+  ],
+  "answer": 2,
+  "explanation": "Have no fellowship with the unfruitful works of darkness, but rather reprove them.",
+  "ref": "Ephesians 5:11"
+ },
+ {
+  "id": "ephesians-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what are all things that are reproved made manifest?",
+  "choices": [
+   "The law",
+   "The light",
+   "The elders",
+   "The fire"
+  ],
+  "answer": 1,
+  "explanation": "All things that are reproved are made manifest by the light.",
+  "ref": "Ephesians 5:13"
+ },
+ {
+  "id": "ephesians-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Instead of being unwise, what are believers to understand?",
+  "choices": [
+   "What the will of the Lord is",
+   "What the law of Moses requires",
+   "What the rulers desire",
+   "What the prophets foretold"
+  ],
+  "answer": 0,
+  "explanation": "Be ye not unwise, but understanding what the will of the Lord is.",
+  "ref": "Ephesians 5:17"
+ },
+ {
+  "id": "ephesians-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Where are believers to make melody to the Lord?",
+  "choices": [
+   "In the temple",
+   "In the synagogue",
+   "In the house of the elders",
+   "In your heart"
+  ],
+  "answer": 3,
+  "explanation": "Singing and making melody in your heart to the Lord.",
+  "ref": "Ephesians 5:19"
+ },
+ {
+  "id": "ephesians-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "In whose name are believers to give thanks always for all things?",
+  "choices": [
+   "The apostles",
+   "Moses and the prophets",
+   "Our Lord Jesus Christ",
+   "The church"
+  ],
+  "answer": 2,
+  "explanation": "Giving thanks always for all things unto God and the Father in the name of our Lord Jesus Christ.",
+  "ref": "Ephesians 5:20"
+ },
+ {
+  "id": "ephesians-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what are believers to submit themselves one to another?",
+  "choices": [
+   "The strength of the law",
+   "The fear of God",
+   "The wisdom of men",
+   "The custom of the church"
+  ],
+  "answer": 1,
+  "explanation": "Submitting yourselves one to another in the fear of God.",
+  "ref": "Ephesians 5:21"
+ },
+ {
+  "id": "ephesians-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Christ is the head of the church and the saviour of what?",
+  "choices": [
+   "The body",
+   "The nations",
+   "The temple",
+   "The world"
+  ],
+  "answer": 0,
+  "explanation": "Christ is the head of the church: and he is the saviour of the body.",
+  "ref": "Ephesians 5:23"
+ },
+ {
+  "id": "ephesians-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "As the church is subject unto Christ, how are wives to be subject to their husbands?",
+  "choices": [
+   "In some things",
+   "In worship only",
+   "In the home only",
+   "In every thing"
+  ],
+  "answer": 3,
+  "explanation": "As the church is subject unto Christ, so let the wives be to their own husbands in every thing.",
+  "ref": "Ephesians 5:24"
+ },
+ {
+  "id": "ephesians-5-m-15",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Christ gave himself for the church so that he might do what to it?",
+  "choices": [
+   "Rule over it",
+   "Hide it from the world",
+   "Sanctify and cleanse it",
+   "Send it out as judge"
+  ],
+  "answer": 2,
+  "explanation": "Christ gave himself for it, that he might sanctify and cleanse it.",
+  "ref": "Ephesians 5:25–26"
+ },
+ {
+  "id": "ephesians-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what does Christ cleanse the church?",
+  "choices": [
+   "The blood of bulls and goats",
+   "The washing of water by the word",
+   "The oil of anointing",
+   "The smoke of incense"
+  ],
+  "answer": 1,
+  "explanation": "That he might sanctify and cleanse it with the washing of water by the word.",
+  "ref": "Ephesians 5:26"
+ },
+ {
+  "id": "ephesians-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Christ will present the church to himself not having what?",
+  "choices": [
+   "Spot, or wrinkle, or any such thing",
+   "Debt or blame",
+   "Scar or sword",
+   "Weakness or fear"
+  ],
+  "answer": 0,
+  "explanation": "That he might present it to himself a glorious church, not having spot, or wrinkle, or any such thing.",
+  "ref": "Ephesians 5:27"
+ },
+ {
+  "id": "ephesians-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "No man ever hated his own flesh, but what does he do with it?",
+  "choices": [
+   "Corrects and chastens it",
+   "Hides and guards it",
+   "Spends and wastes it",
+   "Nourisheth and cherisheth it"
+  ],
+  "answer": 3,
+  "explanation": "No man ever yet hated his own flesh; but nourisheth and cherisheth it, even as the Lord the church.",
+  "ref": "Ephesians 5:29"
+ },
+ {
+  "id": "ephesians-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what does Paul say we are members?",
+  "choices": [
+   "His house and his temple",
+   "His kingdom and his throne",
+   "His body, of his flesh, and of his bones",
+   "His flock and his fold"
+  ],
+  "answer": 2,
+  "explanation": "For we are members of his body, of his flesh, and of his bones.",
+  "ref": "Ephesians 5:30"
+ },
+ {
+  "id": "ephesians-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall a man and his wife be?",
+  "choices": [
+   "One house",
+   "One flesh",
+   "One mind",
+   "One name"
+  ],
+  "answer": 1,
+  "explanation": "They two shall be one flesh.",
+  "ref": "Ephesians 5:31"
+ },
+ {
+  "id": "ephesians-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Paul calls this a great mystery, but speaks concerning whom?",
+  "choices": [
+   "Christ and the church",
+   "Adam and Eve",
+   "Abraham and Sarah",
+   "Israel and the nations"
+  ],
+  "answer": 0,
+  "explanation": "This is a great mystery: but I speak concerning Christ and the church.",
+  "ref": "Ephesians 5:32"
+ },
+ {
+  "id": "ephesians-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "The unclean and covetous have no inheritance in the kingdom of whom?",
+  "choices": [
+   "The apostles and of the prophets",
+   "Moses and of Aaron",
+   "Peter and of Paul",
+   "Christ and of God"
+  ],
+  "answer": 3,
+  "explanation": "No whoremonger, nor unclean person, nor covetous man hath any inheritance in the kingdom of Christ and of God.",
+  "ref": "Ephesians 5:5"
+ },
+ {
+  "id": "ephesians-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what are believers to speak to themselves?",
+  "choices": [
+   "Prayers and fasting",
+   "Proverbs and parables",
+   "Psalms and hymns and spiritual songs",
+   "Laws and commandments"
+  ],
+  "answer": 2,
+  "explanation": "Speaking to yourselves in psalms and hymns and spiritual songs.",
+  "ref": "Ephesians 5:19"
+ },
+ {
+  "id": "ephesians-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom are believers to give thanks always for all things?",
+  "choices": [
+   "The apostles",
+   "God and the Father",
+   "The church",
+   "The Spirit"
+  ],
+  "answer": 1,
+  "explanation": "Giving thanks always for all things unto God and the Father.",
+  "ref": "Ephesians 5:20"
+ },
+ {
+  "id": "ephesians-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are believers told to follow God?",
+  "choices": [
+   "As dear children",
+   "As faithful servants",
+   "As loyal soldiers",
+   "As wise stewards"
+  ],
+  "answer": 0,
+  "explanation": "Be ye therefore followers of God, as dear children.",
+  "ref": "Ephesians 5:1"
+ },
+ {
+  "id": "ephesians-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are believers to do with the unfruitful works of darkness, rather than have fellowship with them?",
+  "choices": [
+   "Hide them",
+   "Forgive them",
+   "Teach them",
+   "Reprove them"
+  ],
+  "answer": 3,
+  "explanation": "Have no fellowship with the unfruitful works of darkness, but rather reprove them.",
+  "ref": "Ephesians 5:11"
+ },
+ {
+  "id": "ephesians-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what does Paul warn that someone may deceive them?",
+  "choices": [
+   "Fair promises",
+   "Strange doctrines",
+   "Vain words",
+   "False signs"
+  ],
+  "answer": 2,
+  "explanation": "Let no man deceive you with vain words.",
+  "ref": "Ephesians 5:6"
+ },
+ {
+  "id": "ephesians-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say about filthiness, foolish talking and jesting?",
+  "choices": [
+   "They are forgiven in Christ",
+   "They are not convenient",
+   "They are fruit of the Spirit",
+   "They are sin unto death"
+  ],
+  "answer": 1,
+  "explanation": "Neither filthiness, nor foolish talking, nor jesting, which are not convenient.",
+  "ref": "Ephesians 5:4"
+ },
+ {
+  "id": "ephesians-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom will Christ present the glorious church?",
+  "choices": [
+   "To himself",
+   "To the Father",
+   "To the angels",
+   "To the world"
+  ],
+  "answer": 0,
+  "explanation": "That he might present it to himself a glorious church.",
+  "ref": "Ephesians 5:27"
+ },
+ {
+  "id": "ephesians-5-h-15",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul tell believers not to be with those under the wrath of God?",
+  "choices": [
+   "Neighbours to them",
+   "Judges of them",
+   "Hearers of them",
+   "Partakers with them"
+  ],
+  "answer": 3,
+  "explanation": "Be not ye therefore partakers with them.",
+  "ref": "Ephesians 5:7"
+ },
+ {
+  "id": "ephesians-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which is the first commandment with promise?",
+  "choices": [
+   "Thou shalt not kill",
+   "Remember the sabbath day",
+   "Thou shalt not steal",
+   "Honour thy father and mother"
+  ],
+  "answer": 3,
+  "explanation": "Honour thy father and mother; which is the first commandment with promise.",
+  "ref": "Ephesians 6:2"
+ },
+ {
+  "id": "ephesians-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul tell believers to put on to stand against the wiles of the devil?",
+  "choices": [
+   "A robe of mourning",
+   "The yoke of the law",
+   "The whole armour of God",
+   "The garments of the priests"
+  ],
+  "answer": 2,
+  "explanation": "Put on the whole armour of God, that ye may be able to stand against the wiles of the devil.",
+  "ref": "Ephesians 6:11"
+ },
+ {
+  "id": "ephesians-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say to take as the helmet?",
+  "choices": [
+   "Righteousness",
+   "Salvation",
+   "Faith",
+   "Truth"
+  ],
+  "answer": 1,
+  "explanation": "And take the helmet of salvation, and the sword of the Spirit.",
+  "ref": "Ephesians 6:17"
+ },
+ {
+  "id": "ephesians-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what are believers to have their loins girt about?",
+  "choices": [
+   "Truth",
+   "Faith",
+   "Peace",
+   "Righteousness"
+  ],
+  "answer": 0,
+  "explanation": "Stand therefore, having your loins girt about with truth.",
+  "ref": "Ephesians 6:14"
+ },
+ {
+  "id": "ephesians-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Paul send to make known his affairs?",
+  "choices": [
+   "Timothy",
+   "Titus",
+   "Silas",
+   "Tychicus"
+  ],
+  "answer": 3,
+  "explanation": "Tychicus, a beloved brother and faithful minister in the Lord, shall make known to you all things.",
+  "ref": "Ephesians 6:21"
+ },
+ {
+  "id": "ephesians-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul call himself, for the mystery of the gospel?",
+  "choices": [
+   "An ambassador of Rome",
+   "A soldier of fortune",
+   "An ambassador in bonds",
+   "A wandering teacher"
+  ],
+  "answer": 2,
+  "explanation": "For which I am an ambassador in bonds.",
+  "ref": "Ephesians 6:20"
+ },
+ {
+  "id": "ephesians-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul wish upon the brethren?",
+  "choices": [
+   "Riches and honour",
+   "Peace, and love with faith",
+   "Wisdom and health",
+   "Strength and victory"
+  ],
+  "answer": 1,
+  "explanation": "Peace be to the brethren, and love with faith, from God the Father and the Lord Jesus Christ.",
+  "ref": "Ephesians 6:23"
+ },
+ {
+  "id": "ephesians-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the promise given for honouring father and mother?",
+  "choices": [
+   "That it may be well and thou mayest live long",
+   "That thou shalt inherit the land",
+   "That thou shalt be a great nation",
+   "That thou shalt have many sons"
+  ],
+  "answer": 0,
+  "explanation": "Honour thy father and mother, that it may be well with thee, and thou mayest live long on the earth.",
+  "ref": "Ephesians 6:2–3"
+ },
+ {
+  "id": "ephesians-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what are fathers to bring up their children?",
+  "choices": [
+   "The strictness of the law",
+   "The customs of their fathers",
+   "The wisdom of the world",
+   "The nurture and admonition of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Bring them up in the nurture and admonition of the Lord.",
+  "ref": "Ephesians 6:4"
+ },
+ {
+  "id": "ephesians-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "As unto whom are servants to be obedient to their masters?",
+  "choices": [
+   "The law",
+   "Caesar",
+   "Christ",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "Servants, be obedient to them that are your masters, in singleness of your heart, as unto Christ.",
+  "ref": "Ephesians 6:5"
+ },
+ {
+  "id": "ephesians-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "From whom shall any man receive whatsoever good thing he doeth?",
+  "choices": [
+   "His master",
+   "The Lord",
+   "The church",
+   "The apostles"
+  ],
+  "answer": 1,
+  "explanation": "Whatsoever good thing any man doeth, the same shall he receive of the Lord, whether he be bond or free.",
+  "ref": "Ephesians 6:8"
+ },
+ {
+  "id": "ephesians-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are masters told to forbear?",
+  "choices": [
+   "Threatening",
+   "Praying",
+   "Teaching",
+   "Paying wages"
+  ],
+  "answer": 0,
+  "explanation": "And, ye masters, do the same things unto them, forbearing threatening.",
+  "ref": "Ephesians 6:9"
+ },
+ {
+  "id": "ephesians-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Where does Paul say the Master of both servants and masters is?",
+  "choices": [
+   "In the temple",
+   "In Jerusalem",
+   "In the church",
+   "In heaven"
+  ],
+  "answer": 3,
+  "explanation": "Knowing that your Master also is in heaven; neither is there respect of persons with him.",
+  "ref": "Ephesians 6:9"
+ },
+ {
+  "id": "ephesians-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whom and in what are believers to be strong?",
+  "choices": [
+   "In the law and the traditions",
+   "In their own wisdom and strength",
+   "In the Lord and in the power of his might",
+   "In the church and its leaders"
+  ],
+  "answer": 2,
+  "explanation": "Be strong in the Lord, and in the power of his might.",
+  "ref": "Ephesians 6:10"
+ },
+ {
+  "id": "ephesians-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Having done all, what are believers to do?",
+  "choices": [
+   "Rest",
+   "Stand",
+   "Flee",
+   "Fight on"
+  ],
+  "answer": 1,
+  "explanation": "Take unto you the whole armour of God, that ye may be able to withstand in the evil day, and having done all, to stand.",
+  "ref": "Ephesians 6:13"
+ },
+ {
+  "id": "ephesians-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what day are believers able to withstand with the whole armour?",
+  "choices": [
+   "The evil day",
+   "The day of the Lord",
+   "The sabbath day",
+   "The day of atonement"
+  ],
+  "answer": 0,
+  "explanation": "Take unto you the whole armour of God, that ye may be able to withstand in the evil day.",
+  "ref": "Ephesians 6:13"
+ },
+ {
+  "id": "ephesians-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what are the feet shod?",
+  "choices": [
+   "The strength of the law",
+   "The wisdom of the elders",
+   "The shoes of the prophets",
+   "The preparation of the gospel of peace"
+  ],
+  "answer": 3,
+  "explanation": "And your feet shod with the preparation of the gospel of peace.",
+  "ref": "Ephesians 6:15"
+ },
+ {
+  "id": "ephesians-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What breastplate are believers to have on?",
+  "choices": [
+   "Faith",
+   "Truth",
+   "Righteousness",
+   "Salvation"
+  ],
+  "answer": 2,
+  "explanation": "Having on the breastplate of righteousness.",
+  "ref": "Ephesians 6:14"
+ },
+ {
+  "id": "ephesians-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whom are believers to pray with all perseverance?",
+  "choices": [
+   "All kings",
+   "All saints",
+   "All the Gentiles",
+   "All their enemies"
+  ],
+  "answer": 1,
+  "explanation": "Watching thereunto with all perseverance and supplication for all saints.",
+  "ref": "Ephesians 6:18"
+ },
+ {
+  "id": "ephesians-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Paul send Tychicus to the Ephesians?",
+  "choices": [
+   "To collect an offering",
+   "That they might know his affairs and be comforted",
+   "To rebuke the elders",
+   "To bring Paul’s chains"
+  ],
+  "answer": 1,
+  "explanation": "I have sent him that ye might know our affairs, and that he might comfort your hearts.",
+  "ref": "Ephesians 6:21–22"
+ },
+ {
+  "id": "ephesians-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are servants to do service, as to the Lord?",
+  "choices": [
+   "With good will",
+   "With complaint",
+   "With fear only",
+   "For the sake of wages"
+  ],
+  "answer": 0,
+  "explanation": "With good will doing service, as to the Lord, and not to men.",
+  "ref": "Ephesians 6:7"
+ },
+ {
+  "id": "ephesians-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The rulers against whom believers wrestle are rulers of what?",
+  "choices": [
+   "The kingdoms of the earth",
+   "The temples of the nations",
+   "The armies of Rome",
+   "The darkness of this world"
+  ],
+  "answer": 3,
+  "explanation": "We wrestle against the rulers of the darkness of this world.",
+  "ref": "Ephesians 6:12"
+ },
+ {
+  "id": "ephesians-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Peace and love with faith come from whom?",
+  "choices": [
+   "The apostles and the church",
+   "Paul and Tychicus",
+   "God the Father and the Lord Jesus Christ",
+   "The Spirit and the prophets"
+  ],
+  "answer": 2,
+  "explanation": "Peace be to the brethren, and love with faith, from God the Father and the Lord Jesus Christ.",
+  "ref": "Ephesians 6:23"
+ },
+ {
+  "id": "ephesians-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the shield of faith quench?",
+  "choices": [
+   "The wrath of God",
+   "All the fiery darts of the wicked",
+   "The lusts of the flesh",
+   "The wiles of the world"
+  ],
+  "answer": 1,
+  "explanation": "The shield of faith, wherewith ye shall be able to quench all the fiery darts of the wicked.",
+  "ref": "Ephesians 6:16"
+ },
+ {
+  "id": "ephesians-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does Paul say children should obey their parents in the Lord?",
+  "choices": [
+   "For this is right",
+   "For the elders command it",
+   "For it brings great wealth",
+   "For the law of Moses requires it"
+  ],
+  "answer": 0,
+  "explanation": "Children, obey your parents in the Lord: for this is right.",
+  "ref": "Ephesians 6:1"
+ },
+ {
+  "id": "ephesians-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Servants are to obey with fear and trembling, in singleness of what?",
+  "choices": [
+   "Their mind",
+   "Their strength",
+   "Their purpose",
+   "Their heart"
+  ],
+  "answer": 3,
+  "explanation": "Be obedient with fear and trembling, in singleness of your heart, as unto Christ.",
+  "ref": "Ephesians 6:5"
+ },
+ {
+  "id": "ephesians-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Against what are believers to wrestle in high places?",
+  "choices": [
+   "Earthly kings",
+   "Hunger and want",
+   "Spiritual wickedness",
+   "Sickness and death"
+  ],
+  "answer": 2,
+  "explanation": "We wrestle against spiritual wickedness in high places.",
+  "ref": "Ephesians 6:12"
+ },
+ {
+  "id": "ephesians-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are believers to watch in prayer?",
+  "choices": [
+   "With fasting",
+   "With all perseverance",
+   "With tears",
+   "With silence"
+  ],
+  "answer": 1,
+  "explanation": "Watching thereunto with all perseverance and supplication for all saints.",
+  "ref": "Ephesians 6:18"
+ },
+ {
+  "id": "ephesians-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Servants are to do what from the heart?",
+  "choices": [
+   "The will of God",
+   "The will of their masters",
+   "The works of the law",
+   "The commands of the elders"
+  ],
+  "answer": 0,
+  "explanation": "As the servants of Christ, doing the will of God from the heart.",
+  "ref": "Ephesians 6:6"
+ },
+ {
+  "id": "ephesians-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Servants must not serve with eyeservice, as what?",
+  "choices": [
+   "Hypocrites",
+   "Slaves",
+   "Strangers",
+   "Menpleasers"
+  ],
+  "answer": 3,
+  "explanation": "Not with eyeservice, as menpleasers; but as the servants of Christ.",
+  "ref": "Ephesians 6:6"
+ },
+ {
+  "id": "ephesians-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Above all, what are believers to take?",
+  "choices": [
+   "The sword of the Spirit",
+   "The helmet of salvation",
+   "The shield of faith",
+   "The breastplate of righteousness"
+  ],
+  "answer": 2,
+  "explanation": "Above all, taking the shield of faith.",
+  "ref": "Ephesians 6:16"
  }
 ]
