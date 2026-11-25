@@ -5904,6 +5904,662 @@
   "ref": "2 Samuel 9:7"
  },
  {
+  "id": "2-samuel-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David ask at the start of the chapter?",
+  "choices": [
+   "Is there yet any that is left of the house of Saul?",
+   "Where is the ark of God?",
+   "Who will reign after me?",
+   "Is there peace in Israel?"
+  ],
+  "answer": 0,
+  "explanation": "David said, Is there yet any that is left of the house of Saul, that I may shew him kindness for Jonathan's sake?",
+  "ref": "2 Samuel 9:1"
+ },
+ {
+  "id": "2-samuel-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told David that Jonathan still had a son?",
+  "choices": [
+   "Joab",
+   "Nathan",
+   "Machir",
+   "Ziba"
+  ],
+  "answer": 3,
+  "explanation": "Ziba said unto the king, Jonathan hath yet a son, which is lame on his feet.",
+  "ref": "2 Samuel 9:3"
+ },
+ {
+  "id": "2-samuel-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Mephibosheth's father?",
+  "choices": [
+   "Saul",
+   "Abner",
+   "Jonathan",
+   "Machir"
+  ],
+  "answer": 2,
+  "explanation": "Mephibosheth was the son of Jonathan, the son of Saul.",
+  "ref": "2 Samuel 9:6"
+ },
+ {
+  "id": "2-samuel-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Mephibosheth greet David when he came?",
+  "choices": [
+   "He ran and embraced him",
+   "He fell on his face and did reverence",
+   "He refused to speak",
+   "He stood and bowed his head"
+  ],
+  "answer": 1,
+  "explanation": "He fell on his face, and did reverence.",
+  "ref": "2 Samuel 9:6"
+ },
+ {
+  "id": "2-samuel-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David first say to Mephibosheth?",
+  "choices": [
+   "Fear not",
+   "Rise up",
+   "Who sent you",
+   "Welcome home"
+  ],
+  "answer": 0,
+  "explanation": "David said unto him, Fear not: for I will surely shew thee kindness for Jonathan thy father's sake.",
+  "ref": "2 Samuel 9:7"
+ },
+ {
+  "id": "2-samuel-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would David restore to Mephibosheth?",
+  "choices": [
+   "The throne of Saul",
+   "Saul's armour",
+   "Saul's cities in Benjamin",
+   "All the land of Saul his father"
+  ],
+  "answer": 3,
+  "explanation": "I will restore thee all the land of Saul thy father.",
+  "ref": "2 Samuel 9:7"
+ },
+ {
+  "id": "2-samuel-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Mephibosheth call himself before David?",
+  "choices": [
+   "A poor shepherd",
+   "A slave",
+   "A dead dog",
+   "A stranger"
+  ],
+  "answer": 2,
+  "explanation": "What is thy servant, that thou shouldest look upon such a dead dog as I am?",
+  "ref": "2 Samuel 9:8"
+ },
+ {
+  "id": "2-samuel-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was to till the land for Mephibosheth?",
+  "choices": [
+   "The priests of Nob",
+   "Ziba, his sons and his servants",
+   "The men of Jabesh",
+   "Joab's soldiers"
+  ],
+  "answer": 1,
+  "explanation": "Thou therefore, and thy sons, and thy servants, shall till the land for him.",
+  "ref": "2 Samuel 9:10"
+ },
+ {
+  "id": "2-samuel-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Mephibosheth dwell at the end of the chapter?",
+  "choices": [
+   "Jerusalem",
+   "Lo-debar",
+   "Hebron",
+   "Gibeah"
+  ],
+  "answer": 0,
+  "explanation": "Mephibosheth dwelt in Jerusalem: for he did eat continually at the king's table.",
+  "ref": "2 Samuel 9:13"
+ },
+ {
+  "id": "2-samuel-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "As whom would Mephibosheth eat at David's table?",
+  "choices": [
+   "As a captain",
+   "As a guest of Ziba",
+   "As a servant",
+   "As one of the king's sons"
+  ],
+  "answer": 3,
+  "explanation": "As for Mephibosheth, said the king, he shall eat at my table, as one of the king's sons.",
+  "ref": "2 Samuel 9:11"
+ },
+ {
+  "id": "2-samuel-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "In whose house in Lo-debar was Mephibosheth staying?",
+  "choices": [
+   "Ziba the servant of Saul",
+   "Barzillai the Gileadite",
+   "Machir the son of Ammiel",
+   "Obed-edom the Gittite"
+  ],
+  "answer": 2,
+  "explanation": "He is in the house of Machir, the son of Ammiel, in Lo-debar.",
+  "ref": "2 Samuel 9:4"
+ },
+ {
+  "id": "2-samuel-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of kindness did David want to show to Saul's house?",
+  "choices": [
+   "The kindness of a king",
+   "The kindness of God",
+   "A father's kindness",
+   "A gift of silver"
+  ],
+  "answer": 1,
+  "explanation": "Is there not yet any of the house of Saul, that I may shew the kindness of God unto him?",
+  "ref": "2 Samuel 9:3"
+ },
+ {
+  "id": "2-samuel-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David get Mephibosheth to Jerusalem?",
+  "choices": [
+   "He sent and fetched him out of Lo-debar",
+   "Ziba carried him",
+   "Joab brought him by force",
+   "Mephibosheth came on his own"
+  ],
+  "answer": 0,
+  "explanation": "King David sent, and fetched him out of the house of Machir, from Lo-debar.",
+  "ref": "2 Samuel 9:5"
+ },
+ {
+  "id": "2-samuel-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David ask Ziba when they called him?",
+  "choices": [
+   "Where is Jonathan's house?",
+   "Who sent thee?",
+   "Hast thou any sons?",
+   "Art thou Ziba?"
+  ],
+  "answer": 3,
+  "explanation": "The king said unto him, Art thou Ziba? And he said, Thy servant is he.",
+  "ref": "2 Samuel 9:2"
+ },
+ {
+  "id": "2-samuel-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Mephibosheth answer when David called his name?",
+  "choices": [
+   "Here I am, my king",
+   "What dost thou want?",
+   "Behold thy servant!",
+   "Let me go"
+  ],
+  "answer": 2,
+  "explanation": "David said, Mephibosheth. And he answered, Behold thy servant!",
+  "ref": "2 Samuel 9:6"
+ },
+ {
+  "id": "2-samuel-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say he had given to Ziba's master's son?",
+  "choices": [
+   "Half the kingdom",
+   "All that pertained to Saul and to all his house",
+   "A house in Zion",
+   "The ark's tent"
+  ],
+  "answer": 1,
+  "explanation": "I have given unto thy master's son all that pertained to Saul and to all his house.",
+  "ref": "2 Samuel 9:9"
+ },
+ {
+  "id": "2-samuel-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ziba to bring in from the land?",
+  "choices": [
+   "The fruits, so that Mephibosheth would have food",
+   "The gold of Saul",
+   "The first of the flocks",
+   "Silver for the king"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt bring in the fruits, that thy master's son may have food to eat.",
+  "ref": "2 Samuel 9:10"
+ },
+ {
+  "id": "2-samuel-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Mephibosheth himself always do at the king's table?",
+  "choices": [
+   "Sit at the king's right hand",
+   "Serve the guests",
+   "Sing before the king",
+   "Eat bread"
+  ],
+  "answer": 3,
+  "explanation": "Mephibosheth thy master's son shall eat bread alway at my table.",
+  "ref": "2 Samuel 9:10"
+ },
+ {
+  "id": "2-samuel-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Ziba answer David's command?",
+  "choices": [
+   "I will do it only for silver",
+   "Let the king ask Joab",
+   "According to all that my lord the king hath commanded",
+   "It is too hard for me"
+  ],
+  "answer": 2,
+  "explanation": "Ziba said, According to all that my lord the king hath commanded his servant, so shall thy servant do.",
+  "ref": "2 Samuel 9:11"
+ },
+ {
+  "id": "2-samuel-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "What was the name of Mephibosheth's young son?",
+  "choices": [
+   "Ziba",
+   "Micha",
+   "Machir",
+   "Ammiel"
+  ],
+  "answer": 1,
+  "explanation": "Mephibosheth had a young son, whose name was Micha.",
+  "ref": "2 Samuel 9:12"
+ },
+ {
+  "id": "2-samuel-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who in Ziba's house became servants to Mephibosheth?",
+  "choices": [
+   "All that dwelt in Ziba's house",
+   "Only Ziba's sons",
+   "The elders of Benjamin",
+   "Only the twenty servants"
+  ],
+  "answer": 0,
+  "explanation": "All that dwelt in the house of Ziba were servants unto Mephibosheth.",
+  "ref": "2 Samuel 9:12"
+ },
+ {
+  "id": "2-samuel-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ziba say about Jonathan's remaining son?",
+  "choices": [
+   "He is a mighty man",
+   "He is hidden in Gibeah",
+   "He is a priest",
+   "He is lame on his feet"
+  ],
+  "answer": 3,
+  "explanation": "Ziba said, Jonathan hath yet a son, which is lame on his feet.",
+  "ref": "2 Samuel 9:3"
+ },
+ {
+  "id": "2-samuel-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons did Ziba have?",
+  "choices": [
+   "Ten",
+   "Twelve",
+   "Fifteen",
+   "Twenty"
+  ],
+  "answer": 2,
+  "explanation": "Now Ziba had fifteen sons and twenty servants.",
+  "ref": "2 Samuel 9:10"
+ },
+ {
+  "id": "2-samuel-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many servants did Ziba have?",
+  "choices": [
+   "Fifteen",
+   "Twenty",
+   "Ten",
+   "Thirty"
+  ],
+  "answer": 1,
+  "explanation": "Now Ziba had fifteen sons and twenty servants.",
+  "ref": "2 Samuel 9:10"
+ },
+ {
+  "id": "2-samuel-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Machir, in whose house Mephibosheth lived?",
+  "choices": [
+   "Ammiel",
+   "Ner",
+   "Ahilud",
+   "Jonathan"
+  ],
+  "answer": 0,
+  "explanation": "Machir, the son of Ammiel, in Lo-debar.",
+  "ref": "2 Samuel 9:4"
+ },
+ {
+  "id": "2-samuel-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "What had Ziba been in Saul's house?",
+  "choices": [
+   "A captain",
+   "A priest",
+   "A scribe",
+   "A servant"
+  ],
+  "answer": 3,
+  "explanation": "There was of the house of Saul a servant whose name was Ziba.",
+  "ref": "2 Samuel 9:2"
+ },
+ {
+  "id": "2-samuel-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Mephibosheth ask when he bowed himself?",
+  "choices": [
+   "What is thy servant, that thou look on a dead dog?",
+   "Why hast thou sent for me?",
+   "Where is my father's house?",
+   "Wilt thou take my life?"
+  ],
+  "answer": 0,
+  "explanation": "He bowed himself, and said, What is thy servant, that thou shouldest look upon such a dead dog as I am?",
+  "ref": "2 Samuel 9:8"
+ },
+ {
+  "id": "2-samuel-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did David call Ziba's master's son?",
+  "choices": [
+   "Jonathan",
+   "Mephibosheth",
+   "Micha",
+   "Machir"
+  ],
+  "answer": 1,
+  "explanation": "Mephibosheth thy master's son shall eat bread alway at my table.",
+  "ref": "2 Samuel 9:10"
+ },
+ {
+  "id": "2-samuel-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Mephibosheth, according to his greeting?",
+  "choices": [
+   "The son of Jonathan, the son of Saul",
+   "The son of Saul, the son of Kish",
+   "The son of Abner, the son of Ner",
+   "The son of Machir, the son of Ammiel"
+  ],
+  "answer": 0,
+  "explanation": "Mephibosheth, the son of Jonathan, the son of Saul, was come unto David.",
+  "ref": "2 Samuel 9:6"
+ },
+ {
+  "id": "2-samuel-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was true about Mephibosheth's feet at the end of the chapter?",
+  "choices": [
+   "He was lame on one foot",
+   "He had been healed",
+   "He walked with a staff",
+   "He was lame on both his feet"
+  ],
+  "answer": 3,
+  "explanation": "He was lame on both his feet.",
+  "ref": "2 Samuel 9:13"
+ },
+ {
+  "id": "2-samuel-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whose sake did David say he would show Mephibosheth kindness?",
+  "choices": [
+   "Saul's",
+   "Abner's",
+   "His father Jonathan's",
+   "Ziba's"
+  ],
+  "answer": 2,
+  "explanation": "I will surely shew thee kindness for Jonathan thy father's sake.",
+  "ref": "2 Samuel 9:7"
+ },
+ {
+  "id": "2-samuel-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How often would Mephibosheth eat at David's table?",
+  "choices": [
+   "On feast days",
+   "Continually",
+   "Once a week",
+   "At the new moon"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt eat bread at my table continually.",
+  "ref": "2 Samuel 9:7"
+ },
+ {
+  "id": "2-samuel-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Ziba reply when David asked if he was Ziba?",
+  "choices": [
+   "Thy servant is he",
+   "I am not worthy",
+   "I am the king's friend",
+   "Yes, my lord Jonathan"
+  ],
+  "answer": 0,
+  "explanation": "And he said, Thy servant is he.",
+  "ref": "2 Samuel 9:2"
+ },
+ {
+  "id": "2-samuel-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose land would Mephibosheth have restored to him?",
+  "choices": [
+   "Jonathan's",
+   "Ziba's",
+   "Machir's",
+   "Saul his father's"
+  ],
+  "answer": 3,
+  "explanation": "I will restore thee all the land of Saul thy father.",
+  "ref": "2 Samuel 9:7"
+ },
+ {
+  "id": "2-samuel-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Mephibosheth do after David promised him kindness?",
+  "choices": [
+   "He wept",
+   "He fled",
+   "He bowed himself",
+   "He asked for silver"
+  ],
+  "answer": 2,
+  "explanation": "He bowed himself, and said, What is thy servant, that thou shouldest look upon such a dead dog as I am?",
+  "ref": "2 Samuel 9:8"
+ },
+ {
+  "id": "2-samuel-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David ask Ziba after hearing Jonathan had a son?",
+  "choices": [
+   "Is he well?",
+   "Where is he?",
+   "How old is he?",
+   "Will he come?"
+  ],
+  "answer": 1,
+  "explanation": "The king said unto him, Where is he?",
+  "ref": "2 Samuel 9:4"
+ },
+ {
+  "id": "2-samuel-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose young son was named Micha?",
+  "choices": [
+   "Mephibosheth's",
+   "Ziba's",
+   "Jonathan's",
+   "Machir's"
+  ],
+  "answer": 0,
+  "explanation": "Mephibosheth had a young son, whose name was Micha.",
+  "ref": "2 Samuel 9:12"
+ },
+ {
+  "id": "2-samuel-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "For whom was Ziba to till the land?",
+  "choices": [
+   "Mephibosheth",
+   "David",
+   "Micha",
+   "Jonathan"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt till the land for him, that thy master's son may have food to eat.",
+  "ref": "2 Samuel 9:10"
+ },
+ {
+  "id": "2-samuel-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David tell Mephibosheth not to do?",
+  "choices": [
+   "Weep",
+   "Kneel",
+   "Run",
+   "Fear"
+  ],
+  "answer": 3,
+  "explanation": "David said unto him, Fear not.",
+  "ref": "2 Samuel 9:7"
+ },
+ {
+  "id": "2-samuel-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the land, what did David promise Mephibosheth?",
+  "choices": [
+   "A captain's post",
+   "A house in Hebron",
+   "To eat at the king's table continually",
+   "A wife from Judah"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt eat bread at my table continually.",
+  "ref": "2 Samuel 9:7"
+ },
+ {
+  "id": "2-samuel-9-h-16",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which people in Saul's house had David asked about before Ziba was called?",
+  "choices": [
+   "The sons of Rizpah",
+   "Anyone left of the house of Saul",
+   "The captains of Abner",
+   "The priests of Nob"
+  ],
+  "answer": 1,
+  "explanation": "David said, Is there yet any that is left of the house of Saul?",
+  "ref": "2 Samuel 9:1"
+ },
+ {
   "id": "old-2-samuel-10-1",
   "chapter": 10,
   "level": "beginner",
