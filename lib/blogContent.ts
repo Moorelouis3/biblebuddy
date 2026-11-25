@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "who-created-god",
+    title: "Who Created God?",
+    description:
+      "Who created God? What Genesis 1:1 and Psalm 90:2 reveal about God's eternal, uncreated nature, and what omnipotent, omniscient and omnipresent mean.",
+    category: "Bible Insights",
+    categorySlug: "bible-insights",
+    canonicalPath: "/blog/who-created-god",
+    publishedAt: "2026-11-25",
+    readTime: "15 min read",
+    image: "/who-created-god-banner.png",
+    groupPost: {
+      title: "Who Created God? 📖",
+      content:
+        "Everything around you had a beginning.\nSo who created God?\n\n📌 Genesis 1:1 doesn't explain where God came from.\n\n📖 Psalm 90:2 calls God eternal, with no end.\n📖 Genesis 1 shows Him speaking light into being.\n📖 Psalm 139 shows He knows your words first.\n\nNew article on:\n🟢 what it means to call God **eternal**\n🟢 the three words that describe His **nature**\n🟢 why this question isn't **disrespectful** to ask\n\nDoes this question ever cross your mind? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-2-explained",
     title: "2 Samuel 2 Explained: David Crowned, Civil War Begins",
     description:
