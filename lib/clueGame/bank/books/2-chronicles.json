@@ -10656,6 +10656,214 @@
   "ref": "2 Chronicles 22:10"
  },
  {
+  "id": "2-chronicles-22-e-01",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who hid the child Joash from Athaliah so she could not slay him?",
+  "choices": [
+   "Jehoshabeath",
+   "Maacah",
+   "Azubah",
+   "Athaliah"
+  ],
+  "answer": 0,
+  "explanation": "Jehoshabeath, the daughter of the king, took Joash and hid him from Athaliah, so that she slew him not.",
+  "ref": "2 Chronicles 22:11"
+ },
+ {
+  "id": "2-chronicles-22-m-01",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose daughter was Athaliah, the mother of Ahaziah?",
+  "choices": [
+   "Ahab",
+   "Jehoshaphat",
+   "Omri",
+   "Nimshi"
+  ],
+  "answer": 2,
+  "explanation": "His mother's name also was Athaliah the daughter of Omri.",
+  "ref": "2 Chronicles 22:2"
+ },
+ {
+  "id": "2-chronicles-22-m-02",
+  "chapter": 22,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Joram return to be healed of the wounds Syrians gave him?",
+  "choices": [
+   "Samaria",
+   "Jezreel",
+   "Jerusalem",
+   "Ramoth-gilead"
+  ],
+  "answer": 1,
+  "explanation": "He returned to be healed in Jezreel because of the wounds given him at Ramah.",
+  "ref": "2 Chronicles 22:6"
+ },
+ {
+  "id": "2-chronicles-22-m-03",
+  "chapter": 22,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Ahaziah hiding when Jehu's men caught him?",
+  "choices": [
+   "Jezreel",
+   "Ramah",
+   "Samaria",
+   "Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "They sought Ahaziah and caught him, for he was hid in Samaria, and brought him to Jehu.",
+  "ref": "2 Chronicles 22:9"
+ },
+ {
+  "id": "2-chronicles-22-m-04",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Ahaziah given a burial after he was slain?",
+  "choices": [
+   "He was the son of Jehoshaphat, who sought the LORD",
+   "He repented before he died",
+   "Jehu took pity on him",
+   "Athaliah commanded it"
+  ],
+  "answer": 0,
+  "explanation": "They buried him because he is the son of Jehoshaphat, who sought the LORD with all his heart.",
+  "ref": "2 Chronicles 22:9"
+ },
+ {
+  "id": "2-chronicles-22-m-05",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom had the LORD anointed to cut off the house of Ahab?",
+  "choices": [
+   "Hazael",
+   "Jehu the son of Nimshi",
+   "Jehoiada",
+   "Joram"
+  ],
+  "answer": 1,
+  "explanation": "Ahaziah went out with Jehoram against Jehu the son of Nimshi, whom the LORD had anointed to cut off the house of Ahab.",
+  "ref": "2 Chronicles 22:7"
+ },
+ {
+  "id": "2-chronicles-22-m-06",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Jehoshabeath put Joash and his nurse to hide them?",
+  "choices": [
+   "In a cave",
+   "Behind the altar",
+   "In a bedchamber",
+   "In the king's garden"
+  ],
+  "answer": 2,
+  "explanation": "She put him and his nurse in a bedchamber.",
+  "ref": "2 Chronicles 22:11"
+ },
+ {
+  "id": "2-chronicles-22-h-01",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Ahaziah when he began to reign?",
+  "choices": [
+   "Twenty and two",
+   "Thirty and two",
+   "Forty and two",
+   "Fifty and two"
+  ],
+  "answer": 2,
+  "explanation": "Forty and two years old was Ahaziah when he began to reign.",
+  "ref": "2 Chronicles 22:2"
+ },
+ {
+  "id": "2-chronicles-22-h-02",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Ahaziah reign in Jerusalem?",
+  "choices": [
+   "One year",
+   "Three years",
+   "Seven years",
+   "Forty years"
+  ],
+  "answer": 0,
+  "explanation": "He reigned one year in Jerusalem.",
+  "ref": "2 Chronicles 22:2"
+ },
+ {
+  "id": "2-chronicles-22-h-03",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years was Joash hid with them in the house of God?",
+  "choices": [
+   "Two",
+   "Four",
+   "Six",
+   "Ten"
+  ],
+  "answer": 2,
+  "explanation": "He was with them hid in the house of God six years: and Athaliah reigned over the land.",
+  "ref": "2 Chronicles 22:12"
+ },
+ {
+  "id": "2-chronicles-22-h-04",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Jehoshabeath, the sister of Ahaziah, have as her husband?",
+  "choices": [
+   "Jehoiada the priest",
+   "Jehu",
+   "Azariah",
+   "Zechariah"
+  ],
+  "answer": 0,
+  "explanation": "Jehoshabeath was the wife of Jehoiada the priest, and the sister of Ahaziah.",
+  "ref": "2 Chronicles 22:11"
+ },
+ {
+  "id": "2-chronicles-22-h-05",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Jehu find and slay while executing judgment on the house of Ahab?",
+  "choices": [
+   "The princes of Judah and the sons of Ahaziah's brethren",
+   "The priests of Baal",
+   "The Arabians who came to the camp",
+   "The captains of Hazael"
+  ],
+  "answer": 0,
+  "explanation": "Jehu found the princes of Judah, and the sons of the brethren of Ahaziah, that ministered to Ahaziah, and slew them.",
+  "ref": "2 Chronicles 22:8"
+ },
+ {
+  "id": "2-chronicles-22-h-06",
+  "chapter": 22,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Ahaziah and Jehoram go to war against Hazael king of Syria?",
+  "choices": [
+   "Jezreel",
+   "Ramoth-gilead",
+   "Samaria",
+   "Gibeon"
+  ],
+  "answer": 1,
+  "explanation": "Ahaziah went with Jehoram to war against Hazael king of Syria at Ramoth-gilead.",
+  "ref": "2 Chronicles 22:5"
+ },
+ {
   "id": "old-2-chronicles-23-1",
   "chapter": 23,
   "level": "beginner",
