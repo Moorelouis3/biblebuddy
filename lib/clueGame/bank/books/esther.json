@@ -608,6 +608,502 @@
   "ref": "Esther 2:21–23"
  },
  {
+  "id": "esther-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king’s servants suggest to find a new queen?",
+  "choices": [
+   "Choose a princess from Greece",
+   "Ask the wise men to pick one",
+   "Seek fair young virgins for the king",
+   "Recall Vashti after a year"
+  ],
+  "answer": 2,
+  "explanation": "The king’s servants said, Let there be fair young virgins sought for the king.",
+  "ref": "Esther 2:2"
+ },
+ {
+  "id": "esther-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the king’s chamberlain, keeper of the women?",
+  "choices": [
+   "Bigthan",
+   "Hegai",
+   "Shaashgaz",
+   "Hatach"
+  ],
+  "answer": 1,
+  "explanation": "The maidens were gathered unto Shushan the palace, to the custody of Hegai, keeper of the women.",
+  "ref": "Esther 2:8"
+ },
+ {
+  "id": "esther-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To which tribe did Mordecai belong?",
+  "choices": [
+   "Benjamin",
+   "Judah",
+   "Levi",
+   "Ephraim"
+  ],
+  "answer": 0,
+  "explanation": "In Shushan the palace there was a certain Jew, whose name was Mordecai, a Benjamite.",
+  "ref": "Esther 2:5"
+ },
+ {
+  "id": "esther-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Mordecai do every day before the court of the women’s house?",
+  "choices": [
+   "Fasted and prayed",
+   "Sold his wares",
+   "Read the king’s letters",
+   "Walked to learn how Esther did"
+  ],
+  "answer": 3,
+  "explanation": "Mordecai walked every day before the court of the women’s house, to know how Esther did, and what should become of her.",
+  "ref": "Esther 2:11"
+ },
+ {
+  "id": "esther-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Mordecai’s discovery of the plot to the king?",
+  "choices": [
+   "Mordecai himself",
+   "Haman",
+   "Esther, in Mordecai’s name",
+   "Hegai"
+  ],
+  "answer": 2,
+  "explanation": "The thing was known to Mordecai, who told it unto Esther the queen; and Esther certified the king thereof in Mordecai’s name.",
+  "ref": "Esther 2:22"
+ },
+ {
+  "id": "esther-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city were the fair young virgins gathered?",
+  "choices": [
+   "Susa of the north",
+   "Shushan the palace",
+   "Jerusalem",
+   "Babylon"
+  ],
+  "answer": 1,
+  "explanation": "Officers were appointed to gather all the fair young virgins unto Shushan the palace.",
+  "ref": "Esther 2:3"
+ },
+ {
+  "id": "esther-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king do for Esther after he made her queen?",
+  "choices": [
+   "Made a great feast, Esther’s feast",
+   "Sent her to her people",
+   "Gave her the throne of Vashti’s family",
+   "Built her a house in Judah"
+  ],
+  "answer": 0,
+  "explanation": "The king made a great feast unto all his princes and his servants, even Esther’s feast.",
+  "ref": "Esther 2:18"
+ },
+ {
+  "id": "esther-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king remember when his wrath was appeased?",
+  "choices": [
+   "The feast of the third year",
+   "The laws of the Medes",
+   "His promise to the princes",
+   "Vashti, and what she had done and what was decreed"
+  ],
+  "answer": 3,
+  "explanation": "He remembered Vashti, and what she had done, and what was decreed against her.",
+  "ref": "Esther 2:1"
+ },
+ {
+  "id": "esther-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Mordecai take Esther for his own daughter?",
+  "choices": [
+   "The king commanded it",
+   "She was sick",
+   "Her father and mother were dead",
+   "He had no children of his own"
+  ],
+  "answer": 2,
+  "explanation": "She had neither father nor mother: Mordecai took her for his own daughter.",
+  "ref": "Esther 2:7"
+ },
+ {
+  "id": "esther-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Mordecai had been carried away from Jerusalem with which king of Judah?",
+  "choices": [
+   "Josiah",
+   "Jeconiah",
+   "Zedekiah",
+   "Hezekiah"
+  ],
+  "answer": 1,
+  "explanation": "Mordecai had been carried away with the captivity carried away with Jeconiah king of Judah, whom Nebuchadnezzar had carried away.",
+  "ref": "Esther 2:6"
+ },
+ {
+  "id": "esther-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many maidens did Hegai give Esther to serve her?",
+  "choices": [
+   "Seven",
+   "Three",
+   "Twelve",
+   "Two"
+  ],
+  "answer": 0,
+  "explanation": "He gave her seven maidens, which were meet to be given her, out of the king’s house.",
+  "ref": "Esther 2:9"
+ },
+ {
+  "id": "esther-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was each maiden’s purification before she went in to the king?",
+  "choices": [
+   "Seven days",
+   "Forty days",
+   "Three months",
+   "Twelve months"
+  ],
+  "answer": 3,
+  "explanation": "When every maid’s turn was come to go in to the king, she had been twelve months in purifications.",
+  "ref": "Esther 2:12"
+ },
+ {
+  "id": "esther-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Esther ask for when her turn came to go in to the king?",
+  "choices": [
+   "A crown of gold",
+   "Mordecai’s company",
+   "Nothing but what Hegai appointed",
+   "Her father’s jewels"
+  ],
+  "answer": 2,
+  "explanation": "She required nothing but what Hegai the king’s chamberlain, the keeper of the women, appointed.",
+  "ref": "Esther 2:15"
+ },
+ {
+  "id": "esther-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king give the provinces after he made Esther queen?",
+  "choices": [
+   "Her portion of the spoil",
+   "A release, and gifts",
+   "A feast of seven days",
+   "A new law"
+  ],
+  "answer": 1,
+  "explanation": "He made a release to the provinces, and gave gifts, according to the state of the king.",
+  "ref": "Esther 2:18"
+ },
+ {
+  "id": "esther-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Mordecai sitting when the two chamberlains plotted?",
+  "choices": [
+   "In the king’s gate",
+   "In the house of the women",
+   "In the court of the garden",
+   "At Esther’s feast"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai sat in the king’s gate.",
+  "ref": "Esther 2:19–21"
+ },
+ {
+  "id": "esther-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who plotted to lay hand on the king?",
+  "choices": [
+   "Two of the seven princes",
+   "Vashti’s servants",
+   "Two captains of the guard",
+   "Two chamberlains who kept the door"
+  ],
+  "answer": 3,
+  "explanation": "Two of the king’s chamberlains, of those which kept the door, were wroth, and sought to lay hand on the king.",
+  "ref": "Esther 2:21"
+ },
+ {
+  "id": "esther-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When could a maiden who had been with the king come to him again?",
+  "choices": [
+   "When Hegai allowed it",
+   "If she had a son",
+   "If he delighted in her and called her by name",
+   "After a year had passed"
+  ],
+  "answer": 2,
+  "explanation": "She came in unto the king no more, except the king delighted in her, and that she were called by name.",
+  "ref": "Esther 2:14"
+ },
+ {
+  "id": "esther-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was given to each maiden to take with her to the king?",
+  "choices": [
+   "Oil of myrrh",
+   "Whatsoever she desired",
+   "Only a white robe",
+   "A crown and a ring"
+  ],
+  "answer": 1,
+  "explanation": "Whatsoever she desired was given her to go with her out of the house of the women unto the king’s house.",
+  "ref": "Esther 2:13"
+ },
+ {
+  "id": "esther-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king’s servants say he should appoint in all the provinces?",
+  "choices": [
+   "Officers to gather the fair young virgins",
+   "Judges for the women",
+   "Scribes to write his name",
+   "Guards for the palace gate"
+  ],
+  "answer": 0,
+  "explanation": "Let the king appoint officers in all the provinces, that they may gather together all the fair young virgins unto Shushan the palace.",
+  "ref": "Esther 2:3"
+ },
+ {
+  "id": "esther-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the first six months of purification done with?",
+  "choices": [
+   "Wine",
+   "Water from the temple",
+   "Oil of myrrh",
+   "Sweet odours"
+  ],
+  "answer": 2,
+  "explanation": "The days of their purifications were six months with oil of myrrh, and six months with sweet odours.",
+  "ref": "Esther 2:12"
+ },
+ {
+  "id": "esther-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Ahasuerus’s reign was Esther taken to him?",
+  "choices": [
+   "The first",
+   "The seventh",
+   "The third",
+   "The twelfth"
+  ],
+  "answer": 1,
+  "explanation": "Esther was taken unto king Ahasuerus in the tenth month, which is Tebeth, in the seventh year of his reign.",
+  "ref": "Esther 2:16"
+ },
+ {
+  "id": "esther-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the chamberlain who kept the concubines in the second house of the women?",
+  "choices": [
+   "Shaashgaz",
+   "Hegai",
+   "Hatach",
+   "Teresh"
+  ],
+  "answer": 0,
+  "explanation": "On the morrow she returned into the second house of the women, to the custody of Shaashgaz, the king’s chamberlain, which kept the concubines.",
+  "ref": "Esther 2:14"
+ },
+ {
+  "id": "esther-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Esther’s father?",
+  "choices": [
+   "Jair",
+   "Kish",
+   "Shimei",
+   "Abihail"
+  ],
+  "answer": 3,
+  "explanation": "The turn of Esther, the daughter of Abihail the uncle of Mordecai, was come.",
+  "ref": "Esther 2:15"
+ },
+ {
+  "id": "esther-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Mordecai was the son of whom?",
+  "choices": [
+   "Kish",
+   "Shaashgaz",
+   "Jair",
+   "Abihail"
+  ],
+  "answer": 2,
+  "explanation": "Mordecai the son of Jair, the son of Shimei, the son of Kish, a Benjamite.",
+  "ref": "Esther 2:5"
+ },
+ {
+  "id": "esther-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esther obtain in the sight of all that looked upon her?",
+  "choices": [
+   "A place in the king’s court",
+   "Favour",
+   "Silver",
+   "A gift of land"
+  ],
+  "answer": 1,
+  "explanation": "Esther obtained favour in the sight of all them that looked upon her.",
+  "ref": "Esther 2:15"
+ },
+ {
+  "id": "esther-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Hegai prefer Esther and her maids to be placed?",
+  "choices": [
+   "In the best place of the house of the women",
+   "In the king’s house",
+   "In the second house of the women",
+   "In the court of the garden"
+  ],
+  "answer": 0,
+  "explanation": "He preferred her and her maids unto the best place of the house of the women.",
+  "ref": "Esther 2:9"
+ },
+ {
+  "id": "esther-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the plot of the two chamberlains recorded?",
+  "choices": [
+   "On the gate of Shushan",
+   "In a letter to Haman",
+   "In the queen’s house",
+   "In the book of the chronicles before the king"
+  ],
+  "answer": 3,
+  "explanation": "It was found out; and it was written in the book of the chronicles before the king.",
+  "ref": "Esther 2:23"
+ },
+ {
+  "id": "esther-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did each maiden go in to the king, and when did she return?",
+  "choices": [
+   "At dawn, and at noon",
+   "At night, and after seven days",
+   "In the evening, and on the morrow",
+   "At noon, and at night"
+  ],
+  "answer": 2,
+  "explanation": "In the evening she went, and on the morrow she returned into the second house of the women.",
+  "ref": "Esther 2:14"
+ },
+ {
+  "id": "esther-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Esther treat Mordecai’s commandment after she became queen?",
+  "choices": [
+   "She asked Hegai first",
+   "She did it as when she was brought up with him",
+   "She set it aside",
+   "She obeyed only the king"
+  ],
+  "answer": 1,
+  "explanation": "Esther did the commandment of Mordecai, like as when she was brought up with him.",
+  "ref": "Esther 2:20"
+ },
+ {
+  "id": "esther-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the two chamberlains when the plot was found out?",
+  "choices": [
+   "They were both hanged on a tree",
+   "They were sent away",
+   "They were thrown to the lions",
+   "They fled to Babylon"
+  ],
+  "answer": 0,
+  "explanation": "When inquisition was made, it was found out; therefore they were both hanged on a tree.",
+  "ref": "Esther 2:23"
+ },
+ {
+  "id": "esther-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king set upon Esther’s head?",
+  "choices": [
+   "A veil of purple",
+   "A ring of gold",
+   "The royal crown",
+   "A wreath of myrtle"
+  ],
+  "answer": 2,
+  "explanation": "The king set the royal crown upon her head, and made her queen instead of Vashti.",
+  "ref": "Esther 2:17"
+ },
+ {
   "id": "old-esther-3-1",
   "chapter": 3,
   "level": "beginner",
@@ -688,6 +1184,310 @@
   "ref": "Esther 3:10"
  },
  {
+  "id": "esther-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did King Ahasuerus promote above all the princes?",
+  "choices": [
+   "Mordecai",
+   "Hegai",
+   "Memucan",
+   "Haman"
+  ],
+  "answer": 3,
+  "explanation": "King Ahasuerus promoted Haman, and set his seat above all the princes that were with him.",
+  "ref": "Esther 3:1"
+ },
+ {
+  "id": "esther-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king and Haman do after the decree was sent out?",
+  "choices": [
+   "Fasted for three days",
+   "Went out to the gate",
+   "Sat down to drink",
+   "Prayed in the temple"
+  ],
+  "answer": 2,
+  "explanation": "The king and Haman sat down to drink; but the city Shushan was perplexed.",
+  "ref": "Esther 3:15"
+ },
+ {
+  "id": "esther-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the decree first given out?",
+  "choices": [
+   "In the temple of Judah",
+   "In Shushan the palace",
+   "In Jerusalem",
+   "In the king’s garden at Babylon"
+  ],
+  "answer": 1,
+  "explanation": "The decree was given in Shushan the palace.",
+  "ref": "Esther 3:15"
+ },
+ {
+  "id": "esther-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the king’s servants bow to Haman?",
+  "choices": [
+   "The king had commanded it",
+   "They were afraid of his army",
+   "They wanted his silver",
+   "Haman was a priest"
+  ],
+  "answer": 0,
+  "explanation": "All the king’s servants bowed, and reverenced Haman: for the king had so commanded concerning him.",
+  "ref": "Esther 3:2"
+ },
+ {
+  "id": "esther-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Mordecai told the king’s servants about himself?",
+  "choices": [
+   "That he was a prince of Persia",
+   "That he was Esther’s father",
+   "That he served another king",
+   "That he was a Jew"
+  ],
+  "answer": 3,
+  "explanation": "The servants told Haman, for Mordecai had told them that he was a Jew.",
+  "ref": "Esther 3:4"
+ },
+ {
+  "id": "esther-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did Haman give the king for not letting the Jews live?",
+  "choices": [
+   "They plotted against the king",
+   "They worshipped the sun",
+   "They did not keep the king’s laws",
+   "They had refused to pay tribute"
+  ],
+  "answer": 2,
+  "explanation": "Their laws are diverse from all people; neither keep they the king’s laws.",
+  "ref": "Esther 3:8"
+ },
+ {
+  "id": "esther-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king say about the silver and the people?",
+  "choices": [
+   "Pay the silver by the first month",
+   "The silver is given to thee, the people also",
+   "Take the silver and spare the people",
+   "The silver goes to my treasury"
+  ],
+  "answer": 1,
+  "explanation": "The king said unto Haman, The silver is given to thee, the people also, to do with them as it seemeth good to thee.",
+  "ref": "Esther 3:11"
+ },
+ {
+  "id": "esther-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the letters sent into all the king’s provinces?",
+  "choices": [
+   "By posts",
+   "By the king’s chamberlains",
+   "By ships",
+   "By the princes in person"
+  ],
+  "answer": 0,
+  "explanation": "The letters were sent by posts into all the king’s provinces.",
+  "ref": "Esther 3:13"
+ },
+ {
+  "id": "esther-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom was the decree meant to destroy?",
+  "choices": [
+   "Only the leaders of the Jews",
+   "Only Mordecai’s household",
+   "Only the men of Judah",
+   "All Jews, young and old, little children and women"
+  ],
+  "answer": 3,
+  "explanation": "To destroy, to kill, and to cause to perish, all Jews, both young and old, little children and women, in one day.",
+  "ref": "Esther 3:13"
+ },
+ {
+  "id": "esther-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month was the day of destruction set?",
+  "choices": [
+   "The tenth month, Tebeth",
+   "The seventh month",
+   "The twelfth month, Adar",
+   "The first month, Nisan"
+  ],
+  "answer": 2,
+  "explanation": "Upon the thirteenth day of the twelfth month, which is the month Adar.",
+  "ref": "Esther 3:13"
+ },
+ {
+  "id": "esther-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Haman think it too little to lay hands on Mordecai alone?",
+  "choices": [
+   "Mordecai was the queen’s kin",
+   "The king had forbidden it",
+   "Mordecai had many soldiers",
+   "They had shewed him the people of Mordecai"
+  ],
+  "answer": 3,
+  "explanation": "He thought scorn to lay hands on Mordecai alone; for they had shewed him the people of Mordecai.",
+  "ref": "Esther 3:6"
+ },
+ {
+  "id": "esther-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much silver did Haman promise to pay into the king’s treasuries?",
+  "choices": [
+   "Ten thousand talents",
+   "Seven hundred talents",
+   "A thousand shekels",
+   "Thirty thousand talents"
+  ],
+  "answer": 0,
+  "explanation": "I will pay ten thousand talents of silver to the hands of those that have the charge of the business.",
+  "ref": "Esther 3:9"
+ },
+ {
+  "id": "esther-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Ahasuerus did they cast Pur before Haman?",
+  "choices": [
+   "The third",
+   "The seventh",
+   "The first",
+   "The twelfth"
+  ],
+  "answer": 3,
+  "explanation": "In the first month, in the twelfth year of king Ahasuerus, they cast Pur, that is, the lot, before Haman.",
+  "ref": "Esther 3:7"
+ },
+ {
+  "id": "esther-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day of the twelfth month were the Jews to be destroyed?",
+  "choices": [
+   "The fourteenth",
+   "The seventh",
+   "The thirteenth",
+   "The first"
+  ],
+  "answer": 2,
+  "explanation": "In one day, even upon the thirteenth day of the twelfth month.",
+  "ref": "Esther 3:13"
+ },
+ {
+  "id": "esther-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Haman?",
+  "choices": [
+   "Abihail",
+   "Hammedatha",
+   "Agag",
+   "Jair"
+  ],
+  "answer": 1,
+  "explanation": "Haman the son of Hammedatha the Agagite.",
+  "ref": "Esther 3:1"
+ },
+ {
+  "id": "esther-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the killers of the Jews allowed to take?",
+  "choices": [
+   "The spoil of them for a prey",
+   "Their houses only",
+   "Their children as servants",
+   "Their land in Judah"
+  ],
+  "answer": 0,
+  "explanation": "To take the spoil of them for a prey.",
+  "ref": "Esther 3:13"
+ },
+ {
+  "id": "esther-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month did they begin to cast Pur before Haman?",
+  "choices": [
+   "Adar, the twelfth month",
+   "Tebeth, the tenth month",
+   "Sivan, the third month",
+   "Nisan, the first month"
+  ],
+  "answer": 3,
+  "explanation": "In the first month, that is, the month Nisan, they cast Pur before Haman from day to day, and from month to month.",
+  "ref": "Esther 3:7"
+ },
+ {
+  "id": "esther-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the lieutenants and governors, to whom was the decree written?",
+  "choices": [
+   "The priests of Persia",
+   "The captains of the guard",
+   "The rulers of every people",
+   "The elders of the Jews"
+  ],
+  "answer": 2,
+  "explanation": "It was written to the king’s lieutenants, and to the governors, and to the rulers of every people of every province.",
+  "ref": "Esther 3:12"
+ },
+ {
+  "id": "esther-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Haman say it was not for the king’s profit to do?",
+  "choices": [
+   "Make a new queen",
+   "Suffer the Jews to live among his people",
+   "Let the provinces pay tribute",
+   "Keep the law of the Medes"
+  ],
+  "answer": 1,
+  "explanation": "It is not for the king’s profit to suffer them.",
+  "ref": "Esther 3:8"
+ },
+ {
   "id": "old-esther-4-1",
   "chapter": 4,
   "level": "beginner",
@@ -766,6 +1566,358 @@
   "answer": 1,
   "explanation": "She asked for a three-day fast before approaching the king.",
   "ref": "Esther 4:16"
+ },
+ {
+  "id": "esther-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Esther send to learn what was wrong with Mordecai?",
+  "choices": [
+   "Hatach",
+   "Hegai",
+   "Memucan",
+   "Shaashgaz"
+  ],
+  "answer": 0,
+  "explanation": "Esther called for Hatach, one of the king’s chamberlains, and gave him a commandment to Mordecai, to know what it was, and why it was.",
+  "ref": "Esther 4:5"
+ },
+ {
+  "id": "esther-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Esther react when her maids told her of Mordecai?",
+  "choices": [
+   "She was angry with him",
+   "She laughed",
+   "She went to the king at once",
+   "She was exceedingly grieved"
+  ],
+  "answer": 3,
+  "explanation": "Then was the queen exceedingly grieved; and she sent raiment to clothe Mordecai.",
+  "ref": "Esther 4:4"
+ },
+ {
+  "id": "esther-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Esther say about the outcome of her going in to the king?",
+  "choices": [
+   "The king will hear me gladly",
+   "I will return by morning",
+   "If I perish, I perish",
+   "I will surely be spared"
+  ],
+  "answer": 2,
+  "explanation": "I will go in unto the king, which is not according to the law: and if I perish, I perish.",
+  "ref": "Esther 4:16"
+ },
+ {
+  "id": "esther-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Jews do in every province when the decree came?",
+  "choices": [
+   "Sent gifts to the king",
+   "Mourned, fasted, wept, and wailed",
+   "Armed themselves",
+   "Fled to Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "In every province there was great mourning among the Jews, and fasting, and weeping, and wailing.",
+  "ref": "Esther 4:3"
+ },
+ {
+  "id": "esther-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why could Mordecai not enter the king’s gate?",
+  "choices": [
+   "None might enter clothed with sackcloth",
+   "The gate was shut by Haman",
+   "He was no longer a servant",
+   "He had not been called"
+  ],
+  "answer": 0,
+  "explanation": "He came even before the king’s gate: for none might enter into the king’s gate clothed with sackcloth.",
+  "ref": "Esther 4:2"
+ },
+ {
+  "id": "esther-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Mordecai respond to the raiment Esther sent him?",
+  "choices": [
+   "He wore it to the gate",
+   "He sent it to the poor",
+   "He thanked her and kept it",
+   "He received it not"
+  ],
+  "answer": 3,
+  "explanation": "She sent raiment to clothe Mordecai, and to take away his sackcloth from him: but he received it not.",
+  "ref": "Esther 4:4"
+ },
+ {
+  "id": "esther-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Hatach meet Mordecai?",
+  "choices": [
+   "In Mordecai’s house",
+   "In the court of the garden",
+   "In the street of the city before the king’s gate",
+   "In the house of the women"
+  ],
+  "answer": 2,
+  "explanation": "Hatach went forth to Mordecai unto the street of the city, which was before the king’s gate.",
+  "ref": "Esther 4:6"
+ },
+ {
+  "id": "esther-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Mordecai tell Hatach about the money Haman had promised?",
+  "choices": [
+   "That Mordecai would repay it",
+   "The sum Haman would pay the king for the Jews",
+   "That Haman had already paid it",
+   "That the king refused it"
+  ],
+  "answer": 1,
+  "explanation": "Mordecai told him of the sum of the money that Haman had promised to pay to the king’s treasuries for the Jews.",
+  "ref": "Esther 4:7"
+ },
+ {
+  "id": "esther-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Mordecai give Hatach to show Esther?",
+  "choices": [
+   "The copy of the writing of the decree",
+   "A letter to the king",
+   "A gift of silver",
+   "A scroll of the law"
+  ],
+  "answer": 0,
+  "explanation": "He gave him the copy of the writing of the decree that was given at Shushan to destroy them.",
+  "ref": "Esther 4:8"
+ },
+ {
+  "id": "esther-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Mordecai tell Esther she should not think?",
+  "choices": [
+   "That the king would hear her",
+   "That Haman would repent",
+   "That fasting would save them",
+   "That she would escape in the king’s house"
+  ],
+  "answer": 3,
+  "explanation": "Think not with thyself that thou shalt escape in the king’s house, more than all the Jews.",
+  "ref": "Esther 4:13"
+ },
+ {
+  "id": "esther-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Mordecai say deliverance would arise if Esther held her peace?",
+  "choices": [
+   "From the king’s own house",
+   "From the provinces of Persia",
+   "From another place",
+   "From Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "If thou altogether holdest thy peace, then shall there enlargement and deliverance arise to the Jews from another place.",
+  "ref": "Esther 4:14"
+ },
+ {
+  "id": "esther-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Esther say would fast likewise with her?",
+  "choices": [
+   "The princes",
+   "Her maidens",
+   "The king’s chamberlains",
+   "Hegai"
+  ],
+  "answer": 1,
+  "explanation": "Fast ye for me; I also and my maidens will fast likewise.",
+  "ref": "Esther 4:16"
+ },
+ {
+  "id": "esther-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Mordecai go crying with a loud and bitter cry?",
+  "choices": [
+   "Into the midst of the city",
+   "To the temple",
+   "Out of Shushan",
+   "Into the house of Haman"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai rent his clothes, and put on sackcloth with ashes, and went out into the midst of the city, and cried with a loud and a bitter cry.",
+  "ref": "Esther 4:1"
+ },
+ {
+  "id": "esther-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long had it been since Esther was called to come in to the king?",
+  "choices": [
+   "Seven days",
+   "A year",
+   "Three months",
+   "Thirty days"
+  ],
+  "answer": 3,
+  "explanation": "I have not been called to come in unto the king these thirty days.",
+  "ref": "Esther 4:11"
+ },
+ {
+  "id": "esther-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Hatach?",
+  "choices": [
+   "A servant of Haman",
+   "A scribe of Mordecai",
+   "One of the king’s chamberlains appointed to attend Esther",
+   "The keeper of the women"
+  ],
+  "answer": 2,
+  "explanation": "Esther called for Hatach, one of the king’s chamberlains, whom he had appointed to attend upon her.",
+  "ref": "Esther 4:5"
+ },
+ {
+  "id": "esther-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esther tell the Jews not to do for three days?",
+  "choices": [
+   "Sleep in their houses",
+   "Neither eat nor drink, night or day",
+   "Leave Shushan",
+   "Speak to the king’s servants"
+  ],
+  "answer": 1,
+  "explanation": "Fast ye for me, and neither eat nor drink three days, night or day.",
+  "ref": "Esther 4:16"
+ },
+ {
+  "id": "esther-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esther say about her going in to the king?",
+  "choices": [
+   "It was not according to the law",
+   "It was the king’s wish",
+   "It was Haman’s plan",
+   "It was a custom of the queens"
+  ],
+  "answer": 0,
+  "explanation": "I will go in unto the king, which is not according to the law.",
+  "ref": "Esther 4:16"
+ },
+ {
+  "id": "esther-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Mordecai warn would happen to Esther and her father’s house if she held her peace?",
+  "choices": [
+   "They would be exiled",
+   "They would be rewarded",
+   "They would be forgotten",
+   "They would be destroyed"
+  ],
+  "answer": 3,
+  "explanation": "Thou and thy father’s house shall be destroyed.",
+  "ref": "Esther 4:14"
+ },
+ {
+  "id": "esther-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Mordecai do after Esther gave her answer?",
+  "choices": [
+   "He went back to the gate and waited",
+   "He sent Hatach away",
+   "He did according to all that Esther had commanded him",
+   "He went to the king himself"
+  ],
+  "answer": 2,
+  "explanation": "Mordecai went his way, and did according to all that Esther had commanded him.",
+  "ref": "Esther 4:17"
+ },
+ {
+  "id": "esther-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Which Jews did Esther tell Mordecai to gather together?",
+  "choices": [
+   "Only the elders",
+   "All that were present in Shushan",
+   "All in the provinces",
+   "Only the priests"
+  ],
+  "answer": 1,
+  "explanation": "Go, gather together all the Jews that are present in Shushan, and fast ye for me.",
+  "ref": "Esther 4:16"
+ },
+ {
+  "id": "esther-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esther send Hatach to find out?",
+  "choices": [
+   "What it was, and why it was",
+   "Whether Haman was at the gate",
+   "Who had written the decree",
+   "How much silver was promised"
+  ],
+  "answer": 0,
+  "explanation": "She gave him a commandment to Mordecai, to know what it was, and why it was.",
+  "ref": "Esther 4:5"
+ },
+ {
+  "id": "esther-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides mourning, fasting, and weeping, what did the Jews do?",
+  "choices": [
+   "Sing songs of praise",
+   "Offer sacrifices at the gate",
+   "Send letters to Judah",
+   "Wail, and many lay in sackcloth and ashes"
+  ],
+  "answer": 3,
+  "explanation": "There was great mourning among the Jews, and fasting, and weeping, and wailing; and many lay in sackcloth and ashes.",
+  "ref": "Esther 4:3"
  },
  {
   "id": "old-esther-5-1",
