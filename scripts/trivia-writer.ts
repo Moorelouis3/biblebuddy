@@ -17,7 +17,8 @@ import { BOOK_INDEX, bookItems, booksWithQuestions } from "../lib/clueGame/bank"
 import "../lib/clueGame/bank/all";
 import { kjvStaticUrl } from "../lib/chapterStaticData";
 
-const TARGET = 15;
+import { targetFor } from "./trivia-target";
+
 const LEVELS = ["beginner", "medium", "hard"] as const;
 const LABEL = { beginner: "Easy", medium: "Medium", hard: "Hard" } as const;
 const ROOT = path.resolve(__dirname, "..");
@@ -25,7 +26,8 @@ const [cmd, a, b] = process.argv.slice(2);
 
 function need(book: string, ch: number) {
   const have = BOOK_INDEX[book]?.chapters?.[ch] ?? [0, 0, 0];
-  return have.map((n) => Math.max(0, TARGET - n));
+  const target = targetFor(book, ch);
+  return have.map((n) => Math.max(0, target - n));
 }
 
 if (cmd === "next") {
@@ -37,13 +39,13 @@ if (cmd === "next") {
       const n = need(id, ch);
       if (n.some((x) => x > 0)) {
         const have = BOOK_INDEX[id].chapters[ch];
-        out.push(`${id} ${ch}   (${name} ${ch}: have Easy ${have[0]}, Medium ${have[1]}, Hard ${have[2]}; write Easy ${n[0]}, Medium ${n[1]}, Hard ${n[2]})`);
+        out.push(`${id} ${ch}   (${name} ${ch}, target ${targetFor(id, ch)} per level: have Easy ${have[0]}, Medium ${have[1]}, Hard ${have[2]}; write Easy ${n[0]}, Medium ${n[1]}, Hard ${n[2]})`);
         if (out.length >= wanted) break;
       }
     }
     if (out.length >= wanted) break;
   }
-  console.log(out.length ? out.join("\n") : "ALL DONE: every chapter has 15 Easy, 15 Medium and 15 Hard.");
+  console.log(out.length ? out.join("\n") : "ALL DONE: every chapter has its Easy, Medium and Hard questions.");
 } else if (cmd === "show") {
   const ch = Number(b);
   for (const lv of LEVELS) {
@@ -59,7 +61,8 @@ if (cmd === "next") {
   const qs = bookItems(a).filter((q) => q.chapter === ch);
   LEVELS.forEach((lv, i) => {
     const n = qs.filter((q) => q.level === lv).length;
-    if (n < TARGET) problems.push(`${LABEL[lv]}: ${n} questions, needs ${TARGET}`);
+    const target = targetFor(a, ch);
+    if (n < target) problems.push(`${LABEL[lv]}: ${n} questions, needs ${target}`);
     if (index && index[i] !== n) problems.push(`${LABEL[lv]}: the index says ${index[i]} but the files have ${n} (run --index)`);
   });
   const seenQ = new Set<string>();

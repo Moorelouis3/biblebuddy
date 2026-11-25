@@ -42,8 +42,13 @@ how many of each level to write. For each chapter, in order:
    `lib/clueGame/bank/genesis-*.ts`) may both be fixed. Keep a fixed
    question's id; give a replacement a new id. Note each replacement in the
    commit message in a few words.
-4. **Write the missing questions** until the chapter has at least 15 of each
-   level. Add them to `lib/clueGame/bank/books/<book>.json` (the same file for
+4. **Write the missing questions** until the chapter has its target of each
+   level: **15, or the chapter's number of verses if that is smaller (never
+   under 5)**. `next` and `check` print the target. A short chapter
+   (Revelation 15 has 8 verses, Psalm 117 has 2) gets fewer, better
+   questions, never filler: Louis, "20 to 25 good real questions are
+   enough" (2026-11-25). Filler means asking different blanks of the same
+   sentence, the order of a list, or the same fact twice. Add them to `lib/clueGame/bank/books/<book>.json` (the same file for
    Genesis; never add new ones to the .ts files).
 5. `npx tsx scripts/trivia-import-old.ts --index`
 6. `npx tsx scripts/trivia-writer.ts check <book> <chapter>` must say `ok`.
