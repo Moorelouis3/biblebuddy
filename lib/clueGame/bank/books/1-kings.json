@@ -14496,6 +14496,646 @@
   "ref": "1 Kings 21:27"
  },
  {
+  "id": "1-kings-21-e-01",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose vineyard was hard by the palace of Ahab?",
+  "choices": [
+   "Nabal",
+   "Naboth",
+   "Jehu",
+   "Obadiah"
+  ],
+  "answer": 1,
+  "explanation": "Naboth the Jezreelite had a vineyard in Jezreel, hard by the palace of Ahab.",
+  "ref": "1 Kings 21:1"
+ },
+ {
+  "id": "1-kings-21-e-02",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ahab want to make out of Naboth's vineyard?",
+  "choices": [
+   "A garden of herbs",
+   "A palace for Jezebel",
+   "A temple for Baal",
+   "A place for his chariots"
+  ],
+  "answer": 0,
+  "explanation": "Ahab wanted it for a garden of herbs, because it was near unto his house.",
+  "ref": "1 Kings 21:2"
+ },
+ {
+  "id": "1-kings-21-e-03",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ahab do when Naboth refused to sell?",
+  "choices": [
+   "Sent soldiers to burn the vineyard",
+   "Went to ask Elijah for help",
+   "Took the vineyard by force",
+   "Lay on his bed and would eat no bread"
+  ],
+  "answer": 3,
+  "explanation": "Ahab laid him down upon his bed, turned away his face, and would eat no bread.",
+  "ref": "1 Kings 21:4"
+ },
+ {
+  "id": "1-kings-21-e-04",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Ahab's wife who plotted against Naboth?",
+  "choices": [
+   "Athaliah",
+   "Abishag",
+   "Jezebel",
+   "Michal"
+  ],
+  "answer": 2,
+  "explanation": "Jezebel his wife said unto him, I will give thee the vineyard of Naboth the Jezreelite.",
+  "ref": "1 Kings 21:7"
+ },
+ {
+  "id": "1-kings-21-e-05",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was Naboth put to death?",
+  "choices": [
+   "He was put to the sword",
+   "He was stoned with stones",
+   "He was hanged",
+   "He was cast into a pit"
+  ],
+  "answer": 1,
+  "explanation": "They carried him forth out of the city, and stoned him with stones, that he died.",
+  "ref": "1 Kings 21:13"
+ },
+ {
+  "id": "1-kings-21-e-06",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophet did the LORD send to meet Ahab?",
+  "choices": [
+   "Elijah the Tishbite",
+   "Elisha",
+   "Micaiah",
+   "Obadiah"
+  ],
+  "answer": 0,
+  "explanation": "The word of the LORD came to Elijah the Tishbite: Arise, go down to meet Ahab.",
+  "ref": "1 Kings 21:17–18"
+ },
+ {
+  "id": "1-kings-21-e-07",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Elijah find Ahab?",
+  "choices": [
+   "In the palace of Samaria",
+   "At the gate of Jezreel",
+   "On Mount Carmel",
+   "In the vineyard of Naboth"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said Ahab was in the vineyard of Naboth, whither he was gone down to possess it.",
+  "ref": "1 Kings 21:18"
+ },
+ {
+  "id": "1-kings-21-e-08",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jezebel tell Ahab to do once Naboth was dead?",
+  "choices": [
+   "Mourn for Naboth",
+   "Send gifts to Naboth's family",
+   "Take possession of the vineyard",
+   "Destroy the vineyard"
+  ],
+  "answer": 2,
+  "explanation": "Jezebel said, Arise, take possession of the vineyard of Naboth the Jezreelite.",
+  "ref": "1 Kings 21:15"
+ },
+ {
+  "id": "1-kings-21-e-09",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "What did the LORD say the dogs would eat by the wall of Jezreel?",
+  "choices": [
+   "Ahab's horses",
+   "Jezebel",
+   "The sons of Naboth",
+   "The false witnesses"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said, The dogs shall eat Jezebel by the wall of Jezreel.",
+  "ref": "1 Kings 21:23"
+ },
+ {
+  "id": "1-kings-21-e-10",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ahab say to Elijah when he saw him?",
+  "choices": [
+   "Hast thou found me, O mine enemy?",
+   "Welcome, man of God",
+   "Why hast thou troubled Israel?",
+   "Pray for me, O prophet"
+  ],
+  "answer": 0,
+  "explanation": "Ahab said to Elijah, Hast thou found me, O mine enemy?",
+  "ref": "1 Kings 21:20"
+ },
+ {
+  "id": "1-kings-21-m-01",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ahab offer Naboth in exchange for his vineyard?",
+  "choices": [
+   "A house in Samaria",
+   "Ten oxen",
+   "A field near Jezreel",
+   "A better vineyard"
+  ],
+  "answer": 3,
+  "explanation": "Ahab said, I will give thee for it a better vineyard than it; or the worth of it in money.",
+  "ref": "1 Kings 21:2"
+ },
+ {
+  "id": "1-kings-21-m-02",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jezebel ask Ahab, doubting his rule?",
+  "choices": [
+   "Art thou not the king of Samaria?",
+   "Where is thy sword, O king?",
+   "Dost thou now govern the kingdom of Israel?",
+   "Who hath made thee judge?"
+  ],
+  "answer": 2,
+  "explanation": "Jezebel said, Dost thou now govern the kingdom of Israel? arise, and eat bread.",
+  "ref": "1 Kings 21:7"
+ },
+ {
+  "id": "1-kings-21-m-03",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jezebel promise Ahab when she told him to be merry?",
+  "choices": [
+   "She would bring him Naboth's head",
+   "She would give him Naboth's vineyard",
+   "She would pray for him",
+   "She would fetch him another wife"
+  ],
+  "answer": 1,
+  "explanation": "Jezebel said, Let thine heart be merry: I will give thee the vineyard of Naboth the Jezreelite.",
+  "ref": "1 Kings 21:7"
+ },
+ {
+  "id": "1-kings-21-m-04",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did Jezebel send the letters?",
+  "choices": [
+   "The elders and the nobles of Naboth's city",
+   "The priests of Baal",
+   "The captains of the army",
+   "The judges of Samaria"
+  ],
+  "answer": 0,
+  "explanation": "She sent the letters unto the elders and to the nobles that were in his city, dwelling with Naboth.",
+  "ref": "1 Kings 21:8"
+ },
+ {
+  "id": "1-kings-21-m-05",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the elders told to do in the letters first of all?",
+  "choices": [
+   "Call an assembly of the army",
+   "Offer a sacrifice",
+   "Close the city gates",
+   "Proclaim a fast"
+  ],
+  "answer": 3,
+  "explanation": "She wrote in the letters, Proclaim a fast, and set Naboth on high among the people.",
+  "ref": "1 Kings 21:9"
+ },
+ {
+  "id": "1-kings-21-m-06",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was Naboth set during the fast?",
+  "choices": [
+   "In the prison",
+   "Before the king",
+   "On high among the people",
+   "At the city gate"
+  ],
+  "answer": 2,
+  "explanation": "They proclaimed a fast, and set Naboth on high among the people.",
+  "ref": "1 Kings 21:12"
+ },
+ {
+  "id": "1-kings-21-m-07",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men were set before Naboth to witness against him?",
+  "choices": [
+   "Three",
+   "Two",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Two men, children of Belial, came in and sat before him.",
+  "ref": "1 Kings 21:10"
+ },
+ {
+  "id": "1-kings-21-m-08",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the false witnesses say Naboth had done?",
+  "choices": [
+   "Blasphemed God and the king",
+   "Stolen from the temple",
+   "Worshipped other gods",
+   "Plotted against Jezebel"
+  ],
+  "answer": 0,
+  "explanation": "They said, Naboth did blaspheme God and the king.",
+  "ref": "1 Kings 21:13"
+ },
+ {
+  "id": "1-kings-21-m-09",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ahab do when he heard that Naboth was dead?",
+  "choices": [
+   "Wept over Naboth",
+   "Called for the false witnesses",
+   "Sent for Elijah",
+   "Went down to take possession of the vineyard"
+  ],
+  "answer": 3,
+  "explanation": "Ahab rose up to go down to the vineyard of Naboth to take possession of it.",
+  "ref": "1 Kings 21:16"
+ },
+ {
+  "id": "1-kings-21-m-10",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question did the LORD tell Elijah to put to Ahab?",
+  "choices": [
+   "Why hast thou forsaken me?",
+   "Where is thy brother?",
+   "Hast thou killed, and also taken possession?",
+   "What hast thou done with Naboth's sons?"
+  ],
+  "answer": 2,
+  "explanation": "Thus saith the LORD, Hast thou killed, and also taken possession?",
+  "ref": "1 Kings 21:19"
+ },
+ {
+  "id": "1-kings-21-m-11",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Elijah say he had found Ahab?",
+  "choices": [
+   "Ahab had worshipped Baal on Carmel",
+   "Ahab had sold himself to work evil",
+   "Ahab had shed the blood of prophets",
+   "Ahab had broken his treaty"
+  ],
+  "answer": 1,
+  "explanation": "Elijah said, I have found thee: because thou hast sold thyself to work evil in the sight of the LORD.",
+  "ref": "1 Kings 21:20"
+ },
+ {
+  "id": "1-kings-21-m-12",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would eat Ahab's people who died in the field?",
+  "choices": [
+   "The fowls of the air",
+   "The wild beasts",
+   "The dogs",
+   "The lions"
+  ],
+  "answer": 0,
+  "explanation": "Him that dieth in the field shall the fowls of the air eat.",
+  "ref": "1 Kings 21:24"
+ },
+ {
+  "id": "1-kings-21-m-13",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Who is said to have stirred Ahab up to wickedness?",
+  "choices": [
+   "The prophets of Baal",
+   "Ben-hadad",
+   "The elders of Samaria",
+   "Jezebel his wife"
+  ],
+  "answer": 3,
+  "explanation": "There was none like unto Ahab, whom Jezebel his wife stirred up.",
+  "ref": "1 Kings 21:25"
+ },
+ {
+  "id": "1-kings-21-m-14",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the LORD say He would bring the evil upon Ahab's house?",
+  "choices": [
+   "In Ahab's own days",
+   "At once, within the year",
+   "In his son's days",
+   "After seven years"
+  ],
+  "answer": 2,
+  "explanation": "I will not bring the evil in his days: but in his son's days will I bring the evil upon his house.",
+  "ref": "1 Kings 21:29"
+ },
+ {
+  "id": "1-kings-21-m-15",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jezebel ask Ahab when she found him not eating?",
+  "choices": [
+   "Hast thou lost thy kingdom?",
+   "Why is thy spirit so sad?",
+   "Who hath wronged thee?",
+   "Why art thou cast down, O king?"
+  ],
+  "answer": 1,
+  "explanation": "Jezebel said, Why is thy spirit so sad, that thou eatest no bread?",
+  "ref": "1 Kings 21:5"
+ },
+ {
+  "id": "1-kings-21-h-01",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jezebel use to seal the letters?",
+  "choices": [
+   "Ahab's seal",
+   "Her own ring",
+   "The seal of the elders",
+   "The king's signet of Samaria"
+  ],
+  "answer": 0,
+  "explanation": "She wrote letters in Ahab's name, and sealed them with his seal.",
+  "ref": "1 Kings 21:8"
+ },
+ {
+  "id": "1-kings-21-h-02",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "What were the two men set before Naboth called?",
+  "choices": [
+   "Men of Jezreel",
+   "Priests of Baal",
+   "Sons of the prophets",
+   "Sons of Belial"
+  ],
+  "answer": 3,
+  "explanation": "Jezebel said to set two men, sons of Belial, before him to bear witness against him.",
+  "ref": "1 Kings 21:10"
+ },
+ {
+  "id": "1-kings-21-h-03",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the elders send to Jezebel after Naboth was killed?",
+  "choices": [
+   "Naboth hath fled the city",
+   "Naboth will not give the vineyard",
+   "Naboth is stoned, and is dead",
+   "Naboth hath cursed the king"
+  ],
+  "answer": 2,
+  "explanation": "They sent to Jezebel, saying, Naboth is stoned, and is dead.",
+  "ref": "1 Kings 21:14"
+ },
+ {
+  "id": "1-kings-21-h-04",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What reason did Jezebel give for Ahab taking the vineyard?",
+  "choices": [
+   "The king may take any land",
+   "Naboth was not alive, but dead",
+   "Naboth had no sons",
+   "The LORD had given it to Ahab"
+  ],
+  "answer": 1,
+  "explanation": "Take possession of the vineyard, which he refused to give thee: for Naboth is not alive, but dead.",
+  "ref": "1 Kings 21:15"
+ },
+ {
+  "id": "1-kings-21-h-05",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose houses did the LORD say Ahab's house would be like?",
+  "choices": [
+   "Jeroboam's and Baasha's",
+   "Omri's and Zimri's",
+   "Rehoboam's and Nadab's",
+   "Solomon's and Asa's"
+  ],
+  "answer": 0,
+  "explanation": "I will make thine house like the house of Jeroboam the son of Nebat, and like the house of Baasha.",
+  "ref": "1 Kings 21:22"
+ },
+ {
+  "id": "1-kings-21-h-06",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why would the LORD make Ahab's house like Jeroboam's?",
+  "choices": [
+   "Ahab had broken the covenant at Sinai",
+   "Ahab had refused to humble himself",
+   "Ahab had taken a foreign wife",
+   "Ahab had provoked Him and made Israel to sin"
+  ],
+  "answer": 3,
+  "explanation": "It was for the provocation wherewith thou hast provoked me to anger, and made Israel to sin.",
+  "ref": "1 Kings 21:22"
+ },
+ {
+  "id": "1-kings-21-h-07",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose ways did Ahab follow in his idols, whom the LORD cast out?",
+  "choices": [
+   "The Philistines",
+   "The Moabites",
+   "The Amorites",
+   "The Egyptians"
+  ],
+  "answer": 2,
+  "explanation": "He did very abominably in following idols, according to all things as did the Amorites.",
+  "ref": "1 Kings 21:26"
+ },
+ {
+  "id": "1-kings-21-h-08",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Ahab walk after he heard Elijah's words?",
+  "choices": [
+   "Barefoot",
+   "Softly",
+   "With a staff",
+   "Bowed to the ground"
+  ],
+  "answer": 1,
+  "explanation": "He rent his clothes, put sackcloth upon his flesh, fasted, lay in sackcloth, and went softly.",
+  "ref": "1 Kings 21:27"
+ },
+ {
+  "id": "1-kings-21-h-09",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Ahab king, according to the chapter's first verse?",
+  "choices": [
+   "Samaria",
+   "Jezreel",
+   "Tirzah",
+   "Bethel"
+  ],
+  "answer": 0,
+  "explanation": "Naboth had a vineyard in Jezreel, hard by the palace of Ahab king of Samaria.",
+  "ref": "1 Kings 21:1"
+ },
+ {
+  "id": "1-kings-21-h-10",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Ahab come into his house after Naboth's refusal?",
+  "choices": [
+   "Angry and shouting",
+   "Weeping and afraid",
+   "Silent and calm",
+   "Heavy and displeased"
+  ],
+  "answer": 3,
+  "explanation": "Ahab came into his house heavy and displeased because of the word which Naboth had spoken.",
+  "ref": "1 Kings 21:4"
+ },
+ {
+  "id": "1-kings-21-h-11",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He would take away from Ahab?",
+  "choices": [
+   "His crown",
+   "His chariots",
+   "His posterity",
+   "His palace"
+  ],
+  "answer": 2,
+  "explanation": "I will bring evil upon thee, and will take away thy posterity.",
+  "ref": "1 Kings 21:21"
+ },
+ {
+  "id": "1-kings-21-h-12",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Elijah to see about Ahab?",
+  "choices": [
+   "How Ahab hath fled to Samaria",
+   "How Ahab humbleth himself before Him",
+   "How Ahab hath built an altar",
+   "How Ahab hath gathered his army"
+  ],
+  "answer": 1,
+  "explanation": "Seest thou how Ahab humbleth himself before me?",
+  "ref": "1 Kings 21:29"
+ },
+ {
+  "id": "1-kings-21-h-13",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If Naboth preferred, what else did Ahab offer for the vineyard?",
+  "choices": [
+   "The worth of it in money",
+   "A herd of oxen",
+   "A house in Samaria",
+   "A field of corn"
+  ],
+  "answer": 0,
+  "explanation": "Ahab said, If it seem good to thee, I will give thee the worth of it in money.",
+  "ref": "1 Kings 21:2"
+ },
+ {
+  "id": "1-kings-21-h-14",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "In which city was Naboth's vineyard?",
+  "choices": [
+   "Samaria",
+   "Tirzah",
+   "Bethel",
+   "Jezreel"
+  ],
+  "answer": 3,
+  "explanation": "Naboth the Jezreelite had a vineyard which was in Jezreel.",
+  "ref": "1 Kings 21:1"
+ },
+ {
+  "id": "1-kings-21-h-15",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Baasha, whose house is named, was the son of whom?",
+  "choices": [
+   "Nebat",
+   "Omri",
+   "Ahijah",
+   "Jehoshaphat"
+  ],
+  "answer": 2,
+  "explanation": "Like the house of Baasha the son of Ahijah.",
+  "ref": "1 Kings 21:22"
+ },
+ {
   "id": "old-1-kings-22-1",
   "chapter": 22,
   "level": "beginner",
