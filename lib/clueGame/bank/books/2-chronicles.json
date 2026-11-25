@@ -1904,6 +1904,262 @@
   "ref": "2 Chronicles 5:14"
  },
  {
+  "id": "2-chronicles-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which city did they bring up the ark of the covenant?",
+  "choices": [
+   "Bethlehem",
+   "The city of David, which is Zion",
+   "Gibeon",
+   "Hebron"
+  ],
+  "answer": 1,
+  "explanation": "They brought up the ark of the covenant of the LORD out of the city of David, which is Zion.",
+  "ref": "2 Chronicles 5:2"
+ },
+ {
+  "id": "2-chronicles-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took up the ark?",
+  "choices": [
+   "The captains",
+   "The Philistines",
+   "The Levites",
+   "The judges"
+  ],
+  "answer": 2,
+  "explanation": "All the elders of Israel came; and the Levites took up the ark.",
+  "ref": "2 Chronicles 5:4"
+ },
+ {
+  "id": "2-chronicles-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month did the men of Israel assemble at the feast?",
+  "choices": [
+   "The first month",
+   "The second month",
+   "The tenth month",
+   "The seventh month"
+  ],
+  "answer": 3,
+  "explanation": "All the men of Israel assembled themselves unto the king in the feast which was in the seventh month.",
+  "ref": "2 Chronicles 5:3"
+ },
+ {
+  "id": "2-chronicles-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was in the ark?",
+  "choices": [
+   "Two tables of stone",
+   "The pot of manna",
+   "Aaron's rod",
+   "The book of the law"
+  ],
+  "answer": 0,
+  "explanation": "There was nothing in the ark save the two tables which Moses put therein at Horeb.",
+  "ref": "2 Chronicles 5:10"
+ },
+ {
+  "id": "2-chronicles-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the ark and holy vessels, what else did the priests and Levites bring up?",
+  "choices": [
+   "The brasen altar",
+   "The tabernacle of the congregation",
+   "The molten sea",
+   "The golden table"
+  ],
+  "answer": 1,
+  "explanation": "They brought up the ark, and the tabernacle of the congregation, and all the holy vessels that were in the tabernacle.",
+  "ref": "2 Chronicles 5:5"
+ },
+ {
+  "id": "2-chronicles-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Where had Moses put the two tables in the ark?",
+  "choices": [
+   "At Gilgal",
+   "At Shiloh",
+   "At Horeb",
+   "At Kadesh"
+  ],
+  "answer": 2,
+  "explanation": "The two tables which Moses put therein at Horeb, when the LORD made a covenant with the children of Israel.",
+  "ref": "2 Chronicles 5:10"
+ },
+ {
+  "id": "2-chronicles-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the singers wear as they stood at the east end of the altar?",
+  "choices": [
+   "Blue robes",
+   "Purple and crimson",
+   "Sackcloth",
+   "White linen"
+  ],
+  "answer": 3,
+  "explanation": "The Levites which were the singers were arrayed in white linen, having cymbals and psalteries and harps.",
+  "ref": "2 Chronicles 5:12"
+ },
+ {
+  "id": "2-chronicles-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the singers and trumpeters say in praise to the Lord?",
+  "choices": [
+   "For he is good; for his mercy endureth for ever",
+   "Holy, holy, holy",
+   "The LORD reigneth",
+   "Great is our God above all gods"
+  ],
+  "answer": 0,
+  "explanation": "They praised the LORD, saying, For he is good; for his mercy endureth for ever.",
+  "ref": "2 Chronicles 5:13"
+ },
+ {
+  "id": "2-chronicles-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon and the congregation sacrifice before the ark?",
+  "choices": [
+   "Only doves",
+   "Sheep and oxen without number",
+   "One bull",
+   "Only goats"
+  ],
+  "answer": 1,
+  "explanation": "They sacrificed sheep and oxen, which could not be told nor numbered for multitude.",
+  "ref": "2 Chronicles 5:6"
+ },
+ {
+  "id": "2-chronicles-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many priests sounded with trumpets at the east end of the altar?",
+  "choices": [
+   "Twelve",
+   "Seventy",
+   "One hundred and twenty",
+   "Four hundred"
+  ],
+  "answer": 2,
+  "explanation": "With them an hundred and twenty priests sounding with trumpets.",
+  "ref": "2 Chronicles 5:12"
+ },
+ {
+  "id": "2-chronicles-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Which three families of singers are named?",
+  "choices": [
+   "Zadok, Abiathar and Nathan",
+   "Bezaleel, Uri and Hur",
+   "Huram, Ornan and Hiram",
+   "Asaph, Heman and Jeduthun"
+  ],
+  "answer": 3,
+  "explanation": "The Levites which were the singers, all of them of Asaph, of Heman, of Jeduthun.",
+  "ref": "2 Chronicles 5:12"
+ },
+ {
+  "id": "2-chronicles-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priests do about the ends of the staves of the ark?",
+  "choices": [
+   "Drew them out so the ends were seen from the ark",
+   "Took them away",
+   "Covered them in gold",
+   "Hid them in the court"
+  ],
+  "answer": 0,
+  "explanation": "They drew out the staves of the ark, that the ends of the staves were seen from the ark before the oracle.",
+  "ref": "2 Chronicles 5:9"
+ },
+ {
+  "id": "2-chronicles-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the cherubims spread forth their wings?",
+  "choices": [
+   "Over the altar",
+   "Over the place of the ark",
+   "Over the veil",
+   "Over the pillars"
+  ],
+  "answer": 1,
+  "explanation": "The cherubims spread forth their wings over the place of the ark, and covered the ark and the staves.",
+  "ref": "2 Chronicles 5:8"
+ },
+ {
+  "id": "2-chronicles-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Solomon put among the treasures of the house of God?",
+  "choices": [
+   "Spoil from the Philistines",
+   "Gifts from Huram",
+   "Silver, gold and instruments David dedicated",
+   "The shewbread tables"
+  ],
+  "answer": 2,
+  "explanation": "Solomon brought in all the things that David his father had dedicated, the silver, and the gold, and all the instruments.",
+  "ref": "2 Chronicles 5:1"
+ },
+ {
+  "id": "2-chronicles-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the trumpeters and singers sound as they praised the Lord?",
+  "choices": [
+   "In turns",
+   "In three groups",
+   "Without instruments",
+   "As one, in one sound"
+  ],
+  "answer": 3,
+  "explanation": "The trumpeters and singers were as one, to make one sound to be heard in praising and thanking the LORD.",
+  "ref": "2 Chronicles 5:13"
+ },
+ {
+  "id": "2-chronicles-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were the ends of the ark's staves not seen?",
+  "choices": [
+   "Outside the oracle",
+   "Before the oracle",
+   "In the court",
+   "Beside the altar"
+  ],
+  "answer": 0,
+  "explanation": "The ends of the staves were seen from the ark before the oracle; but they were not seen without.",
+  "ref": "2 Chronicles 5:9"
+ },
+ {
   "id": "old-2-chronicles-6-1",
   "chapter": 6,
   "level": "beginner",
