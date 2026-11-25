@@ -12100,16 +12100,176 @@
   "chapter": 20,
   "level": "beginner",
   "category": "keyword",
-  "question": "What pattern is emphasized by the end of the chapter?",
+  "question": "How many fingers and toes did the giant at Gath have?",
   "choices": [
-   "Israel feared the giants",
-   "The ark was lost",
-   "Saul returned to power",
-   "David's servants kept striking down giants"
+   "Twelve",
+   "Four and twenty",
+   "Eighteen",
+   "Thirty"
+  ],
+  "answer": 1,
+  "explanation": "His fingers and toes were four and twenty, six on each hand, and six on each foot.",
+  "ref": "1 Chronicles 20:6"
+ },
+ {
+  "id": "1-chronicles-20-m-01",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "Which Ammonite city did Joab besiege and destroy?",
+  "choices": [
+   "Medeba",
+   "Rabbah",
+   "Gezer",
+   "Gath"
+  ],
+  "answer": 1,
+  "explanation": "Joab came and besieged Rabbah. And Joab smote Rabbah, and destroyed it.",
+  "ref": "1 Chronicles 20:1"
+ },
+ {
+  "id": "1-chronicles-20-m-02",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much did the crown of the Ammonite king weigh?",
+  "choices": [
+   "Ten pounds of brass",
+   "A hundred shekels of silver",
+   "A talent of gold",
+   "A thousand talents"
+  ],
+  "answer": 2,
+  "explanation": "David took the crown of their king from off his head, and found it to weigh a talent of gold.",
+  "ref": "1 Chronicles 20:2"
+ },
+ {
+  "id": "1-chronicles-20-m-03",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "Who slew Sippai, who was of the children of the giant, at Gezer?",
+  "choices": [
+   "Sibbechai the Hushathite",
+   "Elhanan",
+   "Jonathan",
+   "Joab"
+  ],
+  "answer": 0,
+  "explanation": "Sibbechai the Hushathite slew Sippai, that was of the children of the giant.",
+  "ref": "1 Chronicles 20:4"
+ },
+ {
+  "id": "1-chronicles-20-m-04",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose spear staff was like a weaver's beam?",
+  "choices": [
+   "The giant at Gezer",
+   "Sippai",
+   "Lahmi, the brother of Goliath",
+   "The king of Rabbah"
+  ],
+  "answer": 2,
+  "explanation": "Elhanan slew Lahmi the brother of Goliath the Gittite, whose spear staff was like a weaver's beam.",
+  "ref": "1 Chronicles 20:5"
+ },
+ {
+  "id": "1-chronicles-20-m-05",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "Who slew the tall man of Gath who defied Israel?",
+  "choices": [
+   "Joab",
+   "Jonathan the son of Shimea",
+   "Abishai",
+   "Elhanan"
+  ],
+  "answer": 1,
+  "explanation": "When he defied Israel, Jonathan the son of Shimea David's brother slew him.",
+  "ref": "1 Chronicles 20:7"
+ },
+ {
+  "id": "1-chronicles-20-h-01",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Joab lead forth the army to Ammon?",
+  "choices": [
+   "When the year was expired, when kings go out to battle",
+   "In the winter",
+   "At the feast",
+   "After Gath fell"
+  ],
+  "answer": 0,
+  "explanation": "After the year was expired, at the time that kings go out to battle, Joab led forth the power of the army.",
+  "ref": "1 Chronicles 20:1"
+ },
+ {
+  "id": "1-chronicles-20-h-02",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were David's weapons against the Ammonite cities' people, besides saws?",
+  "choices": [
+   "Chains and fire",
+   "Swords and spears",
+   "Slings and stones",
+   "Harrows of iron and axes"
   ],
   "answer": 3,
-  "explanation": "The chapter highlights repeated victories over giant enemies.",
-  "ref": "1 Chronicles 20:4–8"
+  "explanation": "He cut them with saws, and with harrows of iron, and with axes.",
+  "ref": "1 Chronicles 20:3"
+ },
+ {
+  "id": "1-chronicles-20-h-03",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Elhanan the son of?",
+  "choices": [
+   "Zeruiah",
+   "Shimea",
+   "Hushai",
+   "Jair"
+  ],
+  "answer": 3,
+  "explanation": "Elhanan the son of Jair slew Lahmi the brother of Goliath.",
+  "ref": "1 Chronicles 20:5"
+ },
+ {
+  "id": "1-chronicles-20-h-04",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was set upon David's head from the spoil of Rabbah?",
+  "choices": [
+   "The king's crown with precious stones",
+   "A wreath of gold",
+   "A helmet of brass",
+   "A garland of olive"
+  ],
+  "answer": 0,
+  "explanation": "There were precious stones in it; and it was set upon David's head.",
+  "ref": "1 Chronicles 20:2"
+ },
+ {
+  "id": "1-chronicles-20-h-05",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the giant at Gath do to Israel before he was slain?",
+  "choices": [
+   "Defied them",
+   "Besieged them",
+   "Took their ark",
+   "Captured Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "When he defied Israel, Jonathan the son of Shimea slew him.",
+  "ref": "1 Chronicles 20:7"
  },
  {
   "id": "old-1-chronicles-21-1",
