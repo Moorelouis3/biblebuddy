@@ -1184,6 +1184,310 @@
   "ref": "Esther 3:10"
  },
  {
+  "id": "esther-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did King Ahasuerus promote above all the princes?",
+  "choices": [
+   "Mordecai",
+   "Hegai",
+   "Memucan",
+   "Haman"
+  ],
+  "answer": 3,
+  "explanation": "King Ahasuerus promoted Haman, and set his seat above all the princes that were with him.",
+  "ref": "Esther 3:1"
+ },
+ {
+  "id": "esther-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king and Haman do after the decree was sent out?",
+  "choices": [
+   "Fasted for three days",
+   "Went out to the gate",
+   "Sat down to drink",
+   "Prayed in the temple"
+  ],
+  "answer": 2,
+  "explanation": "The king and Haman sat down to drink; but the city Shushan was perplexed.",
+  "ref": "Esther 3:15"
+ },
+ {
+  "id": "esther-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the decree first given out?",
+  "choices": [
+   "In the temple of Judah",
+   "In Shushan the palace",
+   "In Jerusalem",
+   "In the king’s garden at Babylon"
+  ],
+  "answer": 1,
+  "explanation": "The decree was given in Shushan the palace.",
+  "ref": "Esther 3:15"
+ },
+ {
+  "id": "esther-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the king’s servants bow to Haman?",
+  "choices": [
+   "The king had commanded it",
+   "They were afraid of his army",
+   "They wanted his silver",
+   "Haman was a priest"
+  ],
+  "answer": 0,
+  "explanation": "All the king’s servants bowed, and reverenced Haman: for the king had so commanded concerning him.",
+  "ref": "Esther 3:2"
+ },
+ {
+  "id": "esther-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Mordecai told the king’s servants about himself?",
+  "choices": [
+   "That he was a prince of Persia",
+   "That he was Esther’s father",
+   "That he served another king",
+   "That he was a Jew"
+  ],
+  "answer": 3,
+  "explanation": "The servants told Haman, for Mordecai had told them that he was a Jew.",
+  "ref": "Esther 3:4"
+ },
+ {
+  "id": "esther-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did Haman give the king for not letting the Jews live?",
+  "choices": [
+   "They plotted against the king",
+   "They worshipped the sun",
+   "They did not keep the king’s laws",
+   "They had refused to pay tribute"
+  ],
+  "answer": 2,
+  "explanation": "Their laws are diverse from all people; neither keep they the king’s laws.",
+  "ref": "Esther 3:8"
+ },
+ {
+  "id": "esther-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king say about the silver and the people?",
+  "choices": [
+   "Pay the silver by the first month",
+   "The silver is given to thee, the people also",
+   "Take the silver and spare the people",
+   "The silver goes to my treasury"
+  ],
+  "answer": 1,
+  "explanation": "The king said unto Haman, The silver is given to thee, the people also, to do with them as it seemeth good to thee.",
+  "ref": "Esther 3:11"
+ },
+ {
+  "id": "esther-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the letters sent into all the king’s provinces?",
+  "choices": [
+   "By posts",
+   "By the king’s chamberlains",
+   "By ships",
+   "By the princes in person"
+  ],
+  "answer": 0,
+  "explanation": "The letters were sent by posts into all the king’s provinces.",
+  "ref": "Esther 3:13"
+ },
+ {
+  "id": "esther-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom was the decree meant to destroy?",
+  "choices": [
+   "Only the leaders of the Jews",
+   "Only Mordecai’s household",
+   "Only the men of Judah",
+   "All Jews, young and old, little children and women"
+  ],
+  "answer": 3,
+  "explanation": "To destroy, to kill, and to cause to perish, all Jews, both young and old, little children and women, in one day.",
+  "ref": "Esther 3:13"
+ },
+ {
+  "id": "esther-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month was the day of destruction set?",
+  "choices": [
+   "The tenth month, Tebeth",
+   "The seventh month",
+   "The twelfth month, Adar",
+   "The first month, Nisan"
+  ],
+  "answer": 2,
+  "explanation": "Upon the thirteenth day of the twelfth month, which is the month Adar.",
+  "ref": "Esther 3:13"
+ },
+ {
+  "id": "esther-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Haman think it too little to lay hands on Mordecai alone?",
+  "choices": [
+   "Mordecai was the queen’s kin",
+   "The king had forbidden it",
+   "Mordecai had many soldiers",
+   "They had shewed him the people of Mordecai"
+  ],
+  "answer": 3,
+  "explanation": "He thought scorn to lay hands on Mordecai alone; for they had shewed him the people of Mordecai.",
+  "ref": "Esther 3:6"
+ },
+ {
+  "id": "esther-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much silver did Haman promise to pay into the king’s treasuries?",
+  "choices": [
+   "Ten thousand talents",
+   "Seven hundred talents",
+   "A thousand shekels",
+   "Thirty thousand talents"
+  ],
+  "answer": 0,
+  "explanation": "I will pay ten thousand talents of silver to the hands of those that have the charge of the business.",
+  "ref": "Esther 3:9"
+ },
+ {
+  "id": "esther-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Ahasuerus did they cast Pur before Haman?",
+  "choices": [
+   "The third",
+   "The seventh",
+   "The first",
+   "The twelfth"
+  ],
+  "answer": 3,
+  "explanation": "In the first month, in the twelfth year of king Ahasuerus, they cast Pur, that is, the lot, before Haman.",
+  "ref": "Esther 3:7"
+ },
+ {
+  "id": "esther-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day of the twelfth month were the Jews to be destroyed?",
+  "choices": [
+   "The fourteenth",
+   "The seventh",
+   "The thirteenth",
+   "The first"
+  ],
+  "answer": 2,
+  "explanation": "In one day, even upon the thirteenth day of the twelfth month.",
+  "ref": "Esther 3:13"
+ },
+ {
+  "id": "esther-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Haman?",
+  "choices": [
+   "Abihail",
+   "Hammedatha",
+   "Agag",
+   "Jair"
+  ],
+  "answer": 1,
+  "explanation": "Haman the son of Hammedatha the Agagite.",
+  "ref": "Esther 3:1"
+ },
+ {
+  "id": "esther-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the killers of the Jews allowed to take?",
+  "choices": [
+   "The spoil of them for a prey",
+   "Their houses only",
+   "Their children as servants",
+   "Their land in Judah"
+  ],
+  "answer": 0,
+  "explanation": "To take the spoil of them for a prey.",
+  "ref": "Esther 3:13"
+ },
+ {
+  "id": "esther-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month did they begin to cast Pur before Haman?",
+  "choices": [
+   "Adar, the twelfth month",
+   "Tebeth, the tenth month",
+   "Sivan, the third month",
+   "Nisan, the first month"
+  ],
+  "answer": 3,
+  "explanation": "In the first month, that is, the month Nisan, they cast Pur before Haman from day to day, and from month to month.",
+  "ref": "Esther 3:7"
+ },
+ {
+  "id": "esther-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the lieutenants and governors, to whom was the decree written?",
+  "choices": [
+   "The priests of Persia",
+   "The captains of the guard",
+   "The rulers of every people",
+   "The elders of the Jews"
+  ],
+  "answer": 2,
+  "explanation": "It was written to the king’s lieutenants, and to the governors, and to the rulers of every people of every province.",
+  "ref": "Esther 3:12"
+ },
+ {
+  "id": "esther-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Haman say it was not for the king’s profit to do?",
+  "choices": [
+   "Make a new queen",
+   "Suffer the Jews to live among his people",
+   "Let the provinces pay tribute",
+   "Keep the law of the Medes"
+  ],
+  "answer": 1,
+  "explanation": "It is not for the king’s profit to suffer them.",
+  "ref": "Esther 3:8"
+ },
+ {
   "id": "old-esther-4-1",
   "chapter": 4,
   "level": "beginner",
