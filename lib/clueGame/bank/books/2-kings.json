@@ -15246,5 +15246,645 @@
   "answer": 1,
   "explanation": "Evil-merodach lifted Jehoiachin out of prison and gave him a regular allowance.",
   "ref": "2 Kings 25:27–30"
+ },
+ {
+  "id": "2-kings-25-e-01",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Babylon came against Jerusalem with all his host?",
+  "choices": [
+   "Evil-merodach",
+   "Berodach-baladan",
+   "Nebuchadnezzar",
+   "Belshazzar"
+  ],
+  "answer": 2,
+  "explanation": "Nebuchadnezzar king of Babylon came, he, and all his host, against Jerusalem, and pitched against it.",
+  "ref": "2 Kings 25:1"
+ },
+ {
+  "id": "2-kings-25-e-02",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What prevailed in the city during the siege?",
+  "choices": [
+   "Plague",
+   "A flood",
+   "Famine",
+   "Civil war"
+  ],
+  "answer": 2,
+  "explanation": "The famine prevailed in the city, and there was no bread for the people of the land.",
+  "ref": "2 Kings 25:3"
+ },
+ {
+  "id": "2-kings-25-e-03",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Zedekiah's sons?",
+  "choices": [
+   "They escaped to Egypt",
+   "They became kings in Babylon",
+   "They were slain before his eyes",
+   "They were taken to Babylon"
+  ],
+  "answer": 2,
+  "explanation": "They slew the sons of Zedekiah before his eyes.",
+  "ref": "2 Kings 25:7"
+ },
+ {
+  "id": "2-kings-25-e-04",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the Chaldees bring Zedekiah to the king of Babylon?",
+  "choices": [
+   "Jericho",
+   "Riblah",
+   "Megiddo",
+   "Mizpah"
+  ],
+  "answer": 1,
+  "explanation": "They took the king, and brought him up to the king of Babylon to Riblah; and they gave judgment upon him.",
+  "ref": "2 Kings 25:6"
+ },
+ {
+  "id": "2-kings-25-e-05",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Zedekiah finally carried?",
+  "choices": [
+   "To Egypt",
+   "To Samaria",
+   "To Babylon",
+   "To Assyria"
+  ],
+  "answer": 2,
+  "explanation": "They bound him with fetters of brass, and carried him to Babylon.",
+  "ref": "2 Kings 25:7"
+ },
+ {
+  "id": "2-kings-25-e-06",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the army of the Chaldees do to the walls of Jerusalem?",
+  "choices": [
+   "Repaired them",
+   "Brake them down round about",
+   "Left them standing",
+   "Painted them"
+  ],
+  "answer": 1,
+  "explanation": "All the army of the Chaldees brake down the walls of Jerusalem round about.",
+  "ref": "2 Kings 25:10"
+ },
+ {
+  "id": "2-kings-25-e-07",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the captain of the guard leave in the land to be vinedressers and husbandmen?",
+  "choices": [
+   "The priests",
+   "The princes",
+   "The craftsmen",
+   "Some of the poor of the land"
+  ],
+  "answer": 3,
+  "explanation": "The captain of the guard left of the poor of the land to be vinedressers and husbandmen.",
+  "ref": "2 Kings 25:12"
+ },
+ {
+  "id": "2-kings-25-e-08",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Nebuchadnezzar make ruler over the people left in Judah?",
+  "choices": [
+   "Ishmael",
+   "Gedaliah",
+   "Johanan",
+   "Seraiah"
+  ],
+  "answer": 1,
+  "explanation": "He made Gedaliah the son of Ahikam, the son of Shaphan, ruler.",
+  "ref": "2 Kings 25:22"
+ },
+ {
+  "id": "2-kings-25-e-09",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who killed Gedaliah?",
+  "choices": [
+   "Johanan the son of Careah",
+   "Nebuzar-adan",
+   "Zedekiah",
+   "Ishmael the son of Nethaniah"
+  ],
+  "answer": 3,
+  "explanation": "Ishmael the son of Nethaniah came, and ten men with him, and smote Gedaliah, that he died.",
+  "ref": "2 Kings 25:25"
+ },
+ {
+  "id": "2-kings-25-e-10",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the people flee, afraid of the Chaldees?",
+  "choices": [
+   "To Egypt",
+   "To Moab",
+   "To Samaria",
+   "To Babylon"
+  ],
+  "answer": 0,
+  "explanation": "All the people, both small and great, and the captains of the armies, arose, and came to Egypt: for they were afraid of the Chaldees.",
+  "ref": "2 Kings 25:26"
+ },
+ {
+  "id": "2-kings-25-m-01",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month did Nebuchadnezzar begin the siege of Jerusalem?",
+  "choices": [
+   "The tenth month",
+   "The first month",
+   "The fourth month",
+   "The twelfth month"
+  ],
+  "answer": 0,
+  "explanation": "In the ninth year of his reign, in the tenth month, in the tenth day of the month, Nebuchadnezzar came.",
+  "ref": "2 Kings 25:1"
+ },
+ {
+  "id": "2-kings-25-m-02",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Chaldees build against the city round about?",
+  "choices": [
+   "Rams",
+   "Forts",
+   "Altars",
+   "Roads"
+  ],
+  "answer": 1,
+  "explanation": "They pitched against it; and they built forts against it round about.",
+  "ref": "2 Kings 25:1"
+ },
+ {
+  "id": "2-kings-25-m-03",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The city was besieged until which year of King Zedekiah?",
+  "choices": [
+   "The fourth",
+   "The ninth",
+   "The nineteenth",
+   "The eleventh"
+  ],
+  "answer": 3,
+  "explanation": "The city was besieged unto the eleventh year of king Zedekiah.",
+  "ref": "2 Kings 25:2"
+ },
+ {
+  "id": "2-kings-25-m-04",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the men of war flee the broken city?",
+  "choices": [
+   "At dawn",
+   "At noon",
+   "During a feast",
+   "By night"
+  ],
+  "answer": 3,
+  "explanation": "All the men of war fled by night by the way of the gate between two walls.",
+  "ref": "2 Kings 25:4"
+ },
+ {
+  "id": "2-kings-25-m-05",
+  "chapter": 25,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the Chaldees overtake Zedekiah?",
+  "choices": [
+   "At the Jordan",
+   "On the road to Egypt",
+   "In the plains of Jericho",
+   "At Mizpah"
+  ],
+  "answer": 2,
+  "explanation": "The army of the Chaldees pursued after the king, and overtook him in the plains of Jericho.",
+  "ref": "2 Kings 25:5"
+ },
+ {
+  "id": "2-kings-25-m-06",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year of Nebuchadnezzar's reign did Nebuzar-adan come to Jerusalem?",
+  "choices": [
+   "The eighth",
+   "The ninth",
+   "The thirty-seventh",
+   "The nineteenth"
+  ],
+  "answer": 3,
+  "explanation": "The nineteenth year of king Nebuchadnezzar king of Babylon, came Nebuzar-adan.",
+  "ref": "2 Kings 25:8"
+ },
+ {
+  "id": "2-kings-25-m-07",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Chaldees do with the brass pillars of the house of the LORD?",
+  "choices": [
+   "Broke them and carried the brass to Babylon",
+   "Left them standing",
+   "Hid them in Egypt",
+   "Gave them to the poor"
+  ],
+  "answer": 0,
+  "explanation": "The pillars of brass, and the bases, and the brasen sea, did the Chaldees break in pieces, and carried the brass of them to Babylon.",
+  "ref": "2 Kings 25:13"
+ },
+ {
+  "id": "2-kings-25-m-08",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the chief priest the captain of the guard took?",
+  "choices": [
+   "Hilkiah",
+   "Seraiah",
+   "Zephaniah",
+   "Ahikam"
+  ],
+  "answer": 1,
+  "explanation": "The captain of the guard took Seraiah the chief priest, and Zephaniah the second priest.",
+  "ref": "2 Kings 25:18"
+ },
+ {
+  "id": "2-kings-25-m-09",
+  "chapter": 25,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the king of Babylon slay the men brought to him?",
+  "choices": [
+   "At Jerusalem",
+   "At Mizpah",
+   "At Babylon",
+   "At Riblah in the land of Hamath"
+  ],
+  "answer": 3,
+  "explanation": "The king of Babylon smote them, and slew them at Riblah in the land of Hamath.",
+  "ref": "2 Kings 25:21"
+ },
+ {
+  "id": "2-kings-25-m-10",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Gedaliah, governor of the land?",
+  "choices": [
+   "Nethaniah's",
+   "Ahikam's",
+   "Careah's",
+   "Tanhumeth's"
+  ],
+  "answer": 1,
+  "explanation": "Gedaliah the son of Ahikam, the son of Shaphan.",
+  "ref": "2 Kings 25:22"
+ },
+ {
+  "id": "2-kings-25-m-11",
+  "chapter": 25,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the captains come to Gedaliah?",
+  "choices": [
+   "Bethel",
+   "Jericho",
+   "Hebron",
+   "Mizpah"
+  ],
+  "answer": 3,
+  "explanation": "There came to Gedaliah to Mizpah, even Ishmael the son of Nethaniah, and Johanan the son of Careah.",
+  "ref": "2 Kings 25:23"
+ },
+ {
+  "id": "2-kings-25-m-12",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gedaliah tell the captains?",
+  "choices": [
+   "Fight the Chaldees",
+   "Flee to Egypt",
+   "Fear not to serve the Chaldees",
+   "Rebuild the walls"
+  ],
+  "answer": 2,
+  "explanation": "Fear not to be the servants of the Chaldees: dwell in the land, and serve the king of Babylon; and it shall be well with you.",
+  "ref": "2 Kings 25:24"
+ },
+ {
+  "id": "2-kings-25-m-13",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month did Ishmael kill Gedaliah?",
+  "choices": [
+   "The fourth month",
+   "The tenth month",
+   "The seventh month",
+   "The twelfth month"
+  ],
+  "answer": 2,
+  "explanation": "It came to pass in the seventh month, that Ishmael smote Gedaliah.",
+  "ref": "2 Kings 25:25"
+ },
+ {
+  "id": "2-kings-25-m-14",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Which king lifted up the head of Jehoiachin out of prison?",
+  "choices": [
+   "Nebuchadnezzar",
+   "Belshazzar",
+   "Evil-merodach",
+   "Nebuzar-adan"
+  ],
+  "answer": 2,
+  "explanation": "Evil-merodach king of Babylon did lift up the head of Jehoiachin king of Judah out of prison.",
+  "ref": "2 Kings 25:27"
+ },
+ {
+  "id": "2-kings-25-m-15",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Evil-merodach set above the thrones of the other kings with Jehoiachin?",
+  "choices": [
+   "A banquet table",
+   "A golden crown",
+   "The temple vessels",
+   "Jehoiachin's throne"
+  ],
+  "answer": 3,
+  "explanation": "He spake kindly to him, and set his throne above the throne of the kings that were with him in Babylon.",
+  "ref": "2 Kings 25:28"
+ },
+ {
+  "id": "2-kings-25-h-01",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How tall was one of the brass pillars?",
+  "choices": [
+   "Eighteen cubits",
+   "Three cubits",
+   "Thirty cubits",
+   "Eight cubits"
+  ],
+  "answer": 0,
+  "explanation": "The height of the one pillar was eighteen cubits.",
+  "ref": "2 Kings 25:17"
+ },
+ {
+  "id": "2-kings-25-h-02",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How tall was the chapiter upon the pillar?",
+  "choices": [
+   "Eighteen cubits",
+   "Five cubits",
+   "One cubit",
+   "Three cubits"
+  ],
+  "answer": 3,
+  "explanation": "The height of the chapiter three cubits.",
+  "ref": "2 Kings 25:17"
+ },
+ {
+  "id": "2-kings-25-h-03",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was on the chapiter round about, all of brass?",
+  "choices": [
+   "Lions and oxen",
+   "Palm trees and flowers",
+   "Cherubim and lilies",
+   "Wreathen work and pomegranates"
+  ],
+  "answer": 3,
+  "explanation": "The wreathen work, and pomegranates upon the chapiter round about, all of brass.",
+  "ref": "2 Kings 25:17"
+ },
+ {
+  "id": "2-kings-25-h-04",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many keepers of the door were taken with the priests?",
+  "choices": [
+   "Three",
+   "Five",
+   "Seven",
+   "Sixty"
+  ],
+  "answer": 0,
+  "explanation": "The captain of the guard took Seraiah the chief priest, and Zephaniah the second priest, and the three keepers of the door.",
+  "ref": "2 Kings 25:18"
+ },
+ {
+  "id": "2-kings-25-h-05",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of the people of the land were taken out of the city?",
+  "choices": [
+   "Threescore",
+   "Five",
+   "Ten",
+   "A hundred"
+  ],
+  "answer": 0,
+  "explanation": "Threescore men of the people of the land that were found in the city.",
+  "ref": "2 Kings 25:19"
+ },
+ {
+  "id": "2-kings-25-h-06",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of the king's presence were found in the city?",
+  "choices": [
+   "Five",
+   "Three",
+   "Ten",
+   "Sixty"
+  ],
+  "answer": 0,
+  "explanation": "Five men of them that were in the king's presence, which were found in the city.",
+  "ref": "2 Kings 25:19"
+ },
+ {
+  "id": "2-kings-25-h-07",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Which captain was the son of Careah?",
+  "choices": [
+   "Johanan",
+   "Ishmael",
+   "Seraiah",
+   "Jaazaniah"
+  ],
+  "answer": 0,
+  "explanation": "Ishmael the son of Nethaniah, and Johanan the son of Careah.",
+  "ref": "2 Kings 25:23"
+ },
+ {
+  "id": "2-kings-25-h-08",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Seraiah the captain was the son of whom?",
+  "choices": [
+   "Careah the Maachathite",
+   "Nethaniah the Elishamite",
+   "Ahikam the scribe",
+   "Tanhumeth the Netophathite"
+  ],
+  "answer": 3,
+  "explanation": "Seraiah the son of Tanhumeth the Netophathite.",
+  "ref": "2 Kings 25:23"
+ },
+ {
+  "id": "2-kings-25-h-09",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men came with Ishmael when he struck Gedaliah?",
+  "choices": [
+   "Five",
+   "Ten",
+   "Sixty",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "Ishmael... of the seed royal, came, and ten men with him, and smote Gedaliah.",
+  "ref": "2 Kings 25:25"
+ },
+ {
+  "id": "2-kings-25-h-10",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of the weight of the brass of the vessels?",
+  "choices": [
+   "It was ten thousand talents",
+   "It was without weight",
+   "It was left behind",
+   "It was weighed for Babylon"
+  ],
+  "answer": 1,
+  "explanation": "The brass of all these vessels was without weight.",
+  "ref": "2 Kings 25:16"
+ },
+ {
+  "id": "2-kings-25-h-11",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the captain take away in gold and silver?",
+  "choices": [
+   "Pots and shovels",
+   "Pillars and bases",
+   "Firepans and bowls",
+   "Snuffers and spoons"
+  ],
+  "answer": 2,
+  "explanation": "The firepans, and the bowls, and such things as were of gold, in gold, and of silver, in silver, the captain of the guard took away.",
+  "ref": "2 Kings 25:15"
+ },
+ {
+  "id": "2-kings-25-h-12",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Evil-merodach give Jehoiachin all the days of his life?",
+  "choices": [
+   "A house in Jerusalem",
+   "A city to rule",
+   "A seat in the court only",
+   "A continual daily allowance"
+  ],
+  "answer": 3,
+  "explanation": "His allowance was a continual allowance given him of the king, a daily rate for every day.",
+  "ref": "2 Kings 25:30"
+ },
+ {
+  "id": "2-kings-25-h-13",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Evil-merodach change for Jehoiachin?",
+  "choices": [
+   "His name",
+   "His throne",
+   "His palace",
+   "His prison garments"
+  ],
+  "answer": 3,
+  "explanation": "He changed his prison garments: and he did eat bread continually before him.",
+  "ref": "2 Kings 25:29"
+ },
+ {
+  "id": "2-kings-25-h-14",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day of the fourth month did the famine prevail?",
+  "choices": [
+   "The tenth day",
+   "The ninth day",
+   "The seventh day",
+   "The twenty-seventh day"
+  ],
+  "answer": 1,
+  "explanation": "On the ninth day of the fourth month the famine prevailed in the city.",
+  "ref": "2 Kings 25:3"
+ },
+ {
+  "id": "2-kings-25-h-15",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who else was slain at Mizpah with Gedaliah?",
+  "choices": [
+   "His sons only",
+   "The priests of Bethel",
+   "Nebuzar-adan",
+   "The Jews and Chaldees with him"
+  ],
+  "answer": 3,
+  "explanation": "Ishmael smote Gedaliah, that he died, and the Jews and the Chaldees that were with him at Mizpah.",
+  "ref": "2 Kings 25:25"
  }
 ]
