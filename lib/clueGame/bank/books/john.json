@@ -5918,5 +5918,4485 @@
   "answer": 3,
   "explanation": "The other disciples came in a little ship; dragging the net with fishes.",
   "ref": "John 21:8"
+ },
+ {
+  "id": "john-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus call the man who climbs up some other way into the sheepfold?",
+  "choices": [
+   "A hireling",
+   "A thief and a robber",
+   "A stranger",
+   "A wolf"
+  ],
+  "answer": 1,
+  "explanation": "He that entereth not by the door, but climbeth up some other way, the same is a thief and a robber.",
+  "ref": "John 10:1"
+ },
+ {
+  "id": "john-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say he is, besides the good shepherd?",
+  "choices": [
+   "The true vine",
+   "The bread of life",
+   "The way",
+   "The door of the sheep"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said, I am the door of the sheep.",
+  "ref": "John 10:7"
+ },
+ {
+  "id": "john-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom will the sheep not follow?",
+  "choices": [
+   "A stranger",
+   "The porter",
+   "The hireling",
+   "A shepherd"
+  ],
+  "answer": 0,
+  "explanation": "A stranger will they not follow, but will flee from him: for they know not the voice of strangers.",
+  "ref": "John 10:5"
+ },
+ {
+  "id": "john-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the thief come to do?",
+  "choices": [
+   "Gather and feed",
+   "Scatter and flee",
+   "Steal, kill and destroy",
+   "Buy and sell"
+  ],
+  "answer": 2,
+  "explanation": "The thief cometh not, but for to steal, and to kill, and to destroy.",
+  "ref": "John 10:10"
+ },
+ {
+  "id": "john-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jesus say he came?",
+  "choices": [
+   "To bring a sword",
+   "To judge the world",
+   "That they might have life more abundantly",
+   "To call the Gentiles only"
+  ],
+  "answer": 2,
+  "explanation": "I am come that they might have life, and that they might have it more abundantly.",
+  "ref": "John 10:10"
+ },
+ {
+  "id": "john-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the hireling do when he sees the wolf coming?",
+  "choices": [
+   "Leaves the sheep and flees",
+   "Fights the wolf",
+   "Calls the shepherd",
+   "Hides the sheep"
+  ],
+  "answer": 0,
+  "explanation": "He that is an hireling seeth the wolf coming, and leaveth the sheep, and fleeth.",
+  "ref": "John 10:12"
+ },
+ {
+  "id": "john-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say there shall be when he brings his other sheep?",
+  "choices": [
+   "Two folds and two shepherds",
+   "One temple",
+   "One kingdom of Israel only",
+   "One fold and one shepherd"
+  ],
+  "answer": 3,
+  "explanation": "They shall hear my voice; and there shall be one fold, and one shepherd.",
+  "ref": "John 10:16"
+ },
+ {
+  "id": "john-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What feast was it at Jerusalem?",
+  "choices": [
+   "Passover",
+   "The feast of the dedication",
+   "Tabernacles",
+   "Pentecost"
+  ],
+  "answer": 1,
+  "explanation": "It was at Jerusalem the feast of the dedication, and it was winter.",
+  "ref": "John 10:22"
+ },
+ {
+  "id": "john-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus walk in the temple?",
+  "choices": [
+   "Solomon's porch",
+   "The treasury",
+   "The court of the women",
+   "The eastern gate"
+  ],
+  "answer": 0,
+  "explanation": "Jesus walked in the temple in Solomon's porch.",
+  "ref": "John 10:23"
+ },
+ {
+  "id": "john-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus go after he escaped out of their hand?",
+  "choices": [
+   "Back to Galilee",
+   "To Bethany",
+   "Beyond Jordan, where John at first baptized",
+   "To Ephraim"
+  ],
+  "answer": 2,
+  "explanation": "He went away again beyond Jordan into the place where John at first baptized; and there he abode.",
+  "ref": "John 10:40"
+ },
+ {
+  "id": "john-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the shepherd call his own sheep?",
+  "choices": [
+   "By a whistle",
+   "By a rod",
+   "By name",
+   "By a song"
+  ],
+  "answer": 2,
+  "explanation": "He calleth his own sheep by name, and leadeth them out.",
+  "ref": "John 10:3"
+ },
+ {
+  "id": "john-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the hearers respond to the parable of the sheepfold?",
+  "choices": [
+   "They rejoiced",
+   "They asked for more",
+   "They understood not what he spake",
+   "They worshipped him"
+  ],
+  "answer": 2,
+  "explanation": "This parable spake Jesus unto them: but they understood not what things they were which he spake unto them.",
+  "ref": "John 10:6"
+ },
+ {
+  "id": "john-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say of all that ever came before him?",
+  "choices": [
+   "They are thieves and robbers",
+   "They were prophets",
+   "They were hirelings",
+   "They were shepherds"
+  ],
+  "answer": 0,
+  "explanation": "All that ever came before me are thieves and robbers: but the sheep did not hear them.",
+  "ref": "John 10:8"
+ },
+ {
+  "id": "john-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say of the one who enters in by him?",
+  "choices": [
+   "He shall never hunger",
+   "He shall be a shepherd",
+   "He shall see the Father",
+   "He shall be saved, and go in and out, and find pasture"
+  ],
+  "answer": 3,
+  "explanation": "By me if any man enter in, he shall be saved, and shall go in and out, and find pasture.",
+  "ref": "John 10:9"
+ },
+ {
+  "id": "john-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the sheep when the hireling flees?",
+  "choices": [
+   "The shepherd returns",
+   "The wolf catcheth and scattereth them",
+   "They follow the stranger",
+   "They find the door"
+  ],
+  "answer": 1,
+  "explanation": "The wolf catcheth them, and scattereth the sheep.",
+  "ref": "John 10:12"
+ },
+ {
+  "id": "john-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the hireling flee?",
+  "choices": [
+   "He careth not for the sheep",
+   "He fears the porter",
+   "He is paid by the sheep",
+   "He is a stranger to the fold"
+  ],
+  "answer": 0,
+  "explanation": "The hireling fleeth, because he is an hireling, and careth not for the sheep.",
+  "ref": "John 10:13"
+ },
+ {
+  "id": "john-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Jesus say he knows as he is known?",
+  "choices": [
+   "Moses",
+   "The prophets",
+   "The Father",
+   "Abraham"
+  ],
+  "answer": 2,
+  "explanation": "As the Father knoweth me, even so know I the Father.",
+  "ref": "John 10:15"
+ },
+ {
+  "id": "john-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus say the Father loves him?",
+  "choices": [
+   "Because he keeps the sabbath",
+   "Because he lays down his life to take it again",
+   "Because he heals the sick",
+   "Because he gathers the nations"
+  ],
+  "answer": 1,
+  "explanation": "Therefore doth my Father love me, because I lay down my life, that I might take it again.",
+  "ref": "John 10:17"
+ },
+ {
+  "id": "john-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say of who takes his life from him?",
+  "choices": [
+   "The Jews shall take it",
+   "The Romans shall take it",
+   "The Father shall take it",
+   "No man takes it; he lays it down of himself"
+  ],
+  "answer": 3,
+  "explanation": "No man taketh it from me, but I lay it down of myself.",
+  "ref": "John 10:18"
+ },
+ {
+  "id": "john-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did others among the Jews say about the words of Jesus?",
+  "choices": [
+   "He is a prophet of Galilee",
+   "He is Elias",
+   "He hath a devil",
+   "Can a devil open the eyes of the blind?"
+  ],
+  "answer": 3,
+  "explanation": "Others said, These are not the words of him that hath a devil. Can a devil open the eyes of the blind?",
+  "ref": "John 10:21"
+ },
+ {
+  "id": "john-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Jews demand of Jesus at the temple?",
+  "choices": [
+   "Show us a sign from heaven",
+   "If thou be the Christ, tell us plainly",
+   "Tell us who is thy father",
+   "Heal the sick before us"
+  ],
+  "answer": 1,
+  "explanation": "How long dost thou make us to doubt? If thou be the Christ, tell us plainly.",
+  "ref": "John 10:24"
+ },
+ {
+  "id": "john-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say bears witness of him?",
+  "choices": [
+   "The prophets",
+   "John the Baptist",
+   "The works he does in his Father's name",
+   "The scribes"
+  ],
+  "answer": 2,
+  "explanation": "The works that I do in my Father's name, they bear witness of me.",
+  "ref": "John 10:25"
+ },
+ {
+  "id": "john-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus say the Jews did not believe?",
+  "choices": [
+   "They were not of his sheep",
+   "They were Gentiles",
+   "They were rich",
+   "They were Samaritans"
+  ],
+  "answer": 0,
+  "explanation": "Ye believe not, because ye are not of my sheep.",
+  "ref": "John 10:26"
+ },
+ {
+  "id": "john-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say he gives to his sheep?",
+  "choices": [
+   "Great riches",
+   "Eternal life",
+   "A kingdom on earth",
+   "Authority over the temple"
+  ],
+  "answer": 1,
+  "explanation": "I give unto them eternal life; and they shall never perish.",
+  "ref": "John 10:28"
+ },
+ {
+  "id": "john-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Jews say they stoned Jesus?",
+  "choices": [
+   "For breaking the sabbath",
+   "For healing the blind",
+   "For teaching in the temple",
+   "For blasphemy, because he made himself God"
+  ],
+  "answer": 3,
+  "explanation": "For a good work we stone thee not; but for blasphemy; and because that thou, being a man, makest thyself God.",
+  "ref": "John 10:33"
+ },
+ {
+  "id": "john-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus quote from their law?",
+  "choices": [
+   "Thou shalt not kill",
+   "The Lord is one",
+   "Honour thy father",
+   "I said, Ye are gods"
+  ],
+  "answer": 3,
+  "explanation": "Is it not written in your law, I said, Ye are gods?",
+  "ref": "John 10:34"
+ },
+ {
+  "id": "john-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say cannot be broken?",
+  "choices": [
+   "The sheepfold",
+   "The scripture",
+   "The law of Moses only",
+   "The temple"
+  ],
+  "answer": 1,
+  "explanation": "The scripture cannot be broken.",
+  "ref": "John 10:35"
+ },
+ {
+  "id": "john-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the Father had done to him?",
+  "choices": [
+   "Sanctified him and sent him into the world",
+   "Anointed him king",
+   "Made him a priest",
+   "Given him the temple"
+  ],
+  "answer": 0,
+  "explanation": "Say ye of him, whom the Father hath sanctified, and sent into the world, Thou blasphemest?",
+  "ref": "John 10:36"
+ },
+ {
+  "id": "john-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say to do if they did not believe him?",
+  "choices": [
+   "Ask the prophets",
+   "Ask John",
+   "Believe the works",
+   "Ask the priests"
+  ],
+  "answer": 2,
+  "explanation": "Though ye believe not me, believe the works: that ye may know, and believe, that the Father is in me, and I in him.",
+  "ref": "John 10:38"
+ },
+ {
+  "id": "john-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened when the Jews again sought to take Jesus?",
+  "choices": [
+   "He was bound",
+   "He escaped out of their hand",
+   "He was struck",
+   "He was taken to the high priest"
+  ],
+  "answer": 1,
+  "explanation": "They sought again to take him: but he escaped out of their hand.",
+  "ref": "John 10:39"
+ },
+ {
+  "id": "john-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the many beyond Jordan say John did not do?",
+  "choices": [
+   "Baptize",
+   "Preach",
+   "Fast",
+   "Any miracle"
+  ],
+  "answer": 3,
+  "explanation": "John did no miracle: but all things that John spake of this man were true.",
+  "ref": "John 10:41"
+ },
+ {
+  "id": "john-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did many do beyond Jordan?",
+  "choices": [
+   "Fled from him",
+   "Stoned him",
+   "Bound him",
+   "Believed on him"
+  ],
+  "answer": 3,
+  "explanation": "Many believed on him there.",
+  "ref": "John 10:42"
+ },
+ {
+  "id": "john-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When the shepherd puts forth his own sheep, where does he go?",
+  "choices": [
+   "Behind them",
+   "Before them",
+   "Beside the door",
+   "Far off"
+  ],
+  "answer": 1,
+  "explanation": "When he putteth forth his own sheep, he goeth before them, and the sheep follow him.",
+  "ref": "John 10:4"
+ },
+ {
+  "id": "john-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whom did Jesus say he received the commandment to lay down his life?",
+  "choices": [
+   "Moses",
+   "The prophets",
+   "His Father",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "This commandment have I received of my Father.",
+  "ref": "John 10:18"
+ },
+ {
+  "id": "john-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did Jesus say is greater than all?",
+  "choices": [
+   "His Father",
+   "Moses",
+   "The shepherd",
+   "Abraham"
+  ],
+  "answer": 0,
+  "explanation": "My Father, which gave them me, is greater than all.",
+  "ref": "John 10:29"
+ },
+ {
+  "id": "john-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus ask the Jews about his good works?",
+  "choices": [
+   "Who sent you to take me?",
+   "For which of those works do ye stone me?",
+   "Why do you not believe the prophets?",
+   "Where is your witness?"
+  ],
+  "answer": 1,
+  "explanation": "Many good works have I shewed you from my Father; for which of those works do ye stone me?",
+  "ref": "John 10:32"
+ },
+ {
+  "id": "john-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say to do if he did not the works of his Father?",
+  "choices": [
+   "Stone him",
+   "Follow him still",
+   "Ask the prophets",
+   "Believe him not"
+  ],
+  "answer": 3,
+  "explanation": "If I do not the works of my Father, believe me not.",
+  "ref": "John 10:37"
+ },
+ {
+  "id": "john-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Jews ask when they came round about Jesus?",
+  "choices": [
+   "How long dost thou make us to doubt?",
+   "Where is thy Father?",
+   "By what power doest thou this?",
+   "Who gave thee this authority?"
+  ],
+  "answer": 0,
+  "explanation": "Then came the Jews round about him, and said unto him, How long dost thou make us to doubt?",
+  "ref": "John 10:24"
+ },
+ {
+  "id": "john-10-h-14",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the result of these sayings among the Jews?",
+  "choices": [
+   "A riot",
+   "A fast",
+   "A division",
+   "A council"
+  ],
+  "answer": 2,
+  "explanation": "There was a division therefore again among the Jews for these sayings.",
+  "ref": "John 10:19"
+ },
+ {
+  "id": "john-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did many of the Jews say of Jesus?",
+  "choices": [
+   "He is Elias",
+   "He is a prophet",
+   "He hath a devil, and is mad",
+   "He is a king"
+  ],
+  "answer": 2,
+  "explanation": "Many of them said, He hath a devil, and is mad; why hear ye him?",
+  "ref": "John 10:20"
+ },
+ {
+  "id": "john-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Lazarus lived in the town of which two sisters?",
+  "choices": [
+   "Mary and Salome",
+   "Mary and Martha",
+   "Martha and Joanna",
+   "Rachel and Leah"
+  ],
+  "answer": 1,
+  "explanation": "Lazarus was of Bethany, the town of Mary and her sister Martha.",
+  "ref": "John 11:1"
+ },
+ {
+  "id": "john-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the sisters tell Jesus about Lazarus?",
+  "choices": [
+   "He is dead",
+   "He wishes to see thee",
+   "He is in the grave",
+   "He whom thou lovest is sick"
+  ],
+  "answer": 3,
+  "explanation": "His sisters sent unto him, saying, Lord, behold, he whom thou lovest is sick.",
+  "ref": "John 11:3"
+ },
+ {
+  "id": "john-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say the sickness was for?",
+  "choices": [
+   "The glory of God",
+   "The punishment of sin",
+   "A sign to Rome",
+   "The teaching of the disciples"
+  ],
+  "answer": 0,
+  "explanation": "This sickness is not unto death, but for the glory of God, that the Son of God might be glorified thereby.",
+  "ref": "John 11:4"
+ },
+ {
+  "id": "john-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Jesus stay in the same place after hearing Lazarus was sick?",
+  "choices": [
+   "One day",
+   "Four days",
+   "Two days",
+   "A week"
+  ],
+  "answer": 2,
+  "explanation": "He abode two days still in the same place where he was.",
+  "ref": "John 11:6"
+ },
+ {
+  "id": "john-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say Lazarus did, when he spoke of his death?",
+  "choices": [
+   "Wandereth",
+   "Waiteth",
+   "Sleepeth",
+   "Travelleth"
+  ],
+  "answer": 2,
+  "explanation": "Our friend Lazarus sleepeth; but I go, that I may awake him out of sleep.",
+  "ref": "John 11:11"
+ },
+ {
+  "id": "john-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said, Let us also go, that we may die with him?",
+  "choices": [
+   "Thomas",
+   "Peter",
+   "Philip",
+   "Andrew"
+  ],
+  "answer": 0,
+  "explanation": "Then said Thomas, which is called Didymus, Let us also go, that we may die with him.",
+  "ref": "John 11:16"
+ },
+ {
+  "id": "john-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long had Lazarus lain in the grave when Jesus came?",
+  "choices": [
+   "Two days",
+   "Three days",
+   "Seven days",
+   "Four days"
+  ],
+  "answer": 3,
+  "explanation": "He found that he had lain in the grave four days already.",
+  "ref": "John 11:17"
+ },
+ {
+  "id": "john-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which sister met Jesus first while the other sat in the house?",
+  "choices": [
+   "Mary",
+   "Martha",
+   "Salome",
+   "Joanna"
+  ],
+  "answer": 1,
+  "explanation": "Martha went and met him: but Mary sat still in the house.",
+  "ref": "John 11:20"
+ },
+ {
+  "id": "john-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Martha say would not have happened if Jesus had been there?",
+  "choices": [
+   "Her brother would not have died",
+   "The Jews would not have come",
+   "The stone would not have been set",
+   "The sickness would not have spread"
+  ],
+  "answer": 0,
+  "explanation": "Lord, if thou hadst been here, my brother had not died.",
+  "ref": "John 11:21"
+ },
+ {
+  "id": "john-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of grave was Lazarus laid in?",
+  "choices": [
+   "A garden tomb",
+   "A house",
+   "A cave with a stone upon it",
+   "A pit"
+  ],
+  "answer": 2,
+  "explanation": "It was a cave, and a stone lay upon it.",
+  "ref": "John 11:38"
+ },
+ {
+  "id": "john-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Mary, the sister of Lazarus, done to the Lord?",
+  "choices": [
+   "Washed his feet with water",
+   "Given him bread",
+   "Anointed him with ointment and wiped his feet with her hair",
+   "Made him a supper"
+  ],
+  "answer": 2,
+  "explanation": "It was that Mary which anointed the Lord with ointment, and wiped his feet with her hair.",
+  "ref": "John 11:2"
+ },
+ {
+  "id": "john-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the disciples object to going back into Judaea?",
+  "choices": [
+   "The way was far",
+   "Lazarus was already dead",
+   "The Jews of late sought to stone him",
+   "Herod waited there"
+  ],
+  "answer": 2,
+  "explanation": "Master, the Jews of late sought to stone thee; and goest thou thither again?",
+  "ref": "John 11:8"
+ },
+ {
+  "id": "john-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does he that walks in the day not stumble?",
+  "choices": [
+   "He seeth the light of this world",
+   "He knows the road",
+   "He carries a lamp",
+   "He walks with friends"
+  ],
+  "answer": 0,
+  "explanation": "If any man walk in the day, he stumbleth not, because he seeth the light of this world.",
+  "ref": "John 11:9"
+ },
+ {
+  "id": "john-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus say he was glad he was not there?",
+  "choices": [
+   "That the sisters might rest",
+   "That Lazarus might sleep",
+   "That the Jews might not find him",
+   "That the disciples might believe"
+  ],
+  "answer": 3,
+  "explanation": "I am glad for your sakes that I was not there, to the intent ye may believe.",
+  "ref": "John 11:15"
+ },
+ {
+  "id": "john-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did many Jews come to Martha and Mary?",
+  "choices": [
+   "To mourn with the priests",
+   "To comfort them about their brother",
+   "To bring gifts",
+   "To ask for Jesus"
+  ],
+  "answer": 1,
+  "explanation": "Many of the Jews came to Martha and Mary, to comfort them concerning their brother.",
+  "ref": "John 11:19"
+ },
+ {
+  "id": "john-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Martha say she knew about God and Jesus?",
+  "choices": [
+   "Whatsoever he asks of God, God will give it him",
+   "God would raise Lazarus that day",
+   "God would send an angel",
+   "God hears the prayers of the Jews"
+  ],
+  "answer": 0,
+  "explanation": "I know, that even now, whatsoever thou wilt ask of God, God will give it thee.",
+  "ref": "John 11:22"
+ },
+ {
+  "id": "john-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Martha say her brother would rise again?",
+  "choices": [
+   "On the third day",
+   "At the feast",
+   "In the resurrection at the last day",
+   "When Jesus came"
+  ],
+  "answer": 2,
+  "explanation": "I know that he shall rise again in the resurrection at the last day.",
+  "ref": "John 11:24"
+ },
+ {
+  "id": "john-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Martha confess about Jesus?",
+  "choices": [
+   "That he is Elias",
+   "That he is the Christ, the Son of God",
+   "That he is the prophet",
+   "That he is the King of Israel"
+  ],
+  "answer": 1,
+  "explanation": "I believe that thou art the Christ, the Son of God, which should come into the world.",
+  "ref": "John 11:27"
+ },
+ {
+  "id": "john-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Martha call her sister Mary?",
+  "choices": [
+   "Openly in the street",
+   "By sending a servant",
+   "With a loud voice",
+   "Secretly, saying the Master is come"
+  ],
+  "answer": 3,
+  "explanation": "She went her way, and called Mary her sister secretly, saying, The Master is come, and calleth for thee.",
+  "ref": "John 11:28"
+ },
+ {
+  "id": "john-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Jews follow Mary when she rose up hastily?",
+  "choices": [
+   "They thought she went to Jerusalem",
+   "They wanted to see Jesus",
+   "They were sent by the priests",
+   "They thought she went to the grave to weep"
+  ],
+  "answer": 3,
+  "explanation": "They said, She goeth unto the grave to weep there.",
+  "ref": "John 11:31"
+ },
+ {
+  "id": "john-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Mary do when she came where Jesus was?",
+  "choices": [
+   "Ran past him",
+   "Fell down at his feet",
+   "Wept at the door",
+   "Brought him water"
+  ],
+  "answer": 1,
+  "explanation": "She fell down at his feet, saying unto him, Lord, if thou hadst been here, my brother had not died.",
+  "ref": "John 11:32"
+ },
+ {
+  "id": "john-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did some of the Jews say about Jesus at the weeping?",
+  "choices": [
+   "He loved him not",
+   "He is a stranger",
+   "Could he who opened blind eyes not have saved him?",
+   "He came too late on purpose"
+  ],
+  "answer": 2,
+  "explanation": "Could not this man, which opened the eyes of the blind, have caused that even this man should not have died?",
+  "ref": "John 11:37"
+ },
+ {
+  "id": "john-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Martha say when Jesus told them to take away the stone?",
+  "choices": [
+   "By this time he stinketh, for he hath been dead four days",
+   "He is not there",
+   "We cannot move it",
+   "The Jews will stone us"
+  ],
+  "answer": 0,
+  "explanation": "Lord, by this time he stinketh: for he hath been dead four days.",
+  "ref": "John 11:39"
+ },
+ {
+  "id": "john-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus tell Martha she should see if she would believe?",
+  "choices": [
+   "Her brother alive that day",
+   "The glory of God",
+   "A great sign in heaven",
+   "The face of the Father"
+  ],
+  "answer": 1,
+  "explanation": "If thou wouldest believe, thou shouldest see the glory of God.",
+  "ref": "John 11:40"
+ },
+ {
+  "id": "john-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the chief priests and Pharisees say when they gathered a council?",
+  "choices": [
+   "This man is a Samaritan",
+   "This man breaks the sabbath",
+   "This man is a king",
+   "This man doeth many miracles"
+  ],
+  "answer": 3,
+  "explanation": "What do we? for this man doeth many miracles.",
+  "ref": "John 11:47"
+ },
+ {
+  "id": "john-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "About how far was Bethany from Jerusalem?",
+  "choices": [
+   "Five furlongs",
+   "Fifty furlongs",
+   "Two hundred furlongs",
+   "Fifteen furlongs"
+  ],
+  "answer": 3,
+  "explanation": "Bethany was nigh unto Jerusalem, about fifteen furlongs off.",
+  "ref": "John 11:18"
+ },
+ {
+  "id": "john-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What name is Thomas also called in this chapter?",
+  "choices": [
+   "Bartholomew",
+   "Didymus",
+   "Nathanael",
+   "Levi"
+  ],
+  "answer": 1,
+  "explanation": "Then said Thomas, which is called Didymus.",
+  "ref": "John 11:16"
+ },
+ {
+  "id": "john-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jesus react when he saw Mary and the Jews weeping?",
+  "choices": [
+   "He groaned in the spirit and was troubled",
+   "He turned away",
+   "He rebuked them",
+   "He prayed in silence"
+  ],
+  "answer": 0,
+  "explanation": "When Jesus therefore saw her weeping, he groaned in the spirit, and was troubled.",
+  "ref": "John 11:33"
+ },
+ {
+  "id": "john-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus ask when he came to the place?",
+  "choices": [
+   "Who hath moved the stone?",
+   "How long hath he been dead?",
+   "Where have ye laid him?",
+   "Where is his sister?"
+  ],
+  "answer": 2,
+  "explanation": "He said, Where have ye laid him? They said unto him, Lord, come and see.",
+  "ref": "John 11:34"
+ },
+ {
+  "id": "john-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jesus say he spoke aloud to the Father?",
+  "choices": [
+   "Because the disciples doubted",
+   "For the people, that they may believe he was sent",
+   "Because Martha asked",
+   "Because the Pharisees listened"
+  ],
+  "answer": 1,
+  "explanation": "Because of the people which stand by I said it, that they may believe that thou hast sent me.",
+  "ref": "John 11:42"
+ },
+ {
+  "id": "john-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was bound about the face of Lazarus?",
+  "choices": [
+   "A veil",
+   "A headband",
+   "A linen cloth of the temple",
+   "A napkin"
+  ],
+  "answer": 3,
+  "explanation": "His face was bound about with a napkin.",
+  "ref": "John 11:44"
+ },
+ {
+  "id": "john-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say to the people when Lazarus came forth?",
+  "choices": [
+   "Give him bread",
+   "Take him home",
+   "Tell no man",
+   "Loose him, and let him go"
+  ],
+  "answer": 3,
+  "explanation": "Jesus saith unto them, Loose him, and let him go.",
+  "ref": "John 11:44"
+ },
+ {
+  "id": "john-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did some of the Jews do after seeing what Jesus did?",
+  "choices": [
+   "Went home and wept",
+   "Went to the Pharisees and told them",
+   "Went to Galilee",
+   "Tried to stone him"
+  ],
+  "answer": 1,
+  "explanation": "Some of them went their ways to the Pharisees, and told them what things Jesus had done.",
+  "ref": "John 11:46"
+ },
+ {
+  "id": "john-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the council fear the Romans would do?",
+  "choices": [
+   "Burn the temple only",
+   "Take Jesus",
+   "Take away both their place and nation",
+   "Raise the taxes"
+  ],
+  "answer": 2,
+  "explanation": "The Romans shall come and take away both our place and nation.",
+  "ref": "John 11:48"
+ },
+ {
+  "id": "john-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What office did Caiaphas hold that year?",
+  "choices": [
+   "High priest",
+   "Scribe",
+   "Ruler of the synagogue",
+   "Captain of the temple"
+  ],
+  "answer": 0,
+  "explanation": "One of them, named Caiaphas, being the high priest that same year.",
+  "ref": "John 11:49"
+ },
+ {
+  "id": "john-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Caiaphas prophesy beyond that nation?",
+  "choices": [
+   "That Jesus would be crowned",
+   "That he would gather God's scattered children in one",
+   "That Rome would fall",
+   "That the temple would be rebuilt"
+  ],
+  "answer": 1,
+  "explanation": "Not for that nation only, but that also he should gather together in one the children of God that were scattered abroad.",
+  "ref": "John 11:52"
+ },
+ {
+  "id": "john-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jesus go to avoid walking openly among the Jews?",
+  "choices": [
+   "Bethany",
+   "Jericho",
+   "Galilee",
+   "Ephraim, near the wilderness"
+  ],
+  "answer": 3,
+  "explanation": "Jesus went thence unto a country near to the wilderness, into a city called Ephraim.",
+  "ref": "John 11:54"
+ },
+ {
+  "id": "john-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did many go up to Jerusalem before the passover?",
+  "choices": [
+   "To purify themselves",
+   "To pay tribute",
+   "To see Jesus crowned",
+   "To sell in the temple"
+  ],
+  "answer": 0,
+  "explanation": "Many went out of the country up to Jerusalem before the passover, to purify themselves.",
+  "ref": "John 11:55"
+ },
+ {
+  "id": "john-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the chief priests and Pharisees commanded about Jesus?",
+  "choices": [
+   "That he be stoned on sight",
+   "That the temple be closed",
+   "That anyone knowing where he was should shew it",
+   "That Lazarus be hidden"
+  ],
+  "answer": 2,
+  "explanation": "If any man knew where he were, he should shew it, that they might take him.",
+  "ref": "John 11:57"
+ },
+ {
+  "id": "john-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus thank the Father for when he lifted up his eyes?",
+  "choices": [
+   "That Lazarus lived",
+   "That the stone was moved",
+   "That he had heard him",
+   "That the Jews believed"
+  ],
+  "answer": 2,
+  "explanation": "Father, I thank thee that thou hast heard me.",
+  "ref": "John 11:41"
+ },
+ {
+  "id": "john-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus come six days before the passover?",
+  "choices": [
+   "Jericho",
+   "Bethany",
+   "Ephraim",
+   "Bethphage"
+  ],
+  "answer": 1,
+  "explanation": "Jesus six days before the passover came to Bethany, where Lazarus was which had been dead.",
+  "ref": "John 12:1"
+ },
+ {
+  "id": "john-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who served at the supper made for Jesus?",
+  "choices": [
+   "Mary",
+   "Salome",
+   "Joanna",
+   "Martha"
+  ],
+  "answer": 3,
+  "explanation": "There they made him a supper; and Martha served.",
+  "ref": "John 12:2"
+ },
+ {
+  "id": "john-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of ointment did Mary use on Jesus?",
+  "choices": [
+   "Spikenard, very costly",
+   "Myrrh",
+   "Frankincense",
+   "Aloes"
+  ],
+  "answer": 0,
+  "explanation": "Mary took a pound of ointment of spikenard, very costly.",
+  "ref": "John 12:3"
+ },
+ {
+  "id": "john-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did much people of the Jews come to Bethany?",
+  "choices": [
+   "To hear Martha",
+   "To buy ointment",
+   "To see Lazarus also",
+   "To plan a feast"
+  ],
+  "answer": 2,
+  "explanation": "They came not for Jesus' sake only, but that they might see Lazarus also, whom he had raised from the dead.",
+  "ref": "John 12:9"
+ },
+ {
+  "id": "john-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the chief priests plan to do to Lazarus?",
+  "choices": [
+   "Send him away",
+   "Bind him",
+   "Put him to death",
+   "Question him"
+  ],
+  "answer": 2,
+  "explanation": "The chief priests consulted that they might put Lazarus also to death.",
+  "ref": "John 12:10"
+ },
+ {
+  "id": "john-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the crowd cry as Jesus came to Jerusalem?",
+  "choices": [
+   "Hosanna: Blessed is the King of Israel",
+   "Peace on earth",
+   "Holy, holy, holy",
+   "Son of David, have mercy"
+  ],
+  "answer": 0,
+  "explanation": "They cried, Hosanna: Blessed is the King of Israel that cometh in the name of the Lord.",
+  "ref": "John 12:13"
+ },
+ {
+  "id": "john-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus sit on as he entered Jerusalem?",
+  "choices": [
+   "A horse",
+   "A camel",
+   "A chariot",
+   "A young ass"
+  ],
+  "answer": 3,
+  "explanation": "Jesus, when he had found a young ass, sat thereon.",
+  "ref": "John 12:14"
+ },
+ {
+  "id": "john-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came up to worship at the feast and wanted to see Jesus?",
+  "choices": [
+   "Roman soldiers",
+   "Certain Greeks",
+   "Samaritan women",
+   "Egyptian merchants"
+  ],
+  "answer": 1,
+  "explanation": "There were certain Greeks among them that came up to worship at the feast.",
+  "ref": "John 12:20"
+ },
+ {
+  "id": "john-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the Greeks come with their request?",
+  "choices": [
+   "Philip",
+   "Peter",
+   "Thomas",
+   "James"
+  ],
+  "answer": 0,
+  "explanation": "The same came therefore to Philip, which was of Bethsaida of Galilee.",
+  "ref": "John 12:21"
+ },
+ {
+  "id": "john-12-e-10",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Philip go and tell about the Greeks?",
+  "choices": [
+   "Peter",
+   "John",
+   "Andrew",
+   "Thomas"
+  ],
+  "answer": 2,
+  "explanation": "Philip cometh and telleth Andrew: and again Andrew and Philip tell Jesus.",
+  "ref": "John 12:22"
+ },
+ {
+  "id": "john-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Judas really speak of the poor when he complained of the ointment?",
+  "choices": [
+   "Because he served the poor",
+   "Because he feared Rome",
+   "Because he was a thief and had the bag",
+   "Because he loved the temple"
+  ],
+  "answer": 2,
+  "explanation": "This he said, not that he cared for the poor; but because he was a thief, and had the bag.",
+  "ref": "John 12:5–6"
+ },
+ {
+  "id": "john-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Judas say the ointment should have been sold for?",
+  "choices": [
+   "Thirty pieces",
+   "Two hundred pence",
+   "Three hundred pence",
+   "Five hundred pence"
+  ],
+  "answer": 2,
+  "explanation": "Why was not this ointment sold for three hundred pence, and given to the poor?",
+  "ref": "John 12:5"
+ },
+ {
+  "id": "john-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus answer Judas about Mary?",
+  "choices": [
+   "Let her alone: against the day of his burying she kept this",
+   "She has wasted it",
+   "She should sell it",
+   "She should give half to the poor"
+  ],
+  "answer": 0,
+  "explanation": "Let her alone: against the day of my burying hath she kept this.",
+  "ref": "John 12:7"
+ },
+ {
+  "id": "john-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say about the poor?",
+  "choices": [
+   "They will be provided for",
+   "They are blessed",
+   "They must be fed first",
+   "Ye have them always, but not him"
+  ],
+  "answer": 3,
+  "explanation": "For the poor always ye have with you; but me ye have not always.",
+  "ref": "John 12:8"
+ },
+ {
+  "id": "john-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did many of the Jews go away and believe on Jesus?",
+  "choices": [
+   "Because of the feast",
+   "Because of Lazarus",
+   "Because of the Greeks",
+   "Because of the priests"
+  ],
+  "answer": 1,
+  "explanation": "By reason of him many of the Jews went away, and believed on Jesus.",
+  "ref": "John 12:11"
+ },
+ {
+  "id": "john-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people meet Jesus on the road into Jerusalem?",
+  "choices": [
+   "They heard he had done this miracle",
+   "They wanted bread",
+   "They were sent by the priests",
+   "They wanted a king from Rome"
+  ],
+  "answer": 0,
+  "explanation": "For this cause the people also met him, for that they heard that he had done this miracle.",
+  "ref": "John 12:18"
+ },
+ {
+  "id": "john-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Pharisees say among themselves?",
+  "choices": [
+   "He is a false prophet",
+   "He must be crowned",
+   "Ye prevail nothing; the world is gone after him",
+   "He will leave the city"
+  ],
+  "answer": 2,
+  "explanation": "Perceive ye how ye prevail nothing? behold, the world is gone after him.",
+  "ref": "John 12:19"
+ },
+ {
+  "id": "john-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus answer the Greeks' request?",
+  "choices": [
+   "The kingdom is at hand",
+   "The hour is come that the Son of man should be glorified",
+   "Come and see",
+   "Go in peace"
+  ],
+  "answer": 1,
+  "explanation": "Jesus answered them, saying, The hour is come, that the Son of man should be glorified.",
+  "ref": "John 12:23"
+ },
+ {
+  "id": "john-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say about a corn of wheat?",
+  "choices": [
+   "It must be sown in the spring",
+   "It feeds the poor",
+   "It is nothing without rain",
+   "Dying, it brings forth much fruit; else it abides alone"
+  ],
+  "answer": 3,
+  "explanation": "Except a corn of wheat fall into the ground and die, it abideth alone: but if it die, it bringeth forth much fruit.",
+  "ref": "John 12:24"
+ },
+ {
+  "id": "john-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say of him who loveth his life?",
+  "choices": [
+   "He shall keep it",
+   "He shall be glorified",
+   "He shall follow the Father",
+   "He shall lose it"
+  ],
+  "answer": 3,
+  "explanation": "He that loveth his life shall lose it.",
+  "ref": "John 12:25"
+ },
+ {
+  "id": "john-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people say when the voice came from heaven?",
+  "choices": [
+   "That it was Elias",
+   "That it thundered, or an angel spake to him",
+   "That it was the Father",
+   "That it was the Baptist"
+  ],
+  "answer": 1,
+  "explanation": "The people said that it thundered: others said, An angel spake to him.",
+  "ref": "John 12:29"
+ },
+ {
+  "id": "john-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus say the voice came?",
+  "choices": [
+   "To warn the Pharisees",
+   "To comfort Philip",
+   "For their sakes, not for his",
+   "To bless the Greeks"
+  ],
+  "answer": 2,
+  "explanation": "This voice came not because of me, but for your sakes.",
+  "ref": "John 12:30"
+ },
+ {
+  "id": "john-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say would be cast out?",
+  "choices": [
+   "The prince of this world",
+   "The Pharisees",
+   "The priests",
+   "The unbelieving Jews"
+  ],
+  "answer": 0,
+  "explanation": "Now shall the prince of this world be cast out.",
+  "ref": "John 12:31"
+ },
+ {
+  "id": "john-12-m-14",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say he would draw when lifted up from the earth?",
+  "choices": [
+   "Fire from heaven",
+   "All men unto him",
+   "The twelve",
+   "The nations of Israel only"
+  ],
+  "answer": 1,
+  "explanation": "I, if I be lifted up from the earth, will draw all men unto me.",
+  "ref": "John 12:32"
+ },
+ {
+  "id": "john-12-m-15",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people object that they had heard out of the law?",
+  "choices": [
+   "That Christ would be born in Bethlehem",
+   "That Christ would come from Galilee",
+   "That Christ would suffer",
+   "That Christ abideth for ever"
+  ],
+  "answer": 3,
+  "explanation": "We have heard out of the law that Christ abideth for ever: and how sayest thou, The Son of man must be lifted up?",
+  "ref": "John 12:34"
+ },
+ {
+  "id": "john-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much ointment of spikenard did Mary take?",
+  "choices": [
+   "A flask",
+   "A box",
+   "Two pounds",
+   "A pound"
+  ],
+  "answer": 3,
+  "explanation": "Then took Mary a pound of ointment of spikenard, very costly.",
+  "ref": "John 12:3"
+ },
+ {
+  "id": "john-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Judas Iscariot?",
+  "choices": [
+   "Zebedee's",
+   "Simon's",
+   "Alphaeus'",
+   "Jonas'"
+  ],
+  "answer": 1,
+  "explanation": "Judas Iscariot, Simon's son, which should betray him.",
+  "ref": "John 12:4"
+ },
+ {
+  "id": "john-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many days before the passover did Jesus come to Bethany?",
+  "choices": [
+   "Six",
+   "Three",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 0,
+  "explanation": "Jesus six days before the passover came to Bethany.",
+  "ref": "John 12:1"
+ },
+ {
+  "id": "john-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the disciples remember that these things were written of Jesus?",
+  "choices": [
+   "When the Greeks came",
+   "When Lazarus rose",
+   "When Jesus was glorified",
+   "When the passover began"
+  ],
+  "answer": 2,
+  "explanation": "When Jesus was glorified, then remembered they that these things were written of him.",
+  "ref": "John 12:16"
+ },
+ {
+  "id": "john-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "What was Philip's town?",
+  "choices": [
+   "Capernaum",
+   "Bethsaida of Galilee",
+   "Cana",
+   "Nazareth"
+  ],
+  "answer": 1,
+  "explanation": "Philip, which was of Bethsaida of Galilee.",
+  "ref": "John 12:21"
+ },
+ {
+  "id": "john-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the voice from heaven say?",
+  "choices": [
+   "This is my beloved Son",
+   "Hear him",
+   "Fear not, I am with thee",
+   "I have both glorified it, and will glorify it again"
+  ],
+  "answer": 3,
+  "explanation": "I have both glorified it, and will glorify it again.",
+  "ref": "John 12:28"
+ },
+ {
+  "id": "john-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus tell the people to do while they have the light?",
+  "choices": [
+   "Rest",
+   "Pray",
+   "Wait",
+   "Walk"
+  ],
+  "answer": 3,
+  "explanation": "Walk while ye have the light, lest darkness come upon you.",
+  "ref": "John 12:35"
+ },
+ {
+  "id": "john-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say they might become if they believed in the light?",
+  "choices": [
+   "Sons of the kingdom",
+   "Children of light",
+   "Servants of the Father",
+   "Friends of God"
+  ],
+  "answer": 1,
+  "explanation": "While ye have light, believe in the light, that ye may be the children of light.",
+  "ref": "John 12:36"
+ },
+ {
+  "id": "john-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Which prophet's saying was fulfilled in their unbelief?",
+  "choices": [
+   "Jeremias",
+   "Daniel",
+   "Esaias",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "That the saying of Esaias the prophet might be fulfilled, Lord, who hath believed our report?",
+  "ref": "John 12:38"
+ },
+ {
+  "id": "john-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did many chief rulers not confess Jesus?",
+  "choices": [
+   "For fear of the Pharisees and being put out of the synagogue",
+   "For fear of Rome",
+   "For love of money",
+   "For lack of proof"
+  ],
+  "answer": 0,
+  "explanation": "Because of the Pharisees they did not confess him, lest they should be put out of the synagogue.",
+  "ref": "John 12:42"
+ },
+ {
+  "id": "john-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they love more than the praise of God?",
+  "choices": [
+   "The riches of men",
+   "The praise of men",
+   "The law of Moses",
+   "The honour of Caesar"
+  ],
+  "answer": 1,
+  "explanation": "They loved the praise of men more than the praise of God.",
+  "ref": "John 12:43"
+ },
+ {
+  "id": "john-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On whom did Jesus say he that believeth on him really believes?",
+  "choices": [
+   "The prophets",
+   "The Holy Ghost",
+   "Moses",
+   "Him that sent me"
+  ],
+  "answer": 3,
+  "explanation": "He that believeth on me, believeth not on me, but on him that sent me.",
+  "ref": "John 12:44"
+ },
+ {
+  "id": "john-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jesus say he came into the world, not to judge?",
+  "choices": [
+   "To save the world",
+   "To rule the nations",
+   "To bring a sword",
+   "To end the law"
+  ],
+  "answer": 0,
+  "explanation": "I came not to judge the world, but to save the world.",
+  "ref": "John 12:47"
+ },
+ {
+  "id": "john-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say shall judge him who rejects him in the last day?",
+  "choices": [
+   "The prophets",
+   "The Father alone",
+   "The word that he has spoken",
+   "The law of Moses"
+  ],
+  "answer": 2,
+  "explanation": "The word that I have spoken, the same shall judge him in the last day.",
+  "ref": "John 12:48"
+ },
+ {
+  "id": "john-12-h-15",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the Father's commandment is?",
+  "choices": [
+   "Peace on earth",
+   "Love and mercy",
+   "Life everlasting",
+   "The kingdom of God"
+  ],
+  "answer": 2,
+  "explanation": "I know that his commandment is life everlasting.",
+  "ref": "John 12:50"
+ },
+ {
+  "id": "john-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What feast was near when Jesus washed his disciples' feet?",
+  "choices": [
+   "Tabernacles",
+   "The passover",
+   "Pentecost",
+   "The dedication"
+  ],
+  "answer": 1,
+  "explanation": "Now before the feast of the passover, when Jesus knew that his hour was come.",
+  "ref": "John 13:1"
+ },
+ {
+  "id": "john-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus gird himself with?",
+  "choices": [
+   "A cord",
+   "A linen cloth of the temple",
+   "A robe",
+   "A towel"
+  ],
+  "answer": 3,
+  "explanation": "He riseth from supper, and laid aside his garments; and took a towel, and girded himself.",
+  "ref": "John 13:4"
+ },
+ {
+  "id": "john-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell Peter when he refused to be washed?",
+  "choices": [
+   "If I wash thee not, thou hast no part with me",
+   "Then thou art not clean",
+   "Then follow me afar off",
+   "Then wash thyself"
+  ],
+  "answer": 0,
+  "explanation": "Jesus answered him, If I wash thee not, thou hast no part with me.",
+  "ref": "John 13:8"
+ },
+ {
+  "id": "john-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter then ask Jesus to wash?",
+  "choices": [
+   "His feet twice",
+   "His garments",
+   "His hands and his head, not his feet only",
+   "His face only"
+  ],
+  "answer": 2,
+  "explanation": "Lord, not my feet only, but also my hands and my head.",
+  "ref": "John 13:9"
+ },
+ {
+  "id": "john-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who had put it into Judas's heart to betray Jesus?",
+  "choices": [
+   "The chief priests",
+   "Caiaphas",
+   "The devil",
+   "The Pharisees"
+  ],
+  "answer": 2,
+  "explanation": "The devil having now put into the heart of Judas Iscariot, Simon's son, to betray him.",
+  "ref": "John 13:2"
+ },
+ {
+  "id": "john-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say the disciples ought to do for one another?",
+  "choices": [
+   "Wash one another's feet",
+   "Pray for one another",
+   "Feed one another",
+   "Carry one another's burdens"
+  ],
+  "answer": 0,
+  "explanation": "Ye also ought to wash one another's feet.",
+  "ref": "John 13:14"
+ },
+ {
+  "id": "john-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say he had given them?",
+  "choices": [
+   "A commandment of the law",
+   "A new covenant",
+   "A sign",
+   "An example"
+  ],
+  "answer": 3,
+  "explanation": "For I have given you an example, that ye should do as I have done to you.",
+  "ref": "John 13:15"
+ },
+ {
+  "id": "john-13-e-08",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was leaning on Jesus' bosom at the supper?",
+  "choices": [
+   "Peter",
+   "The disciple whom Jesus loved",
+   "Thomas",
+   "Judas"
+  ],
+  "answer": 1,
+  "explanation": "There was leaning on Jesus' bosom one of his disciples, whom Jesus loved.",
+  "ref": "John 13:23"
+ },
+ {
+  "id": "john-13-e-09",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who beckoned to that disciple to ask who it should be?",
+  "choices": [
+   "Simon Peter",
+   "Andrew",
+   "Philip",
+   "Thomas"
+  ],
+  "answer": 0,
+  "explanation": "Simon Peter therefore beckoned to him, that he should ask who it should be of whom he spake.",
+  "ref": "John 13:24"
+ },
+ {
+  "id": "john-13-e-10",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What entered into Judas after the sop?",
+  "choices": [
+   "An angel",
+   "An unclean spirit of fear",
+   "Satan",
+   "A spirit of sleep"
+  ],
+  "answer": 2,
+  "explanation": "After the sop Satan entered into him.",
+  "ref": "John 13:27"
+ },
+ {
+  "id": "john-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus know about his hour?",
+  "choices": [
+   "That it was far off",
+   "That it would not come this year",
+   "That he should depart out of this world unto the Father",
+   "That it was hidden from the Father"
+  ],
+  "answer": 2,
+  "explanation": "Jesus knew that his hour was come that he should depart out of this world unto the Father.",
+  "ref": "John 13:1"
+ },
+ {
+  "id": "john-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus know the Father had given into his hands?",
+  "choices": [
+   "The twelve only",
+   "The temple",
+   "All things",
+   "The nations of Israel"
+  ],
+  "answer": 2,
+  "explanation": "Jesus knowing that the Father had given all things into his hands.",
+  "ref": "John 13:3"
+ },
+ {
+  "id": "john-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Peter say when Jesus came to him?",
+  "choices": [
+   "Lord, dost thou wash my feet?",
+   "Lord, wash me all over",
+   "Lord, I am not worthy",
+   "Lord, we are clean"
+  ],
+  "answer": 0,
+  "explanation": "Then cometh he to Simon Peter: and Peter saith unto him, Lord, dost thou wash my feet?",
+  "ref": "John 13:6"
+ },
+ {
+  "id": "john-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus tell Peter about what he was doing?",
+  "choices": [
+   "Thou shalt see it at the cross",
+   "It is a sign for the world",
+   "Ask the others to explain",
+   "Thou knowest not now, but shalt know hereafter"
+  ],
+  "answer": 3,
+  "explanation": "What I do thou knowest not now; but thou shalt know hereafter.",
+  "ref": "John 13:7"
+ },
+ {
+  "id": "john-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say of him that is washed?",
+  "choices": [
+   "He needeth nothing",
+   "He needeth only to wash his feet, and is clean every whit",
+   "He needeth to be washed again",
+   "He is a servant"
+  ],
+  "answer": 1,
+  "explanation": "He that is washed needeth not save to wash his feet, but is clean every whit.",
+  "ref": "John 13:10"
+ },
+ {
+  "id": "john-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus say, Ye are not all clean?",
+  "choices": [
+   "He knew who should betray him",
+   "He saw their sandals",
+   "He knew who would doubt",
+   "He knew who would flee"
+  ],
+  "answer": 0,
+  "explanation": "He knew who should betray him; therefore said he, Ye are not all clean.",
+  "ref": "John 13:11"
+ },
+ {
+  "id": "john-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the disciples call Jesus?",
+  "choices": [
+   "Rabbi and King",
+   "Teacher and Prophet",
+   "Master and Lord",
+   "Son of David"
+  ],
+  "answer": 2,
+  "explanation": "Ye call me Master and Lord: and ye say well; for so I am.",
+  "ref": "John 13:13"
+ },
+ {
+  "id": "john-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say about the servant and his lord?",
+  "choices": [
+   "The servant is loved by the lord",
+   "The servant is not greater than his lord",
+   "The servant becomes a lord",
+   "The lord serves first"
+  ],
+  "answer": 1,
+  "explanation": "The servant is not greater than his lord; neither he that is sent greater than he that sent him.",
+  "ref": "John 13:16"
+ },
+ {
+  "id": "john-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say makes them happy?",
+  "choices": [
+   "Knowing these things only",
+   "Being washed",
+   "Sitting at the supper",
+   "Knowing these things and doing them"
+  ],
+  "answer": 3,
+  "explanation": "If ye know these things, happy are ye if ye do them.",
+  "ref": "John 13:17"
+ },
+ {
+  "id": "john-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which scripture did Jesus say would be fulfilled?",
+  "choices": [
+   "The shepherd shall be smitten",
+   "They parted my garments",
+   "He was numbered with the transgressors",
+   "He that eateth bread with me hath lifted up his heel"
+  ],
+  "answer": 3,
+  "explanation": "That the scripture may be fulfilled, He that eateth bread with me hath lifted up his heel against me.",
+  "ref": "John 13:18"
+ },
+ {
+  "id": "john-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus tell them these things before they came to pass?",
+  "choices": [
+   "That they might flee",
+   "That they might believe that he is he",
+   "That they might not fear",
+   "That they might pray"
+  ],
+  "answer": 1,
+  "explanation": "Now I tell you before it come, that, when it is come to pass, ye may believe that I am he.",
+  "ref": "John 13:19"
+ },
+ {
+  "id": "john-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jesus feel before saying one of them would betray him?",
+  "choices": [
+   "Angry",
+   "Weary",
+   "Troubled in spirit",
+   "Calm"
+  ],
+  "answer": 2,
+  "explanation": "He was troubled in spirit, and testified, and said, one of you shall betray me.",
+  "ref": "John 13:21"
+ },
+ {
+  "id": "john-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to Judas after the sop?",
+  "choices": [
+   "That thou doest, do quickly",
+   "Go in peace",
+   "Depart from me",
+   "Tell the priests"
+  ],
+  "answer": 0,
+  "explanation": "Then said Jesus unto him, That thou doest, do quickly.",
+  "ref": "John 13:27"
+ },
+ {
+  "id": "john-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did some disciples think Jesus told Judas to do?",
+  "choices": [
+   "Go and pray",
+   "Buy things for the feast, or give to the poor",
+   "Fetch the Father",
+   "Hide the money"
+  ],
+  "answer": 1,
+  "explanation": "Some thought Jesus had said unto him, Buy those things that we have need of against the feast; or, that he should give something to the poor.",
+  "ref": "John 13:29"
+ },
+ {
+  "id": "john-13-m-15",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Judas do when he received the sop?",
+  "choices": [
+   "Sat and wept",
+   "Asked to be forgiven",
+   "Washed his hands",
+   "Went immediately out, and it was night"
+  ],
+  "answer": 3,
+  "explanation": "He then having received the sop went immediately out: and it was night.",
+  "ref": "John 13:30"
+ },
+ {
+  "id": "john-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do with his garments before he washed their feet?",
+  "choices": [
+   "Gave them to Peter",
+   "Folded them on the table",
+   "Wore them wet",
+   "Laid them aside"
+  ],
+  "answer": 3,
+  "explanation": "He riseth from supper, and laid aside his garments.",
+  "ref": "John 13:4"
+ },
+ {
+  "id": "john-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say about where he was going, to the disciples?",
+  "choices": [
+   "Whither I go, ye shall follow",
+   "Whither I go, ye cannot come",
+   "Whither I go, ye know",
+   "Whither I go, Peter shall go"
+  ],
+  "answer": 1,
+  "explanation": "As I said unto the Jews, Whither I go, ye cannot come; so now I say to you.",
+  "ref": "John 13:33"
+ },
+ {
+  "id": "john-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jesus say all men would know they were his disciples?",
+  "choices": [
+   "If they have love one to another",
+   "If they keep the sabbath",
+   "If they wash feet",
+   "If they teach in his name"
+  ],
+  "answer": 0,
+  "explanation": "By this shall all men know that ye are my disciples, if ye have love one to another.",
+  "ref": "John 13:35"
+ },
+ {
+  "id": "john-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus tell Peter about following him?",
+  "choices": [
+   "He must wait three days",
+   "He must follow at once",
+   "He could not now, but would afterwards",
+   "He must follow Judas"
+  ],
+  "answer": 2,
+  "explanation": "Whither I go, thou canst not follow me now; but thou shalt follow me afterwards.",
+  "ref": "John 13:36"
+ },
+ {
+  "id": "john-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Peter say he would do for Jesus' sake?",
+  "choices": [
+   "Fast forty days",
+   "Lay down his life",
+   "Go to prison",
+   "Leave all"
+  ],
+  "answer": 1,
+  "explanation": "Lord, why cannot I follow thee now? I will lay down my life for thy sake.",
+  "ref": "John 13:37"
+ },
+ {
+  "id": "john-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose son was the Judas to whom Jesus gave the sop?",
+  "choices": [
+   "Zebedee's",
+   "Alphaeus'",
+   "Jonas'",
+   "Simon's"
+  ],
+  "answer": 3,
+  "explanation": "He gave it to Judas Iscariot, the son of Simon.",
+  "ref": "John 13:26"
+ },
+ {
+  "id": "john-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say of him who receiveth whomsoever he sends?",
+  "choices": [
+   "He is blessed of the Father",
+   "He shall be a prophet",
+   "He shall be clean",
+   "He receiveth Jesus, and him that sent Jesus"
+  ],
+  "answer": 3,
+  "explanation": "He that receiveth whomsoever I send receiveth me; and he that receiveth me receiveth him that sent me.",
+  "ref": "John 13:20"
+ },
+ {
+  "id": "john-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say when Judas had gone out?",
+  "choices": [
+   "Now is the hour of darkness",
+   "Now is the Son of man glorified",
+   "Now is the day of the Lord",
+   "Now is the end come"
+  ],
+  "answer": 1,
+  "explanation": "Jesus said, Now is the Son of man glorified, and God is glorified in him.",
+  "ref": "John 13:31"
+ },
+ {
+  "id": "john-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Jesus love his own which were in the world?",
+  "choices": [
+   "For a little while",
+   "Until the feast",
+   "Unto the end",
+   "Until the supper"
+  ],
+  "answer": 2,
+  "explanation": "Having loved his own which were in the world, he loved them unto the end.",
+  "ref": "John 13:1"
+ },
+ {
+  "id": "john-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do to the sop before he gave it to Judas?",
+  "choices": [
+   "Dipped it",
+   "Broke it in two",
+   "Blessed it",
+   "Salted it"
+  ],
+  "answer": 0,
+  "explanation": "When he had dipped the sop, he gave it to Judas Iscariot, the son of Simon.",
+  "ref": "John 13:26"
+ },
+ {
+  "id": "john-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus call the disciples when he said he was with them a little while?",
+  "choices": [
+   "My brethren",
+   "Little children",
+   "My friends",
+   "Sons of the kingdom"
+  ],
+  "answer": 1,
+  "explanation": "Little children, yet a little while I am with you.",
+  "ref": "John 13:33"
+ },
+ {
+  "id": "john-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say God would do for the Son?",
+  "choices": [
+   "Take him up in a cloud",
+   "Send twelve legions",
+   "Raise a kingdom",
+   "Straightway glorify him"
+  ],
+  "answer": 3,
+  "explanation": "God shall also glorify him in himself, and shall straightway glorify him.",
+  "ref": "John 13:32"
+ },
+ {
+  "id": "john-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who at the table knew why Jesus spoke to Judas?",
+  "choices": [
+   "No man",
+   "Peter",
+   "John",
+   "Thomas"
+  ],
+  "answer": 0,
+  "explanation": "No man at the table knew for what intent he spake this unto him.",
+  "ref": "John 13:28"
+ },
+ {
+  "id": "john-13-h-14",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the disciples react when Jesus said one would betray him?",
+  "choices": [
+   "They asked Judas",
+   "They wept",
+   "They looked one on another, doubting of whom he spake",
+   "They rose to leave"
+  ],
+  "answer": 2,
+  "explanation": "The disciples looked one on another, doubting of whom he spake.",
+  "ref": "John 13:22"
+ },
+ {
+  "id": "john-13-h-15",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus ask after he sat down again?",
+  "choices": [
+   "Who is greatest among you?",
+   "Who will follow me?",
+   "Know ye what I have done to you?",
+   "Do ye love me?"
+  ],
+  "answer": 2,
+  "explanation": "Know ye what I have done to you?",
+  "ref": "John 13:12"
+ },
+ {
+  "id": "john-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell the disciples about their hearts?",
+  "choices": [
+   "Let your heart be hardened",
+   "Let not your heart be troubled",
+   "Guard your heart with fasting",
+   "Give your heart to the Father"
+  ],
+  "answer": 1,
+  "explanation": "Let not your heart be troubled: ye believe in God, believe also in me.",
+  "ref": "John 14:1"
+ },
+ {
+  "id": "john-14-e-02",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say he was going to do?",
+  "choices": [
+   "Raise an army",
+   "Build a temple",
+   "Gather the nations",
+   "Prepare a place for them"
+  ],
+  "answer": 3,
+  "explanation": "I go to prepare a place for you.",
+  "ref": "John 14:2"
+ },
+ {
+  "id": "john-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus promise about his return?",
+  "choices": [
+   "He will come again and receive them to himself",
+   "He will send an angel",
+   "He will return in the spring",
+   "He will come with Moses"
+  ],
+  "answer": 0,
+  "explanation": "I will come again, and receive you unto myself; that where I am, there ye may be also.",
+  "ref": "John 14:3"
+ },
+ {
+  "id": "john-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said, Lord, shew us the Father, and it sufficeth us?",
+  "choices": [
+   "Thomas",
+   "Peter",
+   "Philip",
+   "Andrew"
+  ],
+  "answer": 2,
+  "explanation": "Philip saith unto him, Lord, shew us the Father, and it sufficeth us.",
+  "ref": "John 14:8"
+ },
+ {
+  "id": "john-14-e-05",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say he that hath seen him hath seen?",
+  "choices": [
+   "The Spirit",
+   "The prophets",
+   "The Father",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "He that hath seen me hath seen the Father.",
+  "ref": "John 14:9"
+ },
+ {
+  "id": "john-14-e-06",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say about whatsoever they ask in his name?",
+  "choices": [
+   "He will do it",
+   "The Spirit will give it",
+   "It shall be taken from them",
+   "The Father will think on it"
+  ],
+  "answer": 0,
+  "explanation": "Whatsoever ye shall ask in my name, that will I do, that the Father may be glorified in the Son.",
+  "ref": "John 14:13"
+ },
+ {
+  "id": "john-14-e-07",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say if they love him?",
+  "choices": [
+   "Follow me afar off",
+   "Wash my feet",
+   "Build my house",
+   "Keep my commandments"
+  ],
+  "answer": 3,
+  "explanation": "If ye love me, keep my commandments.",
+  "ref": "John 14:15"
+ },
+ {
+  "id": "john-14-e-08",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What else is the Comforter called?",
+  "choices": [
+   "The Spirit of power",
+   "The Spirit of truth",
+   "The Spirit of wisdom",
+   "The Spirit of life"
+  ],
+  "answer": 1,
+  "explanation": "Even the Spirit of truth; whom the world cannot receive.",
+  "ref": "John 14:17"
+ },
+ {
+  "id": "john-14-e-09",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus promise about leaving them?",
+  "choices": [
+   "I will not leave you comfortless",
+   "I will leave you my cloak",
+   "I will leave you the law",
+   "I will leave you the twelve"
+  ],
+  "answer": 0,
+  "explanation": "I will not leave you comfortless: I will come to you.",
+  "ref": "John 14:18"
+ },
+ {
+  "id": "john-14-e-10",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say believers would do because he goes to the Father?",
+  "choices": [
+   "The same works only",
+   "Works of the law",
+   "Greater works than his",
+   "No works"
+  ],
+  "answer": 2,
+  "explanation": "He that believeth on me, the works that I do shall he do also; and greater works than these shall he do; because I go unto my Father.",
+  "ref": "John 14:12"
+ },
+ {
+  "id": "john-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus tell them to believe, besides God?",
+  "choices": [
+   "Believe in the prophets",
+   "Believe in the law",
+   "Believe also in him",
+   "Believe in the temple"
+  ],
+  "answer": 2,
+  "explanation": "Ye believe in God, believe also in me.",
+  "ref": "John 14:1"
+ },
+ {
+  "id": "john-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say he would have done if there were no mansions?",
+  "choices": [
+   "Built them",
+   "Asked the Father",
+   "Have told them",
+   "Sent them away"
+  ],
+  "answer": 2,
+  "explanation": "In my Father's house are many mansions: if it were not so, I would have told you.",
+  "ref": "John 14:2"
+ },
+ {
+  "id": "john-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say no man can do except by him?",
+  "choices": [
+   "Come unto the Father",
+   "See the Father's house",
+   "Enter the kingdom of Israel",
+   "Know the law"
+  ],
+  "answer": 0,
+  "explanation": "No man cometh unto the Father, but by me.",
+  "ref": "John 14:6"
+ },
+ {
+  "id": "john-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus ask Philip about the time he had been with the disciples?",
+  "choices": [
+   "Have I not shown thee the way?",
+   "Hast thou not seen the Father?",
+   "Where was thy faith?",
+   "Hast thou not known me, so long time with you?"
+  ],
+  "answer": 3,
+  "explanation": "Have I been so long time with you, and yet hast thou not known me, Philip?",
+  "ref": "John 14:9"
+ },
+ {
+  "id": "john-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to believe him for if they did not believe his words?",
+  "choices": [
+   "For the prophets' sake",
+   "For the very works' sake",
+   "For the law's sake",
+   "For Moses' sake"
+  ],
+  "answer": 1,
+  "explanation": "Believe me for the very works' sake.",
+  "ref": "John 14:11"
+ },
+ {
+  "id": "john-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus say he would do what they ask in his name?",
+  "choices": [
+   "That the Father may be glorified in the Son",
+   "That the disciples may be rich",
+   "That the world may fear",
+   "That the law may be fulfilled"
+  ],
+  "answer": 0,
+  "explanation": "That the Father may be glorified in the Son.",
+  "ref": "John 14:13"
+ },
+ {
+  "id": "john-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long will the Comforter abide with them?",
+  "choices": [
+   "Until the feast",
+   "For a season",
+   "For ever",
+   "Until Jesus returns"
+  ],
+  "answer": 2,
+  "explanation": "He shall give you another Comforter, that he may abide with you for ever.",
+  "ref": "John 14:16"
+ },
+ {
+  "id": "john-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why can the world not receive the Spirit of truth?",
+  "choices": [
+   "It hates the Father",
+   "It seeth him not, neither knoweth him",
+   "It is blind",
+   "It has not been baptized"
+  ],
+  "answer": 1,
+  "explanation": "Whom the world cannot receive, because it seeth him not, neither knoweth him.",
+  "ref": "John 14:17"
+ },
+ {
+  "id": "john-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say about living because of him?",
+  "choices": [
+   "Ye shall live in the law",
+   "Ye shall live long",
+   "Ye shall live apart from the world",
+   "Because I live, ye shall live also"
+  ],
+  "answer": 3,
+  "explanation": "Because I live, ye shall live also.",
+  "ref": "John 14:19"
+ },
+ {
+  "id": "john-14-m-10",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "Who asked why Jesus would manifest himself to them and not the world?",
+  "choices": [
+   "Judas Iscariot",
+   "Thomas",
+   "Philip",
+   "Judas, not Iscariot"
+  ],
+  "answer": 3,
+  "explanation": "Judas saith unto him, not Iscariot, Lord, how is it that thou wilt manifest thyself unto us, and not unto the world?",
+  "ref": "John 14:22"
+ },
+ {
+  "id": "john-14-m-11",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to the man who loves him and keeps his words?",
+  "choices": [
+   "He will be called a prophet",
+   "The Father will love him and make abode with him",
+   "He will sit in the temple",
+   "He will be taught by angels"
+  ],
+  "answer": 1,
+  "explanation": "If a man love me, he will keep my words: and my Father will love him, and we will come unto him, and make our abode with him.",
+  "ref": "John 14:23"
+ },
+ {
+  "id": "john-14-m-12",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say of him that loves him not?",
+  "choices": [
+   "He shall be cast out",
+   "He shall be judged",
+   "He keepeth not his sayings",
+   "He shall not see him"
+  ],
+  "answer": 2,
+  "explanation": "He that loveth me not keepeth not my sayings.",
+  "ref": "John 14:24"
+ },
+ {
+  "id": "john-14-m-13",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say the Comforter would do?",
+  "choices": [
+   "Teach them all things and bring all things to remembrance",
+   "Lead them to Jerusalem",
+   "Give them tongues of fire",
+   "Judge the world"
+  ],
+  "answer": 0,
+  "explanation": "He shall teach you all things, and bring all things to your remembrance, whatsoever I have said unto you.",
+  "ref": "John 14:26"
+ },
+ {
+  "id": "john-14-m-14",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jesus say his peace differs from what the world gives?",
+  "choices": [
+   "It is only for a season",
+   "Not as the world giveth",
+   "It is given to the twelve only",
+   "It is bought with a price"
+  ],
+  "answer": 1,
+  "explanation": "Not as the world giveth, give I unto you.",
+  "ref": "John 14:27"
+ },
+ {
+  "id": "john-14-m-15",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Jesus say is greater than he?",
+  "choices": [
+   "Moses",
+   "The prophets",
+   "The angels",
+   "The Father"
+  ],
+  "answer": 3,
+  "explanation": "My Father is greater than I.",
+  "ref": "John 14:28"
+ },
+ {
+  "id": "john-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say they would do if they loved him?",
+  "choices": [
+   "Weep for his going",
+   "Follow him at once",
+   "Fast and pray",
+   "Rejoice because he goes to the Father"
+  ],
+  "answer": 3,
+  "explanation": "If ye loved me, ye would rejoice, because I said, I go unto the Father.",
+  "ref": "John 14:28"
+ },
+ {
+  "id": "john-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jesus tell them before it came to pass?",
+  "choices": [
+   "That they might flee",
+   "That they might believe when it came",
+   "That they might be ready to fight",
+   "That they might tell the world"
+  ],
+  "answer": 1,
+  "explanation": "I have told you before it come to pass, that, when it is come to pass, ye might believe.",
+  "ref": "John 14:29"
+ },
+ {
+  "id": "john-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the prince of this world has in him?",
+  "choices": [
+   "Nothing",
+   "Power",
+   "A claim",
+   "A grave"
+  ],
+  "answer": 0,
+  "explanation": "The prince of this world cometh, and hath nothing in me.",
+  "ref": "John 14:30"
+ },
+ {
+  "id": "john-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say as the chapter ends?",
+  "choices": [
+   "Peace be with you",
+   "Watch and pray",
+   "Arise, let us go hence",
+   "Follow me"
+  ],
+  "answer": 2,
+  "explanation": "Arise, let us go hence.",
+  "ref": "John 14:31"
+ },
+ {
+  "id": "john-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did Jesus say doeth the works?",
+  "choices": [
+   "The Spirit",
+   "The Father that dwelleth in him",
+   "The disciples",
+   "The prophets"
+  ],
+  "answer": 1,
+  "explanation": "The Father that dwelleth in me, he doeth the works.",
+  "ref": "John 14:10"
+ },
+ {
+  "id": "john-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Jesus say would be loved of his Father and have him manifest himself?",
+  "choices": [
+   "He that fasts",
+   "He that is baptized",
+   "He that is of Israel",
+   "He that hath his commandments and keepeth them"
+  ],
+  "answer": 3,
+  "explanation": "He that hath my commandments, and keepeth them, he it is that loveth me.",
+  "ref": "John 14:21"
+ },
+ {
+  "id": "john-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say they would know at that day?",
+  "choices": [
+   "That the Spirit had come",
+   "That the kingdom is Israel's",
+   "That the world was judged",
+   "That he is in the Father, they in him, and he in them"
+  ],
+  "answer": 3,
+  "explanation": "At that day ye shall know that I am in my Father, and ye in me, and I in you.",
+  "ref": "John 14:20"
+ },
+ {
+  "id": "john-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose word did Jesus say the disciples heard?",
+  "choices": [
+   "Moses'",
+   "The Father's which sent him",
+   "The prophets'",
+   "The angels'"
+  ],
+  "answer": 1,
+  "explanation": "The word which ye hear is not mine, but the Father's which sent me.",
+  "ref": "John 14:24"
+ },
+ {
+  "id": "john-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the world would no more do in a little while?",
+  "choices": [
+   "Hear him",
+   "Know him",
+   "See him",
+   "Follow him"
+  ],
+  "answer": 2,
+  "explanation": "Yet a little while, and the world seeth me no more; but ye see me.",
+  "ref": "John 14:19"
+ },
+ {
+  "id": "john-14-h-10",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose name will the Father send the Comforter?",
+  "choices": [
+   "In Jesus' name",
+   "In the name of Moses",
+   "In the name of the Spirit",
+   "In the name of the angels"
+  ],
+  "answer": 0,
+  "explanation": "The Comforter, which is the Holy Ghost, whom the Father will send in my name.",
+  "ref": "John 14:26"
+ },
+ {
+  "id": "john-14-h-11",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the disciples knew?",
+  "choices": [
+   "Where the Father dwells",
+   "Whither he goes, and the way",
+   "When he would return",
+   "Who would betray him"
+  ],
+  "answer": 1,
+  "explanation": "Whither I go ye know, and the way ye know.",
+  "ref": "John 14:4"
+ },
+ {
+  "id": "john-14-h-12",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say they would have known if they had known him?",
+  "choices": [
+   "The law",
+   "The kingdom",
+   "The Spirit",
+   "The Father also"
+  ],
+  "answer": 3,
+  "explanation": "If ye had known me, ye should have known my Father also.",
+  "ref": "John 14:7"
+ },
+ {
+  "id": "john-14-h-13",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus ask Philip he believed about him and the Father?",
+  "choices": [
+   "That he is in the Father and the Father in him",
+   "That he came from Galilee",
+   "That he is the Son of David",
+   "That he sent the Spirit"
+  ],
+  "answer": 0,
+  "explanation": "Believest thou not that I am in the Father, and the Father in me?",
+  "ref": "John 14:10"
+ },
+ {
+  "id": "john-14-h-14",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jesus say he would come again and receive them?",
+  "choices": [
+   "That they might judge the world",
+   "That they might rest",
+   "That where he is, they may be also",
+   "That they might learn the law"
+  ],
+  "answer": 2,
+  "explanation": "I will come again, and receive you unto myself; that where I am, there ye may be also.",
+  "ref": "John 14:3"
+ },
+ {
+  "id": "john-14-h-15",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say he would do for the Father to give another Comforter?",
+  "choices": [
+   "Send the disciples to Jerusalem",
+   "Fast forty days",
+   "Pray the Father",
+   "Offer a sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "I will pray the Father, and he shall give you another Comforter.",
+  "ref": "John 14:16"
+ },
+ {
+  "id": "john-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who brought a woman taken in adultery to Jesus?",
+  "choices": [
+   "The chief priests and elders",
+   "The scribes and Pharisees",
+   "The disciples of John",
+   "The Sadducees"
+  ],
+  "answer": 1,
+  "explanation": "The scribes and Pharisees brought unto him a woman taken in adultery.",
+  "ref": "John 8:3"
+ },
+ {
+  "id": "john-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus do while his accusers pressed their question?",
+  "choices": [
+   "Prayed aloud",
+   "Left the temple",
+   "Called his disciples",
+   "Wrote on the ground with his finger"
+  ],
+  "answer": 3,
+  "explanation": "Jesus stooped down, and with his finger wrote on the ground, as though he heard them not.",
+  "ref": "John 8:6"
+ },
+ {
+  "id": "john-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the accusers say Moses in the law commanded for such a woman?",
+  "choices": [
+   "That she be stoned",
+   "That she be scourged",
+   "That she be sent away",
+   "That she pay a fine"
+  ],
+  "answer": 0,
+  "explanation": "They said, Moses in the law commanded us, that such should be stoned.",
+  "ref": "John 8:5"
+ },
+ {
+  "id": "john-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say the one without sin should do first?",
+  "choices": [
+   "Bring a witness",
+   "Speak to her",
+   "Cast a stone at her",
+   "Leave the temple"
+  ],
+  "answer": 2,
+  "explanation": "He that is without sin among you, let him first cast a stone at her.",
+  "ref": "John 8:7"
+ },
+ {
+  "id": "john-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was left with Jesus after the accusers went out?",
+  "choices": [
+   "Peter",
+   "The scribes",
+   "The woman",
+   "His disciples"
+  ],
+  "answer": 2,
+  "explanation": "Jesus was left alone, and the woman standing in the midst.",
+  "ref": "John 8:9"
+ },
+ {
+  "id": "john-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus go at the start of the chapter?",
+  "choices": [
+   "The mount of Olives",
+   "Bethany",
+   "Capernaum",
+   "The Jordan"
+  ],
+  "answer": 0,
+  "explanation": "Jesus went unto the mount of Olives.",
+  "ref": "John 8:1"
+ },
+ {
+  "id": "john-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Jews accuse Jesus of being?",
+  "choices": [
+   "A Roman",
+   "An Egyptian",
+   "A Greek with a devil",
+   "A Samaritan with a devil"
+  ],
+  "answer": 3,
+  "explanation": "The Jews said, Say we not well that thou art a Samaritan, and hast a devil?",
+  "ref": "John 8:48"
+ },
+ {
+  "id": "john-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the Jews claim as their father?",
+  "choices": [
+   "Moses",
+   "Abraham",
+   "David",
+   "Jacob"
+  ],
+  "answer": 1,
+  "explanation": "They answered and said unto him, Abraham is our father.",
+  "ref": "John 8:39"
+ },
+ {
+  "id": "john-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus call a liar and the father of it?",
+  "choices": [
+   "The devil",
+   "Cain",
+   "Pharaoh",
+   "Herod"
+  ],
+  "answer": 0,
+  "explanation": "Jesus said the devil is a liar, and the father of it.",
+  "ref": "John 8:44"
+ },
+ {
+  "id": "john-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say a man who keeps his saying shall never see?",
+  "choices": [
+   "Darkness",
+   "Judgment",
+   "Death",
+   "Famine"
+  ],
+  "answer": 2,
+  "explanation": "If a man keep my saying, he shall never see death.",
+  "ref": "John 8:51"
+ },
+ {
+  "id": "john-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the scribes and Pharisees ask Jesus about the woman?",
+  "choices": [
+   "To learn the law",
+   "To honour him",
+   "To have something to accuse him of",
+   "To save the woman"
+  ],
+  "answer": 2,
+  "explanation": "They said this tempting him, that they might have to accuse him.",
+  "ref": "John 8:6"
+ },
+ {
+  "id": "john-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus ask the woman when he saw none but her?",
+  "choices": [
+   "Who is thy husband?",
+   "What is thy name?",
+   "Where are those thine accusers?",
+   "Why art thou here?"
+  ],
+  "answer": 2,
+  "explanation": "Jesus asked, Woman, where are those thine accusers? hath no man condemned thee?",
+  "ref": "John 8:10"
+ },
+ {
+  "id": "john-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus promise the one who follows him?",
+  "choices": [
+   "He shall have the light of life",
+   "He shall never hunger",
+   "He shall sit at his right hand",
+   "He shall see the Father"
+  ],
+  "answer": 0,
+  "explanation": "He that followeth me shall not walk in darkness, but shall have the light of life.",
+  "ref": "John 8:12"
+ },
+ {
+  "id": "john-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Pharisees say Jesus' record was not true?",
+  "choices": [
+   "Because he was a Galilean",
+   "Because he healed on the sabbath",
+   "Because he had no disciples",
+   "Because he bore record of himself"
+  ],
+  "answer": 3,
+  "explanation": "The Pharisees said, Thou bearest record of thyself; thy record is not true.",
+  "ref": "John 8:13"
+ },
+ {
+  "id": "john-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus say his record was true even though he bore it himself?",
+  "choices": [
+   "Moses had written of him",
+   "He knew whence he came and whither he went",
+   "Two men had seen him",
+   "John had testified"
+  ],
+  "answer": 1,
+  "explanation": "Jesus said his record is true, for I know whence I came, and whither I go.",
+  "ref": "John 8:14"
+ },
+ {
+  "id": "john-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Jesus say bears witness of him besides himself?",
+  "choices": [
+   "The Father that sent him",
+   "John the Baptist",
+   "Moses",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "I am one that bear witness of myself, and the Father that sent me beareth witness of me.",
+  "ref": "John 8:18"
+ },
+ {
+  "id": "john-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say the Jews would have known if they had known him?",
+  "choices": [
+   "The law of Moses",
+   "The day of his death",
+   "His Father also",
+   "The hour of his return"
+  ],
+  "answer": 2,
+  "explanation": "If ye had known me, ye should have known my Father also.",
+  "ref": "John 8:19"
+ },
+ {
+  "id": "john-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did no man lay hands on Jesus in the treasury?",
+  "choices": [
+   "The people loved him",
+   "His hour was not yet come",
+   "The guards were away",
+   "The Pharisees feared Rome"
+  ],
+  "answer": 1,
+  "explanation": "No man laid hands on him; for his hour was not yet come.",
+  "ref": "John 8:20"
+ },
+ {
+  "id": "john-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Jews wonder when Jesus said, Whither I go, ye cannot come?",
+  "choices": [
+   "Whether he would flee to Galilee",
+   "Whether he would go to the Gentiles",
+   "Whether he would call fire from heaven",
+   "Whether he would kill himself"
+  ],
+  "answer": 3,
+  "explanation": "The Jews said, Will he kill himself?",
+  "ref": "John 8:22"
+ },
+ {
+  "id": "john-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say would happen to those who believe not that he is he?",
+  "choices": [
+   "They shall be cast out",
+   "They shall be scattered",
+   "They shall be blinded",
+   "They shall die in their sins"
+  ],
+  "answer": 3,
+  "explanation": "If ye believe not that I am he, ye shall die in your sins.",
+  "ref": "John 8:24"
+ },
+ {
+  "id": "john-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the Jews answer when Jesus spoke of being made free?",
+  "choices": [
+   "They were already free in Moses",
+   "They were Abraham's seed and never in bondage",
+   "They had the temple",
+   "They had no master but Caesar"
+  ],
+  "answer": 1,
+  "explanation": "They answered, We be Abraham's seed, and were never in bondage to any man.",
+  "ref": "John 8:33"
+ },
+ {
+  "id": "john-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say whosoever committeth sin is?",
+  "choices": [
+   "A son of the devil",
+   "A stranger to the law",
+   "The servant of sin",
+   "A child of wrath"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever committeth sin is the servant of sin.",
+  "ref": "John 8:34"
+ },
+ {
+  "id": "john-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus say the Jews sought to kill him?",
+  "choices": [
+   "His word had no place in them",
+   "He broke the sabbath",
+   "He ate with sinners",
+   "He claimed to be a king"
+  ],
+  "answer": 0,
+  "explanation": "Ye seek to kill me, because my word hath no place in you.",
+  "ref": "John 8:37"
+ },
+ {
+  "id": "john-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say Abraham's children would do?",
+  "choices": [
+   "Keep the sabbath only",
+   "The works of Abraham",
+   "Offer sacrifice daily",
+   "Build the temple"
+  ],
+  "answer": 1,
+  "explanation": "If ye were Abraham's children, ye would do the works of Abraham.",
+  "ref": "John 8:39"
+ },
+ {
+  "id": "john-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus call the devil from the beginning?",
+  "choices": [
+   "A thief",
+   "A robber",
+   "A deceiver of kings",
+   "A murderer"
+  ],
+  "answer": 3,
+  "explanation": "He was a murderer from the beginning, and abode not in the truth.",
+  "ref": "John 8:44"
+ },
+ {
+  "id": "john-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old did the Jews say Jesus was not yet, when they asked about Abraham?",
+  "choices": [
+   "Forty",
+   "Thirty",
+   "Sixty",
+   "Fifty"
+  ],
+  "answer": 3,
+  "explanation": "The Jews said, Thou art not yet fifty years old, and hast thou seen Abraham?",
+  "ref": "John 8:57"
+ },
+ {
+  "id": "john-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say Abraham did to see his day?",
+  "choices": [
+   "He wept",
+   "He rejoiced",
+   "He prayed",
+   "He trembled"
+  ],
+  "answer": 1,
+  "explanation": "Your father Abraham rejoiced to see my day: and he saw it, and was glad.",
+  "ref": "John 8:56"
+ },
+ {
+  "id": "john-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do when they took up stones to cast at him?",
+  "choices": [
+   "Hid himself and went out of the temple",
+   "Called down fire",
+   "Stood still and prayed",
+   "Fled to the mount of Olives"
+  ],
+  "answer": 0,
+  "explanation": "Jesus hid himself, and went out of the temple, going through the midst of them.",
+  "ref": "John 8:59"
+ },
+ {
+  "id": "john-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "In what part of the temple did Jesus speak these words?",
+  "choices": [
+   "Solomon's porch",
+   "The court of the Gentiles",
+   "The treasury",
+   "The holy place"
+  ],
+  "answer": 2,
+  "explanation": "These words spake Jesus in the treasury, as he taught in the temple.",
+  "ref": "John 8:20"
+ },
+ {
+  "id": "john-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Jesus come again into the temple that day?",
+  "choices": [
+   "At noon",
+   "Early in the morning",
+   "In the evening",
+   "At night"
+  ],
+  "answer": 1,
+  "explanation": "Early in the morning he came again into the temple, and all the people came unto him.",
+  "ref": "John 8:2"
+ },
+ {
+  "id": "john-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the accusers say the woman was taken?",
+  "choices": [
+   "By night",
+   "By two witnesses",
+   "In another man's house",
+   "In the very act"
+  ],
+  "answer": 3,
+  "explanation": "They said, this woman was taken in adultery, in the very act.",
+  "ref": "John 8:4"
+ },
+ {
+  "id": "john-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Jews say they were not born of?",
+  "choices": [
+   "Bondage",
+   "The Gentiles",
+   "Uncircumcision",
+   "Fornication"
+  ],
+  "answer": 3,
+  "explanation": "They said, We be not born of fornication; we have one Father, even God.",
+  "ref": "John 8:41"
+ },
+ {
+  "id": "john-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say his honour was if he honoured himself?",
+  "choices": [
+   "Little",
+   "Nothing",
+   "Vain",
+   "Weighed"
+  ],
+  "answer": 1,
+  "explanation": "If I honour myself, my honour is nothing: it is my Father that honoureth me.",
+  "ref": "John 8:54"
+ },
+ {
+  "id": "john-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say he would be if he said he knew not the Father?",
+  "choices": [
+   "A thief",
+   "A stranger",
+   "A liar",
+   "A fool"
+  ],
+  "answer": 2,
+  "explanation": "If I should say, I know him not, I shall be a liar like unto you.",
+  "ref": "John 8:55"
+ },
+ {
+  "id": "john-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Jews say of Abraham and the prophets?",
+  "choices": [
+   "They are dead",
+   "They are hidden",
+   "They are silent",
+   "They are asleep"
+  ],
+  "answer": 0,
+  "explanation": "Abraham is dead, and the prophets; art thou greater than our father Abraham, which is dead?",
+  "ref": "John 8:52–53"
+ },
+ {
+  "id": "john-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did Jesus say does not abide in the house for ever?",
+  "choices": [
+   "The stranger",
+   "The servant",
+   "The hireling",
+   "The son"
+  ],
+  "answer": 1,
+  "explanation": "The servant abideth not in the house for ever: but the Son abideth ever.",
+  "ref": "John 8:35"
+ },
+ {
+  "id": "john-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Jesus say he was from, as against those from beneath?",
+  "choices": [
+   "From the east",
+   "From Nazareth",
+   "From Jordan",
+   "From above"
+  ],
+  "answer": 3,
+  "explanation": "Ye are from beneath; I am from above: ye are of this world; I am not of this world.",
+  "ref": "John 8:23"
+ },
+ {
+  "id": "john-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Jesus say the Jews would know that he is he?",
+  "choices": [
+   "When they had lifted up the Son of man",
+   "When Abraham returned",
+   "When the temple fell",
+   "When the prophets rose"
+  ],
+  "answer": 0,
+  "explanation": "When ye have lifted up the Son of man, then shall ye know that I am he.",
+  "ref": "John 8:28"
+ },
+ {
+  "id": "john-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say he does always?",
+  "choices": [
+   "Keep the sabbath",
+   "Speak in parables",
+   "Those things that please the Father",
+   "Fast and pray apart"
+  ],
+  "answer": 2,
+  "explanation": "I do always those things that please him.",
+  "ref": "John 8:29"
+ },
+ {
+  "id": "john-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened as Jesus spoke these words about the Father?",
+  "choices": [
+   "Many fled",
+   "The Pharisees departed",
+   "Many believed on him",
+   "The temple guards came"
+  ],
+  "answer": 2,
+  "explanation": "As he spake these words, many believed on him.",
+  "ref": "John 8:30"
+ },
+ {
+  "id": "john-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who asked Jesus who sinned, this man or his parents?",
+  "choices": [
+   "The Pharisees",
+   "His disciples",
+   "The neighbours",
+   "The man's parents"
+  ],
+  "answer": 1,
+  "explanation": "His disciples asked him, Master, who did sin, this man, or his parents, that he was born blind?",
+  "ref": "John 9:2"
+ },
+ {
+  "id": "john-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jesus say the man was born blind?",
+  "choices": [
+   "Because of his parents' sin",
+   "Because of his own sin",
+   "Because he had broken the law",
+   "That the works of God should be made manifest in him"
+  ],
+  "answer": 3,
+  "explanation": "Neither hath this man sinned, nor his parents: but that the works of God should be made manifest in him.",
+  "ref": "John 9:3"
+ },
+ {
+  "id": "john-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what day did Jesus make the clay and open the man's eyes?",
+  "choices": [
+   "The sabbath day",
+   "The day of preparation",
+   "The feast day",
+   "The first day of the week"
+  ],
+  "answer": 0,
+  "explanation": "It was the sabbath day when Jesus made the clay, and opened his eyes.",
+  "ref": "John 9:14"
+ },
+ {
+  "id": "john-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did they bring the man who had been blind?",
+  "choices": [
+   "The priests",
+   "The scribes of Galilee",
+   "The Pharisees",
+   "The Roman governor"
+  ],
+  "answer": 2,
+  "explanation": "They brought to the Pharisees him that aforetime was blind.",
+  "ref": "John 9:13"
+ },
+ {
+  "id": "john-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the neighbours say the man had done before he was healed?",
+  "choices": [
+   "Taught in the temple",
+   "Kept sheep",
+   "Sat and begged",
+   "Carried water"
+  ],
+  "answer": 2,
+  "explanation": "They said, Is not this he that sat and begged?",
+  "ref": "John 9:8"
+ },
+ {
+  "id": "john-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Pharisees do to the man in the end?",
+  "choices": [
+   "Cast him out",
+   "Stoned him",
+   "Put him in prison",
+   "Sent him to Siloam"
+  ],
+  "answer": 0,
+  "explanation": "They answered and said unto him, Thou wast altogether born in sins, and dost thou teach us? And they cast him out.",
+  "ref": "John 9:34"
+ },
+ {
+  "id": "john-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the man do after he said, Lord, I believe?",
+  "choices": [
+   "Ran to tell his parents",
+   "Went back to the pool",
+   "Followed the Pharisees",
+   "Worshipped Jesus"
+  ],
+  "answer": 3,
+  "explanation": "And he said, Lord, I believe. And he worshipped him.",
+  "ref": "John 9:38"
+ },
+ {
+  "id": "john-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the healed man first describe the one who healed him?",
+  "choices": [
+   "The Son of David",
+   "A man that is called Jesus",
+   "A prophet from Nazareth",
+   "A teacher of Moses"
+  ],
+  "answer": 1,
+  "explanation": "He answered and said, A man that is called Jesus made clay, and anointed mine eyes.",
+  "ref": "John 9:11"
+ },
+ {
+  "id": "john-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the one thing the man said he knew?",
+  "choices": [
+   "That he was blind and now he saw",
+   "That Jesus was a sinner",
+   "That Jesus was from God",
+   "That the Pharisees were wrong"
+  ],
+  "answer": 0,
+  "explanation": "One thing I know, that, whereas I was blind, now I see.",
+  "ref": "John 9:25"
+ },
+ {
+  "id": "john-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the Jews call to find out if the man had really been blind?",
+  "choices": [
+   "His neighbours",
+   "The disciples",
+   "His parents",
+   "The rulers of Siloam"
+  ],
+  "answer": 2,
+  "explanation": "The Jews did not believe he had been blind, until they called the parents of him that had received his sight.",
+  "ref": "John 9:18"
+ },
+ {
+  "id": "john-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say he must do while it is day?",
+  "choices": [
+   "Rest from his labours",
+   "Go up to Jerusalem",
+   "Work the works of him that sent him",
+   "Gather his sheep"
+  ],
+  "answer": 2,
+  "explanation": "I must work the works of him that sent me, while it is day: the night cometh, when no man can work.",
+  "ref": "John 9:4"
+ },
+ {
+  "id": "john-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the name Siloam mean, according to the chapter?",
+  "choices": [
+   "Peace",
+   "Water",
+   "Sent",
+   "Spring"
+  ],
+  "answer": 2,
+  "explanation": "The pool of Siloam, which is by interpretation, Sent.",
+  "ref": "John 9:7"
+ },
+ {
+  "id": "john-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the healed man say when asked where Jesus was?",
+  "choices": [
+   "I know not",
+   "He is at the temple",
+   "He went to Galilee",
+   "He is by the pool"
+  ],
+  "answer": 0,
+  "explanation": "Then said they unto him, Where is he? He said, I know not.",
+  "ref": "John 9:12"
+ },
+ {
+  "id": "john-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did some Pharisees say Jesus was not of God?",
+  "choices": [
+   "He ate with sinners",
+   "He was from Galilee",
+   "He had no teacher",
+   "He keepeth not the sabbath day"
+  ],
+  "answer": 3,
+  "explanation": "This man is not of God, because he keepeth not the sabbath day.",
+  "ref": "John 9:16"
+ },
+ {
+  "id": "john-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did other Pharisees ask?",
+  "choices": [
+   "Who is his father?",
+   "How can a man that is a sinner do such miracles?",
+   "Where did he study?",
+   "Who is his master?"
+  ],
+  "answer": 1,
+  "explanation": "Others said, How can a man that is a sinner do such miracles? And there was a division among them.",
+  "ref": "John 9:16"
+ },
+ {
+  "id": "john-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the parents refuse to say who opened their son's eyes?",
+  "choices": [
+   "They feared the Jews",
+   "They did not love him",
+   "They did not care",
+   "They were far away"
+  ],
+  "answer": 0,
+  "explanation": "These words spake his parents, because they feared the Jews.",
+  "ref": "John 9:22"
+ },
+ {
+  "id": "john-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the Jews agreed to do to anyone who confessed Jesus was Christ?",
+  "choices": [
+   "Stone him",
+   "Fine him",
+   "Put him out of the synagogue",
+   "Banish him from Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "If any man did confess that he was Christ, he should be put out of the synagogue.",
+  "ref": "John 9:22"
+ },
+ {
+  "id": "john-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Pharisees say they knew about Jesus?",
+  "choices": [
+   "That he is a prophet",
+   "That he is a sinner",
+   "That he is from Galilee",
+   "That he is of God"
+  ],
+  "answer": 1,
+  "explanation": "Give God the praise: we know that this man is a sinner.",
+  "ref": "John 9:24"
+ },
+ {
+  "id": "john-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose disciples did the Pharisees say they were?",
+  "choices": [
+   "Abraham's",
+   "David's",
+   "The prophets'",
+   "Moses'"
+  ],
+  "answer": 3,
+  "explanation": "They reviled him, and said, Thou art his disciple; but we are Moses' disciples.",
+  "ref": "John 9:28"
+ },
+ {
+  "id": "john-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the man call a marvellous thing?",
+  "choices": [
+   "That the Pharisees came to the pool",
+   "That his parents feared",
+   "That the sabbath had come",
+   "That they knew not whence Jesus was, yet he opened his eyes"
+  ],
+  "answer": 3,
+  "explanation": "Why herein is a marvellous thing, that ye know not from whence he is, and yet he hath opened mine eyes.",
+  "ref": "John 9:30"
+ },
+ {
+  "id": "john-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the man say God heareth not?",
+  "choices": [
+   "The proud",
+   "Sinners",
+   "The Gentiles",
+   "The unclean"
+  ],
+  "answer": 1,
+  "explanation": "Now we know that God heareth not sinners.",
+  "ref": "John 9:31"
+ },
+ {
+  "id": "john-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Pharisees say the man was altogether born in?",
+  "choices": [
+   "Darkness",
+   "Blindness",
+   "Sins",
+   "Bondage"
+  ],
+  "answer": 2,
+  "explanation": "They said, Thou wast altogether born in sins, and dost thou teach us?",
+  "ref": "John 9:34"
+ },
+ {
+  "id": "john-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus tell the man when he asked who the Son of God is?",
+  "choices": [
+   "Thou hast both seen him, and it is he that talketh with thee",
+   "He is the one who sent thee to the pool",
+   "He is the prophet thou hast named",
+   "He is in Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Jesus said, Thou hast both seen him, and it is he that talketh with thee.",
+  "ref": "John 9:37"
+ },
+ {
+  "id": "john-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus say he came into this world?",
+  "choices": [
+   "To heal every blind man",
+   "For judgment, that they which see not might see",
+   "To keep the sabbath",
+   "To teach the Pharisees"
+  ],
+  "answer": 1,
+  "explanation": "For judgment I am come into this world, that they which see not might see; and that they which see might be made blind.",
+  "ref": "John 9:39"
+ },
+ {
+  "id": "john-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus do when he heard the man had been cast out?",
+  "choices": [
+   "Called the Pharisees",
+   "Went to the synagogue",
+   "Sent his disciples",
+   "Found him"
+  ],
+  "answer": 3,
+  "explanation": "Jesus heard that they had cast him out; and when he had found him, he said unto him, Dost thou believe on the Son of God?",
+  "ref": "John 9:35"
+ },
+ {
+  "id": "john-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the parents say about their son's ability to answer?",
+  "choices": [
+   "He is too weak to answer",
+   "He has gone to Siloam",
+   "He is afraid to answer",
+   "He is of age; he shall speak for himself"
+  ],
+  "answer": 3,
+  "explanation": "He is of age: ask him: he shall speak for himself.",
+  "ref": "John 9:21"
+ },
+ {
+  "id": "john-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the parents say they knew for certain?",
+  "choices": [
+   "That Jesus was a prophet",
+   "That this was their son and he was born blind",
+   "Who had opened his eyes",
+   "How he now saw"
+  ],
+  "answer": 1,
+  "explanation": "We know that this is our son, and that he was born blind.",
+  "ref": "John 9:20"
+ },
+ {
+  "id": "john-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man say when some said, He is like him?",
+  "choices": [
+   "I am he",
+   "I am a prophet",
+   "I am a disciple",
+   "I am the son of Simon"
+  ],
+  "answer": 0,
+  "explanation": "Some said, This is he: others said, He is like him: but he said, I am he.",
+  "ref": "John 9:9"
+ },
+ {
+  "id": "john-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man ask the Pharisees when he said he had already told them?",
+  "choices": [
+   "Will ye also be healed?",
+   "Will ye cast me out?",
+   "Will ye also be his disciples?",
+   "Will ye also go to Siloam?"
+  ],
+  "answer": 2,
+  "explanation": "I have told you already, and ye did not hear: will ye also be his disciples?",
+  "ref": "John 9:27"
+ },
+ {
+  "id": "john-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did some of the Pharisees ask when Jesus spoke of the blind?",
+  "choices": [
+   "Who is this man?",
+   "Are we blind also?",
+   "What sign dost thou show?",
+   "Who hath sent thee?"
+  ],
+  "answer": 1,
+  "explanation": "Some of the Pharisees heard these words, and said unto him, Are we blind also?",
+  "ref": "John 9:40"
+ },
+ {
+  "id": "john-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say remaineth with those who say, We see?",
+  "choices": [
+   "Their blindness",
+   "Their judgment alone",
+   "Their darkness of heart",
+   "Their sin"
+  ],
+  "answer": 3,
+  "explanation": "But now ye say, We see; therefore your sin remaineth.",
+  "ref": "John 9:41"
+ },
+ {
+  "id": "john-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man say he did after Jesus put clay on his eyes?",
+  "choices": [
+   "Prayed",
+   "Waited",
+   "Ran to the temple",
+   "Washed"
+  ],
+  "answer": 3,
+  "explanation": "He put clay upon mine eyes, and I washed, and do see.",
+  "ref": "John 9:15"
+ },
+ {
+  "id": "john-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man say God does for the one who worships him and does his will?",
+  "choices": [
+   "Heals him",
+   "Hears him",
+   "Delivers him from the Jews",
+   "Gives him sight"
+  ],
+  "answer": 1,
+  "explanation": "If any man be a worshipper of God, and doeth his will, him he heareth.",
+  "ref": "John 9:31"
+ },
+ {
+  "id": "john-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Pharisees tell the man to give to God?",
+  "choices": [
+   "The thanks",
+   "The glory of Moses",
+   "The praise",
+   "A sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "Then again called they the man that was blind, and said unto him, Give God the praise.",
+  "ref": "John 9:24"
+ },
+ {
+  "id": "john-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man say had never been heard since the world began?",
+  "choices": [
+   "That any man opened the eyes of one born blind",
+   "That a prophet healed on the sabbath",
+   "That God heard a sinner",
+   "That a blind man taught the Pharisees"
+  ],
+  "answer": 0,
+  "explanation": "Since the world began was it not heard that any man opened the eyes of one that was born blind.",
+  "ref": "John 9:32"
+ },
+ {
+  "id": "john-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the Pharisees treat the man when he asked if they would be disciples?",
+  "choices": [
+   "They stoned him",
+   "They reviled him",
+   "They laughed",
+   "They praised him"
+  ],
+  "answer": 1,
+  "explanation": "Then they reviled him, and said, Thou art his disciple; but we are Moses' disciples.",
+  "ref": "John 9:28"
+ },
+ {
+  "id": "john-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man's healing cause among the Pharisees?",
+  "choices": [
+   "A riot",
+   "A trial",
+   "A fast",
+   "A division"
+  ],
+  "answer": 3,
+  "explanation": "There was a division among them.",
+  "ref": "John 9:16"
+ },
+ {
+  "id": "john-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say comes when no man can work?",
+  "choices": [
+   "The night",
+   "The winter",
+   "The judgment",
+   "The sabbath"
+  ],
+  "answer": 0,
+  "explanation": "I must work the works of him that sent me, while it is day: the night cometh, when no man can work.",
+  "ref": "John 9:4"
+ },
+ {
+  "id": "john-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man ask Jesus when told of the Son of God?",
+  "choices": [
+   "Where is he, Lord?",
+   "What must I do, Lord?",
+   "Who is he, Lord, that I might believe on him?",
+   "How shall I know him?"
+  ],
+  "answer": 2,
+  "explanation": "He answered and said, Who is he, Lord, that I might believe on him?",
+  "ref": "John 9:36"
+ },
+ {
+  "id": "john-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Jews ask the parents about their son?",
+  "choices": [
+   "Where did he go to be healed?",
+   "Who is his teacher?",
+   "Is this your son, who ye say was born blind?",
+   "Why did he not tell us?"
+  ],
+  "answer": 2,
+  "explanation": "They asked them, Is this your son, who ye say was born blind? how then doth he now see?",
+  "ref": "John 9:19"
  }
 ]
