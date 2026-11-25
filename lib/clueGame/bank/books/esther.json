@@ -2672,6 +2672,166 @@
   "ref": "Esther 7:10"
  },
  {
+  "id": "esther-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the king go in his wrath when he rose from the banquet?",
+  "choices": [
+   "Into the palace garden",
+   "Into the inner court",
+   "Out to the king's gate",
+   "Up to the royal house"
+  ],
+  "answer": 0,
+  "explanation": "The king arising from the banquet of wine in his wrath went into the palace garden.",
+  "ref": "Esther 7:7"
+ },
+ {
+  "id": "esther-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If Esther's people had only been sold as slaves, what did she say she would have done?",
+  "choices": [
+   "Held her tongue",
+   "Pleaded for them",
+   "Gone to Mordecai",
+   "Paid their price"
+  ],
+  "answer": 0,
+  "explanation": "Esther said that if they had been sold for bondmen and bondwomen, I had held my tongue.",
+  "ref": "Esther 7:4"
+ },
+ {
+  "id": "esther-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Which chamberlain told the king about the gallows at Haman's house?",
+  "choices": [
+   "Harbonah",
+   "Hegai",
+   "Bigthan",
+   "Teresh"
+  ],
+  "answer": 0,
+  "explanation": "Harbonah, one of the chamberlains, said, Behold also, the gallows fifty cubits high, which Haman had made for Mordecai, standeth in the house of Haman.",
+  "ref": "Esther 7:9"
+ },
+ {
+  "id": "esther-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Haman when the king came back in from the garden?",
+  "choices": [
+   "Fallen upon the bed where Esther was",
+   "Hiding behind the king's throne",
+   "Kneeling at the king's gate",
+   "Standing in the inner court"
+  ],
+  "answer": 0,
+  "explanation": "The king returned and Haman was fallen upon the bed whereon Esther was.",
+  "ref": "Esther 7:8"
+ },
+ {
+  "id": "esther-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What command did the king give when he heard about the gallows?",
+  "choices": [
+   "Hang him thereon",
+   "Send him from Shushan",
+   "Cast him into prison",
+   "Strip him of his rank"
+  ],
+  "answer": 0,
+  "explanation": "The king said, Hang him thereon.",
+  "ref": "Esther 7:9"
+ },
+ {
+  "id": "esther-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king ask Esther when she said her people were sold?",
+  "choices": [
+   "Who is he that dared to do so",
+   "Why did she not speak sooner",
+   "Who had told her this",
+   "Where was Mordecai"
+  ],
+  "answer": 0,
+  "explanation": "The king said, Who is he, and where is he, that durst presume in his heart to do so?",
+  "ref": "Esther 7:5"
+ },
+ {
+  "id": "esther-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How high did Harbonah say the gallows at Haman's house was?",
+  "choices": [
+   "Fifty cubits",
+   "Thirty cubits",
+   "Seventy cubits",
+   "One hundred cubits"
+  ],
+  "answer": 0,
+  "explanation": "Harbonah said the gallows fifty cubits high, which Haman had made for Mordecai, standeth in the house of Haman.",
+  "ref": "Esther 7:9"
+ },
+ {
+  "id": "esther-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they do to Haman's face as the king's word went out?",
+  "choices": [
+   "They covered it",
+   "They struck it",
+   "They turned it to the wall",
+   "They crowned it"
+  ],
+  "answer": 0,
+  "explanation": "As the word went out of the king's mouth, they covered Haman's face.",
+  "ref": "Esther 7:8"
+ },
+ {
+  "id": "esther-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Haman stand up to plead with Esther for his life?",
+  "choices": [
+   "He saw the king had determined evil against him",
+   "Esther had called him",
+   "The king had asked him to",
+   "Mordecai was dying"
+  ],
+  "answer": 0,
+  "explanation": "Haman stood up to make request for his life to Esther, for he saw that there was evil determined against him by the king.",
+  "ref": "Esther 7:7"
+ },
+ {
+  "id": "esther-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the king's wrath after Haman was hanged?",
+  "choices": [
+   "It was pacified",
+   "It was kindled against Esther",
+   "It turned on Mordecai",
+   "It lasted many days"
+  ],
+  "answer": 0,
+  "explanation": "So they hanged Haman on the gallows that he had prepared for Mordecai. Then was the king's wrath pacified.",
+  "ref": "Esther 7:10"
+ },
+ {
   "id": "old-esther-8-1",
   "chapter": 8,
   "level": "beginner",
