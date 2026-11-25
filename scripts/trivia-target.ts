@@ -46,5 +46,13 @@ const LIST_CHAPTERS = new Set([
   "ezekiel:40", "ezekiel:41", "ezekiel:42", "ezekiel:45", "ezekiel:48",
 ]);
 
+/**
+ * Proverbs is one-line sayings: 15 per level meant asking the second half of a
+ * couplet already asked, or a single word from it. 10 per level at most
+ * (2026-11-25), so every question is its own saying.
+ */
+const CAPS: Record<string, number> = { proverbs: 10 };
+
 export const targetFor = (book: string, chapter: number) =>
-  LIST_CHAPTERS.has(`${book}:${chapter}`) ? 5 : Math.min(15, Math.max(5, Math.ceil(versesIn(book, chapter) / 2)));
+  LIST_CHAPTERS.has(`${book}:${chapter}`) ? 5 :
+  CAPS[book] ? Math.min(CAPS[book], Math.max(5, Math.ceil(versesIn(book, chapter) / 2))) : Math.min(15, Math.max(5, Math.ceil(versesIn(book, chapter) / 2)));
