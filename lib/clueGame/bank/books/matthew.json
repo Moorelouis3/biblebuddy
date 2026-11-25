@@ -7118,5 +7118,5029 @@
   "answer": 3,
   "explanation": "There was a great earthquake: for the angel of the Lord descended from heaven, and rolled back the stone.",
   "ref": "Matthew 28:2"
+ },
+ {
+  "id": "matthew-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What choked the seed that fell among thorns?",
+  "choices": [
+   "The sun scorched it",
+   "The thorns sprang up and choked it",
+   "The fowls devoured it",
+   "It had no depth of earth"
+  ],
+  "answer": 1,
+  "explanation": "Some seed fell among thorns; and the thorns sprung up, and choked them.",
+  "ref": "Matthew 13:7"
+ },
+ {
+  "id": "matthew-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Jesus sit to teach the great multitudes by the sea?",
+  "choices": [
+   "On a mountain",
+   "In a ship",
+   "In the synagogue",
+   "On the shore among them"
+  ],
+  "answer": 1,
+  "explanation": "He went into a ship, and sat; and the whole multitude stood on the shore.",
+  "ref": "Matthew 13:2"
+ },
+ {
+  "id": "matthew-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sowed tares among the wheat while men slept?",
+  "choices": [
+   "A hired servant",
+   "His enemy",
+   "The reapers",
+   "A neighbouring householder"
+  ],
+  "answer": 1,
+  "explanation": "While men slept, his enemy came and sowed tares among the wheat, and went his way.",
+  "ref": "Matthew 13:25"
+ },
+ {
+  "id": "matthew-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the merchant man seeking?",
+  "choices": [
+   "Fine linen",
+   "Goodly pearls",
+   "Treasure in a field",
+   "Vineyards"
+  ],
+  "answer": 1,
+  "explanation": "The kingdom of heaven is like unto a merchant man, seeking goodly pearls.",
+  "ref": "Matthew 13:45"
+ },
+ {
+  "id": "matthew-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the woman hide in three measures of meal?",
+  "choices": [
+   "Salt",
+   "Leaven",
+   "Oil",
+   "Mustard seed"
+  ],
+  "answer": 1,
+  "explanation": "The kingdom of heaven is like unto leaven, which a woman took, and hid in three measures of meal, till the whole was leavened.",
+  "ref": "Matthew 13:33"
+ },
+ {
+  "id": "matthew-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In the parable of the net, what did they do with the bad fish?",
+  "choices": [
+   "Sold them at the shore",
+   "Cast them away",
+   "Burned them in a furnace",
+   "Put them back in vessels"
+  ],
+  "answer": 1,
+  "explanation": "They gathered the good into vessels, but cast the bad away.",
+  "ref": "Matthew 13:48"
+ },
+ {
+  "id": "matthew-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose son did the people of his own country call Jesus?",
+  "choices": [
+   "The fisherman's son",
+   "The carpenter's son",
+   "The priest's son",
+   "The scribe's son"
+  ],
+  "answer": 1,
+  "explanation": "They said, Is not this the carpenter's son? is not his mother called Mary?",
+  "ref": "Matthew 13:55"
+ },
+ {
+  "id": "matthew-13-e-08",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jesus not do many mighty works in his own country?",
+  "choices": [
+   "Because the Pharisees drove him out",
+   "Because of their unbelief",
+   "Because he was tired",
+   "Because the sick would not come"
+  ],
+  "answer": 1,
+  "explanation": "He did not many mighty works there because of their unbelief.",
+  "ref": "Matthew 13:58"
+ },
+ {
+  "id": "matthew-13-e-09",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus say a prophet is not without, save in his own country?",
+  "choices": [
+   "Enemies",
+   "Honour",
+   "Wisdom",
+   "Followers"
+  ],
+  "answer": 1,
+  "explanation": "A prophet is not without honour, save in his own country, and in his own house.",
+  "ref": "Matthew 13:57"
+ },
+ {
+  "id": "matthew-13-e-10",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is done to the tares at harvest?",
+  "choices": [
+   "Sown again in the field",
+   "Bound in bundles and burned",
+   "Fed to the cattle",
+   "Cast into the sea"
+  ],
+  "answer": 1,
+  "explanation": "Gather ye together first the tares, and bind them in bundles to burn them: but gather the wheat into my barn.",
+  "ref": "Matthew 13:30"
+ },
+ {
+  "id": "matthew-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus say he spoke to the multitude in parables?",
+  "choices": [
+   "Because the scribes had forbidden plain speech",
+   "Because the multitude was too large to hear",
+   "Because it was not yet time to reveal his name",
+   "Because seeing they see not, and hearing they hear not"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said, Therefore speak I to them in parables: because they seeing see not; and hearing they hear not, neither do they understand.",
+  "ref": "Matthew 13:13"
+ },
+ {
+  "id": "matthew-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Jesus say was given to know the mysteries of the kingdom of heaven?",
+  "choices": [
+   "The scribes",
+   "The Pharisees",
+   "The multitude",
+   "His disciples"
+  ],
+  "answer": 3,
+  "explanation": "He told the disciples, It is given unto you to know the mysteries of the kingdom of heaven, but to them it is not given.",
+  "ref": "Matthew 13:11"
+ },
+ {
+  "id": "matthew-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the seed on stony places wither away?",
+  "choices": [
+   "Thorns choked it",
+   "The fowls devoured it",
+   "It was trodden down",
+   "It had no root, and the sun scorched it"
+  ],
+  "answer": 3,
+  "explanation": "It had no deepness of earth, and when the sun was up, they were scorched; and because they had no root, they withered away.",
+  "ref": "Matthew 13:5–6"
+ },
+ {
+  "id": "matthew-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What choked the word in the one who received seed among the thorns?",
+  "choices": [
+   "Tribulation and persecution",
+   "The wicked one catching it away",
+   "Pride in his own understanding",
+   "The care of this world and the deceitfulness of riches"
+  ],
+  "answer": 3,
+  "explanation": "The care of this world, and the deceitfulness of riches, choke the word, and he becometh unfruitful.",
+  "ref": "Matthew 13:22"
+ },
+ {
+  "id": "matthew-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who catcheth away the word from one who hears and understands it not?",
+  "choices": [
+   "The scribes",
+   "The elders",
+   "His own household",
+   "The wicked one"
+  ],
+  "answer": 3,
+  "explanation": "When any one heareth the word of the kingdom, and understandeth it not, then cometh the wicked one, and catcheth away that which was sown in his heart.",
+  "ref": "Matthew 13:19"
+ },
+ {
+  "id": "matthew-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the householder say not to gather up the tares?",
+  "choices": [
+   "Because the tares were too many",
+   "Because the servants were asleep",
+   "Because the tares were of no harm",
+   "Lest the wheat be rooted up with them"
+  ],
+  "answer": 3,
+  "explanation": "He said, Nay; lest while ye gather up the tares, ye root up also the wheat with them.",
+  "ref": "Matthew 13:29"
+ },
+ {
+  "id": "matthew-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the servants ask when the tares appeared in the field?",
+  "choices": [
+   "Whether the field was his",
+   "Whether they should burn the field",
+   "Whether the reapers had come",
+   "Whether he had not sowed good seed"
+  ],
+  "answer": 3,
+  "explanation": "The servants said, Sir, didst not thou sow good seed in thy field? from whence then hath it tares?",
+  "ref": "Matthew 13:27"
+ },
+ {
+  "id": "matthew-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "In the explanation of the tares, who are the reapers?",
+  "choices": [
+   "The apostles",
+   "The servants of the householder",
+   "The righteous",
+   "The angels"
+  ],
+  "answer": 3,
+  "explanation": "The harvest is the end of the world; and the reapers are the angels.",
+  "ref": "Matthew 13:39"
+ },
+ {
+  "id": "matthew-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose prophecy did Jesus say was fulfilled in those who hear and do not understand?",
+  "choices": [
+   "Jeremias",
+   "Elias",
+   "Daniel",
+   "Esaias"
+  ],
+  "answer": 3,
+  "explanation": "In them is fulfilled the prophecy of Esaias, which saith, By hearing ye shall hear, and shall not understand.",
+  "ref": "Matthew 13:14"
+ },
+ {
+  "id": "matthew-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What come and lodge in the branches of the mustard plant?",
+  "choices": [
+   "The beasts of the field",
+   "The bees",
+   "The fowls of heaven only at night",
+   "The birds of the air"
+  ],
+  "answer": 3,
+  "explanation": "It becometh a tree, so that the birds of the air come and lodge in the branches thereof.",
+  "ref": "Matthew 13:32"
+ },
+ {
+  "id": "matthew-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In the parable of the tares, what is the field?",
+  "choices": [
+   "The kingdom of heaven",
+   "The heart of man",
+   "The house of Israel",
+   "The world"
+  ],
+  "answer": 3,
+  "explanation": "The field is the world; the good seed are the children of the kingdom.",
+  "ref": "Matthew 13:38"
+ },
+ {
+  "id": "matthew-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Jesus say had desired to see what the disciples saw and had not seen it?",
+  "choices": [
+   "Kings and rulers",
+   "The scribes and Pharisees",
+   "The elders of the people",
+   "Many prophets and righteous men"
+  ],
+  "answer": 3,
+  "explanation": "Many prophets and righteous men have desired to see those things which ye see, and have not seen them.",
+  "ref": "Matthew 13:17"
+ },
+ {
+  "id": "matthew-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Jesus teach when he came into his own country?",
+  "choices": [
+   "In the temple",
+   "By the sea side",
+   "In a ship",
+   "In their synagogue"
+  ],
+  "answer": 3,
+  "explanation": "When he was come into his own country, he taught them in their synagogue, insomuch that they were astonished.",
+  "ref": "Matthew 13:54"
+ },
+ {
+  "id": "matthew-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the people of his own country take Jesus?",
+  "choices": [
+   "They worshipped him",
+   "They sought to stone him",
+   "They asked him to stay",
+   "They were offended in him"
+  ],
+  "answer": 3,
+  "explanation": "They were offended in him. But Jesus said unto them, A prophet is not without honour, save in his own country.",
+  "ref": "Matthew 13:57"
+ },
+ {
+  "id": "matthew-13-m-15",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the scribe instructed unto the kingdom bring out of his treasure?",
+  "choices": [
+   "Gold and silver",
+   "Pearls and fine linen",
+   "Treasure hid in a field",
+   "Things new and old"
+  ],
+  "answer": 3,
+  "explanation": "Every scribe which is instructed unto the kingdom of heaven is like a householder, which bringeth forth out of his treasure things new and old.",
+  "ref": "Matthew 13:52"
+ },
+ {
+  "id": "matthew-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What three yields did the good ground bring forth?",
+  "choices": [
+   "An hundredfold, sixtyfold and thirtyfold",
+   "Tenfold, twentyfold and fiftyfold",
+   "Twofold, fourfold and sevenfold",
+   "A thousandfold, five hundredfold and a hundredfold"
+  ],
+  "answer": 0,
+  "explanation": "Other seed fell into good ground, and brought forth fruit, some an hundredfold, some sixtyfold, some thirtyfold.",
+  "ref": "Matthew 13:8"
+ },
+ {
+  "id": "matthew-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many measures of meal did the woman hide the leaven in?",
+  "choices": [
+   "Three",
+   "Two",
+   "Five",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "The woman took leaven, and hid it in three measures of meal, till the whole was leavened.",
+  "ref": "Matthew 13:33"
+ },
+ {
+  "id": "matthew-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Who are the tares, as Jesus explained the parable?",
+  "choices": [
+   "The children of the wicked one",
+   "The Pharisees only",
+   "The unbelieving Gentiles",
+   "The false prophets"
+  ],
+  "answer": 0,
+  "explanation": "The good seed are the children of the kingdom; but the tares are the children of the wicked one.",
+  "ref": "Matthew 13:38"
+ },
+ {
+  "id": "matthew-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is the enemy that sowed the tares?",
+  "choices": [
+   "The devil",
+   "The wicked king",
+   "The scribe",
+   "The unbelieving world"
+  ],
+  "answer": 0,
+  "explanation": "The enemy that sowed them is the devil; the harvest is the end of the world.",
+  "ref": "Matthew 13:39"
+ },
+ {
+  "id": "matthew-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the harvest, according to Jesus?",
+  "choices": [
+   "The end of the world",
+   "The day of judgement of Israel",
+   "The coming of the Messiah",
+   "The gathering of the Gentiles"
+  ],
+  "answer": 0,
+  "explanation": "The harvest is the end of the world; and the reapers are the angels.",
+  "ref": "Matthew 13:39"
+ },
+ {
+  "id": "matthew-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where shall the righteous shine forth as the sun?",
+  "choices": [
+   "In the kingdom of their Father",
+   "In the house of the householder",
+   "In the barn of the wheat",
+   "In the heavens above the earth"
+  ],
+  "answer": 0,
+  "explanation": "Then shall the righteous shine forth as the sun in the kingdom of their Father.",
+  "ref": "Matthew 13:43"
+ },
+ {
+  "id": "matthew-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these did the people name as a brother of Jesus?",
+  "choices": [
+   "Joses",
+   "John",
+   "Andrew",
+   "Philip"
+  ],
+  "answer": 0,
+  "explanation": "They asked, And his brethren, James, and Joses, and Simon, and Judas?",
+  "ref": "Matthew 13:55"
+ },
+ {
+  "id": "matthew-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What moved the man to sell all he had for the field with the treasure?",
+  "choices": [
+   "Joy",
+   "Fear of thieves",
+   "The advice of a friend",
+   "A debt he owed"
+  ],
+  "answer": 0,
+  "explanation": "When a man hath found treasure, he hideth, and for joy thereof goeth and selleth all that he hath, and buyeth that field.",
+  "ref": "Matthew 13:44"
+ },
+ {
+  "id": "matthew-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into what did the fishermen gather the good fish?",
+  "choices": [
+   "Vessels",
+   "Baskets",
+   "Nets",
+   "Barns"
+  ],
+  "answer": 0,
+  "explanation": "They drew to shore, and sat down, and gathered the good into vessels, but cast the bad away.",
+  "ref": "Matthew 13:48"
+ },
+ {
+  "id": "matthew-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the disciples answer when Jesus asked if they had understood all these things?",
+  "choices": [
+   "Yea, Lord",
+   "We do not yet understand",
+   "Declare it again, Lord",
+   "We have left all to follow thee"
+  ],
+  "answer": 0,
+  "explanation": "Jesus saith unto them, Have ye understood all these things? They say unto him, Yea, Lord.",
+  "ref": "Matthew 13:51"
+ },
+ {
+  "id": "matthew-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the prophet foretold he would open his mouth in?",
+  "choices": [
+   "Parables",
+   "Proverbs",
+   "Visions",
+   "Songs"
+  ],
+  "answer": 0,
+  "explanation": "That it might be fulfilled which was spoken by the prophet, saying, I will open my mouth in parables.",
+  "ref": "Matthew 13:35"
+ },
+ {
+  "id": "matthew-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Where were the disciples when they asked Jesus to declare the parable of the tares?",
+  "choices": [
+   "In the house",
+   "By the sea side",
+   "In the ship",
+   "On the mountain"
+  ],
+  "answer": 0,
+  "explanation": "Jesus sent the multitude away, and went into the house: and his disciples came unto him.",
+  "ref": "Matthew 13:36"
+ },
+ {
+  "id": "matthew-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say shall be taken from him that hath not?",
+  "choices": [
+   "Even that he hath",
+   "His portion in the barn",
+   "His place in the kingdom",
+   "The mysteries given to others"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever hath not, from him shall be taken away even that he hath.",
+  "ref": "Matthew 13:12"
+ },
+ {
+  "id": "matthew-13-h-14",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the tares appear among the wheat?",
+  "choices": [
+   "When the blade sprung up and brought forth fruit",
+   "As soon as the seed was sown",
+   "At the time of harvest",
+   "When the servants slept"
+  ],
+  "answer": 0,
+  "explanation": "When the blade was sprung up, and brought forth fruit, then appeared the tares also.",
+  "ref": "Matthew 13:26"
+ },
+ {
+  "id": "matthew-13-h-15",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At harvest, what does the lord say the reapers should gather first?",
+  "choices": [
+   "The tares, to burn them",
+   "The wheat into the barn",
+   "The good fish into vessels",
+   "The thorns from the ground"
+  ],
+  "answer": 0,
+  "explanation": "In the time of harvest I will say to the reapers, Gather ye together first the tares, and bind them in bundles to burn them.",
+  "ref": "Matthew 13:30"
+ },
+ {
+  "id": "matthew-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Why did Herod lay hold on John and put him in prison?",
+  "choices": [
+   "For preaching against the temple",
+   "For Herodias' sake, his brother Philip's wife",
+   "For baptizing without leave",
+   "For stirring up the people against Caesar"
+  ],
+  "answer": 1,
+  "explanation": "Herod had laid hold on John, and bound him, and put him in prison for Herodias' sake, his brother Philip's wife.",
+  "ref": "Matthew 14:3"
+ },
+ {
+  "id": "matthew-14-e-02",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Herodias' daughter ask for after she danced?",
+  "choices": [
+   "Half of Herod's kingdom",
+   "John Baptist's head in a charger",
+   "A great sum of silver",
+   "John's release from prison"
+  ],
+  "answer": 1,
+  "explanation": "She said, Give me here John Baptist's head in a charger.",
+  "ref": "Matthew 14:8"
+ },
+ {
+  "id": "matthew-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Herod say Jesus was when he heard of his fame?",
+  "choices": [
+   "Elias come again",
+   "John the Baptist risen from the dead",
+   "One of the old prophets",
+   "Jeremias"
+  ],
+  "answer": 1,
+  "explanation": "Herod said to his servants, This is John the Baptist; he is risen from the dead.",
+  "ref": "Matthew 14:1–2"
+ },
+ {
+  "id": "matthew-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did John's disciples do after he was beheaded?",
+  "choices": [
+   "Fled into the wilderness",
+   "Took the body, buried it and told Jesus",
+   "Followed Herod to demand justice",
+   "Carried the body to Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "His disciples came, and took up the body, and buried it, and went and told Jesus.",
+  "ref": "Matthew 14:12"
+ },
+ {
+  "id": "matthew-14-e-05",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to his disciples about feeding the multitude?",
+  "choices": [
+   "Send them to the villages",
+   "Give ye them to eat",
+   "Let them fast until morning",
+   "Go and buy bread"
+  ],
+  "answer": 1,
+  "explanation": "Jesus said unto them, They need not depart; give ye them to eat.",
+  "ref": "Matthew 14:16"
+ },
+ {
+  "id": "matthew-14-e-06",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus command the multitude to do before he fed them?",
+  "choices": [
+   "Stand in rows of fifty",
+   "Sit down on the grass",
+   "Wash their hands",
+   "Kneel and pray"
+  ],
+  "answer": 1,
+  "explanation": "He commanded the multitude to sit down on the grass, and took the five loaves, and the two fishes.",
+  "ref": "Matthew 14:19"
+ },
+ {
+  "id": "matthew-14-e-07",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus go alone to pray after sending the multitudes away?",
+  "choices": [
+   "Into the synagogue",
+   "Up into a mountain",
+   "Into the desert place",
+   "Into the house of Peter"
+  ],
+  "answer": 1,
+  "explanation": "When he had sent the multitudes away, he went up into a mountain apart to pray: and when the evening was come, he was there alone.",
+  "ref": "Matthew 14:23"
+ },
+ {
+  "id": "matthew-14-e-08",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the disciples cry out when they saw Jesus walking on the sea?",
+  "choices": [
+   "It is the Lord",
+   "It is a spirit",
+   "Save us, we perish",
+   "It is Elias"
+  ],
+  "answer": 1,
+  "explanation": "They were troubled, saying, It is a spirit; and they cried out for fear.",
+  "ref": "Matthew 14:26"
+ },
+ {
+  "id": "matthew-14-e-09",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter ask Jesus to bid him do?",
+  "choices": [
+   "Command the wind to cease",
+   "Come unto him on the water",
+   "Send him back to the shore",
+   "Feed the multitude"
+  ],
+  "answer": 1,
+  "explanation": "Peter said, Lord, if it be thou, bid me come unto thee on the water.",
+  "ref": "Matthew 14:28"
+ },
+ {
+  "id": "matthew-14-e-10",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did those in the ship say when they worshipped Jesus?",
+  "choices": [
+   "Thou art Elias that should come",
+   "Of a truth thou art the Son of God",
+   "Thou art the Christ of Israel",
+   "Thou art the prophet of Nazareth"
+  ],
+  "answer": 1,
+  "explanation": "They that were in the ship came and worshipped him, saying, Of a truth thou art the Son of God.",
+  "ref": "Matthew 14:33"
+ },
+ {
+  "id": "matthew-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Herod fear to put John to death?",
+  "choices": [
+   "Herodias begged him to spare John",
+   "John was his brother",
+   "The Pharisees defended John",
+   "The multitude counted John as a prophet"
+  ],
+  "answer": 3,
+  "explanation": "When he would have put him to death, he feared the multitude, because they counted him as a prophet.",
+  "ref": "Matthew 14:5"
+ },
+ {
+  "id": "matthew-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did John say to Herod about Herodias?",
+  "choices": [
+   "Thou shalt repent of thy kingdom",
+   "She is the wife of thy servant",
+   "Put her away and be baptized",
+   "It is not lawful for thee to have her"
+  ],
+  "answer": 3,
+  "explanation": "John said unto him, It is not lawful for thee to have her.",
+  "ref": "Matthew 14:4"
+ },
+ {
+  "id": "matthew-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was being kept when the daughter of Herodias danced before them?",
+  "choices": [
+   "The feast of the passover",
+   "A feast of tabernacles",
+   "A wedding in Galilee",
+   "Herod's birthday"
+  ],
+  "answer": 3,
+  "explanation": "When Herod's birthday was kept, the daughter of Herodias danced before them, and pleased Herod.",
+  "ref": "Matthew 14:6"
+ },
+ {
+  "id": "matthew-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Herod promise the damsel?",
+  "choices": [
+   "Half of his kingdom",
+   "A place at his table",
+   "Her mother's freedom",
+   "With an oath, whatsoever she would ask"
+  ],
+  "answer": 3,
+  "explanation": "He promised with an oath to give her whatsoever she would ask.",
+  "ref": "Matthew 14:7"
+ },
+ {
+  "id": "matthew-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had instructed the damsel to ask for John's head?",
+  "choices": [
+   "Herod's servants",
+   "The chief priests",
+   "Philip",
+   "Her mother"
+  ],
+  "answer": 3,
+  "explanation": "She, being before instructed of her mother, said, Give me here John Baptist's head in a charger.",
+  "ref": "Matthew 14:8"
+ },
+ {
+  "id": "matthew-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Herod command John's head to be given though he was sorry?",
+  "choices": [
+   "Because he feared Herodias",
+   "Because the multitude demanded it",
+   "Because John had insulted him",
+   "For the oath's sake and for those who sat with him at meat"
+  ],
+  "answer": 3,
+  "explanation": "The king was sorry: nevertheless for the oath's sake, and them which sat with him at meat, he commanded it to be given her.",
+  "ref": "Matthew 14:9"
+ },
+ {
+  "id": "matthew-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Jesus go by ship when he heard what had happened to John?",
+  "choices": [
+   "To Capernaum",
+   "Across to Gennesaret",
+   "To Jerusalem",
+   "Into a desert place apart"
+  ],
+  "answer": 3,
+  "explanation": "When Jesus heard of it, he departed thence by ship into a desert place apart.",
+  "ref": "Matthew 14:13"
+ },
+ {
+  "id": "matthew-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus do when he saw the great multitude?",
+  "choices": [
+   "Sent them away at once",
+   "Taught them in parables",
+   "Rebuked them for following",
+   "Was moved with compassion and healed their sick"
+  ],
+  "answer": 3,
+  "explanation": "Jesus went forth, and saw a great multitude, and was moved with compassion toward them, and he healed their sick.",
+  "ref": "Matthew 14:14"
+ },
+ {
+  "id": "matthew-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the disciples ask Jesus to send the multitude away?",
+  "choices": [
+   "Because the multitude was unruly",
+   "Because the Sabbath was beginning",
+   "Because Jesus was weary",
+   "So they could buy victuals in the villages"
+  ],
+  "answer": 3,
+  "explanation": "This is a desert place, and the time is now past; send the multitude away, that they may go into the villages, and buy themselves victuals.",
+  "ref": "Matthew 14:15"
+ },
+ {
+  "id": "matthew-14-m-10",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did Jesus give the loaves after he blessed and broke them?",
+  "choices": [
+   "The multitude directly",
+   "The twelve baskets",
+   "Peter alone",
+   "His disciples"
+  ],
+  "answer": 3,
+  "explanation": "He blessed, and brake, and gave the loaves to his disciples, and the disciples to the multitude.",
+  "ref": "Matthew 14:19"
+ },
+ {
+  "id": "matthew-14-m-11",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus constrain his disciples to do straightway after the feeding?",
+  "choices": [
+   "Gather the fragments",
+   "Dismiss the multitudes",
+   "Follow him up the mountain",
+   "Get into a ship and go before him"
+  ],
+  "answer": 3,
+  "explanation": "Jesus constrained his disciples to get into a ship, and to go before him unto the other side, while he sent the multitudes away.",
+  "ref": "Matthew 14:22"
+ },
+ {
+  "id": "matthew-14-m-12",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to the disciples when he came to them on the sea?",
+  "choices": [
+   "Peace be still",
+   "Fear not, for I am with you",
+   "Why are ye so fearful",
+   "Be of good cheer; it is I; be not afraid"
+  ],
+  "answer": 3,
+  "explanation": "Straightway Jesus spake unto them, saying, Be of good cheer; it is I; be not afraid.",
+  "ref": "Matthew 14:27"
+ },
+ {
+  "id": "matthew-14-m-13",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to Peter when he caught him?",
+  "choices": [
+   "Why fearest thou the sea?",
+   "Follow me, and I will make thee fisher of men",
+   "Thou shalt not sink, for I am with thee",
+   "O thou of little faith, wherefore didst thou doubt?"
+  ],
+  "answer": 3,
+  "explanation": "Jesus stretched forth his hand, and caught him, and said, O thou of little faith, wherefore didst thou doubt?",
+  "ref": "Matthew 14:31"
+ },
+ {
+  "id": "matthew-14-m-14",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened when Jesus and Peter came into the ship?",
+  "choices": [
+   "The ship reached the land",
+   "The waves covered the ship",
+   "A great calm and silence fell upon the disciples",
+   "The wind ceased"
+  ],
+  "answer": 3,
+  "explanation": "When they were come into the ship, the wind ceased.",
+  "ref": "Matthew 14:32"
+ },
+ {
+  "id": "matthew-14-m-15",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the ship tossed with waves in the midst of the sea?",
+  "choices": [
+   "A great storm of hail came",
+   "The ship was overloaded",
+   "The nets were cast",
+   "The wind was contrary"
+  ],
+  "answer": 3,
+  "explanation": "The ship was now in the midst of the sea, tossed with waves: for the wind was contrary.",
+  "ref": "Matthew 14:24"
+ },
+ {
+  "id": "matthew-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which watch of the night did Jesus go to them, walking on the sea?",
+  "choices": [
+   "The fourth watch",
+   "The first watch",
+   "The second watch",
+   "The third watch"
+  ],
+  "answer": 0,
+  "explanation": "In the fourth watch of the night Jesus went unto them, walking on the sea.",
+  "ref": "Matthew 14:25"
+ },
+ {
+  "id": "matthew-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "Into what land did they come after they were gone over?",
+  "choices": [
+   "Gennesaret",
+   "Magdala",
+   "Capernaum",
+   "Bethsaida"
+  ],
+  "answer": 0,
+  "explanation": "When they were gone over, they came into the land of Gennesaret.",
+  "ref": "Matthew 14:34"
+ },
+ {
+  "id": "matthew-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the sick ask that they might touch?",
+  "choices": [
+   "The hem of his garment",
+   "His hand",
+   "His feet",
+   "The fringe of his cloak at the door"
+  ],
+  "answer": 0,
+  "explanation": "They besought him that they might only touch the hem of his garment: and as many as touched were made perfectly whole.",
+  "ref": "Matthew 14:36"
+ },
+ {
+  "id": "matthew-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was John beheaded?",
+  "choices": [
+   "In the prison",
+   "In Herod's palace",
+   "In the wilderness",
+   "At the feast"
+  ],
+  "answer": 0,
+  "explanation": "Herod sent, and beheaded John in the prison.",
+  "ref": "Matthew 14:10"
+ },
+ {
+  "id": "matthew-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what was John's head brought and given to the damsel?",
+  "choices": [
+   "A charger",
+   "A basket",
+   "A cloth",
+   "A bowl of silver"
+  ],
+  "answer": 0,
+  "explanation": "His head was brought in a charger, and given to the damsel: and she brought it to her mother.",
+  "ref": "Matthew 14:11"
+ },
+ {
+  "id": "matthew-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Peter cry when he began to sink?",
+  "choices": [
+   "Lord, save me",
+   "Master, we perish",
+   "Lord, increase my faith",
+   "Bid me return"
+  ],
+  "answer": 0,
+  "explanation": "Beginning to sink, he cried, saying, Lord, save me.",
+  "ref": "Matthew 14:30"
+ },
+ {
+  "id": "matthew-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jesus respond when Peter cried out?",
+  "choices": [
+   "He immediately stretched forth his hand and caught him",
+   "He called to him to be calm",
+   "He rebuked the wind first",
+   "He sent the other disciples to him"
+  ],
+  "answer": 0,
+  "explanation": "Immediately Jesus stretched forth his hand, and caught him.",
+  "ref": "Matthew 14:31"
+ },
+ {
+  "id": "matthew-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "What title is given to Herod at the start of the chapter?",
+  "choices": [
+   "Tetrarch",
+   "Governor",
+   "Procurator",
+   "High priest"
+  ],
+  "answer": 0,
+  "explanation": "At that time Herod the tetrarch heard of the fame of Jesus.",
+  "ref": "Matthew 14:1"
+ },
+ {
+  "id": "matthew-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the five thousand men, who else ate of the loaves and fishes?",
+  "choices": [
+   "Women and children",
+   "The twelve disciples only",
+   "The scribes and Pharisees",
+   "Strangers from Tyre"
+  ],
+  "answer": 0,
+  "explanation": "They that had eaten were about five thousand men, beside women and children.",
+  "ref": "Matthew 14:21"
+ },
+ {
+  "id": "matthew-14-h-10",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Jesus look as he took the five loaves and two fishes?",
+  "choices": [
+   "Up to heaven",
+   "At the multitude",
+   "Toward Jerusalem",
+   "Down to the grass"
+  ],
+  "answer": 0,
+  "explanation": "He took the five loaves, and the two fishes, and looking up to heaven, he blessed, and brake.",
+  "ref": "Matthew 14:19"
+ },
+ {
+  "id": "matthew-14-h-11",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the people follow Jesus to the desert place?",
+  "choices": [
+   "On foot out of the cities",
+   "By ship across the lake",
+   "On the backs of animals",
+   "At night, in secret"
+  ],
+  "answer": 0,
+  "explanation": "When the people had heard thereof, they followed him on foot out of the cities.",
+  "ref": "Matthew 14:13"
+ },
+ {
+  "id": "matthew-14-h-12",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the king feel when the damsel asked for John's head?",
+  "choices": [
+   "Sorry",
+   "Angry",
+   "Afraid",
+   "Glad"
+  ],
+  "answer": 0,
+  "explanation": "The king was sorry: nevertheless for the oath's sake, he commanded it to be given her.",
+  "ref": "Matthew 14:9"
+ },
+ {
+  "id": "matthew-14-h-13",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did the damsel carry John's head?",
+  "choices": [
+   "Her mother",
+   "Herod's servants",
+   "Philip",
+   "The guests at the table"
+  ],
+  "answer": 0,
+  "explanation": "His head was brought in a charger, and given to the damsel: and she brought it to her mother.",
+  "ref": "Matthew 14:11"
+ },
+ {
+  "id": "matthew-14-h-14",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men of Gennesaret do when they knew Jesus was there?",
+  "choices": [
+   "Brought him all that were diseased",
+   "Closed their doors against him",
+   "Asked him to depart",
+   "Hid their sick in the hills"
+  ],
+  "answer": 0,
+  "explanation": "They sent out into all that country round about, and brought unto him all that were diseased.",
+  "ref": "Matthew 14:35"
+ },
+ {
+  "id": "matthew-14-h-15",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides five loaves, what did the disciples say they had?",
+  "choices": [
+   "Two fishes",
+   "Three fishes",
+   "Seven fishes",
+   "A few little fishes"
+  ],
+  "answer": 0,
+  "explanation": "They say unto him, We have here but five loaves, and two fishes.",
+  "ref": "Matthew 14:17"
+ },
+ {
+  "id": "matthew-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to Jesus complaining about his disciples?",
+  "choices": [
+   "Sadducees from Galilee",
+   "Scribes and Pharisees from Jerusalem",
+   "Herod's servants",
+   "Priests from the temple"
+  ],
+  "answer": 1,
+  "explanation": "Then came to Jesus scribes and Pharisees, which were of Jerusalem.",
+  "ref": "Matthew 15:1"
+ },
+ {
+  "id": "matthew-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the scribes and Pharisees say the disciples did wrong?",
+  "choices": [
+   "They broke the Sabbath",
+   "They did not wash their hands when they ate bread",
+   "They ate with publicans",
+   "They did not fast"
+  ],
+  "answer": 1,
+  "explanation": "Why do thy disciples transgress the tradition of the elders? for they wash not their hands when they eat bread.",
+  "ref": "Matthew 15:2"
+ },
+ {
+  "id": "matthew-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God command about father and mother?",
+  "choices": [
+   "Obey thy father and mother in all things",
+   "Honour thy father and mother",
+   "Leave thy father and mother",
+   "Fear thy father and mother"
+  ],
+  "answer": 1,
+  "explanation": "God commanded, saying, Honour thy father and mother.",
+  "ref": "Matthew 15:4"
+ },
+ {
+  "id": "matthew-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus call the scribes and Pharisees?",
+  "choices": [
+   "Blind guides of Israel",
+   "Hypocrites",
+   "A faithless generation",
+   "Children of the wicked one"
+  ],
+  "answer": 1,
+  "explanation": "Ye hypocrites, well did Esaias prophesy of you.",
+  "ref": "Matthew 15:7"
+ },
+ {
+  "id": "matthew-15-e-05",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was wrong with the daughter of the woman of Canaan?",
+  "choices": [
+   "She was dead",
+   "She was grievously vexed with a devil",
+   "She was blind and dumb",
+   "She was sick of a fever"
+  ],
+  "answer": 1,
+  "explanation": "My daughter is grievously vexed with a devil.",
+  "ref": "Matthew 15:22"
+ },
+ {
+  "id": "matthew-15-e-06",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "Into which coasts did Jesus depart before meeting the woman of Canaan?",
+  "choices": [
+   "Caesarea Philippi",
+   "Tyre and Sidon",
+   "Decapolis",
+   "Gennesaret"
+  ],
+  "answer": 1,
+  "explanation": "Jesus went thence, and departed into the coasts of Tyre and Sidon.",
+  "ref": "Matthew 15:21"
+ },
+ {
+  "id": "matthew-15-e-07",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the woman say even the dogs eat?",
+  "choices": [
+   "The bones under the table",
+   "The crumbs which fall from their masters' table",
+   "The scraps cast out of the house",
+   "The children's bread"
+  ],
+  "answer": 1,
+  "explanation": "Truth, Lord: yet the dogs eat of the crumbs which fall from their masters' table.",
+  "ref": "Matthew 15:27"
+ },
+ {
+  "id": "matthew-15-e-08",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men ate when Jesus fed the multitude with seven loaves?",
+  "choices": [
+   "Five thousand",
+   "Four thousand",
+   "Three thousand",
+   "Seven thousand"
+  ],
+  "answer": 1,
+  "explanation": "They that did eat were four thousand men, beside women and children.",
+  "ref": "Matthew 15:38"
+ },
+ {
+  "id": "matthew-15-e-09",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus do for the great multitudes who came to him on the mountain?",
+  "choices": [
+   "He taught them parables",
+   "He healed them",
+   "He sent them away",
+   "He rebuked them"
+  ],
+  "answer": 1,
+  "explanation": "Great multitudes came unto him, having with them those that were lame, blind, dumb, maimed; and he healed them.",
+  "ref": "Matthew 15:30"
+ },
+ {
+  "id": "matthew-15-e-10",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say will happen if the blind lead the blind?",
+  "choices": [
+   "Both shall be led home",
+   "Both shall fall into the ditch",
+   "Both shall perish by the sword",
+   "Both shall be rooted up"
+  ],
+  "answer": 1,
+  "explanation": "If the blind lead the blind, both shall fall into the ditch.",
+  "ref": "Matthew 15:14"
+ },
+ {
+  "id": "matthew-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jesus say the Pharisees made the commandment of God of none effect?",
+  "choices": [
+   "By their prayers",
+   "By their sacrifices",
+   "By their silence",
+   "By their tradition"
+  ],
+  "answer": 3,
+  "explanation": "Thus have ye made the commandment of God of none effect by your tradition.",
+  "ref": "Matthew 15:6"
+ },
+ {
+  "id": "matthew-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God command for him that curseth father or mother?",
+  "choices": [
+   "Let him be put out of the camp",
+   "Let him pay a double portion",
+   "Let him be scourged",
+   "Let him die the death"
+  ],
+  "answer": 3,
+  "explanation": "God commanded, He that curseth father or mother, let him die the death.",
+  "ref": "Matthew 15:4"
+ },
+ {
+  "id": "matthew-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Pharisees teach a man could say to be free from honouring his parents?",
+  "choices": [
+   "It is corban",
+   "It is not lawful",
+   "It is an offering",
+   "It is a gift"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever shall say to his father or his mother, It is a gift, by whatsoever thou mightest be profited by me, he shall be free.",
+  "ref": "Matthew 15:5–6"
+ },
+ {
+  "id": "matthew-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose prophecy did Jesus say fitted the scribes and Pharisees?",
+  "choices": [
+   "Jeremias",
+   "Moses",
+   "Daniel",
+   "Esaias"
+  ],
+  "answer": 3,
+  "explanation": "Well did Esaias prophesy of you, saying, This people draweth nigh unto me with their mouth.",
+  "ref": "Matthew 15:7–8"
+ },
+ {
+  "id": "matthew-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen to every plant that the heavenly Father has not planted?",
+  "choices": [
+   "It shall be burned",
+   "It shall be cut down in the harvest",
+   "It shall wither at once",
+   "It shall be rooted up"
+  ],
+  "answer": 3,
+  "explanation": "Every plant, which my heavenly Father hath not planted, shall be rooted up.",
+  "ref": "Matthew 15:13"
+ },
+ {
+  "id": "matthew-15-m-06",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Who asked Jesus to declare the parable of what defiles a man?",
+  "choices": [
+   "John",
+   "Andrew",
+   "Philip",
+   "Peter"
+  ],
+  "answer": 3,
+  "explanation": "Then answered Peter and said unto him, Declare unto us this parable.",
+  "ref": "Matthew 15:15"
+ },
+ {
+  "id": "matthew-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does food go that a man eats, according to Jesus?",
+  "choices": [
+   "Into the heart and is made clean",
+   "Into the blood and is spent",
+   "Into the body and defiles it",
+   "Into the belly and is cast out into the draught"
+  ],
+  "answer": 3,
+  "explanation": "Whatsoever entereth in at the mouth goeth into the belly, and is cast out into the draught.",
+  "ref": "Matthew 15:17"
+ },
+ {
+  "id": "matthew-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From where do the things that come out of the mouth proceed?",
+  "choices": [
+   "The mind",
+   "The belly",
+   "The tongue alone",
+   "The heart"
+  ],
+  "answer": 3,
+  "explanation": "Those things which proceed out of the mouth come forth from the heart; and they defile the man.",
+  "ref": "Matthew 15:18"
+ },
+ {
+  "id": "matthew-15-m-09",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the woman of Canaan address Jesus when she cried to him?",
+  "choices": [
+   "Rabbi",
+   "Master of Israel",
+   "Prophet of Nazareth",
+   "Thou Son of David"
+  ],
+  "answer": 3,
+  "explanation": "Have mercy on me, O Lord, thou Son of David.",
+  "ref": "Matthew 15:22"
+ },
+ {
+  "id": "matthew-15-m-10",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jesus first answer the woman's cry?",
+  "choices": [
+   "He told her to go home",
+   "He healed her daughter at once",
+   "He sent her to the priests",
+   "He answered her not a word"
+  ],
+  "answer": 3,
+  "explanation": "He answered her not a word.",
+  "ref": "Matthew 15:23"
+ },
+ {
+  "id": "matthew-15-m-11",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the disciples say about the woman?",
+  "choices": [
+   "Let her speak with the Master",
+   "She has great faith",
+   "She is a Samaritan",
+   "Send her away; for she crieth after us"
+  ],
+  "answer": 3,
+  "explanation": "His disciples besought him, saying, Send her away; for she crieth after us.",
+  "ref": "Matthew 15:23"
+ },
+ {
+  "id": "matthew-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom did Jesus say he was sent?",
+  "choices": [
+   "The nations of the Gentiles",
+   "The tribes of Judah",
+   "The poor of the city",
+   "The lost sheep of the house of Israel"
+  ],
+  "answer": 3,
+  "explanation": "I am not sent but unto the lost sheep of the house of Israel.",
+  "ref": "Matthew 15:24"
+ },
+ {
+  "id": "matthew-15-m-13",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say is not meet to cast to dogs?",
+  "choices": [
+   "The fragments of the feast",
+   "The crumbs of the table",
+   "The bread of the Pharisees",
+   "The children's bread"
+  ],
+  "answer": 3,
+  "explanation": "It is not meet to take the children's bread, and to cast it to dogs.",
+  "ref": "Matthew 15:26"
+ },
+ {
+  "id": "matthew-15-m-14",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus have compassion on the multitude of four thousand?",
+  "choices": [
+   "They were sick and diseased",
+   "They had no shepherd",
+   "They had walked from Tyre",
+   "They had continued three days and had nothing to eat"
+  ],
+  "answer": 3,
+  "explanation": "I have compassion on the multitude, because they continue with me now three days, and have nothing to eat.",
+  "ref": "Matthew 15:32"
+ },
+ {
+  "id": "matthew-15-m-15",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the woman's daughter?",
+  "choices": [
+   "She was made whole the next day",
+   "She was made whole after three days",
+   "She was raised up and given to her mother in the evening",
+   "She was made whole from that very hour"
+  ],
+  "answer": 3,
+  "explanation": "Her daughter was made whole from that very hour.",
+  "ref": "Matthew 15:28"
+ },
+ {
+  "id": "matthew-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these did Jesus name as proceeding out of the heart?",
+  "choices": [
+   "False witness",
+   "Covetousness",
+   "Idolatry",
+   "Drunkenness"
+  ],
+  "answer": 0,
+  "explanation": "Out of the heart proceed evil thoughts, murders, adulteries, fornications, thefts, false witness, blasphemies.",
+  "ref": "Matthew 15:19"
+ },
+ {
+  "id": "matthew-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say of the Pharisees when his disciples said they were offended?",
+  "choices": [
+   "Let them alone: they be blind leaders of the blind",
+   "Go and tell them the parable",
+   "Forgive them seventy times seven",
+   "Beware of their leaven"
+  ],
+  "answer": 0,
+  "explanation": "Let them alone: they be blind leaders of the blind.",
+  "ref": "Matthew 15:14"
+ },
+ {
+  "id": "matthew-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say does not defile a man?",
+  "choices": [
+   "To eat with unwashen hands",
+   "To eat with sinners",
+   "To touch the dead",
+   "To eat unclean beasts"
+  ],
+  "answer": 0,
+  "explanation": "These are the things which defile a man: but to eat with unwashen hands defileth not a man.",
+  "ref": "Matthew 15:20"
+ },
+ {
+  "id": "matthew-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esaias say of the worship of those who teach the commandments of men?",
+  "choices": [
+   "They worship in vain",
+   "They worship in secret",
+   "They shall not see the kingdom",
+   "They shall be cut off"
+  ],
+  "answer": 0,
+  "explanation": "In vain they do worship me, teaching for doctrines the commandments of men.",
+  "ref": "Matthew 15:9"
+ },
+ {
+  "id": "matthew-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did the multitude glorify when they saw the dumb speak and the lame walk?",
+  "choices": [
+   "The God of Israel",
+   "The Son of David",
+   "Moses and the prophets",
+   "The Lord of hosts alone"
+  ],
+  "answer": 0,
+  "explanation": "The multitude wondered, and they glorified the God of Israel.",
+  "ref": "Matthew 15:31"
+ },
+ {
+  "id": "matthew-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides seven loaves, what did the disciples say they had?",
+  "choices": [
+   "A few little fishes",
+   "Two fishes",
+   "Twelve fishes",
+   "Fruit of the vine"
+  ],
+  "answer": 0,
+  "explanation": "They said, Seven, and a few little fishes.",
+  "ref": "Matthew 15:34"
+ },
+ {
+  "id": "matthew-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "On what did Jesus command the multitude to sit?",
+  "choices": [
+   "The ground",
+   "The grass",
+   "The mountain stones",
+   "Mats of reeds"
+  ],
+  "answer": 0,
+  "explanation": "He commanded the multitude to sit down on the ground.",
+  "ref": "Matthew 15:35"
+ },
+ {
+  "id": "matthew-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "To which coasts did Jesus come after sending away the multitude?",
+  "choices": [
+   "Magdala",
+   "Gennesaret",
+   "Tyre",
+   "Caesarea Philippi"
+  ],
+  "answer": 0,
+  "explanation": "He sent away the multitude, and took ship, and came into the coasts of Magdala.",
+  "ref": "Matthew 15:39"
+ },
+ {
+  "id": "matthew-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do with the seven loaves before breaking them?",
+  "choices": [
+   "Gave thanks",
+   "Looked up to heaven",
+   "Laid hands on them",
+   "Prayed apart"
+  ],
+  "answer": 0,
+  "explanation": "He took the seven loaves and the fishes, and gave thanks, and brake them.",
+  "ref": "Matthew 15:36"
+ },
+ {
+  "id": "matthew-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Beside which sea did Jesus go up into a mountain and sit down?",
+  "choices": [
+   "The sea of Galilee",
+   "The Dead Sea",
+   "The Red Sea",
+   "The sea of Tiberias at Magdala"
+  ],
+  "answer": 0,
+  "explanation": "Jesus came nigh unto the sea of Galilee; and went up into a mountain, and sat down there.",
+  "ref": "Matthew 15:29"
+ },
+ {
+  "id": "matthew-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the disciples ask when told to feed the multitude?",
+  "choices": [
+   "Whence should we have so much bread in the wilderness?",
+   "How long shall we stay here?",
+   "Shall we send for the baskets?",
+   "Who will carry the fishes?"
+  ],
+  "answer": 0,
+  "explanation": "His disciples say unto him, Whence should we have so much bread in the wilderness, as to fill so great a multitude?",
+  "ref": "Matthew 15:33"
+ },
+ {
+  "id": "matthew-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the multitudes cast those who were lame, blind and maimed?",
+  "choices": [
+   "Down at Jesus' feet",
+   "At the door of the synagogue",
+   "By the sea side",
+   "Before the disciples"
+  ],
+  "answer": 0,
+  "explanation": "Great multitudes came unto him, and cast them down at Jesus' feet; and he healed them.",
+  "ref": "Matthew 15:30"
+ },
+ {
+  "id": "matthew-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "From where had the scribes and Pharisees come?",
+  "choices": [
+   "Jerusalem",
+   "Capernaum",
+   "Nazareth",
+   "Jericho"
+  ],
+  "answer": 0,
+  "explanation": "Then came to Jesus scribes and Pharisees, which were of Jerusalem.",
+  "ref": "Matthew 15:1"
+ },
+ {
+  "id": "matthew-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say to his disciples when they asked him to declare the parable?",
+  "choices": [
+   "Are ye also yet without understanding?",
+   "Have ye not read what David did?",
+   "O ye of little faith",
+   "Take heed and beware"
+  ],
+  "answer": 0,
+  "explanation": "Jesus said, Are ye also yet without understanding?",
+  "ref": "Matthew 15:16"
+ },
+ {
+  "id": "matthew-15-h-15",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the woman say when she came and worshipped Jesus?",
+  "choices": [
+   "Lord, help me",
+   "Lord, increase my faith",
+   "Heal my daughter, Master",
+   "Speak the word only"
+  ],
+  "answer": 0,
+  "explanation": "Then came she and worshipped him, saying, Lord, help me.",
+  "ref": "Matthew 15:25"
+ },
+ {
+  "id": "matthew-16-e-01",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign did Jesus say would be given to the wicked and adulterous generation?",
+  "choices": [
+   "The sign of the rainbow",
+   "The sign of the prophet Jonas",
+   "The sign of Moses' rod",
+   "The sign of the temple veil"
+  ],
+  "answer": 1,
+  "explanation": "There shall no sign be given unto it, but the sign of the prophet Jonas.",
+  "ref": "Matthew 16:4"
+ },
+ {
+  "id": "matthew-16-e-02",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the disciples forgotten to take when they came to the other side?",
+  "choices": [
+   "Water",
+   "Bread",
+   "Fishing nets",
+   "Money"
+  ],
+  "answer": 1,
+  "explanation": "When his disciples were come to the other side, they had forgotten to take bread.",
+  "ref": "Matthew 16:5"
+ },
+ {
+  "id": "matthew-16-e-03",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell the disciples to beware of?",
+  "choices": [
+   "The scribes of Jerusalem",
+   "The leaven of the Pharisees and of the Sadducees",
+   "The tax gatherers",
+   "The elders of the synagogue"
+  ],
+  "answer": 1,
+  "explanation": "Take heed and beware of the leaven of the Pharisees and of the Sadducees.",
+  "ref": "Matthew 16:6"
+ },
+ {
+  "id": "matthew-16-e-04",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which coasts did Jesus ask his disciples who men said he was?",
+  "choices": [
+   "Capernaum",
+   "Caesarea Philippi",
+   "Gennesaret",
+   "Tyre and Sidon"
+  ],
+  "answer": 1,
+  "explanation": "When Jesus came into the coasts of Caesarea Philippi, he asked his disciples, Whom do men say that I the Son of man am?",
+  "ref": "Matthew 16:13"
+ },
+ {
+  "id": "matthew-16-e-05",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what did Jesus say he would build his church?",
+  "choices": [
+   "Upon the temple",
+   "Upon this rock",
+   "Upon the twelve thrones",
+   "Upon the mountain of Zion"
+  ],
+  "answer": 1,
+  "explanation": "Thou art Peter, and upon this rock I will build my church.",
+  "ref": "Matthew 16:18"
+ },
+ {
+  "id": "matthew-16-e-06",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took Jesus aside and began to rebuke him for saying he must suffer?",
+  "choices": [
+   "John",
+   "Peter",
+   "Judas",
+   "Andrew"
+  ],
+  "answer": 1,
+  "explanation": "Then Peter took him, and began to rebuke him, saying, Be it far from thee, Lord.",
+  "ref": "Matthew 16:22"
+ },
+ {
+  "id": "matthew-16-e-07",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to Peter when he rebuked him?",
+  "choices": [
+   "O thou of little faith",
+   "Get thee behind me, Satan",
+   "Blessed art thou, Simon",
+   "Follow me"
+  ],
+  "answer": 1,
+  "explanation": "He turned, and said unto Peter, Get thee behind me, Satan: thou art an offence unto me.",
+  "ref": "Matthew 16:23"
+ },
+ {
+  "id": "matthew-16-e-08",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Besides John the Baptist, whom did men say Jesus was?",
+  "choices": [
+   "Moses or Joshua",
+   "Elias, Jeremias, or one of the prophets",
+   "David or Solomon",
+   "Isaac or Jacob"
+  ],
+  "answer": 1,
+  "explanation": "Some say that thou art John the Baptist: some, Elias; and others, Jeremias, or one of the prophets.",
+  "ref": "Matthew 16:14"
+ },
+ {
+  "id": "matthew-16-e-09",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus ask would profit a man nothing if he gained the whole world?",
+  "choices": [
+   "Losing his house",
+   "Losing his own soul",
+   "Losing his friends",
+   "Losing his good name"
+  ],
+  "answer": 1,
+  "explanation": "What is a man profited, if he shall gain the whole world, and lose his own soul?",
+  "ref": "Matthew 16:26"
+ },
+ {
+  "id": "matthew-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say men say when the sky is red in the evening?",
+  "choices": [
+   "It will be fair weather",
+   "It will be foul weather",
+   "It will rain on the morrow",
+   "The sun will be hot"
+  ],
+  "answer": 0,
+  "explanation": "When it is evening, ye say, It will be fair weather: for the sky is red.",
+  "ref": "Matthew 16:2"
+ },
+ {
+  "id": "matthew-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say the Pharisees could discern but not the signs of the times?",
+  "choices": [
+   "The face of the sky",
+   "The voice of the prophets",
+   "The writing of the law",
+   "The ways of the Gentiles"
+  ],
+  "answer": 0,
+  "explanation": "O ye hypocrites, ye can discern the face of the sky; but can ye not discern the signs of the times?",
+  "ref": "Matthew 16:3"
+ },
+ {
+  "id": "matthew-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of generation did Jesus say seeketh after a sign?",
+  "choices": [
+   "A wicked and adulterous generation",
+   "A faithless and perverse generation",
+   "A blind and stubborn generation",
+   "A proud and hypocritical generation"
+  ],
+  "answer": 0,
+  "explanation": "A wicked and adulterous generation seeketh after a sign.",
+  "ref": "Matthew 16:4"
+ },
+ {
+  "id": "matthew-16-m-04",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the disciples reason when Jesus spoke of leaven?",
+  "choices": [
+   "That it was because they had taken no bread",
+   "That the Pharisees would trap them",
+   "That Jesus was speaking of the Sabbath",
+   "That they should buy bread in the villages"
+  ],
+  "answer": 0,
+  "explanation": "They reasoned among themselves, saying, It is because we have taken no bread.",
+  "ref": "Matthew 16:7"
+ },
+ {
+  "id": "matthew-16-m-05",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus call the disciples when he perceived their reasoning?",
+  "choices": [
+   "O ye of little faith",
+   "O faithless and perverse generation",
+   "Ye blind guides",
+   "Ye hypocrites"
+  ],
+  "answer": 0,
+  "explanation": "Which when Jesus perceived, he said unto them, O ye of little faith, why reason ye among yourselves?",
+  "ref": "Matthew 16:8"
+ },
+ {
+  "id": "matthew-16-m-06",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two feedings did Jesus remind the disciples of?",
+  "choices": [
+   "The five thousand and the four thousand",
+   "The five thousand and the three thousand",
+   "The four thousand and the seven thousand",
+   "The wedding at Cana and the five thousand"
+  ],
+  "answer": 0,
+  "explanation": "Do ye not yet understand, neither remember the five loaves of the five thousand, nor the seven loaves of the four thousand?",
+  "ref": "Matthew 16:9–10"
+ },
+ {
+  "id": "matthew-16-m-07",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus mean by the leaven he warned them of?",
+  "choices": [
+   "The doctrine of the Pharisees and of the Sadducees",
+   "The tradition of the elders",
+   "The hypocrisy of Herod",
+   "The unbelief of the multitude"
+  ],
+  "answer": 0,
+  "explanation": "He bade them not beware of the leaven of bread, but of the doctrine of the Pharisees and of the Sadducees.",
+  "ref": "Matthew 16:12"
+ },
+ {
+  "id": "matthew-16-m-08",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Jesus say had revealed to Peter that he was the Christ?",
+  "choices": [
+   "His Father which is in heaven",
+   "Flesh and blood",
+   "The prophets of old",
+   "The voice from the cloud"
+  ],
+  "answer": 0,
+  "explanation": "Flesh and blood hath not revealed it unto thee, but my Father which is in heaven.",
+  "ref": "Matthew 16:17"
+ },
+ {
+  "id": "matthew-16-m-09",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say shall not prevail against his church?",
+  "choices": [
+   "The gates of hell",
+   "The princes of this world",
+   "The Pharisees",
+   "The powers of Rome"
+  ],
+  "answer": 0,
+  "explanation": "Upon this rock I will build my church; and the gates of hell shall not prevail against it.",
+  "ref": "Matthew 16:18"
+ },
+ {
+  "id": "matthew-16-m-10",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say would be bound in heaven?",
+  "choices": [
+   "Whatsoever Peter should bind on earth",
+   "Whatsoever the church should pray for",
+   "Whatsoever the Pharisees taught",
+   "Whatsoever was written in the law"
+  ],
+  "answer": 0,
+  "explanation": "Whatsoever thou shalt bind on earth shall be bound in heaven.",
+  "ref": "Matthew 16:19"
+ },
+ {
+  "id": "matthew-16-m-11",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus charge his disciples after Peter's confession?",
+  "choices": [
+   "To tell no man that he was Jesus the Christ",
+   "To go into Jerusalem at once",
+   "To fast and pray",
+   "To build three tabernacles"
+  ],
+  "answer": 0,
+  "explanation": "Then charged he his disciples that they should tell no man that he was Jesus the Christ.",
+  "ref": "Matthew 16:20"
+ },
+ {
+  "id": "matthew-16-m-12",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Peter say when he rebuked Jesus?",
+  "choices": [
+   "Be it far from thee, Lord: this shall not be unto thee",
+   "Lord, I will go with thee to prison and to death",
+   "Lord, to whom shall we go?",
+   "Master, we have left all and followed thee"
+  ],
+  "answer": 0,
+  "explanation": "Peter began to rebuke him, saying, Be it far from thee, Lord: this shall not be unto thee.",
+  "ref": "Matthew 16:22"
+ },
+ {
+  "id": "matthew-16-m-13",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus say Peter was an offence to him?",
+  "choices": [
+   "He savoured not the things of God, but of men",
+   "He had denied the Christ",
+   "He was proud of his keys",
+   "He had forgotten the bread"
+  ],
+  "answer": 0,
+  "explanation": "Thou savourest not the things that be of God, but those that be of men.",
+  "ref": "Matthew 16:23"
+ },
+ {
+  "id": "matthew-16-m-14",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to his works, what will the Son of man do when he comes in his Father's glory?",
+  "choices": [
+   "Reward every man",
+   "Gather the tares",
+   "Judge the twelve tribes",
+   "Build his church"
+  ],
+  "answer": 0,
+  "explanation": "The Son of man shall come in the glory of his Father with his angels; and then he shall reward every man according to his works.",
+  "ref": "Matthew 16:27"
+ },
+ {
+  "id": "matthew-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say whosoever will lose his life for his sake shall do?",
+  "choices": [
+   "Save it",
+   "Keep it",
+   "Find it",
+   "Inherit it"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever will lose his life for my sake shall find it.",
+  "ref": "Matthew 16:25"
+ },
+ {
+  "id": "matthew-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say some standing there would not taste of death until they saw?",
+  "choices": [
+   "The kingdom of God come with power in Jerusalem",
+   "The temple built again",
+   "The Son of man coming in his kingdom",
+   "The resurrection of the dead"
+  ],
+  "answer": 2,
+  "explanation": "There be some standing here, which shall not taste of death, till they see the Son of man coming in his kingdom.",
+  "ref": "Matthew 16:28"
+ },
+ {
+  "id": "matthew-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must a man do first if he will come after Jesus?",
+  "choices": [
+   "Sell all that he has",
+   "Forgive his enemies",
+   "Deny himself",
+   "Leave his house"
+  ],
+  "answer": 2,
+  "explanation": "If any man will come after me, let him deny himself, and take up his cross, and follow me.",
+  "ref": "Matthew 16:24"
+ },
+ {
+  "id": "matthew-16-h-04",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Which prophet did some say Jesus was, besides John the Baptist and Elias?",
+  "choices": [
+   "Esaias",
+   "Daniel",
+   "Jeremias",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "Some say that thou art John the Baptist: some, Elias; and others, Jeremias, or one of the prophets.",
+  "ref": "Matthew 16:14"
+ },
+ {
+  "id": "matthew-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "By what name did Jesus address Peter when he blessed him?",
+  "choices": [
+   "Simon Cephas",
+   "Simon Zelotes",
+   "Simon Barjona",
+   "Simon the son of Jonas of Galilee"
+  ],
+  "answer": 2,
+  "explanation": "Blessed art thou, Simon Barjona: for flesh and blood hath not revealed it unto thee.",
+  "ref": "Matthew 16:17"
+ },
+ {
+  "id": "matthew-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say would be loosed in heaven?",
+  "choices": [
+   "Whatsoever the angels should free",
+   "Whatsoever the church forgave",
+   "Whatsoever Peter should loose on earth",
+   "Whatsoever the Father had bound"
+  ],
+  "answer": 2,
+  "explanation": "Whatsoever thou shalt loose on earth shall be loosed in heaven.",
+  "ref": "Matthew 16:19"
+ },
+ {
+  "id": "matthew-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom did Jesus say he must suffer many things?",
+  "choices": [
+   "The Pharisees and Sadducees",
+   "Herod and the Romans",
+   "The elders, chief priests and scribes",
+   "The Gentiles"
+  ],
+  "answer": 2,
+  "explanation": "He must go unto Jerusalem, and suffer many things of the elders and chief priests and scribes.",
+  "ref": "Matthew 16:21"
+ },
+ {
+  "id": "matthew-16-h-08",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jesus say he must go and suffer?",
+  "choices": [
+   "Bethany",
+   "Capernaum",
+   "Jerusalem",
+   "Nazareth"
+  ],
+  "answer": 2,
+  "explanation": "He must go unto Jerusalem, and suffer many things, and be killed, and be raised again the third day.",
+  "ref": "Matthew 16:21"
+ },
+ {
+  "id": "matthew-16-h-09",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "With whom will the Son of man come in the glory of his Father?",
+  "choices": [
+   "The twelve apostles",
+   "The prophets",
+   "His angels",
+   "Moses and Elias"
+  ],
+  "answer": 2,
+  "explanation": "The Son of man shall come in the glory of his Father with his angels.",
+  "ref": "Matthew 16:27"
+ },
+ {
+  "id": "matthew-16-h-10",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Which group came with the Pharisees to tempt Jesus?",
+  "choices": [
+   "The scribes",
+   "The Herodians",
+   "The Sadducees",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "The Pharisees also with the Sadducees came, and tempting desired him that he would shew them a sign from heaven.",
+  "ref": "Matthew 16:1"
+ },
+ {
+  "id": "matthew-16-h-11",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say men say in the morning when the sky is red and lowring?",
+  "choices": [
+   "It will be fair weather",
+   "The wind will cease",
+   "It will be foul weather to day",
+   "A storm will come tomorrow"
+  ],
+  "answer": 2,
+  "explanation": "In the morning, It will be foul weather to day: for the sky is red and lowring.",
+  "ref": "Matthew 16:3"
+ },
+ {
+  "id": "matthew-16-h-12",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do after speaking of the sign of the prophet Jonas?",
+  "choices": [
+   "He healed the sick",
+   "He taught the multitude",
+   "He left them and departed",
+   "He went into the ship"
+  ],
+  "answer": 2,
+  "explanation": "The sign of the prophet Jonas. And he left them, and departed.",
+  "ref": "Matthew 16:4"
+ },
+ {
+  "id": "matthew-16-h-13",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What title did Jesus use for himself when he asked who men said he was?",
+  "choices": [
+   "The Son of David",
+   "The Shepherd of Israel",
+   "The Son of man",
+   "The Prophet"
+  ],
+  "answer": 2,
+  "explanation": "Whom do men say that I the Son of man am?",
+  "ref": "Matthew 16:13"
+ },
+ {
+  "id": "matthew-16-h-14",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus ask the disciples to remember about the loaves of the five thousand?",
+  "choices": [
+   "How many men were fed",
+   "Who had given the loaves",
+   "How many baskets they took up",
+   "How many fishes there were"
+  ],
+  "answer": 2,
+  "explanation": "Do ye not yet understand, neither remember the five loaves of the five thousand, and how many baskets ye took up?",
+  "ref": "Matthew 16:9"
+ },
+ {
+  "id": "matthew-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which three disciples did Jesus take up the high mountain?",
+  "choices": [
+   "Peter, Andrew and James",
+   "Peter, James and John",
+   "James, John and Philip",
+   "Peter, John and Thomas"
+  ],
+  "answer": 1,
+  "explanation": "Jesus taketh Peter, James, and John his brother, and bringeth them up into an high mountain apart.",
+  "ref": "Matthew 17:1"
+ },
+ {
+  "id": "matthew-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Jesus' face when he was transfigured?",
+  "choices": [
+   "It was covered with a cloud",
+   "It did shine as the sun",
+   "It became like a lamb's",
+   "It was hidden by a veil"
+  ],
+  "answer": 1,
+  "explanation": "He was transfigured before them: and his face did shine as the sun.",
+  "ref": "Matthew 17:2"
+ },
+ {
+  "id": "matthew-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Jesus' raiment described in the transfiguration?",
+  "choices": [
+   "Purple as a king's",
+   "White as the light",
+   "Bright as gold",
+   "Clean as new linen"
+  ],
+  "answer": 1,
+  "explanation": "His raiment was white as the light.",
+  "ref": "Matthew 17:2"
+ },
+ {
+  "id": "matthew-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter offer to make on the mountain?",
+  "choices": [
+   "Three altars",
+   "Three tabernacles",
+   "Three crowns",
+   "Three thrones"
+  ],
+  "answer": 1,
+  "explanation": "Let us make here three tabernacles; one for thee, and one for Moses, and one for Elias.",
+  "ref": "Matthew 17:4"
+ },
+ {
+  "id": "matthew-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What overshadowed the disciples on the mountain?",
+  "choices": [
+   "A dark cloud",
+   "A bright cloud",
+   "A pillar of fire",
+   "A great mist"
+  ],
+  "answer": 1,
+  "explanation": "While he yet spake, behold, a bright cloud overshadowed them.",
+  "ref": "Matthew 17:5"
+ },
+ {
+  "id": "matthew-17-e-06",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the disciples react when they heard the voice from the cloud?",
+  "choices": [
+   "They ran down the mountain",
+   "They fell on their face and were sore afraid",
+   "They worshipped standing",
+   "They spoke with Moses"
+  ],
+  "answer": 1,
+  "explanation": "When the disciples heard it, they fell on their face, and were sore afraid.",
+  "ref": "Matthew 17:6"
+ },
+ {
+  "id": "matthew-17-e-07",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say when he touched the frightened disciples?",
+  "choices": [
+   "Peace be unto you",
+   "Arise, and be not afraid",
+   "Fear not, for I am with you",
+   "Be of good cheer"
+  ],
+  "answer": 1,
+  "explanation": "Jesus came and touched them, and said, Arise, and be not afraid.",
+  "ref": "Matthew 17:7"
+ },
+ {
+  "id": "matthew-17-e-08",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus charge the three as they came down the mountain?",
+  "choices": [
+   "Go and tell the other disciples at once",
+   "Tell the vision to no man until he was risen from the dead",
+   "Preach it in the villages",
+   "Write it down"
+  ],
+  "answer": 1,
+  "explanation": "Jesus charged them, saying, Tell the vision to no man, until the Son of man be risen again from the dead.",
+  "ref": "Matthew 17:9"
+ },
+ {
+  "id": "matthew-17-e-09",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was wrong with the son of the man who knelt to Jesus?",
+  "choices": [
+   "He was blind from birth",
+   "He was lunatick and sore vexed",
+   "He was dead",
+   "He was palsied"
+  ],
+  "answer": 1,
+  "explanation": "Lord, have mercy on my son: for he is lunatick, and sore vexed: for ofttimes he falleth into the fire, and oft into the water.",
+  "ref": "Matthew 17:15"
+ },
+ {
+  "id": "matthew-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "After how many days did Jesus take Peter, James and John up the mountain?",
+  "choices": [
+   "Six days",
+   "Three days",
+   "Seven days",
+   "Eight days"
+  ],
+  "answer": 0,
+  "explanation": "After six days Jesus taketh Peter, James, and John his brother, and bringeth them up into an high mountain apart.",
+  "ref": "Matthew 17:1"
+ },
+ {
+  "id": "matthew-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the disciples see when they lifted up their eyes after the voice?",
+  "choices": [
+   "No man, save Jesus only",
+   "Moses and Elias",
+   "Two angels",
+   "The multitude"
+  ],
+  "answer": 0,
+  "explanation": "When they had lifted up their eyes, they saw no man, save Jesus only.",
+  "ref": "Matthew 17:8"
+ },
+ {
+  "id": "matthew-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the disciples ask Jesus about Elias?",
+  "choices": [
+   "Why the scribes say that Elias must first come",
+   "Whether Elias would return to Israel",
+   "Where Elias had gone",
+   "Whether Elias was Moses"
+  ],
+  "answer": 0,
+  "explanation": "His disciples asked him, saying, Why then say the scribes that Elias must first come?",
+  "ref": "Matthew 17:10"
+ },
+ {
+  "id": "matthew-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the disciples understand Jesus meant by Elias come already?",
+  "choices": [
+   "John the Baptist",
+   "Jeremias",
+   "Moses",
+   "Peter"
+  ],
+  "answer": 0,
+  "explanation": "Then the disciples understood that he spake unto them of John the Baptist.",
+  "ref": "Matthew 17:13"
+ },
+ {
+  "id": "matthew-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say the Son of man would do, as Elias was treated?",
+  "choices": [
+   "Suffer of them",
+   "Rule over them",
+   "Judge them",
+   "Be received of them"
+  ],
+  "answer": 0,
+  "explanation": "Elias is come already, and they knew him not. Likewise shall also the Son of man suffer of them.",
+  "ref": "Matthew 17:12"
+ },
+ {
+  "id": "matthew-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where had the man brought his son before he came to Jesus?",
+  "choices": [
+   "To the disciples, who could not cure him",
+   "To the priests",
+   "To the scribes",
+   "To the pool of Bethesda"
+  ],
+  "answer": 0,
+  "explanation": "I brought him to thy disciples, and they could not cure him.",
+  "ref": "Matthew 17:16"
+ },
+ {
+  "id": "matthew-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus call the generation when he heard of the disciples' failure?",
+  "choices": [
+   "Faithless and perverse",
+   "Wicked and adulterous",
+   "Blind and deaf",
+   "Hypocritical and proud"
+  ],
+  "answer": 0,
+  "explanation": "O faithless and perverse generation, how long shall I be with you?",
+  "ref": "Matthew 17:17"
+ },
+ {
+  "id": "matthew-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened when Jesus rebuked the devil in the child?",
+  "choices": [
+   "He departed, and the child was cured from that hour",
+   "The child was healed after three days",
+   "The devil entered the swine",
+   "The child was carried away dead"
+  ],
+  "answer": 0,
+  "explanation": "Jesus rebuked the devil; and he departed out of him: and the child was cured from that very hour.",
+  "ref": "Matthew 17:18"
+ },
+ {
+  "id": "matthew-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what did Jesus say this kind goeth not out?",
+  "choices": [
+   "Prayer and fasting",
+   "Faith and obedience",
+   "Anointing with oil",
+   "Laying on of hands"
+  ],
+  "answer": 0,
+  "explanation": "Howbeit this kind goeth not out but by prayer and fasting.",
+  "ref": "Matthew 17:21"
+ },
+ {
+  "id": "matthew-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say would be impossible to those with faith as a grain of mustard seed?",
+  "choices": [
+   "Nothing",
+   "Raising the dead",
+   "Walking on the sea",
+   "Entering the kingdom"
+  ],
+  "answer": 0,
+  "explanation": "If ye have faith as a grain of mustard seed, ye shall say unto this mountain, Remove hence to yonder place; and nothing shall be impossible unto you.",
+  "ref": "Matthew 17:20"
+ },
+ {
+  "id": "matthew-17-m-11",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say would happen to the Son of man while they abode in Galilee?",
+  "choices": [
+   "He would be betrayed into the hands of men",
+   "He would be crowned king",
+   "He would go up to heaven",
+   "He would be rejected by the Gentiles"
+  ],
+  "answer": 0,
+  "explanation": "The Son of man shall be betrayed into the hands of men: and they shall kill him, and the third day he shall be raised again.",
+  "ref": "Matthew 17:22–23"
+ },
+ {
+  "id": "matthew-17-m-12",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the disciples feel when Jesus spoke of being killed and raised?",
+  "choices": [
+   "Exceeding sorry",
+   "Afraid and silent",
+   "Angry",
+   "Doubtful"
+  ],
+  "answer": 0,
+  "explanation": "They shall kill him, and the third day he shall be raised again. And they were exceeding sorry.",
+  "ref": "Matthew 17:23"
+ },
+ {
+  "id": "matthew-17-m-13",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Who came to Peter at Capernaum asking about the tribute?",
+  "choices": [
+   "They that received tribute money",
+   "The scribes of the temple",
+   "The Roman soldiers",
+   "The priests of Capernaum"
+  ],
+  "answer": 0,
+  "explanation": "When they were come to Capernaum, they that received tribute money came to Peter.",
+  "ref": "Matthew 17:24"
+ },
+ {
+  "id": "matthew-17-m-14",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the tribute collectors ask Peter?",
+  "choices": [
+   "Doth not your master pay tribute?",
+   "Wilt thou pay the tribute?",
+   "Is it lawful to give tribute to Caesar?",
+   "Who is thy master?"
+  ],
+  "answer": 0,
+  "explanation": "They said, Doth not your master pay tribute?",
+  "ref": "Matthew 17:24"
+ },
+ {
+  "id": "matthew-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom do the kings of the earth take tribute from, according to Peter?",
+  "choices": [
+   "Their own children",
+   "The poor",
+   "Strangers",
+   "Their servants"
+  ],
+  "answer": 2,
+  "explanation": "Jesus saith, of their own children, or of strangers? Peter saith unto him, Of strangers.",
+  "ref": "Matthew 17:25–26"
+ },
+ {
+  "id": "matthew-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jesus tell Peter to pay the tribute?",
+  "choices": [
+   "Because the law required it",
+   "Because Caesar demanded it",
+   "Lest they should offend them",
+   "Because the priests threatened Jesus"
+  ],
+  "answer": 2,
+  "explanation": "Notwithstanding, lest we should offend them, go thou to the sea, and cast an hook.",
+  "ref": "Matthew 17:27"
+ },
+ {
+  "id": "matthew-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say when Peter answered Of strangers?",
+  "choices": [
+   "Then render unto Caesar",
+   "Then pay it for me and thee",
+   "Then are the children free",
+   "Then the temple is free"
+  ],
+  "answer": 2,
+  "explanation": "Jesus saith unto him, Then are the children free.",
+  "ref": "Matthew 17:26"
+ },
+ {
+  "id": "matthew-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jesus tell Peter to catch the fish?",
+  "choices": [
+   "Cast a net on the right side",
+   "Let down a net in the deep",
+   "Cast an hook into the sea",
+   "Draw it out with his hands"
+  ],
+  "answer": 2,
+  "explanation": "Go thou to the sea, and cast an hook, and take up the fish that first cometh up.",
+  "ref": "Matthew 17:27"
+ },
+ {
+  "id": "matthew-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Peter to do with the piece of money he found?",
+  "choices": [
+   "Give it to the poor",
+   "Keep it for the disciples",
+   "Give it for Jesus and himself",
+   "Offer it in the temple"
+  ],
+  "answer": 2,
+  "explanation": "That take, and give unto them for me and thee.",
+  "ref": "Matthew 17:27"
+ },
+ {
+  "id": "matthew-17-h-06",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Who said, Lord, it is good for us to be here?",
+  "choices": [
+   "James",
+   "John",
+   "Peter",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "Then answered Peter, and said unto Jesus, Lord, it is good for us to be here.",
+  "ref": "Matthew 17:4"
+ },
+ {
+  "id": "matthew-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Peter when Jesus spoke to him about the tribute?",
+  "choices": [
+   "By the sea",
+   "In the synagogue",
+   "In the house",
+   "On the mountain"
+  ],
+  "answer": 2,
+  "explanation": "When he was come into the house, Jesus prevented him, saying, What thinkest thou, Simon?",
+  "ref": "Matthew 17:25"
+ },
+ {
+  "id": "matthew-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus ask when he called the generation faithless and perverse?",
+  "choices": [
+   "How long shall I stay in Galilee?",
+   "Why seek ye a sign?",
+   "How long shall I be with you?",
+   "Who among you hath faith?"
+  ],
+  "answer": 2,
+  "explanation": "O faithless and perverse generation, how long shall I be with you? how long shall I suffer you?",
+  "ref": "Matthew 17:17"
+ },
+ {
+  "id": "matthew-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the disciples ask Jesus privately about the child?",
+  "choices": [
+   "Who sinned, this child or his father?",
+   "Where is thy power?",
+   "Why could not we cast him out?",
+   "Will the child be healed?"
+  ],
+  "answer": 2,
+  "explanation": "Then came the disciples to Jesus apart, and said, Why could not we cast him out?",
+  "ref": "Matthew 17:19"
+ },
+ {
+  "id": "matthew-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say Elias shall first do?",
+  "choices": [
+   "Prepare the way",
+   "Baptize the people",
+   "Restore all things",
+   "Turn the hearts of the fathers"
+  ],
+  "answer": 2,
+  "explanation": "Elias truly shall first come, and restore all things.",
+  "ref": "Matthew 17:11"
+ },
+ {
+  "id": "matthew-17-h-11",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the people had done to Elias?",
+  "choices": [
+   "Cast him into prison",
+   "Received him gladly",
+   "Whatsoever they listed",
+   "Mocked him openly"
+  ],
+  "answer": 2,
+  "explanation": "Elias is come already, and they knew him not, but have done unto him whatsoever they listed.",
+  "ref": "Matthew 17:12"
+ },
+ {
+  "id": "matthew-17-h-12",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day would the Son of man be raised again after being killed?",
+  "choices": [
+   "The second day",
+   "The seventh day",
+   "The third day",
+   "The fortieth day"
+  ],
+  "answer": 2,
+  "explanation": "They shall kill him, and the third day he shall be raised again.",
+  "ref": "Matthew 17:23"
+ },
+ {
+  "id": "matthew-17-h-13",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jesus bring the three disciples?",
+  "choices": [
+   "Up to the temple",
+   "Into a desert place",
+   "Up into an high mountain apart",
+   "Into the house at Capernaum"
+  ],
+  "answer": 2,
+  "explanation": "Jesus bringeth them up into an high mountain apart.",
+  "ref": "Matthew 17:1"
+ },
+ {
+  "id": "matthew-17-h-14",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the man approach Jesus about his son?",
+  "choices": [
+   "Standing at a distance",
+   "Falling on his face weeping",
+   "Kneeling down to him",
+   "Running before the multitude"
+  ],
+  "answer": 2,
+  "explanation": "There came to him a certain man, kneeling down to him, and saying, Lord, have mercy on my son.",
+  "ref": "Matthew 17:14"
+ },
+ {
+  "id": "matthew-18-e-01",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the disciples ask Jesus at the start of the chapter?",
+  "choices": [
+   "Who shall sit on thy right hand?",
+   "Who is the greatest in the kingdom of heaven?",
+   "How oft shall we forgive?",
+   "When shall the kingdom come?"
+  ],
+  "answer": 1,
+  "explanation": "The disciples came unto Jesus, saying, Who is the greatest in the kingdom of heaven?",
+  "ref": "Matthew 18:1"
+ },
+ {
+  "id": "matthew-18-e-02",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus set in the midst of the disciples?",
+  "choices": [
+   "A servant",
+   "A little child",
+   "A shepherd",
+   "A publican"
+  ],
+  "answer": 1,
+  "explanation": "Jesus called a little child unto him, and set him in the midst of them.",
+  "ref": "Matthew 18:2"
+ },
+ {
+  "id": "matthew-18-e-03",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say is better for the one who offends a little one?",
+  "choices": [
+   "To be cast out of the synagogue",
+   "A millstone hanged about his neck and he drowned in the sea",
+   "To lose his goods",
+   "To be put in prison"
+  ],
+  "answer": 1,
+  "explanation": "It were better for him that a millstone were hanged about his neck, and that he were drowned in the depth of the sea.",
+  "ref": "Matthew 18:6"
+ },
+ {
+  "id": "matthew-18-e-04",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to do if thy hand or thy foot offend thee?",
+  "choices": [
+   "Bind it and keep it hidden",
+   "Cut it off and cast it from thee",
+   "Wash it in the river",
+   "Offer a sacrifice for it"
+  ],
+  "answer": 1,
+  "explanation": "If thy hand or thy foot offend thee, cut them off, and cast them from thee.",
+  "ref": "Matthew 18:8"
+ },
+ {
+  "id": "matthew-18-e-05",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sheep had the man in the parable?",
+  "choices": [
+   "Ninety",
+   "An hundred",
+   "Fifty",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "If a man have an hundred sheep, and one of them be gone astray, doth he not leave the ninety and nine?",
+  "ref": "Matthew 18:12"
+ },
+ {
+  "id": "matthew-18-e-06",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who asked Jesus how oft he should forgive his brother?",
+  "choices": [
+   "John",
+   "Peter",
+   "Judas",
+   "Thomas"
+  ],
+  "answer": 1,
+  "explanation": "Then came Peter to him, and said, Lord, how oft shall my brother sin against me, and I forgive him?",
+  "ref": "Matthew 18:21"
+ },
+ {
+  "id": "matthew-18-e-07",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many talents did the first servant owe his lord?",
+  "choices": [
+   "Five thousand",
+   "Ten thousand",
+   "One thousand",
+   "A hundred"
+  ],
+  "answer": 1,
+  "explanation": "One was brought unto him, which owed him ten thousand talents.",
+  "ref": "Matthew 18:24"
+ },
+ {
+  "id": "matthew-18-e-08",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much did the fellowservant owe the first servant?",
+  "choices": [
+   "Ten thousand talents",
+   "An hundred pence",
+   "Ten pence",
+   "A thousand pence"
+  ],
+  "answer": 1,
+  "explanation": "He found one of his fellowservants, which owed him an hundred pence.",
+  "ref": "Matthew 18:28"
+ },
+ {
+  "id": "matthew-18-e-09",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the forgiven servant do to his fellowservant who could not pay?",
+  "choices": [
+   "Forgave him also",
+   "Cast him into prison",
+   "Sold his goods",
+   "Gave him more time"
+  ],
+  "answer": 1,
+  "explanation": "He laid hands on him, and took him by the throat; and he would not: but went and cast him into prison, till he should pay the debt.",
+  "ref": "Matthew 18:28–30"
+ },
+ {
+  "id": "matthew-18-e-10",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say is in the midst where two or three are gathered in his name?",
+  "choices": [
+   "The angels of the Father",
+   "He himself",
+   "The Holy Spirit",
+   "The church"
+  ],
+  "answer": 1,
+  "explanation": "Where two or three are gathered together in my name, there am I in the midst of them.",
+  "ref": "Matthew 18:20"
+ },
+ {
+  "id": "matthew-18-m-01",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jesus say a man becomes greatest in the kingdom of heaven?",
+  "choices": [
+   "By serving in the temple",
+   "By keeping the commandments",
+   "By leaving all",
+   "By humbling himself as a little child"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever therefore shall humble himself as this little child, the same is greatest in the kingdom of heaven.",
+  "ref": "Matthew 18:4"
+ },
+ {
+  "id": "matthew-18-m-02",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say of whoever receives one such little child in his name?",
+  "choices": [
+   "He shall be greatest",
+   "He shall have eternal life",
+   "He shall be called blessed",
+   "He receiveth me"
+  ],
+  "answer": 3,
+  "explanation": "Whoso shall receive one such little child in my name receiveth me.",
+  "ref": "Matthew 18:5"
+ },
+ {
+  "id": "matthew-18-m-03",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say of the angels of the little ones?",
+  "choices": [
+   "They guard them in every way",
+   "They carry their prayers to the temple",
+   "They will judge the world",
+   "They always behold the face of the Father in heaven"
+  ],
+  "answer": 3,
+  "explanation": "In heaven their angels do always behold the face of my Father which is in heaven.",
+  "ref": "Matthew 18:10"
+ },
+ {
+  "id": "matthew-18-m-04",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what did Jesus say the Son of man is come?",
+  "choices": [
+   "To fulfil the law",
+   "To bring a sword",
+   "To judge the world",
+   "To save that which was lost"
+  ],
+  "answer": 3,
+  "explanation": "For the Son of man is come to save that which was lost.",
+  "ref": "Matthew 18:11"
+ },
+ {
+  "id": "matthew-18-m-05",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the man do who loses one of his hundred sheep?",
+  "choices": [
+   "Waits for the sheep to return",
+   "Sends his servants to look",
+   "Counts the rest again",
+   "Leaves the ninety and nine and seeks the one"
+  ],
+  "answer": 3,
+  "explanation": "Doth he not leave the ninety and nine, and goeth into the mountains, and seeketh that which is gone astray?",
+  "ref": "Matthew 18:12"
+ },
+ {
+  "id": "matthew-18-m-06",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Over which does the man rejoice more when he finds the sheep?",
+  "choices": [
+   "The ninety and nine more than the one",
+   "All the sheep equally",
+   "His servants",
+   "That sheep, more than the ninety and nine"
+  ],
+  "answer": 3,
+  "explanation": "He rejoiceth more of that sheep, than of the ninety and nine which went not astray.",
+  "ref": "Matthew 18:13"
+ },
+ {
+  "id": "matthew-18-m-07",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should you do first if your brother trespasses against you?",
+  "choices": [
+   "Tell the church",
+   "Take witnesses with you",
+   "Forgive him in silence",
+   "Go and tell him his fault between thee and him alone"
+  ],
+  "answer": 3,
+  "explanation": "If thy brother shall trespass against thee, go and tell him his fault between thee and him alone.",
+  "ref": "Matthew 18:15"
+ },
+ {
+  "id": "matthew-18-m-08",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If he will not hear you alone, what should you do?",
+  "choices": [
+   "Tell it to the church at once",
+   "Leave him alone",
+   "Cast him out of the house",
+   "Take with thee one or two more"
+  ],
+  "answer": 3,
+  "explanation": "If he will not hear thee, then take with thee one or two more.",
+  "ref": "Matthew 18:16"
+ },
+ {
+  "id": "matthew-18-m-09",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How should a man who will not hear the church be treated?",
+  "choices": [
+   "As a brother in need",
+   "As an enemy of the law",
+   "As a stranger in the land",
+   "As an heathen man and a publican"
+  ],
+  "answer": 3,
+  "explanation": "If he neglect to hear the church, let him be unto thee as an heathen man and a publican.",
+  "ref": "Matthew 18:17"
+ },
+ {
+  "id": "matthew-18-m-10",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the Father do if two agree on earth as touching anything they ask?",
+  "choices": [
+   "It shall be given after seven days",
+   "It shall be answered by an angel",
+   "It shall be bound in heaven only",
+   "It shall be done for them"
+  ],
+  "answer": 3,
+  "explanation": "If two of you shall agree on earth as touching any thing that they shall ask, it shall be done for them of my Father which is in heaven.",
+  "ref": "Matthew 18:19"
+ },
+ {
+  "id": "matthew-18-m-11",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Till how many times did Peter suggest he should forgive?",
+  "choices": [
+   "Three times",
+   "Ten times",
+   "Twelve times",
+   "Seven times"
+  ],
+  "answer": 3,
+  "explanation": "Lord, how oft shall my brother sin against me, and I forgive him? till seven times?",
+  "ref": "Matthew 18:21"
+ },
+ {
+  "id": "matthew-18-m-12",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the first servant say when he fell down before his lord?",
+  "choices": [
+   "Lord, I have not so much to pay",
+   "Lord, forgive my wife and children",
+   "Lord, sell my goods instead",
+   "Lord, have patience with me, and I will pay thee all"
+  ],
+  "answer": 3,
+  "explanation": "The servant fell down, and worshipped him, saying, Lord, have patience with me, and I will pay thee all.",
+  "ref": "Matthew 18:26"
+ },
+ {
+  "id": "matthew-18-m-13",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the lord do when his servant begged for patience?",
+  "choices": [
+   "Gave him a year to pay",
+   "Sold only his goods",
+   "Cast him into prison",
+   "Was moved with compassion, loosed him and forgave the debt"
+  ],
+  "answer": 3,
+  "explanation": "The lord of that servant was moved with compassion, and loosed him, and forgave him the debt.",
+  "ref": "Matthew 18:27"
+ },
+ {
+  "id": "matthew-18-m-14",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the lord first commanded to be done to the servant who could not pay?",
+  "choices": [
+   "He be beaten",
+   "He be sent to the tormentors",
+   "He be cast into prison",
+   "He and his wife and children and all he had be sold"
+  ],
+  "answer": 3,
+  "explanation": "His lord commanded him to be sold, and his wife, and children, and all that he had, and payment to be made.",
+  "ref": "Matthew 18:25"
+ },
+ {
+  "id": "matthew-18-m-15",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the fellowservants do when they saw what was done?",
+  "choices": [
+   "They helped the debtor",
+   "They rebuked the servant themselves",
+   "They said nothing",
+   "They were very sorry and told their lord"
+  ],
+  "answer": 3,
+  "explanation": "They were very sorry, and came and told unto their lord all that was done.",
+  "ref": "Matthew 18:31"
+ },
+ {
+  "id": "matthew-18-h-01",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say is not the will of the Father?",
+  "choices": [
+   "That one of these little ones should perish",
+   "That the wicked prosper",
+   "That any man be rich",
+   "That a brother be left alone"
+  ],
+  "answer": 0,
+  "explanation": "It is not the will of your Father which is in heaven, that one of these little ones should perish.",
+  "ref": "Matthew 18:14"
+ },
+ {
+  "id": "matthew-18-h-02",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say you have gained if your brother hears you?",
+  "choices": [
+   "Thy brother",
+   "A friend for ever",
+   "A witness",
+   "A place in the kingdom"
+  ],
+  "answer": 0,
+  "explanation": "If he shall hear thee, thou hast gained thy brother.",
+  "ref": "Matthew 18:15"
+ },
+ {
+  "id": "matthew-18-h-03",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say establishes every word?",
+  "choices": [
+   "The mouth of two or three witnesses",
+   "The voice of the church",
+   "The testimony of the elders",
+   "The oath of the priests"
+  ],
+  "answer": 0,
+  "explanation": "In the mouth of two or three witnesses every word may be established.",
+  "ref": "Matthew 18:16"
+ },
+ {
+  "id": "matthew-18-h-04",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the lord call the servant who would not forgive?",
+  "choices": [
+   "O thou wicked servant",
+   "O thou slothful servant",
+   "O thou unprofitable servant",
+   "O thou foolish servant"
+  ],
+  "answer": 0,
+  "explanation": "His lord said unto him, O thou wicked servant, I forgave thee all that debt.",
+  "ref": "Matthew 18:32"
+ },
+ {
+  "id": "matthew-18-h-05",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the heavenly Father will do if you do not forgive from your hearts?",
+  "choices": [
+   "So likewise shall he do unto you",
+   "He will forgive you after seven times",
+   "He will hear your prayers anyway",
+   "He will send an angel to judge"
+  ],
+  "answer": 0,
+  "explanation": "So likewise shall my heavenly Father do also unto you, if ye from your hearts forgive not every one his brother their trespasses.",
+  "ref": "Matthew 18:35"
+ },
+ {
+  "id": "matthew-18-h-06",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say must needs come?",
+  "choices": [
+   "Offences",
+   "Wars and rumours of wars",
+   "Famines",
+   "False prophets"
+  ],
+  "answer": 0,
+  "explanation": "Woe unto the world because of offences! for it must needs be that offences come.",
+  "ref": "Matthew 18:7"
+ },
+ {
+  "id": "matthew-18-h-07",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say it is better to have than two eyes and be cast into hell fire?",
+  "choices": [
+   "One eye, entering into life",
+   "A blind eye in the kingdom",
+   "An eye plucked and burned",
+   "No eye at all, free of sin"
+  ],
+  "answer": 0,
+  "explanation": "It is better for thee to enter into life with one eye, rather than having two eyes to be cast into hell fire.",
+  "ref": "Matthew 18:9"
+ },
+ {
+  "id": "matthew-18-h-08",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the lord say the servant should have had on his fellowservant?",
+  "choices": [
+   "Compassion",
+   "Patience",
+   "Anger",
+   "Judgement"
+  ],
+  "answer": 0,
+  "explanation": "Shouldest not thou also have had compassion on thy fellowservant, even as I had pity on thee?",
+  "ref": "Matthew 18:33"
+ },
+ {
+  "id": "matthew-18-h-09",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the lord say he forgave the servant all that debt?",
+  "choices": [
+   "Because he desired him",
+   "Because the servant was poor",
+   "Because the servant had a wife and children",
+   "Because the servant had served him"
+  ],
+  "answer": 0,
+  "explanation": "I forgave thee all that debt, because thou desiredst me.",
+  "ref": "Matthew 18:32"
+ },
+ {
+  "id": "matthew-18-h-10",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say would be bound in heaven?",
+  "choices": [
+   "Whatsoever ye shall bind on earth",
+   "Whatsoever the Father loosed",
+   "Whatsoever the church forgave",
+   "Whatsoever the angels saw"
+  ],
+  "answer": 0,
+  "explanation": "Whatsoever ye shall bind on earth shall be bound in heaven: and whatsoever ye shall loose on earth shall be loosed in heaven.",
+  "ref": "Matthew 18:18"
+ },
+ {
+  "id": "matthew-18-h-11",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the lord feel when he heard of the servant's deed?",
+  "choices": [
+   "Wroth",
+   "Sorry",
+   "Glad",
+   "Silent"
+  ],
+  "answer": 0,
+  "explanation": "His lord was wroth, and delivered him to the tormentors, till he should pay all that was due unto him.",
+  "ref": "Matthew 18:34"
+ },
+ {
+  "id": "matthew-18-h-12",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the first servant say as he took his fellowservant by the throat?",
+  "choices": [
+   "Pay me that thou owest",
+   "Where is my money?",
+   "Thou owest me an hundred pence",
+   "Give me my talents"
+  ],
+  "answer": 0,
+  "explanation": "He laid hands on him, and took him by the throat, saying, Pay me that thou owest.",
+  "ref": "Matthew 18:28"
+ },
+ {
+  "id": "matthew-18-h-13",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what state did Jesus say it is better to enter life than to have two hands or feet and be cast into fire?",
+  "choices": [
+   "Halt or maimed",
+   "Blind or deaf",
+   "Poor or sick",
+   "Young or old"
+  ],
+  "answer": 0,
+  "explanation": "It is better for thee to enter into life halt or maimed, rather than having two hands or two feet to be cast into everlasting fire.",
+  "ref": "Matthew 18:8"
+ },
+ {
+  "id": "matthew-18-h-14",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus pronounce on the man by whom the offence cometh?",
+  "choices": [
+   "Woe",
+   "Judgement",
+   "Shame",
+   "Death"
+  ],
+  "answer": 0,
+  "explanation": "Woe unto the world because of offences! but woe to that man by whom the offence cometh!",
+  "ref": "Matthew 18:7"
+ },
+ {
+  "id": "matthew-18-h-15",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king want to do with his servants at the beginning of the parable?",
+  "choices": [
+   "Take account of them",
+   "Pay them their wages",
+   "Send them away",
+   "Give them talents"
+  ],
+  "answer": 0,
+  "explanation": "The kingdom of heaven is likened unto a certain king, which would take account of his servants.",
+  "ref": "Matthew 18:23"
+ },
+ {
+  "id": "matthew-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus do for the great multitudes that followed him into Judaea?",
+  "choices": [
+   "He fed them",
+   "He healed them",
+   "He taught them parables",
+   "He sent them home"
+  ],
+  "answer": 1,
+  "explanation": "Great multitudes followed him; and he healed them there.",
+  "ref": "Matthew 19:2"
+ },
+ {
+  "id": "matthew-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say God made at the beginning?",
+  "choices": [
+   "Two kingdoms",
+   "Them male and female",
+   "The heavens and the earth in six days",
+   "A garden and a river"
+  ],
+  "answer": 1,
+  "explanation": "He which made them at the beginning made them male and female.",
+  "ref": "Matthew 19:4"
+ },
+ {
+  "id": "matthew-19-e-03",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say a man shall leave and cleave to his wife?",
+  "choices": [
+   "His house and lands",
+   "Father and mother",
+   "His friends",
+   "His trade"
+  ],
+  "answer": 1,
+  "explanation": "For this cause shall a man leave father and mother, and shall cleave to his wife.",
+  "ref": "Matthew 19:5"
+ },
+ {
+  "id": "matthew-19-e-04",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the disciples do when little children were brought to Jesus?",
+  "choices": [
+   "They blessed them",
+   "They rebuked them",
+   "They sent for their parents",
+   "They lifted them up"
+  ],
+  "answer": 1,
+  "explanation": "Then were there brought unto him little children, that he should put his hands on them, and pray: and the disciples rebuked them.",
+  "ref": "Matthew 19:13"
+ },
+ {
+  "id": "matthew-19-e-05",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Of whom did Jesus say is the kingdom of heaven?",
+  "choices": [
+   "Of the poor in spirit",
+   "Of such as little children",
+   "Of the humble in heart",
+   "Of the meek"
+  ],
+  "answer": 1,
+  "explanation": "Suffer little children, and forbid them not, to come unto me: for of such is the kingdom of heaven.",
+  "ref": "Matthew 19:14"
+ },
+ {
+  "id": "matthew-19-e-06",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the young man go away sorrowful?",
+  "choices": [
+   "He was afraid of the Pharisees",
+   "He had great possessions",
+   "He did not believe Jesus",
+   "He had no family"
+  ],
+  "answer": 1,
+  "explanation": "When the young man heard that saying, he went away sorrowful: for he had great possessions.",
+  "ref": "Matthew 19:22"
+ },
+ {
+  "id": "matthew-19-e-07",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say is easier than for a rich man to enter the kingdom of God?",
+  "choices": [
+   "A mountain moving into the sea",
+   "A camel going through the eye of a needle",
+   "A fig tree withering",
+   "A sheep passing through a gate"
+  ],
+  "answer": 1,
+  "explanation": "It is easier for a camel to go through the eye of a needle, than for a rich man to enter into the kingdom of God.",
+  "ref": "Matthew 19:24"
+ },
+ {
+  "id": "matthew-19-e-08",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell the young man to do to enter into life?",
+  "choices": [
+   "Be baptized",
+   "Keep the commandments",
+   "Fast and pray",
+   "Offer a sacrifice"
+  ],
+  "answer": 1,
+  "explanation": "If thou wilt enter into life, keep the commandments.",
+  "ref": "Matthew 19:17"
+ },
+ {
+  "id": "matthew-19-e-09",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter ask Jesus after the rich young man left?",
+  "choices": [
+   "Who then can be saved?",
+   "What shall we have therefore?",
+   "Where shall we go?",
+   "When will the kingdom come?"
+  ],
+  "answer": 1,
+  "explanation": "Peter said, Behold, we have forsaken all, and followed thee; what shall we have therefore?",
+  "ref": "Matthew 19:27"
+ },
+ {
+  "id": "matthew-19-e-10",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say about many that are first?",
+  "choices": [
+   "They shall be great",
+   "They shall be last",
+   "They shall be cast out",
+   "They shall be few"
+  ],
+  "answer": 1,
+  "explanation": "Many that are first shall be last; and the last shall be first.",
+  "ref": "Matthew 19:30"
+ },
+ {
+  "id": "matthew-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Moses suffer the Israelites to put away their wives?",
+  "choices": [
+   "Because the law required it",
+   "Because of their sins in the wilderness",
+   "Because the priests asked it",
+   "Because of the hardness of their hearts"
+  ],
+  "answer": 3,
+  "explanation": "Moses because of the hardness of your hearts suffered you to put away your wives: but from the beginning it was not so.",
+  "ref": "Matthew 19:8"
+ },
+ {
+  "id": "matthew-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What exception did Jesus give for putting away a wife?",
+  "choices": [
+   "Barrenness",
+   "Idolatry",
+   "Desertion",
+   "Fornication"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever shall put away his wife, except it be for fornication, and shall marry another, committeth adultery.",
+  "ref": "Matthew 19:9"
+ },
+ {
+  "id": "matthew-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the disciples say when they heard Jesus' teaching on divorce?",
+  "choices": [
+   "It is hard to be a disciple",
+   "Who then can be saved?",
+   "Lord, teach us to pray",
+   "It is not good to marry"
+  ],
+  "answer": 3,
+  "explanation": "His disciples say unto him, If the case of the man be so with his wife, it is not good to marry.",
+  "ref": "Matthew 19:10"
+ },
+ {
+  "id": "matthew-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom did Jesus say this saying can be received?",
+  "choices": [
+   "To the scribes",
+   "To all who are baptized",
+   "To the rich",
+   "To them to whom it is given"
+  ],
+  "answer": 3,
+  "explanation": "All men cannot receive this saying, save they to whom it is given.",
+  "ref": "Matthew 19:11"
+ },
+ {
+  "id": "matthew-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which commandment about parents did Jesus name to the rich young man?",
+  "choices": [
+   "Remember the sabbath day",
+   "Thou shalt have no other gods",
+   "Thou shalt not covet",
+   "Honour thy father and thy mother"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said, Thou shalt do no murder, Thou shalt not commit adultery, Honour thy father and thy mother.",
+  "ref": "Matthew 19:18–19"
+ },
+ {
+  "id": "matthew-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say when the young man called him good?",
+  "choices": [
+   "I am the way, the truth and the life",
+   "Call no man good upon earth",
+   "Good is he that keepeth the law",
+   "There is none good but one, that is, God"
+  ],
+  "answer": 3,
+  "explanation": "Why callest thou me good? there is none good but one, that is, God.",
+  "ref": "Matthew 19:17"
+ },
+ {
+  "id": "matthew-19-m-07",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the young man say about the commandments?",
+  "choices": [
+   "I have kept some, but not all",
+   "I have taught them to others",
+   "I have kept them since my marriage",
+   "All these things have I kept from my youth up"
+  ],
+  "answer": 3,
+  "explanation": "The young man saith unto him, All these things have I kept from my youth up: what lack I yet?",
+  "ref": "Matthew 19:20"
+ },
+ {
+  "id": "matthew-19-m-08",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the disciples say when they heard how hard it is for a rich man to enter the kingdom?",
+  "choices": [
+   "Lord, increase our faith",
+   "Then who can enter in?",
+   "Who is able to stand?",
+   "Who then can be saved?"
+  ],
+  "answer": 3,
+  "explanation": "When his disciples heard it, they were exceedingly amazed, saying, Who then can be saved?",
+  "ref": "Matthew 19:25"
+ },
+ {
+  "id": "matthew-19-m-09",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say about salvation with men and with God?",
+  "choices": [
+   "With men it is hard; with God it is easy",
+   "With men it is by works; with God by faith",
+   "With men it is for few; with God for many",
+   "With men it is impossible; with God all things are possible"
+  ],
+  "answer": 3,
+  "explanation": "With men this is impossible; but with God all things are possible.",
+  "ref": "Matthew 19:26"
+ },
+ {
+  "id": "matthew-19-m-10",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus promise the twelve who had followed him?",
+  "choices": [
+   "They shall each receive a crown",
+   "They shall rule the earth",
+   "They shall be called apostles",
+   "They shall sit upon twelve thrones"
+  ],
+  "answer": 3,
+  "explanation": "Ye also shall sit upon twelve thrones, judging the twelve tribes of Israel.",
+  "ref": "Matthew 19:28"
+ },
+ {
+  "id": "matthew-19-m-11",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall everyone who forsakes houses, brethren or lands for Jesus' name receive?",
+  "choices": [
+   "Twice as much in this life",
+   "Treasure laid up on earth",
+   "A place beside the twelve",
+   "An hundredfold and everlasting life"
+  ],
+  "answer": 3,
+  "explanation": "Every one that hath forsaken houses, or brethren, or sisters, or father, or mother, or wife, or children, or lands, for my name's sake, shall receive an hundredfold, and shall inherit everlasting life.",
+  "ref": "Matthew 19:29"
+ },
+ {
+  "id": "matthew-19-m-12",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus tell the young man to do after selling and giving to the poor?",
+  "choices": [
+   "Go and sin no more",
+   "Return to his home",
+   "Fast and pray",
+   "Come and follow me"
+  ],
+  "answer": 3,
+  "explanation": "Go and sell that thou hast, and give to the poor, and thou shalt have treasure in heaven: and come and follow me.",
+  "ref": "Matthew 19:21"
+ },
+ {
+  "id": "matthew-19-m-13",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Pharisees come to Jesus with their question about divorce?",
+  "choices": [
+   "To learn of him",
+   "To accuse his disciples",
+   "To invite him to a feast",
+   "Tempting him"
+  ],
+  "answer": 3,
+  "explanation": "The Pharisees also came unto him, tempting him, and saying unto him, Is it lawful for a man to put away his wife for every cause?",
+  "ref": "Matthew 19:3"
+ },
+ {
+  "id": "matthew-19-m-14",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus do for the little children before he departed?",
+  "choices": [
+   "He blessed them with oil",
+   "He took them in his arms and wept",
+   "He fed them bread",
+   "He laid his hands on them"
+  ],
+  "answer": 3,
+  "explanation": "He laid his hands on them, and departed thence.",
+  "ref": "Matthew 19:15"
+ },
+ {
+  "id": "matthew-19-m-15",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whose sake must one forsake houses and lands to receive a hundredfold?",
+  "choices": [
+   "The sake of the gospel",
+   "The sake of the poor",
+   "The kingdom's sake",
+   "Jesus' name's sake"
+  ],
+  "answer": 3,
+  "explanation": "Every one that hath forsaken houses, or brethren, or sisters, or father, or mother, or wife, or children, or lands, for my name's sake, shall receive an hundredfold.",
+  "ref": "Matthew 19:29"
+ },
+ {
+  "id": "matthew-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the twelve judge from their thrones?",
+  "choices": [
+   "The twelve tribes of Israel",
+   "The nations of the earth",
+   "The scribes and Pharisees",
+   "The living and the dead"
+  ],
+  "answer": 0,
+  "explanation": "Ye also shall sit upon twelve thrones, judging the twelve tribes of Israel.",
+  "ref": "Matthew 19:28"
+ },
+ {
+  "id": "matthew-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whose sake did Jesus say some have made themselves eunuchs?",
+  "choices": [
+   "The kingdom of heaven's sake",
+   "For the law's sake",
+   "For their own sake",
+   "For the temple's sake"
+  ],
+  "answer": 0,
+  "explanation": "There be eunuchs, which have made themselves eunuchs for the kingdom of heaven's sake. He that is able to receive it, let him receive it.",
+  "ref": "Matthew 19:12"
+ },
+ {
+  "id": "matthew-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say of whoso marrieth her which is put away?",
+  "choices": [
+   "He doth commit adultery",
+   "He doth well",
+   "He is free from blame",
+   "He must put her away"
+  ],
+  "answer": 0,
+  "explanation": "Whoso marrieth her which is put away doth commit adultery.",
+  "ref": "Matthew 19:9"
+ },
+ {
+  "id": "matthew-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the rich young man address Jesus?",
+  "choices": [
+   "Good Master",
+   "Rabbi",
+   "Lord of Israel",
+   "Son of David"
+  ],
+  "answer": 0,
+  "explanation": "One came and said unto him, Good Master, what good thing shall I do, that I may have eternal life?",
+  "ref": "Matthew 19:16"
+ },
+ {
+  "id": "matthew-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which commandment about a neighbour did Jesus add to the list?",
+  "choices": [
+   "Thou shalt love thy neighbour as thyself",
+   "Thou shalt not covet thy neighbour's house",
+   "Thou shalt not bear false witness against thy neighbour",
+   "Thou shalt forgive thy neighbour seven times"
+  ],
+  "answer": 0,
+  "explanation": "Honour thy father and thy mother: and, Thou shalt love thy neighbour as thyself.",
+  "ref": "Matthew 19:19"
+ },
+ {
+  "id": "matthew-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the young man ask after saying he had kept the commandments?",
+  "choices": [
+   "What lack I yet?",
+   "What more must I do for the kingdom?",
+   "Who is my neighbour?",
+   "Where is the life you speak of?"
+  ],
+  "answer": 0,
+  "explanation": "All these things have I kept from my youth up: what lack I yet?",
+  "ref": "Matthew 19:20"
+ },
+ {
+  "id": "matthew-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Jesus say the young man would have treasure if he sold what he had?",
+  "choices": [
+   "In heaven",
+   "In the temple",
+   "In the kingdom of Israel",
+   "In his father's house"
+  ],
+  "answer": 0,
+  "explanation": "Go and sell that thou hast, and give to the poor, and thou shalt have treasure in heaven.",
+  "ref": "Matthew 19:21"
+ },
+ {
+  "id": "matthew-19-h-08",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jesus come when he departed from Galilee?",
+  "choices": [
+   "The coasts of Judaea beyond Jordan",
+   "The coasts of Tyre and Sidon",
+   "Jericho",
+   "The mount of Olives"
+  ],
+  "answer": 0,
+  "explanation": "He departed from Galilee, and came into the coasts of Judaea beyond Jordan.",
+  "ref": "Matthew 19:1"
+ },
+ {
+  "id": "matthew-19-h-09",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say a rich man shall hardly do?",
+  "choices": [
+   "Enter into the kingdom of heaven",
+   "Keep the commandments",
+   "Follow him",
+   "Give to the poor"
+  ],
+  "answer": 0,
+  "explanation": "A rich man shall hardly enter into the kingdom of heaven.",
+  "ref": "Matthew 19:23"
+ },
+ {
+  "id": "matthew-19-h-10",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus ask the young man who called him good?",
+  "choices": [
+   "Why callest thou me good?",
+   "Whom callest thou Lord?",
+   "What seekest thou?",
+   "Who hath sent thee?"
+  ],
+  "answer": 0,
+  "explanation": "Why callest thou me good? there is none good but one, that is, God.",
+  "ref": "Matthew 19:17"
+ },
+ {
+  "id": "matthew-19-h-11",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did those who brought the children want Jesus to do?",
+  "choices": [
+   "Put his hands on them and pray",
+   "Heal them of sickness",
+   "Teach them",
+   "Bless them with oil"
+  ],
+  "answer": 0,
+  "explanation": "Then were there brought unto him little children, that he should put his hands on them, and pray.",
+  "ref": "Matthew 19:13"
+ },
+ {
+  "id": "matthew-19-h-12",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what cause did the Pharisees ask if a man may put away his wife?",
+  "choices": [
+   "For every cause",
+   "For adultery only",
+   "For barrenness",
+   "For disobedience"
+  ],
+  "answer": 0,
+  "explanation": "Is it lawful for a man to put away his wife for every cause?",
+  "ref": "Matthew 19:3"
+ },
+ {
+  "id": "matthew-19-h-13",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the Son of man will sit upon in the regeneration?",
+  "choices": [
+   "The throne of his glory",
+   "The seat of Moses",
+   "The throne of David",
+   "The mount of Zion"
+  ],
+  "answer": 0,
+  "explanation": "In the regeneration when the Son of man shall sit in the throne of his glory, ye also shall sit upon twelve thrones.",
+  "ref": "Matthew 19:28"
+ },
+ {
+  "id": "matthew-19-h-14",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Pharisees say Moses commanded to give?",
+  "choices": [
+   "A writing of divorcement",
+   "A bill of sale",
+   "A letter of peace",
+   "A gift for the wife"
+  ],
+  "answer": 0,
+  "explanation": "Why did Moses then command to give a writing of divorcement, and to put her away?",
+  "ref": "Matthew 19:7"
+ },
+ {
+  "id": "matthew-19-h-15",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say husband and wife are no more?",
+  "choices": [
+   "Twain, but one flesh",
+   "Free, but bound to the law",
+   "Two, but one household",
+   "Single, but one name"
+  ],
+  "answer": 0,
+  "explanation": "They are no more twain, but one flesh. What therefore God hath joined together, let not man put asunder.",
+  "ref": "Matthew 19:6"
+ },
+ {
+  "id": "matthew-20-e-01",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did the householder first go out to hire labourers?",
+  "choices": [
+   "At the third hour",
+   "Early in the morning",
+   "At noon",
+   "In the evening"
+  ],
+  "answer": 1,
+  "explanation": "The householder went out early in the morning to hire labourers into his vineyard.",
+  "ref": "Matthew 20:1"
+ },
+ {
+  "id": "matthew-20-e-02",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the householder find others doing at the eleventh hour?",
+  "choices": [
+   "Sleeping under a tree",
+   "Standing idle",
+   "Working in another field",
+   "Selling in the market"
+  ],
+  "answer": 1,
+  "explanation": "About the eleventh hour he went out, and found others standing idle.",
+  "ref": "Matthew 20:6"
+ },
+ {
+  "id": "matthew-20-e-03",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did each labourer receive when they were paid?",
+  "choices": [
+   "Two pence",
+   "A penny",
+   "A talent",
+   "A measure of wheat"
+  ],
+  "answer": 1,
+  "explanation": "They that were hired about the eleventh hour received every man a penny; and the first likewise received every man a penny.",
+  "ref": "Matthew 20:9–10"
+ },
+ {
+  "id": "matthew-20-e-04",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the first labourers do when they received a penny?",
+  "choices": [
+   "Thanked the householder",
+   "Murmured against the goodman of the house",
+   "Left without a word",
+   "Asked for a talent"
+  ],
+  "answer": 1,
+  "explanation": "When they had received it, they murmured against the goodman of the house.",
+  "ref": "Matthew 20:11"
+ },
+ {
+  "id": "matthew-20-e-05",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Jesus going when he took the twelve apart in the way?",
+  "choices": [
+   "Down to Capernaum",
+   "Up to Jerusalem",
+   "To Galilee",
+   "To Bethany"
+  ],
+  "answer": 1,
+  "explanation": "Jesus going up to Jerusalem took the twelve disciples apart in the way.",
+  "ref": "Matthew 20:17"
+ },
+ {
+  "id": "matthew-20-e-06",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to Jesus with her sons and worshipped him?",
+  "choices": [
+   "The mother of Jesus",
+   "The mother of Zebedee's children",
+   "The wife of Peter",
+   "A woman of Canaan"
+  ],
+  "answer": 1,
+  "explanation": "Then came to him the mother of Zebedee's children with her sons, worshipping him.",
+  "ref": "Matthew 20:20"
+ },
+ {
+  "id": "matthew-20-e-07",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the mother of Zebedee's children ask for her sons?",
+  "choices": [
+   "That they be healed of their sickness",
+   "To sit on his right and left in his kingdom",
+   "That they be made apostles",
+   "That they be given great possessions"
+  ],
+  "answer": 1,
+  "explanation": "Grant that these my two sons may sit, the one on thy right hand, and the other on the left, in thy kingdom.",
+  "ref": "Matthew 20:21"
+ },
+ {
+  "id": "matthew-20-e-08",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "How did the ten disciples react when they heard the request?",
+  "choices": [
+   "They laughed at them",
+   "They were moved with indignation against the two brethren",
+   "They asked the same",
+   "They were silent"
+  ],
+  "answer": 1,
+  "explanation": "When the ten heard it, they were moved with indignation against the two brethren.",
+  "ref": "Matthew 20:24"
+ },
+ {
+  "id": "matthew-20-e-09",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "From where were Jesus and his disciples departing when two blind men cried out?",
+  "choices": [
+   "Jerusalem",
+   "Jericho",
+   "Capernaum",
+   "Bethany"
+  ],
+  "answer": 1,
+  "explanation": "As they departed from Jericho, a great multitude followed him. And, behold, two blind men sitting by the way side.",
+  "ref": "Matthew 20:29–30"
+ },
+ {
+  "id": "matthew-20-e-10",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the blind men when Jesus touched their eyes?",
+  "choices": [
+   "They were told to tell no man",
+   "They received sight and followed him",
+   "They went home rejoicing",
+   "They were healed but fell silent"
+  ],
+  "answer": 1,
+  "explanation": "Jesus had compassion on them, and touched their eyes: and immediately their eyes received sight, and they followed him.",
+  "ref": "Matthew 20:34"
+ },
+ {
+  "id": "matthew-20-m-01",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why had the last labourers been standing idle?",
+  "choices": [
+   "Because they were lazy",
+   "Because they came late from the city",
+   "Because the vineyard was full",
+   "Because no man had hired them"
+  ],
+  "answer": 3,
+  "explanation": "They say unto him, Because no man hath hired us.",
+  "ref": "Matthew 20:7"
+ },
+ {
+  "id": "matthew-20-m-02",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the first labourers say about the last?",
+  "choices": [
+   "They were not worthy of a penny",
+   "They had stolen work",
+   "They had come from the city",
+   "They had wrought but one hour, yet were made equal"
+  ],
+  "answer": 3,
+  "explanation": "These last have wrought but one hour, and thou hast made them equal unto us, which have borne the burden and heat of the day.",
+  "ref": "Matthew 20:12"
+ },
+ {
+  "id": "matthew-20-m-03",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the householder say to the one who complained?",
+  "choices": [
+   "Go thy way, thou unprofitable servant",
+   "Thou hast been paid in full",
+   "Be content with thy wages",
+   "Friend, I do thee no wrong"
+  ],
+  "answer": 3,
+  "explanation": "He answered one of them, and said, Friend, I do thee no wrong: didst not thou agree with me for a penny?",
+  "ref": "Matthew 20:13"
+ },
+ {
+  "id": "matthew-20-m-04",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the householder tell the complainer to do with his wage?",
+  "choices": [
+   "Give it to the last",
+   "Return it to the steward",
+   "Wait for more at evening",
+   "Take it and go his way"
+  ],
+  "answer": 3,
+  "explanation": "Take that thine is, and go thy way: I will give unto this last, even as unto thee.",
+  "ref": "Matthew 20:14"
+ },
+ {
+  "id": "matthew-20-m-05",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into whose hands did Jesus say the Son of man would be betrayed?",
+  "choices": [
+   "The Pharisees and Sadducees",
+   "Herod and the Romans",
+   "The elders and the people",
+   "The chief priests and the scribes"
+  ],
+  "answer": 3,
+  "explanation": "The Son of man shall be betrayed unto the chief priests and unto the scribes, and they shall condemn him to death.",
+  "ref": "Matthew 20:18"
+ },
+ {
+  "id": "matthew-20-m-06",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom would the chief priests deliver the Son of man to be mocked, scourged and crucified?",
+  "choices": [
+   "Herod",
+   "Pilate alone",
+   "The elders of Israel",
+   "The Gentiles"
+  ],
+  "answer": 3,
+  "explanation": "They shall condemn him to death, and shall deliver him to the Gentiles to mock, and to scourge, and to crucify him: and the third day he shall rise again.",
+  "ref": "Matthew 20:18–19"
+ },
+ {
+  "id": "matthew-20-m-07",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus ask the two brothers they were able to do?",
+  "choices": [
+   "Sit on his right hand",
+   "Follow him to Jerusalem",
+   "Heal the sick in his name",
+   "Drink his cup and share his baptism"
+  ],
+  "answer": 3,
+  "explanation": "Are ye able to drink of the cup that I shall drink of, and to be baptized with the baptism that I am baptized with?",
+  "ref": "Matthew 20:22"
+ },
+ {
+  "id": "matthew-20-m-08",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the two brothers answer?",
+  "choices": [
+   "We know not",
+   "We will follow thee",
+   "Lord, we are not worthy",
+   "We are able"
+  ],
+  "answer": 3,
+  "explanation": "They say unto him, We are able.",
+  "ref": "Matthew 20:22"
+ },
+ {
+  "id": "matthew-20-m-09",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say was not his to give?",
+  "choices": [
+   "To forgive sins",
+   "To judge the nations",
+   "To open the kingdom",
+   "To sit on his right hand and on his left"
+  ],
+  "answer": 3,
+  "explanation": "To sit on my right hand, and on my left, is not mine to give, but it shall be given to them for whom it is prepared of my Father.",
+  "ref": "Matthew 20:23"
+ },
+ {
+  "id": "matthew-20-m-10",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say the princes of the Gentiles do?",
+  "choices": [
+   "Serve their people",
+   "Give their lives for many",
+   "Appoint ministers",
+   "Exercise dominion over them"
+  ],
+  "answer": 3,
+  "explanation": "The princes of the Gentiles exercise dominion over them, and they that are great exercise authority upon them.",
+  "ref": "Matthew 20:25"
+ },
+ {
+  "id": "matthew-20-m-11",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must he be who will be great among the disciples?",
+  "choices": [
+   "Their lord",
+   "Their judge",
+   "Their teacher",
+   "Their minister"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever will be great among you, let him be your minister.",
+  "ref": "Matthew 20:26"
+ },
+ {
+  "id": "matthew-20-m-12",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the multitude do to the two blind men?",
+  "choices": [
+   "Led them to Jesus",
+   "Gave them alms",
+   "Carried them away",
+   "Rebuked them because they should hold their peace"
+  ],
+  "answer": 3,
+  "explanation": "The multitude rebuked them, because they should hold their peace.",
+  "ref": "Matthew 20:31"
+ },
+ {
+  "id": "matthew-20-m-13",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the blind men respond when rebuked?",
+  "choices": [
+   "They fell silent",
+   "They went away",
+   "They hid",
+   "They cried the more"
+  ],
+  "answer": 3,
+  "explanation": "They cried the more, saying, Have mercy on us, O Lord, thou Son of David.",
+  "ref": "Matthew 20:31"
+ },
+ {
+  "id": "matthew-20-m-14",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus ask the blind men?",
+  "choices": [
+   "Believe ye that I am able?",
+   "Who told you of me?",
+   "What seek ye?",
+   "What will ye that I shall do unto you?"
+  ],
+  "answer": 3,
+  "explanation": "Jesus stood still, and called them, and said, What will ye that I shall do unto you?",
+  "ref": "Matthew 20:32"
+ },
+ {
+  "id": "matthew-20-m-15",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were the two blind men sitting?",
+  "choices": [
+   "At the gate of Jericho",
+   "In the temple",
+   "At the pool",
+   "By the way side"
+  ],
+  "answer": 3,
+  "explanation": "Behold, two blind men sitting by the way side, when they heard that Jesus passed by, cried out.",
+  "ref": "Matthew 20:30"
+ },
+ {
+  "id": "matthew-20-h-01",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the householder ask the complainer about his eye?",
+  "choices": [
+   "Is thine eye evil, because I am good?",
+   "Is thine eye single?",
+   "Hast thou eyes and seest not?",
+   "Is thine eye blind to my goodness?"
+  ],
+  "answer": 0,
+  "explanation": "Is it not lawful for me to do what I will with mine own? Is thine eye evil, because I am good?",
+  "ref": "Matthew 20:15"
+ },
+ {
+  "id": "matthew-20-h-02",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the householder say it is lawful for him to do?",
+  "choices": [
+   "What he will with his own",
+   "To pay according to the work",
+   "To dismiss his labourers",
+   "To keep the vineyard"
+  ],
+  "answer": 0,
+  "explanation": "Is it not lawful for me to do what I will with mine own?",
+  "ref": "Matthew 20:15"
+ },
+ {
+  "id": "matthew-20-h-03",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what order did the steward pay the labourers?",
+  "choices": [
+   "Beginning from the last unto the first",
+   "Beginning from the first unto the last",
+   "All together at once",
+   "By their hours of work"
+  ],
+  "answer": 0,
+  "explanation": "Call the labourers, and give them their hire, beginning from the last unto the first.",
+  "ref": "Matthew 20:8"
+ },
+ {
+  "id": "matthew-20-h-04",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the householder hire the last labourers?",
+  "choices": [
+   "About the eleventh hour",
+   "About the ninth hour",
+   "About the sixth hour",
+   "About the third hour"
+  ],
+  "answer": 0,
+  "explanation": "About the eleventh hour he went out, and found others standing idle.",
+  "ref": "Matthew 20:6"
+ },
+ {
+  "id": "matthew-20-h-05",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say of many and few?",
+  "choices": [
+   "Many be called, but few chosen",
+   "Many are first, but few are last",
+   "Many are sick, but few healed",
+   "Many seek, but few find"
+  ],
+  "answer": 0,
+  "explanation": "So the last shall be first, and the first last: for many be called, but few chosen.",
+  "ref": "Matthew 20:16"
+ },
+ {
+  "id": "matthew-20-h-06",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What followed Jesus as he departed from Jericho?",
+  "choices": [
+   "A great multitude",
+   "His twelve disciples only",
+   "A company of Pharisees",
+   "The mother of Zebedee's children"
+  ],
+  "answer": 0,
+  "explanation": "As they departed from Jericho, a great multitude followed him.",
+  "ref": "Matthew 20:29"
+ },
+ {
+  "id": "matthew-20-h-07",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say to the mother and her sons?",
+  "choices": [
+   "Ye know not what ye ask",
+   "Be content with what ye have",
+   "Get you behind me",
+   "Ask in my name"
+  ],
+  "answer": 0,
+  "explanation": "Jesus answered and said, Ye know not what ye ask.",
+  "ref": "Matthew 20:22"
+ },
+ {
+  "id": "matthew-20-h-08",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Jesus take apart in the way to Jerusalem?",
+  "choices": [
+   "The twelve disciples",
+   "Peter, James and John",
+   "The mother of Zebedee's children",
+   "The multitudes"
+  ],
+  "answer": 0,
+  "explanation": "Jesus going up to Jerusalem took the twelve disciples apart in the way.",
+  "ref": "Matthew 20:17"
+ },
+ {
+  "id": "matthew-20-h-09",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the mother of Zebedee's children doing when she desired a certain thing?",
+  "choices": [
+   "Worshipping him",
+   "Weeping",
+   "Standing silent",
+   "Bowing at his feet in the street"
+  ],
+  "answer": 0,
+  "explanation": "Then came to him the mother of Zebedee's children with her sons, worshipping him, and desiring a certain thing of him.",
+  "ref": "Matthew 20:20"
+ },
+ {
+  "id": "matthew-20-h-10",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Who prepares the places at Jesus' right and left hand?",
+  "choices": [
+   "His Father",
+   "The angels",
+   "The twelve",
+   "The Holy Spirit"
+  ],
+  "answer": 0,
+  "explanation": "It shall be given to them for whom it is prepared of my Father.",
+  "ref": "Matthew 20:23"
+ },
+ {
+  "id": "matthew-20-h-11",
+  "chapter": 20,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the householder see others standing idle?",
+  "choices": [
+   "In the marketplace",
+   "By the vineyard gate",
+   "Along the road",
+   "At the well"
+  ],
+  "answer": 0,
+  "explanation": "He went out about the third hour, and saw others standing idle in the marketplace.",
+  "ref": "Matthew 20:3"
+ },
+ {
+  "id": "matthew-20-h-12",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day did Jesus say the Son of man would rise again?",
+  "choices": [
+   "The third day",
+   "The seventh day",
+   "The first day",
+   "The fortieth day"
+  ],
+  "answer": 0,
+  "explanation": "The third day he shall rise again.",
+  "ref": "Matthew 20:19"
+ },
+ {
+  "id": "matthew-20-h-13",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say whosoever will be chief among them must be?",
+  "choices": [
+   "Their servant",
+   "Their shepherd",
+   "Their master",
+   "Their steward"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever will be chief among you, let him be your servant.",
+  "ref": "Matthew 20:27"
+ },
+ {
+  "id": "matthew-20-h-14",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus have on the blind men?",
+  "choices": [
+   "Compassion",
+   "Wrath",
+   "Sorrow",
+   "Silence"
+  ],
+  "answer": 0,
+  "explanation": "So Jesus had compassion on them, and touched their eyes.",
+  "ref": "Matthew 20:34"
+ },
+ {
+  "id": "matthew-20-h-15",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the blind men say they wanted Jesus to do?",
+  "choices": [
+   "Open their eyes",
+   "Heal their sick friends",
+   "Give them alms",
+   "Lead them to Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "They say unto him, Lord, that our eyes may be opened.",
+  "ref": "Matthew 20:33"
  }
 ]
