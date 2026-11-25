@@ -17280,6 +17280,454 @@
   "ref": "1 Chronicles 28:20"
  },
  {
+  "id": "1-chronicles-28-e-01",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe did the LORD choose to be the ruler?",
+  "choices": [
+   "Benjamin",
+   "Levi",
+   "Ephraim",
+   "Judah"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hath chosen Judah to be the ruler; and of the house of Judah, the house of my father.",
+  "ref": "1 Chronicles 28:4"
+ },
+ {
+  "id": "1-chronicles-28-e-02",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what did David tell Solomon to serve the LORD?",
+  "choices": [
+   "A perfect heart and a willing mind",
+   "Gold and silver",
+   "A mighty army",
+   "Burnt offerings only"
+  ],
+  "answer": 0,
+  "explanation": "Serve him with a perfect heart and with a willing mind.",
+  "ref": "1 Chronicles 28:9"
+ },
+ {
+  "id": "1-chronicles-28-e-03",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say would happen if Solomon forsook the LORD?",
+  "choices": [
+   "He would lose his sons",
+   "He would be cast off for ever",
+   "He would be sent to Egypt",
+   "He would lose the gold"
+  ],
+  "answer": 1,
+  "explanation": "If thou forsake him, he will cast thee off for ever.",
+  "ref": "1 Chronicles 28:9"
+ },
+ {
+  "id": "1-chronicles-28-e-04",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David give to Solomon his son?",
+  "choices": [
+   "A golden crown",
+   "The ark of the covenant",
+   "The pattern of the porch and the houses of the temple",
+   "The captains of the host"
+  ],
+  "answer": 2,
+  "explanation": "David gave to Solomon his son the pattern of the porch, and of the houses thereof, and of the treasuries thereof.",
+  "ref": "1 Chronicles 28:11"
+ },
+ {
+  "id": "1-chronicles-28-e-05",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David say he received the whole pattern?",
+  "choices": [
+   "From the priests",
+   "By a dream at night",
+   "From Nathan the prophet",
+   "The LORD made him understand in writing"
+  ],
+  "answer": 3,
+  "explanation": "The LORD made me understand in writing by his hand upon me, even all the works of this pattern.",
+  "ref": "1 Chronicles 28:19"
+ },
+ {
+  "id": "1-chronicles-28-e-06",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did David say would be with Solomon and not fail or forsake him?",
+  "choices": [
+   "The LORD God",
+   "Joab",
+   "The priests",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "The LORD God, even my God, will be with thee; he will not fail thee, nor forsake thee.",
+  "ref": "1 Chronicles 28:20"
+ },
+ {
+  "id": "1-chronicles-28-m-01",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what condition would God establish Solomon's kingdom for ever?",
+  "choices": [
+   "If he built quickly",
+   "If he were constant to do God's commandments",
+   "If he made war on his enemies",
+   "If he took many wives"
+  ],
+  "answer": 1,
+  "explanation": "I will establish his kingdom for ever, if he be constant to do my commandments and my judgments.",
+  "ref": "1 Chronicles 28:7"
+ },
+ {
+  "id": "1-chronicles-28-m-02",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD search, according to David?",
+  "choices": [
+   "All the temples",
+   "All the cities",
+   "All hearts",
+   "All the treasuries"
+  ],
+  "answer": 2,
+  "explanation": "The LORD searcheth all hearts, and understandeth all the imaginations of the thoughts.",
+  "ref": "1 Chronicles 28:9"
+ },
+ {
+  "id": "1-chronicles-28-m-03",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say he would be to Solomon?",
+  "choices": [
+   "His shepherd",
+   "His judge",
+   "His shield",
+   "His father"
+  ],
+  "answer": 3,
+  "explanation": "I have chosen him to be my son, and I will be his father.",
+  "ref": "1 Chronicles 28:6"
+ },
+ {
+  "id": "1-chronicles-28-m-04",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If Israel kept the LORD's commandments, what would they do with the good land?",
+  "choices": [
+   "Leave it for an inheritance for their children",
+   "Sell it to the nations",
+   "Divide it among the priests",
+   "Give it to the Levites"
+  ],
+  "answer": 0,
+  "explanation": "That ye may possess this good land, and leave it for an inheritance for your children after you for ever.",
+  "ref": "1 Chronicles 28:8"
+ },
+ {
+  "id": "1-chronicles-28-m-05",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the ark of the covenant, what had David planned a house of rest for?",
+  "choices": [
+   "The shewbread",
+   "The footstool of our God",
+   "The altar of burnt offering",
+   "The tabernacle"
+  ],
+  "answer": 1,
+  "explanation": "I had in mine heart to build an house of rest for the ark of the covenant of the LORD, and for the footstool of our God.",
+  "ref": "1 Chronicles 28:2"
+ },
+ {
+  "id": "1-chronicles-28-m-06",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was gold and silver given by weight for?",
+  "choices": [
+   "Armour for the army",
+   "Gifts for the princes",
+   "All instruments of every kind of service",
+   "Walls around the city"
+  ],
+  "answer": 2,
+  "explanation": "He gave of gold by weight for things of gold, for all instruments of all manner of service; silver also for all instruments of silver.",
+  "ref": "1 Chronicles 28:14"
+ },
+ {
+  "id": "1-chronicles-28-m-07",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was made of refined gold by weight?",
+  "choices": [
+   "The ark",
+   "The candlestick",
+   "The table of shewbread",
+   "The altar of incense"
+  ],
+  "answer": 3,
+  "explanation": "For the altar of incense refined gold by weight.",
+  "ref": "1 Chronicles 28:18"
+ },
+ {
+  "id": "1-chronicles-28-m-08",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the cherubims in the pattern cover with their wings?",
+  "choices": [
+   "The ark of the covenant",
+   "The altar of incense",
+   "The tables of shewbread",
+   "The treasuries"
+  ],
+  "answer": 0,
+  "explanation": "The pattern of the chariot of the cherubims, that spread out their wings, and covered the ark of the covenant of the LORD.",
+  "ref": "1 Chronicles 28:18"
+ },
+ {
+  "id": "1-chronicles-28-m-09",
+  "chapter": 28,
+  "level": "medium",
+  "category": "person",
+  "question": "Who would be with Solomon for all the service of the house of God?",
+  "choices": [
+   "The captains of the host",
+   "The courses of the priests and the Levites",
+   "The stewards of the king",
+   "The sons of Judah only"
+  ],
+  "answer": 1,
+  "explanation": "The courses of the priests and the Levites, even they shall be with thee for all the service of the house of God.",
+  "ref": "1 Chronicles 28:21"
+ },
+ {
+  "id": "1-chronicles-28-m-10",
+  "chapter": 28,
+  "level": "medium",
+  "category": "person",
+  "question": "Who would be wholly at Solomon's commandment?",
+  "choices": [
+   "Only the Levites",
+   "Only the captains",
+   "The princes and all the people",
+   "The sons of David"
+  ],
+  "answer": 2,
+  "explanation": "The princes and all the people will be wholly at thy commandment.",
+  "ref": "1 Chronicles 28:21"
+ },
+ {
+  "id": "1-chronicles-28-m-11",
+  "chapter": 28,
+  "level": "medium",
+  "category": "person",
+  "question": "Who would help with all manner of workmanship?",
+  "choices": [
+   "The priests alone",
+   "The captains of hundreds",
+   "The stewards",
+   "Every willing skilful man"
+  ],
+  "answer": 3,
+  "explanation": "There shall be with thee for all manner of workmanship every willing skilful man, for any manner of service.",
+  "ref": "1 Chronicles 28:21"
+ },
+ {
+  "id": "1-chronicles-28-h-01",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was gold given by weight for, along with their lamps?",
+  "choices": [
+   "The candlesticks",
+   "The altar",
+   "The cups",
+   "The mercy seat"
+  ],
+  "answer": 0,
+  "explanation": "The weight for the candlesticks of gold, and for their lamps of gold, by weight for every candlestick.",
+  "ref": "1 Chronicles 28:15"
+ },
+ {
+  "id": "1-chronicles-28-h-02",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what did David give gold by weight, and also silver for the silver ones?",
+  "choices": [
+   "The altars",
+   "The tables of shewbread",
+   "The courts",
+   "The gates"
+  ],
+  "answer": 1,
+  "explanation": "By weight he gave gold for the tables of shewbread, for every table; and likewise silver for the tables of silver.",
+  "ref": "1 Chronicles 28:16"
+ },
+ {
+  "id": "1-chronicles-28-h-03",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For which items was pure gold given?",
+  "choices": [
+   "The candlesticks",
+   "The tables",
+   "The fleshhooks, the bowls and the cups",
+   "The cherubims"
+  ],
+  "answer": 2,
+  "explanation": "Also pure gold for the fleshhooks, and the bowls, and the cups.",
+  "ref": "1 Chronicles 28:17"
+ },
+ {
+  "id": "1-chronicles-28-h-04",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which place did David's pattern include with the porch and the treasuries?",
+  "choices": [
+   "The altar of burnt offering",
+   "The court of the women",
+   "The gate Shallecheth",
+   "The place of the mercy seat"
+  ],
+  "answer": 3,
+  "explanation": "The pattern of the porch, and of the houses thereof, and of the treasuries thereof, and of the place of the mercy seat.",
+  "ref": "1 Chronicles 28:11"
+ },
+ {
+  "id": "1-chronicles-28-h-05",
+  "chapter": 28,
+  "level": "hard",
+  "category": "person",
+  "question": "Before whom did the LORD choose David to be king over Israel?",
+  "choices": [
+   "All the house of his father",
+   "The sons of Saul",
+   "The princes of Israel",
+   "The captains of the host"
+  ],
+  "answer": 0,
+  "explanation": "The LORD God of Israel chose me before all the house of my father to be king over Israel for ever.",
+  "ref": "1 Chronicles 28:4"
+ },
+ {
+  "id": "1-chronicles-28-h-06",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the LORD given David many of?",
+  "choices": [
+   "Servants",
+   "Sons",
+   "Cities",
+   "Flocks"
+  ],
+  "answer": 1,
+  "explanation": "For the LORD hath given me many sons.",
+  "ref": "1 Chronicles 28:5"
+ },
+ {
+  "id": "1-chronicles-28-h-07",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose audience did David charge Israel to keep all the commandments?",
+  "choices": [
+   "The priests'",
+   "Solomon's",
+   "Our God's",
+   "Joab's"
+  ],
+  "answer": 2,
+  "explanation": "In the sight of all Israel the congregation of the LORD, and in the audience of our God, keep and seek for all the commandments of the LORD.",
+  "ref": "1 Chronicles 28:8"
+ },
+ {
+  "id": "1-chronicles-28-h-08",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say the LORD would not do to Solomon?",
+  "choices": [
+   "Give him many sons",
+   "Make him build alone",
+   "Take away his wisdom",
+   "Fail him nor forsake him"
+  ],
+  "answer": 3,
+  "explanation": "He will not fail thee, nor forsake thee, until thou hast finished all the work for the service of the house of the LORD.",
+  "ref": "1 Chronicles 28:20"
+ },
+ {
+  "id": "1-chronicles-28-h-09",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what did David have the pattern of the courts of the house of the LORD?",
+  "choices": [
+   "The spirit",
+   "The priests",
+   "A vision of the ark",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "The pattern of all that he had by the spirit, of the courts of the house of the LORD.",
+  "ref": "1 Chronicles 28:12"
+ },
+ {
+  "id": "1-chronicles-28-h-10",
+  "chapter": 28,
+  "level": "hard",
+  "category": "person",
+  "question": "Who were over all the substance and possession of the king and of his sons?",
+  "choices": [
+   "The captains of thousands",
+   "The stewards",
+   "The porters",
+   "The judges"
+  ],
+  "answer": 1,
+  "explanation": "The stewards over all the substance and possession of the king, and of his sons.",
+  "ref": "1 Chronicles 28:1"
+ },
+ {
+  "id": "1-chronicles-28-h-11",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say would happen if Solomon sought the LORD?",
+  "choices": [
+   "He would receive great wealth",
+   "He would be given a long life",
+   "He would be found of him",
+   "He would not need an army"
+  ],
+  "answer": 2,
+  "explanation": "If thou seek him, he will be found of thee.",
+  "ref": "1 Chronicles 28:9"
+ },
+ {
   "id": "old-1-chronicles-29-1",
   "chapter": 29,
   "level": "beginner",
