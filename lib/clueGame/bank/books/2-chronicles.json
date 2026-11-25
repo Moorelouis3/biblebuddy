@@ -944,6 +944,358 @@
   "ref": "2 Chronicles 3:14"
  },
  {
+  "id": "2-chronicles-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two names did Solomon give the pillars he set before the temple?",
+  "choices": [
+   "Hiram and Huram",
+   "Jachin and Boaz",
+   "Bezaleel and Uri",
+   "Zadok and Asaph"
+  ],
+  "answer": 1,
+  "explanation": "He called the name of that on the right hand Jachin, and the name of that on the left Boaz.",
+  "ref": "2 Chronicles 3:17"
+ },
+ {
+  "id": "2-chronicles-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon engrave on the walls of the house?",
+  "choices": [
+   "Lions",
+   "Palm trees only",
+   "Cherubims",
+   "Oxen"
+  ],
+  "answer": 2,
+  "explanation": "He overlaid the house with gold, and graved cherubims on the walls.",
+  "ref": "2 Chronicles 3:7"
+ },
+ {
+  "id": "2-chronicles-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon set up before the house, one on the right hand and one on the left?",
+  "choices": [
+   "Two altars",
+   "Two lampstands",
+   "Two oxen",
+   "Two pillars"
+  ],
+  "answer": 3,
+  "explanation": "He made before the house two pillars, and reared them up before the temple, one on the right hand, and the other on the left.",
+  "ref": "2 Chronicles 3:15–17"
+ },
+ {
+  "id": "2-chronicles-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which city did Solomon begin to build the house of the Lord?",
+  "choices": [
+   "Jerusalem",
+   "Hebron",
+   "Gibeon",
+   "Tyre"
+  ],
+  "answer": 0,
+  "explanation": "Solomon began to build the house of the LORD at Jerusalem in mount Moriah.",
+  "ref": "2 Chronicles 3:1"
+ },
+ {
+  "id": "2-chronicles-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year of his reign did Solomon begin to build?",
+  "choices": [
+   "The first",
+   "The fourth",
+   "The seventh",
+   "The twelfth"
+  ],
+  "answer": 1,
+  "explanation": "He began to build in the second day of the second month, in the fourth year of his reign.",
+  "ref": "2 Chronicles 3:2"
+ },
+ {
+  "id": "2-chronicles-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month did Solomon begin to build the house?",
+  "choices": [
+   "The first month",
+   "The seventh month",
+   "The second month",
+   "The tenth month"
+  ],
+  "answer": 2,
+  "explanation": "He began to build in the second day of the second month.",
+  "ref": "2 Chronicles 3:2"
+ },
+ {
+  "id": "2-chronicles-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was the house, by the first measure?",
+  "choices": [
+   "Twenty cubits",
+   "Thirty-five cubits",
+   "One hundred and twenty cubits",
+   "Sixty cubits"
+  ],
+  "answer": 3,
+  "explanation": "The length by cubits after the first measure was threescore cubits, and the breadth twenty cubits.",
+  "ref": "2 Chronicles 3:3"
+ },
+ {
+  "id": "2-chronicles-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what wood did Solomon ceil the greater house?",
+  "choices": [
+   "Fir tree",
+   "Cedar only",
+   "Olive wood",
+   "Algum"
+  ],
+  "answer": 0,
+  "explanation": "The greater house he cieled with fir tree, which he overlaid with fine gold.",
+  "ref": "2 Chronicles 3:5"
+ },
+ {
+  "id": "2-chronicles-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon set on the greater house along with chains?",
+  "choices": [
+   "Lily flowers",
+   "Palm trees",
+   "Pomegranates",
+   "Oxen"
+  ],
+  "answer": 1,
+  "explanation": "He overlaid it with fine gold, and set thereon palm trees and chains.",
+  "ref": "2 Chronicles 3:5"
+ },
+ {
+  "id": "2-chronicles-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Solomon garnish the house with precious stones?",
+  "choices": [
+   "For defence",
+   "For payment to Huram",
+   "For beauty",
+   "For the priests' use"
+  ],
+  "answer": 2,
+  "explanation": "He garnished the house with precious stones for beauty.",
+  "ref": "2 Chronicles 3:6"
+ },
+ {
+  "id": "2-chronicles-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which way did the faces of the two cherubims in the most holy house look?",
+  "choices": [
+   "Toward the east",
+   "Toward the door",
+   "Toward the ground",
+   "Inward"
+  ],
+  "answer": 3,
+  "explanation": "They stood on their feet, and their faces were inward.",
+  "ref": "2 Chronicles 3:13"
+ },
+ {
+  "id": "2-chronicles-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How high were the two pillars Solomon made before the house?",
+  "choices": [
+   "Thirty-five cubits",
+   "Twenty cubits",
+   "Sixty cubits",
+   "One hundred and twenty cubits"
+  ],
+  "answer": 0,
+  "explanation": "He made before the house two pillars of thirty and five cubits high.",
+  "ref": "2 Chronicles 3:15"
+ },
+ {
+  "id": "2-chronicles-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon make of blue, purple, crimson and fine linen, with cherubims on it?",
+  "choices": [
+   "The ephod",
+   "The veil",
+   "The curtains of the court",
+   "The roof"
+  ],
+  "answer": 1,
+  "explanation": "He made the vail of blue, and purple, and crimson, and fine linen, and wrought cherubims thereon.",
+  "ref": "2 Chronicles 3:14"
+ },
+ {
+  "id": "2-chronicles-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How high was the porch in front of the house?",
+  "choices": [
+   "Twenty cubits",
+   "Sixty cubits",
+   "One hundred and twenty cubits",
+   "Thirty-five cubits"
+  ],
+  "answer": 2,
+  "explanation": "The height of the porch was an hundred and twenty.",
+  "ref": "2 Chronicles 3:4"
+ },
+ {
+  "id": "2-chronicles-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much fine gold went into overlaying the most holy house?",
+  "choices": [
+   "Fifty talents",
+   "One hundred talents",
+   "Three thousand talents",
+   "Six hundred talents"
+  ],
+  "answer": 3,
+  "explanation": "He overlaid it with fine gold, amounting to six hundred talents.",
+  "ref": "2 Chronicles 3:8"
+ },
+ {
+  "id": "2-chronicles-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much did the weight of the gold nails come to?",
+  "choices": [
+   "Fifty shekels",
+   "Six hundred shekels",
+   "One hundred shekels",
+   "Twenty shekels"
+  ],
+  "answer": 0,
+  "explanation": "The weight of the nails was fifty shekels of gold.",
+  "ref": "2 Chronicles 3:9"
+ },
+ {
+  "id": "2-chronicles-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How far did the wings of the two cherubims spread in all?",
+  "choices": [
+   "Five cubits",
+   "Twenty cubits",
+   "Ten cubits",
+   "Thirty-five cubits"
+  ],
+  "answer": 1,
+  "explanation": "The wings of these cherubims spread themselves forth twenty cubits.",
+  "ref": "2 Chronicles 3:13"
+ },
+ {
+  "id": "2-chronicles-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was each single wing of a cherub reaching to the wall?",
+  "choices": [
+   "Ten cubits",
+   "Twenty cubits",
+   "Five cubits",
+   "Three cubits"
+  ],
+  "answer": 2,
+  "explanation": "One wing of the one cherub was five cubits, reaching to the wall of the house.",
+  "ref": "2 Chronicles 3:11"
+ },
+ {
+  "id": "2-chronicles-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many pomegranates did Solomon make for the chains?",
+  "choices": [
+   "Twelve",
+   "Four hundred",
+   "Two hundred",
+   "One hundred"
+  ],
+  "answer": 3,
+  "explanation": "He made an hundred pomegranates, and put them on the chains.",
+  "ref": "2 Chronicles 3:16"
+ },
+ {
+  "id": "2-chronicles-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the gold used to garnish the house called?",
+  "choices": [
+   "Gold of Parvaim",
+   "Gold of Ophir",
+   "Gold of Havilah",
+   "Gold of Sheba"
+  ],
+  "answer": 0,
+  "explanation": "The gold was gold of Parvaim.",
+  "ref": "2 Chronicles 3:6"
+ },
+ {
+  "id": "2-chronicles-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How high was the capital on top of each pillar?",
+  "choices": [
+   "Three cubits",
+   "Five cubits",
+   "Twenty cubits",
+   "Thirty-five cubits"
+  ],
+  "answer": 1,
+  "explanation": "The chapiter that was on the top of each of them was five cubits.",
+  "ref": "2 Chronicles 3:15"
+ },
+ {
+  "id": "2-chronicles-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the length and breadth of the most holy house?",
+  "choices": [
+   "Sixty by twenty cubits",
+   "Thirty by ten cubits",
+   "Twenty cubits by twenty cubits",
+   "Ten by ten cubits"
+  ],
+  "answer": 2,
+  "explanation": "The most holy house: the length according to the breadth of the house, twenty cubits, and the breadth twenty cubits.",
+  "ref": "2 Chronicles 3:8"
+ },
+ {
   "id": "old-2-chronicles-4-1",
   "chapter": 4,
   "level": "beginner",
