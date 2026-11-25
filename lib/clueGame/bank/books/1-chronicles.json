@@ -7504,20 +7504,660 @@
   "ref": "1 Chronicles 12:32"
  },
  {
-  "id": "old-1-chronicles-12-5",
+  "id": "1-chronicles-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the chief of the Benjamites who came to David at Ziklag?",
+  "choices": [
+   "Joash",
+   "Ahiezer",
+   "Jehu",
+   "Amasai"
+  ],
+  "answer": 1,
+  "explanation": "The chief was Ahiezer, then Joash, the sons of Shemaah the Gibeathite.",
+  "ref": "1 Chronicles 12:3"
+ },
+ {
+  "id": "1-chronicles-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who spoke for the men of Benjamin and Judah, saying Thine are we, David?",
+  "choices": [
+   "Ahiezer",
+   "Jehoiada",
+   "Amasai",
+   "Adnah"
+  ],
+  "answer": 2,
+  "explanation": "The spirit came upon Amasai, who was chief of the captains, and he said, Thine are we, David.",
+  "ref": "1 Chronicles 12:18"
+ },
+ {
+  "id": "1-chronicles-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was a young man mighty of valour with twenty and two captains of his father's house?",
+  "choices": [
+   "Jehoiada",
+   "Amasai",
+   "Ismaiah",
+   "Zadok"
+  ],
+  "answer": 3,
+  "explanation": "Zadok, a young man mighty of valour, and of his father's house twenty and two captains.",
+  "ref": "1 Chronicles 12:28"
+ },
+ {
+  "id": "1-chronicles-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the leader of the Aaronites?",
+  "choices": [
+   "Jehoiada",
+   "Zadok",
+   "Ahiezer",
+   "Johanan"
+  ],
+  "answer": 0,
+  "explanation": "Jehoiada was the leader of the Aaronites, and with him were three thousand and seven hundred.",
+  "ref": "1 Chronicles 12:27"
+ },
+ {
+  "id": "1-chronicles-12-e-05",
   "chapter": 12,
   "level": "beginner",
   "category": "keyword",
-  "question": "What was the overall mood in Israel when the people came to Hebron to make David king?",
+  "question": "How long did the men stay with David at Hebron, eating and drinking?",
   "choices": [
-   "Fear",
-   "Division",
-   "Mourning",
-   "Joy and one heart"
+   "One day",
+   "Three days",
+   "Seven days",
+   "Forty days"
+  ],
+  "answer": 1,
+  "explanation": "There they were with David three days, eating and drinking: for their brethren had prepared for them.",
+  "ref": "1 Chronicles 12:39"
+ },
+ {
+  "id": "1-chronicles-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The great host that came to David day by day was like what?",
+  "choices": [
+   "The sand of the sea",
+   "The stars of heaven",
+   "The host of God",
+   "The army of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Day by day there came to David to help him, until it was a great host, like the host of God.",
+  "ref": "1 Chronicles 12:22"
+ },
+ {
+  "id": "1-chronicles-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the Jordan like when the Gadites crossed it?",
+  "choices": [
+   "It was dry",
+   "It was frozen",
+   "It was full of boats",
+   "It had overflown all his banks"
   ],
   "answer": 3,
-  "explanation": "The tribes came with a perfect heart and there was joy in Israel.",
-  "ref": "1 Chronicles 12:38–40"
+  "explanation": "They went over Jordan in the first month, when it had overflown all his banks.",
+  "ref": "1 Chronicles 12:15"
+ },
+ {
+  "id": "1-chronicles-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the lords of the Philistines send David away from the battle?",
+  "choices": [
+   "They feared he would fall to Saul",
+   "He asked to leave",
+   "He was too young",
+   "He refused to fight"
+  ],
+  "answer": 0,
+  "explanation": "The lords of the Philistines sent him away, saying, He will fall to his master Saul to the jeopardy of our heads.",
+  "ref": "1 Chronicles 12:19"
+ },
+ {
+  "id": "1-chronicles-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did all these men of war come to Hebron?",
+  "choices": [
+   "To fight the Philistines",
+   "To make David king over all Israel",
+   "To worship at the tabernacle",
+   "To bury Saul"
+  ],
+  "answer": 1,
+  "explanation": "They came with a perfect heart to Hebron, to make David king over all Israel.",
+  "ref": "1 Chronicles 12:38"
+ },
+ {
+  "id": "1-chronicles-12-e-10",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say to the men if they came peaceably to help him?",
+  "choices": [
+   "They must give him hostages",
+   "They must serve Saul",
+   "His heart would be knit unto them",
+   "They must fight first"
+  ],
+  "answer": 2,
+  "explanation": "If ye be come peaceably unto me to help me, mine heart shall be knit unto you.",
+  "ref": "1 Chronicles 12:17"
+ },
+ {
+  "id": "1-chronicles-12-e-11",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do after Amasai spoke?",
+  "choices": [
+   "He sent them away",
+   "He asked them to wait",
+   "He gave them land",
+   "He received them and made them captains of the band"
+  ],
+  "answer": 3,
+  "explanation": "David received them, and made them captains of the band.",
+  "ref": "1 Chronicles 12:18"
+ },
+ {
+  "id": "1-chronicles-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say if they had come to betray him to his enemies?",
+  "choices": [
+   "Let the sword decide",
+   "Go in peace",
+   "The God of our fathers look thereon and rebuke it",
+   "Return to Saul"
+  ],
+  "answer": 2,
+  "explanation": "If ye be come to betray me to mine enemies, seeing there is no wrong in mine hands, the God of our fathers look thereon, and rebuke it.",
+  "ref": "1 Chronicles 12:17"
+ },
+ {
+  "id": "1-chronicles-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Amasai say to David about God?",
+  "choices": [
+   "Thy God hath forsaken thee",
+   "Thy God is with Saul",
+   "Thy God hath chosen Benjamin",
+   "Thy God helpeth thee"
+  ],
+  "answer": 3,
+  "explanation": "Peace, peace be unto thee, and peace be to thine helpers; for thy God helpeth thee.",
+  "ref": "1 Chronicles 12:18"
+ },
+ {
+  "id": "1-chronicles-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What size was the command of one of the least of the Gadite captains?",
+  "choices": [
+   "An hundred",
+   "A thousand",
+   "Ten",
+   "Fifty"
+  ],
+  "answer": 0,
+  "explanation": "One of the least was over an hundred, and the greatest over a thousand.",
+  "ref": "1 Chronicles 12:14"
+ },
+ {
+  "id": "1-chronicles-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why had the men of Benjamin, Saul's kindred, only now come to David?",
+  "choices": [
+   "They lived far away",
+   "They had kept the ward of the house of Saul",
+   "They had been in exile",
+   "They feared David"
+  ],
+  "answer": 1,
+  "explanation": "Of Benjamin, the kindred of Saul, three thousand: for hitherto the greatest part of them had kept the ward of the house of Saul.",
+  "ref": "1 Chronicles 12:29"
+ },
+ {
+  "id": "1-chronicles-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of Issachar understand?",
+  "choices": [
+   "The law of Moses",
+   "The signs of the stars",
+   "The times, to know what Israel ought to do",
+   "The language of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Of Issachar, men that had understanding of the times, to know what Israel ought to do.",
+  "ref": "1 Chronicles 12:32"
+ },
+ {
+  "id": "1-chronicles-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many heads of Issachar were there?",
+  "choices": [
+   "Twenty",
+   "Two thousand",
+   "Twelve",
+   "Two hundred"
+  ],
+  "answer": 3,
+  "explanation": "The heads of them were two hundred; and all their brethren were at their commandment.",
+  "ref": "1 Chronicles 12:32"
+ },
+ {
+  "id": "1-chronicles-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men of Zebulun, expert in war, came to David?",
+  "choices": [
+   "Fifty thousand",
+   "Forty thousand",
+   "Twenty thousand",
+   "Thirty-seven thousand"
+  ],
+  "answer": 0,
+  "explanation": "Of Zebulun, such as went forth to battle, expert in war, fifty thousand, which could keep rank.",
+  "ref": "1 Chronicles 12:33"
+ },
+ {
+  "id": "1-chronicles-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The men of Zebulun were not of what?",
+  "choices": [
+   "Hard heart",
+   "Double heart",
+   "Little faith",
+   "Proud eyes"
+  ],
+  "answer": 1,
+  "explanation": "They could keep rank: they were not of double heart.",
+  "ref": "1 Chronicles 12:33"
+ },
+ {
+  "id": "1-chronicles-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men came from the Reubenites, Gadites and half tribe of Manasseh across the Jordan?",
+  "choices": [
+   "Forty thousand",
+   "Fifty thousand",
+   "An hundred and twenty thousand",
+   "Eighteen thousand"
+  ],
+  "answer": 2,
+  "explanation": "On the other side of Jordan, with all manner of instruments of war for the battle, an hundred and twenty thousand.",
+  "ref": "1 Chronicles 12:37"
+ },
+ {
+  "id": "1-chronicles-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many of the children of Judah that bare shield and spear came to David?",
+  "choices": [
+   "Seven thousand and one hundred",
+   "Four thousand and six hundred",
+   "Three thousand",
+   "Six thousand and eight hundred"
+  ],
+  "answer": 3,
+  "explanation": "The children of Judah that bare shield and spear were six thousand and eight hundred.",
+  "ref": "1 Chronicles 12:24"
+ },
+ {
+  "id": "1-chronicles-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many mighty men of Simeon came to David?",
+  "choices": [
+   "Seven thousand and one hundred",
+   "Six thousand and eight hundred",
+   "Four thousand and six hundred",
+   "Three thousand"
+  ],
+  "answer": 0,
+  "explanation": "Of the children of Simeon, mighty men of valour for the war, seven thousand and one hundred.",
+  "ref": "1 Chronicles 12:25"
+ },
+ {
+  "id": "1-chronicles-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who helped David against the band of the rovers?",
+  "choices": [
+   "The Gadites",
+   "The captains of Manasseh",
+   "The men of Benjamin",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "They helped David against the band of the rovers: for they were all mighty men of valour.",
+  "ref": "1 Chronicles 12:21"
+ },
+ {
+  "id": "1-chronicles-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Which Gibeonite was a mighty man among the thirty and over the thirty?",
+  "choices": [
+   "Jeremiah",
+   "Jahaziel",
+   "Ismaiah",
+   "Eluzai"
+  ],
+  "answer": 2,
+  "explanation": "Ismaiah the Gibeonite, a mighty man among the thirty, and over the thirty.",
+  "ref": "1 Chronicles 12:4"
+ },
+ {
+  "id": "1-chronicles-12-m-14",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month did the Gadites go over Jordan?",
+  "choices": [
+   "The seventh month",
+   "The third month",
+   "The twelfth month",
+   "The first month"
+  ],
+  "answer": 3,
+  "explanation": "These are they that went over Jordan in the first month, when it had overflown all his banks.",
+  "ref": "1 Chronicles 12:15"
+ },
+ {
+  "id": "1-chronicles-12-m-15",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Gadites handle in the battle?",
+  "choices": [
+   "Shield and buckler",
+   "Sword and sling",
+   "Chariot and horse",
+   "Bow and harp"
+  ],
+  "answer": 0,
+  "explanation": "Men of war fit for the battle, that could handle shield and buckler.",
+  "ref": "1 Chronicles 12:8"
+ },
+ {
+  "id": "1-chronicles-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Ahiezer and Joash were the sons of whom?",
+  "choices": [
+   "Azmaveth",
+   "Jeroham of Gedor",
+   "Shephatiah",
+   "Shemaah the Gibeathite"
+  ],
+  "answer": 3,
+  "explanation": "The chief was Ahiezer, then Joash, the sons of Shemaah the Gibeathite.",
+  "ref": "1 Chronicles 12:3"
+ },
+ {
+  "id": "1-chronicles-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Jeziel and Pelet were the sons of whom?",
+  "choices": [
+   "Azmaveth",
+   "Shemaah",
+   "Jeroham",
+   "Sacar"
+  ],
+  "answer": 0,
+  "explanation": "Jeziel, and Pelet, the sons of Azmaveth.",
+  "ref": "1 Chronicles 12:3"
+ },
+ {
+  "id": "1-chronicles-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Joelah and Zebadiah were sons of Jeroham of which place?",
+  "choices": [
+   "Gibeon",
+   "Gedor",
+   "Ziklag",
+   "Anathoth"
+  ],
+  "answer": 1,
+  "explanation": "Joelah, and Zebadiah, the sons of Jeroham of Gedor.",
+  "ref": "1 Chronicles 12:7"
+ },
+ {
+  "id": "1-chronicles-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man of Manasseh fell to David as he went to Ziklag?",
+  "choices": [
+   "Ahiezer",
+   "Jehoiada",
+   "Adnah",
+   "Shephatiah"
+  ],
+  "answer": 2,
+  "explanation": "There fell to him of Manasseh, Adnah, and Jozabad, and Jediael, and Michael, and Jozabad, and Elihu, and Zilthai.",
+  "ref": "1 Chronicles 12:20"
+ },
+ {
+  "id": "1-chronicles-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What office did the men of Manasseh who joined David hold?",
+  "choices": [
+   "Priests of the thousands",
+   "Judges of the tribes",
+   "Keepers of the gates",
+   "Captains of the thousands"
+  ],
+  "answer": 3,
+  "explanation": "Adnah and the others were captains of the thousands that were of Manasseh.",
+  "ref": "1 Chronicles 12:20"
+ },
+ {
+  "id": "1-chronicles-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of the children of Ephraim, famous in their fathers' houses, came?",
+  "choices": [
+   "Twenty thousand and eight hundred",
+   "Eighteen thousand",
+   "Twenty-eight thousand and six hundred",
+   "Thirty-seven thousand"
+  ],
+  "answer": 0,
+  "explanation": "Of the children of Ephraim twenty thousand and eight hundred, mighty men of valour.",
+  "ref": "1 Chronicles 12:30"
+ },
+ {
+  "id": "1-chronicles-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of the half tribe of Manasseh, expressed by name, came to make David king?",
+  "choices": [
+   "Twenty thousand",
+   "Eighteen thousand",
+   "Forty thousand",
+   "Fifty thousand"
+  ],
+  "answer": 1,
+  "explanation": "Of the half tribe of Manasseh eighteen thousand, which were expressed by name.",
+  "ref": "1 Chronicles 12:31"
+ },
+ {
+  "id": "1-chronicles-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Danites, expert in war, came to David?",
+  "choices": [
+   "Forty thousand",
+   "Twenty thousand and eight hundred",
+   "Twenty and eight thousand and six hundred",
+   "Thirty and seven thousand"
+  ],
+  "answer": 2,
+  "explanation": "Of the Danites expert in war twenty and eight thousand and six hundred.",
+  "ref": "1 Chronicles 12:35"
+ },
+ {
+  "id": "1-chronicles-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of Asher, expert in war, came to David?",
+  "choices": [
+   "Fifty thousand",
+   "Twenty-eight thousand",
+   "Eighteen thousand",
+   "Forty thousand"
+  ],
+  "answer": 3,
+  "explanation": "Of Asher, such as went forth to battle, expert in war, forty thousand.",
+  "ref": "1 Chronicles 12:36"
+ },
+ {
+  "id": "1-chronicles-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many captains of Naphtali came, and with them how many with shield and spear?",
+  "choices": [
+   "A thousand captains and thirty and seven thousand",
+   "Two hundred and forty thousand",
+   "A hundred captains and seven thousand",
+   "Two thousand and ten thousand"
+  ],
+  "answer": 0,
+  "explanation": "Of Naphtali a thousand captains, and with them with shield and spear thirty and seven thousand.",
+  "ref": "1 Chronicles 12:34"
+ },
+ {
+  "id": "1-chronicles-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Levites came to David?",
+  "choices": [
+   "Six thousand and eight hundred",
+   "Four thousand and six hundred",
+   "Three thousand and seven hundred",
+   "Seven thousand and one hundred"
+  ],
+  "answer": 1,
+  "explanation": "Of the children of Levi four thousand and six hundred.",
+  "ref": "1 Chronicles 12:26"
+ },
+ {
+  "id": "1-chronicles-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men were with Jehoiada, leader of the Aaronites?",
+  "choices": [
+   "Four thousand and six hundred",
+   "Three thousand",
+   "Three thousand and seven hundred",
+   "Twenty and two"
+  ],
+  "answer": 2,
+  "explanation": "Jehoiada was the leader of the Aaronites, and with him were three thousand and seven hundred.",
+  "ref": "1 Chronicles 12:27"
+ },
+ {
+  "id": "1-chronicles-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Gadites' faces were like the faces of what?",
+  "choices": [
+   "Eagles",
+   "Bears",
+   "Wolves",
+   "Lions"
+  ],
+  "answer": 3,
+  "explanation": "Men of might, whose faces were like the faces of lions, and were as swift as the roes upon the mountains.",
+  "ref": "1 Chronicles 12:8"
+ },
+ {
+  "id": "1-chronicles-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two tribes, with Issachar, brought bread on asses and camels?",
+  "choices": [
+   "Zebulun and Naphtali",
+   "Judah and Benjamin",
+   "Dan and Asher",
+   "Ephraim and Simeon"
+  ],
+  "answer": 0,
+  "explanation": "They that were nigh them, even unto Issachar and Zebulun and Naphtali, brought bread on asses, and on camels.",
+  "ref": "1 Chronicles 12:40"
+ },
+ {
+  "id": "1-chronicles-12-h-15",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men near them bring besides bread, meat and meal?",
+  "choices": [
+   "Honey and locusts",
+   "Cakes of figs and bunches of raisins",
+   "Pomegranates and dates",
+   "Fish and cheese"
+  ],
+  "answer": 1,
+  "explanation": "They brought bread, and meat, meal, cakes of figs, and bunches of raisins, and wine, and oil.",
+  "ref": "1 Chronicles 12:40"
  },
  {
   "id": "old-1-chronicles-13-1",
