@@ -12336,6 +12336,454 @@
   "ref": "2 Kings 20:12–15"
  },
  {
+  "id": "2-kings-20-e-01",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Judah was sick unto death in this chapter?",
+  "choices": [
+   "Manasseh",
+   "Josiah",
+   "Ahaz",
+   "Hezekiah"
+  ],
+  "answer": 3,
+  "explanation": "Hezekiah was sick unto death.",
+  "ref": "2 Kings 20:1"
+ },
+ {
+  "id": "2-kings-20-e-02",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophet told Hezekiah he would die?",
+  "choices": [
+   "Elisha",
+   "Jeremiah",
+   "Nathan",
+   "Isaiah"
+  ],
+  "answer": 3,
+  "explanation": "Isaiah the son of Amoz said, Set thine house in order; for thou shalt die.",
+  "ref": "2 Kings 20:1"
+ },
+ {
+  "id": "2-kings-20-e-03",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah do when he heard he would die?",
+  "choices": [
+   "He sent for the priests",
+   "He prayed to the LORD",
+   "He fled to Egypt",
+   "He tore down the altars"
+  ],
+  "answer": 1,
+  "explanation": "Hezekiah turned his face to the wall, and prayed unto the LORD.",
+  "ref": "2 Kings 20:2"
+ },
+ {
+  "id": "2-kings-20-e-04",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which king sent letters and a present to Hezekiah?",
+  "choices": [
+   "The king of Assyria",
+   "The king of Egypt",
+   "The king of Babylon",
+   "The king of Moab"
+  ],
+  "answer": 2,
+  "explanation": "Berodach-baladan, king of Babylon, sent letters and a present unto Hezekiah.",
+  "ref": "2 Kings 20:12"
+ },
+ {
+  "id": "2-kings-20-e-05",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Isaiah say would happen to everything in Hezekiah's house?",
+  "choices": [
+   "It would be given to the poor",
+   "It would be burned",
+   "It would be carried to Babylon",
+   "It would be hidden in the temple"
+  ],
+  "answer": 2,
+  "explanation": "All that is in thine house shall be carried into Babylon: nothing shall be left.",
+  "ref": "2 Kings 20:17"
+ },
+ {
+  "id": "2-kings-20-e-06",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who became king after Hezekiah?",
+  "choices": [
+   "Josiah his son",
+   "Manasseh his son",
+   "Amon his son",
+   "Jehoash his son"
+  ],
+  "answer": 1,
+  "explanation": "Hezekiah slept with his fathers: and Manasseh his son reigned in his stead.",
+  "ref": "2 Kings 20:21"
+ },
+ {
+  "id": "2-kings-20-m-01",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hezekiah ask the LORD to remember in his prayer?",
+  "choices": [
+   "That he had built the temple",
+   "That he had defeated Assyria",
+   "That he had walked before him in truth",
+   "That he had kept every feast"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah said, remember now how I have walked before thee in truth and with a perfect heart.",
+  "ref": "2 Kings 20:3"
+ },
+ {
+  "id": "2-kings-20-m-02",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Isaiah when the word of the LORD came to him again?",
+  "choices": [
+   "At the temple gate",
+   "In the middle court",
+   "On the city wall",
+   "In the king's chamber"
+  ],
+  "answer": 1,
+  "explanation": "Afore Isaiah was gone out into the middle court, the word of the LORD came to him.",
+  "ref": "2 Kings 20:4"
+ },
+ {
+  "id": "2-kings-20-m-03",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say he had seen?",
+  "choices": [
+   "Hezekiah's treasures",
+   "Hezekiah's tears",
+   "Hezekiah's armies",
+   "Hezekiah's altars"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said, I have heard thy prayer, I have seen thy tears.",
+  "ref": "2 Kings 20:5"
+ },
+ {
+  "id": "2-kings-20-m-04",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day would Hezekiah go up to the house of the LORD?",
+  "choices": [
+   "The first day",
+   "The third day",
+   "The seventh day",
+   "The tenth day"
+  ],
+  "answer": 1,
+  "explanation": "On the third day thou shalt go up unto the house of the LORD.",
+  "ref": "2 Kings 20:5"
+ },
+ {
+  "id": "2-kings-20-m-05",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "What else did the LORD promise to deliver from the king of Assyria?",
+  "choices": [
+   "Jerusalem, the city",
+   "The temple vessels",
+   "The royal treasury",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "I will deliver thee and this city out of the hand of the king of Assyria.",
+  "ref": "2 Kings 20:6"
+ },
+ {
+  "id": "2-kings-20-m-06",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "For whose sake, besides his own, would the LORD defend the city?",
+  "choices": [
+   "David's",
+   "Isaiah's",
+   "Solomon's",
+   "Hezekiah's"
+  ],
+  "answer": 0,
+  "explanation": "I will defend this city for mine own sake, and for my servant David's sake.",
+  "ref": "2 Kings 20:6"
+ },
+ {
+  "id": "2-kings-20-m-07",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hezekiah ask Isaiah for after the figs were laid on the boil?",
+  "choices": [
+   "A longer reign",
+   "A sign that the LORD would heal him",
+   "A son to follow him",
+   "A written promise"
+  ],
+  "answer": 1,
+  "explanation": "Hezekiah said, What shall be the sign that the LORD will heal me?",
+  "ref": "2 Kings 20:8"
+ },
+ {
+  "id": "2-kings-20-m-08",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what was the shadow moved backward ten degrees?",
+  "choices": [
+   "The dial of Ahaz",
+   "The wall of Jerusalem",
+   "The gate of Samaria",
+   "The tower of Babel"
+  ],
+  "answer": 0,
+  "explanation": "He brought the shadow ten degrees backward, by which it had gone down in the dial of Ahaz.",
+  "ref": "2 Kings 20:11"
+ },
+ {
+  "id": "2-kings-20-m-09",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the king of Babylon send Hezekiah letters and a present?",
+  "choices": [
+   "He wanted an alliance against Assyria",
+   "He had heard Hezekiah was sick",
+   "He wanted to buy the temple",
+   "He had won a war"
+  ],
+  "answer": 1,
+  "explanation": "He sent letters and a present: for he had heard that Hezekiah had been sick.",
+  "ref": "2 Kings 20:12"
+ },
+ {
+  "id": "2-kings-20-m-10",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Hezekiah say the visitors had come from?",
+  "choices": [
+   "A near country, Egypt",
+   "A far country, Assyria",
+   "A far country, Babylon",
+   "A near country, Edom"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah said, They are come from a far country, even from Babylon.",
+  "ref": "2 Kings 20:14"
+ },
+ {
+  "id": "2-kings-20-m-11",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hezekiah say about the word of the LORD that Isaiah spoke?",
+  "choices": [
+   "It is hard",
+   "It is false",
+   "It is good",
+   "It is too late"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah said, Good is the word of the LORD which thou hast spoken.",
+  "ref": "2 Kings 20:19"
+ },
+ {
+  "id": "2-kings-20-h-01",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What title did the LORD give Hezekiah when he sent Isaiah back?",
+  "choices": [
+   "Shepherd of my flock",
+   "Captain of my people",
+   "Servant of the covenant",
+   "Keeper of the city"
+  ],
+  "answer": 1,
+  "explanation": "Tell Hezekiah the captain of my people, Thus saith the LORD.",
+  "ref": "2 Kings 20:5"
+ },
+ {
+  "id": "2-kings-20-h-02",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "What did the LORD call himself when he answered Hezekiah?",
+  "choices": [
+   "The God of Abraham thy father",
+   "The God of Hezekiah",
+   "The God of David thy father",
+   "The God of the heavens"
+  ],
+  "answer": 2,
+  "explanation": "Thus saith the LORD, the God of David thy father.",
+  "ref": "2 Kings 20:5"
+ },
+ {
+  "id": "2-kings-20-h-03",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hezekiah say about the shadow going down ten degrees?",
+  "choices": [
+   "It is a hard thing",
+   "It is a sure thing",
+   "It is a light thing",
+   "It is a small sign"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah answered, It is a light thing for the shadow to go down ten degrees.",
+  "ref": "2 Kings 20:10"
+ },
+ {
+  "id": "2-kings-20-h-04",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Berodach-baladan, king of Babylon?",
+  "choices": [
+   "Amoz",
+   "Ahaz",
+   "Merodach",
+   "Baladan"
+  ],
+  "answer": 3,
+  "explanation": "Berodach-baladan, the son of Baladan, king of Babylon.",
+  "ref": "2 Kings 20:12"
+ },
+ {
+  "id": "2-kings-20-h-05",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hezekiah show them besides silver, gold, spices and ointment?",
+  "choices": [
+   "The house of his armour",
+   "The ark of the covenant",
+   "The temple vessels",
+   "The royal granaries"
+  ],
+  "answer": 0,
+  "explanation": "He shewed them the silver, the gold, the spices, the precious ointment, and all the house of his armour.",
+  "ref": "2 Kings 20:13"
+ },
+ {
+  "id": "2-kings-20-h-06",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much did Hezekiah leave unshown from his house and dominion?",
+  "choices": [
+   "The temple",
+   "Nothing",
+   "His sons",
+   "The armour"
+  ],
+  "answer": 1,
+  "explanation": "There was nothing in his house, nor in all his dominion, that Hezekiah shewed them not.",
+  "ref": "2 Kings 20:13"
+ },
+ {
+  "id": "2-kings-20-h-07",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the king of Babylon's palace make of some of Hezekiah's sons?",
+  "choices": [
+   "Eunuchs",
+   "Servants",
+   "Captains",
+   "Priests"
+  ],
+  "answer": 0,
+  "explanation": "Of thy sons... they shall be eunuchs in the palace of the king of Babylon.",
+  "ref": "2 Kings 20:18"
+ },
+ {
+  "id": "2-kings-20-h-08",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides Hezekiah's own goods, what else would be carried to Babylon?",
+  "choices": [
+   "The ark of God",
+   "The walls of the city",
+   "The priests of the temple",
+   "What his fathers had laid up in store"
+  ],
+  "answer": 3,
+  "explanation": "All that is in thine house, and that which thy fathers have laid up in store, shall be carried into Babylon.",
+  "ref": "2 Kings 20:17"
+ },
+ {
+  "id": "2-kings-20-h-09",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hezekiah say would be good, as long as it was in his days?",
+  "choices": [
+   "Rest and plenty",
+   "Peace and truth",
+   "Wealth and honour",
+   "Faith and victory"
+  ],
+  "answer": 1,
+  "explanation": "Is it not good, if peace and truth be in my days?",
+  "ref": "2 Kings 20:19"
+ },
+ {
+  "id": "2-kings-20-h-10",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hezekiah make to bring water into the city?",
+  "choices": [
+   "A well and a wall",
+   "A pool and a conduit",
+   "A dam and a canal",
+   "A tower and a cistern"
+  ],
+  "answer": 1,
+  "explanation": "He made a pool, and a conduit, and brought water into the city.",
+  "ref": "2 Kings 20:20"
+ },
+ {
+  "id": "2-kings-20-h-11",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which way did Hezekiah turn his face to pray?",
+  "choices": [
+   "To the temple",
+   "To the wall",
+   "To the east",
+   "To the ground"
+  ],
+  "answer": 1,
+  "explanation": "Then he turned his face to the wall, and prayed unto the LORD.",
+  "ref": "2 Kings 20:2"
+ },
+ {
   "id": "old-2-kings-21-1",
   "chapter": 21,
   "level": "beginner",
