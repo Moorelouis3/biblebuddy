@@ -13588,15 +13588,15 @@
   "chapter": 23,
   "level": "beginner",
   "category": "keyword",
-  "question": "What was one of the Levites' major responsibilities according to David's order?",
+  "question": "What did four thousand of the Levites do with the instruments David made?",
   "choices": [
-   "Praising the Lord with instruments",
-   "Commanding chariots",
-   "Ruling Egypt",
-   "Guarding Philistine borders"
+   "Praise the LORD",
+   "Guard the gates",
+   "Judge the people",
+   "Carry the tabernacle"
   ],
   "answer": 0,
-  "explanation": "The Levites were assigned to praise and assist temple worship.",
+  "explanation": "Four thousand praised the LORD with the instruments which David made to praise therewith.",
   "ref": "1 Chronicles 23:5"
  },
  {
@@ -13630,6 +13630,646 @@
   "answer": 0,
   "explanation": "Four thousand were appointed for praise with instruments.",
   "ref": "1 Chronicles 23:5"
+ },
+ {
+  "id": "1-chronicles-23-e-01",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into which three families did David divide the Levites by courses?",
+  "choices": [
+   "Gershon, Kohath and Merari",
+   "Aaron, Moses and Miriam",
+   "Laadan, Shimei and Jahath",
+   "Amram, Izhar and Hebron"
+  ],
+  "answer": 0,
+  "explanation": "David divided them into courses among the sons of Levi, namely, Gershon, Kohath, and Merari.",
+  "ref": "1 Chronicles 23:6"
+ },
+ {
+  "id": "1-chronicles-23-e-02",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two sons did Amram have?",
+  "choices": [
+   "Gershom and Eliezer",
+   "Aaron and Moses",
+   "Mahli and Mushi",
+   "Izhar and Hebron"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Amram were Aaron and Moses.",
+  "ref": "1 Chronicles 23:13"
+ },
+ {
+  "id": "1-chronicles-23-e-03",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "What were the names of Moses' two sons?",
+  "choices": [
+   "Aaron and Moses",
+   "Mahli and Mushi",
+   "Gershom and Eliezer",
+   "Jahath and Zina"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Moses were Gershom and Eliezer.",
+  "ref": "1 Chronicles 23:15"
+ },
+ {
+  "id": "1-chronicles-23-e-04",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Aaron separated to do?",
+  "choices": [
+   "Judge Israel",
+   "Number the people",
+   "Guard the city gates",
+   "Sanctify the most holy things"
+  ],
+  "answer": 3,
+  "explanation": "Aaron was separated that he should sanctify the most holy things, he and his sons for ever.",
+  "ref": "1 Chronicles 23:13"
+ },
+ {
+  "id": "1-chronicles-23-e-05",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many Levites were numbered from thirty years old and upward?",
+  "choices": [
+   "38,000",
+   "24,000",
+   "4,000",
+   "6,000"
+  ],
+  "answer": 0,
+  "explanation": "Their number by their polls, man by man, was thirty and eight thousand.",
+  "ref": "1 Chronicles 23:3"
+ },
+ {
+  "id": "1-chronicles-23-e-06",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many Levites were set to forward the work of the house of the LORD?",
+  "choices": [
+   "4,000",
+   "24,000",
+   "38,000",
+   "6,000"
+  ],
+  "answer": 1,
+  "explanation": "Twenty and four thousand were to set forward the work of the house of the LORD.",
+  "ref": "1 Chronicles 23:4"
+ },
+ {
+  "id": "1-chronicles-23-e-07",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David say the LORD's people would dwell for ever?",
+  "choices": [
+   "Hebron",
+   "Bethlehem",
+   "Jerusalem",
+   "Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "The LORD God of Israel hath given rest unto his people, that they may dwell in Jerusalem for ever.",
+  "ref": "1 Chronicles 23:25"
+ },
+ {
+  "id": "1-chronicles-23-e-08",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Levites stand to do every morning and likewise at even?",
+  "choices": [
+   "Offer the shewbread",
+   "Count the people",
+   "Judge the tribes",
+   "Thank and praise the LORD"
+  ],
+  "answer": 3,
+  "explanation": "They were to stand every morning to thank and praise the LORD, and likewise at even.",
+  "ref": "1 Chronicles 23:30"
+ },
+ {
+  "id": "1-chronicles-23-e-09",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom were the Levites to wait on for the service of the house of the LORD?",
+  "choices": [
+   "The sons of Aaron",
+   "The princes of Israel",
+   "The porters",
+   "The judges"
+  ],
+  "answer": 0,
+  "explanation": "Their office was to wait on the sons of Aaron for the service of the house of the LORD.",
+  "ref": "1 Chronicles 23:28"
+ },
+ {
+  "id": "1-chronicles-23-e-10",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "How is Moses described in this chapter?",
+  "choices": [
+   "The lawgiver",
+   "The man of God",
+   "The shepherd of Israel",
+   "The prophet of fire"
+  ],
+  "answer": 1,
+  "explanation": "Concerning Moses the man of God, his sons were named of the tribe of Levi.",
+  "ref": "1 Chronicles 23:14"
+ },
+ {
+  "id": "1-chronicles-23-m-01",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were Jeush and Beriah counted in one reckoning?",
+  "choices": [
+   "They were twins",
+   "They were porters",
+   "They had not many sons",
+   "They were judges"
+  ],
+  "answer": 2,
+  "explanation": "Jeush and Beriah had not many sons; therefore they were in one reckoning, according to their father's house.",
+  "ref": "1 Chronicles 23:10–11"
+ },
+ {
+  "id": "1-chronicles-23-m-02",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many of the Levites were officers and judges?",
+  "choices": [
+   "4,000",
+   "24,000",
+   "38,000",
+   "6,000"
+  ],
+  "answer": 3,
+  "explanation": "Six thousand were officers and judges.",
+  "ref": "1 Chronicles 23:4"
+ },
+ {
+  "id": "1-chronicles-23-m-03",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many of the Levites were porters?",
+  "choices": [
+   "4,000",
+   "6,000",
+   "24,000",
+   "38,000"
+  ],
+  "answer": 0,
+  "explanation": "Four thousand were porters.",
+  "ref": "1 Chronicles 23:5"
+ },
+ {
+  "id": "1-chronicles-23-m-04",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eleazar the son of Mahli have instead of sons?",
+  "choices": [
+   "Servants",
+   "Daughters",
+   "Brothers",
+   "Nephews"
+  ],
+  "answer": 1,
+  "explanation": "Eleazar died, and had no sons, but daughters.",
+  "ref": "1 Chronicles 23:22"
+ },
+ {
+  "id": "1-chronicles-23-m-05",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Who took the daughters of Eleazar?",
+  "choices": [
+   "The sons of Mushi",
+   "The sons of Hebron",
+   "The sons of Kish",
+   "The sons of Izhar"
+  ],
+  "answer": 2,
+  "explanation": "Their brethren the sons of Kish took them.",
+  "ref": "1 Chronicles 23:22"
+ },
+ {
+  "id": "1-chronicles-23-m-06",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the Levites to offer on the sabbaths, new moons and set feasts?",
+  "choices": [
+   "Peace offerings",
+   "First fruits",
+   "Incense",
+   "All burnt sacrifices"
+  ],
+  "answer": 3,
+  "explanation": "They were to offer all burnt sacrifices unto the LORD in the sabbaths, in the new moons, and on the set feasts.",
+  "ref": "1 Chronicles 23:31"
+ },
+ {
+  "id": "1-chronicles-23-m-07",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the Levites no more carry, besides the tabernacle?",
+  "choices": [
+   "Any vessels of it",
+   "The ark of the covenant",
+   "The altar of burnt offering",
+   "The shewbread table"
+  ],
+  "answer": 0,
+  "explanation": "They shall no more carry the tabernacle, nor any vessels of it for the service thereof.",
+  "ref": "1 Chronicles 23:26"
+ },
+ {
+  "id": "1-chronicles-23-m-08",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The Levites were to prepare fine flour for which offering?",
+  "choices": [
+   "Sin offering",
+   "Meat offering",
+   "Trespass offering",
+   "Drink offering"
+  ],
+  "answer": 1,
+  "explanation": "Their work was for the shewbread, and for the fine flour for meat offering, and for the unleavened cakes.",
+  "ref": "1 Chronicles 23:29"
+ },
+ {
+  "id": "1-chronicles-23-m-09",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did David gather together with the priests and the Levites?",
+  "choices": [
+   "The captains of Judah",
+   "The elders of Moab",
+   "All the princes of Israel",
+   "The prophets of Gad"
+  ],
+  "answer": 2,
+  "explanation": "David gathered together all the princes of Israel, with the priests and the Levites.",
+  "ref": "1 Chronicles 23:2"
+ },
+ {
+  "id": "1-chronicles-23-m-10",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Who said that he made the instruments for praising the LORD?",
+  "choices": [
+   "Solomon",
+   "Zadok",
+   "Asaph",
+   "David"
+  ],
+  "answer": 3,
+  "explanation": "Four thousand praised the LORD with the instruments which I made, said David.",
+  "ref": "1 Chronicles 23:5"
+ },
+ {
+  "id": "1-chronicles-23-m-11",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the Levites numbered from twenty years old?",
+  "choices": [
+   "Their office was to wait on the sons of Aaron",
+   "The tabernacle was too heavy",
+   "The army needed more men",
+   "Aaron's sons were too few"
+  ],
+  "answer": 0,
+  "explanation": "By the last words of David the Levites were numbered from twenty years, because their office was to wait on the sons of Aaron.",
+  "ref": "1 Chronicles 23:27–28"
+ },
+ {
+  "id": "1-chronicles-23-m-12",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose sons were Aaron and Moses?",
+  "choices": [
+   "Izhar",
+   "Amram",
+   "Hebron",
+   "Uzziel"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Amram; Aaron and Moses.",
+  "ref": "1 Chronicles 23:13"
+ },
+ {
+  "id": "1-chronicles-23-m-13",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the chief of the sons of Shimei, with Zizah the second?",
+  "choices": [
+   "Shelomith",
+   "Jehiel",
+   "Jahath",
+   "Zetham"
+  ],
+  "answer": 2,
+  "explanation": "Jahath was the chief, and Zizah the second.",
+  "ref": "1 Chronicles 23:10–11"
+ },
+ {
+  "id": "1-chronicles-23-m-14",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the chief of the sons of Gershom the son of Moses?",
+  "choices": [
+   "Rehabiah",
+   "Micah",
+   "Jeriah",
+   "Shebuel"
+  ],
+  "answer": 3,
+  "explanation": "Of the sons of Gershom, Shebuel was the chief.",
+  "ref": "1 Chronicles 23:16"
+ },
+ {
+  "id": "1-chronicles-23-h-01",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the chief among the sons of Laadan?",
+  "choices": [
+   "Jehiel",
+   "Shelomith",
+   "Haziel",
+   "Jahath"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Laadan; the chief was Jehiel, and Zetham, and Joel, three.",
+  "ref": "1 Chronicles 23:8"
+ },
+ {
+  "id": "1-chronicles-23-h-02",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son of Eliezer had very many sons?",
+  "choices": [
+   "Shebuel",
+   "Rehabiah",
+   "Jeriah",
+   "Micah"
+  ],
+  "answer": 1,
+  "explanation": "Rehabiah the chief; Eliezer had none other sons, but the sons of Rehabiah were very many.",
+  "ref": "1 Chronicles 23:17"
+ },
+ {
+  "id": "1-chronicles-23-h-03",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the chief of the sons of Izhar?",
+  "choices": [
+   "Jahath",
+   "Micah",
+   "Shelomith",
+   "Jesiah"
+  ],
+  "answer": 2,
+  "explanation": "Of the sons of Izhar; Shelomith the chief.",
+  "ref": "1 Chronicles 23:18"
+ },
+ {
+  "id": "1-chronicles-23-h-04",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the first of the sons of Hebron?",
+  "choices": [
+   "Amariah",
+   "Jahaziel",
+   "Jekameam",
+   "Jeriah"
+  ],
+  "answer": 3,
+  "explanation": "Of the sons of Hebron; Jeriah the first.",
+  "ref": "1 Chronicles 23:19"
+ },
+ {
+  "id": "1-chronicles-23-h-05",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the first of the sons of Uzziel?",
+  "choices": [
+   "Micah",
+   "Jesiah",
+   "Jeriah",
+   "Eder"
+  ],
+  "answer": 0,
+  "explanation": "Of the sons of Uzziel; Micah the first, and Jesiah the second.",
+  "ref": "1 Chronicles 23:20"
+ },
+ {
+  "id": "1-chronicles-23-h-06",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two sons did Merari have?",
+  "choices": [
+   "Laadan and Shimei",
+   "Mahli and Mushi",
+   "Gershom and Eliezer",
+   "Eleazar and Kish"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Merari; Mahli, and Mushi.",
+  "ref": "1 Chronicles 23:21"
+ },
+ {
+  "id": "1-chronicles-23-h-07",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two sons did Mahli have?",
+  "choices": [
+   "Eder and Jeremoth",
+   "Mahli and Mushi",
+   "Eleazar and Kish",
+   "Jahath and Zina"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Mahli; Eleazar, and Kish.",
+  "ref": "1 Chronicles 23:21"
+ },
+ {
+  "id": "1-chronicles-23-h-08",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons of Mushi are named?",
+  "choices": [
+   "Two",
+   "Four",
+   "Five",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Mushi; Mahli, and Eder, and Jeremoth, three.",
+  "ref": "1 Chronicles 23:23"
+ },
+ {
+  "id": "1-chronicles-23-h-09",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons did Kohath have?",
+  "choices": [
+   "Four",
+   "Two",
+   "Three",
+   "Five"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Kohath; Amram, Izhar, Hebron, and Uzziel, four.",
+  "ref": "1 Chronicles 23:12"
+ },
+ {
+  "id": "1-chronicles-23-h-10",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of Eliezer's sons besides Rehabiah?",
+  "choices": [
+   "They died young",
+   "He had none other sons",
+   "They served in Jerusalem",
+   "They were porters"
+  ],
+  "answer": 1,
+  "explanation": "Eliezer had none other sons; but the sons of Rehabiah were very many.",
+  "ref": "1 Chronicles 23:17"
+ },
+ {
+  "id": "1-chronicles-23-h-11",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son of Laadan is named along with Jehiel and Zetham?",
+  "choices": [
+   "Haran",
+   "Haziel",
+   "Joel",
+   "Zina"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Laadan; the chief was Jehiel, and Zetham, and Joel, three.",
+  "ref": "1 Chronicles 23:8"
+ },
+ {
+  "id": "1-chronicles-23-h-12",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these did the Levites help prepare for the service?",
+  "choices": [
+   "Incense",
+   "Oil for the lamps",
+   "Wine for the drink offering",
+   "Unleavened cakes"
+  ],
+  "answer": 3,
+  "explanation": "Their work was for the unleavened cakes, and for that which is baked in the pan, and for that which is fried.",
+  "ref": "1 Chronicles 23:29"
+ },
+ {
+  "id": "1-chronicles-23-h-13",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the Levites wait on the sons of Aaron?",
+  "choices": [
+   "In the courts and in the chambers",
+   "On the high places",
+   "By the river Jordan",
+   "In the camp of Israel"
+  ],
+  "answer": 0,
+  "explanation": "Their office was to wait on the sons of Aaron in the courts, and in the chambers.",
+  "ref": "1 Chronicles 23:28"
+ },
+ {
+  "id": "1-chronicles-23-h-14",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Aaron separated to burn before the LORD?",
+  "choices": [
+   "Offerings",
+   "Incense",
+   "Wood",
+   "Fat only"
+  ],
+  "answer": 1,
+  "explanation": "Aaron was separated to burn incense before the LORD, and to bless in his name for ever.",
+  "ref": "1 Chronicles 23:13"
+ },
+ {
+  "id": "1-chronicles-23-h-15",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons of Shimei are named in the second list of his sons?",
+  "choices": [
+   "Three",
+   "Five",
+   "Four",
+   "Two"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Shimei were Jahath, Zina, and Jeush, and Beriah. These four were the sons of Shimei.",
+  "ref": "1 Chronicles 23:10"
+ },
+ {
+  "id": "1-chronicles-23-m-15",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Which Levite family included Laadan and Shimei?",
+  "choices": [
+   "The Kohathites",
+   "The Merarites",
+   "The Aaronites",
+   "The Gershonites"
+  ],
+  "answer": 3,
+  "explanation": "Of the Gershonites were, Laadan, and Shimei.",
+  "ref": "1 Chronicles 23:7"
  },
  {
   "id": "old-1-chronicles-24-1",
