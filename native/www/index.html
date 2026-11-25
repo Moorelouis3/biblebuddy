@@ -5,65 +5,175 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bible Buddy</title>
 <style>
-  :root { color-scheme: light dark; }
-  html, body { height: 100%; margin: 0; }
-  body {
-    display: flex; align-items: center; justify-content: center;
-    padding: 24px calc(16px + env(safe-area-inset-left)) 24px calc(16px + env(safe-area-inset-right));
-    background: #f3f6fa; color: #17233b;
-    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    text-align: center;
+  :root {
+    color-scheme: light dark;
+    --bg: #f3f6fa; --card: #ffffff; --text: #17233b; --muted: #5b6b85;
+    --line: #dbe4f0; --brand: #0056fd; --brand-text: #ffffff; --soft: #e8f0ff;
   }
-  main { max-width: 22rem; }
-  .mark { font-size: 13px; font-weight: 700; letter-spacing: 2px; color: #5268a7; margin: 0 0 18px; }
-  h1 { font-size: 22px; line-height: 1.3; margin: 0 0 10px; }
-  p { color: #4a5568; margin: 0 0 20px; }
-  button {
-    font: inherit; font-weight: 700; color: #fff; background: #334f91;
-    border: 0; border-radius: 10px; padding: 13px 26px; cursor: pointer;
-  }
-  button:active { opacity: .85; }
   @media (prefers-color-scheme: dark) {
-    body { background: #11161f; color: #e8edf5; }
-    p { color: #9fb0c7; }
+    :root {
+      --bg: #0f141d; --card: #171e2b; --text: #e8edf5; --muted: #9fb0c7;
+      --line: #263247; --brand: #3d7dff; --soft: #1c2a47;
+    }
   }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background: var(--bg); color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  button { font: inherit; cursor: pointer; }
+  button:active { opacity: .85; }
+
+  /* The strip that says what is going on. Always there. */
+  .status {
+    position: sticky; top: 0; z-index: 2;
+    display: flex; align-items: center; gap: 12px;
+    padding: calc(10px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) 10px calc(16px + env(safe-area-inset-left));
+    background: var(--card); border-bottom: 1px solid var(--line);
+  }
+  .status .words { flex: 1; min-width: 0; }
+  .status .mark { font-size: 11px; font-weight: 800; letter-spacing: 2px; color: var(--brand); margin: 0; }
+  .status .line { font-size: 14px; font-weight: 600; margin: 0; }
+  #retry {
+    flex: none; font-weight: 700; font-size: 14px; color: var(--brand-text); background: var(--brand);
+    border: 0; border-radius: 999px; padding: 9px 16px;
+  }
+
+  main {
+    max-width: 40rem; margin: 0 auto;
+    padding: 16px calc(16px + env(safe-area-inset-right)) calc(28px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
+  }
+
+  /* Shown only if the Bible text is not in this build. */
+  .plain { text-align: center; padding: 18vh 8px 0; }
+  .plain h1 { font-size: 22px; line-height: 1.3; margin: 0 0 10px; }
+  .plain p { color: var(--muted); margin: 0; }
+
+  .intro { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+  h1.where { font-size: 24px; line-height: 1.25; margin: 0 0 2px; }
+  .version { font-size: 12px; font-weight: 700; letter-spacing: 1px; color: var(--muted); margin: 0 0 14px; }
+
+  .picker { display: flex; gap: 8px; margin: 0 0 16px; }
+  .picker button {
+    flex: 1; min-width: 0; text-align: left; font-weight: 700;
+    color: var(--text); background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 11px 14px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .picker button.chapter { flex: none; }
+  .picker button[aria-expanded="true"] { border-color: var(--brand); }
+
+  .sheet { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 12px; margin: 0 0 16px; }
+  .sheet h2 { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; color: var(--muted); margin: 6px 4px 8px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: 6px; }
+  .grid.numbers { grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr)); }
+  .grid button {
+    font-weight: 600; font-size: 14px; text-align: left;
+    color: var(--text); background: transparent; border: 1px solid var(--line);
+    border-radius: 10px; padding: 9px 10px;
+  }
+  .grid.numbers button { text-align: center; padding: 10px 0; }
+  .grid button.on { background: var(--soft); border-color: var(--brand); }
+
+  .text { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 8px; font-size: 18px; line-height: 1.75; }
+  .text p { margin: 0 0 12px; }
+  .text sup { font-size: 11px; font-weight: 800; color: var(--brand); margin-right: 5px; vertical-align: 6px; line-height: 0; }
+  .text .wait { color: var(--muted); font-size: 15px; }
+
+  .turn { display: flex; gap: 8px; margin: 16px 0 0; }
+  .turn button {
+    flex: 1; font-weight: 700; color: var(--text); background: var(--card);
+    border: 1px solid var(--line); border-radius: 12px; padding: 13px 10px;
+  }
+  .turn button:disabled { opacity: .4; }
+
+  .note { color: var(--muted); font-size: 13px; text-align: center; margin: 18px 0 0; }
+  [hidden] { display: none !important; }
 </style>
 </head>
 <body>
-<main>
-  <p class="mark">BIBLE BUDDY</p>
-  <h1>You're offline</h1>
-  <!--
-    This used to end with "Anything you've saved for offline reading is still
-    available." It was removed on 2026-11-10 because on iOS it is not true.
+<!--
+  THE ONE SCREEN THAT IS BUILT INTO THE APP.
 
-    Service workers are off by default in WKWebView: they need the hosts listed
-    under WKAppBoundDomains in Info.plist AND
-    limitsNavigationsToAppBoundDomains set to true. capacitor.config.ts sets it
-    to false on purpose, and the plist key is not there - so
-    public/service-worker.js never runs in the iOS app, nothing is ever cached,
-    and SaveForOfflineButton hides itself (no worker, no button). The sentence
-    sent an iOS reader looking for downloads the same build had never offered
-    them. Android is fine: the worker has registered there since 93db859ea.
+  Everything else in Bible Buddy is the website, loaded over the network.
+  Capacitor shows this file (errorPath in capacitor.config.ts) when that
+  load fails, which in practice means: the app was opened with no signal.
 
-    Nor can this page tell the difference at runtime. It is served by
-    Capacitor's errorPath from the local shell origin, not from
-    www.mybiblebuddy.net, so getRegistration() here cannot see the site's
-    worker on either platform.
+  Until November 2026 it could only say "You're offline". Now it is a Bible.
+  The whole King James text is packed into the app by
+  scripts/native-offline-bible.mjs (native/www/bible/, about 4 MB), so this
+  page can show any chapter with no connection at all.
 
-    What replaced it is something the script below actually delivers: the
-    button reloads whatever you were on, and the "online" listener does it for
-    you the moment the connection returns.
-  -->
-  <p>Bible Buddy needs a connection for this page. It picks up where you left off as soon as you're back online.</p>
+  What it is not:
+  - It is not the Bible Buddy reader. No notes, no highlights, no study days.
+    Those live on the website and need a connection.
+  - It does not count. A chapter read here is not marked as read and does not
+    touch the streak: this page runs on the app's own local address, not on
+    mybiblebuddy.net, and cannot reach the account. The page says so.
+  - It only appears when a whole page fails to load. Losing signal while
+    already inside the app does not bring it up.
+
+  The text is loaded with <script> tags, not fetch(). A fetch from this local
+  page is the thing that has hung before inside the iOS app.
+
+  If the text is not in the build (bible/books.js missing), the page falls
+  back to the plain "You're offline" message it always had.
+
+  index.html must stay an identical copy of this file.
+-->
+<div class="status">
+  <div class="words">
+    <p class="mark">BIBLE BUDDY</p>
+    <p class="line" id="statusLine">You're offline</p>
+  </div>
   <button id="retry" type="button">Try again</button>
+</div>
+
+<main>
+  <section class="plain" id="plain">
+    <h1>You're offline</h1>
+    <p>Bible Buddy needs a connection for this page. It picks up where you left off as soon as you're back online.</p>
+  </section>
+
+  <section id="reader" hidden>
+    <p class="intro">No connection, so here is the Bible to read in the meantime. Bible Buddy opens again by itself when you're back online.</p>
+
+    <div class="picker">
+      <button type="button" id="bookButton" aria-expanded="false">Genesis</button>
+      <button type="button" id="chapterButton" class="chapter" aria-expanded="false">Chapter 1</button>
+    </div>
+
+    <div class="sheet" id="bookSheet" hidden>
+      <h2>OLD TESTAMENT</h2>
+      <div class="grid" id="oldBooks"></div>
+      <h2>NEW TESTAMENT</h2>
+      <div class="grid" id="newBooks"></div>
+    </div>
+    <div class="sheet" id="chapterSheet" hidden>
+      <h2>CHAPTER</h2>
+      <div class="grid numbers" id="chapters"></div>
+    </div>
+
+    <h1 class="where" id="where">Genesis 1</h1>
+    <p class="version">KING JAMES VERSION</p>
+    <div class="text" id="text"><p class="wait">Opening...</p></div>
+
+    <div class="turn">
+      <button type="button" id="prev">Previous</button>
+      <button type="button" id="next">Next</button>
+    </div>
+    <p class="note">Reading here is not counted toward your streak or your progress. That needs a connection.</p>
+  </section>
+</main>
+
 <script>
-  // Retrying used to jump to the marketing homepage, which lost your place
-  // and, on a phone that is still offline, simply landed back here.
-  //
-  // Now it reloads whatever you were actually on, and only falls back to the
-  // app's own entry if there is nothing to go back to. The button also waits
-  // for the connection instead of failing again the instant you press it.
+  // ---- Getting back online -------------------------------------------------
+  // Retrying reloads whatever you were actually on, and only falls back to the
+  // app's own entry if there is nothing to go back to. The button waits for
+  // the connection instead of failing again the instant you press it, and the
+  // "online" listener does it for you the moment the phone has signal again.
   (function () {
     var HOME = "https://www.mybiblebuddy.net/app";
     var btn = document.getElementById("retry");
@@ -81,10 +191,182 @@
     }
 
     btn.addEventListener("click", retry);
-    // Come back on its own the moment the phone has a connection again.
     window.addEventListener("online", retry);
   })();
+
+  // ---- The offline Bible ---------------------------------------------------
+  (function () {
+    var PLACE_KEY = "bb:offline-bible:place";
+    var books = [];          // [{ s: slug, n: name, c: chapters }]
+    var loaded = {};         // slug -> [[verse, verse...], ...]
+    var waiting = {};        // slug -> [callbacks]
+    var place = { book: 0, chapter: 1 };
+
+    var $ = function (id) { return document.getElementById(id); };
+
+    // The data files call these two.
+    window.__bbBooks = function (list) { books = list || []; };
+    window.__bbBook = function (slug, chapters) {
+      loaded[slug] = chapters;
+      var callbacks = waiting[slug] || [];
+      delete waiting[slug];
+      callbacks.forEach(function (run) { run(true); });
+    };
+
+    function addScript(src, onDone) {
+      var tag = document.createElement("script");
+      tag.src = src;
+      tag.onload = function () { onDone(true); };
+      tag.onerror = function () { onDone(false); };
+      document.head.appendChild(tag);
+    }
+
+    function loadBook(slug, onDone) {
+      if (loaded[slug]) { onDone(true); return; }
+      if (waiting[slug]) { waiting[slug].push(onDone); return; }
+      waiting[slug] = [onDone];
+      addScript("bible/" + slug + ".js", function (ok) {
+        if (ok) return; // __bbBook answers the callbacks.
+        var callbacks = waiting[slug] || [];
+        delete waiting[slug];
+        callbacks.forEach(function (run) { run(false); });
+      });
+    }
+
+    function remember() {
+      try { localStorage.setItem(PLACE_KEY, JSON.stringify({ s: books[place.book].s, c: place.chapter })); } catch (e) {}
+    }
+
+    function recall() {
+      try {
+        var saved = JSON.parse(localStorage.getItem(PLACE_KEY) || "null");
+        if (!saved) return;
+        for (var i = 0; i < books.length; i += 1) {
+          if (books[i].s === saved.s) {
+            place.book = i;
+            place.chapter = Math.max(1, Math.min(Number(saved.c) || 1, books[i].c));
+            return;
+          }
+        }
+      } catch (e) {}
+    }
+
+    function closeSheets() {
+      $("bookSheet").hidden = true;
+      $("chapterSheet").hidden = true;
+      $("bookButton").setAttribute("aria-expanded", "false");
+      $("chapterButton").setAttribute("aria-expanded", "false");
+    }
+
+    function show() {
+      var book = books[place.book];
+      var requested = place.book + ":" + place.chapter;
+      $("bookButton").textContent = book.n;
+      $("chapterButton").textContent = "Chapter " + place.chapter;
+      $("where").textContent = book.n + " " + place.chapter;
+      $("prev").disabled = place.book === 0 && place.chapter === 1;
+      $("next").disabled = place.book === books.length - 1 && place.chapter === book.c;
+      if (!loaded[book.s]) $("text").innerHTML = '<p class="wait">Opening...</p>';
+
+      loadBook(book.s, function (ok) {
+        // The reader may have moved on while this book was loading.
+        if (requested !== place.book + ":" + place.chapter) return;
+        var text = $("text");
+        text.innerHTML = "";
+        var verses = ok && loaded[book.s] ? loaded[book.s][place.chapter - 1] : null;
+        if (!verses) {
+          var sorry = document.createElement("p");
+          sorry.className = "wait";
+          sorry.textContent = "This chapter could not be opened.";
+          text.appendChild(sorry);
+          return;
+        }
+        verses.forEach(function (verse, i) {
+          var p = document.createElement("p");
+          var n = document.createElement("sup");
+          n.textContent = String(i + 1);
+          p.appendChild(n);
+          p.appendChild(document.createTextNode(verse));
+          text.appendChild(p);
+        });
+        remember();
+      });
+    }
+
+    function go(bookIndex, chapter) {
+      place.book = bookIndex;
+      place.chapter = chapter;
+      closeSheets();
+      show();
+      window.scrollTo(0, 0);
+    }
+
+    function fillBooks() {
+      books.forEach(function (book, i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.textContent = book.n;
+        b.addEventListener("click", function () { go(i, 1); });
+        // The Old Testament is the first 39 books.
+        $(i < 39 ? "oldBooks" : "newBooks").appendChild(b);
+      });
+    }
+
+    function fillChapters() {
+      var holder = $("chapters");
+      holder.innerHTML = "";
+      for (var c = 1; c <= books[place.book].c; c += 1) {
+        (function (chapter) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.textContent = String(chapter);
+          if (chapter === place.chapter) b.className = "on";
+          b.addEventListener("click", function () { go(place.book, chapter); });
+          holder.appendChild(b);
+        })(c);
+      }
+    }
+
+    function start() {
+      if (!books.length) return; // Stay on the plain message.
+      recall();
+      fillBooks();
+      $("plain").hidden = true;
+      $("reader").hidden = false;
+      $("statusLine").textContent = "You're offline. The Bible still works.";
+
+      $("bookButton").addEventListener("click", function () {
+        var open = $("bookSheet").hidden;
+        closeSheets();
+        if (open) {
+          $("bookSheet").hidden = false;
+          $("bookButton").setAttribute("aria-expanded", "true");
+        }
+      });
+      $("chapterButton").addEventListener("click", function () {
+        var open = $("chapterSheet").hidden;
+        closeSheets();
+        if (open) {
+          fillChapters();
+          $("chapterSheet").hidden = false;
+          $("chapterButton").setAttribute("aria-expanded", "true");
+        }
+      });
+      $("prev").addEventListener("click", function () {
+        if (place.chapter > 1) go(place.book, place.chapter - 1);
+        else if (place.book > 0) go(place.book - 1, books[place.book - 1].c);
+      });
+      $("next").addEventListener("click", function () {
+        if (place.chapter < books[place.book].c) go(place.book, place.chapter + 1);
+        else if (place.book < books.length - 1) go(place.book + 1, 1);
+      });
+
+      show();
+    }
+
+    // The list of books first. If it is not in this build, nothing changes.
+    addScript("bible/books.js", function (ok) { if (ok) start(); });
+  })();
 </script>
-</main>
 </body>
 </html>

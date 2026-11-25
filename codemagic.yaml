@@ -74,6 +74,12 @@ workflows:
         # rather than drifting out of step with capacitor.config.ts.
         script: npx cap add ios
 
+      # The offline screen is a Bible reader, and this is its text: the whole
+      # KJV written into native/www/bible (about 4 MB). It must run before
+      # the sync below, which is what copies native/www into the app.
+      - name: Pack the offline Bible into the app
+        script: node scripts/native-offline-bible.mjs
+
       - name: Sync web assets and plugins
         script: npx cap sync ios
 
@@ -234,6 +240,12 @@ workflows:
 
       - name: Generate the iOS project
         script: npx cap add ios
+
+      # The offline screen is a Bible reader, and this is its text: the whole
+      # KJV written into native/www/bible (about 4 MB). It must run before
+      # the sync below, which is what copies native/www into the app.
+      - name: Pack the offline Bible into the app
+        script: node scripts/native-offline-bible.mjs
 
       - name: Sync web assets and plugins
         script: npx cap sync ios
@@ -468,6 +480,12 @@ workflows:
         # and a --omit=dev install would not have it.
         script: npx cap add android
 
+      # The offline screen is a Bible reader, and this is its text: the whole
+      # KJV written into native/www/bible (about 4 MB). It must run before
+      # the sync below, which is what copies native/www into the app.
+      - name: Pack the offline Bible into the app
+        script: node scripts/native-offline-bible.mjs
+
       - name: Sync web assets and plugins
         script: npx cap sync android
 
@@ -605,6 +623,12 @@ workflows:
 
       - name: Generate the Android project
         script: npx cap add android
+
+      # The offline screen is a Bible reader, and this is its text: the whole
+      # KJV written into native/www/bible (about 4 MB). It must run before
+      # the sync below, which is what copies native/www into the app.
+      - name: Pack the offline Bible into the app
+        script: node scripts/native-offline-bible.mjs
 
       - name: Sync web assets and plugins
         script: npx cap sync android

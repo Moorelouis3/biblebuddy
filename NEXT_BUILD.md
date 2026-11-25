@@ -144,6 +144,37 @@ Louis found it in 1.17 (approved 20 Nov): tapping the widget when the lock is no
 **Already fixed on the website for 1.17**, no build needed: the app maps a `/settings` link from outside to `/bible-lock`, and the front door no longer overrides a link that opened the app with `/dashboard` (`lib/pendingDeepLink.ts`). This entry only makes the widget say the right address itself.
 
 
+### 6. The offline screen becomes a Bible
+**Ready. Nothing more to do but build.** Written 26 Nov 2026.
+
+**What it is.** Open the app with no signal and, instead of only "You're
+offline", you get the whole King James Bible: pick a book and a chapter, read,
+Previous and Next. It remembers where you stopped. The moment the phone has a
+connection again, Bible Buddy opens as normal.
+
+**Why.** The app was 6 MB and carried nothing, so with no signal there was no
+app. Other Bible apps carry at least one Bible inside them. This adds about
+4 MB to the download. It is step 4 of `docs/SPEED_REPORT_2026-11-25.md`.
+
+**What it is not.**
+- No notes, highlights or study days. Those are the website and need a
+  connection.
+- Reading there is not counted toward the streak or progress. The screen
+  says so.
+- It only shows when the app is opened (or a whole page is loaded) with no
+  signal. Losing signal while already inside the app does not bring it up.
+
+**Technical:** `native/www/offline.html` and its twin `index.html` are the
+page. `scripts/native-offline-bible.mjs` writes the text into
+`native/www/bible/` and runs in every app workflow just before
+`npx cap sync`. No new plugin, no permission, no entitlement. If the text
+is ever missing from a build the page shows the old plain message.
+
+**Not verified on a device.** Tested in a desktop browser at phone size:
+all 66 books and 1,189 chapters open. Check on a real phone in airplane
+mode before submitting: open the app cold, read a chapter, turn airplane
+mode off and confirm it returns to Bible Buddy by itself.
+
 ## Waiting for the next Android build
 
 **Production release 1.06 (version code 6, Codemagic build 6b0184318f52ca275129b059, commit 3e906e0) sent to Google for review on 21 Nov 2026**, all 177 countries plus rest of world, full rollout. Production access was granted 20 Nov. Every Android item below is in that build; it is live for nobody until Google approves it.
@@ -195,6 +226,11 @@ the PNG to the cache directory, and pass its URI to `Share.share({ files })`
 in `shareImage`. That is a new plugin, so it needs an iOS and an Android build.
 
 ---
+
+### 5. The offline screen becomes a Bible
+Same change as iOS item 6, same page, same script. On Android the website's
+own offline cache also works, so this screen only appears when that cache
+has nothing for the page being opened. Not verified on a device.
 
 ## Before an iOS release can be submitted at all
 

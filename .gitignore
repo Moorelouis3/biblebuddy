@@ -83,3 +83,7 @@ data/shorts-schedule.backup-*.json
 *.p12
 *.mobileprovision
 secrets/
+
+# The offline Bible packed into the app: a copy of public/kjv, written by
+# scripts/native-offline-bible.mjs on every app build.
+/native/www/bible/
