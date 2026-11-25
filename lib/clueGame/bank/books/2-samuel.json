@@ -4432,6 +4432,662 @@
   "ref": "2 Samuel 7:18"
  },
  {
+  "id": "2-samuel-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "To which prophet did David speak about building a house?",
+  "choices": [
+   "Nathan",
+   "Gad",
+   "Samuel",
+   "Ahijah"
+  ],
+  "answer": 0,
+  "explanation": "The king said unto Nathan the prophet, See now, I dwell in an house of cedar.",
+  "ref": "2 Samuel 7:2"
+ },
+ {
+  "id": "2-samuel-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was David's own house made of?",
+  "choices": [
+   "Stone",
+   "Gold",
+   "Brick",
+   "Cedar"
+  ],
+  "answer": 3,
+  "explanation": "David said, I dwell in an house of cedar.",
+  "ref": "2 Samuel 7:2"
+ },
+ {
+  "id": "2-samuel-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did the ark of God dwell, according to David?",
+  "choices": [
+   "In a house of stone",
+   "On a hill",
+   "Within curtains",
+   "In Gibeah"
+  ],
+  "answer": 2,
+  "explanation": "I dwell in an house of cedar, but the ark of God dwelleth within curtains.",
+  "ref": "2 Samuel 7:2"
+ },
+ {
+  "id": "2-samuel-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nathan first tell David to do about his plan?",
+  "choices": [
+   "Wait until Solomon is king",
+   "Go, do all that is in thine heart",
+   "Ask the priests",
+   "Give up the idea"
+  ],
+  "answer": 1,
+  "explanation": "Nathan said to the king, Go, do all that is in thine heart; for the LORD is with thee.",
+  "ref": "2 Samuel 7:3"
+ },
+ {
+  "id": "2-samuel-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did the word of the LORD come to Nathan?",
+  "choices": [
+   "That night",
+   "At dawn",
+   "Three days later",
+   "In the morning"
+  ],
+  "answer": 0,
+  "explanation": "It came to pass that night, that the word of the LORD came unto Nathan.",
+  "ref": "2 Samuel 7:4"
+ },
+ {
+  "id": "2-samuel-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the LORD say He took David from?",
+  "choices": [
+   "The house of Saul",
+   "The city of Bethlehem",
+   "The cave of Adullam",
+   "The sheepcote, from following the sheep"
+  ],
+  "answer": 3,
+  "explanation": "I took thee from the sheepcote, from following the sheep, to be ruler over my people.",
+  "ref": "2 Samuel 7:8"
+ },
+ {
+  "id": "2-samuel-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say He would make David?",
+  "choices": [
+   "A great army",
+   "A tower",
+   "An house",
+   "A new city"
+  ],
+  "answer": 2,
+  "explanation": "The LORD telleth thee that he will make thee an house.",
+  "ref": "2 Samuel 7:11"
+ },
+ {
+  "id": "2-samuel-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say of David's seed: \"I will be his father, and he shall be...\"?",
+  "choices": [
+   "My servant",
+   "My son",
+   "My priest",
+   "My captain"
+  ],
+  "answer": 1,
+  "explanation": "I will be his father, and he shall be my son.",
+  "ref": "2 Samuel 7:14"
+ },
+ {
+  "id": "2-samuel-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "From whom did the LORD say He took His mercy away?",
+  "choices": [
+   "Saul",
+   "Abner",
+   "Eli",
+   "Ish-bosheth"
+  ],
+  "answer": 0,
+  "explanation": "My mercy shall not depart away from him, as I took it from Saul, whom I put away before thee.",
+  "ref": "2 Samuel 7:15"
+ },
+ {
+  "id": "2-samuel-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say there is none like?",
+  "choices": [
+   "The king of Tyre",
+   "Israel's army",
+   "The house of Saul",
+   "The LORD God"
+  ],
+  "answer": 3,
+  "explanation": "Thou art great, O LORD God: for there is none like thee.",
+  "ref": "2 Samuel 7:22"
+ },
+ {
+  "id": "2-samuel-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the LORD given David when he sat in his house?",
+  "choices": [
+   "A son to succeed him",
+   "A great treasure",
+   "Rest round about from all his enemies",
+   "Peace with the Philistines"
+  ],
+  "answer": 2,
+  "explanation": "The LORD had given him rest round about from all his enemies.",
+  "ref": "2 Samuel 7:1"
+ },
+ {
+  "id": "2-samuel-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Since when had the LORD not dwelt in a house?",
+  "choices": [
+   "Since the days of Joshua",
+   "Since He brought Israel out of Egypt",
+   "Since the judges began",
+   "Since Saul was made king"
+  ],
+  "answer": 1,
+  "explanation": "I have not dwelt in any house since the time that I brought up the children of Israel out of Egypt.",
+  "ref": "2 Samuel 7:6"
+ },
+ {
+  "id": "2-samuel-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the LORD never asked the tribes of Israel?",
+  "choices": [
+   "Why build ye not me an house of cedar?",
+   "Why do ye not offer sacrifice?",
+   "Why do ye not keep the sabbath?",
+   "Why do ye not bring me the ark?"
+  ],
+  "answer": 0,
+  "explanation": "Spake I a word with any of the tribes, saying, Why build ye not me an house of cedar?",
+  "ref": "2 Samuel 7:7"
+ },
+ {
+  "id": "2-samuel-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question did the LORD ask David about building?",
+  "choices": [
+   "Wilt thou build me a temple of stone?",
+   "Who will build my house?",
+   "Is it time to build my house?",
+   "Shalt thou build me an house for me to dwell in?"
+  ],
+  "answer": 3,
+  "explanation": "Go and tell my servant David, Thus saith the LORD, Shalt thou build me an house for me to dwell in?",
+  "ref": "2 Samuel 7:5"
+ },
+ {
+  "id": "2-samuel-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He had done to David's enemies?",
+  "choices": [
+   "Made them his servants",
+   "Scattered them to Egypt",
+   "Cut them off out of his sight",
+   "Given them to Joab"
+  ],
+  "answer": 2,
+  "explanation": "I have cut off all thine enemies out of thy sight, and have made thee a great name.",
+  "ref": "2 Samuel 7:9"
+ },
+ {
+  "id": "2-samuel-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would do for His people Israel?",
+  "choices": [
+   "Send them back to Egypt",
+   "Plant them in a place of their own",
+   "Give them a new law",
+   "Set them among the nations"
+  ],
+  "answer": 1,
+  "explanation": "I will appoint a place for my people Israel, and will plant them, that they may dwell in a place of their own, and move no more.",
+  "ref": "2 Samuel 7:10"
+ },
+ {
+  "id": "2-samuel-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD do if David's son committed iniquity?",
+  "choices": [
+   "Chasten him with the rod of men",
+   "Cut off his house",
+   "Take his throne at once",
+   "Send him to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "If he commit iniquity, I will chasten him with the rod of men, and with the stripes of the children of men.",
+  "ref": "2 Samuel 7:14"
+ },
+ {
+  "id": "2-samuel-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long would David's house and throne be established?",
+  "choices": [
+   "Seven generations",
+   "Forty years",
+   "Until the temple stood",
+   "For ever"
+  ],
+  "answer": 3,
+  "explanation": "Thine house and thy kingdom shall be established for ever before thee: thy throne shall be established for ever.",
+  "ref": "2 Samuel 7:16"
+ },
+ {
+  "id": "2-samuel-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David begin his prayer?",
+  "choices": [
+   "Hear my voice, O LORD",
+   "Great is the LORD",
+   "Who am I, O Lord GOD?",
+   "Save me, O God"
+  ],
+  "answer": 2,
+  "explanation": "King David sat before the LORD, and he said, Who am I, O Lord GOD? and what is my house?",
+  "ref": "2 Samuel 7:18"
+ },
+ {
+  "id": "2-samuel-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David ask about Israel in his prayer?",
+  "choices": [
+   "Which tribe shall rule?",
+   "What one nation in the earth is like thy people?",
+   "Who will lead Israel after me?",
+   "Why is Israel chosen?"
+  ],
+  "answer": 1,
+  "explanation": "What one nation in the earth is like thy people, even like Israel?",
+  "ref": "2 Samuel 7:23"
+ },
+ {
+  "id": "2-samuel-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "From what did David say God redeemed Israel?",
+  "choices": [
+   "Egypt",
+   "Babylon",
+   "Philistia",
+   "Moab"
+  ],
+  "answer": 0,
+  "explanation": "Israel, whom thou redeemedst to thee from Egypt, from the nations and their gods.",
+  "ref": "2 Samuel 7:23"
+ },
+ {
+  "id": "2-samuel-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David ask the LORD to do with His word about his house?",
+  "choices": [
+   "Hold it back",
+   "Keep it secret",
+   "Pass it to Nathan",
+   "Establish it for ever"
+  ],
+  "answer": 3,
+  "explanation": "The word that thou hast spoken concerning thy servant, and concerning his house, establish it for ever.",
+  "ref": "2 Samuel 7:25"
+ },
+ {
+  "id": "2-samuel-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David find in his heart to pray this prayer?",
+  "choices": [
+   "He feared the Philistines",
+   "Nathan told him to pray",
+   "The LORD had revealed to him He would build him an house",
+   "He was grieved over Uzzah"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast revealed to thy servant, saying, I will build thee an house: therefore hath thy servant found in his heart to pray this prayer.",
+  "ref": "2 Samuel 7:27"
+ },
+ {
+  "id": "2-samuel-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who spoke to David according to all the words of the vision?",
+  "choices": [
+   "Gad",
+   "Nathan",
+   "Zadok",
+   "Abiathar"
+  ],
+  "answer": 1,
+  "explanation": "According to all these words, and according to all this vision, so did Nathan speak unto David.",
+  "ref": "2 Samuel 7:17"
+ },
+ {
+  "id": "2-samuel-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He had made for David's name?",
+  "choices": [
+   "A great name like the great men of the earth",
+   "A name above Saul",
+   "A name known in Egypt",
+   "A name written in the temple"
+  ],
+  "answer": 0,
+  "explanation": "I have made thee a great name, like unto the name of the great men that are in the earth.",
+  "ref": "2 Samuel 7:9"
+ },
+ {
+  "id": "2-samuel-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did the LORD say would no more afflict Israel as beforetime?",
+  "choices": [
+   "The Philistines",
+   "The Egyptians",
+   "The kings of Syria",
+   "The children of wickedness"
+  ],
+  "answer": 3,
+  "explanation": "Neither shall the children of wickedness afflict them any more, as beforetime.",
+  "ref": "2 Samuel 7:10"
+ },
+ {
+  "id": "2-samuel-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom had the LORD commanded to be over His people before David?",
+  "choices": [
+   "Priests",
+   "Elders",
+   "Judges",
+   "Prophets"
+  ],
+  "answer": 2,
+  "explanation": "Since the time that I commanded judges to be over my people Israel.",
+  "ref": "2 Samuel 7:11"
+ },
+ {
+  "id": "2-samuel-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what would David's promised seed proceed?",
+  "choices": [
+   "His house in Hebron",
+   "His bowels",
+   "His line of Judah",
+   "His sons by Michal"
+  ],
+  "answer": 1,
+  "explanation": "I will set up thy seed after thee, which shall proceed out of thy bowels.",
+  "ref": "2 Samuel 7:12"
+ },
+ {
+  "id": "2-samuel-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whose name would David's son build a house?",
+  "choices": [
+   "The LORD's name",
+   "Solomon's name",
+   "David's name",
+   "Israel's name"
+  ],
+  "answer": 0,
+  "explanation": "He shall build an house for my name, and I will stablish the throne of his kingdom for ever.",
+  "ref": "2 Samuel 7:13"
+ },
+ {
+  "id": "2-samuel-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say was \"yet a small thing\" in God's sight?",
+  "choices": [
+   "The kingdom of Saul",
+   "The ark of God",
+   "The Philistine wars",
+   "His own house as it was"
+  ],
+  "answer": 3,
+  "explanation": "This was yet a small thing in thy sight, O Lord GOD; but thou hast spoken also of thy servant's house for a great while to come.",
+  "ref": "2 Samuel 7:19"
+ },
+ {
+  "id": "2-samuel-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did David say God had done these great things?",
+  "choices": [
+   "Because of David's sacrifices",
+   "Because of Israel's faithfulness",
+   "For his word's sake and according to His own heart",
+   "Because David had won battles"
+  ],
+  "answer": 2,
+  "explanation": "For thy word's sake, and according to thine own heart, hast thou done all these great things.",
+  "ref": "2 Samuel 7:21"
+ },
+ {
+  "id": "2-samuel-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say God had confirmed Israel to be?",
+  "choices": [
+   "A kingdom of priests",
+   "A people unto Himself for ever",
+   "A nation of judges",
+   "A people of the sea"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast confirmed to thyself thy people Israel to be a people unto thee for ever.",
+  "ref": "2 Samuel 7:24"
+ },
+ {
+  "id": "2-samuel-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David want said of the LORD of hosts for ever?",
+  "choices": [
+   "That He is the God over Israel",
+   "That He is the King of Tyre",
+   "That He is the God of the ark",
+   "That He is the Judge of the earth"
+  ],
+  "answer": 0,
+  "explanation": "Let thy name be magnified for ever, saying, The LORD of hosts is the God over Israel.",
+  "ref": "2 Samuel 7:26"
+ },
+ {
+  "id": "2-samuel-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say about God's words in his prayer?",
+  "choices": [
+   "They are hidden",
+   "They are hard",
+   "They are few",
+   "They are true"
+  ],
+  "answer": 3,
+  "explanation": "O Lord GOD, thou art that God, and thy words be true.",
+  "ref": "2 Samuel 7:28"
+ },
+ {
+  "id": "2-samuel-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say God knew about him?",
+  "choices": [
+   "Thou knowest my sin",
+   "Thou knowest my enemies",
+   "Thou knowest thy servant",
+   "Thou knowest my sons"
+  ],
+  "answer": 2,
+  "explanation": "What can David say more unto thee? for thou, Lord GOD, knowest thy servant.",
+  "ref": "2 Samuel 7:20"
+ },
+ {
+  "id": "2-samuel-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom had the LORD commanded to feed His people Israel, according to the chapter?",
+  "choices": [
+   "The priests of Shiloh",
+   "The tribes of Israel",
+   "The Levites",
+   "The kings of Judah"
+  ],
+  "answer": 1,
+  "explanation": "Spake I a word with any of the tribes of Israel, whom I commanded to feed my people Israel?",
+  "ref": "2 Samuel 7:7"
+ },
+ {
+  "id": "2-samuel-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David ask the LORD to do for his house?",
+  "choices": [
+   "Bless it so that it may continue for ever",
+   "Make it greater than Saul's",
+   "Build it of cedar",
+   "Give it rest from war"
+  ],
+  "answer": 0,
+  "explanation": "Let it please thee to bless the house of thy servant, that it may continue for ever before thee.",
+  "ref": "2 Samuel 7:29"
+ },
+ {
+  "id": "2-samuel-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of things did David say God did for Israel's sake?",
+  "choices": [
+   "Great things and terrible",
+   "Quiet things and small",
+   "Hidden things and slow",
+   "Bitter things and long"
+  ],
+  "answer": 0,
+  "explanation": "God went to do for you great things and terrible, for thy land, before thy people.",
+  "ref": "2 Samuel 7:23"
+ },
+ {
+  "id": "2-samuel-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say the LORD became to Israel?",
+  "choices": [
+   "Their God",
+   "Their king",
+   "Their judge",
+   "Their shepherd"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast confirmed to thyself thy people Israel; and thou, LORD, art become their God.",
+  "ref": "2 Samuel 7:24"
+ },
+ {
+  "id": "2-samuel-7-h-16",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say about the house God would raise: \"Is this the manner of...\"?",
+  "choices": [
+   "Man",
+   "Kings",
+   "Fathers",
+   "Priests"
+  ],
+  "answer": 0,
+  "explanation": "David asked, And is this the manner of man, O Lord GOD?",
+  "ref": "2 Samuel 7:19"
+ },
+ {
+  "id": "2-samuel-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the LORD call \"my servant\" in the message sent through Nathan?",
+  "choices": [
+   "David",
+   "Nathan",
+   "Solomon",
+   "Joab"
+  ],
+  "answer": 0,
+  "explanation": "Go and tell my servant David, Thus saith the LORD.",
+  "ref": "2 Samuel 7:5"
+ },
+ {
   "id": "old-2-samuel-8-1",
   "chapter": 8,
   "level": "beginner",
