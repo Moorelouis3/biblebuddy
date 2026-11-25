@@ -368,6 +368,406 @@
   "ref": "Nehemiah 2:12\u201315"
  },
  {
+  "id": "nehemiah-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Nehemiah handing to the king when the king noticed his sadness?",
+  "choices": [
+   "Wine",
+   "Bread",
+   "A letter",
+   "A cup of water"
+  ],
+  "answer": 0,
+  "explanation": "Wine was before him: and I took up the wine, and gave it unto the king.",
+  "ref": "Nehemiah 2:1"
+ },
+ {
+  "id": "nehemiah-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Nehemiah say his face was sad?",
+  "choices": [
+   "He was sick",
+   "He had lost his post",
+   "He was far from home",
+   "The city of his fathers' tombs lay waste"
+  ],
+  "answer": 3,
+  "explanation": "Why should not my countenance be sad, when the city, the place of my fathers' sepulchres, lieth waste?",
+  "ref": "Nehemiah 2:3"
+ },
+ {
+  "id": "nehemiah-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nehemiah do before answering the king's question about his request?",
+  "choices": [
+   "Bowed to the ground",
+   "Asked for a day",
+   "Prayed to the God of heaven",
+   "Called his servants"
+  ],
+  "answer": 2,
+  "explanation": "The king said, For what dost thou make request? So I prayed to the God of heaven.",
+  "ref": "Nehemiah 2:4"
+ },
+ {
+  "id": "nehemiah-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was Nehemiah in Jerusalem before he went out by night?",
+  "choices": [
+   "One day",
+   "Three days",
+   "A week",
+   "A month"
+  ],
+  "answer": 1,
+  "explanation": "So I came to Jerusalem, and was there three days.",
+  "ref": "Nehemiah 2:11"
+ },
+ {
+  "id": "nehemiah-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say after Nehemiah told them his plan?",
+  "choices": [
+   "Let us rise up and build",
+   "We cannot build",
+   "Let us ask the king",
+   "Wait for the prophets"
+  ],
+  "answer": 0,
+  "explanation": "They said, Let us rise up and build. So they strengthened their hands for this good work.",
+  "ref": "Nehemiah 2:18"
+ },
+ {
+  "id": "nehemiah-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was sitting by the king when he asked Nehemiah about his journey?",
+  "choices": [
+   "The governor",
+   "Ezra",
+   "Sanballat",
+   "The queen"
+  ],
+  "answer": 3,
+  "explanation": "The king said unto me, the queen also sitting by him, For how long shall thy journey be?",
+  "ref": "Nehemiah 2:6"
+ },
+ {
+  "id": "nehemiah-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What two things did the king ask about Nehemiah's journey?",
+  "choices": [
+   "Who would go with him and what he would take",
+   "Where he would stay and who would pay",
+   "How long it would be and when he would return",
+   "Which road he would take and when he would start"
+  ],
+  "answer": 2,
+  "explanation": "The king asked, For how long shall thy journey be? and when wilt thou return?",
+  "ref": "Nehemiah 2:6"
+ },
+ {
+  "id": "nehemiah-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did Nehemiah ask for letters so he could pass safely?",
+  "choices": [
+   "The priests of Jerusalem",
+   "The governors beyond the river",
+   "The princes of Judah",
+   "The elders of Babylon"
+  ],
+  "answer": 1,
+  "explanation": "Let letters be given me to the governors beyond the river, that they may convey me over till I come into Judah.",
+  "ref": "Nehemiah 2:7"
+ },
+ {
+  "id": "nehemiah-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did the king send with Nehemiah for protection?",
+  "choices": [
+   "Captains of the army and horsemen",
+   "Priests and Levites",
+   "Ten princes",
+   "Singers and porters"
+  ],
+  "answer": 0,
+  "explanation": "The king had sent captains of the army and horsemen with me.",
+  "ref": "Nehemiah 2:9"
+ },
+ {
+  "id": "nehemiah-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Asaph?",
+  "choices": [
+   "The ruler of Jerusalem",
+   "A priest of Judah",
+   "The king's scribe",
+   "The keeper of the king's forest"
+  ],
+  "answer": 3,
+  "explanation": "A letter unto Asaph the keeper of the king's forest, that he may give me timber.",
+  "ref": "Nehemiah 2:8"
+ },
+ {
+  "id": "nehemiah-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "By which gate did Nehemiah go out by night to view the walls?",
+  "choices": [
+   "The sheep gate",
+   "The fish gate",
+   "The gate of the valley",
+   "The east gate"
+  ],
+  "answer": 2,
+  "explanation": "I went out by night by the gate of the valley, and viewed the walls of Jerusalem.",
+  "ref": "Nehemiah 2:13"
+ },
+ {
+  "id": "nehemiah-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Nehemiah turn back near the king's pool?",
+  "choices": [
+   "The guards stopped him",
+   "There was no place for his beast to pass",
+   "It was nearly morning",
+   "He heard a noise"
+  ],
+  "answer": 1,
+  "explanation": "There was no place for the beast that was under me to pass.",
+  "ref": "Nehemiah 2:14"
+ },
+ {
+  "id": "nehemiah-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom had Nehemiah not told what God had put in his heart?",
+  "choices": [
+   "The Jews, priests, nobles and rulers",
+   "Only the king",
+   "His brother Hanani",
+   "The men of Judah"
+  ],
+  "answer": 0,
+  "explanation": "Neither had I as yet told it to the Jews, nor to the priests, nor to the nobles, nor to the rulers.",
+  "ref": "Nehemiah 2:16"
+ },
+ {
+  "id": "nehemiah-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Sanballat, Tobiah and Geshem ask when they heard of the plan?",
+  "choices": [
+   "Who gave you leave?",
+   "Where is the timber?",
+   "Why do you build at night?",
+   "Will ye rebel against the king?"
+  ],
+  "answer": 3,
+  "explanation": "They laughed us to scorn, and said, What is this thing that ye do? will ye rebel against the king?",
+  "ref": "Nehemiah 2:19"
+ },
+ {
+  "id": "nehemiah-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nehemiah tell his enemies they had in Jerusalem?",
+  "choices": [
+   "A share of the wall",
+   "A seat in the gate",
+   "No portion, right or memorial",
+   "A debt to collect"
+  ],
+  "answer": 2,
+  "explanation": "Ye have no portion, nor right, nor memorial, in Jerusalem.",
+  "ref": "Nehemiah 2:20"
+ },
+ {
+  "id": "nehemiah-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month did Nehemiah take up the wine to the king?",
+  "choices": [
+   "Chisleu",
+   "Nisan",
+   "Tishri",
+   "Elul"
+  ],
+  "answer": 1,
+  "explanation": "It came to pass in the month Nisan, in the twentieth year of Artaxerxes the king.",
+  "ref": "Nehemiah 2:1"
+ },
+ {
+  "id": "nehemiah-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king say the sadness in Nehemiah's face must be?",
+  "choices": [
+   "Sorrow of heart",
+   "The sickness of a traveller",
+   "Anger at the court",
+   "Hunger from fasting"
+  ],
+  "answer": 0,
+  "explanation": "Why is thy countenance sad, seeing thou art not sick? this is nothing else but sorrow of heart.",
+  "ref": "Nehemiah 2:2"
+ },
+ {
+  "id": "nehemiah-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the timber from the king's forest for?",
+  "choices": [
+   "Ships for the river",
+   "The altar of the temple",
+   "Houses for the poor",
+   "Beams for the gates and the wall"
+  ],
+  "answer": 3,
+  "explanation": "Timber to make beams for the gates of the palace, and for the wall of the city, and for the house that I shall enter into.",
+  "ref": "Nehemiah 2:8"
+ },
+ {
+  "id": "nehemiah-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Which enemy of Nehemiah is called the Horonite?",
+  "choices": [
+   "Tobiah",
+   "Geshem",
+   "Sanballat",
+   "Asaph"
+  ],
+  "answer": 2,
+  "explanation": "Sanballat the Horonite, and Tobiah the servant, the Ammonite, heard of it.",
+  "ref": "Nehemiah 2:10"
+ },
+ {
+  "id": "nehemiah-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Which enemy is called the servant, the Ammonite?",
+  "choices": [
+   "Sanballat",
+   "Tobiah",
+   "Geshem",
+   "Hanani"
+  ],
+  "answer": 1,
+  "explanation": "Tobiah the servant, the Ammonite.",
+  "ref": "Nehemiah 2:10"
+ },
+ {
+  "id": "nehemiah-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Which enemy is called the Arabian?",
+  "choices": [
+   "Geshem",
+   "Tobiah",
+   "Sanballat",
+   "Asaph"
+  ],
+  "answer": 0,
+  "explanation": "Sanballat the Horonite, and Tobiah the servant, the Ammonite, and Geshem the Arabian, heard it.",
+  "ref": "Nehemiah 2:19"
+ },
+ {
+  "id": "nehemiah-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Nehemiah have with him on his night ride besides a few men?",
+  "choices": [
+   "A pack of tools",
+   "A lantern",
+   "A guard of horsemen",
+   "Only the beast he rode"
+  ],
+  "answer": 3,
+  "explanation": "Neither was there any beast with me, save the beast that I rode upon.",
+  "ref": "Nehemiah 2:12"
+ },
+ {
+  "id": "nehemiah-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Which well did Nehemiah pass on his night ride?",
+  "choices": [
+   "The well of Bethlehem",
+   "Jacob's well",
+   "The dragon well",
+   "The well of Siloah"
+  ],
+  "answer": 2,
+  "explanation": "I went out by the gate of the valley, even before the dragon well, and to the dung port.",
+  "ref": "Nehemiah 2:13"
+ },
+ {
+  "id": "nehemiah-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides the valley gate, which gate and pool did Nehemiah reach before he could not pass?",
+  "choices": [
+   "The sheep gate and the pool of Siloah",
+   "The gate of the fountain and the king's pool",
+   "The fish gate and the old pool",
+   "The east gate and the dung port"
+  ],
+  "answer": 1,
+  "explanation": "Then I went on to the gate of the fountain, and to the king's pool.",
+  "ref": "Nehemiah 2:14"
+ },
+ {
+  "id": "nehemiah-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what did Nehemiah go up in the night before turning back?",
+  "choices": [
+   "The brook",
+   "The tower",
+   "The stairs",
+   "The mount"
+  ],
+  "answer": 0,
+  "explanation": "Then went I up in the night by the brook, and viewed the wall, and turned back.",
+  "ref": "Nehemiah 2:15"
+ },
+ {
   "id": "old-nehemiah-3-1",
   "chapter": 3,
   "level": "beginner",
