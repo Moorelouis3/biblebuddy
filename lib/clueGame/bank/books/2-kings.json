@@ -4400,6 +4400,646 @@
   "ref": "2 Kings 8:19"
  },
  {
+  "id": "2-kings-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which land did the woman live during the seven years of famine?",
+  "choices": [
+   "Syria",
+   "The land of the Philistines",
+   "Egypt",
+   "Moab"
+  ],
+  "answer": 1,
+  "explanation": "She went with her household, and sojourned in the land of the Philistines seven years.",
+  "ref": "2 Kings 8:2"
+ },
+ {
+  "id": "2-kings-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long would the famine the LORD called for last?",
+  "choices": [
+   "Seven years",
+   "Three years",
+   "Forty days",
+   "Ten years"
+  ],
+  "answer": 0,
+  "explanation": "The LORD hath called for a famine; and it shall also come upon the land seven years.",
+  "ref": "2 Kings 8:1"
+ },
+ {
+  "id": "2-kings-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the woman cry to the king for when she returned?",
+  "choices": [
+   "Her husband",
+   "Her house and her land",
+   "Bread",
+   "A king's guard"
+  ],
+  "answer": 1,
+  "explanation": "She went forth to cry unto the king for her house and for her land.",
+  "ref": "2 Kings 8:3"
+ },
+ {
+  "id": "2-kings-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did Elisha come when Ben-hadad was sick?",
+  "choices": [
+   "Jericho",
+   "Tyre",
+   "Damascus",
+   "Samaria"
+  ],
+  "answer": 2,
+  "explanation": "Elisha came to Damascus; and Ben-hadad the king of Syria was sick.",
+  "ref": "2 Kings 8:7"
+ },
+ {
+  "id": "2-kings-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Ben-hadad send to meet Elisha with a present?",
+  "choices": [
+   "Naaman",
+   "Jehu",
+   "Hazael",
+   "Gehazi"
+  ],
+  "answer": 2,
+  "explanation": "The king said unto Hazael, Take a present in thine hand, and go, meet the man of God.",
+  "ref": "2 Kings 8:8"
+ },
+ {
+  "id": "2-kings-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many camels carried the present Hazael brought to Elisha?",
+  "choices": [
+   "A hundred",
+   "Forty",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Hazael took a present with him, even of every good thing of Damascus, forty camels' burden.",
+  "ref": "2 Kings 8:9"
+ },
+ {
+  "id": "2-kings-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha do as he looked steadfastly at Hazael?",
+  "choices": [
+   "He prayed aloud",
+   "He fled",
+   "He wept",
+   "He laughed"
+  ],
+  "answer": 2,
+  "explanation": "He settled his countenance stedfastly, until he was ashamed: and the man of God wept.",
+  "ref": "2 Kings 8:11"
+ },
+ {
+  "id": "2-kings-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hazael tell Ben-hadad that Elisha had said?",
+  "choices": [
+   "That he must go to war",
+   "That he must repent",
+   "That he would surely recover",
+   "That he would surely die"
+  ],
+  "answer": 2,
+  "explanation": "He answered, He told me that thou shouldest surely recover.",
+  "ref": "2 Kings 8:14"
+ },
+ {
+  "id": "2-kings-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jehoram of Judah walk in the way of the house of Ahab?",
+  "choices": [
+   "Jezebel raised him",
+   "He feared Syria",
+   "The daughter of Ahab was his wife",
+   "Ahab was his father"
+  ],
+  "answer": 2,
+  "explanation": "He walked in the way of the house of Ahab: for the daughter of Ahab was his wife.",
+  "ref": "2 Kings 8:18"
+ },
+ {
+  "id": "2-kings-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Edom do in the days of Jehoram?",
+  "choices": [
+   "Joined Judah in war",
+   "Paid Judah tribute",
+   "Burned Jerusalem",
+   "Revolted from Judah and made a king over themselves"
+  ],
+  "answer": 3,
+  "explanation": "In his days Edom revolted from under the hand of Judah, and made a king over themselves.",
+  "ref": "2 Kings 8:20"
+ },
+ {
+  "id": "2-kings-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha tell the woman to do because of the famine?",
+  "choices": [
+   "Go to Samaria",
+   "Sell her land",
+   "Go and sojourn wherever she could",
+   "Hide in the city"
+  ],
+  "answer": 2,
+  "explanation": "Arise, and go thou and thine household, and sojourn wheresoever thou canst sojourn.",
+  "ref": "2 Kings 8:1"
+ },
+ {
+  "id": "2-kings-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king ask Gehazi to tell him?",
+  "choices": [
+   "Who would be the next king",
+   "What the famine meant",
+   "All the great things Elisha had done",
+   "Where Elisha lived"
+  ],
+  "answer": 2,
+  "explanation": "Tell me, I pray thee, all the great things that Elisha hath done.",
+  "ref": "2 Kings 8:4"
+ },
+ {
+  "id": "2-kings-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Gehazi telling the king when the woman cried out?",
+  "choices": [
+   "How the axe head floated",
+   "How Naaman was healed",
+   "How Elijah went up",
+   "How Elisha had restored a dead body to life"
+  ],
+  "answer": 3,
+  "explanation": "As he was telling the king how he had restored a dead body to life, the woman cried to the king.",
+  "ref": "2 Kings 8:5"
+ },
+ {
+  "id": "2-kings-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king command for the woman?",
+  "choices": [
+   "Pay her in silver",
+   "Send her to Samaria",
+   "Restore all that was hers and the fruits since she left",
+   "Give her a new house"
+  ],
+  "answer": 2,
+  "explanation": "Restore all that was hers, and all the fruits of the field since the day that she left the land.",
+  "ref": "2 Kings 8:6"
+ },
+ {
+  "id": "2-kings-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha say about Ben-hadad's illness?",
+  "choices": [
+   "He had no sickness",
+   "He might recover, yet he would surely die",
+   "He would live many years",
+   "He would be healed by Hazael"
+  ],
+  "answer": 1,
+  "explanation": "Thou mayest certainly recover: howbeit the LORD hath shewed me that he shall surely die.",
+  "ref": "2 Kings 8:10"
+ },
+ {
+  "id": "2-kings-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hazael say when Elisha spoke of the evil he would do?",
+  "choices": [
+   "I am not worthy",
+   "It will not be so",
+   "Pray for me",
+   "Is thy servant a dog, that he should do this great thing?"
+  ],
+  "answer": 3,
+  "explanation": "Hazael said, But what, is thy servant a dog, that he should do this great thing?",
+  "ref": "2 Kings 8:13"
+ },
+ {
+  "id": "2-kings-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD show Elisha that Hazael would be?",
+  "choices": [
+   "King over Syria",
+   "Captain of Israel",
+   "A prophet",
+   "King of Edom"
+  ],
+  "answer": 0,
+  "explanation": "The LORD hath shewed me that thou shalt be king over Syria.",
+  "ref": "2 Kings 8:13"
+ },
+ {
+  "id": "2-kings-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Ben-hadad die?",
+  "choices": [
+   "He died of the sickness",
+   "A thick cloth dipped in water was spread over his face",
+   "He fell in battle",
+   "He was struck by an arrow"
+  ],
+  "answer": 1,
+  "explanation": "He took a thick cloth, and dipped it in water, and spread it on his face, so that he died.",
+  "ref": "2 Kings 8:15"
+ },
+ {
+  "id": "2-kings-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Jehoram reign in Jerusalem?",
+  "choices": [
+   "Forty",
+   "Twelve",
+   "Eight",
+   "Two"
+  ],
+  "answer": 2,
+  "explanation": "Thirty and two years old was he when he began to reign; and he reigned eight years in Jerusalem.",
+  "ref": "2 Kings 8:17"
+ },
+ {
+  "id": "2-kings-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city revolted at the same time that Edom did?",
+  "choices": [
+   "Libnah",
+   "Hebron",
+   "Gezer",
+   "Lachish"
+  ],
+  "answer": 0,
+  "explanation": "Then Libnah revolted at the same time.",
+  "ref": "2 Kings 8:22"
+ },
+ {
+  "id": "2-kings-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Joram go over by night to strike the Edomites?",
+  "choices": [
+   "Ramah",
+   "Dothan",
+   "Gilgal",
+   "Zair"
+  ],
+  "answer": 3,
+  "explanation": "Joram went over to Zair, and all the chariots with him: and he rose by night, and smote the Edomites.",
+  "ref": "2 Kings 8:21"
+ },
+ {
+  "id": "2-kings-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the mother of Ahaziah king of Judah?",
+  "choices": [
+   "Maachah",
+   "Zibiah",
+   "Athaliah",
+   "Jezebel"
+  ],
+  "answer": 2,
+  "explanation": "His mother's name was Athaliah, the daughter of Omri king of Israel.",
+  "ref": "2 Kings 8:26"
+ },
+ {
+  "id": "2-kings-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Joram go to be healed of his wounds?",
+  "choices": [
+   "Damascus",
+   "Jerusalem",
+   "Jezreel",
+   "Samaria"
+  ],
+  "answer": 2,
+  "explanation": "King Joram went back to be healed in Jezreel of the wounds which the Syrians had given him.",
+  "ref": "2 Kings 8:29"
+ },
+ {
+  "id": "2-kings-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who went down to see Joram in Jezreel?",
+  "choices": [
+   "Elisha",
+   "Ahaziah king of Judah",
+   "Jehu",
+   "Hazael"
+  ],
+  "answer": 1,
+  "explanation": "Ahaziah the son of Jehoram king of Judah went down to see Joram the son of Ahab in Jezreel, because he was sick.",
+  "ref": "2 Kings 8:29"
+ },
+ {
+  "id": "2-kings-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha say Hazael would do to the strongholds of Israel?",
+  "choices": [
+   "Leave them alone",
+   "Take them for himself",
+   "Set them on fire",
+   "Pull them down stone by stone"
+  ],
+  "answer": 2,
+  "explanation": "Their strong holds wilt thou set on fire, and their young men wilt thou slay with the sword.",
+  "ref": "2 Kings 8:12"
+ },
+ {
+  "id": "2-kings-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Jehoram of Judah when he began to reign?",
+  "choices": [
+   "Thirty and two",
+   "Twenty-two",
+   "Forty-two",
+   "Eighteen"
+  ],
+  "answer": 0,
+  "explanation": "Thirty and two years old was he when he began to reign.",
+  "ref": "2 Kings 8:17"
+ },
+ {
+  "id": "2-kings-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Joram of Israel did Jehoram of Judah begin to reign?",
+  "choices": [
+   "The twelfth year",
+   "The eleventh year",
+   "The fifth year",
+   "The first year"
+  ],
+  "answer": 2,
+  "explanation": "In the fifth year of Joram the son of Ahab king of Israel, Jehoram the son of Jehoshaphat began to reign.",
+  "ref": "2 Kings 8:16"
+ },
+ {
+  "id": "2-kings-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was still king of Judah when Jehoram began to reign?",
+  "choices": [
+   "Ahaziah",
+   "Asa",
+   "Hezekiah",
+   "Jehoshaphat"
+  ],
+  "answer": 3,
+  "explanation": "Jehoshaphat being then king of Judah, Jehoram began to reign.",
+  "ref": "2 Kings 8:16"
+ },
+ {
+  "id": "2-kings-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Ahaziah when he began to reign?",
+  "choices": [
+   "Sixteen",
+   "Forty",
+   "Twenty and two",
+   "Thirty and two"
+  ],
+  "answer": 2,
+  "explanation": "Two and twenty years old was Ahaziah when he began to reign.",
+  "ref": "2 Kings 8:26"
+ },
+ {
+  "id": "2-kings-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Ahaziah reign in Jerusalem?",
+  "choices": [
+   "Forty years",
+   "One year",
+   "Eight years",
+   "Ten years"
+  ],
+  "answer": 1,
+  "explanation": "He reigned one year in Jerusalem.",
+  "ref": "2 Kings 8:26"
+ },
+ {
+  "id": "2-kings-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Jehoram of Judah buried?",
+  "choices": [
+   "In Samaria",
+   "At Zair",
+   "In a field of Naboth",
+   "In the city of David with his fathers"
+  ],
+  "answer": 3,
+  "explanation": "Joram slept with his fathers, and was buried with his fathers in the city of David.",
+  "ref": "2 Kings 8:24"
+ },
+ {
+  "id": "2-kings-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD promise to give David and his children alway?",
+  "choices": [
+   "A great name",
+   "A light",
+   "A throne in Samaria",
+   "A land of rest"
+  ],
+  "answer": 1,
+  "explanation": "The LORD promised him to give him alway a light, and to his children.",
+  "ref": "2 Kings 8:19"
+ },
+ {
+  "id": "2-kings-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Hazael describe Ben-hadad when he spoke to Elisha?",
+  "choices": [
+   "My brother",
+   "My father",
+   "Thy son",
+   "My master"
+  ],
+  "answer": 2,
+  "explanation": "Thy son Ben-hadad king of Syria hath sent me to thee.",
+  "ref": "2 Kings 8:9"
+ },
+ {
+  "id": "2-kings-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ben-hadad tell Hazael to do when he met Elisha?",
+  "choices": [
+   "Ask him to leave Damascus",
+   "Offer him a gift to curse Israel",
+   "Arrest him",
+   "Enquire of the LORD by him"
+  ],
+  "answer": 3,
+  "explanation": "Go, meet the man of God, and enquire of the LORD by him.",
+  "ref": "2 Kings 8:8"
+ },
+ {
+  "id": "2-kings-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the Syrians wound Joram while he fought Hazael?",
+  "choices": [
+   "At Dothan",
+   "At Ramah",
+   "At Zair",
+   "At Libnah"
+  ],
+  "answer": 1,
+  "explanation": "Joram went back to be healed of the wounds which the Syrians had given him at Ramah.",
+  "ref": "2 Kings 8:29"
+ },
+ {
+  "id": "2-kings-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the Edomites flee after Joram smote them?",
+  "choices": [
+   "Over the Jordan",
+   "Into their tents",
+   "Into Jerusalem",
+   "To Libnah"
+  ],
+  "answer": 1,
+  "explanation": "Joram smote the Edomites which compassed him about, and the people fled into their tents.",
+  "ref": "2 Kings 8:21"
+ },
+ {
+  "id": "2-kings-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Joram of Israel did Ahaziah begin to reign?",
+  "choices": [
+   "The twelfth year",
+   "The fifth year",
+   "The eleventh year",
+   "The first year"
+  ],
+  "answer": 0,
+  "explanation": "In the twelfth year of Joram the son of Ahab king of Israel did Ahaziah begin to reign.",
+  "ref": "2 Kings 8:25"
+ },
+ {
+  "id": "2-kings-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Ahaziah walk in the way of the house of Ahab?",
+  "choices": [
+   "He was Ahab's grandson by Jezebel",
+   "He feared Hazael",
+   "He was raised in Samaria",
+   "He was the son-in-law of the house of Ahab"
+  ],
+  "answer": 3,
+  "explanation": "He walked in the way of the house of Ahab, for he was the son in law of the house of Ahab.",
+  "ref": "2 Kings 8:27"
+ },
+ {
+  "id": "2-kings-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Joram and Ahaziah go to war against Hazael?",
+  "choices": [
+   "Libnah",
+   "Ramoth-gilead",
+   "Zair",
+   "Jezreel"
+  ],
+  "answer": 1,
+  "explanation": "He went with Joram the son of Ahab to the war against Hazael king of Syria in Ramoth-gilead.",
+  "ref": "2 Kings 8:28"
+ },
+ {
+  "id": "2-kings-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who reigned in Judah after Jehoram was buried?",
+  "choices": [
+   "Jehu",
+   "Hazael",
+   "Jehoshaphat",
+   "Ahaziah his son"
+  ],
+  "answer": 3,
+  "explanation": "Joram slept with his fathers, and Ahaziah his son reigned in his stead.",
+  "ref": "2 Kings 8:24"
+ },
+ {
   "id": "old-2-kings-9-1",
   "chapter": 9,
   "level": "beginner",
