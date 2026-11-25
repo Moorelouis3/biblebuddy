@@ -13,7 +13,7 @@
   ],
   "answer": 0,
   "explanation": "Cyrus issued the opening decree of Ezra.",
-  "ref": "Ezra 1:1–2"
+  "ref": "Ezra 1:1\u20132"
  },
  {
   "id": "old-ezra-1-2",
@@ -45,7 +45,7 @@
   ],
   "answer": 2,
   "explanation": "Their neighbors strengthened them with gifts and offerings.",
-  "ref": "Ezra 1:4–6"
+  "ref": "Ezra 1:4\u20136"
  },
  {
   "id": "old-ezra-1-4",
@@ -78,6 +78,214 @@
   "answer": 2,
   "explanation": "The chapter totals the restored vessels at 5,400.",
   "ref": "Ezra 1:11"
+ },
+ {
+  "id": "ezra-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose word from the LORD was fulfilled when Cyrus made his proclamation?",
+  "choices": [
+   "Isaiah",
+   "Haggai",
+   "Jeremiah",
+   "Ezra"
+  ],
+  "answer": 2,
+  "explanation": "The word of the LORD by the mouth of Jeremiah was fulfilled in the first year of Cyrus.",
+  "ref": "Ezra 1:1"
+ },
+ {
+  "id": "ezra-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year of Cyrus did the LORD stir up his spirit?",
+  "choices": [
+   "The first",
+   "The third",
+   "The seventh",
+   "The twentieth"
+  ],
+  "answer": 0,
+  "explanation": "In the first year of Cyrus the LORD stirred up the spirit of Cyrus king of Persia.",
+  "ref": "Ezra 1:1"
+ },
+ {
+  "id": "ezra-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two tribes' chief fathers rose up to go and build the house of the LORD?",
+  "choices": [
+   "Reuben and Gad",
+   "Judah and Benjamin",
+   "Ephraim and Manasseh",
+   "Levi and Simeon"
+  ],
+  "answer": 1,
+  "explanation": "The chief of the fathers of Judah and Benjamin, with the priests and Levites, rose up.",
+  "ref": "Ezra 1:5"
+ },
+ {
+  "id": "ezra-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who rose up to go to Jerusalem, according to the chapter?",
+  "choices": [
+   "All the king's soldiers",
+   "Everyone in Babylon",
+   "All whose spirit God had raised",
+   "Only the priests"
+  ],
+  "answer": 2,
+  "explanation": "They rose up, with all them whose spirit God had raised, to go up to build the house.",
+  "ref": "Ezra 1:5"
+ },
+ {
+  "id": "ezra-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Where had Nebuchadnezzar put the vessels of the house of the LORD?",
+  "choices": [
+   "In the house of his gods",
+   "In the king's treasury",
+   "In the river",
+   "In Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Nebuchadnezzar had put them in the house of his gods.",
+  "ref": "Ezra 1:7"
+ },
+ {
+  "id": "ezra-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the treasurer by whose hand Cyrus brought forth the vessels?",
+  "choices": [
+   "Sheshbazzar",
+   "Mithredath",
+   "Jeshua",
+   "Zerubbabel"
+  ],
+  "answer": 1,
+  "explanation": "Cyrus brought them forth by the hand of Mithredath the treasurer.",
+  "ref": "Ezra 1:8"
+ },
+ {
+  "id": "ezra-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "What title is given to Sheshbazzar?",
+  "choices": [
+   "Priest of Judah",
+   "Governor of Persia",
+   "Prince of Judah",
+   "Scribe of the king"
+  ],
+  "answer": 2,
+  "explanation": "Mithredath numbered them unto Sheshbazzar, the prince of Judah.",
+  "ref": "Ezra 1:8"
+ },
+ {
+  "id": "ezra-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many chargers of silver were among the vessels?",
+  "choices": [
+   "Thirty",
+   "A thousand",
+   "Four hundred and ten",
+   "Nine and twenty"
+  ],
+  "answer": 1,
+  "explanation": "The number was thirty chargers of gold, a thousand chargers of silver, nine and twenty knives.",
+  "ref": "Ezra 1:9"
+ },
+ {
+  "id": "ezra-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many knives were among the vessels?",
+  "choices": [
+   "Nine and twenty",
+   "Thirty",
+   "A thousand",
+   "Four hundred"
+  ],
+  "answer": 0,
+  "explanation": "The number included nine and twenty knives.",
+  "ref": "Ezra 1:9"
+ },
+ {
+  "id": "ezra-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many silver basons of a second sort were there?",
+  "choices": [
+   "Thirty",
+   "A thousand",
+   "Four hundred and ten",
+   "Five thousand four hundred"
+  ],
+  "answer": 2,
+  "explanation": "Silver basons of a second sort were four hundred and ten.",
+  "ref": "Ezra 1:10"
+ },
+ {
+  "id": "ezra-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many basons of gold were there?",
+  "choices": [
+   "Nine and twenty",
+   "Four hundred",
+   "A thousand",
+   "Thirty"
+  ],
+  "answer": 3,
+  "explanation": "There were thirty basons of gold.",
+  "ref": "Ezra 1:10"
+ },
+ {
+  "id": "ezra-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who strengthened the hands of those going up with vessels, gold, goods and beasts?",
+  "choices": [
+   "All they that were about them",
+   "The king's princes",
+   "The Levites alone",
+   "The people of Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "All they that were about them strengthened their hands with vessels of silver, with gold, with goods, and with beasts.",
+  "ref": "Ezra 1:6"
+ },
+ {
+  "id": "ezra-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides gifts for the journey, what did Cyrus say the men of each place should give?",
+  "choices": [
+   "The firstborn of their flocks",
+   "A freewill offering for the house of God",
+   "A tenth of their land",
+   "Their best workmen"
+  ],
+  "answer": 1,
+  "explanation": "Let the men of his place help him, beside the freewill offering for the house of God that is in Jerusalem.",
+  "ref": "Ezra 1:4"
  },
  {
   "id": "old-ezra-2-1",
@@ -285,7 +493,7 @@
   ],
   "answer": 3,
   "explanation": "They used intimidation and political opposition to hinder the work.",
-  "ref": "Ezra 4:4–5"
+  "ref": "Ezra 4:4\u20135"
  },
  {
   "id": "old-ezra-4-4",
@@ -301,7 +509,7 @@
   ],
   "answer": 2,
   "explanation": "Artaxerxes commanded the work to cease.",
-  "ref": "Ezra 4:23–24"
+  "ref": "Ezra 4:23\u201324"
  },
  {
   "id": "old-ezra-4-5",
@@ -317,7 +525,7 @@
   ],
   "answer": 0,
   "explanation": "The letter called Jerusalem a rebellious city and warned the king about its walls being set up.",
-  "ref": "Ezra 4:12–13"
+  "ref": "Ezra 4:12\u201313"
  },
  {
   "id": "old-ezra-5-1",
@@ -429,7 +637,7 @@
   ],
   "answer": 1,
   "explanation": "Darius ordered the officials not to hinder the work.",
-  "ref": "Ezra 6:6–7"
+  "ref": "Ezra 6:6\u20137"
  },
  {
   "id": "old-ezra-6-3",
@@ -637,7 +845,7 @@
   ],
   "answer": 1,
   "explanation": "The treasures were carefully weighed into the temple's custody.",
-  "ref": "Ezra 8:33–34"
+  "ref": "Ezra 8:33\u201334"
  },
  {
   "id": "old-ezra-9-1",
@@ -653,7 +861,7 @@
   ],
   "answer": 2,
   "explanation": "The chief issue was intermarriage with surrounding peoples.",
-  "ref": "Ezra 9:1–2"
+  "ref": "Ezra 9:1\u20132"
  },
  {
   "id": "old-ezra-9-2",
@@ -797,6 +1005,6 @@
   ],
   "answer": 3,
   "explanation": "The matter was examined carefully over time by appointed leaders.",
-  "ref": "Ezra 10:16–17"
+  "ref": "Ezra 10:16\u201317"
  }
 ]
