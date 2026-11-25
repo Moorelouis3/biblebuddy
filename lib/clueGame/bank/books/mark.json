@@ -6158,5 +6158,5077 @@
   "answer": 3,
   "explanation": "Where their worm dieth not, and the fire is not quenched.",
   "ref": "Mark 9:48"
+ },
+ {
+  "id": "mark-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which river did John baptize the people?",
+  "choices": [
+   "Jordan",
+   "Jabbok",
+   "Arnon",
+   "Kidron"
+  ],
+  "answer": 0,
+  "explanation": "There went out unto John all of Judaea and Jerusalem, and were all baptized of him in the river of Jordan.",
+  "ref": "Mark 1:5"
+ },
+ {
+  "id": "mark-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did John the Baptist eat in the wilderness?",
+  "choices": [
+   "Manna and quail",
+   "Bread and fish",
+   "Figs and dates",
+   "Locusts and wild honey"
+  ],
+  "answer": 3,
+  "explanation": "John was clothed with camel’s hair, and he did eat locusts and wild honey.",
+  "ref": "Mark 1:6"
+ },
+ {
+  "id": "mark-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "From where did Jesus come to be baptized by John in Jordan?",
+  "choices": [
+   "Bethlehem of Judaea",
+   "Capernaum",
+   "Nazareth of Galilee",
+   "Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Jesus came from Nazareth of Galilee, and was baptized of John in Jordan.",
+  "ref": "Mark 1:9"
+ },
+ {
+  "id": "mark-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was Jesus in the wilderness, tempted of Satan?",
+  "choices": [
+   "Three days",
+   "Forty days",
+   "Seven days",
+   "Twelve days"
+  ],
+  "answer": 1,
+  "explanation": "He was there in the wilderness forty days, tempted of Satan.",
+  "ref": "Mark 1:13"
+ },
+ {
+  "id": "mark-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the voice from heaven say to Jesus at His baptism?",
+  "choices": [
+   "Thou art my beloved Son",
+   "Hear ye him",
+   "This is the Son of David",
+   "Thou art the prophet that should come"
+  ],
+  "answer": 0,
+  "explanation": "There came a voice from heaven, saying, Thou art my beloved Son, in whom I am well pleased.",
+  "ref": "Mark 1:11"
+ },
+ {
+  "id": "mark-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did John say the one coming after him would baptize with?",
+  "choices": [
+   "Oil",
+   "Blood",
+   "Living water",
+   "The Holy Ghost"
+  ],
+  "answer": 3,
+  "explanation": "John said, I indeed have baptized you with water: but he shall baptize you with the Holy Ghost.",
+  "ref": "Mark 1:8"
+ },
+ {
+  "id": "mark-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which brothers did Jesus call who were mending their nets in the ship?",
+  "choices": [
+   "Peter and Andrew",
+   "Philip and Bartholomew",
+   "James and John",
+   "Matthew and Thomas"
+  ],
+  "answer": 2,
+  "explanation": "Jesus saw James the son of Zebedee, and John his brother, who also were in the ship mending their nets.",
+  "ref": "Mark 1:19"
+ },
+ {
+  "id": "mark-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which town did Jesus teach in the synagogue on the sabbath day?",
+  "choices": [
+   "Nazareth",
+   "Capernaum",
+   "Bethsaida",
+   "Cana"
+  ],
+  "answer": 1,
+  "explanation": "They went into Capernaum; and straightway on the sabbath day he entered into the synagogue, and taught.",
+  "ref": "Mark 1:21"
+ },
+ {
+  "id": "mark-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the unclean spirit call Jesus?",
+  "choices": [
+   "The Holy One of God",
+   "The Son of David",
+   "The King of the Jews",
+   "The Prophet of Galilee"
+  ],
+  "answer": 0,
+  "explanation": "The unclean spirit said, I know thee who thou art, the Holy One of God.",
+  "ref": "Mark 1:24"
+ },
+ {
+  "id": "mark-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus do to the leper when He was moved with compassion?",
+  "choices": [
+   "Spoke to him from afar",
+   "Sent him to wash in Jordan",
+   "Anointed him with oil",
+   "Put forth His hand and touched him"
+  ],
+  "answer": 3,
+  "explanation": "Jesus, moved with compassion, put forth his hand, and touched him, and saith unto him, I will; be thou clean.",
+  "ref": "Mark 1:41"
+ },
+ {
+  "id": "mark-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people do as John baptized them in the Jordan?",
+  "choices": [
+   "Offered sacrifices",
+   "Fasted for three days",
+   "Confessed their sins",
+   "Paid tithes"
+  ],
+  "answer": 2,
+  "explanation": "They were all baptized of him in the river of Jordan, confessing their sins.",
+  "ref": "Mark 1:5"
+ },
+ {
+  "id": "mark-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did John say he was not worthy to do for the one coming after him?",
+  "choices": [
+   "Carry his staff",
+   "Stoop down and unloose his shoes",
+   "Wash his feet",
+   "Light his lamp"
+  ],
+  "answer": 1,
+  "explanation": "John said, the latchet of whose shoes I am not worthy to stoop down and unloose.",
+  "ref": "Mark 1:7"
+ },
+ {
+  "id": "mark-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was John the Baptist clothed with?",
+  "choices": [
+   "Camel’s hair",
+   "Sheep’s wool",
+   "Fine linen",
+   "Goat’s hair"
+  ],
+  "answer": 0,
+  "explanation": "John was clothed with camel’s hair, and with a girdle of a skin about his loins.",
+  "ref": "Mark 1:6"
+ },
+ {
+  "id": "mark-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did John’s baptism of repentance look to?",
+  "choices": [
+   "The return from exile",
+   "The building of the temple",
+   "The healing of the nations",
+   "The remission of sins"
+  ],
+  "answer": 3,
+  "explanation": "John did baptize in the wilderness, and preach the baptism of repentance for the remission of sins.",
+  "ref": "Mark 1:4"
+ },
+ {
+  "id": "mark-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who drove Jesus into the wilderness after His baptism?",
+  "choices": [
+   "Satan",
+   "John the Baptist",
+   "The Spirit",
+   "The angels"
+  ],
+  "answer": 2,
+  "explanation": "Immediately the Spirit driveth him into the wilderness.",
+  "ref": "Mark 1:12"
+ },
+ {
+  "id": "mark-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who ministered to Jesus in the wilderness?",
+  "choices": [
+   "Ravens",
+   "The angels",
+   "The twelve",
+   "John’s disciples"
+  ],
+  "answer": 1,
+  "explanation": "He was there in the wilderness forty days, tempted of Satan; and the angels ministered unto him.",
+  "ref": "Mark 1:13"
+ },
+ {
+  "id": "mark-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say is at hand when He came into Galilee preaching?",
+  "choices": [
+   "The kingdom of God",
+   "The day of judgment",
+   "The feast of tabernacles",
+   "The coming of Elias"
+  ],
+  "answer": 0,
+  "explanation": "Jesus said, The time is fulfilled, and the kingdom of God is at hand: repent ye, and believe the gospel.",
+  "ref": "Mark 1:14–15"
+ },
+ {
+  "id": "mark-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Simon and Andrew do when Jesus said, Come ye after me?",
+  "choices": [
+   "Asked leave to tell their families",
+   "Finished the catch first",
+   "Went home to their father",
+   "Left their nets and followed him"
+  ],
+  "answer": 3,
+  "explanation": "Straightway they forsook their nets, and followed him.",
+  "ref": "Mark 1:17–18"
+ },
+ {
+  "id": "mark-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did James and John leave in the ship with the hired servants?",
+  "choices": [
+   "Their mother",
+   "Their uncle Alphaeus",
+   "Their father Zebedee",
+   "Simon"
+  ],
+  "answer": 2,
+  "explanation": "They left their father Zebedee in the ship with the hired servants, and went after him.",
+  "ref": "Mark 1:20"
+ },
+ {
+  "id": "mark-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the people astonished at Jesus’ teaching in the synagogue?",
+  "choices": [
+   "He quoted the prophets from memory",
+   "He taught as one with authority",
+   "He spoke in a strange tongue",
+   "He healed during the sermon"
+  ],
+  "answer": 1,
+  "explanation": "He taught them as one that had authority, and not as the scribes.",
+  "ref": "Mark 1:22"
+ },
+ {
+  "id": "mark-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the unclean spirit do before it came out of the man?",
+  "choices": [
+   "Tore him and cried with a loud voice",
+   "Begged to be sent to the desert",
+   "Went out quietly",
+   "Struck the others in the synagogue dumb"
+  ],
+  "answer": 0,
+  "explanation": "When the unclean spirit had torn him, and cried with a loud voice, he came out of him.",
+  "ref": "Mark 1:26"
+ },
+ {
+  "id": "mark-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the people bring all the sick and possessed to Jesus?",
+  "choices": [
+   "At noon",
+   "At the first light of dawn",
+   "After midnight",
+   "When the sun did set"
+  ],
+  "answer": 3,
+  "explanation": "At even, when the sun did set, they brought unto him all that were diseased, and them that were possessed with devils.",
+  "ref": "Mark 1:32"
+ },
+ {
+  "id": "mark-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus not allow the devils to speak?",
+  "choices": [
+   "Because the crowd would be afraid",
+   "Because it was the sabbath",
+   "Because they knew him",
+   "Because he was weary"
+  ],
+  "answer": 2,
+  "explanation": "He suffered not the devils to speak, because they knew him.",
+  "ref": "Mark 1:34"
+ },
+ {
+  "id": "mark-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Jesus go to pray, rising a great while before day?",
+  "choices": [
+   "The synagogue",
+   "A solitary place",
+   "A mountain by the Jordan",
+   "Simon’s house"
+  ],
+  "answer": 1,
+  "explanation": "Rising up a great while before day, he went out, and departed into a solitary place, and there prayed.",
+  "ref": "Mark 1:35"
+ },
+ {
+  "id": "mark-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose commandment did Jesus tell the healed leper to follow in his offering?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "Elijah",
+   "David"
+  ],
+  "answer": 0,
+  "explanation": "Jesus said, offer for thy cleansing those things which Moses commanded, for a testimony unto them.",
+  "ref": "Mark 1:44"
+ },
+ {
+  "id": "mark-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was John’s girdle made of?",
+  "choices": [
+   "Camel’s hair",
+   "Fine linen",
+   "A skin",
+   "Plaited rope"
+  ],
+  "answer": 2,
+  "explanation": "John was clothed with camel’s hair, and with a girdle of a skin about his loins.",
+  "ref": "Mark 1:6"
+ },
+ {
+  "id": "mark-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Who went out to John to be baptized in the river of Jordan?",
+  "choices": [
+   "The people of Galilee and Samaria",
+   "All the land of Judaea and they of Jerusalem",
+   "The people of Tyre and Sidon",
+   "Only the scribes and priests"
+  ],
+  "answer": 1,
+  "explanation": "There went out unto him all the land of Judaea, and they of Jerusalem.",
+  "ref": "Mark 1:5"
+ },
+ {
+  "id": "mark-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus see as He came up out of the water?",
+  "choices": [
+   "The heavens opened",
+   "Fire upon the river",
+   "A star at noon",
+   "A cloud over the Jordan"
+  ],
+  "answer": 0,
+  "explanation": "Straightway coming up out of the water, he saw the heavens opened, and the Spirit like a dove descending upon him.",
+  "ref": "Mark 1:10"
+ },
+ {
+  "id": "mark-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom was Jesus with in the wilderness besides the angels?",
+  "choices": [
+   "A band of shepherds",
+   "John the Baptist",
+   "The twelve",
+   "The wild beasts"
+  ],
+  "answer": 3,
+  "explanation": "He was there in the wilderness forty days, tempted of Satan; and was with the wild beasts.",
+  "ref": "Mark 1:13"
+ },
+ {
+  "id": "mark-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had happened to John when Jesus came into Galilee preaching?",
+  "choices": [
+   "He had gone to Jerusalem",
+   "He had been baptized",
+   "He had been put in prison",
+   "He had fled to the desert"
+  ],
+  "answer": 2,
+  "explanation": "After that John was put in prison, Jesus came into Galilee, preaching the gospel of the kingdom of God.",
+  "ref": "Mark 1:14"
+ },
+ {
+  "id": "mark-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the unclean spirit fear Jesus had come to do?",
+  "choices": [
+   "Judge the nations",
+   "Destroy them",
+   "Bind them in chains",
+   "Send them to the sea"
+  ],
+  "answer": 1,
+  "explanation": "The spirit cried, art thou come to destroy us? I know thee who thou art, the Holy One of God.",
+  "ref": "Mark 1:24"
+ },
+ {
+  "id": "mark-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the voice crying in the wilderness say to prepare?",
+  "choices": [
+   "The altar of the Lord",
+   "The temple of the Lord",
+   "The way of the Lord",
+   "The feast of the Lord"
+  ],
+  "answer": 2,
+  "explanation": "The voice of one crying in the wilderness, Prepare ye the way of the Lord, make his paths straight.",
+  "ref": "Mark 1:3"
+ },
+ {
+  "id": "mark-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did Jesus tell the healed leper to show himself?",
+  "choices": [
+   "The scribes",
+   "The elders of the city",
+   "The priest",
+   "Simon and Andrew"
+  ],
+  "answer": 2,
+  "explanation": "Jesus saith unto him, shew thyself to the priest, and offer for thy cleansing those things which Moses commanded.",
+  "ref": "Mark 1:44"
+ },
+ {
+  "id": "mark-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who went into the house of Simon and Andrew with them?",
+  "choices": [
+   "Philip and Bartholomew",
+   "Matthew and Thomas",
+   "James and John",
+   "Levi and Judas"
+  ],
+  "answer": 2,
+  "explanation": "When they were come out of the synagogue, they entered into the house of Simon and Andrew, with James and John.",
+  "ref": "Mark 1:29"
+ },
+ {
+  "id": "mark-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Simon’s wife’s mother do after the fever left her?",
+  "choices": [
+   "Went to the synagogue",
+   "Ministered unto them",
+   "Went to tell the neighbours",
+   "Fell asleep"
+  ],
+  "answer": 1,
+  "explanation": "He took her by the hand, and lifted her up; and immediately the fever left her, and she ministered unto them.",
+  "ref": "Mark 1:31"
+ },
+ {
+  "id": "mark-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the leper say as he knelt before Jesus?",
+  "choices": [
+   "Lord, remember me",
+   "Master, have mercy on my house",
+   "If thou wilt, thou canst make me clean",
+   "Heal me and I will follow thee"
+  ],
+  "answer": 2,
+  "explanation": "There came a leper to him, beseeching him, and kneeling down to him, and saying, If thou wilt, thou canst make me clean.",
+  "ref": "Mark 1:40"
+ },
+ {
+  "id": "mark-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Simon and his companions say when they found Jesus praying?",
+  "choices": [
+   "The scribes are looking for thee",
+   "Send the multitudes away",
+   "Herod hath sent for thee",
+   "All men seek for thee"
+  ],
+  "answer": 3,
+  "explanation": "When they had found him, they said unto him, All men seek for thee.",
+  "ref": "Mark 1:36–37"
+ },
+ {
+  "id": "mark-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jesus want to go to the next towns?",
+  "choices": [
+   "To rest from the crowds",
+   "To escape the scribes",
+   "To preach there also",
+   "To heal Simon’s friends"
+  ],
+  "answer": 2,
+  "explanation": "Jesus said, Let us go into the next towns, that I may preach there also: for therefore came I forth.",
+  "ref": "Mark 1:38"
+ },
+ {
+  "id": "mark-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were James and John doing when Jesus called them?",
+  "choices": [
+   "Casting a net",
+   "Mending their nets",
+   "Hauling fish ashore",
+   "Selling fish"
+  ],
+  "answer": 1,
+  "explanation": "James the son of Zebedee, and John his brother, were in the ship mending their nets.",
+  "ref": "Mark 1:19"
+ },
+ {
+  "id": "mark-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did John describe the one who would come after him?",
+  "choices": [
+   "Wiser than the prophets",
+   "Greater than Moses",
+   "Mightier than I",
+   "Holier than the priests"
+  ],
+  "answer": 2,
+  "explanation": "John preached, saying, There cometh one mightier than I after me.",
+  "ref": "Mark 1:7"
+ },
+ {
+  "id": "mark-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which town was Jesus when the sick man was let down through the roof?",
+  "choices": [
+   "Capernaum",
+   "Nazareth",
+   "Bethsaida",
+   "Jericho"
+  ],
+  "answer": 0,
+  "explanation": "Jesus entered into Capernaum, and it was noised that he was in the house.",
+  "ref": "Mark 2:1"
+ },
+ {
+  "id": "mark-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men carried the sick of the palsy?",
+  "choices": [
+   "Two",
+   "Six",
+   "Twelve",
+   "Four"
+  ],
+  "answer": 3,
+  "explanation": "They came bringing one sick of the palsy, which was borne of four.",
+  "ref": "Mark 2:3"
+ },
+ {
+  "id": "mark-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who did the scribes say can forgive sins?",
+  "choices": [
+   "The priests",
+   "Moses",
+   "God only",
+   "The high priest"
+  ],
+  "answer": 2,
+  "explanation": "The scribes reasoned, Why doth this man thus speak blasphemies? who can forgive sins but God only?",
+  "ref": "Mark 2:7"
+ },
+ {
+  "id": "mark-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the healed man do when Jesus told him to arise?",
+  "choices": [
+   "Fell silent and sat still",
+   "Took up his bed and went forth before them all",
+   "Ran to find the scribes",
+   "Asked for a sign"
+  ],
+  "answer": 1,
+  "explanation": "Immediately he arose, took up the bed, and went forth before them all.",
+  "ref": "Mark 2:12"
+ },
+ {
+  "id": "mark-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Levi sitting when Jesus said, Follow me?",
+  "choices": [
+   "At the receipt of custom",
+   "In the synagogue",
+   "On the mountain",
+   "At his fishing boats"
+  ],
+  "answer": 0,
+  "explanation": "Jesus saw Levi the son of Alphaeus sitting at the receipt of custom, and said unto him, Follow me.",
+  "ref": "Mark 2:14"
+ },
+ {
+  "id": "mark-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "With whom did the scribes and Pharisees see Jesus eating?",
+  "choices": [
+   "Herodians",
+   "Roman soldiers",
+   "Lepers",
+   "Publicans and sinners"
+  ],
+  "answer": 3,
+  "explanation": "When the scribes and Pharisees saw him eat with publicans and sinners, they said unto his disciples, How is it?",
+  "ref": "Mark 2:16"
+ },
+ {
+  "id": "mark-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Jesus say He came to call?",
+  "choices": [
+   "The righteous",
+   "The priests of the temple",
+   "Sinners to repentance",
+   "The elders of Israel"
+  ],
+  "answer": 2,
+  "explanation": "Jesus said, I came not to call the righteous, but sinners to repentance.",
+  "ref": "Mark 2:17"
+ },
+ {
+  "id": "mark-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the disciples doing in the corn fields on the sabbath day?",
+  "choices": [
+   "Reaping with sickles",
+   "Plucking the ears of corn",
+   "Gathering sheaves",
+   "Threshing wheat"
+  ],
+  "answer": 1,
+  "explanation": "His disciples began, as they went, to pluck the ears of corn.",
+  "ref": "Mark 2:23"
+ },
+ {
+  "id": "mark-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who did Jesus say have no need of the physician?",
+  "choices": [
+   "They that are whole",
+   "The scribes",
+   "The rich",
+   "The righteous priests"
+  ],
+  "answer": 0,
+  "explanation": "They that are whole have no need of the physician, but they that are sick.",
+  "ref": "Mark 2:17"
+ },
+ {
+  "id": "mark-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus see when He said, Son, thy sins be forgiven thee?",
+  "choices": [
+   "Their tears",
+   "Their obedience",
+   "The crowd’s respect",
+   "Their faith"
+  ],
+  "answer": 3,
+  "explanation": "When Jesus saw their faith, he said unto the sick of the palsy, Son, thy sins be forgiven thee.",
+  "ref": "Mark 2:5"
+ },
+ {
+  "id": "mark-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jesus know what the scribes were reasoning in their hearts?",
+  "choices": [
+   "A disciple told him",
+   "He heard them whisper",
+   "He perceived it in his spirit",
+   "He read it in the law"
+  ],
+  "answer": 2,
+  "explanation": "Immediately when Jesus perceived in his spirit that they so reasoned within themselves, he said unto them, Why reason ye?",
+  "ref": "Mark 2:8"
+ },
+ {
+  "id": "mark-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two sayings did Jesus ask the scribes to weigh as easier?",
+  "choices": [
+   "Be clean, or Be opened",
+   "Thy sins be forgiven, or Arise and walk",
+   "Follow me, or Come out",
+   "Peace, or Be still"
+  ],
+  "answer": 1,
+  "explanation": "Whether is it easier to say, Thy sins be forgiven thee; or to say, Arise, and take up thy bed, and walk?",
+  "ref": "Mark 2:9"
+ },
+ {
+  "id": "mark-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say He healed the man to show?",
+  "choices": [
+   "The Son of man can forgive sins on earth",
+   "The sabbath is for rest",
+   "The scribes were wrong about Moses",
+   "The kingdom was near"
+  ],
+  "answer": 0,
+  "explanation": "That ye may know that the Son of man hath power on earth to forgive sins, I say unto thee, Arise.",
+  "ref": "Mark 2:10–11"
+ },
+ {
+  "id": "mark-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the amazed people do after the paralytic walked out?",
+  "choices": [
+   "Took up stones",
+   "Left in anger",
+   "Went to tell the scribes",
+   "Glorified God"
+  ],
+  "answer": 3,
+  "explanation": "They were all amazed, and glorified God, saying, We never saw it on this fashion.",
+  "ref": "Mark 2:12"
+ },
+ {
+  "id": "mark-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the scribes call Jesus’ words to the paralytic?",
+  "choices": [
+   "Lies",
+   "Sorcery",
+   "Blasphemies",
+   "Folly"
+  ],
+  "answer": 2,
+  "explanation": "Why doth this man thus speak blasphemies?",
+  "ref": "Mark 2:7"
+ },
+ {
+  "id": "mark-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Jesus go forth again, so that the multitude resorted to Him?",
+  "choices": [
+   "Up the mountain",
+   "Into the synagogue",
+   "To the wilderness",
+   "By the sea side"
+  ],
+  "answer": 3,
+  "explanation": "He went forth again by the sea side; and all the multitude resorted unto him, and he taught them.",
+  "ref": "Mark 2:13"
+ },
+ {
+  "id": "mark-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose disciples, besides the Pharisees’, used to fast?",
+  "choices": [
+   "John’s",
+   "Elijah’s",
+   "Herod’s",
+   "Levi’s"
+  ],
+  "answer": 0,
+  "explanation": "The disciples of John and of the Pharisees used to fast.",
+  "ref": "Mark 2:18"
+ },
+ {
+  "id": "mark-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say would happen when the bridegroom is taken away?",
+  "choices": [
+   "They would scatter",
+   "They would feast all the more",
+   "They would go home",
+   "Then shall they fast"
+  ],
+  "answer": 3,
+  "explanation": "The days will come, when the bridegroom shall be taken away from them, and then shall they fast in those days.",
+  "ref": "Mark 2:20"
+ },
+ {
+  "id": "mark-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say happens when new cloth is sewn onto an old garment?",
+  "choices": [
+   "The garment is made new",
+   "The cloth shrinks away",
+   "The tear is made worse",
+   "Nothing is changed"
+  ],
+  "answer": 2,
+  "explanation": "The new piece that filled it up taketh away from the old, and the rent is made worse.",
+  "ref": "Mark 2:21"
+ },
+ {
+  "id": "mark-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say new wine does to old bottles?",
+  "choices": [
+   "Makes them stronger",
+   "Bursts them",
+   "Stains them",
+   "Turns sour in them"
+  ],
+  "answer": 1,
+  "explanation": "No man putteth new wine into old bottles: else the new wine doth burst the bottles.",
+  "ref": "Mark 2:22"
+ },
+ {
+  "id": "mark-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David eat when he was hungry, which only the priests might eat?",
+  "choices": [
+   "The shewbread",
+   "The firstfruits",
+   "The peace offering",
+   "The unleavened cakes"
+  ],
+  "answer": 0,
+  "explanation": "David went into the house of God and did eat the shewbread, which is not lawful to eat but for the priests.",
+  "ref": "Mark 2:25–26"
+ },
+ {
+  "id": "mark-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was noised abroad after some days in Capernaum?",
+  "choices": [
+   "That a prophet had risen",
+   "That the sabbath had been broken",
+   "That John was in prison",
+   "That Jesus was in the house"
+  ],
+  "answer": 3,
+  "explanation": "Again he entered into Capernaum, after some days; and it was noised that he was in the house.",
+  "ref": "Mark 2:1"
+ },
+ {
+  "id": "mark-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jesus begin His answer to the Pharisees about the corn?",
+  "choices": [
+   "By quoting the law of Moses",
+   "By rebuking the disciples",
+   "By asking if they had never read what David did",
+   "By asking for a sign"
+  ],
+  "answer": 2,
+  "explanation": "He said unto them, Have ye never read what David did, when he had need, and was an hungred?",
+  "ref": "Mark 2:25"
+ },
+ {
+  "id": "mark-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Levi’s father?",
+  "choices": [
+   "Alphaeus",
+   "Zebedee",
+   "Abiathar",
+   "Jonas"
+  ],
+  "answer": 0,
+  "explanation": "He saw Levi the son of Alphaeus sitting at the receipt of custom.",
+  "ref": "Mark 2:14"
+ },
+ {
+  "id": "mark-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "In the days of which high priest did David eat the shewbread?",
+  "choices": [
+   "Eli",
+   "Zadok",
+   "Annas",
+   "Abiathar"
+  ],
+  "answer": 3,
+  "explanation": "David went into the house of God in the days of Abiathar the high priest, and did eat the shewbread.",
+  "ref": "Mark 2:26"
+ },
+ {
+  "id": "mark-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into what did Jesus say new wine must be put?",
+  "choices": [
+   "Old bottles",
+   "Clay jars",
+   "Goatskins already used",
+   "New bottles"
+  ],
+  "answer": 3,
+  "explanation": "New wine must be put into new bottles.",
+  "ref": "Mark 2:22"
+ },
+ {
+  "id": "mark-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who alone was lawfully allowed to eat the shewbread?",
+  "choices": [
+   "The Levites",
+   "The priests",
+   "The elders",
+   "The scribes"
+  ],
+  "answer": 1,
+  "explanation": "The shewbread is not lawful to eat but for the priests.",
+  "ref": "Mark 2:26"
+ },
+ {
+  "id": "mark-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides eating it himself, what did David do with the shewbread?",
+  "choices": [
+   "Gave it to those with him",
+   "Offered it on the altar",
+   "Returned it to the priest",
+   "Hid it in the field"
+  ],
+  "answer": 0,
+  "explanation": "David did eat the shewbread, and gave also to them which were with him.",
+  "ref": "Mark 2:26"
+ },
+ {
+  "id": "mark-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jesus tell the healed man to go?",
+  "choices": [
+   "To the priest",
+   "To the synagogue",
+   "To Jerusalem",
+   "Into his house"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said, Arise, and take up thy bed, and go thy way into thine house.",
+  "ref": "Mark 2:11"
+ },
+ {
+  "id": "mark-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus conclude about the Son of man and the sabbath?",
+  "choices": [
+   "He keeps it better than the priests",
+   "He will bring it to an end",
+   "He is Lord also of the sabbath",
+   "He is servant of the sabbath"
+  ],
+  "answer": 2,
+  "explanation": "Therefore the Son of man is Lord also of the sabbath.",
+  "ref": "Mark 2:28"
+ },
+ {
+  "id": "mark-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How crowded was the house when the four men arrived?",
+  "choices": [
+   "Only the roof was free",
+   "The scribes had left space",
+   "Half the room was empty",
+   "No room, not even about the door"
+  ],
+  "answer": 3,
+  "explanation": "There was no room to receive them, no, not so much as about the door.",
+  "ref": "Mark 2:2"
+ },
+ {
+  "id": "mark-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the four men uncover the roof?",
+  "choices": [
+   "They could not come near for the press",
+   "The door was barred",
+   "Jesus was upstairs",
+   "The scribes blocked them"
+  ],
+  "answer": 0,
+  "explanation": "When they could not come nigh unto him for the press, they uncovered the roof where he was.",
+  "ref": "Mark 2:4"
+ },
+ {
+  "id": "mark-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Pharisees say the disciples were doing that was not lawful?",
+  "choices": [
+   "Eating with unwashen hands",
+   "Fasting in public",
+   "Gathering sheaves on a feast day",
+   "Plucking corn on the sabbath day"
+  ],
+  "answer": 3,
+  "explanation": "The Pharisees said unto him, Behold, why do they on the sabbath day that which is not lawful?",
+  "ref": "Mark 2:23–24"
+ },
+ {
+  "id": "mark-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Levi do when Jesus said, Follow me?",
+  "choices": [
+   "Asked to finish his accounts",
+   "Gave his goods to the poor first",
+   "Went home to his father",
+   "Arose and followed him"
+  ],
+  "answer": 3,
+  "explanation": "He arose and followed him.",
+  "ref": "Mark 2:14"
+ },
+ {
+  "id": "mark-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did people ask Jesus about His disciples and fasting?",
+  "choices": [
+   "Why they fasted too often",
+   "Why Jesus fasted forty days",
+   "Why John fasted alone",
+   "Why they fasted not, as John’s disciples did"
+  ],
+  "answer": 3,
+  "explanation": "Why do the disciples of John and of the Pharisees fast, but thy disciples fast not?",
+  "ref": "Mark 2:18"
+ },
+ {
+  "id": "mark-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what condition were David and his men when they ate the shewbread?",
+  "choices": [
+   "Hungry and in need",
+   "Wounded and weary",
+   "Strangers in a foreign land",
+   "Sick with fever"
+  ],
+  "answer": 0,
+  "explanation": "Have ye never read what David did, when he had need, and was an hungred, he, and they that were with him?",
+  "ref": "Mark 2:25"
+ },
+ {
+  "id": "mark-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Into what did David go when he ate the shewbread?",
+  "choices": [
+   "The tent of Abiathar",
+   "The city of the priests",
+   "The mountain of the Lord",
+   "The house of God"
+  ],
+  "answer": 3,
+  "explanation": "David went into the house of God... and did eat the shewbread.",
+  "ref": "Mark 2:26"
+ },
+ {
+  "id": "mark-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On which day did they watch to see whether Jesus would heal the man?",
+  "choices": [
+   "The sabbath day",
+   "The day of Atonement",
+   "The feast of tabernacles",
+   "The first day of the week"
+  ],
+  "answer": 0,
+  "explanation": "They watched him, whether he would heal him on the sabbath day; that they might accuse him.",
+  "ref": "Mark 3:2"
+ },
+ {
+  "id": "mark-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell the man with the withered hand to do?",
+  "choices": [
+   "Wash in the pool",
+   "Go show thyself to the priest",
+   "Follow me",
+   "Stretch forth thine hand"
+  ],
+  "answer": 3,
+  "explanation": "Jesus saith unto the man, Stretch forth thine hand. And he stretched it out.",
+  "ref": "Mark 3:5"
+ },
+ {
+  "id": "mark-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the unclean spirits cry when they saw Jesus?",
+  "choices": [
+   "Thou art Elias",
+   "Thou art the king of Israel",
+   "Thou art the Son of God",
+   "Thou art the prophet"
+  ],
+  "answer": 2,
+  "explanation": "Unclean spirits, when they saw him, fell down before him, and cried, saying, Thou art the Son of God.",
+  "ref": "Mark 3:11"
+ },
+ {
+  "id": "mark-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus go up to call those He would?",
+  "choices": [
+   "Into a ship",
+   "Into a mountain",
+   "Into the synagogue",
+   "Into the temple"
+  ],
+  "answer": 1,
+  "explanation": "He goeth up into a mountain, and calleth unto him whom he would: and they came unto him.",
+  "ref": "Mark 3:13"
+ },
+ {
+  "id": "mark-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "What surname did Jesus give to Simon?",
+  "choices": [
+   "Peter",
+   "Boanerges",
+   "Cephas the Canaanite",
+   "Rock of Zion"
+  ],
+  "answer": 0,
+  "explanation": "Simon he surnamed Peter.",
+  "ref": "Mark 3:16"
+ },
+ {
+  "id": "mark-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of the twelve is named as the one who betrayed Jesus?",
+  "choices": [
+   "Thomas",
+   "Philip",
+   "Thaddaeus",
+   "Judas Iscariot"
+  ],
+  "answer": 3,
+  "explanation": "Judas Iscariot, which also betrayed him.",
+  "ref": "Mark 3:19"
+ },
+ {
+  "id": "mark-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the scribes from Jerusalem say Jesus had?",
+  "choices": [
+   "Legion",
+   "A lying spirit",
+   "Beelzebub",
+   "The spirit of Elias"
+  ],
+  "answer": 2,
+  "explanation": "The scribes which came down from Jerusalem said, He hath Beelzebub, and by the prince of the devils casteth he out devils.",
+  "ref": "Mark 3:22"
+ },
+ {
+  "id": "mark-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question did Jesus ask the scribes in parables?",
+  "choices": [
+   "Is it lawful to heal on the sabbath?",
+   "How can Satan cast out Satan?",
+   "Where is thy witness?",
+   "Who made thee a judge?"
+  ],
+  "answer": 1,
+  "explanation": "He called them unto him, and said unto them in parables, How can Satan cast out Satan?",
+  "ref": "Mark 3:23"
+ },
+ {
+  "id": "mark-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say of a house divided against itself?",
+  "choices": [
+   "That house cannot stand",
+   "That house shall be rebuilt",
+   "That house shall be judged",
+   "That house shall be shaken"
+  ],
+  "answer": 0,
+  "explanation": "If a house be divided against itself, that house cannot stand.",
+  "ref": "Mark 3:25"
+ },
+ {
+  "id": "mark-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stood outside and sent to call Jesus?",
+  "choices": [
+   "The scribes from Jerusalem",
+   "The Herodians",
+   "His disciples",
+   "His brethren and his mother"
+  ],
+  "answer": 3,
+  "explanation": "There came then his brethren and his mother, and, standing without, sent unto him, calling him.",
+  "ref": "Mark 3:31"
+ },
+ {
+  "id": "mark-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus ask about the sabbath: to save life, or to do what?",
+  "choices": [
+   "To rest",
+   "To heal",
+   "To kill",
+   "To fast"
+  ],
+  "answer": 2,
+  "explanation": "Is it lawful to do good on the sabbath days, or to do evil? to save life, or to kill?",
+  "ref": "Mark 3:4"
+ },
+ {
+  "id": "mark-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the Pharisees answer Jesus’ question about the sabbath?",
+  "choices": [
+   "They said it was lawful",
+   "They held their peace",
+   "They quoted the law of Moses",
+   "They called for the priests"
+  ],
+  "answer": 1,
+  "explanation": "Is it lawful to do good on the sabbath days, or to do evil? to save life, or to kill? But they held their peace.",
+  "ref": "Mark 3:4"
+ },
+ {
+  "id": "mark-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What grieved Jesus as He looked round on them with anger?",
+  "choices": [
+   "The hardness of their hearts",
+   "Their unbelief in Moses",
+   "Their love of money",
+   "Their pride in the temple"
+  ],
+  "answer": 0,
+  "explanation": "He had looked round about on them with anger, being grieved for the hardness of their hearts.",
+  "ref": "Mark 3:5"
+ },
+ {
+  "id": "mark-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Jesus withdraw with His disciples after the plot began?",
+  "choices": [
+   "To Jerusalem",
+   "To the wilderness of Judaea",
+   "To the mountain",
+   "To the sea"
+  ],
+  "answer": 3,
+  "explanation": "Jesus withdrew himself with his disciples to the sea: and a great multitude followed him.",
+  "ref": "Mark 3:7"
+ },
+ {
+  "id": "mark-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus ask that a small ship wait on Him?",
+  "choices": [
+   "To cross to Tyre",
+   "To escape the Pharisees",
+   "Because of the multitude",
+   "To catch fish"
+  ],
+  "answer": 2,
+  "explanation": "He spake to his disciples, that a small ship should wait on him because of the multitude, lest they should throng him.",
+  "ref": "Mark 3:9"
+ },
+ {
+  "id": "mark-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the sick press upon Jesus?",
+  "choices": [
+   "To hear him preach",
+   "To touch him",
+   "To give him gifts",
+   "To follow him to the mountain"
+  ],
+  "answer": 1,
+  "explanation": "He had healed many; insomuch that they pressed upon him for to touch him, as many as had plagues.",
+  "ref": "Mark 3:10"
+ },
+ {
+  "id": "mark-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus charge the unclean spirits not to do?",
+  "choices": [
+   "Make him known",
+   "Enter the swine",
+   "Speak in the synagogue",
+   "Cry out in the night"
+  ],
+  "answer": 0,
+  "explanation": "He straitly charged them that they should not make him known.",
+  "ref": "Mark 3:12"
+ },
+ {
+  "id": "mark-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What power did Jesus give the twelve besides healing sicknesses?",
+  "choices": [
+   "To raise the dead",
+   "To forgive sins",
+   "To command the sea",
+   "To cast out devils"
+  ],
+  "answer": 3,
+  "explanation": "That he might send them forth to preach, and to have power to heal sicknesses, and to cast out devils.",
+  "ref": "Mark 3:14–15"
+ },
+ {
+  "id": "mark-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what first purpose did Jesus ordain the twelve?",
+  "choices": [
+   "That they should rule Israel",
+   "That they should baptize",
+   "That they should be with him",
+   "That they should write the law"
+  ],
+  "answer": 2,
+  "explanation": "He ordained twelve, that they should be with him, and that he might send them forth to preach.",
+  "ref": "Mark 3:14"
+ },
+ {
+  "id": "mark-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did His friends say when they went out to lay hold on Him?",
+  "choices": [
+   "He hath a devil",
+   "He is beside himself",
+   "He is a prophet",
+   "He is the carpenter"
+  ],
+  "answer": 1,
+  "explanation": "When his friends heard of it, they went out to lay hold on him: for they said, He is beside himself.",
+  "ref": "Mark 3:21"
+ },
+ {
+  "id": "mark-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say must happen before a strong man’s house can be spoiled?",
+  "choices": [
+   "The strong man must first be bound",
+   "The house must be sold",
+   "The door must be broken",
+   "The master must be asleep"
+  ],
+  "answer": 0,
+  "explanation": "No man can enter into a strong man’s house, and spoil his goods, except he will first bind the strong man.",
+  "ref": "Mark 3:27"
+ },
+ {
+  "id": "mark-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say has never forgiveness?",
+  "choices": [
+   "Pride before God",
+   "Breaking the sabbath",
+   "Cursing father or mother",
+   "Blasphemy against the Holy Ghost"
+  ],
+  "answer": 3,
+  "explanation": "He that shall blaspheme against the Holy Ghost hath never forgiveness, but is in danger of eternal damnation.",
+  "ref": "Mark 3:29"
+ },
+ {
+  "id": "mark-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where were Jesus’ mother and brethren when they sent for Him?",
+  "choices": [
+   "Waiting at the sea",
+   "Inside the crowded house",
+   "Standing outside",
+   "On the mountain"
+  ],
+  "answer": 2,
+  "explanation": "His brethren and his mother, standing without, sent unto him, calling him.",
+  "ref": "Mark 3:31"
+ },
+ {
+  "id": "mark-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus ask when told His mother and brethren were seeking Him?",
+  "choices": [
+   "Why do they trouble me?",
+   "Who is my mother, or my brethren?",
+   "Where is my father?",
+   "Is it the sabbath?"
+  ],
+  "answer": 1,
+  "explanation": "He answered them, saying, Who is my mother, or my brethren?",
+  "ref": "Mark 3:33"
+ },
+ {
+  "id": "mark-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "From where had the scribes who accused Jesus come down?",
+  "choices": [
+   "Jerusalem",
+   "Capernaum",
+   "Nazareth",
+   "Jericho"
+  ],
+  "answer": 0,
+  "explanation": "The scribes which came down from Jerusalem said, He hath Beelzebub.",
+  "ref": "Mark 3:22"
+ },
+ {
+  "id": "mark-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus first say to the man with the withered hand?",
+  "choices": [
+   "Stand forth",
+   "Be thou clean",
+   "Arise and walk",
+   "Come near"
+  ],
+  "answer": 0,
+  "explanation": "He saith unto the man which had the withered hand, Stand forth.",
+  "ref": "Mark 3:3"
+ },
+ {
+  "id": "mark-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the one who blasphemes the Holy Ghost is in danger of?",
+  "choices": [
+   "Eternal damnation",
+   "The sword of Herod",
+   "Being cut off from Israel",
+   "Death by stoning"
+  ],
+  "answer": 0,
+  "explanation": "He that shall blaspheme against the Holy Ghost hath never forgiveness, but is in danger of eternal damnation.",
+  "ref": "Mark 3:29"
+ },
+ {
+  "id": "mark-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say will happen to Satan if he rises against himself?",
+  "choices": [
+   "He cannot stand, but hath an end",
+   "He will rule the earth",
+   "He will be bound for a season",
+   "He will flee to the desert"
+  ],
+  "answer": 0,
+  "explanation": "If Satan rise up against himself, and be divided, he cannot stand, but hath an end.",
+  "ref": "Mark 3:26"
+ },
+ {
+  "id": "mark-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did they watch Jesus in the synagogue on the sabbath?",
+  "choices": [
+   "That they might accuse him",
+   "That they might learn from him",
+   "That they might honour him",
+   "That they might seek a sign"
+  ],
+  "answer": 0,
+  "explanation": "They watched him, whether he would heal him on the sabbath day; that they might accuse him.",
+  "ref": "Mark 3:2"
+ },
+ {
+  "id": "mark-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jesus and the twelve go after He ordained them?",
+  "choices": [
+   "Back to the synagogue",
+   "Up to Jerusalem",
+   "Into a house",
+   "Across the sea"
+  ],
+  "answer": 2,
+  "explanation": "Judas Iscariot, which also betrayed him: and they went into an house.",
+  "ref": "Mark 3:19"
+ },
+ {
+  "id": "mark-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why could Jesus and His disciples not so much as eat bread?",
+  "choices": [
+   "The sabbath had begun",
+   "The multitude came together again",
+   "No bread was left",
+   "The scribes kept watch at the door"
+  ],
+  "answer": 1,
+  "explanation": "The multitude cometh together again, so that they could not so much as eat bread.",
+  "ref": "Mark 3:20"
+ },
+ {
+  "id": "mark-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jesus speak of blasphemy against the Holy Ghost?",
+  "choices": [
+   "Because they said He had an unclean spirit",
+   "Because Herod had arrested John",
+   "Because they asked for a sign",
+   "Because Judas had left him"
+  ],
+  "answer": 0,
+  "explanation": "Because they said, He hath an unclean spirit.",
+  "ref": "Mark 3:30"
+ },
+ {
+  "id": "mark-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus’ friends go out to do when they heard of the crowd?",
+  "choices": [
+   "Lay hold on him",
+   "Bring him food",
+   "Send him to Jerusalem",
+   "Pray for him"
+  ],
+  "answer": 0,
+  "explanation": "When his friends heard of it, they went out to lay hold on him: for they said, He is beside himself.",
+  "ref": "Mark 3:21"
+ },
+ {
+  "id": "mark-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say shall be forgiven the sons of men?",
+  "choices": [
+   "Only sins done in ignorance",
+   "Only sins confessed to the priests",
+   "All sins and blasphemies",
+   "Sins against the law of Moses"
+  ],
+  "answer": 2,
+  "explanation": "All sins shall be forgiven unto the sons of men, and blasphemies wherewith soever they shall blaspheme.",
+  "ref": "Mark 3:28"
+ },
+ {
+  "id": "mark-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the man’s hand after he stretched it out?",
+  "choices": [
+   "Healed but scarred",
+   "Restored whole as the other",
+   "Weak for many days",
+   "Still partly withered"
+  ],
+  "answer": 1,
+  "explanation": "He stretched it out: and his hand was restored whole as the other.",
+  "ref": "Mark 3:5"
+ },
+ {
+  "id": "mark-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At whom did Jesus look when He said, Behold my mother and my brethren?",
+  "choices": [
+   "Those who sat about him",
+   "The scribes from Jerusalem",
+   "His brothers at the door",
+   "The twelve alone"
+  ],
+  "answer": 0,
+  "explanation": "He looked round about on them which sat about him, and said, Behold my mother and my brethren!",
+  "ref": "Mark 3:34"
+ },
+ {
+  "id": "mark-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the unclean spirits do when they saw Jesus?",
+  "choices": [
+   "Fled into the wilderness",
+   "Ran into the sea",
+   "Hid among the crowd",
+   "Fell down before him"
+  ],
+  "answer": 3,
+  "explanation": "Unclean spirits, when they saw him, fell down before him, and cried.",
+  "ref": "Mark 3:11"
+ },
+ {
+  "id": "mark-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the multitudes from far places come to Jesus?",
+  "choices": [
+   "They had been sent by Herod",
+   "They came to be baptized",
+   "They had heard what great things he did",
+   "They wished to see the twelve"
+  ],
+  "answer": 2,
+  "explanation": "When they had heard what great things he did, came unto him.",
+  "ref": "Mark 3:8"
+ },
+ {
+  "id": "mark-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jesus enter again when He met the man with the withered hand?",
+  "choices": [
+   "Into the synagogue",
+   "Into the temple",
+   "Into a house in Capernaum",
+   "Into a ship"
+  ],
+  "answer": 0,
+  "explanation": "He entered again into the synagogue; and there was a man there which had a withered hand.",
+  "ref": "Mark 3:1"
+ },
+ {
+  "id": "mark-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By whose power did the scribes say Jesus cast out devils?",
+  "choices": [
+   "The prince of the devils",
+   "The power of Herod",
+   "The spirit of Elias",
+   "The Holy Ghost"
+  ],
+  "answer": 0,
+  "explanation": "The scribes said, by the prince of the devils casteth he out devils.",
+  "ref": "Mark 3:22"
+ },
+ {
+  "id": "mark-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "From where did Jesus teach the multitude by the sea?",
+  "choices": [
+   "A ship on the sea",
+   "A mountain",
+   "The synagogue",
+   "A hill by the shore"
+  ],
+  "answer": 0,
+  "explanation": "A great multitude was gathered unto him, so that he entered into a ship, and sat in the sea.",
+  "ref": "Mark 4:1"
+ },
+ {
+  "id": "mark-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What devoured the seed that fell by the way side?",
+  "choices": [
+   "The wild beasts",
+   "Locusts",
+   "The sun",
+   "The fowls of the air"
+  ],
+  "answer": 3,
+  "explanation": "Some fell by the way side, and the fowls of the air came and devoured it up.",
+  "ref": "Mark 4:4"
+ },
+ {
+  "id": "mark-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What scorched the seed on stony ground?",
+  "choices": [
+   "A drought",
+   "Frost",
+   "The sun",
+   "A hot wind"
+  ],
+  "answer": 2,
+  "explanation": "When the sun was up, it was scorched; and because it had no root, it withered away.",
+  "ref": "Mark 4:6"
+ },
+ {
+  "id": "mark-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What choked the seed that fell among thorns?",
+  "choices": [
+   "The birds",
+   "The thorns grew up",
+   "The dry ground",
+   "The weeds of the field"
+  ],
+  "answer": 1,
+  "explanation": "Some fell among thorns, and the thorns grew up, and choked it, and it yielded no fruit.",
+  "ref": "Mark 4:7"
+ },
+ {
+  "id": "mark-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the good ground yield?",
+  "choices": [
+   "Thirty, sixty and an hundred",
+   "Ten, twenty and fifty",
+   "Two hundred and more",
+   "Seven times as much"
+  ],
+  "answer": 0,
+  "explanation": "Other fell on good ground, and brought forth, some thirty, and some sixty, and some an hundred.",
+  "ref": "Mark 4:8"
+ },
+ {
+  "id": "mark-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who comes immediately to take away the word sown by the way side?",
+  "choices": [
+   "The scribes",
+   "The Pharisees",
+   "The wild beasts",
+   "Satan"
+  ],
+  "answer": 3,
+  "explanation": "Satan cometh immediately, and taketh away the word that was sown in their hearts.",
+  "ref": "Mark 4:15"
+ },
+ {
+  "id": "mark-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Jesus doing in the ship during the storm?",
+  "choices": [
+   "Praying on his knees",
+   "Steering the ship",
+   "Asleep on a pillow",
+   "Mending a net"
+  ],
+  "answer": 2,
+  "explanation": "He was in the hinder part of the ship, asleep on a pillow.",
+  "ref": "Mark 4:38"
+ },
+ {
+  "id": "mark-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the disciples say when they woke Jesus in the storm?",
+  "choices": [
+   "Lord, save us from the sea",
+   "Master, carest thou not that we perish?",
+   "Master, command the wind",
+   "Teacher, where is the shore?"
+  ],
+  "answer": 1,
+  "explanation": "They awake him, and say unto him, Master, carest thou not that we perish?",
+  "ref": "Mark 4:38"
+ },
+ {
+  "id": "mark-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to the sea?",
+  "choices": [
+   "Peace, be still",
+   "Be thou clean",
+   "Be opened",
+   "Depart from us"
+  ],
+  "answer": 0,
+  "explanation": "He arose, and rebuked the wind, and said unto the sea, Peace, be still.",
+  "ref": "Mark 4:39"
+ },
+ {
+  "id": "mark-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when Jesus rebuked the wind and the sea?",
+  "choices": [
+   "The ship ran aground",
+   "The waves grew greater",
+   "The sky turned dark",
+   "The wind ceased and there was a great calm"
+  ],
+  "answer": 3,
+  "explanation": "The wind ceased, and there was a great calm.",
+  "ref": "Mark 4:39"
+ },
+ {
+  "id": "mark-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say is given to His disciples to know?",
+  "choices": [
+   "The day of his return",
+   "The meaning of the law",
+   "The mystery of the kingdom of God",
+   "The names of the elect"
+  ],
+  "answer": 2,
+  "explanation": "Unto you it is given to know the mystery of the kingdom of God: but unto them that are without, all these things are done in parables.",
+  "ref": "Mark 4:11"
+ },
+ {
+  "id": "mark-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus say those outside see and hear without understanding?",
+  "choices": [
+   "Because they were too young",
+   "Lest they should be converted and forgiven",
+   "Because the parables were too long",
+   "Because they were Gentiles"
+  ],
+  "answer": 1,
+  "explanation": "That seeing they may see, and not perceive; lest at any time they should be converted, and their sins should be forgiven them.",
+  "ref": "Mark 4:12"
+ },
+ {
+  "id": "mark-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the seed on stony ground spring up at once?",
+  "choices": [
+   "It had no depth of earth",
+   "It was watered by rain",
+   "It was sown early",
+   "It was the best seed"
+  ],
+  "answer": 0,
+  "explanation": "It had not much earth; and immediately it sprang up, because it had no depth of earth.",
+  "ref": "Mark 4:5"
+ },
+ {
+  "id": "mark-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do the hearers sown on stony ground fall away?",
+  "choices": [
+   "They love the world",
+   "They never heard the word",
+   "Satan steals it",
+   "Affliction or persecution comes"
+  ],
+  "answer": 3,
+  "explanation": "When affliction or persecution ariseth for the word’s sake, immediately they are offended.",
+  "ref": "Mark 4:17"
+ },
+ {
+  "id": "mark-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say chokes the word among the thorns?",
+  "choices": [
+   "Hatred, envy and strife",
+   "Fear of kings",
+   "Cares of this world, riches and lusts",
+   "Doubts about the law"
+  ],
+  "answer": 2,
+  "explanation": "The cares of this world, and the deceitfulness of riches, and the lusts of other things entering in, choke the word.",
+  "ref": "Mark 4:19"
+ },
+ {
+  "id": "mark-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Jesus say a candle should be set?",
+  "choices": [
+   "Under a bushel",
+   "On a candlestick",
+   "Under a bed",
+   "In the window"
+  ],
+  "answer": 1,
+  "explanation": "Is a candle brought to be put under a bushel, or under a bed? and not to be set on a candlestick?",
+  "ref": "Mark 4:21"
+ },
+ {
+  "id": "mark-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say will be done to you by the measure you mete?",
+  "choices": [
+   "It shall be measured to you",
+   "It shall be forgotten",
+   "It shall be doubled in heaven",
+   "It shall be given to others"
+  ],
+  "answer": 0,
+  "explanation": "With what measure ye mete, it shall be measured to you.",
+  "ref": "Mark 4:24"
+ },
+ {
+  "id": "mark-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the man not know about the seed he cast into the ground?",
+  "choices": [
+   "Where it was sown",
+   "When it was planted",
+   "Who owns the field",
+   "How it springs and grows"
+  ],
+  "answer": 3,
+  "explanation": "He should sleep, and rise night and day, and the seed should spring and grow up, he knoweth not how.",
+  "ref": "Mark 4:26–27"
+ },
+ {
+  "id": "mark-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What comes first as the seed grows?",
+  "choices": [
+   "The ear",
+   "The full corn",
+   "The blade",
+   "The root"
+  ],
+  "answer": 2,
+  "explanation": "First the blade, then the ear, after that the full corn in the ear.",
+  "ref": "Mark 4:28"
+ },
+ {
+  "id": "mark-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When does the man put in the sickle?",
+  "choices": [
+   "When the seed is sown",
+   "When the harvest is come",
+   "When the blade appears",
+   "When the sun is up"
+  ],
+  "answer": 1,
+  "explanation": "When the fruit is brought forth, immediately he putteth in the sickle, because the harvest is come.",
+  "ref": "Mark 4:29"
+ },
+ {
+  "id": "mark-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the mustard seed become when it is sown?",
+  "choices": [
+   "Greater than all herbs",
+   "A great cedar",
+   "A fruitful vine",
+   "A tree of life"
+  ],
+  "answer": 0,
+  "explanation": "When it is sown, it groweth up, and becometh greater than all herbs, and shooteth out great branches.",
+  "ref": "Mark 4:32"
+ },
+ {
+  "id": "mark-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What may lodge under the shadow of the grown mustard plant?",
+  "choices": [
+   "The flocks of the field",
+   "The wild beasts",
+   "The labourers",
+   "The fowls of the air"
+  ],
+  "answer": 3,
+  "explanation": "It shooteth out great branches; so that the fowls of the air may lodge under the shadow of it.",
+  "ref": "Mark 4:32"
+ },
+ {
+  "id": "mark-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What becomes of the word when the thorns choke it?",
+  "choices": [
+   "It is taken away",
+   "It becometh unfruitful",
+   "It withers in the sun",
+   "It is carried to another field"
+  ],
+  "answer": 1,
+  "explanation": "The cares of this world, and the deceitfulness of riches, choke the word, and it becometh unfruitful.",
+  "ref": "Mark 4:19"
+ },
+ {
+  "id": "mark-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was happening to the ship in the storm?",
+  "choices": [
+   "It was blown to the shore",
+   "The waves beat into it and it was full",
+   "It broke upon the rocks",
+   "It was swept away from the others"
+  ],
+  "answer": 1,
+  "explanation": "There arose a great storm of wind, and the waves beat into the ship, so that it was now full.",
+  "ref": "Mark 4:37"
+ },
+ {
+  "id": "mark-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus say nothing is kept secret?",
+  "choices": [
+   "That the wise may hide it",
+   "That it should come abroad",
+   "That the twelve may keep it",
+   "That the world may forget"
+  ],
+  "answer": 1,
+  "explanation": "Neither was any thing kept secret, but that it should come abroad.",
+  "ref": "Mark 4:22"
+ },
+ {
+  "id": "mark-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where in the ship was Jesus during the storm?",
+  "choices": [
+   "At the helm",
+   "In the bow",
+   "In the hinder part",
+   "Beneath the mast"
+  ],
+  "answer": 2,
+  "explanation": "He was in the hinder part of the ship, asleep on a pillow.",
+  "ref": "Mark 4:38"
+ },
+ {
+  "id": "mark-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the disciples lacked when He asked why they were so fearful?",
+  "choices": [
+   "Oars",
+   "Faith",
+   "Courage",
+   "Understanding"
+  ],
+  "answer": 1,
+  "explanation": "Why are ye so fearful? how is it that ye have no faith?",
+  "ref": "Mark 4:40"
+ },
+ {
+  "id": "mark-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the disciples feel after Jesus calmed the storm?",
+  "choices": [
+   "They feared exceedingly",
+   "They rejoiced and sang",
+   "They fell asleep",
+   "They grew angry"
+  ],
+  "answer": 0,
+  "explanation": "They feared exceedingly, and said one to another, What manner of man is this?",
+  "ref": "Mark 4:41"
+ },
+ {
+  "id": "mark-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus ask when the disciples asked Him about the parable?",
+  "choices": [
+   "Why do you not believe?",
+   "Who among you hath ears?",
+   "Where is your faith?",
+   "Know ye not this parable?"
+  ],
+  "answer": 3,
+  "explanation": "He said unto them, Know ye not this parable? and how then will ye know all parables?",
+  "ref": "Mark 4:13"
+ },
+ {
+  "id": "mark-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say will be taken from him that hath not?",
+  "choices": [
+   "His house",
+   "His good name",
+   "Even that which he hath",
+   "His place in the kingdom"
+  ],
+  "answer": 2,
+  "explanation": "He that hath not, from him shall be taken even that which he hath.",
+  "ref": "Mark 4:25"
+ },
+ {
+  "id": "mark-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the hearers sown on stony ground first receive the word?",
+  "choices": [
+   "With fear",
+   "With gladness",
+   "With doubt",
+   "With tears"
+  ],
+  "answer": 1,
+  "explanation": "They which are sown on stony ground, when they have heard the word, immediately receive it with gladness.",
+  "ref": "Mark 4:16"
+ },
+ {
+  "id": "mark-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do when He was alone with His disciples?",
+  "choices": [
+   "Expounded all things",
+   "Healed the sick",
+   "Sent them to preach",
+   "Sat in silence"
+  ],
+  "answer": 0,
+  "explanation": "When they were alone, he expounded all things to his disciples.",
+  "ref": "Mark 4:34"
+ },
+ {
+  "id": "mark-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus tell the people to take heed of?",
+  "choices": [
+   "What they eat",
+   "What they hear",
+   "What they sow",
+   "What they say"
+  ],
+  "answer": 1,
+  "explanation": "He said unto them, Take heed what ye hear: with what measure ye mete, it shall be measured to you.",
+  "ref": "Mark 4:24"
+ },
+ {
+  "id": "mark-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jesus describe the mustard seed’s size?",
+  "choices": [
+   "As small as dust",
+   "Less than all the seeds in the earth",
+   "Larger than the barley seed",
+   "Equal to a grain of corn"
+  ],
+  "answer": 1,
+  "explanation": "It is like a grain of mustard seed, which is less than all the seeds that be in the earth.",
+  "ref": "Mark 4:31"
+ },
+ {
+  "id": "mark-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the man in the secret seed parable do while it grows?",
+  "choices": [
+   "Watches over the field",
+   "Sleeps and rises night and day",
+   "Waters it daily",
+   "Labours without rest"
+  ],
+  "answer": 1,
+  "explanation": "He should sleep, and rise night and day, and the seed should spring and grow up, he knoweth not how.",
+  "ref": "Mark 4:27"
+ },
+ {
+  "id": "mark-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What brings forth fruit in the parable of the growing seed?",
+  "choices": [
+   "The earth of herself",
+   "The sower’s labour",
+   "The rain from heaven",
+   "The seed alone"
+  ],
+  "answer": 0,
+  "explanation": "The earth bringeth forth fruit of herself.",
+  "ref": "Mark 4:28"
+ },
+ {
+  "id": "mark-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the grown mustard plant shoot out?",
+  "choices": [
+   "Golden fruit",
+   "Great branches",
+   "Deep roots",
+   "A tall stem like a cedar"
+  ],
+  "answer": 1,
+  "explanation": "It groweth up, and becometh greater than all herbs, and shooteth out great branches.",
+  "ref": "Mark 4:32"
+ },
+ {
+  "id": "mark-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why do the hearers sown on stony ground endure only for a time?",
+  "choices": [
+   "They hate the word",
+   "They have no root in themselves",
+   "Satan takes it away",
+   "They love riches"
+  ],
+  "answer": 1,
+  "explanation": "These have no root in themselves, and so endure but for a time.",
+  "ref": "Mark 4:17"
+ },
+ {
+  "id": "mark-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What else went with Jesus’ ship across the sea?",
+  "choices": [
+   "A fleet of Roman galleys",
+   "Other little ships",
+   "A company of fishermen",
+   "Seven angels"
+  ],
+  "answer": 1,
+  "explanation": "They took him even as he was in the ship. And there were also with him other little ships.",
+  "ref": "Mark 4:36"
+ },
+ {
+  "id": "mark-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the multitude while Jesus sat in the ship?",
+  "choices": [
+   "By the sea on the land",
+   "In the ship with him",
+   "On the mountain",
+   "In the synagogue"
+  ],
+  "answer": 0,
+  "explanation": "He entered into a ship, and sat in the sea; and the whole multitude was by the sea on the land.",
+  "ref": "Mark 4:1"
+ },
+ {
+  "id": "mark-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which country did Jesus and His disciples come across the sea?",
+  "choices": [
+   "The country of the Gadarenes",
+   "The country of Tyre and Sidon",
+   "The land of Gennesaret",
+   "The borders of Judaea"
+  ],
+  "answer": 0,
+  "explanation": "They came over unto the other side of the sea, into the country of the Gadarenes.",
+  "ref": "Mark 5:1"
+ },
+ {
+  "id": "mark-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the man with the unclean spirit live?",
+  "choices": [
+   "In a cave by the sea",
+   "In the city gate",
+   "In a desert tent",
+   "Among the tombs"
+  ],
+  "answer": 3,
+  "explanation": "There met him out of the tombs a man with an unclean spirit, who had his dwelling among the tombs.",
+  "ref": "Mark 5:2–3"
+ },
+ {
+  "id": "mark-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the man do when he saw Jesus afar off?",
+  "choices": [
+   "Fled into the mountains",
+   "Hid among the tombs",
+   "Ran and worshipped him",
+   "Threw stones at him"
+  ],
+  "answer": 2,
+  "explanation": "When he saw Jesus afar off, he ran and worshipped him.",
+  "ref": "Mark 5:6"
+ },
+ {
+  "id": "mark-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the herd of swine do after the spirits entered them?",
+  "choices": [
+   "Scattered through the city",
+   "Ran down a steep place into the sea",
+   "Fell asleep on the hill",
+   "Ran into the tombs"
+  ],
+  "answer": 1,
+  "explanation": "The herd ran violently down a steep place into the sea, and were choked in the sea.",
+  "ref": "Mark 5:13"
+ },
+ {
+  "id": "mark-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell the healed man to do?",
+  "choices": [
+   "Go home and tell what the Lord had done",
+   "Follow him in the ship",
+   "Offer a sacrifice",
+   "Tell no man"
+  ],
+  "answer": 0,
+  "explanation": "Go home to thy friends, and tell them how great things the Lord hath done for thee.",
+  "ref": "Mark 5:19"
+ },
+ {
+  "id": "mark-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the healed man publish what Jesus had done?",
+  "choices": [
+   "In Jerusalem",
+   "In Capernaum",
+   "In Nazareth",
+   "In Decapolis"
+  ],
+  "answer": 3,
+  "explanation": "He departed, and began to publish in Decapolis how great things Jesus had done for him.",
+  "ref": "Mark 5:20"
+ },
+ {
+  "id": "mark-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the woman touch in the press?",
+  "choices": [
+   "His hand",
+   "His feet",
+   "His garment",
+   "His staff"
+  ],
+  "answer": 2,
+  "explanation": "She came in the press behind, and touched his garment.",
+  "ref": "Mark 5:27"
+ },
+ {
+  "id": "mark-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to the woman who touched Him?",
+  "choices": [
+   "Be of good cheer, thou art clean",
+   "Daughter, thy faith hath made thee whole",
+   "Go and sin no more",
+   "Thy sins are forgiven"
+  ],
+  "answer": 1,
+  "explanation": "Daughter, thy faith hath made thee whole; go in peace, and be whole of thy plague.",
+  "ref": "Mark 5:34"
+ },
+ {
+  "id": "mark-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What word came to Jairus from his house?",
+  "choices": [
+   "Thy daughter is dead",
+   "Thy daughter is healed",
+   "Thy daughter calls for thee",
+   "The physician has come"
+  ],
+  "answer": 0,
+  "explanation": "There came from the ruler of the synagogue’s house certain which said, Thy daughter is dead.",
+  "ref": "Mark 5:35"
+ },
+ {
+  "id": "mark-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say of the damsel?",
+  "choices": [
+   "She hath a devil",
+   "She shall rise at the last day",
+   "She is dying",
+   "She is not dead, but sleepeth"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said, the damsel is not dead, but sleepeth.",
+  "ref": "Mark 5:39"
+ },
+ {
+  "id": "mark-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the possessed man do to the chains and fetters?",
+  "choices": [
+   "Slipped them off in the night",
+   "Carried them to the tombs",
+   "Plucked them asunder and broke them",
+   "Mended them with stones"
+  ],
+  "answer": 2,
+  "explanation": "The chains had been plucked asunder by him, and the fetters broken in pieces: neither could any man tame him.",
+  "ref": "Mark 5:4"
+ },
+ {
+  "id": "mark-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the man do to himself night and day?",
+  "choices": [
+   "Fasted without ceasing",
+   "Cut himself with stones",
+   "Beat his chest in the tombs",
+   "Hid in a cave"
+  ],
+  "answer": 1,
+  "explanation": "Always, night and day, he was in the mountains, and in the tombs, crying, and cutting himself with stones.",
+  "ref": "Mark 5:5"
+ },
+ {
+  "id": "mark-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the man address Jesus?",
+  "choices": [
+   "Son of the most high God",
+   "Son of David",
+   "Prophet of Nazareth",
+   "King of the Jews"
+  ],
+  "answer": 0,
+  "explanation": "What have I to do with thee, Jesus, thou Son of the most high God?",
+  "ref": "Mark 5:7"
+ },
+ {
+  "id": "mark-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the spirit say, My name is Legion?",
+  "choices": [
+   "For we are strong",
+   "For we serve Caesar",
+   "For we come from Rome",
+   "For we are many"
+  ],
+  "answer": 3,
+  "explanation": "My name is Legion: for we are many.",
+  "ref": "Mark 5:9"
+ },
+ {
+  "id": "mark-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the devils beseech Jesus to do?",
+  "choices": [
+   "Send them into the sea",
+   "Let them stay in the tombs",
+   "Send them into the swine",
+   "Cast them into the wilderness"
+  ],
+  "answer": 2,
+  "explanation": "All the devils besought him, saying, Send us into the swine, that we may enter into them.",
+  "ref": "Mark 5:12"
+ },
+ {
+  "id": "mark-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did those who fed the swine do?",
+  "choices": [
+   "Drove the herd back",
+   "Fled and told it in the city",
+   "Followed Jesus to the ship",
+   "Hid among the tombs"
+  ],
+  "answer": 1,
+  "explanation": "They that fed the swine fled, and told it in the city, and in the country.",
+  "ref": "Mark 5:14"
+ },
+ {
+  "id": "mark-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the people find the man who had had the legion?",
+  "choices": [
+   "Sitting, clothed, and in his right mind",
+   "Sleeping in the tombs",
+   "Praying on the mountain",
+   "Weeping on the shore"
+  ],
+  "answer": 0,
+  "explanation": "They see him that was possessed with the devil sitting, and clothed, and in his right mind: and they were afraid.",
+  "ref": "Mark 5:15"
+ },
+ {
+  "id": "mark-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people of the country ask Jesus to do?",
+  "choices": [
+   "Heal their sick",
+   "Stay among them",
+   "Cast out more devils",
+   "Depart out of their coasts"
+  ],
+  "answer": 3,
+  "explanation": "They began to pray him to depart out of their coasts.",
+  "ref": "Mark 5:17"
+ },
+ {
+  "id": "mark-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the healed man ask when Jesus entered the ship?",
+  "choices": [
+   "That he might have a gift",
+   "That he might go to Jerusalem",
+   "That he might be with him",
+   "That Jesus would heal his friends"
+  ],
+  "answer": 2,
+  "explanation": "He that had been possessed with the devil prayed him that he might be with him.",
+  "ref": "Mark 5:18"
+ },
+ {
+  "id": "mark-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "What was Jairus by office?",
+  "choices": [
+   "A scribe from Jerusalem",
+   "One of the rulers of the synagogue",
+   "A centurion",
+   "A chief priest"
+  ],
+  "answer": 1,
+  "explanation": "There cometh one of the rulers of the synagogue, Jairus by name.",
+  "ref": "Mark 5:22"
+ },
+ {
+  "id": "mark-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jairus ask Jesus to do for his daughter?",
+  "choices": [
+   "Come and lay his hands on her",
+   "Speak a word from afar",
+   "Pray in the synagogue",
+   "Send a disciple"
+  ],
+  "answer": 0,
+  "explanation": "I pray thee, come and lay thy hands on her, that she may be healed; and she shall live.",
+  "ref": "Mark 5:23"
+ },
+ {
+  "id": "mark-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the woman spent on physicians?",
+  "choices": [
+   "Half her goods",
+   "Her husband’s inheritance",
+   "Ten pieces of silver",
+   "All that she had"
+  ],
+  "answer": 3,
+  "explanation": "She had suffered many things of many physicians, and had spent all that she had, and was nothing bettered.",
+  "ref": "Mark 5:26"
+ },
+ {
+  "id": "mark-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the woman say to herself about touching Jesus?",
+  "choices": [
+   "He will not know me",
+   "The priest must see me first",
+   "If I touch but his clothes, I shall be whole",
+   "I will wait for him to speak"
+  ],
+  "answer": 2,
+  "explanation": "She said, If I may touch but his clothes, I shall be whole.",
+  "ref": "Mark 5:28"
+ },
+ {
+  "id": "mark-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus know in Himself when the woman touched Him?",
+  "choices": [
+   "That she was unclean",
+   "That virtue had gone out of him",
+   "That Jairus was waiting",
+   "That his disciples had doubted"
+  ],
+  "answer": 1,
+  "explanation": "Jesus, immediately knowing in himself that virtue had gone out of him, turned him about in the press.",
+  "ref": "Mark 5:30"
+ },
+ {
+  "id": "mark-5-m-15",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Jesus allow to follow Him to Jairus’ house?",
+  "choices": [
+   "Peter, James and John",
+   "Peter, Andrew and Philip",
+   "James, Thomas and Levi",
+   "Only Peter"
+  ],
+  "answer": 0,
+  "explanation": "He suffered no man to follow him, save Peter, and James, and John the brother of James.",
+  "ref": "Mark 5:37"
+ },
+ {
+  "id": "mark-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man ask of Jesus, adjuring Him by God?",
+  "choices": [
+   "That he be sent to the tombs",
+   "That he be given a new name",
+   "That He torment him not",
+   "That he be healed in the temple"
+  ],
+  "answer": 2,
+  "explanation": "I adjure thee by God, that thou torment me not.",
+  "ref": "Mark 5:7"
+ },
+ {
+  "id": "mark-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did all men respond to the healed man’s story in Decapolis?",
+  "choices": [
+   "They drove him out",
+   "They were afraid and fled",
+   "They marvelled",
+   "They offered sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "He began to publish in Decapolis how great things Jesus had done for him: and all men did marvel.",
+  "ref": "Mark 5:20"
+ },
+ {
+  "id": "mark-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the spirits beseech Jesus not to do?",
+  "choices": [
+   "Send them away out of the country",
+   "Command them to be silent",
+   "Bind them in chains",
+   "Send them to the sea"
+  ],
+  "answer": 0,
+  "explanation": "He besought him much that he would not send them away out of the country.",
+  "ref": "Mark 5:10"
+ },
+ {
+  "id": "mark-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What became of the woman though she had seen many physicians?",
+  "choices": [
+   "She was half healed",
+   "She lost her sight",
+   "She grew worse",
+   "She was cast out of the city"
+  ],
+  "answer": 2,
+  "explanation": "She had suffered many things of many physicians, and was nothing bettered, but rather grew worse.",
+  "ref": "Mark 5:26"
+ },
+ {
+  "id": "mark-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "About how many swine ran into the sea?",
+  "choices": [
+   "Five hundred",
+   "Twelve hundred",
+   "Two thousand",
+   "Ten thousand"
+  ],
+  "answer": 2,
+  "explanation": "The herd ran violently down a steep place into the sea, (they were about two thousand;) and were choked in the sea.",
+  "ref": "Mark 5:13"
+ },
+ {
+  "id": "mark-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do to find the woman who touched Him?",
+  "choices": [
+   "Called for his disciples to search",
+   "Asked Jairus to point her out",
+   "Looked round about to see her",
+   "Went back to the shore"
+  ],
+  "answer": 2,
+  "explanation": "He looked round about to see her that had done this thing.",
+  "ref": "Mark 5:32"
+ },
+ {
+  "id": "mark-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the woman’s bleeding when she touched Jesus’ garment?",
+  "choices": [
+   "The fountain dried up straightway",
+   "It lessened over many days",
+   "It returned that night",
+   "It ceased after she bathed"
+  ],
+  "answer": 0,
+  "explanation": "Straightway the fountain of her blood was dried up; and she felt in her body that she was healed.",
+  "ref": "Mark 5:29"
+ },
+ {
+  "id": "mark-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the disciples answer when Jesus asked who touched Him?",
+  "choices": [
+   "We saw no one near thee",
+   "It was Jairus",
+   "A woman followed thee",
+   "Thou seest the multitude thronging thee"
+  ],
+  "answer": 3,
+  "explanation": "His disciples said, Thou seest the multitude thronging thee, and sayest thou, Who touched me?",
+  "ref": "Mark 5:31"
+ },
+ {
+  "id": "mark-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the woman come to Jesus when He turned about?",
+  "choices": [
+   "Boldly and in joy",
+   "Silently from afar",
+   "Fearing and trembling, and told all the truth",
+   "Weeping for her daughter"
+  ],
+  "answer": 2,
+  "explanation": "The woman fearing and trembling came and fell down before him, and told him all the truth.",
+  "ref": "Mark 5:33"
+ },
+ {
+  "id": "mark-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say to Jairus on hearing his daughter was dead?",
+  "choices": [
+   "Return home in peace",
+   "Be not afraid, only believe",
+   "Go and tell no man",
+   "Thy faith hath made thee whole"
+  ],
+  "answer": 1,
+  "explanation": "He saith unto the ruler of the synagogue, Be not afraid, only believe.",
+  "ref": "Mark 5:36"
+ },
+ {
+  "id": "mark-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did those in the house respond when Jesus said she sleepeth?",
+  "choices": [
+   "They laughed him to scorn",
+   "They fell silent",
+   "They wept the more",
+   "They begged him to heal her"
+  ],
+  "answer": 0,
+  "explanation": "They laughed him to scorn. But when he had put them all out, he entereth in where the damsel was lying.",
+  "ref": "Mark 5:40"
+ },
+ {
+  "id": "mark-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Jesus take with Him into the room where the damsel lay?",
+  "choices": [
+   "Only Peter",
+   "The whole household",
+   "The scribes of the synagogue",
+   "The father, the mother and those with him"
+  ],
+  "answer": 3,
+  "explanation": "He taketh the father and the mother of the damsel, and them that were with him, and entereth in where the damsel was lying.",
+  "ref": "Mark 5:40"
+ },
+ {
+  "id": "mark-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Jairus’ daughter when she arose?",
+  "choices": [
+   "Seven years",
+   "Fourteen years",
+   "Twelve years",
+   "Ten years"
+  ],
+  "answer": 2,
+  "explanation": "The damsel arose, and walked; for she was of the age of twelve years.",
+  "ref": "Mark 5:42"
+ },
+ {
+  "id": "mark-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus command to be given the damsel?",
+  "choices": [
+   "A garment",
+   "Something to eat",
+   "Water to drink",
+   "A place to rest"
+  ],
+  "answer": 1,
+  "explanation": "He commanded that something should be given her to eat.",
+  "ref": "Mark 5:43"
+ },
+ {
+  "id": "mark-5-h-15",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus charge them straitly about the raising of the damsel?",
+  "choices": [
+   "That no man should know it",
+   "That they should tell Jerusalem",
+   "That they should write it down",
+   "That they should bring her to the synagogue"
+  ],
+  "answer": 0,
+  "explanation": "He charged them straitly that no man should know it; and commanded that something should be given her to eat.",
+  "ref": "Mark 5:43"
+ },
+ {
+  "id": "mark-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people of Jesus’ own country call Him?",
+  "choices": [
+   "The carpenter, the son of Mary",
+   "The son of David",
+   "The prophet of Galilee",
+   "The scribe from Nazareth"
+  ],
+  "answer": 0,
+  "explanation": "Is not this the carpenter, the son of Mary, the brother of James, and Joses, and of Juda, and Simon?",
+  "ref": "Mark 6:3"
+ },
+ {
+  "id": "mark-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Jesus say a prophet is without honour?",
+  "choices": [
+   "In Jerusalem",
+   "Among the Gentiles",
+   "In the temple",
+   "In his own country and among his own kin"
+  ],
+  "answer": 3,
+  "explanation": "A prophet is not without honour, but in his own country, and among his own kin, and in his own house.",
+  "ref": "Mark 6:4"
+ },
+ {
+  "id": "mark-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jesus send out the twelve?",
+  "choices": [
+   "All together",
+   "One by one",
+   "By two and two",
+   "By tens"
+  ],
+  "answer": 2,
+  "explanation": "He called unto him the twelve, and began to send them forth by two and two.",
+  "ref": "Mark 6:7"
+ },
+ {
+  "id": "mark-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the twelve anoint the sick with?",
+  "choices": [
+   "Spikenard",
+   "Oil",
+   "Balm",
+   "Water from Jordan"
+  ],
+  "answer": 1,
+  "explanation": "They cast out many devils, and anointed with oil many that were sick, and healed them.",
+  "ref": "Mark 6:13"
+ },
+ {
+  "id": "mark-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Herod say Jesus was?",
+  "choices": [
+   "John the Baptist risen from the dead",
+   "Elias",
+   "Moses",
+   "Isaiah"
+  ],
+  "answer": 0,
+  "explanation": "Herod said, It is John, whom I beheaded: he is risen from the dead.",
+  "ref": "Mark 6:14–16"
+ },
+ {
+  "id": "mark-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Herodias’ daughter do that pleased Herod?",
+  "choices": [
+   "She sang",
+   "She played a harp",
+   "She served the feast",
+   "She danced"
+  ],
+  "answer": 3,
+  "explanation": "The daughter of Herodias came in, and danced, and pleased Herod and them that sat with him.",
+  "ref": "Mark 6:22"
+ },
+ {
+  "id": "mark-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Herodias tell her daughter to ask for?",
+  "choices": [
+   "Half the kingdom",
+   "A palace in Galilee",
+   "The head of John the Baptist",
+   "The freedom of John"
+  ],
+  "answer": 2,
+  "explanation": "She said, The head of John the Baptist.",
+  "ref": "Mark 6:24"
+ },
+ {
+  "id": "mark-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many fishes did the disciples have with the five loaves?",
+  "choices": [
+   "Three",
+   "Two",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "How many loaves have ye? go and see. And when they knew, they say, Five, and two fishes.",
+  "ref": "Mark 6:38"
+ },
+ {
+  "id": "mark-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many baskets of fragments were taken up?",
+  "choices": [
+   "Twelve",
+   "Seven",
+   "Five",
+   "Three"
+  ],
+  "answer": 0,
+  "explanation": "They took up twelve baskets full of the fragments, and of the fishes.",
+  "ref": "Mark 6:43"
+ },
+ {
+  "id": "mark-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "About how many men ate of the loaves?",
+  "choices": [
+   "Four thousand",
+   "Two thousand",
+   "Ten thousand",
+   "Five thousand"
+  ],
+  "answer": 3,
+  "explanation": "They that did eat of the loaves were about five thousand men.",
+  "ref": "Mark 6:44"
+ },
+ {
+  "id": "mark-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus intend as He walked on the sea toward the disciples?",
+  "choices": [
+   "To stop the wind",
+   "To get into the ship at once",
+   "To go to Bethsaida alone",
+   "To pass by them"
+  ],
+  "answer": 3,
+  "explanation": "He cometh unto them, walking upon the sea, and would have passed by them.",
+  "ref": "Mark 6:48"
+ },
+ {
+  "id": "mark-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to the frightened disciples on the sea?",
+  "choices": [
+   "Peace, be still",
+   "Why are ye so fearful?",
+   "Follow me",
+   "Be of good cheer: it is I; be not afraid"
+  ],
+  "answer": 3,
+  "explanation": "Immediately he talked with them, and saith unto them, Be of good cheer: it is I; be not afraid.",
+  "ref": "Mark 6:50"
+ },
+ {
+  "id": "mark-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What mighty works could Jesus do in His own country?",
+  "choices": [
+   "Only heal a few sick folk",
+   "None at all",
+   "All who came to him",
+   "Cast out devils only"
+  ],
+  "answer": 0,
+  "explanation": "He could there do no mighty work, save that he laid his hands upon a few sick folk, and healed them.",
+  "ref": "Mark 6:5"
+ },
+ {
+  "id": "mark-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus marvel at in His own country?",
+  "choices": [
+   "Their pride",
+   "Their poverty",
+   "Their anger",
+   "Their unbelief"
+  ],
+  "answer": 3,
+  "explanation": "He marvelled because of their unbelief.",
+  "ref": "Mark 6:6"
+ },
+ {
+  "id": "mark-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the twelve to do if a place would not receive them?",
+  "choices": [
+   "Call down fire",
+   "Curse the city",
+   "Shake off the dust under their feet",
+   "Pray in the street"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever shall not receive you, nor hear you, shake off the dust under your feet for a testimony against them.",
+  "ref": "Mark 6:11"
+ },
+ {
+  "id": "mark-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Which cities did Jesus say would find it more tolerable in judgment?",
+  "choices": [
+   "Tyre and Sidon",
+   "Sodom and Gomorrha",
+   "Capernaum and Bethsaida",
+   "Jericho and Ai"
+  ],
+  "answer": 1,
+  "explanation": "It shall be more tolerable for Sodom and Gomorrha in the day of judgment, than for that city.",
+  "ref": "Mark 6:11"
+ },
+ {
+  "id": "mark-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the twelve preach as they went out?",
+  "choices": [
+   "That men should repent",
+   "That the kingdom was lost",
+   "That the temple would fall",
+   "That the sabbath must be kept"
+  ],
+  "answer": 0,
+  "explanation": "They went out, and preached that men should repent.",
+  "ref": "Mark 6:12"
+ },
+ {
+  "id": "mark-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose wife was Herodias, whom Herod had married?",
+  "choices": [
+   "Caesar’s",
+   "Pilate’s",
+   "His brother Archelaus’",
+   "His brother Philip’s"
+  ],
+  "answer": 3,
+  "explanation": "Herod had laid hold upon John for Herodias’ sake, his brother Philip’s wife: for he had married her.",
+  "ref": "Mark 6:17"
+ },
+ {
+  "id": "mark-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had John said to Herod?",
+  "choices": [
+   "Repent and be baptized",
+   "Thy kingdom shall be taken",
+   "It is not lawful for thee to have thy brother’s wife",
+   "Thou art a king unjust"
+  ],
+  "answer": 2,
+  "explanation": "John had said unto Herod, It is not lawful for thee to have thy brother’s wife.",
+  "ref": "Mark 6:18"
+ },
+ {
+  "id": "mark-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Herod keep John safe from Herodias?",
+  "choices": [
+   "He loved John as a brother",
+   "He feared John, knowing him a just and holy man",
+   "He hoped to win the people",
+   "He had promised John’s father"
+  ],
+  "answer": 1,
+  "explanation": "Herod feared John, knowing that he was a just man and an holy, and observed him.",
+  "ref": "Mark 6:20"
+ },
+ {
+  "id": "mark-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Herod invite to the supper on his birthday?",
+  "choices": [
+   "His lords, high captains and chief estates of Galilee",
+   "The priests of Jerusalem",
+   "The Pharisees and scribes",
+   "The elders of Capernaum"
+  ],
+  "answer": 0,
+  "explanation": "Herod on his birthday made a supper to his lords, high captains, and chief estates of Galilee.",
+  "ref": "Mark 6:21"
+ },
+ {
+  "id": "mark-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much did Herod swear to give the damsel?",
+  "choices": [
+   "A hundred pieces of silver",
+   "A palace in Tiberias",
+   "The wealth of Philip",
+   "Up to the half of his kingdom"
+  ],
+  "answer": 3,
+  "explanation": "He sware unto her, Whatsoever thou shalt ask of me, I will give it thee, unto the half of my kingdom.",
+  "ref": "Mark 6:23"
+ },
+ {
+  "id": "mark-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Herod not refuse the damsel’s request?",
+  "choices": [
+   "He hated John",
+   "Herodias threatened him",
+   "For his oath’s sake and for those who sat with him",
+   "The people demanded it"
+  ],
+  "answer": 2,
+  "explanation": "The king was exceeding sorry; yet for his oath’s sake, and for their sakes which sat with him, he would not reject her.",
+  "ref": "Mark 6:26"
+ },
+ {
+  "id": "mark-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was John beheaded?",
+  "choices": [
+   "In the palace",
+   "In the prison",
+   "In the wilderness",
+   "At the Jordan"
+  ],
+  "answer": 1,
+  "explanation": "The king sent an executioner, and he went and beheaded him in the prison.",
+  "ref": "Mark 6:27"
+ },
+ {
+  "id": "mark-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus bid the apostles come apart and rest?",
+  "choices": [
+   "Many were coming and going, and they had no leisure to eat",
+   "They were weary from the sea",
+   "Herod was seeking them",
+   "It was the sabbath"
+  ],
+  "answer": 0,
+  "explanation": "There were many coming and going, and they had no leisure so much as to eat.",
+  "ref": "Mark 6:31"
+ },
+ {
+  "id": "mark-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Who besides John did others say Jesus might be?",
+  "choices": [
+   "Moses or Joshua",
+   "David or Solomon",
+   "Elias, or one of the prophets",
+   "Isaiah or Daniel"
+  ],
+  "answer": 2,
+  "explanation": "Others said, That it is Elias. And others said, That it is a prophet, or as one of the prophets.",
+  "ref": "Mark 6:15"
+ },
+ {
+  "id": "mark-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Herod respond when he heard John?",
+  "choices": [
+   "He wept and fled",
+   "He did many things and heard him gladly",
+   "He bound him again",
+   "He argued with him"
+  ],
+  "answer": 1,
+  "explanation": "When he heard him, he did many things, and heard him gladly.",
+  "ref": "Mark 6:20"
+ },
+ {
+  "id": "mark-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long were the twelve to stay in a house that received them?",
+  "choices": [
+   "Three days",
+   "Until the sabbath",
+   "Only one night",
+   "Till they departed from that place"
+  ],
+  "answer": 3,
+  "explanation": "In what place soever ye enter into an house, there abide till ye depart from that place.",
+  "ref": "Mark 6:10"
+ },
+ {
+  "id": "mark-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Who took up John’s corpse and laid it in a tomb?",
+  "choices": [
+   "Herod’s servants",
+   "Philip",
+   "Joseph of Arimathaea",
+   "His disciples"
+  ],
+  "answer": 3,
+  "explanation": "When his disciples heard of it, they came and took up his corpse, and laid it in a tomb.",
+  "ref": "Mark 6:29"
+ },
+ {
+  "id": "mark-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the people reach Jesus before His ship arrived?",
+  "choices": [
+   "They sailed in small boats",
+   "They waited at the mountain",
+   "They ran afoot and outwent them",
+   "They followed through the night"
+  ],
+  "answer": 2,
+  "explanation": "The people saw them departing, and ran afoot thither out of all cities, and outwent them.",
+  "ref": "Mark 6:33"
+ },
+ {
+  "id": "mark-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was Jesus moved with compassion toward the people?",
+  "choices": [
+   "They were hungry and sick",
+   "They were as sheep not having a shepherd",
+   "They had walked through the night",
+   "They had been cast out of the synagogue"
+  ],
+  "answer": 1,
+  "explanation": "Jesus was moved with compassion toward them, because they were as sheep not having a shepherd.",
+  "ref": "Mark 6:34"
+ },
+ {
+  "id": "mark-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the disciples say it would cost to buy bread for the crowd?",
+  "choices": [
+   "Two hundred pennyworth",
+   "Fifty pieces of silver",
+   "Twelve talents",
+   "Five hundred pence"
+  ],
+  "answer": 0,
+  "explanation": "They say unto him, Shall we go and buy two hundred pennyworth of bread, and give them to eat?",
+  "ref": "Mark 6:37"
+ },
+ {
+  "id": "mark-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the people seated on the green grass?",
+  "choices": [
+   "By tens in rows",
+   "In twelve groups",
+   "By tribes",
+   "In ranks, by hundreds and by fifties"
+  ],
+  "answer": 3,
+  "explanation": "They sat down in ranks, by hundreds, and by fifties.",
+  "ref": "Mark 6:40"
+ },
+ {
+  "id": "mark-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "To which place did Jesus send the disciples ahead in the ship?",
+  "choices": [
+   "Capernaum",
+   "Gennesaret",
+   "Bethsaida",
+   "Nazareth"
+  ],
+  "answer": 2,
+  "explanation": "He constrained his disciples to get into the ship, and to go to the other side before unto Bethsaida.",
+  "ref": "Mark 6:45"
+ },
+ {
+  "id": "mark-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Jesus go after sending the people away?",
+  "choices": [
+   "Into the ship",
+   "Into a mountain to pray",
+   "To Herod’s house",
+   "To Gennesaret"
+  ],
+  "answer": 1,
+  "explanation": "When he had sent them away, he departed into a mountain to pray.",
+  "ref": "Mark 6:46"
+ },
+ {
+  "id": "mark-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which watch of the night did Jesus come to them on the sea?",
+  "choices": [
+   "The fourth watch",
+   "The first watch",
+   "The second watch",
+   "The third watch"
+  ],
+  "answer": 0,
+  "explanation": "About the fourth watch of the night he cometh unto them, walking upon the sea.",
+  "ref": "Mark 6:48"
+ },
+ {
+  "id": "mark-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the disciples suppose when they saw Him walking on the sea?",
+  "choices": [
+   "That it was Elias",
+   "That it was a fisherman",
+   "That it was Herod’s soldier",
+   "That it was a spirit"
+  ],
+  "answer": 3,
+  "explanation": "When they saw him walking upon the sea, they supposed it had been a spirit, and cried out.",
+  "ref": "Mark 6:49"
+ },
+ {
+  "id": "mark-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why were the disciples sore amazed and wondering?",
+  "choices": [
+   "They had never seen the sea so calm",
+   "They had no bread left",
+   "They considered not the miracle of the loaves",
+   "They thought him a ghost still"
+  ],
+  "answer": 2,
+  "explanation": "They considered not the miracle of the loaves: for their heart was hardened.",
+  "ref": "Mark 6:51–52"
+ },
+ {
+  "id": "mark-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the sick beseech to touch in Gennesaret?",
+  "choices": [
+   "His hand",
+   "The border of his garment",
+   "His staff",
+   "His feet"
+  ],
+  "answer": 1,
+  "explanation": "They besought him that they might touch if it were but the border of his garment: and as many as touched him were made whole.",
+  "ref": "Mark 6:56"
+ },
+ {
+  "id": "mark-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the apostles do when they gathered to Jesus after their journey?",
+  "choices": [
+   "Asked for a sign",
+   "Fell silent in fear",
+   "Sent for the multitude",
+   "Told him all they had done and taught"
+  ],
+  "answer": 3,
+  "explanation": "The apostles gathered themselves together unto Jesus, and told him all things, both what they had done, and what they had taught.",
+  "ref": "Mark 6:30"
+ },
+ {
+  "id": "mark-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came together unto Jesus from Jerusalem?",
+  "choices": [
+   "The Pharisees and certain of the scribes",
+   "The Sadducees and priests",
+   "The Herodians and elders",
+   "The chief priests and Romans"
+  ],
+  "answer": 0,
+  "explanation": "Then came together unto him the Pharisees, and certain of the scribes, which came from Jerusalem.",
+  "ref": "Mark 7:1"
+ },
+ {
+  "id": "mark-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophet did Jesus say had prophesied well of the hypocrites?",
+  "choices": [
+   "Jeremiah",
+   "Moses",
+   "Daniel",
+   "Esaias"
+  ],
+  "answer": 3,
+  "explanation": "Well hath Esaias prophesied of you hypocrites, as it is written.",
+  "ref": "Mark 7:6"
+ },
+ {
+  "id": "mark-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people honour God, according to the prophecy Jesus quoted?",
+  "choices": [
+   "With their sacrifices",
+   "With their fasting",
+   "With their lips",
+   "With their tithes"
+  ],
+  "answer": 2,
+  "explanation": "This people honoureth me with their lips, but their heart is far from me.",
+  "ref": "Mark 7:6"
+ },
+ {
+  "id": "mark-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What commandment did Moses give about parents?",
+  "choices": [
+   "Obey the elders of the people",
+   "Honour thy father and thy mother",
+   "Give half to the priests",
+   "Bury thy father first"
+  ],
+  "answer": 1,
+  "explanation": "Moses said, Honour thy father and thy mother.",
+  "ref": "Mark 7:10"
+ },
+ {
+  "id": "mark-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Into whose borders did Jesus go after leaving the house?",
+  "choices": [
+   "The borders of Tyre and Sidon",
+   "The borders of Samaria",
+   "The borders of Judaea",
+   "The borders of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "From thence he arose, and went into the borders of Tyre and Sidon.",
+  "ref": "Mark 7:24"
+ },
+ {
+  "id": "mark-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the woman say the dogs eat under the table?",
+  "choices": [
+   "The scraps of the feast",
+   "The bones",
+   "The leavings of the swine",
+   "The children’s crumbs"
+  ],
+  "answer": 3,
+  "explanation": "Yes, Lord: yet the dogs under the table eat of the children’s crumbs.",
+  "ref": "Mark 7:28"
+ },
+ {
+  "id": "mark-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the woman find when she came to her house?",
+  "choices": [
+   "Her daughter asleep in the fields",
+   "Her daughter calling for water",
+   "The devil gone and her daughter on the bed",
+   "Her house empty"
+  ],
+  "answer": 2,
+  "explanation": "She found the devil gone out, and her daughter laid upon the bed.",
+  "ref": "Mark 7:30"
+ },
+ {
+  "id": "mark-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to the deaf man?",
+  "choices": [
+   "Talitha cumi",
+   "Ephphatha, that is, Be opened",
+   "Peace, be still",
+   "Be thou clean"
+  ],
+  "answer": 1,
+  "explanation": "Looking up to heaven, he sighed, and saith unto him, Ephphatha, that is, Be opened.",
+  "ref": "Mark 7:34"
+ },
+ {
+  "id": "mark-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus put into the deaf man’s ears?",
+  "choices": [
+   "His fingers",
+   "Clay",
+   "Oil",
+   "A cloth"
+  ],
+  "answer": 0,
+  "explanation": "He took him aside from the multitude, and put his fingers into his ears, and he spit, and touched his tongue.",
+  "ref": "Mark 7:33"
+ },
+ {
+  "id": "mark-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did those who brought the deaf man ask Jesus to do?",
+  "choices": [
+   "Speak a word from afar",
+   "Take him to the synagogue",
+   "Pray at the sea",
+   "Put his hand upon him"
+  ],
+  "answer": 3,
+  "explanation": "They bring unto him one that was deaf, and they beseech him to put his hand upon him.",
+  "ref": "Mark 7:32"
+ },
+ {
+  "id": "mark-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What tradition did the Pharisees and all the Jews hold to?",
+  "choices": [
+   "The law of Moses alone",
+   "The oral teaching of the priests",
+   "The tradition of the elders",
+   "The commandments of the prophets"
+  ],
+  "answer": 2,
+  "explanation": "The Pharisees, and all the Jews, except they wash their hands oft, eat not, holding the tradition of the elders.",
+  "ref": "Mark 7:3"
+ },
+ {
+  "id": "mark-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did they not eat unless they washed?",
+  "choices": [
+   "Before the sabbath",
+   "When they came from the market",
+   "After a feast day",
+   "When strangers were present"
+  ],
+  "answer": 1,
+  "explanation": "When they come from the market, except they wash, they eat not.",
+  "ref": "Mark 7:4"
+ },
+ {
+  "id": "mark-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus call the Pharisees and scribes?",
+  "choices": [
+   "Hypocrites",
+   "Blind guides",
+   "Serpents",
+   "Whited walls"
+  ],
+  "answer": 0,
+  "explanation": "Well hath Esaias prophesied of you hypocrites.",
+  "ref": "Mark 7:6"
+ },
+ {
+  "id": "mark-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say the people taught for doctrines?",
+  "choices": [
+   "The words of the prophets",
+   "The traditions of Moses",
+   "The sayings of the rabbis",
+   "The commandments of men"
+  ],
+  "answer": 3,
+  "explanation": "In vain do they worship me, teaching for doctrines the commandments of men.",
+  "ref": "Mark 7:7"
+ },
+ {
+  "id": "mark-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say they laid aside to hold the tradition of men?",
+  "choices": [
+   "The feast of tabernacles",
+   "The sabbath",
+   "The commandment of God",
+   "The offerings of the temple"
+  ],
+  "answer": 2,
+  "explanation": "For laying aside the commandment of God, ye hold the tradition of men.",
+  "ref": "Mark 7:8"
+ },
+ {
+  "id": "mark-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say should happen to whoso curseth father or mother?",
+  "choices": [
+   "Let him be cast out",
+   "Let him die the death",
+   "Let him pay a fine",
+   "Let him offer a sacrifice"
+  ],
+  "answer": 1,
+  "explanation": "Moses said, Honour thy father and thy mother; and, Whoso curseth father or mother, let him die the death.",
+  "ref": "Mark 7:10"
+ },
+ {
+  "id": "mark-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say Corban allowed a man to stop doing?",
+  "choices": [
+   "Doing ought for his father or mother",
+   "Keeping the sabbath",
+   "Paying the temple tax",
+   "Washing his hands"
+  ],
+  "answer": 0,
+  "explanation": "Ye suffer him no more to do ought for his father or his mother; making the word of God of none effect through your tradition.",
+  "ref": "Mark 7:11–13"
+ },
+ {
+  "id": "mark-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say makes the word of God of none effect?",
+  "choices": [
+   "Their sacrifices",
+   "Their idols",
+   "Their silence",
+   "Their tradition"
+  ],
+  "answer": 3,
+  "explanation": "Making the word of God of none effect through your tradition, which ye have delivered.",
+  "ref": "Mark 7:13"
+ },
+ {
+  "id": "mark-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does food go that enters a man, said Jesus?",
+  "choices": [
+   "Into the soul",
+   "Into the blood",
+   "Into the belly, not the heart",
+   "Into the temple of the body"
+  ],
+  "answer": 2,
+  "explanation": "It entereth not into his heart, but into the belly, and goeth out into the draught, purging all meats.",
+  "ref": "Mark 7:19"
+ },
+ {
+  "id": "mark-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these did Jesus name as coming out of the heart?",
+  "choices": [
+   "Idolatry",
+   "Murders",
+   "Drunkenness",
+   "Sabbath-breaking"
+  ],
+  "answer": 1,
+  "explanation": "From within, out of the heart of men, proceed evil thoughts, adulteries, fornications, murders.",
+  "ref": "Mark 7:21"
+ },
+ {
+  "id": "mark-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus want about His coming into the house at Tyre?",
+  "choices": [
+   "That no man should know it",
+   "That the Pharisees would follow",
+   "That a feast be made",
+   "That a guide be sent"
+  ],
+  "answer": 0,
+  "explanation": "He entered into an house, and would have no man know it: but he could not be hid.",
+  "ref": "Mark 7:24"
+ },
+ {
+  "id": "mark-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say should be filled first?",
+  "choices": [
+   "The dogs",
+   "The strangers",
+   "The scribes",
+   "The children"
+  ],
+  "answer": 3,
+  "explanation": "Let the children first be filled: for it is not meet to take the children’s bread, and to cast it unto the dogs.",
+  "ref": "Mark 7:27"
+ },
+ {
+  "id": "mark-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say because of the woman’s saying?",
+  "choices": [
+   "Thy faith hath made thee whole",
+   "Thy sins are forgiven",
+   "Go thy way; the devil is gone out of thy daughter",
+   "Return and tell no man"
+  ],
+  "answer": 2,
+  "explanation": "He said unto her, For this saying go thy way; the devil is gone out of thy daughter.",
+  "ref": "Mark 7:29"
+ },
+ {
+  "id": "mark-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Through which region did Jesus come to the sea of Galilee?",
+  "choices": [
+   "The wilderness of Judaea",
+   "The midst of the coasts of Decapolis",
+   "The hill country of Samaria",
+   "The plain of Gennesaret"
+  ],
+  "answer": 1,
+  "explanation": "Departing from the coasts of Tyre and Sidon, he came unto the sea of Galilee, through the midst of the coasts of Decapolis.",
+  "ref": "Mark 7:31"
+ },
+ {
+  "id": "mark-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Jesus take the deaf man?",
+  "choices": [
+   "Aside from the multitude",
+   "Into the synagogue",
+   "Out of the city to the mountain",
+   "To the house of the scribes"
+  ],
+  "answer": 0,
+  "explanation": "He took him aside from the multitude, and put his fingers into his ears.",
+  "ref": "Mark 7:33"
+ },
+ {
+  "id": "mark-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say of their worship though they honoured God with their lips?",
+  "choices": [
+   "It is in vain",
+   "It is accepted",
+   "It is half-hearted but blessed",
+   "It is hidden from men"
+  ],
+  "answer": 0,
+  "explanation": "In vain do they worship me, teaching for doctrines the commandments of men.",
+  "ref": "Mark 7:7"
+ },
+ {
+  "id": "mark-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these is in Jesus’ list of things that defile a man?",
+  "choices": [
+   "Idolatry",
+   "An evil eye",
+   "Drunkenness",
+   "Sorcery"
+  ],
+  "answer": 1,
+  "explanation": "Thefts, covetousness, wickedness, deceit, lasciviousness, an evil eye, blasphemy, pride, foolishness.",
+  "ref": "Mark 7:22"
+ },
+ {
+  "id": "mark-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Pharisees ask about the disciples and the elders’ tradition?",
+  "choices": [
+   "Why they walked not according to it",
+   "Why they fasted not",
+   "Why they ate with sinners",
+   "Why they plucked corn"
+  ],
+  "answer": 0,
+  "explanation": "Why walk not thy disciples according to the tradition of the elders, but eat bread with unwashen hands?",
+  "ref": "Mark 7:5"
+ },
+ {
+  "id": "mark-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the tradition say of the man who declared his goods Corban?",
+  "choices": [
+   "He shall be free",
+   "He shall be fined",
+   "He shall be cursed",
+   "He shall be a priest"
+  ],
+  "answer": 0,
+  "explanation": "If a man shall say to his father or mother, It is Corban; he shall be free.",
+  "ref": "Mark 7:11"
+ },
+ {
+  "id": "mark-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to the chapter, what does Corban mean?",
+  "choices": [
+   "A gift",
+   "A curse",
+   "A feast",
+   "An oath"
+  ],
+  "answer": 0,
+  "explanation": "It is Corban, that is to say, a gift, by whatsoever thou mightest be profited by me.",
+  "ref": "Mark 7:11"
+ },
+ {
+  "id": "mark-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do besides putting His fingers into the deaf man’s ears?",
+  "choices": [
+   "He washed his eyes",
+   "He spit and touched his tongue",
+   "He anointed him with oil",
+   "He laid hands on his head"
+  ],
+  "answer": 1,
+  "explanation": "He put his fingers into his ears, and he spit, and touched his tongue.",
+  "ref": "Mark 7:33"
+ },
+ {
+  "id": "mark-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do as He looked up to heaven?",
+  "choices": [
+   "He sighed",
+   "He wept",
+   "He knelt",
+   "He gave thanks aloud"
+  ],
+  "answer": 0,
+  "explanation": "Looking up to heaven, he sighed, and saith unto him, Ephphatha.",
+  "ref": "Mark 7:34"
+ },
+ {
+  "id": "mark-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the deaf man after Jesus spoke?",
+  "choices": [
+   "He could hear but not speak",
+   "He spoke but stayed deaf",
+   "He was healed after three days",
+   "His ears opened, his tongue loosed, he spake plain"
+  ],
+  "answer": 3,
+  "explanation": "Straightway his ears were opened, and the string of his tongue was loosed, and he spake plain.",
+  "ref": "Mark 7:35"
+ },
+ {
+  "id": "mark-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus charge the people about the deaf man’s healing?",
+  "choices": [
+   "That they should bring all the deaf to him",
+   "That they should praise God",
+   "That they should tell no man",
+   "That they should go to the priest"
+  ],
+  "answer": 2,
+  "explanation": "He charged them that they should tell no man: but the more he charged them, so much the more a great deal they published it.",
+  "ref": "Mark 7:36"
+ },
+ {
+  "id": "mark-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people say Jesus maketh?",
+  "choices": [
+   "The blind to see and the lame to walk",
+   "The deaf to hear and the dumb to speak",
+   "The dead to rise",
+   "The sea to be still"
+  ],
+  "answer": 1,
+  "explanation": "He maketh both the deaf to hear, and the dumb to speak.",
+  "ref": "Mark 7:37"
+ },
+ {
+  "id": "mark-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus call everyone to do before speaking about defilement?",
+  "choices": [
+   "Hearken and understand",
+   "Fast and pray",
+   "Come out of the city",
+   "Bring their offerings"
+  ],
+  "answer": 0,
+  "explanation": "He called all the people unto him, he said unto them, Hearken unto me every one of you, and understand.",
+  "ref": "Mark 7:14"
+ },
+ {
+  "id": "mark-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the woman do when she heard of Jesus?",
+  "choices": [
+   "Sent a servant to him",
+   "Waited at the synagogue",
+   "Cried out from afar",
+   "Came and fell at his feet"
+  ],
+  "answer": 3,
+  "explanation": "A certain woman, whose young daughter had an unclean spirit, heard of him, and came and fell at his feet.",
+  "ref": "Mark 7:25"
+ },
+ {
+  "id": "mark-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say it is not meet to cast to the dogs?",
+  "choices": [
+   "The holy things",
+   "The crumbs of the feast",
+   "The children’s bread",
+   "The fruit of the field"
+  ],
+  "answer": 2,
+  "explanation": "It is not meet to take the children’s bread, and to cast it unto the dogs.",
+  "ref": "Mark 7:27"
+ },
+ {
+  "id": "mark-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How astonished were the people at the healing of the deaf man?",
+  "choices": [
+   "A little",
+   "Beyond measure",
+   "For a short while",
+   "Not at all"
+  ],
+  "answer": 1,
+  "explanation": "They were beyond measure astonished, saying, He hath done all things well.",
+  "ref": "Mark 7:37"
+ },
+ {
+  "id": "mark-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jesus say they rejected the commandment of God?",
+  "choices": [
+   "That they may keep their own tradition",
+   "That they may please Herod",
+   "That they may honour the priests",
+   "That they may be left in peace"
+  ],
+  "answer": 0,
+  "explanation": "Full well ye reject the commandment of God, that ye may keep your own tradition.",
+  "ref": "Mark 7:9"
+ },
+ {
+  "id": "mark-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long had the multitude been with Jesus with nothing to eat?",
+  "choices": [
+   "Three days",
+   "One day",
+   "Seven days",
+   "Forty days"
+  ],
+  "answer": 0,
+  "explanation": "I have compassion on the multitude, because they have now been with me three days, and have nothing to eat.",
+  "ref": "Mark 8:2"
+ },
+ {
+  "id": "mark-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many baskets of broken meat were left?",
+  "choices": [
+   "Twelve",
+   "Five",
+   "Three",
+   "Seven"
+  ],
+  "answer": 3,
+  "explanation": "They took up of the broken meat that was left seven baskets.",
+  "ref": "Mark 8:8"
+ },
+ {
+  "id": "mark-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "About how many had eaten?",
+  "choices": [
+   "Five thousand",
+   "Three thousand",
+   "Four thousand",
+   "Twelve thousand"
+  ],
+  "answer": 2,
+  "explanation": "They that had eaten were about four thousand: and he sent them away.",
+  "ref": "Mark 8:9"
+ },
+ {
+  "id": "mark-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Pharisees seek from Jesus?",
+  "choices": [
+   "A healing for a ruler",
+   "A sign from heaven",
+   "A word against Herod",
+   "A place at his table"
+  ],
+  "answer": 1,
+  "explanation": "The Pharisees came forth, and began to question with him, seeking of him a sign from heaven, tempting him.",
+  "ref": "Mark 8:11"
+ },
+ {
+  "id": "mark-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many loaves did the disciples have with them in the ship?",
+  "choices": [
+   "One loaf",
+   "Five loaves",
+   "Seven loaves",
+   "None"
+  ],
+  "answer": 0,
+  "explanation": "The disciples had forgotten to take bread, neither had they in the ship with them more than one loaf.",
+  "ref": "Mark 8:14"
+ },
+ {
+  "id": "mark-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the blind man say when he first looked up?",
+  "choices": [
+   "I see nothing",
+   "I see a great light",
+   "I see the Lord",
+   "I see men as trees, walking"
+  ],
+  "answer": 3,
+  "explanation": "He looked up, and said, I see men as trees, walking.",
+  "ref": "Mark 8:24"
+ },
+ {
+  "id": "mark-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus do to the blind man’s eyes?",
+  "choices": [
+   "Anointed them with clay",
+   "Washed them in a pool",
+   "Spit on them and put His hands upon him",
+   "Bound them with a cloth"
+  ],
+  "answer": 2,
+  "explanation": "When he had spit on his eyes, and put his hands upon him, he asked him if he saw ought.",
+  "ref": "Mark 8:23"
+ },
+ {
+  "id": "mark-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Into which towns did Jesus and His disciples go when He asked who men said He was?",
+  "choices": [
+   "The towns of Decapolis",
+   "The towns of Caesarea Philippi",
+   "The towns of Galilee",
+   "The towns of Tyre"
+  ],
+  "answer": 1,
+  "explanation": "Jesus went out, and his disciples, into the towns of Caesarea Philippi.",
+  "ref": "Mark 8:27"
+ },
+ {
+  "id": "mark-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the people say Jesus was?",
+  "choices": [
+   "John the Baptist",
+   "Moses",
+   "Isaiah",
+   "David"
+  ],
+  "answer": 0,
+  "explanation": "They answered, John the Baptist: but some say, Elias; and others, One of the prophets.",
+  "ref": "Mark 8:28"
+ },
+ {
+  "id": "mark-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took Jesus aside and began to rebuke Him?",
+  "choices": [
+   "Andrew",
+   "Judas",
+   "Thomas",
+   "Peter"
+  ],
+  "answer": 3,
+  "explanation": "Peter took him, and began to rebuke him.",
+  "ref": "Mark 8:32"
+ },
+ {
+  "id": "mark-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus have compassion on the multitude?",
+  "choices": [
+   "They were sick",
+   "They had lost their shepherd",
+   "They had nothing to eat after three days",
+   "They had walked through the night"
+  ],
+  "answer": 2,
+  "explanation": "I have compassion on the multitude, because they have now been with me three days, and have nothing to eat.",
+  "ref": "Mark 8:2"
+ },
+ {
+  "id": "mark-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus not want to send them away fasting?",
+  "choices": [
+   "They would be robbed",
+   "They would faint by the way",
+   "The sabbath was near",
+   "The night was cold"
+  ],
+  "answer": 1,
+  "explanation": "If I send them away fasting to their own houses, they will faint by the way: for divers of them came from far.",
+  "ref": "Mark 8:3"
+ },
+ {
+  "id": "mark-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the disciples ask about feeding the multitude?",
+  "choices": [
+   "From whence can a man satisfy these men with bread here?",
+   "Shall we send to the city for food?",
+   "Shall we ask Herod for bread?",
+   "Is there a boy with loaves?"
+  ],
+  "answer": 0,
+  "explanation": "His disciples answered him, From whence can a man satisfy these men with bread here in the wilderness?",
+  "ref": "Mark 8:4"
+ },
+ {
+  "id": "mark-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus do with the seven loaves?",
+  "choices": [
+   "Sent them to the priests",
+   "Hid them until evening",
+   "Carried them to the people himself",
+   "Gave thanks, brake them and gave to his disciples"
+  ],
+  "answer": 3,
+  "explanation": "He took the seven loaves, and gave thanks, and brake, and gave to his disciples to set before them.",
+  "ref": "Mark 8:6"
+ },
+ {
+  "id": "mark-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they have besides the seven loaves?",
+  "choices": [
+   "Wine in jars",
+   "Figs and dates",
+   "A few small fishes",
+   "Two large fishes"
+  ],
+  "answer": 2,
+  "explanation": "They had a few small fishes: and he blessed, and commanded to set them also before them.",
+  "ref": "Mark 8:7"
+ },
+ {
+  "id": "mark-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "To which parts did Jesus come after sending the people away?",
+  "choices": [
+   "Gennesaret",
+   "Dalmanutha",
+   "Bethsaida",
+   "Capernaum"
+  ],
+  "answer": 1,
+  "explanation": "He entered into a ship with his disciples, and came into the parts of Dalmanutha.",
+  "ref": "Mark 8:10"
+ },
+ {
+  "id": "mark-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus do when the Pharisees asked for a sign?",
+  "choices": [
+   "Sighed deeply in his spirit",
+   "Wept",
+   "Healed a leper",
+   "Walked away silently"
+  ],
+  "answer": 0,
+  "explanation": "He sighed deeply in his spirit, and saith, Why doth this generation seek after a sign?",
+  "ref": "Mark 8:12"
+ },
+ {
+  "id": "mark-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say would be given to that generation?",
+  "choices": [
+   "The sign of Jonas",
+   "The sign of the temple",
+   "A sign from the sea",
+   "No sign"
+  ],
+  "answer": 3,
+  "explanation": "There shall no sign be given unto this generation.",
+  "ref": "Mark 8:12"
+ },
+ {
+  "id": "mark-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the disciples reason when Jesus warned them about leaven?",
+  "choices": [
+   "He means the Pharisees’ teaching",
+   "He is angry at Herod",
+   "It is because we have no bread",
+   "We must not eat in the ship"
+  ],
+  "answer": 2,
+  "explanation": "They reasoned among themselves, saying, It is because we have no bread.",
+  "ref": "Mark 8:16"
+ },
+ {
+  "id": "mark-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many baskets did the disciples take up after the five loaves fed five thousand?",
+  "choices": [
+   "Seven",
+   "Twelve",
+   "Five",
+   "Four"
+  ],
+  "answer": 1,
+  "explanation": "When I brake the five loaves among five thousand, how many baskets full of fragments took ye up? They say unto him, Twelve.",
+  "ref": "Mark 8:19"
+ },
+ {
+  "id": "mark-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Jesus lead the blind man before healing him?",
+  "choices": [
+   "Out of the town",
+   "Into the synagogue",
+   "To the pool",
+   "Up the mountain"
+  ],
+  "answer": 0,
+  "explanation": "He took the blind man by the hand, and led him out of the town.",
+  "ref": "Mark 8:23"
+ },
+ {
+  "id": "mark-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to the man after He healed him?",
+  "choices": [
+   "Go to the priest",
+   "Wash in the sea",
+   "Follow me",
+   "Neither go into the town, nor tell it to any"
+  ],
+  "answer": 3,
+  "explanation": "He sent him away to his house, saying, Neither go into the town, nor tell it to any in the town.",
+  "ref": "Mark 8:26"
+ },
+ {
+  "id": "mark-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus charge the disciples after Peter’s answer?",
+  "choices": [
+   "That they should preach in Jerusalem",
+   "That they should baptize",
+   "That they should tell no man of him",
+   "That they should write it down"
+  ],
+  "answer": 2,
+  "explanation": "He charged them that they should tell no man of him.",
+  "ref": "Mark 8:30"
+ },
+ {
+  "id": "mark-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "By whom did Jesus say the Son of man must be rejected?",
+  "choices": [
+   "The Pharisees and Herodians",
+   "The elders, chief priests and scribes",
+   "The Romans and Herod",
+   "The Sadducees and Samaritans"
+  ],
+  "answer": 1,
+  "explanation": "The Son of man must suffer many things, and be rejected of the elders, and of the chief priests, and scribes.",
+  "ref": "Mark 8:31"
+ },
+ {
+  "id": "mark-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to Peter when He rebuked him?",
+  "choices": [
+   "Get thee behind me, Satan",
+   "Depart from me, for I am a sinful man",
+   "Be thou still",
+   "Thou art Peter"
+  ],
+  "answer": 0,
+  "explanation": "He rebuked Peter, saying, Get thee behind me, Satan.",
+  "ref": "Mark 8:33"
+ },
+ {
+  "id": "mark-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jesus say Peter was in error?",
+  "choices": [
+   "He had denied the Christ",
+   "He had spoken too loudly",
+   "He savoured the things of men, not of God",
+   "He had doubted the sea"
+  ],
+  "answer": 2,
+  "explanation": "Thou savourest not the things that be of God, but the things that be of men.",
+  "ref": "Mark 8:33"
+ },
+ {
+  "id": "mark-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say of whoever will save his life?",
+  "choices": [
+   "He shall keep it for ever",
+   "He shall lose it",
+   "He shall be spared",
+   "He shall be judged"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever will save his life shall lose it; but whosoever shall lose his life for my sake and the gospel’s, the same shall save it.",
+  "ref": "Mark 8:35"
+ },
+ {
+  "id": "mark-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus ask would profit a man who gained the whole world?",
+  "choices": [
+   "He would lose his own soul",
+   "He would gain the kingdom",
+   "He would be envied of men",
+   "He would be ashamed of his gold"
+  ],
+  "answer": 0,
+  "explanation": "What shall it profit a man, if he shall gain the whole world, and lose his own soul?",
+  "ref": "Mark 8:36"
+ },
+ {
+  "id": "mark-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of whom did Jesus say the Son of man would be ashamed?",
+  "choices": [
+   "Those who deny the sabbath",
+   "Those who refuse baptism",
+   "Those who ask for signs",
+   "Whosoever is ashamed of him and his words"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever therefore shall be ashamed of me and of my words, of him also shall the Son of man be ashamed.",
+  "ref": "Mark 8:38"
+ },
+ {
+  "id": "mark-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what glory will the Son of man come?",
+  "choices": [
+   "The glory of David",
+   "The glory of Moses",
+   "The glory of his Father with the holy angels",
+   "The glory of the temple"
+  ],
+  "answer": 2,
+  "explanation": "When he cometh in the glory of his Father with the holy angels.",
+  "ref": "Mark 8:38"
+ },
+ {
+  "id": "mark-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many baskets did the disciples take up after the four thousand?",
+  "choices": [
+   "Twelve",
+   "Seven",
+   "Five",
+   "Nine"
+  ],
+  "answer": 1,
+  "explanation": "When the seven among four thousand, how many baskets full of fragments took ye up? And they said, Seven.",
+  "ref": "Mark 8:20"
+ },
+ {
+  "id": "mark-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do before He rebuked Peter?",
+  "choices": [
+   "Went away alone",
+   "Turned about and looked on his disciples",
+   "Wept openly",
+   "Struck the ground"
+  ],
+  "answer": 1,
+  "explanation": "When he had turned about and looked on his disciples, he rebuked Peter, saying, Get thee behind me, Satan.",
+  "ref": "Mark 8:33"
+ },
+ {
+  "id": "mark-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus command the people to do before the loaves were set before them?",
+  "choices": [
+   "Wash their hands",
+   "Sit down on the ground",
+   "Stand in ranks of fifty",
+   "Fast one more day"
+  ],
+  "answer": 1,
+  "explanation": "He commanded the people to sit down on the ground: and he took the seven loaves.",
+  "ref": "Mark 8:6"
+ },
+ {
+  "id": "mark-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened after Jesus put His hands again upon the man’s eyes?",
+  "choices": [
+   "He saw only light and shadow",
+   "He saw nothing but heard",
+   "He was restored and saw every man clearly",
+   "He still saw men as trees"
+  ],
+  "answer": 2,
+  "explanation": "He was restored, and saw every man clearly.",
+  "ref": "Mark 8:25"
+ },
+ {
+  "id": "mark-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do after refusing the Pharisees a sign?",
+  "choices": [
+   "Healed one of them",
+   "Left them and crossed to the other side in the ship",
+   "Went to Jerusalem",
+   "Prayed on the mountain"
+  ],
+  "answer": 1,
+  "explanation": "He left them, and entering into the ship again departed to the other side.",
+  "ref": "Mark 8:13"
+ },
+ {
+  "id": "mark-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say a follower must do first, before taking up his cross?",
+  "choices": [
+   "Deny himself",
+   "Sell his goods",
+   "Leave his family",
+   "Fast for forty days"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever will come after me, let him deny himself, and take up his cross, and follow me.",
+  "ref": "Mark 8:34"
+ },
+ {
+  "id": "mark-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do with the few small fishes?",
+  "choices": [
+   "Gave them to the disciples alone",
+   "Blessed them and commanded them set before the people",
+   "Kept them for the morrow",
+   "Cast them back into the sea"
+  ],
+  "answer": 1,
+  "explanation": "They had a few small fishes: and he blessed, and commanded to set them also before them.",
+  "ref": "Mark 8:7"
+ },
+ {
+  "id": "mark-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say would happen after three days?",
+  "choices": [
+   "The temple would be rebuilt",
+   "The kingdom would come",
+   "The Son of man would rise again",
+   "The disciples would be scattered"
+  ],
+  "answer": 2,
+  "explanation": "The Son of man must suffer many things, and be killed, and after three days rise again.",
+  "ref": "Mark 8:31"
+ },
+ {
+  "id": "mark-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus begin to teach His disciples the Son of man must do?",
+  "choices": [
+   "Gather the twelve tribes",
+   "Suffer many things, be rejected, killed and rise again",
+   "Restore the kingdom to Israel",
+   "Judge the Pharisees"
+  ],
+  "answer": 1,
+  "explanation": "He began to teach them, that the Son of man must suffer many things, and be rejected, and be killed, and after three days rise again.",
+  "ref": "Mark 8:31"
+ },
+ {
+  "id": "mark-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jesus describe the generation in which men would be ashamed of Him?",
+  "choices": [
+   "Adulterous and sinful",
+   "Hard and stiffnecked",
+   "Proud and blind",
+   "Faithless and perverse"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever shall be ashamed of me and of my words in this adulterous and sinful generation.",
+  "ref": "Mark 8:38"
  }
 ]
