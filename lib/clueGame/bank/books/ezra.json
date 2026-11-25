@@ -4766,5 +4766,645 @@
   "answer": 3,
   "explanation": "The matter was examined carefully over time by appointed leaders.",
   "ref": "Ezra 10:16\u201317"
+ },
+ {
+  "id": "ezra-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Ezra there was still hope in Israel concerning the strange wives?",
+  "choices": [
+   "Shechaniah the son of Jehiel",
+   "Johanan the son of Eliashib",
+   "Jonathan the son of Asahel",
+   "Meremoth the son of Uriah"
+  ],
+  "answer": 0,
+  "explanation": "Shechaniah the son of Jehiel said, We have trespassed against our God, yet now there is hope in Israel.",
+  "ref": "Ezra 10:2"
+ },
+ {
+  "id": "ezra-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Shechaniah propose to do about the strange wives?",
+  "choices": [
+   "Send them to Babylon",
+   "Ask the king for help",
+   "Teach them the law",
+   "Make a covenant with God to put them away"
+  ],
+  "answer": 3,
+  "explanation": "Let us make a covenant with our God to put away all the wives, and such as are born of them.",
+  "ref": "Ezra 10:3"
+ },
+ {
+  "id": "ezra-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra make the chief priests, Levites and all Israel do?",
+  "choices": [
+   "Fast for forty days",
+   "Leave Jerusalem",
+   "Swear to do as Shechaniah had said",
+   "Build an altar"
+  ],
+  "answer": 2,
+  "explanation": "Ezra made the chief priests, the Levites, and all Israel to swear that they should do according to this word. And they sware.",
+  "ref": "Ezra 10:5"
+ },
+ {
+  "id": "ezra-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra not do in the chamber of Johanan the son of Eliashib?",
+  "choices": [
+   "Pray aloud",
+   "Eat bread or drink water",
+   "Read the law",
+   "Speak to anyone"
+  ],
+  "answer": 1,
+  "explanation": "He did eat no bread, nor drink water: for he mourned because of the transgression.",
+  "ref": "Ezra 10:6"
+ },
+ {
+  "id": "ezra-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Ezra mourn?",
+  "choices": [
+   "For the transgression of those who had been carried away",
+   "For the death of the king",
+   "For the ruin of the walls",
+   "For the loss of the temple vessels"
+  ],
+  "answer": 0,
+  "explanation": "He mourned because of the transgression of them that had been carried away.",
+  "ref": "Ezra 10:6"
+ },
+ {
+  "id": "ezra-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Within how many days were all the people to gather at Jerusalem?",
+  "choices": [
+   "One day",
+   "Seven days",
+   "Ten days",
+   "Three days"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever would not come within three days, all his substance should be forfeited.",
+  "ref": "Ezra 10:8"
+ },
+ {
+  "id": "ezra-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would happen to anyone who did not come within three days?",
+  "choices": [
+   "He would be put to death",
+   "He would be sent to Babylon",
+   "Lose his goods and be separated from the people",
+   "He would pay a ram"
+  ],
+  "answer": 2,
+  "explanation": "All his substance should be forfeited, and himself separated from the congregation.",
+  "ref": "Ezra 10:8"
+ },
+ {
+  "id": "ezra-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stood up and told the people they had transgressed by taking strange wives?",
+  "choices": [
+   "Shechaniah",
+   "Ezra the priest",
+   "The princes",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Ezra the priest stood up, and said unto them, Ye have transgressed, and have taken strange wives.",
+  "ref": "Ezra 10:10"
+ },
+ {
+  "id": "ezra-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What troubled the people as they sat in the street of the house of God?",
+  "choices": [
+   "The great rain",
+   "A great wind",
+   "The heat of the sun",
+   "An earthquake"
+  ],
+  "answer": 0,
+  "explanation": "All the people sat in the street, trembling because of this matter, and for the great rain.",
+  "ref": "Ezra 10:9"
+ },
+ {
+  "id": "ezra-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the guilty priests offer for their trespass?",
+  "choices": [
+   "A bullock",
+   "A pair of doves",
+   "A lamb of the first year",
+   "A ram of the flock"
+  ],
+  "answer": 3,
+  "explanation": "They gave their hands that they would put away their wives; and being guilty, they offered a ram of the flock.",
+  "ref": "Ezra 10:19"
+ },
+ {
+  "id": "ezra-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who assembled to Ezra as he prayed and wept before the house of God?",
+  "choices": [
+   "Only the priests",
+   "The princes of Persia",
+   "A very great congregation of men, women and children",
+   "The elders of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "There assembled unto him out of Israel a very great congregation of men and women and children.",
+  "ref": "Ezra 10:1"
+ },
+ {
+  "id": "ezra-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To which family did Shechaniah belong?",
+  "choices": [
+   "The sons of Pashur",
+   "The sons of Elam",
+   "The sons of Harim",
+   "The sons of Immer"
+  ],
+  "answer": 1,
+  "explanation": "Shechaniah the son of Jehiel, one of the sons of Elam, answered and said unto Ezra.",
+  "ref": "Ezra 10:2"
+ },
+ {
+  "id": "ezra-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Shechaniah say to encourage Ezra?",
+  "choices": [
+   "Be of good courage and do it",
+   "Wait for the king's word",
+   "Let others do it",
+   "Pray for a sign"
+  ],
+  "answer": 0,
+  "explanation": "Arise; this matter belongeth unto thee: we also will be with thee: be of good courage, and do it.",
+  "ref": "Ezra 10:4"
+ },
+ {
+  "id": "ezra-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the congregation answer Ezra's command?",
+  "choices": [
+   "We cannot do it",
+   "Let us ask the king",
+   "Give us a year",
+   "As thou hast said, so must we do"
+  ],
+  "answer": 3,
+  "explanation": "Then all the congregation answered with a loud voice, As thou hast said, so must we do.",
+  "ref": "Ezra 10:12"
+ },
+ {
+  "id": "ezra-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people say they could not stand outside?",
+  "choices": [
+   "The king forbade it",
+   "The city was under siege",
+   "They were many and it was a time of much rain",
+   "They were afraid of the princes"
+  ],
+  "answer": 2,
+  "explanation": "The people are many, and it is a time of much rain, and we are not able to stand without.",
+  "ref": "Ezra 10:13"
+ },
+ {
+  "id": "ezra-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which men gathered unto Jerusalem within three days?",
+  "choices": [
+   "The men of Levi",
+   "The men of Judah and Benjamin",
+   "The men of Ephraim",
+   "The men of Gad"
+  ],
+  "answer": 1,
+  "explanation": "All the men of Judah and Benjamin gathered themselves together unto Jerusalem within three days.",
+  "ref": "Ezra 10:9"
+ },
+ {
+  "id": "ezra-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezra tell the people to do besides confessing to the LORD?",
+  "choices": [
+   "Separate from the people of the land and the strange wives",
+   "Pay a tenth of their goods",
+   "Leave Jerusalem",
+   "Build the walls"
+  ],
+  "answer": 0,
+  "explanation": "Make confession unto the LORD, and do his pleasure: and separate yourselves from the people of the land.",
+  "ref": "Ezra 10:11"
+ },
+ {
+  "id": "ezra-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were to stand for all the congregation at appointed times?",
+  "choices": [
+   "The singers and porters",
+   "The princes of Persia",
+   "The Levites alone",
+   "The rulers, with the elders and judges of each city"
+  ],
+  "answer": 3,
+  "explanation": "Let our rulers stand, and let them come at appointed times, and with them the elders of every city, and the judges thereof.",
+  "ref": "Ezra 10:14"
+ },
+ {
+  "id": "ezra-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who helped Jonathan and Jahaziah in this matter?",
+  "choices": [
+   "Eliashib and Johanan",
+   "Shechaniah and Jehiel",
+   "Meshullam and Shabbethai the Levite",
+   "Meremoth and Eleazar"
+  ],
+  "answer": 2,
+  "explanation": "Meshullam and Shabbethai the Levite helped them.",
+  "ref": "Ezra 10:15"
+ },
+ {
+  "id": "ezra-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when were the rulers to keep handling the matter?",
+  "choices": [
+   "Until the king returned",
+   "Until the fierce wrath of God was turned away",
+   "Until the next feast",
+   "Until the walls were built"
+  ],
+  "answer": 1,
+  "explanation": "Until the fierce wrath of our God for this matter be turned from us.",
+  "ref": "Ezra 10:14"
+ },
+ {
+  "id": "ezra-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was true of some of the men who had taken strange wives?",
+  "choices": [
+   "They had children by them",
+   "They were priests",
+   "They had come from Persia",
+   "They had been judges"
+  ],
+  "answer": 0,
+  "explanation": "All these had taken strange wives: and some of them had wives by whom they had children.",
+  "ref": "Ezra 10:44"
+ },
+ {
+  "id": "ezra-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Israel done, according to Shechaniah?",
+  "choices": [
+   "Forgotten the sabbath",
+   "Defiled the altar",
+   "Stopped the offerings",
+   "Taken strange wives of the people of the land"
+  ],
+  "answer": 3,
+  "explanation": "We have trespassed against our God, and have taken strange wives of the people of the land.",
+  "ref": "Ezra 10:2"
+ },
+ {
+  "id": "ezra-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Which priestly line is named first among those who had taken strange wives?",
+  "choices": [
+   "The sons of Immer",
+   "The sons of Harim",
+   "The sons of Jeshua the son of Jozadak",
+   "The sons of Pashur"
+  ],
+  "answer": 2,
+  "explanation": "Among the sons of the priests were the sons of Jeshua the son of Jozadak, and his brethren.",
+  "ref": "Ezra 10:18"
+ },
+ {
+  "id": "ezra-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the sons of the priests do to show they would put away their wives?",
+  "choices": [
+   "Sent a letter",
+   "Gave their hands",
+   "Signed a scroll",
+   "Swore by the altar"
+  ],
+  "answer": 1,
+  "explanation": "They gave their hands that they would put away their wives.",
+  "ref": "Ezra 10:19"
+ },
+ {
+  "id": "ezra-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month did the people gather at Jerusalem?",
+  "choices": [
+   "The ninth month",
+   "The first month",
+   "The fifth month",
+   "The tenth month"
+  ],
+  "answer": 0,
+  "explanation": "It was the ninth month, on the twentieth day of the month.",
+  "ref": "Ezra 10:9"
+ },
+ {
+  "id": "ezra-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what day of the ninth month did the people gather?",
+  "choices": [
+   "The first day",
+   "The tenth day",
+   "The twenty-fifth day",
+   "The twentieth day"
+  ],
+  "answer": 3,
+  "explanation": "It was the ninth month, on the twentieth day of the month.",
+  "ref": "Ezra 10:9"
+ },
+ {
+  "id": "ezra-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Ezra and the chief of the fathers sit down to examine the matter?",
+  "choices": [
+   "The first day of the first month",
+   "The twentieth day of the ninth month",
+   "The first day of the tenth month",
+   "The first day of the seventh month"
+  ],
+  "answer": 2,
+  "explanation": "They sat down in the first day of the tenth month to examine the matter.",
+  "ref": "Ezra 10:16"
+ },
+ {
+  "id": "ezra-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By when did they make an end with all the men who had taken strange wives?",
+  "choices": [
+   "The first day of the tenth month",
+   "The first day of the first month",
+   "The twentieth day of the ninth month",
+   "The fifth month"
+  ],
+  "answer": 1,
+  "explanation": "They made an end with all the men that had taken strange wives by the first day of the first month.",
+  "ref": "Ezra 10:17"
+ },
+ {
+  "id": "ezra-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man, the son of Asahel, was employed about this matter?",
+  "choices": [
+   "Jonathan",
+   "Jahaziah",
+   "Meshullam",
+   "Shabbethai"
+  ],
+  "answer": 0,
+  "explanation": "Only Jonathan the son of Asahel and Jahaziah the son of Tikvah were employed about this matter.",
+  "ref": "Ezra 10:15"
+ },
+ {
+  "id": "ezra-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Jeshua, named among the priests?",
+  "choices": [
+   "Immer",
+   "Pashur",
+   "Harim",
+   "Jozadak"
+  ],
+  "answer": 3,
+  "explanation": "Of the sons of Jeshua the son of Jozadak, and his brethren.",
+  "ref": "Ezra 10:18"
+ },
+ {
+  "id": "ezra-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which Levite is also called Kelita?",
+  "choices": [
+   "Jozabad",
+   "Shimei",
+   "Kelaiah",
+   "Pethahiah"
+  ],
+  "answer": 2,
+  "explanation": "Of the Levites; Jozabad, Shimei, Kelaiah, (the same is Kelita), Pethahiah, Judah, and Eliezer.",
+  "ref": "Ezra 10:23"
+ },
+ {
+  "id": "ezra-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which singer is named among those who had taken strange wives?",
+  "choices": [
+   "Shallum",
+   "Eliashib",
+   "Telem",
+   "Uri"
+  ],
+  "answer": 1,
+  "explanation": "Of the singers also; Eliashib.",
+  "ref": "Ezra 10:24"
+ },
+ {
+  "id": "ezra-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of the porters is named among those who had taken strange wives?",
+  "choices": [
+   "Shallum",
+   "Eliashib",
+   "Hanani",
+   "Zebadiah"
+  ],
+  "answer": 0,
+  "explanation": "Of the porters; Shallum, and Telem, and Uri.",
+  "ref": "Ezra 10:24"
+ },
+ {
+  "id": "ezra-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two men of the sons of Immer are named?",
+  "choices": [
+   "Maaseiah and Elijah",
+   "Elioenai and Ishmael",
+   "Jozabad and Elasah",
+   "Hanani and Zebadiah"
+  ],
+  "answer": 3,
+  "explanation": "And of the sons of Immer; Hanani, and Zebadiah.",
+  "ref": "Ezra 10:20"
+ },
+ {
+  "id": "ezra-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did all the people sit, trembling, when they gathered?",
+  "choices": [
+   "In the temple court",
+   "By the river Ahava",
+   "In the street of the house of God",
+   "In the king's gate"
+  ],
+  "answer": 2,
+  "explanation": "All the people sat in the street of the house of God, trembling because of this matter.",
+  "ref": "Ezra 10:9"
+ },
+ {
+  "id": "ezra-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the wives, whom did Shechaniah say they would put away?",
+  "choices": [
+   "Their servants",
+   "Those born of the wives",
+   "Their cattle",
+   "Their friends"
+  ],
+  "answer": 1,
+  "explanation": "Let us put away all the wives, and such as are born of them.",
+  "ref": "Ezra 10:3"
+ },
+ {
+  "id": "ezra-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Shechaniah said the covenant was to be done according to what?",
+  "choices": [
+   "The law",
+   "The king's decree",
+   "The vote of the elders",
+   "The lot"
+  ],
+  "answer": 0,
+  "explanation": "Let it be done according to the law.",
+  "ref": "Ezra 10:3"
+ },
+ {
+  "id": "ezra-10-h-14",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose chamber did Ezra go into when he rose from before the house of God?",
+  "choices": [
+   "Meremoth the son of Uriah",
+   "Shechaniah the son of Jehiel",
+   "Iddo the chief",
+   "Johanan the son of Eliashib"
+  ],
+  "answer": 3,
+  "explanation": "Ezra went into the chamber of Johanan the son of Eliashib.",
+  "ref": "Ezra 10:6"
+ },
+ {
+  "id": "ezra-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who sat down with Ezra to examine the matter?",
+  "choices": [
+   "The princes of Persia",
+   "The priests of Immer",
+   "Certain chief of the fathers, by their names",
+   "The elders of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "Ezra the priest, with certain chief of the fathers, all of them by their names, were separated, and sat down to examine the matter.",
+  "ref": "Ezra 10:16"
+ },
+ {
+  "id": "ezra-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where were all the children of the captivity told to gather by the proclamation?",
+  "choices": [
+   "Jerusalem",
+   "Bethel",
+   "Casiphia",
+   "The river Ahava"
+  ],
+  "answer": 0,
+  "explanation": "They made proclamation throughout Judah and Jerusalem that they should gather themselves together unto Jerusalem.",
+  "ref": "Ezra 10:7"
  }
 ]
