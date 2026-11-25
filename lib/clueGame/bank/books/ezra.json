@@ -2016,6 +2016,374 @@
   "ref": "Ezra 5:5"
  },
  {
+  "id": "ezra-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "To which king did Tatnai send his letter?",
+  "choices": [
+   "Cyrus",
+   "Artaxerxes",
+   "Darius",
+   "Nebuchadnezzar"
+  ],
+  "answer": 2,
+  "explanation": "They sent a letter unto Darius the king, all peace.",
+  "ref": "Ezra 5:6\u20137"
+ },
+ {
+  "id": "ezra-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Tatnai ask the Jews about the building?",
+  "choices": [
+   "Who hath commanded you to build this house",
+   "How long will it take",
+   "Where will you get timber",
+   "Why is it so small"
+  ],
+  "answer": 0,
+  "explanation": "Who hath commanded you to build this house, and to make up this wall?",
+  "ref": "Ezra 5:3"
+ },
+ {
+  "id": "ezra-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who destroyed the house of God and carried the people away to Babylon?",
+  "choices": [
+   "Cyrus",
+   "Nebuchadnezzar",
+   "Darius",
+   "Tatnai"
+  ],
+  "answer": 1,
+  "explanation": "God gave them into the hand of Nebuchadnezzar, who destroyed this house, and carried the people away into Babylon.",
+  "ref": "Ezra 5:12"
+ },
+ {
+  "id": "ezra-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king made a decree to build the house of God in his first year?",
+  "choices": [
+   "Darius",
+   "Artaxerxes",
+   "Cyrus",
+   "Ahasuerus"
+  ],
+  "answer": 2,
+  "explanation": "In the first year of Cyrus the same king Cyrus made a decree to build this house of God.",
+  "ref": "Ezra 5:13"
+ },
+ {
+  "id": "ezra-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the prophets of God do while the Jews began to build?",
+  "choices": [
+   "They stood by and watched",
+   "They helped them",
+   "They warned them to stop",
+   "They left Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "Then rose up Zerubbabel and Jeshua, and began to build; and with them were the prophets of God helping them.",
+  "ref": "Ezra 5:2"
+ },
+ {
+  "id": "ezra-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Zechariah the prophet?",
+  "choices": [
+   "Iddo",
+   "Shealtiel",
+   "Jozadak",
+   "Haggai"
+  ],
+  "answer": 0,
+  "explanation": "Haggai the prophet, and Zechariah the son of Iddo, prophesied unto the Jews.",
+  "ref": "Ezra 5:1"
+ },
+ {
+  "id": "ezra-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Who came with Tatnai, governor on this side the river?",
+  "choices": [
+   "Rehum",
+   "Shethar-boznai",
+   "Mithredath",
+   "Shimshai"
+  ],
+  "answer": 1,
+  "explanation": "Tatnai, governor on this side the river, and Shethar-boznai, and their companions.",
+  "ref": "Ezra 5:3"
+ },
+ {
+  "id": "ezra-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Tatnai report about the work as he saw it?",
+  "choices": [
+   "It was almost abandoned",
+   "It had no workmen",
+   "It goeth fast on, and prospereth",
+   "It was built of mud"
+  ],
+  "answer": 2,
+  "explanation": "This work goeth fast on, and prospereth in their hands.",
+  "ref": "Ezra 5:8"
+ },
+ {
+  "id": "ezra-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the elders say God gave their fathers into Nebuchadnezzar's hand?",
+  "choices": [
+   "They broke the sabbath",
+   "They paid no tribute",
+   "They hated Babylon",
+   "They had provoked the God of heaven to wrath"
+  ],
+  "answer": 3,
+  "explanation": "Our fathers had provoked the God of heaven unto wrath.",
+  "ref": "Ezra 5:12"
+ },
+ {
+  "id": "ezra-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Cyrus make governor and give the vessels to?",
+  "choices": [
+   "Sheshbazzar",
+   "Zerubbabel",
+   "Mithredath",
+   "Jeshua"
+  ],
+  "answer": 0,
+  "explanation": "The vessels were delivered unto one, whose name was Sheshbazzar, whom he had made governor.",
+  "ref": "Ezra 5:14"
+ },
+ {
+  "id": "ezra-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Cyrus tell Sheshbazzar to do with the vessels?",
+  "choices": [
+   "Sell them in Tyre",
+   "Carry them into the temple in Jerusalem",
+   "Keep them in Babylon",
+   "Melt them for the work"
+  ],
+  "answer": 1,
+  "explanation": "Take these vessels, go, carry them into the temple that is in Jerusalem.",
+  "ref": "Ezra 5:15"
+ },
+ {
+  "id": "ezra-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From where did Cyrus take the vessels that Nebuchadnezzar had taken?",
+  "choices": [
+   "The treasury of Persia",
+   "The house of the rolls",
+   "The temple of Babylon",
+   "The palace of Susa"
+  ],
+  "answer": 2,
+  "explanation": "Cyrus the king took them out of the temple of Babylon.",
+  "ref": "Ezra 5:14"
+ },
+ {
+  "id": "ezra-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Tatnai ask the king to search for Cyrus's decree?",
+  "choices": [
+   "In the temple at Jerusalem",
+   "In Achmetha",
+   "In Samaria",
+   "In the king's treasure house at Babylon"
+  ],
+  "answer": 3,
+  "explanation": "Let there be search made in the king's treasure house, which is there at Babylon.",
+  "ref": "Ezra 5:17"
+ },
+ {
+  "id": "ezra-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the elders say about the house they were building?",
+  "choices": [
+   "It was a new temple for Persia",
+   "It was built many years ago by a great king of Israel",
+   "It was meant for Cyrus",
+   "It was small and temporary"
+  ],
+  "answer": 1,
+  "explanation": "Build the house that was builded these many years ago, which a great king of Israel builded and set up.",
+  "ref": "Ezra 5:11"
+ },
+ {
+  "id": "ezra-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the house built with, according to Tatnai's report?",
+  "choices": [
+   "Cedar and gold",
+   "Great stones and timber in the walls",
+   "Bricks and clay",
+   "Marble pillars"
+  ],
+  "answer": 1,
+  "explanation": "The house of the great God is builded with great stones, and timber is laid in the walls.",
+  "ref": "Ezra 5:8"
+ },
+ {
+  "id": "ezra-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Into which province did Tatnai say they went?",
+  "choices": [
+   "Judea",
+   "Media",
+   "Samaria",
+   "Galilee"
+  ],
+  "answer": 0,
+  "explanation": "We went into the province of Judea, to the house of the great God.",
+  "ref": "Ezra 5:8"
+ },
+ {
+  "id": "ezra-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Tatnai ask for the names of the chief men?",
+  "choices": [
+   "To tax them",
+   "To arrest them",
+   "To certify the king",
+   "To honor them"
+  ],
+  "answer": 2,
+  "explanation": "We asked their names also, to certify thee, that we might write the names of the men that were the chief.",
+  "ref": "Ezra 5:10"
+ },
+ {
+  "id": "ezra-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the elders say of the house since Sheshbazzar laid its foundation?",
+  "choices": [
+   "It was finished",
+   "It had been abandoned",
+   "It was destroyed again",
+   "It was still in building and not finished"
+  ],
+  "answer": 3,
+  "explanation": "Since that time even until now hath it been in building, and yet it is not finished.",
+  "ref": "Ezra 5:16"
+ },
+ {
+  "id": "ezra-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Tatnai ask the king to have searched for?",
+  "choices": [
+   "Whether a decree was made of Cyrus",
+   "The names of the elders",
+   "A record of Nebuchadnezzar's wars",
+   "The temple's old plans"
+  ],
+  "answer": 0,
+  "explanation": "Whether it be so, that a decree was made of Cyrus the king to build this house of God.",
+  "ref": "Ezra 5:17"
+ },
+ {
+  "id": "ezra-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Tatnai's letter greet King Darius?",
+  "choices": [
+   "Long live the king",
+   "All peace",
+   "Hail, O king",
+   "God save the king"
+  ],
+  "answer": 1,
+  "explanation": "Unto Darius the king, all peace.",
+  "ref": "Ezra 5:7"
+ },
+ {
+  "id": "ezra-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What title does Cyrus have in the elders' reply?",
+  "choices": [
+   "King of Media",
+   "King of Assyria",
+   "King of Babylon",
+   "King of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "In the first year of Cyrus the king of Babylon the same king Cyrus made a decree.",
+  "ref": "Ezra 5:13"
+ },
+ {
+  "id": "ezra-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which group of people are named as companions of Tatnai and Shethar-boznai?",
+  "choices": [
+   "The Chaldeans",
+   "The Elamites",
+   "The Medes",
+   "The Apharsachites"
+  ],
+  "answer": 3,
+  "explanation": "Tatnai and Shethar-boznai and his companions the Apharsachites sent the letter.",
+  "ref": "Ezra 5:6"
+ },
+ {
+  "id": "ezra-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose name did Haggai and Zechariah prophesy?",
+  "choices": [
+   "The God of Israel",
+   "The king of Persia",
+   "Cyrus",
+   "The LORD of Babylon"
+  ],
+  "answer": 0,
+  "explanation": "They prophesied unto the Jews in the name of the God of Israel.",
+  "ref": "Ezra 5:1"
+ },
+ {
   "id": "old-ezra-6-1",
   "chapter": 6,
   "level": "beginner",
