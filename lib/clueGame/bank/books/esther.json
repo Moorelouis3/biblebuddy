@@ -2000,6 +2000,262 @@
   "ref": "Esther 5:14"
  },
  {
+  "id": "esther-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Esther put on before she stood in the inner court of the king's house?",
+  "choices": [
+   "Her royal apparel",
+   "Sackcloth and ashes",
+   "A veil of mourning",
+   "Her bridal garments"
+  ],
+  "answer": 0,
+  "explanation": "On the third day Esther put on her royal apparel and stood in the inner court of the king's house.",
+  "ref": "Esther 5:1"
+ },
+ {
+  "id": "esther-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Esther do when the king held out the golden sceptre to her?",
+  "choices": [
+   "Drew near and touched its top",
+   "Fell down and wept",
+   "Read the king's decree",
+   "Handed him a letter"
+  ],
+  "answer": 0,
+  "explanation": "The king held out the golden sceptre, and Esther drew near and touched the top of the sceptre.",
+  "ref": "Esther 5:2"
+ },
+ {
+  "id": "esther-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much of the kingdom did the king say Esther's request could be given up to?",
+  "choices": [
+   "Half of it",
+   "A third of it",
+   "A tenth of it",
+   "All of it"
+  ],
+  "answer": 0,
+  "explanation": "The king said, What is thy request? It shall be even given thee to the half of the kingdom.",
+  "ref": "Esther 5:3"
+ },
+ {
+  "id": "esther-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Haman's wife?",
+  "choices": [
+   "Zeresh",
+   "Vashti",
+   "Hadassah",
+   "Bigthan"
+  ],
+  "answer": 0,
+  "explanation": "Haman sent and called for his friends, and Zeresh his wife.",
+  "ref": "Esther 5:10"
+ },
+ {
+  "id": "esther-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides his riches and promotion, what did Haman boast to his friends about?",
+  "choices": [
+   "The multitude of his children",
+   "His victories in war",
+   "His great wisdom",
+   "His royal ancestry"
+  ],
+  "answer": 0,
+  "explanation": "Haman told them of the glory of his riches, and the multitude of his children, and how the king had promoted him.",
+  "ref": "Esther 5:11"
+ },
+ {
+  "id": "esther-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Haman say he could not enjoy while he saw Mordecai sitting at the king's gate?",
+  "choices": [
+   "All his honours",
+   "His banquet",
+   "His sleep",
+   "His new house"
+  ],
+  "answer": 0,
+  "explanation": "Haman said, Yet all this availeth me nothing, so long as I see Mordecai the Jew sitting at the king's gate.",
+  "ref": "Esther 5:13"
+ },
+ {
+  "id": "esther-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "After leaving the banquet, what did Haman do instead of acting on his anger at once?",
+  "choices": [
+   "Went home and called his friends and wife",
+   "Went straight to the king",
+   "Had Mordecai arrested",
+   "Left Shushan the palace"
+  ],
+  "answer": 0,
+  "explanation": "Haman refrained himself, and when he came home he sent and called for his friends, and Zeresh his wife.",
+  "ref": "Esther 5:10"
+ },
+ {
+  "id": "esther-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Haman boast about Esther's banquet?",
+  "choices": [
+   "Only he was invited with the king",
+   "She had served him first",
+   "She had given him a gift",
+   "She had asked for his advice"
+  ],
+  "answer": 0,
+  "explanation": "Haman said Esther let no man come in with the king unto the banquet but himself, and to morrow he was invited also.",
+  "ref": "Esther 5:12"
+ },
+ {
+  "id": "esther-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Esther say she would prepare the second banquet?",
+  "choices": [
+   "The next day",
+   "That same night",
+   "In three days",
+   "At the new moon"
+  ],
+  "answer": 0,
+  "explanation": "Esther said, let the king and Haman come to the banquet that I shall prepare for them, and I will do to morrow as the king hath said.",
+  "ref": "Esther 5:8"
+ },
+ {
+  "id": "esther-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Esther stand when she waited for the king?",
+  "choices": [
+   "In the inner court of the king's house",
+   "Before the gate of Shushan",
+   "In the garden of the palace",
+   "At the door of the women's house"
+  ],
+  "answer": 0,
+  "explanation": "Esther stood in the inner court of the king's house, over against the king's house.",
+  "ref": "Esther 5:1"
+ },
+ {
+  "id": "esther-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the king sitting when he saw Esther in the court?",
+  "choices": [
+   "On his royal throne in the royal house",
+   "At the banquet of wine",
+   "In the king's gate",
+   "In the palace garden"
+  ],
+  "answer": 0,
+  "explanation": "The king sat upon his royal throne in the royal house, over against the gate of the house.",
+  "ref": "Esther 5:1"
+ },
+ {
+  "id": "esther-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Haman feel as he went out from the first banquet?",
+  "choices": [
+   "Joyful, with a glad heart",
+   "Fearful and troubled",
+   "Sorrowful and silent",
+   "Proud but suspicious"
+  ],
+  "answer": 0,
+  "explanation": "Then went Haman forth that day joyful and with a glad heart.",
+  "ref": "Esther 5:9"
+ },
+ {
+  "id": "esther-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Above whom did Haman say the king had advanced him?",
+  "choices": [
+   "The princes and servants of the king",
+   "The priests and the scribes",
+   "The Jews and the captains",
+   "The seven wise counsellors"
+  ],
+  "answer": 0,
+  "explanation": "Haman told how the king had advanced him above the princes and servants of the king.",
+  "ref": "Esther 5:11"
+ },
+ {
+  "id": "esther-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Zeresh and the friends say Haman should ask the king the next day?",
+  "choices": [
+   "That Mordecai be hanged on the gallows",
+   "That Esther be sent away",
+   "That the Jews be banished",
+   "That Mordecai be sent to prison"
+  ],
+  "answer": 0,
+  "explanation": "Let a gallows be made of fifty cubits high, and to morrow speak thou unto the king that Mordecai may be hanged thereon.",
+  "ref": "Esther 5:14"
+ },
+ {
+  "id": "esther-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did the king command to make haste to come to Esther's banquet?",
+  "choices": [
+   "Haman",
+   "Mordecai",
+   "Harbonah",
+   "Hegai"
+  ],
+  "answer": 0,
+  "explanation": "The king said, Cause Haman to make haste, that he may do as Esther hath said.",
+  "ref": "Esther 5:5"
+ },
+ {
+  "id": "esther-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Haman do after the advice of his wife and friends pleased him?",
+  "choices": [
+   "Had the gallows made",
+   "Sent for Mordecai",
+   "Wrote to the king",
+   "Went to Esther at once"
+  ],
+  "answer": 0,
+  "explanation": "The thing pleased Haman; and he caused the gallows to be made.",
+  "ref": "Esther 5:14"
+ },
+ {
   "id": "old-esther-6-1",
   "chapter": 6,
   "level": "beginner",
