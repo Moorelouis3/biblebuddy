@@ -15024,6 +15024,598 @@
   "ref": "2 Chronicles 30:26"
  },
  {
+  "id": "2-chronicles-30-e-01",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who wrote letters to Ephraim and Manasseh inviting them to Jerusalem?",
+  "choices": [
+   "Hezekiah",
+   "Ahaz",
+   "Azariah",
+   "Isaiah"
+  ],
+  "answer": 0,
+  "explanation": "Hezekiah sent to all Israel and Judah, and wrote letters also to Ephraim and Manasseh.",
+  "ref": "2 Chronicles 30:1"
+ },
+ {
+  "id": "2-chronicles-30-e-02",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which feast did Hezekiah invite them to keep at Jerusalem?",
+  "choices": [
+   "Pentecost",
+   "The passover",
+   "The feast of trumpets",
+   "The day of atonement"
+  ],
+  "answer": 1,
+  "explanation": "They should come to the house of the LORD at Jerusalem, to keep the passover unto the LORD God of Israel.",
+  "ref": "2 Chronicles 30:1"
+ },
+ {
+  "id": "2-chronicles-30-e-03",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In which month did they decide to keep the passover?",
+  "choices": [
+   "The first month",
+   "The seventh month",
+   "The second month",
+   "The third month"
+  ],
+  "answer": 2,
+  "explanation": "The king had taken counsel to keep the passover in the second month.",
+  "ref": "2 Chronicles 30:2"
+ },
+ {
+  "id": "2-chronicles-30-e-04",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "place",
+  "question": "The proclamation went throughout all Israel from Beer-sheba to which place?",
+  "choices": [
+   "Hebron",
+   "Bethel",
+   "Gilgal",
+   "Dan"
+  ],
+  "answer": 3,
+  "explanation": "They made proclamation throughout all Israel, from Beer-sheba even to Dan.",
+  "ref": "2 Chronicles 30:5"
+ },
+ {
+  "id": "2-chronicles-30-e-05",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "place",
+  "question": "Into which brook did they cast the altars they took away?",
+  "choices": [
+   "Kidron",
+   "Jordan",
+   "Kishon",
+   "Arnon"
+  ],
+  "answer": 0,
+  "explanation": "They took away the altars that were in Jerusalem, and cast them into the brook Kidron.",
+  "ref": "2 Chronicles 30:14"
+ },
+ {
+  "id": "2-chronicles-30-e-06",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days did they keep the feast of unleavened bread at first?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Fourteen days",
+   "Forty days"
+  ],
+  "answer": 1,
+  "explanation": "They kept the feast of unleavened bread seven days with great gladness.",
+  "ref": "2 Chronicles 30:21"
+ },
+ {
+  "id": "2-chronicles-30-e-07",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who arose and blessed the people at the end of the chapter?",
+  "choices": [
+   "The princes",
+   "The king alone",
+   "The priests the Levites",
+   "The singers of Asaph"
+  ],
+  "answer": 2,
+  "explanation": "Then the priests the Levites arose and blessed the people.",
+  "ref": "2 Chronicles 30:27"
+ },
+ {
+  "id": "2-chronicles-30-e-08",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD do when Hezekiah prayed for the people?",
+  "choices": [
+   "Sent fire from heaven",
+   "Sent them home",
+   "Struck the unclean",
+   "Hearkened and healed the people"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hearkened to Hezekiah, and healed the people.",
+  "ref": "2 Chronicles 30:20"
+ },
+ {
+  "id": "2-chronicles-30-e-09",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name does the chapter give to those who carried the king's letters?",
+  "choices": [
+   "Posts",
+   "Scribes",
+   "Heralds",
+   "Watchmen"
+  ],
+  "answer": 0,
+  "explanation": "So the posts went with the letters from the king and his princes throughout all Israel and Judah.",
+  "ref": "2 Chronicles 30:6"
+ },
+ {
+  "id": "2-chronicles-30-m-01",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the letters urge the children of Israel to do?",
+  "choices": [
+   "Make war on Assyria",
+   "Turn again unto the LORD",
+   "Rebuild the walls",
+   "Pay a tax to the king"
+  ],
+  "answer": 1,
+  "explanation": "Ye children of Israel, turn again unto the LORD God of Abraham, Isaac, and Israel.",
+  "ref": "2 Chronicles 30:6"
+ },
+ {
+  "id": "2-chronicles-30-m-02",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would those who turned again find before their captors, according to the letters?",
+  "choices": [
+   "Silver",
+   "Safe passage only",
+   "Compassion",
+   "Silence"
+  ],
+  "answer": 2,
+  "explanation": "Your brethren and your children shall find compassion before them that lead them captive.",
+  "ref": "2 Chronicles 30:9"
+ },
+ {
+  "id": "2-chronicles-30-m-03",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the letters describe the LORD?",
+  "choices": [
+   "Swift and terrible",
+   "Silent and far off",
+   "Jealous and hidden",
+   "Gracious and merciful"
+  ],
+  "answer": 3,
+  "explanation": "The LORD your God is gracious and merciful, and will not turn away his face from you, if ye return unto him.",
+  "ref": "2 Chronicles 30:9"
+ },
+ {
+  "id": "2-chronicles-30-m-04",
+  "chapter": 30,
+  "level": "medium",
+  "category": "place",
+  "question": "Which tribes did the chapter say some humbled themselves and came to Jerusalem from?",
+  "choices": [
+   "Asher, Manasseh and Zebulun",
+   "Reuben, Gad and Dan",
+   "Judah, Simeon and Levi",
+   "Naphtali, Dan and Issachar"
+  ],
+  "answer": 0,
+  "explanation": "Divers of Asher and Manasseh and of Zebulun humbled themselves, and came to Jerusalem.",
+  "ref": "2 Chronicles 30:11"
+ },
+ {
+  "id": "2-chronicles-30-m-05",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the hand of God give to Judah?",
+  "choices": [
+   "A great army",
+   "One heart to do the king's commandment",
+   "Rain in due season",
+   "Victory over Assyria"
+  ],
+  "answer": 1,
+  "explanation": "In Judah the hand of God was to give them one heart to do the commandment of the king and of the princes.",
+  "ref": "2 Chronicles 30:12"
+ },
+ {
+  "id": "2-chronicles-30-m-06",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day of the second month did they kill the passover?",
+  "choices": [
+   "The first day",
+   "The seventh day",
+   "The fourteenth day",
+   "The twenty-first day"
+  ],
+  "answer": 2,
+  "explanation": "They killed the passover on the fourteenth day of the second month.",
+  "ref": "2 Chronicles 30:15"
+ },
+ {
+  "id": "2-chronicles-30-m-07",
+  "chapter": 30,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were ashamed and sanctified themselves before bringing the burnt offerings?",
+  "choices": [
+   "The princes of Judah",
+   "The people of Ephraim",
+   "The posts",
+   "The priests and the Levites"
+  ],
+  "answer": 3,
+  "explanation": "The priests and the Levites were ashamed, and sanctified themselves, and brought in the burnt offerings.",
+  "ref": "2 Chronicles 30:15"
+ },
+ {
+  "id": "2-chronicles-30-m-08",
+  "chapter": 30,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had charge of killing the passovers for everyone who was not clean?",
+  "choices": [
+   "The Levites",
+   "The priests",
+   "The princes",
+   "Hezekiah"
+  ],
+  "answer": 0,
+  "explanation": "The Levites had the charge of the killing of the passovers for every one that was not clean.",
+  "ref": "2 Chronicles 30:17"
+ },
+ {
+  "id": "2-chronicles-30-m-09",
+  "chapter": 30,
+  "level": "medium",
+  "category": "person",
+  "question": "Which tribe is named with Ephraim, Manasseh and Zebulun as having many who had not cleansed themselves?",
+  "choices": [
+   "Asher",
+   "Issachar",
+   "Dan",
+   "Reuben"
+  ],
+  "answer": 1,
+  "explanation": "Many of Ephraim, and Manasseh, Issachar, and Zebulun, had not cleansed themselves.",
+  "ref": "2 Chronicles 30:18"
+ },
+ {
+  "id": "2-chronicles-30-m-10",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Hezekiah ask the good LORD to pardon?",
+  "choices": [
+   "Every one who came from Israel",
+   "Only the priests",
+   "Every one that prepareth his heart to seek God",
+   "Those who had mocked the posts"
+  ],
+  "answer": 2,
+  "explanation": "The good LORD pardon every one that prepareth his heart to seek God.",
+  "ref": "2 Chronicles 30:18–19"
+ },
+ {
+  "id": "2-chronicles-30-m-11",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the whole assembly decide after the first seven days?",
+  "choices": [
+   "To go home",
+   "To keep the sabbath only",
+   "To bring more tithes",
+   "To keep other seven days"
+  ],
+  "answer": 3,
+  "explanation": "The whole assembly took counsel to keep other seven days: and they kept other seven days with gladness.",
+  "ref": "2 Chronicles 30:23"
+ },
+ {
+  "id": "2-chronicles-30-m-12",
+  "chapter": 30,
+  "level": "medium",
+  "category": "person",
+  "question": "Who gave the congregation a thousand bullocks and seven thousand sheep?",
+  "choices": [
+   "Hezekiah",
+   "The princes",
+   "The priests",
+   "The strangers"
+  ],
+  "answer": 0,
+  "explanation": "Hezekiah king of Judah did give to the congregation a thousand bullocks and seven thousand sheep.",
+  "ref": "2 Chronicles 30:24"
+ },
+ {
+  "id": "2-chronicles-30-m-13",
+  "chapter": 30,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the letters tell Israel not to be like?",
+  "choices": [
+   "The Assyrians",
+   "Their fathers",
+   "The Philistines",
+   "The priests of Baal"
+  ],
+  "answer": 1,
+  "explanation": "Be not ye like your fathers, and like your brethren, which trespassed against the LORD God of their fathers.",
+  "ref": "2 Chronicles 30:7"
+ },
+ {
+  "id": "2-chronicles-30-m-14",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why could they not keep the passover at the usual time?",
+  "choices": [
+   "The temple was shut",
+   "The king was ill",
+   "The priests had not sanctified themselves enough",
+   "Assyria had attacked"
+  ],
+  "answer": 2,
+  "explanation": "They could not keep it at that time, because the priests had not sanctified themselves sufficiently.",
+  "ref": "2 Chronicles 30:3"
+ },
+ {
+  "id": "2-chronicles-30-h-01",
+  "chapter": 30,
+  "level": "hard",
+  "category": "place",
+  "question": "The posts passed through Ephraim and Manasseh even unto which place?",
+  "choices": [
+   "Dan",
+   "Gilead",
+   "Carmel",
+   "Zebulun"
+  ],
+  "answer": 3,
+  "explanation": "The posts passed from city to city through the country of Ephraim and Manasseh even unto Zebulun.",
+  "ref": "2 Chronicles 30:10"
+ },
+ {
+  "id": "2-chronicles-30-h-02",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sheep did the princes give to the congregation?",
+  "choices": [
+   "Ten thousand",
+   "Seven thousand",
+   "A thousand",
+   "Three thousand"
+  ],
+  "answer": 0,
+  "explanation": "The princes gave to the congregation a thousand bullocks and ten thousand sheep.",
+  "ref": "2 Chronicles 30:24"
+ },
+ {
+  "id": "2-chronicles-30-h-03",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sheep did Hezekiah give to the congregation?",
+  "choices": [
+   "Ten thousand",
+   "Seven thousand",
+   "A thousand",
+   "Two hundred"
+  ],
+  "answer": 1,
+  "explanation": "Hezekiah gave a thousand bullocks and seven thousand sheep.",
+  "ref": "2 Chronicles 30:24"
+ },
+ {
+  "id": "2-chronicles-30-h-04",
+  "chapter": 30,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did Hezekiah speak comfortably?",
+  "choices": [
+   "The princes of Israel",
+   "The strangers in Judah",
+   "The Levites that taught the good knowledge of the LORD",
+   "The priests of Ephraim"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah spake comfortably unto all the Levites that taught the good knowledge of the LORD.",
+  "ref": "2 Chronicles 30:22"
+ },
+ {
+  "id": "2-chronicles-30-h-05",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the letters say would turn away from them if they yielded to the LORD?",
+  "choices": [
+   "The kings of Assyria",
+   "The famine in the land",
+   "The mockery of their brethren",
+   "The fierceness of his wrath"
+  ],
+  "answer": 3,
+  "explanation": "Yield yourselves unto the LORD, that the fierceness of his wrath may turn away from you.",
+  "ref": "2 Chronicles 30:8"
+ },
+ {
+  "id": "2-chronicles-30-h-06",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did many from Ephraim and Manasseh eat the passover?",
+  "choices": [
+   "Otherwise than it was written",
+   "Standing in their place",
+   "Without any bread",
+   "Before the appointed day"
+  ],
+  "answer": 0,
+  "explanation": "Many had not cleansed themselves, yet did they eat the passover otherwise than it was written.",
+  "ref": "2 Chronicles 30:18"
+ },
+ {
+  "id": "2-chronicles-30-h-07",
+  "chapter": 30,
+  "level": "hard",
+  "category": "person",
+  "question": "From whose hand did the priests receive the blood they sprinkled?",
+  "choices": [
+   "The princes",
+   "The Levites",
+   "The king",
+   "The strangers"
+  ],
+  "answer": 1,
+  "explanation": "The priests sprinkled the blood, which they received of the hand of the Levites.",
+  "ref": "2 Chronicles 30:16"
+ },
+ {
+  "id": "2-chronicles-30-h-08",
+  "chapter": 30,
+  "level": "hard",
+  "category": "person",
+  "question": "According to the law of whom did the priests and Levites stand in their place?",
+  "choices": [
+   "David the king",
+   "Solomon",
+   "Moses the man of God",
+   "Aaron the priest"
+  ],
+  "answer": 2,
+  "explanation": "They stood in their place after their manner, according to the law of Moses the man of God.",
+  "ref": "2 Chronicles 30:16"
+ },
+ {
+  "id": "2-chronicles-30-h-09",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they offer while they ate throughout the seven days?",
+  "choices": [
+   "Sin offerings",
+   "Trespass offerings",
+   "Meat offerings",
+   "Peace offerings"
+  ],
+  "answer": 3,
+  "explanation": "They did eat throughout the feast seven days, offering peace offerings, and making confession to the LORD God of their fathers.",
+  "ref": "2 Chronicles 30:22"
+ },
+ {
+  "id": "2-chronicles-30-h-10",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Israel not done of a long time as it was written?",
+  "choices": [
+   "Kept the passover",
+   "Paid the tithe",
+   "Rebuilt the temple",
+   "Observed the sabbath"
+  ],
+  "answer": 0,
+  "explanation": "They had not done it of a long time in such sort as it was written.",
+  "ref": "2 Chronicles 30:5"
+ },
+ {
+  "id": "2-chronicles-30-h-11",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD do for the remnant that escaped the kings of Assyria, if they turned?",
+  "choices": [
+   "Break the Assyrian kings",
+   "Return to them",
+   "Send them a prophet",
+   "Give them silver"
+  ],
+  "answer": 1,
+  "explanation": "Turn again unto the LORD, and he will return to the remnant of you, that are escaped out of the hand of the kings of Assyria.",
+  "ref": "2 Chronicles 30:6"
+ },
+ {
+  "id": "2-chronicles-30-h-12",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long had the LORD sanctified his sanctuary, according to the letters?",
+  "choices": [
+   "For seven years",
+   "Until Solomon's day",
+   "For ever",
+   "Until the exile"
+  ],
+  "answer": 2,
+  "explanation": "Enter into his sanctuary, which he hath sanctified for ever.",
+  "ref": "2 Chronicles 30:8"
+ },
+ {
+  "id": "2-chronicles-30-h-13",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the voice and prayer of the priests the Levites come up to?",
+  "choices": [
+   "The mountain of Zion",
+   "The house of Hezekiah",
+   "The ears of the princes",
+   "His holy dwelling place, even unto heaven"
+  ],
+  "answer": 3,
+  "explanation": "Their voice was heard, and their prayer came up to his holy dwelling place, even unto heaven.",
+  "ref": "2 Chronicles 30:27"
+ },
+ {
+  "id": "2-chronicles-30-h-14",
+  "chapter": 30,
+  "level": "hard",
+  "category": "person",
+  "question": "Who took counsel with the king to keep the passover in the second month?",
+  "choices": [
+   "His princes and all the congregation in Jerusalem",
+   "The priests and the Levites only",
+   "The elders of Ephraim",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "The king had taken counsel, and his princes, and all the congregation in Jerusalem.",
+  "ref": "2 Chronicles 30:2"
+ },
+ {
   "id": "old-2-chronicles-31-1",
   "chapter": 31,
   "level": "beginner",
