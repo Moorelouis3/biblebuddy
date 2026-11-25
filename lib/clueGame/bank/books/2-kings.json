@@ -9696,6 +9696,406 @@
   "ref": "2 Kings 16:10–11"
  },
  {
+  "id": "2-kings-16-e-01",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Syria was slain when Assyria took Damascus?",
+  "choices": [
+   "Hazael",
+   "Rezin",
+   "Ben-hadad",
+   "Pekah"
+  ],
+  "answer": 1,
+  "explanation": "The king of Assyria went up against Damascus, and took it, and slew Rezin.",
+  "ref": "2 Kings 16:9"
+ },
+ {
+  "id": "2-kings-16-e-02",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Ahaz go to meet Tiglath-pileser?",
+  "choices": [
+   "Samaria",
+   "Elath",
+   "Damascus",
+   "Tirzah"
+  ],
+  "answer": 2,
+  "explanation": "King Ahaz went to Damascus to meet Tiglath-pileser king of Assyria.",
+  "ref": "2 Kings 16:10"
+ },
+ {
+  "id": "2-kings-16-e-03",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Judah after Ahaz?",
+  "choices": [
+   "Jotham",
+   "Amaziah",
+   "Azariah",
+   "Hezekiah his son"
+  ],
+  "answer": 3,
+  "explanation": "Ahaz slept with his fathers, and Hezekiah his son reigned in his stead.",
+  "ref": "2 Kings 16:20"
+ },
+ {
+  "id": "2-kings-16-e-04",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Ahaz sacrifice and burn incense?",
+  "choices": [
+   "In the high places, on the hills and under every green tree",
+   "Only in the temple",
+   "In the valley of Hinnom",
+   "In the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "He sacrificed and burnt incense in the high places, and on the hills, and under every green tree.",
+  "ref": "2 Kings 16:4"
+ },
+ {
+  "id": "2-kings-16-e-05",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son was Ahaz?",
+  "choices": [
+   "Azariah",
+   "Jotham",
+   "Amaziah",
+   "Pekah"
+  ],
+  "answer": 1,
+  "explanation": "Ahaz the son of Jotham king of Judah began to reign.",
+  "ref": "2 Kings 16:1"
+ },
+ {
+  "id": "2-kings-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened when Rezin and Pekah besieged Ahaz?",
+  "choices": [
+   "Jerusalem fell",
+   "Ahaz fled to Egypt",
+   "They could not overcome him",
+   "They burned the temple"
+  ],
+  "answer": 2,
+  "explanation": "They besieged Ahaz, but could not overcome him.",
+  "ref": "2 Kings 16:5"
+ },
+ {
+  "id": "2-kings-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city did Rezin recover to Syria?",
+  "choices": [
+   "Damascus",
+   "Kir",
+   "Tirzah",
+   "Elath"
+  ],
+  "answer": 3,
+  "explanation": "Rezin king of Syria recovered Elath to Syria, and drave the Jews from Elath.",
+  "ref": "2 Kings 16:6"
+ },
+ {
+  "id": "2-kings-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Ahaz describe himself to Tiglath-pileser?",
+  "choices": [
+   "Thy servant and thy son",
+   "Thy brother and ally",
+   "Thy captive",
+   "Thy faithful friend"
+  ],
+  "answer": 0,
+  "explanation": "Ahaz said, I am thy servant and thy son: come up, and save me.",
+  "ref": "2 Kings 16:7"
+ },
+ {
+  "id": "2-kings-16-m-04",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king do when he saw the new altar?",
+  "choices": [
+   "Tore it down",
+   "Approached it and offered on it",
+   "Ordered it covered",
+   "Sent it back to Damascus"
+  ],
+  "answer": 1,
+  "explanation": "The king approached to the altar, and offered thereon.",
+  "ref": "2 Kings 16:12"
+ },
+ {
+  "id": "2-kings-16-m-05",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Ahaz put the brasen altar that was before the LORD?",
+  "choices": [
+   "Behind the temple",
+   "In the king's house",
+   "On the north side of the new altar",
+   "In Damascus"
+  ],
+  "answer": 2,
+  "explanation": "He put the brasen altar on the north side of the altar.",
+  "ref": "2 Kings 16:14"
+ },
+ {
+  "id": "2-kings-16-m-06",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ahaz say the brasen altar would be for?",
+  "choices": [
+   "To burn the evening offering",
+   "To store the blood",
+   "To honour Assyria",
+   "To enquire by"
+  ],
+  "answer": 3,
+  "explanation": "The brasen altar shall be for me to enquire by.",
+  "ref": "2 Kings 16:15"
+ },
+ {
+  "id": "2-kings-16-m-07",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ahaz take down from the brasen oxen?",
+  "choices": [
+   "The sea",
+   "The laver",
+   "The bases",
+   "The pillars"
+  ],
+  "answer": 0,
+  "explanation": "He took down the sea from off the brasen oxen that were under it.",
+  "ref": "2 Kings 16:17"
+ },
+ {
+  "id": "2-kings-16-m-08",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whom did Ahaz turn the covert for the sabbath away from the house of the LORD?",
+  "choices": [
+   "The king of Syria",
+   "The king of Assyria",
+   "The priests",
+   "The king of Israel"
+  ],
+  "answer": 1,
+  "explanation": "He turned the covert for the sabbath from the house of the LORD for the king of Assyria.",
+  "ref": "2 Kings 16:18"
+ },
+ {
+  "id": "2-kings-16-m-09",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose way did Ahaz walk in?",
+  "choices": [
+   "David his father",
+   "Jotham his father",
+   "The kings of Israel",
+   "Hezekiah"
+  ],
+  "answer": 2,
+  "explanation": "He walked in the way of the kings of Israel.",
+  "ref": "2 Kings 16:3"
+ },
+ {
+  "id": "2-kings-16-m-10",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Ahaz buried?",
+  "choices": [
+   "In Samaria",
+   "In Damascus",
+   "In his own house",
+   "In the city of David"
+  ],
+  "answer": 3,
+  "explanation": "Ahaz was buried with his fathers in the city of David.",
+  "ref": "2 Kings 16:20"
+ },
+ {
+  "id": "2-kings-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Ahaz when he began to reign?",
+  "choices": [
+   "Twenty",
+   "Twenty-five",
+   "Sixteen",
+   "Eight"
+  ],
+  "answer": 0,
+  "explanation": "Twenty years old was Ahaz when he began to reign.",
+  "ref": "2 Kings 16:2"
+ },
+ {
+  "id": "2-kings-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Ahaz reign in Jerusalem?",
+  "choices": [
+   "Twenty",
+   "Sixteen",
+   "Twenty-nine",
+   "Fifty-two"
+  ],
+  "answer": 1,
+  "explanation": "Ahaz reigned sixteen years in Jerusalem.",
+  "ref": "2 Kings 16:2"
+ },
+ {
+  "id": "2-kings-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose abominations did Ahaz follow in making his son pass through the fire?",
+  "choices": [
+   "The Philistines",
+   "The Egyptians",
+   "The heathen",
+   "The Assyrians"
+  ],
+  "answer": 2,
+  "explanation": "He made his son to pass through the fire, according to the abominations of the heathen.",
+  "ref": "2 Kings 16:3"
+ },
+ {
+  "id": "2-kings-16-h-04",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Assyria carry the people of Damascus captive?",
+  "choices": [
+   "Assyria",
+   "Elath",
+   "Samaria",
+   "Kir"
+  ],
+  "answer": 3,
+  "explanation": "The king of Assyria carried the people of Damascus captive to Kir.",
+  "ref": "2 Kings 16:9"
+ },
+ {
+  "id": "2-kings-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which offering did Ahaz tell Urijah to burn on the great altar in the morning?",
+  "choices": [
+   "The burnt offering",
+   "The peace offering",
+   "The sin offering",
+   "The meat offering"
+  ],
+  "answer": 0,
+  "explanation": "Upon the great altar burn the morning burnt offering, and the evening meat offering.",
+  "ref": "2 Kings 16:15"
+ },
+ {
+  "id": "2-kings-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose blood did Ahaz sprinkle upon the new altar?",
+  "choices": [
+   "His sin offerings",
+   "His peace offerings",
+   "The people's trespass offerings",
+   "The priests' offerings"
+  ],
+  "answer": 1,
+  "explanation": "He sprinkled the blood of his peace offerings upon the altar.",
+  "ref": "2 Kings 16:13"
+ },
+ {
+  "id": "2-kings-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ahaz remove from off the bases?",
+  "choices": [
+   "The pillars",
+   "The pomegranates",
+   "The laver",
+   "The chains"
+  ],
+  "answer": 2,
+  "explanation": "King Ahaz cut off the borders of the bases, and removed the laver from off them.",
+  "ref": "2 Kings 16:17"
+ },
+ {
+  "id": "2-kings-16-h-08",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Which priest built the altar like the one in Damascus?",
+  "choices": [
+   "Zadok",
+   "Hilkiah",
+   "Jehoiada",
+   "Urijah"
+  ],
+  "answer": 3,
+  "explanation": "Urijah the priest built an altar according to all that king Ahaz had sent from Damascus.",
+  "ref": "2 Kings 16:11"
+ },
+ {
+  "id": "2-kings-16-h-09",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where did Ahaz take silver and gold to send to Assyria?",
+  "choices": [
+   "The house of the LORD and the king's treasures",
+   "Only the king's treasures",
+   "The storehouses of Elath",
+   "The tribute of Edom"
+  ],
+  "answer": 0,
+  "explanation": "He took the silver and gold found in the house of the LORD and in the treasures of the king's house.",
+  "ref": "2 Kings 16:8"
+ },
+ {
+  "id": "2-kings-16-h-10",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of whose hand did Ahaz ask Tiglath-pileser to save him?",
+  "choices": [
+   "Syria and Israel",
+   "Edom and Moab",
+   "Philistia and Egypt",
+   "Syria and Assyria"
+  ],
+  "answer": 0,
+  "explanation": "Ahaz asked to be saved out of the hand of the king of Syria, and out of the hand of the king of Israel.",
+  "ref": "2 Kings 16:7"
+ },
+ {
   "id": "old-2-kings-17-1",
   "chapter": 17,
   "level": "beginner",
