@@ -48,7 +48,15 @@ how many of each level to write. For each chapter, in order:
    (Revelation 15 has 8 verses, Psalm 117 has 2) gets fewer, better
    questions, never filler: Louis, "20 to 25 good real questions are
    enough" (2026-11-25). Filler means asking different blanks of the same
-   sentence, the order of a list, or the same fact twice. Add them to `lib/clueGame/bank/books/<book>.json` (the same file for
+   sentence, the order of a list, or the same fact twice.
+
+   Never write these (found in review, 2026-11-25): word-level questions
+   ("which word opens the chapter", "what is the last word of the letter",
+   "which word does Paul use for…"); the order of a list ("which tribe is
+   named right after Juda"); a blank in a sentence's grammar ("As he is in
+   what…"); trivial quantities ("how many sins? All"); the same fact from two
+   sides or at two levels. Write every question by hand from the text, never
+   with a generator script. Add them to `lib/clueGame/bank/books/<book>.json` (the same file for
    Genesis; never add new ones to the .ts files).
 5. `npx tsx scripts/trivia-import-old.ts --index`
 6. `npx tsx scripts/trivia-writer.ts check <book> <chapter>` must say `ok`.
