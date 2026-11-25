@@ -9360,6 +9360,678 @@
   "ref": "2 Chronicles 20:23"
  },
  {
+  "id": "2-chronicles-20-e-01",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jehoshaphat do when he heard a great multitude was coming?",
+  "choices": [
+   "Hid the treasure",
+   "Set himself to seek the Lord",
+   "Called for Egypt",
+   "Fled to Samaria"
+  ],
+  "answer": 1,
+  "explanation": "Jehoshaphat feared, and set himself to seek the LORD, and proclaimed a fast throughout all Judah.",
+  "ref": "2 Chronicles 20:3"
+ },
+ {
+  "id": "2-chronicles-20-e-02",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jehoshaphat stand to pray before Judah?",
+  "choices": [
+   "On the city wall",
+   "At the gate of Samaria",
+   "In the wilderness of Tekoa",
+   "In the house of the Lord, before the new court"
+  ],
+  "answer": 3,
+  "explanation": "Jehoshaphat stood in the congregation of Judah and Jerusalem, in the house of the LORD, before the new court.",
+  "ref": "2 Chronicles 20:5"
+ },
+ {
+  "id": "2-chronicles-20-e-03",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Upon whom did the Spirit of the Lord come in the midst of the congregation?",
+  "choices": [
+   "Eliezer",
+   "Jahaziel",
+   "Azariah",
+   "Hanani"
+  ],
+  "answer": 1,
+  "explanation": "Upon Jahaziel, a Levite of the sons of Asaph, came the Spirit of the LORD.",
+  "ref": "2 Chronicles 20:14"
+ },
+ {
+  "id": "2-chronicles-20-e-04",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jahaziel say about the battle?",
+  "choices": [
+   "It will be short",
+   "It will be lost",
+   "It is not yours, but God's",
+   "It is yours alone"
+  ],
+  "answer": 2,
+  "explanation": "Be not afraid nor dismayed by reason of this great multitude; for the battle is not yours, but God's.",
+  "ref": "2 Chronicles 20:15"
+ },
+ {
+  "id": "2-chronicles-20-e-05",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jehoshaphat and Judah respond to Jahaziel's words?",
+  "choices": [
+   "They bowed and worshipped the Lord",
+   "They went home",
+   "They argued",
+   "They prepared swords"
+  ],
+  "answer": 0,
+  "explanation": "Jehoshaphat bowed his head with his face to the ground: and all Judah fell before the LORD, worshipping the LORD.",
+  "ref": "2 Chronicles 20:18"
+ },
+ {
+  "id": "2-chronicles-20-e-06",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who went out before the army praising the Lord?",
+  "choices": [
+   "Prophets",
+   "Captains",
+   "Singers",
+   "Priests with swords"
+  ],
+  "answer": 2,
+  "explanation": "He appointed singers unto the LORD, that should praise the beauty of holiness, as they went out before the army.",
+  "ref": "2 Chronicles 20:21"
+ },
+ {
+  "id": "2-chronicles-20-e-07",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the singers say as they went out?",
+  "choices": [
+   "Praise the Lord; for his mercy endureth for ever",
+   "The Lord is a man of war",
+   "Go up against them",
+   "Holy, holy, holy"
+  ],
+  "answer": 0,
+  "explanation": "Praise the LORD; for his mercy endureth for ever.",
+  "ref": "2 Chronicles 20:21"
+ },
+ {
+  "id": "2-chronicles-20-e-08",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Judah find when they came to the watch tower?",
+  "choices": [
+   "An empty camp",
+   "Dead bodies fallen to the earth",
+   "An army waiting",
+   "A river"
+  ],
+  "answer": 1,
+  "explanation": "They looked unto the multitude, and, behold, they were dead bodies fallen to the earth, and none escaped.",
+  "ref": "2 Chronicles 20:24"
+ },
+ {
+  "id": "2-chronicles-20-e-09",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "What was the valley called where Judah blessed the Lord?",
+  "choices": [
+   "The valley of Jehoshaphat",
+   "The valley of Salt",
+   "The valley of Hinnom",
+   "The valley of Berachah"
+  ],
+  "answer": 3,
+  "explanation": "On the fourth day they assembled themselves in the valley of Berachah; for there they blessed the LORD.",
+  "ref": "2 Chronicles 20:26"
+ },
+ {
+  "id": "2-chronicles-20-e-10",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king joined with Jehoshaphat to make ships to Tarshish?",
+  "choices": [
+   "Jehu",
+   "Jeroboam",
+   "Ahaziah king of Israel",
+   "Ahab"
+  ],
+  "answer": 2,
+  "explanation": "Jehoshaphat joined himself with Ahaziah king of Israel, who did very wickedly, to make ships to go to Tarshish.",
+  "ref": "2 Chronicles 20:35–36"
+ },
+ {
+  "id": "2-chronicles-20-m-01",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which peoples came against Jehoshaphat in the beginning of the chapter?",
+  "choices": [
+   "Edom and Philistia",
+   "Assyria and Babylon",
+   "Moab and Ammon, with others",
+   "Syria and Egypt"
+  ],
+  "answer": 2,
+  "explanation": "The children of Moab, and the children of Ammon, and with them other beside the Ammonites, came against Jehoshaphat to battle.",
+  "ref": "2 Chronicles 20:1"
+ },
+ {
+  "id": "2-chronicles-20-m-02",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoshaphat say about the Lord's power in his prayer?",
+  "choices": [
+   "None is able to withstand thee",
+   "He is far away",
+   "He is weaker than idols",
+   "He rests from war"
+  ],
+  "answer": 0,
+  "explanation": "In thine hand is there not power and might, so that none is able to withstand thee?",
+  "ref": "2 Chronicles 20:6"
+ },
+ {
+  "id": "2-chronicles-20-m-03",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Jehoshaphat call Abraham in his prayer?",
+  "choices": [
+   "Thy servant",
+   "Thy son",
+   "Thy friend",
+   "Thy prophet"
+  ],
+  "answer": 2,
+  "explanation": "Gavest it to the seed of Abraham thy friend for ever.",
+  "ref": "2 Chronicles 20:7"
+ },
+ {
+  "id": "2-chronicles-20-m-04",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoshaphat say Judah's enemies were doing?",
+  "choices": [
+   "Fleeing from them",
+   "Coming to cast them out of the Lord's possession",
+   "Asking for peace",
+   "Selling them food"
+  ],
+  "answer": 1,
+  "explanation": "They reward us, to come to cast us out of thy possession, which thou hast given us to inherit.",
+  "ref": "2 Chronicles 20:11"
+ },
+ {
+  "id": "2-chronicles-20-m-05",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoshaphat say at the end of his prayer about Judah?",
+  "choices": [
+   "We have a great army",
+   "We will fight alone",
+   "We will flee",
+   "We know not what to do, but our eyes are upon thee"
+  ],
+  "answer": 3,
+  "explanation": "Neither know we what to do: but our eyes are upon thee.",
+  "ref": "2 Chronicles 20:12"
+ },
+ {
+  "id": "2-chronicles-20-m-06",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who stood before the Lord with their little ones, wives and children?",
+  "choices": [
+   "The elders alone",
+   "All Judah",
+   "The priests only",
+   "The captains"
+  ],
+  "answer": 1,
+  "explanation": "All Judah stood before the LORD, with their little ones, their wives, and their children.",
+  "ref": "2 Chronicles 20:13"
+ },
+ {
+  "id": "2-chronicles-20-m-07",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jahaziel say Judah would not need to do?",
+  "choices": [
+   "Pray",
+   "March",
+   "Sing",
+   "Fight in the battle"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall not need to fight in this battle: set yourselves, stand ye still, and see the salvation of the LORD.",
+  "ref": "2 Chronicles 20:17"
+ },
+ {
+  "id": "2-chronicles-20-m-08",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the Levites stand up to praise the Lord with a loud voice?",
+  "choices": [
+   "Before the king",
+   "At the gate",
+   "On high, the Kohathites and Korhites",
+   "In the valley"
+  ],
+  "answer": 2,
+  "explanation": "The Levites, of the Kohathites and of the Korhites, stood up to praise the LORD God of Israel with a loud voice on high.",
+  "ref": "2 Chronicles 20:19"
+ },
+ {
+  "id": "2-chronicles-20-m-09",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "Into which wilderness did Judah go forth early in the morning?",
+  "choices": [
+   "Tekoa",
+   "Jeruel",
+   "Zin",
+   "Paran"
+  ],
+  "answer": 0,
+  "explanation": "They rose early in the morning, and went forth into the wilderness of Tekoa.",
+  "ref": "2 Chronicles 20:20"
+ },
+ {
+  "id": "2-chronicles-20-m-10",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoshaphat tell Judah to believe so they would be established?",
+  "choices": [
+   "Their numbers",
+   "The Lord their God",
+   "The king",
+   "The captains"
+  ],
+  "answer": 1,
+  "explanation": "Believe in the LORD your God, so shall ye be established; believe his prophets, so shall ye prosper.",
+  "ref": "2 Chronicles 20:20"
+ },
+ {
+  "id": "2-chronicles-20-m-11",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the Lord set ambushments against the enemies?",
+  "choices": [
+   "When the king prayed",
+   "When Judah drew swords",
+   "When night fell",
+   "When they began to sing and to praise"
+  ],
+  "answer": 3,
+  "explanation": "When they began to sing and to praise, the LORD set ambushments against the children of Ammon, Moab, and mount Seir.",
+  "ref": "2 Chronicles 20:22"
+ },
+ {
+  "id": "2-chronicles-20-m-12",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ammon and Moab do to the inhabitants of mount Seir?",
+  "choices": [
+   "Traded with them",
+   "Stood up to slay and destroy them",
+   "Made peace with them",
+   "Fled from them"
+  ],
+  "answer": 1,
+  "explanation": "The children of Ammon and Moab stood up against the inhabitants of mount Seir, utterly to slay and destroy them.",
+  "ref": "2 Chronicles 20:23"
+ },
+ {
+  "id": "2-chronicles-20-m-13",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long were they gathering the spoil?",
+  "choices": [
+   "One day",
+   "Seven days",
+   "Forty days",
+   "Three days"
+  ],
+  "answer": 3,
+  "explanation": "They were three days in gathering of the spoil, it was so much.",
+  "ref": "2 Chronicles 20:25"
+ },
+ {
+  "id": "2-chronicles-20-m-14",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did they come to Jerusalem after the victory?",
+  "choices": [
+   "With psalteries, harps and trumpets",
+   "In silence",
+   "With chariots",
+   "With captives in chains"
+  ],
+  "answer": 0,
+  "explanation": "They came to Jerusalem with psalteries and harps and trumpets unto the house of the LORD.",
+  "ref": "2 Chronicles 20:28"
+ },
+ {
+  "id": "2-chronicles-20-m-15",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What fell on all the kingdoms when they heard the Lord fought Israel's enemies?",
+  "choices": [
+   "A plague",
+   "A great storm",
+   "The fear of God",
+   "A famine"
+  ],
+  "answer": 2,
+  "explanation": "The fear of God was on all the kingdoms of those countries.",
+  "ref": "2 Chronicles 20:29"
+ },
+ {
+  "id": "2-chronicles-20-m-16",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was lacking among the people though Jehoshaphat did right?",
+  "choices": [
+   "The high places were not taken away",
+   "The temple had no priests",
+   "The law was lost",
+   "The altar was broken"
+  ],
+  "answer": 0,
+  "explanation": "The high places were not taken away: for as yet the people had not prepared their hearts unto the God of their fathers.",
+  "ref": "2 Chronicles 20:33"
+ },
+ {
+  "id": "2-chronicles-20-m-17",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the ships at Ezion-gaber?",
+  "choices": [
+   "They were sold",
+   "They were burned by Syria",
+   "They were broken and could not go to Tarshish",
+   "They sailed to Tarshish"
+  ],
+  "answer": 2,
+  "explanation": "The ships were broken, that they were not able to go to Tarshish.",
+  "ref": "2 Chronicles 20:37"
+ },
+ {
+  "id": "2-chronicles-20-h-01",
+  "chapter": 20,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the report say the great multitude was, which is En-gedi?",
+  "choices": [
+   "Hazazon-tamar",
+   "Jeruel",
+   "Tekoa",
+   "Mount Seir"
+  ],
+  "answer": 0,
+  "explanation": "They be Hazazon-tamar, which is En-gedi.",
+  "ref": "2 Chronicles 20:2"
+ },
+ {
+  "id": "2-chronicles-20-h-02",
+  "chapter": 20,
+  "level": "hard",
+  "category": "place",
+  "question": "By which cliff would the enemies come up?",
+  "choices": [
+   "The cliff of Engedi",
+   "The cliff of Tekoa",
+   "The cliff of Ziz",
+   "The cliff of Arnon"
+  ],
+  "answer": 2,
+  "explanation": "They come up by the cliff of Ziz; and ye shall find them at the end of the brook, before the wilderness of Jeruel.",
+  "ref": "2 Chronicles 20:16"
+ },
+ {
+  "id": "2-chronicles-20-h-03",
+  "chapter": 20,
+  "level": "hard",
+  "category": "place",
+  "question": "Before which wilderness would Judah find the enemy?",
+  "choices": [
+   "Jeruel",
+   "Tekoa",
+   "Paran",
+   "Sin"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall find them at the end of the brook, before the wilderness of Jeruel.",
+  "ref": "2 Chronicles 20:16"
+ },
+ {
+  "id": "2-chronicles-20-h-04",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jehoshaphat's prayer say the Lord would do when evil came and they cried in the sanctuary?",
+  "choices": [
+   "Hide his face",
+   "Send a prophet",
+   "Withhold rain",
+   "Hear and help"
+  ],
+  "answer": 3,
+  "explanation": "We stand before this house and cry unto thee in our affliction, then thou wilt hear and help.",
+  "ref": "2 Chronicles 20:9"
+ },
+ {
+  "id": "2-chronicles-20-h-05",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom would the Lord not let Israel invade when they came out of Egypt?",
+  "choices": [
+   "Midian and Amalek",
+   "Ammon, Moab and mount Seir",
+   "Edom and Syria",
+   "Philistia and Tyre"
+  ],
+  "answer": 1,
+  "explanation": "The children of Ammon and Moab and mount Seir, whom thou wouldest not let Israel invade.",
+  "ref": "2 Chronicles 20:10"
+ },
+ {
+  "id": "2-chronicles-20-h-06",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Jahaziel was a Levite of the sons of whom?",
+  "choices": [
+   "Korah",
+   "Merari",
+   "Heman",
+   "Asaph"
+  ],
+  "answer": 3,
+  "explanation": "Jahaziel, a Levite of the sons of Asaph.",
+  "ref": "2 Chronicles 20:14"
+ },
+ {
+  "id": "2-chronicles-20-h-07",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jahaziel say to do tomorrow?",
+  "choices": [
+   "Fast again",
+   "Go down against them",
+   "Stay in the city",
+   "Send an offering"
+  ],
+  "answer": 1,
+  "explanation": "To morrow go ye down against them.",
+  "ref": "2 Chronicles 20:16"
+ },
+ {
+  "id": "2-chronicles-20-h-08",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the singers praise, according to Jehoshaphat's appointment?",
+  "choices": [
+   "The beauty of holiness",
+   "The victory",
+   "The king",
+   "The mountains"
+  ],
+  "answer": 0,
+  "explanation": "He appointed singers that should praise the beauty of holiness.",
+  "ref": "2 Chronicles 20:21"
+ },
+ {
+  "id": "2-chronicles-20-h-09",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Jehoshaphat when he began to reign?",
+  "choices": [
+   "Forty",
+   "Twelve",
+   "Thirty and five",
+   "Twenty and five"
+  ],
+  "answer": 2,
+  "explanation": "He was thirty and five years old when he began to reign, and he reigned twenty and five years in Jerusalem.",
+  "ref": "2 Chronicles 20:31"
+ },
+ {
+  "id": "2-chronicles-20-h-10",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Jehoshaphat reign in Jerusalem?",
+  "choices": [
+   "Thirty and five",
+   "Forty and one",
+   "Fifteen",
+   "Twenty and five"
+  ],
+  "answer": 3,
+  "explanation": "He reigned twenty and five years in Jerusalem.",
+  "ref": "2 Chronicles 20:31"
+ },
+ {
+  "id": "2-chronicles-20-h-11",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "What was the name of Jehoshaphat's mother?",
+  "choices": [
+   "Naamah",
+   "Azubah the daughter of Shilhi",
+   "Maachah",
+   "Athaliah"
+  ],
+  "answer": 1,
+  "explanation": "His mother's name was Azubah the daughter of Shilhi.",
+  "ref": "2 Chronicles 20:31"
+ },
+ {
+  "id": "2-chronicles-20-h-12",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "In whose way did Jehoshaphat walk?",
+  "choices": [
+   "David his father",
+   "Ahab",
+   "Solomon",
+   "Asa his father"
+  ],
+  "answer": 3,
+  "explanation": "He walked in the way of Asa his father, and departed not from it.",
+  "ref": "2 Chronicles 20:32"
+ },
+ {
+  "id": "2-chronicles-20-h-13",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were the rest of Jehoshaphat's acts written?",
+  "choices": [
+   "In the book of Gad",
+   "In the book of Jehu the son of Hanani",
+   "In the book of Nathan",
+   "In the book of Iddo"
+  ],
+  "answer": 1,
+  "explanation": "The rest of the acts of Jehoshaphat are written in the book of Jehu the son of Hanani.",
+  "ref": "2 Chronicles 20:34"
+ },
+ {
+  "id": "2-chronicles-20-h-14",
+  "chapter": 20,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did they make the ships?",
+  "choices": [
+   "Tyre",
+   "Eloth",
+   "Ezion-gaber",
+   "Joppa"
+  ],
+  "answer": 2,
+  "explanation": "They made the ships in Ezion-gaber.",
+  "ref": "2 Chronicles 20:36"
+ },
+ {
+  "id": "2-chronicles-20-h-15",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Who prophesied against Jehoshaphat for joining Ahaziah?",
+  "choices": [
+   "Eliezer the son of Dodavah of Mareshah",
+   "Jahaziel",
+   "Jehu",
+   "Hanani"
+  ],
+  "answer": 0,
+  "explanation": "Eliezer the son of Dodavah of Mareshah prophesied against Jehoshaphat.",
+  "ref": "2 Chronicles 20:37"
+ },
+ {
   "id": "old-2-chronicles-21-1",
   "chapter": 21,
   "level": "beginner",
