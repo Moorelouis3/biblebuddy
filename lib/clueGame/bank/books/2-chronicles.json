@@ -11472,6 +11472,598 @@
   "ref": "2 Chronicles 24:25"
  },
  {
+  "id": "2-chronicles-24-e-01",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Joash when he began to reign?",
+  "choices": [
+   "Twelve",
+   "Seven years old",
+   "Twenty-five",
+   "Forty"
+  ],
+  "answer": 1,
+  "explanation": "Joash was seven years old when he began to reign.",
+  "ref": "2 Chronicles 24:1"
+ },
+ {
+  "id": "2-chronicles-24-e-02",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Jehoiada buried?",
+  "choices": [
+   "In the city of David among the kings",
+   "In Samaria",
+   "In the house of Baal",
+   "In Beer-sheba"
+  ],
+  "answer": 0,
+  "explanation": "They buried him in the city of David among the kings, because he had done good in Israel.",
+  "ref": "2 Chronicles 24:16"
+ },
+ {
+  "id": "2-chronicles-24-e-03",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came and made obeisance to the king after Jehoiada died?",
+  "choices": [
+   "The Levites",
+   "The singers",
+   "The princes of Judah",
+   "The Syrians"
+  ],
+  "answer": 2,
+  "explanation": "After the death of Jehoiada came the princes of Judah, and made obeisance to the king. Then the king hearkened unto them.",
+  "ref": "2 Chronicles 24:17"
+ },
+ {
+  "id": "2-chronicles-24-e-04",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people serve after they left the house of the LORD?",
+  "choices": [
+   "Groves and idols",
+   "The brazen serpent",
+   "Foreign kings",
+   "The golden calves"
+  ],
+  "answer": 0,
+  "explanation": "They left the house of the LORD God of their fathers, and served groves and idols.",
+  "ref": "2 Chronicles 24:18"
+ },
+ {
+  "id": "2-chronicles-24-e-05",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God send to bring the people back to the LORD?",
+  "choices": [
+   "Famine",
+   "Prophets",
+   "An angel",
+   "Fire from heaven"
+  ],
+  "answer": 1,
+  "explanation": "Yet he sent prophets to them, to bring them again unto the LORD.",
+  "ref": "2 Chronicles 24:19"
+ },
+ {
+  "id": "2-chronicles-24-e-06",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who came up against Joash and Jerusalem at the end of the year?",
+  "choices": [
+   "The host of Syria",
+   "The Philistines",
+   "The Egyptians",
+   "The Edomites"
+  ],
+  "answer": 0,
+  "explanation": "At the end of the year, the host of Syria came up against him.",
+  "ref": "2 Chronicles 24:23"
+ },
+ {
+  "id": "2-chronicles-24-e-07",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the princes and people respond as they brought in money for the chest?",
+  "choices": [
+   "They complained",
+   "They rejoiced",
+   "They refused",
+   "They hid their money"
+  ],
+  "answer": 1,
+  "explanation": "All the princes and all the people rejoiced, and brought in, and cast into the chest.",
+  "ref": "2 Chronicles 24:10"
+ },
+ {
+  "id": "2-chronicles-24-e-08",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in the stead of Joash?",
+  "choices": [
+   "Amaziah his son",
+   "Uzziah",
+   "Jotham",
+   "Zechariah"
+  ],
+  "answer": 0,
+  "explanation": "Amaziah his son reigned in his stead.",
+  "ref": "2 Chronicles 24:27"
+ },
+ {
+  "id": "2-chronicles-24-e-09",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took two wives for Joash?",
+  "choices": [
+   "Zechariah",
+   "Jehoiada",
+   "Azariah",
+   "The princes of Judah"
+  ],
+  "answer": 1,
+  "explanation": "Jehoiada took for him two wives; and he begat sons and daughters.",
+  "ref": "2 Chronicles 24:3"
+ },
+ {
+  "id": "2-chronicles-24-m-01",
+  "chapter": 24,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Joash's mother Zibiah from?",
+  "choices": [
+   "Beer-sheba",
+   "Hebron",
+   "Jezreel",
+   "Bethlehem"
+  ],
+  "answer": 0,
+  "explanation": "His mother's name also was Zibiah of Beer-sheba.",
+  "ref": "2 Chronicles 24:1"
+ },
+ {
+  "id": "2-chronicles-24-m-02",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had broken up the house of God and given its dedicated things to Baalim?",
+  "choices": [
+   "The Syrians",
+   "The sons of Athaliah",
+   "Jehu's men",
+   "The princes of Judah"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Athaliah, that wicked woman, had broken up the house of God.",
+  "ref": "2 Chronicles 24:7"
+ },
+ {
+  "id": "2-chronicles-24-m-03",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joash ask Jehoiada why he had not required of the Levites?",
+  "choices": [
+   "To teach the people",
+   "To guard the gates",
+   "To bring in the collection from Judah and Jerusalem",
+   "To offer sacrifices daily"
+  ],
+  "answer": 2,
+  "explanation": "Why hast thou not required of the Levites to bring in out of Judah and out of Jerusalem the collection?",
+  "ref": "2 Chronicles 24:6"
+ },
+ {
+  "id": "2-chronicles-24-m-04",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Who laid the collection upon Israel in the wilderness?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Joshua",
+   "Samuel"
+  ],
+  "answer": 1,
+  "explanation": "The collection that Moses the servant of God laid upon Israel in the wilderness.",
+  "ref": "2 Chronicles 24:9"
+ },
+ {
+  "id": "2-chronicles-24-m-05",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who came and emptied the chest when there was much money?",
+  "choices": [
+   "The Levites",
+   "Jehoiada and the king",
+   "The king's scribe and the high priest's officer",
+   "The masons"
+  ],
+  "answer": 2,
+  "explanation": "The king's scribe and the high priest's officer came and emptied the chest.",
+  "ref": "2 Chronicles 24:11"
+ },
+ {
+  "id": "2-chronicles-24-m-06",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was made from the money left after the repairs were finished?",
+  "choices": [
+   "A new throne",
+   "Vessels for the house of the LORD",
+   "A wall for the city",
+   "Gifts for the Syrians"
+  ],
+  "answer": 1,
+  "explanation": "They brought the rest of the money before the king and Jehoiada, whereof were made vessels for the house of the LORD.",
+  "ref": "2 Chronicles 24:14"
+ },
+ {
+  "id": "2-chronicles-24-m-07",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Jehoiada buried among the kings?",
+  "choices": [
+   "He had done good in Israel toward God and his house",
+   "Because he had been king",
+   "Because Joash commanded it",
+   "Because he was a hundred and thirty"
+  ],
+  "answer": 0,
+  "explanation": "They buried him among the kings, because he had done good in Israel, both toward God, and toward his house.",
+  "ref": "2 Chronicles 24:16"
+ },
+ {
+  "id": "2-chronicles-24-m-08",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Zechariah say the people could not do because they transgressed?",
+  "choices": [
+   "Prosper",
+   "Rest",
+   "Return home",
+   "Pray"
+  ],
+  "answer": 0,
+  "explanation": "Why transgress ye the commandments of the LORD, that ye cannot prosper?",
+  "ref": "2 Chronicles 24:20"
+ },
+ {
+  "id": "2-chronicles-24-m-09",
+  "chapter": 24,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Zechariah stoned?",
+  "choices": [
+   "Outside the city gate",
+   "In the court of the house of the LORD",
+   "In the wilderness",
+   "In the king's house"
+  ],
+  "answer": 1,
+  "explanation": "They stoned him with stones at the commandment of the king in the court of the house of the LORD.",
+  "ref": "2 Chronicles 24:21"
+ },
+ {
+  "id": "2-chronicles-24-m-10",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Joash failed to remember when he slew Zechariah?",
+  "choices": [
+   "The kindness Jehoiada had done to him",
+   "The law of Moses",
+   "His coronation oath",
+   "The prophets' warning"
+  ],
+  "answer": 0,
+  "explanation": "Joash the king remembered not the kindness which Jehoiada his father had done to him, but slew his son.",
+  "ref": "2 Chronicles 24:22"
+ },
+ {
+  "id": "2-chronicles-24-m-11",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Zechariah say as he died?",
+  "choices": [
+   "Lord, receive my spirit",
+   "The LORD look upon it, and require it",
+   "Forgive them",
+   "Return to the LORD"
+  ],
+  "answer": 1,
+  "explanation": "When he died, he said, The LORD look upon it, and require it.",
+  "ref": "2 Chronicles 24:22"
+ },
+ {
+  "id": "2-chronicles-24-m-12",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did the Syrians send the spoil of Judah's princes?",
+  "choices": [
+   "The king of Damascus",
+   "The king of Assyria",
+   "The king of Egypt",
+   "The king of Tyre"
+  ],
+  "answer": 0,
+  "explanation": "They sent all the spoil of them unto the king of Damascus.",
+  "ref": "2 Chronicles 24:23"
+ },
+ {
+  "id": "2-chronicles-24-m-13",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD deliver a very great host into the hand of a small Syrian company?",
+  "choices": [
+   "Because Joash had broken his covenant",
+   "Because they had forsaken the LORD God of their fathers",
+   "Because the Syrians prayed",
+   "Because the walls had fallen"
+  ],
+  "answer": 1,
+  "explanation": "The LORD delivered a very great host into their hand, because they had forsaken the LORD God of their fathers.",
+  "ref": "2 Chronicles 24:24"
+ },
+ {
+  "id": "2-chronicles-24-m-14",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Joash's own servants conspire against him?",
+  "choices": [
+   "For the blood of the sons of Jehoiada the priest",
+   "For his heavy taxes",
+   "For the spoil given to Syria",
+   "For a throne for Amaziah"
+  ],
+  "answer": 0,
+  "explanation": "His own servants conspired against him for the blood of the sons of Jehoiada the priest.",
+  "ref": "2 Chronicles 24:25"
+ },
+ {
+  "id": "2-chronicles-24-h-01",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Joash reign in Jerusalem?",
+  "choices": [
+   "Seven",
+   "Twenty",
+   "Forty",
+   "Fifty-two"
+  ],
+  "answer": 2,
+  "explanation": "He reigned forty years in Jerusalem.",
+  "ref": "2 Chronicles 24:1"
+ },
+ {
+  "id": "2-chronicles-24-h-02",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Jehoiada when he died?",
+  "choices": [
+   "Ninety",
+   "A hundred and ten",
+   "A hundred and thirty",
+   "A hundred and fifty"
+  ],
+  "answer": 2,
+  "explanation": "Jehoiada waxed old, and was full of days when he died; an hundred and thirty years old was he.",
+  "ref": "2 Chronicles 24:15"
+ },
+ {
+  "id": "2-chronicles-24-h-03",
+  "chapter": 24,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Joash not buried, though he was buried in the city of David?",
+  "choices": [
+   "In a field outside Jerusalem",
+   "In the sepulchres of the kings",
+   "Beside Jehoiada",
+   "In the house of the LORD"
+  ],
+  "answer": 1,
+  "explanation": "They buried him in the city of David, but they buried him not in the sepulchres of the kings.",
+  "ref": "2 Chronicles 24:25"
+ },
+ {
+  "id": "2-chronicles-24-h-04",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Which conspirator against Joash was the son of Shimeath an Ammonitess?",
+  "choices": [
+   "Zabad",
+   "Jehozabad",
+   "Zichri",
+   "Amaziah"
+  ],
+  "answer": 0,
+  "explanation": "Zabad the son of Shimeath an Ammonitess conspired against him.",
+  "ref": "2 Chronicles 24:26"
+ },
+ {
+  "id": "2-chronicles-24-h-05",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what people was Shimrith, mother of the conspirator Jehozabad?",
+  "choices": [
+   "Ammonite",
+   "Edomite",
+   "Moabitess",
+   "Egyptian"
+  ],
+  "answer": 2,
+  "explanation": "Jehozabad was the son of Shimrith a Moabitess.",
+  "ref": "2 Chronicles 24:26"
+ },
+ {
+  "id": "2-chronicles-24-h-06",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By whose hand was the chest brought to the king's office?",
+  "choices": [
+   "The Levites",
+   "The scribe",
+   "The princes",
+   "The masons"
+  ],
+  "answer": 0,
+  "explanation": "The chest was brought unto the king's office by the hand of the Levites.",
+  "ref": "2 Chronicles 24:11"
+ },
+ {
+  "id": "2-chronicles-24-h-07",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How often was the chest emptied and returned to its place?",
+  "choices": [
+   "Once a week",
+   "Day by day",
+   "Every sabbath",
+   "Once a month"
+  ],
+  "answer": 1,
+  "explanation": "They emptied the chest, and carried it to his place again. Thus they did day by day.",
+  "ref": "2 Chronicles 24:11"
+ },
+ {
+  "id": "2-chronicles-24-h-08",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how long did they offer burnt offerings continually in the house of the LORD?",
+  "choices": [
+   "All the days of Joash",
+   "All the days of Jehoiada",
+   "Seven years",
+   "Until Syria came"
+  ],
+  "answer": 1,
+  "explanation": "They offered burnt offerings in the house of the LORD continually all the days of Jehoiada.",
+  "ref": "2 Chronicles 24:14"
+ },
+ {
+  "id": "2-chronicles-24-h-09",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did the Syrians destroy from among the people?",
+  "choices": [
+   "The priests",
+   "The firstborn",
+   "All the princes of the people",
+   "The Levites"
+  ],
+  "answer": 2,
+  "explanation": "They destroyed all the princes of the people from among the people.",
+  "ref": "2 Chronicles 24:23"
+ },
+ {
+  "id": "2-chronicles-24-h-10",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what condition did the Syrians leave Joash when they departed?",
+  "choices": [
+   "In great diseases",
+   "In chains",
+   "In poverty",
+   "In exile"
+  ],
+  "answer": 0,
+  "explanation": "They left him in great diseases.",
+  "ref": "2 Chronicles 24:25"
+ },
+ {
+  "id": "2-chronicles-24-h-11",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What came upon Zechariah the son of Jehoiada before he spoke to the people?",
+  "choices": [
+   "A vision of the temple",
+   "The Spirit of God",
+   "An angel with a scroll",
+   "A great fear"
+  ],
+  "answer": 1,
+  "explanation": "The Spirit of God came upon Zechariah the son of Jehoiada the priest.",
+  "ref": "2 Chronicles 24:20"
+ },
+ {
+  "id": "2-chronicles-24-h-12",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Zechariah say God had done because the people forsook the LORD?",
+  "choices": [
+   "He had forsaken them",
+   "He had sent famine",
+   "He had hidden the ark",
+   "He had cursed the city"
+  ],
+  "answer": 0,
+  "explanation": "Because ye have forsaken the LORD, he hath also forsaken you.",
+  "ref": "2 Chronicles 24:20"
+ },
+ {
+  "id": "2-chronicles-24-h-13",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Levites fail to do when Joash told them to gather money?",
+  "choices": [
+   "Hasten the matter",
+   "Count the money",
+   "Leave the temple",
+   "Visit Israel"
+  ],
+  "answer": 0,
+  "explanation": "Howbeit the Levites hastened it not.",
+  "ref": "2 Chronicles 24:5"
+ },
+ {
+  "id": "2-chronicles-24-h-14",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the workmen do to the house of God once the work was perfected?",
+  "choices": [
+   "Set it in his state, and strengthened it",
+   "Added a second court",
+   "Covered it with gold",
+   "Moved the ark"
+  ],
+  "answer": 0,
+  "explanation": "The workmen wrought, and the work was perfected by them, and they set the house of God in his state, and strengthened it.",
+  "ref": "2 Chronicles 24:13"
+ },
+ {
   "id": "old-2-chronicles-25-1",
   "chapter": 25,
   "level": "beginner",
