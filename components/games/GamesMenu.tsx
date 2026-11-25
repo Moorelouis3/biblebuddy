@@ -7,9 +7,8 @@
  * divider, the name and line, and a round button. The first game is the
  * featured one: gold edge, soft glow and a gold play button.
  *
- * Icons: until the painted icons arrive (docs/games-menu-icons-prompt.md,
- * saved as /games/menu/<key>.png), each tile is an emoji on the game's colour.
- * Set `icon` on a game once its file is in public/games/menu.
+ * Icons: Louis's painted icons (2026-11-25) in public/games/menu/<key>.webp.
+ * A game without `icon` falls back to its emoji on the game's colour.
  */
 
 import Link from "next/link";
@@ -24,6 +23,7 @@ const GAMES: Game[] = [
     line: "Connect the tiles and walk through the Bible, board by board.",
     emoji: "💎",
     tile: "linear-gradient(145deg,#2f7bff 0%,#0b3db8 100%)",
+    icon: "/games/menu/match.webp",
     badge: "New",
   },
   {
@@ -33,6 +33,7 @@ const GAMES: Game[] = [
     line: "Any book, any chapter. Play solo, with friends, or take a challenge.",
     emoji: "📜",
     tile: "linear-gradient(145deg,#2f8a55 0%,#0f4a2a 100%)",
+    icon: "/games/menu/trivia.webp",
   },
   {
     key: "memory",
@@ -41,6 +42,7 @@ const GAMES: Game[] = [
     line: "Save a verse and learn it by heart, a few minutes at a time.",
     emoji: "🧠",
     tile: "linear-gradient(145deg,#8b4fd1 0%,#4a1f86 100%)",
+    icon: "/games/menu/memory.webp",
   },
   {
     key: "word-search",
@@ -49,6 +51,7 @@ const GAMES: Game[] = [
     line: "Find the people, places and themes of every book.",
     emoji: "🔎",
     tile: "linear-gradient(145deg,#2f5fa8 0%,#132d5c 100%)",
+    icon: "/games/menu/word-search.webp",
   },
 ];
 
@@ -86,11 +89,11 @@ function Row({ game, featured }: { game: Game; featured: boolean }) {
       }}
     >
       <span
-        className="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-2xl text-[34px] sm:h-[72px] sm:w-[72px]"
-        style={{ background: game.icon ? "transparent" : game.tile, boxShadow: "inset 0 1px 0 rgba(255,255,255,.35), 0 4px 12px rgba(0,0,0,.4)" }}
+        className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-2xl text-[38px] sm:h-[92px] sm:w-[92px]"
+        style={game.icon ? { filter: "drop-shadow(0 4px 10px rgba(0,0,0,.45))" } : { background: game.tile, boxShadow: "inset 0 1px 0 rgba(255,255,255,.35), 0 4px 12px rgba(0,0,0,.4)" }}
         aria-hidden="true"
       >
-        {game.icon ? <img src={game.icon} alt="" className="h-full w-full object-cover" /> : game.emoji}
+        {game.icon ? <img src={game.icon} alt="" className="h-full w-full object-contain" /> : game.emoji}
       </span>
       <span className="hidden h-12 w-px shrink-0 sm:block" style={{ background: "rgba(233,180,90,.35)" }} aria-hidden="true" />
       <span className="min-w-0 flex-1">
