@@ -1152,22 +1152,6 @@
   "ref": "Ezekiel 16:15"
  },
  {
-  "id": "old-ezekiel-16-5",
-  "chapter": 16,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What future promise appears?",
-  "choices": [
-   "I will forget Jerusalem forever",
-   "I will remember my covenant with thee",
-   "I will destroy every remnant",
-   "Egypt shall save thee"
-  ],
-  "answer": 1,
-  "explanation": "Despite the shocking sin, the chapter ends with a promise of remembered covenant mercy.",
-  "ref": "Ezekiel 16:60"
- },
- {
   "id": "old-ezekiel-17-1",
   "chapter": 17,
   "level": "beginner",
@@ -19822,5 +19806,6357 @@
   "answer": 0,
   "explanation": "The iniquity of the house of Israel and Judah is exceeding great.",
   "ref": "Ezekiel 9:9"
+ },
+ {
+  "id": "ezekiel-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the prophets see for Jerusalem when there was no peace?",
+  "choices": [
+   "Visions of war",
+   "Visions of peace",
+   "Visions of a rebuilt temple",
+   "Visions of the exile's end"
+  ],
+  "answer": 1,
+  "explanation": "The prophets of Israel prophesy concerning Jerusalem and see visions of peace for her, and there is no peace.",
+  "ref": "Ezekiel 13:16"
+ },
+ {
+  "id": "ezekiel-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Against whom does the LORD next tell Ezekiel to set his face?",
+  "choices": [
+   "The daughters of his people who prophesy",
+   "The elders of Judah",
+   "The kings of Tyre",
+   "The priests of the temple"
+  ],
+  "answer": 0,
+  "explanation": "Ezekiel is to set his face against the daughters of his people which prophesy out of their own heart.",
+  "ref": "Ezekiel 13:17"
+ },
+ {
+  "id": "ezekiel-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would bring down the wall daubed with untempered mortar?",
+  "choices": [
+   "An army from Babylon",
+   "An earthquake",
+   "Fire from heaven",
+   "Stormy wind, overflowing shower, great hailstones"
+  ],
+  "answer": 3,
+  "explanation": "There shall be an overflowing shower, great hailstones shall fall, and a stormy wind shall rend it.",
+  "ref": "Ezekiel 13:11"
+ },
+ {
+  "id": "ezekiel-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD do to the women's pillows and kerchiefs?",
+  "choices": [
+   "Burn them in the temple",
+   "Hide them away",
+   "Tear them and set the hunted souls free",
+   "Give them to the poor"
+  ],
+  "answer": 2,
+  "explanation": "He is against their pillows and kerchiefs, will tear them, and will let the souls go.",
+  "ref": "Ezekiel 13:20–21"
+ },
+ {
+  "id": "ezekiel-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where would the lying prophets not enter?",
+  "choices": [
+   "The land of Babylon",
+   "The land of Israel",
+   "The land of Egypt",
+   "The land of Moab"
+  ],
+  "answer": 1,
+  "explanation": "They shall not enter into the land of Israel.",
+  "ref": "Ezekiel 13:9"
+ },
+ {
+  "id": "ezekiel-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "What does the LORD tell Ezekiel to do about the prophets of Israel?",
+  "choices": [
+   "Prophesy against them",
+   "Anoint them",
+   "Send them to Babylon",
+   "Teach them"
+  ],
+  "answer": 0,
+  "explanation": "Son of man, prophesy against the prophets of Israel that prophesy out of their own hearts.",
+  "ref": "Ezekiel 13:2"
+ },
+ {
+  "id": "ezekiel-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does the LORD say He is against the prophets?",
+  "choices": [
+   "They refused to prophesy",
+   "They worshipped Baal",
+   "They fled to Egypt",
+   "They have spoken vanity and seen lies"
+  ],
+  "answer": 3,
+  "explanation": "Because ye have spoken vanity, and seen lies, therefore I am against you.",
+  "ref": "Ezekiel 13:8"
+ },
+ {
+  "id": "ezekiel-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the prophets not done for Israel to stand in battle in the day of the LORD?",
+  "choices": [
+   "Blown the trumpet",
+   "Carried the ark",
+   "Gone up into the gaps and made up the hedge",
+   "Fasted in sackcloth"
+  ],
+  "answer": 2,
+  "explanation": "Ye have not gone up into the gaps, neither made up the hedge for the house of Israel.",
+  "ref": "Ezekiel 13:5"
+ },
+ {
+  "id": "ezekiel-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city did the prophets of Israel prophesy peace for?",
+  "choices": [
+   "Samaria",
+   "Jerusalem",
+   "Babylon",
+   "Tyre"
+  ],
+  "answer": 1,
+  "explanation": "They prophesy concerning Jerusalem and see visions of peace for her.",
+  "ref": "Ezekiel 13:16"
+ },
+ {
+  "id": "ezekiel-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will be asked of the daubers when the wall has fallen?",
+  "choices": [
+   "Where is the daubing wherewith ye have daubed it?",
+   "Who built this wall?",
+   "Why did you not warn us?",
+   "Where is the king?"
+  ],
+  "answer": 0,
+  "explanation": "When the wall is fallen it shall be said, Where is the daubing wherewith ye have daubed it?",
+  "ref": "Ezekiel 13:12"
+ },
+ {
+  "id": "ezekiel-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD say of the wall and those who daubed it?",
+  "choices": [
+   "The wall will be rebuilt",
+   "The wall is strong enough",
+   "They will repair it",
+   "The wall is no more, neither they that daubed it"
+  ],
+  "answer": 3,
+  "explanation": "The LORD will say, The wall is no more, neither they that daubed it.",
+  "ref": "Ezekiel 13:15"
+ },
+ {
+  "id": "ezekiel-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the LORD call the prophets foolish?",
+  "choices": [
+   "They refuse the LORD's word",
+   "They serve idols",
+   "They follow their own spirit and have seen nothing",
+   "They speak for the king"
+  ],
+  "answer": 2,
+  "explanation": "Woe unto the foolish prophets, that follow their own spirit, and have seen nothing.",
+  "ref": "Ezekiel 13:3"
+ },
+ {
+  "id": "ezekiel-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will they know when the LORD tears the kerchiefs and delivers His people?",
+  "choices": [
+   "That Babylon is mighty",
+   "That He is the LORD",
+   "That the temple stands",
+   "That the prophets spoke truth"
+  ],
+  "answer": 1,
+  "explanation": "He will deliver His people out of their hand, and they shall know that He is the LORD.",
+  "ref": "Ezekiel 13:21"
+ },
+ {
+  "id": "ezekiel-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was true of the prophets who said, The LORD saith?",
+  "choices": [
+   "The LORD had not sent them",
+   "They came from Babylon",
+   "They were priests",
+   "They were Levites"
+  ],
+  "answer": 0,
+  "explanation": "They said, The LORD saith, and the LORD hath not sent them.",
+  "ref": "Ezekiel 13:6–7"
+ },
+ {
+  "id": "ezekiel-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say the women did to Him among His people?",
+  "choices": [
+   "Honoured Him",
+   "Silenced Him",
+   "Forgot Him",
+   "Polluted Him"
+  ],
+  "answer": 3,
+  "explanation": "Will ye pollute me among my people for handfuls of barley and for pieces of bread?",
+  "ref": "Ezekiel 13:19"
+ },
+ {
+  "id": "ezekiel-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the false prophets see no more?",
+  "choices": [
+   "Dreams of kings",
+   "Battles with Babylon",
+   "Vain visions and divinations",
+   "Their own pillows"
+  ],
+  "answer": 2,
+  "explanation": "Therefore ye shall see no more vanity, nor divine divinations.",
+  "ref": "Ezekiel 13:23"
+ },
+ {
+  "id": "ezekiel-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the lying prophets make others hope for?",
+  "choices": [
+   "That the exile would end",
+   "That their word would be confirmed",
+   "That a king would return",
+   "That rain would fall"
+  ],
+  "answer": 1,
+  "explanation": "They made others to hope that they would confirm the word.",
+  "ref": "Ezekiel 13:6"
+ },
+ {
+  "id": "ezekiel-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would be uncovered when the LORD broke the wall down to the ground?",
+  "choices": [
+   "Its foundation",
+   "Buried idols",
+   "Hidden gold",
+   "The bodies of the prophets"
+  ],
+  "answer": 0,
+  "explanation": "The foundation thereof shall be discovered, and it shall fall.",
+  "ref": "Ezekiel 13:14"
+ },
+ {
+  "id": "ezekiel-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the prophets do to God's people by saying Peace?",
+  "choices": [
+   "Taught them",
+   "Healed them",
+   "Judged them",
+   "Seduced them"
+  ],
+  "answer": 3,
+  "explanation": "They have seduced my people, saying, Peace; and there was no peace.",
+  "ref": "Ezekiel 13:10"
+ },
+ {
+  "id": "ezekiel-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where would the lying prophets not be written?",
+  "choices": [
+   "In the book of life",
+   "On the temple wall",
+   "In the writing of the house of Israel",
+   "In the king's chronicle"
+  ],
+  "answer": 2,
+  "explanation": "They shall not be written in the writing of the house of Israel.",
+  "ref": "Ezekiel 13:9"
+ },
+ {
+  "id": "ezekiel-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the women get in return for their lies?",
+  "choices": [
+   "Silver and gold",
+   "Handfuls of barley and pieces of bread",
+   "Oil and wine",
+   "Sheep and goats"
+  ],
+  "answer": 1,
+  "explanation": "They polluted the LORD among His people for handfuls of barley and for pieces of bread.",
+  "ref": "Ezekiel 13:19"
+ },
+ {
+  "id": "ezekiel-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the women do to souls that should not die?",
+  "choices": [
+   "Slay them",
+   "Heal them",
+   "Teach them",
+   "Hide them"
+  ],
+  "answer": 0,
+  "explanation": "They slay the souls that should not die, and save the souls alive that should not live.",
+  "ref": "Ezekiel 13:19"
+ },
+ {
+  "id": "ezekiel-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Where would those who daubed the wall be consumed?",
+  "choices": [
+   "In the valley of Hinnom",
+   "On the mountains of Israel",
+   "In Babylon",
+   "In the midst of the fallen wall"
+  ],
+  "answer": 3,
+  "explanation": "The wall shall fall, and ye shall be consumed in the midst thereof.",
+  "ref": "Ezekiel 13:14"
+ },
+ {
+  "id": "ezekiel-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the lying prophets promise the wicked man?",
+  "choices": [
+   "Great wealth",
+   "Rest from enemies",
+   "Life",
+   "Pardon"
+  ],
+  "answer": 2,
+  "explanation": "They strengthened the hands of the wicked by promising him life.",
+  "ref": "Ezekiel 13:22"
+ },
+ {
+  "id": "ezekiel-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question does the LORD put to the women who hunt souls?",
+  "choices": [
+   "Will ye feed the souls of my people?",
+   "Will ye hunt the souls of my people?",
+   "Will ye teach the souls of my people?",
+   "Will ye lead the souls of my people?"
+  ],
+  "answer": 1,
+  "explanation": "Woe to the women that hunt souls! Will ye hunt the souls of my people?",
+  "ref": "Ezekiel 13:18"
+ },
+ {
+  "id": "ezekiel-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What place among God's people do the lying prophets lose?",
+  "choices": [
+   "The assembly of my people",
+   "The priesthood",
+   "Their houses",
+   "Their flocks"
+  ],
+  "answer": 0,
+  "explanation": "They shall not be in the assembly of my people.",
+  "ref": "Ezekiel 13:9"
+ },
+ {
+  "id": "ezekiel-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the great hailstones do in the LORD's fury?",
+  "choices": [
+   "Scatter the prophets",
+   "Fill the rivers",
+   "Break the gates",
+   "Consume the wall"
+  ],
+  "answer": 3,
+  "explanation": "There shall be great hailstones in my fury to consume it.",
+  "ref": "Ezekiel 13:13"
+ },
+ {
+  "id": "ezekiel-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of what did the daughters of God's people prophesy?",
+  "choices": [
+   "A dream of the night",
+   "Tablets of stone",
+   "Their own heart",
+   "Scrolls from the temple"
+  ],
+  "answer": 2,
+  "explanation": "The daughters of his people prophesy out of their own heart.",
+  "ref": "Ezekiel 13:17"
+ },
+ {
+  "id": "ezekiel-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD call the vision the prophets said He had spoken?",
+  "choices": [
+   "A holy vision",
+   "A vain vision",
+   "A dream of the night",
+   "A hard saying"
+  ],
+  "answer": 1,
+  "explanation": "Have ye not seen a vain vision, whereas ye say, The LORD saith it; albeit I have not spoken?",
+  "ref": "Ezekiel 13:7"
+ },
+ {
+  "id": "ezekiel-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the women sew their pillows?",
+  "choices": [
+   "To all armholes",
+   "To the temple curtains",
+   "To every doorpost",
+   "To the city gate"
+  ],
+  "answer": 0,
+  "explanation": "Woe to the women that sew pillows to all armholes.",
+  "ref": "Ezekiel 13:18"
+ },
+ {
+  "id": "ezekiel-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does the LORD say He will deliver out of the false women's hand?",
+  "choices": [
+   "The king of Judah",
+   "The prisoners of Egypt",
+   "Only the righteous priests",
+   "His people"
+  ],
+  "answer": 3,
+  "explanation": "I will deliver my people out of your hand, and they shall be no more in your hand to be hunted.",
+  "ref": "Ezekiel 13:21"
+ },
+ {
+  "id": "ezekiel-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came and sat before Ezekiel at the start of the chapter?",
+  "choices": [
+   "Priests from the temple",
+   "Captains of the army",
+   "Certain of the elders of Israel",
+   "Messengers from Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Then came certain of the elders of Israel unto me, and sat before me.",
+  "ref": "Ezekiel 14:1"
+ },
+ {
+  "id": "ezekiel-14-e-02",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD tell the house of Israel to do about their idols?",
+  "choices": [
+   "Hide them from Babylon",
+   "Repent and turn from them",
+   "Offer them to the LORD",
+   "Carry them to the temple"
+  ],
+  "answer": 1,
+  "explanation": "Repent, and turn yourselves from your idols; and turn away your faces from all your abominations.",
+  "ref": "Ezekiel 14:6"
+ },
+ {
+  "id": "ezekiel-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will be left in Jerusalem after the four judgments?",
+  "choices": [
+   "A remnant of sons and daughters",
+   "Only the priests",
+   "Nothing at all",
+   "The king and his house"
+  ],
+  "answer": 0,
+  "explanation": "Therein shall be left a remnant that shall be brought forth, both sons and daughters.",
+  "ref": "Ezekiel 14:22"
+ },
+ {
+  "id": "ezekiel-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD ask about being consulted by the elders with idols in their hearts?",
+  "choices": [
+   "Shall I forgive them?",
+   "Shall I send them a king?",
+   "Shall I speak in the night?",
+   "Should I be enquired of at all by them?"
+  ],
+  "answer": 3,
+  "explanation": "These men have set up their idols in their heart: should I be enquired of at all by them?",
+  "ref": "Ezekiel 14:3"
+ },
+ {
+  "id": "ezekiel-14-e-05",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD do to a man who separates from Him and seeks a prophet?",
+  "choices": [
+   "Give him a new heart",
+   "Send him to Babylon",
+   "Cut him off from the midst of His people",
+   "Make him a priest"
+  ],
+  "answer": 2,
+  "explanation": "I will set my face against that man, and cut him off from the midst of my people.",
+  "ref": "Ezekiel 14:8"
+ },
+ {
+  "id": "ezekiel-14-e-06",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom could Noah, Daniel and Job not deliver from the judgment?",
+  "choices": [
+   "Their own souls",
+   "Their sons and daughters",
+   "Their servants",
+   "The king"
+  ],
+  "answer": 1,
+  "explanation": "They shall deliver neither sons nor daughters; they only shall be delivered.",
+  "ref": "Ezekiel 14:16"
+ },
+ {
+  "id": "ezekiel-14-e-07",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say He will break when a land sins grievously?",
+  "choices": [
+   "The staff of the bread thereof",
+   "The bow of its warriors",
+   "The gates of its cities",
+   "The altar of its temple"
+  ],
+  "answer": 0,
+  "explanation": "I will stretch out mine hand upon it, and will break the staff of the bread thereof.",
+  "ref": "Ezekiel 14:13"
+ },
+ {
+  "id": "ezekiel-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the LORD answer idol-keepers according to their idols?",
+  "choices": [
+   "To give them peace",
+   "To teach them to pray",
+   "To reward their loyalty",
+   "To take Israel in their own heart, being estranged"
+  ],
+  "answer": 3,
+  "explanation": "That I may take the house of Israel in their own heart, because they are all estranged from me through their idols.",
+  "ref": "Ezekiel 14:5"
+ },
+ {
+  "id": "ezekiel-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "Besides Israelites, whom does the LORD warn about coming to a prophet with idols?",
+  "choices": [
+   "The king of Babylon",
+   "The Philistines",
+   "The stranger that sojourneth in Israel",
+   "The priests of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Every one of the house of Israel, or of the stranger that sojourneth in Israel, who sets up idols and comes to a prophet.",
+  "ref": "Ezekiel 14:7"
+ },
+ {
+  "id": "ezekiel-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do to a prophet who is deceived in what he speaks?",
+  "choices": [
+   "Send him to Egypt",
+   "Stretch out His hand and destroy him",
+   "Make him a priest",
+   "Forgive him"
+  ],
+  "answer": 1,
+  "explanation": "The LORD will stretch out His hand upon him, and will destroy him from the midst of His people.",
+  "ref": "Ezekiel 14:9"
+ },
+ {
+  "id": "ezekiel-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose punishment will equal the prophet's?",
+  "choices": [
+   "The one who seeks to him",
+   "The king's",
+   "The priests'",
+   "The elders of Babylon"
+  ],
+  "answer": 0,
+  "explanation": "The punishment of the prophet shall be even as the punishment of him that seeketh unto him.",
+  "ref": "Ezekiel 14:10"
+ },
+ {
+  "id": "ezekiel-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the LORD deal so with Israel (the goal of it all)?",
+  "choices": [
+   "So Babylon will be honoured",
+   "So the temple is rebuilt",
+   "So Israel has a king",
+   "So Israel goes no more astray but is His people"
+  ],
+  "answer": 3,
+  "explanation": "That the house of Israel may go no more astray, but that they may be my people, and I their God.",
+  "ref": "Ezekiel 14:11"
+ },
+ {
+  "id": "ezekiel-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD make of the man who seeks a prophet with idols in his heart?",
+  "choices": [
+   "A king",
+   "A watchman",
+   "A sign and a proverb",
+   "A prophet"
+  ],
+  "answer": 2,
+  "explanation": "I will make him a sign and a proverb, and I will cut him off from the midst of my people.",
+  "ref": "Ezekiel 14:8"
+ },
+ {
+  "id": "ezekiel-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD send so that no man may pass through the land?",
+  "choices": [
+   "A flood",
+   "Noisome beasts",
+   "Locusts",
+   "An earthquake"
+  ],
+  "answer": 1,
+  "explanation": "If I cause noisome beasts to pass through the land, so that no man may pass because of the beasts.",
+  "ref": "Ezekiel 14:15"
+ },
+ {
+  "id": "ezekiel-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD say to the sword if He brought it upon a land?",
+  "choices": [
+   "Go through the land",
+   "Return to your sheath",
+   "Spare the city",
+   "Rest"
+  ],
+  "answer": 0,
+  "explanation": "I bring a sword upon that land, and say, Sword, go through the land.",
+  "ref": "Ezekiel 14:17"
+ },
+ {
+  "id": "ezekiel-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD pour out upon a land along with a pestilence?",
+  "choices": [
+   "Fire from heaven",
+   "A great flood",
+   "Darkness",
+   "His fury in blood"
+  ],
+  "answer": 3,
+  "explanation": "If I send a pestilence into that land, and pour out my fury upon it in blood.",
+  "ref": "Ezekiel 14:19"
+ },
+ {
+  "id": "ezekiel-14-m-10",
+  "chapter": 14,
+  "level": "medium",
+  "category": "place",
+  "question": "Upon which city will the LORD send His four sore judgments?",
+  "choices": [
+   "Babylon",
+   "Samaria",
+   "Jerusalem",
+   "Tyre"
+  ],
+  "answer": 2,
+  "explanation": "How much more when I send my four sore judgments upon Jerusalem.",
+  "ref": "Ezekiel 14:21"
+ },
+ {
+  "id": "ezekiel-14-m-11",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who will comfort the exiles when they see their ways and doings?",
+  "choices": [
+   "The elders of Israel",
+   "The remnant that comes forth",
+   "Noah, Daniel and Job",
+   "The prophets"
+  ],
+  "answer": 1,
+  "explanation": "They shall comfort you, when ye see their ways and their doings.",
+  "ref": "Ezekiel 14:22–23"
+ },
+ {
+  "id": "ezekiel-14-m-12",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the LORD confirm that the three men could deliver neither sons nor daughters?",
+  "choices": [
+   "As I live, saith the Lord GOD",
+   "By the covenant with Abraham",
+   "By the ark",
+   "By the stars of heaven"
+  ],
+  "answer": 0,
+  "explanation": "As I live, saith the Lord GOD, they shall deliver neither sons nor daughters.",
+  "ref": "Ezekiel 14:16"
+ },
+ {
+  "id": "ezekiel-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the elders set before their face along with their idols?",
+  "choices": [
+   "The ark of the covenant",
+   "A burnt offering",
+   "The book of the law",
+   "The stumblingblock of their iniquity"
+  ],
+  "answer": 3,
+  "explanation": "These men have set up their idols in their heart, and put the stumblingblock of their iniquity before their face.",
+  "ref": "Ezekiel 14:3"
+ },
+ {
+  "id": "ezekiel-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD say of Israel when the judgments have done their work?",
+  "choices": [
+   "They shall be forgotten",
+   "They shall have a king",
+   "They shall be my people, and I their God",
+   "They shall return to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "That they may be my people, and I may be their God, saith the Lord GOD.",
+  "ref": "Ezekiel 14:11"
+ },
+ {
+  "id": "ezekiel-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD cut off from a land struck by famine?",
+  "choices": [
+   "Its vines and fig trees",
+   "Man and beast",
+   "Its kings and princes",
+   "Its priests"
+  ],
+  "answer": 1,
+  "explanation": "I will send famine upon it, and will cut off man and beast from it.",
+  "ref": "Ezekiel 14:13"
+ },
+ {
+  "id": "ezekiel-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would become of the land if the three men were in it during the beasts?",
+  "choices": [
+   "The land would be desolate",
+   "The land would be spared",
+   "The land would be healed",
+   "The land would be filled with sons"
+  ],
+  "answer": 0,
+  "explanation": "They shall deliver neither sons nor daughters; they only shall be delivered, but the land shall be desolate.",
+  "ref": "Ezekiel 14:16"
+ },
+ {
+  "id": "ezekiel-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How will the LORD answer a man who separates from Him and comes to a prophet?",
+  "choices": [
+   "By a dream",
+   "By the prophet's mouth",
+   "By an angel",
+   "By Himself"
+  ],
+  "answer": 3,
+  "explanation": "I the LORD will answer him by myself.",
+  "ref": "Ezekiel 14:7"
+ },
+ {
+  "id": "ezekiel-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD tell Israel to turn their faces from?",
+  "choices": [
+   "The land of Egypt",
+   "The kings of Babylon",
+   "All your abominations",
+   "The mountains of Israel"
+  ],
+  "answer": 2,
+  "explanation": "Turn away your faces from all your abominations.",
+  "ref": "Ezekiel 14:6"
+ },
+ {
+  "id": "ezekiel-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the exiles know about all the LORD had done in Jerusalem?",
+  "choices": [
+   "That it was done in anger only",
+   "That He had not done it without cause",
+   "That it was done by Babylon",
+   "That it would be undone"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall know that I have not done without cause all that I have done in it.",
+  "ref": "Ezekiel 14:23"
+ },
+ {
+  "id": "ezekiel-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "Who does the LORD say has deceived a prophet who is deceived in what he spoke?",
+  "choices": [
+   "I the LORD",
+   "The king",
+   "The false priests",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "If the prophet be deceived when he hath spoken a thing, I the LORD have deceived that prophet.",
+  "ref": "Ezekiel 14:9"
+ },
+ {
+  "id": "ezekiel-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom will the remnant come forth?",
+  "choices": [
+   "The king of Babylon",
+   "The priests in the temple",
+   "The nations around",
+   "The exiles with Ezekiel"
+  ],
+  "answer": 3,
+  "explanation": "They shall come forth unto you, and ye shall see their way and their doings.",
+  "ref": "Ezekiel 14:22"
+ },
+ {
+  "id": "ezekiel-14-h-10",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD send upon a land after He has broken its staff of bread?",
+  "choices": [
+   "Flood",
+   "Earthquake",
+   "Famine",
+   "Darkness"
+  ],
+  "answer": 2,
+  "explanation": "I will break the staff of the bread thereof, and will send famine upon it.",
+  "ref": "Ezekiel 14:13"
+ },
+ {
+  "id": "ezekiel-14-h-11",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Through what were all Israel estranged from the LORD?",
+  "choices": [
+   "Their kings",
+   "Their idols",
+   "Their marriages",
+   "Their wars"
+  ],
+  "answer": 1,
+  "explanation": "They are all estranged from me through their idols.",
+  "ref": "Ezekiel 14:5"
+ },
+ {
+  "id": "ezekiel-14-h-12",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "In the case of the sword, who alone would be delivered?",
+  "choices": [
+   "The three men themselves",
+   "Their sons and daughters",
+   "The whole land",
+   "The elders of Israel"
+  ],
+  "answer": 0,
+  "explanation": "Though these three men were in it, they shall deliver neither sons nor daughters, but they only shall be delivered themselves.",
+  "ref": "Ezekiel 14:18"
+ },
+ {
+  "id": "ezekiel-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would men not take from vine wood to hang a vessel on?",
+  "choices": [
+   "A beam",
+   "A nail of iron",
+   "A cord",
+   "A pin"
+  ],
+  "answer": 3,
+  "explanation": "Will men take a pin of it to hang any vessel thereon?",
+  "ref": "Ezekiel 15:3"
+ },
+ {
+  "id": "ezekiel-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD ask Ezekiel about the vine tree?",
+  "choices": [
+   "Who planted it?",
+   "Where does it grow?",
+   "What is it more than any tree?",
+   "How old is it?"
+  ],
+  "answer": 2,
+  "explanation": "Son of man, What is the vine tree more than any tree, or than a branch which is among the trees of the forest?",
+  "ref": "Ezekiel 15:2"
+ },
+ {
+  "id": "ezekiel-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom will the LORD give to the fire, as He gave the vine tree?",
+  "choices": [
+   "The kings of Babylon",
+   "The inhabitants of Jerusalem",
+   "The priests of Egypt",
+   "The cities of Moab"
+  ],
+  "answer": 1,
+  "explanation": "As the vine tree among the trees of the forest, which I have given to the fire for fuel, so will I give the inhabitants of Jerusalem.",
+  "ref": "Ezekiel 15:6"
+ },
+ {
+  "id": "ezekiel-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the people know when the LORD sets His face against them?",
+  "choices": [
+   "That He is the LORD",
+   "That Babylon is strong",
+   "That the temple is safe",
+   "That their idols are gods"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall know that I am the LORD, when I set my face against them.",
+  "ref": "Ezekiel 15:7"
+ },
+ {
+  "id": "ezekiel-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the fire do to the two ends of the vine branch?",
+  "choices": [
+   "Leaves them whole",
+   "Turns them to gold",
+   "Hides them",
+   "Devours them"
+  ],
+  "answer": 3,
+  "explanation": "The fire devoureth both the ends of it, and the midst of it is burned.",
+  "ref": "Ezekiel 15:4"
+ },
+ {
+  "id": "ezekiel-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Among what does the LORD say the vine tree grows?",
+  "choices": [
+   "The cedars of Lebanon",
+   "The gardens of Eden",
+   "The trees of the forest",
+   "The hills of Samaria"
+  ],
+  "answer": 2,
+  "explanation": "Than a branch which is among the trees of the forest.",
+  "ref": "Ezekiel 15:2"
+ },
+ {
+  "id": "ezekiel-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If the vine wood was useless whole, how useful is it after the fire?",
+  "choices": [
+   "Useful for a throne",
+   "Even less useful",
+   "Useful for a door",
+   "Useful again"
+  ],
+  "answer": 1,
+  "explanation": "When it was whole, it was meet for no work: how much less when the fire hath devoured it.",
+  "ref": "Ezekiel 15:5"
+ },
+ {
+  "id": "ezekiel-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what use is the vine branch cast into the fire?",
+  "choices": [
+   "Fuel",
+   "A sacrifice",
+   "A signal",
+   "A feast"
+  ],
+  "answer": 0,
+  "explanation": "It is cast into the fire for fuel.",
+  "ref": "Ezekiel 15:4"
+ },
+ {
+  "id": "ezekiel-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What part of the branch is burned after the fire devours both ends?",
+  "choices": [
+   "The root only",
+   "The leaves only",
+   "The fruit",
+   "The midst of it"
+  ],
+  "answer": 3,
+  "explanation": "The fire devoureth both the ends of it, and the midst of it is burned.",
+  "ref": "Ezekiel 15:4"
+ },
+ {
+  "id": "ezekiel-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would a pin of vine wood have been used to hang?",
+  "choices": [
+   "A sword",
+   "A crown",
+   "Any vessel",
+   "A lamp of gold"
+  ],
+  "answer": 2,
+  "explanation": "Will men take a pin of it to hang any vessel thereon?",
+  "ref": "Ezekiel 15:3"
+ },
+ {
+  "id": "ezekiel-16-e-01",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "Whose abominations is Ezekiel told to make known?",
+  "choices": [
+   "Jerusalem's",
+   "Samaria's",
+   "Babylon's",
+   "Tyre's"
+  ],
+  "answer": 0,
+  "explanation": "Son of man, cause Jerusalem to know her abominations.",
+  "ref": "Ezekiel 16:2"
+ },
+ {
+  "id": "ezekiel-16-e-02",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "Of what land is Jerusalem's birth and nativity said to be?",
+  "choices": [
+   "Egypt",
+   "Babylon",
+   "Assyria",
+   "Canaan"
+  ],
+  "answer": 3,
+  "explanation": "Thy birth and thy nativity is of the land of Canaan.",
+  "ref": "Ezekiel 16:3"
+ },
+ {
+  "id": "ezekiel-16-e-03",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the newborn child cast out?",
+  "choices": [
+   "In a river",
+   "In the temple court",
+   "In the open field",
+   "In a cave"
+  ],
+  "answer": 2,
+  "explanation": "Thou wast cast out in the open field, in the day that thou wast born.",
+  "ref": "Ezekiel 16:5"
+ },
+ {
+  "id": "ezekiel-16-e-04",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD do when He saw that her time was the time of love?",
+  "choices": [
+   "Sent her away",
+   "Spread His skirt over her and covered her",
+   "Gave her to a king",
+   "Left her in the field"
+  ],
+  "answer": 1,
+  "explanation": "I spread my skirt over thee, and covered thy nakedness: yea, I sware unto thee, and entered into a covenant with thee.",
+  "ref": "Ezekiel 16:8"
+ },
+ {
+  "id": "ezekiel-16-e-05",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the LORD cleanse the child He found?",
+  "choices": [
+   "He washed away her blood and anointed her with oil",
+   "He left her as she was",
+   "He gave her to a priest",
+   "He sent her to a spring alone"
+  ],
+  "answer": 0,
+  "explanation": "Then washed I thee with water; I throughly washed away thy blood from thee, and I anointed thee with oil.",
+  "ref": "Ezekiel 16:9"
+ },
+ {
+  "id": "ezekiel-16-e-06",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD put upon her head?",
+  "choices": [
+   "A veil of linen",
+   "A wreath of olive",
+   "A turban of silk",
+   "A beautiful crown"
+  ],
+  "answer": 3,
+  "explanation": "I put a jewel on thy forehead, and earrings in thine ears, and a beautiful crown upon thine head.",
+  "ref": "Ezekiel 16:12"
+ },
+ {
+  "id": "ezekiel-16-e-07",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did she make from the gold and silver the LORD had given her?",
+  "choices": [
+   "A golden throne",
+   "A new altar",
+   "Images of men",
+   "A treasury"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast taken thy fair jewels of my gold and of my silver, and madest to thyself images of men.",
+  "ref": "Ezekiel 16:17"
+ },
+ {
+  "id": "ezekiel-16-e-08",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did she sacrifice to her idols?",
+  "choices": [
+   "Her servants",
+   "Her sons and daughters",
+   "Her enemies",
+   "Her flocks"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast taken thy sons and thy daughters, whom thou hast borne unto me, and these hast thou sacrificed unto them.",
+  "ref": "Ezekiel 16:20"
+ },
+ {
+  "id": "ezekiel-16-e-09",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city is named as Jerusalem's younger sister?",
+  "choices": [
+   "Sodom",
+   "Samaria",
+   "Tyre",
+   "Gaza"
+  ],
+  "answer": 0,
+  "explanation": "Thy younger sister, that dwelleth at thy right hand, is Sodom and her daughters.",
+  "ref": "Ezekiel 16:46"
+ },
+ {
+  "id": "ezekiel-16-e-10",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of covenant does the LORD promise to establish with her at last?",
+  "choices": [
+   "A covenant of peace with Egypt",
+   "A covenant of the sword",
+   "A covenant of Sinai again",
+   "An everlasting covenant"
+  ],
+  "answer": 3,
+  "explanation": "I will remember my covenant with thee in the days of thy youth, and I will establish unto thee an everlasting covenant.",
+  "ref": "Ezekiel 16:60"
+ },
+ {
+  "id": "ezekiel-16-e-11",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which neighbours, great of flesh, did she commit fornication with?",
+  "choices": [
+   "The Philistines",
+   "The Moabites",
+   "The Egyptians",
+   "The Edomites"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast also committed fornication with the Egyptians thy neighbours, great of flesh.",
+  "ref": "Ezekiel 16:26"
+ },
+ {
+  "id": "ezekiel-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did she eat that helped her prosper into a kingdom?",
+  "choices": [
+   "Manna and quail",
+   "Fine flour, honey and oil",
+   "Figs and dates",
+   "Bread and fish"
+  ],
+  "answer": 1,
+  "explanation": "Thou didst eat fine flour, and honey, and oil: and thou didst prosper into a kingdom.",
+  "ref": "Ezekiel 16:13"
+ },
+ {
+  "id": "ezekiel-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had not been done for the child on the day she was born?",
+  "choices": [
+   "She was not washed, salted or swaddled",
+   "She was not named",
+   "She was not circumcised",
+   "She was not blessed"
+  ],
+  "answer": 0,
+  "explanation": "Thou wast not washed in water to supple thee; thou wast not salted at all, nor swaddled at all.",
+  "ref": "Ezekiel 16:4"
+ },
+ {
+  "id": "ezekiel-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who showed the newborn child pity?",
+  "choices": [
+   "Her mother alone",
+   "The priests",
+   "The neighbours",
+   "No eye pitied her"
+  ],
+  "answer": 3,
+  "explanation": "None eye pitied thee, to have compassion upon thee; thou wast cast out in the open field.",
+  "ref": "Ezekiel 16:5"
+ },
+ {
+  "id": "ezekiel-16-m-04",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what does the LORD compare the girl's growth?",
+  "choices": [
+   "A cedar of Lebanon",
+   "A river in flood",
+   "The bud of the field",
+   "A flock of sheep"
+  ],
+  "answer": 2,
+  "explanation": "I have caused thee to multiply as the bud of the field, and thou hast increased and waxen great.",
+  "ref": "Ezekiel 16:7"
+ },
+ {
+  "id": "ezekiel-16-m-05",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD shod her with?",
+  "choices": [
+   "Gold sandals",
+   "Badgers' skin",
+   "Linen cloth",
+   "Leather of oxen"
+  ],
+  "answer": 1,
+  "explanation": "I clothed thee also with broidered work, and shod thee with badgers' skin.",
+  "ref": "Ezekiel 16:10"
+ },
+ {
+  "id": "ezekiel-16-m-06",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did she do with her garments?",
+  "choices": [
+   "Decked her high places with divers colours",
+   "Gave them to the poor",
+   "Wore them in the temple",
+   "Hid them in a chest"
+  ],
+  "answer": 0,
+  "explanation": "Of thy garments thou didst take, and deckedst thy high places with divers colours.",
+  "ref": "Ezekiel 16:16"
+ },
+ {
+  "id": "ezekiel-16-m-07",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did she set before the images she had made?",
+  "choices": [
+   "Her firstborn lambs",
+   "The tribute of kings",
+   "Her silver crown",
+   "The LORD's oil and incense and the food He gave her"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast set mine oil and mine incense before them. My meat also which I gave thee thou hast set before them.",
+  "ref": "Ezekiel 16:18–19"
+ },
+ {
+  "id": "ezekiel-16-m-08",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had she not remembered in all her abominations?",
+  "choices": [
+   "The law of Moses",
+   "The name of her father",
+   "The days of her youth",
+   "The land of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast not remembered the days of thy youth, when thou wast naked and bare.",
+  "ref": "Ezekiel 16:22"
+ },
+ {
+  "id": "ezekiel-16-m-09",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did she build her high place?",
+  "choices": [
+   "Only on Mount Zion",
+   "At every head of the way",
+   "In the valley of Hinnom",
+   "In the wilderness"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast built thy high place at every head of the way.",
+  "ref": "Ezekiel 16:25"
+ },
+ {
+  "id": "ezekiel-16-m-10",
+  "chapter": 16,
+  "level": "medium",
+  "category": "person",
+  "question": "Who, ashamed of her lewd way, were given the will over her?",
+  "choices": [
+   "The daughters of the Philistines",
+   "The sons of Edom",
+   "The kings of Egypt",
+   "The men of Tyre"
+  ],
+  "answer": 0,
+  "explanation": "I have delivered thee unto the will of them that hate thee, the daughters of the Philistines.",
+  "ref": "Ezekiel 16:27"
+ },
+ {
+  "id": "ezekiel-16-m-11",
+  "chapter": 16,
+  "level": "medium",
+  "category": "person",
+  "question": "With which nation did she also play the harlot, being unsatiable?",
+  "choices": [
+   "The Ammonites",
+   "The Syrians",
+   "The Arabians",
+   "The Assyrians"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast played the whore also with the Assyrians, because thou wast unsatiable.",
+  "ref": "Ezekiel 16:28"
+ },
+ {
+  "id": "ezekiel-16-m-12",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was she unlike other harlots?",
+  "choices": [
+   "She hid her sin",
+   "She repented quickly",
+   "She paid her lovers instead of being paid",
+   "She served only one"
+  ],
+  "answer": 2,
+  "explanation": "Thou givest a reward, and no reward is given unto thee, therefore thou art contrary.",
+  "ref": "Ezekiel 16:33–34"
+ },
+ {
+  "id": "ezekiel-16-m-13",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What proverb will be used against her?",
+  "choices": [
+   "The fathers have eaten sour grapes",
+   "As is the mother, so is her daughter",
+   "Pride goes before a fall",
+   "A city set on a hill"
+  ],
+  "answer": 1,
+  "explanation": "Every one that useth proverbs shall use this proverb against thee, As is the mother, so is her daughter.",
+  "ref": "Ezekiel 16:44"
+ },
+ {
+  "id": "ezekiel-16-m-14",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the iniquity of Sodom, according to the LORD?",
+  "choices": [
+   "Pride, fulness of bread, idleness, neglect of the poor",
+   "Idolatry with images of men",
+   "Violence against prophets",
+   "Selling children"
+  ],
+  "answer": 0,
+  "explanation": "Pride, fulness of bread, and abundance of idleness; neither did she strengthen the hand of the poor and needy.",
+  "ref": "Ezekiel 16:49"
+ },
+ {
+  "id": "ezekiel-16-m-15",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the company do to her?",
+  "choices": [
+   "Carry her away to Babylon",
+   "Crown her queen",
+   "Leave her in the field",
+   "Stone her and thrust her through with swords"
+  ],
+  "answer": 3,
+  "explanation": "They shall stone thee with stones, and thrust thee through with their swords.",
+  "ref": "Ezekiel 16:40"
+ },
+ {
+  "id": "ezekiel-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Which sister dwelt at Jerusalem's left hand?",
+  "choices": [
+   "Sodom",
+   "Tyre",
+   "Samaria",
+   "Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Thine elder sister is Samaria, she and her daughters that dwell at thy left hand.",
+  "ref": "Ezekiel 16:46"
+ },
+ {
+  "id": "ezekiel-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the LORD say Samaria and Sodom compare with Jerusalem?",
+  "choices": [
+   "They are equal to her",
+   "They are more righteous than she",
+   "They are worse than she",
+   "They are judged alike"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast committed more abominable sins than they: they are more righteous than thou.",
+  "ref": "Ezekiel 16:52"
+ },
+ {
+  "id": "ezekiel-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much of Jerusalem's sins had Samaria committed?",
+  "choices": [
+   "Not half",
+   "About a third",
+   "Nearly all",
+   "The same amount"
+  ],
+  "answer": 0,
+  "explanation": "Neither hath Samaria committed half of thy sins; but thou hast multiplied thine abominations more than they.",
+  "ref": "Ezekiel 16:51"
+ },
+ {
+  "id": "ezekiel-16-h-04",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Whom did Jerusalem not mention in the day of her pride?",
+  "choices": [
+   "Her sister Samaria",
+   "Her mother the Hittite",
+   "The Philistines",
+   "Her sister Sodom"
+  ],
+  "answer": 3,
+  "explanation": "Thy sister Sodom was not mentioned by thy mouth in the day of thy pride.",
+  "ref": "Ezekiel 16:56"
+ },
+ {
+  "id": "ezekiel-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom will the LORD give her for daughters, though not by her covenant?",
+  "choices": [
+   "The daughters of the Philistines",
+   "The daughters of Syria",
+   "Her elder and younger sisters",
+   "The children of the exiles"
+  ],
+  "answer": 2,
+  "explanation": "I will give them unto thee for daughters, but not by thy covenant.",
+  "ref": "Ezekiel 16:61"
+ },
+ {
+  "id": "ezekiel-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do for her captives when He restores Sodom and Samaria?",
+  "choices": [
+   "Leave her in Babylon",
+   "Bring back her captives among them",
+   "Give her a new king",
+   "Make her their servant"
+  ],
+  "answer": 1,
+  "explanation": "When I shall bring again their captivity, then will I bring again the captivity of thy captives in the midst of them.",
+  "ref": "Ezekiel 16:53"
+ },
+ {
+  "id": "ezekiel-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would happen to the LORD's fury after the judgments?",
+  "choices": [
+   "It would rest and be no more angry",
+   "It would grow stronger",
+   "It would turn on Babylon",
+   "It would be turned to jealousy"
+  ],
+  "answer": 0,
+  "explanation": "So will I make my fury toward thee to rest, and my jealousy shall depart, and I will be quiet.",
+  "ref": "Ezekiel 16:42"
+ },
+ {
+  "id": "ezekiel-16-h-08",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose sight would the judgments be carried out?",
+  "choices": [
+   "The kings of Babylon",
+   "The elders of Israel",
+   "The priests",
+   "Many women"
+  ],
+  "answer": 3,
+  "explanation": "They shall execute judgments upon thee in the sight of many women.",
+  "ref": "Ezekiel 16:41"
+ },
+ {
+  "id": "ezekiel-16-h-09",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As whom does the LORD say He will judge her?",
+  "choices": [
+   "Women who are slaves",
+   "Women of Egypt",
+   "Women that break wedlock and shed blood",
+   "Women who worship Baal"
+  ],
+  "answer": 2,
+  "explanation": "I will judge thee, as women that break wedlock and shed blood are judged.",
+  "ref": "Ezekiel 16:38"
+ },
+ {
+  "id": "ezekiel-16-h-10",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had she despised in breaking the covenant?",
+  "choices": [
+   "The temple",
+   "The oath",
+   "The Sabbath",
+   "The priesthood"
+  ],
+  "answer": 1,
+  "explanation": "I will deal with thee as thou hast done, which hast despised the oath in breaking the covenant.",
+  "ref": "Ezekiel 16:59"
+ },
+ {
+  "id": "ezekiel-16-h-11",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "What will the LORD do with her lovers?",
+  "choices": [
+   "Gather them round about against her",
+   "Send them away",
+   "Give them her wealth",
+   "Make them her allies"
+  ],
+  "answer": 0,
+  "explanation": "I will gather all thy lovers, even round about against thee.",
+  "ref": "Ezekiel 16:37"
+ },
+ {
+  "id": "ezekiel-16-h-12",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what kind of woman is she compared who takes strangers instead of her husband?",
+  "choices": [
+   "A widow in need",
+   "A servant girl",
+   "A queen mother",
+   "A wife that commits adultery"
+  ],
+  "answer": 3,
+  "explanation": "As a wife that committeth adultery, which taketh strangers instead of her husband!",
+  "ref": "Ezekiel 16:32"
+ },
+ {
+  "id": "ezekiel-16-h-13",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "In what land did she multiply her fornication as far as Chaldea?",
+  "choices": [
+   "The land of Egypt",
+   "The land of Judah",
+   "The land of Canaan",
+   "The land of Syria"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast moreover multiplied thy fornication in the land of Canaan unto Chaldea.",
+  "ref": "Ezekiel 16:29"
+ },
+ {
+  "id": "ezekiel-16-h-14",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would her lovers take from her?",
+  "choices": [
+   "Her children",
+   "Her clothes and fair jewels",
+   "Her flocks",
+   "Her sons only"
+  ],
+  "answer": 1,
+  "explanation": "They shall strip thee of thy clothes, and shall take thy fair jewels, and leave thee naked and bare.",
+  "ref": "Ezekiel 16:39"
+ },
+ {
+  "id": "ezekiel-16-h-15",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why will she never open her mouth any more?",
+  "choices": [
+   "Because of her shame",
+   "Because of her sickness",
+   "Because she is exiled",
+   "Because the LORD forbids speech"
+  ],
+  "answer": 0,
+  "explanation": "That thou mayest remember, and be confounded, and never open thy mouth any more because of thy shame.",
+  "ref": "Ezekiel 16:63"
+ },
+ {
+  "id": "ezekiel-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the great eagle take when he came to Lebanon?",
+  "choices": [
+   "A flock of sheep",
+   "The highest branch of the cedar",
+   "The seed of the vine",
+   "The gold of the temple"
+  ],
+  "answer": 1,
+  "explanation": "A great eagle came unto Lebanon, and took the highest branch of the cedar.",
+  "ref": "Ezekiel 17:3"
+ },
+ {
+  "id": "ezekiel-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the eagle carry the top of the young twigs?",
+  "choices": [
+   "A land of traffick, a city of merchants",
+   "The temple in Jerusalem",
+   "A mountain in Edom",
+   "A fruitful field in Egypt"
+  ],
+  "answer": 0,
+  "explanation": "He cropped off the top of his young twigs, and carried it into a land of traffick; he set it in a city of merchants.",
+  "ref": "Ezekiel 17:4"
+ },
+ {
+  "id": "ezekiel-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did the eagle plant the seed of the land?",
+  "choices": [
+   "A rocky mountain",
+   "The wilderness",
+   "A garden in Lebanon",
+   "A fruitful field by great waters"
+  ],
+  "answer": 3,
+  "explanation": "He took of the seed of the land, and planted it in a fruitful field; he placed it by great waters.",
+  "ref": "Ezekiel 17:5"
+ },
+ {
+  "id": "ezekiel-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the king of Babylon take with him to Babylon?",
+  "choices": [
+   "Only the priests",
+   "The women and children",
+   "The king of Jerusalem and the princes",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "The king of Babylon is come to Jerusalem, and hath taken the king thereof, and the princes thereof, and led them with him to Babylon.",
+  "ref": "Ezekiel 17:12"
+ },
+ {
+  "id": "ezekiel-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which country did the king send ambassadors?",
+  "choices": [
+   "Assyria",
+   "Egypt",
+   "Syria",
+   "Edom"
+  ],
+  "answer": 1,
+  "explanation": "He rebelled against him in sending his ambassadors into Egypt.",
+  "ref": "Ezekiel 17:15"
+ },
+ {
+  "id": "ezekiel-17-e-06",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where will the king who broke the covenant die?",
+  "choices": [
+   "In the midst of Babylon",
+   "In Jerusalem",
+   "In Egypt",
+   "On the battlefield at Lebanon"
+  ],
+  "answer": 0,
+  "explanation": "In the place where the king dwelleth that made him king, he shall die in the midst of Babylon.",
+  "ref": "Ezekiel 17:16"
+ },
+ {
+  "id": "ezekiel-17-e-07",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD spread upon him?",
+  "choices": [
+   "His shield",
+   "His hand of peace",
+   "His cloak",
+   "His net"
+  ],
+  "answer": 3,
+  "explanation": "I will spread my net upon him, and he shall be taken in my snare, and I will bring him to Babylon.",
+  "ref": "Ezekiel 17:20"
+ },
+ {
+  "id": "ezekiel-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is the first great eagle described?",
+  "choices": [
+   "A black eagle with iron beaks",
+   "A young eagle with golden wings",
+   "Great wings, longwinged, full of feathers of divers colours",
+   "A white eagle with one wing"
+  ],
+  "answer": 2,
+  "explanation": "A great eagle with great wings, longwinged, full of feathers, which had divers colours.",
+  "ref": "Ezekiel 17:3"
+ },
+ {
+  "id": "ezekiel-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the vine bend its roots toward the second eagle?",
+  "choices": [
+   "To flee from the first eagle",
+   "That he might water it by the furrows",
+   "To hide from the sun",
+   "To reach the mountain"
+  ],
+  "answer": 1,
+  "explanation": "The vine did bend her roots toward him, that he might water it by the furrows of her plantation.",
+  "ref": "Ezekiel 17:7"
+ },
+ {
+  "id": "ezekiel-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen to the vine when the east wind touches it?",
+  "choices": [
+   "It will utterly wither",
+   "It will bear fruit",
+   "It will be uprooted by Pharaoh",
+   "It will be watered"
+  ],
+  "answer": 0,
+  "explanation": "Shall it not utterly wither, when the east wind toucheth it? it shall wither in the furrows where it grew.",
+  "ref": "Ezekiel 17:10"
+ },
+ {
+  "id": "ezekiel-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the king of Babylon make a covenant with the king of Jerusalem?",
+  "choices": [
+   "So he could march into Egypt",
+   "So he could take the temple gold",
+   "So Judah would have a new law",
+   "So Judah stayed low and stood by the covenant"
+  ],
+  "answer": 3,
+  "explanation": "That the kingdom might be base, that it might not lift itself up, but that by keeping of his covenant it might stand.",
+  "ref": "Ezekiel 17:14"
+ },
+ {
+  "id": "ezekiel-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king hope to get from Egypt?",
+  "choices": [
+   "Gold and silver",
+   "Corn and oil",
+   "Horses and much people",
+   "Cedars and spices"
+  ],
+  "answer": 2,
+  "explanation": "He rebelled in sending his ambassadors into Egypt, that they might give him horses and much people.",
+  "ref": "Ezekiel 17:15"
+ },
+ {
+  "id": "ezekiel-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose mighty army will not help him in the war?",
+  "choices": [
+   "The king of Tyre's",
+   "Pharaoh's",
+   "The Philistines'",
+   "Assyria's"
+  ],
+  "answer": 1,
+  "explanation": "Neither shall Pharaoh with his mighty army and great company make for him in the war.",
+  "ref": "Ezekiel 17:17"
+ },
+ {
+  "id": "ezekiel-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do to the king when He brings him to Babylon?",
+  "choices": [
+   "Plead with him for his trespass",
+   "Crown him again",
+   "Send him home",
+   "Give him a new covenant"
+  ],
+  "answer": 0,
+  "explanation": "I will bring him to Babylon, and will plead with him there for his trespass that he hath trespassed against me.",
+  "ref": "Ezekiel 17:20"
+ },
+ {
+  "id": "ezekiel-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen to the king's fugitives and bands?",
+  "choices": [
+   "They return to Jerusalem",
+   "They are made priests",
+   "They flee safely to Egypt",
+   "Fall by the sword; the rest scatter to all winds"
+  ],
+  "answer": 3,
+  "explanation": "All his fugitives with all his bands shall fall by the sword, and they that remain shall be scattered toward all winds.",
+  "ref": "Ezekiel 17:21"
+ },
+ {
+  "id": "ezekiel-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD take from the high cedar and plant?",
+  "choices": [
+   "The whole cedar",
+   "Its roots",
+   "A tender one from the top of the young twigs",
+   "Its fruit"
+  ],
+  "answer": 2,
+  "explanation": "I will crop off from the top of his young twigs a tender one, and will plant it upon an high mountain.",
+  "ref": "Ezekiel 17:22"
+ },
+ {
+  "id": "ezekiel-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "Where will the LORD plant the tender twig?",
+  "choices": [
+   "The mountains of Lebanon",
+   "The mountain of the height of Israel",
+   "The valley of Hinnom",
+   "The hills of Samaria"
+  ],
+  "answer": 1,
+  "explanation": "In the mountain of the height of Israel will I plant it.",
+  "ref": "Ezekiel 17:23"
+ },
+ {
+  "id": "ezekiel-17-m-11",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who will dwell under the shadow of the goodly cedar?",
+  "choices": [
+   "All fowl of every wing",
+   "The kings of the earth",
+   "The elders of Israel",
+   "The wild beasts"
+  ],
+  "answer": 0,
+  "explanation": "Under it shall dwell all fowl of every wing; in the shadow of the branches thereof shall they dwell.",
+  "ref": "Ezekiel 17:23"
+ },
+ {
+  "id": "ezekiel-17-m-12",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will all the trees of the field know?",
+  "choices": [
+   "That Babylon is mighty",
+   "That the cedar is greater than the vine",
+   "That the east wind is unstoppable",
+   "That the LORD brings down the high tree and exalts the low"
+  ],
+  "answer": 3,
+  "explanation": "All the trees of the field shall know that I the LORD have brought down the high tree, have exalted the low tree.",
+  "ref": "Ezekiel 17:24"
+ },
+ {
+  "id": "ezekiel-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the first eagle crop off the cedar?",
+  "choices": [
+   "Its roots",
+   "Its fruit",
+   "The top of his young twigs",
+   "Its bark"
+  ],
+  "answer": 2,
+  "explanation": "He cropped off the top of his young twigs, and carried it into a land of traffick.",
+  "ref": "Ezekiel 17:4"
+ },
+ {
+  "id": "ezekiel-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of vine did the planted seed become?",
+  "choices": [
+   "A tall vine reaching the clouds",
+   "A spreading vine of low stature",
+   "A wild vine in the desert",
+   "A vine without leaves"
+  ],
+  "answer": 1,
+  "explanation": "It became a spreading vine of low stature, whose branches turned toward him.",
+  "ref": "Ezekiel 17:6"
+ },
+ {
+  "id": "ezekiel-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where would the vine wither?",
+  "choices": [
+   "In the furrows where it grew",
+   "On the mountain top",
+   "In the wilderness",
+   "In Lebanon"
+  ],
+  "answer": 0,
+  "explanation": "It shall wither in the furrows where it grew.",
+  "ref": "Ezekiel 17:10"
+ },
+ {
+  "id": "ezekiel-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Without what would the vine be plucked up by the roots?",
+  "choices": [
+   "A sword",
+   "A strong wind only",
+   "The eagles' help",
+   "Great power or many people"
+  ],
+  "answer": 3,
+  "explanation": "It shall wither, even without great power or many people to pluck it up by the roots.",
+  "ref": "Ezekiel 17:9"
+ },
+ {
+  "id": "ezekiel-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the king, what did the king of Babylon take from the land?",
+  "choices": [
+   "The cattle",
+   "The firstfruits",
+   "The mighty of the land",
+   "The temple vessels"
+  ],
+  "answer": 2,
+  "explanation": "He hath also taken the mighty of the land.",
+  "ref": "Ezekiel 17:13"
+ },
+ {
+  "id": "ezekiel-17-h-06",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD recompense upon the king's own head?",
+  "choices": [
+   "His idols",
+   "The oath he despised and the covenant he broke",
+   "His hidden treasure",
+   "His gifts to Egypt"
+  ],
+  "answer": 1,
+  "explanation": "As I live, mine oath that he hath despised, and my covenant that he hath broken, even it will I recompense upon his own head.",
+  "ref": "Ezekiel 17:19"
+ },
+ {
+  "id": "ezekiel-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the LORD address the house of Israel when explaining the riddle?",
+  "choices": [
+   "The rebellious house",
+   "The faithful remnant",
+   "The chosen people",
+   "The house of David"
+  ],
+  "answer": 0,
+  "explanation": "Say now to the rebellious house, Know ye not what these things mean?",
+  "ref": "Ezekiel 17:12"
+ },
+ {
+  "id": "ezekiel-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do to the dry tree?",
+  "choices": [
+   "Burn it",
+   "Cut it down",
+   "Plant it in Egypt",
+   "Make it flourish"
+  ],
+  "answer": 3,
+  "explanation": "I the LORD have dried up the green tree, and have made the dry tree to flourish.",
+  "ref": "Ezekiel 17:24"
+ },
+ {
+  "id": "ezekiel-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the planted cedar bring forth?",
+  "choices": [
+   "Gold and silver",
+   "Seed for Egypt",
+   "Boughs and fruit",
+   "Thorns and briers"
+  ],
+  "answer": 2,
+  "explanation": "It shall bring forth boughs, and bear fruit, and be a goodly cedar.",
+  "ref": "Ezekiel 17:23"
+ },
+ {
+  "id": "ezekiel-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Pharaoh's army not be able to do for the king by casting up mounts?",
+  "choices": [
+   "Build a temple",
+   "Cut off many persons in the war",
+   "Plant a vineyard",
+   "Heal the land"
+  ],
+  "answer": 1,
+  "explanation": "Pharaoh shall not make for him in the war, by casting up mounts, and building forts, to cut off many persons.",
+  "ref": "Ezekiel 17:17"
+ },
+ {
+  "id": "ezekiel-17-h-11",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Toward whom did the vine bend her roots?",
+  "choices": [
+   "Another great eagle",
+   "The cedar of Lebanon",
+   "The east wind",
+   "The king of Tyre"
+  ],
+  "answer": 0,
+  "explanation": "There was also another great eagle: this vine did bend her roots toward him.",
+  "ref": "Ezekiel 17:7"
+ },
+ {
+  "id": "ezekiel-17-h-12",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the king given when he broke the covenant?",
+  "choices": [
+   "His son",
+   "His crown",
+   "His seal",
+   "His hand"
+  ],
+  "answer": 3,
+  "explanation": "He despised the oath by breaking the covenant, when, lo, he had given his hand.",
+  "ref": "Ezekiel 17:18"
+ },
+ {
+  "id": "ezekiel-18-e-01",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say about the proverb of the sour grapes?",
+  "choices": [
+   "It shall be written in the temple",
+   "It shall be sung at the feast",
+   "Ye shall not have occasion any more to use it in Israel",
+   "It is the law of the land"
+  ],
+  "answer": 2,
+  "explanation": "As I live, ye shall not have occasion any more to use this proverb in Israel.",
+  "ref": "Ezekiel 18:3"
+ },
+ {
+  "id": "ezekiel-18-e-02",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the soul that sinneth?",
+  "choices": [
+   "It shall be sold",
+   "It shall die",
+   "It shall wander",
+   "It shall be taught"
+  ],
+  "answer": 1,
+  "explanation": "The soul that sinneth, it shall die.",
+  "ref": "Ezekiel 18:4"
+ },
+ {
+  "id": "ezekiel-18-e-03",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "What does the son not bear?",
+  "choices": [
+   "The iniquity of the father",
+   "The name of his father",
+   "The land of his father",
+   "The sword of his father"
+  ],
+  "answer": 0,
+  "explanation": "The son shall not bear the iniquity of the father, neither shall the father bear the iniquity of the son.",
+  "ref": "Ezekiel 18:20"
+ },
+ {
+  "id": "ezekiel-18-e-04",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the just man give to the hungry?",
+  "choices": [
+   "His oil",
+   "His silver",
+   "His land",
+   "His bread"
+  ],
+  "answer": 3,
+  "explanation": "The just man hath given his bread to the hungry, and hath covered the naked with a garment.",
+  "ref": "Ezekiel 18:7"
+ },
+ {
+  "id": "ezekiel-18-e-05",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say of the just man who walks in His statutes?",
+  "choices": [
+   "He shall be king",
+   "He shall judge the nations",
+   "He shall surely live",
+   "He shall go to Babylon"
+  ],
+  "answer": 2,
+  "explanation": "He hath walked in my statutes, and hath kept my judgments; he is just, he shall surely live.",
+  "ref": "Ezekiel 18:9"
+ },
+ {
+  "id": "ezekiel-18-e-06",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "What does the LORD say of the robber son, a shedder of blood?",
+  "choices": [
+   "He shall inherit his father's goods",
+   "He shall not live; he shall surely die",
+   "He shall live for his father's righteousness",
+   "He shall be a prophet"
+  ],
+  "answer": 1,
+  "explanation": "Shall he then live? he shall not live: he shall surely die; his blood shall be upon him.",
+  "ref": "Ezekiel 18:10–13"
+ },
+ {
+  "id": "ezekiel-18-e-07",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "What happens to the son who sees his father's sins and does not do such like?",
+  "choices": [
+   "He shall not die for his father's iniquity",
+   "He shall die with his father",
+   "He shall be exiled",
+   "He shall be a slave"
+  ],
+  "answer": 0,
+  "explanation": "He shall not die for the iniquity of his father, he shall surely live.",
+  "ref": "Ezekiel 18:14–17"
+ },
+ {
+  "id": "ezekiel-18-e-08",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "What does the LORD say of the father who cruelly oppressed and spoiled his brother?",
+  "choices": [
+   "He shall live",
+   "His son shall die in his place",
+   "He shall be restored",
+   "He shall die in his iniquity"
+  ],
+  "answer": 3,
+  "explanation": "Because he cruelly oppressed, lo, even he shall die in his iniquity.",
+  "ref": "Ezekiel 18:18"
+ },
+ {
+  "id": "ezekiel-18-e-09",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say about the death of him that dieth?",
+  "choices": [
+   "It is the lot of all men",
+   "It is a blessing",
+   "I have no pleasure in it",
+   "It is Babylon's work"
+  ],
+  "answer": 2,
+  "explanation": "I have no pleasure in the death of him that dieth, saith the Lord GOD: wherefore turn yourselves, and live ye.",
+  "ref": "Ezekiel 18:32"
+ },
+ {
+  "id": "ezekiel-18-e-10",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the house of Israel complain about the way of the Lord?",
+  "choices": [
+   "It is too hard",
+   "It is not equal",
+   "It is too long",
+   "It is hidden"
+  ],
+  "answer": 1,
+  "explanation": "Yet saith the house of Israel, The way of the Lord is not equal.",
+  "ref": "Ezekiel 18:29"
+ },
+ {
+  "id": "ezekiel-18-m-01",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where had the just man not eaten?",
+  "choices": [
+   "Upon the mountains",
+   "In the temple",
+   "In Egypt",
+   "In the city gate"
+  ],
+  "answer": 0,
+  "explanation": "He hath not eaten upon the mountains, neither hath lifted up his eyes to the idols.",
+  "ref": "Ezekiel 18:6"
+ },
+ {
+  "id": "ezekiel-18-m-02",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the just man restore to the debtor?",
+  "choices": [
+   "His house",
+   "His field",
+   "His sheep",
+   "His pledge"
+  ],
+  "answer": 3,
+  "explanation": "He hath restored to the debtor his pledge.",
+  "ref": "Ezekiel 18:7"
+ },
+ {
+  "id": "ezekiel-18-m-03",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the just man not lifted his eyes to?",
+  "choices": [
+   "The temple",
+   "The kings of Egypt",
+   "The idols of the house of Israel",
+   "The stars"
+  ],
+  "answer": 2,
+  "explanation": "He hath not lifted up his eyes to the idols of the house of Israel.",
+  "ref": "Ezekiel 18:6"
+ },
+ {
+  "id": "ezekiel-18-m-04",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the just man not done with his neighbour's wife?",
+  "choices": [
+   "Taken her to Egypt",
+   "Defiled her",
+   "Asked her advice",
+   "Hidden her"
+  ],
+  "answer": 1,
+  "explanation": "He hath not defiled his neighbour's wife.",
+  "ref": "Ezekiel 18:6"
+ },
+ {
+  "id": "ezekiel-18-m-05",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the just man not take on his lending?",
+  "choices": [
+   "Usury and increase",
+   "A garment",
+   "The land",
+   "A hostage"
+  ],
+  "answer": 0,
+  "explanation": "He hath not given forth upon usury, neither hath taken any increase.",
+  "ref": "Ezekiel 18:8"
+ },
+ {
+  "id": "ezekiel-18-m-06",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of son does the just man beget in the second case?",
+  "choices": [
+   "A priest",
+   "A king",
+   "A shepherd",
+   "A robber and a shedder of blood"
+  ],
+  "answer": 3,
+  "explanation": "If he beget a son that is a robber, a shedder of blood.",
+  "ref": "Ezekiel 18:10"
+ },
+ {
+  "id": "ezekiel-18-m-07",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the just man clothe the naked with?",
+  "choices": [
+   "A cloak of purple",
+   "A tent",
+   "A garment",
+   "Sackcloth"
+  ],
+  "answer": 2,
+  "explanation": "He hath covered the naked with a garment.",
+  "ref": "Ezekiel 18:7"
+ },
+ {
+  "id": "ezekiel-18-m-08",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will not be mentioned to the wicked man who turns from his sins?",
+  "choices": [
+   "His name",
+   "All his transgressions",
+   "His idols",
+   "His father"
+  ],
+  "answer": 1,
+  "explanation": "All his transgressions that he hath committed, they shall not be mentioned unto him.",
+  "ref": "Ezekiel 18:22"
+ },
+ {
+  "id": "ezekiel-18-m-09",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to a righteous man's righteousness if he turns to iniquity?",
+  "choices": [
+   "It shall not be mentioned",
+   "It shall be doubled",
+   "It shall be given to his sons",
+   "It shall be kept"
+  ],
+  "answer": 0,
+  "explanation": "All his righteousness that he hath done shall not be mentioned: in his trespass he shall die.",
+  "ref": "Ezekiel 18:24"
+ },
+ {
+  "id": "ezekiel-18-m-10",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the LORD answer the claim that His way is not equal?",
+  "choices": [
+   "Is not Babylon stronger?",
+   "Hear the prophets",
+   "It is the law of the fathers",
+   "Are not your ways unequal?"
+  ],
+  "answer": 3,
+  "explanation": "Hear now, O house of Israel; Is not my way equal? are not your ways unequal?",
+  "ref": "Ezekiel 18:25"
+ },
+ {
+  "id": "ezekiel-18-m-11",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How will the LORD judge the house of Israel?",
+  "choices": [
+   "By the fathers' sins",
+   "By the king's choice",
+   "Every one according to his ways",
+   "By lot"
+  ],
+  "answer": 2,
+  "explanation": "I will judge you, O house of Israel, every one according to his ways.",
+  "ref": "Ezekiel 18:30"
+ },
+ {
+  "id": "ezekiel-18-m-12",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the wicked man who turns away from wickedness save?",
+  "choices": [
+   "His house",
+   "His soul alive",
+   "His flocks",
+   "His name"
+  ],
+  "answer": 1,
+  "explanation": "He shall save his soul alive.",
+  "ref": "Ezekiel 18:27"
+ },
+ {
+  "id": "ezekiel-18-m-13",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say if they repent and turn from all transgressions?",
+  "choices": [
+   "Iniquity shall not be their ruin",
+   "They shall have a king",
+   "They shall leave Babylon",
+   "They shall be priests"
+  ],
+  "answer": 0,
+  "explanation": "Repent, and turn yourselves from all your transgressions; so iniquity shall not be your ruin.",
+  "ref": "Ezekiel 18:30"
+ },
+ {
+  "id": "ezekiel-18-m-14",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of son does the third man have?",
+  "choices": [
+   "One who copies his father",
+   "One who never sees his father",
+   "One who becomes a priest",
+   "One who sees his father's sins and does not do such like"
+  ],
+  "answer": 3,
+  "explanation": "If he beget a son, that seeth all his father's sins which he hath done, and considereth, and doeth not such like.",
+  "ref": "Ezekiel 18:14"
+ },
+ {
+  "id": "ezekiel-18-h-01",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question does the LORD ask the house of Israel in closing?",
+  "choices": [
+   "Where is your king?",
+   "Who will save you?",
+   "Why will ye die?",
+   "What is your name?"
+  ],
+  "answer": 2,
+  "explanation": "Cast away your transgressions: for why will ye die, O house of Israel?",
+  "ref": "Ezekiel 18:31"
+ },
+ {
+  "id": "ezekiel-18-h-02",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the violent son given forth upon and taken?",
+  "choices": [
+   "Gold and silver",
+   "Usury and increase",
+   "Flocks and fields",
+   "Gifts and tribute"
+  ],
+  "answer": 1,
+  "explanation": "He hath given forth upon usury, and hath taken increase: shall he then live? he shall not live.",
+  "ref": "Ezekiel 18:13"
+ },
+ {
+  "id": "ezekiel-18-h-03",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How had the father spoiled his brother?",
+  "choices": [
+   "By violence",
+   "By lying",
+   "By secret theft",
+   "By law"
+  ],
+  "answer": 0,
+  "explanation": "Because he cruelly oppressed, spoiled his brother by violence.",
+  "ref": "Ezekiel 18:18"
+ },
+ {
+  "id": "ezekiel-18-h-04",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the good son taken off from the poor?",
+  "choices": [
+   "His rule",
+   "His tax",
+   "His shadow",
+   "His hand"
+  ],
+  "answer": 3,
+  "explanation": "That hath taken off his hand from the poor, that hath not received usury nor increase.",
+  "ref": "Ezekiel 18:17"
+ },
+ {
+  "id": "ezekiel-18-h-05",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Upon whom does the LORD say the righteousness of the righteous rests?",
+  "choices": [
+   "Upon his son",
+   "Upon his father",
+   "Upon himself",
+   "Upon the land"
+  ],
+  "answer": 2,
+  "explanation": "The righteousness of the righteous shall be upon him, and the wickedness of the wicked shall be upon him.",
+  "ref": "Ezekiel 18:20"
+ },
+ {
+  "id": "ezekiel-18-h-06",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why will the wicked man who turns surely live?",
+  "choices": [
+   "He has a righteous father",
+   "He considereth and turneth from all his transgressions",
+   "He pays an offering",
+   "He lives in Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "Because he considereth, and turneth away from all his transgressions, he shall surely live.",
+  "ref": "Ezekiel 18:28"
+ },
+ {
+  "id": "ezekiel-18-h-07",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose blood shall be upon the violent son?",
+  "choices": [
+   "His own",
+   "His father's",
+   "The prophet's",
+   "The king's"
+  ],
+  "answer": 0,
+  "explanation": "He shall surely die; his blood shall be upon him.",
+  "ref": "Ezekiel 18:13"
+ },
+ {
+  "id": "ezekiel-18-h-08",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the just man keep and walk in?",
+  "choices": [
+   "The traditions of the elders",
+   "The customs of Egypt",
+   "The law of the king",
+   "The LORD's statutes and judgments"
+  ],
+  "answer": 3,
+  "explanation": "Hath walked in my statutes, and hath kept my judgments, to deal truly.",
+  "ref": "Ezekiel 18:9"
+ },
+ {
+  "id": "ezekiel-18-h-09",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the people ask about the son and the father's iniquity?",
+  "choices": [
+   "Is the king guilty?",
+   "Will the temple stand?",
+   "Doth not the son bear the iniquity of the father?",
+   "Who taught the father?"
+  ],
+  "answer": 2,
+  "explanation": "Yet say ye, Why? doth not the son bear the iniquity of the father?",
+  "ref": "Ezekiel 18:19"
+ },
+ {
+  "id": "ezekiel-18-h-10",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the violent son done to the poor and needy?",
+  "choices": [
+   "Fed them",
+   "Oppressed them",
+   "Taught them",
+   "Hired them"
+  ],
+  "answer": 1,
+  "explanation": "He hath oppressed the poor and needy, hath spoiled by violence, hath not restored the pledge.",
+  "ref": "Ezekiel 18:12"
+ },
+ {
+  "id": "ezekiel-18-h-11",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the good son not withholden?",
+  "choices": [
+   "The pledge",
+   "The tithe",
+   "The sacrifice",
+   "The bread"
+  ],
+  "answer": 0,
+  "explanation": "Neither hath oppressed any, hath not withholden the pledge.",
+  "ref": "Ezekiel 18:16"
+ },
+ {
+  "id": "ezekiel-18-h-12",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the good son executed?",
+  "choices": [
+   "The king's decrees",
+   "The priests' commands",
+   "The elders' counsel",
+   "The LORD's judgments"
+  ],
+  "answer": 3,
+  "explanation": "He hath executed my judgments, hath walked in my statutes; he shall not die for the iniquity of his father.",
+  "ref": "Ezekiel 18:17"
+ },
+ {
+  "id": "ezekiel-18-h-13",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides turning from his sins, what must the wicked man do?",
+  "choices": [
+   "Offer a thousand sacrifices",
+   "Leave the city",
+   "Keep all the statutes and do what is lawful and right",
+   "Bring gifts to the king"
+  ],
+  "answer": 2,
+  "explanation": "If the wicked will turn from all his sins, and keep all my statutes, and do that which is lawful and right, he shall surely live.",
+  "ref": "Ezekiel 18:21"
+ },
+ {
+  "id": "ezekiel-18-h-14",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD urge Israel to do, since He has no pleasure in death?",
+  "choices": [
+   "Gather in Jerusalem",
+   "Turn yourselves, and live",
+   "Send gifts to Egypt",
+   "Build a wall"
+  ],
+  "answer": 1,
+  "explanation": "For I have no pleasure in the death of him that dieth: wherefore turn yourselves, and live ye.",
+  "ref": "Ezekiel 18:32"
+ },
+ {
+  "id": "ezekiel-18-h-15",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to a son who does what is lawful and right and keeps all the statutes?",
+  "choices": [
+   "He shall surely live",
+   "He shall bear his father's sin",
+   "He shall be exiled",
+   "He shall be silent"
+  ],
+  "answer": 0,
+  "explanation": "When the son hath done that which is lawful and right, and hath kept all my statutes, he shall surely live.",
+  "ref": "Ezekiel 18:19"
+ },
+ {
+  "id": "ezekiel-18-m-15",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the just man execute between man and man?",
+  "choices": [
+   "A secret oath",
+   "A royal decree",
+   "A written bond",
+   "True judgment"
+  ],
+  "answer": 3,
+  "explanation": "He hath executed true judgment between man and man.",
+  "ref": "Ezekiel 18:8"
+ },
+ {
+  "id": "ezekiel-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "For whom is Ezekiel told to take up a lamentation?",
+  "choices": [
+   "The priests of Judah",
+   "The kings of Egypt",
+   "The elders of Babylon",
+   "The princes of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Take thou up a lamentation for the princes of Israel.",
+  "ref": "Ezekiel 19:1"
+ },
+ {
+  "id": "ezekiel-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the first young lion learn to do?",
+  "choices": [
+   "Guard the flock",
+   "Lead the herd",
+   "Catch the prey and devour men",
+   "Hide in the den"
+  ],
+  "answer": 2,
+  "explanation": "It became a young lion, and it learned to catch the prey; it devoured men.",
+  "ref": "Ezekiel 19:3"
+ },
+ {
+  "id": "ezekiel-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the lioness nourish her whelps?",
+  "choices": [
+   "On the mountains",
+   "Among young lions",
+   "In a garden",
+   "By the river"
+  ],
+  "answer": 1,
+  "explanation": "She lay down among lions, she nourished her whelps among young lions.",
+  "ref": "Ezekiel 19:2"
+ },
+ {
+  "id": "ezekiel-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the lioness do when her hope was lost?",
+  "choices": [
+   "Took another whelp and made him a young lion",
+   "Left her den",
+   "Went to Egypt",
+   "Gave up her whelps"
+  ],
+  "answer": 0,
+  "explanation": "When she saw that she had waited, and her hope was lost, then she took another of her whelps.",
+  "ref": "Ezekiel 19:5"
+ },
+ {
+  "id": "ezekiel-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the second lion lay waste?",
+  "choices": [
+   "Their gardens",
+   "Their vineyards",
+   "Their ships",
+   "Their cities"
+  ],
+  "answer": 3,
+  "explanation": "He knew their desolate palaces, and he laid waste their cities.",
+  "ref": "Ezekiel 19:7"
+ },
+ {
+  "id": "ezekiel-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the nations spread over the second lion?",
+  "choices": [
+   "A cloak",
+   "A banner",
+   "A net",
+   "A chain of gold"
+  ],
+  "answer": 2,
+  "explanation": "The nations set against him on every side, and spread their net over him: he was taken in their pit.",
+  "ref": "Ezekiel 19:8"
+ },
+ {
+  "id": "ezekiel-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the second lion held in chains in Babylon?",
+  "choices": [
+   "So he could be crowned",
+   "His voice must no more be heard on Israel's mountains",
+   "So he could learn the language",
+   "So he could pay tribute"
+  ],
+  "answer": 1,
+  "explanation": "They put him in ward in chains, that his voice should no more be heard upon the mountains of Israel.",
+  "ref": "Ezekiel 19:9"
+ },
+ {
+  "id": "ezekiel-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what was the vine planted?",
+  "choices": [
+   "The waters",
+   "The mountains",
+   "The temple",
+   "The wilderness"
+  ],
+  "answer": 0,
+  "explanation": "Thy mother is like a vine, planted by the waters: she was fruitful by reason of many waters.",
+  "ref": "Ezekiel 19:10"
+ },
+ {
+  "id": "ezekiel-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the lioness done before she took another whelp?",
+  "choices": [
+   "Hunted in the forest",
+   "Prayed in the temple",
+   "Fled into Egypt",
+   "Waited until her hope was lost"
+  ],
+  "answer": 3,
+  "explanation": "When she saw that she had waited, and her hope was lost, then she took another of her whelps.",
+  "ref": "Ezekiel 19:5"
+ },
+ {
+  "id": "ezekiel-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What dried up the vine's fruit?",
+  "choices": [
+   "A drought",
+   "A flood",
+   "The east wind",
+   "Locusts"
+  ],
+  "answer": 2,
+  "explanation": "She was cast down to the ground, and the east wind dried up her fruit.",
+  "ref": "Ezekiel 19:12"
+ },
+ {
+  "id": "ezekiel-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Where is the vine now planted?",
+  "choices": [
+   "By the rivers of Babylon",
+   "In the wilderness, in a dry and thirsty ground",
+   "In the valley of Jezreel",
+   "In the garden of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Now she is planted in the wilderness, in a dry and thirsty ground.",
+  "ref": "Ezekiel 19:13"
+ },
+ {
+  "id": "ezekiel-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of what did the fire go forth that devoured the fruit?",
+  "choices": [
+   "A rod of her branches",
+   "The temple",
+   "The east wind",
+   "Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Fire is gone out of a rod of her branches, which hath devoured her fruit.",
+  "ref": "Ezekiel 19:14"
+ },
+ {
+  "id": "ezekiel-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what was the land made desolate?",
+  "choices": [
+   "The sword of Babylon",
+   "A famine",
+   "A plague",
+   "The noise of his roaring"
+  ],
+  "answer": 3,
+  "explanation": "The land was desolate, and the fulness thereof, by the noise of his roaring.",
+  "ref": "Ezekiel 19:7"
+ },
+ {
+  "id": "ezekiel-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what was the first lion taken by the nations?",
+  "choices": [
+   "Their camp",
+   "Their net",
+   "Their pit",
+   "Their tower"
+  ],
+  "answer": 2,
+  "explanation": "The nations heard of him; he was taken in their pit, and they brought him with chains unto the land of Egypt.",
+  "ref": "Ezekiel 19:4"
+ },
+ {
+  "id": "ezekiel-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the strong rod of the vine meant to serve as?",
+  "choices": [
+   "A staff for shepherds",
+   "A sceptre for those who bear rule",
+   "A spear for soldiers",
+   "A pillar for the temple"
+  ],
+  "answer": 1,
+  "explanation": "She had strong rods for the sceptres of them that bare rule.",
+  "ref": "Ezekiel 19:11"
+ },
+ {
+  "id": "ezekiel-19-m-07",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the mother of the princes called in the lamentation?",
+  "choices": [
+   "A lioness",
+   "A cedar",
+   "An eagle",
+   "A shepherdess"
+  ],
+  "answer": 0,
+  "explanation": "What is thy mother? A lioness: she lay down among lions.",
+  "ref": "Ezekiel 19:2"
+ },
+ {
+  "id": "ezekiel-20-e-01",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say to the elders who came to enquire of Him?",
+  "choices": [
+   "I will not be enquired of by you",
+   "Ask and it shall be given",
+   "Come back tomorrow",
+   "Go to the temple"
+  ],
+  "answer": 0,
+  "explanation": "Are ye come to enquire of me? As I live, saith the Lord GOD, I will not be enquired of by you.",
+  "ref": "Ezekiel 20:3"
+ },
+ {
+  "id": "ezekiel-20-e-02",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the LORD make Himself known to the seed of Jacob?",
+  "choices": [
+   "On Mount Zion",
+   "In Babylon",
+   "In the wilderness of Sin",
+   "In the land of Egypt"
+  ],
+  "answer": 3,
+  "explanation": "I made myself known unto them in the land of Egypt, saying, I am the LORD your God.",
+  "ref": "Ezekiel 20:5"
+ },
+ {
+  "id": "ezekiel-20-e-03",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Israel to cast away in Egypt?",
+  "choices": [
+   "Their weapons",
+   "Their garments",
+   "The abominations of their eyes",
+   "Their flocks"
+  ],
+  "answer": 2,
+  "explanation": "Cast ye away every man the abominations of his eyes, and defile not yourselves with the idols of Egypt.",
+  "ref": "Ezekiel 20:7"
+ },
+ {
+  "id": "ezekiel-20-e-04",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the LORD describe the land He had espied for them?",
+  "choices": [
+   "A land of giants",
+   "Flowing with milk and honey",
+   "A land of deserts",
+   "A land of rivers of gold"
+  ],
+  "answer": 1,
+  "explanation": "A land that I had espied for them, flowing with milk and honey, which is the glory of all lands.",
+  "ref": "Ezekiel 20:6"
+ },
+ {
+  "id": "ezekiel-20-e-05",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the LORD bring them after He brought them out of Egypt?",
+  "choices": [
+   "Into the wilderness",
+   "Into Babylon",
+   "Into Canaan at once",
+   "Into Assyria"
+  ],
+  "answer": 0,
+  "explanation": "I caused them to go forth out of the land of Egypt, and brought them into the wilderness.",
+  "ref": "Ezekiel 20:10"
+ },
+ {
+  "id": "ezekiel-20-e-06",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD give them in the wilderness that a man might live in?",
+  "choices": [
+   "Gold and silver",
+   "A king",
+   "A temple",
+   "His statutes and judgments"
+  ],
+  "answer": 3,
+  "explanation": "I gave them my statutes, and shewed them my judgments, which if a man do, he shall even live in them.",
+  "ref": "Ezekiel 20:11"
+ },
+ {
+  "id": "ezekiel-20-e-07",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "How did the children in the wilderness respond to the LORD?",
+  "choices": [
+   "They obeyed Him fully",
+   "They fled to Egypt",
+   "They rebelled against Him",
+   "They built a temple"
+  ],
+  "answer": 2,
+  "explanation": "Notwithstanding the children rebelled against me: they walked not in my statutes.",
+  "ref": "Ezekiel 20:21"
+ },
+ {
+  "id": "ezekiel-20-e-08",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "What did they see in the land where they offered their sacrifices?",
+  "choices": [
+   "A great river",
+   "Every high hill and all the thick trees",
+   "A mighty city",
+   "A tower of silver"
+  ],
+  "answer": 1,
+  "explanation": "They saw every high hill, and all the thick trees, and they offered there their sacrifices.",
+  "ref": "Ezekiel 20:28"
+ },
+ {
+  "id": "ezekiel-20-e-09",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "Into what land will the LORD finally bring them?",
+  "choices": [
+   "The land of Israel",
+   "The land of Egypt",
+   "The land of Babylon",
+   "The wilderness of Sinai"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall know that I am the LORD, when I shall bring you into the land of Israel.",
+  "ref": "Ezekiel 20:42"
+ },
+ {
+  "id": "ezekiel-20-e-10",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD kindle in the forest of the south?",
+  "choices": [
+   "A flood",
+   "A famine",
+   "A plague",
+   "A fire"
+  ],
+  "answer": 3,
+  "explanation": "I will kindle a fire in thee, and it shall devour every green tree in thee, and every dry tree.",
+  "ref": "Ezekiel 20:47"
+ },
+ {
+  "id": "ezekiel-20-m-01",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Ezekiel to cause the elders to know?",
+  "choices": [
+   "The laws of Moses",
+   "The glory of the temple",
+   "The abominations of their fathers",
+   "The names of the kings"
+  ],
+  "answer": 2,
+  "explanation": "Wilt thou judge them, son of man? cause them to know the abominations of their fathers.",
+  "ref": "Ezekiel 20:4"
+ },
+ {
+  "id": "ezekiel-20-m-02",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD call the land flowing with milk and honey?",
+  "choices": [
+   "The land of the kings",
+   "The glory of all lands",
+   "The land of the promise only",
+   "The garden of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "A land flowing with milk and honey, which is the glory of all lands.",
+  "ref": "Ezekiel 20:6"
+ },
+ {
+  "id": "ezekiel-20-m-03",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would do to Israel in Egypt when they rebelled?",
+  "choices": [
+   "Pour out His fury upon them",
+   "Send them to Assyria",
+   "Make them kings",
+   "Open the sea"
+  ],
+  "answer": 0,
+  "explanation": "I will pour out my fury upon them to accomplish my anger against them in the midst of the land of Egypt.",
+  "ref": "Ezekiel 20:8"
+ },
+ {
+  "id": "ezekiel-20-m-04",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen to the man who does the LORD's statutes and judgments?",
+  "choices": [
+   "He shall be a king",
+   "He shall go to Egypt",
+   "He shall be silent",
+   "He shall live in them"
+  ],
+  "answer": 3,
+  "explanation": "My statutes and my judgments, which if a man do, he shall even live in them.",
+  "ref": "Ezekiel 20:11"
+ },
+ {
+  "id": "ezekiel-20-m-05",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the Sabbaths show Israel?",
+  "choices": [
+   "That Egypt was defeated",
+   "That the land was theirs",
+   "That the LORD sanctifies them",
+   "That the king was holy"
+  ],
+  "answer": 2,
+  "explanation": "I gave them my sabbaths, to be a sign between me and them, that they might know that I am the LORD that sanctify them.",
+  "ref": "Ezekiel 20:12"
+ },
+ {
+  "id": "ezekiel-20-m-06",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD vow in the wilderness about the first generation?",
+  "choices": [
+   "That He would give them kings",
+   "That He would not bring them into the land",
+   "That He would send manna",
+   "That He would bring them to Babylon"
+  ],
+  "answer": 1,
+  "explanation": "I lifted up my hand unto them in the wilderness, that I would not bring them into the land.",
+  "ref": "Ezekiel 20:15"
+ },
+ {
+  "id": "ezekiel-20-m-07",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD refuse to let them into the land?",
+  "choices": [
+   "Their heart went after their idols",
+   "They lacked soldiers",
+   "They feared Pharaoh",
+   "They had no priests"
+  ],
+  "answer": 0,
+  "explanation": "They despised my judgments, and polluted my sabbaths: for their heart went after their idols.",
+  "ref": "Ezekiel 20:16"
+ },
+ {
+  "id": "ezekiel-20-m-08",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD tell their children in the wilderness?",
+  "choices": [
+   "Go back to Egypt",
+   "Build a golden calf",
+   "Hide in the mountains",
+   "Walk ye not in the statutes of your fathers"
+  ],
+  "answer": 3,
+  "explanation": "I said unto their children in the wilderness, Walk ye not in the statutes of your fathers.",
+  "ref": "Ezekiel 20:18"
+ },
+ {
+  "id": "ezekiel-20-m-09",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they cause to pass through the fire?",
+  "choices": [
+   "Their flocks of sheep",
+   "Their silver vessels",
+   "All that openeth the womb",
+   "Their garments"
+  ],
+  "answer": 2,
+  "explanation": "They caused to pass through the fire all that openeth the womb, that I might make them desolate.",
+  "ref": "Ezekiel 20:26"
+ },
+ {
+  "id": "ezekiel-20-m-10",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the exiles say they would be like, serving wood and stone?",
+  "choices": [
+   "The priests of Egypt",
+   "The heathen, the families of the countries",
+   "The kings of Tyre",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "That ye say, We will be as the heathen, as the families of the countries, to serve wood and stone.",
+  "ref": "Ezekiel 20:32"
+ },
+ {
+  "id": "ezekiel-20-m-11",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what will the LORD rule over them?",
+  "choices": [
+   "A mighty hand, a stretched out arm and fury poured out",
+   "A gentle word and a golden sceptre",
+   "A great army from Babylon",
+   "Law and sacrifice only"
+  ],
+  "answer": 0,
+  "explanation": "With a mighty hand, and with a stretched out arm, and with fury poured out, will I rule over you.",
+  "ref": "Ezekiel 20:33"
+ },
+ {
+  "id": "ezekiel-20-m-12",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "Where will the LORD plead with them face to face?",
+  "choices": [
+   "In Jerusalem",
+   "On Mount Carmel",
+   "In the land of Egypt",
+   "In the wilderness of the people"
+  ],
+  "answer": 3,
+  "explanation": "I will bring you into the wilderness of the people, and there will I plead with you face to face.",
+  "ref": "Ezekiel 20:35"
+ },
+ {
+  "id": "ezekiel-20-m-13",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the exiles do when they remember their ways in the land?",
+  "choices": [
+   "Sing and rejoice",
+   "Build the temple",
+   "Loathe themselves in their own sight",
+   "Fight the nations"
+  ],
+  "answer": 2,
+  "explanation": "There shall ye remember your ways, and ye shall lothe yourselves in your own sight for all your evils.",
+  "ref": "Ezekiel 20:43"
+ },
+ {
+  "id": "ezekiel-20-m-14",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "Where will all the house of Israel serve the LORD in the end?",
+  "choices": [
+   "In Babylon",
+   "In His holy mountain, the mountain of the height of Israel",
+   "In Egypt",
+   "On the mountains of Samaria"
+  ],
+  "answer": 1,
+  "explanation": "In mine holy mountain, in the mountain of the height of Israel, there shall all the house of Israel serve me.",
+  "ref": "Ezekiel 20:40"
+ },
+ {
+  "id": "ezekiel-20-m-15",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom will the LORD purge out from among them?",
+  "choices": [
+   "The rebels and those who transgress against Him",
+   "The priests",
+   "The elders",
+   "The poor"
+  ],
+  "answer": 0,
+  "explanation": "I will purge out from among you the rebels, and them that transgress against me.",
+  "ref": "Ezekiel 20:38"
+ },
+ {
+  "id": "ezekiel-20-h-01",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Toward which direction is Ezekiel told to set his face?",
+  "choices": [
+   "The north",
+   "The east",
+   "The west",
+   "The south"
+  ],
+  "answer": 3,
+  "explanation": "Son of man, set thy face toward the south, and prophesy against the forest of the south field.",
+  "ref": "Ezekiel 20:46"
+ },
+ {
+  "id": "ezekiel-20-h-02",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the fire devour in the forest of the south?",
+  "choices": [
+   "Only the dry trees",
+   "Only the cedars",
+   "Every green tree and every dry tree",
+   "The fruit trees only"
+  ],
+  "answer": 2,
+  "explanation": "It shall devour every green tree in thee, and every dry tree.",
+  "ref": "Ezekiel 20:47"
+ },
+ {
+  "id": "ezekiel-20-h-03",
+  "chapter": 20,
+  "level": "hard",
+  "category": "place",
+  "question": "What is the name of the high place the people went to?",
+  "choices": [
+   "Bethel",
+   "Bamah",
+   "Shiloh",
+   "Gilgal"
+  ],
+  "answer": 1,
+  "explanation": "What is the high place whereunto ye go? And the name thereof is called Bamah unto this day.",
+  "ref": "Ezekiel 20:29"
+ },
+ {
+  "id": "ezekiel-20-h-04",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into what will the LORD bring them under the rod?",
+  "choices": [
+   "The bond of the covenant",
+   "The land of Egypt",
+   "The wilderness",
+   "A new temple"
+  ],
+  "answer": 0,
+  "explanation": "I will cause you to pass under the rod, and I will bring you into the bond of the covenant.",
+  "ref": "Ezekiel 20:37"
+ },
+ {
+  "id": "ezekiel-20-h-05",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do with His hand when the children rebelled?",
+  "choices": [
+   "Raised it against them",
+   "Hid it",
+   "Gave it to Pharaoh",
+   "Withdrew it"
+  ],
+  "answer": 3,
+  "explanation": "Nevertheless I withdrew mine hand, and wrought for my name's sake.",
+  "ref": "Ezekiel 20:22"
+ },
+ {
+  "id": "ezekiel-20-h-06",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He would do to them among the heathen?",
+  "choices": [
+   "Make them kings",
+   "Give them rest",
+   "Scatter them and disperse them through the countries",
+   "Gather them all in Egypt"
+  ],
+  "answer": 2,
+  "explanation": "I would scatter them among the heathen, and disperse them through the countries.",
+  "ref": "Ezekiel 20:23"
+ },
+ {
+  "id": "ezekiel-20-h-07",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After what were their eyes in the wilderness?",
+  "choices": [
+   "The promised land",
+   "Their fathers' idols",
+   "The ark",
+   "The pillar of cloud"
+  ],
+  "answer": 1,
+  "explanation": "Their eyes were after their fathers' idols.",
+  "ref": "Ezekiel 20:24"
+ },
+ {
+  "id": "ezekiel-20-h-08",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say of the thought to be as the heathen?",
+  "choices": [
+   "It shall not be at all",
+   "It shall be granted",
+   "It shall be allowed in the land",
+   "It shall be a sign"
+  ],
+  "answer": 0,
+  "explanation": "That which cometh into your mind shall not be at all, that ye say, We will be as the heathen.",
+  "ref": "Ezekiel 20:32"
+ },
+ {
+  "id": "ezekiel-20-h-09",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say to them if they will not hearken?",
+  "choices": [
+   "Return to Egypt",
+   "Build a wall",
+   "Fast and pray",
+   "Go, serve every one his idols"
+  ],
+  "answer": 3,
+  "explanation": "Go ye, serve ye every one his idols, but pollute ye my holy name no more with your gifts.",
+  "ref": "Ezekiel 20:39"
+ },
+ {
+  "id": "ezekiel-20-h-10",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD require in His holy mountain?",
+  "choices": [
+   "Silver for the king",
+   "Their sons",
+   "Offerings and the firstfruits of their oblations",
+   "A wall for the city"
+  ],
+  "answer": 2,
+  "explanation": "There will I require your offerings, and the firstfruits of your oblations, with all your holy things.",
+  "ref": "Ezekiel 20:40"
+ },
+ {
+  "id": "ezekiel-20-h-11",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD be before the heathen when He gathers them?",
+  "choices": [
+   "Hidden from them",
+   "Sanctified in them",
+   "Honoured by Egypt",
+   "Forgotten"
+  ],
+  "answer": 1,
+  "explanation": "I will accept you, and I will be sanctified in you before the heathen.",
+  "ref": "Ezekiel 20:41"
+ },
+ {
+  "id": "ezekiel-20-h-12",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who will see that the LORD has kindled the fire?",
+  "choices": [
+   "All flesh",
+   "Only the elders",
+   "Only the prophets",
+   "The kings of the earth"
+  ],
+  "answer": 0,
+  "explanation": "All flesh shall see that I the LORD have kindled it: it shall not be quenched.",
+  "ref": "Ezekiel 20:48"
+ },
+ {
+  "id": "ezekiel-20-h-13",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose sight did the LORD act for His name's sake in Egypt?",
+  "choices": [
+   "The priests",
+   "The elders",
+   "The Egyptians' army",
+   "The heathen"
+  ],
+  "answer": 3,
+  "explanation": "I wrought for my name's sake, that it should not be polluted before the heathen, in whose sight I brought them out.",
+  "ref": "Ezekiel 20:9"
+ },
+ {
+  "id": "ezekiel-20-h-14",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Like whom will the LORD plead with them in the wilderness?",
+  "choices": [
+   "Like a king with his servants",
+   "Like a shepherd with sheep",
+   "Like He pleaded with their fathers in Egypt's wilderness",
+   "Like a judge in the gate"
+  ],
+  "answer": 2,
+  "explanation": "Like as I pleaded with your fathers in the wilderness of the land of Egypt, so will I plead with you.",
+  "ref": "Ezekiel 20:36"
+ },
+ {
+  "id": "ezekiel-20-h-15",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He gave them that were not good?",
+  "choices": [
+   "Gold and silver",
+   "Statutes whereby they should not live",
+   "A king",
+   "The Sabbaths"
+  ],
+  "answer": 1,
+  "explanation": "I gave them also statutes that were not good, and judgments whereby they should not live.",
+  "ref": "Ezekiel 20:25"
+ },
+ {
+  "id": "ezekiel-21-e-01",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "Toward what city is Ezekiel told to set his face?",
+  "choices": [
+   "Babylon",
+   "Jerusalem",
+   "Samaria",
+   "Rabbath"
+  ],
+  "answer": 1,
+  "explanation": "Son of man, set thy face toward Jerusalem, and drop thy word toward the holy places.",
+  "ref": "Ezekiel 21:2"
+ },
+ {
+  "id": "ezekiel-21-e-02",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Out of what will the LORD draw forth His sword?",
+  "choices": [
+   "Its sheath",
+   "The fire",
+   "The temple",
+   "The sea"
+  ],
+  "answer": 0,
+  "explanation": "I will draw forth my sword out of his sheath, and will cut off from thee the righteous and the wicked.",
+  "ref": "Ezekiel 21:3"
+ },
+ {
+  "id": "ezekiel-21-e-03",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say of the sword once drawn?",
+  "choices": [
+   "It shall rest at night",
+   "It shall be given to Babylon",
+   "It shall be hung in the temple",
+   "It shall not return any more"
+  ],
+  "answer": 3,
+  "explanation": "All flesh may know that I the LORD have drawn forth my sword: it shall not return any more.",
+  "ref": "Ezekiel 21:5"
+ },
+ {
+  "id": "ezekiel-21-e-04",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Ezekiel told to do before the eyes of the people?",
+  "choices": [
+   "Sing a song",
+   "Build a wall",
+   "Sigh with bitterness",
+   "Walk barefoot"
+  ],
+  "answer": 2,
+  "explanation": "Sigh therefore, thou son of man, with the breaking of thy loins; and with bitterness sigh before their eyes.",
+  "ref": "Ezekiel 21:6"
+ },
+ {
+  "id": "ezekiel-21-e-05",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Ezekiel to answer when they ask why he sighs?",
+  "choices": [
+   "For the death of the king",
+   "For the tidings; because it cometh",
+   "For his sick wife",
+   "For the lost temple"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore sighest thou? Thou shalt answer, For the tidings; because it cometh.",
+  "ref": "Ezekiel 21:7"
+ },
+ {
+  "id": "ezekiel-21-e-06",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things are said of the sword in the song?",
+  "choices": [
+   "It is sharpened and furbished",
+   "It is rusted and broken",
+   "It is heavy and blunt",
+   "It is hidden and golden"
+  ],
+  "answer": 0,
+  "explanation": "A sword, a sword is sharpened, and also furbished.",
+  "ref": "Ezekiel 21:9"
+ },
+ {
+  "id": "ezekiel-21-e-07",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Into whose hand is the furbished sword given?",
+  "choices": [
+   "The king of Judah",
+   "The priests",
+   "The prophets",
+   "The slayer"
+  ],
+  "answer": 3,
+  "explanation": "This sword is sharpened, and it is furbished, to give it into the hand of the slayer.",
+  "ref": "Ezekiel 21:11"
+ },
+ {
+  "id": "ezekiel-21-e-08",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Ezekiel told to do with his thigh?",
+  "choices": [
+   "Bind it with cloth",
+   "Wash it",
+   "Smite upon it",
+   "Cover it"
+  ],
+  "answer": 2,
+  "explanation": "Cry and howl, son of man: smite therefore upon thy thigh.",
+  "ref": "Ezekiel 21:12"
+ },
+ {
+  "id": "ezekiel-21-e-09",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stood at the parting of the way using divination?",
+  "choices": [
+   "Pharaoh",
+   "The king of Babylon",
+   "The king of Tyre",
+   "The prince of Judah"
+  ],
+  "answer": 1,
+  "explanation": "The king of Babylon stood at the parting of the way, at the head of the two ways, to use divination.",
+  "ref": "Ezekiel 21:21"
+ },
+ {
+  "id": "ezekiel-21-e-10",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say to take off and remove?",
+  "choices": [
+   "The diadem and the crown",
+   "The sandals and the staff",
+   "The robe and the ring",
+   "The breastplate"
+  ],
+  "answer": 0,
+  "explanation": "Remove the diadem, and take off the crown: exalt him that is low, and abase him that is high.",
+  "ref": "Ezekiel 21:26"
+ },
+ {
+  "id": "ezekiel-21-m-01",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen to every heart and all knees at the tidings?",
+  "choices": [
+   "Hearts harden and knees stand firm",
+   "Hearts rejoice and knees dance",
+   "Hearts break and knees bleed",
+   "Hearts melt and knees are weak as water"
+  ],
+  "answer": 3,
+  "explanation": "Every heart shall melt, and all knees shall be weak as water.",
+  "ref": "Ezekiel 21:7"
+ },
+ {
+  "id": "ezekiel-21-m-02",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the sword sharpened to make?",
+  "choices": [
+   "A great feast",
+   "A new peace",
+   "A sore slaughter",
+   "A city wall"
+  ],
+  "answer": 2,
+  "explanation": "It is sharpened to make a sore slaughter; it is furbished that it may glitter.",
+  "ref": "Ezekiel 21:10"
+ },
+ {
+  "id": "ezekiel-21-m-03",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Upon whom will terrors by reason of the sword be?",
+  "choices": [
+   "Only the king of Babylon",
+   "My people and all the princes of Israel",
+   "Only the Ammonites",
+   "The nations round about"
+  ],
+  "answer": 1,
+  "explanation": "It shall be upon my people, it shall be upon all the princes of Israel: terrors by reason of the sword.",
+  "ref": "Ezekiel 21:12"
+ },
+ {
+  "id": "ezekiel-21-m-04",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Where does the sword of the great men enter?",
+  "choices": [
+   "Into their privy chambers",
+   "Into the temple",
+   "Into the gates of Tyre",
+   "Into the sea"
+  ],
+  "answer": 0,
+  "explanation": "It is the sword of the great men that are slain, which entereth into their privy chambers.",
+  "ref": "Ezekiel 21:14"
+ },
+ {
+  "id": "ezekiel-21-m-05",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Against what has the LORD set the point of the sword?",
+  "choices": [
+   "The altars",
+   "The idols",
+   "The vineyards",
+   "All their gates"
+  ],
+  "answer": 3,
+  "explanation": "I have set the point of the sword against all their gates, that their heart may faint.",
+  "ref": "Ezekiel 21:15"
+ },
+ {
+  "id": "ezekiel-21-m-06",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do with His fury at the end?",
+  "choices": [
+   "Pour it out on Egypt",
+   "Turn it on the sword",
+   "Cause it to rest",
+   "Give it to the king"
+  ],
+  "answer": 2,
+  "explanation": "I will also smite mine hands together, and I will cause my fury to rest: I the LORD have said it.",
+  "ref": "Ezekiel 21:17"
+ },
+ {
+  "id": "ezekiel-21-m-07",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the chapter describe Jerusalem when the sword is sent to Judah?",
+  "choices": [
+   "The beautiful",
+   "The defenced",
+   "The ancient",
+   "The holy city of David"
+  ],
+  "answer": 1,
+  "explanation": "Appoint a way, that the sword may come to Rabbath of the Ammonites, and to Judah in Jerusalem the defenced.",
+  "ref": "Ezekiel 21:20"
+ },
+ {
+  "id": "ezekiel-21-m-08",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the king of Babylon seek divination?",
+  "choices": [
+   "Bright arrows, images and the liver",
+   "Dreams and prophets",
+   "Stars and the moon",
+   "Lots and the ark"
+  ],
+  "answer": 0,
+  "explanation": "He made his arrows bright, he consulted with images, he looked in the liver.",
+  "ref": "Ezekiel 21:21"
+ },
+ {
+  "id": "ezekiel-21-m-09",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the divination for Jerusalem appoint against the gates?",
+  "choices": [
+   "Spies",
+   "Priests",
+   "Treaties",
+   "Battering rams"
+  ],
+  "answer": 3,
+  "explanation": "At his right hand was the divination for Jerusalem, to appoint battering rams against the gates, to cast a mount, and to build a fort.",
+  "ref": "Ezekiel 21:22"
+ },
+ {
+  "id": "ezekiel-21-m-10",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How would the divination seem to those who had sworn oaths?",
+  "choices": [
+   "A true word",
+   "A word of peace",
+   "A false divination",
+   "A dream"
+  ],
+  "answer": 2,
+  "explanation": "It shall be unto them as a false divination in their sight, to them that have sworn oaths.",
+  "ref": "Ezekiel 21:23"
+ },
+ {
+  "id": "ezekiel-21-m-11",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will be done to him that is low and him that is high?",
+  "choices": [
+   "Both made kings",
+   "The low exalted, the high abased",
+   "Both cut off",
+   "Both sent to Babylon"
+  ],
+  "answer": 1,
+  "explanation": "Exalt him that is low, and abase him that is high.",
+  "ref": "Ezekiel 21:26"
+ },
+ {
+  "id": "ezekiel-21-m-12",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Against whom is the second sword song spoken?",
+  "choices": [
+   "The Ammonites",
+   "The Egyptians",
+   "The Philistines",
+   "The Syrians"
+  ],
+  "answer": 0,
+  "explanation": "Prophesy concerning the Ammonites, and concerning their reproach: The sword, the sword is drawn.",
+  "ref": "Ezekiel 21:28"
+ },
+ {
+  "id": "ezekiel-21-m-13",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen to the Ammonites at the last?",
+  "choices": [
+   "They will become a great nation",
+   "They will rule Babylon",
+   "They will be rebuilt",
+   "They will be fuel to the fire and no more remembered"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt be for fuel to the fire; thou shalt be no more remembered.",
+  "ref": "Ezekiel 21:32"
+ },
+ {
+  "id": "ezekiel-21-m-14",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Into whose hand will the LORD deliver the Ammonites?",
+  "choices": [
+   "The priests of Judah",
+   "The kings of Egypt",
+   "Brutish men, skilful to destroy",
+   "The elders of Israel"
+  ],
+  "answer": 2,
+  "explanation": "I will deliver thee into the hand of brutish men, and skilful to destroy.",
+  "ref": "Ezekiel 21:31"
+ },
+ {
+  "id": "ezekiel-21-m-15",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When is the profane wicked prince said to meet his day?",
+  "choices": [
+   "When the temple is rebuilt",
+   "When iniquity shall have an end",
+   "When Babylon falls",
+   "When the sword returns"
+  ],
+  "answer": 1,
+  "explanation": "Thou profane wicked prince of Israel, whose day is come, when iniquity shall have an end.",
+  "ref": "Ezekiel 21:25"
+ },
+ {
+  "id": "ezekiel-21-h-01",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Where will the LORD judge the Ammonites?",
+  "choices": [
+   "Where they were created, the land of their nativity",
+   "In Jerusalem",
+   "In the wilderness",
+   "In Babylon"
+  ],
+  "answer": 0,
+  "explanation": "I will judge thee in the place where thou wast created, in the land of thy nativity.",
+  "ref": "Ezekiel 21:30"
+ },
+ {
+  "id": "ezekiel-21-h-02",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what is the sword made bright and wrapped up?",
+  "choices": [
+   "The feast",
+   "The marriage",
+   "The coronation",
+   "The slaughter"
+  ],
+  "answer": 3,
+  "explanation": "Ah! it is made bright, it is wrapped up for the slaughter.",
+  "ref": "Ezekiel 21:15"
+ },
+ {
+  "id": "ezekiel-21-h-03",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At whose hand was the divination for Jerusalem?",
+  "choices": [
+   "His left hand",
+   "The priest's hand",
+   "His right hand",
+   "The captain's hand"
+  ],
+  "answer": 2,
+  "explanation": "At his right hand was the divination for Jerusalem.",
+  "ref": "Ezekiel 21:22"
+ },
+ {
+  "id": "ezekiel-21-h-04",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the king of Babylon stand to use divination?",
+  "choices": [
+   "On Mount Zion",
+   "At the parting of the way, at the head of the two ways",
+   "On the walls of Jerusalem",
+   "At the gate of Rabbath"
+  ],
+  "answer": 1,
+  "explanation": "The king of Babylon stood at the parting of the way, at the head of the two ways, to use divination.",
+  "ref": "Ezekiel 21:21"
+ },
+ {
+  "id": "ezekiel-21-h-05",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Where is Ezekiel to choose a place for the sign?",
+  "choices": [
+   "At the head of the way to the city",
+   "On the temple mount",
+   "By the river Chebar",
+   "Within the city gate"
+  ],
+  "answer": 0,
+  "explanation": "Choose thou a place, choose it at the head of the way to the city.",
+  "ref": "Ezekiel 21:19"
+ },
+ {
+  "id": "ezekiel-21-h-06",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the doubled sword called?",
+  "choices": [
+   "The sword of kings",
+   "The sword of Judah",
+   "The sword of peace",
+   "The sword of the slain"
+  ],
+  "answer": 3,
+  "explanation": "Let the sword be doubled the third time, the sword of the slain: it is the sword of the great men that are slain.",
+  "ref": "Ezekiel 21:14"
+ },
+ {
+  "id": "ezekiel-21-h-07",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will happen to those whose sins have come to remembrance?",
+  "choices": [
+   "They shall be forgiven",
+   "They shall be hidden",
+   "They shall be taken with the hand",
+   "They shall be given a king"
+  ],
+  "answer": 2,
+  "explanation": "Because ye are come to remembrance, ye shall be taken with the hand.",
+  "ref": "Ezekiel 21:24"
+ },
+ {
+  "id": "ezekiel-21-h-08",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what will the LORD blow against the Ammonites?",
+  "choices": [
+   "A strong east wind",
+   "The fire of His wrath",
+   "A storm of hail",
+   "A flood of waters"
+  ],
+  "answer": 1,
+  "explanation": "I will blow against thee in the fire of my wrath.",
+  "ref": "Ezekiel 21:31"
+ },
+ {
+  "id": "ezekiel-21-h-09",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do they see and divine for the Ammonites?",
+  "choices": [
+   "Vanity and a lie",
+   "A true vision",
+   "A word of peace",
+   "A sign from heaven"
+  ],
+  "answer": 0,
+  "explanation": "Whiles they see vanity unto thee, whiles they divine a lie unto thee.",
+  "ref": "Ezekiel 21:29"
+ },
+ {
+  "id": "ezekiel-21-h-10",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD smite together at the end?",
+  "choices": [
+   "His staves",
+   "His shields",
+   "His swords",
+   "His hands"
+  ],
+  "answer": 3,
+  "explanation": "I will also smite mine hands together, and I will cause my fury to rest.",
+  "ref": "Ezekiel 21:17"
+ },
+ {
+  "id": "ezekiel-21-h-11",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what extent will the sword go from the south to the north?",
+  "choices": [
+   "Against the priests only",
+   "Against Egypt only",
+   "Against all flesh",
+   "Against the princes only"
+  ],
+  "answer": 2,
+  "explanation": "My sword go forth out of his sheath against all flesh from the south to the north.",
+  "ref": "Ezekiel 21:4"
+ },
+ {
+  "id": "ezekiel-21-h-12",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question does the LORD ask about the sharpened sword?",
+  "choices": [
+   "Who will wield it?",
+   "Should we then make mirth?",
+   "Where shall we hide?",
+   "Who will repent?"
+  ],
+  "answer": 1,
+  "explanation": "It is sharpened to make a sore slaughter: should we then make mirth?",
+  "ref": "Ezekiel 21:10"
+ },
+ {
+  "id": "ezekiel-21-h-13",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was the sword given to be furbished?",
+  "choices": [
+   "That it may be handled",
+   "That it may be sold",
+   "That it may be hidden",
+   "That it may be blessed"
+  ],
+  "answer": 0,
+  "explanation": "He hath given it to be furbished, that it may be handled.",
+  "ref": "Ezekiel 21:11"
+ },
+ {
+  "id": "ezekiel-21-h-14",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD ask about the Ammonites' sword?",
+  "choices": [
+   "Shall I give it to Judah?",
+   "Shall I break it?",
+   "Shall I bury it?",
+   "Shall I cause it to return into his sheath?"
+  ],
+  "answer": 3,
+  "explanation": "Shall I cause it to return into his sheath? I will judge thee in the place where thou wast created.",
+  "ref": "Ezekiel 21:30"
+ },
+ {
+  "id": "ezekiel-21-h-15",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With the breaking of what is Ezekiel told to sigh?",
+  "choices": [
+   "His staff",
+   "His bread",
+   "His loins",
+   "His harp"
+  ],
+  "answer": 2,
+  "explanation": "Sigh therefore, thou son of man, with the breaking of thy loins.",
+  "ref": "Ezekiel 21:6"
+ },
+ {
+  "id": "ezekiel-22-e-01",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the city shed in the midst of her?",
+  "choices": [
+   "Tears",
+   "Oil",
+   "Blood",
+   "Water"
+  ],
+  "answer": 2,
+  "explanation": "The city sheddeth blood in the midst of it, that her time may come.",
+  "ref": "Ezekiel 22:3"
+ },
+ {
+  "id": "ezekiel-22-e-02",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the city make against herself to defile herself?",
+  "choices": [
+   "Weapons",
+   "Idols",
+   "Walls",
+   "Altars of stone"
+  ],
+  "answer": 1,
+  "explanation": "She maketh idols against herself to defile herself.",
+  "ref": "Ezekiel 22:3"
+ },
+ {
+  "id": "ezekiel-22-e-03",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "What were the princes of Israel in her to their power to do?",
+  "choices": [
+   "Shed blood",
+   "Build the temple",
+   "Judge fairly",
+   "Feed the poor"
+  ],
+  "answer": 0,
+  "explanation": "Behold, the princes of Israel, every one were in thee to their power to shed blood.",
+  "ref": "Ezekiel 22:6"
+ },
+ {
+  "id": "ezekiel-22-e-04",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom had they oppressed and vexed?",
+  "choices": [
+   "The priests and the kings",
+   "The soldiers",
+   "The rich only",
+   "The stranger, the fatherless and the widow"
+  ],
+  "answer": 3,
+  "explanation": "They dealt by oppression with the stranger: they vexed the fatherless and the widow.",
+  "ref": "Ezekiel 22:7"
+ },
+ {
+  "id": "ezekiel-22-e-05",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had they despised and profaned?",
+  "choices": [
+   "The king's decrees",
+   "The laws of Egypt",
+   "The LORD's holy things and sabbaths",
+   "The prophets' tents"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast despised mine holy things, and hast profaned my sabbaths.",
+  "ref": "Ezekiel 22:8"
+ },
+ {
+  "id": "ezekiel-22-e-06",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD do with the people among the heathen?",
+  "choices": [
+   "Make them kings",
+   "Scatter and disperse them",
+   "Give them rest",
+   "Send them gifts"
+  ],
+  "answer": 1,
+  "explanation": "I will scatter thee among the heathen, and disperse thee in the countries.",
+  "ref": "Ezekiel 22:15"
+ },
+ {
+  "id": "ezekiel-22-e-07",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has the house of Israel become to the LORD?",
+  "choices": [
+   "Dross",
+   "Fine gold",
+   "A flock",
+   "A vineyard"
+  ],
+  "answer": 0,
+  "explanation": "Son of man, the house of Israel is to me become dross.",
+  "ref": "Ezekiel 22:18"
+ },
+ {
+  "id": "ezekiel-22-e-08",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where will the LORD gather them to melt them?",
+  "choices": [
+   "Into Babylon",
+   "Into the wilderness",
+   "Into Egypt",
+   "Into the midst of Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "I will gather you into the midst of Jerusalem.",
+  "ref": "Ezekiel 22:19"
+ },
+ {
+  "id": "ezekiel-22-e-09",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said of the land in the day of indignation?",
+  "choices": [
+   "It is full of fruit",
+   "It is at peace",
+   "It is not cleansed, nor rained upon",
+   "It is rebuilt"
+  ],
+  "answer": 2,
+  "explanation": "Thou art the land that is not cleansed, nor rained upon in the day of indignation.",
+  "ref": "Ezekiel 22:24"
+ },
+ {
+  "id": "ezekiel-22-e-10",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the princes in her midst like?",
+  "choices": [
+   "Shepherds with flocks",
+   "Wolves ravening the prey",
+   "Eagles in the sky",
+   "Rams in a fold"
+  ],
+  "answer": 1,
+  "explanation": "Her princes in the midst thereof are like wolves ravening the prey.",
+  "ref": "Ezekiel 22:27"
+ },
+ {
+  "id": "ezekiel-22-m-01",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had they done with their father and mother?",
+  "choices": [
+   "Set light by them",
+   "Honoured them",
+   "Left them behind",
+   "Sold them"
+  ],
+  "answer": 0,
+  "explanation": "In thee have they set light by father and mother.",
+  "ref": "Ezekiel 22:7"
+ },
+ {
+  "id": "ezekiel-22-m-02",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men who carried tales do?",
+  "choices": [
+   "Spread peace",
+   "Taught the law",
+   "Judged the poor",
+   "Carried tales to shed blood"
+  ],
+  "answer": 3,
+  "explanation": "In thee are men that carry tales to shed blood.",
+  "ref": "Ezekiel 22:9"
+ },
+ {
+  "id": "ezekiel-22-m-03",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had they taken in order to shed blood?",
+  "choices": [
+   "Swords",
+   "Wives",
+   "Gifts",
+   "Silver cups"
+  ],
+  "answer": 2,
+  "explanation": "In thee have they taken gifts to shed blood.",
+  "ref": "Ezekiel 22:12"
+ },
+ {
+  "id": "ezekiel-22-m-04",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question does the LORD ask about the heart and hands of the city?",
+  "choices": [
+   "Will ye turn and live?",
+   "Can thine heart endure, or can thine hands be strong?",
+   "Who will build again?",
+   "Where is thy king?"
+  ],
+  "answer": 1,
+  "explanation": "Can thine heart endure, or can thine hands be strong, in the days that I shall deal with thee?",
+  "ref": "Ezekiel 22:14"
+ },
+ {
+  "id": "ezekiel-22-m-05",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD consume out of her?",
+  "choices": [
+   "Her filthiness",
+   "Her gold",
+   "Her children",
+   "Her walls"
+  ],
+  "answer": 0,
+  "explanation": "I will scatter thee among the heathen, and will consume thy filthiness out of thee.",
+  "ref": "Ezekiel 22:15"
+ },
+ {
+  "id": "ezekiel-22-m-06",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which metals are listed with the silver in the furnace?",
+  "choices": [
+   "Gold, copper and bronze",
+   "Iron, gold and silver only",
+   "Bronze, zinc and tin",
+   "Brass, tin, iron and lead"
+  ],
+  "answer": 3,
+  "explanation": "They are brass, and tin, and iron, and lead, in the midst of the furnace; they are even the dross of silver.",
+  "ref": "Ezekiel 22:18"
+ },
+ {
+  "id": "ezekiel-22-m-07",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do to them in the fire of His wrath in the midst of Jerusalem?",
+  "choices": [
+   "Heal them",
+   "Feed them",
+   "Blow upon them and melt them",
+   "Crown them"
+  ],
+  "answer": 2,
+  "explanation": "I will gather you, and blow upon you in the fire of my wrath, and ye shall be melted in the midst thereof.",
+  "ref": "Ezekiel 22:21"
+ },
+ {
+  "id": "ezekiel-22-m-08",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will they know when they are melted?",
+  "choices": [
+   "That Babylon was strong",
+   "That the LORD poured out His fury upon them",
+   "That the temple was safe",
+   "That the princes were wise"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall know that I the LORD have poured out my fury upon you.",
+  "ref": "Ezekiel 22:22"
+ },
+ {
+  "id": "ezekiel-22-m-09",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the conspiracy of her prophets done?",
+  "choices": [
+   "Devoured souls, taken treasure, made many widows",
+   "Healed the sick",
+   "Led the army",
+   "Built the temple"
+  ],
+  "answer": 0,
+  "explanation": "They have devoured souls; they have taken the treasure and precious things; they have made her many widows.",
+  "ref": "Ezekiel 22:25"
+ },
+ {
+  "id": "ezekiel-22-m-10",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the priests hid their eyes from?",
+  "choices": [
+   "The idols",
+   "The king's court",
+   "The foreign envoys",
+   "The LORD's sabbaths"
+  ],
+  "answer": 3,
+  "explanation": "They have hid their eyes from my sabbaths, and I am profaned among them.",
+  "ref": "Ezekiel 22:26"
+ },
+ {
+  "id": "ezekiel-22-m-11",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the prophets daubed with untempered morter?",
+  "choices": [
+   "The temple wall",
+   "The city gates",
+   "The people, seeing vanity and divining lies",
+   "The idols"
+  ],
+  "answer": 2,
+  "explanation": "Her prophets have daubed them with untempered morter, seeing vanity, and divining lies.",
+  "ref": "Ezekiel 22:28"
+ },
+ {
+  "id": "ezekiel-22-m-12",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "What had the people of the land done to the stranger?",
+  "choices": [
+   "Welcomed him",
+   "Oppressed him wrongfully",
+   "Fed him",
+   "Hired him"
+  ],
+  "answer": 1,
+  "explanation": "They have oppressed the stranger wrongfully.",
+  "ref": "Ezekiel 22:29"
+ },
+ {
+  "id": "ezekiel-22-m-13",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the LORD poured out upon them in the end?",
+  "choices": [
+   "His indignation",
+   "His blessing",
+   "His rain",
+   "His mercy"
+  ],
+  "answer": 0,
+  "explanation": "I have poured out mine indignation upon them; I have consumed them with the fire of my wrath.",
+  "ref": "Ezekiel 22:31"
+ },
+ {
+  "id": "ezekiel-22-m-14",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the LORD looking for a man to stand in the gap?",
+  "choices": [
+   "So Babylon would withdraw",
+   "So the king would rule",
+   "So the temple would be built",
+   "So He would not destroy the land"
+  ],
+  "answer": 3,
+  "explanation": "I sought for a man that should stand in the gap before me for the land, that I should not destroy it.",
+  "ref": "Ezekiel 22:30"
+ },
+ {
+  "id": "ezekiel-22-m-15",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Ezekiel told to show the bloody city?",
+  "choices": [
+   "All her riches",
+   "The way of peace",
+   "All her abominations",
+   "The coming king"
+  ],
+  "answer": 2,
+  "explanation": "Wilt thou judge the bloody city? yea, thou shalt shew her all her abominations.",
+  "ref": "Ezekiel 22:2"
+ },
+ {
+  "id": "ezekiel-22-h-01",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the LORD made the city to the heathen?",
+  "choices": [
+   "A fortress",
+   "A reproach and a mocking",
+   "A teacher",
+   "A friend"
+  ],
+  "answer": 1,
+  "explanation": "I have made thee a reproach unto the heathen, and a mocking to all countries.",
+  "ref": "Ezekiel 22:4"
+ },
+ {
+  "id": "ezekiel-22-h-02",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Who shall mock the city?",
+  "choices": [
+   "Those near and those far",
+   "Only Babylon",
+   "Only Egypt",
+   "Only the Ammonites"
+  ],
+  "answer": 0,
+  "explanation": "Those that be near, and those that be far from thee, shall mock thee.",
+  "ref": "Ezekiel 22:5"
+ },
+ {
+  "id": "ezekiel-22-h-03",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will she take in herself in the sight of the heathen?",
+  "choices": [
+   "Her crown",
+   "Her sword",
+   "Her tribute",
+   "Her inheritance"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt take thine inheritance in thyself in the sight of the heathen.",
+  "ref": "Ezekiel 22:16"
+ },
+ {
+  "id": "ezekiel-22-h-04",
+  "chapter": 22,
+  "level": "hard",
+  "category": "place",
+  "question": "Where do the people eat in the city, according to the LORD?",
+  "choices": [
+   "In the temple",
+   "In the market",
+   "Upon the mountains",
+   "By the river"
+  ],
+  "answer": 2,
+  "explanation": "In thee they eat upon the mountains.",
+  "ref": "Ezekiel 22:9"
+ },
+ {
+  "id": "ezekiel-22-h-05",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what day is the land not rained upon?",
+  "choices": [
+   "The day of harvest",
+   "The day of indignation",
+   "The day of atonement",
+   "The day of the feast"
+  ],
+  "answer": 1,
+  "explanation": "Thou art the land that is not cleansed, nor rained upon in the day of indignation.",
+  "ref": "Ezekiel 22:24"
+ },
+ {
+  "id": "ezekiel-22-h-06",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the princes seek by destroying souls?",
+  "choices": [
+   "Dishonest gain",
+   "Honour",
+   "Peace",
+   "Land"
+  ],
+  "answer": 0,
+  "explanation": "Her princes are like wolves, to shed blood, and to destroy souls, to get dishonest gain.",
+  "ref": "Ezekiel 22:27"
+ },
+ {
+  "id": "ezekiel-22-h-07",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom had the people of the land vexed?",
+  "choices": [
+   "The priests",
+   "The judges",
+   "The soldiers",
+   "The poor and needy"
+  ],
+  "answer": 3,
+  "explanation": "They have vexed the poor and needy.",
+  "ref": "Ezekiel 22:29"
+ },
+ {
+  "id": "ezekiel-22-h-08",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD recompense upon their heads?",
+  "choices": [
+   "Their gold",
+   "Their idols",
+   "Their own way",
+   "Their sabbaths"
+  ],
+  "answer": 2,
+  "explanation": "Their own way have I recompensed upon their heads, saith the Lord GOD.",
+  "ref": "Ezekiel 22:31"
+ },
+ {
+  "id": "ezekiel-22-h-09",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do with them once He has gathered them?",
+  "choices": [
+   "Send them home",
+   "Leave them there and melt them",
+   "Give them rest",
+   "Crown them"
+  ],
+  "answer": 1,
+  "explanation": "I will gather you in mine anger and in my fury, and I will leave you there, and melt you.",
+  "ref": "Ezekiel 22:20"
+ },
+ {
+  "id": "ezekiel-22-h-10",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the prophets say though the LORD had not spoken?",
+  "choices": [
+   "Thus saith the Lord GOD",
+   "Peace, peace",
+   "The temple shall stand",
+   "Flee to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "They divine lies, saying, Thus saith the Lord GOD, when the LORD hath not spoken.",
+  "ref": "Ezekiel 22:28"
+ },
+ {
+  "id": "ezekiel-22-h-11",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How will Israel be melted?",
+  "choices": [
+   "As wax before a fire",
+   "As snow in the sun",
+   "As salt in water",
+   "As silver is melted in the furnace"
+  ],
+  "answer": 3,
+  "explanation": "As silver is melted in the midst of the furnace, so shall ye be melted in the midst thereof.",
+  "ref": "Ezekiel 22:22"
+ },
+ {
+  "id": "ezekiel-22-h-12",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say of His word about dealing with her?",
+  "choices": [
+   "I will think on it",
+   "I may relent",
+   "I have spoken it, and will do it",
+   "I will wait"
+  ],
+  "answer": 2,
+  "explanation": "I the LORD have spoken it, and will do it.",
+  "ref": "Ezekiel 22:14"
+ },
+ {
+  "id": "ezekiel-22-h-13",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides holy and profane, what difference had the priests not shown?",
+  "choices": [
+   "Between king and prophet",
+   "Between the unclean and the clean",
+   "Between rich and poor",
+   "Between Judah and Israel"
+  ],
+  "answer": 1,
+  "explanation": "They have put no difference between the holy and profane, neither have they shewed difference between the unclean and the clean.",
+  "ref": "Ezekiel 22:26"
+ },
+ {
+  "id": "ezekiel-22-h-14",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the prophets taken besides souls?",
+  "choices": [
+   "The treasure and precious things",
+   "The temple vessels",
+   "The first fruits",
+   "The flocks"
+  ],
+  "answer": 0,
+  "explanation": "They have taken the treasure and precious things.",
+  "ref": "Ezekiel 22:25"
+ },
+ {
+  "id": "ezekiel-22-h-15",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom had the city forgotten in her extortion?",
+  "choices": [
+   "Her king",
+   "Her fathers",
+   "Her priests",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast greedily gained of thy neighbours by extortion, and hast forgotten me, saith the Lord GOD.",
+  "ref": "Ezekiel 22:12"
+ },
+ {
+  "id": "ezekiel-23-e-01",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "How are the two women related to each other?",
+  "choices": [
+   "Wives of one king",
+   "Servants of one house",
+   "Sisters of Pharaoh",
+   "Daughters of one mother"
+  ],
+  "answer": 3,
+  "explanation": "Son of man, there were two women, the daughters of one mother.",
+  "ref": "Ezekiel 23:2"
+ },
+ {
+  "id": "ezekiel-23-e-02",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the sisters commit whoredoms in their youth?",
+  "choices": [
+   "Babylon",
+   "Assyria",
+   "Egypt",
+   "Canaan"
+  ],
+  "answer": 2,
+  "explanation": "They committed whoredoms in Egypt; they committed whoredoms in their youth.",
+  "ref": "Ezekiel 23:3"
+ },
+ {
+  "id": "ezekiel-23-e-03",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "On which neighbours did Aholah dote?",
+  "choices": [
+   "The Egyptians",
+   "The Assyrians",
+   "The Philistines",
+   "The Syrians"
+  ],
+  "answer": 1,
+  "explanation": "Aholah played the harlot when she was mine; and she doted on her lovers, on the Assyrians her neighbours.",
+  "ref": "Ezekiel 23:5"
+ },
+ {
+  "id": "ezekiel-23-e-04",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what were the Assyrian lovers clothed?",
+  "choices": [
+   "Blue",
+   "Scarlet",
+   "White linen",
+   "Sackcloth"
+  ],
+  "answer": 0,
+  "explanation": "On the Assyrians her neighbours, which were clothed with blue, captains and rulers.",
+  "ref": "Ezekiel 23:6"
+ },
+ {
+  "id": "ezekiel-23-e-05",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD do with Aholah?",
+  "choices": [
+   "Gave her a crown",
+   "Sent her to Egypt",
+   "Hid her in the temple",
+   "Delivered her into the hand of the Assyrians"
+  ],
+  "answer": 3,
+  "explanation": "Wherefore I have delivered her into the hand of her lovers, into the hand of the Assyrians.",
+  "ref": "Ezekiel 23:9"
+ },
+ {
+  "id": "ezekiel-23-e-06",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose images did Aholibah see portrayed on the wall?",
+  "choices": [
+   "The Egyptians",
+   "The Assyrians",
+   "The Chaldeans",
+   "The Philistines"
+  ],
+  "answer": 2,
+  "explanation": "She saw men pourtrayed upon the wall, the images of the Chaldeans pourtrayed with vermilion.",
+  "ref": "Ezekiel 23:14"
+ },
+ {
+  "id": "ezekiel-23-e-07",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Aholibah send messengers to the Babylonians?",
+  "choices": [
+   "Into Egypt",
+   "Into Chaldea",
+   "Into Tyre",
+   "Into Syria"
+  ],
+  "answer": 1,
+  "explanation": "As soon as she saw them with her eyes, she sent messengers unto them into Chaldea.",
+  "ref": "Ezekiel 23:16"
+ },
+ {
+  "id": "ezekiel-23-e-08",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to her mind after the Babylonians defiled her?",
+  "choices": [
+   "It was alienated from them",
+   "It loved them more",
+   "It forgot Egypt",
+   "It turned to the LORD"
+  ],
+  "answer": 0,
+  "explanation": "The Babylonians came to her, and she was polluted with them, and her mind was alienated from them.",
+  "ref": "Ezekiel 23:17"
+ },
+ {
+  "id": "ezekiel-23-e-09",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose cup will Aholibah drink?",
+  "choices": [
+   "Her mother's",
+   "The king's",
+   "The priest's",
+   "Her sister's"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast walked in the way of thy sister; therefore will I give her cup into thine hand.",
+  "ref": "Ezekiel 23:31"
+ },
+ {
+  "id": "ezekiel-23-e-10",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the sisters do with the sons they bore to the LORD?",
+  "choices": [
+   "Sent them to Egypt",
+   "Gave them to the priests",
+   "Caused them to pass through the fire to their idols",
+   "Trained them as warriors"
+  ],
+  "answer": 2,
+  "explanation": "They caused their sons, whom they bare unto me, to pass for them through the fire, to devour them.",
+  "ref": "Ezekiel 23:37"
+ },
+ {
+  "id": "ezekiel-23-m-01",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "What is said of the sisters in relation to the LORD?",
+  "choices": [
+   "They were His servants only",
+   "They were His and bore sons and daughters",
+   "They were strangers to Him",
+   "They were from Egypt"
+  ],
+  "answer": 1,
+  "explanation": "They were mine, and they bare sons and daughters. Samaria is Aholah, and Jerusalem Aholibah.",
+  "ref": "Ezekiel 23:4"
+ },
+ {
+  "id": "ezekiel-23-m-02",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the Chaldeans' images made on the wall?",
+  "choices": [
+   "Pourtrayed with vermilion",
+   "Carved in gold",
+   "Woven in silk",
+   "Written in blood"
+  ],
+  "answer": 0,
+  "explanation": "The images of the Chaldeans pourtrayed with vermilion.",
+  "ref": "Ezekiel 23:14"
+ },
+ {
+  "id": "ezekiel-23-m-03",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom will the LORD raise up against Aholibah?",
+  "choices": [
+   "The Egyptians",
+   "Her own sons",
+   "The Philistines only",
+   "Her lovers from whom her mind is alienated"
+  ],
+  "answer": 3,
+  "explanation": "I will raise up thy lovers against thee, from whom thy mind is alienated, and I will bring them against thee on every side.",
+  "ref": "Ezekiel 23:22"
+ },
+ {
+  "id": "ezekiel-23-m-04",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Which peoples are named among those raised against Aholibah, besides the Babylonians?",
+  "choices": [
+   "Moab, Edom and Ammon",
+   "Tyre, Sidon and Gebal",
+   "Pekod, Shoa and Koa",
+   "Cush, Put and Lud"
+  ],
+  "answer": 2,
+  "explanation": "The Babylonians, and all the Chaldeans, Pekod, and Shoa, and Koa, and all the Assyrians with them.",
+  "ref": "Ezekiel 23:23"
+ },
+ {
+  "id": "ezekiel-23-m-05",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what will they come against Aholibah?",
+  "choices": [
+   "Ships",
+   "Chariots, wagons and wheels",
+   "Fire and smoke",
+   "Camels only"
+  ],
+  "answer": 1,
+  "explanation": "They shall come against thee with chariots, wagons, and wheels, and with an assembly of people.",
+  "ref": "Ezekiel 23:24"
+ },
+ {
+  "id": "ezekiel-23-m-06",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By whose judgments will they judge her?",
+  "choices": [
+   "Their own judgments",
+   "The temple's law",
+   "The law of Moses",
+   "The elders' decree"
+  ],
+  "answer": 0,
+  "explanation": "I will set judgment before them, and they shall judge thee according to their judgments.",
+  "ref": "Ezekiel 23:24"
+ },
+ {
+  "id": "ezekiel-23-m-07",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will become of her sons and daughters?",
+  "choices": [
+   "They will be spared",
+   "They will reign",
+   "They will flee to Egypt",
+   "They will be taken and the rest devoured by fire"
+  ],
+  "answer": 3,
+  "explanation": "They shall take thy sons and thy daughters; and thy residue shall be devoured by the fire.",
+  "ref": "Ezekiel 23:25"
+ },
+ {
+  "id": "ezekiel-23-m-08",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will they strip from her and take away?",
+  "choices": [
+   "Her sons",
+   "Her crown",
+   "Her clothes and fair jewels",
+   "Her flocks"
+  ],
+  "answer": 2,
+  "explanation": "They shall strip thee out of thy clothes, and take away thy fair jewels.",
+  "ref": "Ezekiel 23:26"
+ },
+ {
+  "id": "ezekiel-23-m-09",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD cause to cease from her?",
+  "choices": [
+   "Her kings",
+   "Her lewdness and whoredom brought from Egypt",
+   "Her tribute",
+   "Her wars"
+  ],
+  "answer": 1,
+  "explanation": "Thus will I make thy lewdness to cease from thee, and thy whoredom brought from the land of Egypt.",
+  "ref": "Ezekiel 23:27"
+ },
+ {
+  "id": "ezekiel-23-m-10",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will the LORD do these things to Aholibah?",
+  "choices": [
+   "She went after the heathen and was polluted by their idols",
+   "She served Egypt",
+   "She broke the Sabbath only",
+   "She stole from the temple"
+  ],
+  "answer": 0,
+  "explanation": "Because thou hast gone a whoring after the heathen, and because thou art polluted with their idols.",
+  "ref": "Ezekiel 23:30"
+ },
+ {
+  "id": "ezekiel-23-m-11",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what will Aholibah be filled from her sister's cup?",
+  "choices": [
+   "Wine and peace",
+   "Bread and honey",
+   "Oil and gladness",
+   "Drunkenness and sorrow, astonishment and desolation"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt be filled with drunkenness and sorrow, with the cup of astonishment and desolation.",
+  "ref": "Ezekiel 23:33"
+ },
+ {
+  "id": "ezekiel-23-m-12",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why must Aholibah bear her lewdness?",
+  "choices": [
+   "She served Babylon",
+   "She was ignorant",
+   "She forgot the LORD and cast Him behind her back",
+   "She was young"
+  ],
+  "answer": 2,
+  "explanation": "Because thou hast forgotten me, and cast me behind thy back, therefore bear thou also thy lewdness.",
+  "ref": "Ezekiel 23:35"
+ },
+ {
+  "id": "ezekiel-23-m-13",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they defile on the same day that they slew their children?",
+  "choices": [
+   "The king's palace",
+   "The LORD's sanctuary",
+   "The city gate",
+   "The idol's house"
+  ],
+  "answer": 1,
+  "explanation": "They have defiled my sanctuary in the same day, and have profaned my sabbaths.",
+  "ref": "Ezekiel 23:38–39"
+ },
+ {
+  "id": "ezekiel-23-m-14",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the company do to them?",
+  "choices": [
+   "Stone them and slay them with swords and burn their houses",
+   "Crown them",
+   "Send them to Egypt",
+   "Feed them"
+  ],
+  "answer": 0,
+  "explanation": "The company shall stone them with stones, and dispatch them with their swords, and burn up their houses with fire.",
+  "ref": "Ezekiel 23:47"
+ },
+ {
+  "id": "ezekiel-23-m-15",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the desirable young men of Assyria ride?",
+  "choices": [
+   "Camels",
+   "Chariots of iron",
+   "Mules",
+   "Horses"
+  ],
+  "answer": 3,
+  "explanation": "All of them desirable young men, horsemen riding upon horses.",
+  "ref": "Ezekiel 23:6"
+ },
+ {
+  "id": "ezekiel-23-h-01",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of the two sisters is the elder?",
+  "choices": [
+   "Aholibah",
+   "Neither is named",
+   "Aholah",
+   "Both are twins"
+  ],
+  "answer": 2,
+  "explanation": "The names of them were Aholah the elder, and Aholibah her sister.",
+  "ref": "Ezekiel 23:4"
+ },
+ {
+  "id": "ezekiel-23-h-02",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Aholah become among women?",
+  "choices": [
+   "Honoured",
+   "Famous",
+   "Hated",
+   "Unknown"
+  ],
+  "answer": 1,
+  "explanation": "She became famous among women; for they had executed judgment upon her.",
+  "ref": "Ezekiel 23:10"
+ },
+ {
+  "id": "ezekiel-23-h-03",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Aholibah compare with her sister in corruption?",
+  "choices": [
+   "She was more corrupt",
+   "She was less corrupt",
+   "She was equal",
+   "She repented"
+  ],
+  "answer": 0,
+  "explanation": "Aholibah saw this, she was more corrupt in her inordinate love than she.",
+  "ref": "Ezekiel 23:11"
+ },
+ {
+  "id": "ezekiel-23-h-04",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what were the Chaldean princes girded?",
+  "choices": [
+   "Swords of iron",
+   "Cloaks of purple",
+   "Chains of gold",
+   "Girdles upon their loins"
+  ],
+  "answer": 3,
+  "explanation": "Girded with girdles upon their loins, exceeding in dyed attire upon their heads.",
+  "ref": "Ezekiel 23:15"
+ },
+ {
+  "id": "ezekiel-23-h-05",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where did they send for men to come?",
+  "choices": [
+   "From Egypt only",
+   "From the mountains of Israel",
+   "From far",
+   "From Tyre"
+  ],
+  "answer": 2,
+  "explanation": "Ye have sent for men to come from far, unto whom a messenger was sent; and, lo, they came.",
+  "ref": "Ezekiel 23:40"
+ },
+ {
+  "id": "ezekiel-23-h-06",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose incense and oil did she set upon the table?",
+  "choices": [
+   "Her own",
+   "The LORD's",
+   "The king's",
+   "The priests'"
+  ],
+  "answer": 1,
+  "explanation": "A table prepared before it, whereupon thou hast set mine incense and mine oil.",
+  "ref": "Ezekiel 23:41"
+ },
+ {
+  "id": "ezekiel-23-h-07",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Who were brought from the wilderness with the men of the common sort?",
+  "choices": [
+   "The Sabeans",
+   "The Midianites",
+   "The Moabites",
+   "The Edomites"
+  ],
+  "answer": 0,
+  "explanation": "With the men of the common sort were brought Sabeans from the wilderness.",
+  "ref": "Ezekiel 23:42"
+ },
+ {
+  "id": "ezekiel-23-h-08",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD want all women to be taught?",
+  "choices": [
+   "To honour the king",
+   "To serve the temple",
+   "To flee from Babylon",
+   "Not to do after their lewdness"
+  ],
+  "answer": 3,
+  "explanation": "Thus will I cause lewdness to cease out of the land, that all women may be taught not to do after your lewdness.",
+  "ref": "Ezekiel 23:48"
+ },
+ {
+  "id": "ezekiel-23-h-09",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall Aholibah bear at the end?",
+  "choices": [
+   "The kingdom of Babylon",
+   "The crown of Judah",
+   "The sins of her idols",
+   "The curse of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "They shall recompense your lewdness upon you, and ye shall bear the sins of your idols.",
+  "ref": "Ezekiel 23:49"
+ },
+ {
+  "id": "ezekiel-23-h-10",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will become of Aholibah's drink from the cup?",
+  "choices": [
+   "She will be honoured",
+   "She will be laughed to scorn and held in derision",
+   "She will be healed",
+   "She will be left alone"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt drink of thy sister's cup deep and large: thou shalt be laughed to scorn and had in derision.",
+  "ref": "Ezekiel 23:32"
+ },
+ {
+  "id": "ezekiel-23-h-11",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is in their hands besides adultery?",
+  "choices": [
+   "Blood",
+   "Gold",
+   "Idols",
+   "Incense"
+  ],
+  "answer": 0,
+  "explanation": "They have committed adultery, and blood is in their hands.",
+  "ref": "Ezekiel 23:37"
+ },
+ {
+  "id": "ezekiel-23-h-12",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the Babylonians take away from her?",
+  "choices": [
+   "Her land only",
+   "Her crown only",
+   "Her mother",
+   "All her labour"
+  ],
+  "answer": 3,
+  "explanation": "They shall deal with thee hatefully, and shall take away all thy labour, and shall leave thee naked and bare.",
+  "ref": "Ezekiel 23:29"
+ },
+ {
+  "id": "ezekiel-23-h-13",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is Ezekiel told to declare to Aholah and Aholibah?",
+  "choices": [
+   "Their riches",
+   "Their ancestry",
+   "Their abominations",
+   "Their future"
+  ],
+  "answer": 2,
+  "explanation": "Wilt thou judge Aholah and Aholibah? yea, declare unto them their abominations.",
+  "ref": "Ezekiel 23:36"
+ },
+ {
+  "id": "ezekiel-23-h-14",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will Aholibah not do any more after the judgment?",
+  "choices": [
+   "Honour the LORD",
+   "Remember Egypt",
+   "Fear Babylon",
+   "Keep the Sabbath"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not lift up thine eyes unto them, nor remember Egypt any more.",
+  "ref": "Ezekiel 23:27"
+ },
+ {
+  "id": "ezekiel-23-h-15",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After whose manner shall the righteous men judge them?",
+  "choices": [
+   "Adulteresses and women that shed blood",
+   "Thieves and robbers",
+   "Priests who profane",
+   "False prophets"
+  ],
+  "answer": 0,
+  "explanation": "The righteous men shall judge them after the manner of adulteresses, and after the manner of women that shed blood.",
+  "ref": "Ezekiel 23:45"
+ },
+ {
+  "id": "ezekiel-24-e-01",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD tell Ezekiel to write down?",
+  "choices": [
+   "The name of the day",
+   "The name of the king",
+   "The names of the elders",
+   "The names of the exiles"
+  ],
+  "answer": 0,
+  "explanation": "Son of man, write thee the name of the day, even of this same day.",
+  "ref": "Ezekiel 24:2"
+ },
+ {
+  "id": "ezekiel-24-e-02",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Ezekiel utter to the rebellious house?",
+  "choices": [
+   "A song of joy",
+   "A law",
+   "A prayer",
+   "A parable"
+  ],
+  "answer": 3,
+  "explanation": "Utter a parable unto the rebellious house, and say unto them, Set on a pot.",
+  "ref": "Ezekiel 24:3"
+ },
+ {
+  "id": "ezekiel-24-e-03",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What goes into the pot?",
+  "choices": [
+   "Gold and silver",
+   "Grain and oil",
+   "Every good piece, the thigh and the shoulder",
+   "Fish and bread"
+  ],
+  "answer": 2,
+  "explanation": "Gather the pieces thereof into it, even every good piece, the thigh, and the shoulder.",
+  "ref": "Ezekiel 24:4"
+ },
+ {
+  "id": "ezekiel-24-e-04",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD call the city in the pot parable?",
+  "choices": [
+   "The holy city",
+   "The bloody city",
+   "The city of peace",
+   "The city of David"
+  ],
+  "answer": 1,
+  "explanation": "Woe to the bloody city, to the pot whose scum is therein!",
+  "ref": "Ezekiel 24:6"
+ },
+ {
+  "id": "ezekiel-24-e-05",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "What happened to Ezekiel's wife that evening?",
+  "choices": [
+   "She died",
+   "She fell ill",
+   "She left for Egypt",
+   "She was taken captive"
+  ],
+  "answer": 0,
+  "explanation": "At even my wife died; and I did in the morning as I was commanded.",
+  "ref": "Ezekiel 24:18"
+ },
+ {
+  "id": "ezekiel-24-e-06",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people ask Ezekiel when they saw him?",
+  "choices": [
+   "Where is thy wife?",
+   "Who will lead us?",
+   "When will we go home?",
+   "Wilt thou not tell us what these things are to us?"
+  ],
+  "answer": 3,
+  "explanation": "Wilt thou not tell us what these things are to us, that thou doest so?",
+  "ref": "Ezekiel 24:19"
+ },
+ {
+  "id": "ezekiel-24-e-07",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD profane?",
+  "choices": [
+   "The king's palace",
+   "The city wall",
+   "His sanctuary",
+   "The altar of Bethel"
+  ],
+  "answer": 2,
+  "explanation": "Behold, I will profane my sanctuary, the excellency of your strength, the desire of your eyes.",
+  "ref": "Ezekiel 24:21"
+ },
+ {
+  "id": "ezekiel-24-e-08",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will fall by the sword?",
+  "choices": [
+   "The priests only",
+   "Their sons and daughters whom they left",
+   "The king only",
+   "The prophets"
+  ],
+  "answer": 1,
+  "explanation": "Your sons and your daughters whom ye have left shall fall by the sword.",
+  "ref": "Ezekiel 24:21"
+ },
+ {
+  "id": "ezekiel-24-e-09",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "What is Ezekiel to the people?",
+  "choices": [
+   "A sign",
+   "A king",
+   "A judge",
+   "A priest"
+  ],
+  "answer": 0,
+  "explanation": "Thus Ezekiel is unto you a sign: according to all that he hath done shall ye do.",
+  "ref": "Ezekiel 24:24"
+ },
+ {
+  "id": "ezekiel-24-m-01",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What choice thing was to be taken from the flock for the pot?",
+  "choices": [
+   "The oldest ram",
+   "The firstborn",
+   "The lamb of the feast",
+   "The choice of the flock"
+  ],
+  "answer": 3,
+  "explanation": "Take the choice of the flock, and burn also the bones under it.",
+  "ref": "Ezekiel 24:5"
+ },
+ {
+  "id": "ezekiel-24-m-02",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the bloody city set her blood?",
+  "choices": [
+   "In a pit",
+   "In the river",
+   "On the top of a rock, not covered with dust",
+   "In the temple"
+  ],
+  "answer": 2,
+  "explanation": "She set it upon the top of a rock; she poured it not upon the ground, to cover it with dust.",
+  "ref": "Ezekiel 24:7"
+ },
+ {
+  "id": "ezekiel-24-m-03",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD set her blood on the top of a rock?",
+  "choices": [
+   "To hide it",
+   "To cause fury to come up and take vengeance",
+   "To shame the poor",
+   "To make a monument"
+  ],
+  "answer": 1,
+  "explanation": "I have set her blood upon the top of a rock, that it should not be covered, to take vengeance.",
+  "ref": "Ezekiel 24:8"
+ },
+ {
+  "id": "ezekiel-24-m-04",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be set empty upon the coals?",
+  "choices": [
+   "The pot, so its brass would be hot",
+   "The temple vessels",
+   "The altar",
+   "The king's crown"
+  ],
+  "answer": 0,
+  "explanation": "Set it empty upon the coals thereof, that the brass of it may be hot.",
+  "ref": "Ezekiel 24:11"
+ },
+ {
+  "id": "ezekiel-24-m-05",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what has the city wearied herself?",
+  "choices": [
+   "Idols",
+   "Wars",
+   "Sacrifices",
+   "Lies"
+  ],
+  "answer": 3,
+  "explanation": "She hath wearied herself with lies, and her great scum went not forth out of her.",
+  "ref": "Ezekiel 24:12"
+ },
+ {
+  "id": "ezekiel-24-m-06",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when will the filthiness not be purged from her?",
+  "choices": [
+   "Till the king repents",
+   "Till Babylon leaves",
+   "Till the LORD's fury rests upon her",
+   "Till the temple is rebuilt"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt not be purged from thy filthiness any more, till I have caused my fury to rest upon thee.",
+  "ref": "Ezekiel 24:13"
+ },
+ {
+  "id": "ezekiel-24-m-07",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD not do in this judgment?",
+  "choices": [
+   "Speak to the elders",
+   "Go back, spare or repent",
+   "Burn the temple",
+   "Wait for Babylon"
+  ],
+  "answer": 1,
+  "explanation": "I will not go back, neither will I spare, neither will I repent.",
+  "ref": "Ezekiel 24:14"
+ },
+ {
+  "id": "ezekiel-24-m-08",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezekiel forbidden to make for the dead?",
+  "choices": [
+   "Mourning",
+   "A grave",
+   "A song",
+   "A feast"
+  ],
+  "answer": 0,
+  "explanation": "Forbear to cry, make no mourning for the dead.",
+  "ref": "Ezekiel 24:17"
+ },
+ {
+  "id": "ezekiel-24-m-09",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezekiel to wear on his head and feet?",
+  "choices": [
+   "Sackcloth and ashes",
+   "A crown and sandals of gold",
+   "A turban and no shoes",
+   "The tire on his head and shoes on his feet"
+  ],
+  "answer": 3,
+  "explanation": "Bind the tire of thine head upon thee, and put on thy shoes upon thy feet.",
+  "ref": "Ezekiel 24:17"
+ },
+ {
+  "id": "ezekiel-24-m-10",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezekiel not to eat?",
+  "choices": [
+   "The meat of sacrifice",
+   "The fruit of the vine",
+   "The bread of men",
+   "The honey of the land"
+  ],
+  "answer": 2,
+  "explanation": "Cover not thy lips, and eat not the bread of men.",
+  "ref": "Ezekiel 24:17"
+ },
+ {
+  "id": "ezekiel-24-m-11",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the people not do, as Ezekiel did not?",
+  "choices": [
+   "Sing songs",
+   "Cover their lips or eat the bread of men",
+   "Build houses",
+   "Go to Babylon"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall do as I have done: ye shall not cover your lips, nor eat the bread of men.",
+  "ref": "Ezekiel 24:22"
+ },
+ {
+  "id": "ezekiel-24-m-12",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the people do instead of mourning and weeping?",
+  "choices": [
+   "Pine away for their iniquities",
+   "Rejoice in the LORD",
+   "Flee to Egypt",
+   "Offer sacrifices"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall not mourn nor weep; but ye shall pine away for your iniquities, and mourn one toward another.",
+  "ref": "Ezekiel 24:23"
+ },
+ {
+  "id": "ezekiel-24-m-13",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the LORD describe the sanctuary He will profane?",
+  "choices": [
+   "The house of prayer",
+   "The dwelling of David",
+   "The seat of judgment",
+   "The excellency of your strength, the desire of your eyes"
+  ],
+  "answer": 3,
+  "explanation": "I will profane my sanctuary, the excellency of your strength, the desire of your eyes, and that which your soul pitieth.",
+  "ref": "Ezekiel 24:21"
+ },
+ {
+  "id": "ezekiel-24-m-14",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where shall the city's great scum be?",
+  "choices": [
+   "In the river",
+   "In Babylon",
+   "In the fire",
+   "In the temple"
+  ],
+  "answer": 2,
+  "explanation": "Her great scum went not forth out of her: her scum shall be in the fire.",
+  "ref": "Ezekiel 24:12"
+ },
+ {
+  "id": "ezekiel-24-h-01",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the pot's contents to be brought out?",
+  "choices": [
+   "All at once",
+   "Piece by piece, with no lot falling upon it",
+   "Through the gate",
+   "By the priests"
+  ],
+  "answer": 1,
+  "explanation": "Bring it out piece by piece; let no lot fall upon it.",
+  "ref": "Ezekiel 24:6"
+ },
+ {
+  "id": "ezekiel-24-h-02",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD make great for the fire?",
+  "choices": [
+   "The pile",
+   "The flame",
+   "The wood house",
+   "The altar"
+  ],
+  "answer": 0,
+  "explanation": "I will even make the pile for fire great.",
+  "ref": "Ezekiel 24:9"
+ },
+ {
+  "id": "ezekiel-24-h-03",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was to be done with the bones?",
+  "choices": [
+   "They were buried",
+   "They were sold",
+   "They were scattered",
+   "They were burned"
+  ],
+  "answer": 3,
+  "explanation": "Heap on wood, kindle the fire, consume the flesh, and spice it well, and let the bones be burned.",
+  "ref": "Ezekiel 24:10"
+ },
+ {
+  "id": "ezekiel-24-h-04",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be molten in the empty pot on the coals?",
+  "choices": [
+   "The gold of the temple",
+   "The king's crown",
+   "The filthiness of it",
+   "The idols"
+  ],
+  "answer": 2,
+  "explanation": "That the filthiness of it may be molten in it, that the scum of it may be consumed.",
+  "ref": "Ezekiel 24:11"
+ },
+ {
+  "id": "ezekiel-24-h-05",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ezekiel do in the morning after speaking to the people?",
+  "choices": [
+   "He fled",
+   "As he was commanded",
+   "He mourned openly",
+   "He went to Babylon"
+  ],
+  "answer": 1,
+  "explanation": "I spake unto the people in the morning: and at even my wife died; and I did in the morning as I was commanded.",
+  "ref": "Ezekiel 24:18"
+ },
+ {
+  "id": "ezekiel-24-h-06",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Who will come to Ezekiel in that day to tell him the news?",
+  "choices": [
+   "He that escapeth",
+   "The king of Babylon",
+   "The prophets",
+   "The princes"
+  ],
+  "answer": 0,
+  "explanation": "He that escapeth in that day shall come unto thee, to cause thee to hear it with thine ears.",
+  "ref": "Ezekiel 24:26"
+ },
+ {
+  "id": "ezekiel-24-h-07",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will happen to Ezekiel's mouth when the escaped one comes?",
+  "choices": [
+   "It will be shut",
+   "It will be silent",
+   "It will be sealed",
+   "It will be opened and he will be no more dumb"
+  ],
+  "answer": 3,
+  "explanation": "In that day shall thy mouth be opened to him which is escaped, and thou shalt speak, and be no more dumb.",
+  "ref": "Ezekiel 24:27"
+ },
+ {
+  "id": "ezekiel-24-h-08",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Ezekiel not to cover?",
+  "choices": [
+   "His head",
+   "His feet",
+   "His lips",
+   "His eyes"
+  ],
+  "answer": 2,
+  "explanation": "Cover not thy lips, and eat not the bread of men.",
+  "ref": "Ezekiel 24:17"
+ },
+ {
+  "id": "ezekiel-24-h-09",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the people know when this cometh?",
+  "choices": [
+   "That Babylon is strong",
+   "That the LORD is the Lord GOD",
+   "That Ezekiel was wise",
+   "That the king was just"
+  ],
+  "answer": 1,
+  "explanation": "When this cometh, ye shall know that I am the Lord GOD.",
+  "ref": "Ezekiel 24:24"
+ },
+ {
+  "id": "ezekiel-24-h-10",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How would the LORD take the desire of Ezekiel's eyes?",
+  "choices": [
+   "With a stroke",
+   "By a sword",
+   "By famine",
+   "By a long sickness"
+  ],
+  "answer": 0,
+  "explanation": "Behold, I take away from thee the desire of thine eyes with a stroke.",
+  "ref": "Ezekiel 24:16"
+ },
+ {
+  "id": "ezekiel-24-h-11",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was to be poured into the pot?",
+  "choices": [
+   "Oil",
+   "Wine",
+   "Blood",
+   "Water"
+  ],
+  "answer": 3,
+  "explanation": "Set on a pot, set it on, and also pour water into it.",
+  "ref": "Ezekiel 24:3"
+ },
+ {
+  "id": "ezekiel-24-h-12",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to what shall they judge the city?",
+  "choices": [
+   "The oaths of the kings",
+   "The law of Egypt",
+   "Her ways and her doings",
+   "The word of the elders"
+  ],
+  "answer": 2,
+  "explanation": "According to thy ways, and according to thy doings, shall they judge thee, saith the Lord GOD.",
+  "ref": "Ezekiel 24:14"
+ },
+ {
+  "id": "ezekiel-24-h-13",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD take from them besides strength and the desire of their eyes?",
+  "choices": [
+   "Their harvest",
+   "The joy of their glory",
+   "Their kings",
+   "Their land"
+  ],
+  "answer": 1,
+  "explanation": "In the day when I take from them their strength, the joy of their glory, the desire of their eyes.",
+  "ref": "Ezekiel 24:25"
+ },
+ {
+  "id": "ezekiel-24-h-14",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Toward whom will the people mourn after Ezekiel's sign?",
+  "choices": [
+   "One toward another",
+   "Toward the king",
+   "Toward Babylon",
+   "Toward the priests"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall pine away for your iniquities, and mourn one toward another.",
+  "ref": "Ezekiel 24:23"
  }
 ]
