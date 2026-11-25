@@ -61,7 +61,7 @@
   ],
   "answer": 1,
   "explanation": "He asked God to remember His promise to regather repentant Israel.",
-  "ref": "Nehemiah 1:8\u20139"
+  "ref": "Nehemiah 1:8–9"
  },
  {
   "id": "old-nehemiah-1-5",
@@ -141,7 +141,7 @@
   ],
   "answer": 1,
   "explanation": "I fasted, and prayed before the God of heaven, and said, I beseech thee, O LORD God of heaven.",
-  "ref": "Nehemiah 1:4\u20135"
+  "ref": "Nehemiah 1:4–5"
  },
  {
   "id": "nehemiah-1-m-04",
@@ -301,7 +301,7 @@
   ],
   "answer": 0,
   "explanation": "Artaxerxes saw Nehemiah's sorrow and questioned him.",
-  "ref": "Nehemiah 2:1\u20132"
+  "ref": "Nehemiah 2:1–2"
  },
  {
   "id": "old-nehemiah-2-2",
@@ -333,7 +333,7 @@
   ],
   "answer": 1,
   "explanation": "He requested official letters and timber from the king's forest.",
-  "ref": "Nehemiah 2:7\u20138"
+  "ref": "Nehemiah 2:7–8"
  },
  {
   "id": "old-nehemiah-2-4",
@@ -365,7 +365,7 @@
   ],
   "answer": 2,
   "explanation": "He quietly surveyed the damage at night.",
-  "ref": "Nehemiah 2:12\u201315"
+  "ref": "Nehemiah 2:12–15"
  },
  {
   "id": "nehemiah-2-e-01",
@@ -845,7 +845,7 @@
   ],
   "answer": 1,
   "explanation": "The chapter highlights cooperative rebuilding across the city.",
-  "ref": "Nehemiah 3:1\u201332"
+  "ref": "Nehemiah 3:1–32"
  },
  {
   "id": "nehemiah-3-e-01",
@@ -1568,6 +1568,502 @@
   "ref": "Nehemiah 4:17"
  },
  {
+  "id": "nehemiah-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the Jews building when Sanballat mocked them?",
+  "choices": [
+   "A new temple altar",
+   "A palace for the king",
+   "A city of refuge",
+   "The wall of Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "Sanballat heard that they builded the wall, was wroth, and mocked the Jews.",
+  "ref": "Nehemiah 4:1"
+ },
+ {
+  "id": "nehemiah-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Tobiah by nationality?",
+  "choices": [
+   "Moabite",
+   "Edomite",
+   "Philistine",
+   "Ammonite"
+  ],
+  "answer": 3,
+  "explanation": "Tobiah the Ammonite was by Sanballat when he sneered at the wall.",
+  "ref": "Nehemiah 4:3"
+ },
+ {
+  "id": "nehemiah-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Before the army of which city did Sanballat mock the Jews?",
+  "choices": [
+   "Babylon",
+   "Ashdod",
+   "Damascus",
+   "Samaria"
+  ],
+  "answer": 3,
+  "explanation": "Sanballat spake before his brethren and the army of Samaria.",
+  "ref": "Nehemiah 4:2"
+ },
+ {
+  "id": "nehemiah-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Nehemiah tell the frightened people to remember?",
+  "choices": [
+   "Their fathers in Egypt",
+   "Cyrus the king",
+   "The prophet Isaiah",
+   "The Lord, great and terrible"
+  ],
+  "answer": 3,
+  "explanation": "Be not ye afraid of them: remember the Lord, which is great and terrible.",
+  "ref": "Nehemiah 4:14"
+ },
+ {
+  "id": "nehemiah-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the people do when they heard the trumpet?",
+  "choices": [
+   "Go home at once",
+   "Begin to sing",
+   "Run back to the gates",
+   "Gather to where it sounded"
+  ],
+  "answer": 3,
+  "explanation": "In what place ye hear the sound of the trumpet, resort ye thither unto us.",
+  "ref": "Nehemiah 4:20"
+ },
+ {
+  "id": "nehemiah-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who did Nehemiah say would fight for the builders?",
+  "choices": [
+   "The king's army",
+   "The nobles",
+   "The priests",
+   "Our God"
+  ],
+  "answer": 3,
+  "explanation": "Nehemiah said, Our God shall fight for us.",
+  "ref": "Nehemiah 4:20"
+ },
+ {
+  "id": "nehemiah-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Until when did the workers labour each day?",
+  "choices": [
+   "Till noon",
+   "Till the evening sacrifice",
+   "Till the trumpet ceased",
+   "Till the stars appeared"
+  ],
+  "answer": 3,
+  "explanation": "So we laboured in the work: and half of them held the spears from the rising of the morning till the stars appeared.",
+  "ref": "Nehemiah 4:21"
+ },
+ {
+  "id": "nehemiah-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Sanballat ask if the Jews thought they could do in a day?",
+  "choices": [
+   "Win a war with Samaria",
+   "Raise an army",
+   "Make an end of the work",
+   "Offer every sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "Sanballat asked, Will they make an end in a day?",
+  "ref": "Nehemiah 4:2"
+ },
+ {
+  "id": "nehemiah-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nehemiah pray God would do with the reproach of his enemies?",
+  "choices": [
+   "Hide it from the king",
+   "Forget it",
+   "Turn it upon their own head",
+   "Send it to Babylon"
+  ],
+  "answer": 2,
+  "explanation": "Hear, O our God; for we are despised: and turn their reproach upon their own head.",
+  "ref": "Nehemiah 4:4"
+ },
+ {
+  "id": "nehemiah-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Sanballat, Tobiah and the others plan against Jerusalem?",
+  "choices": [
+   "To buy it from the Jews",
+   "To send gifts to the builders",
+   "To come and fight against it",
+   "To move the wall"
+  ],
+  "answer": 2,
+  "explanation": "They conspired all of them together to come and to fight against Jerusalem, and to hinder it.",
+  "ref": "Nehemiah 4:8"
+ },
+ {
+  "id": "nehemiah-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Judah say was decayed?",
+  "choices": [
+   "The foundations of the wall",
+   "The gates of the city",
+   "The strength of the bearers of burdens",
+   "The tools of the masons"
+  ],
+  "answer": 2,
+  "explanation": "Judah said, The strength of the bearers of burdens is decayed, and there is much rubbish.",
+  "ref": "Nehemiah 4:10"
+ },
+ {
+  "id": "nehemiah-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the adversaries say they would do before the Jews knew?",
+  "choices": [
+   "Set fire to the gates",
+   "Poison the wells",
+   "Come among them, slay them and stop the work",
+   "Steal the stones"
+  ],
+  "answer": 2,
+  "explanation": "They said, They shall not know, neither see, till we come in the midst among them, and slay them, and cause the work to cease.",
+  "ref": "Nehemiah 4:11"
+ },
+ {
+  "id": "nehemiah-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who kept telling Nehemiah that enemies would attack from every place?",
+  "choices": [
+   "The priests",
+   "Sanballat's servants",
+   "The Jews who lived near them",
+   "The Arabians"
+  ],
+  "answer": 2,
+  "explanation": "The Jews which dwelt by them said unto us ten times, From all places whence ye shall return unto us they will be upon you.",
+  "ref": "Nehemiah 4:12"
+ },
+ {
+  "id": "nehemiah-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Nehemiah arrange the people behind the wall?",
+  "choices": [
+   "By tribe with only stones",
+   "In one line along the gate",
+   "By their families with swords, spears and bows",
+   "By age, youngest first"
+  ],
+  "answer": 2,
+  "explanation": "I set the people after their families with their swords, their spears, and their bows.",
+  "ref": "Nehemiah 4:13"
+ },
+ {
+  "id": "nehemiah-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whom did Nehemiah tell the people to fight?",
+  "choices": [
+   "The king of Persia",
+   "The temple priests",
+   "Their brethren, children, wives and houses",
+   "Their enemies' captives"
+  ],
+  "answer": 2,
+  "explanation": "Fight for your brethren, your sons, and your daughters, your wives, and your houses.",
+  "ref": "Nehemiah 4:14"
+ },
+ {
+  "id": "nehemiah-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people do once the enemies learned their plot was known?",
+  "choices": [
+   "Fled into the city",
+   "Went out to fight",
+   "Returned to the wall, each to his work",
+   "Sent for the king"
+  ],
+  "answer": 2,
+  "explanation": "God had brought their counsel to nought, that we returned all of us to the wall, every one unto his work.",
+  "ref": "Nehemiah 4:15"
+ },
+ {
+  "id": "nehemiah-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Nehemiah want a trumpet sounded if attack came?",
+  "choices": [
+   "The gates were locked",
+   "The night was dark",
+   "The work was great and the builders were spread out",
+   "The king had commanded it"
+  ],
+  "answer": 2,
+  "explanation": "The work is great and large, and we are separated upon the wall, one far from another.",
+  "ref": "Nehemiah 4:19"
+ },
+ {
+  "id": "nehemiah-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Nehemiah tell everyone to lodge within Jerusalem at night?",
+  "choices": [
+   "To save food",
+   "To avoid the cold",
+   "So they could guard by night and labour by day",
+   "To attend the temple"
+  ],
+  "answer": 2,
+  "explanation": "Let every one with his servant lodge within Jerusalem, that in the night they may be a guard to us, and labour on the day.",
+  "ref": "Nehemiah 4:22"
+ },
+ {
+  "id": "nehemiah-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did half of Nehemiah's servants do while the other half worked?",
+  "choices": [
+   "Slept in the tents",
+   "Carried water",
+   "Held spears, shields, bows and habergeons",
+   "Guarded the temple only"
+  ],
+  "answer": 2,
+  "explanation": "The half of my servants wrought in the work, and the other half of them held both the spears, the shields, and the bows, and the habergeons.",
+  "ref": "Nehemiah 4:16"
+ },
+ {
+  "id": "nehemiah-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides Arabians and Ammonites, which people were very wroth at the repaired breaches?",
+  "choices": [
+   "Moabites",
+   "Philistines of Gath",
+   "Ashdodites",
+   "Edomites"
+  ],
+  "answer": 2,
+  "explanation": "Sanballat, and Tobiah, and the Arabians, and the Ammonites, and the Ashdodites heard... then they were very wroth.",
+  "ref": "Nehemiah 4:7"
+ },
+ {
+  "id": "nehemiah-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Nehemiah ask God not to blot out?",
+  "choices": [
+   "The names of the builders",
+   "The wall's foundation",
+   "The sin of his enemies",
+   "The reproach of Judah"
+  ],
+  "answer": 2,
+  "explanation": "Cover not their iniquity, and let not their sin be blotted out from before thee.",
+  "ref": "Nehemiah 4:5"
+ },
+ {
+  "id": "nehemiah-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times did the neighbouring Jews warn Nehemiah?",
+  "choices": [
+   "Three times",
+   "Seven times",
+   "Ten times",
+   "Twelve times"
+  ],
+  "answer": 2,
+  "explanation": "The Jews which dwelt by them said unto us ten times.",
+  "ref": "Nehemiah 4:12"
+ },
+ {
+  "id": "nehemiah-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Nehemiah say was great and large?",
+  "choices": [
+   "The army of Samaria",
+   "The city",
+   "The work",
+   "The enemy's plot"
+  ],
+  "answer": 2,
+  "explanation": "The work is great and large, and we are separated upon the wall.",
+  "ref": "Nehemiah 4:19"
+ },
+ {
+  "id": "nehemiah-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who stood behind all the house of Judah while the servants held weapons?",
+  "choices": [
+   "The priests",
+   "The Arabians",
+   "The rulers",
+   "The trumpeters"
+  ],
+  "answer": 2,
+  "explanation": "The rulers were behind all the house of Judah.",
+  "ref": "Nehemiah 4:16"
+ },
+ {
+  "id": "nehemiah-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who stayed beside Nehemiah while the builders worked?",
+  "choices": [
+   "The chief priest",
+   "Sanballat's spy",
+   "The man who sounded the trumpet",
+   "Hanani"
+  ],
+  "answer": 2,
+  "explanation": "He that sounded the trumpet was by me.",
+  "ref": "Nehemiah 4:18"
+ },
+ {
+  "id": "nehemiah-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did none of them put off, save for washing?",
+  "choices": [
+   "Their swords",
+   "Their sandals",
+   "Their clothes",
+   "Their helmets"
+  ],
+  "answer": 2,
+  "explanation": "None of us put off our clothes, saving that every one put them off for washing.",
+  "ref": "Nehemiah 4:23"
+ },
+ {
+  "id": "nehemiah-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Sanballat say the Jews would revive out of the burned heaps of rubbish?",
+  "choices": [
+   "The timbers",
+   "The gates",
+   "The stones",
+   "The ashes"
+  ],
+  "answer": 2,
+  "explanation": "Will they revive the stones out of the heaps of the rubbish which are burned?",
+  "ref": "Nehemiah 4:2"
+ },
+ {
+  "id": "nehemiah-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides fortifying themselves, what did Sanballat ask whether the Jews would do?",
+  "choices": [
+   "Pay tribute",
+   "Rebel against Persia",
+   "Sacrifice",
+   "Hire soldiers"
+  ],
+  "answer": 2,
+  "explanation": "What do these feeble Jews? will they fortify themselves? will they sacrifice?",
+  "ref": "Nehemiah 4:2"
+ },
+ {
+  "id": "nehemiah-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Nehemiah describe the Lord when urging them not to fear?",
+  "choices": [
+   "Slow to anger",
+   "Mighty in battle",
+   "Great and terrible",
+   "King of Persia"
+  ],
+  "answer": 2,
+  "explanation": "Remember the Lord, which is great and terrible.",
+  "ref": "Nehemiah 4:14"
+ },
+ {
+  "id": "nehemiah-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Nehemiah pray his enemies would be given as a prey?",
+  "choices": [
+   "In Samaria",
+   "In the wilderness",
+   "In the land of captivity",
+   "In Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Give them for a prey in the land of captivity.",
+  "ref": "Nehemiah 4:4"
+ },
+ {
+  "id": "nehemiah-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Before whom did Nehemiah say the enemies had provoked God to anger?",
+  "choices": [
+   "The nobles",
+   "The king",
+   "The builders",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "They have provoked thee to anger before the builders.",
+  "ref": "Nehemiah 4:5"
+ },
+ {
   "id": "old-nehemiah-5-1",
   "chapter": 5,
   "level": "beginner",
@@ -1581,7 +2077,7 @@
   ],
   "answer": 0,
   "explanation": "They cried out over famine, mortgages, and debt slavery.",
-  "ref": "Nehemiah 5:1\u20135"
+  "ref": "Nehemiah 5:1–5"
  },
  {
   "id": "old-nehemiah-5-2",
@@ -1645,7 +2141,7 @@
   ],
   "answer": 2,
   "explanation": "Nehemiah refused to burden the people with the governor's provision.",
-  "ref": "Nehemiah 5:14\u201318"
+  "ref": "Nehemiah 5:14–18"
  },
  {
   "id": "old-nehemiah-6-1",
@@ -1693,7 +2189,7 @@
   ],
   "answer": 2,
   "explanation": "His enemies accused him of planning a revolt.",
-  "ref": "Nehemiah 6:6\u20137"
+  "ref": "Nehemiah 6:6–7"
  },
  {
   "id": "old-nehemiah-6-4",
@@ -1805,7 +2301,7 @@
   ],
   "answer": 0,
   "explanation": "The chapter preserves the returnees' genealogical record.",
-  "ref": "Nehemiah 7:6\u201373"
+  "ref": "Nehemiah 7:6–73"
  },
  {
   "id": "old-nehemiah-8-1",
@@ -1853,7 +2349,7 @@
   ],
   "answer": 2,
   "explanation": "They explained the sense so the people understood what was read.",
-  "ref": "Nehemiah 8:7\u20138"
+  "ref": "Nehemiah 8:7–8"
  },
  {
   "id": "old-nehemiah-8-4",
@@ -1885,7 +2381,7 @@
   ],
   "answer": 3,
   "explanation": "They kept the Feast of Booths with great gladness.",
-  "ref": "Nehemiah 8:14\u201317"
+  "ref": "Nehemiah 8:14–17"
  },
  {
   "id": "old-nehemiah-9-1",
@@ -1949,7 +2445,7 @@
   ],
   "answer": 3,
   "explanation": "The prayer reviews God's works from creation through settlement in the land.",
-  "ref": "Nehemiah 9:6\u201325"
+  "ref": "Nehemiah 9:6–25"
  },
  {
   "id": "old-nehemiah-9-5",
@@ -2093,7 +2589,7 @@
   ],
   "answer": 3,
   "explanation": "The chapter details residents from Judah and Benjamin.",
-  "ref": "Nehemiah 11:4\u20139"
+  "ref": "Nehemiah 11:4–9"
  },
  {
   "id": "old-nehemiah-11-4",
@@ -2109,7 +2605,7 @@
   ],
   "answer": 0,
   "explanation": "The chapter includes several groups serving around the temple.",
-  "ref": "Nehemiah 11:10\u201324"
+  "ref": "Nehemiah 11:10–24"
  },
  {
   "id": "old-nehemiah-11-5",
@@ -2141,7 +2637,7 @@
   ],
   "answer": 0,
   "explanation": "The chapter begins with records of priests and Levites.",
-  "ref": "Nehemiah 12:1\u201326"
+  "ref": "Nehemiah 12:1–26"
  },
  {
   "id": "old-nehemiah-12-2",
@@ -2205,7 +2701,7 @@
   ],
   "answer": 1,
   "explanation": "Provision for temple workers was organized faithfully.",
-  "ref": "Nehemiah 12:44\u201347"
+  "ref": "Nehemiah 12:44–47"
  },
  {
   "id": "old-nehemiah-13-1",
@@ -2237,7 +2733,7 @@
   ],
   "answer": 0,
   "explanation": "Tobiah had been given a chamber in the temple complex.",
-  "ref": "Nehemiah 13:4\u20135"
+  "ref": "Nehemiah 13:4–5"
  },
  {
   "id": "old-nehemiah-13-3",
@@ -2269,7 +2765,7 @@
   ],
   "answer": 2,
   "explanation": "He shut down Sabbath commerce at the gates.",
-  "ref": "Nehemiah 13:15\u201322"
+  "ref": "Nehemiah 13:15–22"
  },
  {
   "id": "old-nehemiah-13-5",
