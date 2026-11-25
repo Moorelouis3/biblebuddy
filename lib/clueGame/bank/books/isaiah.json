@@ -2656,22 +2656,6 @@
   "ref": "Isaiah 34:1"
  },
  {
-  "id": "old-isaiah-34-2",
-  "chapter": 34,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "Upon whom is the indignation of the Lord?",
-  "choices": [
-   "The house of David only",
-   "The poor in Zion",
-   "The prophets",
-   "All nations"
-  ],
-  "answer": 3,
-  "explanation": "God's wrath is announced against the nations and their armies.",
-  "ref": "Isaiah 34:2"
- },
- {
   "id": "old-isaiah-34-3",
   "chapter": 34,
   "level": "beginner",
@@ -3120,22 +3104,6 @@
   "ref": "Isaiah 39:8"
  },
  {
-  "id": "old-isaiah-40-1",
-  "chapter": 40,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What repeated word opens the chapter?",
-  "choices": [
-   "Awake",
-   "Comfort",
-   "Repent",
-   "Hear"
-  ],
-  "answer": 1,
-  "explanation": "The new section begins with a call to comfort God's people.",
-  "ref": "Isaiah 40:1"
- },
- {
   "id": "old-isaiah-40-2",
   "chapter": 40,
   "level": "beginner",
@@ -3264,22 +3232,6 @@
   "ref": "Isaiah 41:4"
  },
  {
-  "id": "old-isaiah-41-5",
-  "chapter": 41,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What are idols called?",
-  "choices": [
-   "Glorious",
-   "Precious",
-   "Vanity",
-   "Helpful"
-  ],
-  "answer": 2,
-  "explanation": "The chapter ends by exposing idols as empty and worthless.",
-  "ref": "Isaiah 41:29"
- },
- {
   "id": "old-isaiah-42-1",
   "chapter": 42,
   "level": "beginner",
@@ -3406,22 +3358,6 @@
   "answer": 3,
   "explanation": "God declares that salvation belongs to Him alone.",
   "ref": "Isaiah 43:11"
- },
- {
-  "id": "old-isaiah-43-4",
-  "chapter": 43,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What are the people told not to remember?",
-  "choices": [
-   "The law",
-   "The psalms",
-   "Former things",
-   "The kings"
-  ],
-  "answer": 2,
-  "explanation": "God is preparing His people to notice His new work.",
-  "ref": "Isaiah 43:18"
  },
  {
   "id": "old-isaiah-43-5",
@@ -13070,5 +13006,5285 @@
   "answer": 2,
   "explanation": "Instead of the thorn shall come up the fir tree, and instead of the brier shall come up the myrtle tree.",
   "ref": "Isaiah 55:13"
+ },
+ {
+  "id": "isaiah-34-e-01",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will fall down like a leaf from the vine and a falling fig?",
+  "choices": [
+   "The princes of Edom",
+   "The mountains of Zion",
+   "All the host of heaven",
+   "The cities of the plain"
+  ],
+  "answer": 2,
+  "explanation": "The host of heaven shall fall down, as the leaf falleth off from the vine, and as a falling fig from the fig tree.",
+  "ref": "Isaiah 34:4"
+ },
+ {
+  "id": "isaiah-34-e-02",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which city does the Lord say he has a sacrifice?",
+  "choices": [
+   "Nineveh",
+   "Samaria",
+   "Bozrah",
+   "Hebron"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hath a sacrifice in Bozrah, and a great slaughter in the land of Idumea.",
+  "ref": "Isaiah 34:6"
+ },
+ {
+  "id": "isaiah-34-e-03",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the streams of the land be turned into?",
+  "choices": [
+   "Blood",
+   "Wine",
+   "Pitch",
+   "Salt"
+  ],
+  "answer": 2,
+  "explanation": "The streams thereof shall be turned into pitch, and the dust thereof into brimstone.",
+  "ref": "Isaiah 34:9"
+ },
+ {
+  "id": "isaiah-34-e-04",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the mountains be melted with?",
+  "choices": [
+   "Fire from heaven",
+   "Floods of rain",
+   "The blood of the slain",
+   "The heat of the sun"
+  ],
+  "answer": 2,
+  "explanation": "The mountains shall be melted with their blood.",
+  "ref": "Isaiah 34:3"
+ },
+ {
+  "id": "isaiah-34-e-05",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the Lord describe the burning of the land?",
+  "choices": [
+   "It shall be put out in a year",
+   "It shall burn for seventy years",
+   "It shall not be quenched night nor day",
+   "It shall be quenched by rain"
+  ],
+  "answer": 2,
+  "explanation": "It shall not be quenched night nor day; the smoke thereof shall go up for ever.",
+  "ref": "Isaiah 34:10"
+ },
+ {
+  "id": "isaiah-34-m-01",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the LORD's year of recompences for?",
+  "choices": [
+   "The sins of Egypt",
+   "The controversy of Zion",
+   "The rebellion of Judah",
+   "The pride of Assyria"
+  ],
+  "answer": 1,
+  "explanation": "It is the day of the LORD's vengeance, and the year of recompences for the controversy of Zion.",
+  "ref": "Isaiah 34:8"
+ },
+ {
+  "id": "isaiah-34-m-02",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose blood fills the sword of the LORD?",
+  "choices": [
+   "Bullocks and doves",
+   "Lambs, goats and rams",
+   "Oxen and calves",
+   "Lions and bears"
+  ],
+  "answer": 1,
+  "explanation": "The sword of the LORD is filled with blood, with the blood of lambs and goats, with the fat of the kidneys of rams.",
+  "ref": "Isaiah 34:6"
+ },
+ {
+  "id": "isaiah-34-m-03",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the dust of the land become?",
+  "choices": [
+   "Gold",
+   "Brimstone",
+   "Ashes of cedar",
+   "Fine flour"
+  ],
+  "answer": 1,
+  "explanation": "The dust thereof into brimstone, and the land thereof shall become burning pitch.",
+  "ref": "Isaiah 34:9"
+ },
+ {
+  "id": "isaiah-34-m-04",
+  "chapter": 34,
+  "level": "medium",
+  "category": "person",
+  "question": "Who will be called to the kingdom, but none shall be there?",
+  "choices": [
+   "The priests",
+   "The nobles",
+   "The prophets",
+   "The judges"
+  ],
+  "answer": 1,
+  "explanation": "They shall call the nobles thereof to the kingdom, but none shall be there, and all her princes shall be nothing.",
+  "ref": "Isaiah 34:12"
+ },
+ {
+  "id": "isaiah-34-m-05",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which creatures will possess the land?",
+  "choices": [
+   "The lion, bear and wolf",
+   "The cormorant, bittern, owl and raven",
+   "The eagle, dove and sparrow",
+   "The ox, ass and sheep"
+  ],
+  "answer": 1,
+  "explanation": "The cormorant and the bittern shall possess it; the owl also and the raven shall dwell in it.",
+  "ref": "Isaiah 34:11"
+ },
+ {
+  "id": "isaiah-34-m-06",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall come up in the palaces and fortresses of Idumea?",
+  "choices": [
+   "Vines and fig trees",
+   "Thorns, nettles and brambles",
+   "Cedars and cypresses",
+   "Wheat and barley"
+  ],
+  "answer": 1,
+  "explanation": "Thorns shall come up in her palaces, nettles and brambles in the fortresses thereof.",
+  "ref": "Isaiah 34:13"
+ },
+ {
+  "id": "isaiah-34-m-07",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Lord tell the reader to seek out and read?",
+  "choices": [
+   "The law of Moses",
+   "The book of the LORD",
+   "The writing of the king",
+   "The scroll of the priests"
+  ],
+  "answer": 1,
+  "explanation": "Seek ye out of the book of the LORD, and read: no one of these shall fail.",
+  "ref": "Isaiah 34:16"
+ },
+ {
+  "id": "isaiah-34-m-08",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord cast for the creatures of the land?",
+  "choices": [
+   "A stone",
+   "The lot",
+   "A net",
+   "A line of fire"
+  ],
+  "answer": 1,
+  "explanation": "He hath cast the lot for them, and his hand hath divided it unto them by line.",
+  "ref": "Isaiah 34:17"
+ },
+ {
+  "id": "isaiah-34-m-09",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the Lord stretch out upon the land?",
+  "choices": [
+   "The shadow of his wings",
+   "The line of confusion and the stones of emptiness",
+   "The rod of his anger",
+   "The cloud of his glory"
+  ],
+  "answer": 1,
+  "explanation": "He shall stretch out upon it the line of confusion, and the stones of emptiness.",
+  "ref": "Isaiah 34:11"
+ },
+ {
+  "id": "isaiah-34-h-01",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will Idumea become, with a court for owls?",
+  "choices": [
+   "An habitation of dragons",
+   "A garden of the Lord",
+   "A city of refuge",
+   "A pasture for flocks"
+  ],
+  "answer": 0,
+  "explanation": "Thorns shall come up in her palaces: and it shall be an habitation of dragons, and a court for owls.",
+  "ref": "Isaiah 34:13"
+ },
+ {
+  "id": "isaiah-34-h-02",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What gathered the creatures into the land?",
+  "choices": [
+   "The LORD's mouth commanded and his spirit gathered them",
+   "The famine of the land",
+   "The fall of the cities",
+   "The wind from the east"
+  ],
+  "answer": 0,
+  "explanation": "For my mouth it hath commanded, and his spirit it hath gathered them.",
+  "ref": "Isaiah 34:16"
+ },
+ {
+  "id": "isaiah-34-h-03",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of anyone who tries to pass through the land?",
+  "choices": [
+   "None shall pass through it for ever",
+   "Only the priests may pass",
+   "He shall find water there",
+   "He shall be healed"
+  ],
+  "answer": 0,
+  "explanation": "From generation to generation it shall lie waste; none shall pass through it for ever and ever.",
+  "ref": "Isaiah 34:10"
+ },
+ {
+  "id": "isaiah-34-h-04",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall come up out of the carcases of the slain?",
+  "choices": [
+   "Their stink",
+   "A cry for mercy",
+   "A great fire",
+   "A flock of birds"
+  ],
+  "answer": 0,
+  "explanation": "Their slain also shall be cast out, and their stink shall come up out of their carcases.",
+  "ref": "Isaiah 34:3"
+ },
+ {
+  "id": "isaiah-34-h-05",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall come down with the unicorns?",
+  "choices": [
+   "The bullocks with the bulls",
+   "The lambs with the goats",
+   "The eagles with the vultures",
+   "The kings with the princes"
+  ],
+  "answer": 0,
+  "explanation": "The unicorns shall come down with them, and the bullocks with the bulls.",
+  "ref": "Isaiah 34:7"
+ },
+ {
+  "id": "isaiah-34-h-06",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "What does the Lord call the people on whom his sword comes down?",
+  "choices": [
+   "The people of my curse",
+   "The people of my pasture",
+   "The people of the covenant",
+   "The remnant of Jacob"
+  ],
+  "answer": 0,
+  "explanation": "My sword shall come down upon Idumea, and upon the people of my curse, to judgment.",
+  "ref": "Isaiah 34:5"
+ },
+ {
+  "id": "isaiah-34-h-07",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the satyr do?",
+  "choices": [
+   "Cry to his fellow",
+   "Dwell in the palaces",
+   "Flee to the mountains",
+   "Dig a pit"
+  ],
+  "answer": 0,
+  "explanation": "The wild beasts of the desert shall also meet with the wild beasts of the island, and the satyr shall cry to his fellow.",
+  "ref": "Isaiah 34:14"
+ },
+ {
+  "id": "isaiah-34-h-08",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long will Idumea lie waste?",
+  "choices": [
+   "From generation to generation",
+   "Seventy years",
+   "Until the Messiah comes",
+   "Forty days"
+  ],
+  "answer": 0,
+  "explanation": "From generation to generation it shall lie waste.",
+  "ref": "Isaiah 34:10"
+ },
+ {
+  "id": "isaiah-34-h-09",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the vultures do in the land?",
+  "choices": [
+   "Be gathered, every one with her mate",
+   "Fly away to Zion",
+   "Eat the bread of the poor",
+   "Build in the palaces"
+  ],
+  "answer": 0,
+  "explanation": "There shall the vultures also be gathered, every one with her mate.",
+  "ref": "Isaiah 34:15"
+ },
+ {
+  "id": "isaiah-35-m-01",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall be given to the blossoming desert?",
+  "choices": [
+   "The riches of Egypt",
+   "The cedars of Tyre",
+   "The gold of Ophir",
+   "The glory of Lebanon, the excellency of Carmel and Sharon"
+  ],
+  "answer": 3,
+  "explanation": "The glory of Lebanon shall be given unto it, the excellency of Carmel and Sharon.",
+  "ref": "Isaiah 35:2"
+ },
+ {
+  "id": "isaiah-35-m-02",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are God's people told to strengthen?",
+  "choices": [
+   "The walls and the gates",
+   "The bows and the spears",
+   "The altars and the vows",
+   "The weak hands and the feeble knees"
+  ],
+  "answer": 3,
+  "explanation": "Strengthen ye the weak hands, and confirm the feeble knees.",
+  "ref": "Isaiah 35:3"
+ },
+ {
+  "id": "isaiah-35-m-03",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How will God come to those of a fearful heart?",
+  "choices": [
+   "With silence and rest",
+   "With a famine and a sword",
+   "With thunder and a cloud",
+   "With vengeance and a recompence, to save them"
+  ],
+  "answer": 3,
+  "explanation": "Your God will come with vengeance, even God with a recompence; he will come and save you.",
+  "ref": "Isaiah 35:4"
+ },
+ {
+  "id": "isaiah-35-m-04",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What picture shows how the lame man will move?",
+  "choices": [
+   "He shall run as a horse",
+   "He shall fly as an eagle",
+   "He shall walk as a lamb",
+   "He shall leap as an hart"
+  ],
+  "answer": 3,
+  "explanation": "Then shall the lame man leap as an hart, and the tongue of the dumb sing.",
+  "ref": "Isaiah 35:6"
+ },
+ {
+  "id": "isaiah-35-m-05",
+  "chapter": 35,
+  "level": "medium",
+  "category": "person",
+  "question": "Who shall return and come to Zion with songs?",
+  "choices": [
+   "The captains of Assyria",
+   "The princes of Moab",
+   "The elders of Egypt",
+   "The ransomed of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "The ransomed of the LORD shall return, and come to Zion with songs and everlasting joy upon their heads.",
+  "ref": "Isaiah 35:10"
+ },
+ {
+  "id": "isaiah-35-h-01",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall break out in the wilderness and the desert?",
+  "choices": [
+   "Fire and smoke",
+   "Wheat and barley",
+   "Waters and streams",
+   "Springs of oil"
+  ],
+  "answer": 2,
+  "explanation": "In the wilderness shall waters break out, and streams in the desert.",
+  "ref": "Isaiah 35:6"
+ },
+ {
+  "id": "isaiah-35-h-02",
+  "chapter": 35,
+  "level": "hard",
+  "category": "person",
+  "question": "Who shall not pass over the way of holiness?",
+  "choices": [
+   "The poor",
+   "The strangers",
+   "The unclean",
+   "The blind"
+  ],
+  "answer": 2,
+  "explanation": "It shall be called The way of holiness; the unclean shall not pass over it.",
+  "ref": "Isaiah 35:8"
+ },
+ {
+  "id": "isaiah-35-h-03",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will not be found on the highway?",
+  "choices": [
+   "A thorn or a stone",
+   "A thief or a robber",
+   "A lion or any ravenous beast",
+   "A king or a captain"
+  ],
+  "answer": 2,
+  "explanation": "No lion shall be there, nor any ravenous beast shall go up thereon.",
+  "ref": "Isaiah 35:9"
+ },
+ {
+  "id": "isaiah-35-h-04",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall flee away from the ransomed?",
+  "choices": [
+   "Hunger and thirst",
+   "Fear and war",
+   "Sorrow and sighing",
+   "Sickness and death"
+  ],
+  "answer": 2,
+  "explanation": "They shall obtain joy and gladness, and sorrow and sighing shall flee away.",
+  "ref": "Isaiah 35:10"
+ },
+ {
+  "id": "isaiah-35-h-05",
+  "chapter": 35,
+  "level": "hard",
+  "category": "person",
+  "question": "Who, though fools, shall not err on the highway?",
+  "choices": [
+   "The priests of the temple",
+   "The scribes of the king",
+   "The wayfaring men",
+   "The captains of the host"
+  ],
+  "answer": 2,
+  "explanation": "The wayfaring men, though fools, shall not err therein.",
+  "ref": "Isaiah 35:8"
+ },
+ {
+  "id": "isaiah-36-e-01",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Sennacherib do to the defenced cities of Judah?",
+  "choices": [
+   "He came up against them and took them",
+   "He made peace with them",
+   "He passed them by",
+   "He burned the fields only"
+  ],
+  "answer": 0,
+  "explanation": "Sennacherib king of Assyria came up against all the defenced cities of Judah, and took them.",
+  "ref": "Isaiah 36:1"
+ },
+ {
+  "id": "isaiah-36-e-02",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which city did the king of Assyria send Rabshakeh to Jerusalem?",
+  "choices": [
+   "Lachish",
+   "Samaria",
+   "Hamath",
+   "Babylon"
+  ],
+  "answer": 0,
+  "explanation": "The king of Assyria sent Rabshakeh from Lachish to Jerusalem unto king Hezekiah with a great army.",
+  "ref": "Isaiah 36:2"
+ },
+ {
+  "id": "isaiah-36-e-03",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In which language did Rabshakeh cry out with a loud voice?",
+  "choices": [
+   "The Jews' language",
+   "The Syrian language",
+   "The language of Egypt",
+   "The language of Babylon"
+  ],
+  "answer": 0,
+  "explanation": "Rabshakeh stood, and cried with a loud voice in the Jews' language.",
+  "ref": "Isaiah 36:13"
+ },
+ {
+  "id": "isaiah-36-e-04",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which three men came out to meet Rabshakeh?",
+  "choices": [
+   "Eliakim, Shebna and Joah",
+   "Hezekiah, Isaiah and Asaph",
+   "Hilkiah, Joab and Shebna",
+   "Eliakim, Amos and Obadiah"
+  ],
+  "answer": 0,
+  "explanation": "Then came forth unto him Eliakim, Shebna the scribe, and Joah, Asaph's son, the recorder.",
+  "ref": "Isaiah 36:3"
+ },
+ {
+  "id": "isaiah-36-e-05",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the three men do to their clothes when they reported to Hezekiah?",
+  "choices": [
+   "They rent them",
+   "They washed them",
+   "They burned them",
+   "They laid them aside"
+  ],
+  "answer": 0,
+  "explanation": "They came to Hezekiah with their clothes rent, and told him the words of Rabshakeh.",
+  "ref": "Isaiah 36:22"
+ },
+ {
+  "id": "isaiah-36-e-06",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Rabshakeh stand when he spoke to Hezekiah's men?",
+  "choices": [
+   "By the conduit of the upper pool",
+   "On the wall of Jerusalem",
+   "At the gate of the temple",
+   "By the river of the fuller"
+  ],
+  "answer": 0,
+  "explanation": "He stood by the conduit of the upper pool in the highway of the fuller's field.",
+  "ref": "Isaiah 36:2"
+ },
+ {
+  "id": "isaiah-36-m-01",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Eliakim's charge in Hezekiah's court?",
+  "choices": [
+   "He was the keeper of the gate",
+   "He was captain of the host",
+   "He was over the house",
+   "He was the king's cupbearer"
+  ],
+  "answer": 2,
+  "explanation": "Eliakim, Hilkiah's son, which was over the house.",
+  "ref": "Isaiah 36:3"
+ },
+ {
+  "id": "isaiah-36-m-02",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Shebna's office?",
+  "choices": [
+   "Recorder",
+   "Priest",
+   "Scribe",
+   "Captain"
+  ],
+  "answer": 2,
+  "explanation": "Shebna the scribe, and Joah, Asaph's son, the recorder.",
+  "ref": "Isaiah 36:3"
+ },
+ {
+  "id": "isaiah-36-m-03",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Rabshakeh offer to give Hezekiah if he is able to set riders on them?",
+  "choices": [
+   "Two hundred chariots",
+   "Ten captains",
+   "Two thousand horses",
+   "A thousand shields"
+  ],
+  "answer": 2,
+  "explanation": "I will give thee two thousand horses, if thou be able on thy part to set riders upon them.",
+  "ref": "Isaiah 36:8"
+ },
+ {
+  "id": "isaiah-36-m-04",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Rabshakeh say Hezekiah has taken away, which he claims angers the LORD?",
+  "choices": [
+   "The images and the groves",
+   "The gates and the walls",
+   "The high places and the altars",
+   "The tithes and the offerings"
+  ],
+  "answer": 2,
+  "explanation": "Is it not he, whose high places and whose altars Hezekiah hath taken away?",
+  "ref": "Isaiah 36:7"
+ },
+ {
+  "id": "isaiah-36-m-05",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do Hezekiah's officials ask Rabshakeh to speak in the Syrian language?",
+  "choices": [
+   "Because they cannot speak Hebrew",
+   "Because the king commanded it",
+   "So the people on the wall will not understand",
+   "So that the army would not hear"
+  ],
+  "answer": 2,
+  "explanation": "Speak not to us in the Jews' language, in the ears of the people that are on the wall.",
+  "ref": "Isaiah 36:11"
+ },
+ {
+  "id": "isaiah-36-m-06",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Rabshakeh claim the LORD told him?",
+  "choices": [
+   "Spare the city of Zion",
+   "Turn back to Nineveh",
+   "Go up against this land, and destroy it",
+   "Make peace with Hezekiah"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said unto me, Go up against this land, and destroy it.",
+  "ref": "Isaiah 36:10"
+ },
+ {
+  "id": "isaiah-36-m-07",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of land does Rabshakeh promise to take the people to?",
+  "choices": [
+   "A land flowing with milk and honey",
+   "A land of cedar and gold",
+   "A land of corn and wine, bread and vineyards",
+   "A land of rivers and pastures"
+  ],
+  "answer": 2,
+  "explanation": "Until I come and take you away to a land like your own land, a land of corn and wine, a land of bread and vineyards.",
+  "ref": "Isaiah 36:17"
+ },
+ {
+  "id": "isaiah-36-m-08",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people on the wall not answer Rabshakeh?",
+  "choices": [
+   "They did not understand him",
+   "They were afraid of his army",
+   "The king's commandment was, Answer him not",
+   "They were waiting for Isaiah"
+  ],
+  "answer": 2,
+  "explanation": "They held their peace, and answered him not a word: for the king's commandment was, saying, Answer him not.",
+  "ref": "Isaiah 36:21"
+ },
+ {
+  "id": "isaiah-36-m-09",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Rabshakeh ask Hezekiah to give to his master the king of Assyria?",
+  "choices": [
+   "Gold and silver",
+   "His sons",
+   "Pledges",
+   "The keys of the temple"
+  ],
+  "answer": 2,
+  "explanation": "Now therefore give pledges, I pray thee, to my master the king of Assyria.",
+  "ref": "Isaiah 36:8"
+ },
+ {
+  "id": "isaiah-36-m-10",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen to the man who leans on the broken reed of Egypt?",
+  "choices": [
+   "It will carry him to safety",
+   "It will break his staff",
+   "It will go into his hand and pierce it",
+   "It will blossom in his hand"
+  ],
+  "answer": 2,
+  "explanation": "Whereon if a man lean, it will go into his hand, and pierce it: so is Pharaoh king of Egypt to all that trust in him.",
+  "ref": "Isaiah 36:6"
+ },
+ {
+  "id": "isaiah-36-m-11",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Rabshakeh say Hezekiah shall not be able to do?",
+  "choices": [
+   "Feed them",
+   "Hide them",
+   "Deliver them",
+   "Fight alone"
+  ],
+  "answer": 2,
+  "explanation": "Let not Hezekiah deceive you: for he shall not be able to deliver you.",
+  "ref": "Isaiah 36:14"
+ },
+ {
+  "id": "isaiah-36-h-01",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Rabshakeh say Hezekiah is trusting Egypt for?",
+  "choices": [
+   "Gold and silver",
+   "Grain and oil",
+   "Ships and sailors",
+   "Chariots and horsemen"
+  ],
+  "answer": 3,
+  "explanation": "How then wilt thou put thy trust on Egypt for chariots and for horsemen?",
+  "ref": "Isaiah 36:9"
+ },
+ {
+  "id": "isaiah-36-h-02",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Joah the recorder?",
+  "choices": [
+   "Hilkiah",
+   "Amoz",
+   "Shebna",
+   "Asaph"
+  ],
+  "answer": 3,
+  "explanation": "Joah, Asaph's son, the recorder.",
+  "ref": "Isaiah 36:3"
+ },
+ {
+  "id": "isaiah-36-h-03",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Eliakim, who was over the house?",
+  "choices": [
+   "Asaph",
+   "Amoz",
+   "Joah",
+   "Hilkiah"
+  ],
+  "answer": 3,
+  "explanation": "Eliakim, Hilkiah's son, which was over the house.",
+  "ref": "Isaiah 36:3"
+ },
+ {
+  "id": "isaiah-36-h-04",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which gods does Rabshakeh say could not deliver their lands?",
+  "choices": [
+   "The gods of Tyre, Sidon and Moab",
+   "The gods of Egypt, Cush and Libya",
+   "The gods of Edom, Ammon and Gaza",
+   "The gods of Hamath, Arphad and Sepharvaim"
+  ],
+  "answer": 3,
+  "explanation": "Where are the gods of Hamath and Arphad? where are the gods of Sepharvaim?",
+  "ref": "Isaiah 36:19"
+ },
+ {
+  "id": "isaiah-36-h-05",
+  "chapter": 36,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city does Rabshakeh say its gods failed to deliver out of his master's hand?",
+  "choices": [
+   "Lachish",
+   "Damascus",
+   "Tyre",
+   "Samaria"
+  ],
+  "answer": 3,
+  "explanation": "Have they delivered Samaria out of my hand?",
+  "ref": "Isaiah 36:19"
+ },
+ {
+  "id": "isaiah-36-h-06",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom can Hezekiah not turn away, according to Rabshakeh?",
+  "choices": [
+   "The king of Egypt",
+   "Sennacherib himself",
+   "The whole host of Assyria",
+   "One captain of the least of his master's servants"
+  ],
+  "answer": 3,
+  "explanation": "How then wilt thou turn away the face of one captain of the least of my master's servants?",
+  "ref": "Isaiah 36:9"
+ },
+ {
+  "id": "isaiah-36-h-07",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Rabshakeh call Hezekiah's claim to have counsel and strength for war?",
+  "choices": [
+   "Wise counsel",
+   "A pleasing song",
+   "A bold vow",
+   "Vain words"
+  ],
+  "answer": 3,
+  "explanation": "I say, sayest thou, (but they are but vain words) I have counsel and strength for war.",
+  "ref": "Isaiah 36:5"
+ },
+ {
+  "id": "isaiah-36-h-08",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Rabshakeh style the king of Assyria?",
+  "choices": [
+   "The mighty lord",
+   "The king of kings",
+   "The master of all",
+   "The great king"
+  ],
+  "answer": 3,
+  "explanation": "Thus saith the great king, the king of Assyria.",
+  "ref": "Isaiah 36:4"
+ },
+ {
+  "id": "isaiah-36-h-09",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Rabshakeh say Hezekiah told Judah about the altar?",
+  "choices": [
+   "Ye shall worship on every hill",
+   "Ye shall go up to Bethel",
+   "Ye shall burn incense in the gates",
+   "Ye shall worship before this altar"
+  ],
+  "answer": 3,
+  "explanation": "Hezekiah said to Judah and to Jerusalem, Ye shall worship before this altar.",
+  "ref": "Isaiah 36:7"
+ },
+ {
+  "id": "isaiah-36-h-10",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question does Rabshakeh open with?",
+  "choices": [
+   "Where is thy God?",
+   "Who is thy king?",
+   "Why dost thou hide thy face?",
+   "What confidence is this wherein thou trustest?"
+  ],
+  "answer": 3,
+  "explanation": "What confidence is this wherein thou trustest?",
+  "ref": "Isaiah 36:4"
+ },
+ {
+  "id": "isaiah-36-h-11",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what shall each man eat and drink, if he makes an agreement with the king of Assyria?",
+  "choices": [
+   "The king's bread and wine",
+   "Manna and honey",
+   "The fruit of Lachish",
+   "His own vine, fig tree and cistern"
+  ],
+  "answer": 3,
+  "explanation": "Eat ye every one of his vine, and every one of his fig tree, and drink ye every one the waters of his own cistern.",
+  "ref": "Isaiah 36:16"
+ },
+ {
+  "id": "isaiah-37-e-01",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah do with the letter from the Assyrian messengers?",
+  "choices": [
+   "He burned it in the fire",
+   "He spread it before the LORD",
+   "He sent it to Egypt",
+   "He hid it in the treasury"
+  ],
+  "answer": 1,
+  "explanation": "Hezekiah received the letter, read it, went up unto the house of the LORD, and spread it before the LORD.",
+  "ref": "Isaiah 37:14"
+ },
+ {
+  "id": "isaiah-37-e-02",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sent messengers to Hezekiah with the letter?",
+  "choices": [
+   "Tirhakah king of Ethiopia",
+   "Sennacherib king of Assyria",
+   "Pharaoh king of Egypt",
+   "Esar-haddon"
+  ],
+  "answer": 1,
+  "explanation": "Sennacherib sent messengers to Hezekiah, and Hezekiah received the letter from the hand of the messengers, and read it.",
+  "ref": "Isaiah 37:9–14"
+ },
+ {
+  "id": "isaiah-37-e-03",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Sennacherib worshipping when his sons struck him down?",
+  "choices": [
+   "In the house of the LORD",
+   "In the house of Nisroch his god",
+   "On the wall of Nineveh",
+   "At the gate of Lachish"
+  ],
+  "answer": 1,
+  "explanation": "As he was worshipping in the house of Nisroch his god, Adrammelech and Sharezer his sons smote him with the sword.",
+  "ref": "Isaiah 37:38"
+ },
+ {
+  "id": "isaiah-37-e-04",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Sennacherib's place?",
+  "choices": [
+   "Tirhakah",
+   "Esar-haddon his son",
+   "Adrammelech",
+   "Hezekiah"
+  ],
+  "answer": 1,
+  "explanation": "Esar-haddon his son reigned in his stead.",
+  "ref": "Isaiah 37:38"
+ },
+ {
+  "id": "isaiah-37-e-05",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Sennacherib dwell after he left Judah?",
+  "choices": [
+   "Babylon",
+   "Nineveh",
+   "Lachish",
+   "Hamath"
+  ],
+  "answer": 1,
+  "explanation": "So Sennacherib king of Assyria departed, and went and returned, and dwelt at Nineveh.",
+  "ref": "Isaiah 37:37"
+ },
+ {
+  "id": "isaiah-37-e-06",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Hezekiah send to Isaiah?",
+  "choices": [
+   "Joah and the captains of the army",
+   "Eliakim, Shebna and the elders of the priests",
+   "Hilkiah and the prophets",
+   "His sons and his servants"
+  ],
+  "answer": 1,
+  "explanation": "He sent Eliakim, who was over the household, and Shebna the scribe, and the elders of the priests covered with sackcloth, unto Isaiah.",
+  "ref": "Isaiah 37:2"
+ },
+ {
+  "id": "isaiah-37-e-07",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah ask Isaiah to lift up for the remnant?",
+  "choices": [
+   "A sacrifice",
+   "Prayer",
+   "An army",
+   "A banner"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore lift up thy prayer for the remnant that is left.",
+  "ref": "Isaiah 37:4"
+ },
+ {
+  "id": "isaiah-37-e-08",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Hezekiah ask the LORD to do for them, so all kingdoms may know he is the LORD?",
+  "choices": [
+   "Send them an army",
+   "Save them from the hand of Sennacherib",
+   "Give them rain",
+   "Make peace with Egypt"
+  ],
+  "answer": 1,
+  "explanation": "O LORD our God, save us from his hand, that all the kingdoms of the earth may know that thou art the LORD, even thou only.",
+  "ref": "Isaiah 37:20"
+ },
+ {
+  "id": "isaiah-37-e-09",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Hezekiah say the LORD has made?",
+  "choices": [
+   "The cherubims and the ark",
+   "Heaven and earth",
+   "Kings and priests",
+   "Mountains and rivers only"
+  ],
+  "answer": 1,
+  "explanation": "Thou art the God, even thou alone, of all the kingdoms of the earth: thou hast made heaven and earth.",
+  "ref": "Isaiah 37:16"
+ },
+ {
+  "id": "isaiah-37-e-10",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the Assyrians done to the gods of the nations, according to Hezekiah?",
+  "choices": [
+   "Carried them to Nineveh",
+   "Cast them into the fire",
+   "Hidden them in the temple",
+   "Sold them for silver"
+  ],
+  "answer": 1,
+  "explanation": "They have cast their gods into the fire: for they were no gods, but the work of men's hands, wood and stone.",
+  "ref": "Isaiah 37:19"
+ },
+ {
+  "id": "isaiah-37-m-01",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What picture does Hezekiah use for the day of trouble, rebuke and blasphemy?",
+  "choices": [
+   "A ship in a storm with no anchor",
+   "A flock without a shepherd",
+   "A city with no wall",
+   "Children at the birth with no strength to bring forth"
+  ],
+  "answer": 3,
+  "explanation": "The children are come to the birth, and there is not strength to bring forth.",
+  "ref": "Isaiah 37:3"
+ },
+ {
+  "id": "isaiah-37-m-02",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Isaiah say will happen to the king of Assyria in his own land?",
+  "choices": [
+   "He will die of sickness",
+   "He will be taken captive",
+   "He will lose his crown",
+   "He will fall by the sword"
+  ],
+  "answer": 3,
+  "explanation": "I will cause him to fall by the sword in his own land.",
+  "ref": "Isaiah 37:7"
+ },
+ {
+  "id": "isaiah-37-m-03",
+  "chapter": 37,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Rabshakeh find the king of Assyria warring?",
+  "choices": [
+   "Against Samaria",
+   "Against Hamath",
+   "Against Egypt",
+   "Against Libnah"
+  ],
+  "answer": 3,
+  "explanation": "Rabshakeh returned, and found the king of Assyria warring against Libnah.",
+  "ref": "Isaiah 37:8"
+ },
+ {
+  "id": "isaiah-37-m-04",
+  "chapter": 37,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the king of Ethiopia that was coming to make war with Sennacherib?",
+  "choices": [
+   "Hezekiah",
+   "Hilkiah",
+   "Nisroch",
+   "Tirhakah"
+  ],
+  "answer": 3,
+  "explanation": "He heard say concerning Tirhakah king of Ethiopia, He is come forth to make war with thee.",
+  "ref": "Isaiah 37:9"
+ },
+ {
+  "id": "isaiah-37-m-05",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the letter tell Hezekiah not to let his God do?",
+  "choices": [
+   "Forsake him",
+   "Forget him",
+   "Test him",
+   "Deceive him"
+  ],
+  "answer": 3,
+  "explanation": "Let not thy God, in whom thou trustest, deceive thee, saying, Jerusalem shall not be given into the hand of the king of Assyria.",
+  "ref": "Isaiah 37:10"
+ },
+ {
+  "id": "isaiah-37-m-06",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Hezekiah address the LORD in his prayer?",
+  "choices": [
+   "That rideth upon the clouds",
+   "That sittest in the heavens only",
+   "That walkest in the garden",
+   "That dwellest between the cherubims"
+  ],
+  "answer": 3,
+  "explanation": "O LORD of hosts, God of Israel, that dwellest between the cherubims.",
+  "ref": "Isaiah 37:16"
+ },
+ {
+  "id": "isaiah-37-m-07",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Hezekiah say the Assyrians could destroy the nations' gods?",
+  "choices": [
+   "The gods were asleep",
+   "The gods fled to the mountains",
+   "The gods were weak against the stars",
+   "They were no gods, but wood and stone"
+  ],
+  "answer": 3,
+  "explanation": "They were no gods, but the work of men's hands, wood and stone: therefore they have destroyed them.",
+  "ref": "Isaiah 37:19"
+ },
+ {
+  "id": "isaiah-37-m-08",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What have the daughter of Zion and the daughter of Jerusalem done to Sennacherib?",
+  "choices": [
+   "Wept and mourned for him",
+   "Fled from him in fear",
+   "Brought gifts to him",
+   "Despised and laughed him to scorn"
+  ],
+  "answer": 3,
+  "explanation": "The virgin, the daughter of Zion, hath despised thee, and laughed thee to scorn.",
+  "ref": "Isaiah 37:22"
+ },
+ {
+  "id": "isaiah-37-m-09",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Sennacherib boast he will cut down on Lebanon?",
+  "choices": [
+   "The vines and the figs",
+   "The groves and the images",
+   "The olive trees and the palms",
+   "The tall cedars and the choice fir trees"
+  ],
+  "answer": 3,
+  "explanation": "I will cut down the tall cedars thereof, and the choice fir trees thereof.",
+  "ref": "Isaiah 37:24"
+ },
+ {
+  "id": "isaiah-37-m-10",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Against whom has Sennacherib exalted his voice?",
+  "choices": [
+   "The king of Egypt",
+   "The king of Ethiopia",
+   "The prophet Isaiah",
+   "The Holy One of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Whom hast thou reproached and blasphemed? even against the Holy One of Israel.",
+  "ref": "Isaiah 37:23"
+ },
+ {
+  "id": "isaiah-37-m-11",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD put in Sennacherib's nose and lips?",
+  "choices": [
+   "A ring and a chain",
+   "A cord and a yoke",
+   "A bit and a rope",
+   "A hook and a bridle"
+  ],
+  "answer": 3,
+  "explanation": "I will put my hook in thy nose, and my bridle in thy lips, and I will turn thee back.",
+  "ref": "Isaiah 37:29"
+ },
+ {
+  "id": "isaiah-37-m-12",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the remnant of Judah do, as a sign of renewal?",
+  "choices": [
+   "Return to Egypt in peace",
+   "Build a new temple",
+   "Sing in the valley",
+   "Take root downward and bear fruit upward"
+  ],
+  "answer": 3,
+  "explanation": "The remnant that is escaped of the house of Judah shall again take root downward, and bear fruit upward.",
+  "ref": "Isaiah 37:31"
+ },
+ {
+  "id": "isaiah-37-m-13",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say the king of Assyria shall not do to the city?",
+  "choices": [
+   "Take the treasures of the king",
+   "Burn the temple",
+   "Enter the gates by night",
+   "Shoot an arrow there or cast a bank against it"
+  ],
+  "answer": 3,
+  "explanation": "He shall not come into this city, nor shoot an arrow there nor come before it with shields, nor cast a bank against it.",
+  "ref": "Isaiah 37:33"
+ },
+ {
+  "id": "isaiah-37-m-14",
+  "chapter": 37,
+  "level": "medium",
+  "category": "person",
+  "question": "For whose sake does the LORD say he will defend the city, besides his own?",
+  "choices": [
+   "His servant Isaiah",
+   "His servant Hezekiah",
+   "His servant Moses",
+   "His servant David"
+  ],
+  "answer": 3,
+  "explanation": "I will defend this city to save it for mine own sake, and for my servant David's sake.",
+  "ref": "Isaiah 37:35"
+ },
+ {
+  "id": "isaiah-37-m-15",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Isaiah tell Hezekiah's men to say to their master?",
+  "choices": [
+   "Make peace with Sennacherib",
+   "Pay tribute to Assyria",
+   "Flee to the mountains",
+   "Be not afraid of the words that thou hast heard"
+  ],
+  "answer": 3,
+  "explanation": "Be not afraid of the words that thou hast heard, wherewith the servants of the king of Assyria have blasphemed me.",
+  "ref": "Isaiah 37:6"
+ },
+ {
+  "id": "isaiah-37-h-01",
+  "chapter": 37,
+  "level": "hard",
+  "category": "place",
+  "question": "Which cities' kings does the letter ask about, to show they were not delivered?",
+  "choices": [
+   "Hamath, Arphad and Sepharvaim",
+   "Tyre, Sidon and Gaza",
+   "Moab, Edom and Ammon",
+   "Damascus, Samaria and Hebron"
+  ],
+  "answer": 0,
+  "explanation": "Where is the king of Hamath, and the king of Arphad, and the king of the city of Sepharvaim?",
+  "ref": "Isaiah 37:13"
+ },
+ {
+  "id": "isaiah-37-h-02",
+  "chapter": 37,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the letter say the children of Eden were?",
+  "choices": [
+   "In Telassar",
+   "In Haran",
+   "In Gozan",
+   "In Libnah"
+  ],
+  "answer": 0,
+  "explanation": "The children of Eden which were in Telassar.",
+  "ref": "Isaiah 37:12"
+ },
+ {
+  "id": "isaiah-37-h-03",
+  "chapter": 37,
+  "level": "hard",
+  "category": "place",
+  "question": "Into which land did the sons who killed Sennacherib escape?",
+  "choices": [
+   "Armenia",
+   "Ethiopia",
+   "Egypt",
+   "Judah"
+  ],
+  "answer": 0,
+  "explanation": "They escaped into the land of Armenia.",
+  "ref": "Isaiah 37:38"
+ },
+ {
+  "id": "isaiah-37-h-04",
+  "chapter": 37,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two sons smote Sennacherib with the sword?",
+  "choices": [
+   "Adrammelech and Sharezer",
+   "Eliakim and Joah",
+   "Tirhakah and Nisroch",
+   "Esar-haddon and Asaph"
+  ],
+  "answer": 0,
+  "explanation": "Adrammelech and Sharezer his sons smote him with the sword.",
+  "ref": "Isaiah 37:38"
+ },
+ {
+  "id": "isaiah-37-h-05",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By which way does the LORD say Sennacherib shall return?",
+  "choices": [
+   "By the way that he came",
+   "By the way of Egypt",
+   "By the sea",
+   "By the valley of Hinnom"
+  ],
+  "answer": 0,
+  "explanation": "By the way that he came, by the same shall he return, and shall not come into this city.",
+  "ref": "Isaiah 37:34"
+ },
+ {
+  "id": "isaiah-37-h-06",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has come up into the LORD's ears?",
+  "choices": [
+   "Sennacherib's rage and tumult against him",
+   "The cry of Hezekiah's people",
+   "The groaning of the captives",
+   "The prayers of the priests"
+  ],
+  "answer": 0,
+  "explanation": "Because thy rage against me, and thy tumult, is come up into mine ears.",
+  "ref": "Isaiah 37:29"
+ },
+ {
+  "id": "isaiah-37-h-07",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Sennacherib boast he dried up with the sole of his feet?",
+  "choices": [
+   "The rivers of the besieged places",
+   "The wells of Judah",
+   "The springs of Lebanon",
+   "The brook Kidron"
+  ],
+  "answer": 0,
+  "explanation": "I have digged, and drunk water; and with the sole of my feet have I dried up all the rivers of the besieged places.",
+  "ref": "Isaiah 37:25"
+ },
+ {
+  "id": "isaiah-37-h-08",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what does the LORD liken the people of the cities Sennacherib laid waste?",
+  "choices": [
+   "Grass of the field and the grass on the housetops",
+   "Sheep without a shepherd",
+   "Dust of the threshingfloor",
+   "Smoke before the wind"
+  ],
+  "answer": 0,
+  "explanation": "They were as the grass of the field, and as the green herb, as the grass on the housetops.",
+  "ref": "Isaiah 37:27"
+ },
+ {
+  "id": "isaiah-37-h-09",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the people to do in the third year?",
+  "choices": [
+   "Sow, reap and plant vineyards",
+   "Rest and keep the sabbath",
+   "Return to Zion",
+   "Gather the remnant"
+  ],
+  "answer": 0,
+  "explanation": "In the third year sow ye, and reap, and plant vineyards, and eat the fruit thereof.",
+  "ref": "Isaiah 37:30"
+ },
+ {
+  "id": "isaiah-37-h-10",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall bring about the remnant going out of Jerusalem?",
+  "choices": [
+   "The zeal of the LORD of hosts",
+   "The strength of the king",
+   "The wisdom of Isaiah",
+   "The wealth of the temple"
+  ],
+  "answer": 0,
+  "explanation": "The zeal of the LORD of hosts shall do this.",
+  "ref": "Isaiah 37:32"
+ },
+ {
+  "id": "isaiah-37-h-11",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say he did long ago, which Sennacherib has not heard?",
+  "choices": [
+   "He formed it, and brought it to pass",
+   "He gave the law at Sinai",
+   "He drowned the army of Egypt",
+   "He made the sun stand still"
+  ],
+  "answer": 0,
+  "explanation": "Hast thou not heard long ago, how I have done it; and of ancient times, that I have formed it?",
+  "ref": "Isaiah 37:26"
+ },
+ {
+  "id": "isaiah-37-h-12",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the letter say the kings of Assyria have done to all lands?",
+  "choices": [
+   "Destroyed them utterly",
+   "Taught them peace",
+   "Made them pay tribute only",
+   "Left them in the care of their kings"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast heard what the kings of Assyria have done to all lands by destroying them utterly; and shalt thou be delivered?",
+  "ref": "Isaiah 37:11"
+ },
+ {
+  "id": "isaiah-37-h-13",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Rabshakeh heard about the king of Assyria?",
+  "choices": [
+   "That he was departed from Lachish",
+   "That he was dead",
+   "That he was sick",
+   "That he had fled to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "He had heard that he was departed from Lachish.",
+  "ref": "Isaiah 37:8"
+ },
+ {
+  "id": "isaiah-37-h-14",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What three things does Hezekiah say the day is?",
+  "choices": [
+   "Trouble, rebuke and blasphemy",
+   "Fasting, mourning and prayer",
+   "War, famine and plague",
+   "Fear, shame and exile"
+  ],
+  "answer": 0,
+  "explanation": "This day is a day of trouble, and of rebuke, and of blasphemy.",
+  "ref": "Isaiah 37:3"
+ },
+ {
+  "id": "isaiah-37-h-15",
+  "chapter": 37,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Isaiah the prophet?",
+  "choices": [
+   "Amoz",
+   "Asaph",
+   "Hilkiah",
+   "Nisroch"
+  ],
+  "answer": 0,
+  "explanation": "Isaiah the son of Amoz.",
+  "ref": "Isaiah 37:2"
+ },
+ {
+  "id": "isaiah-38-e-01",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah do as he prayed?",
+  "choices": [
+   "He tore his beard",
+   "He fasted forty days",
+   "He wept sore",
+   "He sang a psalm"
+  ],
+  "answer": 2,
+  "explanation": "Remember now, O LORD, I beseech thee. And Hezekiah wept sore.",
+  "ref": "Isaiah 38:3"
+ },
+ {
+  "id": "isaiah-38-e-02",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How sick was Hezekiah?",
+  "choices": [
+   "Sick with fever only",
+   "Wounded in battle",
+   "Sick unto death",
+   "Blind and lame"
+  ],
+  "answer": 2,
+  "explanation": "In those days was Hezekiah sick unto death.",
+  "ref": "Isaiah 38:1"
+ },
+ {
+  "id": "isaiah-38-e-03",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides adding years, what did the LORD promise to do for Hezekiah and the city?",
+  "choices": [
+   "Give them a new temple",
+   "Make peace with Egypt",
+   "Deliver them out of the hand of the king of Assyria",
+   "Send rain on the land"
+  ],
+  "answer": 2,
+  "explanation": "I will deliver thee and this city out of the hand of the king of Assyria: and I will defend this city.",
+  "ref": "Isaiah 38:6"
+ },
+ {
+  "id": "isaiah-38-e-04",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say he had heard and seen?",
+  "choices": [
+   "Hezekiah's gold and silver",
+   "Hezekiah's army and walls",
+   "Hezekiah's prayer and tears",
+   "Hezekiah's idols and altars"
+  ],
+  "answer": 2,
+  "explanation": "I have heard thy prayer, I have seen thy tears.",
+  "ref": "Isaiah 38:5"
+ },
+ {
+  "id": "isaiah-38-e-05",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall praise the LORD, according to Hezekiah's writing?",
+  "choices": [
+   "The dead",
+   "The kings of the earth",
+   "The living",
+   "The people of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "The living, the living, he shall praise thee, as I do this day.",
+  "ref": "Isaiah 38:19"
+ },
+ {
+  "id": "isaiah-38-e-06",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where will Hezekiah sing his songs to the stringed instruments?",
+  "choices": [
+   "In the gates of Jerusalem",
+   "In the fields of Judah",
+   "In the house of the LORD",
+   "In the king's garden"
+  ],
+  "answer": 2,
+  "explanation": "We will sing my songs to the stringed instruments all the days of our life in the house of the LORD.",
+  "ref": "Isaiah 38:20"
+ },
+ {
+  "id": "isaiah-38-m-01",
+  "chapter": 38,
+  "level": "medium",
+  "category": "person",
+  "question": "How does the LORD describe himself to Hezekiah?",
+  "choices": [
+   "The God of David thy father",
+   "The God of Abraham thy father",
+   "The God of Moses thy servant",
+   "The God of Zion thy rock"
+  ],
+  "answer": 0,
+  "explanation": "Thus saith the LORD, the God of David thy father.",
+  "ref": "Isaiah 38:5"
+ },
+ {
+  "id": "isaiah-38-m-02",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Hezekiah say he has done before the LORD?",
+  "choices": [
+   "Walked in truth and with a perfect heart",
+   "Kept every feast of the year",
+   "Torn down every idol in Judah",
+   "Offered a thousand lambs"
+  ],
+  "answer": 0,
+  "explanation": "Remember how I have walked before thee in truth and with a perfect heart, and have done that which is good in thy sight.",
+  "ref": "Isaiah 38:3"
+ },
+ {
+  "id": "isaiah-38-m-03",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what does Hezekiah compare his departing age?",
+  "choices": [
+   "A shepherd's tent",
+   "A fading flower",
+   "A flowing river",
+   "A passing cloud"
+  ],
+  "answer": 0,
+  "explanation": "Mine age is departed, and is removed from me as a shepherd's tent.",
+  "ref": "Isaiah 38:12"
+ },
+ {
+  "id": "isaiah-38-m-04",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom does Hezekiah compare himself, cutting off his life?",
+  "choices": [
+   "A weaver",
+   "A potter",
+   "A shepherd",
+   "A reaper"
+  ],
+  "answer": 0,
+  "explanation": "I have cut off like a weaver my life.",
+  "ref": "Isaiah 38:12"
+ },
+ {
+  "id": "isaiah-38-m-05",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what does Hezekiah compare the LORD, breaking all his bones?",
+  "choices": [
+   "A lion",
+   "A bear",
+   "A wolf",
+   "A leopard"
+  ],
+  "answer": 0,
+  "explanation": "I reckoned till morning, that, as a lion, so will he break all my bones.",
+  "ref": "Isaiah 38:13"
+ },
+ {
+  "id": "isaiah-38-m-06",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom does Hezekiah fear he will not see in the land of the living?",
+  "choices": [
+   "The LORD",
+   "His sons",
+   "The prophet Isaiah",
+   "The king of Babylon"
+  ],
+  "answer": 0,
+  "explanation": "I shall not see the LORD, even the LORD, in the land of the living.",
+  "ref": "Isaiah 38:11"
+ },
+ {
+  "id": "isaiah-38-m-07",
+  "chapter": 38,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Hezekiah say he should go in the cutting off of his days?",
+  "choices": [
+   "To the gates of the grave",
+   "To the house of Babylon",
+   "To the mountains of Gilead",
+   "To the city of David"
+  ],
+  "answer": 0,
+  "explanation": "I said in the cutting off of my days, I shall go to the gates of the grave.",
+  "ref": "Isaiah 38:10"
+ },
+ {
+  "id": "isaiah-38-m-08",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD cast behind his back?",
+  "choices": [
+   "All Hezekiah's sins",
+   "All Hezekiah's enemies",
+   "All Assyria's gods",
+   "All the idols of Judah"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast cast all my sins behind thy back.",
+  "ref": "Isaiah 38:17"
+ },
+ {
+  "id": "isaiah-38-m-09",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Hezekiah say the grave cannot do?",
+  "choices": [
+   "Praise the LORD",
+   "Hold the king",
+   "Hide the sinner",
+   "Open its gates"
+  ],
+  "answer": 0,
+  "explanation": "The grave cannot praise thee, death can not celebrate thee.",
+  "ref": "Isaiah 38:18"
+ },
+ {
+  "id": "isaiah-38-m-10",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many degrees did the sun return on the dial?",
+  "choices": [
+   "Ten degrees",
+   "Five degrees",
+   "Fifteen degrees",
+   "Seven degrees"
+  ],
+  "answer": 0,
+  "explanation": "So the sun returned ten degrees, by which degrees it was gone down.",
+  "ref": "Isaiah 38:8"
+ },
+ {
+  "id": "isaiah-38-m-11",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hezekiah ask Isaiah as a sign?",
+  "choices": [
+   "That he would go up to the house of the LORD",
+   "That the sun would stand still",
+   "That fire would fall from heaven",
+   "That the Assyrians would flee"
+  ],
+  "answer": 0,
+  "explanation": "Hezekiah also had said, What is the sign that I shall go up to the house of the LORD?",
+  "ref": "Isaiah 38:22"
+ },
+ {
+  "id": "isaiah-38-h-01",
+  "chapter": 38,
+  "level": "hard",
+  "category": "person",
+  "question": "On whose sun dial did the shadow go back?",
+  "choices": [
+   "Hezekiah",
+   "Ahaz",
+   "Uzziah",
+   "David"
+  ],
+  "answer": 1,
+  "explanation": "I will bring again the shadow of the degrees, which is gone down in the sun dial of Ahaz, ten degrees backward.",
+  "ref": "Isaiah 38:8"
+ },
+ {
+  "id": "isaiah-38-h-02",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Like which two birds did Hezekiah chatter?",
+  "choices": [
+   "An eagle or a hawk",
+   "A crane or a swallow",
+   "A raven or an owl",
+   "A sparrow or a pigeon"
+  ],
+  "answer": 1,
+  "explanation": "Like a crane or a swallow, so did I chatter: I did mourn as a dove.",
+  "ref": "Isaiah 38:14"
+ },
+ {
+  "id": "isaiah-38-h-03",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Like what bird did Hezekiah mourn?",
+  "choices": [
+   "A raven",
+   "A dove",
+   "An eagle",
+   "A sparrow"
+  ],
+  "answer": 1,
+  "explanation": "I did mourn as a dove: mine eyes fail with looking upward.",
+  "ref": "Isaiah 38:14"
+ },
+ {
+  "id": "isaiah-38-h-04",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Hezekiah say he will go all his years?",
+  "choices": [
+   "Boldly, in the strength of his youth",
+   "Softly, in the bitterness of his soul",
+   "Quietly, in the shade of the temple",
+   "Humbly, in sackcloth and ashes"
+  ],
+  "answer": 1,
+  "explanation": "I shall go softly all my years in the bitterness of my soul.",
+  "ref": "Isaiah 38:15"
+ },
+ {
+  "id": "isaiah-38-h-05",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what has the LORD delivered Hezekiah's soul?",
+  "choices": [
+   "The sword of Assyria",
+   "The pit of corruption",
+   "The snare of the fowler",
+   "The waters of the flood"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast in love to my soul delivered it from the pit of corruption.",
+  "ref": "Isaiah 38:17"
+ },
+ {
+  "id": "isaiah-38-h-06",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the father make known to the children?",
+  "choices": [
+   "The king's name",
+   "The LORD's truth",
+   "The way of Egypt",
+   "The writing of the law"
+  ],
+  "answer": 1,
+  "explanation": "The father to the children shall make known thy truth.",
+  "ref": "Isaiah 38:19"
+ },
+ {
+  "id": "isaiah-38-h-07",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Hezekiah say the LORD was ready to do?",
+  "choices": [
+   "Judge him",
+   "Save him",
+   "Forget him",
+   "Test him"
+  ],
+  "answer": 1,
+  "explanation": "The LORD was ready to save me.",
+  "ref": "Isaiah 38:20"
+ },
+ {
+  "id": "isaiah-38-h-08",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what did Hezekiah say he was deprived?",
+  "choices": [
+   "The glory of his crown",
+   "The residue of his years",
+   "The strength of his hands",
+   "The sight of his eyes"
+  ],
+  "answer": 1,
+  "explanation": "I am deprived of the residue of my years.",
+  "ref": "Isaiah 38:10"
+ },
+ {
+  "id": "isaiah-38-h-09",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Hezekiah say they that go down into the pit cannot hope for?",
+  "choices": [
+   "Their children's return",
+   "The LORD's truth",
+   "The king's mercy",
+   "A burial place"
+  ],
+  "answer": 1,
+  "explanation": "They that go down into the pit cannot hope for thy truth.",
+  "ref": "Isaiah 38:18"
+ },
+ {
+  "id": "isaiah-38-h-10",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Hezekiah say he should behold no more?",
+  "choices": [
+   "His fathers in the grave",
+   "Man, with the inhabitants of the world",
+   "The priests of the temple",
+   "The king of Assyria"
+  ],
+  "answer": 1,
+  "explanation": "I shall behold man no more with the inhabitants of the world.",
+  "ref": "Isaiah 38:11"
+ },
+ {
+  "id": "isaiah-38-h-11",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what does Hezekiah say the LORD will cut him off?",
+  "choices": [
+   "A sudden sword",
+   "Pining sickness",
+   "A great plague",
+   "A burning fever"
+  ],
+  "answer": 1,
+  "explanation": "He will cut me off with pining sickness: from day even to night wilt thou make an end of me.",
+  "ref": "Isaiah 38:12"
+ },
+ {
+  "id": "isaiah-39-m-01",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Merodach-baladan send letters and a present to Hezekiah?",
+  "choices": [
+   "He wanted to make an alliance against Assyria",
+   "He wished to buy the temple treasures",
+   "He had been defeated in battle",
+   "He had heard Hezekiah had been sick and recovered"
+  ],
+  "answer": 3,
+  "explanation": "He had heard that he had been sick, and was recovered.",
+  "ref": "Isaiah 39:1"
+ },
+ {
+  "id": "isaiah-39-m-02",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Hezekiah say when Isaiah asks where the men came from?",
+  "choices": [
+   "They come from Egypt to buy horses",
+   "They are merchants of Tyre",
+   "They are messengers from Assyria",
+   "They are come from a far country, even from Babylon"
+  ],
+  "answer": 3,
+  "explanation": "They are come from a far country unto me, even from Babylon.",
+  "ref": "Isaiah 39:3"
+ },
+ {
+  "id": "isaiah-39-m-03",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Isaiah say will happen to all that is in Hezekiah's house?",
+  "choices": [
+   "It shall be given to the poor",
+   "It shall be hidden in the temple",
+   "It shall be sold to Egypt",
+   "It shall be carried to Babylon; nothing shall be left"
+  ],
+  "answer": 3,
+  "explanation": "All that is in thine house shall be carried to Babylon: nothing shall be left, saith the LORD.",
+  "ref": "Isaiah 39:6"
+ },
+ {
+  "id": "isaiah-39-m-04",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will become of Hezekiah's sons?",
+  "choices": [
+   "They shall reign over Judah",
+   "They shall flee to Egypt",
+   "They shall be priests in the temple",
+   "They shall be eunuchs in the palace of the king of Babylon"
+  ],
+  "answer": 3,
+  "explanation": "Of thy sons they shall take away; and they shall be eunuchs in the palace of the king of Babylon.",
+  "ref": "Isaiah 39:7"
+ },
+ {
+  "id": "isaiah-39-m-05",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Hezekiah take comfort in after Isaiah's word?",
+  "choices": [
+   "His sons will reign after him",
+   "The temple will be saved",
+   "Babylon will be defeated",
+   "There shall be peace and truth in his days"
+  ],
+  "answer": 3,
+  "explanation": "For there shall be peace and truth in my days.",
+  "ref": "Isaiah 39:8"
+ },
+ {
+  "id": "isaiah-39-h-01",
+  "chapter": 39,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Merodach-baladan?",
+  "choices": [
+   "Amoz",
+   "Hilkiah",
+   "Baladan",
+   "Nebuchadnezzar"
+  ],
+  "answer": 2,
+  "explanation": "Merodach-baladan, the son of Baladan, king of Babylon.",
+  "ref": "Isaiah 39:1"
+ },
+ {
+  "id": "isaiah-39-h-02",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which items did Hezekiah show, besides the silver and gold?",
+  "choices": [
+   "Chariots, horses and ships",
+   "Scrolls, altars and incense",
+   "Spices, precious ointment and the house of his armour",
+   "Vines, olives and flocks"
+  ],
+  "answer": 2,
+  "explanation": "The silver, and the gold, and the spices, and the precious ointment, and all the house of his armour.",
+  "ref": "Isaiah 39:2"
+ },
+ {
+  "id": "isaiah-39-h-03",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Hezekiah say about all he showed the men?",
+  "choices": [
+   "He showed them only the temple",
+   "He hid the gold",
+   "There was nothing among his treasures he had not shewed them",
+   "He showed them the armour only"
+  ],
+  "answer": 2,
+  "explanation": "There is nothing among my treasures that I have not shewed them.",
+  "ref": "Isaiah 39:4"
+ },
+ {
+  "id": "isaiah-39-h-04",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Hezekiah feel about the letters from Babylon?",
+  "choices": [
+   "He was afraid of them",
+   "He was angry at them",
+   "He was glad of them",
+   "He ignored them"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah was glad of them, and shewed them the house of his precious things.",
+  "ref": "Isaiah 39:2"
+ },
+ {
+  "id": "isaiah-39-h-05",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Isaiah say his fathers have done with the treasures?",
+  "choices": [
+   "Given them to the temple",
+   "Hidden them in the earth",
+   "Laid them up in store until this day",
+   "Sold them in Egypt"
+  ],
+  "answer": 2,
+  "explanation": "That which thy fathers have laid up in store until this day, shall be carried to Babylon.",
+  "ref": "Isaiah 39:6"
+ },
+ {
+  "id": "isaiah-40-e-01",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where is Zion told to go up with good tidings?",
+  "choices": [
+   "Into the high mountain",
+   "Into the valley of vision",
+   "Into the wilderness",
+   "Into the house of the king"
+  ],
+  "answer": 0,
+  "explanation": "O Zion, that bringest good tidings, get thee up into the high mountain.",
+  "ref": "Isaiah 40:9"
+ },
+ {
+  "id": "isaiah-40-e-02",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD do for his flock, like a shepherd?",
+  "choices": [
+   "Feed them",
+   "Count them",
+   "Shear them",
+   "Sell them"
+  ],
+  "answer": 0,
+  "explanation": "He shall feed his flock like a shepherd: he shall gather the lambs with his arm.",
+  "ref": "Isaiah 40:11"
+ },
+ {
+  "id": "isaiah-40-e-03",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom will the LORD carry in his bosom?",
+  "choices": [
+   "The lambs",
+   "The aged",
+   "The captives",
+   "The kings"
+  ],
+  "answer": 0,
+  "explanation": "He shall gather the lambs with his arm, and carry them in his bosom.",
+  "ref": "Isaiah 40:11"
+ },
+ {
+  "id": "isaiah-40-e-04",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Jerusalem told about her warfare and her iniquity?",
+  "choices": [
+   "Her warfare is accomplished and her iniquity is pardoned",
+   "Her warfare has only begun",
+   "Her iniquity is remembered",
+   "Her warfare is forgotten"
+  ],
+  "answer": 0,
+  "explanation": "Her warfare is accomplished, that her iniquity is pardoned.",
+  "ref": "Isaiah 40:2"
+ },
+ {
+  "id": "isaiah-40-e-05",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will happen to every valley and every mountain?",
+  "choices": [
+   "Every valley exalted, every mountain made low",
+   "Every valley dried, every mountain burned",
+   "Every valley flooded, every mountain split",
+   "Every valley sown, every mountain fenced"
+  ],
+  "answer": 0,
+  "explanation": "Every valley shall be exalted, and every mountain and hill shall be made low.",
+  "ref": "Isaiah 40:4"
+ },
+ {
+  "id": "isaiah-40-e-06",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the nations counted as before the LORD?",
+  "choices": [
+   "A drop of a bucket",
+   "A cloud of smoke",
+   "A flock of sheep",
+   "A pile of stones"
+  ],
+  "answer": 0,
+  "explanation": "Behold, the nations are as a drop of a bucket, and are counted as the small dust of the balance.",
+  "ref": "Isaiah 40:15"
+ },
+ {
+  "id": "isaiah-40-e-07",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who says, My way is hid from the LORD?",
+  "choices": [
+   "Jacob and Israel",
+   "Egypt and Assyria",
+   "The priests and prophets",
+   "The princes of Judah"
+  ],
+  "answer": 0,
+  "explanation": "Why sayest thou, O Jacob, and speakest, O Israel, My way is hid from the LORD?",
+  "ref": "Isaiah 40:27"
+ },
+ {
+  "id": "isaiah-40-e-08",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom does the LORD give power to?",
+  "choices": [
+   "The faint",
+   "The proud",
+   "The rich",
+   "The kings"
+  ],
+  "answer": 0,
+  "explanation": "He giveth power to the faint; and to them that have no might he increaseth strength.",
+  "ref": "Isaiah 40:29"
+ },
+ {
+  "id": "isaiah-40-e-09",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the inhabitants of the earth compared to?",
+  "choices": [
+   "Grasshoppers",
+   "Sheep",
+   "Sparrows",
+   "Sand"
+  ],
+  "answer": 0,
+  "explanation": "He sitteth upon the circle of the earth, and the inhabitants thereof are as grasshoppers.",
+  "ref": "Isaiah 40:22"
+ },
+ {
+  "id": "isaiah-40-e-10",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall faint and be weary, and the young men utterly fall?",
+  "choices": [
+   "Even the youths",
+   "The old men",
+   "The princes",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "Even the youths shall faint and be weary, and the young men shall utterly fall.",
+  "ref": "Isaiah 40:30"
+ },
+ {
+  "id": "isaiah-40-e-11",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God do with the host of heaven he has created?",
+  "choices": [
+   "Calls them all by names",
+   "Hides them from men",
+   "Casts them down",
+   "Binds them in chains"
+  ],
+  "answer": 0,
+  "explanation": "He bringeth out their host by number: he calleth them all by names.",
+  "ref": "Isaiah 40:26"
+ },
+ {
+  "id": "isaiah-40-m-01",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has Jerusalem received from the LORD's hand?",
+  "choices": [
+   "A crown of glory",
+   "Double for all her sins",
+   "A land of corn",
+   "Peace from her enemies"
+  ],
+  "answer": 1,
+  "explanation": "She hath received of the LORD's hand double for all her sins.",
+  "ref": "Isaiah 40:2"
+ },
+ {
+  "id": "isaiah-40-m-02",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall be revealed so that all flesh sees it together?",
+  "choices": [
+   "The ark of the covenant",
+   "The glory of the LORD",
+   "The face of the king",
+   "The new Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "The glory of the LORD shall be revealed, and all flesh shall see it together.",
+  "ref": "Isaiah 40:5"
+ },
+ {
+  "id": "isaiah-40-m-03",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the grass wither and the flower fade?",
+  "choices": [
+   "The sun is too hot",
+   "The spirit of the LORD bloweth upon it",
+   "The rain does not come",
+   "The east wind from the desert"
+  ],
+  "answer": 1,
+  "explanation": "The grass withereth, the flower fadeth: because the spirit of the LORD bloweth upon it.",
+  "ref": "Isaiah 40:7"
+ },
+ {
+  "id": "isaiah-40-m-04",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are Zion and Jerusalem to say to the cities of Judah?",
+  "choices": [
+   "Prepare for war!",
+   "Behold your God!",
+   "Return to the land!",
+   "Fear the king!"
+  ],
+  "answer": 1,
+  "explanation": "Say unto the cities of Judah, Behold your God!",
+  "ref": "Isaiah 40:9"
+ },
+ {
+  "id": "isaiah-40-m-05",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Lord GOD bring with him when he comes?",
+  "choices": [
+   "A sword and a shield",
+   "His reward is with him, and his work before him",
+   "Fire and a whirlwind",
+   "Silver and gold"
+  ],
+  "answer": 1,
+  "explanation": "Behold, his reward is with him, and his work before him.",
+  "ref": "Isaiah 40:10"
+ },
+ {
+  "id": "isaiah-40-m-06",
+  "chapter": 40,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom will the LORD gently lead?",
+  "choices": [
+   "The captains of the host",
+   "Those that are with young",
+   "The young men",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "He shall gently lead those that are with young.",
+  "ref": "Isaiah 40:11"
+ },
+ {
+  "id": "isaiah-40-m-07",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD measured in the hollow of his hand?",
+  "choices": [
+   "The mountains",
+   "The waters",
+   "The stars",
+   "The sand"
+  ],
+  "answer": 1,
+  "explanation": "Who hath measured the waters in the hollow of his hand, and meted out heaven with the span?",
+  "ref": "Isaiah 40:12"
+ },
+ {
+  "id": "isaiah-40-m-08",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of Lebanon and its beasts?",
+  "choices": [
+   "They are the glory of the LORD",
+   "They are not sufficient for a burnt offering",
+   "They are the pasture of his flock",
+   "They are given to the nations"
+  ],
+  "answer": 1,
+  "explanation": "Lebanon is not sufficient to burn, nor the beasts thereof sufficient for a burnt offering.",
+  "ref": "Isaiah 40:16"
+ },
+ {
+  "id": "isaiah-40-m-09",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How are all nations counted before the LORD?",
+  "choices": [
+   "As his chosen flock",
+   "Less than nothing, and vanity",
+   "As the dust of the temple",
+   "As the stars of heaven"
+  ],
+  "answer": 1,
+  "explanation": "All nations before him are as nothing; and they are counted to him less than nothing, and vanity.",
+  "ref": "Isaiah 40:17"
+ },
+ {
+  "id": "isaiah-40-m-10",
+  "chapter": 40,
+  "level": "medium",
+  "category": "person",
+  "question": "Who chooses a tree that will not rot for his idol?",
+  "choices": [
+   "The king of Assyria",
+   "He that is so impoverished that he hath no oblation",
+   "The priest of Baal",
+   "The goldsmith"
+  ],
+  "answer": 1,
+  "explanation": "He that is so impoverished that he hath no oblation chooseth a tree that will not rot.",
+  "ref": "Isaiah 40:20"
+ },
+ {
+  "id": "isaiah-40-m-11",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the goldsmith cast for the graven image?",
+  "choices": [
+   "Iron nails",
+   "Silver chains",
+   "Brass bells",
+   "Wooden pegs"
+  ],
+  "answer": 1,
+  "explanation": "The goldsmith spreadeth it over with gold, and casteth silver chains.",
+  "ref": "Isaiah 40:19"
+ },
+ {
+  "id": "isaiah-40-m-12",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the LORD stretch out the heavens?",
+  "choices": [
+   "As a roof of stone",
+   "As a curtain",
+   "As a veil of cloud",
+   "As a bow in the sky"
+  ],
+  "answer": 1,
+  "explanation": "He stretcheth out the heavens as a curtain, and spreadeth them out as a tent to dwell in.",
+  "ref": "Isaiah 40:22"
+ },
+ {
+  "id": "isaiah-40-m-13",
+  "chapter": 40,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does the LORD bring to nothing?",
+  "choices": [
+   "The shepherds of Israel",
+   "The princes and judges of the earth",
+   "The priests of Zion",
+   "The captains of Judah"
+  ],
+  "answer": 1,
+  "explanation": "He bringeth the princes to nothing; he maketh the judges of the earth as vanity.",
+  "ref": "Isaiah 40:23"
+ },
+ {
+  "id": "isaiah-40-m-14",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall take the princes away as stubble?",
+  "choices": [
+   "The sword",
+   "The whirlwind",
+   "The flood",
+   "The fire"
+  ],
+  "answer": 1,
+  "explanation": "He shall also blow upon them, and they shall wither, and the whirlwind shall take them away as stubble.",
+  "ref": "Isaiah 40:24"
+ },
+ {
+  "id": "isaiah-40-m-15",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of the everlasting God, the Creator of the ends of the earth?",
+  "choices": [
+   "He sleepeth in the heavens",
+   "He fainteth not, neither is weary",
+   "He is hidden from the nations",
+   "He rests every seventh day"
+  ],
+  "answer": 1,
+  "explanation": "The everlasting God, the LORD, the Creator of the ends of the earth, fainteth not, neither is weary.",
+  "ref": "Isaiah 40:28"
+ },
+ {
+  "id": "isaiah-40-h-01",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what has the LORD weighed the mountains and the hills?",
+  "choices": [
+   "In his hands",
+   "In a great measure of corn",
+   "In scales and in a balance",
+   "In a bucket"
+  ],
+  "answer": 2,
+  "explanation": "Weighed the mountains in scales, and the hills in a balance?",
+  "ref": "Isaiah 40:12"
+ },
+ {
+  "id": "isaiah-40-h-02",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what has the LORD meted out heaven?",
+  "choices": [
+   "A line",
+   "A rod",
+   "The span",
+   "A cubit"
+  ],
+  "answer": 2,
+  "explanation": "Who hath meted out heaven with the span?",
+  "ref": "Isaiah 40:12"
+ },
+ {
+  "id": "isaiah-40-h-03",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the drop of a bucket, what are the nations counted as?",
+  "choices": [
+   "The chaff of the floor",
+   "The grass of the housetops",
+   "The small dust of the balance",
+   "The ashes of the altar"
+  ],
+  "answer": 2,
+  "explanation": "The nations are counted as the small dust of the balance.",
+  "ref": "Isaiah 40:15"
+ },
+ {
+  "id": "isaiah-40-h-04",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of the isles?",
+  "choices": [
+   "He hath given them to his servant",
+   "He hath hidden them in the sea",
+   "He taketh them up as a very little thing",
+   "He hath made them wait for his law"
+  ],
+  "answer": 2,
+  "explanation": "He taketh up the isles as a very little thing.",
+  "ref": "Isaiah 40:15"
+ },
+ {
+  "id": "isaiah-40-h-05",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of the LORD's understanding?",
+  "choices": [
+   "It is hidden in the heavens",
+   "It is given to the wise",
+   "There is no searching of it",
+   "It is written in the law"
+  ],
+  "answer": 2,
+  "explanation": "There is no searching of his understanding.",
+  "ref": "Isaiah 40:28"
+ },
+ {
+  "id": "isaiah-40-h-06",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what does the LORD sit?",
+  "choices": [
+   "The throne of the sun",
+   "The wings of the wind",
+   "The circle of the earth",
+   "The mountains of Lebanon"
+  ],
+  "answer": 2,
+  "explanation": "It is he that sitteth upon the circle of the earth.",
+  "ref": "Isaiah 40:22"
+ },
+ {
+  "id": "isaiah-40-h-07",
+  "chapter": 40,
+  "level": "hard",
+  "category": "place",
+  "question": "Where is the highway for our God to be made straight?",
+  "choices": [
+   "On the mountain of Zion",
+   "In the valley of Hinnom",
+   "In the desert",
+   "By the sea"
+  ],
+  "answer": 2,
+  "explanation": "Prepare ye the way of the LORD, make straight in the desert a highway for our God.",
+  "ref": "Isaiah 40:3"
+ },
+ {
+  "id": "isaiah-40-h-08",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall be made straight and plain?",
+  "choices": [
+   "The paths of the proud",
+   "The walls of Jerusalem",
+   "The crooked and the rough places",
+   "The rivers of Judah"
+  ],
+  "answer": 2,
+  "explanation": "The crooked shall be made straight, and the rough places plain.",
+  "ref": "Isaiah 40:4"
+ },
+ {
+  "id": "isaiah-40-h-09",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD's arm do when he comes with strong hand?",
+  "choices": [
+   "It shall be stretched out in mercy",
+   "It shall be lifted in prayer",
+   "It shall rule for him",
+   "It shall bring peace"
+  ],
+  "answer": 2,
+  "explanation": "The Lord GOD will come with strong hand, and his arm shall rule for him.",
+  "ref": "Isaiah 40:10"
+ },
+ {
+  "id": "isaiah-40-h-10",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who asks, To whom then will ye liken me?",
+  "choices": [
+   "The prophet Isaiah",
+   "The king of Judah",
+   "The Holy One",
+   "The angel of the LORD"
+  ],
+  "answer": 2,
+  "explanation": "To whom then will ye liken me, or shall I be equal? saith the Holy One.",
+  "ref": "Isaiah 40:25"
+ },
+ {
+  "id": "isaiah-40-h-11",
+  "chapter": 40,
+  "level": "hard",
+  "category": "place",
+  "question": "Where are the people told to lift their eyes, to see who created the stars?",
+  "choices": [
+   "To the hills",
+   "To the sea",
+   "On high",
+   "To Zion"
+  ],
+  "answer": 2,
+  "explanation": "Lift up your eyes on high, and behold who hath created these things.",
+  "ref": "Isaiah 40:26"
+ },
+ {
+  "id": "isaiah-40-h-12",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of the host of heaven, which God brings out by number?",
+  "choices": [
+   "They shall be dissolved",
+   "They are hidden by day",
+   "Not one faileth",
+   "They rest at night"
+  ],
+  "answer": 2,
+  "explanation": "He calleth them all by names by the greatness of his might; not one faileth.",
+  "ref": "Isaiah 40:26"
+ },
+ {
+  "id": "isaiah-40-h-13",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why shall all flesh see the glory of the LORD?",
+  "choices": [
+   "The prophets have foretold it",
+   "The angels will proclaim it",
+   "The mouth of the LORD hath spoken it",
+   "The temple will shine"
+  ],
+  "answer": 2,
+  "explanation": "The glory of the LORD shall be revealed, and all flesh shall see it together: for the mouth of the LORD hath spoken it.",
+  "ref": "Isaiah 40:5"
+ },
+ {
+  "id": "isaiah-40-h-14",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the impoverished man seek to prepare a graven image that shall not be moved?",
+  "choices": [
+   "A wise priest",
+   "A strong mason",
+   "A cunning workman",
+   "A skilled shepherd"
+  ],
+  "answer": 2,
+  "explanation": "He seeketh unto him a cunning workman to prepare a graven image, that shall not be moved.",
+  "ref": "Isaiah 40:20"
+ },
+ {
+  "id": "isaiah-40-h-15",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what does the voice compare the goodliness of the people?",
+  "choices": [
+   "The cedar of Lebanon",
+   "The dew of the morning",
+   "The flower of the field",
+   "The stars of heaven"
+  ],
+  "answer": 2,
+  "explanation": "All flesh is grass, and all the goodliness thereof is as the flower of the field.",
+  "ref": "Isaiah 40:6"
+ },
+ {
+  "id": "isaiah-41-e-01",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does the LORD call the seed of Abraham my friend?",
+  "choices": [
+   "Egypt, whom he has judged",
+   "Israel, whom he calls his servant",
+   "Edom, his brother",
+   "Babylon, the conqueror"
+  ],
+  "answer": 1,
+  "explanation": "Thou, Israel, art my servant, Jacob whom I have chosen, the seed of Abraham my friend.",
+  "ref": "Isaiah 41:8"
+ },
+ {
+  "id": "isaiah-41-e-02",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD call Jacob when he says, Fear not?",
+  "choices": [
+   "A lamb",
+   "A worm",
+   "A lion",
+   "A tree"
+  ],
+  "answer": 1,
+  "explanation": "Fear not, thou worm Jacob, and ye men of Israel; I will help thee, saith the LORD.",
+  "ref": "Isaiah 41:14"
+ },
+ {
+  "id": "isaiah-41-e-03",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the LORD describe himself as Israel's helper?",
+  "choices": [
+   "Thy shield, the Mighty One of Jacob",
+   "Thy redeemer, the Holy One of Israel",
+   "Thy judge, the King of Zion",
+   "Thy refuge, the God of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "I will help thee, saith the LORD, and thy redeemer, the Holy One of Israel.",
+  "ref": "Isaiah 41:14"
+ },
+ {
+  "id": "isaiah-41-e-04",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD make Israel into?",
+  "choices": [
+   "A shining sword",
+   "A new sharp threshing instrument having teeth",
+   "A strong wall of bronze",
+   "A fruitful vine"
+  ],
+  "answer": 1,
+  "explanation": "I will make thee a new sharp threshing instrument having teeth: thou shalt thresh the mountains.",
+  "ref": "Isaiah 41:15"
+ },
+ {
+  "id": "isaiah-41-e-05",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "place",
+  "question": "From where did the LORD raise up the righteous man?",
+  "choices": [
+   "The south",
+   "The east",
+   "The west",
+   "The sea"
+  ],
+  "answer": 1,
+  "explanation": "Who raised up the righteous man from the east, called him to his foot?",
+  "ref": "Isaiah 41:2"
+ },
+ {
+  "id": "isaiah-41-e-06",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD promise the poor and needy who seek water?",
+  "choices": [
+   "He will send them to Egypt",
+   "He will hear them and not forsake them",
+   "He will give them gold",
+   "He will ask them to wait"
+  ],
+  "answer": 1,
+  "explanation": "When the poor and needy seek water, and there is none, I the LORD will hear them, I the God of Israel will not forsake them.",
+  "ref": "Isaiah 41:17"
+ },
+ {
+  "id": "isaiah-41-e-07",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD make of the wilderness?",
+  "choices": [
+   "A garden of roses",
+   "A pool of water",
+   "A field of wheat",
+   "A city of refuge"
+  ],
+  "answer": 1,
+  "explanation": "I will make the wilderness a pool of water, and the dry land springs of water.",
+  "ref": "Isaiah 41:18"
+ },
+ {
+  "id": "isaiah-41-e-08",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD do with Israel's right hand?",
+  "choices": [
+   "Break it",
+   "Hold it",
+   "Anoint it",
+   "Bind it"
+  ],
+  "answer": 1,
+  "explanation": "For I the LORD thy God will hold thy right hand, saying unto thee, Fear not; I will help thee.",
+  "ref": "Isaiah 41:13"
+ },
+ {
+  "id": "isaiah-41-e-09",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the carpenter encourage in making an idol?",
+  "choices": [
+   "The potter",
+   "The goldsmith",
+   "The priest",
+   "The king"
+  ],
+  "answer": 1,
+  "explanation": "So the carpenter encouraged the goldsmith.",
+  "ref": "Isaiah 41:7"
+ },
+ {
+  "id": "isaiah-41-e-10",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say the molten images of the idols are?",
+  "choices": [
+   "Gold and glory",
+   "Wind and confusion",
+   "Dust and ashes",
+   "Wood and fire"
+  ],
+  "answer": 1,
+  "explanation": "Their molten images are wind and confusion.",
+  "ref": "Isaiah 41:29"
+ },
+ {
+  "id": "isaiah-41-e-11",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD challenge the idols to do?",
+  "choices": [
+   "Build a house for him",
+   "Shew what shall happen, the things to come",
+   "Fight his battles",
+   "Bring him offerings"
+  ],
+  "answer": 1,
+  "explanation": "Shew the things that are to come hereafter, that we may know that ye are gods.",
+  "ref": "Isaiah 41:23"
+ },
+ {
+  "id": "isaiah-41-m-01",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall Israel make of the hills?",
+  "choices": [
+   "Gold",
+   "Pasture",
+   "Chaff",
+   "A road"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt thresh the mountains, and beat them small, and shalt make the hills as chaff.",
+  "ref": "Isaiah 41:15"
+ },
+ {
+  "id": "isaiah-41-m-02",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will carry away and scatter the threshed mountains?",
+  "choices": [
+   "The river and the flood",
+   "The fire and the smoke",
+   "The wind and the whirlwind",
+   "The sword and the spear"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt fan them, and the wind shall carry them away, and the whirlwind shall scatter them.",
+  "ref": "Isaiah 41:16"
+ },
+ {
+  "id": "isaiah-41-m-03",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whom shall Israel rejoice and glory?",
+  "choices": [
+   "Their king and their army",
+   "The temple and the altar",
+   "The LORD and the Holy One of Israel",
+   "Their fathers and their land"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt rejoice in the LORD, and shalt glory in the Holy One of Israel.",
+  "ref": "Isaiah 41:16"
+ },
+ {
+  "id": "isaiah-41-m-04",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what will the LORD uphold Israel?",
+  "choices": [
+   "The strength of his army",
+   "The wings of an eagle",
+   "The right hand of his righteousness",
+   "The staff of his shepherd"
+  ],
+  "answer": 2,
+  "explanation": "I will uphold thee with the right hand of my righteousness.",
+  "ref": "Isaiah 41:10"
+ },
+ {
+  "id": "isaiah-41-m-05",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall become of those who were incensed against Israel?",
+  "choices": [
+   "They shall be made servants of Israel",
+   "They shall be forgiven",
+   "They shall be ashamed and confounded, as nothing",
+   "They shall be scattered to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "All they that were incensed against thee shall be ashamed and confounded: they shall be as nothing.",
+  "ref": "Isaiah 41:11"
+ },
+ {
+  "id": "isaiah-41-m-06",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD open in high places and in the midst of valleys?",
+  "choices": [
+   "Gates and doors",
+   "Treasures and storehouses",
+   "Rivers and fountains",
+   "Roads and highways"
+  ],
+  "answer": 2,
+  "explanation": "I will open rivers in high places, and fountains in the midst of the valleys.",
+  "ref": "Isaiah 41:18"
+ },
+ {
+  "id": "isaiah-41-m-07",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will the LORD plant trees in the desert?",
+  "choices": [
+   "To provide wood for the temple",
+   "To shade the poor",
+   "That all may know the hand of the LORD hath done this",
+   "To feed the wild beasts"
+  ],
+  "answer": 2,
+  "explanation": "That they may see, and know, and consider, and understand together, that the hand of the LORD hath done this.",
+  "ref": "Isaiah 41:20"
+ },
+ {
+  "id": "isaiah-41-m-08",
+  "chapter": 41,
+  "level": "medium",
+  "category": "place",
+  "question": "From where did the LORD take Israel?",
+  "choices": [
+   "The land of Egypt",
+   "The cities of Assyria",
+   "The ends of the earth",
+   "The mountains of Moab"
+  ],
+  "answer": 2,
+  "explanation": "Thou whom I have taken from the ends of the earth, and called thee from the chief men thereof.",
+  "ref": "Isaiah 41:9"
+ },
+ {
+  "id": "isaiah-41-m-09",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say he has not done to Israel?",
+  "choices": [
+   "Spared thee",
+   "Forgotten thy name",
+   "Cast thee away",
+   "Sent thee to Babylon"
+  ],
+  "answer": 2,
+  "explanation": "Thou art my servant; I have chosen thee, and not cast thee away.",
+  "ref": "Isaiah 41:9"
+ },
+ {
+  "id": "isaiah-41-m-10",
+  "chapter": 41,
+  "level": "medium",
+  "category": "person",
+  "question": "What is said of the one who chooses the idols?",
+  "choices": [
+   "Blessed is he",
+   "Wise is he",
+   "An abomination is he",
+   "Strong is he"
+  ],
+  "answer": 2,
+  "explanation": "Behold, ye are of nothing, and your work of nought: an abomination is he that chooseth you.",
+  "ref": "Isaiah 41:24"
+ },
+ {
+  "id": "isaiah-41-m-11",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How will the one raised from the north come upon princes?",
+  "choices": [
+   "As a lion upon a flock",
+   "As fire on stubble",
+   "As upon mortar, as the potter treadeth clay",
+   "As a flood on a field"
+  ],
+  "answer": 2,
+  "explanation": "He shall come upon princes as upon morter, and as the potter treadeth clay.",
+  "ref": "Isaiah 41:25"
+ },
+ {
+  "id": "isaiah-41-m-12",
+  "chapter": 41,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom will the LORD give to Jerusalem?",
+  "choices": [
+   "A king from Judah",
+   "A new priesthood",
+   "One that bringeth good tidings",
+   "A wall of fire"
+  ],
+  "answer": 2,
+  "explanation": "I will give to Jerusalem one that bringeth good tidings.",
+  "ref": "Isaiah 41:27"
+ },
+ {
+  "id": "isaiah-41-m-13",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD find when he looked among the idols?",
+  "choices": [
+   "A wise priest who could answer",
+   "A prophet who spoke truth",
+   "No man and no counsellor who could answer a word",
+   "A king with strong reasons"
+  ],
+  "answer": 2,
+  "explanation": "I beheld, and there was no man; even among them, and there was no counsellor, that, when I asked of them, could answer a word.",
+  "ref": "Isaiah 41:28"
+ },
+ {
+  "id": "isaiah-41-m-14",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the isles and the ends of the earth react when they saw it?",
+  "choices": [
+   "They laughed and mocked",
+   "They fled and hid",
+   "They feared and drew near",
+   "They praised and sang"
+  ],
+  "answer": 2,
+  "explanation": "The isles saw it, and feared; the ends of the earth were afraid, drew near, and came.",
+  "ref": "Isaiah 41:5"
+ },
+ {
+  "id": "isaiah-41-m-15",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall become of those who contended with Israel?",
+  "choices": [
+   "They will rule over Israel",
+   "They will be made priests",
+   "Israel will seek them and not find them",
+   "They will be given the land"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt seek them, and shalt not find them, even them that contended with thee.",
+  "ref": "Isaiah 41:12"
+ },
+ {
+  "id": "isaiah-41-h-01",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does the LORD say he calls from the beginning, the first and with the last?",
+  "choices": [
+   "The nations",
+   "The prophets",
+   "The kings",
+   "The generations"
+  ],
+  "answer": 3,
+  "explanation": "Who hath wrought and done it, calling the generations from the beginning? I the LORD, the first, and with the last.",
+  "ref": "Isaiah 41:4"
+ },
+ {
+  "id": "isaiah-41-h-02",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD give the righteous man's enemies to be like, to his sword and bow?",
+  "choices": [
+   "Smoke to his sword, chaff to his bow",
+   "Sheep to his sword, grass to his bow",
+   "Water to his sword, sand to his bow",
+   "Dust to his sword, driven stubble to his bow"
+  ],
+  "answer": 3,
+  "explanation": "He gave them as the dust to his sword, and as driven stubble to his bow.",
+  "ref": "Isaiah 41:2"
+ },
+ {
+  "id": "isaiah-41-h-03",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the righteous man pass after pursuing his enemies?",
+  "choices": [
+   "Swiftly, on horses of fire",
+   "Quietly, by night",
+   "Slowly, by the sea",
+   "Safely, by a way he had not gone"
+  ],
+  "answer": 3,
+  "explanation": "He pursued them, and passed safely; even by the way that he had not gone with his feet.",
+  "ref": "Isaiah 41:3"
+ },
+ {
+  "id": "isaiah-41-h-04",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did every one say to his brother?",
+  "choices": [
+   "Let us flee",
+   "Let us go up",
+   "Be silent",
+   "Be of good courage"
+  ],
+  "answer": 3,
+  "explanation": "They helped every one his neighbour; and every one said to his brother, Be of good courage.",
+  "ref": "Isaiah 41:6"
+ },
+ {
+  "id": "isaiah-41-h-05",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the idol fastened so it would not be moved?",
+  "choices": [
+   "With a rope",
+   "With clay",
+   "With iron bands",
+   "With nails"
+  ],
+  "answer": 3,
+  "explanation": "It is ready for the sodering: and he fastened it with nails, that it should not be moved.",
+  "ref": "Isaiah 41:7"
+ },
+ {
+  "id": "isaiah-41-h-06",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which trees will the LORD plant in the wilderness?",
+  "choices": [
+   "Olive, fig, palm and vine",
+   "Oak, elm, ash and willow",
+   "Almond, pomegranate, apple and date",
+   "Cedar, shittah, myrtle and the oil tree"
+  ],
+  "answer": 3,
+  "explanation": "I will plant in the wilderness the cedar, the shittah tree, and the myrtle, and the oil tree.",
+  "ref": "Isaiah 41:19"
+ },
+ {
+  "id": "isaiah-41-h-07",
+  "chapter": 41,
+  "level": "hard",
+  "category": "person",
+  "question": "How does the LORD call himself when he says, Produce your cause?",
+  "choices": [
+   "The Shepherd of Israel",
+   "The Judge of the earth",
+   "The Rock of Zion",
+   "The King of Jacob"
+  ],
+  "answer": 3,
+  "explanation": "Produce your cause, saith the LORD; bring forth your strong reasons, saith the King of Jacob.",
+  "ref": "Isaiah 41:21"
+ },
+ {
+  "id": "isaiah-41-h-08",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where shall the one from the north call upon the LORD's name?",
+  "choices": [
+   "The setting of the sun",
+   "The middle of the sea",
+   "The top of the mountain",
+   "The rising of the sun"
+  ],
+  "answer": 3,
+  "explanation": "From the rising of the sun shall he call upon my name.",
+  "ref": "Isaiah 41:25"
+ },
+ {
+  "id": "isaiah-41-h-09",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What faileth for thirst when the poor and needy seek water?",
+  "choices": [
+   "Their strength",
+   "Their eyes",
+   "Their hands",
+   "Their tongue"
+  ],
+  "answer": 3,
+  "explanation": "Their tongue faileth for thirst, I the LORD will hear them.",
+  "ref": "Isaiah 41:17"
+ },
+ {
+  "id": "isaiah-41-h-10",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are they that war against Israel to be?",
+  "choices": [
+   "As a strong tower",
+   "As a refuge for Israel",
+   "As a flock in the field",
+   "As nothing, and as a thing of nought"
+  ],
+  "answer": 3,
+  "explanation": "They that war against thee shall be as nothing, and as a thing of nought.",
+  "ref": "Isaiah 41:12"
+ },
+ {
+  "id": "isaiah-41-h-11",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say of the idols' works?",
+  "choices": [
+   "They are great and mighty",
+   "They are precious in his sight",
+   "They are hidden in the temple",
+   "They are of nothing and of nought"
+  ],
+  "answer": 3,
+  "explanation": "Behold, ye are of nothing, and your work of nought.",
+  "ref": "Isaiah 41:24"
+ },
+ {
+  "id": "isaiah-41-h-12",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say none among the idols can do?",
+  "choices": [
+   "Heal, save or deliver",
+   "Build, plant or sow",
+   "Judge, rule or reign",
+   "Declare, shew or hear"
+  ],
+  "answer": 3,
+  "explanation": "There is none that sheweth, yea, there is none that declareth, yea, there is none that heareth your words.",
+  "ref": "Isaiah 41:26"
+ },
+ {
+  "id": "isaiah-41-h-13",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who shall say to Zion, Behold, behold them?",
+  "choices": [
+   "The last",
+   "The prophet",
+   "The king",
+   "The first"
+  ],
+  "answer": 3,
+  "explanation": "The first shall say to Zion, Behold, behold them.",
+  "ref": "Isaiah 41:27"
+ },
+ {
+  "id": "isaiah-41-h-14",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell the islands to keep before him?",
+  "choices": [
+   "A feast",
+   "A watch",
+   "A fast",
+   "Silence"
+  ],
+  "answer": 3,
+  "explanation": "Keep silence before me, O islands; and let the people renew their strength.",
+  "ref": "Isaiah 41:1"
+ },
+ {
+  "id": "isaiah-41-h-15",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the new threshing instrument do to the mountains?",
+  "choices": [
+   "Lifts them up",
+   "Plants them with trees",
+   "Divides them in two",
+   "Beats them small"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt thresh the mountains, and beat them small.",
+  "ref": "Isaiah 41:15"
+ },
+ {
+  "id": "isaiah-42-e-01",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the servant not quench?",
+  "choices": [
+   "The burning bush",
+   "The lamp of the temple",
+   "The smoking flax",
+   "The fire of the altar"
+  ],
+  "answer": 2,
+  "explanation": "A bruised reed shall he not break, and the smoking flax shall he not quench.",
+  "ref": "Isaiah 42:3"
+ },
+ {
+  "id": "isaiah-42-e-02",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has God put upon his servant?",
+  "choices": [
+   "His crown",
+   "His sword",
+   "His spirit",
+   "His robe"
+  ],
+  "answer": 2,
+  "explanation": "I have put my spirit upon him: he shall bring forth judgment to the Gentiles.",
+  "ref": "Isaiah 42:1"
+ },
+ {
+  "id": "isaiah-42-e-03",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom shall the servant bring forth judgment?",
+  "choices": [
+   "The priests only",
+   "The kings of Judah",
+   "The Gentiles",
+   "The Philistines"
+  ],
+  "answer": 2,
+  "explanation": "He shall bring forth judgment to the Gentiles.",
+  "ref": "Isaiah 42:1"
+ },
+ {
+  "id": "isaiah-42-e-04",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the servant do for the blind and the prisoners?",
+  "choices": [
+   "Give them gold and land",
+   "Send them to Babylon",
+   "Open the blind eyes and bring the prisoners out of prison",
+   "Make them rulers"
+  ],
+  "answer": 2,
+  "explanation": "To open the blind eyes, to bring out the prisoners from the prison.",
+  "ref": "Isaiah 42:7"
+ },
+ {
+  "id": "isaiah-42-e-05",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall wait for the servant's law?",
+  "choices": [
+   "The cities of Judah",
+   "The hills of Lebanon",
+   "The isles",
+   "The kings of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "The isles shall wait for his law.",
+  "ref": "Isaiah 42:4"
+ },
+ {
+  "id": "isaiah-42-e-06",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD not give to another or to graven images?",
+  "choices": [
+   "His land and his people",
+   "His temple and his law",
+   "His glory and his praise",
+   "His servant and his sword"
+  ],
+  "answer": 2,
+  "explanation": "My glory will I not give to another, neither my praise to graven images.",
+  "ref": "Isaiah 42:8"
+ },
+ {
+  "id": "isaiah-42-e-07",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are those who go down to the sea told to do?",
+  "choices": [
+   "Fear the LORD in silence",
+   "Build ships for the LORD",
+   "Sing unto the LORD a new song",
+   "Bring tribute to Zion"
+  ],
+  "answer": 2,
+  "explanation": "Sing unto the LORD a new song, and his praise from the end of the earth, ye that go down to the sea.",
+  "ref": "Isaiah 42:10"
+ },
+ {
+  "id": "isaiah-42-e-08",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who gave Jacob for a spoil and Israel to the robbers?",
+  "choices": [
+   "The king of Assyria",
+   "The king of Egypt",
+   "The LORD, against whom they sinned",
+   "The false prophets"
+  ],
+  "answer": 2,
+  "explanation": "Who gave Jacob for a spoil? did not the LORD, he against whom we have sinned?",
+  "ref": "Isaiah 42:24"
+ },
+ {
+  "id": "isaiah-42-m-01",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the servant given to be?",
+  "choices": [
+   "A king of Israel and a rod of Judah",
+   "A shepherd of Zion and a rock of the nations",
+   "A covenant of the people and a light of the Gentiles",
+   "A priest of the temple and a judge of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "I will give thee for a covenant of the people, for a light of the Gentiles.",
+  "ref": "Isaiah 42:6"
+ },
+ {
+  "id": "isaiah-42-m-02",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say he will do for his called servant?",
+  "choices": [
+   "Carry him on eagles' wings",
+   "Hide him in the mountains",
+   "Hold his hand and keep him",
+   "Send him to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "I the LORD have called thee in righteousness, and will hold thine hand, and will keep thee.",
+  "ref": "Isaiah 42:6"
+ },
+ {
+  "id": "isaiah-42-m-03",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say has come to pass and what does he declare?",
+  "choices": [
+   "The old law is ended; a new law is written",
+   "Wars have ceased; peace is promised",
+   "The former things have come to pass; new things he declares",
+   "The prophets are silent; a king is coming"
+  ],
+  "answer": 2,
+  "explanation": "Behold, the former things are come to pass, and new things do I declare: before they spring forth I tell you of them.",
+  "ref": "Isaiah 42:9"
+ },
+ {
+  "id": "isaiah-42-m-04",
+  "chapter": 42,
+  "level": "medium",
+  "category": "place",
+  "question": "Which people's villages are called to lift up their voice?",
+  "choices": [
+   "The villages of Moab",
+   "The villages of Edom",
+   "The villages that Kedar doth inhabit",
+   "The villages of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Let the wilderness and the cities thereof lift up their voice, the villages that Kedar doth inhabit.",
+  "ref": "Isaiah 42:11"
+ },
+ {
+  "id": "isaiah-42-m-05",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the LORD go forth against his enemies?",
+  "choices": [
+   "As a shepherd with his rod",
+   "As a king on a throne",
+   "As a mighty man and a man of war",
+   "As a fire in the night"
+  ],
+  "answer": 2,
+  "explanation": "The LORD shall go forth as a mighty man, he shall stir up jealousy like a man of war.",
+  "ref": "Isaiah 42:13"
+ },
+ {
+  "id": "isaiah-42-m-06",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what does the LORD compare himself, after long holding his peace?",
+  "choices": [
+   "A mighty lion",
+   "A fire in the forest",
+   "A travailing woman",
+   "A sword of vengeance"
+  ],
+  "answer": 2,
+  "explanation": "I have long time holden my peace: now will I cry like a travailing woman; I will destroy and devour at once.",
+  "ref": "Isaiah 42:14"
+ },
+ {
+  "id": "isaiah-42-m-07",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD make of the rivers and what will he dry up?",
+  "choices": [
+   "Rivers into blood; he dries up the sea",
+   "Rivers into wine; he dries up the wells",
+   "Rivers islands; he dries up the pools",
+   "Rivers into roads; he dries up the springs"
+  ],
+  "answer": 2,
+  "explanation": "I will make the rivers islands, and I will dry up the pools.",
+  "ref": "Isaiah 42:15"
+ },
+ {
+  "id": "isaiah-42-m-08",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do for the blind who do not know the way?",
+  "choices": [
+   "Give them a king to rule them",
+   "Send an angel to guard them",
+   "Lead them in paths they have not known and not forsake them",
+   "Heal them by the river"
+  ],
+  "answer": 2,
+  "explanation": "I will bring the blind by a way that they knew not; I will lead them in paths that they have not known.",
+  "ref": "Isaiah 42:16"
+ },
+ {
+  "id": "isaiah-42-m-09",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will be done to them that trust in graven images?",
+  "choices": [
+   "They shall be given the land",
+   "They shall be healed",
+   "They shall be turned back and greatly ashamed",
+   "They shall be made kings"
+  ],
+  "answer": 2,
+  "explanation": "They shall be turned back, they shall be greatly ashamed, that trust in graven images.",
+  "ref": "Isaiah 42:17"
+ },
+ {
+  "id": "isaiah-42-m-10",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say he will magnify and make honourable?",
+  "choices": [
+   "The temple",
+   "The king",
+   "The law",
+   "The priesthood"
+  ],
+  "answer": 2,
+  "explanation": "The LORD is well pleased for his righteousness' sake; he will magnify the law, and make it honourable.",
+  "ref": "Isaiah 42:21"
+ },
+ {
+  "id": "isaiah-42-m-11",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of the people who are robbed and spoiled?",
+  "choices": [
+   "They are scattered over the mountains",
+   "They are held in Egypt",
+   "They are snared in holes and hid in prison houses",
+   "They are sold to the isles"
+  ],
+  "answer": 2,
+  "explanation": "This is a people robbed and spoiled; they are all of them snared in holes, and they are hid in prison houses.",
+  "ref": "Isaiah 42:22"
+ },
+ {
+  "id": "isaiah-42-m-12",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD poured upon Israel?",
+  "choices": [
+   "The rain of his mercy",
+   "The oil of his anointing",
+   "The fury of his anger and the strength of battle",
+   "The wine of his wrath only"
+  ],
+  "answer": 2,
+  "explanation": "He hath poured upon him the fury of his anger, and the strength of battle.",
+  "ref": "Isaiah 42:25"
+ },
+ {
+  "id": "isaiah-42-m-13",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Jacob given for a spoil?",
+  "choices": [
+   "They worshipped the sun",
+   "They built high places",
+   "They would not walk in his ways nor obey his law",
+   "They made peace with Egypt"
+  ],
+  "answer": 2,
+  "explanation": "They would not walk in his ways, neither were they obedient unto his law.",
+  "ref": "Isaiah 42:24"
+ },
+ {
+  "id": "isaiah-42-h-01",
+  "chapter": 42,
+  "level": "hard",
+  "category": "person",
+  "question": "Who are told to sing a new song, besides those who go down to the sea?",
+  "choices": [
+   "The kings of the earth",
+   "The isles and their inhabitants",
+   "The priests of Judah",
+   "The mountains and the hills"
+  ],
+  "answer": 1,
+  "explanation": "Ye that go down to the sea, and all that is therein; the isles, and the inhabitants thereof.",
+  "ref": "Isaiah 42:10"
+ },
+ {
+  "id": "isaiah-42-h-02",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who shall shout from the top of the mountains?",
+  "choices": [
+   "The priests of Zion",
+   "The inhabitants of the rock",
+   "The captains of the army",
+   "The shepherds of Kedar"
+  ],
+  "answer": 1,
+  "explanation": "Let the inhabitants of the rock sing, let them shout from the top of the mountains.",
+  "ref": "Isaiah 42:11"
+ },
+ {
+  "id": "isaiah-42-h-03",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of the one who sees many things?",
+  "choices": [
+   "He remembers all",
+   "He observes not",
+   "He tells the king",
+   "He fears the LORD"
+  ],
+  "answer": 1,
+  "explanation": "Seeing many things, but thou observest not; opening the ears, but he heareth not.",
+  "ref": "Isaiah 42:20"
+ },
+ {
+  "id": "isaiah-42-h-04",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of the people who are a prey and a spoil?",
+  "choices": [
+   "The LORD hears them at once",
+   "None delivereth and none saith, Restore",
+   "Their king will rescue them",
+   "They will return home"
+  ],
+  "answer": 1,
+  "explanation": "They are for a prey, and none delivereth; for a spoil, and none saith, Restore.",
+  "ref": "Isaiah 42:22"
+ },
+ {
+  "id": "isaiah-42-h-05",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is to lift up his voice besides the villages of Kedar?",
+  "choices": [
+   "The kings of the east",
+   "The wilderness and the cities thereof",
+   "The mountains of Zion",
+   "The rivers of Judah"
+  ],
+  "answer": 1,
+  "explanation": "Let the wilderness and the cities thereof lift up their voice.",
+  "ref": "Isaiah 42:11"
+ },
+ {
+  "id": "isaiah-42-h-06",
+  "chapter": 42,
+  "level": "hard",
+  "category": "place",
+  "question": "Where are the people to declare the LORD's praise?",
+  "choices": [
+   "In the temple only",
+   "In the islands",
+   "In the gates of Zion",
+   "In the valley of Jordan"
+  ],
+  "answer": 1,
+  "explanation": "Let them give glory unto the LORD, and declare his praise in the islands.",
+  "ref": "Isaiah 42:12"
+ },
+ {
+  "id": "isaiah-42-h-07",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say he did to the heavens?",
+  "choices": [
+   "Hid them in clouds",
+   "Created and stretched them out",
+   "Set a veil over them",
+   "Wrote his law in them"
+  ],
+  "answer": 1,
+  "explanation": "He that created the heavens, and stretched them out; he that spread forth the earth.",
+  "ref": "Isaiah 42:5"
+ },
+ {
+  "id": "isaiah-42-h-08",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD give to the people upon the earth?",
+  "choices": [
+   "Gold",
+   "Breath",
+   "Law",
+   "Land"
+  ],
+  "answer": 1,
+  "explanation": "He that giveth breath unto the people upon it, and spirit to them that walk therein.",
+  "ref": "Isaiah 42:5"
+ },
+ {
+  "id": "isaiah-42-h-09",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When does the LORD tell of new things?",
+  "choices": [
+   "After they are fulfilled",
+   "Before they spring forth",
+   "In the night season",
+   "At the feast"
+  ],
+  "answer": 1,
+  "explanation": "New things do I declare: before they spring forth I tell you of them.",
+  "ref": "Isaiah 42:9"
+ },
+ {
+  "id": "isaiah-42-h-10",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do they say to the molten images?",
+  "choices": [
+   "Ye are our fathers",
+   "Ye are our gods",
+   "Ye are our kings",
+   "Ye are our help"
+  ],
+  "answer": 1,
+  "explanation": "That say to the molten images, Ye are our gods.",
+  "ref": "Isaiah 42:17"
+ },
+ {
+  "id": "isaiah-42-h-11",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel not do, though he was set on fire round about?",
+  "choices": [
+   "Cry out to the LORD",
+   "Lay it to heart",
+   "Flee to Egypt",
+   "Offer sacrifice"
+  ],
+  "answer": 1,
+  "explanation": "It hath set him on fire round about, yet he knew not; and it burned him, yet he laid it not to heart.",
+  "ref": "Isaiah 42:25"
+ },
+ {
+  "id": "isaiah-42-h-12",
+  "chapter": 42,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does the LORD call blind and deaf, though he sent him as a messenger?",
+  "choices": [
+   "The king of Babylon",
+   "My servant",
+   "The prophets of Baal",
+   "The priests of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Who is blind, but my servant? or deaf, as my messenger that I sent?",
+  "ref": "Isaiah 42:19"
+ },
+ {
+  "id": "isaiah-42-h-13",
+  "chapter": 42,
+  "level": "hard",
+  "category": "place",
+  "question": "From where is the LORD's praise to be sung in the new song?",
+  "choices": [
+   "The top of Zion",
+   "The end of the earth",
+   "The gates of Jerusalem",
+   "The river of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Sing unto the LORD a new song, and his praise from the end of the earth.",
+  "ref": "Isaiah 42:10"
+ },
+ {
+  "id": "isaiah-43-e-01",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which lands did the LORD give for Israel's ransom?",
+  "choices": [
+   "Moab, Edom and Ammon",
+   "Assyria, Babylon and Persia",
+   "Tyre, Sidon and Gaza",
+   "Egypt, Ethiopia and Seba"
+  ],
+  "answer": 3,
+  "explanation": "I gave Egypt for thy ransom, Ethiopia and Seba for thee.",
+  "ref": "Isaiah 43:3"
+ },
+ {
+  "id": "isaiah-43-e-02",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "person",
+  "question": "What does the LORD call his people, who are to know and believe him?",
+  "choices": [
+   "My soldiers",
+   "My priests",
+   "My judges",
+   "My witnesses"
+  ],
+  "answer": 3,
+  "explanation": "Ye are my witnesses, saith the LORD, and my servant whom I have chosen.",
+  "ref": "Isaiah 43:10"
+ },
+ {
+  "id": "isaiah-43-e-03",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which two directions will the LORD bring Israel's seed?",
+  "choices": [
+   "The north and the south",
+   "The sea and the desert",
+   "Egypt and Assyria",
+   "The east and the west"
+  ],
+  "answer": 3,
+  "explanation": "I will bring thy seed from the east, and gather thee from the west.",
+  "ref": "Isaiah 43:5"
+ },
+ {
+  "id": "isaiah-43-e-04",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD say to the north and to the south?",
+  "choices": [
+   "Hold fast and Stand firm",
+   "Make war and Be ready",
+   "Send help and Bring peace",
+   "Give up and Keep not back"
+  ],
+  "answer": 3,
+  "explanation": "I will say to the north, Give up; and to the south, Keep not back.",
+  "ref": "Isaiah 43:6"
+ },
+ {
+  "id": "isaiah-43-e-05",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does the LORD blot out Israel's transgressions?",
+  "choices": [
+   "For the sake of the temple",
+   "Because Israel has repented",
+   "Because of Israel's sacrifices",
+   "For his own sake"
+  ],
+  "answer": 3,
+  "explanation": "I, even I, am he that blotteth out thy transgressions for mine own sake, and will not remember thy sins.",
+  "ref": "Isaiah 43:25"
+ },
+ {
+  "id": "isaiah-43-e-06",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "place",
+  "question": "For whose sake did the LORD send to Babylon?",
+  "choices": [
+   "Egypt's",
+   "Edom's",
+   "Assyria's",
+   "Israel's"
+  ],
+  "answer": 3,
+  "explanation": "For your sake I have sent to Babylon, and have brought down all their nobles.",
+  "ref": "Isaiah 43:14"
+ },
+ {
+  "id": "isaiah-43-e-07",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the LORD form this people for himself?",
+  "choices": [
+   "To rule the nations",
+   "To build a city",
+   "To serve in battle",
+   "To shew forth his praise"
+  ],
+  "answer": 3,
+  "explanation": "This people have I formed for myself; they shall shew forth my praise.",
+  "ref": "Isaiah 43:21"
+ },
+ {
+  "id": "isaiah-43-e-08",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who will honour the LORD because he gives waters in the wilderness?",
+  "choices": [
+   "The kings of the earth",
+   "The captains of Babylon",
+   "The priests of Zion",
+   "The beast of the field"
+  ],
+  "answer": 3,
+  "explanation": "The beast of the field shall honour me, the dragons and the owls: because I give waters in the wilderness.",
+  "ref": "Isaiah 43:20"
+ },
+ {
+  "id": "isaiah-43-e-09",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom will the LORD give drink in the wilderness?",
+  "choices": [
+   "The kings of Egypt",
+   "The nations of the north",
+   "The princes of Judah",
+   "His people, his chosen"
+  ],
+  "answer": 3,
+  "explanation": "I give waters in the wilderness, to give drink to my people, my chosen.",
+  "ref": "Isaiah 43:20"
+ },
+ {
+  "id": "isaiah-43-e-10",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How has the LORD called Israel?",
+  "choices": [
+   "By a new name",
+   "By a vision",
+   "By a stranger",
+   "By thy name"
+  ],
+  "answer": 3,
+  "explanation": "I have redeemed thee, I have called thee by thy name; thou art mine.",
+  "ref": "Isaiah 43:1"
+ },
+ {
+  "id": "isaiah-43-m-01",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the LORD say he will give men and people for Israel?",
+  "choices": [
+   "Israel had paid a great price",
+   "Israel was precious in his sight and loved",
+   "Israel had won a battle",
+   "Israel had built the temple"
+  ],
+  "answer": 1,
+  "explanation": "Since thou wast precious in my sight, thou hast been honourable, and I have loved thee.",
+  "ref": "Isaiah 43:4"
+ },
+ {
+  "id": "isaiah-43-m-02",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the called by his name created for?",
+  "choices": [
+   "His war",
+   "His glory",
+   "His wealth",
+   "His kingdom"
+  ],
+  "answer": 1,
+  "explanation": "Every one that is called by my name: for I have created him for my glory.",
+  "ref": "Isaiah 43:7"
+ },
+ {
+  "id": "isaiah-43-m-03",
+  "chapter": 43,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does the LORD tell to be brought forth?",
+  "choices": [
+   "The kings of the east",
+   "The blind people that have eyes, and the deaf that have ears",
+   "The captains of Babylon",
+   "The sons of the prophets"
+  ],
+  "answer": 1,
+  "explanation": "Bring forth the blind people that have eyes, and the deaf that have ears.",
+  "ref": "Isaiah 43:8"
+ },
+ {
+  "id": "isaiah-43-m-04",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD challenge the nations to bring forth?",
+  "choices": [
+   "Their idols",
+   "Their witnesses",
+   "Their gold",
+   "Their swords"
+  ],
+  "answer": 1,
+  "explanation": "Let all the nations be gathered together: let them bring forth their witnesses, that they may be justified.",
+  "ref": "Isaiah 43:9"
+ },
+ {
+  "id": "isaiah-43-m-05",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say about gods before and after him?",
+  "choices": [
+   "Many gods were before him",
+   "None was formed before him, nor shall be after him",
+   "Others will come after him",
+   "There were two before him"
+  ],
+  "answer": 1,
+  "explanation": "Before me there was no God formed, neither shall there be after me.",
+  "ref": "Isaiah 43:10"
+ },
+ {
+  "id": "isaiah-43-m-06",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not among them when the LORD declared and saved?",
+  "choices": [
+   "A king",
+   "A strange god",
+   "A prophet",
+   "A priest"
+  ],
+  "answer": 1,
+  "explanation": "I have declared, and have saved, and I have shewed, when there was no strange god among you.",
+  "ref": "Isaiah 43:12"
+ },
+ {
+  "id": "isaiah-43-m-07",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say of anyone who would deliver out of his hand?",
+  "choices": [
+   "Only the king can deliver",
+   "None can deliver; who shall let it?",
+   "The priests can deliver",
+   "The sea can deliver"
+  ],
+  "answer": 1,
+  "explanation": "There is none that can deliver out of my hand: I will work, and who shall let it?",
+  "ref": "Isaiah 43:13"
+ },
+ {
+  "id": "isaiah-43-m-08",
+  "chapter": 43,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose cry is in the ships?",
+  "choices": [
+   "The Philistines",
+   "The Chaldeans",
+   "The Egyptians",
+   "The Ethiopians"
+  ],
+  "answer": 1,
+  "explanation": "I have brought down all their nobles, and the Chaldeans, whose cry is in the ships.",
+  "ref": "Isaiah 43:14"
+ },
+ {
+  "id": "isaiah-43-m-09",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What becomes of the chariot, horse, army and power?",
+  "choices": [
+   "They rise up and fight",
+   "They lie down together and are quenched as tow",
+   "They flee to Egypt",
+   "They are given to Israel"
+  ],
+  "answer": 1,
+  "explanation": "They shall lie down together, they shall not rise: they are extinct, they are quenched as tow.",
+  "ref": "Isaiah 43:17"
+ },
+ {
+  "id": "isaiah-43-m-10",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD make in the desert, with a way in the wilderness?",
+  "choices": [
+   "Gardens",
+   "Rivers",
+   "Walls",
+   "Wells of oil"
+  ],
+  "answer": 1,
+  "explanation": "I will even make a way in the wilderness, and rivers in the desert.",
+  "ref": "Isaiah 43:19"
+ },
+ {
+  "id": "isaiah-43-m-11",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has Israel not brought the LORD?",
+  "choices": [
+   "The firstfruits of the corn",
+   "The small cattle of burnt offerings",
+   "Tithes of oil and wine",
+   "Silver and gold"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast not brought me the small cattle of thy burnt offerings; neither hast thou honoured me with thy sacrifices.",
+  "ref": "Isaiah 43:23"
+ },
+ {
+  "id": "isaiah-43-m-12",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has Israel wearied the LORD with?",
+  "choices": [
+   "Their offerings",
+   "Their iniquities",
+   "Their prayers",
+   "Their feasts"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast made me to serve with thy sins, thou hast wearied me with thine iniquities.",
+  "ref": "Isaiah 43:24"
+ },
+ {
+  "id": "isaiah-43-m-13",
+  "chapter": 43,
+  "level": "medium",
+  "category": "person",
+  "question": "Who has sinned and transgressed against the LORD?",
+  "choices": [
+   "The kings of Egypt",
+   "Thy first father and thy teachers",
+   "The false prophets of Baal",
+   "The captains of Babylon"
+  ],
+  "answer": 1,
+  "explanation": "Thy first father hath sinned, and thy teachers have transgressed against me.",
+  "ref": "Isaiah 43:27"
+ },
+ {
+  "id": "isaiah-43-m-14",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD done to the princes of the sanctuary?",
+  "choices": [
+   "Anointed them",
+   "Profaned them",
+   "Sent them to Egypt",
+   "Made them kings"
+  ],
+  "answer": 1,
+  "explanation": "I have profaned the princes of the sanctuary, and have given Jacob to the curse, and Israel to reproaches.",
+  "ref": "Isaiah 43:28"
+ },
+ {
+  "id": "isaiah-43-h-01",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD give for Israel's life?",
+  "choices": [
+   "Gold and silver",
+   "Cattle and sheep",
+   "Cities and lands",
+   "Men and people"
+  ],
+  "answer": 3,
+  "explanation": "Therefore will I give men for thee, and people for thy life.",
+  "ref": "Isaiah 43:4"
+ },
+ {
+  "id": "isaiah-43-h-02",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before what was the LORD he?",
+  "choices": [
+   "The flood",
+   "The law",
+   "The temple",
+   "The day"
+  ],
+  "answer": 3,
+  "explanation": "Yea, before the day was I am he; and there is none that can deliver out of my hand.",
+  "ref": "Isaiah 43:13"
+ },
+ {
+  "id": "isaiah-43-h-03",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has Israel not bought the LORD with money?",
+  "choices": [
+   "Frankincense",
+   "Pure oil",
+   "Spices",
+   "Sweet cane"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast bought me no sweet cane with money.",
+  "ref": "Isaiah 43:24"
+ },
+ {
+  "id": "isaiah-43-h-04",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what has Israel not filled the LORD?",
+  "choices": [
+   "The cry of praise",
+   "The smoke of the altar",
+   "The first of the fruits",
+   "The fat of sacrifices"
+  ],
+  "answer": 3,
+  "explanation": "Neither hast thou filled me with the fat of thy sacrifices.",
+  "ref": "Isaiah 43:24"
+ },
+ {
+  "id": "isaiah-43-h-05",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the LORD not done to Israel regarding offerings?",
+  "choices": [
+   "Asked a thousand lambs",
+   "Demanded the firstborn",
+   "Taken away the altar",
+   "Wearied Israel with incense"
+  ],
+  "answer": 3,
+  "explanation": "I have not caused thee to serve with an offering, nor wearied thee with incense.",
+  "ref": "Isaiah 43:23"
+ },
+ {
+  "id": "isaiah-43-h-06",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has Jacob not done, but been weary of the LORD?",
+  "choices": [
+   "Sung to him",
+   "Bowed to him",
+   "Waited for him",
+   "Called upon him"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast not called upon me, O Jacob; but thou hast been weary of me, O Israel.",
+  "ref": "Isaiah 43:22"
+ },
+ {
+  "id": "isaiah-43-h-07",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD invite Israel to do?",
+  "choices": [
+   "Offer a lamb at the altar",
+   "Flee from the nations",
+   "Fast for seven days",
+   "Put him in remembrance and plead together"
+  ],
+  "answer": 3,
+  "explanation": "Put me in remembrance: let us plead together: declare thou, that thou mayest be justified.",
+  "ref": "Isaiah 43:26"
+ },
+ {
+  "id": "isaiah-43-h-08",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which wild creatures honour the LORD?",
+  "choices": [
+   "The lions and the bears",
+   "The eagles and the doves",
+   "The wolves and the foxes",
+   "The dragons and the owls"
+  ],
+  "answer": 3,
+  "explanation": "The beast of the field shall honour me, the dragons and the owls.",
+  "ref": "Isaiah 43:20"
+ },
+ {
+  "id": "isaiah-43-h-09",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the LORD call himself in speaking to Israel?",
+  "choices": [
+   "Your Judge, the ruler of Israel, your Lord",
+   "Your Rock, the shepherd of Israel, your Father",
+   "Your Shield, the helper of Israel, your God",
+   "Your Holy One, the creator of Israel, your King"
+  ],
+  "answer": 3,
+  "explanation": "I am the LORD, your Holy One, the creator of Israel, your King.",
+  "ref": "Isaiah 43:15"
+ },
+ {
+  "id": "isaiah-43-h-10",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom will the LORD bring from far and from the ends of the earth?",
+  "choices": [
+   "His priests and prophets",
+   "His kings and princes",
+   "His armies and captains",
+   "His sons and his daughters"
+  ],
+  "answer": 3,
+  "explanation": "Bring my sons from far, and my daughters from the ends of the earth.",
+  "ref": "Isaiah 43:6"
+ },
+ {
+  "id": "isaiah-43-h-11",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does the LORD call Israel his witnesses?",
+  "choices": [
+   "That they may fight his wars",
+   "That they may judge the nations",
+   "That they may build his house",
+   "That they may know, believe and understand he is he"
+  ],
+  "answer": 3,
+  "explanation": "Ye are my witnesses: that ye may know and believe me, and understand that I am he.",
+  "ref": "Isaiah 43:10"
+ },
+ {
+  "id": "isaiah-43-h-12",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What three things does the LORD say he has done?",
+  "choices": [
+   "Judged, scattered and healed",
+   "Built, planted and watered",
+   "Spoken, sworn and sealed",
+   "Declared, saved and shewed"
+  ],
+  "answer": 3,
+  "explanation": "I have declared, and have saved, and I have shewed.",
+  "ref": "Isaiah 43:12"
+ },
+ {
+  "id": "isaiah-43-h-13",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD make in the mighty waters?",
+  "choices": [
+   "A bridge",
+   "A harbour",
+   "A wall",
+   "A path"
+  ],
+  "answer": 3,
+  "explanation": "Which maketh a way in the sea, and a path in the mighty waters.",
+  "ref": "Isaiah 43:16"
+ },
+ {
+  "id": "isaiah-43-h-14",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say shall not overflow Israel?",
+  "choices": [
+   "The sea",
+   "The floods of rain",
+   "The waters of Babylon",
+   "The rivers"
+  ],
+  "answer": 3,
+  "explanation": "Through the rivers, they shall not overflow thee.",
+  "ref": "Isaiah 43:2"
+ },
+ {
+  "id": "isaiah-44-e-01",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Like what will the LORD's chosen spring up by the water courses?",
+  "choices": [
+   "Willows",
+   "Cedars",
+   "Lilies",
+   "Vines"
+  ],
+  "answer": 0,
+  "explanation": "They shall spring up as among the grass, as willows by the water courses.",
+  "ref": "Isaiah 44:4"
+ },
+ {
+  "id": "isaiah-44-e-02",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "person",
+  "question": "What does the LORD call Cyrus?",
+  "choices": [
+   "My shepherd",
+   "My servant",
+   "My captain",
+   "My messenger"
+  ],
+  "answer": 0,
+  "explanation": "That saith of Cyrus, He is my shepherd, and shall perform all my pleasure.",
+  "ref": "Isaiah 44:28"
+ },
+ {
+  "id": "isaiah-44-e-03",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say to Jerusalem and the temple?",
+  "choices": [
+   "Jerusalem built; the temple's foundation laid",
+   "Jerusalem fall; the temple burned",
+   "Jerusalem hidden; the temple moved",
+   "Jerusalem wait; the temple shut"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt be built; and to the temple, Thy foundation shall be laid.",
+  "ref": "Isaiah 44:28"
+ },
+ {
+  "id": "isaiah-44-e-04",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After what figure does the carpenter make the idol?",
+  "choices": [
+   "A man, according to the beauty of a man",
+   "A lion, according to the strength of a lion",
+   "A bull, according to the strength of a bull",
+   "A bird, according to the wings of a bird"
+  ],
+  "answer": 0,
+  "explanation": "He maketh it after the figure of a man, according to the beauty of a man.",
+  "ref": "Isaiah 44:13"
+ },
+ {
+  "id": "isaiah-44-e-05",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the man pray to his idol made of the residue?",
+  "choices": [
+   "Deliver me; for thou art my god",
+   "Bless me; for thou art my king",
+   "Hear me; for thou art my father",
+   "Heal me; for thou art my rock"
+  ],
+  "answer": 0,
+  "explanation": "He falleth down unto it, and worshippeth it, and prayeth unto it, and saith, Deliver me; for thou art my god.",
+  "ref": "Isaiah 44:17"
+ },
+ {
+  "id": "isaiah-44-e-06",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who are called to sing because the LORD hath done it?",
+  "choices": [
+   "The heavens, the earth, the mountains and the forest",
+   "The priests, the Levites and the singers",
+   "The kings, the princes and the judges",
+   "The captives, the poor and the strangers"
+  ],
+  "answer": 0,
+  "explanation": "Sing, O ye heavens; for the LORD hath done it: shout, ye lower parts of the earth: break forth into singing, ye mountains.",
+  "ref": "Isaiah 44:23"
+ },
+ {
+  "id": "isaiah-44-e-07",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say of Israel in his word to Jacob?",
+  "choices": [
+   "Thou shalt not be forgotten of me",
+   "Thou shalt be cast off",
+   "Thou shalt be scattered",
+   "Thou shalt be silent"
+  ],
+  "answer": 0,
+  "explanation": "O Israel, thou shalt not be forgotten of me.",
+  "ref": "Isaiah 44:21"
+ },
+ {
+  "id": "isaiah-44-e-08",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say about who stretched forth the heavens?",
+  "choices": [
+   "He did it alone",
+   "The angels helped him",
+   "The wise men helped him",
+   "He did it with the sea"
+  ],
+  "answer": 0,
+  "explanation": "I am the LORD that maketh all things; that stretcheth forth the heavens alone.",
+  "ref": "Isaiah 44:24"
+ },
+ {
+  "id": "isaiah-44-e-09",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say to the deep?",
+  "choices": [
+   "Be dry",
+   "Be still",
+   "Be opened",
+   "Be parted"
+  ],
+  "answer": 0,
+  "explanation": "That saith to the deep, Be dry, and I will dry up thy rivers.",
+  "ref": "Isaiah 44:27"
+ },
+ {
+  "id": "isaiah-44-m-01",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What other name is given to Israel in the LORD's call?",
+  "choices": [
+   "Ephraim",
+   "Zion",
+   "Sharon",
+   "Jesurun"
+  ],
+  "answer": 3,
+  "explanation": "Fear not, O Jacob, my servant; and thou, Jesurun, whom I have chosen.",
+  "ref": "Isaiah 44:2"
+ },
+ {
+  "id": "isaiah-44-m-02",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the LORD describe himself as the King of Israel?",
+  "choices": [
+   "Judge of Israel and his shield the LORD of Jacob",
+   "Father of Israel and his rock the LORD of Zion",
+   "Shepherd of Israel and his friend the LORD of heaven",
+   "King of Israel and his redeemer the LORD of hosts"
+  ],
+  "answer": 3,
+  "explanation": "Thus saith the LORD the King of Israel, and his redeemer the LORD of hosts.",
+  "ref": "Isaiah 44:6"
+ },
+ {
+  "id": "isaiah-44-m-03",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say when he asks, Is there a God beside me?",
+  "choices": [
+   "There are gods of the nations",
+   "There is one in Egypt",
+   "There is a god in Babylon",
+   "There is no God; I know not any"
+  ],
+  "answer": 3,
+  "explanation": "Is there a God beside me? yea, there is no God; I know not any.",
+  "ref": "Isaiah 44:8"
+ },
+ {
+  "id": "isaiah-44-m-04",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of those who make a graven image?",
+  "choices": [
+   "They are wise craftsmen of the land",
+   "They are blessed by the LORD",
+   "They are chosen by the king",
+   "They are vanity; their delectable things profit not"
+  ],
+  "answer": 3,
+  "explanation": "They that make a graven image are all of them vanity; and their delectable things shall not profit.",
+  "ref": "Isaiah 44:9"
+ },
+ {
+  "id": "isaiah-44-m-05",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the smith work the idol?",
+  "choices": [
+   "With a chisel and a saw",
+   "With a plough and a sickle",
+   "With a loom and a needle",
+   "With the tongs in the coals, and with hammers"
+  ],
+  "answer": 3,
+  "explanation": "The smith with the tongs both worketh in the coals, and fashioneth it with hammers.",
+  "ref": "Isaiah 44:12"
+ },
+ {
+  "id": "isaiah-44-m-06",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the carpenter use to mark out the idol?",
+  "choices": [
+   "A hammer and nails",
+   "A sword and a staff",
+   "An axe and a wedge",
+   "A rule, a line, planes and a compass"
+  ],
+  "answer": 3,
+  "explanation": "The carpenter stretcheth out his rule; he marketh it out with a line; he fitteth it with planes, and he marketh it out with the compass.",
+  "ref": "Isaiah 44:13"
+ },
+ {
+  "id": "isaiah-44-m-07",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which trees does the man hew down?",
+  "choices": [
+   "Palms, figs and olives",
+   "Willows, poplars and myrtles",
+   "Almonds, pines and firs",
+   "Cedars, the cypress and the oak"
+  ],
+  "answer": 3,
+  "explanation": "He heweth him down cedars, and taketh the cypress and the oak.",
+  "ref": "Isaiah 44:14"
+ },
+ {
+  "id": "isaiah-44-m-08",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the man do with part of the tree?",
+  "choices": [
+   "Builds a house of it",
+   "Sells it for silver",
+   "Carries it to the temple",
+   "Burns it to warm himself and bake bread"
+  ],
+  "answer": 3,
+  "explanation": "He will take thereof, and warm himself; yea, he kindleth it, and baketh bread.",
+  "ref": "Isaiah 44:15"
+ },
+ {
+  "id": "isaiah-44-m-09",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why can they not see or understand?",
+  "choices": [
+   "They are too young",
+   "They are in a far country",
+   "They have no teachers",
+   "He hath shut their eyes and hearts"
+  ],
+  "answer": 3,
+  "explanation": "He hath shut their eyes, that they cannot see; and their hearts, that they cannot understand.",
+  "ref": "Isaiah 44:18"
+ },
+ {
+  "id": "isaiah-44-m-10",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the deceived man fail to say?",
+  "choices": [
+   "Is there not a God in heaven?",
+   "Is there not a king in Zion?",
+   "Is there not a way of escape?",
+   "Is there not a lie in my right hand?"
+  ],
+  "answer": 3,
+  "explanation": "A deceived heart hath turned him aside, that he cannot say, Is there not a lie in my right hand?",
+  "ref": "Isaiah 44:20"
+ },
+ {
+  "id": "isaiah-44-m-11",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say to Israel after blotting out his transgressions?",
+  "choices": [
+   "Go out from the land",
+   "Build a temple for me",
+   "Wait seventy years",
+   "Return unto me; for I have redeemed thee"
+  ],
+  "answer": 3,
+  "explanation": "I have blotted out, as a thick cloud, thy transgressions: return unto me; for I have redeemed thee.",
+  "ref": "Isaiah 44:22"
+ },
+ {
+  "id": "isaiah-44-m-12",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD do to the tokens of the liars and the diviners?",
+  "choices": [
+   "Honours the tokens and makes diviners wise",
+   "Gathers the tokens and sends diviners home",
+   "Hides the tokens and makes diviners silent",
+   "Frustrates the tokens and makes diviners mad"
+  ],
+  "answer": 3,
+  "explanation": "That frustrateth the tokens of the liars, and maketh diviners mad.",
+  "ref": "Isaiah 44:25"
+ },
+ {
+  "id": "isaiah-44-m-13",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD do to wise men?",
+  "choices": [
+   "Calls them to counsel him",
+   "Sends them to Cyrus",
+   "Gives them double wisdom",
+   "Turns them backward and makes their knowledge foolish"
+  ],
+  "answer": 3,
+  "explanation": "That turneth wise men backward, and maketh their knowledge foolish.",
+  "ref": "Isaiah 44:25"
+ },
+ {
+  "id": "isaiah-44-m-14",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD confirm and perform?",
+  "choices": [
+   "The oath of the kings and the vow of the priests",
+   "The law of Moses and the psalms of David",
+   "The names of the tribes and the borders of the land",
+   "The word of his servant and the counsel of his messengers"
+  ],
+  "answer": 3,
+  "explanation": "That confirmeth the word of his servant, and performeth the counsel of his messengers.",
+  "ref": "Isaiah 44:26"
+ },
+ {
+  "id": "isaiah-44-h-01",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall one do with his hand, and surname himself by the name of Israel?",
+  "choices": [
+   "Lift it to heaven",
+   "Subscribe unto the LORD",
+   "Lay it on the altar",
+   "Hold the sword"
+  ],
+  "answer": 1,
+  "explanation": "Another shall subscribe with his hand unto the LORD, and surname himself by the name of Israel.",
+  "ref": "Isaiah 44:5"
+ },
+ {
+  "id": "isaiah-44-h-02",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the man say while warming himself at the fire?",
+  "choices": [
+   "Praise the LORD, I am blessed",
+   "Aha, I am warm, I have seen the fire",
+   "It is enough, I will rest",
+   "Help me, the fire is too hot"
+  ],
+  "answer": 1,
+  "explanation": "Yea, he warmeth himself, and saith, Aha, I am warm, I have seen the fire.",
+  "ref": "Isaiah 44:16"
+ },
+ {
+  "id": "isaiah-44-h-03",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD raise up in the cities of Judah?",
+  "choices": [
+   "The high places",
+   "The decayed places",
+   "The gates of the temple",
+   "The towers of the fathers"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall be built, and I will raise up the decayed places thereof.",
+  "ref": "Isaiah 44:26"
+ },
+ {
+  "id": "isaiah-44-h-04",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say to Jerusalem and the cities of Judah?",
+  "choices": [
+   "Thou shalt be forsaken; ye shall be burned",
+   "Thou shalt be inhabited; ye shall be built",
+   "Thou shalt be silent; ye shall be sold",
+   "Thou shalt be wise; ye shall be rich"
+  ],
+  "answer": 1,
+  "explanation": "That saith to Jerusalem, Thou shalt be inhabited; and to the cities of Judah, Ye shall be built.",
+  "ref": "Isaiah 44:26"
+ },
+ {
+  "id": "isaiah-44-h-05",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does the carpenter make the idol after the figure of a man?",
+  "choices": [
+   "That it may walk in the street",
+   "That it may remain in the house",
+   "That it may guard the gate",
+   "That it may be carried to war"
+  ],
+  "answer": 1,
+  "explanation": "He maketh it after the figure of a man, that it may remain in the house.",
+  "ref": "Isaiah 44:13"
+ },
+ {
+  "id": "isaiah-44-h-06",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to the smith who works the idol?",
+  "choices": [
+   "He sings with joy at his work",
+   "He is hungry, drinks no water and is faint",
+   "He grows rich and proud",
+   "He falls asleep at the forge"
+  ],
+  "answer": 1,
+  "explanation": "He is hungry, and his strength faileth: he drinketh no water, and is faint.",
+  "ref": "Isaiah 44:12"
+ },
+ {
+  "id": "isaiah-44-h-07",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of the workmen who make the idols?",
+  "choices": [
+   "They are of the LORD",
+   "They are of men",
+   "They are of Cyrus",
+   "They are of the angels"
+  ],
+  "answer": 1,
+  "explanation": "The workmen, they are of men: let them all be gathered together; yet they shall fear, and they shall be ashamed together.",
+  "ref": "Isaiah 44:11"
+ },
+ {
+  "id": "isaiah-44-h-08",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the man ask himself about the stock of a tree?",
+  "choices": [
+   "Shall I burn it all?",
+   "Shall I fall down to it?",
+   "Shall I sell it?",
+   "Shall I plant it again?"
+  ],
+  "answer": 1,
+  "explanation": "Shall I fall down to the stock of a tree?",
+  "ref": "Isaiah 44:19"
+ },
+ {
+  "id": "isaiah-44-h-09",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD pour upon Israel's offspring?",
+  "choices": [
+   "His wrath",
+   "His blessing",
+   "His silver",
+   "His judgment"
+  ],
+  "answer": 1,
+  "explanation": "I will pour my spirit upon thy seed, and my blessing upon thine offspring.",
+  "ref": "Isaiah 44:3"
+ },
+ {
+  "id": "isaiah-44-h-10",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has turned the man aside, so that he cannot deliver his soul?",
+  "choices": [
+   "A broken spirit",
+   "A deceived heart",
+   "A wandering eye",
+   "A proud neck"
+  ],
+  "answer": 1,
+  "explanation": "He feedeth on ashes: a deceived heart hath turned him aside, that he cannot deliver his soul.",
+  "ref": "Isaiah 44:20"
+ },
+ {
+  "id": "isaiah-44-h-11",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does the LORD ask to declare and set in order what is coming?",
+  "choices": [
+   "The wise men of Babylon",
+   "Who, as I, shall call and declare it",
+   "The prophets of Egypt",
+   "The princes of Judah"
+  ],
+  "answer": 1,
+  "explanation": "Who, as I, shall call, and shall declare it, and set it in order for me, since I appointed the ancient people?",
+  "ref": "Isaiah 44:7"
+ },
+ {
+  "id": "isaiah-44-h-12",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD ask Israel about telling them from that time?",
+  "choices": [
+   "Have not I fed thee in the wilderness?",
+   "Have not I told thee from that time, and declared it?",
+   "Have not I given thee the land?",
+   "Have not I sent thee a king?"
+  ],
+  "answer": 1,
+  "explanation": "Fear ye not, neither be afraid: have not I told thee from that time, and have declared it?",
+  "ref": "Isaiah 44:8"
+ },
+ {
+  "id": "isaiah-44-h-13",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the man do with the residue of the tree?",
+  "choices": [
+   "Builds a boat of it",
+   "Makes a god of it, even his graven image",
+   "Leaves it to rot",
+   "Gives it to the poor"
+  ],
+  "answer": 1,
+  "explanation": "And the residue thereof he maketh a god, even his graven image: he falleth down unto it.",
+  "ref": "Isaiah 44:17"
+ },
+ {
+  "id": "isaiah-44-h-14",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the LORD say he spread abroad the earth?",
+  "choices": [
+   "With the angels",
+   "By myself",
+   "By the wind",
+   "With the sea"
+  ],
+  "answer": 1,
+  "explanation": "That stretcheth forth the heavens alone; that spreadeth abroad the earth by myself.",
+  "ref": "Isaiah 44:24"
  }
 ]
