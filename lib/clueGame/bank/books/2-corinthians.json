@@ -416,22 +416,6 @@
   "ref": "2 Corinthians 6:2"
  },
  {
-  "id": "old-2-corinthians-6-2",
-  "chapter": 6,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How does Paul describe himself and his companions?",
-  "choices": [
-   "As rulers",
-   "As ministers of God",
-   "As judges",
-   "As prophets alone"
-  ],
-  "answer": 1,
-  "explanation": "They approve themselves as the ministers of God.",
-  "ref": "2 Corinthians 6:4"
- },
- {
   "id": "old-2-corinthians-6-3",
   "chapter": 6,
   "level": "beginner",
@@ -3534,5 +3518,2693 @@
   "answer": 1,
   "explanation": "As touching the ministering to the saints, it is superfluous for me to write to you.",
   "ref": "2 Corinthians 9:1"
+ },
+ {
+  "id": "2-corinthians-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named with Paul as the sender of this letter?",
+  "choices": [
+   "Titus",
+   "Timothy",
+   "Apollos",
+   "Barnabas"
+  ],
+  "answer": 1,
+  "explanation": "The letter opens with Paul, an apostle of Jesus Christ by the will of God, and Timothy our brother.",
+  "ref": "2 Corinthians 1:1"
+ },
+ {
+  "id": "2-corinthians-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "By whose will does Paul say he is an apostle of Jesus Christ?",
+  "choices": [
+   "The church",
+   "God",
+   "The Corinthians",
+   "Timothy"
+  ],
+  "answer": 1,
+  "explanation": "Paul is an apostle of Jesus Christ by the will of God.",
+  "ref": "2 Corinthians 1:1"
+ },
+ {
+  "id": "2-corinthians-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul wish for the Corinthians from God our Father and the Lord Jesus Christ?",
+  "choices": [
+   "Wisdom and power",
+   "Grace and peace",
+   "Riches and honour",
+   "Health and long life"
+  ],
+  "answer": 1,
+  "explanation": "Paul writes, Grace be to you and peace from God our Father, and from the Lord Jesus Christ.",
+  "ref": "2 Corinthians 1:2"
+ },
+ {
+  "id": "2-corinthians-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the trouble come to Paul that pressed him out of measure?",
+  "choices": [
+   "Macedonia",
+   "Asia",
+   "Achaia",
+   "Judaea"
+  ],
+  "answer": 1,
+  "explanation": "Paul would not have them ignorant of the trouble which came to them in Asia.",
+  "ref": "2 Corinthians 1:8"
+ },
+ {
+  "id": "2-corinthians-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "In whom does Paul say they learned to trust instead of in themselves?",
+  "choices": [
+   "The church at Corinth",
+   "God which raiseth the dead",
+   "Their own strength",
+   "Their companions"
+  ],
+  "answer": 1,
+  "explanation": "They had the sentence of death in themselves, that they should not trust in themselves, but in God which raiseth the dead.",
+  "ref": "2 Corinthians 1:9"
+ },
+ {
+  "id": "2-corinthians-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "By whom does Paul say our consolation also aboundeth?",
+  "choices": [
+   "Timothy",
+   "Christ",
+   "The apostles",
+   "The Corinthians"
+  ],
+  "answer": 1,
+  "explanation": "As the sufferings of Christ abound in us, so our consolation also aboundeth by Christ.",
+  "ref": "2 Corinthians 1:5"
+ },
+ {
+  "id": "2-corinthians-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Paul say stablisheth him with the Corinthians in Christ and hath anointed them?",
+  "choices": [
+   "Timothy",
+   "God",
+   "Silvanus",
+   "The church"
+  ],
+  "answer": 1,
+  "explanation": "Now he which stablisheth us with you in Christ, and hath anointed us, is God.",
+  "ref": "2 Corinthians 1:21"
+ },
+ {
+  "id": "2-corinthians-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If Paul is afflicted, what does he say it is for?",
+  "choices": [
+   "Their correction",
+   "His own reward",
+   "Their consolation and salvation",
+   "The spread of the law"
+  ],
+  "answer": 2,
+  "explanation": "Whether we be afflicted, it is for your consolation and salvation.",
+  "ref": "2 Corinthians 1:6"
+ },
+ {
+  "id": "2-corinthians-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul describe the trouble that came to him in Asia?",
+  "choices": [
+   "Light and soon over",
+   "A trouble he brought on himself",
+   "Pressed out of measure, above strength",
+   "A small delay on the road"
+  ],
+  "answer": 2,
+  "explanation": "They were pressed out of measure, above strength, insomuch that they despaired even of life.",
+  "ref": "2 Corinthians 1:8"
+ },
+ {
+  "id": "2-corinthians-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say the Corinthians do to help him, so that many give thanks?",
+  "choices": [
+   "Send money",
+   "Write letters",
+   "Help together by prayer",
+   "Visit him in prison"
+  ],
+  "answer": 2,
+  "explanation": "Ye also helping together by prayer for us, that thanks may be given by many on our behalf.",
+  "ref": "2 Corinthians 1:11"
+ },
+ {
+  "id": "2-corinthians-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul call his rejoicing?",
+  "choices": [
+   "The size of his churches",
+   "The letters of commendation he carried",
+   "The testimony of his conscience",
+   "The miracles done by his hands"
+  ],
+  "answer": 2,
+  "explanation": "For our rejoicing is this, the testimony of our conscience, that in simplicity and godly sincerity we have had our conversation in the world.",
+  "ref": "2 Corinthians 1:12"
+ },
+ {
+  "id": "2-corinthians-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say he writes to the Corinthians, and nothing else?",
+  "choices": [
+   "Secret mysteries",
+   "New commands from Jerusalem",
+   "What they read or acknowledge",
+   "Visions he had seen"
+  ],
+  "answer": 2,
+  "explanation": "We write none other things unto you, than what ye read or acknowledge.",
+  "ref": "2 Corinthians 1:13"
+ },
+ {
+  "id": "2-corinthians-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which day does Paul say the Corinthians are his rejoicing, even as he is theirs?",
+  "choices": [
+   "The day of Pentecost",
+   "The day of his release",
+   "The day of the Lord Jesus",
+   "The day of the feast"
+  ],
+  "answer": 2,
+  "explanation": "Ye are our rejoicing, even as we are yours in the day of the Lord Jesus.",
+  "ref": "2 Corinthians 1:14"
+ },
+ {
+  "id": "2-corinthians-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "After Macedonia, toward what land did Paul plan to be brought on his way by the Corinthians?",
+  "choices": [
+   "Troas",
+   "Asia",
+   "Judaea",
+   "Rome"
+  ],
+  "answer": 2,
+  "explanation": "He planned to come again out of Macedonia unto them, and of them to be brought on his way toward Judaea.",
+  "ref": "2 Corinthians 1:16"
+ },
+ {
+  "id": "2-corinthians-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul hope the Corinthians might have from his planned visit?",
+  "choices": [
+   "A second letter",
+   "A new teacher",
+   "A second benefit",
+   "A shorter journey"
+  ],
+  "answer": 2,
+  "explanation": "In this confidence I was minded to come unto you before, that ye might have a second benefit.",
+  "ref": "2 Corinthians 1:15"
+ },
+ {
+  "id": "2-corinthians-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who does Paul say was preached among the Corinthians by himself, Silvanus and Timotheus?",
+  "choices": [
+   "Moses the lawgiver",
+   "John the Baptist",
+   "The Son of God, Jesus Christ",
+   "An angel of the Lord"
+  ],
+  "answer": 2,
+  "explanation": "The Son of God, Jesus Christ, was preached among you by us, even by me and Silvanus and Timotheus.",
+  "ref": "2 Corinthians 1:19"
+ },
+ {
+  "id": "2-corinthians-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul trust that God will yet do, having delivered them from so great a death?",
+  "choices": [
+   "Judge them",
+   "Send them elsewhere",
+   "Deliver them",
+   "Make them rest"
+  ],
+  "answer": 2,
+  "explanation": "He delivered us from so great a death, and doth deliver: in whom we trust that he will yet deliver us.",
+  "ref": "2 Corinthians 1:10"
+ },
+ {
+  "id": "2-corinthians-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does Paul call for a record upon his soul that he came not yet to Corinth to spare them?",
+  "choices": [
+   "Timothy",
+   "The church at Corinth",
+   "God",
+   "Silvanus"
+  ],
+  "answer": 2,
+  "explanation": "Moreover I call God for a record upon my soul, that to spare you I came not as yet unto Corinth.",
+  "ref": "2 Corinthians 1:23"
+ },
+ {
+  "id": "2-corinthians-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say he and his companions are to the Corinthians, not lords over their faith?",
+  "choices": [
+   "Judges of their conduct",
+   "Keepers of their law",
+   "Helpers of their joy",
+   "Rulers of their church"
+  ],
+  "answer": 2,
+  "explanation": "Not for that we have dominion over your faith, but are helpers of your joy.",
+  "ref": "2 Corinthians 1:24"
+ },
+ {
+  "id": "2-corinthians-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides Corinth, whose saints does the opening address include?",
+  "choices": [
+   "All Asia",
+   "All Macedonia",
+   "All Achaia",
+   "All Judaea"
+  ],
+  "answer": 2,
+  "explanation": "The letter is unto the church of God which is at Corinth, with all the saints which are in all Achaia.",
+  "ref": "2 Corinthians 1:1"
+ },
+ {
+  "id": "2-corinthians-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says the Corinthians are partakers of the sufferings. Of what shall they be partakers also?",
+  "choices": [
+   "The kingdom",
+   "The inheritance",
+   "The consolation",
+   "The prison"
+  ],
+  "answer": 2,
+  "explanation": "As ye are partakers of the sufferings, so shall ye be also of the consolation.",
+  "ref": "2 Corinthians 1:7"
+ },
+ {
+  "id": "2-corinthians-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul and his companions despair of in the trouble in Asia?",
+  "choices": [
+   "Of their companions",
+   "Of their journey",
+   "Even of life",
+   "Of the Corinthians"
+  ],
+  "answer": 2,
+  "explanation": "They were pressed out of measure, above strength, insomuch that they despaired even of life.",
+  "ref": "2 Corinthians 1:8"
+ },
+ {
+  "id": "2-corinthians-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what, through many persons, does Paul say thanks may be given by many?",
+  "choices": [
+   "The letter they sent",
+   "The peace of the churches",
+   "The gift bestowed upon them",
+   "The safe journey"
+  ],
+  "answer": 2,
+  "explanation": "That for the gift bestowed upon us by the means of many persons thanks may be given by many on our behalf.",
+  "ref": "2 Corinthians 1:11"
+ },
+ {
+  "id": "2-corinthians-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Not with fleshly wisdom, but by what did Paul say he lived in the world?",
+  "choices": [
+   "The law of Moses",
+   "The strength of his hands",
+   "The grace of God",
+   "The favour of rulers"
+  ],
+  "answer": 2,
+  "explanation": "In simplicity and godly sincerity, not with fleshly wisdom, but by the grace of God, we have had our conversation in the world.",
+  "ref": "2 Corinthians 1:12"
+ },
+ {
+  "id": "2-corinthians-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Paul plan to pass by the Corinthians into, and then come again out of?",
+  "choices": [
+   "Asia",
+   "Troas",
+   "Macedonia",
+   "Achaia"
+  ],
+  "answer": 2,
+  "explanation": "He planned to pass by you into Macedonia, and to come again out of Macedonia unto you.",
+  "ref": "2 Corinthians 1:16"
+ },
+ {
+  "id": "2-corinthians-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul asked if his plans were purposed according to what, so that with him there should be yea yea, and nay nay?",
+  "choices": [
+   "The law",
+   "The elders",
+   "The flesh",
+   "His enemies"
+  ],
+  "answer": 2,
+  "explanation": "Do I purpose according to the flesh, that with me there should be yea yea, and nay nay?",
+  "ref": "2 Corinthians 1:17"
+ },
+ {
+  "id": "2-corinthians-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what does Paul rest his claim that his word toward them was not yea and nay?",
+  "choices": [
+   "As the heavens are high",
+   "As the law is holy",
+   "As God is true",
+   "As the church is one"
+  ],
+  "answer": 2,
+  "explanation": "But as God is true, our word toward you was not yea and nay.",
+  "ref": "2 Corinthians 1:18"
+ },
+ {
+  "id": "2-corinthians-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two men does Paul name as preaching Christ with him among the Corinthians?",
+  "choices": [
+   "Titus and Luke",
+   "Apollos and Aquila",
+   "Silvanus and Timotheus",
+   "Barnabas and Mark"
+  ],
+  "answer": 2,
+  "explanation": "The Son of God was preached among you by me and Silvanus and Timotheus.",
+  "ref": "2 Corinthians 1:19"
+ },
+ {
+  "id": "2-corinthians-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "All the promises of God in Christ are yea and Amen unto what?",
+  "choices": [
+   "The strength of the church",
+   "The end of the law",
+   "The glory of God",
+   "The peace of the saints"
+  ],
+  "answer": 2,
+  "explanation": "All the promises of God in him are yea, and in him Amen, unto the glory of God by us.",
+  "ref": "2 Corinthians 1:20"
+ },
+ {
+  "id": "2-corinthians-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says that by what do the Corinthians stand?",
+  "choices": [
+   "Works",
+   "Prayer",
+   "Faith",
+   "Obedience to the law"
+  ],
+  "answer": 2,
+  "explanation": "We are helpers of your joy: for by faith ye stand.",
+  "ref": "2 Corinthians 1:24"
+ },
+ {
+  "id": "2-corinthians-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides stablishing and anointing them, what does Paul say God hath also done to believers?",
+  "choices": [
+   "Taught them",
+   "Sent them out",
+   "Sealed them",
+   "Healed them"
+  ],
+  "answer": 2,
+  "explanation": "God hath also sealed us, and given the earnest of the Spirit in our hearts.",
+  "ref": "2 Corinthians 1:22"
+ },
+ {
+  "id": "2-corinthians-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "At which city did Paul say a door was opened to him to preach Christ's gospel?",
+  "choices": [
+   "Corinth",
+   "Troas",
+   "Ephesus",
+   "Philippi"
+  ],
+  "answer": 1,
+  "explanation": "When I came to Troas to preach Christ's gospel, a door was opened unto me of the Lord.",
+  "ref": "2 Corinthians 2:12"
+ },
+ {
+  "id": "2-corinthians-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Paul not find at Troas, so that he had no rest in his spirit?",
+  "choices": [
+   "Timothy",
+   "Titus",
+   "Silvanus",
+   "Luke"
+  ],
+  "answer": 1,
+  "explanation": "I had no rest in my spirit, because I found not Titus my brother.",
+  "ref": "2 Corinthians 2:13"
+ },
+ {
+  "id": "2-corinthians-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Paul go after taking his leave of those at Troas?",
+  "choices": [
+   "Judaea",
+   "Macedonia",
+   "Asia",
+   "Achaia"
+  ],
+  "answer": 1,
+  "explanation": "Taking my leave of them, I went from thence into Macedonia.",
+  "ref": "2 Corinthians 2:13"
+ },
+ {
+  "id": "2-corinthians-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Paul say he wrote to the Corinthians out of much affliction?",
+  "choices": [
+   "In great haste",
+   "With many tears",
+   "With many witnesses",
+   "In secret"
+  ],
+  "answer": 1,
+  "explanation": "Out of much affliction and anguish of heart I wrote unto you with many tears.",
+  "ref": "2 Corinthians 2:4"
+ },
+ {
+  "id": "2-corinthians-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul say the offender should be forgiven and comforted?",
+  "choices": [
+   "So the church would grow",
+   "Lest he be swallowed up with overmuch sorrow",
+   "So Paul could return sooner",
+   "Because the law required it"
+  ],
+  "answer": 1,
+  "explanation": "Ye ought rather to forgive him, and comfort him, lest perhaps such a one should be swallowed up with overmuch sorrow.",
+  "ref": "2 Corinthians 2:7"
+ },
+ {
+  "id": "2-corinthians-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say of the punishment inflicted on the offender by many?",
+  "choices": [
+   "It was too light",
+   "It was sufficient",
+   "It must be doubled",
+   "It must be hidden"
+  ],
+  "answer": 1,
+  "explanation": "Sufficient to such a man is this punishment, which was inflicted of many.",
+  "ref": "2 Corinthians 2:6"
+ },
+ {
+  "id": "2-corinthians-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul ask the Corinthians to confirm toward the offender?",
+  "choices": [
+   "Their judgment",
+   "Their love",
+   "Their law",
+   "Their gift"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore I beseech you that ye would confirm your love toward him.",
+  "ref": "2 Corinthians 2:8"
+ },
+ {
+  "id": "2-corinthians-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say he wrote to find out about the Corinthians?",
+  "choices": [
+   "Whether they would send a gift",
+   "Whether they were obedient in all things",
+   "Whether they had left the church",
+   "Whether they knew the law"
+  ],
+  "answer": 1,
+  "explanation": "For to this end also did I write, that I might know the proof of you, whether ye be obedient in all things.",
+  "ref": "2 Corinthians 2:9"
+ },
+ {
+  "id": "2-corinthians-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "In whose person did Paul say he forgave for the Corinthians' sakes?",
+  "choices": [
+   "The elders",
+   "Christ",
+   "The apostles",
+   "Timothy"
+  ],
+  "answer": 1,
+  "explanation": "For your sakes forgave I it in the person of Christ.",
+  "ref": "2 Corinthians 2:10"
+ },
+ {
+  "id": "2-corinthians-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul say he decided not to come to them again in heaviness?",
+  "choices": [
+   "He was ill",
+   "He would not make them sorry",
+   "He was afraid of Rome",
+   "He lacked money"
+  ],
+  "answer": 1,
+  "explanation": "But I determined this with myself, that I would not come again to you in heaviness.",
+  "ref": "2 Corinthians 2:1"
+ },
+ {
+  "id": "2-corinthians-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul say he wrote with many tears?",
+  "choices": [
+   "That they might fear him",
+   "That they might know his abundant love",
+   "That they might send help",
+   "That they might leave the city"
+  ],
+  "answer": 1,
+  "explanation": "I wrote unto you with many tears; not that ye should be grieved, but that ye might know the love which I have more abundantly unto you.",
+  "ref": "2 Corinthians 2:4"
+ },
+ {
+  "id": "2-corinthians-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was opened to Paul by the Lord when he came to Troas?",
+  "choices": [
+   "A prison",
+   "A door",
+   "A scroll",
+   "A ship"
+  ],
+  "answer": 1,
+  "explanation": "When I came to Troas to preach Christ's gospel, a door was opened unto me of the Lord.",
+  "ref": "2 Corinthians 2:12"
+ },
+ {
+  "id": "2-corinthians-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say God maketh manifest by the apostles in every place?",
+  "choices": [
+   "The glory of the law",
+   "The savour of his knowledge",
+   "The names of the saints",
+   "The works of the prophets"
+  ],
+  "answer": 1,
+  "explanation": "God maketh manifest the savour of his knowledge by us in every place.",
+  "ref": "2 Corinthians 2:14"
+ },
+ {
+  "id": "2-corinthians-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To those who perish, what does Paul say the apostles are the savour of?",
+  "choices": [
+   "Death unto death",
+   "Judgment unto judgment",
+   "Sorrow unto sorrow",
+   "Darkness unto darkness"
+  ],
+  "answer": 0,
+  "explanation": "To the one we are the savour of death unto death.",
+  "ref": "2 Corinthians 2:16"
+ },
+ {
+  "id": "2-corinthians-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To those who are saved, what does Paul say the apostles are the savour of?",
+  "choices": [
+   "Life unto life",
+   "Peace unto peace",
+   "Glory unto glory",
+   "Faith unto faith"
+  ],
+  "answer": 0,
+  "explanation": "To the other the savour of life unto life.",
+  "ref": "2 Corinthians 2:16"
+ },
+ {
+  "id": "2-corinthians-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which question does Paul ask after speaking of the savour of death and life?",
+  "choices": [
+   "Who is sufficient for these things?",
+   "Who shall condemn?",
+   "Who hath known the mind of the Lord?",
+   "Who shall separate us?"
+  ],
+  "answer": 0,
+  "explanation": "And who is sufficient for these things?",
+  "ref": "2 Corinthians 2:16"
+ },
+ {
+  "id": "2-corinthians-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say he does not do, as many do, with the word of God?",
+  "choices": [
+   "Corrupt it",
+   "Hide it",
+   "Sell it",
+   "Change its language"
+  ],
+  "answer": 0,
+  "explanation": "We are not as many, which corrupt the word of God.",
+  "ref": "2 Corinthians 2:17"
+ },
+ {
+  "id": "2-corinthians-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says: if he makes the Corinthians sorry, who maketh him glad?",
+  "choices": [
+   "The same which is made sorry by him",
+   "The elders of the church",
+   "Titus",
+   "His companions"
+  ],
+  "answer": 0,
+  "explanation": "If I make you sorry, who is he then that maketh me glad, but the same which is made sorry by me?",
+  "ref": "2 Corinthians 2:2"
+ },
+ {
+  "id": "2-corinthians-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul wrote lest, when he came, he should have sorrow from whom?",
+  "choices": [
+   "Them of whom he ought to rejoice",
+   "Those who opposed him",
+   "The false apostles",
+   "The rulers"
+  ],
+  "answer": 0,
+  "explanation": "I wrote this same unto you, lest, when I came, I should have sorrow from them of whom I ought to rejoice.",
+  "ref": "2 Corinthians 2:3"
+ },
+ {
+  "id": "2-corinthians-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of the one who caused grief, why does Paul say he has grieved him only in part?",
+  "choices": [
+   "That he may not overcharge them all",
+   "That he may keep the peace in Rome",
+   "That he may hide the matter",
+   "That he may rest at Troas"
+  ],
+  "answer": 0,
+  "explanation": "If any have caused grief, he hath not grieved me, but in part: that I may not overcharge you all.",
+  "ref": "2 Corinthians 2:5"
+ },
+ {
+  "id": "2-corinthians-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says his joy is the joy of whom?",
+  "choices": [
+   "You all",
+   "The elders",
+   "The apostles",
+   "The saints in Achaia"
+  ],
+  "answer": 0,
+  "explanation": "I have confidence in you all, that my joy is the joy of you all.",
+  "ref": "2 Corinthians 2:3"
+ },
+ {
+  "id": "2-corinthians-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "In whose sight does Paul say he speaks in Christ?",
+  "choices": [
+   "God",
+   "Caesar",
+   "The elders",
+   "The Corinthians"
+  ],
+  "answer": 0,
+  "explanation": "In the sight of God speak we in Christ.",
+  "ref": "2 Corinthians 2:17"
+ },
+ {
+  "id": "2-corinthians-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where does Paul say the Corinthians' epistle is written, not in tables of stone?",
+  "choices": [
+   "In the temple",
+   "In fleshy tables of the heart",
+   "In a book of the law",
+   "In the sand"
+  ],
+  "answer": 1,
+  "explanation": "The epistle of Christ is written not in tables of stone, but in fleshy tables of the heart.",
+  "ref": "2 Corinthians 3:3"
+ },
+ {
+  "id": "2-corinthians-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Paul say hath made the apostles able ministers of the new testament?",
+  "choices": [
+   "Moses",
+   "God",
+   "The Corinthians",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Who also hath made us able ministers of the new testament; our sufficiency is of God.",
+  "ref": "2 Corinthians 3:5-6"
+ },
+ {
+  "id": "2-corinthians-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses put over his face?",
+  "choices": [
+   "A crown",
+   "A vail",
+   "A cloth of linen",
+   "A stone mask"
+  ],
+  "answer": 1,
+  "explanation": "Moses put a vail over his face, that the children of Israel could not stedfastly look to the end of that which is abolished.",
+  "ref": "2 Corinthians 3:13"
+ },
+ {
+  "id": "2-corinthians-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose face could the children of Israel not stedfastly behold for its glory?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Joshua",
+   "Elijah"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel could not stedfastly behold the face of Moses for the glory of his countenance.",
+  "ref": "2 Corinthians 3:7"
+ },
+ {
+  "id": "2-corinthians-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what is the epistle known and read of all men written?",
+  "choices": [
+   "Stone tablets",
+   "Our hearts",
+   "Scrolls",
+   "The temple walls"
+  ],
+  "answer": 1,
+  "explanation": "Ye are our epistle written in our hearts, known and read of all men.",
+  "ref": "2 Corinthians 3:2"
+ },
+ {
+  "id": "2-corinthians-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Of whom does Paul say our sufficiency is?",
+  "choices": [
+   "Ourselves",
+   "God",
+   "The apostles",
+   "The church"
+  ],
+  "answer": 1,
+  "explanation": "Not that we are sufficient of ourselves to think any thing as of ourselves; but our sufficiency is of God.",
+  "ref": "2 Corinthians 3:5"
+ },
+ {
+  "id": "2-corinthians-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says God made them ministers of the new testament, not of the letter, but of what?",
+  "choices": [
+   "The law",
+   "The spirit",
+   "The prophets",
+   "The temple"
+  ],
+  "answer": 1,
+  "explanation": "Not of the letter, but of the spirit: for the letter killeth, but the spirit giveth life.",
+  "ref": "2 Corinthians 3:6"
+ },
+ {
+  "id": "2-corinthians-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Through whom does Paul say they have such trust toward God?",
+  "choices": [
+   "Moses",
+   "Christ",
+   "The law",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "And such trust have we through Christ to God-ward.",
+  "ref": "2 Corinthians 3:4"
+ },
+ {
+  "id": "2-corinthians-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Moses put a vail over his face, according to Paul?",
+  "choices": [
+   "So he could rest",
+   "So Israel could not look to the end of what was abolished",
+   "So he could hide his fear",
+   "So he could pray alone"
+  ],
+  "answer": 1,
+  "explanation": "Moses put a vail over his face, that the children of Israel could not stedfastly look to the end of that which is abolished.",
+  "ref": "2 Corinthians 3:13"
+ },
+ {
+  "id": "2-corinthians-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In the reading of what does Paul say the same vail remains untaken away?",
+  "choices": [
+   "The prophets only",
+   "The old testament",
+   "The letters of the apostles",
+   "The psalms"
+  ],
+  "answer": 1,
+  "explanation": "Until this day remaineth the same vail untaken away in the reading of the old testament.",
+  "ref": "2 Corinthians 3:14"
+ },
+ {
+  "id": "2-corinthians-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When Moses is read, where does Paul say the vail is?",
+  "choices": [
+   "Upon their eyes",
+   "Upon their heart",
+   "Upon the scroll",
+   "Upon the altar"
+  ],
+  "answer": 1,
+  "explanation": "Even unto this day, when Moses is read, the vail is upon their heart.",
+  "ref": "2 Corinthians 3:15"
+ },
+ {
+  "id": "2-corinthians-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say shall happen when it shall turn to the Lord?",
+  "choices": [
+   "The law shall be done away",
+   "The vail shall be taken away",
+   "The temple shall be rebuilt",
+   "The Spirit shall depart"
+  ],
+  "answer": 1,
+  "explanation": "Nevertheless when it shall turn to the Lord, the vail shall be taken away.",
+  "ref": "2 Corinthians 3:16"
+ },
+ {
+  "id": "2-corinthians-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Paul say he uses great plainness of speech?",
+  "choices": [
+   "Because he is not learned",
+   "Because they have such hope",
+   "Because he fears rulers",
+   "Because the Corinthians asked"
+  ],
+  "answer": 1,
+  "explanation": "Seeing then that we have such hope, we use great plainness of speech.",
+  "ref": "2 Corinthians 3:12"
+ },
+ {
+  "id": "2-corinthians-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul asks whether they need, as some others, what for the Corinthians?",
+  "choices": [
+   "Epistles of commendation",
+   "A new teacher",
+   "A written law",
+   "An offering"
+  ],
+  "answer": 0,
+  "explanation": "Do we begin again to commend ourselves? or need we, as some others, epistles of commendation to you?",
+  "ref": "2 Corinthians 3:1"
+ },
+ {
+  "id": "2-corinthians-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Upon what was the ministration of death written and engraven?",
+  "choices": [
+   "Stones",
+   "Wood",
+   "Brass",
+   "Skins"
+  ],
+  "answer": 0,
+  "explanation": "The ministration of death, written and engraven in stones, was glorious.",
+  "ref": "2 Corinthians 3:7"
+ },
+ {
+  "id": "2-corinthians-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which ministration does Paul say exceeds in glory the ministration of condemnation?",
+  "choices": [
+   "The ministration of righteousness",
+   "The ministration of death",
+   "The ministration of the law",
+   "The ministration of the temple"
+  ],
+  "answer": 0,
+  "explanation": "If the ministration of condemnation be glory, much more doth the ministration of righteousness exceed in glory.",
+  "ref": "2 Corinthians 3:9"
+ },
+ {
+  "id": "2-corinthians-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says if that which is done away was glorious, much more is what glorious?",
+  "choices": [
+   "That which remaineth",
+   "That which is written",
+   "That which is seen",
+   "That which is past"
+  ],
+  "answer": 0,
+  "explanation": "If that which is done away was glorious, much more that which remaineth is glorious.",
+  "ref": "2 Corinthians 3:11"
+ },
+ {
+  "id": "2-corinthians-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul say was blinded?",
+  "choices": [
+   "Their minds",
+   "Their eyes",
+   "Their hands",
+   "Their leaders"
+  ],
+  "answer": 0,
+  "explanation": "But their minds were blinded.",
+  "ref": "2 Corinthians 3:14"
+ },
+ {
+  "id": "2-corinthians-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "In whom does Paul say the vail is done away?",
+  "choices": [
+   "Christ",
+   "Moses",
+   "The Spirit",
+   "The law"
+  ],
+  "answer": 0,
+  "explanation": "The same vail remaineth untaken away in the reading of the old testament; which vail is done away in Christ.",
+  "ref": "2 Corinthians 3:14"
+ },
+ {
+  "id": "2-corinthians-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what kind of face do believers behold as in a glass the glory of the Lord?",
+  "choices": [
+   "Open face",
+   "Covered face",
+   "Bowed face",
+   "Shining face"
+  ],
+  "answer": 0,
+  "explanation": "But we all, with open face beholding as in a glass the glory of the Lord, are changed into the same image.",
+  "ref": "2 Corinthians 3:18"
+ },
+ {
+  "id": "2-corinthians-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By whom are believers changed from glory to glory?",
+  "choices": [
+   "The Spirit of the Lord",
+   "The law of Moses",
+   "The apostles",
+   "The church"
+  ],
+  "answer": 0,
+  "explanation": "We are changed into the same image from glory to glory, even as by the Spirit of the Lord.",
+  "ref": "2 Corinthians 3:18"
+ },
+ {
+  "id": "2-corinthians-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say the Lord is?",
+  "choices": [
+   "That Spirit",
+   "The lawgiver",
+   "The temple",
+   "The letter"
+  ],
+  "answer": 0,
+  "explanation": "Now the Lord is that Spirit.",
+  "ref": "2 Corinthians 3:17"
+ },
+ {
+  "id": "2-corinthians-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Paul say he and his companions preach, not themselves?",
+  "choices": [
+   "Moses",
+   "Christ Jesus the Lord",
+   "The law",
+   "The apostles"
+  ],
+  "answer": 1,
+  "explanation": "We preach not ourselves, but Christ Jesus the Lord; and ourselves your servants for Jesus' sake.",
+  "ref": "2 Corinthians 4:5"
+ },
+ {
+  "id": "2-corinthians-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say he who raised up the Lord Jesus will do for us?",
+  "choices": [
+   "Judge us first",
+   "Raise us up also",
+   "Send us away",
+   "Hide us"
+  ],
+  "answer": 1,
+  "explanation": "He which raised up the Lord Jesus shall raise up us also by Jesus.",
+  "ref": "2 Corinthians 4:14"
+ },
+ {
+  "id": "2-corinthians-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the inward man day by day?",
+  "choices": [
+   "It is hidden",
+   "It is renewed",
+   "It is weakened",
+   "It is judged"
+  ],
+  "answer": 1,
+  "explanation": "Though our outward man perish, yet the inward man is renewed day by day.",
+  "ref": "2 Corinthians 4:16"
+ },
+ {
+  "id": "2-corinthians-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul call his affliction which works a far more exceeding weight of glory?",
+  "choices": [
+   "Heavy and long",
+   "Light, and for a moment",
+   "Too great to bear",
+   "Hidden from God"
+  ],
+  "answer": 1,
+  "explanation": "Our light affliction, which is but for a moment, worketh for us a far more exceeding and eternal weight of glory.",
+  "ref": "2 Corinthians 4:17"
+ },
+ {
+  "id": "2-corinthians-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Paul say we have this treasure in earthen vessels?",
+  "choices": [
+   "That it may be hidden",
+   "That the excellency of the power may be of God",
+   "That it may be sold",
+   "That it may be kept in the temple"
+  ],
+  "answer": 1,
+  "explanation": "We have this treasure in earthen vessels, that the excellency of the power may be of God, and not of us.",
+  "ref": "2 Corinthians 4:7"
+ },
+ {
+  "id": "2-corinthians-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says he is troubled on every side, yet not what?",
+  "choices": [
+   "Forsaken",
+   "Distressed",
+   "Destroyed",
+   "Silenced"
+  ],
+  "answer": 1,
+  "explanation": "We are troubled on every side, yet not distressed.",
+  "ref": "2 Corinthians 4:8"
+ },
+ {
+  "id": "2-corinthians-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says he is persecuted, but not what?",
+  "choices": [
+   "Distressed",
+   "Forsaken",
+   "Despairing",
+   "Silenced"
+  ],
+  "answer": 1,
+  "explanation": "Persecuted, but not forsaken; cast down, but not destroyed.",
+  "ref": "2 Corinthians 4:9"
+ },
+ {
+  "id": "2-corinthians-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says he is cast down, but not what?",
+  "choices": [
+   "Forsaken",
+   "Destroyed",
+   "Perplexed",
+   "Blamed"
+  ],
+  "answer": 1,
+  "explanation": "Cast down, but not destroyed.",
+  "ref": "2 Corinthians 4:9"
+ },
+ {
+  "id": "2-corinthians-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says death worketh in the apostles. What worketh in the Corinthians?",
+  "choices": [
+   "Sorrow",
+   "Life",
+   "Faith",
+   "Peace"
+  ],
+  "answer": 1,
+  "explanation": "So then death worketh in us, but life in you.",
+  "ref": "2 Corinthians 4:12"
+ },
+ {
+  "id": "2-corinthians-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says he has the same spirit of faith; what does he say, because he believes?",
+  "choices": [
+   "Therefore he waits",
+   "Therefore he speaks",
+   "Therefore he writes",
+   "Therefore he rests"
+  ],
+  "answer": 1,
+  "explanation": "We having the same spirit of faith, according as it is written, I believed, and therefore have I spoken; we also believe, and therefore speak.",
+  "ref": "2 Corinthians 4:13"
+ },
+ {
+  "id": "2-corinthians-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "In what has God shined, to give the light of the knowledge of the glory of God?",
+  "choices": [
+   "The temple",
+   "Our hearts",
+   "The heavens",
+   "The law"
+  ],
+  "answer": 1,
+  "explanation": "God, who commanded the light to shine out of darkness, hath shined in our hearts.",
+  "ref": "2 Corinthians 4:6"
+ },
+ {
+  "id": "2-corinthians-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who does Paul say is the image of God?",
+  "choices": [
+   "Moses",
+   "Christ",
+   "The apostles",
+   "The Spirit"
+  ],
+  "answer": 1,
+  "explanation": "The light of the glorious gospel of Christ, who is the image of God.",
+  "ref": "2 Corinthians 4:4"
+ },
+ {
+  "id": "2-corinthians-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says they have renounced the hidden things of what?",
+  "choices": [
+   "Idolatry",
+   "Dishonesty",
+   "The law",
+   "The flesh"
+  ],
+  "answer": 1,
+  "explanation": "We have renounced the hidden things of dishonesty.",
+  "ref": "2 Corinthians 4:2"
+ },
+ {
+  "id": "2-corinthians-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says they are perplexed, but not in what?",
+  "choices": [
+   "Despair",
+   "Anger",
+   "Doubt",
+   "Prison"
+  ],
+  "answer": 0,
+  "explanation": "We are perplexed, but not in despair.",
+  "ref": "2 Corinthians 4:8"
+ },
+ {
+  "id": "2-corinthians-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says the things which are seen are what?",
+  "choices": [
+   "Temporal",
+   "Eternal",
+   "Hidden",
+   "Holy"
+  ],
+  "answer": 0,
+  "explanation": "The things which are seen are temporal; but the things which are not seen are eternal.",
+  "ref": "2 Corinthians 4:18"
+ },
+ {
+  "id": "2-corinthians-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say they bear about in the body always?",
+  "choices": [
+   "The dying of the Lord Jesus",
+   "The law of Moses",
+   "The cross of Rome",
+   "The marks of prison"
+  ],
+  "answer": 0,
+  "explanation": "Always bearing about in the body the dying of the Lord Jesus.",
+  "ref": "2 Corinthians 4:10"
+ },
+ {
+  "id": "2-corinthians-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says they do not handle the word of God how?",
+  "choices": [
+   "Deceitfully",
+   "Slowly",
+   "Privately",
+   "Carelessly"
+  ],
+  "answer": 0,
+  "explanation": "Nor handling the word of God deceitfully.",
+  "ref": "2 Corinthians 4:2"
+ },
+ {
+  "id": "2-corinthians-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what will abundant grace redound through the thanksgiving of many?",
+  "choices": [
+   "The glory of God",
+   "The strength of the church",
+   "The end of the world",
+   "The peace of the saints"
+  ],
+  "answer": 0,
+  "explanation": "That the abundant grace might through the thanksgiving of many redound to the glory of God.",
+  "ref": "2 Corinthians 4:15"
+ },
+ {
+  "id": "2-corinthians-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Lest what should shine unto those who believe not?",
+  "choices": [
+   "The light of the glorious gospel of Christ",
+   "The glory of the temple",
+   "The law of Moses",
+   "The brightness of the sun"
+  ],
+  "answer": 0,
+  "explanation": "The god of this world hath blinded the minds of them which believe not, lest the light of the glorious gospel of Christ should shine unto them.",
+  "ref": "2 Corinthians 4:4"
+ },
+ {
+  "id": "2-corinthians-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "In the face of whom is the knowledge of the glory of God?",
+  "choices": [
+   "Jesus Christ",
+   "Moses",
+   "The Father only",
+   "The angels"
+  ],
+  "answer": 0,
+  "explanation": "To give the light of the knowledge of the glory of God in the face of Jesus Christ.",
+  "ref": "2 Corinthians 4:6"
+ },
+ {
+  "id": "2-corinthians-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says death works in the body that the life of Jesus might be made manifest in our what?",
+  "choices": [
+   "Mortal flesh",
+   "Hearts only",
+   "Churches",
+   "Works"
+  ],
+  "answer": 0,
+  "explanation": "That the life also of Jesus might be made manifest in our mortal flesh.",
+  "ref": "2 Corinthians 4:11"
+ },
+ {
+  "id": "2-corinthians-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Paul says God who raised up Jesus shall present the apostles together with whom?",
+  "choices": [
+   "The Corinthians",
+   "The angels",
+   "The elders",
+   "The Gentiles"
+  ],
+  "answer": 0,
+  "explanation": "He which raised up the Lord Jesus shall raise up us also by Jesus, and shall present us with you.",
+  "ref": "2 Corinthians 4:14"
+ },
+ {
+  "id": "2-corinthians-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If our earthly house of this tabernacle were dissolved, what do we have?",
+  "choices": [
+   "A new law",
+   "A building of God, not made with hands",
+   "A new city",
+   "A place of rest on earth"
+  ],
+  "answer": 1,
+  "explanation": "We have a building of God, an house not made with hands, eternal in the heavens.",
+  "ref": "2 Corinthians 5:1"
+ },
+ {
+  "id": "2-corinthians-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the apostles, as though God did beseech you by them?",
+  "choices": [
+   "Judges of Israel",
+   "Ambassadors for Christ",
+   "Keepers of the law",
+   "Priests of the temple"
+  ],
+  "answer": 1,
+  "explanation": "Now then we are ambassadors for Christ, as though God did beseech you by us.",
+  "ref": "2 Corinthians 5:20"
+ },
+ {
+  "id": "2-corinthians-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say constraineth us?",
+  "choices": [
+   "The fear of men",
+   "The love of Christ",
+   "The law of Moses",
+   "The need of money"
+  ],
+  "answer": 1,
+  "explanation": "For the love of Christ constraineth us.",
+  "ref": "2 Corinthians 5:14"
+ },
+ {
+  "id": "2-corinthians-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who hath wrought us for the selfsame thing, and given the earnest of the Spirit?",
+  "choices": [
+   "Moses",
+   "God",
+   "The apostles",
+   "The church"
+  ],
+  "answer": 1,
+  "explanation": "He that hath wrought us for the selfsame thing is God, who also hath given unto us the earnest of the Spirit.",
+  "ref": "2 Corinthians 5:5"
+ },
+ {
+  "id": "2-corinthians-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Paul say knew no sin?",
+  "choices": [
+   "Moses",
+   "Christ",
+   "The apostles",
+   "Adam"
+  ],
+  "answer": 1,
+  "explanation": "For he hath made him to be sin for us, who knew no sin.",
+  "ref": "2 Corinthians 5:21"
+ },
+ {
+  "id": "2-corinthians-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whilst we are at home in the body, from whom are we absent?",
+  "choices": [
+   "The church",
+   "The Lord",
+   "The world",
+   "The saints"
+  ],
+  "answer": 1,
+  "explanation": "Whilst we are at home in the body, we are absent from the Lord.",
+  "ref": "2 Corinthians 5:6"
+ },
+ {
+  "id": "2-corinthians-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Where is the building of God, eternal?",
+  "choices": [
+   "In Jerusalem",
+   "In Corinth",
+   "In the wilderness",
+   "In the heavens"
+  ],
+  "answer": 3,
+  "explanation": "We have a building of God, an house not made with hands, eternal in the heavens.",
+  "ref": "2 Corinthians 5:1"
+ },
+ {
+  "id": "2-corinthians-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what do the apostles groan, earnestly desiring to be clothed upon?",
+  "choices": [
+   "A robe of gold",
+   "The law of God",
+   "The glory of Moses",
+   "Their house which is from heaven"
+  ],
+  "answer": 3,
+  "explanation": "In this we groan, earnestly desiring to be clothed upon with our house which is from heaven.",
+  "ref": "2 Corinthians 5:2"
+ },
+ {
+  "id": "2-corinthians-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul wants mortality to be swallowed up of what?",
+  "choices": [
+   "Death",
+   "Glory",
+   "Judgment",
+   "Life"
+  ],
+  "answer": 3,
+  "explanation": "That mortality might be swallowed up of life.",
+  "ref": "2 Corinthians 5:4"
+ },
+ {
+  "id": "2-corinthians-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whether present or absent, what does Paul say they labour to be?",
+  "choices": [
+   "Free from the law",
+   "Known to all men",
+   "Rich in works",
+   "Accepted of him"
+  ],
+  "answer": 3,
+  "explanation": "Wherefore we labour, that, whether present or absent, we may be accepted of him.",
+  "ref": "2 Corinthians 5:9"
+ },
+ {
+  "id": "2-corinthians-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to what shall every one receive the things done in his body?",
+  "choices": [
+   "His age",
+   "His wealth",
+   "His rank",
+   "That he hath done, good or bad"
+  ],
+  "answer": 3,
+  "explanation": "That every one may receive the things done in his body, according to that he hath done, whether it be good or bad.",
+  "ref": "2 Corinthians 5:10"
+ },
+ {
+  "id": "2-corinthians-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Knowing the terror of the Lord, what do the apostles do?",
+  "choices": [
+   "Hide away",
+   "Pray in silence",
+   "Flee the cities",
+   "Persuade men"
+  ],
+  "answer": 3,
+  "explanation": "Knowing therefore the terror of the Lord, we persuade men.",
+  "ref": "2 Corinthians 5:11"
+ },
+ {
+  "id": "2-corinthians-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul judges that if one died for all, then were all what?",
+  "choices": [
+   "Saved",
+   "Forgiven",
+   "Judged",
+   "Dead"
+  ],
+  "answer": 3,
+  "explanation": "We thus judge that if one died for all, then were all dead.",
+  "ref": "2 Corinthians 5:14"
+ },
+ {
+  "id": "2-corinthians-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Paul says Christ died for all, that those who live should live unto whom?",
+  "choices": [
+   "Themselves",
+   "The apostles",
+   "The law",
+   "Him which died for them, and rose again"
+  ],
+  "answer": 3,
+  "explanation": "That they which live should not henceforth live unto themselves, but unto him which died for them, and rose again.",
+  "ref": "2 Corinthians 5:15"
+ },
+ {
+  "id": "2-corinthians-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says God was in Christ, reconciling whom unto himself?",
+  "choices": [
+   "Israel",
+   "The apostles",
+   "The church only",
+   "The world"
+  ],
+  "answer": 3,
+  "explanation": "God was in Christ, reconciling the world unto himself.",
+  "ref": "2 Corinthians 5:19"
+ },
+ {
+  "id": "2-corinthians-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God not impute to them, in reconciling the world?",
+  "choices": [
+   "Their works",
+   "Their ignorance",
+   "Their poverty",
+   "Their trespasses"
+  ],
+  "answer": 3,
+  "explanation": "Not imputing their trespasses unto them.",
+  "ref": "2 Corinthians 5:19"
+ },
+ {
+  "id": "2-corinthians-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Praying in Christ's stead, what does Paul beg them to be?",
+  "choices": [
+   "Judged by God",
+   "Separate from the world",
+   "Faithful to the law",
+   "Reconciled to God"
+  ],
+  "answer": 3,
+  "explanation": "We pray you in Christ's stead, be ye reconciled to God.",
+  "ref": "2 Corinthians 5:20"
+ },
+ {
+  "id": "2-corinthians-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say are become new, when any man is in Christ?",
+  "choices": [
+   "Only his name",
+   "Only his works",
+   "Only his home",
+   "All things"
+  ],
+  "answer": 3,
+  "explanation": "If any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.",
+  "ref": "2 Corinthians 5:17"
+ },
+ {
+  "id": "2-corinthians-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says we are willing rather to be absent from the body and present with whom?",
+  "choices": [
+   "The church",
+   "The apostles",
+   "The saints",
+   "The Lord"
+  ],
+  "answer": 3,
+  "explanation": "We are willing rather to be absent from the body, and to be present with the Lord.",
+  "ref": "2 Corinthians 5:8"
+ },
+ {
+  "id": "2-corinthians-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says that being clothed, we shall not be found what?",
+  "choices": [
+   "Dead",
+   "Lost",
+   "Alone",
+   "Naked"
+  ],
+  "answer": 3,
+  "explanation": "If so be that being clothed we shall not be found naked.",
+  "ref": "2 Corinthians 5:3"
+ },
+ {
+  "id": "2-corinthians-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say those in this tabernacle do, being burdened?",
+  "choices": [
+   "Rejoice",
+   "Rest",
+   "Sleep",
+   "Groan"
+  ],
+  "answer": 3,
+  "explanation": "We that are in this tabernacle do groan, being burdened.",
+  "ref": "2 Corinthians 5:4"
+ },
+ {
+  "id": "2-corinthians-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says he gives the Corinthians occasion to glory, that they may answer those who glory in what?",
+  "choices": [
+   "Wealth, and not in works",
+   "Law, and not in grace",
+   "Strength, and not in wisdom",
+   "Appearance, and not in heart"
+  ],
+  "answer": 3,
+  "explanation": "That ye may have somewhat to answer them which glory in appearance, and not in heart.",
+  "ref": "2 Corinthians 5:12"
+ },
+ {
+  "id": "2-corinthians-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says if he is beside himself, it is to whom?",
+  "choices": [
+   "The Corinthians",
+   "Titus",
+   "The elders",
+   "God"
+  ],
+  "answer": 3,
+  "explanation": "For whether we be beside ourselves, it is to God: or whether we be sober, it is for your cause.",
+  "ref": "2 Corinthians 5:13"
+ },
+ {
+  "id": "2-corinthians-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says henceforth they know no man after what?",
+  "choices": [
+   "The law",
+   "The name",
+   "The work",
+   "The flesh"
+  ],
+  "answer": 3,
+  "explanation": "Wherefore henceforth know we no man after the flesh.",
+  "ref": "2 Corinthians 5:16"
+ },
+ {
+  "id": "2-corinthians-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides to God, where does Paul trust the apostles are made manifest?",
+  "choices": [
+   "In their homes",
+   "In their churches",
+   "In their cities",
+   "In their consciences"
+  ],
+  "answer": 3,
+  "explanation": "We are made manifest unto God; and I trust also are made manifest in your consciences.",
+  "ref": "2 Corinthians 5:11"
+ },
+ {
+  "id": "2-corinthians-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what has God committed the word to the apostles?",
+  "choices": [
+   "Judgment",
+   "The law",
+   "Prophecy",
+   "Reconciliation"
+  ],
+  "answer": 3,
+  "explanation": "Hath committed unto us the word of reconciliation.",
+  "ref": "2 Corinthians 5:19"
+ },
+ {
+  "id": "2-corinthians-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says God made Christ to be sin for us, that we might be made what in him?",
+  "choices": [
+   "The sons of Abraham",
+   "The temple of God",
+   "The kings of the earth",
+   "The righteousness of God"
+  ],
+  "answer": 3,
+  "explanation": "That we might be made the righteousness of God in him.",
+  "ref": "2 Corinthians 5:21"
+ },
+ {
+  "id": "2-corinthians-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who does Paul say hath reconciled us to himself by Jesus Christ?",
+  "choices": [
+   "The apostles",
+   "Moses",
+   "The church",
+   "God"
+  ],
+  "answer": 3,
+  "explanation": "All things are of God, who hath reconciled us to himself by Jesus Christ.",
+  "ref": "2 Corinthians 5:18"
+ },
+ {
+  "id": "2-corinthians-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before what must we all appear, according to Paul?",
+  "choices": [
+   "The throne of Caesar",
+   "The council of elders",
+   "The altar of God",
+   "The judgment seat of Christ"
+  ],
+  "answer": 3,
+  "explanation": "We must all appear before the judgment seat of Christ.",
+  "ref": "2 Corinthians 5:10"
+ },
+ {
+  "id": "2-corinthians-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say light has no communion with?",
+  "choices": [
+   "Unbelievers",
+   "Darkness",
+   "The law",
+   "Idols"
+  ],
+  "answer": 1,
+  "explanation": "What communion hath light with darkness?",
+  "ref": "2 Corinthians 6:14"
+ },
+ {
+  "id": "2-corinthians-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With whom does Paul ask what concord Christ hath?",
+  "choices": [
+   "Moses",
+   "Belial",
+   "The law",
+   "The Gentiles"
+  ],
+  "answer": 1,
+  "explanation": "What concord hath Christ with Belial?",
+  "ref": "2 Corinthians 6:15"
+ },
+ {
+  "id": "2-corinthians-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Lord say to those who come out from among them?",
+  "choices": [
+   "Be ye silent",
+   "Be ye separate",
+   "Be ye strong",
+   "Be ye taught"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore come out from among them, and be ye separate, saith the Lord.",
+  "ref": "2 Corinthians 6:17"
+ },
+ {
+  "id": "2-corinthians-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should the Corinthians not receive in vain?",
+  "choices": [
+   "The law of Moses",
+   "The grace of God",
+   "The word of Paul",
+   "The gift of tongues"
+  ],
+  "answer": 1,
+  "explanation": "We beseech you also that ye receive not the grace of God in vain.",
+  "ref": "2 Corinthians 6:1"
+ },
+ {
+  "id": "2-corinthians-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "God says he will dwell in them, and do what else?",
+  "choices": [
+   "Judge them",
+   "Walk in them",
+   "Hide them",
+   "Send them"
+  ],
+  "answer": 1,
+  "explanation": "I will dwell in them, and walk in them; and I will be their God, and they shall be my people.",
+  "ref": "2 Corinthians 6:16"
+ },
+ {
+  "id": "2-corinthians-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul gives no offence in any thing, that the ministry be not what?",
+  "choices": [
+   "Blamed",
+   "Hidden",
+   "Ended",
+   "Sold"
+  ],
+  "answer": 0,
+  "explanation": "Giving no offence in any thing, that the ministry be not blamed.",
+  "ref": "2 Corinthians 6:3"
+ },
+ {
+  "id": "2-corinthians-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says he is sorrowful, yet always what?",
+  "choices": [
+   "Rejoicing",
+   "Praying",
+   "Silent",
+   "Fasting"
+  ],
+  "answer": 0,
+  "explanation": "As sorrowful, yet alway rejoicing.",
+  "ref": "2 Corinthians 6:10"
+ },
+ {
+  "id": "2-corinthians-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says he is poor, yet doing what?",
+  "choices": [
+   "Making many rich",
+   "Needing no one",
+   "Building a church",
+   "Healing the sick"
+  ],
+  "answer": 0,
+  "explanation": "As poor, yet making many rich.",
+  "ref": "2 Corinthians 6:10"
+ },
+ {
+  "id": "2-corinthians-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says he is dying, and behold what?",
+  "choices": [
+   "We live",
+   "We rest",
+   "We rise",
+   "We flee"
+  ],
+  "answer": 0,
+  "explanation": "As dying, and, behold, we live.",
+  "ref": "2 Corinthians 6:9"
+ },
+ {
+  "id": "2-corinthians-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says his mouth is open, and what is enlarged?",
+  "choices": [
+   "His heart",
+   "His house",
+   "His voice",
+   "His hand"
+  ],
+  "answer": 0,
+  "explanation": "O ye Corinthians, our mouth is open unto you, our heart is enlarged.",
+  "ref": "2 Corinthians 6:11"
+ },
+ {
+  "id": "2-corinthians-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says the Corinthians are not straitened in him but in what?",
+  "choices": [
+   "Their own bowels",
+   "Their own houses",
+   "Their own hands",
+   "Their own city"
+  ],
+  "answer": 0,
+  "explanation": "Ye are not straitened in us, but ye are straitened in your own bowels.",
+  "ref": "2 Corinthians 6:12"
+ },
+ {
+  "id": "2-corinthians-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Speaking as to his children, what does Paul ask the Corinthians to be as a recompence?",
+  "choices": [
+   "Enlarged",
+   "Silent",
+   "Separate",
+   "Patient"
+  ],
+  "answer": 0,
+  "explanation": "Now for a recompence in the same, (I speak as unto my children,) be ye also enlarged.",
+  "ref": "2 Corinthians 6:13"
+ },
+ {
+  "id": "2-corinthians-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what does Paul say they approve themselves as ministers of God, listing afflictions?",
+  "choices": [
+   "Much patience",
+   "Great wealth",
+   "High office",
+   "Long study"
+  ],
+  "answer": 0,
+  "explanation": "In all things approving ourselves as the ministers of God, in much patience, in afflictions, in necessities, in distresses.",
+  "ref": "2 Corinthians 6:4"
+ },
+ {
+  "id": "2-corinthians-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul ask that righteousness has with unrighteousness?",
+  "choices": [
+   "Fellowship",
+   "Peace",
+   "Agreement",
+   "Power"
+  ],
+  "answer": 0,
+  "explanation": "What fellowship hath righteousness with unrighteousness?",
+  "ref": "2 Corinthians 6:14"
+ },
+ {
+  "id": "2-corinthians-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says he approves himself by the armour of righteousness on what?",
+  "choices": [
+   "The head and the feet",
+   "The shield and the sword",
+   "The walls and the gates",
+   "The right hand and on the left"
+  ],
+  "answer": 3,
+  "explanation": "By the armour of righteousness on the right hand and on the left.",
+  "ref": "2 Corinthians 6:7"
+ },
+ {
+  "id": "2-corinthians-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says he is as a deceiver, and yet what?",
+  "choices": [
+   "Faithful",
+   "Wise",
+   "Gentle",
+   "True"
+  ],
+  "answer": 3,
+  "explanation": "As deceivers, and yet true.",
+  "ref": "2 Corinthians 6:8"
+ },
+ {
+  "id": "2-corinthians-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says he is as unknown, and yet what?",
+  "choices": [
+   "Highly praised",
+   "Greatly feared",
+   "Soon forgotten",
+   "Well known"
+  ],
+  "answer": 3,
+  "explanation": "As unknown, and yet well known.",
+  "ref": "2 Corinthians 6:9"
+ },
+ {
+  "id": "2-corinthians-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says he is chastened, and not what?",
+  "choices": [
+   "Forsaken",
+   "Ashamed",
+   "Silenced",
+   "Killed"
+  ],
+  "answer": 3,
+  "explanation": "As chastened, and not killed.",
+  "ref": "2 Corinthians 6:9"
+ },
+ {
+  "id": "2-corinthians-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says he is as having nothing, and yet what?",
+  "choices": [
+   "Wanting nothing",
+   "Hiding nothing",
+   "Owing nothing",
+   "Possessing all things"
+  ],
+  "answer": 3,
+  "explanation": "As having nothing, and yet possessing all things.",
+  "ref": "2 Corinthians 6:10"
+ },
+ {
+  "id": "2-corinthians-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which hardship does Paul list among those he endures, along with stripes?",
+  "choices": [
+   "Shipwreck",
+   "Famine in Asia",
+   "Stoning",
+   "Imprisonments"
+  ],
+  "answer": 3,
+  "explanation": "In stripes, in imprisonments, in tumults, in labours, in watchings, in fastings.",
+  "ref": "2 Corinthians 6:5"
+ },
+ {
+  "id": "2-corinthians-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what does Paul say he commends himself, along with the Holy Ghost?",
+  "choices": [
+   "Gold and silver",
+   "The sword",
+   "Great wealth",
+   "Love unfeigned"
+  ],
+  "answer": 3,
+  "explanation": "By the Holy Ghost, by love unfeigned.",
+  "ref": "2 Corinthians 6:6"
+ },
+ {
+  "id": "2-corinthians-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Lord say he will do if they touch not the unclean thing?",
+  "choices": [
+   "Raise them",
+   "Send them",
+   "Teach them",
+   "Receive them"
+  ],
+  "answer": 3,
+  "explanation": "Touch not the unclean thing; and I will receive you.",
+  "ref": "2 Corinthians 6:17"
+ },
+ {
+  "id": "2-corinthians-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who says he will be a Father unto them, and they shall be his sons and daughters?",
+  "choices": [
+   "Moses",
+   "Paul",
+   "The elders",
+   "The Lord Almighty"
+  ],
+  "answer": 3,
+  "explanation": "And will be a Father unto you, and ye shall be my sons and daughters, saith the Lord Almighty.",
+  "ref": "2 Corinthians 6:18"
+ },
+ {
+  "id": "2-corinthians-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Paul say, when they were come there, their flesh had no rest?",
+  "choices": [
+   "Judaea",
+   "Macedonia",
+   "Asia",
+   "Troas"
+  ],
+  "answer": 1,
+  "explanation": "When we were come into Macedonia, our flesh had no rest, but we were troubled on every side.",
+  "ref": "2 Corinthians 7:5"
+ },
+ {
+  "id": "2-corinthians-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul says without were fightings, and within were what?",
+  "choices": [
+   "Doubts",
+   "Fears",
+   "Tears",
+   "Prayers"
+  ],
+  "answer": 1,
+  "explanation": "Without were fightings, within were fears.",
+  "ref": "2 Corinthians 7:5"
+ },
+ {
+  "id": "2-corinthians-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Paul say comforteth those that are cast down?",
+  "choices": [
+   "Titus",
+   "God",
+   "The Corinthians",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "God, that comforteth those that are cast down, comforted us by the coming of Titus.",
+  "ref": "2 Corinthians 7:6"
+ },
+ {
+  "id": "2-corinthians-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say they have not done to any man?",
+  "choices": [
+   "Taught him wrongly",
+   "Left him in prison",
+   "Wronged, corrupted or defrauded him",
+   "Refused him a gift"
+  ],
+  "answer": 2,
+  "explanation": "We have wronged no man, we have corrupted no man, we have defrauded no man.",
+  "ref": "2 Corinthians 7:2"
+ },
+ {
+  "id": "2-corinthians-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says the Corinthians are in his heart to do what?",
+  "choices": [
+   "Teach and rule them",
+   "Judge and correct them",
+   "Die and live with them",
+   "Send and receive them"
+  ],
+  "answer": 2,
+  "explanation": "Ye are in our hearts to die and live with you.",
+  "ref": "2 Corinthians 7:3"
+ },
+ {
+  "id": "2-corinthians-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says he is filled with comfort and exceeding joyful in what?",
+  "choices": [
+   "All their journeys",
+   "All their feasts",
+   "All their tribulation",
+   "All their victories"
+  ],
+  "answer": 2,
+  "explanation": "I am filled with comfort, I am exceeding joyful in all our tribulation.",
+  "ref": "2 Corinthians 7:4"
+ },
+ {
+  "id": "2-corinthians-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Titus tell Paul of the Corinthians, along with their mourning?",
+  "choices": [
+   "Their large gift",
+   "Their new teacher",
+   "Their earnest desire",
+   "Their fear of Rome"
+  ],
+  "answer": 2,
+  "explanation": "He told us your earnest desire, your mourning, your fervent mind toward me; so that I rejoiced the more.",
+  "ref": "2 Corinthians 7:7"
+ },
+ {
+  "id": "2-corinthians-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did Paul say he made the Corinthians sorry?",
+  "choices": [
+   "A visit",
+   "A sermon",
+   "A letter",
+   "A fast"
+  ],
+  "answer": 2,
+  "explanation": "Though I made you sorry with a letter, I do not repent.",
+  "ref": "2 Corinthians 7:8"
+ },
+ {
+  "id": "2-corinthians-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul rejoices not that they were made sorry, but that they sorrowed to what?",
+  "choices": [
+   "Silence",
+   "Judgment",
+   "Repentance",
+   "Sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "I rejoice, not that ye were made sorry, but that ye sorrowed to repentance.",
+  "ref": "2 Corinthians 7:9"
+ },
+ {
+  "id": "2-corinthians-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says godly sorrow works repentance to what?",
+  "choices": [
+   "A longer life",
+   "A greater gift",
+   "Salvation not to be repented of",
+   "A new law"
+  ],
+  "answer": 2,
+  "explanation": "Godly sorrow worketh repentance to salvation not to be repented of.",
+  "ref": "2 Corinthians 7:10"
+ },
+ {
+  "id": "2-corinthians-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose spirit was refreshed by the Corinthians?",
+  "choices": [
+   "Timothy",
+   "Paul",
+   "Titus",
+   "Silvanus"
+  ],
+  "answer": 2,
+  "explanation": "We joyed for the joy of Titus, because his spirit was refreshed by you all.",
+  "ref": "2 Corinthians 7:13"
+ },
+ {
+  "id": "2-corinthians-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these did Paul say godly sorrow worked in the Corinthians?",
+  "choices": [
+   "Hatred of Paul",
+   "Love of money",
+   "Clearing of themselves",
+   "Silence"
+  ],
+  "answer": 2,
+  "explanation": "What carefulness it wrought in you, yea, what clearing of yourselves, yea, what indignation, yea, what fear.",
+  "ref": "2 Corinthians 7:11"
+ },
+ {
+  "id": "2-corinthians-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says the sorrow of the world worketh what?",
+  "choices": [
+   "Anger",
+   "Shame",
+   "Death",
+   "Silence"
+  ],
+  "answer": 2,
+  "explanation": "The sorrow of the world worketh death.",
+  "ref": "2 Corinthians 7:10"
+ },
+ {
+  "id": "2-corinthians-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul said he did not repent of his letter, though he did what?",
+  "choices": [
+   "Rejoice",
+   "Hesitate",
+   "Repent",
+   "Weep"
+  ],
+  "answer": 2,
+  "explanation": "Though I made you sorry with a letter, I do not repent, though I did repent.",
+  "ref": "2 Corinthians 7:8"
+ },
+ {
+  "id": "2-corinthians-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says they were made sorry after a godly manner so they might receive what from him in nothing?",
+  "choices": [
+   "Blessing",
+   "Teaching",
+   "Damage",
+   "Debt"
+  ],
+  "answer": 2,
+  "explanation": "Ye were made sorry after a godly manner, that ye might receive damage by us in nothing.",
+  "ref": "2 Corinthians 7:9"
+ },
+ {
+  "id": "2-corinthians-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says he wrote that what might appear to them in the sight of God?",
+  "choices": [
+   "Their anger at them",
+   "Their fear of them",
+   "Their care for them",
+   "Their need of them"
+  ],
+  "answer": 2,
+  "explanation": "That our care for you in the sight of God might appear unto you.",
+  "ref": "2 Corinthians 7:12"
+ },
+ {
+  "id": "2-corinthians-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Before whom had Paul boasted of the Corinthians, and found it true?",
+  "choices": [
+   "Timothy",
+   "The elders",
+   "Titus",
+   "Silvanus"
+  ],
+  "answer": 2,
+  "explanation": "If I have boasted any thing to him of you, I am not ashamed; our boasting, which I made before Titus, is found a truth.",
+  "ref": "2 Corinthians 7:14"
+ },
+ {
+  "id": "2-corinthians-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the Corinthians receive Titus?",
+  "choices": [
+   "With gifts",
+   "With feasting",
+   "With fear and trembling",
+   "With silence"
+  ],
+  "answer": 2,
+  "explanation": "Whilst he remembereth the obedience of you all, how with fear and trembling ye received him.",
+  "ref": "2 Corinthians 7:15"
+ },
+ {
+  "id": "2-corinthians-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say he rejoices that he has in the Corinthians in all things?",
+  "choices": [
+   "Fear",
+   "Doubt",
+   "Confidence",
+   "Debt"
+  ],
+  "answer": 2,
+  "explanation": "I rejoice therefore that I have confidence in you in all things.",
+  "ref": "2 Corinthians 7:16"
  }
 ]
