@@ -4062,5 +4062,165 @@
   "answer": 0,
   "explanation": "Mordecai used his position for the good and peace of his people.",
   "ref": "Esther 10:3"
+ },
+ {
+  "id": "esther-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Which king laid a tribute upon the land and upon the isles of the sea?",
+  "choices": [
+   "Ahasuerus",
+   "Darius",
+   "Cyrus",
+   "Artaxerxes"
+  ],
+  "answer": 0,
+  "explanation": "The king Ahasuerus laid a tribute upon the land, and upon the isles of the sea.",
+  "ref": "Esther 10:1"
+ },
+ {
+  "id": "esther-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Mordecai's greatness is told alongside the acts of the king's what?",
+  "choices": [
+   "Power and might",
+   "Wars and victories",
+   "Feasts and banquets",
+   "Laws and judgements"
+  ],
+  "answer": 0,
+  "explanation": "All the acts of his power and of his might, and the declaration of the greatness of Mordecai, are written in the chronicles.",
+  "ref": "Esther 10:2"
+ },
+ {
+  "id": "esther-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "The chronicles that record Mordecai's greatness belong to the kings of which two kingdoms?",
+  "choices": [
+   "Media and Persia",
+   "Judah and Israel",
+   "Babylon and Assyria",
+   "Egypt and Ethiopia"
+  ],
+  "answer": 0,
+  "explanation": "They are written in the book of the chronicles of the kings of Media and Persia.",
+  "ref": "Esther 10:2"
+ },
+ {
+  "id": "esther-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "By whom was Mordecai accepted?",
+  "choices": [
+   "The multitude of his brethren",
+   "The priests of the temple",
+   "The captains of Persia",
+   "The queens of the palace"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai the Jew was great among the Jews, and accepted of the multitude of his brethren.",
+  "ref": "Esther 10:3"
+ },
+ {
+  "id": "esther-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the book say the king had done for Mordecai?",
+  "choices": [
+   "Advanced him to greatness",
+   "Sent him to Judah",
+   "Made him high priest",
+   "Gave him Haman's wife"
+  ],
+  "answer": 0,
+  "explanation": "The declaration of the greatness of Mordecai, whereunto the king advanced him.",
+  "ref": "Esther 10:2"
+ },
+ {
+  "id": "esther-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Mordecai said to be seeking for his people?",
+  "choices": [
+   "Their wealth",
+   "Their return to Judah",
+   "Their freedom from tribute",
+   "Their own king"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai was seeking the wealth of his people, and speaking peace to all his seed.",
+  "ref": "Esther 10:3"
+ },
+ {
+  "id": "esther-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did Mordecai speak peace?",
+  "choices": [
+   "All his seed",
+   "The king's princes",
+   "The rulers of the provinces",
+   "The isles of the sea"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai was speaking peace to all his seed.",
+  "ref": "Esther 10:3"
+ },
+ {
+  "id": "esther-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Among which people was Mordecai said to be great?",
+  "choices": [
+   "The Jews",
+   "The Medes",
+   "The Persians",
+   "The Ethiopians"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai the Jew was next unto king Ahasuerus, and great among the Jews.",
+  "ref": "Esther 10:3"
+ },
+ {
+  "id": "esther-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the king lay a tribute besides the land?",
+  "choices": [
+   "Upon the isles of the sea",
+   "Upon the cities of Judah",
+   "Upon the wilderness",
+   "Upon the temple"
+  ],
+  "answer": 0,
+  "explanation": "The king Ahasuerus laid a tribute upon the land, and upon the isles of the sea.",
+  "ref": "Esther 10:1"
+ },
+ {
+  "id": "esther-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Mordecai the Jew said to be next unto?",
+  "choices": [
+   "King Ahasuerus",
+   "Esther the queen",
+   "Haman's successor",
+   "The chief eunuch"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai the Jew was next unto king Ahasuerus, and great among the Jews.",
+  "ref": "Esther 10:3"
  }
 ]
