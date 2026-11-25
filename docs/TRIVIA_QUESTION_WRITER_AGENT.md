@@ -43,8 +43,9 @@ how many of each level to write. For each chapter, in order:
    question's id; give a replacement a new id. Note each replacement in the
    commit message in a few words.
 4. **Write the missing questions** until the chapter has its target of each
-   level: **15, or the chapter's number of verses if that is smaller (never
-   under 5)**. `next` and `check` print the target. A short chapter
+   level: **15, or half the chapter's number of verses (rounded up) if that
+   is smaller, never under 5**. A 30-verse chapter gets 15 per level, a
+   14-verse chapter 7. `next` and `check` print the target. A short chapter
    (Revelation 15 has 8 verses, Psalm 117 has 2) gets fewer, better
    questions, never filler: Louis, "20 to 25 good real questions are
    enough" (2026-11-25). Filler means asking different blanks of the same
