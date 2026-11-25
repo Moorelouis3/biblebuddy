@@ -14228,16 +14228,16 @@
   "chapter": 29,
   "level": "beginner",
   "category": "keyword",
-  "question": "How is Hezekiah's reign introduced spiritually?",
+  "question": "How old was Hezekiah when he began to reign?",
   "choices": [
-   "He did evil",
-   "He followed Ahaz exactly",
-   "He did that which was right in the sight of the Lord",
-   "He ignored the temple"
+   "Sixteen",
+   "Twenty",
+   "Twenty-five",
+   "Twenty-nine"
   ],
   "answer": 2,
-  "explanation": "Hezekiah is commended at the start of his reign.",
-  "ref": "2 Chronicles 29:2"
+  "explanation": "Hezekiah began to reign when he was five and twenty years old.",
+  "ref": "2 Chronicles 29:1"
  },
  {
   "id": "old-2-chronicles-29-2",
@@ -14276,15 +14276,15 @@
   "chapter": 29,
   "level": "beginner",
   "category": "keyword",
-  "question": "How long did the cleansing and sanctifying of the temple take?",
+  "question": "On which day of the first month did they make an end of cleansing the house?",
   "choices": [
-   "3 days",
-   "8 days",
-   "16 days",
-   "40 days"
+   "The eighth day",
+   "The first day",
+   "The sixteenth day",
+   "The twenty-fourth day"
   ],
   "answer": 2,
-  "explanation": "The work of cleansing and sanctifying took sixteen days total.",
+  "explanation": "In the sixteenth day of the first month they made an end.",
   "ref": "2 Chronicles 29:17"
  },
  {
@@ -14302,6 +14302,646 @@
   "answer": 3,
   "explanation": "Sacrifice and praise resumed together.",
   "ref": "2 Chronicles 29:27"
+ },
+ {
+  "id": "2-chronicles-29-e-01",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who gathered the priests and Levites into the east street?",
+  "choices": [
+   "Hezekiah",
+   "Ahaz",
+   "Zechariah",
+   "Asaph"
+  ],
+  "answer": 0,
+  "explanation": "Hezekiah brought in the priests and the Levites and gathered them into the east street.",
+  "ref": "2 Chronicles 29:4"
+ },
+ {
+  "id": "2-chronicles-29-e-02",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah do to the doors of the house of the LORD in the first month?",
+  "choices": [
+   "Shut them up",
+   "Opened and repaired them",
+   "Covered them with gold",
+   "Burned them"
+  ],
+  "answer": 1,
+  "explanation": "He opened the doors of the house of the LORD, and repaired them.",
+  "ref": "2 Chronicles 29:3"
+ },
+ {
+  "id": "2-chronicles-29-e-03",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "What was the name of Hezekiah's mother?",
+  "choices": [
+   "Hephzibah",
+   "Athaliah",
+   "Abijah",
+   "Jerusha"
+  ],
+  "answer": 2,
+  "explanation": "His mother's name was Abijah, the daughter of Zechariah.",
+  "ref": "2 Chronicles 29:1"
+ },
+ {
+  "id": "2-chronicles-29-e-04",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king had cast away the vessels of the temple in his transgression?",
+  "choices": [
+   "Jotham",
+   "Uzziah",
+   "Manasseh",
+   "Ahaz"
+  ],
+  "answer": 3,
+  "explanation": "All the vessels which king Ahaz in his reign did cast away in his transgression were prepared and sanctified.",
+  "ref": "2 Chronicles 29:19"
+ },
+ {
+  "id": "2-chronicles-29-e-05",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "place",
+  "question": "Into which brook did the Levites carry the uncleanness?",
+  "choices": [
+   "Kidron",
+   "Cherith",
+   "Jordan",
+   "Kishon"
+  ],
+  "answer": 0,
+  "explanation": "The Levites took the uncleanness to carry it out abroad into the brook Kidron.",
+  "ref": "2 Chronicles 29:16"
+ },
+ {
+  "id": "2-chronicles-29-e-06",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which instruments did the Levites stand with in the house of the LORD?",
+  "choices": [
+   "Flutes and drums",
+   "Cymbals, psalteries and harps",
+   "Trumpets and horns",
+   "Pipes and timbrels"
+  ],
+  "answer": 1,
+  "explanation": "He set the Levites in the house of the LORD with cymbals, with psalteries, and with harps.",
+  "ref": "2 Chronicles 29:25"
+ },
+ {
+  "id": "2-chronicles-29-e-07",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who helped the priests when there were too few to flay the burnt offerings?",
+  "choices": [
+   "The rulers of the city",
+   "The singers of Asaph",
+   "The Levites",
+   "The congregation"
+  ],
+  "answer": 2,
+  "explanation": "The priests were too few, so their brethren the Levites did help them.",
+  "ref": "2 Chronicles 29:34"
+ },
+ {
+  "id": "2-chronicles-29-e-08",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Hezekiah and all the people rejoice at the end of the chapter?",
+  "choices": [
+   "The enemy had fled",
+   "The rain had come",
+   "The temple was rebuilt",
+   "God had prepared the people"
+  ],
+  "answer": 3,
+  "explanation": "Hezekiah rejoiced, and all the people, that God had prepared the people: for the thing was done suddenly.",
+  "ref": "2 Chronicles 29:36"
+ },
+ {
+  "id": "2-chronicles-29-e-09",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the priests go to cleanse the house of the LORD?",
+  "choices": [
+   "The inner part of the house",
+   "The east street",
+   "The court of the king",
+   "The porch of the palace"
+  ],
+  "answer": 0,
+  "explanation": "The priests went into the inner part of the house of the LORD, to cleanse it.",
+  "ref": "2 Chronicles 29:16"
+ },
+ {
+  "id": "2-chronicles-29-e-10",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priests do with the blood of the killed animals?",
+  "choices": [
+   "Poured it into the brook",
+   "Sprinkled it on the altar",
+   "Carried it to the king",
+   "Buried it in the court"
+  ],
+  "answer": 1,
+  "explanation": "The priests received the blood, and sprinkled it on the altar.",
+  "ref": "2 Chronicles 29:22"
+ },
+ {
+  "id": "2-chronicles-29-m-01",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Hezekiah reign in Jerusalem?",
+  "choices": [
+   "Sixteen",
+   "Thirty-one",
+   "Twenty-nine",
+   "Fifty-five"
+  ],
+  "answer": 2,
+  "explanation": "He reigned nine and twenty years in Jerusalem.",
+  "ref": "2 Chronicles 29:1"
+ },
+ {
+  "id": "2-chronicles-29-m-02",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month of his first year did Hezekiah open the temple doors?",
+  "choices": [
+   "The second month",
+   "The seventh month",
+   "The tenth month",
+   "The first month"
+  ],
+  "answer": 3,
+  "explanation": "He in the first year of his reign, in the first month, opened the doors of the house of the LORD.",
+  "ref": "2 Chronicles 29:3"
+ },
+ {
+  "id": "2-chronicles-29-m-03",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hezekiah tell the Levites to carry forth out of the holy place?",
+  "choices": [
+   "The filthiness",
+   "The shewbread",
+   "The idols of gold",
+   "The ashes of the altar"
+  ],
+  "answer": 0,
+  "explanation": "Sanctify the house of the LORD, and carry forth the filthiness out of the holy place.",
+  "ref": "2 Chronicles 29:5"
+ },
+ {
+  "id": "2-chronicles-29-m-04",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the fathers done to the lamps?",
+  "choices": [
+   "Stolen them",
+   "Put them out",
+   "Hidden them in the brook",
+   "Given them to Ahaz"
+  ],
+  "answer": 1,
+  "explanation": "They shut up the doors of the porch, and put out the lamps.",
+  "ref": "2 Chronicles 29:7"
+ },
+ {
+  "id": "2-chronicles-29-m-05",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had happened to the sons, daughters and wives of Judah, according to Hezekiah?",
+  "choices": [
+   "They had fled to Egypt",
+   "They had died of plague",
+   "They were in captivity",
+   "They were scattered to Dan"
+  ],
+  "answer": 2,
+  "explanation": "Our fathers have fallen by the sword, and our sons and our daughters and our wives are in captivity.",
+  "ref": "2 Chronicles 29:9"
+ },
+ {
+  "id": "2-chronicles-29-m-06",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hezekiah say was in his heart to make with the LORD?",
+  "choices": [
+   "A new altar",
+   "A treaty with Assyria",
+   "A vow of silence",
+   "A covenant"
+  ],
+  "answer": 3,
+  "explanation": "It is in mine heart to make a covenant with the LORD God of Israel, that his fierce wrath may turn away from us.",
+  "ref": "2 Chronicles 29:10"
+ },
+ {
+  "id": "2-chronicles-29-m-07",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hezekiah say the LORD had chosen the Levites to do?",
+  "choices": [
+   "Stand before him and serve him",
+   "Lead the armies of Judah",
+   "Judge the cities",
+   "Guard the king's house"
+  ],
+  "answer": 0,
+  "explanation": "The LORD hath chosen you to stand before him, to serve him, and that ye should minister unto him, and burn incense.",
+  "ref": "2 Chronicles 29:11"
+ },
+ {
+  "id": "2-chronicles-29-m-08",
+  "chapter": 29,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the priests bring the uncleanness before the Levites took it away?",
+  "choices": [
+   "Into the east street",
+   "Into the court of the house of the LORD",
+   "Into the porch of the palace",
+   "Into the brook Kidron"
+  ],
+  "answer": 1,
+  "explanation": "They brought out all the uncleanness into the court of the house of the LORD, and the Levites took it.",
+  "ref": "2 Chronicles 29:16"
+ },
+ {
+  "id": "2-chronicles-29-m-09",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the altar of burnt offering, which table did they say they had cleansed?",
+  "choices": [
+   "The table of the king",
+   "The table of the princes",
+   "The shewbread table",
+   "The table of the covenant"
+  ],
+  "answer": 2,
+  "explanation": "We have cleansed the altar of burnt offering, and the shewbread table, with all the vessels thereof.",
+  "ref": "2 Chronicles 29:18"
+ },
+ {
+  "id": "2-chronicles-29-m-10",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many bullocks were brought for the sin offering?",
+  "choices": [
+   "Twelve",
+   "Ten",
+   "Seventy",
+   "Seven"
+  ],
+  "answer": 3,
+  "explanation": "They brought seven bullocks, and seven rams, and seven lambs, and seven he goats.",
+  "ref": "2 Chronicles 29:21"
+ },
+ {
+  "id": "2-chronicles-29-m-11",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the kingdom and Judah, what was the sin offering for?",
+  "choices": [
+   "The sanctuary",
+   "The priests",
+   "The strangers",
+   "The princes"
+  ],
+  "answer": 0,
+  "explanation": "A sin offering for the kingdom, and for the sanctuary, and for Judah.",
+  "ref": "2 Chronicles 29:21"
+ },
+ {
+  "id": "2-chronicles-29-m-12",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the congregation do to the he goats before the king?",
+  "choices": [
+   "Led them into the wilderness",
+   "Laid their hands upon them",
+   "Washed them in the brook",
+   "Counted them"
+  ],
+  "answer": 1,
+  "explanation": "They brought forth the he goats before the king and the congregation; and they laid their hands upon them.",
+  "ref": "2 Chronicles 29:23"
+ },
+ {
+  "id": "2-chronicles-29-m-13",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whom did the king command the burnt offering and sin offering to be made?",
+  "choices": [
+   "Judah only",
+   "The priests only",
+   "All Israel",
+   "The house of David"
+  ],
+  "answer": 2,
+  "explanation": "The king commanded that the burnt offering and the sin offering should be made for all Israel.",
+  "ref": "2 Chronicles 29:24"
+ },
+ {
+  "id": "2-chronicles-29-m-14",
+  "chapter": 29,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose words did Hezekiah tell the Levites to sing praise with, along with Asaph's?",
+  "choices": [
+   "Solomon's",
+   "Moses'",
+   "Nathan's",
+   "David's"
+  ],
+  "answer": 3,
+  "explanation": "Hezekiah commanded the Levites to sing praise unto the LORD with the words of David, and of Asaph the seer.",
+  "ref": "2 Chronicles 29:30"
+ },
+ {
+  "id": "2-chronicles-29-m-15",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why could the priests not flay all the burnt offerings?",
+  "choices": [
+   "The priests were too few",
+   "They had not sanctified themselves",
+   "The knives were missing",
+   "The king forbade it"
+  ],
+  "answer": 0,
+  "explanation": "The priests were too few, so that they could not flay all the burnt offerings.",
+  "ref": "2 Chronicles 29:34"
+ },
+ {
+  "id": "2-chronicles-29-h-01",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose daughter was Hezekiah's mother Abijah?",
+  "choices": [
+   "Asaph",
+   "Zechariah",
+   "Heman",
+   "Jeduthun"
+  ],
+  "answer": 1,
+  "explanation": "His mother's name was Abijah, the daughter of Zechariah.",
+  "ref": "2 Chronicles 29:1"
+ },
+ {
+  "id": "2-chronicles-29-h-02",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "Mahath, one of the Levites who arose, was the son of whom?",
+  "choices": [
+   "Azariah",
+   "Abdi",
+   "Amasai",
+   "Zimmah"
+  ],
+  "answer": 2,
+  "explanation": "Then the Levites arose, Mahath the son of Amasai.",
+  "ref": "2 Chronicles 29:12"
+ },
+ {
+  "id": "2-chronicles-29-h-03",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two men are named as sons of Asaph among the Levites who arose?",
+  "choices": [
+   "Jehiel and Shimei",
+   "Shemaiah and Uzziel",
+   "Shimri and Jeiel",
+   "Zechariah and Mattaniah"
+  ],
+  "answer": 3,
+  "explanation": "Of the sons of Asaph; Zechariah, and Mattaniah.",
+  "ref": "2 Chronicles 29:13"
+ },
+ {
+  "id": "2-chronicles-29-h-04",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what did Hezekiah say the LORD had delivered Judah and Jerusalem?",
+  "choices": [
+   "Trouble, astonishment and hissing",
+   "Famine, plague and sword",
+   "Exile, shame and silence",
+   "Fire, drought and locusts"
+  ],
+  "answer": 0,
+  "explanation": "He hath delivered them to trouble, to astonishment, and to hissing, as ye see with your eyes.",
+  "ref": "2 Chronicles 29:8"
+ },
+ {
+  "id": "2-chronicles-29-h-05",
+  "chapter": 29,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Hezekiah gather the priests and Levites together?",
+  "choices": [
+   "Into the porch of the temple",
+   "Into the east street",
+   "Into the court of the palace",
+   "Into the valley of Hinnom"
+  ],
+  "answer": 1,
+  "explanation": "He brought in the priests and the Levites, and gathered them together into the east street.",
+  "ref": "2 Chronicles 29:4"
+ },
+ {
+  "id": "2-chronicles-29-h-06",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day of the first month did they come to the porch of the LORD?",
+  "choices": [
+   "The third day",
+   "The twelfth day",
+   "The eighth day",
+   "The sixteenth day"
+  ],
+  "answer": 2,
+  "explanation": "On the eighth day of the month came they to the porch of the LORD.",
+  "ref": "2 Chronicles 29:17"
+ },
+ {
+  "id": "2-chronicles-29-h-07",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many bullocks did the congregation bring as burnt offerings?",
+  "choices": [
+   "Six hundred",
+   "A hundred",
+   "Two hundred",
+   "Threescore and ten"
+  ],
+  "answer": 3,
+  "explanation": "The number of the burnt offerings was threescore and ten bullocks, an hundred rams, and two hundred lambs.",
+  "ref": "2 Chronicles 29:32"
+ },
+ {
+  "id": "2-chronicles-29-h-08",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many lambs did the congregation bring as burnt offerings?",
+  "choices": [
+   "Two hundred",
+   "A hundred",
+   "Seven",
+   "Three thousand"
+  ],
+  "answer": 0,
+  "explanation": "The burnt offerings were threescore and ten bullocks, an hundred rams, and two hundred lambs.",
+  "ref": "2 Chronicles 29:32"
+ },
+ {
+  "id": "2-chronicles-29-h-09",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many oxen were among the consecrated things?",
+  "choices": [
+   "Seventy",
+   "Six hundred",
+   "Three thousand",
+   "Two hundred"
+  ],
+  "answer": 1,
+  "explanation": "The consecrated things were six hundred oxen and three thousand sheep.",
+  "ref": "2 Chronicles 29:33"
+ },
+ {
+  "id": "2-chronicles-29-h-10",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is named with Nathan the prophet as one by whom David's commandment about the instruments came?",
+  "choices": [
+   "Asaph the seer",
+   "Jeduthun",
+   "Gad the king's seer",
+   "Azariah"
+  ],
+  "answer": 2,
+  "explanation": "According to the commandment of David, and of Gad the king's seer, and Nathan the prophet.",
+  "ref": "2 Chronicles 29:25"
+ },
+ {
+  "id": "2-chronicles-29-h-11",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "Who stood with the trumpets while the Levites stood with David's instruments?",
+  "choices": [
+   "The princes",
+   "The singers of Heman",
+   "The rulers of the city",
+   "The priests"
+  ],
+  "answer": 3,
+  "explanation": "The Levites stood with the instruments of David, and the priests with the trumpets.",
+  "ref": "2 Chronicles 29:26"
+ },
+ {
+  "id": "2-chronicles-29-h-12",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "Who were more upright in heart to sanctify themselves, the priests or the Levites?",
+  "choices": [
+   "The Levites",
+   "The priests",
+   "The rulers",
+   "The princes"
+  ],
+  "answer": 0,
+  "explanation": "The Levites were more upright in heart to sanctify themselves than the priests.",
+  "ref": "2 Chronicles 29:34"
+ },
+ {
+  "id": "2-chronicles-29-h-13",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What accompanied the fat of the peace offerings for every burnt offering?",
+  "choices": [
+   "Meat offerings",
+   "Drink offerings",
+   "Incense",
+   "Firstfruits"
+  ],
+  "answer": 1,
+  "explanation": "The burnt offerings were in abundance, with the fat of the peace offerings, and the drink offerings for every burnt offering.",
+  "ref": "2 Chronicles 29:35"
+ },
+ {
+  "id": "2-chronicles-29-h-14",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hezekiah invite the congregation to bring into the house of the LORD?",
+  "choices": [
+   "Gold and silver",
+   "Firstfruits and tithes",
+   "Sacrifices and thank offerings",
+   "Oil and wine"
+  ],
+  "answer": 2,
+  "explanation": "Come near and bring sacrifices and thank offerings into the house of the LORD.",
+  "ref": "2 Chronicles 29:31"
+ },
+ {
+  "id": "2-chronicles-29-h-15",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the fathers turned away from the habitation of the LORD?",
+  "choices": [
+   "Their eyes",
+   "Their offerings",
+   "Their children",
+   "Their faces"
+  ],
+  "answer": 3,
+  "explanation": "They have turned away their faces from the habitation of the LORD, and turned their backs.",
+  "ref": "2 Chronicles 29:6"
  },
  {
   "id": "old-2-chronicles-30-1",
