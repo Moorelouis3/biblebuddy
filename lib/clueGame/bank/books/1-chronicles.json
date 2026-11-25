@@ -2832,6 +2832,550 @@
   "ref": "1 Chronicles 5:20"
  },
  {
+  "id": "1-chronicles-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose sons received Reuben's birthright?",
+  "choices": [
+   "Joseph's",
+   "Levi's",
+   "Judah's",
+   "Benjamin's"
+  ],
+  "answer": 0,
+  "explanation": "Forasmuch as he defiled his father's bed, his birthright was given unto the sons of Joseph the son of Israel.",
+  "ref": "1 Chronicles 5:1"
+ },
+ {
+  "id": "1-chronicles-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Assyria carried Beerah, prince of the Reubenites, away captive?",
+  "choices": [
+   "Jotham",
+   "Hezekiah",
+   "Tilgath-pilneser",
+   "Pul"
+  ],
+  "answer": 2,
+  "explanation": "Beerah, whom Tilgath-pilneser king of Assyria carried away captive: he was prince of the Reubenites.",
+  "ref": "1 Chronicles 5:6"
+ },
+ {
+  "id": "1-chronicles-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which land did the Reubenites' cattle multiply?",
+  "choices": [
+   "Sharon",
+   "Egypt",
+   "Gilead",
+   "Halah"
+  ],
+  "answer": 2,
+  "explanation": "Their cattle were multiplied in the land of Gilead.",
+  "ref": "1 Chronicles 5:9"
+ },
+ {
+  "id": "1-chronicles-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did God hear the tribes in battle against the Hagarites?",
+  "choices": [
+   "They had a mighty king",
+   "They had a large army",
+   "They put their trust in him",
+   "They offered a great sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "They cried to God in the battle, and he was intreated of them; because they put their trust in him.",
+  "ref": "1 Chronicles 5:20"
+ },
+ {
+  "id": "1-chronicles-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the tribes transgress against the God of their fathers?",
+  "choices": [
+   "They killed a prophet",
+   "They worshipped the gods of the people of the land",
+   "They broke the Sabbath",
+   "They refused to go to war"
+  ],
+  "answer": 1,
+  "explanation": "They went a whoring after the gods of the people of the land, whom God destroyed before them.",
+  "ref": "1 Chronicles 5:25"
+ },
+ {
+  "id": "1-chronicles-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe dwelt over against the Reubenites in Bashan?",
+  "choices": [
+   "Dan",
+   "Gad",
+   "Naphtali",
+   "Asher"
+  ],
+  "answer": 1,
+  "explanation": "The children of Gad dwelt over against them, in the land of Bashan unto Salchah.",
+  "ref": "1 Chronicles 5:11"
+ },
+ {
+  "id": "1-chronicles-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did many of the Hagarites fall down slain?",
+  "choices": [
+   "They had no weapons",
+   "The war was of God",
+   "They were surprised at night",
+   "They were afraid"
+  ],
+  "answer": 1,
+  "explanation": "There fell down many slain, because the war was of God.",
+  "ref": "1 Chronicles 5:22"
+ },
+ {
+  "id": "1-chronicles-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which half tribe joined Reuben and Gad in the war?",
+  "choices": [
+   "Ephraim",
+   "Manasseh",
+   "Simeon",
+   "Issachar"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Reuben, and the Gadites, and half the tribe of Manasseh.",
+  "ref": "1 Chronicles 5:18"
+ },
+ {
+  "id": "1-chronicles-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was prince of the Reubenites?",
+  "choices": [
+   "Jeiel",
+   "Beerah",
+   "Bela",
+   "Joel"
+  ],
+  "answer": 1,
+  "explanation": "Beerah, whom Tilgath-pilneser king of Assyria carried away captive: he was prince of the Reubenites.",
+  "ref": "1 Chronicles 5:6"
+ },
+ {
+  "id": "1-chronicles-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Bela the son of Azaz dwell?",
+  "choices": [
+   "At Halah",
+   "In Bashan unto Salchah",
+   "In Sharon",
+   "In Aroer, unto Nebo and Baal-meon"
+  ],
+  "answer": 3,
+  "explanation": "Bela dwelt in Aroer, even unto Nebo and Baal-meon.",
+  "ref": "1 Chronicles 5:8"
+ },
+ {
+  "id": "1-chronicles-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "In whose days did they make war with the Hagarites?",
+  "choices": [
+   "Jotham",
+   "David",
+   "Saul",
+   "Hezekiah"
+  ],
+  "answer": 2,
+  "explanation": "In the days of Saul they made war with the Hagarites, who fell by their hand.",
+  "ref": "1 Chronicles 5:10"
+ },
+ {
+  "id": "1-chronicles-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these peoples did they make war with along with the Hagarites?",
+  "choices": [
+   "Edom",
+   "Ammon",
+   "Jetur",
+   "Moab"
+  ],
+  "answer": 2,
+  "explanation": "They made war with the Hagarites, with Jetur, and Nephish, and Nodab.",
+  "ref": "1 Chronicles 5:19"
+ },
+ {
+  "id": "1-chronicles-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many camels did they take away?",
+  "choices": [
+   "Fifty thousand",
+   "Two hundred fifty thousand",
+   "One hundred thousand",
+   "Two thousand"
+  ],
+  "answer": 0,
+  "explanation": "Of their camels fifty thousand.",
+  "ref": "1 Chronicles 5:21"
+ },
+ {
+  "id": "1-chronicles-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men did they take away?",
+  "choices": [
+   "Two thousand",
+   "Forty-four thousand",
+   "An hundred thousand",
+   "Fifty thousand"
+  ],
+  "answer": 2,
+  "explanation": "They took away of men an hundred thousand.",
+  "ref": "1 Chronicles 5:21"
+ },
+ {
+  "id": "1-chronicles-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "The half tribe of Manasseh increased unto which mount?",
+  "choices": [
+   "Mount Carmel",
+   "Mount Hermon",
+   "Mount Seir",
+   "Mount Nebo"
+  ],
+  "answer": 1,
+  "explanation": "They increased from Bashan unto Baal-hermon and Senir, and unto mount Hermon.",
+  "ref": "1 Chronicles 5:23"
+ },
+ {
+  "id": "1-chronicles-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose spirit did the God of Israel stir up, besides Tilgath-pilneser's?",
+  "choices": [
+   "Jotham king of Judah",
+   "Pul king of Assyria",
+   "Jeroboam king of Israel",
+   "Saul"
+  ],
+  "answer": 1,
+  "explanation": "The God of Israel stirred up the spirit of Pul king of Assyria, and the spirit of Tilgath-pilneser.",
+  "ref": "1 Chronicles 5:26"
+ },
+ {
+  "id": "1-chronicles-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "In the days of which king of Judah were these genealogies reckoned?",
+  "choices": [
+   "Hezekiah",
+   "Jotham",
+   "Uzziah",
+   "Josiah"
+  ],
+  "answer": 1,
+  "explanation": "All these were reckoned by genealogies in the days of Jotham king of Judah.",
+  "ref": "1 Chronicles 5:17"
+ },
+ {
+  "id": "1-chronicles-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Reuben the firstborn?",
+  "choices": [
+   "Hanoch",
+   "Michael",
+   "Epher",
+   "Shapham"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Reuben the firstborn of Israel were, Hanoch, and Pallu, Hezron, and Carmi.",
+  "ref": "1 Chronicles 5:3"
+ },
+ {
+  "id": "1-chronicles-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Eastward the Reubenites lived unto the wilderness from which river?",
+  "choices": [
+   "Jordan",
+   "Euphrates",
+   "Nile",
+   "Gozan"
+  ],
+  "answer": 1,
+  "explanation": "Eastward he inhabited unto the entering in of the wilderness from the river Euphrates.",
+  "ref": "1 Chronicles 5:9"
+ },
+ {
+  "id": "1-chronicles-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the tribes dwell in their steads after the war?",
+  "choices": [
+   "Until the captivity",
+   "Until the flood",
+   "Until David reigned",
+   "Until Saul died"
+  ],
+  "answer": 0,
+  "explanation": "They dwelt in their steads until the captivity.",
+  "ref": "1 Chronicles 5:22"
+ },
+ {
+  "id": "1-chronicles-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Who stirred up the spirit of the kings of Assyria?",
+  "choices": [
+   "Jeroboam",
+   "Jotham",
+   "The God of Israel",
+   "The Hagarites"
+  ],
+  "answer": 2,
+  "explanation": "The God of Israel stirred up the spirit of Pul king of Assyria.",
+  "ref": "1 Chronicles 5:26"
+ },
+ {
+  "id": "1-chronicles-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many valiant men of the three tribes went out to the war?",
+  "choices": [
+   "Forty thousand",
+   "Four and forty thousand seven hundred and threescore",
+   "Fifty thousand",
+   "One hundred thousand"
+  ],
+  "answer": 1,
+  "explanation": "Of valiant men, able to bear buckler and sword, were four and forty thousand seven hundred and threescore.",
+  "ref": "1 Chronicles 5:18"
+ },
+ {
+  "id": "1-chronicles-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sheep did they take away?",
+  "choices": [
+   "Fifty thousand",
+   "One hundred thousand",
+   "Two hundred and fifty thousand",
+   "Two thousand"
+  ],
+  "answer": 2,
+  "explanation": "Of sheep two hundred and fifty thousand.",
+  "ref": "1 Chronicles 5:21"
+ },
+ {
+  "id": "1-chronicles-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many asses did they take away?",
+  "choices": [
+   "One hundred thousand",
+   "Two hundred",
+   "Fifty thousand",
+   "Two thousand"
+  ],
+  "answer": 3,
+  "explanation": "Of asses two thousand.",
+  "ref": "1 Chronicles 5:21"
+ },
+ {
+  "id": "1-chronicles-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the son of Joel, named first in the Reubenite line?",
+  "choices": [
+   "Shemaiah",
+   "Beerah",
+   "Gog",
+   "Micah"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Joel; Shemaiah his son, Gog his son, Shimei his son.",
+  "ref": "1 Chronicles 5:4"
+ },
+ {
+  "id": "1-chronicles-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Bela was the son of whom?",
+  "choices": [
+   "Abdiel",
+   "Joel",
+   "Azaz",
+   "Shema"
+  ],
+  "answer": 2,
+  "explanation": "Bela the son of Azaz, the son of Shema, the son of Joel.",
+  "ref": "1 Chronicles 5:8"
+ },
+ {
+  "id": "1-chronicles-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Ahi, chief of the house of their fathers, was the son of whom?",
+  "choices": [
+   "Buz",
+   "Guni",
+   "Abdiel",
+   "Huri"
+  ],
+  "answer": 2,
+  "explanation": "Ahi the son of Abdiel, the son of Guni.",
+  "ref": "1 Chronicles 5:15"
+ },
+ {
+  "id": "1-chronicles-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the chief of the Gadites in Bashan?",
+  "choices": [
+   "Shaphat",
+   "Joel",
+   "Shapham",
+   "Jaanai"
+  ],
+  "answer": 1,
+  "explanation": "Joel the chief, and Shapham the next, and Jaanai, and Shaphat in Bashan.",
+  "ref": "1 Chronicles 5:12"
+ },
+ {
+  "id": "1-chronicles-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Abihail was the son of whom?",
+  "choices": [
+   "Huri",
+   "Buz",
+   "Jahdo",
+   "Jaroah"
+  ],
+  "answer": 0,
+  "explanation": "These are the children of Abihail the son of Huri.",
+  "ref": "1 Chronicles 5:14"
+ },
+ {
+  "id": "1-chronicles-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many brethren of the house of their fathers are listed with Michael and Meshullam?",
+  "choices": [
+   "Twelve",
+   "Six",
+   "Seven",
+   "Four"
+  ],
+  "answer": 2,
+  "explanation": "Michael, and Meshullam, and Sheba, and Jorai, and Jachan, and Zia, and Heber, seven.",
+  "ref": "1 Chronicles 5:13"
+ },
+ {
+  "id": "1-chronicles-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "The Gadites dwelt in the suburbs of which place?",
+  "choices": [
+   "Halah",
+   "Gozan",
+   "Sharon",
+   "Hermon"
+  ],
+  "answer": 2,
+  "explanation": "They dwelt in Gilead in Bashan, and in all the suburbs of Sharon.",
+  "ref": "1 Chronicles 5:16"
+ },
+ {
+  "id": "1-chronicles-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "The Gadites dwelt in Bashan unto which place?",
+  "choices": [
+   "Nebo",
+   "Senir",
+   "Aroer",
+   "Salchah"
+  ],
+  "answer": 3,
+  "explanation": "The children of Gad dwelt in the land of Bashan unto Salchah.",
+  "ref": "1 Chronicles 5:11"
+ },
+ {
+  "id": "1-chronicles-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides Halah, Habor and Hara, which river were they brought to?",
+  "choices": [
+   "Gozan",
+   "Jordan",
+   "Nile",
+   "Euphrates"
+  ],
+  "answer": 0,
+  "explanation": "He brought them unto Halah, and Habor, and Hara, and to the river Gozan.",
+  "ref": "1 Chronicles 5:26"
+ },
+ {
+  "id": "1-chronicles-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a head of the house of the fathers of the half tribe of Manasseh?",
+  "choices": [
+   "Bela",
+   "Jeiel",
+   "Zechariah",
+   "Azriel"
+  ],
+  "answer": 3,
+  "explanation": "The heads of the house of their fathers, even Epher, and Ishi, and Eliel, and Azriel.",
+  "ref": "1 Chronicles 5:24"
+ },
+ {
   "id": "old-1-chronicles-6-1",
   "chapter": 6,
   "level": "beginner",
