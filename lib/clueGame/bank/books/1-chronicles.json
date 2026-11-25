@@ -2068,16 +2068,16 @@
   "chapter": 4,
   "level": "beginner",
   "category": "keyword",
-  "question": "Which tribe besides Judah is specially traced later in this chapter?",
+  "question": "How did the families of Shimei's brethren compare with the children of Judah?",
   "choices": [
-   "Levi",
-   "Benjamin",
-   "Issachar",
-   "Simeon"
+   "They did not multiply like Judah",
+   "They grew larger than Judah",
+   "They were equal to Judah",
+   "They were driven out by Judah"
   ],
-  "answer": 3,
-  "explanation": "The latter part of the chapter includes Simeon's descendants.",
-  "ref": "1 Chronicles 4:24"
+  "answer": 0,
+  "explanation": "His brethren had not many children, neither did all their family multiply, like to the children of Judah.",
+  "ref": "1 Chronicles 4:27"
  },
  {
   "id": "old-1-chronicles-4-4",
@@ -2110,6 +2110,646 @@
   "answer": 1,
   "explanation": "The chapter plainly says God granted Jabez's request.",
   "ref": "1 Chronicles 4:10"
+ },
+ {
+  "id": "1-chronicles-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who had two wives, Helah and Naarah?",
+  "choices": [
+   "Penuel",
+   "Hur",
+   "Shobal",
+   "Ashur the father of Tekoa"
+  ],
+  "answer": 3,
+  "explanation": "Ashur the father of Tekoa had two wives, Helah and Naarah.",
+  "ref": "1 Chronicles 4:5"
+ },
+ {
+  "id": "1-chronicles-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Bithiah, whom Mered took, was the daughter of whom?",
+  "choices": [
+   "Hodiah",
+   "Caleb",
+   "Jephunneh",
+   "Pharaoh"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Bithiah the daughter of Pharaoh, which Mered took.",
+  "ref": "1 Chronicles 4:18"
+ },
+ {
+  "id": "1-chronicles-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "In the days of which king did the Simeonites destroy the tents at Gedor?",
+  "choices": [
+   "Solomon",
+   "Josiah",
+   "Hezekiah",
+   "David"
+  ],
+  "answer": 2,
+  "explanation": "These written by name came in the days of Hezekiah king of Judah, and smote their tents.",
+  "ref": "1 Chronicles 4:41"
+ },
+ {
+  "id": "1-chronicles-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which mount did five hundred Simeonites go?",
+  "choices": [
+   "Mount Carmel",
+   "Mount Sinai",
+   "Mount Seir",
+   "Mount Hermon"
+  ],
+  "answer": 2,
+  "explanation": "Five hundred men went to mount Seir.",
+  "ref": "1 Chronicles 4:42"
+ },
+ {
+  "id": "1-chronicles-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did the Simeonites smite at mount Seir?",
+  "choices": [
+   "The Amalekites that were escaped",
+   "The Egyptians",
+   "The Moabites",
+   "The Philistines"
+  ],
+  "answer": 0,
+  "explanation": "They smote the rest of the Amalekites that were escaped, and dwelt there.",
+  "ref": "1 Chronicles 4:43"
+ },
+ {
+  "id": "1-chronicles-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose sons were Iru, Elah and Naam?",
+  "choices": [
+   "Mered",
+   "Ashur",
+   "Hur",
+   "Caleb the son of Jephunneh"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Caleb the son of Jephunneh; Iru, Elah, and Naam.",
+  "ref": "1 Chronicles 4:15"
+ },
+ {
+  "id": "1-chronicles-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jabez's mother name him Jabez?",
+  "choices": [
+   "Because he was born at night",
+   "Because she bare him with sorrow",
+   "Because he was her firstborn",
+   "Because he was strong"
+  ],
+  "answer": 1,
+  "explanation": "His mother called his name Jabez, saying, Because I bare him with sorrow.",
+  "ref": "1 Chronicles 4:9"
+ },
+ {
+  "id": "1-chronicles-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On whom did Jabez call?",
+  "choices": [
+   "The prophet Samuel",
+   "The king of Judah",
+   "The God of Israel",
+   "The priest"
+  ],
+  "answer": 2,
+  "explanation": "Jabez called on the God of Israel.",
+  "ref": "1 Chronicles 4:10"
+ },
+ {
+  "id": "1-chronicles-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who dwelt with the king for his work?",
+  "choices": [
+   "The shepherds",
+   "The scribes",
+   "The potters",
+   "The soldiers"
+  ],
+  "answer": 2,
+  "explanation": "These were the potters, and those that dwelt among plants and hedges: there they dwelt with the king for his work.",
+  "ref": "1 Chronicles 4:23"
+ },
+ {
+  "id": "1-chronicles-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Othniel's brother?",
+  "choices": [
+   "Hathath",
+   "Elah",
+   "Seraiah",
+   "Jether"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Kenaz; Othniel, and Seraiah.",
+  "ref": "1 Chronicles 4:13"
+ },
+ {
+  "id": "1-chronicles-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jabez ask God to keep him from?",
+  "choices": [
+   "Famine",
+   "His enemies",
+   "The sword",
+   "Evil"
+  ],
+  "answer": 3,
+  "explanation": "That thou wouldest keep me from evil, that it may not grieve me!",
+  "ref": "1 Chronicles 4:10"
+ },
+ {
+  "id": "1-chronicles-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose sister was Hodiah?",
+  "choices": [
+   "Caleb",
+   "Mered",
+   "Ishi",
+   "Naham"
+  ],
+  "answer": 3,
+  "explanation": "His wife Hodiah the sister of Naham.",
+  "ref": "1 Chronicles 4:19"
+ },
+ {
+  "id": "1-chronicles-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Hazelelponi was the sister of which brothers?",
+  "choices": [
+   "Iru, Elah and Naam",
+   "Nemuel, Jamin and Jarib",
+   "Zereth, Jezoar and Ethnan",
+   "Jezreel, Ishma and Idbash"
+  ],
+  "answer": 3,
+  "explanation": "These were of the father of Etam; Jezreel, and Ishma, and Idbash: and the name of their sister was Hazelelponi.",
+  "ref": "1 Chronicles 4:3"
+ },
+ {
+  "id": "1-chronicles-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Which wife of Ashur bare Ahuzam, Hepher, Temeni and Haahashtari?",
+  "choices": [
+   "Naarah",
+   "Hodiah",
+   "Helah",
+   "Jehudijah"
+  ],
+  "answer": 0,
+  "explanation": "Naarah bare him Ahuzam, and Hepher, and Temeni, and Haahashtari.",
+  "ref": "1 Chronicles 4:6"
+ },
+ {
+  "id": "1-chronicles-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the father of Eshton?",
+  "choices": [
+   "Mehir",
+   "Shuah",
+   "Chelub",
+   "Paseah"
+  ],
+  "answer": 0,
+  "explanation": "Chelub the brother of Shuah begat Mehir, which was the father of Eshton.",
+  "ref": "1 Chronicles 4:11"
+ },
+ {
+  "id": "1-chronicles-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Penuel is called the father of which place?",
+  "choices": [
+   "Socho",
+   "Gedor",
+   "Tekoa",
+   "Bethlehem"
+  ],
+  "answer": 1,
+  "explanation": "Penuel the father of Gedor.",
+  "ref": "1 Chronicles 4:4"
+ },
+ {
+  "id": "1-chronicles-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the son of Othniel?",
+  "choices": [
+   "Seraiah",
+   "Joab",
+   "Hathath",
+   "Kenaz"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Othniel; Hathath.",
+  "ref": "1 Chronicles 4:13"
+ },
+ {
+  "id": "1-chronicles-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the people of the valley of Charashim?",
+  "choices": [
+   "Shepherds",
+   "Soldiers",
+   "Craftsmen",
+   "Potters"
+  ],
+  "answer": 2,
+  "explanation": "Joab, the father of the valley of Charashim; for they were craftsmen.",
+  "ref": "1 Chronicles 4:14"
+ },
+ {
+  "id": "1-chronicles-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many sons and daughters did Shimei have?",
+  "choices": [
+   "Sixteen sons and six daughters",
+   "Ten sons and ten daughters",
+   "Six sons and sixteen daughters",
+   "Twelve sons and two daughters"
+  ],
+  "answer": 0,
+  "explanation": "Shimei had sixteen sons and six daughters.",
+  "ref": "1 Chronicles 4:27"
+ },
+ {
+  "id": "1-chronicles-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "In which city did the sons of Simeon dwell?",
+  "choices": [
+   "Hebron",
+   "Jericho",
+   "Beer-sheba",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "They dwelt at Beer-sheba, and Moladah, and Hazar-shual.",
+  "ref": "1 Chronicles 4:28"
+ },
+ {
+  "id": "1-chronicles-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Until whose reign did the Simeonite cities stand?",
+  "choices": [
+   "David",
+   "Solomon",
+   "Hezekiah",
+   "Saul"
+  ],
+  "answer": 0,
+  "explanation": "These were their cities unto the reign of David.",
+  "ref": "1 Chronicles 4:31"
+ },
+ {
+  "id": "1-chronicles-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who had dwelt in the pasture land of Gedor of old?",
+  "choices": [
+   "They of Ham",
+   "The Philistines",
+   "The Moabites",
+   "The Amalekites"
+  ],
+  "answer": 0,
+  "explanation": "The land was wide, and quiet, and peaceable; for they of Ham had dwelt there of old.",
+  "ref": "1 Chronicles 4:40"
+ },
+ {
+  "id": "1-chronicles-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is the land at Gedor described?",
+  "choices": [
+   "Rocky and steep",
+   "Wide, quiet and peaceable",
+   "Full of enemies",
+   "Dry and barren"
+  ],
+  "answer": 1,
+  "explanation": "They found fat pasture and good, and the land was wide, and quiet, and peaceable.",
+  "ref": "1 Chronicles 4:40"
+ },
+ {
+  "id": "1-chronicles-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was one of the captains of the five hundred men?",
+  "choices": [
+   "Uzziel",
+   "Ziza",
+   "Joash",
+   "Jehu"
+  ],
+  "answer": 0,
+  "explanation": "Having for their captains Pelatiah, and Neariah, and Rephaiah, and Uzziel.",
+  "ref": "1 Chronicles 4:42"
+ },
+ {
+  "id": "1-chronicles-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the son of Elah, Caleb's son?",
+  "choices": [
+   "Iru",
+   "Othniel",
+   "Naam",
+   "Kenaz"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Elah, even Kenaz.",
+  "ref": "1 Chronicles 4:15"
+ },
+ {
+  "id": "1-chronicles-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Jahath's father?",
+  "choices": [
+   "Penuel",
+   "Reaiah",
+   "Hur",
+   "Shobal"
+  ],
+  "answer": 1,
+  "explanation": "Reaiah the son of Shobal begat Jahath.",
+  "ref": "1 Chronicles 4:2"
+ },
+ {
+  "id": "1-chronicles-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Jehu, named with Joel?",
+  "choices": [
+   "Josibiah",
+   "Asiel",
+   "Shiphi",
+   "Amaziah"
+  ],
+  "answer": 0,
+  "explanation": "Jehu the son of Josibiah, the son of Seraiah, the son of Asiel.",
+  "ref": "1 Chronicles 4:35"
+ },
+ {
+  "id": "1-chronicles-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Ziza was the son of Shiphi, the son of whom?",
+  "choices": [
+   "Allon",
+   "Shimri",
+   "Shemaiah",
+   "Jedaiah"
+  ],
+  "answer": 0,
+  "explanation": "Ziza the son of Shiphi, the son of Allon, the son of Jedaiah.",
+  "ref": "1 Chronicles 4:37"
+ },
+ {
+  "id": "1-chronicles-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Joshah was the son of whom?",
+  "choices": [
+   "Asiel",
+   "Amaziah",
+   "Seraiah",
+   "Josibiah"
+  ],
+  "answer": 1,
+  "explanation": "And Meshobab, and Jamlech, and Joshah the son of Amaziah.",
+  "ref": "1 Chronicles 4:34"
+ },
+ {
+  "id": "1-chronicles-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Hur, the firstborn of Ephratah, is called the father of which town?",
+  "choices": [
+   "Bethlehem",
+   "Tekoa",
+   "Gedor",
+   "Etam"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Hur, the firstborn of Ephratah, the father of Bethlehem.",
+  "ref": "1 Chronicles 4:4"
+ },
+ {
+  "id": "1-chronicles-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Seraiah beget?",
+  "choices": [
+   "Meonothai",
+   "Kenaz",
+   "Joab",
+   "Ophrah"
+  ],
+  "answer": 2,
+  "explanation": "Seraiah begat Joab, the father of the valley of Charashim.",
+  "ref": "1 Chronicles 4:14"
+ },
+ {
+  "id": "1-chronicles-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Ishbah is called the father of which place?",
+  "choices": [
+   "Mareshah",
+   "Socho",
+   "Eshtemoa",
+   "Zanoah"
+  ],
+  "answer": 2,
+  "explanation": "Shammai, and Ishbah the father of Eshtemoa.",
+  "ref": "1 Chronicles 4:17"
+ },
+ {
+  "id": "1-chronicles-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Jekuthiel is called the father of which place?",
+  "choices": [
+   "Gedor",
+   "Socho",
+   "Lecah",
+   "Zanoah"
+  ],
+  "answer": 3,
+  "explanation": "Jekuthiel the father of Zanoah.",
+  "ref": "1 Chronicles 4:18"
+ },
+ {
+  "id": "1-chronicles-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Heber is called the father of which place?",
+  "choices": [
+   "Gedor",
+   "Socho",
+   "Keilah",
+   "Zanoah"
+  ],
+  "answer": 1,
+  "explanation": "Heber the father of Socho.",
+  "ref": "1 Chronicles 4:18"
+ },
+ {
+  "id": "1-chronicles-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Laadah is called the father of which place?",
+  "choices": [
+   "Lecah",
+   "Etam",
+   "Tekoa",
+   "Mareshah"
+  ],
+  "answer": 3,
+  "explanation": "Laadah the father of Mareshah.",
+  "ref": "1 Chronicles 4:21"
+ },
+ {
+  "id": "1-chronicles-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Joash and Saraph have the dominion?",
+  "choices": [
+   "Moab",
+   "Gilead",
+   "Edom",
+   "Geshur"
+  ],
+  "answer": 0,
+  "explanation": "Joash, and Saraph, who had the dominion in Moab.",
+  "ref": "1 Chronicles 4:22"
+ },
+ {
+  "id": "1-chronicles-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "The five hundred men's captains were the sons of whom?",
+  "choices": [
+   "Simeon",
+   "Shimei",
+   "Ezra",
+   "Ishi"
+  ],
+  "answer": 3,
+  "explanation": "Their captains Pelatiah, and Neariah, and Rephaiah, and Uzziel, the sons of Ishi.",
+  "ref": "1 Chronicles 4:42"
+ },
+ {
+  "id": "1-chronicles-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cities are named among the villages Etam, Ain, Rimmon, Tochen and Ashan?",
+  "choices": [
+   "Seven",
+   "Twelve",
+   "Three",
+   "Five"
+  ],
+  "answer": 3,
+  "explanation": "And their villages were, Etam, and Ain, Rimmon, and Tochen, and Ashan, five cities.",
+  "ref": "1 Chronicles 4:32"
+ },
+ {
+  "id": "1-chronicles-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose sons were Zoheth and Ben-zoheth?",
+  "choices": [
+   "Ishi",
+   "Kenaz",
+   "Shimon",
+   "Ezra"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Ishi were, Zoheth, and Ben-zoheth.",
+  "ref": "1 Chronicles 4:20"
+ },
+ {
+  "id": "1-chronicles-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The house of Ashbea was known for working what?",
+  "choices": [
+   "Iron",
+   "Fine linen",
+   "Pottery",
+   "Gold"
+  ],
+  "answer": 1,
+  "explanation": "The families of the house of them that wrought fine linen, of the house of Ashbea.",
+  "ref": "1 Chronicles 4:21"
  },
  {
   "id": "old-1-chronicles-5-1",
