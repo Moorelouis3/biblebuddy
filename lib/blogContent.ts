@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-31-explained",
+    title: "1 Samuel 31 Explained: The Death of Saul",
+    description:
+      "1 Samuel 31 explained verse by verse: Saul's final battle, his death on Mount Gilboa, and how Jabesh Gilead repaid an old debt.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-31-explained",
+    publishedAt: "2026-11-25",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 31 Explained 📖",
+      content:
+        "Saul hears his death sentence one night.\nThe next day, it happens exactly as spoken.\n\n📌 A word from God does not expire while you wait on it.\n\n📖 Three of Saul's sons die beside him in battle.\n📖 Saul falls on his own sword rather than be captured.\n📖 A town he once saved carries his body home.\n\nNew article on:\n🟢 the last request **Saul** made to his armourbearer\n🟢 what the **Philistines** did with his body\n🟢 the old debt **Jabesh Gilead** finally repaid\n\nHave you ever watched a long consequence finally arrive? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-30-explained",
     title: "1 Samuel 30 Explained: Ziklag Burned and David's Rescue",
     description:
