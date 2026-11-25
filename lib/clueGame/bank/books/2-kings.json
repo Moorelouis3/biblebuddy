@@ -14016,6 +14016,646 @@
   "ref": "2 Kings 23:29–30"
  },
  {
+  "id": "2-kings-23-e-01",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Josiah do while standing by a pillar?",
+  "choices": [
+   "Offered a thousand bullocks",
+   "Made a covenant before the LORD",
+   "Crowned his son",
+   "Called for a fast"
+  ],
+  "answer": 1,
+  "explanation": "The king made a covenant before the LORD, to walk after the LORD and keep his commandments.",
+  "ref": "2 Kings 23:3"
+ },
+ {
+  "id": "2-kings-23-e-02",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the king first gather to him?",
+  "choices": [
+   "All the elders of Judah and of Jerusalem",
+   "The priests of Bethel",
+   "The captains of the army",
+   "The prophets of Baal"
+  ],
+  "answer": 0,
+  "explanation": "The king sent, and they gathered unto him all the elders of Judah and of Jerusalem.",
+  "ref": "2 Kings 23:1"
+ },
+ {
+  "id": "2-kings-23-e-03",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Josiah do with the grove from the house of the LORD?",
+  "choices": [
+   "Hid it in the temple",
+   "Sold it to Edom",
+   "Burned it and stamped it to powder",
+   "Gave it to the priests"
+  ],
+  "answer": 2,
+  "explanation": "He burned it at the brook Kidron, and stamped it small to powder.",
+  "ref": "2 Kings 23:6"
+ },
+ {
+  "id": "2-kings-23-e-04",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Egypt went up against the king of Assyria?",
+  "choices": [
+   "Pharaoh-nechoh",
+   "Shishak",
+   "So",
+   "Pharaoh-hophra"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh-nechoh king of Egypt went up against the king of Assyria to the river Euphrates.",
+  "ref": "2 Kings 23:29"
+ },
+ {
+  "id": "2-kings-23-e-05",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who became king after Josiah died?",
+  "choices": [
+   "Jehoiakim his son",
+   "Jehoahaz his son",
+   "Amon his son",
+   "Eliakim the priest"
+  ],
+  "answer": 1,
+  "explanation": "The people of the land took Jehoahaz the son of Josiah, and anointed him.",
+  "ref": "2 Kings 23:30"
+ },
+ {
+  "id": "2-kings-23-e-06",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Jehoahaz reign in Jerusalem?",
+  "choices": [
+   "Three years",
+   "Eleven years",
+   "Thirty-one years",
+   "Three months"
+  ],
+  "answer": 3,
+  "explanation": "He reigned three months in Jerusalem.",
+  "ref": "2 Kings 23:31"
+ },
+ {
+  "id": "2-kings-23-e-07",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jehoahaz die?",
+  "choices": [
+   "In Egypt",
+   "In Jerusalem",
+   "In Babylon",
+   "At Megiddo"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh took Jehoahaz away: and he came to Egypt, and died there.",
+  "ref": "2 Kings 23:34"
+ },
+ {
+  "id": "2-kings-23-e-08",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "What name did Pharaoh give to Eliakim when he made him king?",
+  "choices": [
+   "Jehoiakim",
+   "Jehoahaz",
+   "Josiah",
+   "Mattaniah"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh-nechoh made Eliakim the son of Josiah king, and turned his name to Jehoiakim.",
+  "ref": "2 Kings 23:34"
+ },
+ {
+  "id": "2-kings-23-e-09",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Josiah's servants bring his body back to Jerusalem?",
+  "choices": [
+   "On a bier",
+   "On horses",
+   "In a chariot",
+   "On a cart of oxen"
+  ],
+  "answer": 2,
+  "explanation": "His servants carried him in a chariot dead from Megiddo, and brought him to Jerusalem.",
+  "ref": "2 Kings 23:30"
+ },
+ {
+  "id": "2-kings-23-e-10",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was said of Josiah compared with other kings?",
+  "choices": [
+   "None before or after him was like him",
+   "He was the wealthiest king",
+   "He reigned the longest",
+   "He built the most cities"
+  ],
+  "answer": 0,
+  "explanation": "Like unto him was there no king before him... neither after him arose there any like him.",
+  "ref": "2 Kings 23:25"
+ },
+ {
+  "id": "2-kings-23-m-01",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who went up to the house of the LORD with the king?",
+  "choices": [
+   "All the people, both small and great",
+   "Only the priests",
+   "Only the elders",
+   "Only the army"
+  ],
+  "answer": 0,
+  "explanation": "All the men of Judah and all the inhabitants of Jerusalem, and the priests, and the prophets, and all the people, both small and great.",
+  "ref": "2 Kings 23:2"
+ },
+ {
+  "id": "2-kings-23-m-02",
+  "chapter": 23,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Josiah carry the ashes of the Baal vessels?",
+  "choices": [
+   "Unto Hebron",
+   "Unto Bethel",
+   "Unto Samaria",
+   "Unto Gilgal"
+  ],
+  "answer": 1,
+  "explanation": "He burned them without Jerusalem in the fields of Kidron, and carried the ashes of them unto Bethel.",
+  "ref": "2 Kings 23:4"
+ },
+ {
+  "id": "2-kings-23-m-03",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Josiah burn with fire, after taking away the horses given to the sun?",
+  "choices": [
+   "The groves of Samaria",
+   "The chariots of the sun",
+   "The ark of Baal",
+   "The idols of Judah"
+  ],
+  "answer": 1,
+  "explanation": "He took away the horses that the kings of Judah had given to the sun, and burned the chariots of the sun with fire.",
+  "ref": "2 Kings 23:11"
+ },
+ {
+  "id": "2-kings-23-m-04",
+  "chapter": 23,
+  "level": "medium",
+  "category": "place",
+  "question": "Which place in the valley of Hinnom did Josiah defile?",
+  "choices": [
+   "Topheth",
+   "Kidron",
+   "Geba",
+   "Rumah"
+  ],
+  "answer": 0,
+  "explanation": "He defiled Topheth, which is in the valley of the children of Hinnom.",
+  "ref": "2 Kings 23:10"
+ },
+ {
+  "id": "2-kings-23-m-05",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose abomination was Chemosh, for whom Solomon built a high place?",
+  "choices": [
+   "The Moabites'",
+   "The Zidonians'",
+   "The Ammonites'",
+   "The Philistines'"
+  ],
+  "answer": 0,
+  "explanation": "Chemosh the abomination of the Moabites.",
+  "ref": "2 Kings 23:13"
+ },
+ {
+  "id": "2-kings-23-m-06",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did Josiah fill the places of the images and groves?",
+  "choices": [
+   "Stones and earth",
+   "Dust and ashes",
+   "The bones of men",
+   "Salt and sulphur"
+  ],
+  "answer": 2,
+  "explanation": "He brake in pieces the images, and cut down the groves, and filled their places with the bones of men.",
+  "ref": "2 Kings 23:14"
+ },
+ {
+  "id": "2-kings-23-m-07",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose altar and high place at Bethel did Josiah break down?",
+  "choices": [
+   "Ahab's",
+   "Jehu's",
+   "Jeroboam the son of Nebat's",
+   "Omri's"
+  ],
+  "answer": 2,
+  "explanation": "The altar at Bethel, and the high place which Jeroboam the son of Nebat had made.",
+  "ref": "2 Kings 23:15"
+ },
+ {
+  "id": "2-kings-23-m-08",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Josiah do with the bones taken out of the sepulchres at Bethel?",
+  "choices": [
+   "Buried them in Jerusalem",
+   "Cast them into Kidron",
+   "Burned them upon the altar",
+   "Gave them to the priests"
+  ],
+  "answer": 2,
+  "explanation": "He took the bones out of the sepulchres, and burned them upon the altar, and polluted it.",
+  "ref": "2 Kings 23:16"
+ },
+ {
+  "id": "2-kings-23-m-09",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose bones did Josiah say to let alone?",
+  "choices": [
+   "The priests of Bethel",
+   "The man of God from Judah",
+   "King Jeroboam",
+   "The prophet Elisha"
+  ],
+  "answer": 1,
+  "explanation": "Let him alone; let no man move his bones.",
+  "ref": "2 Kings 23:17"
+ },
+ {
+  "id": "2-kings-23-m-10",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Josiah do to the priests of the high places in the cities of Samaria?",
+  "choices": [
+   "Sent them to Jerusalem",
+   "Drove them into exile",
+   "Slew them upon the altars",
+   "Made them servants"
+  ],
+  "answer": 2,
+  "explanation": "He slew all the priests of the high places that were there upon the altars.",
+  "ref": "2 Kings 23:20"
+ },
+ {
+  "id": "2-kings-23-m-11",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Since when had no passover like Josiah's been held?",
+  "choices": [
+   "The days of Moses",
+   "The days of Solomon",
+   "The days of the judges",
+   "The days of Hezekiah"
+  ],
+  "answer": 2,
+  "explanation": "There was not holden such a passover from the days of the judges that judged Israel.",
+  "ref": "2 Kings 23:22"
+ },
+ {
+  "id": "2-kings-23-m-12",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year of Josiah's reign was this passover held?",
+  "choices": [
+   "The eighth",
+   "The eighteenth",
+   "The twelfth",
+   "The thirty-first"
+  ],
+  "answer": 1,
+  "explanation": "In the eighteenth year of king Josiah, this passover was holden to the LORD in Jerusalem.",
+  "ref": "2 Kings 23:23"
+ },
+ {
+  "id": "2-kings-23-m-13",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Why did the LORD not turn from his great wrath against Judah?",
+  "choices": [
+   "Because Josiah had died",
+   "Because of Pharaoh's army",
+   "Because of all Manasseh's provocations",
+   "Because the passover was late"
+  ],
+  "answer": 2,
+  "explanation": "The LORD turned not from the fierceness of his great wrath, because of all the provocations that Manasseh had provoked him withal.",
+  "ref": "2 Kings 23:26"
+ },
+ {
+  "id": "2-kings-23-m-14",
+  "chapter": 23,
+  "level": "medium",
+  "category": "place",
+  "question": "What did the LORD say he would remove out of his sight, as he removed Israel?",
+  "choices": [
+   "Egypt",
+   "Judah",
+   "Samaria",
+   "Moab"
+  ],
+  "answer": 1,
+  "explanation": "I will remove Judah also out of my sight, as I have removed Israel.",
+  "ref": "2 Kings 23:27"
+ },
+ {
+  "id": "2-kings-23-m-15",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the mother of Jehoahaz?",
+  "choices": [
+   "Zebudah",
+   "Jedidah",
+   "Hamutal",
+   "Meshullemeth"
+  ],
+  "answer": 2,
+  "explanation": "His mother's name was Hamutal, the daughter of Jeremiah of Libnah.",
+  "ref": "2 Kings 23:31"
+ },
+ {
+  "id": "2-kings-23-h-01",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Pharaoh-nechoh put Jehoahaz in bands?",
+  "choices": [
+   "Megiddo in the land of Israel",
+   "Riblah in the land of Hamath",
+   "Carchemish by the Euphrates",
+   "Zoar in the land of Moab"
+  ],
+  "answer": 1,
+  "explanation": "Pharaoh-nechoh put him in bands at Riblah in the land of Hamath.",
+  "ref": "2 Kings 23:33"
+ },
+ {
+  "id": "2-kings-23-h-02",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What tribute did Pharaoh put on the land?",
+  "choices": [
+   "A thousand talents of silver",
+   "Ten talents of gold",
+   "A hundred talents of silver and a talent of gold",
+   "Fifty talents of silver and ten of gold"
+  ],
+  "answer": 2,
+  "explanation": "He put the land to a tribute of an hundred talents of silver, and a talent of gold.",
+  "ref": "2 Kings 23:33"
+ },
+ {
+  "id": "2-kings-23-h-03",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Hamutal's father Jeremiah came from which town?",
+  "choices": [
+   "Rumah",
+   "Jotbah",
+   "Boscath",
+   "Libnah"
+  ],
+  "answer": 3,
+  "explanation": "Hamutal, the daughter of Jeremiah of Libnah.",
+  "ref": "2 Kings 23:31"
+ },
+ {
+  "id": "2-kings-23-h-04",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Jehoahaz when he began to reign?",
+  "choices": [
+   "Eight",
+   "Twelve",
+   "Twenty-five",
+   "Twenty and three"
+  ],
+  "answer": 3,
+  "explanation": "Jehoahaz was twenty and three years old when he began to reign.",
+  "ref": "2 Kings 23:31"
+ },
+ {
+  "id": "2-kings-23-h-05",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Jehoiakim reign in Jerusalem?",
+  "choices": [
+   "Eleven years",
+   "Three months",
+   "Thirty-one years",
+   "Two years"
+  ],
+  "answer": 0,
+  "explanation": "Jehoiakim was twenty and five years old when he began to reign; and he reigned eleven years in Jerusalem.",
+  "ref": "2 Kings 23:36"
+ },
+ {
+  "id": "2-kings-23-h-06",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jehoiakim get the silver and gold to give Pharaoh?",
+  "choices": [
+   "He sold the temple vessels",
+   "He raised an army",
+   "He took it from the priests",
+   "He taxed the land"
+  ],
+  "answer": 3,
+  "explanation": "He taxed the land to give the money according to the commandment of Pharaoh.",
+  "ref": "2 Kings 23:35"
+ },
+ {
+  "id": "2-kings-23-h-07",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Jehoiakim's mother Zebudah was the daughter of Pedaiah of which place?",
+  "choices": [
+   "Libnah",
+   "Jotbah",
+   "Rumah",
+   "Hamath"
+  ],
+  "answer": 2,
+  "explanation": "His mother's name was Zebudah, the daughter of Pedaiah of Rumah.",
+  "ref": "2 Kings 23:36"
+ },
+ {
+  "id": "2-kings-23-h-08",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "By whose chamber were the horses of the sun kept?",
+  "choices": [
+   "Nathan-melech the chamberlain",
+   "Hilkiah the priest",
+   "Shaphan the scribe",
+   "Joshua the governor"
+  ],
+  "answer": 0,
+  "explanation": "The horses... at the entering in of the house of the LORD, by the chamber of Nathan-melech the chamberlain.",
+  "ref": "2 Kings 23:11"
+ },
+ {
+  "id": "2-kings-23-h-09",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Josiah defiled the high places from Geba to which place?",
+  "choices": [
+   "Bethel",
+   "Jericho",
+   "Beer-sheba",
+   "Hebron"
+  ],
+  "answer": 2,
+  "explanation": "He defiled the high places where the priests had burned incense, from Geba to Beer-sheba.",
+  "ref": "2 Kings 23:8"
+ },
+ {
+  "id": "2-kings-23-h-10",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the women weave in the houses by the house of the LORD?",
+  "choices": [
+   "Garments for the priests",
+   "Hangings for the grove",
+   "Curtains for the temple",
+   "Robes for the king"
+  ],
+  "answer": 1,
+  "explanation": "The houses of the sodomites, where the women wove hangings for the grove.",
+  "ref": "2 Kings 23:7"
+ },
+ {
+  "id": "2-kings-23-h-11",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Josiah cast the dust of the altars Manasseh had made?",
+  "choices": [
+   "Into the Jordan",
+   "Upon the graves of Bethel",
+   "Into the valley of Hinnom",
+   "Into the brook Kidron"
+  ],
+  "answer": 3,
+  "explanation": "He cast the dust of them into the brook Kidron.",
+  "ref": "2 Kings 23:12"
+ },
+ {
+  "id": "2-kings-23-h-12",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Josiah cast the powder of the grove?",
+  "choices": [
+   "Into the brook Kidron",
+   "Upon the graves of the children of the people",
+   "Upon the altar of Bethel",
+   "Into the valley of Hinnom"
+  ],
+  "answer": 1,
+  "explanation": "He cast the powder thereof upon the graves of the children of the people.",
+  "ref": "2 Kings 23:6"
+ },
+ {
+  "id": "2-kings-23-h-13",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priests of the high places eat among their brethren?",
+  "choices": [
+   "The shewbread",
+   "The passover lamb",
+   "The firstfruits",
+   "Unleavened bread"
+  ],
+  "answer": 3,
+  "explanation": "The priests of the high places came not up to the altar of the LORD in Jerusalem, but they did eat of the unleavened bread among their brethren.",
+  "ref": "2 Kings 23:9"
+ },
+ {
+  "id": "2-kings-23-h-14",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose gate is named near the high places of the gates?",
+  "choices": [
+   "Nathan-melech the chamberlain",
+   "Hilkiah the high priest",
+   "Shaphan the scribe",
+   "Joshua the governor of the city"
+  ],
+  "answer": 3,
+  "explanation": "The gate of Joshua the governor of the city.",
+  "ref": "2 Kings 23:8"
+ },
+ {
+  "id": "2-kings-23-h-15",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Josiah put away, that he might perform the words of the law?",
+  "choices": [
+   "The golden calves and the brazen serpent",
+   "Familiar spirits, wizards, images and idols",
+   "The Baal priests and the Asherah poles",
+   "The horses and chariots of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "The workers with familiar spirits, and the wizards, and the images, and the idols... did Josiah put away.",
+  "ref": "2 Kings 23:24"
+ },
+ {
   "id": "old-2-kings-24-1",
   "chapter": 24,
   "level": "beginner",
