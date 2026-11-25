@@ -238,5 +238,1493 @@
   "answer": 1,
   "explanation": "The book closes with the assurance that the Lord dwells in Zion.",
   "ref": "Joel 3:21"
+ },
+ {
+  "id": "joel-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son was Joel?",
+  "choices": [
+   "Amoz's",
+   "Hosea's",
+   "Uzziah's",
+   "Pethuel's"
+  ],
+  "answer": 3,
+  "explanation": "The word of the LORD that came to Joel the son of Pethuel.",
+  "ref": "Joel 1:1"
+ },
+ {
+  "id": "joel-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the teeth of the nation that comes up upon the land compared to?",
+  "choices": [
+   "The teeth of a wolf",
+   "The teeth of a lion",
+   "The teeth of a bear",
+   "The teeth of a serpent"
+  ],
+  "answer": 1,
+  "explanation": "A nation is come up upon my land, strong, and without number, whose teeth are the teeth of a lion.",
+  "ref": "Joel 1:6"
+ },
+ {
+  "id": "joel-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the nation do to the vine and the fig tree?",
+  "choices": [
+   "Burned them with fire",
+   "Carried them away",
+   "Laid the vine waste and barked the fig tree",
+   "Cut them for fuel"
+  ],
+  "answer": 2,
+  "explanation": "He hath laid my vine waste, and barked my fig tree: he hath made it clean bare.",
+  "ref": "Joel 1:7"
+ },
+ {
+  "id": "joel-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Joel tells them to lament like whom?",
+  "choices": [
+   "A widow in a house of mourning",
+   "A shepherd without a flock",
+   "A king without a throne",
+   "A virgin girded with sackcloth for the husband of her youth"
+  ],
+  "answer": 3,
+  "explanation": "Lament like a virgin girded with sackcloth for the husband of her youth.",
+  "ref": "Joel 1:8"
+ },
+ {
+  "id": "joel-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who mourn because the meat offering and drink offering are cut off?",
+  "choices": [
+   "The priests, the LORD's ministers",
+   "The elders of the land",
+   "The husbandmen",
+   "The drinkers of wine"
+  ],
+  "answer": 0,
+  "explanation": "The meat offering and the drink offering is cut off from the house of the LORD; the priests, the LORD'S ministers, mourn.",
+  "ref": "Joel 1:9"
+ },
+ {
+  "id": "joel-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Joel tell the old men to do with this word?",
+  "choices": [
+   "Write it on the doors",
+   "Keep it in secret",
+   "Sing it at the feasts",
+   "Tell their children, and their children another generation"
+  ],
+  "answer": 3,
+  "explanation": "Tell ye your children of it, and let your children tell their children, and their children another generation.",
+  "ref": "Joel 1:3"
+ },
+ {
+  "id": "joel-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is the invading nation described?",
+  "choices": [
+   "Strong, and without number",
+   "Small, and scattered",
+   "Slow, and few",
+   "Wise, and peaceful"
+  ],
+  "answer": 0,
+  "explanation": "A nation is come up upon my land, strong, and without number.",
+  "ref": "Joel 1:6"
+ },
+ {
+  "id": "joel-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who are told to be ashamed because the harvest of the field has perished?",
+  "choices": [
+   "The priests and elders",
+   "The drunkards",
+   "The husbandmen and vinedressers",
+   "The shepherds"
+  ],
+  "answer": 2,
+  "explanation": "Be ye ashamed, O ye husbandmen; howl, O ye vinedressers, for the wheat and for the barley; because the harvest of the field is perished.",
+  "ref": "Joel 1:11"
+ },
+ {
+  "id": "joel-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is joy withered away from the sons of men?",
+  "choices": [
+   "The temple is destroyed",
+   "The king is dead",
+   "The sea has dried up",
+   "The vine, the fig and all the trees are withered"
+  ],
+  "answer": 3,
+  "explanation": "All the trees of the field are withered: because joy is withered away from the sons of men.",
+  "ref": "Joel 1:12"
+ },
+ {
+  "id": "joel-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the priests told to do all night?",
+  "choices": [
+   "Keep watch on the wall",
+   "Lie in sackcloth",
+   "Offer incense",
+   "Read the law"
+  ],
+  "answer": 1,
+  "explanation": "Gird yourselves, and lament, ye priests: come, lie all night in sackcloth, ye ministers of my God.",
+  "ref": "Joel 1:13"
+ },
+ {
+  "id": "joel-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Joel say will come as a destruction from the Almighty?",
+  "choices": [
+   "The nation of lions",
+   "The wind from the east",
+   "The flood of waters",
+   "The day of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Alas for the day! for the day of the LORD is at hand, and as a destruction from the Almighty shall it come.",
+  "ref": "Joel 1:15"
+ },
+ {
+  "id": "joel-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do the beasts groan and the herds of cattle stand perplexed?",
+  "choices": [
+   "They have no water",
+   "They have no shelter",
+   "They have no pasture",
+   "They have no keeper"
+  ],
+  "answer": 2,
+  "explanation": "How do the beasts groan! the herds of cattle are perplexed, because they have no pasture.",
+  "ref": "Joel 1:18"
+ },
+ {
+  "id": "joel-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has happened to the seed, the garners and the barns?",
+  "choices": [
+   "Seed stolen, garners sold, barns burned",
+   "Seed scattered, garners full, barns shut",
+   "Seed rotten, garners desolate, barns broken down",
+   "Seed sown, garners built, barns blessed"
+  ],
+  "answer": 2,
+  "explanation": "The seed is rotten under their clods, the garners are laid desolate, the barns are broken down; for the corn is withered.",
+  "ref": "Joel 1:17"
+ },
+ {
+  "id": "joel-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Joel cry unto the LORD?",
+  "choices": [
+   "Fire has devoured the pastures of the wilderness",
+   "The king has fallen",
+   "The temple has burned",
+   "The river has overflowed"
+  ],
+  "answer": 0,
+  "explanation": "O LORD, to thee will I cry: for the fire hath devoured the pastures of the wilderness.",
+  "ref": "Joel 1:19"
+ },
+ {
+  "id": "joel-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the land do because the corn is wasted?",
+  "choices": [
+   "It rejoiceth",
+   "It sleepeth",
+   "It mourneth",
+   "It singeth"
+  ],
+  "answer": 2,
+  "explanation": "The field is wasted, the land mourneth; for the corn is wasted: the new wine is dried up, the oil languisheth.",
+  "ref": "Joel 1:10"
+ },
+ {
+  "id": "joel-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of the branches of the fig tree?",
+  "choices": [
+   "They are made green",
+   "They are made heavy",
+   "They are made white",
+   "They are made high"
+  ],
+  "answer": 2,
+  "explanation": "He hath made it clean bare, and cast it away; the branches thereof are made white.",
+  "ref": "Joel 1:7"
+ },
+ {
+  "id": "joel-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the vine and fig tree, which trees are named as withered?",
+  "choices": [
+   "The cedar, the oak and the olive",
+   "The sycomore, the almond and the cypress",
+   "The terebinth, the myrtle and the date",
+   "The pomegranate, the palm and the apple tree"
+  ],
+  "answer": 3,
+  "explanation": "The pomegranate tree, the palm tree also, and the apple tree, even all the trees of the field, are withered.",
+  "ref": "Joel 1:12"
+ },
+ {
+  "id": "joel-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has dried up that the beasts of the field cry to the LORD?",
+  "choices": [
+   "The wells of the city",
+   "The clouds of heaven",
+   "The springs of Zion",
+   "The rivers of waters"
+  ],
+  "answer": 3,
+  "explanation": "The beasts of the field cry also unto thee: for the rivers of waters are dried up.",
+  "ref": "Joel 1:20"
+ },
+ {
+  "id": "joel-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Joel say is cut off before their eyes, with joy and gladness from the house of God?",
+  "choices": [
+   "The meat",
+   "The wine",
+   "The oil",
+   "The incense"
+  ],
+  "answer": 0,
+  "explanation": "Is not the meat cut off before our eyes, yea, joy and gladness from the house of our God?",
+  "ref": "Joel 1:16"
+ },
+ {
+  "id": "joel-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has been made desolate because the herds have no pasture?",
+  "choices": [
+   "The vineyards",
+   "The gardens",
+   "The flocks of sheep",
+   "The cities"
+  ],
+  "answer": 2,
+  "explanation": "The herds of cattle are perplexed, because they have no pasture; yea, the flocks of sheep are made desolate.",
+  "ref": "Joel 1:18"
+ },
+ {
+  "id": "joel-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Joel ask the old men about the locusts?",
+  "choices": [
+   "Whether they have seen the like in Egypt",
+   "Whether it has been in their days or their fathers' days",
+   "Whether the LORD has spoken of it",
+   "Whether it will come again"
+  ],
+  "answer": 1,
+  "explanation": "Hear this, ye old men. Hath this been in your days, or even in the days of your fathers?",
+  "ref": "Joel 1:2"
+ },
+ {
+  "id": "joel-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is dried up in the land, and what languisheth?",
+  "choices": [
+   "The new wine is dried up; the oil languisheth",
+   "The rivers are dried up; the wells languish",
+   "The brooks are dried up; the springs languish",
+   "The vines are dried up; the figs languish"
+  ],
+  "answer": 0,
+  "explanation": "The new wine is dried up, the oil languisheth.",
+  "ref": "Joel 1:10"
+ },
+ {
+  "id": "joel-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the flame burned?",
+  "choices": [
+   "All the houses of the city",
+   "All the trees of the field",
+   "All the altars of the temple",
+   "All the tents of the people"
+  ],
+  "answer": 1,
+  "explanation": "The flame hath burned all the trees of the field.",
+  "ref": "Joel 1:19"
+ },
+ {
+  "id": "joel-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is told to howl, and to gird themselves and lament?",
+  "choices": [
+   "The captains of the host",
+   "The princes of Judah",
+   "The merchants of Tyre",
+   "The ministers of the altar"
+  ],
+  "answer": 3,
+  "explanation": "Gird yourselves, and lament, ye priests: howl, ye ministers of the altar.",
+  "ref": "Joel 1:13"
+ },
+ {
+  "id": "joel-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the palmerworm, the locust, the cankerworm and the caterpiller do?",
+  "choices": [
+   "Each ate a different kind of tree",
+   "Each came from a different nation",
+   "Each died in the field",
+   "Each ate what the one before had left"
+  ],
+  "answer": 3,
+  "explanation": "That which the palmerworm hath left hath the locust eaten; and that which the locust hath left hath the cankerworm eaten.",
+  "ref": "Joel 1:4"
+ },
+ {
+  "id": "joel-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what is the land compared before the army, and what behind it?",
+  "choices": [
+   "A flowing river before; a dry land behind",
+   "A green pasture before; a fire behind",
+   "The garden of Eden before; a desolate wilderness behind",
+   "A walled city before; a plain behind"
+  ],
+  "answer": 2,
+  "explanation": "The land is as the garden of Eden before them, and behind them a desolate wilderness.",
+  "ref": "Joel 2:3"
+ },
+ {
+  "id": "joel-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The appearance of the army is as the appearance of what?",
+  "choices": [
+   "Lions",
+   "Eagles",
+   "Wolves",
+   "Horses"
+  ],
+  "answer": 3,
+  "explanation": "The appearance of them is as the appearance of horses; and as horsemen, so shall they run.",
+  "ref": "Joel 2:4"
+ },
+ {
+  "id": "joel-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what does the LORD tell them to turn to Him?",
+  "choices": [
+   "Burnt offerings and incense",
+   "All their heart, with fasting, weeping and mourning",
+   "Songs and a solemn feast",
+   "Silver and gold"
+  ],
+  "answer": 1,
+  "explanation": "Turn ye even to me with all your heart, and with fasting, and with weeping, and with mourning.",
+  "ref": "Joel 2:12"
+ },
+ {
+  "id": "joel-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the LORD described to those who turn to Him?",
+  "choices": [
+   "Gracious and merciful, slow to anger, of great kindness",
+   "Just and terrible, swift to anger",
+   "Distant and silent",
+   "Jealous and hard"
+  ],
+  "answer": 0,
+  "explanation": "He is gracious and merciful, slow to anger, and of great kindness, and repenteth him of the evil.",
+  "ref": "Joel 2:13"
+ },
+ {
+  "id": "joel-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where are the priests to weep?",
+  "choices": [
+   "Between the porch and the altar",
+   "At the gate of the city",
+   "In the wilderness",
+   "On the mountain"
+  ],
+  "answer": 0,
+  "explanation": "Let the priests, the ministers of the LORD, weep between the porch and the altar.",
+  "ref": "Joel 2:17"
+ },
+ {
+  "id": "joel-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question are the heathen to be given no cause to ask?",
+  "choices": [
+   "Where is their God?",
+   "Who is their king?",
+   "Why do they fast?",
+   "Where is their temple?"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore should they say among the people, Where is their God?",
+  "ref": "Joel 2:17"
+ },
+ {
+  "id": "joel-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD promise to send His people?",
+  "choices": [
+   "Silver, gold and spices",
+   "Corn, and wine, and oil",
+   "Peace and a new king",
+   "Fire and a cloud"
+  ],
+  "answer": 1,
+  "explanation": "Behold, I will send you corn, and wine, and oil, and ye shall be satisfied therewith.",
+  "ref": "Joel 2:19"
+ },
+ {
+  "id": "joel-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall the old men and the young men do, when the LORD pours out His spirit?",
+  "choices": [
+   "Old men dream dreams; young men see visions",
+   "Old men judge; young men fight",
+   "Old men rest; young men build",
+   "Old men pray; young men sing"
+  ],
+  "answer": 0,
+  "explanation": "Your old men shall dream dreams, your young men shall see visions.",
+  "ref": "Joel 2:28"
+ },
+ {
+  "id": "joel-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall the moon be turned into, before the great and terrible day?",
+  "choices": [
+   "Fire",
+   "Darkness",
+   "Blood",
+   "Smoke"
+  ],
+  "answer": 2,
+  "explanation": "The sun shall be turned into darkness, and the moon into blood.",
+  "ref": "Joel 2:31"
+ },
+ {
+  "id": "joel-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD promise whosoever calls on His name?",
+  "choices": [
+   "He shall be rich",
+   "He shall be a king",
+   "He shall be silent",
+   "He shall be delivered"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever shall call on the name of the LORD shall be delivered.",
+  "ref": "Joel 2:32"
+ },
+ {
+  "id": "joel-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How do the invaders enter the houses?",
+  "choices": [
+   "Like a flood, through the gates",
+   "Like fire, through the roof",
+   "Like a thief, in at the windows",
+   "Like a wind, over the walls"
+  ],
+  "answer": 2,
+  "explanation": "They shall enter in at the windows like a thief.",
+  "ref": "Joel 2:9"
+ },
+ {
+  "id": "joel-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How do they march and climb?",
+  "choices": [
+   "They crawl under the wall and scatter",
+   "They climb walls like men of war, unbroken in ranks",
+   "They fly over the wall like birds",
+   "They dig under the wall like moles"
+  ],
+  "answer": 1,
+  "explanation": "They shall climb the wall like men of war; and they shall not break their ranks.",
+  "ref": "Joel 2:7"
+ },
+ {
+  "id": "joel-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question does Joel ask about the great and terrible day of the LORD?",
+  "choices": [
+   "Who shall see it?",
+   "Who will escape it?",
+   "Who can abide it?",
+   "Who has called it?"
+  ],
+  "answer": 2,
+  "explanation": "The day of the LORD is great and very terrible; and who can abide it?",
+  "ref": "Joel 2:11"
+ },
+ {
+  "id": "joel-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What blessing might the LORD leave behind if He returns and repents?",
+  "choices": [
+   "A meat offering and a drink offering for the LORD",
+   "A king for Judah",
+   "A new temple",
+   "A fortress on Zion"
+  ],
+  "answer": 0,
+  "explanation": "Who knoweth if he will return and repent, and leave a blessing behind him; even a meat offering and a drink offering?",
+  "ref": "Joel 2:14"
+ },
+ {
+  "id": "joel-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who else is to be gathered, besides the elders?",
+  "choices": [
+   "The priests of Bethel",
+   "The children, and those that suck the breasts",
+   "The nations around",
+   "The prophets of Judah"
+  ],
+  "answer": 1,
+  "explanation": "Assemble the elders, gather the children, and those that suck the breasts.",
+  "ref": "Joel 2:16"
+ },
+ {
+  "id": "joel-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who is to leave his chamber and his closet for the solemn assembly?",
+  "choices": [
+   "The king and the queen",
+   "The bridegroom and the bride",
+   "The priest and his wife",
+   "The elder and the child"
+  ],
+  "answer": 1,
+  "explanation": "Let the bridegroom go forth of his chamber, and the bride out of her closet.",
+  "ref": "Joel 2:16"
+ },
+ {
+  "id": "joel-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD be for His land, and what will He do for His people?",
+  "choices": [
+   "Jealous for His land, and pity His people",
+   "Angry at His land, and scatter His people",
+   "Silent for His land, and leave His people",
+   "Far from His land, and forget His people"
+  ],
+  "answer": 0,
+  "explanation": "Then will the LORD be jealous for his land, and pity his people.",
+  "ref": "Joel 2:18"
+ },
+ {
+  "id": "joel-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Into what kind of land will the LORD drive the northern army?",
+  "choices": [
+   "A land barren and desolate",
+   "A land of fire",
+   "A land of Edom",
+   "A land of waters"
+  ],
+  "answer": 0,
+  "explanation": "I will remove far off from you the northern army, and will drive him into a land barren and desolate.",
+  "ref": "Joel 2:20"
+ },
+ {
+  "id": "joel-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who is told, Be not afraid, because the pastures of the wilderness spring?",
+  "choices": [
+   "The children of Zion",
+   "The priests",
+   "The old men",
+   "The beasts of the field"
+  ],
+  "answer": 3,
+  "explanation": "Be not afraid, ye beasts of the field: for the pastures of the wilderness do spring.",
+  "ref": "Joel 2:22"
+ },
+ {
+  "id": "joel-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What rains does the LORD cause to come down in the first month?",
+  "choices": [
+   "The former rain and the latter rain",
+   "The early flood and the late dew",
+   "The spring rain and the autumn mist",
+   "The great rain and the small rain"
+  ],
+  "answer": 0,
+  "explanation": "He will cause to come down for you the rain, the former rain, and the latter rain in the first month.",
+  "ref": "Joel 2:23"
+ },
+ {
+  "id": "joel-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what shall the floors and vats be filled?",
+  "choices": [
+   "Barley on the floors; milk in the vats",
+   "Wheat on the floors; wine and oil in the vats",
+   "Figs on the floors; water in the vats",
+   "Olives on the floors; honey in the vats"
+  ],
+  "answer": 1,
+  "explanation": "The floors shall be full of wheat, and the vats shall overflow with wine and oil.",
+  "ref": "Joel 2:24"
+ },
+ {
+  "id": "joel-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are they told to sanctify and call in Zion?",
+  "choices": [
+   "A feast, and a new moon",
+   "A war, and a watch",
+   "A tithe, and a sabbath",
+   "A fast, and a solemn assembly"
+  ],
+  "answer": 3,
+  "explanation": "Blow the trumpet in Zion, sanctify a fast, call a solemn assembly.",
+  "ref": "Joel 2:15"
+ },
+ {
+  "id": "joel-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Besides all flesh, upon whom will the LORD pour out His spirit?",
+  "choices": [
+   "The kings and the princes",
+   "The priests and the Levites",
+   "The elders and the judges",
+   "The servants and the handmaids"
+  ],
+  "answer": 3,
+  "explanation": "Also upon the servants and upon the handmaids in those days will I pour out my spirit.",
+  "ref": "Joel 2:29"
+ },
+ {
+  "id": "joel-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What wonders will the LORD shew in the heavens and in the earth?",
+  "choices": [
+   "Blood, and fire, and pillars of smoke",
+   "Rain, hail and darkness",
+   "Stars, a sword and a flood",
+   "A great wind and an earthquake"
+  ],
+  "answer": 0,
+  "explanation": "I will shew wonders in the heavens and in the earth, blood, and fire, and pillars of smoke.",
+  "ref": "Joel 2:30"
+ },
+ {
+  "id": "joel-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Where shall deliverance be, as the LORD hath said?",
+  "choices": [
+   "In Bethel and Gilgal",
+   "In mount Zion and in Jerusalem",
+   "In Samaria and Dan",
+   "In Edom and Teman"
+  ],
+  "answer": 1,
+  "explanation": "In mount Zion and in Jerusalem shall be deliverance, as the LORD hath said, and in the remnant whom the LORD shall call.",
+  "ref": "Joel 2:32"
+ },
+ {
+  "id": "joel-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD call the locusts that He sent among them?",
+  "choices": [
+   "My great army",
+   "My chosen people",
+   "My sharp sword",
+   "My swift wind"
+  ],
+  "answer": 0,
+  "explanation": "I will restore to you the years that the locust hath eaten, my great army which I sent among you.",
+  "ref": "Joel 2:25"
+ },
+ {
+  "id": "joel-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom does the LORD utter His voice?",
+  "choices": [
+   "His priests",
+   "His army",
+   "His prophets",
+   "His people"
+  ],
+  "answer": 1,
+  "explanation": "The LORD shall utter his voice before his army: for his camp is very great.",
+  "ref": "Joel 2:11"
+ },
+ {
+  "id": "joel-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Their noise is like the noise of what, on the tops of mountains?",
+  "choices": [
+   "Waters",
+   "Thunder",
+   "Chariots",
+   "Trumpets"
+  ],
+  "answer": 2,
+  "explanation": "Like the noise of chariots on the tops of mountains shall they leap.",
+  "ref": "Joel 2:5"
+ },
+ {
+  "id": "joel-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to them when they fall upon the sword?",
+  "choices": [
+   "They are slain",
+   "They are scattered",
+   "They are not wounded",
+   "They are taken"
+  ],
+  "answer": 2,
+  "explanation": "When they fall upon the sword, they shall not be wounded.",
+  "ref": "Joel 2:8"
+ },
+ {
+  "id": "joel-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How shall the people look before the army's face?",
+  "choices": [
+   "Glad, with faces lifted",
+   "Calm, with faces covered",
+   "Much pained, with faces gathering blackness",
+   "Proud, with faces bold"
+  ],
+  "answer": 2,
+  "explanation": "Before their face the people shall be much pained: all faces shall gather blackness.",
+  "ref": "Joel 2:6"
+ },
+ {
+  "id": "joel-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say will rise up from the northern army because he did great things?",
+  "choices": [
+   "His fire and smoke",
+   "His stink and his ill savour",
+   "His cry and lament",
+   "His trumpet and shout"
+  ],
+  "answer": 1,
+  "explanation": "His stink shall come up, and his ill savour shall come up, because he hath done great things.",
+  "ref": "Joel 2:20"
+ },
+ {
+  "id": "joel-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the people do after they are satisfied?",
+  "choices": [
+   "Build a house for the LORD",
+   "Return to Egypt",
+   "Praise the name of the LORD",
+   "Go up to Zion"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall eat in plenty, and be satisfied, and praise the name of the LORD your God, that hath dealt wondrously with you.",
+  "ref": "Joel 2:26"
+ },
+ {
+  "id": "joel-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the people know when the LORD restores them?",
+  "choices": [
+   "That He is in the midst of Israel and none else is God",
+   "That He is far off",
+   "That He has forgotten",
+   "That He has chosen another people"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall know that I am in the midst of Israel, and that I am the LORD your God, and none else.",
+  "ref": "Joel 2:27"
+ },
+ {
+  "id": "joel-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say the land should do, because He will do great things?",
+  "choices": [
+   "Mourn and wait",
+   "Be still and hide",
+   "Rest and sleep",
+   "Fear not; be glad and rejoice"
+  ],
+  "answer": 3,
+  "explanation": "Fear not, O land; be glad and rejoice: for the LORD will do great things.",
+  "ref": "Joel 2:21"
+ },
+ {
+  "id": "joel-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the fig tree and the vine do, in the promise of recovery?",
+  "choices": [
+   "Cast their leaves",
+   "Yield their strength",
+   "Hide their fruit",
+   "Give no shade"
+  ],
+  "answer": 1,
+  "explanation": "The tree beareth her fruit, the fig tree and the vine do yield their strength.",
+  "ref": "Joel 2:22"
+ },
+ {
+  "id": "joel-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the priests ask the LORD not to give to reproach?",
+  "choices": [
+   "His altar",
+   "His heritage",
+   "His city",
+   "His law"
+  ],
+  "answer": 1,
+  "explanation": "Spare thy people, O LORD, and give not thine heritage to reproach, that the heathen should rule over them.",
+  "ref": "Joel 2:17"
+ },
+ {
+  "id": "joel-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two things shall tremble when the army comes?",
+  "choices": [
+   "The sea and the rivers",
+   "The earth and the heavens",
+   "The mountains and the hills",
+   "The city and the wall"
+  ],
+  "answer": 1,
+  "explanation": "The earth shall quake before them; the heavens shall tremble.",
+  "ref": "Joel 2:10"
+ },
+ {
+  "id": "joel-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say will never happen to His people?",
+  "choices": [
+   "They shall never fast",
+   "They shall never be scattered",
+   "They shall never be ashamed",
+   "They shall never hunger"
+  ],
+  "answer": 2,
+  "explanation": "My people shall never be ashamed.",
+  "ref": "Joel 2:26"
+ },
+ {
+  "id": "joel-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does each of the invaders walk, and what do they not do?",
+  "choices": [
+   "Together in a crowd, thrusting each other",
+   "Every one in his path, and none thrusts another",
+   "Apart, each in a different land",
+   "By night, without a sound"
+  ],
+  "answer": 1,
+  "explanation": "Neither shall one thrust another; they shall walk every one in his path.",
+  "ref": "Joel 2:8"
+ },
+ {
+  "id": "joel-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the sun and moon, and the stars do before the army?",
+  "choices": [
+   "Sun and moon grow red; stars fall",
+   "Sun and moon are dark; stars withdraw their shining",
+   "Sun and moon stand still; stars multiply",
+   "Sun and moon are hid; stars burn"
+  ],
+  "answer": 1,
+  "explanation": "The sun and the moon shall be dark, and the stars shall withdraw their shining.",
+  "ref": "Joel 2:10"
+ },
+ {
+  "id": "joel-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which cities does the LORD address with, What have ye to do with me?",
+  "choices": [
+   "Tyre, Zidon and the coasts of Palestine",
+   "Edom, Moab and Ammon",
+   "Egypt, Assyria and Babylon",
+   "Samaria, Dan and Bethel"
+  ],
+  "answer": 0,
+  "explanation": "What have ye to do with me, O Tyre, and Zidon, and all the coasts of Palestine?",
+  "ref": "Joel 3:4"
+ },
+ {
+  "id": "joel-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had they given a boy for, and sold a girl for?",
+  "choices": [
+   "A boy for an harlot; a girl for wine",
+   "A boy for silver; a girl for gold",
+   "A boy for bread; a girl for oil",
+   "A boy for a field; a girl for a house"
+  ],
+  "answer": 0,
+  "explanation": "They have given a boy for an harlot, and sold a girl for wine, that they might drink.",
+  "ref": "Joel 3:3"
+ },
+ {
+  "id": "joel-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the nations told to beat their plowshares into?",
+  "choices": [
+   "Swords",
+   "Sickles",
+   "Spears",
+   "Shields"
+  ],
+  "answer": 0,
+  "explanation": "Beat your plowshares into swords, and your pruninghooks into spears.",
+  "ref": "Joel 3:10"
+ },
+ {
+  "id": "joel-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the valley called where multitudes are gathered?",
+  "choices": [
+   "The valley of slaughter",
+   "The valley of decision",
+   "The valley of Hinnom",
+   "The valley of Elah"
+  ],
+  "answer": 1,
+  "explanation": "Multitudes, multitudes in the valley of decision: for the day of the LORD is near in the valley of decision.",
+  "ref": "Joel 3:14"
+ },
+ {
+  "id": "joel-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall the mountains drop and the hills flow with?",
+  "choices": [
+   "New wine, and milk",
+   "Silver, and gold",
+   "Oil, and honey",
+   "Water, and bread"
+  ],
+  "answer": 0,
+  "explanation": "The mountains shall drop down new wine, and the hills shall flow with milk.",
+  "ref": "Joel 3:18"
+ },
+ {
+  "id": "joel-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which two lands shall be a desolation for the violence against Judah?",
+  "choices": [
+   "Tyre and Zidon",
+   "Moab and Ammon",
+   "Egypt and Edom",
+   "Syria and Philistia"
+  ],
+  "answer": 2,
+  "explanation": "Egypt shall be a desolation, and Edom shall be a desolate wilderness, for the violence against the children of Judah.",
+  "ref": "Joel 3:19"
+ },
+ {
+  "id": "joel-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When will the LORD gather all nations?",
+  "choices": [
+   "When the king is crowned",
+   "When the temple is built",
+   "When the rain returns",
+   "When He brings again the captivity of Judah and Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "In those days, when I shall bring again the captivity of Judah and Jerusalem, I will also gather all nations.",
+  "ref": "Joel 3:1"
+ },
+ {
+  "id": "joel-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What have the nations done for the LORD's people?",
+  "choices": [
+   "Built walls around them",
+   "Prayed for them",
+   "Cast lots for them",
+   "Fed them"
+  ],
+  "answer": 2,
+  "explanation": "They have cast lots for my people.",
+  "ref": "Joel 3:3"
+ },
+ {
+  "id": "joel-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What have they carried into their temples?",
+  "choices": [
+   "The ark of the covenant",
+   "The LORD's silver and gold and goodly pleasant things",
+   "The altars of Judah",
+   "The idols of Israel"
+  ],
+  "answer": 1,
+  "explanation": "Ye have taken my silver and my gold, and have carried into your temples my goodly pleasant things.",
+  "ref": "Joel 3:5"
+ },
+ {
+  "id": "joel-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom have the children of Judah been sold, to remove them far from their border?",
+  "choices": [
+   "The Sabeans",
+   "The Philistines",
+   "The Grecians",
+   "The Egyptians"
+  ],
+  "answer": 2,
+  "explanation": "The children of Judah have ye sold unto the Grecians, that ye might remove them far from their border.",
+  "ref": "Joel 3:6"
+ },
+ {
+  "id": "joel-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who shall sell the sons and daughters of Tyre to a people far off?",
+  "choices": [
+   "The children of Judah",
+   "The children of Edom",
+   "The Grecians",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "I will sell your sons and your daughters into the hand of the children of Judah, and they shall sell them to the Sabeans.",
+  "ref": "Joel 3:8"
+ },
+ {
+  "id": "joel-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the weak told to say?",
+  "choices": [
+   "I am free",
+   "I am strong",
+   "I am wise",
+   "I am a king"
+  ],
+  "answer": 1,
+  "explanation": "Let the weak say, I am strong.",
+  "ref": "Joel 3:10"
+ },
+ {
+  "id": "joel-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will Egypt and Edom be desolate?",
+  "choices": [
+   "They sold Judah to the Grecians",
+   "They shed innocent blood in Judah's land",
+   "They carried off the silver and gold",
+   "They scattered Israel among the nations"
+  ],
+  "answer": 1,
+  "explanation": "For the violence against the children of Judah, because they have shed innocent blood in their land.",
+  "ref": "Joel 3:19"
+ },
+ {
+  "id": "joel-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall happen to Judah and Jerusalem?",
+  "choices": [
+   "Judah dwells for ever, Jerusalem to all generations",
+   "Judah scattered, Jerusalem burned",
+   "Judah shall be ruled by Edom",
+   "Jerusalem shall be forgotten"
+  ],
+  "answer": 0,
+  "explanation": "Judah shall dwell for ever, and Jerusalem from generation to generation.",
+  "ref": "Joel 3:20"
+ },
+ {
+  "id": "joel-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "What valley shall the fountain from the house of the LORD water?",
+  "choices": [
+   "The valley of Shittim",
+   "The valley of Jehoshaphat",
+   "The valley of decision",
+   "The valley of Elah"
+  ],
+  "answer": 0,
+  "explanation": "A fountain shall come forth of the house of the LORD, and shall water the valley of Shittim.",
+  "ref": "Joel 3:18"
+ },
+ {
+  "id": "joel-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the LORD do out of Zion and from Jerusalem?",
+  "choices": [
+   "Gather the nations",
+   "Rebuild the temple",
+   "Send out saviours",
+   "Roar and utter His voice"
+  ],
+  "answer": 3,
+  "explanation": "The LORD also shall roar out of Zion, and utter his voice from Jerusalem; and the heavens and the earth shall shake.",
+  "ref": "Joel 3:16"
+ },
+ {
+  "id": "joel-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do to the nations' recompence if they render it?",
+  "choices": [
+   "Return it swiftly upon their own head",
+   "Forgive it",
+   "Double it",
+   "Give it to Israel"
+  ],
+  "answer": 0,
+  "explanation": "If ye recompense me, swiftly and speedily will I return your recompence upon your own head.",
+  "ref": "Joel 3:4"
+ },
+ {
+  "id": "joel-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say is full and overflowing?",
+  "choices": [
+   "The barns and the garners",
+   "The press and the fats",
+   "The vats and the floors",
+   "The rivers and the seas"
+  ],
+  "answer": 1,
+  "explanation": "The press is full, the fats overflow; for their wickedness is great.",
+  "ref": "Joel 3:13"
+ },
+ {
+  "id": "joel-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the sun, the moon and the stars do?",
+  "choices": [
+   "The sun and moon turn to blood; stars fall",
+   "The sun and moon stand still; stars multiply",
+   "The sun and moon fall; stars grow bright",
+   "The sun and moon are darkened; stars withdraw their shining"
+  ],
+  "answer": 3,
+  "explanation": "The sun and the moon shall be darkened, and the stars shall withdraw their shining.",
+  "ref": "Joel 3:15"
+ },
+ {
+  "id": "joel-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall no more pass through Jerusalem?",
+  "choices": [
+   "Armies",
+   "Merchants",
+   "Travellers",
+   "Strangers"
+  ],
+  "answer": 3,
+  "explanation": "Then shall Jerusalem be holy, and there shall no strangers pass through her any more.",
+  "ref": "Joel 3:17"
+ },
+ {
+  "id": "joel-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do with the blood He has not cleansed?",
+  "choices": [
+   "Cleanse it",
+   "Hide it",
+   "Avenge it",
+   "Remember it"
+  ],
+  "answer": 0,
+  "explanation": "I will cleanse their blood that I have not cleansed: for the LORD dwelleth in Zion.",
+  "ref": "Joel 3:21"
+ },
+ {
+  "id": "joel-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall flow with waters in that day?",
+  "choices": [
+   "All the wells of Edom",
+   "All the rivers of Judah",
+   "All the springs of Egypt",
+   "All the brooks of Tyre"
+  ],
+  "answer": 1,
+  "explanation": "All the rivers of Judah shall flow with waters.",
+  "ref": "Joel 3:18"
+ },
+ {
+  "id": "joel-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say to proclaim among the Gentiles?",
+  "choices": [
+   "Prepare war, wake up the mighty men",
+   "Seek peace, make ready the feast",
+   "Bring tribute, build the wall",
+   "Fast and pray, wait for the sign"
+  ],
+  "answer": 0,
+  "explanation": "Proclaim ye this among the Gentiles; Prepare war, wake up the mighty men, let all the men of war draw near.",
+  "ref": "Joel 3:9"
+ },
+ {
+  "id": "joel-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why will the LORD sit in the valley of Jehoshaphat?",
+  "choices": [
+   "To bless the nations",
+   "To judge all the heathen round about",
+   "To gather His people",
+   "To build a temple"
+  ],
+  "answer": 1,
+  "explanation": "Come up to the valley of Jehoshaphat: for there will I sit to judge all the heathen round about.",
+  "ref": "Joel 3:12"
+ },
+ {
+  "id": "joel-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does the prayer ask the LORD to cause to come down?",
+  "choices": [
+   "His prophets",
+   "His priests",
+   "His mighty ones",
+   "His servants"
+  ],
+  "answer": 2,
+  "explanation": "Thither cause thy mighty ones to come down, O LORD.",
+  "ref": "Joel 3:11"
+ },
+ {
+  "id": "joel-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do with Judah's people sold to the Grecians?",
+  "choices": [
+   "Leave them there",
+   "Send them to Egypt",
+   "Raise them out of the place where they were sold",
+   "Forget them"
+  ],
+  "answer": 2,
+  "explanation": "I will raise them out of the place whither ye have sold them, and will return your recompence upon your own head.",
+  "ref": "Joel 3:7"
+ },
+ {
+  "id": "joel-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "So shall ye know what, when the LORD does these things?",
+  "choices": [
+   "That He is far off",
+   "That the nations are strong",
+   "That He is the LORD your God dwelling in Zion",
+   "That Judah has earned it"
+  ],
+  "answer": 2,
+  "explanation": "So shall ye know that I am the LORD your God dwelling in Zion, my holy mountain.",
+  "ref": "Joel 3:17"
+ },
+ {
+  "id": "joel-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is near in the valley of decision?",
+  "choices": [
+   "The harvest",
+   "The day of the LORD",
+   "The war",
+   "The flood"
+  ],
+  "answer": 1,
+  "explanation": "The day of the LORD is near in the valley of decision.",
+  "ref": "Joel 3:14"
  }
 ]

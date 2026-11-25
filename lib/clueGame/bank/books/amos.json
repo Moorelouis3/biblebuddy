@@ -192,22 +192,6 @@
   "ref": "Amos 3:2"
  },
  {
-  "id": "old-amos-3-3",
-  "chapter": 3,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What series of rhetorical questions fills the chapter?",
-  "choices": [
-   "Questions about harvest only",
-   "Questions about temple furniture",
-   "Questions about kings",
-   "Questions showing that effects have causes"
-  ],
-  "answer": 3,
-  "explanation": "Amos uses cause-and-effect questions to show that coming judgment is not random.",
-  "ref": "Amos 3:3–6"
- },
- {
   "id": "old-amos-3-4",
   "chapter": 3,
   "level": "beginner",
@@ -718,5 +702,2949 @@
   "answer": 1,
   "explanation": "The book ends with a promise of secure restoration in the land God has given.",
   "ref": "Amos 9:15"
+ },
+ {
+  "id": "amos-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "In the days of which king of Judah did Amos see his words?",
+  "choices": [
+   "Joash",
+   "Hazael",
+   "Ben-hadad",
+   "Uzziah"
+  ],
+  "answer": 3,
+  "explanation": "The words of Amos were seen in the days of Uzziah king of Judah, and Jeroboam the son of Joash king of Israel.",
+  "ref": "Amos 1:1"
+ },
+ {
+  "id": "amos-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Edom do to his brother, for which the LORD condemned him?",
+  "choices": [
+   "Sold him for silver",
+   "Pursued him with the sword",
+   "Burned his fields",
+   "Shut him out of the gate"
+  ],
+  "answer": 1,
+  "explanation": "Edom did pursue his brother with the sword, and did cast off all pity.",
+  "ref": "Amos 1:11"
+ },
+ {
+  "id": "amos-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For what is Gaza condemned?",
+  "choices": [
+   "Threshing Gilead with iron instruments",
+   "Burning the bones of a king into lime",
+   "Carrying away the whole captivity to deliver them up to Edom",
+   "Ripping up women with child"
+  ],
+  "answer": 2,
+  "explanation": "They carried away captive the whole captivity, to deliver them up to Edom.",
+  "ref": "Amos 1:6"
+ },
+ {
+  "id": "amos-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "What shall wither when the LORD roars from Zion?",
+  "choices": [
+   "The vineyards of Tekoa",
+   "The gardens of Damascus",
+   "The fields of Gilead",
+   "The top of Carmel"
+  ],
+  "answer": 3,
+  "explanation": "The LORD will roar from Zion, and the top of Carmel shall wither.",
+  "ref": "Amos 1:2"
+ },
+ {
+  "id": "amos-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose palaces shall the fire sent into the house of Hazael devour?",
+  "choices": [
+   "Ben-hadad's",
+   "Jeroboam's",
+   "Uzziah's",
+   "Joash's"
+  ],
+  "answer": 0,
+  "explanation": "I will send a fire into the house of Hazael, which shall devour the palaces of Ben-hadad.",
+  "ref": "Amos 1:4"
+ },
+ {
+  "id": "amos-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Unto where shall the people of Syria go into captivity?",
+  "choices": [
+   "Edom",
+   "Egypt",
+   "Gilead",
+   "Kir"
+  ],
+  "answer": 3,
+  "explanation": "The people of Syria shall go into captivity unto Kir, saith the LORD.",
+  "ref": "Amos 1:5"
+ },
+ {
+  "id": "amos-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Against which Philistine city does the LORD say He will turn His hand?",
+  "choices": [
+   "Ekron",
+   "Gaza",
+   "Gath",
+   "Tyrus"
+  ],
+  "answer": 0,
+  "explanation": "I will turn mine hand against Ekron: and the remnant of the Philistines shall perish.",
+  "ref": "Amos 1:8"
+ },
+ {
+  "id": "amos-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of Edom's anger?",
+  "choices": [
+   "It was soon quenched",
+   "It was hidden in the heart",
+   "It did tear perpetually",
+   "It was turned to mercy"
+  ],
+  "answer": 2,
+  "explanation": "His anger did tear perpetually, and he kept his wrath for ever.",
+  "ref": "Amos 1:11"
+ },
+ {
+  "id": "amos-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city's palaces shall the fire upon Teman devour?",
+  "choices": [
+   "Rabbah",
+   "Kirioth",
+   "Ashdod",
+   "Bozrah"
+  ],
+  "answer": 3,
+  "explanation": "I will send a fire upon Teman, which shall devour the palaces of Bozrah.",
+  "ref": "Amos 1:12"
+ },
+ {
+  "id": "amos-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "On the wall of which city will the LORD kindle a fire for Ammon?",
+  "choices": [
+   "Gaza",
+   "Rabbah",
+   "Tyrus",
+   "Damascus"
+  ],
+  "answer": 1,
+  "explanation": "I will kindle a fire in the wall of Rabbah, and it shall devour the palaces thereof.",
+  "ref": "Amos 1:14"
+ },
+ {
+  "id": "amos-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who shall go into captivity with his princes together, in the judgment on Ammon?",
+  "choices": [
+   "Their priest",
+   "Their judge",
+   "Their prophet",
+   "Their king"
+  ],
+  "answer": 3,
+  "explanation": "Their king shall go into captivity, he and his princes together, saith the LORD.",
+  "ref": "Amos 1:15"
+ },
+ {
+  "id": "amos-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What event does the book name to date Amos's vision?",
+  "choices": [
+   "The flood",
+   "The famine",
+   "The earthquake",
+   "The eclipse"
+  ],
+  "answer": 2,
+  "explanation": "Amos saw his words two years before the earthquake.",
+  "ref": "Amos 1:1"
+ },
+ {
+  "id": "amos-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Jeroboam king of Israel, in the days when Amos saw his words?",
+  "choices": [
+   "Hazael",
+   "Uzziah",
+   "Joash",
+   "Ben-hadad"
+  ],
+  "answer": 2,
+  "explanation": "Jeroboam the son of Joash king of Israel.",
+  "ref": "Amos 1:1"
+ },
+ {
+  "id": "amos-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Tyrus not remember when it delivered the captivity to Edom?",
+  "choices": [
+   "The brotherly covenant",
+   "The law of Moses",
+   "The days of old",
+   "The word of the LORD"
+  ],
+  "answer": 0,
+  "explanation": "They delivered up the whole captivity to Edom, and remembered not the brotherly covenant.",
+  "ref": "Amos 1:9"
+ },
+ {
+  "id": "amos-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "From which plain shall the LORD cut off the inhabitant of Damascus?",
+  "choices": [
+   "The plain of Eden",
+   "The plain of Gilead",
+   "The plain of Aven",
+   "The plain of Kir"
+  ],
+  "answer": 2,
+  "explanation": "I will cut off the inhabitant from the plain of Aven.",
+  "ref": "Amos 1:5"
+ },
+ {
+  "id": "amos-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "From which Philistine city shall him that holdeth the sceptre be cut off?",
+  "choices": [
+   "Gaza",
+   "Gath",
+   "Ashkelon",
+   "Tyrus"
+  ],
+  "answer": 2,
+  "explanation": "I will cut off him that holdeth the sceptre from Ashkelon.",
+  "ref": "Amos 1:8"
+ },
+ {
+  "id": "amos-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How will the judgment come on Rabbah?",
+  "choices": [
+   "A famine and a drought",
+   "A flood from the river",
+   "Plague and silence",
+   "Shouting in battle and a tempest in the whirlwind"
+  ],
+  "answer": 3,
+  "explanation": "A fire in the wall of Rabbah, with shouting in the day of battle, with a tempest in the day of the whirlwind.",
+  "ref": "Amos 1:14"
+ },
+ {
+  "id": "amos-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Ammon rip up the women with child of Gilead?",
+  "choices": [
+   "That they might pay tribute to Edom",
+   "That they might avenge their king",
+   "That they might take Gilead's wine",
+   "That they might enlarge their border"
+  ],
+  "answer": 3,
+  "explanation": "They ripped up the women with child of Gilead, that they might enlarge their border.",
+  "ref": "Amos 1:13"
+ },
+ {
+  "id": "amos-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall mourn when the LORD roars from Zion?",
+  "choices": [
+   "The habitations of the shepherds",
+   "The gates of Jerusalem",
+   "The cities of Judah",
+   "The priests of Bethel"
+  ],
+  "answer": 0,
+  "explanation": "The habitations of the shepherds shall mourn, and the top of Carmel shall wither.",
+  "ref": "Amos 1:2"
+ },
+ {
+  "id": "amos-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD raise up of Israel's young men?",
+  "choices": [
+   "Priests",
+   "Judges",
+   "Nazarites",
+   "Captains"
+  ],
+  "answer": 2,
+  "explanation": "I raised up of your sons for prophets, and of your young men for Nazarites.",
+  "ref": "Amos 2:11"
+ },
+ {
+  "id": "amos-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do to the Nazarites?",
+  "choices": [
+   "Made them judges",
+   "Sent them to Egypt",
+   "Shaved their heads",
+   "Gave them wine to drink"
+  ],
+  "answer": 3,
+  "explanation": "Ye gave the Nazarites wine to drink; and commanded the prophets, saying, Prophesy not.",
+  "ref": "Amos 2:12"
+ },
+ {
+  "id": "amos-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For how long did the LORD lead Israel through the wilderness?",
+  "choices": [
+   "Seven years",
+   "Forty years",
+   "Twelve years",
+   "Four hundred years"
+  ],
+  "answer": 1,
+  "explanation": "I brought you up from the land of Egypt, and led you forty years through the wilderness.",
+  "ref": "Amos 2:10"
+ },
+ {
+  "id": "amos-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Whose palaces shall the fire sent upon Moab devour?",
+  "choices": [
+   "Kirioth",
+   "Rabbah",
+   "Bozrah",
+   "Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "I will send a fire upon Moab, and it shall devour the palaces of Kirioth.",
+  "ref": "Amos 2:2"
+ },
+ {
+  "id": "amos-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom will the LORD cut off from the midst of Moab and slay with all its princes?",
+  "choices": [
+   "The judge",
+   "The priest",
+   "The king",
+   "The prophet"
+  ],
+  "answer": 0,
+  "explanation": "I will cut off the judge from the midst thereof, and will slay all the princes thereof with him.",
+  "ref": "Amos 2:3"
+ },
+ {
+  "id": "amos-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What caused Judah to err?",
+  "choices": [
+   "Their lies",
+   "Their idols",
+   "Their kings",
+   "Their wealth"
+  ],
+  "answer": 0,
+  "explanation": "Their lies caused them to err, after the which their fathers have walked.",
+  "ref": "Amos 2:4"
+ },
+ {
+  "id": "amos-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Whose palaces shall the fire sent upon Judah devour?",
+  "choices": [
+   "Samaria's",
+   "Jerusalem's",
+   "Bethel's",
+   "Kirioth's"
+  ],
+  "answer": 1,
+  "explanation": "I will send a fire upon Judah, and it shall devour the palaces of Jerusalem.",
+  "ref": "Amos 2:5"
+ },
+ {
+  "id": "amos-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the oppressors pant after on the head of the poor?",
+  "choices": [
+   "The dust of the earth",
+   "The gold of the land",
+   "The bread of the field",
+   "The oil of the vine"
+  ],
+  "answer": 0,
+  "explanation": "They pant after the dust of the earth on the head of the poor.",
+  "ref": "Amos 2:7"
+ },
+ {
+  "id": "amos-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do they lay themselves down upon by every altar?",
+  "choices": [
+   "Beds of ivory",
+   "Skins of the sacrifice",
+   "Clothes laid to pledge",
+   "Mats of straw"
+  ],
+  "answer": 2,
+  "explanation": "They lay themselves down upon clothes laid to pledge by every altar.",
+  "ref": "Amos 2:8"
+ },
+ {
+  "id": "amos-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do they drink in the house of their god?",
+  "choices": [
+   "The wine of the vineyards",
+   "The waters of the temple",
+   "The milk of the flock",
+   "The wine of the condemned"
+  ],
+  "answer": 3,
+  "explanation": "They drink the wine of the condemned in the house of their god.",
+  "ref": "Amos 2:8"
+ },
+ {
+  "id": "amos-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the LORD pressed under Israel like?",
+  "choices": [
+   "A rock in the field",
+   "A tree in storm",
+   "A cart full of sheaves",
+   "A mill with stones"
+  ],
+  "answer": 2,
+  "explanation": "Behold, I am pressed under you, as a cart is pressed that is full of sheaves.",
+  "ref": "Amos 2:13"
+ },
+ {
+  "id": "amos-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Amorite's height was like the cedars; what was he as strong as?",
+  "choices": [
+   "The lions",
+   "The oaks",
+   "The mountains",
+   "The rocks"
+  ],
+  "answer": 1,
+  "explanation": "His height was like the height of the cedars, and he was strong as the oaks.",
+  "ref": "Amos 2:9"
+ },
+ {
+  "id": "amos-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the LORD destroy the Amorite before Israel?",
+  "choices": [
+   "With a flood and with hail",
+   "With the sword of Israel's captains",
+   "His fruit from above and his roots from beneath",
+   "With fire from the altar"
+  ],
+  "answer": 2,
+  "explanation": "I destroyed his fruit from above, and his roots from beneath.",
+  "ref": "Amos 2:9"
+ },
+ {
+  "id": "amos-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why do a man and his father go in unto the same maid, according to the LORD?",
+  "choices": [
+   "To profane His holy name",
+   "To break the covenant",
+   "To mock the prophets",
+   "To pay the pledge"
+  ],
+  "answer": 0,
+  "explanation": "A man and his father will go in unto the same maid, to profane my holy name.",
+  "ref": "Amos 2:7"
+ },
+ {
+  "id": "amos-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How shall the courageous among the mighty flee in that day?",
+  "choices": [
+   "By night",
+   "Naked",
+   "On horses",
+   "In chains"
+  ],
+  "answer": 1,
+  "explanation": "He that is courageous among the mighty shall flee away naked in that day.",
+  "ref": "Amos 2:16"
+ },
+ {
+  "id": "amos-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is named among those that shall not deliver themselves in that day?",
+  "choices": [
+   "He that sitteth in the gate",
+   "He that rideth the horse",
+   "He that keepeth the flock",
+   "He that dwelleth in Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "Neither shall he that rideth the horse deliver himself.",
+  "ref": "Amos 2:15"
+ },
+ {
+  "id": "amos-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What sounds accompany Moab's death?",
+  "choices": [
+   "Tumult, shouting and the sound of the trumpet",
+   "Weeping and the sound of the harp",
+   "Silence and the sound of the sea",
+   "Singing and the sound of the viol"
+  ],
+  "answer": 0,
+  "explanation": "Moab shall die with tumult, with shouting, and with the sound of the trumpet.",
+  "ref": "Amos 2:2"
+ },
+ {
+  "id": "amos-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who had walked before Judah after the lies that caused them to err?",
+  "choices": [
+   "Their fathers",
+   "Their prophets",
+   "Their kings",
+   "Their judges"
+  ],
+  "answer": 0,
+  "explanation": "Their lies caused them to err, after the which their fathers have walked.",
+  "ref": "Amos 2:4"
+ },
+ {
+  "id": "amos-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the oppressors do to the way of the meek?",
+  "choices": [
+   "Make it straight",
+   "Shut it up",
+   "Walk in it",
+   "Turn it aside"
+  ],
+  "answer": 3,
+  "explanation": "They pant after the dust of the earth on the head of the poor, and turn aside the way of the meek.",
+  "ref": "Amos 2:7"
+ },
+ {
+  "id": "amos-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Amos say two must be before they can walk together?",
+  "choices": [
+   "Agreed",
+   "Related",
+   "Equal",
+   "Friends"
+  ],
+  "answer": 0,
+  "explanation": "Can two walk together, except they be agreed?",
+  "ref": "Amos 3:3"
+ },
+ {
+  "id": "amos-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom does the Lord GOD reveal His secret before He does anything?",
+  "choices": [
+   "His servants the prophets",
+   "The elders of Israel",
+   "The priests of Bethel",
+   "The kings of Judah"
+  ],
+  "answer": 0,
+  "explanation": "The Lord GOD will do nothing, but he revealeth his secret unto his servants the prophets.",
+  "ref": "Amos 3:7"
+ },
+ {
+  "id": "amos-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD smite the winter house with?",
+  "choices": [
+   "The summer house",
+   "The great house",
+   "The house of ivory",
+   "The house of Jacob"
+  ],
+  "answer": 0,
+  "explanation": "I will smite the winter house with the summer house.",
+  "ref": "Amos 3:15"
+ },
+ {
+  "id": "amos-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the shepherd take out of the mouth of the lion, as a picture of Israel's rescue?",
+  "choices": [
+   "A whole lamb",
+   "Two legs or a piece of an ear",
+   "The staff and the bell",
+   "A skin of the flock"
+  ],
+  "answer": 1,
+  "explanation": "As the shepherd taketh out of the mouth of the lion two legs, or a piece of an ear, so shall Israel be taken out.",
+  "ref": "Amos 3:12"
+ },
+ {
+  "id": "amos-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Amos say should happen to the people when a trumpet is blown in the city?",
+  "choices": [
+   "They should be afraid",
+   "They should gather at the gate",
+   "They should fast",
+   "They should rejoice"
+  ],
+  "answer": 0,
+  "explanation": "Shall a trumpet be blown in the city, and the people not be afraid?",
+  "ref": "Amos 3:6"
+ },
+ {
+  "id": "amos-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "Upon what mountains are they told to assemble to see the tumults?",
+  "choices": [
+   "The mountains of Gilead",
+   "The mountains of Bashan",
+   "The mountains of Samaria",
+   "The mountains of Zion"
+  ],
+  "answer": 2,
+  "explanation": "Assemble yourselves upon the mountains of Samaria, and behold the great tumults.",
+  "ref": "Amos 3:9"
+ },
+ {
+  "id": "amos-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do they store up in their palaces?",
+  "choices": [
+   "Silver and gold",
+   "Wheat and wine",
+   "Oil and fruit",
+   "Violence and robbery"
+  ],
+  "answer": 3,
+  "explanation": "They know not to do right, who store up violence and robbery in their palaces.",
+  "ref": "Amos 3:10"
+ },
+ {
+  "id": "amos-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Lord GOD say shall be round about the land?",
+  "choices": [
+   "A wall of fire",
+   "A famine",
+   "An adversary",
+   "A flood"
+  ],
+  "answer": 2,
+  "explanation": "An adversary there shall be even round about the land.",
+  "ref": "Amos 3:11"
+ },
+ {
+  "id": "amos-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the adversary bring down from Israel, and what shall be spoiled?",
+  "choices": [
+   "His altars; his gates",
+   "His strength; his palaces",
+   "His kings; his fields",
+   "His walls; his idols"
+  ],
+  "answer": 1,
+  "explanation": "He shall bring down thy strength from thee, and thy palaces shall be spoiled.",
+  "ref": "Amos 3:11"
+ },
+ {
+  "id": "amos-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall be cut off and fall to the ground when the LORD visits Bethel?",
+  "choices": [
+   "The gates of Samaria",
+   "The walls of Bethel",
+   "The horns of the altar",
+   "The pillars of ivory"
+  ],
+  "answer": 2,
+  "explanation": "The horns of the altar shall be cut off, and fall to the ground.",
+  "ref": "Amos 3:14"
+ },
+ {
+  "id": "amos-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Amos compare the LORD's speaking to?",
+  "choices": [
+   "A lion's roar",
+   "A trumpet blast",
+   "A rushing river",
+   "A whirlwind"
+  ],
+  "answer": 0,
+  "explanation": "The lion hath roared, who will not fear? the Lord GOD hath spoken, who can but prophesy?",
+  "ref": "Amos 3:8"
+ },
+ {
+  "id": "amos-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Amos say a man cannot help doing once the Lord GOD has spoken?",
+  "choices": [
+   "Repent",
+   "Prophesy",
+   "Flee",
+   "Keep silent"
+  ],
+  "answer": 1,
+  "explanation": "The Lord GOD hath spoken, who can but prophesy?",
+  "ref": "Amos 3:8"
+ },
+ {
+  "id": "amos-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "In the palaces of which two places are they told to publish the message?",
+  "choices": [
+   "Gaza and Tyrus",
+   "Ashdod and Egypt",
+   "Bethel and Gilgal",
+   "Damascus and Kir"
+  ],
+  "answer": 1,
+  "explanation": "Publish in the palaces at Ashdod, and in the palaces in the land of Egypt.",
+  "ref": "Amos 3:9"
+ },
+ {
+  "id": "amos-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city's couch is named alongside Samaria's corner of a bed?",
+  "choices": [
+   "Damascus",
+   "Bethel",
+   "Ashdod",
+   "Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel shall be taken out that dwell in Samaria in the corner of a bed, and in Damascus in a couch.",
+  "ref": "Amos 3:12"
+ },
+ {
+  "id": "amos-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Amos say cannot fall in a snare where no gin is set for it?",
+  "choices": [
+   "A bird",
+   "A deer",
+   "A lion",
+   "A fish"
+  ],
+  "answer": 0,
+  "explanation": "Can a bird fall in a snare upon the earth, where no gin is for him?",
+  "ref": "Amos 3:5"
+ },
+ {
+  "id": "amos-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Where are they told to testify, in the name of the God of hosts?",
+  "choices": [
+   "In the gate of Samaria",
+   "In the temple of Bethel",
+   "In the palaces of Egypt",
+   "In the house of Jacob"
+  ],
+  "answer": 3,
+  "explanation": "Hear ye, and testify in the house of Jacob, saith the Lord GOD, the God of hosts.",
+  "ref": "Amos 3:13"
+ },
+ {
+  "id": "amos-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall perish when the LORD visits Israel's transgressions?",
+  "choices": [
+   "The houses of ivory",
+   "The vineyards of Samaria",
+   "The walls of Damascus",
+   "The cedars of Bashan"
+  ],
+  "answer": 0,
+  "explanation": "The houses of ivory shall perish, and the great houses shall have an end.",
+  "ref": "Amos 3:15"
+ },
+ {
+  "id": "amos-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Where do the Israelites in Samaria dwell, according to the picture Amos gives?",
+  "choices": [
+   "In the clefts of the rock",
+   "In the corner of a bed",
+   "In the house of ivory",
+   "In the winter house"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel shall be taken out that dwell in Samaria in the corner of a bed.",
+  "ref": "Amos 3:12"
+ },
+ {
+  "id": "amos-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "From where did the LORD bring up the whole family He is speaking against?",
+  "choices": [
+   "The land of Damascus",
+   "The land of Edom",
+   "The land of Kir",
+   "The land of Egypt"
+  ],
+  "answer": 3,
+  "explanation": "Hear this word against the whole family which I brought up from the land of Egypt.",
+  "ref": "Amos 3:1"
+ },
+ {
+  "id": "amos-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "From where does a young lion cry out, if he has taken nothing?",
+  "choices": [
+   "The mountain",
+   "The forest",
+   "The field",
+   "His den"
+  ],
+  "answer": 3,
+  "explanation": "Will a young lion cry out of his den, if he have taken nothing?",
+  "ref": "Amos 3:4"
+ },
+ {
+  "id": "amos-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the kine of Bashan say to their masters?",
+  "choices": [
+   "Give us rest",
+   "Let us go to Bethel",
+   "Spare the poor",
+   "Bring, and let us drink"
+  ],
+  "answer": 3,
+  "explanation": "The kine of Bashan oppress the poor and crush the needy, and say to their masters, Bring, and let us drink.",
+  "ref": "Amos 4:1"
+ },
+ {
+  "id": "amos-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "As God overthrew which cities did He overthrow some of Israel?",
+  "choices": [
+   "Tyre and Zidon",
+   "Ashdod and Gaza",
+   "Sodom and Gomorrah",
+   "Gilgal and Bethel"
+  ],
+  "answer": 2,
+  "explanation": "I have overthrown some of you, as God overthrew Sodom and Gomorrah.",
+  "ref": "Amos 4:11"
+ },
+ {
+  "id": "amos-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD give Israel in all their cities?",
+  "choices": [
+   "Cleanness of teeth and want of bread",
+   "Plenty of wheat and wine",
+   "Peace and rest",
+   "Rain in due season"
+  ],
+  "answer": 0,
+  "explanation": "I have given you cleanness of teeth in all your cities, and want of bread in all your places.",
+  "ref": "Amos 4:6"
+ },
+ {
+  "id": "amos-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the LORD withhold the rain?",
+  "choices": [
+   "At the time of sowing",
+   "In the first month",
+   "After the vintage",
+   "Three months before the harvest"
+  ],
+  "answer": 3,
+  "explanation": "I have withholden the rain from you, when there were yet three months to the harvest.",
+  "ref": "Amos 4:7"
+ },
+ {
+  "id": "amos-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people of two or three cities do?",
+  "choices": [
+   "Wandered to one city to drink water, and were not satisfied",
+   "Fled to Bethel for bread",
+   "Gathered at Gilgal to pray",
+   "Sold their cattle for grain"
+  ],
+  "answer": 0,
+  "explanation": "Two or three cities wandered unto one city, to drink water; but they were not satisfied.",
+  "ref": "Amos 4:8"
+ },
+ {
+  "id": "amos-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What devoured their gardens, vineyards, fig trees and olive trees?",
+  "choices": [
+   "The palmerworm",
+   "The locust",
+   "The east wind",
+   "The fire"
+  ],
+  "answer": 0,
+  "explanation": "When your gardens and your vineyards and your fig trees and your olive trees increased, the palmerworm devoured them.",
+  "ref": "Amos 4:9"
+ },
+ {
+  "id": "amos-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "After whose manner did the LORD send the pestilence among Israel?",
+  "choices": [
+   "Edom's",
+   "Egypt's",
+   "Syria's",
+   "Moab's"
+  ],
+  "answer": 1,
+  "explanation": "I have sent among you the pestilence after the manner of Egypt.",
+  "ref": "Amos 4:10"
+ },
+ {
+  "id": "amos-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides slaying their young men, what did the LORD take away?",
+  "choices": [
+   "Their sheep",
+   "Their vineyards",
+   "Their altars",
+   "Their horses"
+  ],
+  "answer": 3,
+  "explanation": "Your young men have I slain with the sword, and have taken away your horses.",
+  "ref": "Amos 4:10"
+ },
+ {
+  "id": "amos-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are they told to bring every morning and after three years?",
+  "choices": [
+   "Firstfruits and wine",
+   "Sacrifices and tithes",
+   "Lambs and doves",
+   "Silver and gold"
+  ],
+  "answer": 1,
+  "explanation": "Bring your sacrifices every morning, and your tithes after three years.",
+  "ref": "Amos 4:4"
+ },
+ {
+  "id": "amos-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what has the Lord GOD sworn that the days shall come?",
+  "choices": [
+   "His holiness",
+   "His name",
+   "His throne",
+   "His covenant"
+  ],
+  "answer": 0,
+  "explanation": "The Lord GOD hath sworn by his holiness, that the days shall come upon you.",
+  "ref": "Amos 4:2"
+ },
+ {
+  "id": "amos-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of sacrifice are they told to offer with leaven?",
+  "choices": [
+   "A burnt offering",
+   "A sin offering",
+   "A sacrifice of thanksgiving",
+   "A drink offering"
+  ],
+  "answer": 2,
+  "explanation": "Offer a sacrifice of thanksgiving with leaven, and proclaim and publish the free offerings.",
+  "ref": "Amos 4:5"
+ },
+ {
+  "id": "amos-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the piece of land where the rain did not fall?",
+  "choices": [
+   "It withered",
+   "It was burned",
+   "It was flooded",
+   "It bore double"
+  ],
+  "answer": 0,
+  "explanation": "One piece was rained upon, and the piece whereupon it rained not withered.",
+  "ref": "Amos 4:7"
+ },
+ {
+  "id": "amos-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD make come up unto their nostrils?",
+  "choices": [
+   "The stink of their camps",
+   "The smoke of their altars",
+   "The dust of their cities",
+   "The smell of the harvest"
+  ],
+  "answer": 0,
+  "explanation": "I have made the stink of your camps to come up unto your nostrils.",
+  "ref": "Amos 4:10"
+ },
+ {
+  "id": "amos-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What picture is used of those plucked out when God overthrew some of them?",
+  "choices": [
+   "A bird escaped from a snare",
+   "A lamb taken from a lion",
+   "A branch cut from a vine",
+   "A firebrand plucked out of the burning"
+  ],
+  "answer": 3,
+  "explanation": "Ye were as a firebrand plucked out of the burning: yet have ye not returned unto me.",
+  "ref": "Amos 4:11"
+ },
+ {
+  "id": "amos-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are they told to proclaim and publish, for it pleases them?",
+  "choices": [
+   "The day of the LORD",
+   "The new moon",
+   "The year of jubilee",
+   "The free offerings"
+  ],
+  "answer": 3,
+  "explanation": "Proclaim and publish the free offerings: for this liketh you, O ye children of Israel.",
+  "ref": "Amos 4:5"
+ },
+ {
+  "id": "amos-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the God of hosts do to the high places of the earth?",
+  "choices": [
+   "Pulls them down",
+   "Fills them with fire",
+   "Treadeth upon them",
+   "Covers them with cloud"
+  ],
+  "answer": 2,
+  "explanation": "He that formeth the mountains, and createth the wind, treadeth upon the high places of the earth.",
+  "ref": "Amos 4:13"
+ },
+ {
+  "id": "amos-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which places does the LORD tell Israel not to seek?",
+  "choices": [
+   "Samaria, Dan and Hebron",
+   "Jerusalem, Hebron and Tekoa",
+   "Bethel, Gilgal and Beer-sheba",
+   "Damascus, Kir and Aven"
+  ],
+  "answer": 2,
+  "explanation": "Seek not Bethel, nor enter into Gilgal, and pass not to Beer-sheba.",
+  "ref": "Amos 5:5"
+ },
+ {
+  "id": "amos-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom are they told to seek, who maketh the seven stars and Orion?",
+  "choices": [
+   "The LORD",
+   "The prophet",
+   "The king",
+   "The priest"
+  ],
+  "answer": 0,
+  "explanation": "Seek him that maketh the seven stars and Orion: The LORD is his name.",
+  "ref": "Amos 5:8"
+ },
+ {
+  "id": "amos-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Amos say the day of the LORD is, for those who desire it?",
+  "choices": [
+   "A feast of gladness",
+   "A day of rest",
+   "A harvest of joy",
+   "Darkness, and not light"
+  ],
+  "answer": 3,
+  "explanation": "Woe unto you that desire the day of the LORD! the day of the LORD is darkness, and not light.",
+  "ref": "Amos 5:18"
+ },
+ {
+  "id": "amos-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In Amos's picture, what meets a man who flees from a lion?",
+  "choices": [
+   "A bear",
+   "A serpent",
+   "A wolf",
+   "A leopard"
+  ],
+  "answer": 0,
+  "explanation": "As if a man did flee from a lion, and a bear met him.",
+  "ref": "Amos 5:19"
+ },
+ {
+  "id": "amos-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall Israel build but not dwell in?",
+  "choices": [
+   "Houses of hewn stone",
+   "Walls of Samaria",
+   "Towers of Bethel",
+   "Temples of cedar"
+  ],
+  "answer": 0,
+  "explanation": "Ye have built houses of hewn stone, but ye shall not dwell in them.",
+  "ref": "Amos 5:11"
+ },
+ {
+  "id": "amos-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say about their burnt offerings and meat offerings?",
+  "choices": [
+   "He will accept them",
+   "He will not accept them",
+   "He will burn them",
+   "He will give them to the poor"
+  ],
+  "answer": 1,
+  "explanation": "Though ye offer me burnt offerings and your meat offerings, I will not accept them.",
+  "ref": "Amos 5:22"
+ },
+ {
+  "id": "amos-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where will the LORD cause Israel to go into captivity?",
+  "choices": [
+   "Unto Egypt",
+   "Unto Kir",
+   "Beyond Tekoa",
+   "Beyond Damascus"
+  ],
+  "answer": 3,
+  "explanation": "Therefore will I cause you to go into captivity beyond Damascus.",
+  "ref": "Amos 5:27"
+ },
+ {
+  "id": "amos-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Amos tell Israel to do with evil and good?",
+  "choices": [
+   "Seek the evil and flee the good",
+   "Hate the evil and love the good",
+   "Offer for the evil and the good",
+   "Fast for evil and good"
+  ],
+  "answer": 1,
+  "explanation": "Hate the evil, and love the good, and establish judgment in the gate.",
+  "ref": "Amos 5:15"
+ },
+ {
+  "id": "amos-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How do they treat him that rebuketh in the gate?",
+  "choices": [
+   "They hate him",
+   "They honour him",
+   "They hide him",
+   "They crown him"
+  ],
+  "answer": 0,
+  "explanation": "They hate him that rebuketh in the gate, and they abhor him that speaketh uprightly.",
+  "ref": "Amos 5:10"
+ },
+ {
+  "id": "amos-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "In which place would the fire have none to quench it?",
+  "choices": [
+   "Gilgal",
+   "Samaria",
+   "Bethel",
+   "Zion"
+  ],
+  "answer": 2,
+  "explanation": "Lest he break out like fire in the house of Joseph, and devour it, and there be none to quench it in Bethel.",
+  "ref": "Amos 5:6"
+ },
+ {
+  "id": "amos-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do those who turn judgment to wormwood leave off?",
+  "choices": [
+   "Righteousness in the earth",
+   "The sacrifices of the temple",
+   "The worship of Bethel",
+   "The law of Moses"
+  ],
+  "answer": 0,
+  "explanation": "Ye who turn judgment to wormwood, and leave off righteousness in the earth.",
+  "ref": "Amos 5:7"
+ },
+ {
+  "id": "amos-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does the LORD strengthen against the strong?",
+  "choices": [
+   "The spoiled",
+   "The rich",
+   "The priests",
+   "The captains"
+  ],
+  "answer": 0,
+  "explanation": "He strengtheneth the spoiled against the strong, so that the spoiled shall come against the fortress.",
+  "ref": "Amos 5:9"
+ },
+ {
+  "id": "amos-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do they take from the poor because their treading is upon them?",
+  "choices": [
+   "Flocks and herds",
+   "Houses of stone",
+   "Gold and silver",
+   "Burdens of wheat"
+  ],
+  "answer": 3,
+  "explanation": "Your treading is upon the poor, and ye take from him burdens of wheat.",
+  "ref": "Amos 5:11"
+ },
+ {
+  "id": "amos-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do they take that turns aside the poor in the gate from their right?",
+  "choices": [
+   "A pledge",
+   "A tithe",
+   "A ransom",
+   "A bribe"
+  ],
+  "answer": 3,
+  "explanation": "They afflict the just, they take a bribe, and they turn aside the poor in the gate from their right.",
+  "ref": "Amos 5:12"
+ },
+ {
+  "id": "amos-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why shall the prudent keep silence in that time?",
+  "choices": [
+   "They fear the king",
+   "They have no words",
+   "It is an evil time",
+   "The priests forbid it"
+  ],
+  "answer": 2,
+  "explanation": "The prudent shall keep silence in that time; for it is an evil time.",
+  "ref": "Amos 5:13"
+ },
+ {
+  "id": "amos-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are they told to establish in the gate?",
+  "choices": [
+   "A market",
+   "Judgment",
+   "A watch",
+   "A temple"
+  ],
+  "answer": 1,
+  "explanation": "Hate the evil, and love the good, and establish judgment in the gate.",
+  "ref": "Amos 5:15"
+ },
+ {
+  "id": "amos-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom may the LORD God of hosts be gracious, if they seek good?",
+  "choices": [
+   "The house of Esau",
+   "The remnant of Joseph",
+   "The priests of Bethel",
+   "The kine of Bashan"
+  ],
+  "answer": 1,
+  "explanation": "It may be that the LORD God of hosts will be gracious unto the remnant of Joseph.",
+  "ref": "Amos 5:15"
+ },
+ {
+  "id": "amos-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom shall they call to mourning when wailing is in all the streets?",
+  "choices": [
+   "The priest",
+   "The elder",
+   "The husbandman",
+   "The judge"
+  ],
+  "answer": 2,
+  "explanation": "They shall call the husbandman to mourning, and such as are skilful of lamentation to wailing.",
+  "ref": "Amos 5:16"
+ },
+ {
+  "id": "amos-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why shall there be wailing in all vineyards?",
+  "choices": [
+   "The grapes have failed",
+   "The LORD will pass through them",
+   "The enemy has come",
+   "The priests have fled"
+  ],
+  "answer": 1,
+  "explanation": "In all vineyards shall be wailing: for I will pass through thee, saith the LORD.",
+  "ref": "Amos 5:17"
+ },
+ {
+  "id": "amos-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD ask about the forty years in the wilderness?",
+  "choices": [
+   "Whether they kept the Sabbath",
+   "Whether they honoured the prophets",
+   "Whether they were fed with manna",
+   "Whether they offered Him sacrifices and offerings"
+  ],
+  "answer": 3,
+  "explanation": "Have ye offered unto me sacrifices and offerings in the wilderness forty years, O house of Israel?",
+  "ref": "Amos 5:25"
+ },
+ {
+  "id": "amos-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose tabernacle and images had Israel borne?",
+  "choices": [
+   "Baal and Ashtoreth",
+   "Dagon and Rimmon",
+   "Bel and Nebo",
+   "Moloch and Chiun"
+  ],
+  "answer": 3,
+  "explanation": "Ye have borne the tabernacle of your Moloch and Chiun your images, the star of your god.",
+  "ref": "Amos 5:26"
+ },
+ {
+  "id": "amos-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the city that went out by a thousand leave?",
+  "choices": [
+   "Ten",
+   "An hundred",
+   "Nine hundred",
+   "None"
+  ],
+  "answer": 1,
+  "explanation": "The city that went out by a thousand shall leave an hundred, and that which went forth by an hundred shall leave ten.",
+  "ref": "Amos 5:3"
+ },
+ {
+  "id": "amos-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say He will not smell?",
+  "choices": [
+   "Their burnt offerings",
+   "Their incense",
+   "Their solemn assemblies",
+   "Their first fruits"
+  ],
+  "answer": 2,
+  "explanation": "I hate, I despise your feast days, and I will not smell in your solemn assemblies.",
+  "ref": "Amos 5:21"
+ },
+ {
+  "id": "amos-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD do with the waters of the sea?",
+  "choices": [
+   "Shuts them up with doors",
+   "Divides them with a rod",
+   "Dries them with the wind",
+   "Calls for them and pours them out upon the earth"
+  ],
+  "answer": 3,
+  "explanation": "He calleth for the waters of the sea, and poureth them out upon the face of the earth.",
+  "ref": "Amos 5:8"
+ },
+ {
+  "id": "amos-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to Gilgal and to Bethel?",
+  "choices": [
+   "Gilgal into captivity; Bethel to nought",
+   "Gilgal to fire; Bethel to the sword",
+   "Gilgal to Egypt; Bethel to Kir",
+   "Gilgal to Zion; Bethel to Samaria"
+  ],
+  "answer": 0,
+  "explanation": "Gilgal shall surely go into captivity, and Bethel shall come to nought.",
+  "ref": "Amos 5:5"
+ },
+ {
+  "id": "amos-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which offerings of fat beasts will the LORD not regard?",
+  "choices": [
+   "The sin offerings",
+   "The trespass offerings",
+   "The wave offerings",
+   "The peace offerings"
+  ],
+  "answer": 3,
+  "explanation": "I will not regard the peace offerings of your fat beasts.",
+  "ref": "Amos 5:22"
+ },
+ {
+  "id": "amos-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What bit the man who leaned his hand on the wall of his house?",
+  "choices": [
+   "A serpent",
+   "A scorpion",
+   "A bear",
+   "A lion"
+  ],
+  "answer": 0,
+  "explanation": "Went into the house, and leaned his hand on the wall, and a serpent bit him.",
+  "ref": "Amos 5:19"
+ },
+ {
+  "id": "amos-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall they plant but not drink of?",
+  "choices": [
+   "Fig trees",
+   "Olive groves",
+   "Pleasant vineyards",
+   "Fields of barley"
+  ],
+  "answer": 2,
+  "explanation": "Ye have planted pleasant vineyards, but ye shall not drink wine of them.",
+  "ref": "Amos 5:11"
+ },
+ {
+  "id": "amos-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Amos ask those who desire the day of the LORD?",
+  "choices": [
+   "Who shall deliver you?",
+   "Where will you flee?",
+   "Who will hear you?",
+   "To what end is it for you?"
+  ],
+  "answer": 3,
+  "explanation": "Woe unto you that desire the day of the LORD! to what end is it for you?",
+  "ref": "Amos 5:18"
+ },
+ {
+  "id": "amos-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Upon what is the virgin of Israel said to be forsaken?",
+  "choices": [
+   "Her mountain",
+   "Her land",
+   "Her bed",
+   "Her wall"
+  ],
+  "answer": 1,
+  "explanation": "The virgin of Israel is fallen; she is forsaken upon her land; there is none to raise her up.",
+  "ref": "Amos 5:2"
+ },
+ {
+  "id": "amos-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If they seek good and not evil, what does the LORD promise?",
+  "choices": [
+   "That the land shall be healed",
+   "That the captivity shall end",
+   "That the rain shall return",
+   "That they may live, and He shall be with them"
+  ],
+  "answer": 3,
+  "explanation": "Seek good, and not evil, that ye may live: and so the LORD, the God of hosts, shall be with you.",
+  "ref": "Amos 5:14"
+ },
+ {
+  "id": "amos-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel make to themselves, besides Moloch and Chiun?",
+  "choices": [
+   "A calf of gold",
+   "Pillars of stone",
+   "The star of their god",
+   "A brazen serpent"
+  ],
+  "answer": 2,
+  "explanation": "Ye have borne the tabernacle of your Moloch and Chiun your images, the star of your god, which ye made to yourselves.",
+  "ref": "Amos 5:26"
+ },
+ {
+  "id": "amos-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD do to the day?",
+  "choices": [
+   "Maketh it long with light",
+   "Divides it with a cloud",
+   "Maketh it dark with night",
+   "Hides it in the sea"
+  ],
+  "answer": 2,
+  "explanation": "Seek him that maketh the day dark with night: The LORD is his name.",
+  "ref": "Amos 5:8"
+ },
+ {
+  "id": "amos-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD ask Israel to take away from Him?",
+  "choices": [
+   "The noise of their songs",
+   "The smoke of their altars",
+   "The gold of their idols",
+   "The dust of their feet"
+  ],
+  "answer": 0,
+  "explanation": "Take thou away from me the noise of thy songs; for I will not hear the melody of thy viols.",
+  "ref": "Amos 5:23"
+ },
+ {
+  "id": "amos-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose house would the LORD break out like fire?",
+  "choices": [
+   "The house of Esau",
+   "The house of David",
+   "The house of Joseph",
+   "The house of Hazael"
+  ],
+  "answer": 2,
+  "explanation": "Lest he break out like fire in the house of Joseph, and devour it.",
+  "ref": "Amos 5:6"
+ },
+ {
+  "id": "amos-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Where shall they say, Alas! alas!?",
+  "choices": [
+   "In the house of the LORD",
+   "In the palaces of Samaria",
+   "In all the highways",
+   "In the gate of Bethel"
+  ],
+  "answer": 2,
+  "explanation": "Wailing shall be in all streets; and they shall say in all the highways, Alas! alas!",
+  "ref": "Amos 5:16"
+ },
+ {
+  "id": "amos-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD do to the shadow of death?",
+  "choices": [
+   "Spreads it over the land",
+   "Hides it in the sea",
+   "Breaks it with fire",
+   "Turneth it into the morning"
+  ],
+  "answer": 3,
+  "explanation": "Seek him that turneth the shadow of death into the morning, and maketh the day dark with night.",
+  "ref": "Amos 5:8"
+ },
+ {
+  "id": "amos-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Like whom do those at ease invent instruments of musick?",
+  "choices": [
+   "Solomon",
+   "David",
+   "Asaph",
+   "Moses"
+  ],
+  "answer": 1,
+  "explanation": "They chant to the sound of the viol, and invent to themselves instruments of musick, like David.",
+  "ref": "Amos 6:5"
+ },
+ {
+  "id": "amos-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do they drink wine in, and anoint themselves with?",
+  "choices": [
+   "Cups of gold, and oil of myrrh",
+   "Bowls, and the chief ointments",
+   "Horns, and sweet spices",
+   "Wineskins, and plain oil"
+  ],
+  "answer": 1,
+  "explanation": "They drink wine in bowls, and anoint themselves with the chief ointments.",
+  "ref": "Amos 6:6"
+ },
+ {
+  "id": "amos-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By whom has the Lord GOD sworn?",
+  "choices": [
+   "His holiness",
+   "Jacob",
+   "Himself",
+   "The mountain of Zion"
+  ],
+  "answer": 2,
+  "explanation": "The Lord GOD hath sworn by himself, I abhor the excellency of Jacob, and hate his palaces.",
+  "ref": "Amos 6:8"
+ },
+ {
+  "id": "amos-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do with the city and all in it?",
+  "choices": [
+   "Hide it",
+   "Deliver it up",
+   "Bless it",
+   "Rebuild it"
+  ],
+  "answer": 1,
+  "explanation": "I abhor the excellency of Jacob, and hate his palaces: therefore will I deliver up the city with all that is therein.",
+  "ref": "Amos 6:8"
+ },
+ {
+  "id": "amos-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If ten men remain in one house, what shall happen?",
+  "choices": [
+   "They shall flee",
+   "They shall be taken captive",
+   "They shall be spared",
+   "They shall die"
+  ],
+  "answer": 3,
+  "explanation": "If there remain ten men in one house, that they shall die.",
+  "ref": "Amos 6:9"
+ },
+ {
+  "id": "amos-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What may they not make mention of, as they bring out the bones?",
+  "choices": [
+   "The name of the king",
+   "The names of the dead",
+   "The name of Samaria",
+   "The name of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Hold thy tongue: for we may not make mention of the name of the LORD.",
+  "ref": "Amos 6:10"
+ },
+ {
+  "id": "amos-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD smite the great house and the little house with?",
+  "choices": [
+   "Fire and sword",
+   "Breaches and clefts",
+   "Flood and wind",
+   "Moths and rust"
+  ],
+  "answer": 1,
+  "explanation": "He will smite the great house with breaches, and the little house with clefts.",
+  "ref": "Amos 6:11"
+ },
+ {
+  "id": "amos-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What two absurd things does Amos ask about?",
+  "choices": [
+   "Fish in the desert, and ships on the hills",
+   "Fire on water, and snow in summer",
+   "Horses running on the rock, and plowing there with oxen",
+   "Wheat in the sea, and vines in stone"
+  ],
+  "answer": 2,
+  "explanation": "Shall horses run upon the rock? will one plow there with oxen?",
+  "ref": "Amos 6:12"
+ },
+ {
+  "id": "amos-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD raise up against the house of Israel?",
+  "choices": [
+   "A famine",
+   "A king",
+   "A flood",
+   "A nation"
+  ],
+  "answer": 3,
+  "explanation": "I will raise up against you a nation, O house of Israel, and they shall afflict you.",
+  "ref": "Amos 6:14"
+ },
+ {
+  "id": "amos-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city does Amos call great, in the list with Calneh and Gath?",
+  "choices": [
+   "Hamath",
+   "Samaria",
+   "Damascus",
+   "Bethel"
+  ],
+  "answer": 0,
+  "explanation": "Pass ye unto Calneh, and see; and from thence go ye to Hamath the great.",
+  "ref": "Amos 6:2"
+ },
+ {
+  "id": "amos-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What have they turned judgment and the fruit of righteousness into?",
+  "choices": [
+   "Silver and gold",
+   "Dust and ashes",
+   "Water and wine",
+   "Gall and hemlock"
+  ],
+  "answer": 3,
+  "explanation": "Ye have turned judgment into gall, and the fruit of righteousness into hemlock.",
+  "ref": "Amos 6:12"
+ },
+ {
+  "id": "amos-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do they rejoice in, and say they took horns by their own strength?",
+  "choices": [
+   "A thing of nought",
+   "A feast of ivory",
+   "A victory in Samaria",
+   "A covenant with kings"
+  ],
+  "answer": 0,
+  "explanation": "Ye which rejoice in a thing of nought, which say, Have we not taken to us horns by our own strength?",
+  "ref": "Amos 6:13"
+ },
+ {
+  "id": "amos-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall be removed along with those who stretched themselves?",
+  "choices": [
+   "Their altars",
+   "Their vineyards",
+   "Their banquet",
+   "Their palaces"
+  ],
+  "answer": 2,
+  "explanation": "They shall go captive with the first that go captive, and the banquet of them that stretched themselves shall be removed.",
+  "ref": "Amos 6:7"
+ },
+ {
+  "id": "amos-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do they put far away and what do they cause to come near?",
+  "choices": [
+   "The poor; the rich",
+   "The priest; the king",
+   "The feast; the fast",
+   "The evil day; the seat of violence"
+  ],
+  "answer": 3,
+  "explanation": "Ye that put far away the evil day, and cause the seat of violence to come near.",
+  "ref": "Amos 6:3"
+ },
+ {
+  "id": "amos-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do those at ease eat out of the flock and the stall?",
+  "choices": [
+   "Bread and honey",
+   "Lambs and calves",
+   "Figs and grapes",
+   "Fish and fowl"
+  ],
+  "answer": 1,
+  "explanation": "They eat the lambs out of the flock, and the calves out of the midst of the stall.",
+  "ref": "Amos 6:4"
+ },
+ {
+  "id": "amos-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the house of Israel said to be named?",
+  "choices": [
+   "Servant of the nations",
+   "Daughter of Zion",
+   "Mother of kings",
+   "Chief of the nations"
+  ],
+  "answer": 3,
+  "explanation": "The mountain of Samaria, which are named chief of the nations, to whom the house of Israel came.",
+  "ref": "Amos 6:1"
+ },
+ {
+  "id": "amos-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did Amaziah send word that Amos had conspired against him?",
+  "choices": [
+   "Uzziah king of Judah",
+   "Hazael king of Syria",
+   "Ben-hadad",
+   "Jeroboam king of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Amaziah the priest of Bethel sent to Jeroboam king of Israel, saying, Amos hath conspired against thee.",
+  "ref": "Amos 7:10"
+ },
+ {
+  "id": "amos-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Amaziah tell Amos to do?",
+  "choices": [
+   "Stay at Bethel and keep silent",
+   "Go to Egypt and hide",
+   "Go home to Tekoa and tend sheep",
+   "Flee to the land of Judah and prophesy there"
+  ],
+  "answer": 3,
+  "explanation": "O thou seer, go, flee thee away into the land of Judah, and there eat bread, and prophesy there.",
+  "ref": "Amos 7:12"
+ },
+ {
+  "id": "amos-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In the second vision, what did the Lord GOD call to contend, which devoured the great deep?",
+  "choices": [
+   "Flood",
+   "Fire",
+   "Sword",
+   "Famine"
+  ],
+  "answer": 1,
+  "explanation": "The Lord GOD called to contend by fire, and it devoured the great deep, and did eat up a part.",
+  "ref": "Amos 7:4"
+ },
+ {
+  "id": "amos-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say to Amos as he followed the flock?",
+  "choices": [
+   "Go down to Egypt",
+   "Build a house for the LORD",
+   "Go, prophesy unto my people Israel",
+   "Stay with the flock"
+  ],
+  "answer": 2,
+  "explanation": "The LORD took me as I followed the flock, and said unto me, Go, prophesy unto my people Israel.",
+  "ref": "Amos 7:15"
+ },
+ {
+  "id": "amos-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Amos plead for Jacob after the grasshoppers?",
+  "choices": [
+   "Because he is faithful",
+   "Because he has repented",
+   "Because he has a king",
+   "Because he is small"
+  ],
+  "answer": 3,
+  "explanation": "O Lord GOD, forgive, I beseech thee: by whom shall Jacob arise? for he is small.",
+  "ref": "Amos 7:2"
+ },
+ {
+  "id": "amos-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD answer when Amos pleaded?",
+  "choices": [
+   "He repented: It shall not be",
+   "He was silent",
+   "He sent a prophet",
+   "He hardened His heart"
+  ],
+  "answer": 0,
+  "explanation": "The LORD repented for this: It shall not be, saith the LORD.",
+  "ref": "Amos 7:3"
+ },
+ {
+  "id": "amos-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In the plumbline vision, upon what did the Lord stand?",
+  "choices": [
+   "A mountain of fire",
+   "A rock in the river",
+   "The altar of Bethel",
+   "A wall made by a plumbline"
+  ],
+  "answer": 3,
+  "explanation": "The Lord stood upon a wall made by a plumbline, with a plumbline in his hand.",
+  "ref": "Amos 7:7"
+ },
+ {
+  "id": "amos-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "What shall be desolate and laid waste, according to the plumbline vision?",
+  "choices": [
+   "The high places of Isaac and the sanctuaries of Israel",
+   "The walls of Samaria and the gates of Bethel",
+   "The vineyards of Judah and the fields of Tekoa",
+   "The palaces of Damascus and Gaza"
+  ],
+  "answer": 0,
+  "explanation": "The high places of Isaac shall be desolate, and the sanctuaries of Israel shall be laid waste.",
+  "ref": "Amos 7:9"
+ },
+ {
+  "id": "amos-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Against whose house will the LORD rise with the sword?",
+  "choices": [
+   "Uzziah's",
+   "Amaziah's",
+   "Jeroboam's",
+   "Hazael's"
+  ],
+  "answer": 2,
+  "explanation": "I will rise against the house of Jeroboam with the sword.",
+  "ref": "Amos 7:9"
+ },
+ {
+  "id": "amos-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Amaziah say Amos had prophesied about Jeroboam?",
+  "choices": [
+   "That he shall be driven from his throne",
+   "That he shall lose Bethel",
+   "That he shall be taken to Egypt",
+   "That he shall die by the sword"
+  ],
+  "answer": 3,
+  "explanation": "Amos saith, Jeroboam shall die by the sword, and Israel shall surely be led away captive out of their own land.",
+  "ref": "Amos 7:11"
+ },
+ {
+  "id": "amos-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Amaziah forbid Amos to prophesy at Bethel?",
+  "choices": [
+   "It is a holy place of the priests",
+   "It is the king's chapel and the king's court",
+   "It is the house of Isaac",
+   "It is the city of the prophets"
+  ],
+  "answer": 1,
+  "explanation": "Prophesy not again any more at Bethel: for it is the king's chapel, and it is the king's court.",
+  "ref": "Amos 7:13"
+ },
+ {
+  "id": "amos-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say would become of Amaziah's wife?",
+  "choices": [
+   "A captive in Judah",
+   "A widow in Bethel",
+   "A servant in Egypt",
+   "An harlot in the city"
+  ],
+  "answer": 3,
+  "explanation": "Thy wife shall be an harlot in the city, and thy sons and thy daughters shall fall by the sword.",
+  "ref": "Amos 7:17"
+ },
+ {
+  "id": "amos-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the LORD say Amaziah shall die?",
+  "choices": [
+   "In Bethel",
+   "In Judah",
+   "In a polluted land",
+   "In the wilderness"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt die in a polluted land: and Israel shall surely go into captivity forth of his land.",
+  "ref": "Amos 7:17"
+ },
+ {
+  "id": "amos-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the LORD form the grasshoppers in the first vision?",
+  "choices": [
+   "At the time of the barley harvest",
+   "After the first rains",
+   "In the beginning of the shooting up of the latter growth",
+   "Before the king's mowings began"
+  ],
+  "answer": 2,
+  "explanation": "He formed grasshoppers in the beginning of the shooting up of the latter growth, after the king's mowings.",
+  "ref": "Amos 7:1"
+ },
+ {
+  "id": "amos-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the grasshoppers eaten when Amos said, forgive?",
+  "choices": [
+   "The grass of the land",
+   "The vineyards of Judah",
+   "The figs of Bethel",
+   "The corn of the king"
+  ],
+  "answer": 0,
+  "explanation": "When they had made an end of eating the grass of the land, then I said, O Lord GOD, forgive.",
+  "ref": "Amos 7:2"
+ },
+ {
+  "id": "amos-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to Amaziah's land?",
+  "choices": [
+   "It shall be given to Judah",
+   "It shall be burned",
+   "It shall be divided by line",
+   "It shall be sold for silver"
+  ],
+  "answer": 2,
+  "explanation": "Thy land shall be divided by line.",
+  "ref": "Amos 7:17"
+ },
+ {
+  "id": "amos-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to Amaziah's sons and daughters?",
+  "choices": [
+   "They shall be carried to Judah",
+   "They shall serve the king",
+   "They shall fall by the sword",
+   "They shall flee to Tekoa"
+  ],
+  "answer": 2,
+  "explanation": "Thy sons and thy daughters shall fall by the sword.",
+  "ref": "Amos 7:17"
+ },
+ {
+  "id": "amos-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Amaziah call Amos?",
+  "choices": [
+   "A herdman",
+   "A conspirator",
+   "A stranger",
+   "A seer"
+  ],
+  "answer": 3,
+  "explanation": "Also Amaziah said unto Amos, O thou seer, go, flee thee away into the land of Judah.",
+  "ref": "Amos 7:12"
+ },
+ {
+  "id": "amos-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Against whose house did Amaziah tell Amos not to drop his word?",
+  "choices": [
+   "Jacob",
+   "Joseph",
+   "Jeroboam",
+   "Isaac"
+  ],
+  "answer": 3,
+  "explanation": "Thou sayest, Prophesy not against Israel, and drop not thy word against the house of Isaac.",
+  "ref": "Amos 7:16"
+ },
+ {
+  "id": "amos-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say He will not do again to Israel after the plumbline?",
+  "choices": [
+   "Pass by them any more",
+   "Send a prophet to them",
+   "Hear their prayer",
+   "Spare their altars"
+  ],
+  "answer": 0,
+  "explanation": "I will set a plumbline in the midst of my people Israel: I will not again pass by them any more.",
+  "ref": "Amos 7:8"
+ },
+ {
+  "id": "amos-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Amos say he was not, besides a prophet?",
+  "choices": [
+   "A priest's son",
+   "A king's son",
+   "A prophet's son",
+   "A seer's son"
+  ],
+  "answer": 2,
+  "explanation": "I was no prophet, neither was I a prophet's son; but I was an herdman, and a gatherer of sycomore fruit.",
+  "ref": "Amos 7:14"
+ },
+ {
+  "id": "amos-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Amos beg when the fire devoured the great deep?",
+  "choices": [
+   "That the Lord GOD would send rain",
+   "That the Lord GOD would cease",
+   "That the Lord GOD would judge",
+   "That the Lord GOD would speak"
+  ],
+  "answer": 1,
+  "explanation": "Then said I, O Lord GOD, cease, I beseech thee: by whom shall Jacob arise? for he is small.",
+  "ref": "Amos 7:5"
+ },
+ {
+  "id": "amos-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall the needy be bought for, along with silver for the poor?",
+  "choices": [
+   "A measure of wheat",
+   "A piece of land",
+   "A pair of shoes",
+   "A skin of wine"
+  ],
+  "answer": 2,
+  "explanation": "That we may buy the poor for silver, and the needy for a pair of shoes.",
+  "ref": "Amos 8:6"
+ },
+ {
+  "id": "amos-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the Lord GOD cause the sun to do?",
+  "choices": [
+   "Go down at noon",
+   "Stand still",
+   "Turn to blood",
+   "Rise in the west"
+  ],
+  "answer": 0,
+  "explanation": "I will cause the sun to go down at noon, and I will darken the earth in the clear day.",
+  "ref": "Amos 8:9"
+ },
+ {
+  "id": "amos-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the merchants say they want to do when the Sabbath is gone?",
+  "choices": [
+   "Set forth wheat",
+   "Rest in the house",
+   "Go up to Bethel",
+   "Offer sacrifices"
+  ],
+  "answer": 0,
+  "explanation": "When will the sabbath be gone, that we may set forth wheat?",
+  "ref": "Amos 8:5"
+ },
+ {
+  "id": "amos-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How do they falsify the balances?",
+  "choices": [
+   "Making the shekel small and the ephah great",
+   "Taking bribes at the gate",
+   "Weighing wheat with stones of gold",
+   "Making the ephah small and the shekel great"
+  ],
+  "answer": 3,
+  "explanation": "Making the ephah small, and the shekel great, and falsifying the balances by deceit.",
+  "ref": "Amos 8:5"
+ },
+ {
+  "id": "amos-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do they sell besides the good wheat?",
+  "choices": [
+   "The first fruits",
+   "The oil of the vine",
+   "The sheep of the flock",
+   "The refuse of the wheat"
+  ],
+  "answer": 3,
+  "explanation": "That we may buy the poor for silver, and sell the refuse of the wheat.",
+  "ref": "Amos 8:6"
+ },
+ {
+  "id": "amos-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD swear He will never do?",
+  "choices": [
+   "Spare their cities",
+   "Send a prophet again",
+   "Forget any of their works",
+   "Turn back His anger"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hath sworn by the excellency of Jacob, Surely I will never forget any of their works.",
+  "ref": "Amos 8:7"
+ },
+ {
+  "id": "amos-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD turn their feasts and songs into?",
+  "choices": [
+   "Silence and dust",
+   "Mourning and lamentation",
+   "Fasting and prayer",
+   "Fire and sword"
+  ],
+  "answer": 1,
+  "explanation": "I will turn your feasts into mourning, and all your songs into lamentation.",
+  "ref": "Amos 8:10"
+ },
+ {
+  "id": "amos-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The LORD says the mourning will be like that for whom?",
+  "choices": [
+   "A king",
+   "An only son",
+   "A father",
+   "A bride"
+  ],
+  "answer": 1,
+  "explanation": "I will make it as the mourning of an only son, and the end thereof as a bitter day.",
+  "ref": "Amos 8:10"
+ },
+ {
+  "id": "amos-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who shall faint for thirst in that day?",
+  "choices": [
+   "The priests and elders",
+   "The kings and princes",
+   "The fair virgins and young men",
+   "The shepherds and herdmen"
+  ],
+  "answer": 2,
+  "explanation": "In that day shall the fair virgins and young men faint for thirst.",
+  "ref": "Amos 8:13"
+ },
+ {
+  "id": "amos-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The land shall rise up wholly as a flood, drowned as by the flood of what?",
+  "choices": [
+   "Jordan",
+   "Egypt",
+   "Noah",
+   "Samaria"
+  ],
+  "answer": 1,
+  "explanation": "It shall rise up wholly as a flood; and it shall be cast out and drowned, as by the flood of Egypt.",
+  "ref": "Amos 8:8"
+ },
+ {
+  "id": "amos-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD bring up upon all loins and every head?",
+  "choices": [
+   "Ashes and dust",
+   "Fire and sword",
+   "Chains and stripes",
+   "Sackcloth and baldness"
+  ],
+  "answer": 3,
+  "explanation": "I will bring up sackcloth upon all loins, and baldness upon every head.",
+  "ref": "Amos 8:10"
+ },
+ {
+  "id": "amos-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "By the god of which place do they swear, besides Samaria?",
+  "choices": [
+   "Bethel and Gilgal",
+   "Zion and Tekoa",
+   "Damascus and Hamath",
+   "Dan and Beer-sheba"
+  ],
+  "answer": 3,
+  "explanation": "They that swear by the sin of Samaria, and say, Thy god, O Dan, liveth; and, The manner of Beer-sheba liveth.",
+  "ref": "Amos 8:14"
+ },
+ {
+  "id": "amos-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall they do with the many dead bodies in every place?",
+  "choices": [
+   "Bury them in Samaria",
+   "Cast them forth with silence",
+   "Burn them with fire",
+   "Carry them to the temple"
+  ],
+  "answer": 1,
+  "explanation": "There shall be many dead bodies in every place; they shall cast them forth with silence.",
+  "ref": "Amos 8:3"
+ },
+ {
+  "id": "amos-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do they that swallow up the needy make the poor of the land do?",
+  "choices": [
+   "Flee",
+   "Sell",
+   "Fail",
+   "Mourn"
+  ],
+  "answer": 2,
+  "explanation": "Hear this, O ye that swallow up the needy, even to make the poor of the land to fail.",
+  "ref": "Amos 8:4"
+ },
+ {
+  "id": "amos-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Between which places shall they wander seeking the word of the LORD?",
+  "choices": [
+   "From Dan to Beer-sheba",
+   "From Egypt to Damascus",
+   "From Tekoa to Bethel",
+   "From sea to sea, and from north to east"
+  ],
+  "answer": 3,
+  "explanation": "They shall wander from sea to sea, and from the north even to the east, to seek the word of the LORD, and shall not find it.",
+  "ref": "Amos 8:12"
+ },
+ {
+  "id": "amos-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to the land, and to all who dwell in it?",
+  "choices": [
+   "It shall tremble, and every one shall mourn",
+   "It shall be sold, and every one shall flee",
+   "It shall be divided, and every one shall serve",
+   "It shall be healed, and every one shall rejoice"
+  ],
+  "answer": 0,
+  "explanation": "Shall not the land tremble for this, and every one mourn that dwelleth therein?",
+  "ref": "Amos 8:8"
+ },
+ {
+  "id": "amos-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD tell the one who stands to smite?",
+  "choices": [
+   "Smite the altar of Bethel",
+   "Smite the lintel of the door, that the posts may shake",
+   "Smite the gates of Samaria",
+   "Smite the walls of Tekoa"
+  ],
+  "answer": 1,
+  "explanation": "I saw the LORD standing upon the altar: and he said, Smite the lintel of the door, that the posts may shake.",
+  "ref": "Amos 9:1"
+ },
+ {
+  "id": "amos-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD command to bite those hid at the bottom of the sea?",
+  "choices": [
+   "The sword",
+   "The fire",
+   "The serpent",
+   "The whirlwind"
+  ],
+  "answer": 2,
+  "explanation": "Though they be hid from my sight in the bottom of the sea, thence will I command the serpent, and he shall bite them.",
+  "ref": "Amos 9:3"
+ },
+ {
+  "id": "amos-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall restored Israel build and inhabit?",
+  "choices": [
+   "The walls of Samaria",
+   "The temple of Bethel",
+   "The palaces of ivory",
+   "The waste cities"
+  ],
+  "answer": 3,
+  "explanation": "They shall build the waste cities, and inhabit them; and they shall plant vineyards, and drink the wine thereof.",
+  "ref": "Amos 9:14"
+ },
+ {
+  "id": "amos-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If they dig into hell or climb up to heaven, what will the LORD do?",
+  "choices": [
+   "Take them from there, and bring them down",
+   "Let them escape",
+   "Send them a prophet",
+   "Forget them"
+  ],
+  "answer": 0,
+  "explanation": "Though they dig into hell, thence shall mine hand take them; though they climb up to heaven, thence will I bring them down.",
+  "ref": "Amos 9:2"
+ },
+ {
+  "id": "amos-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Where does the LORD say He will search and take them out, if they hide?",
+  "choices": [
+   "The clefts of the rock",
+   "The caves of Gilead",
+   "The wall of Samaria",
+   "The top of Carmel"
+  ],
+  "answer": 3,
+  "explanation": "Though they hide themselves in the top of Carmel, I will search and take them out thence.",
+  "ref": "Amos 9:3"
+ },
+ {
+  "id": "amos-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If they go into captivity before their enemies, what will the LORD command?",
+  "choices": [
+   "The sword to slay them",
+   "The fire to burn them",
+   "The famine to pursue them",
+   "The flood to cover them"
+  ],
+  "answer": 0,
+  "explanation": "Though they go into captivity before their enemies, thence will I command the sword, and it shall slay them.",
+  "ref": "Amos 9:4"
+ },
+ {
+  "id": "amos-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom does the LORD compare the children of Israel?",
+  "choices": [
+   "The children of Edom",
+   "The children of Ammon",
+   "The children of the Ethiopians",
+   "The children of the Philistines"
+  ],
+  "answer": 2,
+  "explanation": "Are ye not as children of the Ethiopians unto me, O children of Israel? saith the LORD.",
+  "ref": "Amos 9:7"
+ },
+ {
+  "id": "amos-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "From where did the LORD bring the Philistines and the Syrians?",
+  "choices": [
+   "Egypt and Edom",
+   "Gaza and Damascus",
+   "Tyre and Zidon",
+   "Caphtor and Kir"
+  ],
+  "answer": 3,
+  "explanation": "The Philistines from Caphtor, and the Syrians from Kir.",
+  "ref": "Amos 9:7"
+ },
+ {
+  "id": "amos-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the LORD say He will sift the house of Israel among the nations?",
+  "choices": [
+   "Like wheat is threshed on a floor",
+   "Like corn is sifted in a sieve",
+   "Like grapes are trodden in a press",
+   "Like chaff is driven by the wind"
+  ],
+  "answer": 1,
+  "explanation": "I will sift the house of Israel among all nations, like as corn is sifted in a sieve.",
+  "ref": "Amos 9:9"
+ },
+ {
+  "id": "amos-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the sinners of His people say?",
+  "choices": [
+   "The LORD hath forgotten us",
+   "The day of the LORD is far off",
+   "We shall not see the sword",
+   "The evil shall not overtake nor prevent us"
+  ],
+  "answer": 3,
+  "explanation": "All the sinners of my people shall die by the sword, which say, The evil shall not overtake nor prevent us.",
+  "ref": "Amos 9:10"
+ },
+ {
+  "id": "amos-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the raised-up tabernacle of David possess?",
+  "choices": [
+   "The land of Egypt",
+   "The cities of Philistia",
+   "The remnant of Edom and all the heathen",
+   "The mount of Esau only"
+  ],
+  "answer": 2,
+  "explanation": "That they may possess the remnant of Edom, and of all the heathen, which are called by my name.",
+  "ref": "Amos 9:12"
+ },
+ {
+  "id": "amos-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do to the sinful kingdom, yet not to the house of Jacob?",
+  "choices": [
+   "Scatter it, and gather Jacob",
+   "Judge it, and spare Jacob's altars",
+   "Destroy it, but not utterly destroy Jacob",
+   "Burn it, and feed Jacob"
+  ],
+  "answer": 2,
+  "explanation": "I will destroy it from off the face of the earth; saving that I will not utterly destroy the house of Jacob.",
+  "ref": "Amos 9:8"
+ },
+ {
+  "id": "amos-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When the house of Israel is sifted, what shall not fall upon the earth?",
+  "choices": [
+   "The least grain",
+   "The smallest stone",
+   "The last tree",
+   "The first fruit"
+  ],
+  "answer": 0,
+  "explanation": "I will sift the house of Israel among all nations, yet shall not the least grain fall upon the earth.",
+  "ref": "Amos 9:9"
+ },
+ {
+  "id": "amos-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the mountains drop?",
+  "choices": [
+   "Milk and honey",
+   "Fine gold",
+   "Sweet wine",
+   "Cool water"
+  ],
+  "answer": 2,
+  "explanation": "The mountains shall drop sweet wine, and all the hills shall melt.",
+  "ref": "Amos 9:13"
+ },
+ {
+  "id": "amos-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do with the breaches of the fallen tabernacle of David?",
+  "choices": [
+   "Leave them",
+   "Fill them with fire",
+   "Close them up",
+   "Hide them"
+  ],
+  "answer": 2,
+  "explanation": "I will raise up the tabernacle of David that is fallen, and close up the breaches thereof.",
+  "ref": "Amos 9:11"
+ },
+ {
+  "id": "amos-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD will build the tabernacle of David as in what?",
+  "choices": [
+   "The days of Solomon",
+   "The year of jubilee",
+   "The first month",
+   "The days of old"
+  ],
+  "answer": 3,
+  "explanation": "I will raise up his ruins, and I will build it as in the days of old.",
+  "ref": "Amos 9:11"
+ },
+ {
+  "id": "amos-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Where does the LORD build his stories?",
+  "choices": [
+   "On the mountains",
+   "In Zion",
+   "In the deep",
+   "In the heaven"
+  ],
+  "answer": 3,
+  "explanation": "It is he that buildeth his stories in the heaven, and hath founded his troop in the earth.",
+  "ref": "Amos 9:6"
+ },
+ {
+  "id": "amos-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to the land when the Lord GOD toucheth it?",
+  "choices": [
+   "It shall melt, and all that dwell there shall mourn",
+   "It shall be rebuilt and filled",
+   "It shall be given to Judah",
+   "It shall be covered with snow"
+  ],
+  "answer": 0,
+  "explanation": "The Lord GOD of hosts toucheth the land, and it shall melt, and all that dwell therein shall mourn.",
+  "ref": "Amos 9:5"
+ },
+ {
+  "id": "amos-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom shall the treader of grapes overtake?",
+  "choices": [
+   "Him that reapeth the corn",
+   "Him that keepeth the vineyard",
+   "Him that soweth seed",
+   "Him that carries the wine"
+  ],
+  "answer": 2,
+  "explanation": "The plowman shall overtake the reaper, and the treader of grapes him that soweth seed.",
+  "ref": "Amos 9:13"
  }
 ]
