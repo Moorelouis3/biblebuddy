@@ -10800,22 +10800,6 @@
   "ref": "Ezekiel 29:20"
  },
  {
-  "id": "ezekiel-29-h-01",
-  "chapter": 29,
-  "level": "hard",
-  "category": "keyword",
-  "question": "In which month of the tenth year did the first word come?",
-  "choices": [
-   "The first month",
-   "The fifth month",
-   "The twelfth month",
-   "The tenth month"
-  ],
-  "answer": 3,
-  "explanation": "In the tenth year, in the tenth month, in the twelfth day of the month, the word of the LORD came unto me.",
-  "ref": "Ezekiel 29:1"
- },
- {
   "id": "ezekiel-29-h-02",
   "chapter": 29,
   "level": "hard",
@@ -10894,22 +10878,6 @@
   "answer": 2,
   "explanation": "My river is mine own, and I have made it for myself.",
   "ref": "Ezekiel 29:3"
- },
- {
-  "id": "ezekiel-29-h-07",
-  "chapter": 29,
-  "level": "hard",
-  "category": "keyword",
-  "question": "On which day of the month did the first word of the chapter come?",
-  "choices": [
-   "The first day",
-   "The twelfth day",
-   "The seventh day",
-   "The fifteenth day"
-  ],
-  "answer": 1,
-  "explanation": "In the tenth year, in the tenth month, in the twelfth day of the month, the word of the LORD came unto me.",
-  "ref": "Ezekiel 29:1"
  },
  {
   "id": "ezekiel-29-h-08",
@@ -12302,22 +12270,6 @@
   "answer": 0,
   "explanation": "I will cause all the fowls of the heaven to remain upon thee, and I will fill the beasts of the whole earth with thee.",
   "ref": "Ezekiel 32:4"
- },
- {
-  "id": "ezekiel-32-h-01",
-  "chapter": 32,
-  "level": "hard",
-  "category": "keyword",
-  "question": "In which month of the twelfth year did the first word come?",
-  "choices": [
-   "The tenth month",
-   "The first month",
-   "The sixth month",
-   "The twelfth month"
-  ],
-  "answer": 3,
-  "explanation": "It came to pass in the twelfth year, in the twelfth month, in the first day of the month.",
-  "ref": "Ezekiel 32:1"
  },
  {
   "id": "ezekiel-32-h-02",
@@ -14782,5 +14734,53 @@
   "answer": 1,
   "explanation": "I have lifted up mine hand, Surely the heathen that are about you, they shall bear their shame.",
   "ref": "Ezekiel 36:7"
+ },
+ {
+  "id": "ezekiel-29-h-12",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is thrown into the wilderness with Pharaoh the great dragon?",
+  "choices": [
+   "The princes of Tyrus",
+   "The captains of Babylon",
+   "All the fish of his rivers",
+   "The priests of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "God says, I will leave thee thrown into the wilderness, thee and all the fish of thy rivers.",
+  "ref": "Ezekiel 29:5"
+ },
+ {
+  "id": "ezekiel-29-h-13",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who will know that God is the LORD because they were a staff of reed to Israel?",
+  "choices": [
+   "The kings of Tyrus",
+   "All the inhabitants of Egypt",
+   "The men of Babylon",
+   "The princes of Judah"
+  ],
+  "answer": 1,
+  "explanation": "All the inhabitants of Egypt shall know that I am the LORD, because they have been a staff of reed to the house of Israel.",
+  "ref": "Ezekiel 29:6"
+ },
+ {
+  "id": "ezekiel-32-h-16",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the princes of the north and the Zidonians ashamed of in the pit?",
+  "choices": [
+   "Their idols",
+   "Their wealth",
+   "Their ships",
+   "Their might"
+  ],
+  "answer": 3,
+  "explanation": "The princes of the north and all the Zidonians, with their terror they are ashamed of their might, and bear their shame with them that go down to the pit.",
+  "ref": "Ezekiel 32:30"
  }
 ]
