@@ -144,22 +144,6 @@
   "ref": "Hosea 2:16"
  },
  {
-  "id": "old-hosea-2-5",
-  "chapter": 2,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "With what qualities would God betroth Israel to Himself forever?",
-  "choices": [
-   "Wealth and power",
-   "Fire and thunder",
-   "Law and sacrifice only",
-   "Righteousness, judgment, lovingkindness, and mercies"
-  ],
-  "answer": 3,
-  "explanation": "The restored covenant is grounded in God's righteous and merciful love.",
-  "ref": "Hosea 2:19"
- },
- {
   "id": "old-hosea-3-1",
   "chapter": 3,
   "level": "beginner",
@@ -336,22 +320,6 @@
   "ref": "Hosea 5:1"
  },
  {
-  "id": "old-hosea-5-2",
-  "chapter": 5,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does God say He has been to all the revolters?",
-  "choices": [
-   "A healer",
-   "A helper",
-   "A stranger",
-   "A rebuker"
-  ],
-  "answer": 3,
-  "explanation": "The revolters went deep into slaughter, though God had been a rebuker of them all.",
-  "ref": "Hosea 5:2"
- },
- {
   "id": "old-hosea-5-3",
   "chapter": 5,
   "level": "beginner",
@@ -462,22 +430,6 @@
   "answer": 1,
   "explanation": "Their apparent devotion vanished quickly like mist.",
   "ref": "Hosea 6:4"
- },
- {
-  "id": "old-hosea-6-5",
-  "chapter": 6,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does God say He desired more than sacrifice?",
-  "choices": [
-   "Gold and incense",
-   "Pilgrimages and feasts",
-   "Military victory",
-   "Mercy and the knowledge of God"
-  ],
-  "answer": 3,
-  "explanation": "Hosea 6:6 emphasizes covenant love and true knowledge over empty ritual.",
-  "ref": "Hosea 6:6"
  },
  {
   "id": "old-hosea-7-1",
@@ -1104,19 +1056,3987 @@
   "ref": "Hosea 14:4"
  },
  {
-  "id": "old-hosea-14-5",
+  "id": "hosea-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "What name was given to Hosea's youngest son, the third child?",
+  "choices": [
+   "Lo-ammi",
+   "Jezreel",
+   "Lo-ruhamah",
+   "Ephraim"
+  ],
+  "answer": 0,
+  "explanation": "God said, Call his name Lo-ammi: for ye are not my people, and I will not be your God.",
+  "ref": "Hosea 1:9"
+ },
+ {
+  "id": "hosea-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD tell Hosea to take a wife of whoredoms?",
+  "choices": [
+   "Hosea had sinned against the LORD",
+   "Israel had no king",
+   "The land had committed great whoredom",
+   "Judah had forsaken the temple"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said, Go, take unto thee a wife of whoredoms: for the land hath committed great whoredom, departing from the LORD.",
+  "ref": "Hosea 1:2"
+ },
+ {
+  "id": "hosea-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the daughter named Lo-ruhamah?",
+  "choices": [
+   "Israel would be as the sand of the sea",
+   "The LORD would break the bow of Israel",
+   "Judah would be taken to Assyria",
+   "The LORD would no more have mercy upon the house of Israel"
+  ],
+  "answer": 3,
+  "explanation": "God said, Call her name Lo-ruhamah: for I will no more have mercy upon the house of Israel.",
+  "ref": "Hosea 1:6"
+ },
+ {
+  "id": "hosea-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did God give for the name Lo-ammi?",
+  "choices": [
+   "Ye have broken the bow of Judah",
+   "Ye shall be gathered under one head",
+   "Ye are not my people, and I will not be your God",
+   "Ye have no king in Israel"
+  ],
+  "answer": 2,
+  "explanation": "God said, Call his name Lo-ammi: for ye are not my people, and I will not be your God.",
+  "ref": "Hosea 1:9"
+ },
+ {
+  "id": "hosea-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Upon whose house would the LORD avenge the blood of Jezreel?",
+  "choices": [
+   "Jeroboam",
+   "Uzziah",
+   "Beeri",
+   "Jehu"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said, I will avenge the blood of Jezreel upon the house of Jehu.",
+  "ref": "Hosea 1:4"
+ },
+ {
+  "id": "hosea-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD break in the valley of Jezreel?",
+  "choices": [
+   "The sword of Judah",
+   "The bow of Israel",
+   "The gates of Samaria",
+   "The altars of Baal"
+  ],
+  "answer": 1,
+  "explanation": "I will break the bow of Israel in the valley of Jezreel.",
+  "ref": "Hosea 1:5"
+ },
+ {
+  "id": "hosea-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which house does the LORD say He will have mercy on and save?",
+  "choices": [
+   "The house of Jehu",
+   "The house of Ephraim",
+   "The house of Judah",
+   "The house of Beeri"
+  ],
+  "answer": 2,
+  "explanation": "But I will have mercy upon the house of Judah, and will save them by the LORD their God.",
+  "ref": "Hosea 1:7"
+ },
+ {
+  "id": "hosea-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose daughter was Gomer, the wife Hosea took?",
+  "choices": [
+   "Beeri",
+   "Joash",
+   "Diblaim",
+   "Jehu"
+  ],
+  "answer": 2,
+  "explanation": "So he went and took Gomer the daughter of Diblaim.",
+  "ref": "Hosea 1:3"
+ },
+ {
+  "id": "hosea-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which king of Israel is named in the days of Hosea's word?",
+  "choices": [
+   "Jehu the son of Nimshi",
+   "Jeroboam the son of Joash",
+   "Ahab the son of Omri",
+   "Pekah the son of Remaliah"
+  ],
+  "answer": 1,
+  "explanation": "The word came in the days of Jeroboam the son of Joash, king of Israel.",
+  "ref": "Hosea 1:1"
+ },
+ {
+  "id": "hosea-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Hosea?",
+  "choices": [
+   "Diblaim",
+   "Joash",
+   "Beeri",
+   "Jehu"
+  ],
+  "answer": 2,
+  "explanation": "The word of the LORD that came unto Hosea, the son of Beeri.",
+  "ref": "Hosea 1:1"
+ },
+ {
+  "id": "hosea-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Gomer conceive and bear the third child?",
+  "choices": [
+   "Before Jezreel was born",
+   "While Hosea was away in Judah",
+   "After she had weaned Lo-ruhamah",
+   "On the day Jezreel was named"
+  ],
+  "answer": 2,
+  "explanation": "Now when she had weaned Lo-ruhamah, she conceived, and bare a son.",
+  "ref": "Hosea 1:8"
+ },
+ {
+  "id": "hosea-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the children of Judah and Israel do when they are gathered together?",
+  "choices": [
+   "Appoint twelve princes over them",
+   "Crown a new king in Samaria",
+   "Appoint themselves one head",
+   "Divide the land of Jezreel"
+  ],
+  "answer": 2,
+  "explanation": "The children of Judah and of Israel shall be gathered together, and appoint themselves one head.",
+  "ref": "Hosea 1:11"
+ },
+ {
+  "id": "hosea-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what is the number of the children of Israel compared?",
+  "choices": [
+   "The sand of the sea",
+   "The stars of heaven",
+   "The dust of the earth",
+   "The locusts of the field"
+  ],
+  "answer": 0,
+  "explanation": "The number of the children of Israel shall be as the sand of the sea, which cannot be measured nor numbered.",
+  "ref": "Hosea 1:10"
+ },
+ {
+  "id": "hosea-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall the people say to the mountains and to the hills?",
+  "choices": [
+   "Hide us, and Shelter us",
+   "Lift us up, and Carry us",
+   "Cover us, and Fall on us",
+   "Shake, and Break in pieces"
+  ],
+  "answer": 2,
+  "explanation": "They shall say to the mountains, Cover us; and to the hills, Fall on us.",
+  "ref": "Hosea 10:8"
+ },
+ {
+  "id": "hosea-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom shall the calf be carried as a present?",
+  "choices": [
+   "King Jareb in Assyria",
+   "The king of Egypt",
+   "The house of Jehu",
+   "The priests of Bethel"
+  ],
+  "answer": 0,
+  "explanation": "It shall be also carried unto Assyria for a present to king Jareb.",
+  "ref": "Hosea 10:6"
+ },
+ {
+  "id": "hosea-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the king of Samaria cut off?",
+  "choices": [
+   "As a flame in the stubble",
+   "As a cloud at morning",
+   "As a tree in the forest",
+   "As the foam upon the water"
+  ],
+  "answer": 3,
+  "explanation": "As for Samaria, her king is cut off as the foam upon the water.",
+  "ref": "Hosea 10:7"
+ },
+ {
+  "id": "hosea-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall come up on the altars of the high places of Aven?",
+  "choices": [
+   "The vine and the fig tree",
+   "Grass and corn",
+   "Smoke and fire",
+   "The thorn and the thistle"
+  ],
+  "answer": 3,
+  "explanation": "The thorn and the thistle shall come up on their altars.",
+  "ref": "Hosea 10:8"
+ },
+ {
+  "id": "hosea-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "As the multitude of his fruit increased, what did Israel increase?",
+  "choices": [
+   "The altars",
+   "The flocks",
+   "The cities",
+   "The armies"
+  ],
+  "answer": 0,
+  "explanation": "According to the multitude of his fruit he hath increased the altars.",
+  "ref": "Hosea 10:1"
+ },
+ {
+  "id": "hosea-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Israel told to sow, and what to reap?",
+  "choices": [
+   "Sow in the field, reap in joy",
+   "Sow in peace, reap in gold",
+   "Sow in righteousness, reap in mercy",
+   "Sow in tears, reap in power"
+  ],
+  "answer": 2,
+  "explanation": "Sow to yourselves in righteousness, reap in mercy: break up your fallow ground.",
+  "ref": "Hosea 10:12"
+ },
+ {
+  "id": "hosea-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when is it time to seek the LORD?",
+  "choices": [
+   "Till the harvest is gathered",
+   "Till the king returns from Assyria",
+   "Till the feast of tabernacles",
+   "Till He come and rain righteousness upon you"
+  ],
+  "answer": 3,
+  "explanation": "It is time to seek the LORD, till he come and rain righteousness upon you.",
+  "ref": "Hosea 10:12"
+ },
+ {
+  "id": "hosea-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had they plowed and what had they reaped?",
+  "choices": [
+   "Plowed righteousness, reaped mercy",
+   "Plowed wickedness, reaped iniquity",
+   "Plowed the fallow ground, reaped corn",
+   "Plowed idols, reaped silver"
+  ],
+  "answer": 1,
+  "explanation": "Ye have plowed wickedness, ye have reaped iniquity; ye have eaten the fruit of lies.",
+  "ref": "Hosea 10:13"
+ },
+ {
+  "id": "hosea-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say judgment springs up like in the furrows of the field?",
+  "choices": [
+   "Thorns",
+   "Corn",
+   "Hemlock",
+   "A vine"
+  ],
+  "answer": 2,
+  "explanation": "Judgment springeth up as hemlock in the furrows of the field.",
+  "ref": "Hosea 10:4"
+ },
+ {
+  "id": "hosea-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ephraim love to do, like a heifer that is taught?",
+  "choices": [
+   "Plow the fallow ground",
+   "Drink at the stream",
+   "Feed in the valley",
+   "Tread out the corn"
+  ],
+  "answer": 3,
+  "explanation": "Ephraim is as an heifer that is taught, and loveth to tread out the corn; but I passed over upon her fair neck.",
+  "ref": "Hosea 10:11"
+ },
+ {
+  "id": "hosea-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who spoiled Beth-arbel in the day of battle?",
+  "choices": [
+   "Shalman",
+   "Jareb",
+   "Jehu",
+   "Shishak"
+  ],
+  "answer": 0,
+  "explanation": "All thy fortresses shall be spoiled, as Shalman spoiled Beth-arbel in the day of battle.",
+  "ref": "Hosea 10:14"
+ },
+ {
+  "id": "hosea-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "From the days of which place had Israel sinned?",
+  "choices": [
+   "Gilgal",
+   "Jezreel",
+   "Gibeah",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "O Israel, thou hast sinned from the days of Gibeah: there they stood.",
+  "ref": "Hosea 10:9"
+ },
+ {
+  "id": "hosea-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who shall plow, when Ephraim is made to ride?",
+  "choices": [
+   "Benjamin",
+   "Jacob",
+   "Samaria",
+   "Judah"
+  ],
+  "answer": 3,
+  "explanation": "I will make Ephraim to ride; Judah shall plow, and Jacob shall break his clods.",
+  "ref": "Hosea 10:11"
+ },
+ {
+  "id": "hosea-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was dashed in pieces upon her children?",
+  "choices": [
+   "The king",
+   "The mother",
+   "The calf",
+   "The fortress"
+  ],
+  "answer": 1,
+  "explanation": "The mother was dashed in pieces upon her children.",
+  "ref": "Hosea 10:14"
+ },
+ {
+  "id": "hosea-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Whose calves do the inhabitants of Samaria fear because of?",
+  "choices": [
+   "Gilgal",
+   "Mizpah",
+   "Tabor",
+   "Beth-aven"
+  ],
+  "answer": 3,
+  "explanation": "The inhabitants of Samaria shall fear because of the calves of Beth-aven.",
+  "ref": "Hosea 10:5"
+ },
+ {
+  "id": "hosea-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How have they spoken in making a covenant?",
+  "choices": [
+   "With honest words",
+   "Swearing falsely",
+   "With priestly blessing",
+   "With silver and gold"
+  ],
+  "answer": 1,
+  "explanation": "They have spoken words, swearing falsely in making a covenant.",
+  "ref": "Hosea 10:4"
+ },
+ {
+  "id": "hosea-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to the goodness of their land, what did they make?",
+  "choices": [
+   "Strong walls",
+   "Great feasts",
+   "Goodly images",
+   "Fenced cities"
+  ],
+  "answer": 2,
+  "explanation": "According to the goodness of his land they have made goodly images.",
+  "ref": "Hosea 10:1"
+ },
+ {
+  "id": "hosea-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall arise among the people, and what shall be spoiled?",
+  "choices": [
+   "A famine, and all their vineyards",
+   "A fire, and all their altars",
+   "A tumult, and all their fortresses",
+   "A flood, and all their cities"
+  ],
+  "answer": 2,
+  "explanation": "Therefore shall a tumult arise among thy people, and all thy fortresses shall be spoiled.",
+  "ref": "Hosea 10:14"
+ },
+ {
+  "id": "hosea-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "What shall Bethel do unto them because of their great wickedness?",
+  "choices": [
+   "Receive them as the house of God",
+   "Bring the king of Israel utterly to be cut off in a morning",
+   "Lead them back to the LORD",
+   "Cover them from the sword"
+  ],
+  "answer": 1,
+  "explanation": "So shall Bethel do unto you because of your great wickedness: in a morning shall the king of Israel utterly be cut off.",
+  "ref": "Hosea 10:15"
+ },
+ {
+  "id": "hosea-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall be Ephraim's king, since he shall not return into Egypt?",
+  "choices": [
+   "Pharaoh",
+   "Jeroboam",
+   "David",
+   "The Assyrian"
+  ],
+  "answer": 3,
+  "explanation": "He shall not return into the land of Egypt, but the Assyrian shall be his king, because they refused to return.",
+  "ref": "Hosea 11:5"
+ },
+ {
+  "id": "hosea-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ephraim not know when the LORD taught him to go?",
+  "choices": [
+   "That the LORD would judge them",
+   "That the LORD healed them",
+   "That Assyria would come",
+   "That the way was long"
+  ],
+  "answer": 1,
+  "explanation": "I taught Ephraim also to go, taking them by their arms; but they knew not that I healed them.",
+  "ref": "Hosea 11:3"
+ },
+ {
+  "id": "hosea-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did the LORD draw them?",
+  "choices": [
+   "Cords of a man, with bands of love",
+   "Chains of iron and a rod",
+   "Gifts of silver and gold",
+   "Words of the prophets"
+  ],
+  "answer": 0,
+  "explanation": "I drew them with cords of a man, with bands of love.",
+  "ref": "Hosea 11:4"
+ },
+ {
+  "id": "hosea-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall abide on his cities and consume his branches?",
+  "choices": [
+   "Famine",
+   "Fire",
+   "The sword",
+   "Pestilence"
+  ],
+  "answer": 2,
+  "explanation": "The sword shall abide on his cities, and shall consume his branches, and devour them, because of their own counsels.",
+  "ref": "Hosea 11:6"
+ },
+ {
+  "id": "hosea-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Which two cities does the LORD say He will not make Ephraim like?",
+  "choices": [
+   "Sodom and Gomorrah",
+   "Tyre and Sidon",
+   "Admah and Zeboim",
+   "Gibeah and Gilgal"
+  ],
+  "answer": 2,
+  "explanation": "How shall I make thee as Admah? how shall I set thee as Zeboim?",
+  "ref": "Hosea 11:8"
+ },
+ {
+  "id": "hosea-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD not do to Ephraim, though his anger is great?",
+  "choices": [
+   "Execute the fierceness of His anger and destroy him",
+   "Give him a new land",
+   "Send him a prophet",
+   "Return him to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "I will not execute the fierceness of mine anger, I will not return to destroy Ephraim.",
+  "ref": "Hosea 11:9"
+ },
+ {
+  "id": "hosea-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do when He roars like a lion?",
+  "choices": [
+   "The sword shall rest",
+   "The captives shall be freed",
+   "The rain shall fall",
+   "The children shall tremble from the west"
+  ],
+  "answer": 3,
+  "explanation": "They shall walk after the LORD: he shall roar like a lion: when he shall roar, then the children shall tremble from the west.",
+  "ref": "Hosea 11:10"
+ },
+ {
+  "id": "hosea-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Who compasseth the LORD about with lies?",
+  "choices": [
+   "Judah",
+   "The Assyrian",
+   "Ephraim",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "Ephraim compasseth me about with lies, and the house of Israel with deceit.",
+  "ref": "Hosea 11:12"
+ },
+ {
+  "id": "hosea-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Who yet ruleth with God and is faithful with the saints?",
+  "choices": [
+   "Ephraim",
+   "Judah",
+   "Benjamin",
+   "The house of Jehu"
+  ],
+  "answer": 1,
+  "explanation": "But Judah yet ruleth with God, and is faithful with the saints.",
+  "ref": "Hosea 11:12"
+ },
+ {
+  "id": "hosea-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say His heart does within Him?",
+  "choices": [
+   "It is hardened against them",
+   "It is turned within Him",
+   "It is glad in them",
+   "It is far from them"
+  ],
+  "answer": 1,
+  "explanation": "Mine heart is turned within me, my repentings are kindled together.",
+  "ref": "Hosea 11:8"
+ },
+ {
+  "id": "hosea-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the people of the LORD bent to?",
+  "choices": [
+   "Waiting on Him",
+   "Building for Him",
+   "Returning to Him",
+   "Backsliding from Him"
+  ],
+  "answer": 3,
+  "explanation": "My people are bent to backsliding from me: though they called them to the most High, none at all would exalt him.",
+  "ref": "Hosea 11:7"
+ },
+ {
+  "id": "hosea-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD lay unto them, like one who takes off the yoke?",
+  "choices": [
+   "Corn and wine",
+   "A crown",
+   "A sword",
+   "Meat"
+  ],
+  "answer": 3,
+  "explanation": "I was to them as they that take off the yoke on their jaws, and I laid meat unto them.",
+  "ref": "Hosea 11:4"
+ },
+ {
+  "id": "hosea-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where will the LORD place them after they tremble like a bird and a dove?",
+  "choices": [
+   "In the wilderness",
+   "In Jerusalem",
+   "In their houses",
+   "Among the nations"
+  ],
+  "answer": 2,
+  "explanation": "They shall tremble as a bird out of Egypt, and as a dove out of the land of Assyria: and I will place them in their houses.",
+  "ref": "Hosea 11:11"
+ },
+ {
+  "id": "hosea-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Into which country did Jacob flee?",
+  "choices": [
+   "Egypt",
+   "Assyria",
+   "Syria",
+   "Canaan"
+  ],
+  "answer": 2,
+  "explanation": "And Jacob fled into the country of Syria, and Israel served for a wife, and for a wife he kept sheep.",
+  "ref": "Hosea 12:12"
+ },
+ {
+  "id": "hosea-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do for a wife?",
+  "choices": [
+   "Fought and took spoil",
+   "Served and kept sheep",
+   "Paid silver and gold",
+   "Built a house"
+  ],
+  "answer": 1,
+  "explanation": "Israel served for a wife, and for a wife he kept sheep.",
+  "ref": "Hosea 12:12"
+ },
+ {
+  "id": "hosea-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jacob do after he prevailed over the angel?",
+  "choices": [
+   "He built an altar",
+   "He fled into Syria",
+   "He wept and made supplication",
+   "He blessed the angel"
+  ],
+  "answer": 2,
+  "explanation": "He had power over the angel, and prevailed: he wept, and made supplication unto him.",
+  "ref": "Hosea 12:4"
+ },
+ {
+  "id": "hosea-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is carried into Egypt, as Ephraim makes a covenant with the Assyrians?",
+  "choices": [
+   "Oil",
+   "Silver",
+   "Wheat",
+   "Wine"
+  ],
+  "answer": 0,
+  "explanation": "They do make a covenant with the Assyrians, and oil is carried into Egypt.",
+  "ref": "Hosea 12:1"
+ },
+ {
+  "id": "hosea-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the merchant hold in his hand?",
+  "choices": [
+   "The balances of deceit",
+   "The scales of justice",
+   "The sword of the king",
+   "The keys of the city"
+  ],
+  "answer": 0,
+  "explanation": "He is a merchant, the balances of deceit are in his hand: he loveth to oppress.",
+  "ref": "Hosea 12:7"
+ },
+ {
+  "id": "hosea-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ephraim say of himself?",
+  "choices": [
+   "I have sinned against the LORD",
+   "I am a servant of God",
+   "I will go up to Jerusalem",
+   "Yet I am become rich, I have found me out substance"
+  ],
+  "answer": 3,
+  "explanation": "Ephraim said, Yet I am become rich, I have found me out substance: in all my labours they shall find none iniquity in me.",
+  "ref": "Hosea 12:8"
+ },
+ {
+  "id": "hosea-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "By whom did the LORD bring Israel out of Egypt and preserve him?",
+  "choices": [
+   "An angel",
+   "The king",
+   "A prophet",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "By a prophet the LORD brought Israel out of Egypt, and by a prophet was he preserved.",
+  "ref": "Hosea 12:13"
+ },
+ {
+  "id": "hosea-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He has done by the ministry of the prophets?",
+  "choices": [
+   "Given kings to Israel",
+   "Sent fire from heaven",
+   "Written the law on stone",
+   "Multiplied visions and used similitudes"
+  ],
+  "answer": 3,
+  "explanation": "I have also spoken by the prophets, and I have multiplied visions, and used similitudes.",
+  "ref": "Hosea 12:10"
+ },
+ {
+  "id": "hosea-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what will the LORD yet make Israel dwell?",
+  "choices": [
+   "Tabernacles, as in the days of the solemn feast",
+   "Walled cities",
+   "The house of the king",
+   "The land of Gilead"
+  ],
+  "answer": 0,
+  "explanation": "I that am the LORD thy God from the land of Egypt will yet make thee to dwell in tabernacles.",
+  "ref": "Hosea 12:9"
+ },
+ {
+  "id": "hosea-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Ephraim daily increase?",
+  "choices": [
+   "Lies and desolation",
+   "Corn and oil",
+   "Altars and images",
+   "Silver and gold"
+  ],
+  "answer": 0,
+  "explanation": "He daily increaseth lies and desolation; and they do make a covenant with the Assyrians.",
+  "ref": "Hosea 12:1"
+ },
+ {
+  "id": "hosea-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do they sacrifice in Gilgal?",
+  "choices": [
+   "Lambs",
+   "Doves",
+   "Rams",
+   "Bullocks"
+  ],
+  "answer": 3,
+  "explanation": "They sacrifice bullocks in Gilgal; yea, their altars are as heaps in the furrows of the fields.",
+  "ref": "Hosea 12:11"
+ },
+ {
+  "id": "hosea-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By his strength, what did Jacob have with God?",
+  "choices": [
+   "A new name only",
+   "A blessing from Isaac",
+   "A wife in Syria",
+   "Power with God"
+  ],
+  "answer": 3,
+  "explanation": "By his strength he had power with God: yea, he had power over the angel, and prevailed.",
+  "ref": "Hosea 12:3"
+ },
+ {
+  "id": "hosea-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do to Jacob?",
+  "choices": [
+   "Take him back to Bethel",
+   "Give him a new name",
+   "Send him to Syria",
+   "Punish him according to his ways"
+  ],
+  "answer": 3,
+  "explanation": "The LORD will punish Jacob according to his ways; according to his doings will he recompense him.",
+  "ref": "Hosea 12:2"
+ },
+ {
+  "id": "hosea-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the LORD leave upon Ephraim?",
+  "choices": [
+   "His curse",
+   "His sword",
+   "His blood",
+   "His fire"
+  ],
+  "answer": 2,
+  "explanation": "Ephraim provoked him to anger most bitterly: therefore shall he leave his blood upon him.",
+  "ref": "Hosea 12:14"
+ },
+ {
+  "id": "hosea-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the LORD God of hosts to Jacob?",
+  "choices": [
+   "His king",
+   "His memorial",
+   "His shepherd",
+   "His shield"
+  ],
+  "answer": 1,
+  "explanation": "Even the LORD God of hosts; the LORD is his memorial.",
+  "ref": "Hosea 12:5"
+ },
+ {
+  "id": "hosea-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say of those in Gilead?",
+  "choices": [
+   "Surely they are blessed",
+   "Surely they are strong",
+   "Surely they are faithful",
+   "Surely they are vanity"
+  ],
+  "answer": 3,
+  "explanation": "Is there iniquity in Gilead? surely they are vanity.",
+  "ref": "Hosea 12:11"
+ },
+ {
+  "id": "hosea-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD be unto them, as a leopard by the way?",
+  "choices": [
+   "A lion who observes them",
+   "A shepherd who guides them",
+   "A father who forgives them",
+   "A king who rules them"
+  ],
+  "answer": 0,
+  "explanation": "I will be unto them as a lion: as a leopard by the way will I observe them.",
+  "ref": "Hosea 13:7"
+ },
+ {
+  "id": "hosea-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "As what animal will the LORD meet them, bereaved of her whelps?",
+  "choices": [
+   "A lion",
+   "A bear",
+   "A wolf",
+   "A leopard"
+  ],
+  "answer": 1,
+  "explanation": "I will meet them as a bear that is bereaved of her whelps, and will rend the caul of their heart.",
+  "ref": "Hosea 13:8"
+ },
+ {
+  "id": "hosea-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where is Israel's help, though he has destroyed himself?",
+  "choices": [
+   "In Assyria",
+   "In the LORD",
+   "In his king",
+   "In his idols"
+  ],
+  "answer": 1,
+  "explanation": "O Israel, thou hast destroyed thyself; but in me is thine help.",
+  "ref": "Hosea 13:9"
+ },
+ {
+  "id": "hosea-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they make of their silver?",
+  "choices": [
+   "Crowns for kings",
+   "Altars for the temple",
+   "Vessels of gold",
+   "Molten images"
+  ],
+  "answer": 3,
+  "explanation": "They have made them molten images of their silver, and idols according to their own understanding, all of it the work of the craftsmen.",
+  "ref": "Hosea 13:2"
+ },
+ {
+  "id": "hosea-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did they forget the LORD?",
+  "choices": [
+   "They were filled and their heart was exalted",
+   "They were afraid of Assyria",
+   "They had no king",
+   "They were led astray by Judah"
+  ],
+  "answer": 0,
+  "explanation": "According to their pasture, so were they filled; they were filled, and their heart was exalted; therefore have they forgotten me.",
+  "ref": "Hosea 13:6"
+ },
+ {
+  "id": "hosea-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the LORD know them?",
+  "choices": [
+   "In Egypt, in the house of bondage",
+   "In Samaria, in the king's house",
+   "In Bethel, at the altar",
+   "In the wilderness, in the land of great drought"
+  ],
+  "answer": 3,
+  "explanation": "I did know thee in the wilderness, in the land of great drought.",
+  "ref": "Hosea 13:5"
+ },
+ {
+  "id": "hosea-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD do with the king He gave in anger?",
+  "choices": [
+   "Set him over Judah",
+   "Took him away in His wrath",
+   "Made him priest",
+   "Gave him a son"
+  ],
+  "answer": 1,
+  "explanation": "I gave thee a king in mine anger, and took him away in my wrath.",
+  "ref": "Hosea 13:11"
+ },
+ {
+  "id": "hosea-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the east wind do to Ephraim?",
+  "choices": [
+   "Carry his children to Egypt",
+   "Bring rain upon his fields",
+   "Scatter his altars",
+   "Dry up his spring and his fountain"
+  ],
+  "answer": 3,
+  "explanation": "An east wind shall come: his spring shall become dry, and his fountain shall be dried up.",
+  "ref": "Hosea 13:15"
+ },
+ {
+  "id": "hosea-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why shall Samaria become desolate?",
+  "choices": [
+   "She has made covenant with Egypt",
+   "She has rebelled against her God",
+   "She has no king",
+   "She has plowed the fallow ground"
+  ],
+  "answer": 1,
+  "explanation": "Samaria shall become desolate; for she hath rebelled against her God.",
+  "ref": "Hosea 13:16"
+ },
+ {
+  "id": "hosea-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the east wind spoil?",
+  "choices": [
+   "The harvest of the plain",
+   "The treasure of all pleasant vessels",
+   "The gates of Samaria",
+   "The ships of Tarshish"
+  ],
+  "answer": 1,
+  "explanation": "He shall spoil the treasure of all pleasant vessels.",
+  "ref": "Hosea 13:15"
+ },
+ {
+  "id": "hosea-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say to Israel about every other who might save in all his cities?",
+  "choices": [
+   "There is none to save thee but Assyria",
+   "Where is any other that may save thee?",
+   "The judges shall save thee",
+   "Thy king shall save thee"
+  ],
+  "answer": 1,
+  "explanation": "I will be thy king: where is any other that may save thee in all thy cities?",
+  "ref": "Hosea 13:10"
+ },
+ {
+  "id": "hosea-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ephraim do when he spake trembling?",
+  "choices": [
+   "Exalted himself in Israel",
+   "Fled to Judah",
+   "Built an altar",
+   "Crossed the Jordan"
+  ],
+  "answer": 0,
+  "explanation": "When Ephraim spake trembling, he exalted himself in Israel; but when he offended in Baal, he died.",
+  "ref": "Hosea 13:1"
+ },
+ {
+  "id": "hosea-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is hid from the LORD's eyes?",
+  "choices": [
+   "Repentance",
+   "Mercy",
+   "Sorrow",
+   "Pity"
+  ],
+  "answer": 0,
+  "explanation": "O death, I will be thy plagues; repentance shall be hid from mine eyes.",
+  "ref": "Hosea 13:14"
+ },
+ {
+  "id": "hosea-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall come upon Ephraim, an unwise son?",
+  "choices": [
+   "The sword of the Assyrian",
+   "The fire of the LORD",
+   "The sorrows of a travailing woman",
+   "The famine of the land"
+  ],
+  "answer": 2,
+  "explanation": "The sorrows of a travailing woman shall come upon him: he is an unwise son.",
+  "ref": "Hosea 13:13"
+ },
+ {
+  "id": "hosea-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to the infants of Samaria?",
+  "choices": [
+   "They shall be carried to Assyria",
+   "They shall be dashed in pieces",
+   "They shall be hid in the wilderness",
+   "They shall be redeemed"
+  ],
+  "answer": 1,
+  "explanation": "They shall fall by the sword: their infants shall be dashed in pieces.",
+  "ref": "Hosea 13:16"
+ },
+ {
+  "id": "hosea-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the morning cloud and early dew, what else are they compared to?",
+  "choices": [
+   "Chaff in the whirlwind and smoke from the chimney",
+   "A lion in the thicket and a bear in the wood",
+   "A vine in the field and a fig on the tree",
+   "A river in the plain and a rock in the sea"
+  ],
+  "answer": 0,
+  "explanation": "They shall be as chaff driven with the whirlwind out of the floor, and as the smoke out of the chimney.",
+  "ref": "Hosea 13:3"
+ },
+ {
+  "id": "hosea-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of Ephraim's iniquity and his sin?",
+  "choices": [
+   "Written and sealed",
+   "Washed and forgiven",
+   "Bound up and hid",
+   "Counted and told"
+  ],
+  "answer": 2,
+  "explanation": "The iniquity of Ephraim is bound up; his sin is hid.",
+  "ref": "Hosea 13:12"
+ },
+ {
+  "id": "hosea-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had they asked for in the days of their judges?",
+  "choices": [
+   "A prophet and a priest",
+   "Silver and gold",
+   "A king and princes",
+   "Rain and corn"
+  ],
+  "answer": 2,
+  "explanation": "Thy judges of whom thou saidst, Give me a king and princes?",
+  "ref": "Hosea 13:10"
+ },
+ {
+  "id": "hosea-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to what did they make idols?",
+  "choices": [
+   "The law of Moses",
+   "The pattern of the temple",
+   "The word of the prophets",
+   "Their own understanding"
+  ],
+  "answer": 3,
+  "explanation": "They have made them idols according to their own understanding, all of it the work of the craftsmen.",
+  "ref": "Hosea 13:2"
+ },
+ {
+  "id": "hosea-14-e-01",
   "chapter": 14,
   "level": "beginner",
   "category": "keyword",
-  "question": "How are the Lord's ways described in the book's final verse?",
+  "question": "What will the LORD be unto Israel?",
   "choices": [
-   "Hidden and uncertain",
-   "Right",
-   "Harsh and impossible",
-   "For kings only"
+   "As the dew",
+   "As a lion",
+   "As a moth",
+   "As a flood"
+  ],
+  "answer": 0,
+  "explanation": "I will be as the dew unto Israel: he shall grow as the lily, and cast forth his roots as Lebanon.",
+  "ref": "Hosea 14:5"
+ },
+ {
+  "id": "hosea-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are they told to say to the LORD?",
+  "choices": [
+   "Give us a king and a prince",
+   "Send us rain upon the land",
+   "Deliver us from Assyria",
+   "Take away all iniquity, and receive us graciously"
+  ],
+  "answer": 3,
+  "explanation": "Take with you words, and turn to the LORD: say unto him, Take away all iniquity, and receive us graciously.",
+  "ref": "Hosea 14:2"
+ },
+ {
+  "id": "hosea-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will they render, instead of sacrifices?",
+  "choices": [
+   "The firstfruits of the field",
+   "The calves of our lips",
+   "The tenth of the flock",
+   "The silver of the temple"
   ],
   "answer": 1,
-  "explanation": "The wise understand that the ways of the Lord are right, and the just walk in them.",
+  "explanation": "Say unto him, Take away all iniquity, and receive us graciously: so will we render the calves of our lips.",
+  "ref": "Hosea 14:2"
+ },
+ {
+  "id": "hosea-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Ephraim say about idols?",
+  "choices": [
+   "Let us make a new god",
+   "What have I to do any more with idols?",
+   "Let us bring them to Assyria",
+   "Let us offer to them again"
+  ],
+  "answer": 1,
+  "explanation": "Ephraim shall say, What have I to do any more with idols?",
+  "ref": "Hosea 14:8"
+ },
+ {
+  "id": "hosea-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whom does the fatherless find mercy?",
+  "choices": [
+   "In the king",
+   "In the LORD",
+   "In the Assyrian",
+   "In the priest"
+  ],
+  "answer": 1,
+  "explanation": "Asshur shall not save us: for in thee the fatherless findeth mercy.",
+  "ref": "Hosea 14:3"
+ },
+ {
+  "id": "hosea-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How shall Israel grow when the LORD is as the dew?",
+  "choices": [
+   "As the cedar, rising above the hills",
+   "As the thorn, spreading over the field",
+   "As the reed, bending in the wind",
+   "As the lily, casting forth roots as Lebanon"
+  ],
+  "answer": 3,
+  "explanation": "He shall grow as the lily, and cast forth his roots as Lebanon.",
+  "ref": "Hosea 14:5"
+ },
+ {
+  "id": "hosea-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will they say they will not ride upon?",
+  "choices": [
+   "Camels",
+   "Chariots of Egypt",
+   "Ships of Tarshish",
+   "Horses"
+  ],
+  "answer": 3,
+  "explanation": "Asshur shall not save us; we will not ride upon horses.",
+  "ref": "Hosea 14:3"
+ },
+ {
+  "id": "hosea-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what tree does Ephraim compare himself?",
+  "choices": [
+   "A cedar of Lebanon",
+   "A green fir tree",
+   "A fig tree in blossom",
+   "A palm by the water"
+  ],
+  "answer": 1,
+  "explanation": "I have heard him, and observed him: I am like a green fir tree. From me is thy fruit found.",
+  "ref": "Hosea 14:8"
+ },
+ {
+  "id": "hosea-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the transgressors do in the ways of the LORD?",
+  "choices": [
+   "Walk therein",
+   "Rest therein",
+   "Fall therein",
+   "Teach therein"
+  ],
+  "answer": 2,
+  "explanation": "The ways of the LORD are right, and the just shall walk in them: but the transgressors shall fall therein.",
   "ref": "Hosea 14:9"
+ },
+ {
+  "id": "hosea-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why will the LORD love them freely?",
+  "choices": [
+   "His anger is turned away from them",
+   "They have offered sacrifice",
+   "They have built the temple",
+   "They have found a king"
+  ],
+  "answer": 0,
+  "explanation": "I will heal their backsliding, I will love them freely: for mine anger is turned away from him.",
+  "ref": "Hosea 14:4"
+ },
+ {
+  "id": "hosea-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what shall Israel's beauty be likened?",
+  "choices": [
+   "The cedar tree",
+   "The olive tree",
+   "The palm tree",
+   "The fig tree"
+  ],
+  "answer": 1,
+  "explanation": "His branches shall spread, and his beauty shall be as the olive tree, and his smell as Lebanon.",
+  "ref": "Hosea 14:6"
+ },
+ {
+  "id": "hosea-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "What names was Hosea told to give to his brethren and his sisters?",
+  "choices": [
+   "Ammi and Ruhamah",
+   "Jezreel and Ephraim",
+   "Ishi and Baali",
+   "Gomer and Diblaim"
+  ],
+  "answer": 0,
+  "explanation": "Say ye unto your brethren, Ammi; and to your sisters, Ru-hamah.",
+  "ref": "Hosea 2:1"
+ },
+ {
+  "id": "hosea-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where will the LORD bring her and speak comfortably unto her?",
+  "choices": [
+   "To Samaria",
+   "To Jezreel",
+   "Into the wilderness",
+   "Into Egypt"
+  ],
+  "answer": 2,
+  "explanation": "I will allure her, and bring her into the wilderness, and speak comfortably unto her.",
+  "ref": "Hosea 2:14"
+ },
+ {
+  "id": "hosea-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the LORD tell the children to plead with?",
+  "choices": [
+   "Their king",
+   "The priests",
+   "Their mother",
+   "Their brethren"
+  ],
+  "answer": 2,
+  "explanation": "Plead with your mother, plead: for she is not my wife, neither am I her husband.",
+  "ref": "Hosea 2:2"
+ },
+ {
+  "id": "hosea-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom does she say she will return when she cannot find her lovers?",
+  "choices": [
+   "Her first husband",
+   "The king of Assyria",
+   "The house of Judah",
+   "Her mother"
+  ],
+  "answer": 0,
+  "explanation": "She shall say, I will go and return to my first husband; for then was it better with me than now.",
+  "ref": "Hosea 2:7"
+ },
+ {
+  "id": "hosea-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD take away out of her mouth?",
+  "choices": [
+   "The names of Baalim",
+   "The words of the law",
+   "The songs of Zion",
+   "The names of her children"
+  ],
+  "answer": 0,
+  "explanation": "I will take away the names of Baalim out of her mouth, and they shall no more be remembered by their name.",
+  "ref": "Hosea 2:17"
+ },
+ {
+  "id": "hosea-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD say to them which were not my people?",
+  "choices": [
+   "Thou art my servant",
+   "Thou art my people",
+   "Thou art my kingdom",
+   "Thou art my priest"
+  ],
+  "answer": 1,
+  "explanation": "I will say to them which were not my people, Thou art my people; and they shall say, Thou art my God.",
+  "ref": "Hosea 2:23"
+ },
+ {
+  "id": "hosea-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will she do in the valley of Achor, as in the days of her youth?",
+  "choices": [
+   "Weep there",
+   "Sing there",
+   "Fast there",
+   "Plead there"
+  ],
+  "answer": 1,
+  "explanation": "The valley of Achor for a door of hope: and she shall sing there, as in the days of her youth.",
+  "ref": "Hosea 2:15"
+ },
+ {
+  "id": "hosea-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did she not know that the LORD gave her?",
+  "choices": [
+   "Corn, and wine, and oil",
+   "Bread, and fish, and honey",
+   "Sheep, and goats, and oxen",
+   "Wool, and flax, and linen"
+  ],
+  "answer": 0,
+  "explanation": "She did not know that I gave her corn, and wine, and oil, and multiplied her silver and gold.",
+  "ref": "Hosea 2:8"
+ },
+ {
+  "id": "hosea-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whom did they prepare the silver and gold the LORD multiplied?",
+  "choices": [
+   "Baal",
+   "Jehu",
+   "The king",
+   "The priests of Samaria"
+  ],
+  "answer": 0,
+  "explanation": "I multiplied her silver and gold, which they prepared for Baal.",
+  "ref": "Hosea 2:8"
+ },
+ {
+  "id": "hosea-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD take away in the time thereof and in the season thereof?",
+  "choices": [
+   "Her corn and her wine",
+   "Her silver and her gold",
+   "Her sheep and her oxen",
+   "Her houses and her gates"
+  ],
+  "answer": 0,
+  "explanation": "I will take away my corn in the time thereof, and my wine in the season thereof.",
+  "ref": "Hosea 2:9"
+ },
+ {
+  "id": "hosea-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD recover, given to cover her nakedness?",
+  "choices": [
+   "My silver and my gold",
+   "My wool and my flax",
+   "My oil and my drink",
+   "My vines and my fig trees"
+  ],
+  "answer": 1,
+  "explanation": "I will recover my wool and my flax given to cover her nakedness.",
+  "ref": "Hosea 2:9"
+ },
+ {
+  "id": "hosea-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD cause to cease along with all her mirth?",
+  "choices": [
+   "Her lovers and her vineyards",
+   "Her corn and her oil",
+   "Her feast days, new moons and sabbaths",
+   "Her kings and her princes"
+  ],
+  "answer": 2,
+  "explanation": "I will also cause all her mirth to cease, her feast days, her new moons, and her sabbaths.",
+  "ref": "Hosea 2:11"
+ },
+ {
+  "id": "hosea-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did she call her vines and her fig trees?",
+  "choices": [
+   "My rewards that my lovers have given me",
+   "My inheritance from my fathers",
+   "The gift of my first husband",
+   "The blessing of the LORD"
+  ],
+  "answer": 0,
+  "explanation": "Her vines and fig trees, whereof she hath said, These are my rewards that my lovers have given me.",
+  "ref": "Hosea 2:12"
+ },
+ {
+  "id": "hosea-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD make of her vines and her fig trees?",
+  "choices": [
+   "A forest, eaten by the beasts of the field",
+   "A garden of the LORD",
+   "A wilderness of thorns and nettles",
+   "A heap in the furrows of the field"
+  ],
+  "answer": 0,
+  "explanation": "I will make them a forest, and the beasts of the field shall eat them.",
+  "ref": "Hosea 2:12"
+ },
+ {
+  "id": "hosea-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD break out of the earth so that they may lie down safely?",
+  "choices": [
+   "The altars, the images and the groves",
+   "The yoke, the bands and the cords",
+   "The wall, the thorns and the hedge",
+   "The bow, the sword and the battle"
+  ],
+  "answer": 3,
+  "explanation": "I will break the bow and the sword and the battle out of the earth, and will make them to lie down safely.",
+  "ref": "Hosea 2:18"
+ },
+ {
+  "id": "hosea-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will she come to know when the LORD betroths her in faithfulness?",
+  "choices": [
+   "Her lovers",
+   "The LORD",
+   "The law of Moses",
+   "The days of her youth"
+  ],
+  "answer": 1,
+  "explanation": "I will even betroth thee unto me in faithfulness: and thou shalt know the LORD.",
+  "ref": "Hosea 2:20"
+ },
+ {
+  "id": "hosea-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did she decorate herself when she burned incense to the Baalim?",
+  "choices": [
+   "Wool and flax",
+   "Silver and gold",
+   "Garlands and oil",
+   "Earrings and jewels"
+  ],
+  "answer": 3,
+  "explanation": "She burned incense to them, and she decked herself with her earrings and her jewels, and she went after her lovers.",
+  "ref": "Hosea 2:13"
+ },
+ {
+  "id": "hosea-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will the LORD not have mercy upon her children?",
+  "choices": [
+   "They are the children of whoredoms",
+   "They have served the king",
+   "They have broken the covenant",
+   "They have gone into Egypt"
+  ],
+  "answer": 0,
+  "explanation": "I will not have mercy upon her children; for they be the children of whoredoms.",
+  "ref": "Hosea 2:4"
+ },
+ {
+  "id": "hosea-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say she did when she went after her lovers?",
+  "choices": [
+   "Feared Him",
+   "Forgat Him",
+   "Honoured Him",
+   "Called upon Him"
+  ],
+  "answer": 1,
+  "explanation": "She went after her lovers, and forgat me, saith the LORD.",
+  "ref": "Hosea 2:13"
+ },
+ {
+  "id": "hosea-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He would make her like, lest she turn?",
+  "choices": [
+   "A forest for the beasts",
+   "A heap in the furrows",
+   "A city of the Gentiles",
+   "A wilderness and a dry land"
+  ],
+  "answer": 3,
+  "explanation": "Lest I make her as a wilderness, and set her like a dry land, and slay her with thirst.",
+  "ref": "Hosea 2:3"
+ },
+ {
+  "id": "hosea-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will happen when she follows after her lovers?",
+  "choices": [
+   "They shall carry her into Egypt",
+   "She shall not overtake them",
+   "They shall fill her with bread",
+   "They shall hear her prayer"
+  ],
+  "answer": 1,
+  "explanation": "She shall follow after her lovers, but she shall not overtake them; and she shall seek them, but shall not find them.",
+  "ref": "Hosea 2:7"
+ },
+ {
+  "id": "hosea-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose sight will the LORD discover her lewdness?",
+  "choices": [
+   "Her lovers",
+   "The priests",
+   "The house of Judah",
+   "The kings of the earth"
+  ],
+  "answer": 0,
+  "explanation": "I will discover her lewdness in the sight of her lovers, and none shall deliver her out of mine hand.",
+  "ref": "Hosea 2:10"
+ },
+ {
+  "id": "hosea-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "As in the day when she came up out of what land will she sing?",
+  "choices": [
+   "Syria",
+   "Assyria",
+   "Egypt",
+   "Canaan"
+  ],
+  "answer": 2,
+  "explanation": "She shall sing there, as in the days of her youth, and as in the day when she came up out of the land of Egypt.",
+  "ref": "Hosea 2:15"
+ },
+ {
+  "id": "hosea-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will she no more call the LORD, in that day?",
+  "choices": [
+   "Baali",
+   "Ishi",
+   "Ammi",
+   "Jezreel"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt call me Ishi; and shalt call me no more Baali.",
+  "ref": "Hosea 2:16"
+ },
+ {
+  "id": "hosea-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will they say to the LORD in that day?",
+  "choices": [
+   "Thou art my King",
+   "Thou art my God",
+   "Thou art my Rock",
+   "Thou art my Shepherd"
+  ],
+  "answer": 1,
+  "explanation": "I will say, Thou art my people; and they shall say, Thou art my God.",
+  "ref": "Hosea 2:23"
+ },
+ {
+  "id": "hosea-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do to her in the earth?",
+  "choices": [
+   "Hide her from her lovers",
+   "Plant her among the nations",
+   "Gather her to Jerusalem",
+   "Sow her unto Himself"
+  ],
+  "answer": 3,
+  "explanation": "I will sow her unto me in the earth; and I will have mercy upon her that had not obtained mercy.",
+  "ref": "Hosea 2:23"
+ },
+ {
+  "id": "hosea-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom shall corn, wine and oil hear in that day?",
+  "choices": [
+   "Ephraim",
+   "Judah",
+   "Ammi",
+   "Jezreel"
+  ],
+  "answer": 3,
+  "explanation": "The earth shall hear the corn, and the wine, and the oil; and they shall hear Jezreel.",
+  "ref": "Hosea 2:22"
+ },
+ {
+  "id": "hosea-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say of the mother in relation to Himself?",
+  "choices": [
+   "She is my firstborn and my beloved",
+   "She is my servant for ever",
+   "She is not my wife, neither am I her husband",
+   "She is my daughter in Zion"
+  ],
+  "answer": 2,
+  "explanation": "Plead with your mother: for she is not my wife, neither am I her husband.",
+  "ref": "Hosea 2:2"
+ },
+ {
+  "id": "hosea-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whom will the LORD make a covenant in that day?",
+  "choices": [
+   "The princes of Judah and the priests of Israel",
+   "The sea, the rivers and the mountains",
+   "The beasts, the fowls and the creeping things",
+   "The sons of Jezreel and of Ephraim"
+  ],
+  "answer": 2,
+  "explanation": "In that day will I make a covenant for them with the beasts of the field, and with the fowls of heaven, and with the creeping things of the ground.",
+  "ref": "Hosea 2:18"
+ },
+ {
+  "id": "hosea-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what state would the LORD set her if she did not put away her whoredoms?",
+  "choices": [
+   "As in the day that she was born",
+   "As in the days of her youth",
+   "As in the land of Egypt",
+   "As in the house of her father"
+  ],
+  "answer": 0,
+  "explanation": "Lest I strip her naked, and set her as in the day that she was born.",
+  "ref": "Hosea 2:3"
+ },
+ {
+  "id": "hosea-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what is the LORD to betroth her, besides faithfulness?",
+  "choices": [
+   "Silver, gold, corn and wine",
+   "Righteousness, judgment, lovingkindness and mercies",
+   "Wisdom, strength, riches and glory",
+   "Law, sacrifice, feasts and sabbaths"
+  ],
+  "answer": 1,
+  "explanation": "I will betroth thee unto me in righteousness, and in judgment, and in lovingkindness, and in mercies.",
+  "ref": "Hosea 2:19"
+ },
+ {
+  "id": "hosea-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In that day the LORD will hear the heavens; whom shall the heavens hear?",
+  "choices": [
+   "The sea",
+   "The prophets",
+   "The beasts of the field",
+   "The earth"
+  ],
+  "answer": 3,
+  "explanation": "I will hear the heavens, and they shall hear the earth; and the earth shall hear the corn, and the wine, and the oil.",
+  "ref": "Hosea 2:21"
+ },
+ {
+  "id": "hosea-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much silver did Hosea pay to buy the woman to himself?",
+  "choices": [
+   "Thirty pieces of silver",
+   "Ten pieces of silver",
+   "Fifty pieces of silver",
+   "Fifteen pieces of silver"
+  ],
+  "answer": 3,
+  "explanation": "So I bought her to me for fifteen pieces of silver, and for an homer of barley, and an half homer of barley.",
+  "ref": "Hosea 3:2"
+ },
+ {
+  "id": "hosea-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hosea give besides silver to buy her?",
+  "choices": [
+   "A flock of sheep and an ox",
+   "A measure of oil and of wine",
+   "An homer of barley and an half homer of barley",
+   "Corn, wine and oil"
+  ],
+  "answer": 2,
+  "explanation": "So I bought her to me for fifteen pieces of silver, and for an homer of barley, and an half homer of barley.",
+  "ref": "Hosea 3:2"
+ },
+ {
+  "id": "hosea-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose love toward Israel does Hosea's love for the woman match?",
+  "choices": [
+   "The love of David",
+   "The love of Jehu",
+   "The love of the LORD",
+   "The love of her friend"
+  ],
+  "answer": 2,
+  "explanation": "Love a woman beloved of her friend, yet an adulteress, according to the love of the LORD toward the children of Israel.",
+  "ref": "Hosea 3:1"
+ },
+ {
+  "id": "hosea-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the children of Israel love, while they look to other gods?",
+  "choices": [
+   "Feasts of the new moon",
+   "Flagons of wine",
+   "Altars on the hills",
+   "Gold and silver"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel look to other gods, and love flagons of wine.",
+  "ref": "Hosea 3:1"
+ },
+ {
+  "id": "hosea-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hosea tell the woman she must not do?",
+  "choices": [
+   "Leave his house for her friend",
+   "Speak with her lovers in secret",
+   "Return to the house of her father",
+   "Play the harlot or be for another man"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt abide for me many days; thou shalt not play the harlot, and thou shalt not be for another man.",
+  "ref": "Hosea 3:3"
+ },
+ {
+  "id": "hosea-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is the woman described, besides an adulteress?",
+  "choices": [
+   "Taken from the house of Jehu",
+   "Sold for a servant",
+   "Beloved of her friend",
+   "Born in Samaria"
+  ],
+  "answer": 2,
+  "explanation": "Go yet, love a woman beloved of her friend, yet an adulteress.",
+  "ref": "Hosea 3:1"
+ },
+ {
+  "id": "hosea-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hosea promise her in return for her faithfulness?",
+  "choices": [
+   "I will give thee a house in Samaria",
+   "So will I also be for thee",
+   "I will send thee to thy mother",
+   "I will take another wife"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not be for another man: so will I also be for thee.",
+  "ref": "Hosea 3:3"
+ },
+ {
+  "id": "hosea-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which pair is named among the things Israel will be without?",
+  "choices": [
+   "A temple and a wall",
+   "A prophet and a priest",
+   "An ephod and teraphim",
+   "Silver and gold"
+  ],
+  "answer": 2,
+  "explanation": "Israel shall abide many days without a king, and without a prince, and without a sacrifice, and without an image, and without an ephod, and without teraphim.",
+  "ref": "Hosea 3:4"
+ },
+ {
+  "id": "hosea-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who shall return and seek the LORD their God in the latter days?",
+  "choices": [
+   "The princes of Judah",
+   "The children of Israel",
+   "The priests of Bethel",
+   "The sons of Jehu"
+  ],
+  "answer": 1,
+  "explanation": "Afterward shall the children of Israel return, and seek the LORD their God, and David their king.",
+  "ref": "Hosea 3:5"
+ },
+ {
+  "id": "hosea-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the children of Israel fear in the latter days?",
+  "choices": [
+   "The king of Assyria",
+   "The sword and the famine",
+   "The LORD and his goodness",
+   "The gods of the nations"
+  ],
+  "answer": 2,
+  "explanation": "They shall fear the LORD and his goodness in the latter days.",
+  "ref": "Hosea 3:5"
+ },
+ {
+  "id": "hosea-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Along with the beasts and the fowls, what else would be taken away?",
+  "choices": [
+   "The cattle of the plain",
+   "The vines of the field",
+   "The doves of the valley",
+   "The fishes of the sea"
+  ],
+  "answer": 3,
+  "explanation": "The land shall mourn, with the beasts of the field, and with the fowls of heaven; yea, the fishes of the sea also shall be taken away.",
+  "ref": "Hosea 4:3"
+ },
+ {
+  "id": "hosea-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who shall fall in the night with the people?",
+  "choices": [
+   "The king",
+   "The priest",
+   "The watchman",
+   "The prophet"
+  ],
+  "answer": 3,
+  "explanation": "Therefore shalt thou fall in the day, and the prophet also shall fall with thee in the night.",
+  "ref": "Hosea 4:5"
+ },
+ {
+  "id": "hosea-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where do the people sacrifice and burn incense?",
+  "choices": [
+   "In the valley of Achor",
+   "On the tops of the mountains and upon the hills",
+   "In the house of the king",
+   "By the rivers of Assyria"
+  ],
+  "answer": 1,
+  "explanation": "They sacrifice upon the tops of the mountains, and burn incense upon the hills, under oaks and poplars and elms.",
+  "ref": "Hosea 4:13"
+ },
+ {
+  "id": "hosea-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what do the people ask counsel?",
+  "choices": [
+   "At the altar of the LORD",
+   "At the mouth of the prophets",
+   "At the gates of Samaria",
+   "At their stocks, and their staff declares to them"
+  ],
+  "answer": 3,
+  "explanation": "My people ask counsel at their stocks, and their staff declareth unto them.",
+  "ref": "Hosea 4:12"
+ },
+ {
+  "id": "hosea-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the daughters and the spouses commit because of such worship?",
+  "choices": [
+   "Theft and murder",
+   "Idolatry and witchcraft",
+   "Swearing and lying",
+   "Whoredom and adultery"
+  ],
+  "answer": 3,
+  "explanation": "Your daughters shall commit whoredom, and your spouses shall commit adultery.",
+  "ref": "Hosea 4:13"
+ },
+ {
+  "id": "hosea-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Because the people rejected knowledge, what will the LORD do to them?",
+  "choices": [
+   "Reject them, that they shall be no priest to Him",
+   "Send them to Egypt",
+   "Give them a new king",
+   "Turn their glory into joy"
+  ],
+  "answer": 0,
+  "explanation": "Because thou hast rejected knowledge, I will also reject thee, that thou shalt be no priest to me.",
+  "ref": "Hosea 4:6"
+ },
+ {
+  "id": "hosea-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Because they forgot the law of their God, what will the LORD forget?",
+  "choices": [
+   "Their altars",
+   "Their kings",
+   "Their children",
+   "Their cities"
+  ],
+  "answer": 2,
+  "explanation": "Seeing thou hast forgotten the law of thy God, I will also forget thy children.",
+  "ref": "Hosea 4:6"
+ },
+ {
+  "id": "hosea-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What takes away the heart, according to the LORD?",
+  "choices": [
+   "Silver and gold and corn",
+   "Pride and power and glory",
+   "Whoredom and wine and new wine",
+   "Sorrow and sickness and want"
+  ],
+  "answer": 2,
+  "explanation": "Whoredom and wine and new wine take away the heart.",
+  "ref": "Hosea 4:11"
+ },
+ {
+  "id": "hosea-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Under which trees do the people sacrifice?",
+  "choices": [
+   "Cedars, firs and olives",
+   "Figs, vines and pomegranates",
+   "Oaks, poplars and elms",
+   "Palms, myrtles and sycamores"
+  ],
+  "answer": 2,
+  "explanation": "They burn incense upon the hills, under oaks and poplars and elms, because the shadow thereof is good.",
+  "ref": "Hosea 4:13"
+ },
+ {
+  "id": "hosea-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do they sacrifice under oaks, poplars and elms?",
+  "choices": [
+   "The trees were planted by their fathers",
+   "The king commanded it",
+   "The shadow thereof is good",
+   "The LORD met them there"
+  ],
+  "answer": 2,
+  "explanation": "They burn incense under oaks and poplars and elms, because the shadow thereof is good.",
+  "ref": "Hosea 4:13"
+ },
+ {
+  "id": "hosea-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do to the people and the priest alike?",
+  "choices": [
+   "Spare them for the sake of Judah",
+   "Raise up a new priest over them",
+   "Send a prophet to heal them",
+   "Punish them for their ways and reward them their doings"
+  ],
+  "answer": 3,
+  "explanation": "Like people, like priest: and I will punish them for their ways, and reward them their doings.",
+  "ref": "Hosea 4:9"
+ },
+ {
+  "id": "hosea-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen when they eat?",
+  "choices": [
+   "They shall eat, and not have enough",
+   "They shall eat, and be filled with oil",
+   "They shall eat, and give thanks",
+   "They shall eat, and be strong in war"
+  ],
+  "answer": 0,
+  "explanation": "They shall eat, and not have enough: they shall commit whoredom, and shall not increase.",
+  "ref": "Hosea 4:10"
+ },
+ {
+  "id": "hosea-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Which places is Israel told not to go up to, along with Beth-aven?",
+  "choices": [
+   "Bethel",
+   "Mizpah",
+   "Gilgal",
+   "Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "Come not ye unto Gilgal, neither go ye up to Beth-aven, nor swear, The LORD liveth.",
+  "ref": "Hosea 4:15"
+ },
+ {
+  "id": "hosea-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What animal is Israel compared to when she slides back?",
+  "choices": [
+   "A wild ass",
+   "A silly dove",
+   "A backsliding heifer",
+   "A young lion"
+  ],
+  "answer": 2,
+  "explanation": "Israel slideth back as a backsliding heifer: now the LORD will feed them as a lamb in a large place.",
+  "ref": "Hosea 4:16"
+ },
+ {
+  "id": "hosea-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will the LORD not punish their daughters when they commit whoredom?",
+  "choices": [
+   "The daughters are young and know not the law",
+   "The men themselves are separated with whores",
+   "The king has pardoned them",
+   "The prophets have prayed for them"
+  ],
+  "answer": 1,
+  "explanation": "I will not punish your daughters: for themselves are separated with whores, and they sacrifice with harlots.",
+  "ref": "Hosea 4:14"
+ },
+ {
+  "id": "hosea-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As what will the LORD feed Israel in a large place?",
+  "choices": [
+   "As a lamb",
+   "As a flock of sheep",
+   "As a shepherd",
+   "As a king"
+  ],
+  "answer": 0,
+  "explanation": "The LORD will feed them as a lamb in a large place.",
+  "ref": "Hosea 4:16"
+ },
+ {
+  "id": "hosea-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened as the people increased?",
+  "choices": [
+   "They built more cities",
+   "They gave more offerings",
+   "They sinned against the LORD",
+   "They sought the prophets"
+  ],
+  "answer": 2,
+  "explanation": "As they were increased, so they sinned against me.",
+  "ref": "Hosea 4:7"
+ },
+ {
+  "id": "hosea-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What oath is Israel told not to swear?",
+  "choices": [
+   "Their covenant with Assyria",
+   "The LORD liveth",
+   "By the name of Baal",
+   "By the king of Samaria"
+  ],
+  "answer": 1,
+  "explanation": "Come not ye unto Gilgal, neither go ye up to Beth-aven, nor swear, The LORD liveth.",
+  "ref": "Hosea 4:15"
+ },
+ {
+  "id": "hosea-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Judah get told, while Israel played the harlot?",
+  "choices": [
+   "Let Judah take the land",
+   "Let Judah rule over Israel",
+   "Let not Judah offend",
+   "Let Judah go down to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Though thou, Israel, play the harlot, yet let not Judah offend.",
+  "ref": "Hosea 4:15"
+ },
+ {
+  "id": "hosea-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the people strive with, according to the LORD?",
+  "choices": [
+   "The prophet",
+   "The king",
+   "The princes",
+   "The priest"
+  ],
+  "answer": 3,
+  "explanation": "Let no man strive, nor reprove another: for thy people are as they that strive with the priest.",
+  "ref": "Hosea 4:4"
+ },
+ {
+  "id": "hosea-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the priests and people eat up?",
+  "choices": [
+   "The offerings of the LORD",
+   "The corn of the land",
+   "The sin of my people",
+   "The bread of mourners"
+  ],
+  "answer": 2,
+  "explanation": "They eat up the sin of my people, and they set their heart on their iniquity.",
+  "ref": "Hosea 4:8"
+ },
+ {
+  "id": "hosea-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why shall they commit whoredom and not increase?",
+  "choices": [
+   "They have no king over them",
+   "They have gone down into Egypt",
+   "They have sold their land",
+   "They have left off to take heed to the LORD"
+  ],
+  "answer": 3,
+  "explanation": "They shall commit whoredom, and shall not increase: because they have left off to take heed to the LORD.",
+  "ref": "Hosea 4:10"
+ },
+ {
+  "id": "hosea-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He would destroy, besides the people who fall by day?",
+  "choices": [
+   "Thy king",
+   "Thy mother",
+   "Thy house",
+   "Thy altars"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt fall in the day, and the prophet also shall fall with thee in the night, and I will destroy thy mother.",
+  "ref": "Hosea 4:5"
+ },
+ {
+  "id": "hosea-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say about Ephraim, who is joined to idols?",
+  "choices": [
+   "Let him be gathered to Judah",
+   "Let him be taught again",
+   "Let him alone",
+   "Let him be healed"
+  ],
+  "answer": 2,
+  "explanation": "Ephraim is joined to idols: let him alone.",
+  "ref": "Hosea 4:17"
+ },
+ {
+  "id": "hosea-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say would befall the people that doth not understand?",
+  "choices": [
+   "They shall be gathered",
+   "They shall be healed",
+   "They shall be taught",
+   "They shall fall"
+  ],
+  "answer": 3,
+  "explanation": "Therefore the people that doth not understand shall fall.",
+  "ref": "Hosea 4:14"
+ },
+ {
+  "id": "hosea-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say He will be to Ephraim, and rottenness to Judah?",
+  "choices": [
+   "A lion",
+   "A moth",
+   "A fire",
+   "A flood"
+  ],
+  "answer": 1,
+  "explanation": "I will be unto Ephraim as a moth, and to the house of Judah as rottenness.",
+  "ref": "Hosea 5:12"
+ },
+ {
+  "id": "hosea-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which places had the priests and the house of Israel been a snare and a net?",
+  "choices": [
+   "Gilgal and Bethel",
+   "Mizpah and Tabor",
+   "Samaria and Jezreel",
+   "Ramah and Gibeah"
+  ],
+  "answer": 1,
+  "explanation": "Ye have been a snare on Mizpah, and a net spread upon Tabor.",
+  "ref": "Hosea 5:1"
+ },
+ {
+  "id": "hosea-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD do until they acknowledge their offence?",
+  "choices": [
+   "Go and return to His place",
+   "Dwell in the midst of them",
+   "Send them a prophet",
+   "Hide them in the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "I will go and return to my place, till they acknowledge their offence, and seek my face.",
+  "ref": "Hosea 5:15"
+ },
+ {
+  "id": "hosea-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD be to Ephraim and to Judah, tearing and going away?",
+  "choices": [
+   "A moth and rottenness",
+   "A shepherd and a lamb",
+   "A lion and a young lion",
+   "A rock and a fortress"
+  ],
+  "answer": 2,
+  "explanation": "I will be unto Ephraim as a lion, and as a young lion to the house of Judah.",
+  "ref": "Hosea 5:14"
+ },
+ {
+  "id": "hosea-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do after He tears, according to the chapter?",
+  "choices": [
+   "Return and heal them at once",
+   "Gather them to Jerusalem",
+   "Go away, and none shall rescue",
+   "Set a king over them"
+  ],
+  "answer": 2,
+  "explanation": "I, even I, will tear and go away; I will take away, and none shall rescue him.",
+  "ref": "Hosea 5:14"
+ },
+ {
+  "id": "hosea-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How will the LORD pour out His wrath upon the princes of Judah?",
+  "choices": [
+   "Like fire",
+   "Like water",
+   "Like rain on the corn",
+   "Like a flood of Assyria"
+  ],
+  "answer": 1,
+  "explanation": "The princes of Judah were like them that remove the bound: therefore I will pour out my wrath upon them like water.",
+  "ref": "Hosea 5:10"
+ },
+ {
+  "id": "hosea-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why shall a month devour them with their portions?",
+  "choices": [
+   "They have refused to pay tribute",
+   "They have fled from Samaria",
+   "They have broken the covenant with Egypt",
+   "They have dealt treacherously and begotten strange children"
+  ],
+  "answer": 3,
+  "explanation": "They have dealt treacherously against the LORD: for they have begotten strange children: now shall a month devour them.",
+  "ref": "Hosea 5:7"
+ },
+ {
+  "id": "hosea-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Where is the cornet to be blown?",
+  "choices": [
+   "In Gibeah",
+   "In Jezreel",
+   "In Samaria",
+   "In Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Blow ye the cornet in Gibeah, and the trumpet in Ramah: cry aloud at Beth-aven, after thee, O Benjamin.",
+  "ref": "Hosea 5:8"
+ },
+ {
+  "id": "hosea-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is Ephraim oppressed and broken in judgment?",
+  "choices": [
+   "He refused to pay tribute to Assyria",
+   "He fought against Judah",
+   "He forsook the feasts",
+   "He willingly walked after the commandment"
+  ],
+  "answer": 3,
+  "explanation": "Ephraim is oppressed and broken in judgment, because he willingly walked after the commandment.",
+  "ref": "Hosea 5:11"
+ },
+ {
+  "id": "hosea-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will they do in their affliction?",
+  "choices": [
+   "Seek the LORD early",
+   "Flee into Egypt",
+   "Cry to Assyria",
+   "Build new altars"
+  ],
+  "answer": 0,
+  "explanation": "Till they acknowledge their offence, and seek my face: in their affliction they will seek me early.",
+  "ref": "Hosea 5:15"
+ },
+ {
+  "id": "hosea-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ephraim and Judah each see before Ephraim went to the Assyrian?",
+  "choices": [
+   "Ephraim his glory, and Judah his strength",
+   "Ephraim his sickness, and Judah his wound",
+   "Ephraim his king, and Judah his priest",
+   "Ephraim his altar, and Judah his idols"
+  ],
+  "answer": 1,
+  "explanation": "When Ephraim saw his sickness, and Judah saw his wound, then went Ephraim to the Assyrian.",
+  "ref": "Hosea 5:13"
+ },
+ {
+  "id": "hosea-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom have they not known, with the spirit of whoredoms in their midst?",
+  "choices": [
+   "Their kings",
+   "The prophets",
+   "The LORD",
+   "The Assyrians"
+  ],
+  "answer": 2,
+  "explanation": "The spirit of whoredoms is in the midst of them, and they have not known the LORD.",
+  "ref": "Hosea 5:4"
+ },
+ {
+  "id": "hosea-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what did the LORD liken the princes of Judah?",
+  "choices": [
+   "Them that sit in the gate",
+   "Them that eat bread of mourners",
+   "Them that sleep in the night",
+   "Them that remove the bound"
+  ],
+  "answer": 3,
+  "explanation": "The princes of Judah were like them that remove the bound.",
+  "ref": "Hosea 5:10"
+ },
+ {
+  "id": "hosea-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Along with Israel and Ephraim, who shall fall in their iniquity?",
+  "choices": [
+   "Benjamin",
+   "Syria",
+   "Judah",
+   "Assyria"
+  ],
+  "answer": 2,
+  "explanation": "Therefore shall Israel and Ephraim fall in their iniquity; Judah also shall fall with them.",
+  "ref": "Hosea 5:5"
+ },
+ {
+  "id": "hosea-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the LORD made known among the tribes of Israel?",
+  "choices": [
+   "The day of the new moon",
+   "That which shall surely be",
+   "The name of the next king",
+   "The way back to Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Among the tribes of Israel have I made known that which shall surely be.",
+  "ref": "Hosea 5:9"
+ },
+ {
+  "id": "hosea-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What could King Jareb not do for Ephraim?",
+  "choices": [
+   "Defend his cities",
+   "Heal him or cure his wound",
+   "Receive his tribute",
+   "Make a covenant with him"
+  ],
+  "answer": 1,
+  "explanation": "Then went Ephraim to the Assyrian, and sent to king Jareb: yet could he not heal you, nor cure you of your wound.",
+  "ref": "Hosea 5:13"
+ },
+ {
+  "id": "hosea-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "To which king did Ephraim send?",
+  "choices": [
+   "King Jehu",
+   "King Jotham",
+   "King Jareb",
+   "King Uzziah"
+  ],
+  "answer": 2,
+  "explanation": "Then went Ephraim to the Assyrian, and sent to king Jareb: yet could he not heal you.",
+  "ref": "Hosea 5:13"
+ },
+ {
+  "id": "hosea-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall Ephraim be in the day of rebuke?",
+  "choices": [
+   "Established",
+   "Desolate",
+   "Healed",
+   "Scattered to Judah"
+  ],
+  "answer": 1,
+  "explanation": "Ephraim shall be desolate in the day of rebuke.",
+  "ref": "Hosea 5:9"
+ },
+ {
+  "id": "hosea-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do they bring to seek the LORD, and not find Him?",
+  "choices": [
+   "Their silver and gold",
+   "Their sons and daughters",
+   "Their corn and wine",
+   "Their flocks and their herds"
+  ],
+  "answer": 3,
+  "explanation": "They shall go with their flocks and with their herds to seek the LORD; but they shall not find him.",
+  "ref": "Hosea 5:6"
+ },
+ {
+  "id": "hosea-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say of the revolters, though He has rebuked them all?",
+  "choices": [
+   "They are profound to make slaughter",
+   "They are quick to seek peace",
+   "They are hid from His sight",
+   "They are gathered to Judah"
+  ],
+  "answer": 0,
+  "explanation": "The revolters are profound to make slaughter, though I have been a rebuker of them all.",
+  "ref": "Hosea 5:2"
+ },
+ {
+  "id": "hosea-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does the LORD ask, \"What shall I do unto thee?\"",
+  "choices": [
+   "Israel and Egypt",
+   "Samaria and Jezreel",
+   "Ephraim and Judah",
+   "Gilead and Gibeah"
+  ],
+  "answer": 2,
+  "explanation": "O Ephraim, what shall I do unto thee? O Judah, what shall I do unto thee?",
+  "ref": "Hosea 6:4"
+ },
+ {
+  "id": "hosea-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do, who has torn and smitten?",
+  "choices": [
+   "Raise up kings",
+   "Heal and bind up",
+   "Send rain at once",
+   "Return the captives"
+  ],
+  "answer": 1,
+  "explanation": "He hath torn, and he will heal us; he hath smitten, and he will bind us up.",
+  "ref": "Hosea 6:1"
+ },
+ {
+  "id": "hosea-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the LORD say He has slain them?",
+  "choices": [
+   "By the words of His mouth",
+   "By the sword of Assyria",
+   "By famine in the land",
+   "By the hand of Judah"
+  ],
+  "answer": 0,
+  "explanation": "I have hewed them by the prophets; I have slain them by the words of my mouth.",
+  "ref": "Hosea 6:5"
+ },
+ {
+  "id": "hosea-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who are said to murder in the way by consent?",
+  "choices": [
+   "The company of priests",
+   "The princes of Judah",
+   "The men of Gilead",
+   "The kings of Israel"
+  ],
+  "answer": 0,
+  "explanation": "As troops of robbers wait for a man, so the company of priests murder in the way by consent.",
+  "ref": "Hosea 6:9"
+ },
+ {
+  "id": "hosea-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what are the priests compared as they wait for a man?",
+  "choices": [
+   "A lion in the thicket",
+   "A fowler's snare",
+   "Troops of robbers",
+   "A flock without shepherd"
+  ],
+  "answer": 2,
+  "explanation": "As troops of robbers wait for a man, so the company of priests murder in the way by consent.",
+  "ref": "Hosea 6:9"
+ },
+ {
+  "id": "hosea-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD see in the house of Israel?",
+  "choices": [
+   "A great light",
+   "A faithful remnant",
+   "An horrible thing",
+   "A flock without a shepherd"
+  ],
+  "answer": 2,
+  "explanation": "I have seen an horrible thing in the house of Israel: there is the whoredom of Ephraim, Israel is defiled.",
+  "ref": "Hosea 6:10"
+ },
+ {
+  "id": "hosea-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they do to the covenant, like men?",
+  "choices": [
+   "Kept it and taught it",
+   "Wrote it on their doors",
+   "Sealed it with sacrifice",
+   "Transgressed it and dealt treacherously"
+  ],
+  "answer": 3,
+  "explanation": "But they like men have transgressed the covenant: there have they dealt treacherously against me.",
+  "ref": "Hosea 6:7"
+ },
+ {
+  "id": "hosea-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the LORD set for Judah when He returned the captivity of His people?",
+  "choices": [
+   "An harvest",
+   "A king",
+   "A wall",
+   "A feast"
+  ],
+  "answer": 0,
+  "explanation": "Also, O Judah, he hath set an harvest for thee, when I returned the captivity of my people.",
+  "ref": "Hosea 6:11"
+ },
+ {
+  "id": "hosea-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what are the LORD's judgments compared?",
+  "choices": [
+   "The light that goeth forth",
+   "The rain upon the earth",
+   "The dew of the morning",
+   "A sword in the hand"
+  ],
+  "answer": 0,
+  "explanation": "I have slain them by the words of my mouth: and thy judgments are as the light that goeth forth.",
+  "ref": "Hosea 6:5"
+ },
+ {
+  "id": "hosea-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which city is said to be polluted with blood?",
+  "choices": [
+   "Gibeah",
+   "Samaria",
+   "Gilead",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "Gilead is a city of them that work iniquity, and is polluted with blood.",
+  "ref": "Hosea 6:8"
+ },
+ {
+  "id": "hosea-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose sight will they live when He raises them up?",
+  "choices": [
+   "The sight of the priests",
+   "His sight",
+   "The sight of the kings",
+   "The sight of Judah"
+  ],
+  "answer": 1,
+  "explanation": "In the third day he will raise us up, and we shall live in his sight.",
+  "ref": "Hosea 6:2"
+ },
+ {
+  "id": "hosea-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD desire more than burnt offerings?",
+  "choices": [
+   "The firstfruits of the field",
+   "The incense of the priests",
+   "The knowledge of God",
+   "The silver of the princes"
+  ],
+  "answer": 2,
+  "explanation": "I desired mercy, and not sacrifice; and the knowledge of God more than burnt offerings.",
+  "ref": "Hosea 6:6"
+ },
+ {
+  "id": "hosea-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the people say they must do to know the LORD?",
+  "choices": [
+   "Offer burnt offerings",
+   "Follow on to know Him",
+   "Go up to Gilgal",
+   "Call a solemn assembly"
+  ],
+  "answer": 1,
+  "explanation": "Then shall we know, if we follow on to know the LORD: his going forth is prepared as the morning.",
+  "ref": "Hosea 6:3"
+ },
+ {
+  "id": "hosea-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "By whom does the LORD say He has hewed them?",
+  "choices": [
+   "The priests",
+   "The prophets",
+   "The princes of Judah",
+   "The kings of Assyria"
+  ],
+  "answer": 1,
+  "explanation": "Therefore have I hewed them by the prophets; I have slain them by the words of my mouth.",
+  "ref": "Hosea 6:5"
+ },
+ {
+  "id": "hosea-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "To whom do they call and where do they go, like a silly dove?",
+  "choices": [
+   "They call to Judah, they go to Egypt",
+   "They call to Assyria, they go to Tyre",
+   "They call to Egypt, they go to Assyria",
+   "They call to Syria, they go to Gilead"
+  ],
+  "answer": 2,
+  "explanation": "Ephraim also is like a silly dove without heart: they call to Egypt, they go to Assyria.",
+  "ref": "Hosea 7:11"
+ },
+ {
+  "id": "hosea-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD do when they go?",
+  "choices": [
+   "Send a prophet after them",
+   "Bind up their wounds",
+   "Lead them by the hand",
+   "Spread His net upon them and bring them down like fowls"
+  ],
+  "answer": 3,
+  "explanation": "When they shall go, I will spread my net upon them; I will bring them down as the fowls of the heaven.",
+  "ref": "Hosea 7:12"
+ },
+ {
+  "id": "hosea-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do they assemble themselves for, even as they rebel?",
+  "choices": [
+   "Corn and wine",
+   "Silver and gold",
+   "Judgment and justice",
+   "Sacrifice and feast"
+  ],
+  "answer": 0,
+  "explanation": "They assemble themselves for corn and wine, and they rebel against me.",
+  "ref": "Hosea 7:14"
+ },
+ {
+  "id": "hosea-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did the princes make the king sick?",
+  "choices": [
+   "Lies and flattery",
+   "A heavy tribute",
+   "Words of warning",
+   "Bottles of wine"
+  ],
+  "answer": 3,
+  "explanation": "In the day of our king the princes have made him sick with bottles of wine.",
+  "ref": "Hosea 7:5"
+ },
+ {
+  "id": "hosea-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom have they devoured in the heat of the oven?",
+  "choices": [
+   "Their priests",
+   "Their judges",
+   "Their prophets",
+   "Their neighbours"
+  ],
+  "answer": 1,
+  "explanation": "They are all hot as an oven, and have devoured their judges; all their kings are fallen.",
+  "ref": "Hosea 7:7"
+ },
+ {
+  "id": "hosea-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say none among them does?",
+  "choices": [
+   "Calleth unto Him",
+   "Fears the king",
+   "Keeps the sabbath",
+   "Sells the harvest"
+  ],
+  "answer": 0,
+  "explanation": "All their kings are fallen: there is none among them that calleth unto me.",
+  "ref": "Hosea 7:7"
+ },
+ {
+  "id": "hosea-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What have strangers devoured without Ephraim knowing it?",
+  "choices": [
+   "His cities",
+   "His vineyards",
+   "His children",
+   "His strength"
+  ],
+  "answer": 3,
+  "explanation": "Strangers have devoured his strength, and he knoweth it not.",
+  "ref": "Hosea 7:9"
+ },
+ {
+  "id": "hosea-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are here and there upon Ephraim, though he knows it not?",
+  "choices": [
+   "Wounds and scars",
+   "Chains of iron",
+   "Marks of the net",
+   "Gray hairs"
+  ],
+  "answer": 3,
+  "explanation": "Yea, gray hairs are here and there upon him, yet he knoweth not.",
+  "ref": "Hosea 7:9"
+ },
+ {
+  "id": "hosea-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the LORD say, \"Woe unto them\"?",
+  "choices": [
+   "They have fled from Him and transgressed against Him",
+   "They have sold the righteous for silver",
+   "They have slain the prophets",
+   "They have built high places"
+  ],
+  "answer": 0,
+  "explanation": "Woe unto them! for they have fled from me: destruction unto them! because they have transgressed against me.",
+  "ref": "Hosea 7:13"
+ },
+ {
+  "id": "hosea-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Though the LORD has redeemed them, what do they do?",
+  "choices": [
+   "Offer thanks at Bethel",
+   "Go back to Egypt",
+   "Fast and weep",
+   "Speak lies against Him"
+  ],
+  "answer": 3,
+  "explanation": "Though I have redeemed them, yet they have spoken lies against me.",
+  "ref": "Hosea 7:13"
+ },
+ {
+  "id": "hosea-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do they do when they howl upon their beds?",
+  "choices": [
+   "They cry unto the LORD with all their heart",
+   "They call for the priests",
+   "They do not cry unto the LORD with their heart",
+   "They send for the prophet"
+  ],
+  "answer": 2,
+  "explanation": "They have not cried unto me with their heart, when they howled upon their beds.",
+  "ref": "Hosea 7:14"
+ },
+ {
+  "id": "hosea-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What makes the king glad, and the princes?",
+  "choices": [
+   "Their wickedness and their lies",
+   "Their gifts and their sacrifices",
+   "Their wine and their feasting",
+   "Their wars and their conquests"
+  ],
+  "answer": 0,
+  "explanation": "They make the king glad with their wickedness, and the princes with their lies.",
+  "ref": "Hosea 7:3"
+ },
+ {
+  "id": "hosea-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the LORD bound and strengthened, yet they imagine mischief against Him?",
+  "choices": [
+   "Their cities",
+   "Their arms",
+   "Their gates",
+   "Their walls"
+  ],
+  "answer": 1,
+  "explanation": "Though I have bound and strengthened their arms, yet do they imagine mischief against me.",
+  "ref": "Hosea 7:15"
+ },
+ {
+  "id": "hosea-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Ephraim do among the people?",
+  "choices": [
+   "Rules over them",
+   "Teaches them",
+   "Mixes himself among them",
+   "Flees from them"
+  ],
+  "answer": 2,
+  "explanation": "Ephraim, he hath mixed himself among the people; Ephraim is a cake not turned.",
+  "ref": "Hosea 7:8"
+ },
+ {
+  "id": "hosea-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Where shall the rage of their princes' tongue become their derision?",
+  "choices": [
+   "In the land of Assyria",
+   "In the cities of Judah",
+   "In Samaria",
+   "In the land of Egypt"
+  ],
+  "answer": 3,
+  "explanation": "Their princes shall fall by the sword for the rage of their tongue: this shall be their derision in the land of Egypt.",
+  "ref": "Hosea 7:16"
+ },
+ {
+  "id": "hosea-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do they not consider in their hearts?",
+  "choices": [
+   "That the LORD remembers all their wickedness",
+   "That the king shall fall",
+   "That Assyria shall come",
+   "That the harvest shall fail"
+  ],
+  "answer": 0,
+  "explanation": "They consider not in their hearts that I remember all their wickedness.",
+  "ref": "Hosea 7:2"
+ },
+ {
+  "id": "hosea-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What comes in while a troop of robbers spoils without?",
+  "choices": [
+   "The enemy",
+   "The king",
+   "The prophet",
+   "The thief"
+  ],
+  "answer": 3,
+  "explanation": "The thief cometh in, and the troop of robbers spoileth without.",
+  "ref": "Hosea 7:1"
+ },
+ {
+  "id": "hosea-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to their princes for the rage of their tongue?",
+  "choices": [
+   "They shall fall by the sword",
+   "They shall be carried to Assyria",
+   "They shall be made kings",
+   "They shall be healed"
+  ],
+  "answer": 0,
+  "explanation": "Their princes shall fall by the sword for the rage of their tongue.",
+  "ref": "Hosea 7:16"
+ },
+ {
+  "id": "hosea-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Despite all this, what does Israel not do?",
+  "choices": [
+   "Fear the king of Assyria",
+   "Return to the LORD their God, nor seek Him",
+   "Offer sacrifice at Bethel",
+   "Plow their land"
+  ],
+  "answer": 1,
+  "explanation": "And the pride of Israel testifieth to his face: and they do not return to the LORD their God, nor seek him for all this.",
+  "ref": "Hosea 7:10"
+ },
+ {
+  "id": "hosea-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel make of their silver and their gold?",
+  "choices": [
+   "Idols",
+   "Crowns for kings",
+   "Vessels for the temple",
+   "Walls for Samaria"
+  ],
+  "answer": 0,
+  "explanation": "Of their silver and their gold have they made them idols, that they may be cut off.",
+  "ref": "Hosea 8:4"
+ },
+ {
+  "id": "hosea-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what is Ephraim compared when he goes up to Assyria?",
+  "choices": [
+   "A silly dove",
+   "A cake not turned",
+   "A wild ass alone by himself",
+   "A deceitful bow"
+  ],
+  "answer": 2,
+  "explanation": "For they are gone up to Assyria, a wild ass alone by himself: Ephraim hath hired lovers.",
+  "ref": "Hosea 8:9"
+ },
+ {
+  "id": "hosea-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD send upon Israel's cities?",
+  "choices": [
+   "A flood from the north",
+   "A famine of bread",
+   "A plague of locusts",
+   "A fire that devours the palaces"
+  ],
+  "answer": 3,
+  "explanation": "I will send a fire upon his cities, and it shall devour the palaces thereof.",
+  "ref": "Hosea 8:14"
+ },
+ {
+  "id": "hosea-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom has Israel forgotten, and what does he build?",
+  "choices": [
+   "His king, and he builds walls",
+   "His priests, and he builds altars",
+   "His fathers, and he builds houses",
+   "His Maker, and he builds temples"
+  ],
+  "answer": 3,
+  "explanation": "Israel hath forgotten his Maker, and buildeth temples.",
+  "ref": "Hosea 8:14"
+ },
+ {
+  "id": "hosea-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has Judah multiplied?",
+  "choices": [
+   "Flocks and herds",
+   "Altars on the hills",
+   "Fenced cities",
+   "Silver and gold"
+  ],
+  "answer": 2,
+  "explanation": "Judah hath multiplied fenced cities: but I will send a fire upon his cities.",
+  "ref": "Hosea 8:14"
+ },
+ {
+  "id": "hosea-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ephraim make many of, which became to him for sin?",
+  "choices": [
+   "Kings",
+   "Calves",
+   "Altars",
+   "Temples of Baal"
+  ],
+  "answer": 2,
+  "explanation": "Because Ephraim hath made many altars to sin, altars shall be unto him to sin.",
+  "ref": "Hosea 8:11"
+ },
+ {
+  "id": "hosea-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Israel count the great things of the LORD's law?",
+  "choices": [
+   "As a light to their feet",
+   "As a treasure",
+   "As a strange thing",
+   "As a burden to bear"
+  ],
+  "answer": 2,
+  "explanation": "I have written to him the great things of my law, but they were counted as a strange thing.",
+  "ref": "Hosea 8:12"
+ },
+ {
+  "id": "hosea-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where shall they return, because the LORD accepts not their sacrifices?",
+  "choices": [
+   "To Egypt",
+   "To Assyria",
+   "To Jerusalem",
+   "To Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "The LORD accepteth them not; now will he remember their iniquity, and visit their sins: they shall return to Egypt.",
+  "ref": "Hosea 8:13"
+ },
+ {
+  "id": "hosea-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is the calf of Samaria not God?",
+  "choices": [
+   "The king set it up",
+   "It was made of clay",
+   "It was found in Bethel",
+   "The workman made it"
+  ],
+  "answer": 3,
+  "explanation": "The workman made it; therefore it is not God: but the calf of Samaria shall be broken in pieces.",
+  "ref": "Hosea 8:6"
+ },
+ {
+  "id": "hosea-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to the calf of Samaria?",
+  "choices": [
+   "It shall be broken in pieces",
+   "It shall be carried to Assyria",
+   "It shall be burned for incense",
+   "It shall be hidden in Egypt"
+  ],
+  "answer": 0,
+  "explanation": "The calf of Samaria shall be broken in pieces.",
+  "ref": "Hosea 8:6"
+ },
+ {
+  "id": "hosea-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the bud yield, if it yields anything?",
+  "choices": [
+   "Much meal for the priests",
+   "A tenth for the temple",
+   "No meal, and strangers shall swallow it up",
+   "A crop for Judah"
+  ],
+  "answer": 2,
+  "explanation": "The bud shall yield no meal: if so be it yield, the strangers shall swallow it up.",
+  "ref": "Hosea 8:7"
+ },
+ {
+  "id": "hosea-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall Israel be among the Gentiles?",
+  "choices": [
+   "A light to the nations",
+   "A vessel wherein is no pleasure",
+   "A king over the princes",
+   "A watchman upon the wall"
+  ],
+  "answer": 1,
+  "explanation": "Israel is swallowed up: now shall they be among the Gentiles as a vessel wherein is no pleasure.",
+  "ref": "Hosea 8:8"
+ },
+ {
+  "id": "hosea-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has Ephraim hired in Assyria?",
+  "choices": [
+   "Soldiers",
+   "Horsemen",
+   "Lovers",
+   "Prophets"
+  ],
+  "answer": 2,
+  "explanation": "They are gone up to Assyria, a wild ass alone by himself: Ephraim hath hired lovers.",
+  "ref": "Hosea 8:9"
+ },
+ {
+  "id": "hosea-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the calf of Samaria do to her?",
+  "choices": [
+   "Lead her to Assyria",
+   "Make her king",
+   "Cast her off",
+   "Heal her wounds"
+  ],
+  "answer": 2,
+  "explanation": "Thy calf, O Samaria, hath cast thee off; mine anger is kindled against them.",
+  "ref": "Hosea 8:5"
+ },
+ {
+  "id": "hosea-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whose burden shall they sorrow a little?",
+  "choices": [
+   "The king of Egypt",
+   "The prophet of Israel",
+   "The king of princes",
+   "The priest of Bethel"
+  ],
+  "answer": 2,
+  "explanation": "Now will I gather them, and they shall sorrow a little for the burden of the king of princes.",
+  "ref": "Hosea 8:10"
+ },
+ {
+  "id": "hosea-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do with their iniquity?",
+  "choices": [
+   "Cover it with the blood of bulls",
+   "Cast it into the sea",
+   "Heal it in the latter days",
+   "Remember it and visit their sins"
+  ],
+  "answer": 3,
+  "explanation": "Now will he remember their iniquity, and visit their sins.",
+  "ref": "Hosea 8:13"
+ },
+ {
+  "id": "hosea-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD find Israel like in the wilderness?",
+  "choices": [
+   "Grapes",
+   "A flock of sheep",
+   "A fig tree in blossom",
+   "A green olive tree"
+  ],
+  "answer": 0,
+  "explanation": "I found Israel like grapes in the wilderness; I saw your fathers as the firstripe in the fig tree.",
+  "ref": "Hosea 9:10"
+ },
+ {
+  "id": "hosea-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did they go and separate themselves unto that shame?",
+  "choices": [
+   "To Baal-peor",
+   "To Gilgal",
+   "To Beth-aven",
+   "To Memphis"
+  ],
+  "answer": 0,
+  "explanation": "They went to Baal-peor, and separated themselves unto that shame.",
+  "ref": "Hosea 9:10"
+ },
+ {
+  "id": "hosea-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city shall bury them when Egypt gathers them up?",
+  "choices": [
+   "Tyre",
+   "Gibeah",
+   "Samaria",
+   "Memphis"
+  ],
+  "answer": 3,
+  "explanation": "Egypt shall gather them up, Memphis shall bury them.",
+  "ref": "Hosea 9:6"
+ },
+ {
+  "id": "hosea-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall Israel become among the nations?",
+  "choices": [
+   "Rulers",
+   "Merchants",
+   "Watchmen",
+   "Wanderers"
+  ],
+  "answer": 3,
+  "explanation": "My God will cast them away, because they did not hearken unto him: and they shall be wanderers among the nations.",
+  "ref": "Hosea 9:17"
+ },
+ {
+  "id": "hosea-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what did the LORD liken the fathers of Israel when He saw them?",
+  "choices": [
+   "A cedar planted in Lebanon",
+   "The firstripe in the fig tree at her first time",
+   "A lily among thorns",
+   "A vine on the hillside"
+  ],
+  "answer": 1,
+  "explanation": "I saw your fathers as the firstripe in the fig tree at her first time.",
+  "ref": "Hosea 9:10"
+ },
+ {
+  "id": "hosea-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Israel say of the prophet in the days of visitation?",
+  "choices": [
+   "The prophet is a fool",
+   "The prophet is a shepherd",
+   "The prophet is a king",
+   "The prophet is a priest"
+  ],
+  "answer": 0,
+  "explanation": "The days of visitation are come: the prophet is a fool, the spiritual man is mad.",
+  "ref": "Hosea 9:7"
+ },
+ {
+  "id": "hosea-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Where is all their wickedness, and where did the LORD hate them?",
+  "choices": [
+   "In Bethel",
+   "In Gilgal",
+   "In Jezreel",
+   "In Mizpah"
+  ],
+  "answer": 1,
+  "explanation": "All their wickedness is in Gilgal: for there I hated them.",
+  "ref": "Hosea 9:15"
+ },
+ {
+  "id": "hosea-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "As what place did the LORD see Ephraim, planted in a pleasant place?",
+  "choices": [
+   "As He saw Tyrus",
+   "As He saw Samaria",
+   "As He saw Egypt",
+   "As He saw Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Ephraim, as I saw Tyrus, is planted in a pleasant place.",
+  "ref": "Hosea 9:13"
+ },
+ {
+  "id": "hosea-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom shall Ephraim bring forth his children?",
+  "choices": [
+   "The king of Assyria",
+   "The priests of Baal",
+   "The murderer",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "Ephraim shall bring forth his children to the murderer.",
+  "ref": "Hosea 9:13"
+ },
+ {
+  "id": "hosea-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall possess the pleasant places for their silver?",
+  "choices": [
+   "Vines and fig trees",
+   "The princes of Egypt",
+   "Nettles, with thorns in their tabernacles",
+   "The men of Gibeah"
+  ],
+  "answer": 2,
+  "explanation": "The pleasant places for their silver, nettles shall possess them: thorns shall be in their tabernacles.",
+  "ref": "Hosea 9:6"
+ },
+ {
+  "id": "hosea-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Though they bring up their children, what will the LORD do?",
+  "choices": [
+   "Bereave them, that not a man is left",
+   "Raise them up as kings",
+   "Bring them back from Egypt",
+   "Teach them the law"
+  ],
+  "answer": 0,
+  "explanation": "Though they bring up their children, yet will I bereave them, that there shall not be a man left.",
+  "ref": "Hosea 9:12"
+ },
+ {
+  "id": "hosea-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Hosea ask the LORD to give them?",
+  "choices": [
+   "A king and a prince",
+   "Corn and wine and oil",
+   "A miscarrying womb and dry breasts",
+   "A prophet and a priest"
+  ],
+  "answer": 2,
+  "explanation": "Give them, O LORD: what wilt thou give? give them a miscarrying womb and dry breasts.",
+  "ref": "Hosea 9:14"
+ },
+ {
+  "id": "hosea-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what land shall they not dwell?",
+  "choices": [
+   "The land of Gibeah",
+   "The LORD's land",
+   "The land of Jezreel",
+   "The land of Tyrus"
+  ],
+  "answer": 1,
+  "explanation": "They shall not dwell in the LORD'S land; but Ephraim shall return to Egypt.",
+  "ref": "Hosea 9:3"
+ },
+ {
+  "id": "hosea-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "In the days of which place have they deeply corrupted themselves?",
+  "choices": [
+   "Gilgal",
+   "Jezreel",
+   "Mizpah",
+   "Gibeah"
+  ],
+  "answer": 3,
+  "explanation": "They have deeply corrupted themselves, as in the days of Gibeah.",
+  "ref": "Hosea 9:9"
+ },
+ {
+  "id": "hosea-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whom was the watchman of Ephraim?",
+  "choices": [
+   "The king",
+   "The priests of Baal",
+   "The princes",
+   "My God"
+  ],
+  "answer": 3,
+  "explanation": "The watchman of Ephraim was with my God: but the prophet is a snare of a fowler in all his ways.",
+  "ref": "Hosea 9:8"
+ },
+ {
+  "id": "hosea-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is dried up so that Ephraim shall bear no fruit?",
+  "choices": [
+   "Their winepress",
+   "Their root",
+   "Their well",
+   "Their river"
+  ],
+  "answer": 1,
+  "explanation": "Ephraim is smitten, their root is dried up, they shall bear no fruit.",
+  "ref": "Hosea 9:16"
+ },
+ {
+  "id": "hosea-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Israel loved upon every cornfloor?",
+  "choices": [
+   "A feast",
+   "A gift of the king",
+   "A reward",
+   "A harvest of silver"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast gone a whoring from thy God, thou hast loved a reward upon every cornfloor.",
+  "ref": "Hosea 9:1"
+ },
+ {
+  "id": "hosea-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall they eat in Assyria?",
+  "choices": [
+   "The bread of mourners",
+   "Unclean things",
+   "Corn and wine",
+   "The firstfruits"
+  ],
+  "answer": 1,
+  "explanation": "Ephraim shall return to Egypt, and they shall eat unclean things in Assyria.",
+  "ref": "Hosea 9:3"
+ },
+ {
+  "id": "hosea-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to the beloved fruit of their womb?",
+  "choices": [
+   "The LORD will bless it",
+   "It shall go up to Judah",
+   "The LORD will slay it",
+   "It shall be fed by the king"
+  ],
+  "answer": 2,
+  "explanation": "Though they bring forth, yet will I slay even the beloved fruit of their womb.",
+  "ref": "Hosea 9:16"
+ },
+ {
+  "id": "hosea-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say He will do with them in Gilgal, because of their wickedness?",
+  "choices": [
+   "Gather them to Jerusalem",
+   "Send them a new prophet",
+   "Give them a king",
+   "Drive them out of His house and love them no more"
+  ],
+  "answer": 3,
+  "explanation": "For the wickedness of their doings I will drive them out of mine house, I will love them no more.",
+  "ref": "Hosea 9:15"
+ },
+ {
+  "id": "hosea-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the LORD describe all their princes?",
+  "choices": [
+   "Revolters",
+   "Faithful stewards",
+   "Servants of the king",
+   "Shepherds of the flock"
+  ],
+  "answer": 0,
+  "explanation": "I will love them no more: all their princes are revolters.",
+  "ref": "Hosea 9:15"
+ },
+ {
+  "id": "hosea-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall they not offer to the LORD, nor be pleasing unto Him?",
+  "choices": [
+   "Burnt offerings of rams",
+   "Offerings of oil",
+   "Wine offerings",
+   "Offerings of firstfruits"
+  ],
+  "answer": 2,
+  "explanation": "They shall not offer wine offerings to the LORD, neither shall they be pleasing unto him.",
+  "ref": "Hosea 9:4"
  }
 ]
