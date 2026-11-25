@@ -13632,6 +13632,598 @@
   "ref": "2 Chronicles 28:20"
  },
  {
+  "id": "2-chronicles-28-e-01",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "person",
+  "question": "Like whom did Ahaz not do that which was right in the sight of the LORD?",
+  "choices": [
+   "Jehoshaphat",
+   "David his father",
+   "Solomon",
+   "Hezekiah"
+  ],
+  "answer": 1,
+  "explanation": "He did not that which was right in the sight of the LORD, like David his father.",
+  "ref": "2 Chronicles 28:1"
+ },
+ {
+  "id": "2-chronicles-28-e-02",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Ahaz burn incense and burn his children in the fire?",
+  "choices": [
+   "The valley of the son of Hinnom",
+   "Mount Carmel",
+   "The valley of salt",
+   "Ophel"
+  ],
+  "answer": 0,
+  "explanation": "He burnt incense in the valley of the son of Hinnom, and burnt his children in the fire.",
+  "ref": "2 Chronicles 28:3"
+ },
+ {
+  "id": "2-chronicles-28-e-03",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the king of Syria bring the captives of Judah?",
+  "choices": [
+   "Nineveh",
+   "Damascus",
+   "Tyre",
+   "Babylon"
+  ],
+  "answer": 1,
+  "explanation": "They carried away a great multitude of them captives, and brought them to Damascus.",
+  "ref": "2 Chronicles 28:5"
+ },
+ {
+  "id": "2-chronicles-28-e-04",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who slew a hundred and twenty thousand in Judah in one day?",
+  "choices": [
+   "Pekah the son of Remaliah",
+   "Zichri",
+   "Oded",
+   "Tilgath-pilneser"
+  ],
+  "answer": 0,
+  "explanation": "Pekah the son of Remaliah slew in Judah an hundred and twenty thousand in one day.",
+  "ref": "2 Chronicles 28:6"
+ },
+ {
+  "id": "2-chronicles-28-e-05",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the children of Israel bring the spoil from Judah?",
+  "choices": [
+   "Jericho",
+   "Samaria",
+   "Jezreel",
+   "Bethel"
+  ],
+  "answer": 1,
+  "explanation": "They took much spoil, and brought the spoil to Samaria.",
+  "ref": "2 Chronicles 28:8"
+ },
+ {
+  "id": "2-chronicles-28-e-06",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did the men take the captives, the city of palm trees?",
+  "choices": [
+   "Jericho",
+   "Hebron",
+   "Gath",
+   "Lachish"
+  ],
+  "answer": 0,
+  "explanation": "They brought them to Jericho, the city of palm trees, to their brethren.",
+  "ref": "2 Chronicles 28:15"
+ },
+ {
+  "id": "2-chronicles-28-e-07",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ahaz do to the doors of the house of the LORD?",
+  "choices": [
+   "Overlaid them with gold",
+   "Shut them up",
+   "Burned them",
+   "Gave them to Assyria"
+  ],
+  "answer": 1,
+  "explanation": "He shut up the doors of the house of the LORD.",
+  "ref": "2 Chronicles 28:24"
+ },
+ {
+  "id": "2-chronicles-28-e-08",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Ahaz's stead?",
+  "choices": [
+   "Hezekiah his son",
+   "Jotham",
+   "Manasseh",
+   "Josiah"
+  ],
+  "answer": 0,
+  "explanation": "Hezekiah his son reigned in his stead.",
+  "ref": "2 Chronicles 28:27"
+ },
+ {
+  "id": "2-chronicles-28-e-09",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whose gods did Ahaz sacrifice?",
+  "choices": [
+   "The gods of Egypt",
+   "The gods of Tyre",
+   "The gods of Damascus",
+   "The gods of Moab"
+  ],
+  "answer": 2,
+  "explanation": "He sacrificed unto the gods of Damascus, which smote him.",
+  "ref": "2 Chronicles 28:23"
+ },
+ {
+  "id": "2-chronicles-28-m-01",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king of Syria carry away from Judah to Damascus?",
+  "choices": [
+   "Gold and silver",
+   "A great multitude of captives",
+   "The ark",
+   "The temple vessels"
+  ],
+  "answer": 1,
+  "explanation": "They smote him, and carried away a great multitude of them captives, and brought them to Damascus.",
+  "ref": "2 Chronicles 28:5"
+ },
+ {
+  "id": "2-chronicles-28-m-02",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Judah's slaughter by Pekah said to have come?",
+  "choices": [
+   "Because they forsook the LORD God of their fathers",
+   "Because Ahaz hired mercenaries",
+   "Because they broke a treaty",
+   "Because they refused tribute"
+  ],
+  "answer": 0,
+  "explanation": "Pekah slew a hundred and twenty thousand, because they had forsaken the LORD God of their fathers.",
+  "ref": "2 Chronicles 28:6"
+ },
+ {
+  "id": "2-chronicles-28-m-03",
+  "chapter": 28,
+  "level": "medium",
+  "category": "person",
+  "question": "Who slew Maaseiah the king's son?",
+  "choices": [
+   "Pekah",
+   "Zichri, a mighty man of Ephraim",
+   "Oded",
+   "Amasa"
+  ],
+  "answer": 1,
+  "explanation": "Zichri, a mighty man of Ephraim, slew Maaseiah the king's son.",
+  "ref": "2 Chronicles 28:7"
+ },
+ {
+  "id": "2-chronicles-28-m-04",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many of their brethren did the children of Israel carry away captive?",
+  "choices": [
+   "Ten thousand",
+   "Two hundred thousand",
+   "A hundred and twenty thousand",
+   "Three hundred thousand"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel carried away captive of their brethren two hundred thousand, women, sons, and daughters.",
+  "ref": "2 Chronicles 28:8"
+ },
+ {
+  "id": "2-chronicles-28-m-05",
+  "chapter": 28,
+  "level": "medium",
+  "category": "place",
+  "question": "Before which host did Oded go out to speak?",
+  "choices": [
+   "The host that came to Samaria",
+   "The host at Jericho",
+   "The host in Jerusalem",
+   "The host of Assyria"
+  ],
+  "answer": 0,
+  "explanation": "Oded went out before the host that came to Samaria.",
+  "ref": "2 Chronicles 28:9"
+ },
+ {
+  "id": "2-chronicles-28-m-06",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Oded say the men of Israel purposed to do with Judah?",
+  "choices": [
+   "Make them bondmen and bondwomen",
+   "Rebuild their cities",
+   "Make a treaty with them",
+   "Send them to Assyria"
+  ],
+  "answer": 0,
+  "explanation": "Ye purpose to keep under the children of Judah and Jerusalem for bondmen and bondwomen unto you.",
+  "ref": "2 Chronicles 28:10"
+ },
+ {
+  "id": "2-chronicles-28-m-07",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Oded tell them to deliver again?",
+  "choices": [
+   "The spoil",
+   "The captives",
+   "The cattle",
+   "The idols"
+  ],
+  "answer": 1,
+  "explanation": "Deliver the captives again, which ye have taken captive of your brethren.",
+  "ref": "2 Chronicles 28:11"
+ },
+ {
+  "id": "2-chronicles-28-m-08",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the heads of Ephraim say they would add to if they brought the captives in?",
+  "choices": [
+   "Their wealth",
+   "Their sins and trespass",
+   "Their army",
+   "Their walls"
+  ],
+  "answer": 1,
+  "explanation": "Ye intend to add more to our sins and to our trespass: for our trespass is great.",
+  "ref": "2 Chronicles 28:13"
+ },
+ {
+  "id": "2-chronicles-28-m-09",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Before whom did the armed men leave the captives and the spoil?",
+  "choices": [
+   "The princes and all the congregation",
+   "Oded and the priests",
+   "The king of Israel",
+   "Jehu"
+  ],
+  "answer": 0,
+  "explanation": "The armed men left the captives and the spoil before the princes and all the congregation.",
+  "ref": "2 Chronicles 28:14"
+ },
+ {
+  "id": "2-chronicles-28-m-10",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what did they carry the feeble of the captives?",
+  "choices": [
+   "Camels",
+   "Chariots",
+   "Asses",
+   "Litters"
+  ],
+  "answer": 2,
+  "explanation": "They carried all the feeble of them upon asses.",
+  "ref": "2 Chronicles 28:15"
+ },
+ {
+  "id": "2-chronicles-28-m-11",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who invaded the cities of the low country and took Beth-shemesh?",
+  "choices": [
+   "The Philistines",
+   "The Edomites",
+   "The Syrians",
+   "The Ammonites"
+  ],
+  "answer": 0,
+  "explanation": "The Philistines also had invaded the cities of the low country, and had taken Beth-shemesh, and Ajalon.",
+  "ref": "2 Chronicles 28:18"
+ },
+ {
+  "id": "2-chronicles-28-m-12",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ahaz give to the king of Assyria, who helped him not?",
+  "choices": [
+   "His sons",
+   "A portion of the temple and royal treasures",
+   "Cities of Judah",
+   "His crown"
+  ],
+  "answer": 1,
+  "explanation": "Ahaz took away a portion out of the house of the LORD, and out of the house of the king, and of the princes, and gave it unto the king of Assyria.",
+  "ref": "2 Chronicles 28:21"
+ },
+ {
+  "id": "2-chronicles-28-m-13",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Ahaz say he would sacrifice to the gods of Damascus?",
+  "choices": [
+   "They had smitten him",
+   "The gods of the kings of Syria help them",
+   "They were the gods of his fathers",
+   "He had been commanded to"
+  ],
+  "answer": 1,
+  "explanation": "Because the gods of the kings of Syria help them, therefore will I sacrifice to them, that they may help me.",
+  "ref": "2 Chronicles 28:23"
+ },
+ {
+  "id": "2-chronicles-28-m-14",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ahaz do with the vessels of the house of God?",
+  "choices": [
+   "Hid them",
+   "Cut them in pieces",
+   "Sent them to Assyria",
+   "Melted them for coins"
+  ],
+  "answer": 1,
+  "explanation": "Ahaz gathered together the vessels of the house of God, and cut in pieces the vessels of the house of God.",
+  "ref": "2 Chronicles 28:24"
+ },
+ {
+  "id": "2-chronicles-28-h-01",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Ahaz when he began to reign?",
+  "choices": [
+   "Sixteen",
+   "Twenty",
+   "Twenty and five",
+   "Thirty"
+  ],
+  "answer": 1,
+  "explanation": "Ahaz was twenty years old when he began to reign.",
+  "ref": "2 Chronicles 28:1"
+ },
+ {
+  "id": "2-chronicles-28-h-02",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Ahaz reign in Jerusalem?",
+  "choices": [
+   "Sixteen",
+   "Twenty",
+   "Twenty and nine",
+   "Fifty and two"
+  ],
+  "answer": 0,
+  "explanation": "He reigned sixteen years in Jerusalem.",
+  "ref": "2 Chronicles 28:1"
+ },
+ {
+  "id": "2-chronicles-28-h-03",
+  "chapter": 28,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these did Zichri slay, being the governor of the house?",
+  "choices": [
+   "Azrikam",
+   "Amasa",
+   "Oded",
+   "Hadlai"
+  ],
+  "answer": 0,
+  "explanation": "Zichri slew Maaseiah the king's son, and Azrikam the governor of the house, and Elkanah that was next to the king.",
+  "ref": "2 Chronicles 28:7"
+ },
+ {
+  "id": "2-chronicles-28-h-04",
+  "chapter": 28,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Azariah, one of the heads of the children of Ephraim?",
+  "choices": [
+   "Johanan",
+   "Shallum",
+   "Hadlai",
+   "Remaliah"
+  ],
+  "answer": 0,
+  "explanation": "Certain of the heads of the children of Ephraim, Azariah the son of Johanan, stood up against them that came from the war.",
+  "ref": "2 Chronicles 28:12"
+ },
+ {
+  "id": "2-chronicles-28-h-05",
+  "chapter": 28,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a head of Ephraim who stood against those who came from the war?",
+  "choices": [
+   "Zichri",
+   "Amasa the son of Hadlai",
+   "Pekah",
+   "Elkanah"
+  ],
+  "answer": 1,
+  "explanation": "Amasa the son of Hadlai stood up against them that came from the war.",
+  "ref": "2 Chronicles 28:12"
+ },
+ {
+  "id": "2-chronicles-28-h-06",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides clothing and feeding them, what did the men do for the captives?",
+  "choices": [
+   "Anointed them",
+   "Gave them silver",
+   "Gave them houses",
+   "Taught them the law"
+  ],
+  "answer": 0,
+  "explanation": "They clothed them, arrayed them, shod them, gave them to eat and to drink, and anointed them.",
+  "ref": "2 Chronicles 28:15"
+ },
+ {
+  "id": "2-chronicles-28-h-07",
+  "chapter": 28,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city did the Philistines take among the cities of Judah?",
+  "choices": [
+   "Timnah",
+   "Lachish",
+   "Hebron",
+   "Jabneh"
+  ],
+  "answer": 0,
+  "explanation": "They had taken Beth-shemesh, and Ajalon, and Gederoth, and Shocho, and Timnah.",
+  "ref": "2 Chronicles 28:18"
+ },
+ {
+  "id": "2-chronicles-28-h-08",
+  "chapter": 28,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Ahaz make altars?",
+  "choices": [
+   "On every high hill",
+   "In every corner of Jerusalem",
+   "Only in the temple court",
+   "Beside the king's house"
+  ],
+  "answer": 1,
+  "explanation": "He made him altars in every corner of Jerusalem.",
+  "ref": "2 Chronicles 28:24"
+ },
+ {
+  "id": "2-chronicles-28-h-09",
+  "chapter": 28,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Ahaz make high places to burn incense to other gods?",
+  "choices": [
+   "In every several city of Judah",
+   "Only in Jerusalem",
+   "In Samaria",
+   "In Damascus"
+  ],
+  "answer": 0,
+  "explanation": "In every several city of Judah he made high places to burn incense unto other gods.",
+  "ref": "2 Chronicles 28:25"
+ },
+ {
+  "id": "2-chronicles-28-h-10",
+  "chapter": 28,
+  "level": "hard",
+  "category": "place",
+  "question": "Into what was Ahaz not brought after his burial in Jerusalem?",
+  "choices": [
+   "The sepulchres of the kings of Israel",
+   "The city of David",
+   "The house of the LORD",
+   "The field of the burial"
+  ],
+  "answer": 0,
+  "explanation": "They buried him in the city, even in Jerusalem: but they brought him not into the sepulchres of the kings of Israel.",
+  "ref": "2 Chronicles 28:27"
+ },
+ {
+  "id": "2-chronicles-28-h-11",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How far did Oded say the rage of Israel's slaughter reached?",
+  "choices": [
+   "Unto the walls of Jerusalem",
+   "Unto heaven",
+   "Unto Samaria",
+   "Unto Damascus"
+  ],
+  "answer": 1,
+  "explanation": "Ye have slain them in a rage that reacheth up unto heaven.",
+  "ref": "2 Chronicles 28:9"
+ },
+ {
+  "id": "2-chronicles-28-h-12",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ahaz do in the time of his distress?",
+  "choices": [
+   "Repented before the LORD",
+   "Trespassed yet more against the LORD",
+   "Sought out Oded",
+   "Restored the temple"
+  ],
+  "answer": 1,
+  "explanation": "In the time of his distress did he trespass yet more against the LORD: this is that king Ahaz.",
+  "ref": "2 Chronicles 28:22"
+ },
+ {
+  "id": "2-chronicles-28-h-13",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the gods of Damascus to Ahaz and all Israel?",
+  "choices": [
+   "Their help",
+   "Their ruin",
+   "Their warning",
+   "Their shame only"
+  ],
+  "answer": 1,
+  "explanation": "They were the ruin of him, and of all Israel.",
+  "ref": "2 Chronicles 28:23"
+ },
+ {
+  "id": "2-chronicles-28-h-14",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who had again come and smitten Judah and carried away captives?",
+  "choices": [
+   "The Edomites",
+   "The Moabites",
+   "The Ammonites",
+   "The Arabians"
+  ],
+  "answer": 0,
+  "explanation": "For again the Edomites had come and smitten Judah, and carried away captives.",
+  "ref": "2 Chronicles 28:17"
+ },
+ {
   "id": "old-2-chronicles-29-1",
   "chapter": 29,
   "level": "beginner",
