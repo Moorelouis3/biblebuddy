@@ -12816,6 +12816,502 @@
   "ref": "2 Chronicles 26:19"
  },
  {
+  "id": "2-chronicles-26-e-01",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went in after Uzziah to withstand him in the temple?",
+  "choices": [
+   "Isaiah",
+   "Jotham",
+   "Azariah the priest",
+   "Zechariah"
+  ],
+  "answer": 2,
+  "explanation": "Azariah the priest went in after him, and with him fourscore priests of the LORD, that were valiant men.",
+  "ref": "2 Chronicles 26:17"
+ },
+ {
+  "id": "2-chronicles-26-e-02",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Uzziah live after he became a leper?",
+  "choices": [
+   "In a several house",
+   "In the wilderness",
+   "In Gath",
+   "In the temple court"
+  ],
+  "answer": 0,
+  "explanation": "Uzziah the king was a leper unto the day of his death, and dwelt in a several house.",
+  "ref": "2 Chronicles 26:21"
+ },
+ {
+  "id": "2-chronicles-26-e-03",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who judged the people of the land while Uzziah was a leper?",
+  "choices": [
+   "Isaiah",
+   "Azariah",
+   "Jotham his son",
+   "Amaziah"
+  ],
+  "answer": 2,
+  "explanation": "Jotham his son was over the king's house, judging the people of the land.",
+  "ref": "2 Chronicles 26:21"
+ },
+ {
+  "id": "2-chronicles-26-e-04",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophet wrote the rest of the acts of Uzziah?",
+  "choices": [
+   "Isaiah the prophet",
+   "Elijah",
+   "Jeremiah",
+   "Zechariah"
+  ],
+  "answer": 0,
+  "explanation": "The rest of the acts of Uzziah, first and last, did Isaiah the prophet, the son of Amoz, write.",
+  "ref": "2 Chronicles 26:22"
+ },
+ {
+  "id": "2-chronicles-26-e-05",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Uzziah go forth and war against, breaking down the wall of Gath?",
+  "choices": [
+   "The Philistines",
+   "The Syrians",
+   "The Edomites",
+   "The Egyptians"
+  ],
+  "answer": 0,
+  "explanation": "He went forth and warred against the Philistines, and brake down the wall of Gath.",
+  "ref": "2 Chronicles 26:6"
+ },
+ {
+  "id": "2-chronicles-26-e-06",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Uzziah love?",
+  "choices": [
+   "Hunting",
+   "Husbandry",
+   "Building ships",
+   "Music"
+  ],
+  "answer": 1,
+  "explanation": "He had much cattle, and husbandmen and vine dressers, for he loved husbandry.",
+  "ref": "2 Chronicles 26:10"
+ },
+ {
+  "id": "2-chronicles-26-e-07",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Ammonites do for Uzziah?",
+  "choices": [
+   "Gave him gifts",
+   "Went to war with him",
+   "Fled to Egypt",
+   "Joined his army"
+  ],
+  "answer": 0,
+  "explanation": "The Ammonites gave gifts to Uzziah.",
+  "ref": "2 Chronicles 26:8"
+ },
+ {
+  "id": "2-chronicles-26-m-01",
+  "chapter": 26,
+  "level": "medium",
+  "category": "person",
+  "question": "Who made Uzziah king in the room of his father Amaziah?",
+  "choices": [
+   "Jehoiada",
+   "All the people of Judah",
+   "The priests",
+   "Isaiah"
+  ],
+  "answer": 1,
+  "explanation": "All the people of Judah took Uzziah, who was sixteen years old, and made him king in the room of his father Amaziah.",
+  "ref": "2 Chronicles 26:1"
+ },
+ {
+  "id": "2-chronicles-26-m-02",
+  "chapter": 26,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city did Uzziah build and restore to Judah?",
+  "choices": [
+   "Eloth",
+   "Tirzah",
+   "Hebron",
+   "Jabneh"
+  ],
+  "answer": 0,
+  "explanation": "He built Eloth, and restored it to Judah.",
+  "ref": "2 Chronicles 26:2"
+ },
+ {
+  "id": "2-chronicles-26-m-03",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Zechariah have understanding in?",
+  "choices": [
+   "The visions of God",
+   "The law of Moses",
+   "The songs of David",
+   "The building of towers"
+  ],
+  "answer": 0,
+  "explanation": "He sought God in the days of Zechariah, who had understanding in the visions of God.",
+  "ref": "2 Chronicles 26:5"
+ },
+ {
+  "id": "2-chronicles-26-m-04",
+  "chapter": 26,
+  "level": "medium",
+  "category": "place",
+  "question": "Whose wall did Uzziah break down in his war against the Philistines?",
+  "choices": [
+   "Lachish",
+   "Gath",
+   "Samaria",
+   "Damascus"
+  ],
+  "answer": 1,
+  "explanation": "He brake down the wall of Gath, and the wall of Jabneh, and the wall of Ashdod.",
+  "ref": "2 Chronicles 26:6"
+ },
+ {
+  "id": "2-chronicles-26-m-05",
+  "chapter": 26,
+  "level": "medium",
+  "category": "place",
+  "question": "At which gate in Jerusalem did Uzziah build towers?",
+  "choices": [
+   "The sheep gate",
+   "The fish gate",
+   "The corner gate",
+   "The dung gate"
+  ],
+  "answer": 2,
+  "explanation": "Uzziah built towers in Jerusalem at the corner gate, and at the valley gate.",
+  "ref": "2 Chronicles 26:9"
+ },
+ {
+  "id": "2-chronicles-26-m-06",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Uzziah dig in the desert?",
+  "choices": [
+   "Many wells",
+   "Pits for his enemies",
+   "Canals to Egypt",
+   "Fish ponds"
+  ],
+  "answer": 0,
+  "explanation": "He built towers in the desert, and digged many wells.",
+  "ref": "2 Chronicles 26:10"
+ },
+ {
+  "id": "2-chronicles-26-m-07",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Uzziah dig many wells?",
+  "choices": [
+   "His army needed water",
+   "He had much cattle",
+   "Judah had a famine",
+   "He feared a siege"
+  ],
+  "answer": 1,
+  "explanation": "He digged many wells: for he had much cattle, both in the low country, and in the plains.",
+  "ref": "2 Chronicles 26:10"
+ },
+ {
+  "id": "2-chronicles-26-m-08",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the engines Uzziah made in Jerusalem shoot?",
+  "choices": [
+   "Fire and stones",
+   "Arrows and great stones",
+   "Spears and darts",
+   "Burning pitch"
+  ],
+  "answer": 1,
+  "explanation": "He made engines, to be on the towers, to shoot arrows and great stones withal.",
+  "ref": "2 Chronicles 26:15"
+ },
+ {
+  "id": "2-chronicles-26-m-09",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to Uzziah's heart when he was strong?",
+  "choices": [
+   "It was lifted up to his destruction",
+   "It grew weary",
+   "It turned to Baal",
+   "It broke"
+  ],
+  "answer": 0,
+  "explanation": "When he was strong, his heart was lifted up to his destruction.",
+  "ref": "2 Chronicles 26:16"
+ },
+ {
+  "id": "2-chronicles-26-m-10",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The priests said incense was to be burned only by whom?",
+  "choices": [
+   "The princes of Judah",
+   "The priests the sons of Aaron",
+   "The kings of David's line",
+   "Any consecrated Levite"
+  ],
+  "answer": 1,
+  "explanation": "It appertaineth not unto thee, Uzziah, to burn incense unto the LORD, but to the priests the sons of Aaron.",
+  "ref": "2 Chronicles 26:18"
+ },
+ {
+  "id": "2-chronicles-26-m-11",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Uzziah have in his hand when he was wroth with the priests?",
+  "choices": [
+   "A censer",
+   "A sword",
+   "A scroll",
+   "A sceptre"
+  ],
+  "answer": 0,
+  "explanation": "Uzziah was wroth, and had a censer in his hand to burn incense.",
+  "ref": "2 Chronicles 26:19"
+ },
+ {
+  "id": "2-chronicles-26-m-12",
+  "chapter": 26,
+  "level": "medium",
+  "category": "place",
+  "question": "How far did Uzziah's name spread?",
+  "choices": [
+   "To Babylon",
+   "To the entering in of Egypt",
+   "To Tyre",
+   "To Damascus"
+  ],
+  "answer": 1,
+  "explanation": "His name spread abroad even to the entering in of Egypt; for he strengthened himself exceedingly.",
+  "ref": "2 Chronicles 26:8"
+ },
+ {
+  "id": "2-chronicles-26-h-01",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Uzziah reign in Jerusalem?",
+  "choices": [
+   "Sixteen",
+   "Twenty and nine",
+   "Fifty and two",
+   "Sixty"
+  ],
+  "answer": 2,
+  "explanation": "He reigned fifty and two years in Jerusalem.",
+  "ref": "2 Chronicles 26:3"
+ },
+ {
+  "id": "2-chronicles-26-h-02",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Uzziah's mother?",
+  "choices": [
+   "Jecoliah of Jerusalem",
+   "Jehoaddan of Jerusalem",
+   "Zibiah of Beer-sheba",
+   "Athaliah"
+  ],
+  "answer": 0,
+  "explanation": "His mother's name also was Jecoliah of Jerusalem.",
+  "ref": "2 Chronicles 26:3"
+ },
+ {
+  "id": "2-chronicles-26-h-03",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men were in Uzziah's army that made war with mighty power?",
+  "choices": [
+   "Two hundred thousand",
+   "Three hundred thousand and seven thousand and five hundred",
+   "Eight hundred thousand",
+   "Five hundred thousand"
+  ],
+  "answer": 1,
+  "explanation": "Under their hand was an army, three hundred thousand and seven thousand and five hundred.",
+  "ref": "2 Chronicles 26:13"
+ },
+ {
+  "id": "2-chronicles-26-h-04",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the chief of the fathers of the mighty men of valour?",
+  "choices": [
+   "Six hundred",
+   "Two thousand and six hundred",
+   "Seven thousand",
+   "Ten thousand"
+  ],
+  "answer": 1,
+  "explanation": "The whole number of the chief of the fathers of the mighty men of valour were two thousand and six hundred.",
+  "ref": "2 Chronicles 26:12"
+ },
+ {
+  "id": "2-chronicles-26-h-05",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Under whose hand did Jeiel the scribe and Maaseiah the ruler number the host?",
+  "choices": [
+   "Azariah",
+   "Hananiah",
+   "Zechariah",
+   "Jotham"
+  ],
+  "answer": 1,
+  "explanation": "Jeiel the scribe and Maaseiah the ruler numbered them, under the hand of Hananiah, one of the king's captains.",
+  "ref": "2 Chronicles 26:11"
+ },
+ {
+  "id": "2-chronicles-26-h-06",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many priests of the LORD went in with Azariah?",
+  "choices": [
+   "Twelve",
+   "Forty",
+   "Fourscore",
+   "A hundred and twenty"
+  ],
+  "answer": 2,
+  "explanation": "Azariah the priest went in after him, and with him fourscore priests of the LORD, that were valiant men.",
+  "ref": "2 Chronicles 26:17"
+ },
+ {
+  "id": "2-chronicles-26-h-07",
+  "chapter": 26,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the Arabians that God helped Uzziah against dwell?",
+  "choices": [
+   "Gur-baal",
+   "Carmel",
+   "Ashdod",
+   "Eloth"
+  ],
+  "answer": 0,
+  "explanation": "God helped him against the Arabians that dwelt in Gur-baal, and the Mehunims.",
+  "ref": "2 Chronicles 26:7"
+ },
+ {
+  "id": "2-chronicles-26-h-08",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Uzziah prepare for his host to cast stones?",
+  "choices": [
+   "Slings",
+   "Catapults",
+   "Javelins",
+   "Hammers"
+  ],
+  "answer": 0,
+  "explanation": "Uzziah prepared for them shields, and spears, and helmets, and habergeons, and bows, and slings to cast stones.",
+  "ref": "2 Chronicles 26:14"
+ },
+ {
+  "id": "2-chronicles-26-h-09",
+  "chapter": 26,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Uzziah buried?",
+  "choices": [
+   "In the city of David",
+   "In the field of the burial which belonged to the kings",
+   "In his own house",
+   "In the temple court"
+  ],
+  "answer": 1,
+  "explanation": "They buried him with his fathers in the field of the burial which belonged to the kings; for they said, He is a leper.",
+  "ref": "2 Chronicles 26:23"
+ },
+ {
+  "id": "2-chronicles-26-h-10",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Uzziah himself hasten to go out of the temple?",
+  "choices": [
+   "Because the priests threatened him",
+   "Because the LORD had smitten him",
+   "Because he was ashamed of the crowd",
+   "Because Isaiah called him"
+  ],
+  "answer": 1,
+  "explanation": "They thrust him out; yea, himself hasted also to go out, because the LORD had smitten him.",
+  "ref": "2 Chronicles 26:20"
+ },
+ {
+  "id": "2-chronicles-26-h-11",
+  "chapter": 26,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Uzziah have vine dressers, besides in the mountains?",
+  "choices": [
+   "In Carmel",
+   "In Gath",
+   "In Jabneh",
+   "In the Jordan valley"
+  ],
+  "answer": 0,
+  "explanation": "Husbandmen also, and vine dressers in the mountains, and in Carmel.",
+  "ref": "2 Chronicles 26:10"
+ },
+ {
+  "id": "2-chronicles-26-h-12",
+  "chapter": 26,
+  "level": "hard",
+  "category": "place",
+  "question": "What were the priests telling Uzziah to go out of?",
+  "choices": [
+   "The sanctuary",
+   "The city",
+   "The courts of the temple",
+   "The king's house"
+  ],
+  "answer": 0,
+  "explanation": "Go out of the sanctuary; for thou hast trespassed.",
+  "ref": "2 Chronicles 26:18"
+ },
+ {
   "id": "old-2-chronicles-27-1",
   "chapter": 27,
   "level": "beginner",
