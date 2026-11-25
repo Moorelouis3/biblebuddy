@@ -1475,17 +1475,17 @@
   "id": "old-1-chronicles-3-3",
   "chapter": 3,
   "level": "beginner",
-  "category": "keyword",
-  "question": "What kind of line is traced through the later part of this chapter?",
+  "category": "person",
+  "question": "Who was Solomon's son in the royal line?",
   "choices": [
-   "The royal descendants after David",
-   "Priestly line only",
-   "The Philistine line",
-   "The judges of Israel"
+   "Rehoboam",
+   "Jeroboam",
+   "Abia",
+   "Asa"
   ],
   "answer": 0,
-  "explanation": "The chapter tracks the Davidic royal line after Solomon.",
-  "ref": "1 Chronicles 3:10–24"
+  "explanation": "Solomon's son was Rehoboam, Abia his son, Asa his son, Jehoshaphat his son.",
+  "ref": "1 Chronicles 3:10"
  },
  {
   "id": "old-1-chronicles-3-4",
@@ -1507,17 +1507,529 @@
   "id": "old-1-chronicles-3-5",
   "chapter": 3,
   "level": "beginner",
-  "category": "keyword",
-  "question": "Why is this chapter especially important in Chronicles?",
+  "category": "place",
+  "question": "In which city did David reign thirty and three years?",
   "choices": [
-   "It proves Moses was king",
-   "It lists all Levites",
-   "It preserves the Davidic line",
-   "It explains the tabernacle"
+   "Jerusalem",
+   "Hebron",
+   "Gibeon",
+   "Bethlehem"
+  ],
+  "answer": 0,
+  "explanation": "In Hebron he reigned seven years and six months: and in Jerusalem he reigned thirty and three years.",
+  "ref": "1 Chronicles 3:4"
+ },
+ {
+  "id": "1-chronicles-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was David's firstborn son?",
+  "choices": [
+   "Solomon",
+   "Adonijah",
+   "Absalom",
+   "Amnon"
+  ],
+  "answer": 3,
+  "explanation": "The firstborn Amnon, of Ahinoam the Jezreelitess.",
+  "ref": "1 Chronicles 3:1"
+ },
+ {
+  "id": "1-chronicles-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which son of David was born to Maachah?",
+  "choices": [
+   "Shephatiah",
+   "Adonijah",
+   "Amnon",
+   "Absalom"
+  ],
+  "answer": 3,
+  "explanation": "The third, Absalom the son of Maachah the daughter of Talmai king of Geshur.",
+  "ref": "1 Chronicles 3:2"
+ },
+ {
+  "id": "1-chronicles-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named as the sister of David's sons?",
+  "choices": [
+   "Maachah",
+   "Tamar",
+   "Abigail",
+   "Shelomith"
+  ],
+  "answer": 1,
+  "explanation": "These were all the sons of David, beside the sons of the concubines, and Tamar their sister.",
+  "ref": "1 Chronicles 3:9"
+ },
+ {
+  "id": "1-chronicles-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the father of Josiah?",
+  "choices": [
+   "Ahaz",
+   "Manasseh",
+   "Hezekiah",
+   "Amon"
+  ],
+  "answer": 3,
+  "explanation": "Manasseh his son, Amon his son, Josiah his son.",
+  "ref": "1 Chronicles 3:13–14"
+ },
+ {
+  "id": "1-chronicles-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the son of King Hezekiah?",
+  "choices": [
+   "Manasseh",
+   "Jotham",
+   "Amon",
+   "Ahaz"
+  ],
+  "answer": 0,
+  "explanation": "Ahaz his son, Hezekiah his son, Manasseh his son.",
+  "ref": "1 Chronicles 3:13"
+ },
+ {
+  "id": "1-chronicles-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the son of Jotham?",
+  "choices": [
+   "Uzziah",
+   "Ahaz",
+   "Amaziah",
+   "Hezekiah"
+  ],
+  "answer": 1,
+  "explanation": "Azariah his son, Jotham his son, Ahaz his son.",
+  "ref": "1 Chronicles 3:12–13"
+ },
+ {
+  "id": "1-chronicles-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Jehoshaphat's father?",
+  "choices": [
+   "Rehoboam",
+   "Asa",
+   "Abia",
+   "Joram"
+  ],
+  "answer": 1,
+  "explanation": "Rehoboam, Abia his son, Asa his son, Jehoshaphat his son.",
+  "ref": "1 Chronicles 3:10"
+ },
+ {
+  "id": "1-chronicles-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the mother of David's second son, Daniel?",
+  "choices": [
+   "Eglah",
+   "Haggith",
+   "Ahinoam the Jezreelitess",
+   "Abigail the Carmelitess"
+  ],
+  "answer": 3,
+  "explanation": "The second Daniel, of Abigail the Carmelitess.",
+  "ref": "1 Chronicles 3:1"
+ },
+ {
+  "id": "1-chronicles-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the mother of Amnon?",
+  "choices": [
+   "Maachah",
+   "Abigail the Carmelitess",
+   "Ahinoam the Jezreelitess",
+   "Abital"
   ],
   "answer": 2,
-  "explanation": "The chapter safeguards the royal genealogy central to the chronicler's message.",
+  "explanation": "The firstborn Amnon, of Ahinoam the Jezreelitess.",
   "ref": "1 Chronicles 3:1"
+ },
+ {
+  "id": "1-chronicles-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the father of Maachah, Absalom's mother?",
+  "choices": [
+   "Ammiel",
+   "Shua",
+   "Machir",
+   "Talmai king of Geshur"
+  ],
+  "answer": 3,
+  "explanation": "Absalom the son of Maachah the daughter of Talmai king of Geshur.",
+  "ref": "1 Chronicles 3:2"
+ },
+ {
+  "id": "1-chronicles-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the mother of Adonijah?",
+  "choices": [
+   "Eglah",
+   "Haggith",
+   "Bath-shua",
+   "Abital"
+  ],
+  "answer": 1,
+  "explanation": "The fourth, Adonijah the son of Haggith.",
+  "ref": "1 Chronicles 3:2"
+ },
+ {
+  "id": "1-chronicles-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Ithream's mother, David's sixth son?",
+  "choices": [
+   "Haggith",
+   "Maachah",
+   "Eglah his wife",
+   "Abital"
+  ],
+  "answer": 2,
+  "explanation": "The sixth, Ithream by Eglah his wife.",
+  "ref": "1 Chronicles 3:3"
+ },
+ {
+  "id": "1-chronicles-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many sons were born to David in Hebron?",
+  "choices": [
+   "Four",
+   "Seven",
+   "Nine",
+   "Six"
+  ],
+  "answer": 3,
+  "explanation": "These six were born unto him in Hebron.",
+  "ref": "1 Chronicles 3:4"
+ },
+ {
+  "id": "1-chronicles-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the father of Bath-shua, mother of Solomon?",
+  "choices": [
+   "Shua",
+   "Talmai",
+   "Uriah",
+   "Ammiel"
+  ],
+  "answer": 3,
+  "explanation": "Shimea, and Shobab, and Nathan, and Solomon, four, of Bath-shua the daughter of Ammiel.",
+  "ref": "1 Chronicles 3:5"
+ },
+ {
+  "id": "1-chronicles-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many sons did Bath-shua bear to David?",
+  "choices": [
+   "Four",
+   "Two",
+   "Six",
+   "Nine"
+  ],
+  "answer": 0,
+  "explanation": "Shimea, and Shobab, and Nathan, and Solomon, four, of Bath-shua.",
+  "ref": "1 Chronicles 3:5"
+ },
+ {
+  "id": "1-chronicles-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the firstborn son of Josiah?",
+  "choices": [
+   "Jehoiakim",
+   "Johanan",
+   "Shallum",
+   "Zedekiah"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Josiah were, the firstborn Johanan.",
+  "ref": "1 Chronicles 3:15"
+ },
+ {
+  "id": "1-chronicles-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the father of Zerubbabel?",
+  "choices": [
+   "Jeconiah",
+   "Pedaiah",
+   "Salathiel",
+   "Hananiah"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Pedaiah were, Zerubbabel, and Shimei.",
+  "ref": "1 Chronicles 3:19"
+ },
+ {
+  "id": "1-chronicles-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the sister of Meshullam and Hananiah?",
+  "choices": [
+   "Tamar",
+   "Shelomith",
+   "Hashubah",
+   "Maachah"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Zerubbabel; Meshullam, and Hananiah, and Shelomith their sister.",
+  "ref": "1 Chronicles 3:19"
+ },
+ {
+  "id": "1-chronicles-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose sons are said to be beside David's sons listed here?",
+  "choices": [
+   "Bath-shua's",
+   "Absalom's",
+   "Tamar's",
+   "The concubines'"
+  ],
+  "answer": 3,
+  "explanation": "These were all the sons of David, beside the sons of the concubines.",
+  "ref": "1 Chronicles 3:9"
+ },
+ {
+  "id": "1-chronicles-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many sons of David born in Jerusalem does the list total?",
+  "choices": [
+   "Six",
+   "Nine",
+   "Four",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Eliada, and Eliphelet, nine.",
+  "ref": "1 Chronicles 3:5–8"
+ },
+ {
+  "id": "1-chronicles-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did David reign in Hebron?",
+  "choices": [
+   "Seven years",
+   "Thirty and three years",
+   "Forty years",
+   "Seven years and six months"
+  ],
+  "answer": 3,
+  "explanation": "In Hebron he reigned seven years and six months.",
+  "ref": "1 Chronicles 3:4"
+ },
+ {
+  "id": "1-chronicles-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was David's fifth son, born of Abital?",
+  "choices": [
+   "Adonijah",
+   "Ithream",
+   "Shephatiah",
+   "Daniel"
+  ],
+  "answer": 2,
+  "explanation": "The fifth, Shephatiah of Abital.",
+  "ref": "1 Chronicles 3:3"
+ },
+ {
+  "id": "1-chronicles-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the other son of Jehoiakim besides Jeconiah?",
+  "choices": [
+   "Assir",
+   "Shallum",
+   "Johanan",
+   "Zedekiah"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Jehoiakim: Jeconiah his son, Zedekiah his son.",
+  "ref": "1 Chronicles 3:16"
+ },
+ {
+  "id": "1-chronicles-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the fourth son of Josiah?",
+  "choices": [
+   "Shallum",
+   "Zedekiah",
+   "Jehoiakim",
+   "Johanan"
+  ],
+  "answer": 0,
+  "explanation": "The third Zedekiah, the fourth Shallum.",
+  "ref": "1 Chronicles 3:15"
+ },
+ {
+  "id": "1-chronicles-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons of Elioenai are listed?",
+  "choices": [
+   "Six",
+   "Seven",
+   "Three",
+   "Five"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Elioenai were, Hodaiah, and Eliashib, and Pelaiah, and Akkub, and Johanan, and Dalaiah, and Anani, seven.",
+  "ref": "1 Chronicles 3:24"
+ },
+ {
+  "id": "1-chronicles-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons of Shemaiah are listed?",
+  "choices": [
+   "Six",
+   "Seven",
+   "Five",
+   "Three"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Shemaiah; Hattush, and Igeal, and Bariah, and Neariah, and Shaphat, six.",
+  "ref": "1 Chronicles 3:22"
+ },
+ {
+  "id": "1-chronicles-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons of Neariah are listed?",
+  "choices": [
+   "Five",
+   "Three",
+   "Seven",
+   "Six"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Neariah; Elioenai, and Hezekiah, and Azrikam, three.",
+  "ref": "1 Chronicles 3:23"
+ },
+ {
+  "id": "1-chronicles-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Zerubbabel's brother?",
+  "choices": [
+   "Hananiah",
+   "Pelatiah",
+   "Shimei",
+   "Meshullam"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Pedaiah were, Zerubbabel, and Shimei.",
+  "ref": "1 Chronicles 3:19"
+ },
+ {
+  "id": "1-chronicles-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the son of Shechaniah?",
+  "choices": [
+   "Hattush",
+   "Neariah",
+   "Igeal",
+   "Shemaiah"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Shechaniah; Shemaiah.",
+  "ref": "1 Chronicles 3:22"
+ },
+ {
+  "id": "1-chronicles-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the son of Joash in the royal line?",
+  "choices": [
+   "Amaziah",
+   "Jotham",
+   "Ahaziah",
+   "Azariah"
+  ],
+  "answer": 0,
+  "explanation": "Joash his son, Amaziah his son.",
+  "ref": "1 Chronicles 3:11–12"
+ },
+ {
+  "id": "1-chronicles-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the son of Hananiah, named with Jesaiah?",
+  "choices": [
+   "Obadiah",
+   "Pelatiah",
+   "Hashubah",
+   "Shechaniah"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Hananiah; Pelatiah, and Jesaiah.",
+  "ref": "1 Chronicles 3:21"
+ },
+ {
+  "id": "1-chronicles-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many other children of Zerubbabel are listed, from Hashubah to Jushab-hesed?",
+  "choices": [
+   "Five",
+   "Seven",
+   "Three",
+   "Four"
+  ],
+  "answer": 0,
+  "explanation": "And Hashubah, and Ohel, and Berechiah, and Hasadiah, Jushab-hesed, five.",
+  "ref": "1 Chronicles 3:20"
  },
  {
   "id": "old-1-chronicles-4-1",
