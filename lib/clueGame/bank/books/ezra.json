@@ -292,31 +292,31 @@
   "chapter": 2,
   "level": "beginner",
   "category": "person",
-  "question": "Who is listed throughout this chapter?",
+  "question": "Which king of Babylon had carried these people away to Babylon?",
   "choices": [
-   "Only Persian officials",
-   "Only priests in Jerusalem",
-   "The people who returned from captivity",
-   "The tribes living in Egypt"
+   "Nebuchadnezzar",
+   "Cyrus",
+   "Darius",
+   "Belshazzar"
   ],
-  "answer": 2,
-  "explanation": "Ezra 2 records those who returned from Babylon to Judah.",
+  "answer": 0,
+  "explanation": "They were those whom Nebuchadnezzar the king of Babylon had carried away unto Babylon.",
   "ref": "Ezra 2:1"
  },
  {
   "id": "old-ezra-2-2",
   "chapter": 2,
   "level": "beginner",
-  "category": "keyword",
-  "question": "Which leader is named first among those who came with Zerubbabel?",
+  "category": "person",
+  "question": "Who led the people who came up out of the captivity with Jeshua?",
   "choices": [
    "Ezra",
+   "Zerubbabel",
    "Mordecai",
-   "Daniel",
-   "Jeshua"
+   "Sheshbazzar"
   ],
-  "answer": 3,
-  "explanation": "Jeshua is the first name in the list of those who came with Zerubbabel.",
+  "answer": 1,
+  "explanation": "They came with Zerubbabel: Jeshua, Nehemiah, Seraiah, and the others.",
   "ref": "Ezra 2:2"
  },
  {
@@ -366,6 +366,662 @@
   "answer": 1,
   "explanation": "The matter was deferred until a priest could inquire with Urim and Thummim.",
   "ref": "Ezra 2:63"
+ },
+ {
+  "id": "ezra-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the people who came up out of the captivity return to?",
+  "choices": [
+   "Jerusalem and Judah",
+   "Samaria and Galilee",
+   "Babylon and Persia",
+   "Egypt and Sinai"
+  ],
+  "answer": 0,
+  "explanation": "They came again unto Jerusalem and Judah, every one unto his city.",
+  "ref": "Ezra 2:1"
+ },
+ {
+  "id": "ezra-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did some of the chief fathers give toward the house of God?",
+  "choices": [
+   "They were taxed",
+   "They offered freely",
+   "They lent it out",
+   "They gave nothing"
+  ],
+  "answer": 1,
+  "explanation": "Some of the chief of the fathers offered freely for the house of God to set it up in his place.",
+  "ref": "Ezra 2:68"
+ },
+ {
+  "id": "ezra-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose children are named as the singers in the register?",
+  "choices": [
+   "Heman",
+   "Jeduthun",
+   "Asaph",
+   "Korah"
+  ],
+  "answer": 2,
+  "explanation": "The singers: the children of Asaph, an hundred twenty and eight.",
+  "ref": "Ezra 2:41"
+ },
+ {
+  "id": "ezra-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did all Israel live once they had returned?",
+  "choices": [
+   "In tents at Jerusalem",
+   "In Babylon",
+   "In Samaria",
+   "In their cities"
+  ],
+  "answer": 3,
+  "explanation": "The priests, Levites, singers and the rest dwelt in their cities, and all Israel in their cities.",
+  "ref": "Ezra 2:70"
+ },
+ {
+  "id": "ezra-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the givers offer besides gold and silver?",
+  "choices": [
+   "Priests' garments",
+   "Cedar timber",
+   "Oil and wine",
+   "Camels"
+  ],
+  "answer": 0,
+  "explanation": "They gave gold, silver, and one hundred priests garments.",
+  "ref": "Ezra 2:69"
+ },
+ {
+  "id": "ezra-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose servants' children are listed with the returned exiles?",
+  "choices": [
+   "Moses'",
+   "Solomon's",
+   "David's",
+   "Cyrus's"
+  ],
+  "answer": 1,
+  "explanation": "The children of Solomon's servants are named in the register.",
+  "ref": "Ezra 2:55"
+ },
+ {
+  "id": "ezra-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these men is named among the leaders who came with Zerubbabel?",
+  "choices": [
+   "Daniel",
+   "Esther",
+   "Nehemiah",
+   "Haggai"
+  ],
+  "answer": 2,
+  "explanation": "Which came with Zerubbabel: Jeshua, Nehemiah, Seraiah, Reelaiah, Mordecai.",
+  "ref": "Ezra 2:2"
+ },
+ {
+  "id": "ezra-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides horses, mules and asses, which animal did the returning people bring?",
+  "choices": [
+   "Oxen",
+   "Goats",
+   "Doves",
+   "Camels"
+  ],
+  "answer": 3,
+  "explanation": "Their camels were four hundred thirty and five.",
+  "ref": "Ezra 2:66\u201367"
+ },
+ {
+  "id": "ezra-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which group of Levites' children is named with Jeshua?",
+  "choices": [
+   "Kadmiel",
+   "Kohath",
+   "Merari",
+   "Gershom"
+  ],
+  "answer": 0,
+  "explanation": "The Levites: the children of Jeshua and Kadmiel, of the children of Hodaviah.",
+  "ref": "Ezra 2:40"
+ },
+ {
+  "id": "ezra-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which town is named in the register of the returning families?",
+  "choices": [
+   "Nazareth",
+   "Bethlehem",
+   "Capernaum",
+   "Bethany"
+  ],
+  "answer": 1,
+  "explanation": "The children of Bethlehem, an hundred twenty and three.",
+  "ref": "Ezra 2:21"
+ },
+ {
+  "id": "ezra-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many people were in the whole congregation together?",
+  "choices": [
+   "32,360",
+   "40,000",
+   "42,360",
+   "52,300"
+  ],
+  "answer": 2,
+  "explanation": "The whole congregation together was forty and two thousand three hundred and threescore.",
+  "ref": "Ezra 2:64"
+ },
+ {
+  "id": "ezra-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many servants and maids came with them?",
+  "choices": [
+   "7,337",
+   "6,720",
+   "1,254",
+   "3,630"
+  ],
+  "answer": 0,
+  "explanation": "Beside their servants and their maids there were seven thousand three hundred thirty and seven.",
+  "ref": "Ezra 2:65"
+ },
+ {
+  "id": "ezra-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What could the people from Tel-melah and Tel-harsa not show?",
+  "choices": [
+   "Their tithes",
+   "Their father's house and whether they were of Israel",
+   "Their weapons",
+   "Their permission to return"
+  ],
+  "answer": 1,
+  "explanation": "They could not shew their father's house, and their seed, whether they were of Israel.",
+  "ref": "Ezra 2:59"
+ },
+ {
+  "id": "ezra-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose daughters did a priestly family take a wife from, and take the name of?",
+  "choices": [
+   "Barzillai the Gileadite",
+   "Tobiah the Ammonite",
+   "Jeshua the priest",
+   "Asaph the singer"
+  ],
+  "answer": 0,
+  "explanation": "They took a wife of the daughters of Barzillai the Gileadite, and were called after their name.",
+  "ref": "Ezra 2:61"
+ },
+ {
+  "id": "ezra-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of their animals was the most numerous?",
+  "choices": [
+   "Horses",
+   "Mules",
+   "Camels",
+   "Asses"
+  ],
+  "answer": 3,
+  "explanation": "Their asses were six thousand seven hundred and twenty.",
+  "ref": "Ezra 2:67"
+ },
+ {
+  "id": "ezra-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many were the children of Adonikam?",
+  "choices": [
+   "Six hundred sixty and six",
+   "Two hundred sixty and six",
+   "Three hundred twenty and three",
+   "Four hundred fifty and four"
+  ],
+  "answer": 0,
+  "explanation": "The children of Adonikam, six hundred sixty and six.",
+  "ref": "Ezra 2:13"
+ },
+ {
+  "id": "ezra-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many of the children of Asaph, the singers, returned?",
+  "choices": [
+   "Seventy and four",
+   "An hundred twenty and eight",
+   "An hundred thirty and nine",
+   "Two hundred"
+  ],
+  "answer": 1,
+  "explanation": "The singers: the children of Asaph, an hundred twenty and eight.",
+  "ref": "Ezra 2:41"
+ },
+ {
+  "id": "ezra-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which family was the largest named, at three thousand six hundred thirty?",
+  "choices": [
+   "Parosh",
+   "Pahath-moab",
+   "Senaah",
+   "Bigvai"
+  ],
+  "answer": 2,
+  "explanation": "The children of Senaah, three thousand and six hundred and thirty.",
+  "ref": "Ezra 2:35"
+ },
+ {
+  "id": "ezra-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many Levites returned?",
+  "choices": [
+   "Nine hundred seventy and three",
+   "One hundred twenty and eight",
+   "One hundred thirty and nine",
+   "Seventy and four"
+  ],
+  "answer": 3,
+  "explanation": "The Levites: the children of Jeshua and Kadmiel were seventy and four.",
+  "ref": "Ezra 2:40"
+ },
+ {
+  "id": "ezra-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who were counted with the Nethinims, three hundred ninety and two in all?",
+  "choices": [
+   "Solomon's servants",
+   "The porters",
+   "The singers",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "All the Nethinims and the children of Solomon's servants were three hundred ninety and two.",
+  "ref": "Ezra 2:58"
+ },
+ {
+  "id": "ezra-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many were the children of Pahath-moab?",
+  "choices": [
+   "Two thousand an hundred seventy and two",
+   "Two thousand eight hundred and twelve",
+   "Three thousand and six hundred and thirty",
+   "Two thousand fifty and six"
+  ],
+  "answer": 1,
+  "explanation": "The children of Pahath-moab, of the children of Jeshua and Joab, two thousand eight hundred and twelve.",
+  "ref": "Ezra 2:6"
+ },
+ {
+  "id": "ezra-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Which three families of priests sought their register and could not find it?",
+  "choices": [
+   "Immer, Pashur and Harim",
+   "Jedaiah, Immer and Pashur",
+   "Habaiah, Koz and Barzillai",
+   "Shallum, Talmon and Akkub"
+  ],
+  "answer": 2,
+  "explanation": "Of the priests: the children of Habaiah, the children of Koz, the children of Barzillai sought their register.",
+  "ref": "Ezra 2:61\u201362"
+ },
+ {
+  "id": "ezra-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much gold did the chief fathers give to the treasure of the work?",
+  "choices": [
+   "Five thousand pound",
+   "An hundred drams",
+   "Seven thousand drams",
+   "Threescore and one thousand drams"
+  ],
+  "answer": 3,
+  "explanation": "They gave threescore and one thousand drams of gold.",
+  "ref": "Ezra 2:69"
+ },
+ {
+  "id": "ezra-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "How many singing men and singing women were among them?",
+  "choices": [
+   "Two hundred",
+   "An hundred",
+   "Seven hundred",
+   "Forty-two"
+  ],
+  "answer": 0,
+  "explanation": "There were among them two hundred singing men and singing women.",
+  "ref": "Ezra 2:65"
+ },
+ {
+  "id": "ezra-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which families, together numbering six hundred fifty and two, could not prove their descent?",
+  "choices": [
+   "Immer and Pashur",
+   "Delaiah, Tobiah and Nekoda",
+   "Ziha and Hasupha",
+   "Hodaviah and Kadmiel"
+  ],
+  "answer": 1,
+  "explanation": "The children of Delaiah, Tobiah and Nekoda, six hundred fifty and two, could not shew their father's house.",
+  "ref": "Ezra 2:59\u201360"
+ },
+ {
+  "id": "ezra-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men were there of Anathoth?",
+  "choices": [
+   "Fifty and six",
+   "An hundred twenty and two",
+   "An hundred twenty and eight",
+   "Two hundred twenty and three"
+  ],
+  "answer": 2,
+  "explanation": "The men of Anathoth, an hundred twenty and eight.",
+  "ref": "Ezra 2:23"
+ },
+ {
+  "id": "ezra-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men were there of Netophah?",
+  "choices": [
+   "Fifty and six",
+   "Forty and two",
+   "Fifty and two",
+   "Ninety and five"
+  ],
+  "answer": 0,
+  "explanation": "The men of Netophah, fifty and six.",
+  "ref": "Ezra 2:22"
+ },
+ {
+  "id": "ezra-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many people were there of Bethel and Ai?",
+  "choices": [
+   "An hundred twenty and two",
+   "Two hundred twenty and three",
+   "Six hundred twenty and one",
+   "Seven hundred twenty and five"
+  ],
+  "answer": 1,
+  "explanation": "The men of Bethel and Ai, two hundred twenty and three.",
+  "ref": "Ezra 2:28"
+ },
+ {
+  "id": "ezra-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many children of Pashur were there?",
+  "choices": [
+   "A thousand fifty and two",
+   "A thousand and seventeen",
+   "A thousand two hundred forty and seven",
+   "Nine hundred seventy and three"
+  ],
+  "answer": 2,
+  "explanation": "The children of Pashur, a thousand two hundred forty and seven.",
+  "ref": "Ezra 2:38"
+ },
+ {
+  "id": "ezra-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many porters were there in all?",
+  "choices": [
+   "Seventy and four",
+   "An hundred twenty and eight",
+   "Three hundred ninety and two",
+   "An hundred thirty and nine"
+  ],
+  "answer": 3,
+  "explanation": "The children of the porters were in all an hundred thirty and nine.",
+  "ref": "Ezra 2:42"
+ },
+ {
+  "id": "ezra-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many horses did they have?",
+  "choices": [
+   "Seven hundred thirty and six",
+   "Two hundred forty and five",
+   "Four hundred thirty and five",
+   "Six thousand seven hundred and twenty"
+  ],
+  "answer": 0,
+  "explanation": "Their horses were seven hundred thirty and six.",
+  "ref": "Ezra 2:66"
+ },
+ {
+  "id": "ezra-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many mules did they have?",
+  "choices": [
+   "Seven hundred thirty and six",
+   "Two hundred forty and five",
+   "Four hundred thirty and five",
+   "Six hundred fifty and two"
+  ],
+  "answer": 1,
+  "explanation": "Their mules were two hundred forty and five.",
+  "ref": "Ezra 2:66"
+ },
+ {
+  "id": "ezra-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much silver did the chief fathers give to the treasure of the work?",
+  "choices": [
+   "An hundred pound",
+   "Threescore pound",
+   "Five thousand pound",
+   "A thousand pound"
+  ],
+  "answer": 2,
+  "explanation": "They gave five thousand pound of silver.",
+  "ref": "Ezra 2:69"
+ },
+ {
+  "id": "ezra-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many priests' garments did they give?",
+  "choices": [
+   "Twelve",
+   "Seventy",
+   "Two hundred",
+   "One hundred"
+  ],
+  "answer": 3,
+  "explanation": "They gave one hundred priests garments.",
+  "ref": "Ezra 2:69"
+ },
+ {
+  "id": "ezra-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the children of the other Elam?",
+  "choices": [
+   "A thousand two hundred fifty and four",
+   "Two thousand eight hundred and twelve",
+   "Three hundred and twenty",
+   "Nine hundred forty and five"
+  ],
+  "answer": 0,
+  "explanation": "The children of the other Elam, a thousand two hundred fifty and four.",
+  "ref": "Ezra 2:31"
+ },
+ {
+  "id": "ezra-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the children of Ater of Hezekiah?",
+  "choices": [
+   "Fifty and two",
+   "Ninety and eight",
+   "Ninety and five",
+   "An hundred and twelve"
+  ],
+  "answer": 1,
+  "explanation": "The children of Ater of Hezekiah, ninety and eight.",
+  "ref": "Ezra 2:16"
+ },
+ {
+  "id": "ezra-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the children of Ramah and Gaba?",
+  "choices": [
+   "Seven hundred twenty and five",
+   "An hundred twenty and two",
+   "Six hundred twenty and one",
+   "Six hundred forty and two"
+  ],
+  "answer": 2,
+  "explanation": "The children of Ramah and Gaba, six hundred twenty and one.",
+  "ref": "Ezra 2:26"
+ },
+ {
+  "id": "ezra-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the children of Lod, Hadid and Ono?",
+  "choices": [
+   "Three hundred forty and five",
+   "Seven hundred and forty and three",
+   "Six hundred twenty and one",
+   "Seven hundred twenty and five"
+  ],
+  "answer": 3,
+  "explanation": "The children of Lod, Hadid, and Ono, seven hundred twenty and five.",
+  "ref": "Ezra 2:33"
+ },
+ {
+  "id": "ezra-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the children of Kirjath-arim, Chephirah and Beeroth?",
+  "choices": [
+   "Seven hundred and forty and three",
+   "An hundred and twelve",
+   "Three hundred twenty and three",
+   "Three hundred and twenty"
+  ],
+  "answer": 0,
+  "explanation": "The children of Kirjath-arim, Chephirah, and Beeroth, seven hundred and forty and three.",
+  "ref": "Ezra 2:25"
+ },
+ {
+  "id": "ezra-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the men of Michmas?",
+  "choices": [
+   "Fifty and two",
+   "An hundred twenty and two",
+   "An hundred fifty and six",
+   "Ninety and five"
+  ],
+  "answer": 1,
+  "explanation": "The men of Michmas, an hundred twenty and two.",
+  "ref": "Ezra 2:27"
+ },
+ {
+  "id": "ezra-2-h-16",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the children of Jericho?",
+  "choices": [
+   "Three hundred and twenty",
+   "Two hundred twenty and three",
+   "Three hundred forty and five",
+   "Seven hundred twenty and five"
+  ],
+  "answer": 2,
+  "explanation": "The children of Jericho, three hundred forty and five.",
+  "ref": "Ezra 2:34"
  },
  {
   "id": "old-ezra-3-1",
