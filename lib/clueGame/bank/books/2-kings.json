@@ -10896,6 +10896,646 @@
   "ref": "2 Kings 18:26"
  },
  {
+  "id": "2-kings-18-e-01",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son was Hezekiah?",
+  "choices": [
+   "Jotham",
+   "Ahaz",
+   "Amaziah",
+   "Hoshea"
+  ],
+  "answer": 1,
+  "explanation": "Hezekiah the son of Ahaz king of Judah began to reign.",
+  "ref": "2 Kings 18:1"
+ },
+ {
+  "id": "2-kings-18-e-02",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Hezekiah do in the sight of the LORD?",
+  "choices": [
+   "Evil, like Ahaz",
+   "Right, but not like David",
+   "Right, as David his father did",
+   "Evil, like the kings of Israel"
+  ],
+  "answer": 2,
+  "explanation": "He did that which was right in the sight of the LORD, according to all that David his father did.",
+  "ref": "2 Kings 18:3"
+ },
+ {
+  "id": "2-kings-18-e-03",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah remove from the land?",
+  "choices": [
+   "The royal palace",
+   "The tower of the watchmen",
+   "The altar in Jerusalem",
+   "The high places"
+  ],
+  "answer": 3,
+  "explanation": "He removed the high places, and brake the images, and cut down the groves.",
+  "ref": "2 Kings 18:4"
+ },
+ {
+  "id": "2-kings-18-e-04",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah do about serving the king of Assyria?",
+  "choices": [
+   "He rebelled and served him not",
+   "He paid tribute every year",
+   "He asked for an alliance",
+   "He sent his sons to Assyria"
+  ],
+  "answer": 0,
+  "explanation": "He rebelled against the king of Assyria, and served him not.",
+  "ref": "2 Kings 18:7"
+ },
+ {
+  "id": "2-kings-18-e-05",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Assyria came up against Samaria and besieged it?",
+  "choices": [
+   "Sennacherib",
+   "Shalmaneser",
+   "Tiglath-pileser",
+   "Pul"
+  ],
+  "answer": 1,
+  "explanation": "Shalmaneser king of Assyria came up against Samaria, and besieged it.",
+  "ref": "2 Kings 18:9"
+ },
+ {
+  "id": "2-kings-18-e-06",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did Hezekiah send to the king of Assyria?",
+  "choices": [
+   "Samaria",
+   "Damascus",
+   "Lachish",
+   "Hamath"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah sent to the king of Assyria to Lachish, saying, I have offended.",
+  "ref": "2 Kings 18:14"
+ },
+ {
+  "id": "2-kings-18-e-07",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the officials come to Hezekiah after hearing Rab-shakeh?",
+  "choices": [
+   "With gifts of silver",
+   "With swords drawn",
+   "With the Assyrian letters",
+   "With their clothes rent"
+  ],
+  "answer": 3,
+  "explanation": "They came to Hezekiah with their clothes rent, and told him the words of Rab-shakeh.",
+  "ref": "2 Kings 18:37"
+ },
+ {
+  "id": "2-kings-18-e-08",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people on the wall do when Rab-shakeh spoke?",
+  "choices": [
+   "They held their peace and answered not",
+   "They shouted back at him",
+   "They threw stones at him",
+   "They ran into the city"
+  ],
+  "answer": 0,
+  "explanation": "The people held their peace, and answered him not a word.",
+  "ref": "2 Kings 18:36"
+ },
+ {
+  "id": "2-kings-18-e-09",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In whom did Hezekiah trust?",
+  "choices": [
+   "The king of Egypt",
+   "The LORD God of Israel",
+   "His chariots",
+   "His fenced cities"
+  ],
+  "answer": 1,
+  "explanation": "He trusted in the LORD God of Israel.",
+  "ref": "2 Kings 18:5"
+ },
+ {
+  "id": "2-kings-18-e-10",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose commandments did Hezekiah keep, which the LORD commanded?",
+  "choices": [
+   "David",
+   "Joshua",
+   "Moses",
+   "Solomon"
+  ],
+  "answer": 2,
+  "explanation": "He clave to the LORD, and kept his commandments, which the LORD commanded Moses.",
+  "ref": "2 Kings 18:6"
+ },
+ {
+  "id": "2-kings-18-m-01",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What name did Hezekiah give the brasen serpent?",
+  "choices": [
+   "Zaphenath",
+   "Ichabod",
+   "Penuel",
+   "Nehushtan"
+  ],
+  "answer": 3,
+  "explanation": "He brake in pieces the brasen serpent that Moses had made, and he called it Nehushtan.",
+  "ref": "2 Kings 18:4"
+ },
+ {
+  "id": "2-kings-18-m-02",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Hezekiah prosper wherever he went?",
+  "choices": [
+   "The LORD was with him",
+   "He had a great army",
+   "Egypt helped him",
+   "He paid Assyria"
+  ],
+  "answer": 0,
+  "explanation": "The LORD was with him; and he prospered whithersoever he went forth.",
+  "ref": "2 Kings 18:7"
+ },
+ {
+  "id": "2-kings-18-m-03",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hezekiah say to the king of Assyria at Lachish?",
+  "choices": [
+   "We will fight you at Jerusalem",
+   "I have offended; return from me",
+   "Take Samaria instead",
+   "Our God will deliver us"
+  ],
+  "answer": 1,
+  "explanation": "Hezekiah said, I have offended; return from me: that which thou puttest on me will I bear.",
+  "ref": "2 Kings 18:14"
+ },
+ {
+  "id": "2-kings-18-m-04",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Hezekiah get silver to give to the king of Assyria?",
+  "choices": [
+   "Taxes on the Philistines",
+   "Gifts from Egypt",
+   "The house of the LORD and the king's treasures",
+   "The spoil of Samaria"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah gave him all the silver found in the house of the LORD, and in the treasures of the king's house.",
+  "ref": "2 Kings 18:15"
+ },
+ {
+  "id": "2-kings-18-m-05",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From what did Hezekiah cut off gold for the king of Assyria?",
+  "choices": [
+   "The king's throne",
+   "The brasen sea",
+   "The ark",
+   "The doors and pillars of the temple"
+  ],
+  "answer": 3,
+  "explanation": "Hezekiah cut off the gold from the doors of the temple of the LORD, and from the pillars.",
+  "ref": "2 Kings 18:16"
+ },
+ {
+  "id": "2-kings-18-m-06",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Rab-shakeh call Egypt?",
+  "choices": [
+   "A bruised reed",
+   "A broken wall",
+   "A dry well",
+   "A fallen cedar"
+  ],
+  "answer": 0,
+  "explanation": "Thou trustest upon the staff of this bruised reed, even upon Egypt.",
+  "ref": "2 Kings 18:21"
+ },
+ {
+  "id": "2-kings-18-m-07",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Rab-shakeh say Hezekiah had taken away?",
+  "choices": [
+   "The gods of Egypt",
+   "The high places and altars of the LORD",
+   "The tribute of Assyria",
+   "The temple treasures"
+  ],
+  "answer": 1,
+  "explanation": "Rab-shakeh said Hezekiah had taken away the high places and altars, and told Judah to worship before this altar in Jerusalem.",
+  "ref": "2 Kings 18:22"
+ },
+ {
+  "id": "2-kings-18-m-08",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Rab-shakeh claim had sent him against the land?",
+  "choices": [
+   "The king of Egypt",
+   "The king of Syria",
+   "The LORD",
+   "Tiglath-pileser"
+  ],
+  "answer": 2,
+  "explanation": "He said, The LORD said to me, Go up against this land, and destroy it.",
+  "ref": "2 Kings 18:25"
+ },
+ {
+  "id": "2-kings-18-m-09",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Rab-shakeh offer those who would make an agreement?",
+  "choices": [
+   "Gold from the temple",
+   "Safe passage to Egypt",
+   "A king of their own",
+   "To eat each of his own vine and fig tree"
+  ],
+  "answer": 3,
+  "explanation": "Make an agreement with me by a present, and eat every man of his own vine, and every one of his fig tree.",
+  "ref": "2 Kings 18:31"
+ },
+ {
+  "id": "2-kings-18-m-10",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of land did Rab-shakeh promise to take them to?",
+  "choices": [
+   "A land of corn and wine",
+   "A land of silver and gold",
+   "A land of lions",
+   "A land of cedars"
+  ],
+  "answer": 0,
+  "explanation": "A land like your own land, a land of corn and wine, bread and vineyards.",
+  "ref": "2 Kings 18:32"
+ },
+ {
+  "id": "2-kings-18-m-11",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Rab-shakeh ask about the gods of the nations?",
+  "choices": [
+   "Which god was the greatest",
+   "Had any delivered his land from Assyria",
+   "Where were the temples",
+   "Who built the idols"
+  ],
+  "answer": 1,
+  "explanation": "He asked, Hath any of the gods of the nations delivered at all his land out of the hand of the king of Assyria?",
+  "ref": "2 Kings 18:33"
+ },
+ {
+  "id": "2-kings-18-m-12",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was over the household and went out to Rab-shakeh?",
+  "choices": [
+   "Shebna",
+   "Joah",
+   "Eliakim",
+   "Hilkiah"
+  ],
+  "answer": 2,
+  "explanation": "There came out Eliakim the son of Hilkiah, which was over the household.",
+  "ref": "2 Kings 18:18"
+ },
+ {
+  "id": "2-kings-18-m-13",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Israel carried away to Assyria?",
+  "choices": [
+   "They refused to pay tribute",
+   "They attacked Judah",
+   "They made peace with Egypt",
+   "They obeyed not the voice of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "They obeyed not the voice of the LORD their God, but transgressed his covenant.",
+  "ref": "2 Kings 18:12"
+ },
+ {
+  "id": "2-kings-18-m-14",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Rab-shakeh say Hezekiah would try to make the people trust in?",
+  "choices": [
+   "The LORD",
+   "Egypt",
+   "The wall",
+   "The temple gold"
+  ],
+  "answer": 0,
+  "explanation": "Neither let Hezekiah make you trust in the LORD, saying, The LORD will surely deliver us.",
+  "ref": "2 Kings 18:30"
+ },
+ {
+  "id": "2-kings-18-m-15",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which language did Eliakim ask Rab-shakeh to speak?",
+  "choices": [
+   "The Egyptian language",
+   "The Syrian language",
+   "The language of the Medes",
+   "The Philistine language"
+  ],
+  "answer": 1,
+  "explanation": "Speak, I pray thee, to thy servants in the Syrian language.",
+  "ref": "2 Kings 18:26"
+ },
+ {
+  "id": "2-kings-18-h-01",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Hezekiah when he began to reign?",
+  "choices": [
+   "Twenty",
+   "Sixteen",
+   "Twenty-five",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "Twenty and five years old was he when he began to reign.",
+  "ref": "2 Kings 18:2"
+ },
+ {
+  "id": "2-kings-18-h-02",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Hezekiah reign in Jerusalem?",
+  "choices": [
+   "Sixteen",
+   "Fifty-two",
+   "Forty-one",
+   "Twenty-nine"
+  ],
+  "answer": 3,
+  "explanation": "He reigned twenty and nine years in Jerusalem.",
+  "ref": "2 Kings 18:2"
+ },
+ {
+  "id": "2-kings-18-h-03",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "What was the name of Hezekiah's mother?",
+  "choices": [
+   "Abi, daughter of Zachariah",
+   "Jerusha, daughter of Zadok",
+   "Jecholiah",
+   "Jehoaddan"
+  ],
+  "answer": 0,
+  "explanation": "His mother's name was Abi, the daughter of Zachariah.",
+  "ref": "2 Kings 18:2"
+ },
+ {
+  "id": "2-kings-18-h-04",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Hoshea did Hezekiah begin to reign?",
+  "choices": [
+   "The first",
+   "The third",
+   "The ninth",
+   "The twelfth"
+  ],
+  "answer": 1,
+  "explanation": "In the third year of Hoshea son of Elah, Hezekiah the son of Ahaz began to reign.",
+  "ref": "2 Kings 18:1"
+ },
+ {
+  "id": "2-kings-18-h-05",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Hezekiah was Samaria taken?",
+  "choices": [
+   "The first",
+   "The fourteenth",
+   "The sixth",
+   "The twenty-ninth"
+  ],
+  "answer": 2,
+  "explanation": "In the sixth year of Hezekiah, that is the ninth year of Hoshea, Samaria was taken.",
+  "ref": "2 Kings 18:10"
+ },
+ {
+  "id": "2-kings-18-h-06",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Hezekiah did Sennacherib come up against Judah?",
+  "choices": [
+   "The fourth",
+   "The sixth",
+   "The twenty-ninth",
+   "The fourteenth"
+  ],
+  "answer": 3,
+  "explanation": "In the fourteenth year of king Hezekiah did Sennacherib come up against all the fenced cities.",
+  "ref": "2 Kings 18:13"
+ },
+ {
+  "id": "2-kings-18-h-07",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much silver did the king of Assyria appoint Hezekiah to pay?",
+  "choices": [
+   "Three hundred talents",
+   "Thirty talents",
+   "A thousand talents",
+   "Fifty shekels"
+  ],
+  "answer": 0,
+  "explanation": "The king of Assyria appointed three hundred talents of silver and thirty talents of gold.",
+  "ref": "2 Kings 18:14"
+ },
+ {
+  "id": "2-kings-18-h-08",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man was sent from Lachish with Rab-shakeh and Rabsaris?",
+  "choices": [
+   "Nergal-sharezer",
+   "Tartan",
+   "Shalmaneser",
+   "Pul"
+  ],
+  "answer": 1,
+  "explanation": "The king of Assyria sent Tartan and Rabsaris and Rab-shakeh from Lachish.",
+  "ref": "2 Kings 18:17"
+ },
+ {
+  "id": "2-kings-18-h-09",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the Assyrians stand when they came to Jerusalem?",
+  "choices": [
+   "At the Fish Gate",
+   "In the temple court",
+   "By the conduit of the upper pool",
+   "By the brook Kidron"
+  ],
+  "answer": 2,
+  "explanation": "They stood by the conduit of the upper pool, which is in the highway of the fuller's field.",
+  "ref": "2 Kings 18:17"
+ },
+ {
+  "id": "2-kings-18-h-10",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the scribe that went out to Rab-shakeh?",
+  "choices": [
+   "Eliakim",
+   "Joah",
+   "Hilkiah",
+   "Shebna"
+  ],
+  "answer": 3,
+  "explanation": "There came out Eliakim, and Shebna the scribe, and Joah the son of Asaph the recorder.",
+  "ref": "2 Kings 18:18"
+ },
+ {
+  "id": "2-kings-18-h-11",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Joah the recorder?",
+  "choices": [
+   "Asaph",
+   "Hilkiah",
+   "Zachariah",
+   "Amittai"
+  ],
+  "answer": 0,
+  "explanation": "Joah the son of Asaph the recorder.",
+  "ref": "2 Kings 18:18"
+ },
+ {
+  "id": "2-kings-18-h-12",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many horses did Rab-shakeh offer to give Hezekiah?",
+  "choices": [
+   "Two hundred",
+   "Two thousand",
+   "Ten thousand",
+   "Fifty"
+  ],
+  "answer": 1,
+  "explanation": "I will deliver thee two thousand horses, if thou be able to set riders upon them.",
+  "ref": "2 Kings 18:23"
+ },
+ {
+  "id": "2-kings-18-h-13",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these places did Rab-shakeh name as having gods that failed?",
+  "choices": [
+   "Tyre",
+   "Moab",
+   "Arpad",
+   "Gaza"
+  ],
+  "answer": 2,
+  "explanation": "He asked, Where are the gods of Hamath, and of Arpad? where are the gods of Sepharvaim, Hena, and Ivah?",
+  "ref": "2 Kings 18:34"
+ },
+ {
+  "id": "2-kings-18-h-14",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Unto which city did Hezekiah smite the Philistines?",
+  "choices": [
+   "Gath",
+   "Ashdod",
+   "Ekron",
+   "Gaza"
+  ],
+  "answer": 3,
+  "explanation": "He smote the Philistines, even unto Gaza, and the borders thereof.",
+  "ref": "2 Kings 18:8"
+ },
+ {
+  "id": "2-kings-18-h-15",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Hoshea did the siege of Samaria begin?",
+  "choices": [
+   "The seventh",
+   "The third",
+   "The ninth",
+   "The twelfth"
+  ],
+  "answer": 0,
+  "explanation": "In the fourth year of Hezekiah, which was the seventh year of Hoshea, Shalmaneser came up against Samaria.",
+  "ref": "2 Kings 18:9"
+ },
+ {
   "id": "old-2-kings-19-1",
   "chapter": 19,
   "level": "beginner",
