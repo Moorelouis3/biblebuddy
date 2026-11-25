@@ -15696,6 +15696,454 @@
   "ref": "2 Chronicles 31:20"
  },
  {
+  "id": "2-chronicles-31-e-01",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which sweet food was among the firstfruits the people brought?",
+  "choices": [
+   "Honey",
+   "Dates",
+   "Figs",
+   "Raisins"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel brought in abundance the firstfruits of corn, wine, and oil, and honey.",
+  "ref": "2 Chronicles 31:5"
+ },
+ {
+  "id": "2-chronicles-31-e-02",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the chief priest that answered Hezekiah about the heaps?",
+  "choices": [
+   "Zadok",
+   "Azariah",
+   "Uriah",
+   "Eliashib"
+  ],
+  "answer": 1,
+  "explanation": "Azariah the chief priest of the house of Zadok answered him.",
+  "ref": "2 Chronicles 31:10"
+ },
+ {
+  "id": "2-chronicles-31-e-03",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the children of Israel go after they had destroyed the idols?",
+  "choices": [
+   "To Jerusalem to stay",
+   "Into the wilderness",
+   "Each man to his own possession and city",
+   "To the brook Kidron"
+  ],
+  "answer": 2,
+  "explanation": "All the children of Israel returned, every man to his possession, into their own cities.",
+  "ref": "2 Chronicles 31:1"
+ },
+ {
+  "id": "2-chronicles-31-e-04",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Hezekiah command chambers to be prepared?",
+  "choices": [
+   "In the king's palace",
+   "In the east street",
+   "In Bethel",
+   "In the house of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Hezekiah commanded to prepare chambers in the house of the LORD; and they prepared them.",
+  "ref": "2 Chronicles 31:11"
+ },
+ {
+  "id": "2-chronicles-31-e-05",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people lay the tithes and offerings?",
+  "choices": [
+   "By heaps",
+   "In baskets",
+   "In the brook",
+   "In the court of the king"
+  ],
+  "answer": 0,
+  "explanation": "They brought in the tithe of oxen and sheep, and the tithe of holy things, and laid them by heaps.",
+  "ref": "2 Chronicles 31:6"
+ },
+ {
+  "id": "2-chronicles-31-e-06",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Hezekiah in every work he began?",
+  "choices": [
+   "He was opposed",
+   "He prospered",
+   "He was delayed",
+   "He wept"
+  ],
+  "answer": 1,
+  "explanation": "In every work that he began he did it with all his heart, and prospered.",
+  "ref": "2 Chronicles 31:21"
+ },
+ {
+  "id": "2-chronicles-31-m-01",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For which daily offerings did Hezekiah appoint the king's own portion?",
+  "choices": [
+   "The sin offerings",
+   "The drink offerings only",
+   "The morning and evening burnt offerings",
+   "The peace offerings"
+  ],
+  "answer": 2,
+  "explanation": "The king's portion was for the morning and evening burnt offerings.",
+  "ref": "2 Chronicles 31:3"
+ },
+ {
+  "id": "2-chronicles-31-m-02",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Hezekiah command the people to give the priests' and Levites' portion?",
+  "choices": [
+   "That they might fight for Judah",
+   "That they might build chambers",
+   "That they might guard the gates",
+   "That they might be encouraged in the law of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "He commanded the people to give the portion of the priests and the Levites, that they might be encouraged in the law of the LORD.",
+  "ref": "2 Chronicles 31:4"
+ },
+ {
+  "id": "2-chronicles-31-m-03",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Judah's people bring besides the firstfruits?",
+  "choices": [
+   "The tithe of oxen and sheep",
+   "Silver shekels",
+   "Cedar and stone",
+   "Weapons of war"
+  ],
+  "answer": 0,
+  "explanation": "They also brought in the tithe of oxen and sheep, and the tithe of holy things.",
+  "ref": "2 Chronicles 31:6"
+ },
+ {
+  "id": "2-chronicles-31-m-04",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month did they begin to lay the foundation of the heaps?",
+  "choices": [
+   "The first month",
+   "The third month",
+   "The sixth month",
+   "The tenth month"
+  ],
+  "answer": 1,
+  "explanation": "In the third month they began to lay the foundation of the heaps.",
+  "ref": "2 Chronicles 31:7"
+ },
+ {
+  "id": "2-chronicles-31-m-05",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hezekiah and the princes do when they saw the heaps?",
+  "choices": [
+   "Counted the grain",
+   "Divided them among the princes",
+   "Blessed the LORD and his people",
+   "Burned the first of them"
+  ],
+  "answer": 2,
+  "explanation": "They blessed the LORD, and his people Israel.",
+  "ref": "2 Chronicles 31:8"
+ },
+ {
+  "id": "2-chronicles-31-m-06",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Azariah say the people had since they began to bring offerings?",
+  "choices": [
+   "Peace with Assyria",
+   "A new king",
+   "Fewer priests",
+   "Enough to eat and plenty left"
+  ],
+  "answer": 3,
+  "explanation": "We have had enough to eat, and have left plenty: for the LORD hath blessed his people.",
+  "ref": "2 Chronicles 31:10"
+ },
+ {
+  "id": "2-chronicles-31-m-07",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "Which Levite was ruler over the offerings, tithes and dedicated things?",
+  "choices": [
+   "Cononiah",
+   "Kore",
+   "Azariah",
+   "Shimei"
+  ],
+  "answer": 0,
+  "explanation": "The offerings and the tithes and the dedicated things were brought in faithfully, over which Cononiah the Levite was ruler.",
+  "ref": "2 Chronicles 31:12"
+ },
+ {
+  "id": "2-chronicles-31-m-08",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From what age were the Levites given their portion for their charges?",
+  "choices": [
+   "Three years old",
+   "Twenty years old and upward",
+   "Thirty years old",
+   "Twelve years old"
+  ],
+  "answer": 1,
+  "explanation": "The Levites from twenty years old and upward, in their charges by their courses.",
+  "ref": "2 Chronicles 31:17"
+ },
+ {
+  "id": "2-chronicles-31-m-09",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people cut down and throw down throughout Judah and Benjamin?",
+  "choices": [
+   "The walls of the cities",
+   "The houses of the princes",
+   "The groves, high places and altars",
+   "The gates of the temple"
+  ],
+  "answer": 2,
+  "explanation": "They brake the images in pieces, and cut down the groves, and threw down the high places and the altars.",
+  "ref": "2 Chronicles 31:1"
+ },
+ {
+  "id": "2-chronicles-31-m-10",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Hezekiah do every work he began in the service of the house of God?",
+  "choices": [
+   "With the help of the princes",
+   "In haste",
+   "In secret",
+   "With all his heart"
+  ],
+  "answer": 3,
+  "explanation": "In every work that he began he did it with all his heart, and prospered.",
+  "ref": "2 Chronicles 31:21"
+ },
+ {
+  "id": "2-chronicles-31-m-11",
+  "chapter": 31,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were the priests and Levites to give thanks and praise?",
+  "choices": [
+   "In the gates of the tents of the LORD",
+   "In the east street",
+   "In the court of the palace",
+   "On the mount of Olives"
+  ],
+  "answer": 0,
+  "explanation": "To minister, and to give thanks, and to praise in the gates of the tents of the LORD.",
+  "ref": "2 Chronicles 31:2"
+ },
+ {
+  "id": "2-chronicles-31-h-01",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "Azariah the chief priest belonged to the house of whom?",
+  "choices": [
+   "Aaron",
+   "Zadok",
+   "Eli",
+   "Abiathar"
+  ],
+  "answer": 1,
+  "explanation": "Azariah the chief priest of the house of Zadok.",
+  "ref": "2 Chronicles 31:10"
+ },
+ {
+  "id": "2-chronicles-31-h-02",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month did they finish laying the heaps?",
+  "choices": [
+   "The third month",
+   "The ninth month",
+   "The seventh month",
+   "The first month"
+  ],
+  "answer": 2,
+  "explanation": "In the third month they began to lay the foundation of the heaps, and finished them in the seventh month.",
+  "ref": "2 Chronicles 31:7"
+ },
+ {
+  "id": "2-chronicles-31-h-03",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Kore the porter toward the east over?",
+  "choices": [
+   "The chambers of the temple",
+   "The tithes of oxen",
+   "The gates of the city",
+   "The freewill offerings of God"
+  ],
+  "answer": 3,
+  "explanation": "Kore the Levite, the porter toward the east, was over the freewill offerings of God.",
+  "ref": "2 Chronicles 31:14"
+ },
+ {
+  "id": "2-chronicles-31-h-04",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "Kore the porter was the son of whom?",
+  "choices": [
+   "Imnah",
+   "Cononiah",
+   "Shimei",
+   "Azariah"
+  ],
+  "answer": 0,
+  "explanation": "Kore the son of Imnah the Levite, the porter toward the east.",
+  "ref": "2 Chronicles 31:14"
+ },
+ {
+  "id": "2-chronicles-31-h-05",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was next after Cononiah as ruler over the offerings?",
+  "choices": [
+   "Kore the porter",
+   "Shimei his brother",
+   "Azariah the priest",
+   "Jehiel"
+  ],
+  "answer": 1,
+  "explanation": "Cononiah the Levite was ruler, and Shimei his brother was the next.",
+  "ref": "2 Chronicles 31:12"
+ },
+ {
+  "id": "2-chronicles-31-h-06",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these men was an overseer under the hand of Cononiah and Shimei?",
+  "choices": [
+   "Joel",
+   "Shimri",
+   "Jerimoth",
+   "Kish"
+  ],
+  "answer": 2,
+  "explanation": "Jehiel, and Azaziah, and Nahath, and Asahel, and Jerimoth, and Jozabad were overseers under the hand of Cononiah.",
+  "ref": "2 Chronicles 31:13"
+ },
+ {
+  "id": "2-chronicles-31-h-07",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these men was next to Kore in the cities of the priests?",
+  "choices": [
+   "Mahath",
+   "Jozabad",
+   "Eliel",
+   "Miniamin"
+  ],
+  "answer": 3,
+  "explanation": "Next him were Eden, and Miniamin, and Jeshua, and Shemaiah, Amariah, and Shecaniah.",
+  "ref": "2 Chronicles 31:15"
+ },
+ {
+  "id": "2-chronicles-31-h-08",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the morning and evening offerings, for which times was the king's portion given?",
+  "choices": [
+   "Sabbaths, new moons and set feasts",
+   "Harvest and vintage",
+   "Each new year",
+   "Days of mourning"
+  ],
+  "answer": 0,
+  "explanation": "The burnt offerings for the sabbaths, and for the new moons, and for the set feasts, as it is written in the law of the LORD.",
+  "ref": "2 Chronicles 31:3"
+ },
+ {
+  "id": "2-chronicles-31-h-09",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what age did males receive their daily portion by genealogy?",
+  "choices": [
+   "One year old",
+   "Three years old and upward",
+   "Twenty years old",
+   "Twelve years old"
+  ],
+  "answer": 1,
+  "explanation": "The genealogy of males, from three years old and upward.",
+  "ref": "2 Chronicles 31:16"
+ },
+ {
+  "id": "2-chronicles-31-h-10",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose portions were reckoned by genealogy besides the little ones?",
+  "choices": [
+   "Their servants and strangers",
+   "Their brothers only",
+   "Their wives, sons and daughters",
+   "Their cattle"
+  ],
+  "answer": 2,
+  "explanation": "The genealogy of all their little ones, their wives, and their sons, and their daughters, through all the congregation.",
+  "ref": "2 Chronicles 31:18"
+ },
+ {
+  "id": "2-chronicles-31-h-11",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Azariah call what was left over?",
+  "choices": [
+   "A small remnant",
+   "The king's portion",
+   "The heaps of Judah",
+   "This great store"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hath blessed his people; and that which is left is this great store.",
+  "ref": "2 Chronicles 31:10"
+ },
+ {
   "id": "old-2-chronicles-32-1",
   "chapter": 32,
   "level": "beginner",
