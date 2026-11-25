@@ -7088,6 +7088,454 @@
   "ref": "2 Kings 12:17–18"
  },
  {
+  "id": "2-kings-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "What was the name of Jehoash's mother?",
+  "choices": [
+   "Zibiah of Beer-sheba",
+   "Athaliah of Samaria",
+   "Jehosheba of Jerusalem",
+   "Maachah of Gibeah"
+  ],
+  "answer": 0,
+  "explanation": "His mother's name was Zibiah of Beer-sheba.",
+  "ref": "2 Kings 12:1"
+ },
+ {
+  "id": "2-kings-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Joash buried?",
+  "choices": [
+   "In the city of David with his fathers",
+   "In Samaria",
+   "In Millo",
+   "In Beer-sheba"
+  ],
+  "answer": 0,
+  "explanation": "They buried him with his fathers in the city of David.",
+  "ref": "2 Kings 12:21"
+ },
+ {
+  "id": "2-kings-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took a chest and bored a hole in its lid?",
+  "choices": [
+   "Hazael",
+   "The king's scribe",
+   "Jehoiada the priest",
+   "Joash"
+  ],
+  "answer": 2,
+  "explanation": "Jehoiada the priest took a chest, and bored a hole in the lid of it.",
+  "ref": "2 Kings 12:9"
+ },
+ {
+  "id": "2-kings-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joash's servants do to him?",
+  "choices": [
+   "Sent him to Syria",
+   "Left him in Jerusalem",
+   "Conspired and slew him",
+   "Crowned him again"
+  ],
+  "answer": 2,
+  "explanation": "His servants arose, and made a conspiracy, and slew Joash in the house of Millo.",
+  "ref": "2 Kings 12:20"
+ },
+ {
+  "id": "2-kings-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Judah after Joash?",
+  "choices": [
+   "Hazael",
+   "Jehu",
+   "Jehoiada",
+   "Amaziah his son"
+  ],
+  "answer": 3,
+  "explanation": "Amaziah his son reigned in his stead.",
+  "ref": "2 Kings 12:21"
+ },
+ {
+  "id": "2-kings-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joash tell the priests to repair with the money?",
+  "choices": [
+   "The king's house",
+   "The altar of Baal",
+   "The breaches of the house",
+   "The walls of Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Let them repair the breaches of the house, wheresoever any breach shall be found.",
+  "ref": "2 Kings 12:5"
+ },
+ {
+  "id": "2-kings-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year of Jehu did Jehoash begin to reign?",
+  "choices": [
+   "The twelfth",
+   "The twenty-eighth",
+   "The seventh",
+   "The first"
+  ],
+  "answer": 2,
+  "explanation": "In the seventh year of Jehu Jehoash began to reign.",
+  "ref": "2 Kings 12:1"
+ },
+ {
+  "id": "2-kings-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priests consent to when Joash questioned them?",
+  "choices": [
+   "To repair the house at once",
+   "To give money to the king",
+   "To close the temple",
+   "To stop taking money, and not repair the breaches"
+  ],
+  "answer": 3,
+  "explanation": "The priests consented to receive no more money of the people, neither to repair the breaches of the house.",
+  "ref": "2 Kings 12:8"
+ },
+ {
+  "id": "2-kings-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the chest set in the house of the LORD?",
+  "choices": [
+   "In the king's house",
+   "At the gate of Sur",
+   "Behind the pillar",
+   "Beside the altar"
+  ],
+  "answer": 3,
+  "explanation": "Jehoiada set it beside the altar, on the right side as one cometh into the house of the LORD.",
+  "ref": "2 Kings 12:9"
+ },
+ {
+  "id": "2-kings-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Who came up to count the money in the chest and put it in bags?",
+  "choices": [
+   "Two carpenters",
+   "The captains",
+   "The king's scribe and the high priest",
+   "Jehoiada and Joash"
+  ],
+  "answer": 2,
+  "explanation": "The king's scribe and the high priest came up, and they put up in bags, and told the money.",
+  "ref": "2 Kings 12:10"
+ },
+ {
+  "id": "2-kings-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who was paid with the money laid out for the house?",
+  "choices": [
+   "Carpenters, builders, masons and hewers of stone",
+   "The priests",
+   "The king's guard",
+   "Hazael"
+  ],
+  "answer": 0,
+  "explanation": "They laid it out to the carpenters and builders, and to masons, and hewers of stone.",
+  "ref": "2 Kings 12:11–12"
+ },
+ {
+  "id": "2-kings-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not made for the house of the LORD with the money brought?",
+  "choices": [
+   "Bowls of silver, snuffers, basons and trumpets",
+   "Walls and gates",
+   "Beams and timber",
+   "Stones for the altar"
+  ],
+  "answer": 0,
+  "explanation": "There were not made for the house of the LORD bowls of silver, snuffers, basons, trumpets.",
+  "ref": "2 Kings 12:13"
+ },
+ {
+  "id": "2-kings-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did they not reckon with the men who were given the money?",
+  "choices": [
+   "They were the king's sons",
+   "They were priests",
+   "They were slaves",
+   "They dealt faithfully"
+  ],
+  "answer": 3,
+  "explanation": "They reckoned not with the men: for they dealt faithfully.",
+  "ref": "2 Kings 12:15"
+ },
+ {
+  "id": "2-kings-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose was the trespass money and sin money?",
+  "choices": [
+   "The king's",
+   "The workmen's",
+   "Hazael's",
+   "The priests'"
+  ],
+  "answer": 3,
+  "explanation": "The trespass money and sin money was not brought into the house of the LORD: it was the priests'.",
+  "ref": "2 Kings 12:16"
+ },
+ {
+  "id": "2-kings-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hazael set his face to do after taking Gath?",
+  "choices": [
+   "Go up to Jerusalem",
+   "Return to Damascus",
+   "Attack Samaria",
+   "Make peace with Israel"
+  ],
+  "answer": 0,
+  "explanation": "Hazael set his face to go up to Jerusalem.",
+  "ref": "2 Kings 12:17"
+ },
+ {
+  "id": "2-kings-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose dedicated things did Joash send to Hazael with his own?",
+  "choices": [
+   "Jehoshaphat, Jehoram and Ahaziah",
+   "David and Solomon",
+   "Asa and Abijah",
+   "Jehu and Jehoahaz"
+  ],
+  "answer": 0,
+  "explanation": "Joash took all the hallowed things that Jehoshaphat, and Jehoram, and Ahaziah, his fathers, kings of Judah, had dedicated.",
+  "ref": "2 Kings 12:18"
+ },
+ {
+  "id": "2-kings-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which side of the entrance was the chest set?",
+  "choices": [
+   "Behind the door",
+   "The north wall",
+   "The right side",
+   "The left side"
+  ],
+  "answer": 2,
+  "explanation": "Set it beside the altar, on the right side as one cometh into the house of the LORD.",
+  "ref": "2 Kings 12:9"
+ },
+ {
+  "id": "2-kings-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Who put the money into the chest?",
+  "choices": [
+   "The captains",
+   "The priests that kept the door",
+   "The king's scribe",
+   "The workmen"
+  ],
+  "answer": 1,
+  "explanation": "The priests that kept the door put therein all the money that was brought into the house of the LORD.",
+  "ref": "2 Kings 12:9"
+ },
+ {
+  "id": "2-kings-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Who were the two servants that smote Joash?",
+  "choices": [
+   "Jehosheba and Mattan",
+   "Gehazi and Jehonadab",
+   "Jozachar son of Shimeath and Jehozabad son of Shomer",
+   "Hazael and Amaziah"
+  ],
+  "answer": 2,
+  "explanation": "Jozachar the son of Shimeath, and Jehozabad the son of Shomer, his servants, smote him.",
+  "ref": "2 Kings 12:21"
+ },
+ {
+  "id": "2-kings-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Joash slain by his servants?",
+  "choices": [
+   "At Gath",
+   "In the house of Millo",
+   "In Samaria",
+   "In the house of the LORD"
+  ],
+  "answer": 1,
+  "explanation": "They slew Joash in the house of Millo, which goeth down to Silla.",
+  "ref": "2 Kings 12:20"
+ },
+ {
+  "id": "2-kings-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city did Hazael fight against and take?",
+  "choices": [
+   "Beer-sheba",
+   "Hebron",
+   "Libnah",
+   "Gath"
+  ],
+  "answer": 3,
+  "explanation": "Hazael king of Syria went up, and fought against Gath, and took it.",
+  "ref": "2 Kings 12:17"
+ },
+ {
+  "id": "2-kings-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joash send to Hazael to make him leave Jerusalem?",
+  "choices": [
+   "A hundred horses",
+   "All the gold found in the temple and the king's house",
+   "His own sons",
+   "The ark"
+  ],
+  "answer": 1,
+  "explanation": "He sent it to Hazael king of Syria: and he went away from Jerusalem.",
+  "ref": "2 Kings 12:18"
+ },
+ {
+  "id": "2-kings-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whom were the priests first to take the money for repairs?",
+  "choices": [
+   "The king's treasury",
+   "The captains",
+   "The people of Syria",
+   "Every man of his acquaintance"
+  ],
+  "answer": 3,
+  "explanation": "Let the priests take it to them, every man of his acquaintance.",
+  "ref": "2 Kings 12:5"
+ },
+ {
+  "id": "2-kings-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did the king call for when the breaches were still not repaired?",
+  "choices": [
+   "The carpenters",
+   "The scribe alone",
+   "Jehoiada and the other priests",
+   "Hazael and his captains"
+  ],
+  "answer": 2,
+  "explanation": "King Jehoash called for Jehoiada the priest, and the other priests.",
+  "ref": "2 Kings 12:7"
+ },
+ {
+  "id": "2-kings-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Jehoash had the priests still not repaired the house?",
+  "choices": [
+   "The three and twentieth",
+   "The seventh",
+   "The fortieth",
+   "The twelfth"
+  ],
+  "answer": 0,
+  "explanation": "In the three and twentieth year of king Jehoash the priests had not repaired the breaches of the house.",
+  "ref": "2 Kings 12:6"
+ },
+ {
+  "id": "2-kings-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Who laid out the money to the carpenters and builders?",
+  "choices": [
+   "The high priest only",
+   "Hazael's servants",
+   "Those who had the oversight of the house",
+   "The king himself"
+  ],
+  "answer": 2,
+  "explanation": "They gave the money into the hands of them that did the work, that had the oversight of the house of the LORD.",
+  "ref": "2 Kings 12:11"
+ },
+ {
+  "id": "2-kings-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people still do at the high places?",
+  "choices": [
+   "Prayed and fasted",
+   "Made covenants",
+   "Kept the Sabbath",
+   "Sacrificed and burnt incense"
+  ],
+  "answer": 3,
+  "explanation": "The high places were not taken away: the people still sacrificed and burnt incense in the high places.",
+  "ref": "2 Kings 12:3"
+ },
+ {
+  "id": "2-kings-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joash ask the priests when the house was still not repaired?",
+  "choices": [
+   "Who has taken the silver?",
+   "When will the temple be finished?",
+   "Why repair ye not the breaches of the house?",
+   "Where is the money of the people?"
+  ],
+  "answer": 2,
+  "explanation": "King Jehoash said unto them, Why repair ye not the breaches of the house?",
+  "ref": "2 Kings 12:7"
+ },
+ {
   "id": "old-2-kings-13-1",
   "chapter": 13,
   "level": "beginner",
