@@ -238,5 +238,917 @@
   "answer": 2,
   "explanation": "Paul prays that the Lord of peace Himself will give them peace always by all means.",
   "ref": "2 Thessalonians 3:16"
+ },
+ {
+  "id": "2-thessalonians-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "From where will the Lord Jesus be revealed?",
+  "choices": [
+   "From heaven",
+   "From the sea",
+   "From Jerusalem",
+   "From the mountain"
+  ],
+  "answer": 0,
+  "explanation": "The Lord Jesus shall be revealed from heaven with his mighty angels.",
+  "ref": "2 Thessalonians 1:7"
+ },
+ {
+  "id": "2-thessalonians-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say groweth exceedingly in them?",
+  "choices": [
+   "Their wealth",
+   "Their numbers",
+   "Their faith",
+   "Their fame"
+  ],
+  "answer": 2,
+  "explanation": "Your faith groweth exceedingly, and the charity of every one of you all toward each other aboundeth.",
+  "ref": "2 Thessalonians 1:3"
+ },
+ {
+  "id": "2-thessalonians-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what will the Lord take vengeance?",
+  "choices": [
+   "In a flood",
+   "In flaming fire",
+   "In darkness",
+   "In thunder"
+  ],
+  "answer": 1,
+  "explanation": "In flaming fire taking vengeance on them that know not God.",
+  "ref": "2 Thessalonians 1:8"
+ },
+ {
+  "id": "2-thessalonians-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is a manifest token of the righteous judgment of God?",
+  "choices": [
+   "Their patience in persecutions",
+   "Their large numbers",
+   "Their gifts",
+   "Their meetings"
+  ],
+  "answer": 0,
+  "explanation": "Which is a manifest token of the righteous judgment of God, that ye may be counted worthy of the kingdom of God.",
+  "ref": "2 Thessalonians 1:5"
+ },
+ {
+  "id": "2-thessalonians-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who shall have rest with Paul and his companions?",
+  "choices": [
+   "The rulers",
+   "The angels",
+   "The unbelievers",
+   "Those who are troubled"
+  ],
+  "answer": 3,
+  "explanation": "And to you who are troubled rest with us.",
+  "ref": "2 Thessalonians 1:7"
+ },
+ {
+  "id": "2-thessalonians-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From what will the punished be cut off?",
+  "choices": [
+   "The temple",
+   "The presence of the Lord",
+   "The land",
+   "The synagogue"
+  ],
+  "answer": 1,
+  "explanation": "Punished with everlasting destruction from the presence of the Lord, and from the glory of his power.",
+  "ref": "2 Thessalonians 1:9"
+ },
+ {
+  "id": "2-thessalonians-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul pray God would count them worthy of?",
+  "choices": [
+   "A crown",
+   "A city",
+   "This calling",
+   "A land"
+  ],
+  "answer": 2,
+  "explanation": "We pray always for you, that our God would count you worthy of this calling.",
+  "ref": "2 Thessalonians 1:11"
+ },
+ {
+  "id": "2-thessalonians-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why will Christ be admired in all them that believe?",
+  "choices": [
+   "Because Paul’s testimony was believed",
+   "Because they were rich",
+   "Because they were many",
+   "Because they suffered nothing"
+  ],
+  "answer": 0,
+  "explanation": "To be admired in all them that believe (because our testimony among you was believed) in that day.",
+  "ref": "2 Thessalonians 1:10"
+ },
+ {
+  "id": "2-thessalonians-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom is it a righteous thing with God to recompense tribulation?",
+  "choices": [
+   "The elders",
+   "Them that trouble you",
+   "The Gentiles",
+   "The angels"
+  ],
+  "answer": 1,
+  "explanation": "It is a righteous thing with God to recompense tribulation to them that trouble you.",
+  "ref": "2 Thessalonians 1:6"
+ },
+ {
+  "id": "2-thessalonians-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose name does Paul pray may be glorified in them?",
+  "choices": [
+   "The apostle Paul",
+   "Moses",
+   "Our Lord Jesus Christ",
+   "Silvanus"
+  ],
+  "answer": 2,
+  "explanation": "That the name of our Lord Jesus Christ may be glorified in you, and ye in him.",
+  "ref": "2 Thessalonians 1:12"
+ },
+ {
+  "id": "2-thessalonians-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul prays God would fulfil the good pleasure of his goodness and the work of what?",
+  "choices": [
+   "Faith with power",
+   "Love with joy",
+   "Hope with peace",
+   "Prayer with fasting"
+  ],
+  "answer": 0,
+  "explanation": "Fulfil all the good pleasure of his goodness, and the work of faith with power.",
+  "ref": "2 Thessalonians 1:11"
+ },
+ {
+  "id": "2-thessalonians-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "For what are they said to suffer?",
+  "choices": [
+   "The temple",
+   "The law",
+   "The city",
+   "The kingdom of God"
+  ],
+  "answer": 3,
+  "explanation": "That ye may be counted worthy of the kingdom of God, for which ye also suffer.",
+  "ref": "2 Thessalonians 1:5"
+ },
+ {
+  "id": "2-thessalonians-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who sends this letter to the church of the Thessalonians?",
+  "choices": [
+   "Paul and Luke",
+   "Paul, Silvanus and Timotheus",
+   "Peter and John",
+   "Paul and Titus"
+  ],
+  "answer": 1,
+  "explanation": "Paul, and Silvanus, and Timotheus, unto the church of the Thessalonians.",
+  "ref": "2 Thessalonians 1:1"
+ },
+ {
+  "id": "2-thessalonians-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What else is the man of sin called?",
+  "choices": [
+   "The prince of peace",
+   "The son of David",
+   "The son of perdition",
+   "The beast of the field"
+  ],
+  "answer": 2,
+  "explanation": "That man of sin be revealed, the son of perdition.",
+  "ref": "2 Thessalonians 2:3"
+ },
+ {
+  "id": "2-thessalonians-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does he sit, showing himself that he is God?",
+  "choices": [
+   "In the temple of God",
+   "On a mountain",
+   "In a palace",
+   "In the sea"
+  ],
+  "answer": 0,
+  "explanation": "He as God sitteth in the temple of God, shewing himself that he is God.",
+  "ref": "2 Thessalonians 2:4"
+ },
+ {
+  "id": "2-thessalonians-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose working is his coming after?",
+  "choices": [
+   "The Lord",
+   "Satan",
+   "The angels",
+   "Moses"
+  ],
+  "answer": 1,
+  "explanation": "His coming is after the working of Satan with all power and signs and lying wonders.",
+  "ref": "2 Thessalonians 2:9"
+ },
+ {
+  "id": "2-thessalonians-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who has chosen the Thessalonians to salvation from the beginning?",
+  "choices": [
+   "Paul",
+   "Silvanus",
+   "The elders",
+   "God"
+  ],
+  "answer": 3,
+  "explanation": "God hath from the beginning chosen you to salvation.",
+  "ref": "2 Thessalonians 2:13"
+ },
+ {
+  "id": "2-thessalonians-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what does Paul beseech them?",
+  "choices": [
+   "By the coming of our Lord Jesus Christ",
+   "By the law of Moses",
+   "By the temple",
+   "By the prophets"
+  ],
+  "answer": 0,
+  "explanation": "We beseech you, brethren, by the coming of our Lord Jesus Christ, and by our gathering together unto him.",
+  "ref": "2 Thessalonians 2:1"
+ },
+ {
+  "id": "2-thessalonians-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Not to be shaken by spirit, word, or what, as from Paul?",
+  "choices": [
+   "A dream",
+   "A sign",
+   "A letter",
+   "A voice from Rome"
+  ],
+  "answer": 2,
+  "explanation": "Neither by spirit, nor by word, nor by letter as from us, as that the day of Christ is at hand.",
+  "ref": "2 Thessalonians 2:2"
+ },
+ {
+  "id": "2-thessalonians-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the man of sin exalt himself above?",
+  "choices": [
+   "Only the temple",
+   "All that is called God or worshipped",
+   "The rulers of Rome",
+   "The prophets only"
+  ],
+  "answer": 1,
+  "explanation": "Who opposeth and exalteth himself above all that is called God, or that is worshipped.",
+  "ref": "2 Thessalonians 2:4"
+ },
+ {
+  "id": "2-thessalonians-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say already works?",
+  "choices": [
+   "The mystery of iniquity",
+   "The spirit of peace",
+   "The gift of prophecy",
+   "The word of the cross"
+  ],
+  "answer": 0,
+  "explanation": "For the mystery of iniquity doth already work.",
+  "ref": "2 Thessalonians 2:7"
+ },
+ {
+  "id": "2-thessalonians-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How will the Lord destroy the Wicked?",
+  "choices": [
+   "With a flood",
+   "With the sword of angels",
+   "With famine",
+   "With the brightness of his coming"
+  ],
+  "answer": 3,
+  "explanation": "Whom the Lord shall consume with the spirit of his mouth, and shall destroy with the brightness of his coming.",
+  "ref": "2 Thessalonians 2:8"
+ },
+ {
+  "id": "2-thessalonians-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "His coming is after the working of Satan with power, signs and what?",
+  "choices": [
+   "Great mercy",
+   "True prophecies",
+   "Lying wonders",
+   "Quiet words"
+  ],
+  "answer": 2,
+  "explanation": "With all power and signs and lying wonders.",
+  "ref": "2 Thessalonians 2:9"
+ },
+ {
+  "id": "2-thessalonians-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do those who perish perish?",
+  "choices": [
+   "They never heard of God",
+   "They received not the love of the truth",
+   "They lacked wealth",
+   "They were not taught"
+  ],
+  "answer": 1,
+  "explanation": "Because they received not the love of the truth, that they might be saved.",
+  "ref": "2 Thessalonians 2:10"
+ },
+ {
+  "id": "2-thessalonians-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will God send those who believe a lie?",
+  "choices": [
+   "Strong delusion",
+   "A great famine",
+   "A strong angel",
+   "A plague"
+  ],
+  "answer": 0,
+  "explanation": "God shall send them strong delusion, that they should believe a lie.",
+  "ref": "2 Thessalonians 2:11"
+ },
+ {
+  "id": "2-thessalonians-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Through what has God chosen them to salvation?",
+  "choices": [
+   "Works of the law",
+   "Gifts of money",
+   "Sanctification of the Spirit and belief of the truth",
+   "Sacrifices at the altar"
+  ],
+  "answer": 2,
+  "explanation": "God hath chosen you to salvation through sanctification of the Spirit and belief of the truth.",
+  "ref": "2 Thessalonians 2:13"
+ },
+ {
+  "id": "2-thessalonians-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When had Paul told them these things?",
+  "choices": [
+   "When he was yet with them",
+   "In his last letter",
+   "Through Silvanus",
+   "At Athens"
+  ],
+  "answer": 0,
+  "explanation": "Remember ye not, that, when I was yet with you, I told you these things?",
+  "ref": "2 Thessalonians 2:5"
+ },
+ {
+  "id": "2-thessalonians-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say they know?",
+  "choices": [
+   "Where the day will come",
+   "What withholdeth that he might be revealed in his time",
+   "Who the Wicked is",
+   "When the Lord will return"
+  ],
+  "answer": 1,
+  "explanation": "And now ye know what withholdeth that he might be revealed in his time.",
+  "ref": "2 Thessalonians 2:6"
+ },
+ {
+  "id": "2-thessalonians-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until what will he who now letteth let?",
+  "choices": [
+   "The temple is built",
+   "The Gentiles are saved",
+   "The trumpet sounds",
+   "He be taken out of the way"
+  ],
+  "answer": 3,
+  "explanation": "He who now letteth will let, until he be taken out of the way.",
+  "ref": "2 Thessalonians 2:7"
+ },
+ {
+  "id": "2-thessalonians-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "That they might be damned who believed not the truth, but had pleasure in what?",
+  "choices": [
+   "Unrighteousness",
+   "Riches",
+   "Idols",
+   "Feasting"
+  ],
+  "answer": 0,
+  "explanation": "That they all might be damned who believed not the truth, but had pleasure in unrighteousness.",
+  "ref": "2 Thessalonians 2:12"
+ },
+ {
+  "id": "2-thessalonians-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what did God call them to the glory of our Lord Jesus Christ?",
+  "choices": [
+   "The law",
+   "A vision",
+   "Our gospel",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "Whereunto he called you by our gospel, to the obtaining of the glory of our Lord Jesus Christ.",
+  "ref": "2 Thessalonians 2:14"
+ },
+ {
+  "id": "2-thessalonians-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were they taught the traditions they should hold?",
+  "choices": [
+   "Only by letter",
+   "By word or by Paul’s epistle",
+   "Only by dreams",
+   "By the elders of Rome"
+  ],
+  "answer": 1,
+  "explanation": "Hold the traditions which ye have been taught, whether by word, or our epistle.",
+  "ref": "2 Thessalonians 2:15"
+ },
+ {
+  "id": "2-thessalonians-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has God given through grace, along with good hope?",
+  "choices": [
+   "Everlasting consolation",
+   "Everlasting riches",
+   "Everlasting rest",
+   "Everlasting wisdom"
+  ],
+  "answer": 0,
+  "explanation": "God, which hath loved us, and hath given us everlasting consolation and good hope through grace.",
+  "ref": "2 Thessalonians 2:16"
+ },
+ {
+  "id": "2-thessalonians-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what does Paul pray they be stablished?",
+  "choices": [
+   "Every city",
+   "Every house",
+   "Every good word and work",
+   "Every nation"
+  ],
+  "answer": 2,
+  "explanation": "Comfort your hearts, and stablish you in every good word and work.",
+  "ref": "2 Thessalonians 2:17"
+ },
+ {
+  "id": "2-thessalonians-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does Paul say are brethren beloved of the Lord, bound to be thanked for?",
+  "choices": [
+   "The apostles",
+   "The elders of Judaea",
+   "The Gentiles",
+   "The Thessalonians"
+  ],
+  "answer": 3,
+  "explanation": "We are bound to give thanks alway to God for you, brethren beloved of the Lord.",
+  "ref": "2 Thessalonians 2:13"
+ },
+ {
+  "id": "2-thessalonians-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul wish to be with them all at the end?",
+  "choices": [
+   "The peace of Rome",
+   "The grace of our Lord Jesus Christ",
+   "The law of Moses",
+   "The gift of tongues"
+  ],
+  "answer": 1,
+  "explanation": "The grace of our Lord Jesus Christ be with you all.",
+  "ref": "2 Thessalonians 3:18"
+ },
+ {
+  "id": "2-thessalonians-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did Paul and his companions labour so as not to burden them?",
+  "choices": [
+   "Night and day",
+   "Only on the Sabbath",
+   "Only at harvest",
+   "Only in winter"
+  ],
+  "answer": 0,
+  "explanation": "Wrought with labour and travail night and day, that we might not be chargeable to any of you.",
+  "ref": "2 Thessalonians 3:8"
+ },
+ {
+  "id": "2-thessalonians-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what are they told not to be weary?",
+  "choices": [
+   "Prayer",
+   "Travel",
+   "Well doing",
+   "Teaching"
+  ],
+  "answer": 2,
+  "explanation": "But ye, brethren, be not weary in well doing.",
+  "ref": "2 Thessalonians 3:13"
+ },
+ {
+  "id": "2-thessalonians-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "From whom are they told to withdraw?",
+  "choices": [
+   "Every brother that walketh disorderly",
+   "The elders",
+   "Every stranger",
+   "Every teacher"
+  ],
+  "answer": 0,
+  "explanation": "Withdraw yourselves from every brother that walketh disorderly.",
+  "ref": "2 Thessalonians 3:6"
+ },
+ {
+  "id": "2-thessalonians-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul asks to be delivered from unreasonable and wicked men, for all men have not what?",
+  "choices": [
+   "Wisdom",
+   "Faith",
+   "Wealth",
+   "Knowledge"
+  ],
+  "answer": 1,
+  "explanation": "That we may be delivered from unreasonable and wicked men: for all men have not faith.",
+  "ref": "2 Thessalonians 3:2"
+ },
+ {
+  "id": "2-thessalonians-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "In whom does Paul have confidence concerning them?",
+  "choices": [
+   "The Lord",
+   "Silvanus",
+   "The elders",
+   "Their own strength"
+  ],
+  "answer": 0,
+  "explanation": "We have confidence in the Lord touching you.",
+  "ref": "2 Thessalonians 3:4"
+ },
+ {
+  "id": "2-thessalonians-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into what does Paul pray the Lord direct their hearts?",
+  "choices": [
+   "The study of the law",
+   "The work of the temple",
+   "The care of widows",
+   "The love of God and the patient waiting for Christ"
+  ],
+  "answer": 3,
+  "explanation": "The Lord direct your hearts into the love of God, and into the patient waiting for Christ.",
+  "ref": "2 Thessalonians 3:5"
+ },
+ {
+  "id": "2-thessalonians-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whose name does Paul command them to withdraw?",
+  "choices": [
+   "The apostles",
+   "Moses",
+   "Our Lord Jesus Christ",
+   "Silvanus"
+  ],
+  "answer": 2,
+  "explanation": "We command you, brethren, in the name of our Lord Jesus Christ.",
+  "ref": "2 Thessalonians 3:6"
+ },
+ {
+  "id": "2-thessalonians-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul and his companions not eat for nought?",
+  "choices": [
+   "Any man’s meat",
+   "Any man’s bread",
+   "The Passover",
+   "Fruit from the vine"
+  ],
+  "answer": 1,
+  "explanation": "Neither did we eat any man’s bread for nought.",
+  "ref": "2 Thessalonians 3:8"
+ },
+ {
+  "id": "2-thessalonians-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul work, though he had power not to?",
+  "choices": [
+   "To make themselves an ensample to follow",
+   "To earn his keep in prison",
+   "To please the elders",
+   "To pay a debt"
+  ],
+  "answer": 0,
+  "explanation": "To make ourselves an ensample unto you to follow us.",
+  "ref": "2 Thessalonians 3:9"
+ },
+ {
+  "id": "2-thessalonians-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say some among them are, working not at all?",
+  "choices": [
+   "Prophets",
+   "Teachers",
+   "Busybodies",
+   "Elders"
+  ],
+  "answer": 2,
+  "explanation": "Working not at all, but are busybodies.",
+  "ref": "2 Thessalonians 3:11"
+ },
+ {
+  "id": "2-thessalonians-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How are those who do not work to work and eat their own bread?",
+  "choices": [
+   "With haste",
+   "With quietness",
+   "With song",
+   "With fasting"
+  ],
+  "answer": 1,
+  "explanation": "With quietness they work, and eat their own bread.",
+  "ref": "2 Thessalonians 3:12"
+ },
+ {
+  "id": "2-thessalonians-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why should they have no company with the one who obeys not?",
+  "choices": [
+   "That he may be punished",
+   "That he may leave",
+   "That he may be forgotten",
+   "That he may be ashamed"
+  ],
+  "answer": 3,
+  "explanation": "Note that man, and have no company with him, that he may be ashamed.",
+  "ref": "2 Thessalonians 3:14"
+ },
+ {
+  "id": "2-thessalonians-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where is the word of the Lord already glorified?",
+  "choices": [
+   "With the Thessalonians",
+   "In Rome",
+   "In Judaea",
+   "In Athens"
+  ],
+  "answer": 0,
+  "explanation": "That the word of the Lord may have free course, and be glorified, even as it is with you.",
+  "ref": "2 Thessalonians 3:1"
+ },
+ {
+  "id": "2-thessalonians-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the token in every epistle of Paul?",
+  "choices": [
+   "A seal of wax",
+   "A sign in the heavens",
+   "The salutation with his own hand",
+   "A witness from Silvanus"
+  ],
+  "answer": 2,
+  "explanation": "The salutation of Paul with mine own hand, which is the token in every epistle.",
+  "ref": "2 Thessalonians 3:17"
+ },
+ {
+  "id": "2-thessalonians-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Paul first command them that he who will not work should not eat?",
+  "choices": [
+   "In a letter from Athens",
+   "When he was with them",
+   "After Timotheus returned",
+   "At his next visit"
+  ],
+  "answer": 1,
+  "explanation": "Even when we were with you, this we commanded you.",
+  "ref": "2 Thessalonians 3:10"
+ },
+ {
+  "id": "2-thessalonians-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "A disorderly brother does not walk after what?",
+  "choices": [
+   "The law of Moses",
+   "The sayings of the elders",
+   "The words of the prophets",
+   "The tradition he received of Paul"
+  ],
+  "answer": 3,
+  "explanation": "Walketh disorderly, and not after the tradition which he received of us.",
+  "ref": "2 Thessalonians 3:6"
+ },
+ {
+  "id": "2-thessalonians-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul say they know?",
+  "choices": [
+   "How they ought to follow Paul and his companions",
+   "Where the day would come",
+   "Who the elders were",
+   "When Paul would return"
+  ],
+  "answer": 0,
+  "explanation": "For yourselves know how ye ought to follow us.",
+  "ref": "2 Thessalonians 3:7"
+ },
+ {
+  "id": "2-thessalonians-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says they worked not because they lacked what?",
+  "choices": [
+   "Bread",
+   "Power",
+   "Time",
+   "Help"
+  ],
+  "answer": 1,
+  "explanation": "Not because we have not power, but to make ourselves an ensample.",
+  "ref": "2 Thessalonians 3:9"
+ },
+ {
+  "id": "2-thessalonians-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul expect they both do and will do?",
+  "choices": [
+   "The things the elders command",
+   "The things of their fathers",
+   "The things he commands them",
+   "The works of the law"
+  ],
+  "answer": 2,
+  "explanation": "That ye both do and will do the things which we command you.",
+  "ref": "2 Thessalonians 3:4"
+ },
+ {
+  "id": "2-thessalonians-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Paul say he behaved among them?",
+  "choices": [
+   "Not disorderly",
+   "As a stranger",
+   "As a ruler",
+   "As a debtor"
+  ],
+  "answer": 0,
+  "explanation": "For we behaved not ourselves disorderly among you.",
+  "ref": "2 Thessalonians 3:7"
+ },
+ {
+  "id": "2-thessalonians-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom does Paul ask to be delivered?",
+  "choices": [
+   "The Roman guards",
+   "Unreasonable and wicked men",
+   "The elders",
+   "The Gentile kings"
+  ],
+  "answer": 1,
+  "explanation": "That we may be delivered from unreasonable and wicked men.",
+  "ref": "2 Thessalonians 3:2"
  }
 ]

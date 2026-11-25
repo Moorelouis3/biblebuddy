@@ -352,22 +352,6 @@
   "ref": "1 Thessalonians 5:5"
  },
  {
-  "id": "old-1-thessalonians-5-3",
-  "chapter": 5,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "Which three short commands does Paul give one after another?",
-  "choices": [
-   "Rejoice evermore, pray without ceasing, in every thing give thanks",
-   "Work hard, wait patiently, speak boldly",
-   "Watch, teach, and endure",
-   "Love, serve, and sacrifice"
-  ],
-  "answer": 0,
-  "explanation": "Paul commands them to rejoice always, pray without ceasing, and give thanks in everything.",
-  "ref": "1 Thessalonians 5:16–18"
- },
- {
   "id": "old-1-thessalonians-5-4",
   "chapter": 5,
   "level": "beginner",
@@ -398,5 +382,1781 @@
   "answer": 2,
   "explanation": "Paul prays for the preservation of their whole spirit, soul, and body.",
   "ref": "1 Thessalonians 5:23"
+ },
+ {
+  "id": "1-thessalonians-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who joins Paul in the greeting to the church of the Thessalonians?",
+  "choices": [
+   "Silvanus and Timotheus",
+   "Barnabas and Mark",
+   "Aquila and Priscilla",
+   "Luke and Titus"
+  ],
+  "answer": 0,
+  "explanation": "The letter comes from Paul, and Silvanus, and Timotheus.",
+  "ref": "1 Thessalonians 1:1"
+ },
+ {
+  "id": "1-thessalonians-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Paul say the gospel came to the Thessalonians?",
+  "choices": [
+   "In word only",
+   "In signs and wonders only",
+   "Not in word only, but also in power",
+   "In letters from Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "The gospel came not in word only, but also in power, and in the Holy Ghost, and in much assurance.",
+  "ref": "1 Thessalonians 1:5"
+ },
+ {
+  "id": "1-thessalonians-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the Thessalonians become followers of?",
+  "choices": [
+   "The apostles in Jerusalem",
+   "The prophets of old",
+   "John the Baptist",
+   "Paul and his companions, and the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Paul says, ye became followers of us, and of the Lord.",
+  "ref": "1 Thessalonians 1:6"
+ },
+ {
+  "id": "1-thessalonians-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who delivered believers from the wrath to come?",
+  "choices": [
+   "Paul",
+   "Jesus",
+   "Timotheus",
+   "The angels"
+  ],
+  "answer": 1,
+  "explanation": "Jesus delivered us from the wrath to come.",
+  "ref": "1 Thessalonians 1:10"
+ },
+ {
+  "id": "1-thessalonians-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say he knew about the brethren beloved?",
+  "choices": [
+   "Their election of God",
+   "Their wealth",
+   "Their numbers",
+   "Their patience before rulers"
+  ],
+  "answer": 0,
+  "explanation": "Paul writes, Knowing, brethren beloved, your election of God.",
+  "ref": "1 Thessalonians 1:4"
+ },
+ {
+  "id": "1-thessalonians-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Because their faith was spread abroad, what did Paul say he need not do?",
+  "choices": [
+   "Write another letter",
+   "Send Timotheus again",
+   "Speak any thing",
+   "Pray for them"
+  ],
+  "answer": 2,
+  "explanation": "Their faith to God-ward was spread abroad, so that we need not to speak any thing.",
+  "ref": "1 Thessalonians 1:8"
+ },
+ {
+  "id": "1-thessalonians-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides Macedonia and Achaia, where was their faith spread abroad?",
+  "choices": [
+   "Only in Asia",
+   "In every place",
+   "Throughout Judaea",
+   "In Rome alone"
+  ],
+  "answer": 1,
+  "explanation": "The word sounded out not only in Macedonia and Achaia, but also in every place.",
+  "ref": "1 Thessalonians 1:8"
+ },
+ {
+  "id": "1-thessalonians-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did the Thessalonians receive the word, with joy of the Holy Ghost?",
+  "choices": [
+   "Great wealth",
+   "Perfect peace",
+   "Long silence",
+   "Much affliction"
+  ],
+  "answer": 3,
+  "explanation": "They received the word in much affliction, with joy of the Holy Ghost.",
+  "ref": "1 Thessalonians 1:6"
+ },
+ {
+  "id": "1-thessalonians-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The gospel came in power and in the Holy Ghost, and in much what?",
+  "choices": [
+   "Assurance",
+   "Wisdom",
+   "Patience",
+   "Silence"
+  ],
+  "answer": 0,
+  "explanation": "Our gospel came in power, and in the Holy Ghost, and in much assurance.",
+  "ref": "1 Thessalonians 1:5"
+ },
+ {
+  "id": "1-thessalonians-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "In whom is the church of the Thessalonians said to be?",
+  "choices": [
+   "Moses and the prophets",
+   "God the Father and the Lord Jesus Christ",
+   "Abraham and Isaac",
+   "The apostles of Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "The church is in God the Father and in the Lord Jesus Christ.",
+  "ref": "1 Thessalonians 1:1"
+ },
+ {
+  "id": "1-thessalonians-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "As whom did Paul say he exhorted, comforted and charged every one of them?",
+  "choices": [
+   "A father with his children",
+   "A king with his subjects",
+   "A shepherd with sheep",
+   "A judge with the accused"
+  ],
+  "answer": 0,
+  "explanation": "Paul exhorted, comforted and charged every one of them, as a father doth his children.",
+  "ref": "1 Thessalonians 2:11"
+ },
+ {
+  "id": "1-thessalonians-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who did Paul say was witness that he used no flattering words?",
+  "choices": [
+   "God",
+   "Silvanus",
+   "The elders",
+   "The Philippians"
+  ],
+  "answer": 0,
+  "explanation": "Paul says he used no flattering words nor a cloke of covetousness; God is witness.",
+  "ref": "1 Thessalonians 2:5"
+ },
+ {
+  "id": "1-thessalonians-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who are Paul’s hope, joy and crown of rejoicing at the coming of Jesus?",
+  "choices": [
+   "The apostles",
+   "The Thessalonians",
+   "The angels",
+   "The churches in Judaea"
+  ],
+  "answer": 1,
+  "explanation": "Paul asks, Are not even ye in the presence of our Lord Jesus Christ at his coming?",
+  "ref": "1 Thessalonians 2:19"
+ },
+ {
+  "id": "1-thessalonians-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the Thessalonians receive the word of God?",
+  "choices": [
+   "As the word of men",
+   "As a rumour",
+   "As an old tradition",
+   "As the word of God, not of men"
+  ],
+  "answer": 3,
+  "explanation": "They received it not as the word of men, but as it is in truth, the word of God.",
+  "ref": "1 Thessalonians 2:13"
+ },
+ {
+  "id": "1-thessalonians-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul preach to the Thessalonians while labouring night and day?",
+  "choices": [
+   "The law of Moses",
+   "The kingdom of Rome",
+   "The gospel of God",
+   "The sayings of the prophets"
+  ],
+  "answer": 2,
+  "explanation": "Labouring night and day, we preached unto you the gospel of God.",
+  "ref": "1 Thessalonians 2:9"
+ },
+ {
+  "id": "1-thessalonians-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul labour night and day while preaching?",
+  "choices": [
+   "So as not to be chargeable to any of them",
+   "To build a house of prayer",
+   "To pay a debt",
+   "To please the elders"
+  ],
+  "answer": 0,
+  "explanation": "He laboured night and day because we would not be chargeable unto any of you.",
+  "ref": "1 Thessalonians 2:9"
+ },
+ {
+  "id": "1-thessalonians-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the gospel, what was Paul willing to share with them?",
+  "choices": [
+   "Their houses",
+   "Their garments",
+   "Their own souls",
+   "Their journeys"
+  ],
+  "answer": 2,
+  "explanation": "They were willing to impart not the gospel only, but also our own souls, because ye were dear unto us.",
+  "ref": "1 Thessalonians 2:8"
+ },
+ {
+  "id": "1-thessalonians-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says God tries what in them as they speak the gospel?",
+  "choices": [
+   "Their hearts",
+   "Their works",
+   "Their words only",
+   "Their journeys"
+  ],
+  "answer": 0,
+  "explanation": "We speak not as pleasing men, but God, which trieth our hearts.",
+  "ref": "1 Thessalonians 2:4"
+ },
+ {
+  "id": "1-thessalonians-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says he never used flattering words, nor a cloke of what?",
+  "choices": [
+   "Kindness",
+   "Authority",
+   "Zeal",
+   "Covetousness"
+  ],
+  "answer": 3,
+  "explanation": "Paul says he used neither flattering words nor a cloke of covetousness.",
+  "ref": "1 Thessalonians 2:5"
+ },
+ {
+  "id": "1-thessalonians-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Paul says they might have been burdensome, as whom?",
+  "choices": [
+   "The elders of Philippi",
+   "The apostles of Christ",
+   "The prophets of old",
+   "The rulers of the synagogue"
+  ],
+  "answer": 1,
+  "explanation": "They sought no glory of men when they might have been burdensome, as the apostles of Christ.",
+  "ref": "1 Thessalonians 2:6"
+ },
+ {
+  "id": "1-thessalonians-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Unto what has God called believers, so they should walk worthy of him?",
+  "choices": [
+   "His temple and altar",
+   "His law and covenant",
+   "His kingdom and glory",
+   "His land and peace"
+  ],
+  "answer": 2,
+  "explanation": "Walk worthy of God, who hath called you unto his kingdom and glory.",
+  "ref": "1 Thessalonians 2:12"
+ },
+ {
+  "id": "1-thessalonians-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Whose churches did the Thessalonians become followers of?",
+  "choices": [
+   "The churches of God in Judaea",
+   "The churches of Galatia",
+   "The church at Athens",
+   "The church at Corinth"
+  ],
+  "answer": 0,
+  "explanation": "They became followers of the churches of God which in Judaea are in Christ Jesus.",
+  "ref": "1 Thessalonians 2:14"
+ },
+ {
+  "id": "1-thessalonians-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were Paul and his companions forbidden to do?",
+  "choices": [
+   "Preach in Philippi",
+   "Write letters to the churches",
+   "Enter the synagogue",
+   "Speak to the Gentiles that they might be saved"
+  ],
+  "answer": 3,
+  "explanation": "They were forbidding us to speak to the Gentiles that they might be saved.",
+  "ref": "1 Thessalonians 2:16"
+ },
+ {
+  "id": "1-thessalonians-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has come upon the persecutors to the uttermost?",
+  "choices": [
+   "Famine",
+   "Wrath",
+   "Exile",
+   "Sickness"
+  ],
+  "answer": 1,
+  "explanation": "To fill up their sins alway: for the wrath is come upon them to the uttermost.",
+  "ref": "1 Thessalonians 2:16"
+ },
+ {
+  "id": "1-thessalonians-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "In whom does the word of God effectually work?",
+  "choices": [
+   "In the elders only",
+   "In the Jews",
+   "In you that believe",
+   "In those who forbid"
+  ],
+  "answer": 2,
+  "explanation": "The word of God effectually worketh also in you that believe.",
+  "ref": "1 Thessalonians 2:13"
+ },
+ {
+  "id": "1-thessalonians-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which three things did Paul do to every one of them, as a father?",
+  "choices": [
+   "Exhorted, comforted and charged",
+   "Taught, rebuked and fed",
+   "Fed, clothed and taught",
+   "Warned, fined and sent away"
+  ],
+  "answer": 0,
+  "explanation": "He exhorted and comforted and charged every one of them, as a father doth his children.",
+  "ref": "1 Thessalonians 2:11"
+ },
+ {
+  "id": "1-thessalonians-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom did the Thessalonians suffer like things, as the Judaean churches did from the Jews?",
+  "choices": [
+   "The Romans",
+   "The Philippians",
+   "The Athenians",
+   "Their own countrymen"
+  ],
+  "answer": 3,
+  "explanation": "They suffered like things of their own countrymen, even as the churches have of the Jews.",
+  "ref": "1 Thessalonians 2:14"
+ },
+ {
+  "id": "1-thessalonians-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the Lord Jesus, whom did Paul say the Jews had killed?",
+  "choices": [
+   "Their own priests",
+   "Their own prophets",
+   "The apostles",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "They both killed the Lord Jesus, and their own prophets.",
+  "ref": "1 Thessalonians 2:15"
+ },
+ {
+  "id": "1-thessalonians-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says they please not God and are contrary to whom?",
+  "choices": [
+   "The Gentiles only",
+   "The apostles",
+   "All men",
+   "The rulers"
+  ],
+  "answer": 2,
+  "explanation": "They please not God, and are contrary to all men.",
+  "ref": "1 Thessalonians 2:15"
+ },
+ {
+  "id": "1-thessalonians-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says his exhortation was not of deceit, nor of uncleanness, nor in what?",
+  "choices": [
+   "Guile",
+   "Fear",
+   "Haste",
+   "Pride"
+  ],
+  "answer": 0,
+  "explanation": "For our exhortation was not of deceit, nor of uncleanness, nor in guile.",
+  "ref": "1 Thessalonians 2:3"
+ },
+ {
+  "id": "1-thessalonians-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How often did Paul say he himself would have come to them?",
+  "choices": [
+   "Every year",
+   "Only at Pentecost",
+   "Once and again",
+   "Only once"
+  ],
+  "answer": 2,
+  "explanation": "We would have come unto you, even I Paul, once and again; but Satan hindered us.",
+  "ref": "1 Thessalonians 2:18"
+ },
+ {
+  "id": "1-thessalonians-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what feeling did Paul endeavour to see their face?",
+  "choices": [
+   "A hidden purpose",
+   "Great desire",
+   "A sense of duty",
+   "A fear of loss"
+  ],
+  "answer": 1,
+  "explanation": "He endeavoured the more abundantly to see your face with great desire.",
+  "ref": "1 Thessalonians 2:17"
+ },
+ {
+  "id": "1-thessalonians-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Paul says he behaved holily, justly and unblameably among whom?",
+  "choices": [
+   "The Gentiles who forbid",
+   "The elders of Philippi",
+   "The rulers",
+   "Them that believe"
+  ],
+  "answer": 3,
+  "explanation": "Ye are witnesses how holily and justly and unblameably we behaved ourselves among you that believe.",
+  "ref": "1 Thessalonians 2:10"
+ },
+ {
+  "id": "1-thessalonians-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Paul say he was still with them though taken from them for a short time?",
+  "choices": [
+   "In heart",
+   "In letters",
+   "In prayer only",
+   "In Timotheus"
+  ],
+  "answer": 0,
+  "explanation": "Paul was taken from them for a short time in presence, not in heart.",
+  "ref": "1 Thessalonians 2:17"
+ },
+ {
+  "id": "1-thessalonians-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what way did they speak the gospel at Thessalonica after Philippi?",
+  "choices": [
+   "In secret and fear",
+   "Bold in God, with much contention",
+   "Only to the Jews",
+   "Quietly by letter"
+  ],
+  "answer": 1,
+  "explanation": "They were bold in our God to speak unto you the gospel of God with much contention.",
+  "ref": "1 Thessalonians 2:2"
+ },
+ {
+  "id": "1-thessalonians-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Paul think it good to be left alone?",
+  "choices": [
+   "Philippi",
+   "Athens",
+   "Corinth",
+   "Berea"
+  ],
+  "answer": 1,
+  "explanation": "Paul thought it good to be left at Athens alone.",
+  "ref": "1 Thessalonians 3:1"
+ },
+ {
+  "id": "1-thessalonians-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Paul fear might have tempted the Thessalonians?",
+  "choices": [
+   "The Jews",
+   "The elders",
+   "The tempter",
+   "The Romans"
+  ],
+  "answer": 2,
+  "explanation": "Paul feared lest by some means the tempter have tempted you.",
+  "ref": "1 Thessalonians 3:5"
+ },
+ {
+  "id": "1-thessalonians-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "How does Paul describe Timotheus?",
+  "choices": [
+   "Brother, minister of God and fellowlabourer in the gospel",
+   "A deacon of Athens",
+   "A prophet of Judaea",
+   "A servant of Silvanus"
+  ],
+  "answer": 0,
+  "explanation": "Timotheus is our brother, and minister of God, and our fellowlabourer in the gospel of Christ.",
+  "ref": "1 Thessalonians 3:2"
+ },
+ {
+  "id": "1-thessalonians-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul fear would be in vain if they fell to temptation?",
+  "choices": [
+   "His journey",
+   "His letter",
+   "His prison",
+   "His labour"
+  ],
+  "answer": 3,
+  "explanation": "Paul feared lest the tempter had tempted them, and our labour be in vain.",
+  "ref": "1 Thessalonians 3:5"
+ },
+ {
+  "id": "1-thessalonians-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Timotheus say the Thessalonians had of Paul always?",
+  "choices": [
+   "Fear and doubt",
+   "Good remembrance",
+   "Long silence",
+   "Great debts"
+  ],
+  "answer": 1,
+  "explanation": "Timotheus said ye have good remembrance of us always.",
+  "ref": "1 Thessalonians 3:6"
+ },
+ {
+  "id": "1-thessalonians-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What comforted Paul in all his affliction and distress?",
+  "choices": [
+   "Their gifts",
+   "Their letters",
+   "Their faith",
+   "Their numbers"
+  ],
+  "answer": 2,
+  "explanation": "We were comforted over you in all our affliction and distress by your faith.",
+  "ref": "1 Thessalonians 3:7"
+ },
+ {
+  "id": "1-thessalonians-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say they cannot repay God for?",
+  "choices": [
+   "All the joy he had because of them",
+   "A safe journey",
+   "A gift of money",
+   "Their release from prison"
+  ],
+  "answer": 0,
+  "explanation": "What thanks can we render to God again for all the joy wherewith we joy for your sakes?",
+  "ref": "1 Thessalonians 3:9"
+ },
+ {
+  "id": "1-thessalonians-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom does Paul pray will make them increase and abound in love?",
+  "choices": [
+   "Silvanus",
+   "The Lord",
+   "Timotheus",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "The Lord make you to increase and abound in love one toward another, and toward all men.",
+  "ref": "1 Thessalonians 3:12"
+ },
+ {
+  "id": "1-thessalonians-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Timotheus report about the Thessalonians’ desire?",
+  "choices": [
+   "They desired greatly to see Paul",
+   "They wanted to leave the city",
+   "They asked for money",
+   "They wished to send Paul away"
+  ],
+  "answer": 0,
+  "explanation": "They were desiring greatly to see us, as we also to see you.",
+  "ref": "1 Thessalonians 3:6"
+ },
+ {
+  "id": "1-thessalonians-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul say believers are appointed to?",
+  "choices": [
+   "Riches",
+   "Rulership",
+   "Silence",
+   "Afflictions"
+  ],
+  "answer": 3,
+  "explanation": "That no man should be moved by these afflictions: for yourselves know that we are appointed thereunto.",
+  "ref": "1 Thessalonians 3:3"
+ },
+ {
+  "id": "1-thessalonians-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul pray night and day that he might perfect?",
+  "choices": [
+   "The building of the church",
+   "That which is lacking in their faith",
+   "The offering for the saints",
+   "The writing of his letter"
+  ],
+  "answer": 1,
+  "explanation": "Night and day praying exceedingly that we might perfect that which is lacking in your faith.",
+  "ref": "1 Thessalonians 3:10"
+ },
+ {
+  "id": "1-thessalonians-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "With whom will the Lord Jesus Christ come?",
+  "choices": [
+   "The twelve apostles",
+   "Seven angels",
+   "All his saints",
+   "The prophets only"
+  ],
+  "answer": 2,
+  "explanation": "At the coming of our Lord Jesus Christ with all his saints.",
+  "ref": "1 Thessalonians 3:13"
+ },
+ {
+  "id": "1-thessalonians-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom does Paul say he joys for their sakes?",
+  "choices": [
+   "Our God",
+   "The elders",
+   "The churches",
+   "Silvanus"
+  ],
+  "answer": 0,
+  "explanation": "For all the joy wherewith we joy for your sakes before our God.",
+  "ref": "1 Thessalonians 3:9"
+ },
+ {
+  "id": "1-thessalonians-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does Paul pray will direct his way to the Thessalonians?",
+  "choices": [
+   "The Holy Spirit alone",
+   "God himself and our Father, and our Lord Jesus Christ",
+   "Timotheus and Silvanus",
+   "The elders of Athens"
+  ],
+  "answer": 1,
+  "explanation": "Now God himself and our Father, and our Lord Jesus Christ, direct our way unto you.",
+  "ref": "1 Thessalonians 3:11"
+ },
+ {
+  "id": "1-thessalonians-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Paul tell them they should suffer tribulation?",
+  "choices": [
+   "After Timotheus returned",
+   "In this letter alone",
+   "When he reached Athens",
+   "Before, when he was with them"
+  ],
+  "answer": 3,
+  "explanation": "When we were with you, we told you before that we should suffer tribulation.",
+  "ref": "1 Thessalonians 3:4"
+ },
+ {
+  "id": "1-thessalonians-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Paul pray to see their face?",
+  "choices": [
+   "Night and day, exceedingly",
+   "Once a year",
+   "Only in secret",
+   "Only on the Sabbath"
+  ],
+  "answer": 0,
+  "explanation": "Night and day praying exceedingly that we might see your face.",
+  "ref": "1 Thessalonians 3:10"
+ },
+ {
+  "id": "1-thessalonians-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Lord descend from heaven with?",
+  "choices": [
+   "A sword",
+   "A flood",
+   "A shout",
+   "Silence"
+  ],
+  "answer": 2,
+  "explanation": "The Lord himself shall descend from heaven with a shout.",
+  "ref": "1 Thessalonians 4:16"
+ },
+ {
+  "id": "1-thessalonians-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where will living believers meet the Lord?",
+  "choices": [
+   "On the mountain",
+   "In the air",
+   "In Jerusalem",
+   "In the temple"
+  ],
+  "answer": 1,
+  "explanation": "We shall be caught up to meet the Lord in the air.",
+  "ref": "1 Thessalonians 4:17"
+ },
+ {
+  "id": "1-thessalonians-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul tell them to do with these words?",
+  "choices": [
+   "Comfort one another",
+   "Keep them secret",
+   "Debate them",
+   "Write them down"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore comfort one another with these words.",
+  "ref": "1 Thessalonians 4:18"
+ },
+ {
+  "id": "1-thessalonians-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do believers believe about Jesus?",
+  "choices": [
+   "That he is only a prophet",
+   "That he never died",
+   "That he will return as a king of Rome",
+   "That he died and rose again"
+  ],
+  "answer": 3,
+  "explanation": "We believe that Jesus died and rose again.",
+  "ref": "1 Thessalonians 4:14"
+ },
+ {
+  "id": "1-thessalonians-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who taught them to love one another?",
+  "choices": [
+   "Paul",
+   "God",
+   "Timotheus",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Ye yourselves are taught of God to love one another.",
+  "ref": "1 Thessalonians 4:9"
+ },
+ {
+  "id": "1-thessalonians-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "In what region did they show love toward all the brethren?",
+  "choices": [
+   "Galilee",
+   "Judaea",
+   "Macedonia",
+   "Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Ye do it toward all the brethren which are in all Macedonia.",
+  "ref": "1 Thessalonians 4:10"
+ },
+ {
+  "id": "1-thessalonians-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul tell them to work with?",
+  "choices": [
+   "Their own hands",
+   "Their own gifts",
+   "Their words",
+   "Their learning"
+  ],
+  "answer": 0,
+  "explanation": "Work with your own hands, as we commanded you.",
+  "ref": "1 Thessalonians 4:11"
+ },
+ {
+  "id": "1-thessalonians-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "By whom did Paul exhort them to walk and please God?",
+  "choices": [
+   "By the apostles",
+   "By the Lord Jesus",
+   "By the elders",
+   "By the law"
+  ],
+  "answer": 1,
+  "explanation": "We beseech you, brethren, and exhort you by the Lord Jesus.",
+  "ref": "1 Thessalonians 4:1"
+ },
+ {
+  "id": "1-thessalonians-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says not to sorrow as others who have no what?",
+  "choices": [
+   "Money",
+   "Teachers",
+   "Home",
+   "Hope"
+  ],
+  "answer": 3,
+  "explanation": "That ye sorrow not, even as others which have no hope.",
+  "ref": "1 Thessalonians 4:13"
+ },
+ {
+  "id": "1-thessalonians-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom will God bring with Jesus?",
+  "choices": [
+   "The angels only",
+   "The apostles only",
+   "Them which sleep in Jesus",
+   "The prophets of old only"
+  ],
+  "answer": 2,
+  "explanation": "Them also which sleep in Jesus will God bring with him.",
+  "ref": "1 Thessalonians 4:14"
+ },
+ {
+  "id": "1-thessalonians-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will be the final state of believers, once caught up?",
+  "choices": [
+   "Ever with the Lord",
+   "In Jerusalem",
+   "Alone in the clouds",
+   "Back on earth"
+  ],
+  "answer": 0,
+  "explanation": "And so shall we ever be with the Lord.",
+  "ref": "1 Thessalonians 4:17"
+ },
+ {
+  "id": "1-thessalonians-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "God hath not called us unto uncleanness, but unto what?",
+  "choices": [
+   "Riches",
+   "Holiness",
+   "Rest",
+   "Rule"
+  ],
+  "answer": 1,
+  "explanation": "God hath not called us unto uncleanness, but unto holiness.",
+  "ref": "1 Thessalonians 4:7"
+ },
+ {
+  "id": "1-thessalonians-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who has given us his holy Spirit?",
+  "choices": [
+   "Paul",
+   "The apostles",
+   "God",
+   "The angels"
+  ],
+  "answer": 2,
+  "explanation": "He therefore that despiseth despiseth God, who hath also given unto us his holy Spirit.",
+  "ref": "1 Thessalonians 4:8"
+ },
+ {
+  "id": "1-thessalonians-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Not in the lust of concupiscence, even as whom?",
+  "choices": [
+   "The Gentiles which know not God",
+   "The Pharisees",
+   "The idols",
+   "The rulers of Rome"
+  ],
+  "answer": 0,
+  "explanation": "Not in the lust of concupiscence, even as the Gentiles which know not God.",
+  "ref": "1 Thessalonians 4:5"
+ },
+ {
+  "id": "1-thessalonians-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What wrong against his brother does Paul warn a man not to do?",
+  "choices": [
+   "Rule over him",
+   "Pray for him",
+   "Teach him",
+   "Go beyond and defraud him"
+  ],
+  "answer": 3,
+  "explanation": "That no man go beyond and defraud his brother in any matter.",
+  "ref": "1 Thessalonians 4:6"
+ },
+ {
+  "id": "1-thessalonians-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What should every one of them know how to possess in sanctification and honour?",
+  "choices": [
+   "His house",
+   "His vessel",
+   "His field",
+   "His wealth"
+  ],
+  "answer": 1,
+  "explanation": "That every one of you should know how to possess his vessel in sanctification and honour.",
+  "ref": "1 Thessalonians 4:4"
+ },
+ {
+  "id": "1-thessalonians-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose voice is with the Lord when he descends from heaven?",
+  "choices": [
+   "The prophets",
+   "Moses",
+   "The archangel",
+   "The apostles"
+  ],
+  "answer": 2,
+  "explanation": "The Lord himself shall descend from heaven with the voice of the archangel.",
+  "ref": "1 Thessalonians 4:16"
+ },
+ {
+  "id": "1-thessalonians-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what authority did Paul say what he said about the coming of the Lord?",
+  "choices": [
+   "By the word of the Lord",
+   "By a letter from Jerusalem",
+   "By a dream",
+   "By the elders"
+  ],
+  "answer": 0,
+  "explanation": "This we say unto you by the word of the Lord.",
+  "ref": "1 Thessalonians 4:15"
+ },
+ {
+  "id": "1-thessalonians-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is caught up together with the living in the clouds?",
+  "choices": [
+   "The angels",
+   "The dead in Christ, raised",
+   "The Gentiles",
+   "The apostles only"
+  ],
+  "answer": 1,
+  "explanation": "Then we which are alive and remain shall be caught up together with them in the clouds.",
+  "ref": "1 Thessalonians 4:17"
+ },
+ {
+  "id": "1-thessalonians-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "About what did Paul say they needed no one to write to them?",
+  "choices": [
+   "The Spirit",
+   "Rulers",
+   "Prayer",
+   "Brotherly love"
+  ],
+  "answer": 3,
+  "explanation": "But as touching brotherly love ye need not that I write unto you.",
+  "ref": "1 Thessalonians 4:9"
+ },
+ {
+  "id": "1-thessalonians-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does Paul say to walk honestly and work with their own hands?",
+  "choices": [
+   "That they may have lack of nothing",
+   "That they may be rich",
+   "That they may rule",
+   "That they may be famous"
+  ],
+  "answer": 0,
+  "explanation": "That ye may walk honestly toward them that are without, and that ye may have lack of nothing.",
+  "ref": "1 Thessalonians 4:12"
+ },
+ {
+  "id": "1-thessalonians-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul beseech them to do more and more in their brotherly love?",
+  "choices": [
+   "Rest",
+   "Increase",
+   "Give less",
+   "Hide it"
+  ],
+  "answer": 1,
+  "explanation": "Ye do it toward all the brethren: but we beseech you, brethren, that ye increase more and more.",
+  "ref": "1 Thessalonians 4:10"
+ },
+ {
+  "id": "1-thessalonians-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are believers told to be, as they watch?",
+  "choices": [
+   "Sober",
+   "Silent",
+   "Hasty",
+   "Rich"
+  ],
+  "answer": 0,
+  "explanation": "Let us not sleep, as do others; but let us watch and be sober.",
+  "ref": "1 Thessalonians 5:6"
+ },
+ {
+  "id": "1-thessalonians-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the believer’s helmet?",
+  "choices": [
+   "The word of truth",
+   "The peace of God",
+   "The hope of salvation",
+   "The love of brethren"
+  ],
+  "answer": 2,
+  "explanation": "For an helmet, the hope of salvation.",
+  "ref": "1 Thessalonians 5:8"
+ },
+ {
+  "id": "1-thessalonians-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has God not appointed believers to?",
+  "choices": [
+   "Salvation",
+   "Wrath",
+   "Peace",
+   "Rest"
+  ],
+  "answer": 1,
+  "explanation": "God hath not appointed us to wrath, but to obtain salvation by our Lord Jesus Christ.",
+  "ref": "1 Thessalonians 5:9"
+ },
+ {
+  "id": "1-thessalonians-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Paul ask the brethren to pray for?",
+  "choices": [
+   "Paul and his companions",
+   "The elders only",
+   "The rulers",
+   "The Gentiles"
+  ],
+  "answer": 0,
+  "explanation": "Brethren, pray for us.",
+  "ref": "1 Thessalonians 5:25"
+ },
+ {
+  "id": "1-thessalonians-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul tell them to greet all the brethren?",
+  "choices": [
+   "With a feast",
+   "With a gift",
+   "With a letter",
+   "With an holy kiss"
+  ],
+  "answer": 3,
+  "explanation": "Greet all the brethren with an holy kiss.",
+  "ref": "1 Thessalonians 5:26"
+ },
+ {
+  "id": "1-thessalonians-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say to do with all things?",
+  "choices": [
+   "Prove all things",
+   "Fear all things",
+   "Sell all things",
+   "Forget all things"
+  ],
+  "answer": 0,
+  "explanation": "Prove all things; hold fast that which is good.",
+  "ref": "1 Thessalonians 5:21"
+ },
+ {
+  "id": "1-thessalonians-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what are believers told to abstain?",
+  "choices": [
+   "All meat",
+   "All appearance of evil",
+   "All travel",
+   "All feasts"
+  ],
+  "answer": 1,
+  "explanation": "Abstain from all appearance of evil.",
+  "ref": "1 Thessalonians 5:22"
+ },
+ {
+  "id": "1-thessalonians-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say not to despise?",
+  "choices": [
+   "Teachers",
+   "Gifts of money",
+   "Prophesyings",
+   "Elders"
+  ],
+  "answer": 2,
+  "explanation": "Despise not prophesyings.",
+  "ref": "1 Thessalonians 5:20"
+ },
+ {
+  "id": "1-thessalonians-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say about him that calleth you?",
+  "choices": [
+   "He is silent",
+   "He is angry",
+   "He is distant",
+   "He is faithful"
+  ],
+  "answer": 3,
+  "explanation": "Faithful is he that calleth you, who also will do it.",
+  "ref": "1 Thessalonians 5:24"
+ },
+ {
+  "id": "1-thessalonians-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul command in the shortest verse, about joy?",
+  "choices": [
+   "Rejoice evermore",
+   "Rejoice sometimes",
+   "Rejoice in silence",
+   "Rejoice alone"
+  ],
+  "answer": 0,
+  "explanation": "Rejoice evermore.",
+  "ref": "1 Thessalonians 5:16"
+ },
+ {
+  "id": "1-thessalonians-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will people be saying when sudden destruction comes?",
+  "choices": [
+   "Woe and fear",
+   "Peace and safety",
+   "The Lord is near",
+   "Repent and live"
+  ],
+  "answer": 1,
+  "explanation": "When they shall say, Peace and safety; then sudden destruction cometh upon them.",
+  "ref": "1 Thessalonians 5:3"
+ },
+ {
+  "id": "1-thessalonians-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what does Paul compare sudden destruction?",
+  "choices": [
+   "A flood in the night",
+   "A fire in a field",
+   "Travail upon a woman with child",
+   "A storm at sea"
+  ],
+  "answer": 2,
+  "explanation": "Sudden destruction cometh upon them, as travail upon a woman with child.",
+  "ref": "1 Thessalonians 5:3"
+ },
+ {
+  "id": "1-thessalonians-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom should the brethren esteem very highly in love?",
+  "choices": [
+   "Them that labour among them and are over them in the Lord",
+   "Their wealthy neighbours",
+   "The rulers of the city",
+   "Travelling teachers only"
+  ],
+  "answer": 0,
+  "explanation": "Know them which labour among you, and are over you in the Lord, and esteem them very highly in love.",
+  "ref": "1 Thessalonians 5:12–13"
+ },
+ {
+  "id": "1-thessalonians-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does Paul say to warn?",
+  "choices": [
+   "The feebleminded",
+   "Them that are unruly",
+   "The weak",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "We exhort you, brethren, warn them that are unruly.",
+  "ref": "1 Thessalonians 5:14"
+ },
+ {
+  "id": "1-thessalonians-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does Paul say to comfort?",
+  "choices": [
+   "The feebleminded",
+   "The unruly",
+   "The rich",
+   "The rulers"
+  ],
+  "answer": 0,
+  "explanation": "Comfort the feebleminded.",
+  "ref": "1 Thessalonians 5:14"
+ },
+ {
+  "id": "1-thessalonians-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does Paul say to support?",
+  "choices": [
+   "The unruly",
+   "The elders",
+   "The weak",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "Support the weak.",
+  "ref": "1 Thessalonians 5:14"
+ },
+ {
+  "id": "1-thessalonians-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should none render to any man?",
+  "choices": [
+   "Evil for evil",
+   "Good for good",
+   "Gifts for gifts",
+   "Tithes for taxes"
+  ],
+  "answer": 0,
+  "explanation": "See that none render evil for evil unto any man.",
+  "ref": "1 Thessalonians 5:15"
+ },
+ {
+  "id": "1-thessalonians-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How often does Paul say to pray?",
+  "choices": [
+   "Once a day",
+   "Without ceasing",
+   "On the Sabbath",
+   "Only in trouble"
+  ],
+  "answer": 1,
+  "explanation": "Pray without ceasing.",
+  "ref": "1 Thessalonians 5:17"
+ },
+ {
+  "id": "1-thessalonians-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Who does Paul pray will sanctify them wholly?",
+  "choices": [
+   "The apostles",
+   "The elders",
+   "The Lord of hosts alone",
+   "The very God of peace"
+  ],
+  "answer": 3,
+  "explanation": "The very God of peace sanctify you wholly.",
+  "ref": "1 Thessalonians 5:23"
+ },
+ {
+  "id": "1-thessalonians-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul charge them to have read to all the holy brethren?",
+  "choices": [
+   "This epistle",
+   "The law of Moses",
+   "A psalm",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "I charge you by the Lord that this epistle be read unto all the holy brethren.",
+  "ref": "1 Thessalonians 5:27"
+ },
+ {
+  "id": "1-thessalonians-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are believers to put on as a breastplate?",
+  "choices": [
+   "Truth and peace",
+   "Faith and love",
+   "Hope and joy",
+   "Wisdom and might"
+  ],
+  "answer": 1,
+  "explanation": "Putting on the breastplate of faith and love.",
+  "ref": "1 Thessalonians 5:8"
+ },
+ {
+  "id": "1-thessalonians-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whether we wake or sleep, what does Paul say we should do?",
+  "choices": [
+   "Be silent",
+   "Wait alone",
+   "Live together with him",
+   "Depart from the world"
+  ],
+  "answer": 2,
+  "explanation": "Who died for us, that, whether we wake or sleep, we should live together with him.",
+  "ref": "1 Thessalonians 5:10"
+ },
+ {
+  "id": "1-thessalonians-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say to do together, as they already do?",
+  "choices": [
+   "Comfort and edify one another",
+   "Fast and mourn",
+   "Work and rest",
+   "Teach and rebuke"
+  ],
+  "answer": 0,
+  "explanation": "Comfort yourselves together, and edify one another, even as also ye do.",
+  "ref": "1 Thessalonians 5:11"
+ },
+ {
+  "id": "1-thessalonians-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "About what did Paul say they had no need that he write?",
+  "choices": [
+   "The works of faith",
+   "The gifts of the Spirit",
+   "The elders of the church",
+   "The times and the seasons"
+  ],
+  "answer": 3,
+  "explanation": "But of the times and the seasons, brethren, ye have no need that I write unto you.",
+  "ref": "1 Thessalonians 5:1"
+ },
+ {
+  "id": "1-thessalonians-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When do they that sleep and they that are drunken do so?",
+  "choices": [
+   "In the night",
+   "In the morning",
+   "At noon",
+   "At evening only"
+  ],
+  "answer": 0,
+  "explanation": "They that sleep sleep in the night; and they that be drunken are drunken in the night.",
+  "ref": "1 Thessalonians 5:7"
+ },
+ {
+  "id": "1-thessalonians-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Who does Paul say know perfectly that the day of the Lord comes as a thief?",
+  "choices": [
+   "The elders only",
+   "The rulers",
+   "The Thessalonians themselves",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "For yourselves know perfectly that the day of the Lord so cometh as a thief in the night.",
+  "ref": "1 Thessalonians 5:2"
+ },
+ {
+  "id": "1-thessalonians-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Those who are over them in the Lord labour among them and also do what?",
+  "choices": [
+   "Judge them",
+   "Admonish them",
+   "Feed them",
+   "Send them out"
+  ],
+  "answer": 1,
+  "explanation": "Know them which labour among you, and are over you in the Lord, and admonish you.",
+  "ref": "1 Thessalonians 5:12"
+ },
+ {
+  "id": "1-thessalonians-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Toward whom does Paul say to be patient?",
+  "choices": [
+   "The elders only",
+   "The unruly only",
+   "The brethren only",
+   "All men"
+  ],
+  "answer": 3,
+  "explanation": "Support the weak, be patient toward all men.",
+  "ref": "1 Thessalonians 5:14"
+ },
+ {
+  "id": "1-thessalonians-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say believers should ever follow, among themselves and toward all men?",
+  "choices": [
+   "That which is good",
+   "That which is easy",
+   "That which is new",
+   "That which is lawful"
+  ],
+  "answer": 0,
+  "explanation": "Ever follow that which is good, both among yourselves, and to all men.",
+  "ref": "1 Thessalonians 5:15"
+ },
+ {
+  "id": "1-thessalonians-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why will that day not overtake the brethren as a thief?",
+  "choices": [
+   "They are watching a city",
+   "They are not in darkness",
+   "They have seen signs",
+   "They are hidden"
+  ],
+  "answer": 1,
+  "explanation": "But ye, brethren, are not in darkness, that that day should overtake you as a thief.",
+  "ref": "1 Thessalonians 5:4"
+ },
+ {
+  "id": "1-thessalonians-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "By whom does God appoint us to obtain salvation?",
+  "choices": [
+   "The apostles",
+   "The prophets",
+   "Our Lord Jesus Christ",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "God hath appointed us to obtain salvation by our Lord Jesus Christ.",
+  "ref": "1 Thessalonians 5:9"
+ },
+ {
+  "id": "1-thessalonians-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whose sake does Paul say to esteem the leaders very highly?",
+  "choices": [
+   "For their work’s sake",
+   "For their age",
+   "For their wealth",
+   "For their names"
+  ],
+  "answer": 0,
+  "explanation": "Esteem them very highly in love for their work’s sake.",
+  "ref": "1 Thessalonians 5:13"
+ },
+ {
+  "id": "1-thessalonians-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "By whom does Paul charge them to read the epistle to all?",
+  "choices": [
+   "By the elders",
+   "By the Lord",
+   "By Timotheus",
+   "By the churches"
+  ],
+  "answer": 1,
+  "explanation": "I charge you by the Lord that this epistle be read unto all the holy brethren.",
+  "ref": "1 Thessalonians 5:27"
+ },
+ {
+  "id": "1-thessalonians-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of those who cry Peace and safety?",
+  "choices": [
+   "They shall be forgiven",
+   "They shall be warned",
+   "They shall be many",
+   "They shall not escape"
+  ],
+  "answer": 3,
+  "explanation": "Sudden destruction cometh upon them; and they shall not escape.",
+  "ref": "1 Thessalonians 5:3"
+ },
+ {
+  "id": "1-thessalonians-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say is the will of God in Christ Jesus concerning them?",
+  "choices": [
+   "In every thing give thanks",
+   "Fast in every season",
+   "Leave every city",
+   "Teach every nation"
+  ],
+  "answer": 0,
+  "explanation": "In every thing give thanks: for this is the will of God in Christ Jesus concerning you.",
+  "ref": "1 Thessalonians 5:18"
+ },
+ {
+  "id": "1-thessalonians-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what are those who are sober said to be?",
+  "choices": [
+   "The night",
+   "The day",
+   "The city",
+   "The law"
+  ],
+  "answer": 1,
+  "explanation": "Let us, who are of the day, be sober.",
+  "ref": "1 Thessalonians 5:8"
+ },
+ {
+  "id": "1-thessalonians-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What closes the letter, Paul’s last wish for them?",
+  "choices": [
+   "The grace of our Lord Jesus Christ be with you",
+   "The peace of God be with you",
+   "The Lord keep you from evil",
+   "The Spirit be with all"
+  ],
+  "answer": 0,
+  "explanation": "The grace of our Lord Jesus Christ be with you. Amen.",
+  "ref": "1 Thessalonians 5:28"
+ },
+ {
+  "id": "1-thessalonians-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whom are they told to be at peace?",
+  "choices": [
+   "With the Gentiles",
+   "With the rulers",
+   "Among themselves",
+   "With the Jews"
+  ],
+  "answer": 2,
+  "explanation": "And be at peace among yourselves.",
+  "ref": "1 Thessalonians 5:13"
  }
 ]
