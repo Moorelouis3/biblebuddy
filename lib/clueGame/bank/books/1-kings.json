@@ -2902,10 +2902,10 @@
   "category": "keyword",
   "question": "Why had David not built the house for the Lord according to Solomon?",
   "choices": [
-   "He lacked money",
+   "He lacked cedar",
    "Wars were on every side",
-   "He was too young",
-   "He forgot"
+   "The people refused",
+   "He was in exile"
   ],
   "answer": 1,
   "explanation": "David's wars prevented him from building the temple.",
@@ -2958,6 +2958,646 @@
   "answer": 2,
   "explanation": "Solomon gave Hiram twenty thousand measures of wheat and twenty measures of pure oil year by year.",
   "ref": "1 Kings 5:11"
+ },
+ {
+  "id": "1-kings-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom was Hiram ever a lover of?",
+  "choices": [
+   "Saul",
+   "David",
+   "Nathan",
+   "Solomon"
+  ],
+  "answer": 1,
+  "explanation": "Hiram was ever a lover of David.",
+  "ref": "1 Kings 5:1"
+ },
+ {
+  "id": "1-kings-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon purpose to build?",
+  "choices": [
+   "An house unto the name of the LORD",
+   "A palace for Pharaoh's daughter",
+   "A wall around Tyre",
+   "A fleet of ships"
+  ],
+  "answer": 0,
+  "explanation": "I purpose to build an house unto the name of the LORD my God.",
+  "ref": "1 Kings 5:5"
+ },
+ {
+  "id": "1-kings-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of rest did the LORD give Solomon?",
+  "choices": [
+   "Rest from famine",
+   "Rest from his father's sins",
+   "Rest for seven years",
+   "Rest on every side"
+  ],
+  "answer": 3,
+  "explanation": "The LORD my God hath given me rest on every side.",
+  "ref": "1 Kings 5:4"
+ },
+ {
+  "id": "1-kings-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who did Solomon say were more skilled than his people at hewing timber?",
+  "choices": [
+   "The Egyptians",
+   "The Philistines",
+   "The Sidonians",
+   "The Hittites"
+  ],
+  "answer": 2,
+  "explanation": "There is not among us any that can skill to hew timber like unto the Sidonians.",
+  "ref": "1 Kings 5:6"
+ },
+ {
+  "id": "1-kings-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Hiram react when he heard Solomon's words?",
+  "choices": [
+   "He was angry",
+   "He rejoiced greatly",
+   "He refused",
+   "He sent spies"
+  ],
+  "answer": 1,
+  "explanation": "When Hiram heard the words of Solomon, he rejoiced greatly.",
+  "ref": "1 Kings 5:7"
+ },
+ {
+  "id": "1-kings-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "From where would Hiram's servants bring the cedar down?",
+  "choices": [
+   "Lebanon",
+   "Gilead",
+   "Carmel",
+   "Hermon"
+  ],
+  "answer": 0,
+  "explanation": "My servants shall bring them down from Lebanon unto the sea.",
+  "ref": "1 Kings 5:9"
+ },
+ {
+  "id": "1-kings-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hiram king of Tyre first send to Solomon?",
+  "choices": [
+   "A letter of war",
+   "Ships of gold",
+   "His daughter",
+   "His servants"
+  ],
+  "answer": 3,
+  "explanation": "Hiram king of Tyre sent his servants unto Solomon.",
+  "ref": "1 Kings 5:1"
+ },
+ {
+  "id": "1-kings-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon and Hiram make together?",
+  "choices": [
+   "A covenant with Egypt",
+   "A great feast",
+   "A league",
+   "A new temple"
+  ],
+  "answer": 2,
+  "explanation": "There was peace between Hiram and Solomon; and they two made a league together.",
+  "ref": "1 Kings 5:12"
+ },
+ {
+  "id": "1-kings-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was over the levy?",
+  "choices": [
+   "Benaiah",
+   "Adoniram",
+   "Zadok",
+   "Ahishar"
+  ],
+  "answer": 1,
+  "explanation": "Adoniram was over the levy.",
+  "ref": "1 Kings 5:14"
+ },
+ {
+  "id": "1-kings-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Solomon send the levy to work?",
+  "choices": [
+   "Lebanon",
+   "Jericho",
+   "Egypt",
+   "Gilead"
+  ],
+  "answer": 0,
+  "explanation": "He sent them to Lebanon ten thousand a month by courses.",
+  "ref": "1 Kings 5:14"
+ },
+ {
+  "id": "1-kings-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when could David not build the house of the LORD?",
+  "choices": [
+   "Until Solomon was born",
+   "Until the ark was found",
+   "Until Hiram sent timber",
+   "Until the LORD put his enemies under his feet"
+  ],
+  "answer": 3,
+  "explanation": "David could not build for the wars, until the LORD put them under the soles of his feet.",
+  "ref": "1 Kings 5:3"
+ },
+ {
+  "id": "1-kings-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon say there was neither of in his time?",
+  "choices": [
+   "Famine nor plague",
+   "Hunger nor thirst",
+   "Adversary nor evil occurrent",
+   "Idolatry nor war"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hath given me rest on every side, so that there is neither adversary nor evil occurrent.",
+  "ref": "1 Kings 5:4"
+ },
+ {
+  "id": "1-kings-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about David's son?",
+  "choices": [
+   "He would build a palace of ivory",
+   "He would build an house unto his name",
+   "He would rule Egypt",
+   "He would take Tyre"
+  ],
+  "answer": 1,
+  "explanation": "Thy son, whom I will set upon thy throne in thy room, he shall build an house unto my name.",
+  "ref": "1 Kings 5:5"
+ },
+ {
+  "id": "1-kings-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two kinds of timber did Hiram agree to supply?",
+  "choices": [
+   "Cedar and fir",
+   "Cedar and olive",
+   "Fir and oak",
+   "Fir and cypress"
+  ],
+  "answer": 0,
+  "explanation": "I will do all thy desire concerning timber of cedar, and concerning timber of fir.",
+  "ref": "1 Kings 5:8"
+ },
+ {
+  "id": "1-kings-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon promise to give Hiram's servants?",
+  "choices": [
+   "Land in Israel",
+   "Houses in Jerusalem",
+   "Slaves",
+   "Hire according to all Hiram appointed"
+  ],
+  "answer": 3,
+  "explanation": "Unto thee will I give hire for thy servants according to all that thou shalt appoint.",
+  "ref": "1 Kings 5:6"
+ },
+ {
+  "id": "1-kings-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Hiram answer Solomon's request for timber?",
+  "choices": [
+   "I must refuse",
+   "I will think on it",
+   "I will do all thy desire",
+   "I will ask Pharaoh"
+  ],
+  "answer": 2,
+  "explanation": "I have considered the things which thou sentest to me for: and I will do all thy desire.",
+  "ref": "1 Kings 5:8"
+ },
+ {
+  "id": "1-kings-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hiram say about the LORD when he heard Solomon's words?",
+  "choices": [
+   "The LORD is angry with Israel",
+   "Blessed be the LORD, who gave David a wise son",
+   "The LORD is a god of Tyre",
+   "The LORD has cursed David"
+  ],
+  "answer": 1,
+  "explanation": "Hiram said, Blessed be the LORD this day, which hath given unto David a wise son over this great people.",
+  "ref": "1 Kings 5:7"
+ },
+ {
+  "id": "1-kings-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many measures of wheat did Solomon give Hiram?",
+  "choices": [
+   "Twenty thousand",
+   "Two thousand",
+   "Ten thousand",
+   "Thirty thousand"
+  ],
+  "answer": 0,
+  "explanation": "Solomon gave Hiram twenty thousand measures of wheat for food to his household.",
+  "ref": "1 Kings 5:11"
+ },
+ {
+  "id": "1-kings-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many measures of pure oil did Solomon give Hiram?",
+  "choices": [
+   "Two hundred",
+   "Ten",
+   "Thirty",
+   "Twenty"
+  ],
+  "answer": 3,
+  "explanation": "And twenty measures of pure oil.",
+  "ref": "1 Kings 5:11"
+ },
+ {
+  "id": "1-kings-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How often did Solomon give Hiram wheat and oil?",
+  "choices": [
+   "Every month",
+   "Once",
+   "Year by year",
+   "Every seventh year"
+  ],
+  "answer": 2,
+  "explanation": "Thus gave Solomon to Hiram year by year.",
+  "ref": "1 Kings 5:11"
+ },
+ {
+  "id": "1-kings-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD give Solomon, as he promised him?",
+  "choices": [
+   "Riches",
+   "Wisdom",
+   "Victory over Egypt",
+   "Many sons"
+  ],
+  "answer": 1,
+  "explanation": "The LORD gave Solomon wisdom, as he promised him.",
+  "ref": "1 Kings 5:12"
+ },
+ {
+  "id": "1-kings-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men of the levy went to Lebanon each month?",
+  "choices": [
+   "Ten thousand",
+   "Thirty thousand",
+   "Three thousand",
+   "Seventy thousand"
+  ],
+  "answer": 0,
+  "explanation": "He sent them to Lebanon ten thousand a month by courses.",
+  "ref": "1 Kings 5:14"
+ },
+ {
+  "id": "1-kings-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men bare burdens for Solomon?",
+  "choices": [
+   "Thirty thousand",
+   "Fourscore thousand",
+   "Ten thousand",
+   "Threescore and ten thousand"
+  ],
+  "answer": 3,
+  "explanation": "Solomon had threescore and ten thousand that bare burdens.",
+  "ref": "1 Kings 5:15"
+ },
+ {
+  "id": "1-kings-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many hewers did Solomon have in the mountains?",
+  "choices": [
+   "Threescore and ten thousand",
+   "Thirty thousand",
+   "Fourscore thousand",
+   "Ten thousand"
+  ],
+  "answer": 2,
+  "explanation": "Fourscore thousand hewers in the mountains.",
+  "ref": "1 Kings 5:15"
+ },
+ {
+  "id": "1-kings-5-m-15",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men were in the levy Solomon raised out of Israel?",
+  "choices": [
+   "Ten thousand",
+   "Thirty thousand",
+   "Seventy thousand",
+   "Eighty thousand"
+  ],
+  "answer": 1,
+  "explanation": "The levy was thirty thousand men.",
+  "ref": "1 Kings 5:13"
+ },
+ {
+  "id": "1-kings-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many chief officers were over the work?",
+  "choices": [
+   "Three thousand and three hundred",
+   "Three hundred",
+   "Thirty-three hundred thousand",
+   "Two thousand and three hundred"
+  ],
+  "answer": 0,
+  "explanation": "The chief of Solomon's officers which were over the work, three thousand and three hundred.",
+  "ref": "1 Kings 5:16"
+ },
+ {
+  "id": "1-kings-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who also hewed with Solomon's builders and Hiram's builders?",
+  "choices": [
+   "The Sidonians",
+   "The levy of Judah",
+   "The priests",
+   "The stonesquarers"
+  ],
+  "answer": 3,
+  "explanation": "Solomon's builders and Hiram's builders did hew them, and the stonesquarers.",
+  "ref": "1 Kings 5:18"
+ },
+ {
+  "id": "1-kings-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was each man of the levy at home in turn?",
+  "choices": [
+   "One month",
+   "Three months",
+   "Two months",
+   "Six months"
+  ],
+  "answer": 2,
+  "explanation": "A month they were in Lebanon, and two months at home.",
+  "ref": "1 Kings 5:14"
+ },
+ {
+  "id": "1-kings-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hiram call the people Solomon ruled?",
+  "choices": [
+   "This stiffnecked people",
+   "This great people",
+   "This chosen flock",
+   "This mighty nation"
+  ],
+  "answer": 1,
+  "explanation": "Blessed be the LORD, which hath given unto David a wise son over this great people.",
+  "ref": "1 Kings 5:7"
+ },
+ {
+  "id": "1-kings-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what were the great stones, costly stones and hewed stones brought?",
+  "choices": [
+   "To lay the foundation of the house",
+   "To build the wall",
+   "To pave the court",
+   "To make the altar"
+  ],
+  "answer": 0,
+  "explanation": "They brought great stones, costly stones, and hewed stones, to lay the foundation of the house.",
+  "ref": "1 Kings 5:17"
+ },
+ {
+  "id": "1-kings-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How would Hiram convey the timber by sea?",
+  "choices": [
+   "In ships of Tarshish",
+   "In barges",
+   "In chariots",
+   "In floats"
+  ],
+  "answer": 3,
+  "explanation": "I will convey them by sea in floats unto the place that thou shalt appoint me.",
+  "ref": "1 Kings 5:9"
+ },
+ {
+  "id": "1-kings-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hiram ask in return for the timber?",
+  "choices": [
+   "Silver for his temple",
+   "Land near Tyre",
+   "Food for his household",
+   "Horses from Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt accomplish my desire, in giving food for my household.",
+  "ref": "1 Kings 5:9"
+ },
+ {
+  "id": "1-kings-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Hiram bless when he heard Solomon's words?",
+  "choices": [
+   "David",
+   "The LORD",
+   "Solomon",
+   "Pharaoh"
+  ],
+  "answer": 1,
+  "explanation": "Hiram said, Blessed be the LORD this day.",
+  "ref": "1 Kings 5:7"
+ },
+ {
+  "id": "1-kings-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose servants did Solomon say would be with Hiram's servants?",
+  "choices": [
+   "Solomon's own servants",
+   "The Sidonians",
+   "Adoniram's levy",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "Command thou that they hew me cedar trees out of Lebanon; and my servants shall be with thy servants.",
+  "ref": "1 Kings 5:6"
+ },
+ {
+  "id": "1-kings-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Who commanded that the great stones be brought?",
+  "choices": [
+   "Adoniram",
+   "Hiram",
+   "The chief officers",
+   "The king"
+  ],
+  "answer": 3,
+  "explanation": "The king commanded, and they brought great stones, costly stones, and hewed stones.",
+  "ref": "1 Kings 5:17"
+ },
+ {
+  "id": "1-kings-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose builders worked beside Solomon's builders to prepare the timber and stone?",
+  "choices": [
+   "Pharaoh's builders",
+   "David's builders",
+   "Hiram's builders",
+   "The Sidonian priests"
+  ],
+  "answer": 2,
+  "explanation": "Solomon's builders and Hiram's builders did hew them: so they prepared timber and stones to build the house.",
+  "ref": "1 Kings 5:18"
+ },
+ {
+  "id": "1-kings-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of how much of Israel did Solomon raise the levy?",
+  "choices": [
+   "Only Judah",
+   "All Israel",
+   "Only Benjamin",
+   "Only the northern tribes"
+  ],
+  "answer": 1,
+  "explanation": "King Solomon raised a levy out of all Israel.",
+  "ref": "1 Kings 5:13"
+ },
+ {
+  "id": "1-kings-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the fourscore thousand hewers work?",
+  "choices": [
+   "In the mountains",
+   "In Tyre",
+   "In the valley of Hinnom",
+   "At the sea"
+  ],
+  "answer": 0,
+  "explanation": "Fourscore thousand hewers in the mountains.",
+  "ref": "1 Kings 5:15"
+ },
+ {
+  "id": "1-kings-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose throne did the LORD say Solomon would sit on?",
+  "choices": [
+   "Saul's",
+   "Hiram's",
+   "Pharaoh's",
+   "David's"
+  ],
+  "answer": 3,
+  "explanation": "Thy son, whom I will set upon thy throne in thy room, he shall build an house unto my name.",
+  "ref": "1 Kings 5:5"
+ },
+ {
+  "id": "1-kings-5-h-15",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Hiram say the floats would be discharged?",
+  "choices": [
+   "At the port of Tyre",
+   "At Jerusalem's gate",
+   "At the place Solomon appointed",
+   "At the river Jordan"
+  ],
+  "answer": 2,
+  "explanation": "I will convey them by sea in floats unto the place that thou shalt appoint me, and will cause them to be discharged there.",
+  "ref": "1 Kings 5:9"
  },
  {
   "id": "old-1-kings-6-1",
