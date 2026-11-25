@@ -16,38 +16,6 @@
   "ref": "Ezekiel 1:1"
  },
  {
-  "id": "old-ezekiel-1-2",
-  "chapter": 1,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How many living creatures did Ezekiel see?",
-  "choices": [
-   "Two",
-   "Four",
-   "Seven",
-   "Twelve"
-  ],
-  "answer": 1,
-  "explanation": "The vision included four living creatures around God's throne-chariot.",
-  "ref": "Ezekiel 1:5"
- },
- {
-  "id": "old-ezekiel-1-3",
-  "chapter": 1,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How many faces did each living creature have?",
-  "choices": [
-   "One",
-   "Two",
-   "Three",
-   "Four"
-  ],
-  "answer": 3,
-  "explanation": "Each creature had four faces: man, lion, ox, and eagle.",
-  "ref": "Ezekiel 1:6"
- },
- {
   "id": "old-ezekiel-1-4",
   "chapter": 1,
   "level": "beginner",
@@ -78,22 +46,6 @@
   "answer": 3,
   "explanation": "The sight of God's glory caused Ezekiel to fall on his face in awe.",
   "ref": "Ezekiel 1:28"
- },
- {
-  "id": "old-ezekiel-2-1",
-  "chapter": 2,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How does God repeatedly address Ezekiel in this chapter?",
-  "choices": [
-   "Son of man",
-   "King of Judah",
-   "Priest of Zion",
-   "Watchman"
-  ],
-  "answer": 0,
-  "explanation": "God's title for Ezekiel emphasizes his humanity before divine glory.",
-  "ref": "Ezekiel 2:1"
  },
  {
   "id": "old-ezekiel-2-2",
@@ -190,22 +142,6 @@
   "answer": 2,
   "explanation": "Ezekiel's duty was to hear God's word and warn the people.",
   "ref": "Ezekiel 3:17"
- },
- {
-  "id": "old-ezekiel-3-3",
-  "chapter": 3,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What must Ezekiel do when God warns the wicked?",
-  "choices": [
-   "Keep silent",
-   "Ask the king first",
-   "Write it only on a scroll",
-   "Warn him"
-  ],
-  "answer": 3,
-  "explanation": "If he fails to warn, the wicked man's blood will be required at Ezekiel's hand.",
-  "ref": "Ezekiel 3:18"
  },
  {
   "id": "old-ezekiel-3-4",
@@ -464,22 +400,6 @@
   "ref": "Ezekiel 6:9"
  },
  {
-  "id": "old-ezekiel-6-5",
-  "chapter": 6,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What refrain closes the chapter's sections?",
-  "choices": [
-   "And ye shall know that I am the Lord",
-   "Peace, peace",
-   "Return unto Zion",
-   "The city shall stand"
-  ],
-  "answer": 0,
-  "explanation": "The recognition formula shows that judgment reveals God's identity and holiness.",
-  "ref": "Ezekiel 6:7"
- },
- {
   "id": "old-ezekiel-7-1",
   "chapter": 7,
   "level": "beginner",
@@ -640,22 +560,6 @@
   "ref": "Ezekiel 8:16"
  },
  {
-  "id": "old-ezekiel-9-1",
-  "chapter": 9,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How many men with slaughter weapons appeared in the vision?",
-  "choices": [
-   "Five",
-   "Six",
-   "Seven",
-   "Twelve"
-  ],
-  "answer": 1,
-  "explanation": "Six executioners appear along with one clothed in linen.",
-  "ref": "Ezekiel 9:2"
- },
- {
   "id": "old-ezekiel-9-2",
   "chapter": 9,
   "level": "beginner",
@@ -798,22 +702,6 @@
   "answer": 3,
   "explanation": "The repeated details connect this vision directly with Ezekiel's inaugural vision.",
   "ref": "Ezekiel 10:14"
- },
- {
-  "id": "old-ezekiel-11-1",
-  "chapter": 11,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How many men are seen at the east gate?",
-  "choices": [
-   "Twelve",
-   "Seventy",
-   "Six",
-   "Twenty-five"
-  ],
-  "answer": 3,
-  "explanation": "Twenty-five men are named among the city's corrupt leaders.",
-  "ref": "Ezekiel 11:1"
  },
  {
   "id": "old-ezekiel-11-2",
@@ -14782,5 +14670,5157 @@
   "answer": 3,
   "explanation": "The princes of the north and all the Zidonians, with their terror they are ashamed of their might, and bear their shame with them that go down to the pit.",
   "ref": "Ezekiel 32:30"
+ },
+ {
+  "id": "ezekiel-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was opened when Ezekiel saw visions of God?",
+  "choices": [
+   "The heavens",
+   "The temple doors",
+   "The sea",
+   "The grave"
+  ],
+  "answer": 0,
+  "explanation": "Ezekiel was among the captives by the river of Chebar, and the heavens were opened, and he saw visions of God.",
+  "ref": "Ezekiel 1:1"
+ },
+ {
+  "id": "ezekiel-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which direction did the whirlwind come from?",
+  "choices": [
+   "The south",
+   "The north",
+   "The east",
+   "The west"
+  ],
+  "answer": 1,
+  "explanation": "Ezekiel looked, and behold, a whirlwind came out of the north, a great cloud, and a fire infolding itself.",
+  "ref": "Ezekiel 1:4"
+ },
+ {
+  "id": "ezekiel-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the four faces of each living creature?",
+  "choices": [
+   "Man, lion, bear and dove",
+   "Lion, ox, horse and eagle",
+   "Man, lion, ox and eagle",
+   "Man, serpent, ox and eagle"
+  ],
+  "answer": 2,
+  "explanation": "Each had the face of a man, a lion, an ox and an eagle.",
+  "ref": "Ezekiel 1:10"
+ },
+ {
+  "id": "ezekiel-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the rings of the wheels full of?",
+  "choices": [
+   "Fire",
+   "Lightning",
+   "Water",
+   "Eyes"
+  ],
+  "answer": 3,
+  "explanation": "Their rings were so high that they were dreadful, and their rings were full of eyes round about them four.",
+  "ref": "Ezekiel 1:18"
+ },
+ {
+  "id": "ezekiel-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezekiel see above the firmament over the creatures heads?",
+  "choices": [
+   "A throne",
+   "A rainbow",
+   "A mountain",
+   "An altar"
+  ],
+  "answer": 0,
+  "explanation": "Above the firmament was the likeness of a throne, as the appearance of a sapphire stone.",
+  "ref": "Ezekiel 1:26"
+ },
+ {
+  "id": "ezekiel-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The brightness round about looked like what in the cloud?",
+  "choices": [
+   "A pillar of smoke",
+   "A bow in the day of rain",
+   "A flock of birds",
+   "A flame on an altar"
+  ],
+  "answer": 1,
+  "explanation": "As the appearance of the bow that is in the cloud in the day of rain, so was the brightness round about.",
+  "ref": "Ezekiel 1:28"
+ },
+ {
+  "id": "ezekiel-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "What was Ezekiel, the son of Buzi?",
+  "choices": [
+   "A king",
+   "A shepherd",
+   "A priest",
+   "A scribe"
+  ],
+  "answer": 2,
+  "explanation": "The word of the LORD came expressly unto Ezekiel the priest, the son of Buzi.",
+  "ref": "Ezekiel 1:3"
+ },
+ {
+  "id": "ezekiel-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The noise of the creatures wings was like the noise of what?",
+  "choices": [
+   "A trumpet",
+   "Falling stones",
+   "A lion roaring",
+   "Great waters"
+  ],
+  "answer": 3,
+  "explanation": "When they went, he heard the noise of their wings, like the noise of great waters.",
+  "ref": "Ezekiel 1:24"
+ },
+ {
+  "id": "ezekiel-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What came out of the midst of the fire in the whirlwind?",
+  "choices": [
+   "The likeness of four living creatures",
+   "A chariot of horses",
+   "An angel with a sword",
+   "A burning bush"
+  ],
+  "answer": 0,
+  "explanation": "Out of the midst thereof came the likeness of four living creatures, and they had the likeness of a man.",
+  "ref": "Ezekiel 1:5"
+ },
+ {
+  "id": "ezekiel-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose glory was the brightness the likeness of?",
+  "choices": [
+   "The glory of the king",
+   "The glory of the LORD",
+   "The glory of the temple",
+   "The glory of the angels"
+  ],
+  "answer": 1,
+  "explanation": "This was the appearance of the likeness of the glory of the LORD.",
+  "ref": "Ezekiel 1:28"
+ },
+ {
+  "id": "ezekiel-1-e-11",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Among whom was Ezekiel by the river of Chebar?",
+  "choices": [
+   "The Chaldean soldiers",
+   "The priests of the temple",
+   "The captives",
+   "The kings of Judah"
+  ],
+  "answer": 2,
+  "explanation": "Ezekiel was among the captives by the river of Chebar when the heavens were opened.",
+  "ref": "Ezekiel 1:1"
+ },
+ {
+  "id": "ezekiel-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose captivity was in its fifth year when the word came to Ezekiel?",
+  "choices": [
+   "King Zedekiah",
+   "King Jehoiachin",
+   "King Jehoiakim",
+   "King Nebuchadnezzar"
+  ],
+  "answer": 1,
+  "explanation": "It was the fifth year of king Jehoiachin's captivity.",
+  "ref": "Ezekiel 1:2"
+ },
+ {
+  "id": "ezekiel-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Ezekiel the priest?",
+  "choices": [
+   "Hilkiah",
+   "Jeremiah",
+   "Buzi",
+   "Shaphan"
+  ],
+  "answer": 2,
+  "explanation": "The word of the LORD came expressly unto Ezekiel the priest, the son of Buzi.",
+  "ref": "Ezekiel 1:3"
+ },
+ {
+  "id": "ezekiel-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "In whose land was Ezekiel by the river Chebar?",
+  "choices": [
+   "The land of Egypt",
+   "The land of the Philistines",
+   "The land of Moab",
+   "The land of the Chaldeans"
+  ],
+  "answer": 3,
+  "explanation": "The word came to Ezekiel in the land of the Chaldeans by the river Chebar.",
+  "ref": "Ezekiel 1:3"
+ },
+ {
+  "id": "ezekiel-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What colour was the middle of the fire in the whirlwind?",
+  "choices": [
+   "Amber",
+   "Crimson",
+   "Gold",
+   "White"
+  ],
+  "answer": 0,
+  "explanation": "Out of the midst of the fire came the colour of amber.",
+  "ref": "Ezekiel 1:4"
+ },
+ {
+  "id": "ezekiel-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The soles of the creatures feet were like the foot of what?",
+  "choices": [
+   "A lion",
+   "An ox",
+   "A calf",
+   "A goat"
+  ],
+  "answer": 2,
+  "explanation": "Their feet were straight, and the sole was like a calf's foot, sparkling like burnished brass.",
+  "ref": "Ezekiel 1:7"
+ },
+ {
+  "id": "ezekiel-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the creatures have under their wings?",
+  "choices": [
+   "The claws of an eagle",
+   "The hands of a man",
+   "Eyes round about",
+   "Burning coals"
+  ],
+  "answer": 1,
+  "explanation": "They had the hands of a man under their wings on their four sides.",
+  "ref": "Ezekiel 1:8"
+ },
+ {
+  "id": "ezekiel-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the living creatures go?",
+  "choices": [
+   "In a circle",
+   "Backward and forward",
+   "Up and down in turn",
+   "Every one straight forward"
+  ],
+  "answer": 3,
+  "explanation": "They turned not when they went; they went every one straight forward, whither the spirit was to go.",
+  "ref": "Ezekiel 1:12"
+ },
+ {
+  "id": "ezekiel-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On the left side, which face did all four creatures have?",
+  "choices": [
+   "An ox",
+   "A lion",
+   "An eagle",
+   "A man"
+  ],
+  "answer": 0,
+  "explanation": "They four had the face of an ox on the left side.",
+  "ref": "Ezekiel 1:10"
+ },
+ {
+  "id": "ezekiel-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the creatures appearance look like?",
+  "choices": [
+   "Polished silver and glass",
+   "Clouds and snow",
+   "Burning coals of fire and lamps",
+   "Gold and precious stones"
+  ],
+  "answer": 2,
+  "explanation": "Their appearance was like burning coals of fire, and like the appearance of lamps.",
+  "ref": "Ezekiel 1:13"
+ },
+ {
+  "id": "ezekiel-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the living creatures run and return?",
+  "choices": [
+   "Like a rushing wind",
+   "Like a flash of lightning",
+   "Like a flowing river",
+   "Like a flock of birds"
+  ],
+  "answer": 1,
+  "explanation": "The living creatures ran and returned as the appearance of a flash of lightning.",
+  "ref": "Ezekiel 1:14"
+ },
+ {
+  "id": "ezekiel-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The wheels were the colour of which stone?",
+  "choices": [
+   "A sapphire",
+   "A ruby",
+   "A diamond",
+   "A beryl"
+  ],
+  "answer": 3,
+  "explanation": "The appearance of the wheels was like unto the colour of a beryl.",
+  "ref": "Ezekiel 1:16"
+ },
+ {
+  "id": "ezekiel-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the wheels made?",
+  "choices": [
+   "A wheel in the middle of a wheel",
+   "Of iron and brass",
+   "With wings on every side",
+   "With a single rim of gold"
+  ],
+  "answer": 0,
+  "explanation": "Their appearance and work was as it were a wheel in the middle of a wheel.",
+  "ref": "Ezekiel 1:16"
+ },
+ {
+  "id": "ezekiel-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the wheels go wherever the creatures went?",
+  "choices": [
+   "The wheels were fastened to their feet",
+   "The creatures pulled them with chains",
+   "The spirit of the living creature was in the wheels",
+   "The LORD drove them with a whip"
+  ],
+  "answer": 2,
+  "explanation": "The spirit of the living creature was in the wheels.",
+  "ref": "Ezekiel 1:20"
+ },
+ {
+  "id": "ezekiel-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the firmament over their heads look like?",
+  "choices": [
+   "A sea of glass",
+   "The colour of the terrible crystal",
+   "A cloud of fire",
+   "A sheet of gold"
+  ],
+  "answer": 1,
+  "explanation": "The likeness of the firmament was as the colour of the terrible crystal.",
+  "ref": "Ezekiel 1:22"
+ },
+ {
+  "id": "ezekiel-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month of the thirtieth year did the vision come?",
+  "choices": [
+   "The first month",
+   "The seventh month",
+   "The fourth month",
+   "The tenth month"
+  ],
+  "answer": 2,
+  "explanation": "It was in the thirtieth year, in the fourth month, in the fifth day of the month.",
+  "ref": "Ezekiel 1:1"
+ },
+ {
+  "id": "ezekiel-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did two of each creature's wings do?",
+  "choices": [
+   "Covered their bodies",
+   "Covered their faces",
+   "Touched the ground",
+   "Held the wheels"
+  ],
+  "answer": 0,
+  "explanation": "Two wings of every one were joined, and two covered their bodies.",
+  "ref": "Ezekiel 1:11"
+ },
+ {
+  "id": "ezekiel-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the creatures do with their wings when they stood?",
+  "choices": [
+   "They lifted them up",
+   "They folded them over their faces",
+   "They spread them toward the east",
+   "They let them down"
+  ],
+  "answer": 3,
+  "explanation": "When they stood, they let down their wings.",
+  "ref": "Ezekiel 1:24"
+ },
+ {
+  "id": "ezekiel-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What came from the firmament when the creatures stood and let down their wings?",
+  "choices": [
+   "A flash of fire",
+   "A voice",
+   "A great wind",
+   "A rain of coals"
+  ],
+  "answer": 1,
+  "explanation": "There was a voice from the firmament that was over their heads.",
+  "ref": "Ezekiel 1:25"
+ },
+ {
+  "id": "ezekiel-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The likeness of the throne looked like which stone?",
+  "choices": [
+   "A beryl",
+   "An emerald",
+   "A sapphire",
+   "A jasper"
+  ],
+  "answer": 2,
+  "explanation": "The likeness of a throne was as the appearance of a sapphire stone.",
+  "ref": "Ezekiel 1:26"
+ },
+ {
+  "id": "ezekiel-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ezekiel see from the loins upward and downward?",
+  "choices": [
+   "The appearance of fire with brightness round about",
+   "A robe of white linen",
+   "A rainbow of many colours",
+   "A body of burnished brass"
+  ],
+  "answer": 0,
+  "explanation": "From his loins upward and downward he saw as it were the appearance of fire, with brightness round about.",
+  "ref": "Ezekiel 1:27"
+ },
+ {
+  "id": "ezekiel-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two faces were on the right side of the creatures?",
+  "choices": [
+   "A lion and an eagle",
+   "A man and a lion",
+   "An ox and an eagle",
+   "A man and an ox"
+  ],
+  "answer": 1,
+  "explanation": "They had the face of a man and of a lion on the right side.",
+  "ref": "Ezekiel 1:10"
+ },
+ {
+  "id": "ezekiel-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The noise of the wings was like the voice of whom?",
+  "choices": [
+   "A great host",
+   "A lion",
+   "The thunder",
+   "The Almighty"
+  ],
+  "answer": 3,
+  "explanation": "The noise of their wings was as the voice of the Almighty, the voice of speech, as the noise of an host.",
+  "ref": "Ezekiel 1:24"
+ },
+ {
+  "id": "ezekiel-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the wheels when the creatures were lifted up from the earth?",
+  "choices": [
+   "They were lifted up too",
+   "They stayed on the earth",
+   "They broke apart",
+   "They turned to fire"
+  ],
+  "answer": 0,
+  "explanation": "When the living creatures were lifted up from the earth, the wheels were lifted up.",
+  "ref": "Ezekiel 1:19"
+ },
+ {
+  "id": "ezekiel-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ezekiel hear after he fell upon his face?",
+  "choices": [
+   "The noise of many waters",
+   "A trumpet sounding",
+   "A voice of one that spake",
+   "Weeping from the captives"
+  ],
+  "answer": 2,
+  "explanation": "When he saw it, he fell upon his face and heard a voice of one that spake.",
+  "ref": "Ezekiel 1:28"
+ },
+ {
+  "id": "ezekiel-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was infolding itself in the great cloud?",
+  "choices": [
+   "A light",
+   "A fire",
+   "A rainbow",
+   "A wind"
+  ],
+  "answer": 1,
+  "explanation": "A whirlwind came, a great cloud, and a fire infolding itself, with a brightness about it.",
+  "ref": "Ezekiel 1:4"
+ },
+ {
+  "id": "ezekiel-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of the height of the wheels rings?",
+  "choices": [
+   "They reached up to the heavens",
+   "They were low to the ground",
+   "They were higher than the temple",
+   "They were so high that they were dreadful"
+  ],
+  "answer": 3,
+  "explanation": "Their rings were so high that they were dreadful.",
+  "ref": "Ezekiel 1:18"
+ },
+ {
+  "id": "ezekiel-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the wings of the creatures do under the firmament?",
+  "choices": [
+   "Were straight, one toward the other",
+   "Were stretched over their feet",
+   "Were folded behind them",
+   "Were bound with cords"
+  ],
+  "answer": 0,
+  "explanation": "Under the firmament were their wings straight, the one toward the other.",
+  "ref": "Ezekiel 1:23"
+ },
+ {
+  "id": "ezekiel-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the wheels go, as to turning?",
+  "choices": [
+   "Round and round in a circle",
+   "Only backward",
+   "On their four sides, and they turned not",
+   "Only when the wind blew"
+  ],
+  "answer": 2,
+  "explanation": "When they went, they went upon their four sides: and they turned not when they went.",
+  "ref": "Ezekiel 1:17"
+ },
+ {
+  "id": "ezekiel-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who put the fire into the hands of the man clothed with linen?",
+  "choices": [
+   "An angel of the LORD",
+   "The prophet",
+   "One cherub",
+   "The high priest"
+  ],
+  "answer": 2,
+  "explanation": "One cherub stretched forth his hand unto the fire, and put it into the hands of him that was clothed with linen.",
+  "ref": "Ezekiel 10:7"
+ },
+ {
+  "id": "ezekiel-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What filled the inner court when the man went in?",
+  "choices": [
+   "The smoke of incense",
+   "The cloud",
+   "The sound of music",
+   "The fire"
+  ],
+  "answer": 1,
+  "explanation": "The cloud filled the inner court.",
+  "ref": "Ezekiel 10:3"
+ },
+ {
+  "id": "ezekiel-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose voice was the sound of the cherubims wings like?",
+  "choices": [
+   "The Almighty God when he speaketh",
+   "A great host",
+   "Many waters",
+   "A trumpet"
+  ],
+  "answer": 0,
+  "explanation": "The sound of the cherubims wings was heard even to the outer court, as the voice of the Almighty God when he speaketh.",
+  "ref": "Ezekiel 10:5"
+ },
+ {
+  "id": "ezekiel-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many wheels stood by the cherubims?",
+  "choices": [
+   "Two, one on each side",
+   "Seven, one for each cherub",
+   "Twelve in all",
+   "Four, one by each cherub"
+  ],
+  "answer": 3,
+  "explanation": "Four wheels by the cherubims, one wheel by one cherub, and another wheel by another cherub.",
+  "ref": "Ezekiel 10:9"
+ },
+ {
+  "id": "ezekiel-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What appeared under the wings of the cherubims?",
+  "choices": [
+   "A bow",
+   "A shield",
+   "The form of a mans hand",
+   "A cloud"
+  ],
+  "answer": 2,
+  "explanation": "There appeared in the cherubims the form of a man's hand under their wings.",
+  "ref": "Ezekiel 10:8"
+ },
+ {
+  "id": "ezekiel-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "At the door of which gate did the cherubims stand when they mounted up?",
+  "choices": [
+   "The north gate",
+   "The east gate of the LORD's house",
+   "The water gate",
+   "The gate of the altar"
+  ],
+  "answer": 1,
+  "explanation": "Every one stood at the door of the east gate of the LORD's house.",
+  "ref": "Ezekiel 10:19"
+ },
+ {
+  "id": "ezekiel-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the colour of the wheels?",
+  "choices": [
+   "A beryl stone",
+   "A sapphire",
+   "Burnished brass",
+   "Crystal"
+  ],
+  "answer": 0,
+  "explanation": "The appearance of the wheels was as the colour of a beryl stone.",
+  "ref": "Ezekiel 10:9"
+ },
+ {
+  "id": "ezekiel-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the four wheels made?",
+  "choices": [
+   "Each of solid gold",
+   "Each with six spokes",
+   "Each joined to the next",
+   "As if a wheel had been in the midst of a wheel"
+  ],
+  "answer": 3,
+  "explanation": "They four had one likeness, as if a wheel had been in the midst of a wheel.",
+  "ref": "Ezekiel 10:10"
+ },
+ {
+  "id": "ezekiel-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When the wheels went, where did they follow?",
+  "choices": [
+   "The voice of the man",
+   "The direction of the wind",
+   "The place whither the head looked",
+   "The path of the cloud"
+  ],
+  "answer": 2,
+  "explanation": "To the place whither the head looked they followed it; they turned not as they went.",
+  "ref": "Ezekiel 10:11"
+ },
+ {
+  "id": "ezekiel-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was cried unto the wheels in Ezekiel's hearing?",
+  "choices": [
+   "Holy",
+   "O wheel",
+   "Be still",
+   "Go forth"
+  ],
+  "answer": 1,
+  "explanation": "As for the wheels, it was cried unto them in my hearing, O wheel.",
+  "ref": "Ezekiel 10:13"
+ },
+ {
+  "id": "ezekiel-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which face of each cherub was the first face?",
+  "choices": [
+   "The face of a cherub",
+   "The face of a man",
+   "The face of a lion",
+   "The face of an eagle"
+  ],
+  "answer": 0,
+  "explanation": "The first face was the face of a cherub, and the second face was the face of a man.",
+  "ref": "Ezekiel 10:14"
+ },
+ {
+  "id": "ezekiel-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the cherubims stand when the man went in?",
+  "choices": [
+   "At the east gate",
+   "Before the altar",
+   "In the outer court",
+   "On the right side of the house"
+  ],
+  "answer": 3,
+  "explanation": "The cherubims stood on the right side of the house, when the man went in.",
+  "ref": "Ezekiel 10:3"
+ },
+ {
+  "id": "ezekiel-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the wheels turn with the cherubims?",
+  "choices": [
+   "They were bound with chains",
+   "The wind pushed them",
+   "The spirit of the living creature was in them",
+   "They were drawn by oxen"
+  ],
+  "answer": 2,
+  "explanation": "When they were lifted up, these lifted up themselves also: for the spirit of the living creature was in them.",
+  "ref": "Ezekiel 10:17"
+ },
+ {
+  "id": "ezekiel-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What filled the house and court as the glory of the LORD stood over the threshold?",
+  "choices": [
+   "Smoke and darkness",
+   "The cloud and the brightness",
+   "Water and light",
+   "Fire and ashes"
+  ],
+  "answer": 1,
+  "explanation": "The house was filled with the cloud, and the court was full of the brightness of the LORD's glory.",
+  "ref": "Ezekiel 10:4"
+ },
+ {
+  "id": "ezekiel-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Over what did the glory of the LORD stand after leaving the threshold?",
+  "choices": [
+   "The cherubims",
+   "The altar",
+   "The east gate",
+   "The wheels"
+  ],
+  "answer": 0,
+  "explanation": "The glory of the LORD departed from off the threshold of the house, and stood over the cherubims.",
+  "ref": "Ezekiel 10:18"
+ },
+ {
+  "id": "ezekiel-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How far was the sound of the cherubims wings heard?",
+  "choices": [
+   "Only to the inner court",
+   "To the city gate",
+   "Across the river",
+   "Even to the outer court"
+  ],
+  "answer": 3,
+  "explanation": "The sound of the cherubims wings was heard even to the outer court.",
+  "ref": "Ezekiel 10:5"
+ },
+ {
+  "id": "ezekiel-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where was the fire to be taken?",
+  "choices": [
+   "From the brasen altar",
+   "From the lamps in the house",
+   "From between the wheels, between the cherubims",
+   "From the east gate"
+  ],
+  "answer": 2,
+  "explanation": "Take fire from between the wheels, from between the cherubims.",
+  "ref": "Ezekiel 10:6"
+ },
+ {
+  "id": "ezekiel-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What parts of the cherubims were full of eyes round about?",
+  "choices": [
+   "Only their faces",
+   "Their whole body, backs, hands and wings",
+   "Only their wheels",
+   "Only their wings"
+  ],
+  "answer": 1,
+  "explanation": "Their whole body, and their backs, and their hands, and their wings, and the wheels, were full of eyes round about.",
+  "ref": "Ezekiel 10:12"
+ },
+ {
+  "id": "ezekiel-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was over the cherubims above when they mounted up?",
+  "choices": [
+   "The glory of the God of Israel",
+   "The throne of David",
+   "A cloud of smoke",
+   "The angel with the inkhorn"
+  ],
+  "answer": 0,
+  "explanation": "The glory of the God of Israel was over them above.",
+  "ref": "Ezekiel 10:19"
+ },
+ {
+  "id": "ezekiel-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Ezekiel say he had seen these living creatures before?",
+  "choices": [
+   "At the temple gate",
+   "In Egypt",
+   "On Mount Zion",
+   "By the river of Chebar"
+  ],
+  "answer": 3,
+  "explanation": "This is the living creature that I saw under the God of Israel by the river of Chebar.",
+  "ref": "Ezekiel 10:20"
+ },
+ {
+  "id": "ezekiel-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the cherubims go as in the earlier vision?",
+  "choices": [
+   "In a circle",
+   "Backward and forward",
+   "Every one straight forward",
+   "By turns"
+  ],
+  "answer": 2,
+  "explanation": "They went every one straight forward.",
+  "ref": "Ezekiel 10:22"
+ },
+ {
+  "id": "ezekiel-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the wheels do when the cherubims lifted their wings to mount up?",
+  "choices": [
+   "They stayed on the ground",
+   "They turned not from beside them",
+   "They rolled ahead",
+   "They broke apart"
+  ],
+  "answer": 1,
+  "explanation": "When the cherubims lifted up their wings to mount up from the earth, the same wheels also turned not from beside them.",
+  "ref": "Ezekiel 10:16"
+ },
+ {
+  "id": "ezekiel-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Between what was the man in linen told to go in?",
+  "choices": [
+   "The wheels, under the cherub",
+   "The pillars of the porch",
+   "The altar and the wall",
+   "The two gates"
+  ],
+  "answer": 0,
+  "explanation": "Go in between the wheels, even under the cherub, and fill thine hand with coals of fire.",
+  "ref": "Ezekiel 10:2"
+ },
+ {
+  "id": "ezekiel-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the man told to scatter over the city?",
+  "choices": [
+   "Ashes",
+   "Salt",
+   "Water",
+   "Coals of fire"
+  ],
+  "answer": 3,
+  "explanation": "Fill thine hand with coals of fire from between the cherubims, and scatter them over the city.",
+  "ref": "Ezekiel 10:2"
+ },
+ {
+  "id": "ezekiel-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the man stand after he went in?",
+  "choices": [
+   "Beside the altar",
+   "At the east gate",
+   "Beside the wheels",
+   "Under the throne"
+  ],
+  "answer": 2,
+  "explanation": "He went in, and stood beside the wheels.",
+  "ref": "Ezekiel 10:6"
+ },
+ {
+  "id": "ezekiel-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of the likeness of their faces?",
+  "choices": [
+   "Unlike those he had seen before",
+   "The same as seen by the river of Chebar",
+   "Hidden from him",
+   "Only the lion was seen"
+  ],
+  "answer": 1,
+  "explanation": "The likeness of their faces was the same faces which I saw by the river of Chebar.",
+  "ref": "Ezekiel 10:22"
+ },
+ {
+  "id": "ezekiel-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where did the cherubims mount up in Ezekiel sight?",
+  "choices": [
+   "From the earth",
+   "From the altar",
+   "From the east gate",
+   "From the porch"
+  ],
+  "answer": 0,
+  "explanation": "The cherubims lifted up their wings, and mounted up from the earth in my sight.",
+  "ref": "Ezekiel 10:19"
+ },
+ {
+  "id": "ezekiel-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was commanded to take fire from between the wheels?",
+  "choices": [
+   "The king of Israel",
+   "The prophet Ezekiel",
+   "The high priest",
+   "The man clothed with linen"
+  ],
+  "answer": 3,
+  "explanation": "He had commanded the man clothed with linen, saying, Take fire from between the wheels, from between the cherubims.",
+  "ref": "Ezekiel 10:6"
+ },
+ {
+  "id": "ezekiel-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would God take out of their flesh and what would He give?",
+  "choices": [
+   "Their idols, and a crown",
+   "Their sins, and a sword",
+   "Their silver, and a field",
+   "The stony heart, and a heart of flesh"
+  ],
+  "answer": 3,
+  "explanation": "I will take the stony heart out of their flesh, and will give them an heart of flesh.",
+  "ref": "Ezekiel 11:19"
+ },
+ {
+  "id": "ezekiel-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would God be to the scattered ones in the countries?",
+  "choices": [
+   "A tower of strength",
+   "A pillar of fire",
+   "A little sanctuary",
+   "A shepherd"
+  ],
+  "answer": 2,
+  "explanation": "Although I have scattered them, yet will I be to them as a little sanctuary in the countries where they shall come.",
+  "ref": "Ezekiel 11:16"
+ },
+ {
+  "id": "ezekiel-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would God do with the scattered people?",
+  "choices": [
+   "Leave them in the countries",
+   "Gather them and give them the land of Israel",
+   "Send them to Egypt",
+   "Give them to the king of Babylon"
+  ],
+  "answer": 1,
+  "explanation": "I will even gather you from the people, and give you the land of Israel.",
+  "ref": "Ezekiel 11:17"
+ },
+ {
+  "id": "ezekiel-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the Spirit bring Ezekiel in the vision at the end?",
+  "choices": [
+   "Into Chaldea, to the captivity",
+   "To the mountain east of the city",
+   "To the river Jordan",
+   "Back to Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "The spirit brought me in a vision into Chaldea, to them of the captivity.",
+  "ref": "Ezekiel 11:24"
+ },
+ {
+  "id": "ezekiel-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezekiel do when the vision went up from him?",
+  "choices": [
+   "Kept it secret",
+   "Wrote it on a tile",
+   "Returned to Jerusalem",
+   "Spoke to the captivity all that the LORD had shewed him"
+  ],
+  "answer": 3,
+  "explanation": "Then I spake unto them of the captivity all the things that the LORD had shewed me.",
+  "ref": "Ezekiel 11:25"
+ },
+ {
+  "id": "ezekiel-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezekiel do when Pelatiah died?",
+  "choices": [
+   "Ran from the gate",
+   "Prayed in silence",
+   "Fell on his face and cried out",
+   "Wept with the elders"
+  ],
+  "answer": 2,
+  "explanation": "Then fell I down upon my face, and cried with a loud voice.",
+  "ref": "Ezekiel 11:13"
+ },
+ {
+  "id": "ezekiel-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the people take away when they came to the land?",
+  "choices": [
+   "The gold of the temple",
+   "All the detestable things and abominations",
+   "The stones of the walls",
+   "The altars of Judah"
+  ],
+  "answer": 1,
+  "explanation": "They shall take away all the detestable things thereof and all the abominations thereof.",
+  "ref": "Ezekiel 11:18"
+ },
+ {
+  "id": "ezekiel-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would be said of God and the returned people?",
+  "choices": [
+   "They shall be my people, and I will be their God",
+   "They shall have a king",
+   "They shall be free of all trouble",
+   "They shall rule the nations"
+  ],
+  "answer": 0,
+  "explanation": "That they may walk in my statutes, and they shall be my people, and I will be their God.",
+  "ref": "Ezekiel 11:20"
+ },
+ {
+  "id": "ezekiel-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Ezekiel see among the twenty-five men at the east gate?",
+  "choices": [
+   "Jeremiah and Baruch",
+   "Zedekiah and Seraiah",
+   "Hilkiah and Azariah",
+   "Jaazaniah and Pelatiah, princes of the people"
+  ],
+  "answer": 3,
+  "explanation": "Among them I saw Jaazaniah the son of Azur, and Pelatiah the son of Benaiah, the princes of the people.",
+  "ref": "Ezekiel 11:1"
+ },
+ {
+  "id": "ezekiel-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men say the city was and they were?",
+  "choices": [
+   "The city is the temple, and we are the priests",
+   "The city is the vine, and we are the branches",
+   "The city is the caldron, and we are the flesh",
+   "The city is the wall, and we are the stones"
+  ],
+  "answer": 2,
+  "explanation": "This city is the caldron, and we be the flesh.",
+  "ref": "Ezekiel 11:3"
+ },
+ {
+  "id": "ezekiel-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men say about building houses?",
+  "choices": [
+   "Let us flee and not build",
+   "It is not near; let us build houses",
+   "Let us build the walls first",
+   "Let us build for the king"
+  ],
+  "answer": 1,
+  "explanation": "They say, It is not near; let us build houses.",
+  "ref": "Ezekiel 11:3"
+ },
+ {
+  "id": "ezekiel-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the men done in the city?",
+  "choices": [
+   "Multiplied their slain and filled the streets",
+   "Built many altars",
+   "Hidden the temple vessels",
+   "Sent gifts to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Ye have multiplied your slain in this city, and ye have filled the streets thereof with the slain.",
+  "ref": "Ezekiel 11:6"
+ },
+ {
+  "id": "ezekiel-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men fear, according to God?",
+  "choices": [
+   "The famine",
+   "The pestilence",
+   "The captivity",
+   "The sword"
+  ],
+  "answer": 3,
+  "explanation": "Ye have feared the sword; and I will bring a sword upon you.",
+  "ref": "Ezekiel 11:8"
+ },
+ {
+  "id": "ezekiel-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where would God judge them?",
+  "choices": [
+   "In the temple court",
+   "In Babylon",
+   "In the border of Israel",
+   "At the east gate"
+  ],
+  "answer": 2,
+  "explanation": "I will judge you in the border of Israel; and ye shall know that I am the LORD.",
+  "ref": "Ezekiel 11:10"
+ },
+ {
+  "id": "ezekiel-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would they know that He is the LORD?",
+  "choices": [
+   "They refused to pay tribute",
+   "They did after the heathen, not his statutes",
+   "They killed the prophets",
+   "They forsook the feasts"
+  ],
+  "answer": 1,
+  "explanation": "Ye have not walked in my statutes, but have done after the manners of the heathen that are round about you.",
+  "ref": "Ezekiel 11:12"
+ },
+ {
+  "id": "ezekiel-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the inhabitants of Jerusalem say to Ezekiel's brethren?",
+  "choices": [
+   "Get you far from the LORD",
+   "Return to Babylon",
+   "Be strong and of good courage",
+   "Come and dwell with us"
+  ],
+  "answer": 0,
+  "explanation": "Get you far from the LORD: unto us is this land given in possession.",
+  "ref": "Ezekiel 11:15"
+ },
+ {
+  "id": "ezekiel-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say He would do to those whose heart walked after their abominations?",
+  "choices": [
+   "Lead them back to the land",
+   "Hide them from their enemies",
+   "Make them rulers",
+   "Recompense their way upon their own heads"
+  ],
+  "answer": 3,
+  "explanation": "I will recompense their way upon their own heads.",
+  "ref": "Ezekiel 11:21"
+ },
+ {
+  "id": "ezekiel-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say He knew about the house of Israel?",
+  "choices": [
+   "The names of their children",
+   "The paths of their feet",
+   "The things that come into their mind",
+   "The words of their kings"
+  ],
+  "answer": 2,
+  "explanation": "I know the things that come into your mind, every one of them.",
+  "ref": "Ezekiel 11:5"
+ },
+ {
+  "id": "ezekiel-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would God put within them and why?",
+  "choices": [
+   "A new king, that they may rule",
+   "A new spirit, that they may walk in his statutes",
+   "A new name, that they may be known",
+   "A new law, that they may be wise"
+  ],
+  "answer": 1,
+  "explanation": "I will put a new spirit within you, that they may walk in my statutes, and keep mine ordinances.",
+  "ref": "Ezekiel 11:19"
+ },
+ {
+  "id": "ezekiel-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Jaazaniah in this chapter?",
+  "choices": [
+   "Azur",
+   "Shaphan",
+   "Benaiah",
+   "Buzi"
+  ],
+  "answer": 0,
+  "explanation": "Jaazaniah the son of Azur, and Pelatiah the son of Benaiah, the princes of the people.",
+  "ref": "Ezekiel 11:1"
+ },
+ {
+  "id": "ezekiel-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Pelatiah, who died?",
+  "choices": [
+   "Azur",
+   "Shaphan",
+   "Hilkiah",
+   "Benaiah"
+  ],
+  "answer": 3,
+  "explanation": "Pelatiah the son of Benaiah died.",
+  "ref": "Ezekiel 11:13"
+ },
+ {
+  "id": "ezekiel-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom would God deliver the men to?",
+  "choices": [
+   "The king of Egypt",
+   "The priests",
+   "The hands of strangers",
+   "The Philistines"
+  ],
+  "answer": 2,
+  "explanation": "I will bring you out of the midst thereof, and deliver you into the hands of strangers.",
+  "ref": "Ezekiel 11:9"
+ },
+ {
+  "id": "ezekiel-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Ezekiel describe the people he was addressing as brethren?",
+  "choices": [
+   "Only the priests",
+   "The men of thy kindred, and all the house of Israel",
+   "Only the princes",
+   "The men of Judah alone"
+  ],
+  "answer": 1,
+  "explanation": "Thy brethren, even thy brethren, the men of thy kindred, and all the house of Israel wholly.",
+  "ref": "Ezekiel 11:15"
+ },
+ {
+  "id": "ezekiel-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the cherubims lift up with the wheels beside them?",
+  "choices": [
+   "Their wings",
+   "Their faces",
+   "Their hands",
+   "Their eyes"
+  ],
+  "answer": 0,
+  "explanation": "Then did the cherubims lift up their wings, and the wheels beside them.",
+  "ref": "Ezekiel 11:22"
+ },
+ {
+  "id": "ezekiel-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What went up from Ezekiel at the end?",
+  "choices": [
+   "The spirit of the LORD",
+   "The glory of the cherubims",
+   "The smoke of the city",
+   "The vision that he had seen"
+  ],
+  "answer": 3,
+  "explanation": "So the vision that I had seen went up from me.",
+  "ref": "Ezekiel 11:24"
+ },
+ {
+  "id": "ezekiel-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How would the men fall?",
+  "choices": [
+   "By famine",
+   "By pestilence",
+   "By the sword",
+   "By fire"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall fall by the sword; I will judge you in the border of Israel.",
+  "ref": "Ezekiel 11:10"
+ },
+ {
+  "id": "ezekiel-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the city no longer be to them?",
+  "choices": [
+   "Their refuge",
+   "Their caldron",
+   "Their palace",
+   "Their home"
+  ],
+  "answer": 1,
+  "explanation": "This city shall not be your caldron, neither shall ye be the flesh in the midst thereof.",
+  "ref": "Ezekiel 11:11"
+ },
+ {
+  "id": "ezekiel-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had God done to the people in captivity?",
+  "choices": [
+   "Cast them far off among the heathen and scattered them",
+   "Left them in the land",
+   "Given them a new king",
+   "Hidden them in Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "I have cast them far off among the heathen, and scattered them among the countries.",
+  "ref": "Ezekiel 11:16"
+ },
+ {
+  "id": "ezekiel-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would God give them a new heart and spirit?",
+  "choices": [
+   "That they may rule the nations",
+   "That they may build the temple",
+   "That they may escape the sword",
+   "That they may walk in his statutes and keep his ordinances"
+  ],
+  "answer": 3,
+  "explanation": "That they may walk in my statutes, and keep mine ordinances, and do them.",
+  "ref": "Ezekiel 11:20"
+ },
+ {
+  "id": "ezekiel-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "To which gate of the LORD house did the spirit first bring Ezekiel?",
+  "choices": [
+   "The north gate",
+   "The water gate",
+   "The east gate",
+   "The sheep gate"
+  ],
+  "answer": 2,
+  "explanation": "The spirit brought me unto the east gate of the LORD house, which looketh eastward.",
+  "ref": "Ezekiel 11:1"
+ },
+ {
+  "id": "ezekiel-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was over the cherubims and wheels above?",
+  "choices": [
+   "The cloud of fire",
+   "The glory of the God of Israel",
+   "The throne of David",
+   "The angel with the inkhorn"
+  ],
+  "answer": 1,
+  "explanation": "The glory of the God of Israel was over them above.",
+  "ref": "Ezekiel 11:22"
+ },
+ {
+  "id": "ezekiel-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was Ezekiel brought into Chaldea?",
+  "choices": [
+   "In a vision by the Spirit of God",
+   "On a chariot",
+   "By the king of Babylon",
+   "By a prophet"
+  ],
+  "answer": 0,
+  "explanation": "The spirit took me up, and brought me in a vision by the Spirit of God into Chaldea.",
+  "ref": "Ezekiel 11:24"
+ },
+ {
+  "id": "ezekiel-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On whose heads would God recompense the way of those whose heart walked after detestable things?",
+  "choices": [
+   "The heads of their children",
+   "The heads of the priests",
+   "The head of the king",
+   "Their own heads"
+  ],
+  "answer": 3,
+  "explanation": "As for them whose heart walketh after the heart of their detestable things, I will recompense their way upon their own heads.",
+  "ref": "Ezekiel 11:21"
+ },
+ {
+  "id": "ezekiel-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would God bring them out of?",
+  "choices": [
+   "The land of Egypt",
+   "The house of bondage",
+   "The midst of the city",
+   "The wilderness"
+  ],
+  "answer": 2,
+  "explanation": "I will bring you forth out of the midst of it.",
+  "ref": "Ezekiel 11:7"
+ },
+ {
+  "id": "ezekiel-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Ezekiel told to do against the men at the east gate?",
+  "choices": [
+   "Pray for them",
+   "Prophesy against them",
+   "Flee from them",
+   "Bring them offerings"
+  ],
+  "answer": 1,
+  "explanation": "Therefore prophesy against them, prophesy, O son of man.",
+  "ref": "Ezekiel 11:4"
+ },
+ {
+  "id": "ezekiel-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Of the rebellious house, what was said about their eyes and ears?",
+  "choices": [
+   "They see not and hear not",
+   "They watch for the LORD",
+   "They hear and obey",
+   "They weep for Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "They have eyes to see, and see not; they have ears to hear, and hear not: for they are a rebellious house.",
+  "ref": "Ezekiel 12:2"
+ },
+ {
+  "id": "ezekiel-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Ezekiel told to dig through, in their sight?",
+  "choices": [
+   "The floor of the house",
+   "The gate of the city",
+   "The mountain",
+   "The wall"
+  ],
+  "answer": 3,
+  "explanation": "Dig thou through the wall in their sight, and carry out thereby.",
+  "ref": "Ezekiel 12:5"
+ },
+ {
+  "id": "ezekiel-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Ezekiel to cover as he carried his stuff?",
+  "choices": [
+   "His hands",
+   "His head with ashes",
+   "His face",
+   "His feet"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt cover thy face, that thou see not the ground: for I have set thee for a sign unto the house of Israel.",
+  "ref": "Ezekiel 12:6"
+ },
+ {
+  "id": "ezekiel-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say Ezekiel was to the house of Israel?",
+  "choices": [
+   "A king",
+   "A sign",
+   "A judge",
+   "A priest"
+  ],
+  "answer": 1,
+  "explanation": "Say, I am your sign: like as I have done, so shall it be done unto them.",
+  "ref": "Ezekiel 12:11"
+ },
+ {
+  "id": "ezekiel-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would God spread upon the prince?",
+  "choices": [
+   "His net",
+   "His cloak",
+   "His sword",
+   "His hand"
+  ],
+  "answer": 0,
+  "explanation": "My net also will I spread upon him, and he shall be taken in my snare.",
+  "ref": "Ezekiel 12:13"
+ },
+ {
+  "id": "ezekiel-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would God leave a few men from the sword, famine and pestilence to do?",
+  "choices": [
+   "Rebuild the city",
+   "Guard the temple",
+   "Pray for the king",
+   "Declare their abominations among the heathen"
+  ],
+  "answer": 3,
+  "explanation": "I will leave a few men of them, that they may declare all their abominations among the heathen whither they come.",
+  "ref": "Ezekiel 12:16"
+ },
+ {
+  "id": "ezekiel-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would be no more within the house of Israel?",
+  "choices": [
+   "Any temple sacrifice",
+   "Any prophet at all",
+   "Any vain vision or flattering divination",
+   "Any king"
+  ],
+  "answer": 2,
+  "explanation": "There shall be no more any vain vision nor flattering divination within the house of Israel.",
+  "ref": "Ezekiel 12:24"
+ },
+ {
+  "id": "ezekiel-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did Ezekiel carry his stuff out through the wall?",
+  "choices": [
+   "At noon",
+   "In the twilight",
+   "At dawn",
+   "At midnight"
+  ],
+  "answer": 1,
+  "explanation": "I brought it forth in the twilight, and I bare it upon my shoulder in their sight.",
+  "ref": "Ezekiel 12:7"
+ },
+ {
+  "id": "ezekiel-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say He would scatter toward every wind?",
+  "choices": [
+   "All that were about the prince to help him",
+   "The grain of the land",
+   "The idols of the city",
+   "The walls of Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "I will scatter toward every wind all that are about him to help him, and all his bands.",
+  "ref": "Ezekiel 12:14"
+ },
+ {
+  "id": "ezekiel-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezekiel to prepare and bring forth by day in their sight?",
+  "choices": [
+   "Bread for a feast",
+   "A scroll of the law",
+   "Gifts for the king",
+   "Stuff for removing"
+  ],
+  "answer": 3,
+  "explanation": "Prepare thee stuff for removing, and remove by day in their sight.",
+  "ref": "Ezekiel 12:3"
+ },
+ {
+  "id": "ezekiel-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "At what time was Ezekiel to go forth in their sight, as into captivity?",
+  "choices": [
+   "At noon",
+   "At dawn",
+   "At even",
+   "At midday"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt go forth at even in their sight, as they that go forth into captivity.",
+  "ref": "Ezekiel 12:4"
+ },
+ {
+  "id": "ezekiel-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was Ezekiel to carry his stuff?",
+  "choices": [
+   "In a cart",
+   "Upon his shoulders",
+   "On an ass",
+   "Upon his head"
+  ],
+  "answer": 1,
+  "explanation": "In their sight shalt thou bear it upon thy shoulders, and carry it forth in the twilight.",
+  "ref": "Ezekiel 12:6"
+ },
+ {
+  "id": "ezekiel-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question did the house of Israel ask Ezekiel?",
+  "choices": [
+   "What doest thou",
+   "Who sent thee",
+   "Where is the LORD",
+   "When will it come"
+  ],
+  "answer": 0,
+  "explanation": "Hath not the house of Israel said unto thee, What doest thou?",
+  "ref": "Ezekiel 12:9"
+ },
+ {
+  "id": "ezekiel-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the prince do with his face?",
+  "choices": [
+   "Lift it to heaven",
+   "Turn it to the wall",
+   "Hide it from the king",
+   "Cover it, that he see not the ground"
+  ],
+  "answer": 3,
+  "explanation": "He shall cover his face, that he see not the ground with his eyes.",
+  "ref": "Ezekiel 12:12"
+ },
+ {
+  "id": "ezekiel-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the word of the LORD come after Ezekiel carried out his stuff?",
+  "choices": [
+   "At midnight",
+   "At noon",
+   "In the morning",
+   "At the next feast"
+  ],
+  "answer": 2,
+  "explanation": "And in the morning came the word of the LORD unto me.",
+  "ref": "Ezekiel 12:8"
+ },
+ {
+  "id": "ezekiel-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the people to eat their bread and drink their water?",
+  "choices": [
+   "With joy and thanksgiving",
+   "With carefulness and astonishment",
+   "In haste with their loins girded",
+   "In silence at the temple"
+  ],
+  "answer": 1,
+  "explanation": "They shall eat their bread with carefulness, and drink their water with astonishment.",
+  "ref": "Ezekiel 12:19"
+ },
+ {
+  "id": "ezekiel-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would become of the cities that were inhabited?",
+  "choices": [
+   "They would be laid waste",
+   "They would be rebuilt",
+   "They would be given to Judah",
+   "They would be sold"
+  ],
+  "answer": 0,
+  "explanation": "The cities that are inhabited shall be laid waste, and the land shall be desolate.",
+  "ref": "Ezekiel 12:20"
+ },
+ {
+  "id": "ezekiel-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the land be desolate?",
+  "choices": [
+   "Because of the drought",
+   "Because of the enemy",
+   "Because of the plague of locusts",
+   "Because of the violence of all them that dwell therein"
+  ],
+  "answer": 3,
+  "explanation": "Her land may be desolate, because of the violence of all them that dwell therein.",
+  "ref": "Ezekiel 12:19"
+ },
+ {
+  "id": "ezekiel-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would God make cease in Israel?",
+  "choices": [
+   "The sound of the harp",
+   "The feasts",
+   "The proverb about prolonged days",
+   "The fast of the seventh month"
+  ],
+  "answer": 2,
+  "explanation": "I will make this proverb to cease, and they shall no more use it as a proverb in Israel.",
+  "ref": "Ezekiel 12:23"
+ },
+ {
+  "id": "ezekiel-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say was at hand?",
+  "choices": [
+   "The rain and the harvest",
+   "The days and the effect of every vision",
+   "The feast of tabernacles",
+   "The return of the captives"
+  ],
+  "answer": 1,
+  "explanation": "Say unto them, The days are at hand, and the effect of every vision.",
+  "ref": "Ezekiel 12:23"
+ },
+ {
+  "id": "ezekiel-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the house of Israel say about the vision Ezekiel saw?",
+  "choices": [
+   "It is for many days to come, of times far off",
+   "It is a lie",
+   "It is already fulfilled",
+   "It is for the Gentiles"
+  ],
+  "answer": 0,
+  "explanation": "They say, The vision that he seeth is for many days to come, and he prophesieth of the times that are far off.",
+  "ref": "Ezekiel 12:27"
+ },
+ {
+  "id": "ezekiel-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say would happen to none of His words?",
+  "choices": [
+   "They shall be forgotten",
+   "They shall be written",
+   "They shall be hidden",
+   "They shall not be prolonged any more"
+  ],
+  "answer": 3,
+  "explanation": "There shall none of my words be prolonged any more, but the word which I have spoken shall be done.",
+  "ref": "Ezekiel 12:28"
+ },
+ {
+  "id": "ezekiel-12-m-14",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the word of God say the prince would do with the wall?",
+  "choices": [
+   "Build it again",
+   "Climb over it",
+   "Dig through it to carry out",
+   "Hide behind it"
+  ],
+  "answer": 2,
+  "explanation": "They shall dig through the wall to carry out thereby.",
+  "ref": "Ezekiel 12:12"
+ },
+ {
+  "id": "ezekiel-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose days did God say He would speak the word and perform it?",
+  "choices": [
+   "The days of the prince",
+   "The rebellious house",
+   "The days of the elders",
+   "The days of the prophets"
+  ],
+  "answer": 1,
+  "explanation": "In your days, O rebellious house, will I say the word, and will perform it.",
+  "ref": "Ezekiel 12:25"
+ },
+ {
+  "id": "ezekiel-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what did Ezekiel dig through the wall?",
+  "choices": [
+   "His hand",
+   "A spade",
+   "An iron pan",
+   "A knife"
+  ],
+  "answer": 0,
+  "explanation": "In the even I digged through the wall with mine hand.",
+  "ref": "Ezekiel 12:7"
+ },
+ {
+  "id": "ezekiel-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was Ezekiel to remove from his place to another in their sight?",
+  "choices": [
+   "So they would fear",
+   "So they would repent at once",
+   "So they would follow him",
+   "It may be they will consider"
+  ],
+  "answer": 3,
+  "explanation": "It may be they will consider, though they be a rebellious house.",
+  "ref": "Ezekiel 12:3"
+ },
+ {
+  "id": "ezekiel-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would God draw out after the scattered ones?",
+  "choices": [
+   "The pestilence",
+   "The famine",
+   "The sword",
+   "A flame"
+  ],
+  "answer": 2,
+  "explanation": "I will draw out the sword after them.",
+  "ref": "Ezekiel 12:14"
+ },
+ {
+  "id": "ezekiel-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where would the scattered people be dispersed?",
+  "choices": [
+   "Only in Egypt",
+   "Among the nations and in the countries",
+   "Only in Babylon",
+   "In the wilderness"
+  ],
+  "answer": 1,
+  "explanation": "I shall scatter them among the nations, and disperse them in the countries.",
+  "ref": "Ezekiel 12:15"
+ },
+ {
+  "id": "ezekiel-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where would the prince be brought, though he would not see it?",
+  "choices": [
+   "Babylon, the land of the Chaldeans",
+   "Egypt",
+   "Assyria",
+   "The wilderness"
+  ],
+  "answer": 0,
+  "explanation": "I will bring him to Babylon to the land of the Chaldeans; yet shall he not see it, though he shall die there.",
+  "ref": "Ezekiel 12:13"
+ },
+ {
+  "id": "ezekiel-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What proverb did the people have in the land of Israel?",
+  "choices": [
+   "The fathers have eaten sour grapes",
+   "The LORD seeth not",
+   "Peace, peace",
+   "The days are prolonged, and every vision faileth"
+  ],
+  "answer": 3,
+  "explanation": "What is that proverb that ye have in the land of Israel, saying, The days are prolonged, and every vision faileth?",
+  "ref": "Ezekiel 12:22"
+ },
+ {
+  "id": "ezekiel-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did God say the burden concerned besides the prince?",
+  "choices": [
+   "The priests only",
+   "The nations of the east",
+   "All the house of Israel among them",
+   "The king of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "This burden concerneth the prince in Jerusalem, and all the house of Israel that are among them.",
+  "ref": "Ezekiel 12:10"
+ },
+ {
+  "id": "ezekiel-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the prince bear upon his shoulder?",
+  "choices": [
+   "A crown",
+   "The burden in the twilight",
+   "A sword",
+   "A staff"
+  ],
+  "answer": 1,
+  "explanation": "The prince that is among them shall bear upon his shoulder in the twilight, and shall go forth.",
+  "ref": "Ezekiel 12:12"
+ },
+ {
+  "id": "ezekiel-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would God do with the word He spoke?",
+  "choices": [
+   "It shall come to pass and not be prolonged",
+   "It shall be hidden",
+   "It shall pass away",
+   "It shall be delayed"
+  ],
+  "answer": 0,
+  "explanation": "I will speak, and the word that I shall speak shall come to pass; it shall be no more prolonged.",
+  "ref": "Ezekiel 12:25"
+ },
+ {
+  "id": "ezekiel-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In the midst of whom did Ezekiel dwell?",
+  "choices": [
+   "The Chaldean court",
+   "The priests of the temple",
+   "The elders of Judah",
+   "A rebellious house"
+  ],
+  "answer": 3,
+  "explanation": "Son of man, thou dwellest in the midst of a rebellious house.",
+  "ref": "Ezekiel 12:2"
+ },
+ {
+  "id": "ezekiel-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say would happen to the house of Israel like Ezekiel sign?",
+  "choices": [
+   "They shall return home",
+   "They shall rule Babylon",
+   "They shall remove and go into captivity",
+   "They shall be spared"
+  ],
+  "answer": 2,
+  "explanation": "Like as I have done, so shall it be done unto them: they shall remove and go into captivity.",
+  "ref": "Ezekiel 12:11"
+ },
+ {
+  "id": "ezekiel-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was Ezekiel to eat his bread and drink his water?",
+  "choices": [
+   "With rejoicing",
+   "With quaking and trembling",
+   "In haste",
+   "In silence"
+  ],
+  "answer": 1,
+  "explanation": "Eat thy bread with quaking, and drink thy water with trembling and with carefulness.",
+  "ref": "Ezekiel 12:18"
+ },
+ {
+  "id": "ezekiel-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom was Ezekiel to say that they would eat bread with carefulness?",
+  "choices": [
+   "The people of the land",
+   "The captives at Tel-abib",
+   "The priests",
+   "The nations"
+  ],
+  "answer": 0,
+  "explanation": "Say unto the people of the land, They shall eat their bread with carefulness, and drink their water with astonishment.",
+  "ref": "Ezekiel 12:19"
+ },
+ {
+  "id": "ezekiel-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the hand sent to Ezekiel hold?",
+  "choices": [
+   "A sword",
+   "A golden cup",
+   "A roll of a book",
+   "A bundle of thorns"
+  ],
+  "answer": 2,
+  "explanation": "An hand was sent unto him, and lo, a roll of a book was therein.",
+  "ref": "Ezekiel 2:9"
+ },
+ {
+  "id": "ezekiel-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezekiel to say to the rebellious house?",
+  "choices": [
+   "Thus saith the Lord GOD",
+   "Repent and be saved",
+   "Peace be unto you",
+   "The kingdom is at hand"
+  ],
+  "answer": 0,
+  "explanation": "God said, Thou shalt say unto them, Thus saith the Lord GOD.",
+  "ref": "Ezekiel 2:4"
+ },
+ {
+  "id": "ezekiel-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whether the people hear or forbear, what will they know?",
+  "choices": [
+   "That Babylon will fall",
+   "That a prophet has been among them",
+   "That the temple will stand",
+   "That they will return soon"
+  ],
+  "answer": 1,
+  "explanation": "They shall know that there hath been a prophet among them.",
+  "ref": "Ezekiel 2:5"
+ },
+ {
+  "id": "ezekiel-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does God describe the children Ezekiel is sent to?",
+  "choices": [
+   "Proud and wealthy",
+   "Wise and patient",
+   "Weak and fearful",
+   "Impudent and stiffhearted"
+  ],
+  "answer": 3,
+  "explanation": "God says they are impudent children and stiffhearted.",
+  "ref": "Ezekiel 2:4"
+ },
+ {
+  "id": "ezekiel-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Among what might Ezekiel have to dwell?",
+  "choices": [
+   "Scorpions",
+   "Wolves",
+   "Lions",
+   "Serpents"
+  ],
+  "answer": 0,
+  "explanation": "Briers and thorns be with thee, and thou dost dwell among scorpions.",
+  "ref": "Ezekiel 2:6"
+ },
+ {
+  "id": "ezekiel-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezekiel told not to be like?",
+  "choices": [
+   "The false prophets",
+   "The king of Babylon",
+   "That rebellious house",
+   "The Chaldeans"
+  ],
+  "answer": 2,
+  "explanation": "Be not thou rebellious like that rebellious house: open thy mouth, and eat that I give thee.",
+  "ref": "Ezekiel 2:8"
+ },
+ {
+  "id": "ezekiel-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the roll written?",
+  "choices": [
+   "On one side only",
+   "Within and without",
+   "On the outside only",
+   "Only along the edges"
+  ],
+  "answer": 1,
+  "explanation": "It was written within and without.",
+  "ref": "Ezekiel 2:10"
+ },
+ {
+  "id": "ezekiel-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who had transgressed against God to this very day?",
+  "choices": [
+   "Only the priests",
+   "Only the kings",
+   "The Chaldeans",
+   "The house of Israel and their fathers"
+  ],
+  "answer": 3,
+  "explanation": "They and their fathers have transgressed against me, even unto this very day.",
+  "ref": "Ezekiel 2:3"
+ },
+ {
+  "id": "ezekiel-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After telling Ezekiel to open his mouth, what did God say to do?",
+  "choices": [
+   "Eat that I give thee",
+   "Speak to the elders",
+   "Flee to the mountains",
+   "Lie down and sleep"
+  ],
+  "answer": 0,
+  "explanation": "Open thy mouth, and eat that I give thee.",
+  "ref": "Ezekiel 2:8"
+ },
+ {
+  "id": "ezekiel-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose words was Ezekiel to speak, whether they hear or forbear?",
+  "choices": [
+   "The words of the elders",
+   "The words of the king",
+   "God's words",
+   "The words of the prophets of old"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt speak my words unto them, whether they will hear, or whether they will forbear.",
+  "ref": "Ezekiel 2:7"
+ },
+ {
+  "id": "ezekiel-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Ezekiel told to do so that God could speak to him?",
+  "choices": [
+   "Fall on his face",
+   "Stand upon his feet",
+   "Go up a mountain",
+   "Sit by the river"
+  ],
+  "answer": 1,
+  "explanation": "God said, Son of man, stand upon thy feet, and I will speak unto thee.",
+  "ref": "Ezekiel 2:1"
+ },
+ {
+  "id": "ezekiel-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Ezekiel told to eat before speaking to Israel?",
+  "choices": [
+   "The roll",
+   "A loaf of bread",
+   "Honey from the rock",
+   "A burnt offering"
+  ],
+  "answer": 0,
+  "explanation": "God said, Eat this roll, and go speak unto the house of Israel.",
+  "ref": "Ezekiel 3:1"
+ },
+ {
+  "id": "ezekiel-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Ezekiel come to the captives who dwelt by the river Chebar?",
+  "choices": [
+   "Jerusalem",
+   "Babylon",
+   "Tel-abib",
+   "Nineveh"
+  ],
+  "answer": 2,
+  "explanation": "Then I came to them of the captivity at Tel-abib, that dwelt by the river of Chebar.",
+  "ref": "Ezekiel 3:15"
+ },
+ {
+  "id": "ezekiel-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezekiel do when the glory of the LORD stood in the plain?",
+  "choices": [
+   "He ran away",
+   "He fell on his face",
+   "He sang praises",
+   "He offered a sacrifice"
+  ],
+  "answer": 1,
+  "explanation": "The glory of the LORD stood there, as the glory which he saw by the river of Chebar, and Ezekiel fell on his face.",
+  "ref": "Ezekiel 3:23"
+ },
+ {
+  "id": "ezekiel-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did God tell Ezekiel to go so he could talk with him?",
+  "choices": [
+   "Up the mountain",
+   "Back to the temple",
+   "Into the wilderness",
+   "Into the plain"
+  ],
+  "answer": 3,
+  "explanation": "God said, Arise, go forth into the plain, and I will there talk with thee.",
+  "ref": "Ezekiel 3:22"
+ },
+ {
+  "id": "ezekiel-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Ezekiel was sent to Israel, not to a people of what?",
+  "choices": [
+   "Strange speech and an hard language",
+   "Great wealth and power",
+   "Many cities and walls",
+   "Idols and images"
+  ],
+  "answer": 0,
+  "explanation": "He was not sent to a people of strange speech and of an hard language, but to the house of Israel.",
+  "ref": "Ezekiel 3:5"
+ },
+ {
+  "id": "ezekiel-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Ezekiel to tell the captives?",
+  "choices": [
+   "Peace and safety",
+   "Thus saith the Lord GOD",
+   "Build ye houses",
+   "Return to Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "He was to speak to them of the captivity, Thus saith the Lord GOD.",
+  "ref": "Ezekiel 3:11"
+ },
+ {
+  "id": "ezekiel-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Besides the wicked, whom was Ezekiel to warn?",
+  "choices": [
+   "The king of Babylon",
+   "The Chaldean soldiers",
+   "The righteous man",
+   "The prophets of Baal"
+  ],
+  "answer": 2,
+  "explanation": "If thou warn the righteous man, that the righteous sin not, he shall surely live.",
+  "ref": "Ezekiel 3:21"
+ },
+ {
+  "id": "ezekiel-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Ezekiel told to fill his belly and bowels with?",
+  "choices": [
+   "The roll",
+   "Bread",
+   "Water",
+   "Wine"
+  ],
+  "answer": 0,
+  "explanation": "Cause thy belly to eat, and fill thy bowels with this roll that I give thee.",
+  "ref": "Ezekiel 3:3"
+ },
+ {
+  "id": "ezekiel-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would be put upon Ezekiel so that he could not go out among them?",
+  "choices": [
+   "A yoke",
+   "A chain of iron",
+   "A veil",
+   "Bands"
+  ],
+  "answer": 3,
+  "explanation": "They shall put bands upon thee, and shall bind thee with them, and thou shalt not go out among them.",
+  "ref": "Ezekiel 3:25"
+ },
+ {
+  "id": "ezekiel-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where was Ezekiel told to shut himself?",
+  "choices": [
+   "In the temple",
+   "Within his house",
+   "In a cave",
+   "In the plain"
+  ],
+  "answer": 1,
+  "explanation": "The Spirit said, Go, shut thyself within thine house.",
+  "ref": "Ezekiel 3:24"
+ },
+ {
+  "id": "ezekiel-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If God had sent Ezekiel to a people of strange speech, what would they have done?",
+  "choices": [
+   "Driven him out",
+   "Killed him",
+   "Hearkened to him",
+   "Mocked him"
+  ],
+  "answer": 2,
+  "explanation": "Surely, had I sent thee to them, they would have hearkened unto thee.",
+  "ref": "Ezekiel 3:6"
+ },
+ {
+  "id": "ezekiel-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does God describe all the house of Israel?",
+  "choices": [
+   "Impudent and hardhearted",
+   "Wise and faithful",
+   "Poor and humble",
+   "Fearful and weak"
+  ],
+  "answer": 0,
+  "explanation": "For all the house of Israel are impudent and hardhearted.",
+  "ref": "Ezekiel 3:7"
+ },
+ {
+  "id": "ezekiel-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Ezekiel's forehead was made as hard as what?",
+  "choices": [
+   "A rock in the wilderness",
+   "An adamant harder than flint",
+   "Brass and iron",
+   "A wall of stone"
+  ],
+  "answer": 1,
+  "explanation": "As an adamant harder than flint have I made thy forehead.",
+  "ref": "Ezekiel 3:9"
+ },
+ {
+  "id": "ezekiel-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the voice of a great rushing say?",
+  "choices": [
+   "Holy, holy, holy",
+   "Fear not, for I am with thee",
+   "Arise, and go forth",
+   "Blessed be the glory of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Ezekiel heard a voice of a great rushing, saying, Blessed be the glory of the LORD from his place.",
+  "ref": "Ezekiel 3:12"
+ },
+ {
+  "id": "ezekiel-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Ezekiel go when the Spirit lifted him and took him away?",
+  "choices": [
+   "Rejoicing and singing",
+   "In fear and silence",
+   "In bitterness, in the heat of his spirit",
+   "Gladly and in peace"
+  ],
+  "answer": 2,
+  "explanation": "He went in bitterness, in the heat of his spirit; but the hand of the LORD was strong upon him.",
+  "ref": "Ezekiel 3:14"
+ },
+ {
+  "id": "ezekiel-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezekiel as a watchman to give Israel?",
+  "choices": [
+   "Gifts from the temple",
+   "Warning from God",
+   "Bread and water",
+   "Letters from the king"
+  ],
+  "answer": 1,
+  "explanation": "I have made thee a watchman unto the house of Israel: hear the word at my mouth, and give them warning from me.",
+  "ref": "Ezekiel 3:17"
+ },
+ {
+  "id": "ezekiel-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the wicked man whom Ezekiel does not warn?",
+  "choices": [
+   "He dies in his iniquity",
+   "He is taken captive",
+   "He flees to Egypt",
+   "He repents on his own"
+  ],
+  "answer": 0,
+  "explanation": "The same wicked man shall die in his iniquity.",
+  "ref": "Ezekiel 3:18"
+ },
+ {
+  "id": "ezekiel-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What if Ezekiel warns the wicked and he does not turn?",
+  "choices": [
+   "Ezekiel must be punished",
+   "Ezekiel must warn again",
+   "Ezekiel loses his office",
+   "Ezekiel has delivered his soul"
+  ],
+  "answer": 3,
+  "explanation": "If thou warn the wicked, and he turn not, he shall die in his iniquity; but thou hast delivered thy soul.",
+  "ref": "Ezekiel 3:19"
+ },
+ {
+  "id": "ezekiel-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God lay before a righteous man who turns to iniquity?",
+  "choices": [
+   "A sword",
+   "A burden",
+   "A stumblingblock",
+   "A snare of fowlers"
+  ],
+  "answer": 2,
+  "explanation": "When a righteous man doth turn from his righteousness and commit iniquity, God lays a stumblingblock before him.",
+  "ref": "Ezekiel 3:20"
+ },
+ {
+  "id": "ezekiel-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to the righteousness of a righteous man who dies unwarned?",
+  "choices": [
+   "It shall not be remembered",
+   "It will save his children",
+   "It will be counted to Ezekiel",
+   "It will be rewarded in heaven"
+  ],
+  "answer": 0,
+  "explanation": "His righteousness which he hath done shall not be remembered.",
+  "ref": "Ezekiel 3:20"
+ },
+ {
+  "id": "ezekiel-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was Ezekiel to receive all God's words?",
+  "choices": [
+   "In a book",
+   "In his heart",
+   "On his hands",
+   "In his house"
+  ],
+  "answer": 1,
+  "explanation": "Receive in thine heart all my words, and hear with thine ears.",
+  "ref": "Ezekiel 3:10"
+ },
+ {
+  "id": "ezekiel-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezekiel hear along with the noise of the wings of the living creatures?",
+  "choices": [
+   "The noise of a trumpet",
+   "The cry of the captives",
+   "The noise of the wheels",
+   "The roar of a lion"
+  ],
+  "answer": 2,
+  "explanation": "He heard the noise of the wings of the living creatures, and the noise of the wheels over against them.",
+  "ref": "Ezekiel 3:13"
+ },
+ {
+  "id": "ezekiel-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose words was Ezekiel to speak to the house of Israel?",
+  "choices": [
+   "God's own words",
+   "The words of the elders",
+   "The words of the law only",
+   "His own words"
+  ],
+  "answer": 0,
+  "explanation": "God said, Go, get thee unto the house of Israel, and speak with my words unto them.",
+  "ref": "Ezekiel 3:4"
+ },
+ {
+  "id": "ezekiel-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will the house of Israel not hearken to Ezekiel?",
+  "choices": [
+   "They cannot understand him",
+   "They will not hearken to God",
+   "They do not know him",
+   "They are afraid of Babylon"
+  ],
+  "answer": 1,
+  "explanation": "The house of Israel will not hearken unto thee; for they will not hearken unto me.",
+  "ref": "Ezekiel 3:7"
+ },
+ {
+  "id": "ezekiel-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Ezekiel hear the voice of a great rushing?",
+  "choices": [
+   "Before him",
+   "Behind him",
+   "Above him",
+   "Under him"
+  ],
+  "answer": 1,
+  "explanation": "Then the spirit took me up, and I heard behind me a voice of a great rushing.",
+  "ref": "Ezekiel 3:12"
+ },
+ {
+  "id": "ezekiel-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Ezekiel not be to the rebellious house when his tongue cleaved?",
+  "choices": [
+   "A priest",
+   "A friend",
+   "A king",
+   "A reprover"
+  ],
+  "answer": 3,
+  "explanation": "I will make thy tongue cleave to the roof of thy mouth, that thou shalt be dumb, and shalt not be to them a reprover.",
+  "ref": "Ezekiel 3:26"
+ },
+ {
+  "id": "ezekiel-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When would God open Ezekiel's mouth?",
+  "choices": [
+   "When he speaks with him",
+   "When the siege begins",
+   "When the captives repent",
+   "When the king commands"
+  ],
+  "answer": 0,
+  "explanation": "When I speak with thee, I will open thy mouth.",
+  "ref": "Ezekiel 3:27"
+ },
+ {
+  "id": "ezekiel-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Ezekiel to say to the people about hearing?",
+  "choices": [
+   "All must hear or die",
+   "None will hear",
+   "He that heareth, let him hear",
+   "Only the elders will hear"
+  ],
+  "answer": 2,
+  "explanation": "He that heareth, let him hear; and he that forbeareth, let him forbear.",
+  "ref": "Ezekiel 3:27"
+ },
+ {
+  "id": "ezekiel-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the glory the LORD showed in the plain like?",
+  "choices": [
+   "The glory in the temple",
+   "The glory seen by the river of Chebar",
+   "The glory of Sinai",
+   "The glory of a king"
+  ],
+  "answer": 1,
+  "explanation": "The glory of the LORD stood there, as the glory which I saw by the river of Chebar.",
+  "ref": "Ezekiel 3:23"
+ },
+ {
+  "id": "ezekiel-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whose hand would God require the blood of an unwarned wicked man?",
+  "choices": [
+   "Ezekiel's",
+   "The king's",
+   "The elders",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "His blood will I require at thine hand.",
+  "ref": "Ezekiel 3:18"
+ },
+ {
+  "id": "ezekiel-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had God made strong against the foreheads of Israel?",
+  "choices": [
+   "The walls of Jerusalem",
+   "The gates of the temple",
+   "The arm of the king",
+   "Ezekiel's forehead"
+  ],
+  "answer": 3,
+  "explanation": "I have made thy face strong against their faces, and thy forehead strong against their foreheads.",
+  "ref": "Ezekiel 3:8"
+ },
+ {
+  "id": "ezekiel-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was upon Ezekiel when God told him to go into the plain?",
+  "choices": [
+   "The hand of the LORD",
+   "A cloud of fire",
+   "A garment of linen",
+   "A heavy sleep"
+  ],
+  "answer": 0,
+  "explanation": "The hand of the LORD was there upon me; and he said, Arise, go forth into the plain.",
+  "ref": "Ezekiel 3:22"
+ },
+ {
+  "id": "ezekiel-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why would God make Ezekiel dumb?",
+  "choices": [
+   "The people feared him",
+   "He spoke too much",
+   "They are a rebellious house",
+   "He had sinned"
+  ],
+  "answer": 2,
+  "explanation": "His tongue would cleave to his mouth, for they are a rebellious house.",
+  "ref": "Ezekiel 3:26"
+ },
+ {
+  "id": "ezekiel-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the noise of the wheels sound like?",
+  "choices": [
+   "A great rushing",
+   "A trumpet",
+   "Thunder",
+   "A flowing river"
+  ],
+  "answer": 0,
+  "explanation": "He heard the noise of the wheels over against them, and a noise of a great rushing.",
+  "ref": "Ezekiel 3:13"
+ },
+ {
+  "id": "ezekiel-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Spirit do after entering Ezekiel in the plain?",
+  "choices": [
+   "Carried him to Jerusalem",
+   "Set him upon his feet and spake with him",
+   "Left him alone",
+   "Struck him dumb at once"
+  ],
+  "answer": 1,
+  "explanation": "The spirit entered into him, and set him upon his feet, and spake with him.",
+  "ref": "Ezekiel 3:24"
+ },
+ {
+  "id": "ezekiel-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Blessed be the glory of the LORD from where?",
+  "choices": [
+   "From the temple",
+   "From Zion",
+   "From the heavens",
+   "From his place"
+  ],
+  "answer": 3,
+  "explanation": "The voice said, Blessed be the glory of the LORD from his place.",
+  "ref": "Ezekiel 3:12"
+ },
+ {
+  "id": "ezekiel-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Ezekiel remain astonished among the captives?",
+  "choices": [
+   "Seven days",
+   "Three days",
+   "Forty days",
+   "Thirty days"
+  ],
+  "answer": 0,
+  "explanation": "He sat where they sat, and remained there astonished among them seven days.",
+  "ref": "Ezekiel 3:15"
+ },
+ {
+  "id": "ezekiel-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was Ezekiel to warn the wicked from his wicked way?",
+  "choices": [
+   "To please the king",
+   "To spare the temple",
+   "To save his life",
+   "To gain a reward"
+  ],
+  "answer": 2,
+  "explanation": "He was to warn the wicked from his wicked way, to save his life.",
+  "ref": "Ezekiel 3:18"
+ },
+ {
+  "id": "ezekiel-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days was Ezekiel to lie on his left side?",
+  "choices": [
+   "390 days",
+   "40 days",
+   "70 days",
+   "430 days"
+  ],
+  "answer": 0,
+  "explanation": "I have laid upon thee the years of their iniquity, according to the number of the days, three hundred and ninety days.",
+  "ref": "Ezekiel 4:5"
+ },
+ {
+  "id": "ezekiel-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezekiel set as a wall of iron between himself and the city?",
+  "choices": [
+   "A bronze gate",
+   "A stone altar",
+   "An iron pan",
+   "A tent"
+  ],
+  "answer": 2,
+  "explanation": "Take unto thee an iron pan, and set it for a wall of iron between thee and the city.",
+  "ref": "Ezekiel 4:3"
+ },
+ {
+  "id": "ezekiel-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Ezekiel told to bake his bread with?",
+  "choices": [
+   "Olive oil",
+   "Dung",
+   "Salt",
+   "Frankincense"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt eat it as barley cakes, and thou shalt bake it with dung that cometh out of man, in their sight.",
+  "ref": "Ezekiel 4:12"
+ },
+ {
+  "id": "ezekiel-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would Ezekiel's besieging of the city be to Israel?",
+  "choices": [
+   "A blessing",
+   "A reward",
+   "A secret",
+   "A sign"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt lay siege against it. This shall be a sign to the house of Israel.",
+  "ref": "Ezekiel 4:3"
+ },
+ {
+  "id": "ezekiel-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did each day Ezekiel lay on his side stand for?",
+  "choices": [
+   "A year",
+   "A month",
+   "A generation",
+   "A week"
+  ],
+  "answer": 0,
+  "explanation": "I have appointed thee each day for a year.",
+  "ref": "Ezekiel 4:6"
+ },
+ {
+  "id": "ezekiel-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose iniquity did Ezekiel bear lying on his right side?",
+  "choices": [
+   "The house of Levi",
+   "The house of Judah",
+   "The house of Benjamin",
+   "The house of Ephraim"
+  ],
+  "answer": 1,
+  "explanation": "Lie again on thy right side, and thou shalt bear the iniquity of the house of Judah forty days.",
+  "ref": "Ezekiel 4:6"
+ },
+ {
+  "id": "ezekiel-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezekiel put in one vessel to make his bread?",
+  "choices": [
+   "Only wheat and barley",
+   "Wheat, honey and oil",
+   "Wheat, barley, beans, lentiles, millet and fitches",
+   "Barley, figs and raisins"
+  ],
+  "answer": 2,
+  "explanation": "Take wheat, and barley, and beans, and lentiles, and millet, and fitches, and put them in one vessel, and make bread thereof.",
+  "ref": "Ezekiel 4:9"
+ },
+ {
+  "id": "ezekiel-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much was Ezekiel's food each day by weight?",
+  "choices": [
+   "Ten shekels",
+   "Forty shekels",
+   "One hundred shekels",
+   "Twenty shekels"
+  ],
+  "answer": 3,
+  "explanation": "Thy meat shall be by weight, twenty shekels a day.",
+  "ref": "Ezekiel 4:10"
+ },
+ {
+  "id": "ezekiel-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the dung-baked bread show about Israel?",
+  "choices": [
+   "They would eat defiled bread among the Gentiles",
+   "They would be fed by the Chaldeans",
+   "They would have plenty in the land",
+   "They would never leave Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Even thus shall the children of Israel eat their defiled bread among the Gentiles, whither I will drive them.",
+  "ref": "Ezekiel 4:13"
+ },
+ {
+  "id": "ezekiel-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezekiel say he had never eaten from his youth?",
+  "choices": [
+   "Bread without leaven",
+   "That which dieth of itself or is torn in pieces",
+   "Meat offered to idols",
+   "Fruit of the first year"
+  ],
+  "answer": 1,
+  "explanation": "My soul hath not been polluted: from my youth I have not eaten of that which dieth of itself, or is torn in pieces.",
+  "ref": "Ezekiel 4:14"
+ },
+ {
+  "id": "ezekiel-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say He would break in Jerusalem?",
+  "choices": [
+   "The walls of the city",
+   "The gates of the temple",
+   "The staff of bread",
+   "The strength of the king"
+  ],
+  "answer": 2,
+  "explanation": "I will break the staff of bread in Jerusalem.",
+  "ref": "Ezekiel 4:16"
+ },
+ {
+  "id": "ezekiel-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would stop Ezekiel from turning from one side to another?",
+  "choices": [
+   "Bands laid upon him",
+   "The weight of his food",
+   "The walls of his house",
+   "A guard of soldiers"
+  ],
+  "answer": 0,
+  "explanation": "I will lay bands upon thee, and thou shalt not turn thee from one side to another.",
+  "ref": "Ezekiel 4:8"
+ },
+ {
+  "id": "ezekiel-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezekiel to set against the city drawn on the tile?",
+  "choices": [
+   "A tower of gold",
+   "Heralds and trumpets",
+   "A circle of stones",
+   "Siege works and battering rams"
+  ],
+  "answer": 3,
+  "explanation": "Lay siege against it, build a fort, cast a mount, set the camp and battering rams against it round about.",
+  "ref": "Ezekiel 4:2"
+ },
+ {
+  "id": "ezekiel-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much water was Ezekiel to drink by measure?",
+  "choices": [
+   "A full cup a day",
+   "The sixth part of an hin",
+   "A tenth part of an hin",
+   "Two hins a day"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt drink also water by measure, the sixth part of an hin.",
+  "ref": "Ezekiel 4:11"
+ },
+ {
+  "id": "ezekiel-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was uncovered as Ezekiel prophesied against the siege of Jerusalem?",
+  "choices": [
+   "His arm",
+   "His head",
+   "His feet",
+   "His face"
+  ],
+  "answer": 0,
+  "explanation": "Set thy face toward the siege of Jerusalem, and thine arm shall be uncovered.",
+  "ref": "Ezekiel 4:7"
+ },
+ {
+  "id": "ezekiel-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was Ezekiel to set his face as he prophesied?",
+  "choices": [
+   "Toward the temple",
+   "Toward Babylon",
+   "Toward the siege of Jerusalem",
+   "Toward the river Chebar"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt set thy face toward the siege of Jerusalem, and thou shalt prophesy against it.",
+  "ref": "Ezekiel 4:7"
+ },
+ {
+  "id": "ezekiel-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what would the people drink water by measure?",
+  "choices": [
+   "With joy",
+   "With thanksgiving",
+   "With anger",
+   "With astonishment"
+  ],
+  "answer": 3,
+  "explanation": "They shall eat bread by weight, and with care; and they shall drink water by measure, and with astonishment.",
+  "ref": "Ezekiel 4:16"
+ },
+ {
+  "id": "ezekiel-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why would the people consume away?",
+  "choices": [
+   "For their iniquity",
+   "For their pride",
+   "For their poverty",
+   "For their enemies"
+  ],
+  "answer": 0,
+  "explanation": "That they may want bread and water, and consume away for their iniquity.",
+  "ref": "Ezekiel 4:17"
+ },
+ {
+  "id": "ezekiel-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when could Ezekiel not turn from one side to another?",
+  "choices": [
+   "Till the king returned",
+   "Till he ended the days of his siege",
+   "Till the temple was finished",
+   "Till the captives went home"
+  ],
+  "answer": 1,
+  "explanation": "He shall not turn from one side to another till he hath ended the days of his siege.",
+  "ref": "Ezekiel 4:8"
+ },
+ {
+  "id": "ezekiel-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose sight was Ezekiel to bake the bread?",
+  "choices": [
+   "In the sight of the king",
+   "In the sight of the priests",
+   "In their sight",
+   "In the sight of the Chaldeans"
+  ],
+  "answer": 2,
+  "explanation": "He was to bake it with dung that cometh out of man, in their sight.",
+  "ref": "Ezekiel 4:12"
+ },
+ {
+  "id": "ezekiel-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Ezekiel to bear by lying on his left side?",
+  "choices": [
+   "The iniquity of the house of Israel",
+   "The sins of the nations",
+   "The curse of the law",
+   "The shame of the priests"
+  ],
+  "answer": 0,
+  "explanation": "Lie upon thy left side, and lay the iniquity of the house of Israel upon it.",
+  "ref": "Ezekiel 4:4"
+ },
+ {
+  "id": "ezekiel-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ezekiel say when told to bake with man's dung?",
+  "choices": [
+   "Let this cup pass from me",
+   "Ah Lord GOD, my soul hath not been polluted",
+   "I am not worthy",
+   "Who am I that I should go"
+  ],
+  "answer": 1,
+  "explanation": "Then said I, Ah Lord GOD! behold, my soul hath not been polluted.",
+  "ref": "Ezekiel 4:14"
+ },
+ {
+  "id": "ezekiel-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezekiel take to divide the hair?",
+  "choices": [
+   "A measuring line",
+   "Balances to weigh",
+   "A sieve",
+   "A basin"
+  ],
+  "answer": 1,
+  "explanation": "He was to take balances to weigh, and divide the hair.",
+  "ref": "Ezekiel 5:1"
+ },
+ {
+  "id": "ezekiel-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where had God set Jerusalem?",
+  "choices": [
+   "In the midst of the nations",
+   "On the highest mountain",
+   "Beside the great sea",
+   "At the edge of the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "This is Jerusalem: I have set it in the midst of the nations and countries that are round about her.",
+  "ref": "Ezekiel 5:5"
+ },
+ {
+  "id": "ezekiel-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who says He is against Jerusalem and will execute judgments in her?",
+  "choices": [
+   "The king of Babylon",
+   "The Philistines",
+   "The prophets",
+   "The Lord GOD"
+  ],
+  "answer": 3,
+  "explanation": "Behold, I, even I, am against thee, and will execute judgments in the midst of thee in the sight of the nations.",
+  "ref": "Ezekiel 5:8"
+ },
+ {
+  "id": "ezekiel-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would God make Jerusalem among the nations?",
+  "choices": [
+   "Strong and feared",
+   "Rich and honoured",
+   "Waste and a reproach",
+   "A place of refuge"
+  ],
+  "answer": 2,
+  "explanation": "I will make thee waste, and a reproach among the nations that are round about thee.",
+  "ref": "Ezekiel 5:14"
+ },
+ {
+  "id": "ezekiel-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezekiel to do with a third part of the hair?",
+  "choices": [
+   "Bury it in the plain",
+   "Burn it with fire in the midst of the city",
+   "Cast it into the river",
+   "Give it to the priests"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt burn with fire a third part in the midst of the city.",
+  "ref": "Ezekiel 5:2"
+ },
+ {
+  "id": "ezekiel-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done with a second third of the hair?",
+  "choices": [
+   "Smite about it with a knife",
+   "Weigh it again",
+   "Hang it on the wall",
+   "Sew it into a garment"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt take a third part, and smite about it with a knife.",
+  "ref": "Ezekiel 5:2"
+ },
+ {
+  "id": "ezekiel-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done with the last third of the hair?",
+  "choices": [
+   "Burn it in the temple",
+   "Hide it in a vessel",
+   "Lay it on the altar",
+   "Scatter it in the wind"
+  ],
+  "answer": 3,
+  "explanation": "A third part thou shalt scatter in the wind; and I will draw out a sword after them.",
+  "ref": "Ezekiel 5:2"
+ },
+ {
+  "id": "ezekiel-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would come forth from the few hairs cast into the fire?",
+  "choices": [
+   "A flood upon the land",
+   "A famine in Babylon",
+   "A fire into all the house of Israel",
+   "A voice from heaven"
+  ],
+  "answer": 2,
+  "explanation": "Thereof shall a fire come forth into all the house of Israel.",
+  "ref": "Ezekiel 5:4"
+ },
+ {
+  "id": "ezekiel-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would God diminish Jerusalem and have no pity?",
+  "choices": [
+   "She trusted in Egypt",
+   "She defiled his sanctuary with detestable things",
+   "She refused to pay tribute",
+   "She killed the prophets only"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast defiled my sanctuary with all thy detestable things, and with all thine abominations.",
+  "ref": "Ezekiel 5:11"
+ },
+ {
+  "id": "ezekiel-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the fathers and sons do in the midst of Jerusalem?",
+  "choices": [
+   "Eat one another",
+   "Flee together to Babylon",
+   "Fight beside each other",
+   "Hide in the temple"
+  ],
+  "answer": 0,
+  "explanation": "The fathers shall eat the sons, and the sons shall eat their fathers.",
+  "ref": "Ezekiel 5:10"
+ },
+ {
+  "id": "ezekiel-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the evil arrows God would send?",
+  "choices": [
+   "Fire",
+   "Hail",
+   "Darkness",
+   "Famine"
+  ],
+  "answer": 3,
+  "explanation": "I will send the evil arrows of famine, which shall be for their destruction.",
+  "ref": "Ezekiel 5:16"
+ },
+ {
+  "id": "ezekiel-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would God send with famine to bereave Jerusalem?",
+  "choices": [
+   "Locusts",
+   "Foreign kings",
+   "Evil beasts",
+   "A great flood"
+  ],
+  "answer": 2,
+  "explanation": "I will send upon you famine and evil beasts, and they shall bereave thee.",
+  "ref": "Ezekiel 5:17"
+ },
+ {
+  "id": "ezekiel-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Jerusalem done with God's judgments and statutes?",
+  "choices": [
+   "Written them on the gates",
+   "Refused them and not walked in them",
+   "Taught them to the nations",
+   "Hidden them in the temple"
+  ],
+  "answer": 1,
+  "explanation": "They have refused my judgments and my statutes, they have not walked in them.",
+  "ref": "Ezekiel 5:6"
+ },
+ {
+  "id": "ezekiel-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jerusalem multiplied more than whom?",
+  "choices": [
+   "The nations round about her",
+   "The Egyptians",
+   "The Chaldeans",
+   "The tribes of Israel"
+  ],
+  "answer": 0,
+  "explanation": "Because ye multiplied more than the nations that are round about you, and have not walked in my statutes.",
+  "ref": "Ezekiel 5:7"
+ },
+ {
+  "id": "ezekiel-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say He would do that He had not done before?",
+  "choices": [
+   "A flood upon the whole earth",
+   "A plague of frogs",
+   "A sign in the heavens",
+   "That which He would not do the like again"
+  ],
+  "answer": 3,
+  "explanation": "I will do in thee that which I have not done, and whereunto I will not do any more the like.",
+  "ref": "Ezekiel 5:9"
+ },
+ {
+  "id": "ezekiel-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did God say He had spoken His judgment?",
+  "choices": [
+   "In secret",
+   "In a dream",
+   "In his zeal",
+   "In his patience"
+  ],
+  "answer": 2,
+  "explanation": "They shall know that I the LORD have spoken it in my zeal.",
+  "ref": "Ezekiel 5:13"
+ },
+ {
+  "id": "ezekiel-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say He would be when He had accomplished His fury?",
+  "choices": [
+   "Forgotten",
+   "Comforted",
+   "Sorry",
+   "Silent"
+  ],
+  "answer": 1,
+  "explanation": "I will cause my fury to rest upon them, and I will be comforted.",
+  "ref": "Ezekiel 5:13"
+ },
+ {
+  "id": "ezekiel-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jerusalem would be a taunt and an astonishment to whom?",
+  "choices": [
+   "The nations round about",
+   "The tribes of Israel",
+   "The Babylonian king",
+   "The priests of Judah"
+  ],
+  "answer": 0,
+  "explanation": "It shall be a reproach and a taunt, an instruction and an astonishment unto the nations that are round about thee.",
+  "ref": "Ezekiel 5:15"
+ },
+ {
+  "id": "ezekiel-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would God break as he increased the famine?",
+  "choices": [
+   "Their bows",
+   "The gates of the city",
+   "The altars",
+   "Their staff of bread"
+  ],
+  "answer": 3,
+  "explanation": "I will increase the famine upon you, and will break your staff of bread.",
+  "ref": "Ezekiel 5:16"
+ },
+ {
+  "id": "ezekiel-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom would Jerusalem become a reproach?",
+  "choices": [
+   "Only the Chaldeans",
+   "Only the elders",
+   "All that pass by",
+   "The priests of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "I will make thee waste, and a reproach, in the sight of all that pass by.",
+  "ref": "Ezekiel 5:14"
+ },
+ {
+  "id": "ezekiel-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would God do to the whole remnant of Jerusalem?",
+  "choices": [
+   "Gather it to Babylon",
+   "Scatter it into all the winds",
+   "Bring it back to Zion",
+   "Keep it in the city"
+  ],
+  "answer": 1,
+  "explanation": "The whole remnant of thee will I scatter into all the winds.",
+  "ref": "Ezekiel 5:10"
+ },
+ {
+  "id": "ezekiel-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would pass through Jerusalem with pestilence?",
+  "choices": [
+   "Blood",
+   "Fire",
+   "Darkness",
+   "Locusts"
+  ],
+  "answer": 0,
+  "explanation": "Pestilence and blood shall pass through thee; and I will bring the sword upon thee.",
+  "ref": "Ezekiel 5:17"
+ },
+ {
+  "id": "ezekiel-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say He would bring upon the mountains of Israel?",
+  "choices": [
+   "A flood",
+   "A famine of words",
+   "A sword",
+   "A fire from heaven"
+  ],
+  "answer": 2,
+  "explanation": "I, even I, will bring a sword upon you, and I will destroy your high places.",
+  "ref": "Ezekiel 6:3"
+ },
+ {
+  "id": "ezekiel-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say He would destroy?",
+  "choices": [
+   "The walls of the city",
+   "The high places",
+   "The vineyards",
+   "The kings house"
+  ],
+  "answer": 1,
+  "explanation": "I will bring a sword upon you, and I will destroy your high places.",
+  "ref": "Ezekiel 6:3"
+ },
+ {
+  "id": "ezekiel-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where would God lay the dead bodies of the children of Israel?",
+  "choices": [
+   "Before their idols",
+   "In the temple court",
+   "Beside the river",
+   "In the valley of Hinnom"
+  ],
+  "answer": 0,
+  "explanation": "I will lay the dead carcases of the children of Israel before their idols.",
+  "ref": "Ezekiel 6:5"
+ },
+ {
+  "id": "ezekiel-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where would God scatter the bones of the people?",
+  "choices": [
+   "Along the river",
+   "In the wilderness",
+   "Upon the temple roof",
+   "Round about their altars"
+  ],
+  "answer": 3,
+  "explanation": "I will scatter your bones round about your altars.",
+  "ref": "Ezekiel 6:5"
+ },
+ {
+  "id": "ezekiel-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did God say He was broken?",
+  "choices": [
+   "Their king was killed",
+   "Their city fell",
+   "Their whorish heart departed from him",
+   "Their harvest failed"
+  ],
+  "answer": 2,
+  "explanation": "I am broken with their whorish heart, which hath departed from me.",
+  "ref": "Ezekiel 6:9"
+ },
+ {
+  "id": "ezekiel-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the survivors do to themselves?",
+  "choices": [
+   "Make an offering",
+   "Lothe themselves",
+   "Build an altar",
+   "Flee to the hills"
+  ],
+  "answer": 1,
+  "explanation": "They shall lothe themselves for the evils which they have committed in all their abominations.",
+  "ref": "Ezekiel 6:9"
+ },
+ {
+  "id": "ezekiel-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezekiel told to do with his hand and foot?",
+  "choices": [
+   "Smite with his hand and stamp with his foot",
+   "Lift his hands and kneel",
+   "Strike the ground and run",
+   "Cover his face and hide"
+  ],
+  "answer": 0,
+  "explanation": "Smite with thine hand, and stamp with thy foot, and say, Alas for all the evil abominations of the house of Israel!",
+  "ref": "Ezekiel 6:11"
+ },
+ {
+  "id": "ezekiel-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to the cities in all their dwellingplaces?",
+  "choices": [
+   "They would be rebuilt",
+   "They would be filled with grain",
+   "They would be given to Judah",
+   "They would be laid waste"
+  ],
+  "answer": 3,
+  "explanation": "In all your dwellingplaces the cities shall be laid waste.",
+  "ref": "Ezekiel 6:6"
+ },
+ {
+  "id": "ezekiel-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the people offer sweet savour to their idols?",
+  "choices": [
+   "Only in the temple",
+   "In the valley of Hinnom",
+   "On every high hill and under every green tree",
+   "By the river"
+  ],
+  "answer": 2,
+  "explanation": "The place where they did offer sweet savour to all their idols: upon every high hill and under every green tree.",
+  "ref": "Ezekiel 6:13"
+ },
+ {
+  "id": "ezekiel-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would fall in the midst of the people so they would know God is the LORD?",
+  "choices": [
+   "The walls",
+   "The slain",
+   "The princes",
+   "The stars"
+  ],
+  "answer": 1,
+  "explanation": "The slain shall fall in the midst of you, and ye shall know that I am the LORD.",
+  "ref": "Ezekiel 6:7"
+ },
+ {
+  "id": "ezekiel-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The land would be more desolate than the wilderness toward where?",
+  "choices": [
+   "Diblath",
+   "Sinai",
+   "Zin",
+   "Paran"
+  ],
+  "answer": 0,
+  "explanation": "I will make the land desolate, more desolate than the wilderness toward Diblath.",
+  "ref": "Ezekiel 6:14"
+ },
+ {
+  "id": "ezekiel-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How would he that is far off die?",
+  "choices": [
+   "By the sword",
+   "By famine",
+   "In captivity",
+   "Of the pestilence"
+  ],
+  "answer": 3,
+  "explanation": "He that is far off shall die of the pestilence.",
+  "ref": "Ezekiel 6:12"
+ },
+ {
+  "id": "ezekiel-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How would he that is near fall?",
+  "choices": [
+   "By the pestilence",
+   "By fire",
+   "By the sword",
+   "By famine"
+  ],
+  "answer": 2,
+  "explanation": "He that is near shall fall by the sword.",
+  "ref": "Ezekiel 6:12"
+ },
+ {
+  "id": "ezekiel-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How would he that remaineth and is besieged die?",
+  "choices": [
+   "By the sword",
+   "By the famine",
+   "By the pestilence",
+   "By the flood"
+  ],
+  "answer": 1,
+  "explanation": "He that remaineth and is besieged shall die by the famine.",
+  "ref": "Ezekiel 6:12"
+ },
+ {
+  "id": "ezekiel-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say about His saying that He would do this evil?",
+  "choices": [
+   "He had not said it in vain",
+   "He had said it in secret",
+   "He had said it only to the elders",
+   "He would soften it"
+  ],
+  "answer": 0,
+  "explanation": "They shall know that I have not said in vain that I would do this evil unto them.",
+  "ref": "Ezekiel 6:10"
+ },
+ {
+  "id": "ezekiel-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the eyes of the people do after their idols?",
+  "choices": [
+   "Look with fear",
+   "Weep in sorrow",
+   "Turn away in shame",
+   "Go a whoring"
+  ],
+  "answer": 3,
+  "explanation": "Their eyes go a whoring after their idols.",
+  "ref": "Ezekiel 6:9"
+ },
+ {
+  "id": "ezekiel-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be abolished along with the broken idols?",
+  "choices": [
+   "Their songs",
+   "Their feasts",
+   "Their works",
+   "Their names"
+  ],
+  "answer": 2,
+  "explanation": "Your idols may be broken and cease, and your works may be abolished.",
+  "ref": "Ezekiel 6:6"
+ },
+ {
+  "id": "ezekiel-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Upon what did the end come, according to the Lord GOD?",
+  "choices": [
+   "The gates of the temple",
+   "The river Chebar",
+   "The tops of the mountains",
+   "The four corners of the land"
+  ],
+  "answer": 3,
+  "explanation": "An end, the end is come upon the four corners of the land.",
+  "ref": "Ezekiel 7:2"
+ },
+ {
+  "id": "ezekiel-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who would die by the sword in the field?",
+  "choices": [
+   "He that is in the city",
+   "He that is in the temple",
+   "He that is in the field",
+   "He that is in Babylon"
+  ],
+  "answer": 2,
+  "explanation": "He that is in the field shall die with the sword; and he that is in the city, famine and pestilence shall devour him.",
+  "ref": "Ezekiel 7:15"
+ },
+ {
+  "id": "ezekiel-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Those who escaped would be on the mountains like what?",
+  "choices": [
+   "Eagles of the sky",
+   "Doves of the valleys",
+   "Lions of the hills",
+   "Sheep of the fold"
+  ],
+  "answer": 1,
+  "explanation": "They that escape shall be on the mountains like doves of the valleys, all of them mourning, every one for his iniquity.",
+  "ref": "Ezekiel 7:16"
+ },
+ {
+  "id": "ezekiel-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the people gird themselves with?",
+  "choices": [
+   "Sackcloth",
+   "Fine linen",
+   "Swords",
+   "Armour"
+  ],
+  "answer": 0,
+  "explanation": "They shall also gird themselves with sackcloth, and horror shall cover them.",
+  "ref": "Ezekiel 7:18"
+ },
+ {
+  "id": "ezekiel-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the people do with their silver?",
+  "choices": [
+   "Bury it in the ground",
+   "Give it to the temple",
+   "Send it to Egypt",
+   "Cast it in the streets"
+  ],
+  "answer": 3,
+  "explanation": "They shall cast their silver in the streets, and their gold shall be removed.",
+  "ref": "Ezekiel 7:19"
+ },
+ {
+  "id": "ezekiel-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "They blew the trumpet, but what did none do?",
+  "choices": [
+   "Sleep in the city",
+   "Bring an offering",
+   "Go to the battle",
+   "Flee to the hills"
+  ],
+  "answer": 2,
+  "explanation": "They have blown the trumpet, even to make all ready; but none goeth to the battle: for my wrath is upon all the multitude.",
+  "ref": "Ezekiel 7:14"
+ },
+ {
+  "id": "ezekiel-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the people seek, and find none?",
+  "choices": [
+   "Bread",
+   "Peace",
+   "A king",
+   "A prophet"
+  ],
+  "answer": 1,
+  "explanation": "Destruction cometh; and they shall seek peace, and there shall be none.",
+  "ref": "Ezekiel 7:25"
+ },
+ {
+  "id": "ezekiel-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would God do about all their abominations?",
+  "choices": [
+   "Recompense them",
+   "Forgive them",
+   "Hide them",
+   "Forget them"
+  ],
+  "answer": 0,
+  "explanation": "I will judge thee according to thy ways, and will recompense upon thee all thine abominations.",
+  "ref": "Ezekiel 7:3"
+ },
+ {
+  "id": "ezekiel-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say about the buyer and the seller?",
+  "choices": [
+   "The buyer will grow rich",
+   "The seller will return home",
+   "Both will go to Babylon",
+   "Let not the buyer rejoice nor the seller mourn"
+  ],
+  "answer": 3,
+  "explanation": "Let not the buyer rejoice, nor the seller mourn: for wrath is upon all the multitude thereof.",
+  "ref": "Ezekiel 7:12"
+ },
+ {
+  "id": "ezekiel-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the seller not do?",
+  "choices": [
+   "Sell again at a higher price",
+   "Leave the city",
+   "Return to that which is sold",
+   "Pay the tax"
+  ],
+  "answer": 2,
+  "explanation": "The seller shall not return to that which is sold, although they were yet alive.",
+  "ref": "Ezekiel 7:13"
+ },
+ {
+  "id": "ezekiel-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Violence was risen up into what?",
+  "choices": [
+   "A tower of pride",
+   "A rod of wickedness",
+   "A sword of fire",
+   "A wall of stone"
+  ],
+  "answer": 1,
+  "explanation": "Violence is risen up into a rod of wickedness.",
+  "ref": "Ezekiel 7:11"
+ },
+ {
+  "id": "ezekiel-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people make of the beauty of his ornament?",
+  "choices": [
+   "Images of their abominations",
+   "A crown for the king",
+   "A gift for the temple",
+   "A place for the poor"
+  ],
+  "answer": 0,
+  "explanation": "As for the beauty of his ornament, he set it in majesty: but they made the images of their abominations therein.",
+  "ref": "Ezekiel 7:20"
+ },
+ {
+  "id": "ezekiel-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into whose hands would God give the ornament for a prey?",
+  "choices": [
+   "The priests",
+   "The elders",
+   "The Levites",
+   "The strangers"
+  ],
+  "answer": 3,
+  "explanation": "I will give it into the hands of the strangers for a prey, and to the wicked of the earth for a spoil.",
+  "ref": "Ezekiel 7:21"
+ },
+ {
+  "id": "ezekiel-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who would enter and defile God's secret place?",
+  "choices": [
+   "The Egyptians",
+   "The prophets",
+   "The robbers",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "My face will I turn also from them, and they shall pollute my secret place: for the robbers shall enter into it.",
+  "ref": "Ezekiel 7:22"
+ },
+ {
+  "id": "ezekiel-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the command given because the land was full of bloody crimes?",
+  "choices": [
+   "Build a wall",
+   "Make a chain",
+   "Blow a trumpet",
+   "Raise an altar"
+  ],
+  "answer": 1,
+  "explanation": "Make a chain: for the land is full of bloody crimes, and the city is full of violence.",
+  "ref": "Ezekiel 7:23"
+ },
+ {
+  "id": "ezekiel-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who would God bring to possess the houses of the people?",
+  "choices": [
+   "The worst of the heathen",
+   "The Egyptians",
+   "The remnant of Judah",
+   "The kings of Israel"
+  ],
+  "answer": 0,
+  "explanation": "I will bring the worst of the heathen, and they shall possess their houses.",
+  "ref": "Ezekiel 7:24"
+ },
+ {
+  "id": "ezekiel-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was said of the violent multitude, that none of them would remain?",
+  "choices": [
+   "They will be buried with honour",
+   "Their children will remember them",
+   "They will be carried to Babylon",
+   "There shall be no wailing for them"
+  ],
+  "answer": 3,
+  "explanation": "None of them shall remain, nor of their multitude: neither shall there be wailing for them.",
+  "ref": "Ezekiel 7:11"
+ },
+ {
+  "id": "ezekiel-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was each escaper mourning for?",
+  "choices": [
+   "His lost home",
+   "His slain king",
+   "His iniquity",
+   "His silver and gold"
+  ],
+  "answer": 2,
+  "explanation": "They that escape shall be on the mountains, all of them mourning, every one for his iniquity.",
+  "ref": "Ezekiel 7:16"
+ },
+ {
+  "id": "ezekiel-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say He would make cease?",
+  "choices": [
+   "The songs of the temple",
+   "The pomp of the strong",
+   "The feasts of the year",
+   "The war with Babylon"
+  ],
+  "answer": 1,
+  "explanation": "I will also make the pomp of the strong to cease; and their holy places shall be defiled.",
+  "ref": "Ezekiel 7:24"
+ },
+ {
+  "id": "ezekiel-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what name does God say He will be known when He smites?",
+  "choices": [
+   "The LORD that smiteth",
+   "The LORD of hosts",
+   "The God of Jacob",
+   "The Most High"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall know that I am the LORD that smiteth.",
+  "ref": "Ezekiel 7:9"
+ },
+ {
+  "id": "ezekiel-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be upon all their heads?",
+  "choices": [
+   "Ashes",
+   "Crowns of gold",
+   "Linen cloths",
+   "Baldness"
+  ],
+  "answer": 3,
+  "explanation": "Shame shall be upon all faces, and baldness upon all their heads.",
+  "ref": "Ezekiel 7:18"
+ },
+ {
+  "id": "ezekiel-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Their silver and gold were the stumblingblock of what?",
+  "choices": [
+   "Their kings",
+   "Their journey",
+   "Their iniquity",
+   "Their trade"
+  ],
+  "answer": 2,
+  "explanation": "It is the stumblingblock of their iniquity.",
+  "ref": "Ezekiel 7:19"
+ },
+ {
+  "id": "ezekiel-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would silver and gold not do for their souls?",
+  "choices": [
+   "Buy them a king",
+   "Satisfy them or fill their bowels",
+   "Pay the ransom to Babylon",
+   "Build a new temple"
+  ],
+  "answer": 1,
+  "explanation": "They shall not satisfy their souls, neither fill their bowels.",
+  "ref": "Ezekiel 7:19"
+ },
+ {
+  "id": "ezekiel-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be defiled when the worst of the heathen came?",
+  "choices": [
+   "Their holy places",
+   "Their gates",
+   "Their fields",
+   "Their rivers"
+  ],
+  "answer": 0,
+  "explanation": "Their holy places shall be defiled.",
+  "ref": "Ezekiel 7:24"
+ },
+ {
+  "id": "ezekiel-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who would be clothed with desolation?",
+  "choices": [
+   "The priest",
+   "The prophet",
+   "The elder",
+   "The prince"
+  ],
+  "answer": 3,
+  "explanation": "The king shall mourn, and the prince shall be clothed with desolation.",
+  "ref": "Ezekiel 7:27"
+ },
+ {
+  "id": "ezekiel-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would become feeble?",
+  "choices": [
+   "All gates",
+   "All walls",
+   "All hands",
+   "All songs"
+  ],
+  "answer": 2,
+  "explanation": "All hands shall be feeble, and all knees shall be weak as water.",
+  "ref": "Ezekiel 7:17"
+ },
+ {
+  "id": "ezekiel-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be troubled in the land?",
+  "choices": [
+   "The gates of the city",
+   "The hands of the people",
+   "The cattle of the fields",
+   "The wells of the city"
+  ],
+  "answer": 1,
+  "explanation": "The hands of the people of the land shall be troubled.",
+  "ref": "Ezekiel 7:27"
+ },
+ {
+  "id": "ezekiel-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How would God treat the people of the land?",
+  "choices": [
+   "After their way and according to their deserts",
+   "With mercy and pity",
+   "By sending prophets again",
+   "By sparing the faithful"
+  ],
+  "answer": 0,
+  "explanation": "I will do unto them after their way, and according to their deserts will I judge them.",
+  "ref": "Ezekiel 7:27"
+ },
+ {
+  "id": "ezekiel-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whom would they seek a vision?",
+  "choices": [
+   "The king",
+   "The priest",
+   "The ancients",
+   "The prophet"
+  ],
+  "answer": 3,
+  "explanation": "Then shall they seek a vision of the prophet.",
+  "ref": "Ezekiel 7:26"
+ },
+ {
+  "id": "ezekiel-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who would mourn according to the Lord GOD?",
+  "choices": [
+   "The priests",
+   "The merchants",
+   "The king",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "The king shall mourn, and the prince shall be clothed with desolation.",
+  "ref": "Ezekiel 7:27"
+ },
+ {
+  "id": "ezekiel-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord GOD say about His eye?",
+  "choices": [
+   "It will watch over the faithful",
+   "It shall not spare, nor will He have pity",
+   "It will turn to the nations",
+   "It will weep for the city"
+  ],
+  "answer": 1,
+  "explanation": "Mine eye shall not spare thee, neither will I have pity.",
+  "ref": "Ezekiel 7:4"
+ },
+ {
+  "id": "ezekiel-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was near, according to the Lord GOD?",
+  "choices": [
+   "The day of trouble",
+   "The day of rest",
+   "The day of return",
+   "The day of feasting"
+  ],
+  "answer": 0,
+  "explanation": "The time is come, the day of trouble is near.",
+  "ref": "Ezekiel 7:7"
+ },
+ {
+  "id": "ezekiel-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be weak as water?",
+  "choices": [
+   "All walls",
+   "All hearts",
+   "All gates",
+   "All knees"
+  ],
+  "answer": 3,
+  "explanation": "All hands shall be feeble, and all knees shall be weak as water.",
+  "ref": "Ezekiel 7:17"
+ },
+ {
+  "id": "ezekiel-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be upon all faces?",
+  "choices": [
+   "Joy",
+   "Dust",
+   "Shame",
+   "Fear of the king"
+  ],
+  "answer": 2,
+  "explanation": "Horror shall cover them; and shame shall be upon all faces.",
+  "ref": "Ezekiel 7:18"
+ },
+ {
+  "id": "ezekiel-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where would pestilence and famine be, while the sword was without?",
+  "choices": [
+   "In the field",
+   "Within the city",
+   "On the mountains",
+   "In Babylon"
+  ],
+  "answer": 1,
+  "explanation": "The sword is without, and the pestilence and the famine within.",
+  "ref": "Ezekiel 7:15"
+ },
+ {
+  "id": "ezekiel-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had blossomed when the morning went forth?",
+  "choices": [
+   "The rod",
+   "The vine",
+   "The fig tree",
+   "The almond"
+  ],
+  "answer": 0,
+  "explanation": "The morning is gone forth; the rod hath blossomed, pride hath budded.",
+  "ref": "Ezekiel 7:10"
+ },
+ {
+  "id": "ezekiel-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was said of the end that was come?",
+  "choices": [
+   "It sleeps for a season",
+   "It is hidden from the king",
+   "It turns to the north",
+   "It watcheth for thee"
+  ],
+  "answer": 3,
+  "explanation": "An end is come, the end is come: it watcheth for thee; behold, it is come.",
+  "ref": "Ezekiel 7:6"
+ },
+ {
+  "id": "ezekiel-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the Spirit take Ezekiel to Jerusalem?",
+  "choices": [
+   "By a lock of his head",
+   "By a chariot of fire",
+   "By a ship on the river",
+   "On the wings of an eagle"
+  ],
+  "answer": 0,
+  "explanation": "He put forth the form of an hand, and took me by a lock of mine head.",
+  "ref": "Ezekiel 8:3"
+ },
+ {
+  "id": "ezekiel-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men were worshipping the sun?",
+  "choices": [
+   "About seventy",
+   "About twelve",
+   "About a hundred",
+   "About five and twenty"
+  ],
+  "answer": 3,
+  "explanation": "At the door of the temple were about five and twenty men worshipping the sun toward the east.",
+  "ref": "Ezekiel 8:16"
+ },
+ {
+  "id": "ezekiel-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Ezekiel told to dig through?",
+  "choices": [
+   "The floor",
+   "The gate",
+   "The wall",
+   "The mountain"
+  ],
+  "answer": 2,
+  "explanation": "Son of man, dig now in the wall: and when I had digged in the wall, behold a door.",
+  "ref": "Ezekiel 8:8"
+ },
+ {
+  "id": "ezekiel-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the likeness Ezekiel saw look like?",
+  "choices": [
+   "A man in white linen",
+   "Fire below the loins and brightness like amber above",
+   "A lion with wings",
+   "A cloud with lightning"
+  ],
+  "answer": 1,
+  "explanation": "From his loins downward, fire; and from his loins upward, as the colour of amber.",
+  "ref": "Ezekiel 8:2"
+ },
+ {
+  "id": "ezekiel-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who stood in the midst of the seventy elders with a censer?",
+  "choices": [
+   "Jaazaniah the son of Shaphan",
+   "Pelatiah the son of Benaiah",
+   "Hilkiah the priest",
+   "Buzi the priest"
+  ],
+  "answer": 0,
+  "explanation": "In the midst of them stood Jaazaniah the son of Shaphan, with every man his censer in his hand.",
+  "ref": "Ezekiel 8:11"
+ },
+ {
+  "id": "ezekiel-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was pourtrayed upon the wall round about?",
+  "choices": [
+   "Kings and chariots",
+   "The tribes of Israel",
+   "The stars and the moon",
+   "Creeping things, abominable beasts and idols"
+  ],
+  "answer": 3,
+  "explanation": "He saw every form of creeping things, and abominable beasts, and all the idols of the house of Israel, pourtrayed upon the wall.",
+  "ref": "Ezekiel 8:10"
+ },
+ {
+  "id": "ezekiel-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the ancients say in the dark?",
+  "choices": [
+   "The LORD is our shepherd",
+   "The LORD will deliver us",
+   "The LORD seeth us not",
+   "The LORD hears our prayer"
+  ],
+  "answer": 2,
+  "explanation": "They say, The LORD seeth us not; the LORD hath forsaken the earth.",
+  "ref": "Ezekiel 8:12"
+ },
+ {
+  "id": "ezekiel-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the men standing at the door of the temple?",
+  "choices": [
+   "Faces toward the altar",
+   "Backs toward the temple and faces toward the east",
+   "Kneeling toward Jerusalem",
+   "Standing at the gate with swords"
+  ],
+  "answer": 1,
+  "explanation": "They had their backs toward the temple of the LORD, and their faces toward the east.",
+  "ref": "Ezekiel 8:16"
+ },
+ {
+  "id": "ezekiel-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say about the people's cry?",
+  "choices": [
+   "He would not hear them",
+   "He would answer quickly",
+   "He would send a prophet",
+   "He would give them rest"
+  ],
+  "answer": 0,
+  "explanation": "Though they cry in mine ears with a loud voice, yet will I not hear them.",
+  "ref": "Ezekiel 8:18"
+ },
+ {
+  "id": "ezekiel-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the house of Judah filled the land with?",
+  "choices": [
+   "Idols",
+   "Silver",
+   "Fear",
+   "Violence"
+  ],
+  "answer": 3,
+  "explanation": "They have filled the land with violence, and have returned to provoke me to anger.",
+  "ref": "Ezekiel 8:17"
+ },
+ {
+  "id": "ezekiel-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who was there at Jerusalem, according to the vision Ezekiel saw in the plain?",
+  "choices": [
+   "The prophet Jeremiah",
+   "The king of Babylon",
+   "The glory of the God of Israel",
+   "An angel with a sword"
+  ],
+  "answer": 2,
+  "explanation": "The glory of the God of Israel was there, according to the vision that I saw in the plain.",
+  "ref": "Ezekiel 8:4"
+ },
+ {
+  "id": "ezekiel-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the abominations make God say He would go far off from?",
+  "choices": [
+   "His people",
+   "His sanctuary",
+   "The city",
+   "The earth"
+  ],
+  "answer": 1,
+  "explanation": "Seest thou what they do, that I should go far off from my sanctuary?",
+  "ref": "Ezekiel 8:6"
+ },
+ {
+  "id": "ezekiel-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the ancients do their abominations?",
+  "choices": [
+   "In the dark, in the chambers of imagery",
+   "In the temple porch",
+   "In the open streets",
+   "On the mountain"
+  ],
+  "answer": 0,
+  "explanation": "The ancients do in the dark, every man in the chambers of his imagery.",
+  "ref": "Ezekiel 8:12"
+ },
+ {
+  "id": "ezekiel-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year and month did the hand of the Lord GOD fall on Ezekiel?",
+  "choices": [
+   "The fifth year, in the fourth month",
+   "The thirtieth year, in the fourth month",
+   "The seventh year, in the tenth month",
+   "The sixth year, in the sixth month"
+  ],
+  "answer": 3,
+  "explanation": "It came to pass in the sixth year, in the sixth month, in the fifth day of the month.",
+  "ref": "Ezekiel 8:1"
+ },
+ {
+  "id": "ezekiel-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who sat before Ezekiel in his house?",
+  "choices": [
+   "The priests of Zadok",
+   "The men of Babylon",
+   "The elders of Judah",
+   "The captives of Tel-abib"
+  ],
+  "answer": 2,
+  "explanation": "Ezekiel sat in his house, and the elders of Judah sat before him.",
+  "ref": "Ezekiel 8:1"
+ },
+ {
+  "id": "ezekiel-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the seat of the image of jealousy?",
+  "choices": [
+   "The door of the temple porch",
+   "The door of the inner gate toward the north",
+   "The south gate",
+   "The court of the women"
+  ],
+  "answer": 1,
+  "explanation": "He brought me to the door of the inner gate that looketh toward the north, where was the seat of the image of jealousy.",
+  "ref": "Ezekiel 8:3"
+ },
+ {
+  "id": "ezekiel-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the image of jealousy do?",
+  "choices": [
+   "Provoked to jealousy",
+   "Gave light to the court",
+   "Guarded the gate",
+   "Spoke to the priests"
+  ],
+  "answer": 0,
+  "explanation": "The seat of the image of jealousy, which provoketh to jealousy.",
+  "ref": "Ezekiel 8:3"
+ },
+ {
+  "id": "ezekiel-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the hole Ezekiel saw in the wall?",
+  "choices": [
+   "At the temple porch",
+   "At the north gate",
+   "At the altar",
+   "At the door of the court"
+  ],
+  "answer": 3,
+  "explanation": "He brought me to the door of the court; and behold a hole in the wall.",
+  "ref": "Ezekiel 8:7"
+ },
+ {
+  "id": "ezekiel-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where stood the men who worshipped the sun?",
+  "choices": [
+   "Behind the altar",
+   "In the outer court",
+   "Between the porch and the altar",
+   "At the gate of the city"
+  ],
+  "answer": 2,
+  "explanation": "Between the porch and the altar were about five and twenty men.",
+  "ref": "Ezekiel 8:16"
+ },
+ {
+  "id": "ezekiel-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did each of the seventy men have in his hand?",
+  "choices": [
+   "A sword",
+   "A censer",
+   "A branch",
+   "An idol"
+  ],
+  "answer": 1,
+  "explanation": "Every man with his censer in his hand; and a thick cloud of incense went up.",
+  "ref": "Ezekiel 8:11"
+ },
+ {
+  "id": "ezekiel-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men put to their nose?",
+  "choices": [
+   "The branch",
+   "The incense",
+   "A cloth",
+   "A candle"
+  ],
+  "answer": 0,
+  "explanation": "They put the branch to their nose.",
+  "ref": "Ezekiel 8:17"
+ },
+ {
+  "id": "ezekiel-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was Ezekiel lifted up by the Spirit as he was brought to Jerusalem?",
+  "choices": [
+   "Over the river Chebar",
+   "Above the temple roof",
+   "Through the clouds of fire",
+   "Between the earth and the heaven"
+  ],
+  "answer": 3,
+  "explanation": "The spirit lifted me up between the earth and the heaven, and brought me in the visions of God to Jerusalem.",
+  "ref": "Ezekiel 8:3"
+ },
+ {
+  "id": "ezekiel-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Beside what did the six men and the man in linen stand?",
+  "choices": [
+   "The ark",
+   "The brasen altar",
+   "The temple gate",
+   "The sea of brass"
+  ],
+  "answer": 1,
+  "explanation": "They went in, and stood beside the brasen altar.",
+  "ref": "Ezekiel 9:2"
+ },
+ {
+  "id": "ezekiel-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "What did the man clothed with linen report when he came back?",
+  "choices": [
+   "I have done as thou hast commanded me",
+   "The city is empty",
+   "None are left alive",
+   "The mark is washed away"
+  ],
+  "answer": 0,
+  "explanation": "The man clothed with linen reported, I have done as thou hast commanded me.",
+  "ref": "Ezekiel 9:11"
+ },
+ {
+  "id": "ezekiel-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom were the executioners not to come near?",
+  "choices": [
+   "Any priest in the temple",
+   "Any child in the city",
+   "Any elder of the people",
+   "Any man upon whom is the mark"
+  ],
+  "answer": 3,
+  "explanation": "Come not near any man upon whom is the mark; and begin at my sanctuary.",
+  "ref": "Ezekiel 9:6"
+ },
+ {
+  "id": "ezekiel-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the slaying begin with?",
+  "choices": [
+   "The young men of the city",
+   "The priests at the altar",
+   "The ancient men before the house",
+   "The king's household"
+  ],
+  "answer": 2,
+  "explanation": "Then they began at the ancient men which were before the house.",
+  "ref": "Ezekiel 9:6"
+ },
+ {
+  "id": "ezekiel-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God command the men to do to the house?",
+  "choices": [
+   "Burn it with fire",
+   "Defile it and fill the courts with the slain",
+   "Pull it down to the ground",
+   "Shut its doors"
+  ],
+  "answer": 1,
+  "explanation": "Defile the house, and fill the courts with the slain: go ye forth.",
+  "ref": "Ezekiel 9:7"
+ },
+ {
+  "id": "ezekiel-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezekiel's cry when he fell on his face?",
+  "choices": [
+   "Wilt thou destroy all the residue of Israel",
+   "Spare the city for ten righteous",
+   "Send me instead",
+   "Let the king be spared"
+  ],
+  "answer": 0,
+  "explanation": "Ah Lord GOD! wilt thou destroy all the residue of Israel in thy pouring out of thy fury upon Jerusalem?",
+  "ref": "Ezekiel 9:8"
+ },
+ {
+  "id": "ezekiel-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the land full of, and the city full of perverseness?",
+  "choices": [
+   "The land was full of idols",
+   "The land was full of fire",
+   "The land was full of strangers",
+   "The land was full of blood"
+  ],
+  "answer": 3,
+  "explanation": "The land is full of blood, and the city full of perverseness.",
+  "ref": "Ezekiel 9:9"
+ },
+ {
+  "id": "ezekiel-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people say, as God reports?",
+  "choices": [
+   "The LORD is with us",
+   "The LORD will deliver Jerusalem",
+   "The LORD hath forsaken the earth, and the LORD seeth not",
+   "The LORD has no temple"
+  ],
+  "answer": 2,
+  "explanation": "They say, The LORD hath forsaken the earth, and the LORD seeth not.",
+  "ref": "Ezekiel 9:9"
+ },
+ {
+  "id": "ezekiel-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "From which way did the six men come?",
+  "choices": [
+   "The east gate",
+   "The higher gate toward the north",
+   "The valley gate",
+   "The water gate"
+  ],
+  "answer": 1,
+  "explanation": "Six men came from the way of the higher gate, which lieth toward the north.",
+  "ref": "Ezekiel 9:2"
+ },
+ {
+  "id": "ezekiel-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the glory of the God of Israel go up to?",
+  "choices": [
+   "The threshold of the house",
+   "The roof of the temple",
+   "The mountain",
+   "The brasen altar"
+  ],
+  "answer": 0,
+  "explanation": "The glory of the God of Israel was gone up from the cherub to the threshold of the house.",
+  "ref": "Ezekiel 9:3"
+ },
+ {
+  "id": "ezekiel-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would God do with the way of the people?",
+  "choices": [
+   "Hide it from the nations",
+   "Write it in a book",
+   "Forgive it at last",
+   "Recompense it upon their head"
+  ],
+  "answer": 3,
+  "explanation": "Mine eye shall not spare, neither will I have pity, but I will recompense their way upon their head.",
+  "ref": "Ezekiel 9:10"
+ },
+ {
+  "id": "ezekiel-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom were the men told to slay utterly?",
+  "choices": [
+   "Only the priests",
+   "Only the elders",
+   "Old and young, maids, little children and women",
+   "Only the men of war"
+  ],
+  "answer": 2,
+  "explanation": "Slay utterly old and young, both maids, and little children, and women.",
+  "ref": "Ezekiel 9:6"
+ },
+ {
+  "id": "ezekiel-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was each man to have in his hand when drawing near?",
+  "choices": [
+   "A lamp",
+   "His destroying weapon",
+   "A censer",
+   "A writer's inkhorn"
+  ],
+  "answer": 1,
+  "explanation": "Cause them that have charge over the city to draw near, every man with his destroying weapon in his hand.",
+  "ref": "Ezekiel 9:1"
+ },
+ {
+  "id": "ezekiel-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose iniquity did God call exceeding great?",
+  "choices": [
+   "The house of Israel and Judah",
+   "The Philistines",
+   "The king of Babylon",
+   "The Egyptians"
+  ],
+  "answer": 0,
+  "explanation": "The iniquity of the house of Israel and Judah is exceeding great.",
+  "ref": "Ezekiel 9:9"
  }
 ]
