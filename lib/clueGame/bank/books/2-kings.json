@@ -3200,6 +3200,646 @@
   "ref": "2 Kings 6:25–29"
  },
  {
+  "id": "2-kings-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Elisha that the place where they lived was too small?",
+  "choices": [
+   "The captains of Syria",
+   "The priests of Bethel",
+   "The sons of the prophets",
+   "The elders of Samaria"
+  ],
+  "answer": 2,
+  "explanation": "The sons of the prophets said, the place where we dwell with thee is too strait for us.",
+  "ref": "2 Kings 6:1"
+ },
+ {
+  "id": "2-kings-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which river did the prophets go to cut beams for a new dwelling?",
+  "choices": [
+   "Kishon",
+   "Jordan",
+   "Arnon",
+   "Jabbok"
+  ],
+  "answer": 1,
+  "explanation": "They went to Jordan and cut down wood there.",
+  "ref": "2 Kings 6:2–4"
+ },
+ {
+  "id": "2-kings-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the man cry out when the axe head fell into the water?",
+  "choices": [
+   "It was borrowed",
+   "It was made of gold",
+   "It belonged to the king",
+   "It was Elisha's"
+  ],
+  "answer": 0,
+  "explanation": "He cried, Alas, master! for it was borrowed.",
+  "ref": "2 Kings 6:5"
+ },
+ {
+  "id": "2-kings-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who warned the king of Israel where the Syrians had camped?",
+  "choices": [
+   "A servant of Ben-hadad",
+   "The prophet's servant",
+   "Elisha, the man of God",
+   "The captain of the host"
+  ],
+  "answer": 2,
+  "explanation": "The man of God sent unto the king of Israel, saying, Beware that thou pass not such a place.",
+  "ref": "2 Kings 6:9"
+ },
+ {
+  "id": "2-kings-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which city was Elisha when the Syrian army surrounded him?",
+  "choices": [
+   "Dothan",
+   "Bethel",
+   "Jericho",
+   "Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "The king of Syria was told, Behold, he is in Dothan.",
+  "ref": "2 Kings 6:13"
+ },
+ {
+  "id": "2-kings-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha tell his frightened servant?",
+  "choices": [
+   "Pray for fire from heaven",
+   "Fear not: they with us are more than they with them",
+   "Run to Samaria at once",
+   "Hide in the house until morning"
+  ],
+  "answer": 1,
+  "explanation": "Elisha answered, Fear not: for they that be with us are more than they that be with them.",
+  "ref": "2 Kings 6:16"
+ },
+ {
+  "id": "2-kings-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha tell the king of Israel to set before the Syrians?",
+  "choices": [
+   "Gold and silver",
+   "Bread and water",
+   "Swords and bows",
+   "Oil and wine"
+  ],
+  "answer": 1,
+  "explanation": "Elisha said, set bread and water before them, that they may eat and drink, and go to their master.",
+  "ref": "2 Kings 6:22"
+ },
+ {
+  "id": "2-kings-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Syria gathered his host and besieged Samaria?",
+  "choices": [
+   "Hazael",
+   "Ben-hadad",
+   "Naaman",
+   "Hadadezer"
+  ],
+  "answer": 1,
+  "explanation": "Ben-hadad king of Syria gathered all his host, and went up, and besieged Samaria.",
+  "ref": "2 Kings 6:24"
+ },
+ {
+  "id": "2-kings-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king wear under his clothes as he passed by on the wall?",
+  "choices": [
+   "Armour",
+   "A linen ephod",
+   "A scarlet robe",
+   "Sackcloth"
+  ],
+  "answer": 3,
+  "explanation": "He had sackcloth within upon his flesh.",
+  "ref": "2 Kings 6:30"
+ },
+ {
+  "id": "2-kings-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the woman cry out to as he passed by upon the wall?",
+  "choices": [
+   "Elisha",
+   "The king of Israel",
+   "The king of Syria",
+   "The captain of the host"
+  ],
+  "answer": 1,
+  "explanation": "There cried a woman unto the king of Israel, saying, Help, my lord, O king.",
+  "ref": "2 Kings 6:26"
+ },
+ {
+  "id": "2-kings-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the sons of the prophets plan to make at the Jordan?",
+  "choices": [
+   "A place to dwell",
+   "A temple",
+   "A bridge",
+   "A fortress"
+  ],
+  "answer": 0,
+  "explanation": "They said, let us make us a place there, where we may dwell.",
+  "ref": "2 Kings 6:2"
+ },
+ {
+  "id": "2-kings-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did one of the prophets ask Elisha to do?",
+  "choices": [
+   "Stay in Samaria",
+   "Go with his servants",
+   "Send for the king",
+   "Pray for rain"
+  ],
+  "answer": 1,
+  "explanation": "One said, Be content, I pray thee, and go with thy servants. And Elisha answered, I will go.",
+  "ref": "2 Kings 6:3"
+ },
+ {
+  "id": "2-kings-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha say to the man after the iron swam?",
+  "choices": [
+   "Give it to the master",
+   "Take it up to thee",
+   "Carry it to the king",
+   "Throw it again"
+  ],
+  "answer": 1,
+  "explanation": "Elisha said, Take it up to thee. And he put out his hand, and took it.",
+  "ref": "2 Kings 6:7"
+ },
+ {
+  "id": "2-kings-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the king of Syria sore troubled?",
+  "choices": [
+   "His horses had died",
+   "Elisha had cursed his land",
+   "His servants had run away",
+   "Israel's king kept avoiding the places of his camp"
+  ],
+  "answer": 3,
+  "explanation": "The king of Israel saved himself again and again, so the heart of the king of Syria was sore troubled.",
+  "ref": "2 Kings 6:8–11"
+ },
+ {
+  "id": "2-kings-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king of Syria send to Dothan to take Elisha?",
+  "choices": [
+   "Ten spies",
+   "Horses, chariots and a great host",
+   "A single captain",
+   "A letter of war"
+  ],
+  "answer": 1,
+  "explanation": "He sent thither horses, and chariots, and a great host, and they compassed the city about.",
+  "ref": "2 Kings 6:14"
+ },
+ {
+  "id": "2-kings-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king of Israel call Elisha when he saw the blinded Syrians?",
+  "choices": [
+   "My brother",
+   "My father",
+   "My lord",
+   "My son"
+  ],
+  "answer": 1,
+  "explanation": "The king said, My father, shall I smite them?",
+  "ref": "2 Kings 6:21"
+ },
+ {
+  "id": "2-kings-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened after Israel's king prepared great provision for the Syrians?",
+  "choices": [
+   "The bands of Syria came no more into the land of Israel",
+   "They made Israel pay a tax",
+   "They burned Samaria",
+   "Ben-hadad died"
+  ],
+  "answer": 0,
+  "explanation": "So the bands of Syria came no more into the land of Israel.",
+  "ref": "2 Kings 6:23"
+ },
+ {
+  "id": "2-kings-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many pieces of silver was an ass's head sold for in the siege?",
+  "choices": [
+   "Fifty",
+   "Five",
+   "A hundred",
+   "Fourscore"
+  ],
+  "answer": 3,
+  "explanation": "An ass's head was sold for fourscore pieces of silver.",
+  "ref": "2 Kings 6:25"
+ },
+ {
+  "id": "2-kings-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was sold for five pieces of silver in the famine of Samaria?",
+  "choices": [
+   "A measure of fine flour",
+   "Two measures of barley",
+   "A sheep",
+   "The fourth part of a cab of dove's dung"
+  ],
+  "answer": 3,
+  "explanation": "The fourth part of a cab of dove's dung was sold for five pieces of silver.",
+  "ref": "2 Kings 6:25"
+ },
+ {
+  "id": "2-kings-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king say to the woman who cried for help?",
+  "choices": [
+   "Go and ask Elisha",
+   "Take bread from the palace",
+   "Be content and wait",
+   "If the LORD do not help thee, whence shall I help thee?"
+  ],
+  "answer": 3,
+  "explanation": "He said, If the LORD do not help thee, whence shall I help thee?",
+  "ref": "2 Kings 6:27"
+ },
+ {
+  "id": "2-kings-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king do when he heard the woman's words?",
+  "choices": [
+   "He fell on his face",
+   "He rent his clothes",
+   "He fled the city",
+   "He sent for his captains"
+  ],
+  "answer": 1,
+  "explanation": "When the king heard the words of the woman, he rent his clothes.",
+  "ref": "2 Kings 6:30"
+ },
+ {
+  "id": "2-kings-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose head did the king swear should not stay on him that day?",
+  "choices": [
+   "Ben-hadad",
+   "Elisha the son of Shaphat",
+   "Elijah the Tishbite",
+   "Gehazi"
+  ],
+  "answer": 1,
+  "explanation": "God do so and more also to me, if the head of Elisha the son of Shaphat shall stand on him this day.",
+  "ref": "2 Kings 6:31"
+ },
+ {
+  "id": "2-kings-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who sat with Elisha in his house?",
+  "choices": [
+   "The king's captains",
+   "The elders",
+   "His servant",
+   "The sons of the prophets"
+  ],
+  "answer": 1,
+  "explanation": "Elisha sat in his house, and the elders sat with him.",
+  "ref": "2 Kings 6:32"
+ },
+ {
+  "id": "2-kings-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha call the king who sent a man to take his head?",
+  "choices": [
+   "A foolish shepherd",
+   "A man of blood and iron",
+   "A son of a murderer",
+   "A servant of Baal"
+  ],
+  "answer": 2,
+  "explanation": "He said to the elders, See ye how this son of a murderer hath sent to take away mine head?",
+  "ref": "2 Kings 6:32"
+ },
+ {
+  "id": "2-kings-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the second woman done with her son after the first son was eaten?",
+  "choices": [
+   "She gave him to the king",
+   "She hid him",
+   "She sold him",
+   "She sent him to Syria"
+  ],
+  "answer": 1,
+  "explanation": "I said unto her on the next day, Give thy son, that we may eat him: and she hath hid her son.",
+  "ref": "2 Kings 6:29"
+ },
+ {
+  "id": "2-kings-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How often did the king of Israel save himself by Elisha's warnings?",
+  "choices": [
+   "Seven times",
+   "Every month",
+   "Not once nor twice",
+   "Only once"
+  ],
+  "answer": 2,
+  "explanation": "The king of Israel saved himself there, not once nor twice.",
+  "ref": "2 Kings 6:10"
+ },
+ {
+  "id": "2-kings-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did a servant say Elisha heard the words the king of Syria spoke?",
+  "choices": [
+   "In his bedchamber",
+   "At the gate",
+   "In the field",
+   "In the camp"
+  ],
+  "answer": 0,
+  "explanation": "Elisha telleth the king of Israel the words that thou speakest in thy bedchamber.",
+  "ref": "2 Kings 6:12"
+ },
+ {
+  "id": "2-kings-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king of Syria ask his servants when he was troubled?",
+  "choices": [
+   "Which of us is for the king of Israel?",
+   "Where is Elisha buried?",
+   "Who will go to war?",
+   "Why is the camp empty?"
+  ],
+  "answer": 0,
+  "explanation": "He said, Will ye not shew me which of us is for the king of Israel?",
+  "ref": "2 Kings 6:11"
+ },
+ {
+  "id": "2-kings-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the man doing when the axe head fell into the water?",
+  "choices": [
+   "Felling a beam",
+   "Building a house",
+   "Drawing water",
+   "Washing garments"
+  ],
+  "answer": 0,
+  "explanation": "As one was felling a beam, the axe head fell into the water.",
+  "ref": "2 Kings 6:5"
+ },
+ {
+  "id": "2-kings-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elisha ask the man before he cast in the stick?",
+  "choices": [
+   "Who lent it?",
+   "Where fell it?",
+   "Whose was it?",
+   "How deep is the water?"
+  ],
+  "answer": 1,
+  "explanation": "The man of God said, Where fell it? And he shewed him the place.",
+  "ref": "2 Kings 6:6"
+ },
+ {
+  "id": "2-kings-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elisha tell the blinded Syrians when he met them?",
+  "choices": [
+   "Go back to Syria",
+   "The king is dead",
+   "This is not the way, neither is this the city",
+   "You are my prisoners"
+  ],
+  "answer": 2,
+  "explanation": "Elisha said, This is not the way, neither is this the city: follow me.",
+  "ref": "2 Kings 6:19"
+ },
+ {
+  "id": "2-kings-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the Syrians find themselves when their eyes were opened?",
+  "choices": [
+   "In the midst of Samaria",
+   "At the gate of Dothan",
+   "In the camp of Israel",
+   "On the Jordan"
+  ],
+  "answer": 0,
+  "explanation": "The LORD opened their eyes, and they saw; and, behold, they were in the midst of Samaria.",
+  "ref": "2 Kings 6:20"
+ },
+ {
+  "id": "2-kings-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the woman say the first son was cooked?",
+  "choices": [
+   "He was baked",
+   "He was hidden",
+   "He was boiled",
+   "He was roasted"
+  ],
+  "answer": 2,
+  "explanation": "So we boiled my son, and did eat him.",
+  "ref": "2 Kings 6:29"
+ },
+ {
+  "id": "2-kings-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the king say help could not come from for the woman?",
+  "choices": [
+   "The wall or the gate",
+   "The barnfloor or the winepress",
+   "The temple or the palace",
+   "Dothan or Jericho"
+  ],
+  "answer": 1,
+  "explanation": "If the LORD do not help thee, whence shall I help thee? out of the barnfloor, or out of the winepress?",
+  "ref": "2 Kings 6:27"
+ },
+ {
+  "id": "2-kings-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elisha tell the elders to do when the messenger came?",
+  "choices": [
+   "Shut the door and hold him fast",
+   "Give him bread",
+   "Send him to the king",
+   "Bring him to the wall"
+  ],
+  "answer": 0,
+  "explanation": "When the messenger cometh, shut the door, and hold him fast at the door.",
+  "ref": "2 Kings 6:32"
+ },
+ {
+  "id": "2-kings-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elisha say was behind the king's messenger?",
+  "choices": [
+   "A company of elders",
+   "The cry of the woman",
+   "The sound of his master's feet",
+   "A great host of Syrians"
+  ],
+  "answer": 2,
+  "explanation": "Is not the sound of his master's feet behind him?",
+  "ref": "2 Kings 6:32"
+ },
+ {
+  "id": "2-kings-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king say of the evil as the messenger came?",
+  "choices": [
+   "This evil is of the Syrians",
+   "This evil is of Elisha",
+   "This evil will pass",
+   "This evil is of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Behold, this evil is of the LORD; what should I wait for the LORD any longer?",
+  "ref": "2 Kings 6:33"
+ },
+ {
+  "id": "2-kings-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Elisha answer when the prophets proposed to go to the Jordan?",
+  "choices": [
+   "Ask the king",
+   "Go ye",
+   "Stay here",
+   "I will not go"
+  ],
+  "answer": 1,
+  "explanation": "Elisha answered, Go ye.",
+  "ref": "2 Kings 6:2"
+ },
+ {
+  "id": "2-kings-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king of Syria say to do when he heard Elisha was in Dothan?",
+  "choices": [
+   "Burn the city",
+   "Wait for morning",
+   "Send gifts",
+   "Send and fetch him"
+  ],
+  "answer": 3,
+  "explanation": "He said, Go and spy where he is, that I may send and fetch him.",
+  "ref": "2 Kings 6:13"
+ },
+ {
+  "id": "2-kings-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the servant do before he saw the host around the city?",
+  "choices": [
+   "Fell asleep on the wall",
+   "Prayed on the mountain",
+   "Went to Samaria",
+   "Rose early and went forth"
+  ],
+  "answer": 3,
+  "explanation": "When the servant was risen early, and gone forth, behold, an host compassed the city.",
+  "ref": "2 Kings 6:15"
+ },
+ {
   "id": "old-2-kings-7-1",
   "chapter": 7,
   "level": "beginner",
