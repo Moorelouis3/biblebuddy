@@ -8576,6 +8576,358 @@
   "ref": "1 Chronicles 14:15"
  },
  {
+  "id": "1-chronicles-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these was a son of David born in Jerusalem?",
+  "choices": [
+   "Abinadab",
+   "Solomon",
+   "Uzza",
+   "Obed-edom"
+  ],
+  "answer": 1,
+  "explanation": "These are the names of his children which he had in Jerusalem; Shammua, and Shobab, Nathan, and Solomon.",
+  "ref": "1 Chronicles 14:4"
+ },
+ {
+  "id": "1-chronicles-14-e-02",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which valley did the Philistines spread themselves to fight David?",
+  "choices": [
+   "The valley of Elah",
+   "The valley of Salt",
+   "The valley of Rephaim",
+   "The valley of Hinnom"
+  ],
+  "answer": 2,
+  "explanation": "The Philistines came and spread themselves in the valley of Rephaim.",
+  "ref": "1 Chronicles 14:9"
+ },
+ {
+  "id": "1-chronicles-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David take more of at Jerusalem?",
+  "choices": [
+   "Horses",
+   "Chariots",
+   "Cities",
+   "Wives"
+  ],
+  "answer": 3,
+  "explanation": "David took more wives at Jerusalem: and David begat more sons and daughters.",
+  "ref": "1 Chronicles 14:3"
+ },
+ {
+  "id": "1-chronicles-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What went out into all lands after the victories?",
+  "choices": [
+   "The fame of David",
+   "The ark of God",
+   "The cedars of Tyre",
+   "The Philistine gods"
+  ],
+  "answer": 0,
+  "explanation": "The fame of David went out into all lands.",
+  "ref": "1 Chronicles 14:17"
+ },
+ {
+  "id": "1-chronicles-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did all the Philistines go up to seek David?",
+  "choices": [
+   "He had taken the ark",
+   "He had refused tribute",
+   "They heard he was anointed king over all Israel",
+   "He had slain Goliath"
+  ],
+  "answer": 2,
+  "explanation": "When the Philistines heard that David was anointed king over all Israel, all the Philistines went up to seek David.",
+  "ref": "1 Chronicles 14:8"
+ },
+ {
+  "id": "1-chronicles-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD answer when David asked if he should go up?",
+  "choices": [
+   "Wait seven days",
+   "Go not up",
+   "Send Joab first",
+   "Go up; I will deliver them into thine hand"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said unto him, Go up; for I will deliver them into thine hand.",
+  "ref": "1 Chronicles 14:10"
+ },
+ {
+  "id": "1-chronicles-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "David said God broke in upon his enemies like the breaking forth of what?",
+  "choices": [
+   "Waters",
+   "Fire",
+   "Thunder",
+   "Wind"
+  ],
+  "answer": 0,
+  "explanation": "God hath broken in upon mine enemies by mine hand like the breaking forth of waters.",
+  "ref": "1 Chronicles 14:11"
+ },
+ {
+  "id": "1-chronicles-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David command to be done with the gods the Philistines left?",
+  "choices": [
+   "They were kept in Zion",
+   "They were burned with fire",
+   "They were buried",
+   "They were sent to Hiram"
+  ],
+  "answer": 1,
+  "explanation": "When they had left their gods there, David gave a commandment, and they were burned with fire.",
+  "ref": "1 Chronicles 14:12"
+ },
+ {
+  "id": "1-chronicles-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say the second time David enquired?",
+  "choices": [
+   "Go up quickly",
+   "Send the ark first",
+   "Go not up after them; turn away from them",
+   "Make peace with them"
+  ],
+  "answer": 2,
+  "explanation": "God said unto him, Go not up after them; turn away from them, and come upon them over against the mulberry trees.",
+  "ref": "1 Chronicles 14:14"
+ },
+ {
+  "id": "1-chronicles-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What sound would show David it was time to go out to battle?",
+  "choices": [
+   "A trumpet from Gibeon",
+   "A cry from the valley",
+   "Thunder from heaven",
+   "A sound of going in the tops of the mulberry trees"
+  ],
+  "answer": 3,
+  "explanation": "When thou shalt hear a sound of going in the tops of the mulberry trees, then thou shalt go out to battle.",
+  "ref": "1 Chronicles 14:15"
+ },
+ {
+  "id": "1-chronicles-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say had gone forth before David?",
+  "choices": [
+   "God Himself, to smite the Philistine host",
+   "The ark of God",
+   "An angel of fire",
+   "A cloud of dust"
+  ],
+  "answer": 0,
+  "explanation": "God is gone forth before thee to smite the host of the Philistines.",
+  "ref": "1 Chronicles 14:15"
+ },
+ {
+  "id": "1-chronicles-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD bring upon all nations?",
+  "choices": [
+   "Famine",
+   "The fear of David",
+   "The fame of Hiram",
+   "A plague"
+  ],
+  "answer": 1,
+  "explanation": "The LORD brought the fear of him upon all nations.",
+  "ref": "1 Chronicles 14:17"
+ },
+ {
+  "id": "1-chronicles-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Philistines do again after their defeat?",
+  "choices": [
+   "Sued for peace",
+   "Fled to Gath",
+   "Spread themselves abroad in the valley",
+   "Seized the ark"
+  ],
+  "answer": 2,
+  "explanation": "The Philistines yet again spread themselves abroad in the valley.",
+  "ref": "1 Chronicles 14:13"
+ },
+ {
+  "id": "1-chronicles-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hiram send David besides masons and carpenters?",
+  "choices": [
+   "Gold and silver",
+   "Ships",
+   "Horses",
+   "Timber of cedars"
+  ],
+  "answer": 3,
+  "explanation": "Hiram king of Tyre sent messengers to David, and timber of cedars, with masons and carpenters.",
+  "ref": "1 Chronicles 14:1"
+ },
+ {
+  "id": "1-chronicles-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "David's kingdom was lifted up on high because of whom?",
+  "choices": [
+   "His people Israel",
+   "The Philistines",
+   "Hiram",
+   "Saul's house"
+  ],
+  "answer": 0,
+  "explanation": "David perceived that the LORD had confirmed him king over Israel, for his kingdom was lifted up on high, because of his people Israel.",
+  "ref": "1 Chronicles 14:2"
+ },
+ {
+  "id": "1-chronicles-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After asking if he should go up, what else did David ask God?",
+  "choices": [
+   "Will the ark go with me?",
+   "Wilt thou deliver them into mine hand?",
+   "Shall Joab lead?",
+   "Will the rain stop?"
+  ],
+  "answer": 1,
+  "explanation": "David enquired of God, saying, Shall I go up against the Philistines? and wilt thou deliver them into mine hand?",
+  "ref": "1 Chronicles 14:10"
+ },
+ {
+  "id": "1-chronicles-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By whose hand did David say God had broken in on his enemies?",
+  "choices": [
+   "By Joab's hand",
+   "By Hiram's hand",
+   "By his own hand (mine hand)",
+   "By the angel's hand"
+  ],
+  "answer": 2,
+  "explanation": "God hath broken in upon mine enemies by mine hand.",
+  "ref": "1 Chronicles 14:11"
+ },
+ {
+  "id": "1-chronicles-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "From where to where did they smite the Philistine host the second time?",
+  "choices": [
+   "From Hebron to Gath",
+   "From Zion to Gilgal",
+   "From Rephaim to Ekron",
+   "From Gibeon to Gazer"
+  ],
+  "answer": 3,
+  "explanation": "They smote the host of the Philistines from Gibeon even to Gazer.",
+  "ref": "1 Chronicles 14:16"
+ },
+ {
+  "id": "1-chronicles-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was one of David's sons born in Jerusalem?",
+  "choices": [
+   "Japhia",
+   "Jashobeam",
+   "Jehiel",
+   "Jeribai"
+  ],
+  "answer": 0,
+  "explanation": "Nogah, and Nepheg, and Japhia.",
+  "ref": "1 Chronicles 14:6"
+ },
+ {
+  "id": "1-chronicles-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was another son of David born in Jerusalem?",
+  "choices": [
+   "Bealiah",
+   "Beeliada",
+   "Baanah",
+   "Bocheru"
+  ],
+  "answer": 1,
+  "explanation": "Elishama, and Beeliada, and Eliphalet.",
+  "ref": "1 Chronicles 14:7"
+ },
+ {
+  "id": "1-chronicles-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "David enquired of God the second time, and what did he then do?",
+  "choices": [
+   "Went up at once",
+   "Sent Joab alone",
+   "Did as God commanded him",
+   "Waited at Hebron"
+  ],
+  "answer": 2,
+  "explanation": "David therefore did as God commanded him: and they smote the host of the Philistines.",
+  "ref": "1 Chronicles 14:16"
+ },
+ {
+  "id": "1-chronicles-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was also a son born to David in Jerusalem?",
+  "choices": [
+   "Elishaphat",
+   "Eliada",
+   "Eliakim",
+   "Elishua"
+  ],
+  "answer": 3,
+  "explanation": "Ibhar, and Elishua, and Elpalet.",
+  "ref": "1 Chronicles 14:5"
+ },
+ {
   "id": "old-1-chronicles-15-1",
   "chapter": 15,
   "level": "beginner",
