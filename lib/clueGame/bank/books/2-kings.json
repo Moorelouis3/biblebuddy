@@ -8976,6 +8976,646 @@
   "ref": "2 Kings 15:30"
  },
  {
+  "id": "2-kings-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Azariah do in the sight of the LORD?",
+  "choices": [
+   "He did evil",
+   "He did right",
+   "He did right until he was a leper",
+   "He followed the sins of Jeroboam"
+  ],
+  "answer": 1,
+  "explanation": "He did that which was right in the sight of the LORD, according to all that his father Amaziah had done.",
+  "ref": "2 Kings 15:3"
+ },
+ {
+  "id": "2-kings-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who judged the people of the land while Azariah was a leper?",
+  "choices": [
+   "Pekah",
+   "Menahem",
+   "Jotham the king's son",
+   "Ahaz"
+  ],
+  "answer": 2,
+  "explanation": "Jotham the king's son was over the house, judging the people of the land.",
+  "ref": "2 Kings 15:5"
+ },
+ {
+  "id": "2-kings-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who killed Zachariah and reigned in his place?",
+  "choices": [
+   "Menahem the son of Gadi",
+   "Pekah the son of Remaliah",
+   "Hoshea the son of Elah",
+   "Shallum the son of Jabesh"
+  ],
+  "answer": 3,
+  "explanation": "Shallum the son of Jabesh conspired against him, and smote him before the people, and slew him.",
+  "ref": "2 Kings 15:10"
+ },
+ {
+  "id": "2-kings-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Menahem do in the sight of the LORD?",
+  "choices": [
+   "He did evil",
+   "He did right",
+   "He did right like David",
+   "He did right but not like David"
+  ],
+  "answer": 0,
+  "explanation": "He did that which was evil in the sight of the LORD: he departed not all his days from the sins of Jeroboam.",
+  "ref": "2 Kings 15:18"
+ },
+ {
+  "id": "2-kings-15-e-05",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned after Menahem?",
+  "choices": [
+   "Pekah",
+   "Pekahiah his son",
+   "Shallum",
+   "Jotham"
+  ],
+  "answer": 1,
+  "explanation": "Menahem slept with his fathers; and Pekahiah his son reigned in his stead.",
+  "ref": "2 Kings 15:22"
+ },
+ {
+  "id": "2-kings-15-e-06",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who conspired against Pekahiah and killed him?",
+  "choices": [
+   "Shallum",
+   "Hoshea",
+   "Pekah the son of Remaliah",
+   "Menahem"
+  ],
+  "answer": 2,
+  "explanation": "Pekah the son of Remaliah, a captain of his, conspired against him, and smote him in Samaria.",
+  "ref": "2 Kings 15:25"
+ },
+ {
+  "id": "2-kings-15-e-07",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which Assyrian king took Gilead and Galilee in the days of Pekah?",
+  "choices": [
+   "Pul",
+   "Shalmaneser",
+   "Sennacherib",
+   "Tiglath-pileser"
+  ],
+  "answer": 3,
+  "explanation": "In the days of Pekah came Tiglath-pileser king of Assyria, and took Gilead, and Galilee, and carried them captive to Assyria.",
+  "ref": "2 Kings 15:29"
+ },
+ {
+  "id": "2-kings-15-e-08",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Tiglath-pileser carry the captives from Israel?",
+  "choices": [
+   "To Assyria",
+   "To Egypt",
+   "To Babylon",
+   "To Damascus"
+  ],
+  "answer": 0,
+  "explanation": "He took the cities and carried them captive to Assyria.",
+  "ref": "2 Kings 15:29"
+ },
+ {
+  "id": "2-kings-15-e-09",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Judah after Jotham?",
+  "choices": [
+   "Hezekiah",
+   "Ahaz his son",
+   "Azariah",
+   "Amaziah"
+  ],
+  "answer": 1,
+  "explanation": "Jotham slept with his fathers, and Ahaz his son reigned in his stead.",
+  "ref": "2 Kings 15:38"
+ },
+ {
+  "id": "2-kings-15-e-10",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two kings did the LORD begin to send against Judah?",
+  "choices": [
+   "Pul and Menahem",
+   "Hoshea and Shallum",
+   "Rezin and Pekah",
+   "Hazael and Ben-hadad"
+  ],
+  "answer": 2,
+  "explanation": "The LORD began to send against Judah Rezin the king of Syria, and Pekah the son of Remaliah.",
+  "ref": "2 Kings 15:37"
+ },
+ {
+  "id": "2-kings-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Azariah dwell as a leper?",
+  "choices": [
+   "In the temple court",
+   "In Samaria",
+   "In the wilderness",
+   "In a several house"
+  ],
+  "answer": 3,
+  "explanation": "The LORD smote the king, so that he was a leper unto the day of his death, and dwelt in a several house.",
+  "ref": "2 Kings 15:5"
+ },
+ {
+  "id": "2-kings-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city did Menahem smite when it did not open to him?",
+  "choices": [
+   "Tiphsah",
+   "Tirzah",
+   "Samaria",
+   "Hazor"
+  ],
+  "answer": 0,
+  "explanation": "Menahem smote Tiphsah, because they opened not to him.",
+  "ref": "2 Kings 15:16"
+ },
+ {
+  "id": "2-kings-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Menahem smite Tiphsah?",
+  "choices": [
+   "They had killed his brother",
+   "They opened not to him",
+   "They served Assyria",
+   "They refused to pay tribute"
+  ],
+  "answer": 1,
+  "explanation": "Because they opened not to him, therefore he smote it.",
+  "ref": "2 Kings 15:16"
+ },
+ {
+  "id": "2-kings-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "From which city did Menahem go up to Samaria to kill Shallum?",
+  "choices": [
+   "Gilead",
+   "Tiphsah",
+   "Tirzah",
+   "Jezreel"
+  ],
+  "answer": 2,
+  "explanation": "Menahem the son of Gadi went up from Tirzah, and came to Samaria.",
+  "ref": "2 Kings 15:14"
+ },
+ {
+  "id": "2-kings-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Menahem give Pul silver?",
+  "choices": [
+   "To buy back captives",
+   "To stop a famine",
+   "To build a wall",
+   "To confirm the kingdom in his hand"
+  ],
+  "answer": 3,
+  "explanation": "Menahem gave Pul silver that his hand might be with him to confirm the kingdom in his hand.",
+  "ref": "2 Kings 15:19"
+ },
+ {
+  "id": "2-kings-15-m-06",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From whom did Menahem collect the money for the king of Assyria?",
+  "choices": [
+   "The mighty men of wealth",
+   "The priests",
+   "The farmers of Gilead",
+   "The people of Tiphsah"
+  ],
+  "answer": 0,
+  "explanation": "Menahem exacted the money of Israel, even of all the mighty men of wealth.",
+  "ref": "2 Kings 15:20"
+ },
+ {
+  "id": "2-kings-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king of Assyria do after Menahem paid him?",
+  "choices": [
+   "Took Samaria",
+   "Turned back and stayed not",
+   "Made Menahem a captive",
+   "Demanded more silver"
+  ],
+  "answer": 1,
+  "explanation": "The king of Assyria turned back, and stayed not there in the land.",
+  "ref": "2 Kings 15:20"
+ },
+ {
+  "id": "2-kings-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Pekahiah killed?",
+  "choices": [
+   "In the temple",
+   "In the field",
+   "In the palace of the king's house",
+   "On the road to Tirzah"
+  ],
+  "answer": 2,
+  "explanation": "Pekah smote him in Samaria, in the palace of the king's house.",
+  "ref": "2 Kings 15:25"
+ },
+ {
+  "id": "2-kings-15-m-09",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who was with Pekah when he killed Pekahiah?",
+  "choices": [
+   "A band of Syrians",
+   "The priests of Samaria",
+   "Fifty men of Judah",
+   "Fifty men of the Gileadites"
+  ],
+  "answer": 3,
+  "explanation": "Pekah smote him with Argob and Arieh, and with him fifty men of the Gileadites.",
+  "ref": "2 Kings 15:25"
+ },
+ {
+  "id": "2-kings-15-m-10",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "All the land of which tribe did Tiglath-pileser take?",
+  "choices": [
+   "Naphtali",
+   "Judah",
+   "Reuben",
+   "Ephraim"
+  ],
+  "answer": 0,
+  "explanation": "Tiglath-pileser took Galilee, all the land of Naphtali.",
+  "ref": "2 Kings 15:29"
+ },
+ {
+  "id": "2-kings-15-m-11",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the LORD promised Jehu about his sons?",
+  "choices": [
+   "They would rule forever",
+   "They would sit on the throne to the fourth generation",
+   "They would be priests",
+   "They would rule Judah also"
+  ],
+  "answer": 1,
+  "explanation": "Thy sons shall sit on the throne of Israel unto the fourth generation.",
+  "ref": "2 Kings 15:12"
+ },
+ {
+  "id": "2-kings-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was still not removed in Azariah's days?",
+  "choices": [
+   "The groves of Baal",
+   "The golden calves",
+   "The high places",
+   "The altars of Syria"
+  ],
+  "answer": 2,
+  "explanation": "The high places were not removed: the people sacrificed and burnt incense still on the high places.",
+  "ref": "2 Kings 15:4"
+ },
+ {
+  "id": "2-kings-15-m-13",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jotham build for the house of the LORD?",
+  "choices": [
+   "The altar",
+   "The outer court",
+   "The brazen sea",
+   "The higher gate"
+  ],
+  "answer": 3,
+  "explanation": "He built the higher gate of the house of the LORD.",
+  "ref": "2 Kings 15:35"
+ },
+ {
+  "id": "2-kings-15-m-14",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Pekah?",
+  "choices": [
+   "Remaliah",
+   "Gadi",
+   "Jabesh",
+   "Elah"
+  ],
+  "answer": 0,
+  "explanation": "Pekah the son of Remaliah began to reign over Israel in Samaria.",
+  "ref": "2 Kings 15:27"
+ },
+ {
+  "id": "2-kings-15-m-15",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose example did Azariah follow in doing right?",
+  "choices": [
+   "His grandfather Joash",
+   "His father Amaziah",
+   "David",
+   "Jeroboam"
+  ],
+  "answer": 1,
+  "explanation": "He did right according to all that his father Amaziah had done.",
+  "ref": "2 Kings 15:3"
+ },
+ {
+  "id": "2-kings-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Azariah when he began to reign?",
+  "choices": [
+   "Twenty-five",
+   "Eight",
+   "Sixteen",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "Sixteen years old was he when he began to reign.",
+  "ref": "2 Kings 15:2"
+ },
+ {
+  "id": "2-kings-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Azariah reign in Jerusalem?",
+  "choices": [
+   "Twenty-nine",
+   "Forty",
+   "Sixteen",
+   "Fifty-two"
+  ],
+  "answer": 3,
+  "explanation": "He reigned two and fifty years in Jerusalem.",
+  "ref": "2 Kings 15:2"
+ },
+ {
+  "id": "2-kings-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "What was the name of Azariah's mother?",
+  "choices": [
+   "Jecholiah of Jerusalem",
+   "Jehoaddan of Jerusalem",
+   "Jerusha",
+   "Athaliah"
+  ],
+  "answer": 0,
+  "explanation": "His mother's name was Jecholiah of Jerusalem.",
+  "ref": "2 Kings 15:2"
+ },
+ {
+  "id": "2-kings-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Zachariah reign over Israel?",
+  "choices": [
+   "One month",
+   "Six months",
+   "Two years",
+   "Ten years"
+  ],
+  "answer": 1,
+  "explanation": "Zachariah reigned over Israel in Samaria six months.",
+  "ref": "2 Kings 15:8"
+ },
+ {
+  "id": "2-kings-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Shallum reign in Samaria?",
+  "choices": [
+   "Six months",
+   "Ten years",
+   "A full month",
+   "Two years"
+  ],
+  "answer": 2,
+  "explanation": "Shallum reigned a full month in Samaria.",
+  "ref": "2 Kings 15:13"
+ },
+ {
+  "id": "2-kings-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Menahem reign in Samaria?",
+  "choices": [
+   "Two",
+   "Twenty",
+   "Sixteen",
+   "Ten"
+  ],
+  "answer": 3,
+  "explanation": "Menahem the son of Gadi reigned ten years in Samaria.",
+  "ref": "2 Kings 15:17"
+ },
+ {
+  "id": "2-kings-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Pekahiah reign over Israel?",
+  "choices": [
+   "Two",
+   "Ten",
+   "Twenty",
+   "One"
+  ],
+  "answer": 0,
+  "explanation": "Pekahiah the son of Menahem reigned two years.",
+  "ref": "2 Kings 15:23"
+ },
+ {
+  "id": "2-kings-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Pekah reign over Israel?",
+  "choices": [
+   "Ten",
+   "Twenty",
+   "Two",
+   "Sixteen"
+  ],
+  "answer": 1,
+  "explanation": "Pekah the son of Remaliah reigned twenty years.",
+  "ref": "2 Kings 15:27"
+ },
+ {
+  "id": "2-kings-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much silver did Menahem give Pul?",
+  "choices": [
+   "Fifty shekels",
+   "A hundred talents",
+   "A thousand talents",
+   "Ten thousand talents"
+  ],
+  "answer": 2,
+  "explanation": "Menahem gave Pul a thousand talents of silver.",
+  "ref": "2 Kings 15:19"
+ },
+ {
+  "id": "2-kings-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much silver did each wealthy man pay toward Menahem's gift to Assyria?",
+  "choices": [
+   "One talent",
+   "A thousand shekels",
+   "Ten shekels",
+   "Fifty shekels"
+  ],
+  "answer": 3,
+  "explanation": "He exacted of each man fifty shekels of silver, to give to the king of Assyria.",
+  "ref": "2 Kings 15:20"
+ },
+ {
+  "id": "2-kings-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Jotham's mother?",
+  "choices": [
+   "Jerusha the daughter of Zadok",
+   "Jecholiah",
+   "Jehoaddan",
+   "Athaliah"
+  ],
+  "answer": 0,
+  "explanation": "His mother's name was Jerusha, the daughter of Zadok.",
+  "ref": "2 Kings 15:33"
+ },
+ {
+  "id": "2-kings-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Jotham reign in Jerusalem?",
+  "choices": [
+   "Twenty-five",
+   "Sixteen",
+   "Fifty-two",
+   "Twenty-nine"
+  ],
+  "answer": 1,
+  "explanation": "Jotham reigned sixteen years in Jerusalem.",
+  "ref": "2 Kings 15:33"
+ },
+ {
+  "id": "2-kings-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Shallum, who killed Zachariah?",
+  "choices": [
+   "Gadi",
+   "Remaliah",
+   "Jabesh",
+   "Elah"
+  ],
+  "answer": 2,
+  "explanation": "Shallum was the son of Jabesh.",
+  "ref": "2 Kings 15:10"
+ },
+ {
+  "id": "2-kings-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Menahem?",
+  "choices": [
+   "Jabesh",
+   "Remaliah",
+   "Elah",
+   "Gadi"
+  ],
+  "answer": 3,
+  "explanation": "Menahem was the son of Gadi.",
+  "ref": "2 Kings 15:14"
+ },
+ {
+  "id": "2-kings-15-h-15",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities did Tiglath-pileser take?",
+  "choices": [
+   "Kedesh",
+   "Samaria",
+   "Tiphsah",
+   "Tirzah"
+  ],
+  "answer": 0,
+  "explanation": "He took Ijon, and Abel-beth-maachah, and Janoah, and Kedesh, and Hazor, and Gilead, and Galilee.",
+  "ref": "2 Kings 15:29"
+ },
+ {
   "id": "old-2-kings-16-1",
   "chapter": 16,
   "level": "beginner",
