@@ -9520,6 +9520,646 @@
   "ref": "2 Samuel 14:30"
  },
  {
+  "id": "2-samuel-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who perceived that the king's heart was toward Absalom?",
+  "choices": [
+   "Abishai",
+   "Joab",
+   "Nathan",
+   "Zadok"
+  ],
+  "answer": 1,
+  "explanation": "Joab the son of Zeruiah perceived that the king's heart was toward Absalom.",
+  "ref": "2 Samuel 14:1"
+ },
+ {
+  "id": "2-samuel-14-e-02",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of woman did Joab fetch from Tekoah?",
+  "choices": [
+   "A wise woman",
+   "A prophetess",
+   "A rich widow",
+   "A servant of Absalom"
+  ],
+  "answer": 0,
+  "explanation": "Joab sent to Tekoah, and fetched thence a wise woman.",
+  "ref": "2 Samuel 14:2"
+ },
+ {
+  "id": "2-samuel-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joab tell the woman to pretend to be?",
+  "choices": [
+   "A sick woman",
+   "A beggar",
+   "A queen",
+   "A mourner"
+  ],
+  "answer": 3,
+  "explanation": "Joab said, feign thyself to be a mourner, and put on mourning apparel.",
+  "ref": "2 Samuel 14:2"
+ },
+ {
+  "id": "2-samuel-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sons did the woman say she had?",
+  "choices": [
+   "Three",
+   "One",
+   "Two",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "Thy handmaid had two sons, and they two strove together in the field.",
+  "ref": "2 Samuel 14:6"
+ },
+ {
+  "id": "2-samuel-14-e-05",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened between the woman's two sons in the field?",
+  "choices": [
+   "They fled to Geshur",
+   "One smote the other and killed him",
+   "They both died",
+   "They were captured"
+  ],
+  "answer": 1,
+  "explanation": "There was none to part them, but the one smote the other, and slew him.",
+  "ref": "2 Samuel 14:6"
+ },
+ {
+  "id": "2-samuel-14-e-06",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David swear about the surviving son?",
+  "choices": [
+   "Not one hair of him would fall to the earth",
+   "He would be made a judge",
+   "He would be sent away",
+   "He would be put in prison"
+  ],
+  "answer": 0,
+  "explanation": "As the LORD liveth, there shall not one hair of thy son fall to the earth.",
+  "ref": "2 Samuel 14:11"
+ },
+ {
+  "id": "2-samuel-14-e-07",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the king tell Joab to bring back?",
+  "choices": [
+   "Amnon",
+   "Solomon",
+   "Tamar",
+   "Absalom"
+  ],
+  "answer": 3,
+  "explanation": "The king said unto Joab, go therefore, bring the young man Absalom again.",
+  "ref": "2 Samuel 14:21"
+ },
+ {
+  "id": "2-samuel-14-e-08",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king say about Absalom when he came to Jerusalem?",
+  "choices": [
+   "Let him be king",
+   "Let him go to Hebron",
+   "Let him not see my face",
+   "Let him lead the army"
+  ],
+  "answer": 2,
+  "explanation": "The king said, Let him turn to his own house, and let him not see my face.",
+  "ref": "2 Samuel 14:24"
+ },
+ {
+  "id": "2-samuel-14-e-09",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For what was Absalom praised in all Israel?",
+  "choices": [
+   "His wisdom",
+   "His beauty",
+   "His strength in war",
+   "His wealth"
+  ],
+  "answer": 1,
+  "explanation": "In all Israel there was none to be so much praised as Absalom for his beauty.",
+  "ref": "2 Samuel 14:25"
+ },
+ {
+  "id": "2-samuel-14-e-10",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king do when Absalom bowed before him at the end?",
+  "choices": [
+   "Kissed him",
+   "Banished him",
+   "Judged him",
+   "Gave him a crown"
+  ],
+  "answer": 0,
+  "explanation": "Absalom bowed himself on his face to the ground before the king: and the king kissed Absalom.",
+  "ref": "2 Samuel 14:33"
+ },
+ {
+  "id": "2-samuel-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joab tell the woman not to do?",
+  "choices": [
+   "Speak to the king",
+   "Wear sackcloth",
+   "Eat bread",
+   "Anoint herself with oil"
+  ],
+  "answer": 3,
+  "explanation": "Put on now mourning apparel, and anoint not thyself with oil.",
+  "ref": "2 Samuel 14:2"
+ },
+ {
+  "id": "2-samuel-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "Who put the words in the woman's mouth?",
+  "choices": [
+   "Absalom",
+   "Nathan",
+   "Joab",
+   "The king"
+  ],
+  "answer": 2,
+  "explanation": "So Joab put the words in her mouth.",
+  "ref": "2 Samuel 14:3"
+ },
+ {
+  "id": "2-samuel-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the woman say to the king as she fell on her face?",
+  "choices": [
+   "Hear me, O LORD",
+   "Help, O king",
+   "Pity me, O prince",
+   "Justice, O judge"
+  ],
+  "answer": 1,
+  "explanation": "She fell on her face to the ground, and did obeisance, and said, Help, O king.",
+  "ref": "2 Samuel 14:4"
+ },
+ {
+  "id": "2-samuel-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the family of the woman want to do to the surviving son?",
+  "choices": [
+   "Kill him for his brother's life",
+   "Send him away",
+   "Make him a servant",
+   "Take his field"
+  ],
+  "answer": 0,
+  "explanation": "They said, Deliver him that smote his brother, that we may kill him, for the life of his brother whom he slew.",
+  "ref": "2 Samuel 14:7"
+ },
+ {
+  "id": "2-samuel-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the woman call her surviving son?",
+  "choices": [
+   "My crown",
+   "My staff",
+   "My only wine",
+   "My coal which is left"
+  ],
+  "answer": 3,
+  "explanation": "They shall quench my coal which is left, and shall not leave to my husband neither name nor remainder.",
+  "ref": "2 Samuel 14:7"
+ },
+ {
+  "id": "2-samuel-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On whom did the woman say the iniquity should be?",
+  "choices": [
+   "On Joab",
+   "On the king",
+   "On her and her father's house",
+   "On her son only"
+  ],
+  "answer": 2,
+  "explanation": "The iniquity be on me, and on my father's house: and the king and his throne be guiltless.",
+  "ref": "2 Samuel 14:9"
+ },
+ {
+  "id": "2-samuel-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the woman ask the king to remember?",
+  "choices": [
+   "His father Jesse",
+   "The LORD his God",
+   "His oath to Saul",
+   "The ark of God"
+  ],
+  "answer": 1,
+  "explanation": "Let the king remember the LORD thy God, that thou wouldest not suffer the revengers of blood to destroy any more.",
+  "ref": "2 Samuel 14:11"
+ },
+ {
+  "id": "2-samuel-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the woman say people are like?",
+  "choices": [
+   "Water spilt on the ground",
+   "A fading flower",
+   "Dust on the wind",
+   "A shadow"
+  ],
+  "answer": 0,
+  "explanation": "We must needs die, and are as water spilt on the ground, which cannot be gathered up again.",
+  "ref": "2 Samuel 14:14"
+ },
+ {
+  "id": "2-samuel-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the woman say the king was like for discerning good and bad?",
+  "choices": [
+   "A prophet of old",
+   "A shepherd",
+   "A judge of Israel",
+   "An angel of God"
+  ],
+  "answer": 3,
+  "explanation": "As an angel of God, so is my lord the king to discern good and bad.",
+  "ref": "2 Samuel 14:17"
+ },
+ {
+  "id": "2-samuel-14-m-10",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the king figure out that Joab was behind the woman's story?",
+  "choices": [
+   "She told him at the start",
+   "A servant told him",
+   "He asked whether Joab's hand was with her",
+   "Absalom told him"
+  ],
+  "answer": 2,
+  "explanation": "The king said, Is not the hand of Joab with thee in all this?",
+  "ref": "2 Samuel 14:19"
+ },
+ {
+  "id": "2-samuel-14-m-11",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Joab respond when the king granted his request?",
+  "choices": [
+   "Wept",
+   "Fell on his face and thanked the king",
+   "Left silently",
+   "Asked for Absalom's crown"
+  ],
+  "answer": 1,
+  "explanation": "Joab fell to the ground on his face, and bowed himself, and thanked the king.",
+  "ref": "2 Samuel 14:22"
+ },
+ {
+  "id": "2-samuel-14-m-12",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Absalom do when Joab would not come to him?",
+  "choices": [
+   "Sent a second time",
+   "Wrote to David",
+   "Went to Joab's field",
+   "Fled to Hebron"
+  ],
+  "answer": 0,
+  "explanation": "Absalom sent for Joab, to have sent him to the king; but he would not come: and when he sent again the second time, he would not come.",
+  "ref": "2 Samuel 14:29"
+ },
+ {
+  "id": "2-samuel-14-m-13",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the woman say God devises?",
+  "choices": [
+   "A way to end war",
+   "A law for kings",
+   "A famine for the proud",
+   "Means that his banished be not expelled from him"
+  ],
+  "answer": 3,
+  "explanation": "God devise means, that his banished be not expelled from him.",
+  "ref": "2 Samuel 14:14"
+ },
+ {
+  "id": "2-samuel-14-m-14",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What fault did the woman say the king showed?",
+  "choices": [
+   "He took Joab's counsel",
+   "He ruled too long",
+   "He did not fetch home his banished",
+   "He had cursed God's people"
+  ],
+  "answer": 2,
+  "explanation": "The king doth speak this thing as one which is faulty, in that the king doth not fetch home again his banished.",
+  "ref": "2 Samuel 14:13"
+ },
+ {
+  "id": "2-samuel-14-m-15",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king tell the woman after hearing her story?",
+  "choices": [
+   "Come back tomorrow",
+   "Go to thine house; I will give charge concerning thee",
+   "Wait for Joab",
+   "Leave Israel"
+  ],
+  "answer": 1,
+  "explanation": "The king said unto the woman, Go to thine house, and I will give charge concerning thee.",
+  "ref": "2 Samuel 14:8"
+ },
+ {
+  "id": "2-samuel-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "What was the name of Joab's mother?",
+  "choices": [
+   "Zeruiah",
+   "Abigail",
+   "Eliam",
+   "Tamar"
+  ],
+  "answer": 0,
+  "explanation": "Joab the son of Zeruiah perceived that the king's heart was toward Absalom.",
+  "ref": "2 Samuel 14:1"
+ },
+ {
+  "id": "2-samuel-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much did Absalom's hair weigh when it was cut?",
+  "choices": [
+   "Two shekels",
+   "Twenty talents",
+   "One hundred shekels",
+   "Two hundred shekels"
+  ],
+  "answer": 3,
+  "explanation": "He weighed the hair of his head at two hundred shekels after the king's weight.",
+  "ref": "2 Samuel 14:26"
+ },
+ {
+  "id": "2-samuel-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How often did Absalom cut his hair?",
+  "choices": [
+   "Every month",
+   "Every seventh year",
+   "At every year's end",
+   "Never"
+  ],
+  "answer": 2,
+  "explanation": "It was at every year's end that he polled it: because the hair was heavy on him.",
+  "ref": "2 Samuel 14:26"
+ },
+ {
+  "id": "2-samuel-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons and daughters were born to Absalom?",
+  "choices": [
+   "Two sons and two daughters",
+   "Three sons and one daughter",
+   "Four sons",
+   "Three daughters"
+  ],
+  "answer": 1,
+  "explanation": "Unto Absalom there were born three sons, and one daughter, whose name was Tamar.",
+  "ref": "2 Samuel 14:27"
+ },
+ {
+  "id": "2-samuel-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "What was the name of Absalom's daughter?",
+  "choices": [
+   "Tamar",
+   "Michal",
+   "Bath-sheba",
+   "Abigail"
+  ],
+  "answer": 0,
+  "explanation": "Absalom had one daughter, whose name was Tamar: she was a woman of a fair countenance.",
+  "ref": "2 Samuel 14:27"
+ },
+ {
+  "id": "2-samuel-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king say would happen to anyone who spoke against the woman?",
+  "choices": [
+   "He would be banished",
+   "He would pay fourfold",
+   "He would be put to death",
+   "He would be brought to the king"
+  ],
+  "answer": 3,
+  "explanation": "The king said, Whosoever saith ought unto thee, bring him to me, and he shall not touch thee any more.",
+  "ref": "2 Samuel 14:10"
+ },
+ {
+  "id": "2-samuel-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Absalom say would have been good for him?",
+  "choices": [
+   "To have died in Jerusalem",
+   "To have been king",
+   "To have stayed in Geshur",
+   "To have fled to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Wherefore am I come from Geshur? it had been good for me to have been there still.",
+  "ref": "2 Samuel 14:32"
+ },
+ {
+  "id": "2-samuel-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Absalom say should happen to him if there was iniquity in him?",
+  "choices": [
+   "Let him be exiled",
+   "Let the king kill him",
+   "Let him lose his wife",
+   "Let Joab judge him"
+  ],
+  "answer": 1,
+  "explanation": "If there be any iniquity in me, let him kill me.",
+  "ref": "2 Samuel 14:32"
+ },
+ {
+  "id": "2-samuel-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the woman say she came to speak to the king?",
+  "choices": [
+   "The people had made her afraid",
+   "Joab had threatened her",
+   "She had no food",
+   "The king had called her"
+  ],
+  "answer": 0,
+  "explanation": "I am come to speak of this thing unto my lord the king, it is because the people have made me afraid.",
+  "ref": "2 Samuel 14:15"
+ },
+ {
+  "id": "2-samuel-14-h-10",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the surviving son, whom did the family say they would destroy?",
+  "choices": [
+   "The woman's house",
+   "The woman's field",
+   "The elders",
+   "The heir also"
+  ],
+  "answer": 3,
+  "explanation": "Deliver him that smote his brother, that we may kill him; and we will destroy the heir also.",
+  "ref": "2 Samuel 14:7"
+ },
+ {
+  "id": "2-samuel-14-h-11",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the text describe Absalom's body?",
+  "choices": [
+   "Strong and tall",
+   "A scar on his hand",
+   "No blemish from his foot to his head",
+   "A limp in one foot"
+  ],
+  "answer": 2,
+  "explanation": "From the sole of his foot even to the crown of his head there was no blemish in him.",
+  "ref": "2 Samuel 14:25"
+ },
+ {
+  "id": "2-samuel-14-h-12",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joab say he had found in the king's sight?",
+  "choices": [
+   "Wrath",
+   "Grace",
+   "A kingdom",
+   "A son"
+  ],
+  "answer": 1,
+  "explanation": "Today thy servant knoweth that I have found grace in thy sight, my lord, O king.",
+  "ref": "2 Samuel 14:22"
+ },
+ {
+  "id": "2-samuel-14-h-13",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the woman say the king's word would now be?",
+  "choices": [
+   "Comfortable",
+   "Binding",
+   "Final",
+   "Gentle"
+  ],
+  "answer": 0,
+  "explanation": "The word of my lord the king shall now be comfortable.",
+  "ref": "2 Samuel 14:17"
+ },
+ {
+  "id": "2-samuel-14-h-14",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Against whom did the woman say the king had thought such a thing?",
+  "choices": [
+   "The house of Saul",
+   "The tribe of Judah",
+   "The Philistines",
+   "The people of God"
+  ],
+  "answer": 3,
+  "explanation": "Wherefore then hast thou thought such a thing against the people of God?",
+  "ref": "2 Samuel 14:13"
+ },
+ {
+  "id": "2-samuel-14-h-15",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Absalom want Joab to ask the king on his behalf?",
+  "choices": [
+   "To give him a house",
+   "To make him king",
+   "Why he had come from Geshur",
+   "To fetch Tamar"
+  ],
+  "answer": 2,
+  "explanation": "Come hither, that I may send thee to the king, to say, Wherefore am I come from Geshur?",
+  "ref": "2 Samuel 14:32"
+ },
+ {
   "id": "old-2-samuel-15-1",
   "chapter": 15,
   "level": "beginner",
