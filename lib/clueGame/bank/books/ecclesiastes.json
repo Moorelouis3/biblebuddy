@@ -400,22 +400,6 @@
   "ref": "Ecclesiastes 5:10"
  },
  {
-  "id": "old-ecclesiastes-6-1",
-  "chapter": 6,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How does the Preacher describe the evil he has seen under the sun?",
-  "choices": [
-   "It is hidden from men",
-   "It is quickly passing",
-   "It is common among men",
-   "It is a small thing"
-  ],
-  "answer": 2,
-  "explanation": "He says there is an evil he has seen under the sun, and it is common among men.",
-  "ref": "Ecclesiastes 6:1"
- },
- {
   "id": "old-ecclesiastes-6-2",
   "chapter": 6,
   "level": "beginner",
@@ -638,22 +622,6 @@
   "answer": 2,
   "explanation": "He commends receiving food, drink, and joy as part of God's gift in life.",
   "ref": "Ecclesiastes 8:15"
- },
- {
-  "id": "old-ecclesiastes-9-1",
-  "chapter": 9,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What common event does the Preacher say happens to all?",
-  "choices": [
-   "Victory",
-   "Death",
-   "Riches",
-   "Fame"
-  ],
-  "answer": 1,
-  "explanation": "He observes that death comes alike to the righteous and the wicked.",
-  "ref": "Ecclesiastes 9:2"
  },
  {
   "id": "old-ecclesiastes-9-2",
@@ -958,5 +926,4453 @@
   "answer": 2,
   "explanation": "The book closes by summarizing man's duty as fearing God and keeping His commandments.",
   "ref": "Ecclesiastes 12:13"
+ },
+ {
+  "id": "ecclesiastes-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the sun do, according to the Preacher?",
+  "choices": [
+   "Stands still over Jerusalem",
+   "Rises later every year",
+   "Ariseth, goeth down and hasteth to the place where it arose",
+   "Hides behind the wind"
+  ],
+  "answer": 2,
+  "explanation": "\"The sun also ariseth, and the sun goeth down, and hasteth to his place where he arose.\"",
+  "ref": "Ecclesiastes 1:5"
+ },
+ {
+  "id": "ecclesiastes-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does he say about the rivers and the sea?",
+  "choices": [
+   "The rivers dry up before the sea",
+   "The sea rises and covers the rivers",
+   "The rivers flow in a circle round the land",
+   "All the rivers run into the sea, yet the sea is not full"
+  ],
+  "answer": 3,
+  "explanation": "\"All the rivers run into the sea; yet the sea is not full.\"",
+  "ref": "Ecclesiastes 1:7"
+ },
+ {
+  "id": "ecclesiastes-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does he say there is not, under the sun?",
+  "choices": [
+   "Any wise man",
+   "Any new thing",
+   "Any rest",
+   "Any water"
+  ],
+  "answer": 1,
+  "explanation": "\"The thing that hath been, it is that which shall be... and there is no new thing under the sun.\"",
+  "ref": "Ecclesiastes 1:9"
+ },
+ {
+  "id": "ecclesiastes-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Preacher give his heart to do?",
+  "choices": [
+   "Build a house for the LORD",
+   "Rule the nations by war",
+   "Seek and search out by wisdom all things done under heaven",
+   "Gather silver and gold"
+  ],
+  "answer": 2,
+  "explanation": "\"I gave my heart to seek and search out by wisdom concerning all things that are done under heaven.\"",
+  "ref": "Ecclesiastes 1:13"
+ },
+ {
+  "id": "ecclesiastes-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which way does the wind go, and then turn about?",
+  "choices": [
+   "Toward the east, and turns to the west",
+   "Toward the sea, and turns to the desert",
+   "Toward the south, and turns to the north",
+   "Toward Jerusalem, and turns to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "\"The wind goeth toward the south, and turneth about unto the north.\"",
+  "ref": "Ecclesiastes 1:6"
+ },
+ {
+  "id": "ecclesiastes-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is not satisfied with seeing?",
+  "choices": [
+   "The heart",
+   "The mind",
+   "The soul",
+   "The eye"
+  ],
+  "answer": 3,
+  "explanation": "\"The eye is not satisfied with seeing, nor the ear filled with hearing.\"",
+  "ref": "Ecclesiastes 1:8"
+ },
+ {
+  "id": "ecclesiastes-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of remembrance is there of former things?",
+  "choices": [
+   "A faint one",
+   "A long one",
+   "One kept by kings",
+   "None"
+  ],
+  "answer": 3,
+  "explanation": "\"There is no remembrance of former things.\"",
+  "ref": "Ecclesiastes 1:11"
+ },
+ {
+  "id": "ecclesiastes-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Over what was the Preacher king?",
+  "choices": [
+   "Judah, in Hebron",
+   "Egypt, in Memphis",
+   "Tyre, in Lebanon",
+   "Israel, in Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "\"I the Preacher was king over Israel in Jerusalem.\"",
+  "ref": "Ecclesiastes 1:12"
+ },
+ {
+  "id": "ecclesiastes-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say of all the works done under the sun?",
+  "choices": [
+   "All is a gift of God",
+   "All will be remembered",
+   "All is judged by the king",
+   "All is vanity and vexation of spirit"
+  ],
+  "answer": 3,
+  "explanation": "\"I have seen all the works that are done under the sun; and, behold, all is vanity and vexation of spirit.\"",
+  "ref": "Ecclesiastes 1:14"
+ },
+ {
+  "id": "ecclesiastes-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say cannot be made straight?",
+  "choices": [
+   "The path of the wise",
+   "The heart of a king",
+   "That which is crooked",
+   "The wind"
+  ],
+  "answer": 2,
+  "explanation": "\"That which is crooked cannot be made straight: and that which is wanting cannot be numbered.\"",
+  "ref": "Ecclesiastes 1:15"
+ },
+ {
+  "id": "ecclesiastes-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say he got, being come to great estate?",
+  "choices": [
+   "More wisdom than all before him in Jerusalem",
+   "More gold than all before him",
+   "More sons than all before him",
+   "More wives than all before him"
+  ],
+  "answer": 0,
+  "explanation": "\"I am come to great estate, and have gotten more wisdom than all they that have been before me in Jerusalem.\"",
+  "ref": "Ecclesiastes 1:16"
+ },
+ {
+  "id": "ecclesiastes-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides wisdom, what did he give his heart to know?",
+  "choices": [
+   "War and peace",
+   "Riches and honour",
+   "Madness and folly",
+   "Joy and mirth"
+  ],
+  "answer": 2,
+  "explanation": "\"I gave my heart to know wisdom, and to know madness and folly.\"",
+  "ref": "Ecclesiastes 1:17"
+ },
+ {
+  "id": "ecclesiastes-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has God given the sons of man to be exercised with?",
+  "choices": [
+   "A great vineyard",
+   "A long life",
+   "A sore travail",
+   "A hard law"
+  ],
+  "answer": 2,
+  "explanation": "\"This sore travail hath God given to the sons of man to be exercised therewith.\"",
+  "ref": "Ecclesiastes 1:13"
+ },
+ {
+  "id": "ecclesiastes-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where do the rivers return?",
+  "choices": [
+   "To the place from whence they come",
+   "To the mountains of Lebanon",
+   "To the great sea only",
+   "To the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "\"Unto the place from whence the rivers come, thither they return again.\"",
+  "ref": "Ecclesiastes 1:7"
+ },
+ {
+  "id": "ecclesiastes-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What cannot be numbered?",
+  "choices": [
+   "That which is wanting",
+   "The stars of the heavens",
+   "The days of the king",
+   "The works of the wise"
+  ],
+  "answer": 0,
+  "explanation": "\"That which is wanting cannot be numbered.\"",
+  "ref": "Ecclesiastes 1:15"
+ },
+ {
+  "id": "ecclesiastes-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to what does the wind return?",
+  "choices": [
+   "The seasons",
+   "The rain",
+   "His circuits",
+   "The sea"
+  ],
+  "answer": 2,
+  "explanation": "\"The wind returneth again according to his circuits.\"",
+  "ref": "Ecclesiastes 1:6"
+ },
+ {
+  "id": "ecclesiastes-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did his heart have, great experience of what?",
+  "choices": [
+   "Wisdom and knowledge",
+   "War and conquest",
+   "Wealth and honour",
+   "Joy and laughter"
+  ],
+  "answer": 0,
+  "explanation": "\"My heart had great experience of wisdom and knowledge.\"",
+  "ref": "Ecclesiastes 1:16"
+ },
+ {
+  "id": "ecclesiastes-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is not filled with hearing?",
+  "choices": [
+   "The heart",
+   "The ear",
+   "The eye",
+   "The mouth"
+  ],
+  "answer": 1,
+  "explanation": "\"The eye is not satisfied with seeing, nor the ear filled with hearing.\"",
+  "ref": "Ecclesiastes 1:8"
+ },
+ {
+  "id": "ecclesiastes-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whom is there no remembrance of things that are to come?",
+  "choices": [
+   "The kings of the earth",
+   "Those that shall come after",
+   "The wise of Jerusalem",
+   "The sons of David"
+  ],
+  "answer": 1,
+  "explanation": "\"Neither shall there be any remembrance of things that are to come with those that shall come after.\"",
+  "ref": "Ecclesiastes 1:11"
+ },
+ {
+  "id": "ecclesiastes-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whom did he commune about his wisdom?",
+  "choices": [
+   "The elders of Jerusalem",
+   "Mine own heart",
+   "The priests",
+   "His father David"
+  ],
+  "answer": 1,
+  "explanation": "\"I communed with mine own heart, saying, Lo, I am come to great estate.\"",
+  "ref": "Ecclesiastes 1:16"
+ },
+ {
+  "id": "ecclesiastes-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say man cannot do about all things being full of labour?",
+  "choices": [
+   "Escape it",
+   "Number it",
+   "Finish it",
+   "Utter it"
+  ],
+  "answer": 3,
+  "explanation": "\"All things are full of labour; man cannot utter it.\"",
+  "ref": "Ecclesiastes 1:8"
+ },
+ {
+  "id": "ecclesiastes-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say is also vexation of spirit, about knowing wisdom, madness and folly?",
+  "choices": [
+   "Only folly",
+   "Only madness",
+   "This also",
+   "Nothing of it"
+  ],
+  "answer": 2,
+  "explanation": "\"I perceived that this also is vexation of spirit.\"",
+  "ref": "Ecclesiastes 1:17"
+ },
+ {
+  "id": "ecclesiastes-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to him that diggeth a pit?",
+  "choices": [
+   "He shall fall into it",
+   "He shall find water",
+   "He shall be rich",
+   "He shall be blessed"
+  ],
+  "answer": 0,
+  "explanation": "\"He that diggeth a pit shall fall into it.\"",
+  "ref": "Ecclesiastes 10:8"
+ },
+ {
+  "id": "ecclesiastes-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must a man do if the iron be blunt?",
+  "choices": [
+   "Whet the edge, or put to more strength",
+   "Cast it away",
+   "Beat it with a hammer",
+   "Sell it"
+  ],
+  "answer": 0,
+  "explanation": "\"If the iron be blunt, and he do not whet the edge, then must he put to more strength.\"",
+  "ref": "Ecclesiastes 10:10"
+ },
+ {
+  "id": "ecclesiastes-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When is the land in woe?",
+  "choices": [
+   "When her king is old",
+   "When her king is a stranger",
+   "When her king is poor",
+   "When her king is a child"
+  ],
+  "answer": 3,
+  "explanation": "\"Woe to thee, O land, when thy king is a child, and thy princes eat in the morning!\"",
+  "ref": "Ecclesiastes 10:16"
+ },
+ {
+  "id": "ecclesiastes-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When is the land blessed?",
+  "choices": [
+   "When her king is a warrior",
+   "When her king is a priest",
+   "When her king is a prophet",
+   "When her king is the son of nobles"
+  ],
+  "answer": 3,
+  "explanation": "\"Blessed art thou, O land, when thy king is the son of nobles.\"",
+  "ref": "Ecclesiastes 10:17"
+ },
+ {
+  "id": "ecclesiastes-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens by much slothfulness?",
+  "choices": [
+   "The vineyard is lost",
+   "The king is angry",
+   "The poor are fed",
+   "The building decayeth"
+  ],
+  "answer": 3,
+  "explanation": "\"By much slothfulness the building decayeth; and through idleness of the hands the house droppeth through.\"",
+  "ref": "Ecclesiastes 10:18"
+ },
+ {
+  "id": "ecclesiastes-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did he see, upon horses?",
+  "choices": [
+   "Princes",
+   "Servants",
+   "Priests",
+   "Soldiers"
+  ],
+  "answer": 1,
+  "explanation": "\"I have seen servants upon horses, and princes walking as servants upon the earth.\"",
+  "ref": "Ecclesiastes 10:7"
+ },
+ {
+  "id": "ecclesiastes-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What bites whoso breaketh an hedge?",
+  "choices": [
+   "A lion",
+   "A dog",
+   "A serpent",
+   "A scorpion"
+  ],
+  "answer": 2,
+  "explanation": "\"Whoso breaketh an hedge, a serpent shall bite him.\"",
+  "ref": "Ecclesiastes 10:8"
+ },
+ {
+  "id": "ecclesiastes-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What befalls him that removeth stones?",
+  "choices": [
+   "He shall be hurt therewith",
+   "He shall be rewarded",
+   "He shall find treasure",
+   "He shall be praised"
+  ],
+  "answer": 0,
+  "explanation": "\"Whoso removeth stones shall be hurt therewith; and he that cleaveth wood shall be endangered thereby.\"",
+  "ref": "Ecclesiastes 10:9"
+ },
+ {
+  "id": "ecclesiastes-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is profitable to direct?",
+  "choices": [
+   "Strength",
+   "Counsel",
+   "Wisdom",
+   "Gold"
+  ],
+  "answer": 2,
+  "explanation": "\"If the iron be blunt, and he do not whet the edge, then must he put to more strength: but wisdom is profitable to direct.\"",
+  "ref": "Ecclesiastes 10:10"
+ },
+ {
+  "id": "ecclesiastes-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is no better than the serpent that will bite without enchantment?",
+  "choices": [
+   "A king",
+   "A prince",
+   "A babbler",
+   "A fool"
+  ],
+  "answer": 2,
+  "explanation": "\"Surely the serpent will bite without enchantment; and a babbler is no better.\"",
+  "ref": "Ecclesiastes 10:11"
+ },
+ {
+  "id": "ecclesiastes-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the words of a wise man’s mouth?",
+  "choices": [
+   "Gracious",
+   "Few",
+   "Hidden",
+   "Hard"
+  ],
+  "answer": 0,
+  "explanation": "\"The words of a wise man’s mouth are gracious; but the lips of a fool will swallow up himself.\"",
+  "ref": "Ecclesiastes 10:12"
+ },
+ {
+  "id": "ecclesiastes-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the end of the fool’s talk?",
+  "choices": [
+   "Silence",
+   "Mischievous madness",
+   "Wisdom",
+   "Repentance"
+  ],
+  "answer": 1,
+  "explanation": "\"The beginning of the words of his mouth is foolishness: and the end of his talk is mischievous madness.\"",
+  "ref": "Ecclesiastes 10:13"
+ },
+ {
+  "id": "ecclesiastes-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What answereth all things?",
+  "choices": [
+   "Wisdom",
+   "The king",
+   "Wine",
+   "Money"
+  ],
+  "answer": 3,
+  "explanation": "\"A feast is made for laughter, and wine maketh merry: but money answereth all things.\"",
+  "ref": "Ecclesiastes 10:19"
+ },
+ {
+  "id": "ecclesiastes-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say a fool is full of?",
+  "choices": [
+   "Gold",
+   "Fear",
+   "Anger",
+   "Words"
+  ],
+  "answer": 3,
+  "explanation": "\"A fool also is full of words: a man cannot tell what shall be.\"",
+  "ref": "Ecclesiastes 10:14"
+ },
+ {
+  "id": "ecclesiastes-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What should one not do if the spirit of the ruler rise against him?",
+  "choices": [
+   "Speak to him",
+   "Pay him a gift",
+   "Leave his place",
+   "Plead his cause"
+  ],
+  "answer": 2,
+  "explanation": "\"If the spirit of the ruler rise up against thee, leave not thy place; for yielding pacifieth great offences.\"",
+  "ref": "Ecclesiastes 10:4"
+ },
+ {
+  "id": "ecclesiastes-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is set in great dignity?",
+  "choices": [
+   "Wisdom",
+   "Justice",
+   "Strength",
+   "Folly"
+  ],
+  "answer": 3,
+  "explanation": "\"Folly is set in great dignity, and the rich sit in low place.\"",
+  "ref": "Ecclesiastes 10:6"
+ },
+ {
+  "id": "ecclesiastes-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the labour of the foolish not know?",
+  "choices": [
+   "How to build a house",
+   "How to dig a well",
+   "How to go to the city",
+   "How to read the law"
+  ],
+  "answer": 2,
+  "explanation": "\"The labour of the foolish wearieth every one of them, because he knoweth not how to go to the city.\"",
+  "ref": "Ecclesiastes 10:15"
+ },
+ {
+  "id": "ecclesiastes-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who sit in low place while folly is set in great dignity?",
+  "choices": [
+   "The wise",
+   "The rich",
+   "The princes",
+   "The servants"
+  ],
+  "answer": 1,
+  "explanation": "\"Folly is set in great dignity, and the rich sit in low place.\"",
+  "ref": "Ecclesiastes 10:6"
+ },
+ {
+  "id": "ecclesiastes-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why should princes eat in due season?",
+  "choices": [
+   "For strength, and not for drunkenness",
+   "For honour, and not for pleasure",
+   "For health, and not for feasting",
+   "For wisdom, and not for wine"
+  ],
+  "answer": 0,
+  "explanation": "\"Thy princes eat in due season, for strength, and not for drunkenness!\"",
+  "ref": "Ecclesiastes 10:17"
+ },
+ {
+  "id": "ecclesiastes-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall carry the voice of one who curses the king?",
+  "choices": [
+   "A bird of the air",
+   "The wind",
+   "A servant",
+   "A messenger"
+  ],
+  "answer": 0,
+  "explanation": "\"A bird of the air shall carry the voice, and that which hath wings shall tell the matter.\"",
+  "ref": "Ecclesiastes 10:20"
+ },
+ {
+  "id": "ecclesiastes-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where must he not curse the rich?",
+  "choices": [
+   "In the street",
+   "In the temple",
+   "In his bedchamber",
+   "In the field"
+  ],
+  "answer": 2,
+  "explanation": "\"Curse not the rich in thy bedchamber.\"",
+  "ref": "Ecclesiastes 10:20"
+ },
+ {
+  "id": "ecclesiastes-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is made for laughter?",
+  "choices": [
+   "A song",
+   "A king’s house",
+   "A feast",
+   "A day of rest"
+  ],
+  "answer": 2,
+  "explanation": "\"A feast is made for laughter, and wine maketh merry.\"",
+  "ref": "Ecclesiastes 10:19"
+ },
+ {
+  "id": "ecclesiastes-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whom does the error he saw proceed?",
+  "choices": [
+   "The priests",
+   "The people",
+   "The elders",
+   "The ruler"
+  ],
+  "answer": 3,
+  "explanation": "\"There is an evil which I have seen under the sun, as an error which proceedeth from the ruler.\"",
+  "ref": "Ecclesiastes 10:5"
+ },
+ {
+  "id": "ecclesiastes-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where is a fool’s heart?",
+  "choices": [
+   "At his right",
+   "Upon the sea",
+   "At his left",
+   "In the palace"
+  ],
+  "answer": 2,
+  "explanation": "\"A wise man’s heart is at his right hand; but a fool’s heart at his left.\"",
+  "ref": "Ecclesiastes 10:2"
+ },
+ {
+  "id": "ecclesiastes-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the fool’s lips do?",
+  "choices": [
+   "Curse the king",
+   "Speak wisdom",
+   "Swallow up himself",
+   "Praise God"
+  ],
+  "answer": 2,
+  "explanation": "\"The lips of a fool will swallow up himself.\"",
+  "ref": "Ecclesiastes 10:12"
+ },
+ {
+  "id": "ecclesiastes-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where the tree falleth, what is there?",
+  "choices": [
+   "It shall be moved",
+   "It shall be burned",
+   "There it shall be",
+   "It shall grow again"
+  ],
+  "answer": 2,
+  "explanation": "\"If the tree fall toward the south, or toward the north, in the place where the tree falleth, there it shall be.\"",
+  "ref": "Ecclesiastes 11:3"
+ },
+ {
+  "id": "ecclesiastes-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say thou knowest not about how the bones grow?",
+  "choices": [
+   "In the days of youth",
+   "In the time of famine",
+   "In the womb of her that is with child",
+   "In the earth"
+  ],
+  "answer": 2,
+  "explanation": "\"Thou knowest not what is the way of the spirit, nor how the bones do grow in the womb of her that is with child.\"",
+  "ref": "Ecclesiastes 11:5"
+ },
+ {
+  "id": "ecclesiastes-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When does he say to sow thy seed?",
+  "choices": [
+   "Only in the spring",
+   "At the new moon",
+   "When the rains cease",
+   "In the morning, and in the evening withhold not thine hand"
+  ],
+  "answer": 3,
+  "explanation": "\"In the morning sow thy seed, and in the evening withhold not thine hand.\"",
+  "ref": "Ecclesiastes 11:6"
+ },
+ {
+  "id": "ecclesiastes-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why should a portion be given to seven, and also to eight?",
+  "choices": [
+   "Because the poor are many",
+   "Because the king commands it",
+   "Because the harvest is great",
+   "Thou knowest not what evil shall be upon the earth"
+  ],
+  "answer": 3,
+  "explanation": "\"Give a portion to seven, and also to eight; for thou knowest not what evil shall be upon the earth.\"",
+  "ref": "Ecclesiastes 11:2"
+ },
+ {
+  "id": "ecclesiastes-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is sweet, and pleasant for the eyes to behold?",
+  "choices": [
+   "The wine, and the bread",
+   "The garden, and the vine",
+   "The city, and the king",
+   "The light, and the sun"
+  ],
+  "answer": 3,
+  "explanation": "\"Truly the light is sweet, and a pleasant thing it is for the eyes to behold the sun.\"",
+  "ref": "Ecclesiastes 11:7"
+ },
+ {
+  "id": "ecclesiastes-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who shall not reap?",
+  "choices": [
+   "He that sleeps in harvest",
+   "He that sows late",
+   "He that regardeth the clouds",
+   "He that eats alone"
+  ],
+  "answer": 2,
+  "explanation": "\"He that observeth the wind shall not sow; and he that regardeth the clouds shall not reap.\"",
+  "ref": "Ecclesiastes 11:4"
+ },
+ {
+  "id": "ecclesiastes-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say shall be many?",
+  "choices": [
+   "The years of the king",
+   "The days of darkness",
+   "The sons of men",
+   "The friends of the wise"
+  ],
+  "answer": 1,
+  "explanation": "\"Let him remember the days of darkness; for they shall be many.\"",
+  "ref": "Ecclesiastes 11:8"
+ },
+ {
+  "id": "ecclesiastes-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the young man told to walk in?",
+  "choices": [
+   "The law of Moses",
+   "The paths of the wise",
+   "The counsel of the elders",
+   "The ways of his heart and the sight of his eyes"
+  ],
+  "answer": 3,
+  "explanation": "\"Walk in the ways of thine heart, and in the sight of thine eyes: but know thou, that for all these things God will bring thee into judgment.\"",
+  "ref": "Ecclesiastes 11:9"
+ },
+ {
+  "id": "ecclesiastes-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say to remove from the heart?",
+  "choices": [
+   "Pride",
+   "Fear",
+   "Sorrow",
+   "Desire"
+  ],
+  "answer": 2,
+  "explanation": "\"Remove sorrow from thy heart, and put away evil from thy flesh.\"",
+  "ref": "Ecclesiastes 11:10"
+ },
+ {
+  "id": "ecclesiastes-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are childhood and youth?",
+  "choices": [
+   "Vanity",
+   "Wisdom",
+   "A gift",
+   "A blessing"
+  ],
+  "answer": 0,
+  "explanation": "\"Childhood and youth are vanity.\"",
+  "ref": "Ecclesiastes 11:10"
+ },
+ {
+  "id": "ecclesiastes-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is there no end of?",
+  "choices": [
+   "Gathering silver",
+   "The sons of men",
+   "The seasons",
+   "Making many books"
+  ],
+  "answer": 3,
+  "explanation": "\"Of making many books there is no end; and much study is a weariness of the flesh.\"",
+  "ref": "Ecclesiastes 12:12"
+ },
+ {
+  "id": "ecclesiastes-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall God bring into judgment with every secret thing?",
+  "choices": [
+   "Every nation",
+   "Every work",
+   "Every king",
+   "Every sacrifice"
+  ],
+  "answer": 1,
+  "explanation": "\"God shall bring every work into judgment, with every secret thing, whether it be good, or whether it be evil.\"",
+  "ref": "Ecclesiastes 12:14"
+ },
+ {
+  "id": "ecclesiastes-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will a man say of the evil days?",
+  "choices": [
+   "They are but a dream",
+   "They are in God’s hand",
+   "I have no pleasure in them",
+   "They will soon pass"
+  ],
+  "answer": 2,
+  "explanation": "\"While the evil days come not, nor the years draw nigh, when thou shalt say, I have no pleasure in them.\"",
+  "ref": "Ecclesiastes 12:1"
+ },
+ {
+  "id": "ecclesiastes-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who shall tremble and bow themselves, in the day described?",
+  "choices": [
+   "The priests and the princes",
+   "The kings and the judges",
+   "The shepherds and the flocks",
+   "The keepers of the house and the strong men"
+  ],
+  "answer": 3,
+  "explanation": "\"The keepers of the house shall tremble, and the strong men shall bow themselves.\"",
+  "ref": "Ecclesiastes 12:3"
+ },
+ {
+  "id": "ecclesiastes-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do the grinders cease?",
+  "choices": [
+   "Because the mill is broken",
+   "Because they are few",
+   "Because the grain is gone",
+   "Because it is the sabbath"
+  ],
+  "answer": 1,
+  "explanation": "\"The grinders cease because they are few.\"",
+  "ref": "Ecclesiastes 12:3"
+ },
+ {
+  "id": "ecclesiastes-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall flourish, while the grasshopper is a burden?",
+  "choices": [
+   "The fig tree",
+   "The almond tree",
+   "The vine",
+   "The cedar"
+  ],
+  "answer": 1,
+  "explanation": "\"The almond tree shall flourish, and the grasshopper shall be a burden, and desire shall fail.\"",
+  "ref": "Ecclesiastes 12:5"
+ },
+ {
+  "id": "ecclesiastes-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who go about the streets because man goeth to his long home?",
+  "choices": [
+   "The watchmen",
+   "The mourners",
+   "The merchants",
+   "The children"
+  ],
+  "answer": 1,
+  "explanation": "\"Man goeth to his long home, and the mourners go about the streets.\"",
+  "ref": "Ecclesiastes 12:5"
+ },
+ {
+  "id": "ecclesiastes-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Preacher do, because he was wise?",
+  "choices": [
+   "Built the temple",
+   "Went to war",
+   "Taught the people knowledge",
+   "Sat in judgment"
+  ],
+  "answer": 2,
+  "explanation": "\"Because the preacher was wise, he still taught the people knowledge.\"",
+  "ref": "Ecclesiastes 12:9"
+ },
+ {
+  "id": "ecclesiastes-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From whom are the words of the wise, the nails fastened, given?",
+  "choices": [
+   "The prophets",
+   "The king",
+   "One shepherd",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "\"The words of the wise are as goads, and as nails fastened by the masters of assemblies, which are given from one shepherd.\"",
+  "ref": "Ecclesiastes 12:11"
+ },
+ {
+  "id": "ecclesiastes-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall be broken, or ever the silver cord be loosed?",
+  "choices": [
+   "The silver cup",
+   "The altar",
+   "The golden bowl",
+   "The wall"
+  ],
+  "answer": 2,
+  "explanation": "\"Or ever the silver cord be loosed, or the golden bowl be broken.\"",
+  "ref": "Ecclesiastes 12:6"
+ },
+ {
+  "id": "ecclesiastes-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where is the pitcher broken?",
+  "choices": [
+   "At the well",
+   "At the fountain",
+   "At the gate",
+   "At the river"
+  ],
+  "answer": 1,
+  "explanation": "\"The pitcher be broken at the fountain, or the wheel broken at the cistern.\"",
+  "ref": "Ecclesiastes 12:6"
+ },
+ {
+  "id": "ecclesiastes-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where is the wheel broken?",
+  "choices": [
+   "At the mill",
+   "At the gate",
+   "At the cistern",
+   "At the wall"
+  ],
+  "answer": 2,
+  "explanation": "\"The wheel broken at the cistern.\"",
+  "ref": "Ecclesiastes 12:6"
+ },
+ {
+  "id": "ecclesiastes-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall return to the earth as it was?",
+  "choices": [
+   "The dust",
+   "The spirit",
+   "The works",
+   "The name"
+  ],
+  "answer": 0,
+  "explanation": "\"Then shall the dust return to the earth as it was: and the spirit shall return unto God who gave it.\"",
+  "ref": "Ecclesiastes 12:7"
+ },
+ {
+  "id": "ecclesiastes-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Preacher seek to find out?",
+  "choices": [
+   "Hidden treasure",
+   "Acceptable words",
+   "The way of the wind",
+   "The name of God"
+  ],
+  "answer": 1,
+  "explanation": "\"The preacher sought to find out acceptable words: and that which was written was upright, even words of truth.\"",
+  "ref": "Ecclesiastes 12:10"
+ },
+ {
+  "id": "ecclesiastes-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did he do with many proverbs?",
+  "choices": [
+   "Burned them",
+   "Sold them",
+   "Hid them",
+   "Set them in order"
+  ],
+  "answer": 3,
+  "explanation": "\"He gave good heed, and sought out, and set in order many proverbs.\"",
+  "ref": "Ecclesiastes 12:9"
+ },
+ {
+  "id": "ecclesiastes-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what shall they be afraid?",
+  "choices": [
+   "The king",
+   "That which is high",
+   "The night",
+   "The sea"
+  ],
+  "answer": 1,
+  "explanation": "\"Also when they shall be afraid of that which is high, and fears shall be in the way.\"",
+  "ref": "Ecclesiastes 12:5"
+ },
+ {
+  "id": "ecclesiastes-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did he give himself to, while acquainting his heart with wisdom?",
+  "choices": [
+   "War",
+   "Prayer",
+   "Wine",
+   "Travel"
+  ],
+  "answer": 2,
+  "explanation": "\"I sought in mine heart to give myself unto wine, yet acquainting mine heart with wisdom.\"",
+  "ref": "Ecclesiastes 2:3"
+ },
+ {
+  "id": "ecclesiastes-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did he make, planting trees of all kind of fruits?",
+  "choices": [
+   "Terraces",
+   "Walled cities",
+   "Pastures",
+   "Gardens and orchards"
+  ],
+  "answer": 3,
+  "explanation": "\"I made me gardens and orchards, and I planted trees in them of all kind of fruits.\"",
+  "ref": "Ecclesiastes 2:5"
+ },
+ {
+  "id": "ecclesiastes-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did he make to water the wood that bringeth forth trees?",
+  "choices": [
+   "Pools of water",
+   "Canals from the Nile",
+   "Wells in the desert",
+   "Aqueducts"
+  ],
+  "answer": 0,
+  "explanation": "\"I made me pools of water, to water therewith the wood that bringeth forth trees.\"",
+  "ref": "Ecclesiastes 2:6"
+ },
+ {
+  "id": "ecclesiastes-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did he get, besides having servants born in his house?",
+  "choices": [
+   "Armies and chariots",
+   "Servants and maidens",
+   "Priests and prophets",
+   "Scribes and judges"
+  ],
+  "answer": 1,
+  "explanation": "\"I got me servants and maidens, and had servants born in my house.\"",
+  "ref": "Ecclesiastes 2:7"
+ },
+ {
+  "id": "ecclesiastes-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did he gather for himself?",
+  "choices": [
+   "Silver and gold",
+   "Cedar and cypress",
+   "Ivory and apes",
+   "Corn and wine"
+  ],
+  "answer": 0,
+  "explanation": "\"I gathered me also silver and gold, and the peculiar treasure of kings and of the provinces.\"",
+  "ref": "Ecclesiastes 2:8"
+ },
+ {
+  "id": "ecclesiastes-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did he get for music?",
+  "choices": [
+   "Priests with trumpets",
+   "The sons of Asaph",
+   "Men singers and women singers",
+   "Shepherds with pipes"
+  ],
+  "answer": 2,
+  "explanation": "\"I gat me men singers and women singers, and the delights of the sons of men.\"",
+  "ref": "Ecclesiastes 2:8"
+ },
+ {
+  "id": "ecclesiastes-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How far does wisdom excel folly?",
+  "choices": [
+   "As far as gold excelleth silver",
+   "As far as the heavens excel the earth",
+   "As far as a king excels a servant",
+   "As far as light excelleth darkness"
+  ],
+  "answer": 3,
+  "explanation": "\"Wisdom excelleth folly, as far as light excelleth darkness.\"",
+  "ref": "Ecclesiastes 2:13"
+ },
+ {
+  "id": "ecclesiastes-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where are the wise man’s eyes?",
+  "choices": [
+   "In his head",
+   "In his heart",
+   "On the ground",
+   "Upon his work"
+  ],
+  "answer": 0,
+  "explanation": "\"The wise man’s eyes are in his head; but the fool walketh in darkness.\"",
+  "ref": "Ecclesiastes 2:14"
+ },
+ {
+  "id": "ecclesiastes-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did he make pools of water?",
+  "choices": [
+   "To water the wood that bringeth forth trees",
+   "To keep fish for the king’s table",
+   "To supply the temple",
+   "To cool the palace"
+  ],
+  "answer": 0,
+  "explanation": "\"I made me pools of water, to water therewith the wood that bringeth forth trees.\"",
+  "ref": "Ecclesiastes 2:6"
+ },
+ {
+  "id": "ecclesiastes-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did he possess above all that were before him in Jerusalem?",
+  "choices": [
+   "Great and small cattle",
+   "Chariots and horsemen",
+   "Ships and merchants",
+   "Armour and spears"
+  ],
+  "answer": 0,
+  "explanation": "\"I had great possessions of great and small cattle above all that were in Jerusalem before me.\"",
+  "ref": "Ecclesiastes 2:7"
+ },
+ {
+  "id": "ecclesiastes-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What treasure did he gather from kings and provinces?",
+  "choices": [
+   "Peculiar treasure",
+   "Tribute of corn",
+   "Captive artisans",
+   "Spoil of war"
+  ],
+  "answer": 0,
+  "explanation": "\"I gathered me also silver and gold, and the peculiar treasure of kings and of the provinces.\"",
+  "ref": "Ecclesiastes 2:8"
+ },
+ {
+  "id": "ecclesiastes-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did he withhold from his eyes and his heart?",
+  "choices": [
+   "Wine",
+   "Rest",
+   "Sleep",
+   "Nothing"
+  ],
+  "answer": 3,
+  "explanation": "\"Whatsoever mine eyes desired I kept not from them, I withheld not my heart from any joy.\"",
+  "ref": "Ecclesiastes 2:10"
+ },
+ {
+  "id": "ecclesiastes-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say the man can do that cometh after the king?",
+  "choices": [
+   "Only what hath been already done",
+   "Greater works than the king",
+   "Nothing at all",
+   "Undo the king’s works"
+  ],
+  "answer": 0,
+  "explanation": "\"What can the man do that cometh after the king? even that which hath been already done.\"",
+  "ref": "Ecclesiastes 2:12"
+ },
+ {
+  "id": "ecclesiastes-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he see happeneth to the wise and the fool alike?",
+  "choices": [
+   "A great reward",
+   "A swift judgment",
+   "One event",
+   "A long life"
+  ],
+  "answer": 2,
+  "explanation": "\"I myself perceived also that one event happeneth to them all.\"",
+  "ref": "Ecclesiastes 2:14"
+ },
+ {
+  "id": "ecclesiastes-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will be forgotten for ever, the wise no more than the fool?",
+  "choices": [
+   "Their works only",
+   "Their names only",
+   "Their gold",
+   "The remembrance of both"
+  ],
+  "answer": 3,
+  "explanation": "\"There is no remembrance of the wise more than of the fool for ever.\"",
+  "ref": "Ecclesiastes 2:16"
+ },
+ {
+  "id": "ecclesiastes-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did he hate all his labour?",
+  "choices": [
+   "Because it brought him no silver",
+   "Because he must leave it to the man that shall be after him",
+   "Because the people mocked it",
+   "Because God forbade it"
+  ],
+  "answer": 1,
+  "explanation": "\"I hated all my labour... because I should leave it unto the man that shall be after me.\"",
+  "ref": "Ecclesiastes 2:18"
+ },
+ {
+  "id": "ecclesiastes-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say of the man who shall have rule over all his labour?",
+  "choices": [
+   "He shall be a wise man",
+   "Who knoweth whether he shall be a wise man or a fool",
+   "He shall be a son of David",
+   "He shall be a stranger"
+  ],
+  "answer": 1,
+  "explanation": "\"Who knoweth whether he shall be a wise man or a fool? yet shall he have rule over all my labour.\"",
+  "ref": "Ecclesiastes 2:19"
+ },
+ {
+  "id": "ecclesiastes-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does his heart not take in the night?",
+  "choices": [
+   "Fear",
+   "Courage",
+   "Rest",
+   "Counsel"
+  ],
+  "answer": 2,
+  "explanation": "\"All his days are sorrows, and his travail grief; yea, his heart taketh not rest in the night.\"",
+  "ref": "Ecclesiastes 2:23"
+ },
+ {
+  "id": "ecclesiastes-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God give to the man who is good in his sight?",
+  "choices": [
+   "Silver, gold and honour",
+   "Sons and long life",
+   "Wisdom, and knowledge, and joy",
+   "Peace and rest"
+  ],
+  "answer": 2,
+  "explanation": "\"God giveth to a man that is good in his sight wisdom, and knowledge, and joy.\"",
+  "ref": "Ecclesiastes 2:26"
+ },
+ {
+  "id": "ecclesiastes-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God give the sinner?",
+  "choices": [
+   "Travail, to gather and to heap up",
+   "A long life of ease",
+   "A silent heart",
+   "A heap of folly"
+  ],
+  "answer": 0,
+  "explanation": "\"To the sinner he giveth travail, to gather and to heap up, that he may give to him that is good before God.\"",
+  "ref": "Ecclesiastes 2:26"
+ },
+ {
+  "id": "ecclesiastes-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did he cause his heart to do about all his labour?",
+  "choices": [
+   "Despair of it",
+   "Rejoice in it",
+   "Forget it",
+   "Offer it to God"
+  ],
+  "answer": 0,
+  "explanation": "\"I went about to cause my heart to despair of all the labour which I took under the sun.\"",
+  "ref": "Ecclesiastes 2:20"
+ },
+ {
+  "id": "ecclesiastes-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What remained with him, though he was great and increased?",
+  "choices": [
+   "His friends",
+   "His peace",
+   "His wisdom",
+   "His youth"
+  ],
+  "answer": 2,
+  "explanation": "\"I was great, and increased more than all that were before me in Jerusalem: also my wisdom remained with me.\"",
+  "ref": "Ecclesiastes 2:9"
+ },
+ {
+  "id": "ecclesiastes-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was his portion of all his labour?",
+  "choices": [
+   "A house of cedar",
+   "Rest in the evening",
+   "That his heart rejoiced in it",
+   "The praise of men"
+  ],
+  "answer": 2,
+  "explanation": "\"My heart rejoiced in all my labour: and this was my portion of all my labour.\"",
+  "ref": "Ecclesiastes 2:10"
+ },
+ {
+  "id": "ecclesiastes-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say of how the wise man dieth?",
+  "choices": [
+   "In peace",
+   "As the fool",
+   "Full of days",
+   "Without sorrow"
+  ],
+  "answer": 1,
+  "explanation": "\"And how dieth the wise man? as the fool.\"",
+  "ref": "Ecclesiastes 2:16"
+ },
+ {
+  "id": "ecclesiastes-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did he hate life?",
+  "choices": [
+   "His enemies pursued him",
+   "His sons rebelled",
+   "The work wrought under the sun was grievous to him",
+   "His wealth was taken"
+  ],
+  "answer": 2,
+  "explanation": "\"I hated life; because the work that is wrought under the sun is grievous unto me.\"",
+  "ref": "Ecclesiastes 2:17"
+ },
+ {
+  "id": "ecclesiastes-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who walketh in darkness?",
+  "choices": [
+   "The fool",
+   "The wise man",
+   "The king",
+   "The oppressor"
+  ],
+  "answer": 0,
+  "explanation": "\"The wise man’s eyes are in his head; but the fool walketh in darkness.\"",
+  "ref": "Ecclesiastes 2:14"
+ },
+ {
+  "id": "ecclesiastes-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did he want to see, that sons of men should do all the days of their life?",
+  "choices": [
+   "What was that wise",
+   "What was that holy",
+   "What was that good",
+   "What was that rich"
+  ],
+  "answer": 2,
+  "explanation": "\"Till I might see what was that good for the sons of men, which they should do under the heaven all the days of their life.\"",
+  "ref": "Ecclesiastes 2:3"
+ },
+ {
+  "id": "ecclesiastes-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose labour is in wisdom, knowledge and equity, yet he leaves it to another?",
+  "choices": [
+   "A king who leaves it to his son",
+   "A priest who leaves it to the temple",
+   "A rich man who leaves it to the poor",
+   "A man who leaves it to one that has not laboured"
+  ],
+  "answer": 3,
+  "explanation": "\"To a man that hath not laboured therein shall he leave it for his portion. This also is vanity and a great evil.\"",
+  "ref": "Ecclesiastes 2:21"
+ },
+ {
+  "id": "ecclesiastes-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did he find when he looked on all the works his hands had wrought?",
+  "choices": [
+   "No profit under the sun",
+   "A great reward",
+   "A lasting name",
+   "Rest for his soul"
+  ],
+  "answer": 0,
+  "explanation": "\"All was vanity and vexation of spirit, and there was no profit under the sun.\"",
+  "ref": "Ecclesiastes 2:11"
+ },
+ {
+  "id": "ecclesiastes-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What three things did he turn himself to behold?",
+  "choices": [
+   "Wisdom, and madness, and folly",
+   "Gold, silver and cattle",
+   "Houses, gardens and pools",
+   "Kings, servants and singers"
+  ],
+  "answer": 0,
+  "explanation": "\"I turned myself to behold wisdom, and madness, and folly.\"",
+  "ref": "Ecclesiastes 2:12"
+ },
+ {
+  "id": "ecclesiastes-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did he say to himself about why he was then more wise?",
+  "choices": [
+   "Because God gave him wisdom",
+   "Because Israel obeyed",
+   "As it happeneth to the fool, so to me",
+   "Because the king loved wisdom"
+  ],
+  "answer": 2,
+  "explanation": "\"As it happeneth to the fool, so it happeneth even to me; and why was I then more wise?\"",
+  "ref": "Ecclesiastes 2:15"
+ },
+ {
+  "id": "ecclesiastes-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whom does the sinner gather and heap up?",
+  "choices": [
+   "His own sons",
+   "The king",
+   "Him that is good before God",
+   "The poor"
+  ],
+  "answer": 2,
+  "explanation": "\"To the sinner he giveth travail, to gather and to heap up, that he may give to him that is good before God.\"",
+  "ref": "Ecclesiastes 2:26"
+ },
+ {
+  "id": "ecclesiastes-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Greater than whom did he grow, in Jerusalem?",
+  "choices": [
+   "The kings of Egypt",
+   "All that were before him",
+   "His father David",
+   "The wise men of the east"
+  ],
+  "answer": 1,
+  "explanation": "\"So I was great, and increased more than all that were before me in Jerusalem.\"",
+  "ref": "Ecclesiastes 2:9"
+ },
+ {
+  "id": "ecclesiastes-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he call it when a man leaves his wisdom-labour to one who has not laboured?",
+  "choices": [
+   "A just reward",
+   "Vanity and a great evil",
+   "A blessing from God",
+   "The way of the wise"
+  ],
+  "answer": 1,
+  "explanation": "\"This also is vanity and a great evil.\"",
+  "ref": "Ecclesiastes 2:21"
+ },
+ {
+  "id": "ecclesiastes-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Preacher say there is a time to do, besides plant?",
+  "choices": [
+   "Pluck up that which is planted",
+   "Build a temple",
+   "Harvest the vine",
+   "Offer sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "\"A time to plant, and a time to pluck up that which is planted.\"",
+  "ref": "Ecclesiastes 3:2"
+ },
+ {
+  "id": "ecclesiastes-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What opposite does the list set beside \"a time of war\"?",
+  "choices": [
+   "A time of fear",
+   "A time of rest",
+   "A time of peace",
+   "A time of plenty"
+  ],
+  "answer": 2,
+  "explanation": "\"A time to love, and a time to hate; a time of war, and a time of peace.\"",
+  "ref": "Ecclesiastes 3:8"
+ },
+ {
+  "id": "ecclesiastes-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the list say there is a time to do with stones?",
+  "choices": [
+   "Carry them to the temple",
+   "Set them up as an altar",
+   "Hide them in the earth",
+   "Cast them away and gather them together"
+  ],
+  "answer": 3,
+  "explanation": "\"A time to cast away stones, and a time to gather stones together.\"",
+  "ref": "Ecclesiastes 3:5"
+ },
+ {
+  "id": "ecclesiastes-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the list set beside \"a time to weep\"?",
+  "choices": [
+   "A time to laugh",
+   "A time to pray",
+   "A time to fast",
+   "A time to sing"
+  ],
+  "answer": 0,
+  "explanation": "\"A time to weep, and a time to laugh; a time to mourn, and a time to dance.\"",
+  "ref": "Ecclesiastes 3:4"
+ },
+ {
+  "id": "ecclesiastes-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom does he say God shall judge?",
+  "choices": [
+   "Kings only",
+   "The righteous and the wicked",
+   "The nations of the earth",
+   "Those that mourn"
+  ],
+  "answer": 1,
+  "explanation": "\"God shall judge the righteous and the wicked: for there is a time there for every purpose and for every work.\"",
+  "ref": "Ecclesiastes 3:17"
+ },
+ {
+  "id": "ecclesiastes-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To where do all go, being of the dust?",
+  "choices": [
+   "The mountains",
+   "One place",
+   "The sea",
+   "The temple"
+  ],
+  "answer": 1,
+  "explanation": "\"All go unto one place; all are of the dust, and all turn to dust again.\"",
+  "ref": "Ecclesiastes 3:20"
+ },
+ {
+  "id": "ecclesiastes-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What can no man find out?",
+  "choices": [
+   "The day of his death",
+   "The path of the wind",
+   "The number of the stars",
+   "The work that God maketh from the beginning to the end"
+  ],
+  "answer": 3,
+  "explanation": "\"No man can find out the work that God maketh from the beginning to the end.\"",
+  "ref": "Ecclesiastes 3:11"
+ },
+ {
+  "id": "ecclesiastes-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say of whatsoever God doeth?",
+  "choices": [
+   "It shall pass with the generations",
+   "It shall be hidden from kings",
+   "It shall be for ever; nothing can be added or taken",
+   "It shall change with the seasons"
+  ],
+  "answer": 2,
+  "explanation": "\"Whatsoever God doeth, it shall be for ever: nothing can be put to it, nor any thing taken from it.\"",
+  "ref": "Ecclesiastes 3:14"
+ },
+ {
+  "id": "ecclesiastes-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does God do it, in the Preacher’s words?",
+  "choices": [
+   "That men should fear before him",
+   "That men should be rich",
+   "That men should be wise",
+   "That men should rule"
+  ],
+  "answer": 0,
+  "explanation": "\"God doeth it, that men should fear before him.\"",
+  "ref": "Ecclesiastes 3:14"
+ },
+ {
+  "id": "ecclesiastes-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God require?",
+  "choices": [
+   "A tenth of increase",
+   "That which is past",
+   "A burnt offering",
+   "The first fruits"
+  ],
+  "answer": 1,
+  "explanation": "\"That which hath been is now; and God requireth that which is past.\"",
+  "ref": "Ecclesiastes 3:15"
+ },
+ {
+  "id": "ecclesiastes-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did he see in the place of judgment?",
+  "choices": [
+   "Righteousness",
+   "Mercy",
+   "Fear",
+   "Wickedness"
+  ],
+  "answer": 3,
+  "explanation": "\"I saw under the sun the place of judgment, that wickedness was there.\"",
+  "ref": "Ecclesiastes 3:16"
+ },
+ {
+  "id": "ecclesiastes-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say the sons of men are, that God might manifest them?",
+  "choices": [
+   "Beasts",
+   "Servants",
+   "Strangers",
+   "Dust only"
+  ],
+  "answer": 0,
+  "explanation": "\"That they might see that they themselves are beasts.\"",
+  "ref": "Ecclesiastes 3:18"
+ },
+ {
+  "id": "ecclesiastes-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has a man above a beast?",
+  "choices": [
+   "Great preeminence",
+   "No preeminence",
+   "A longer life",
+   "A louder voice"
+  ],
+  "answer": 1,
+  "explanation": "\"They have all one breath; so that a man hath no preeminence above a beast: for all is vanity.\"",
+  "ref": "Ecclesiastes 3:19"
+ },
+ {
+  "id": "ecclesiastes-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he call eating, drinking and enjoying the good of one’s labour?",
+  "choices": [
+   "The gift of God",
+   "The reward of the wise",
+   "A vanity",
+   "A snare"
+  ],
+  "answer": 0,
+  "explanation": "\"That every man should eat and drink, and enjoy the good of all his labour, it is the gift of God.\"",
+  "ref": "Ecclesiastes 3:13"
+ },
+ {
+  "id": "ecclesiastes-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say is the best thing for a man to do, for that is his portion?",
+  "choices": [
+   "Seek out the work of God",
+   "Fear the king",
+   "Rejoice in his own works",
+   "Gather riches"
+  ],
+  "answer": 2,
+  "explanation": "\"There is nothing better, than that a man should rejoice in his own works; for that is his portion.\"",
+  "ref": "Ecclesiastes 3:22"
+ },
+ {
+  "id": "ecclesiastes-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he ask who knoweth, of the spirit of the beast?",
+  "choices": [
+   "That it returns to God",
+   "That it rests in a field",
+   "That it goeth downward to the earth",
+   "That it lives again"
+  ],
+  "answer": 2,
+  "explanation": "\"Who knoweth the spirit of man that goeth upward, and the spirit of the beast that goeth downward to the earth?\"",
+  "ref": "Ecclesiastes 3:21"
+ },
+ {
+  "id": "ecclesiastes-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Preacher say God hath given the sons of men to be exercised in?",
+  "choices": [
+   "The law",
+   "Travail",
+   "Wisdom",
+   "A garden"
+  ],
+  "answer": 1,
+  "explanation": "\"I have seen the travail, which God hath given to the sons of men to be exercised in it.\"",
+  "ref": "Ecclesiastes 3:10"
+ },
+ {
+  "id": "ecclesiastes-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the list say there is a time to do, beside a time to sew?",
+  "choices": [
+   "Weave",
+   "Bind",
+   "Rend",
+   "Wash"
+  ],
+  "answer": 2,
+  "explanation": "\"A time to rend, and a time to sew; a time to keep silence, and a time to speak.\"",
+  "ref": "Ecclesiastes 3:7"
+ },
+ {
+  "id": "ecclesiastes-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is there for every purpose and every work, in the judgment?",
+  "choices": [
+   "A sacrifice",
+   "A witness",
+   "A time",
+   "A king"
+  ],
+  "answer": 2,
+  "explanation": "\"God shall judge the righteous and the wicked: for there is a time there for every purpose and for every work.\"",
+  "ref": "Ecclesiastes 3:17"
+ },
+ {
+  "id": "ecclesiastes-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who, he says in his heart, might manifest the sons of men as beasts?",
+  "choices": [
+   "The king",
+   "God",
+   "The wise",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "\"I said in mine heart... that God might manifest them, and that they might see that they themselves are beasts.\"",
+  "ref": "Ecclesiastes 3:18"
+ },
+ {
+  "id": "ecclesiastes-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the list set beside a time to kill?",
+  "choices": [
+   "A time to spare",
+   "A time to heal",
+   "A time to bury",
+   "A time to judge"
+  ],
+  "answer": 1,
+  "explanation": "\"A time to kill, and a time to heal; a time to break down, and a time to build up.\"",
+  "ref": "Ecclesiastes 3:3"
+ },
+ {
+  "id": "ecclesiastes-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In the place of righteousness, what was there?",
+  "choices": [
+   "Mercy",
+   "Iniquity",
+   "Wisdom",
+   "Peace"
+  ],
+  "answer": 1,
+  "explanation": "\"The place of righteousness, that iniquity was there.\"",
+  "ref": "Ecclesiastes 3:16"
+ },
+ {
+  "id": "ecclesiastes-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God set in their heart?",
+  "choices": [
+   "Fear",
+   "Wisdom",
+   "The world",
+   "A law"
+  ],
+  "answer": 2,
+  "explanation": "\"He hath set the world in their heart, so that no man can find out the work that God maketh.\"",
+  "ref": "Ecclesiastes 3:11"
+ },
+ {
+  "id": "ecclesiastes-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say of who shall bring a man to see what shall be after him?",
+  "choices": [
+   "The prophets",
+   "The king",
+   "Nobody knows",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "\"For who shall bring him to see what shall be after him?\"",
+  "ref": "Ecclesiastes 3:22"
+ },
+ {
+  "id": "ecclesiastes-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the sons of men and beasts alike have, one thing?",
+  "choices": [
+   "One home",
+   "One breath",
+   "One law",
+   "One name"
+  ],
+  "answer": 1,
+  "explanation": "\"Yea, they have all one breath.\"",
+  "ref": "Ecclesiastes 3:19"
+ },
+ {
+  "id": "ecclesiastes-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he know to be good in them, besides rejoicing?",
+  "choices": [
+   "To seek wisdom",
+   "To honour the king",
+   "To build",
+   "To do good in his life"
+  ],
+  "answer": 3,
+  "explanation": "\"I know that there is no good in them, but for a man to rejoice, and to do good in his life.\"",
+  "ref": "Ecclesiastes 3:12"
+ },
+ {
+  "id": "ecclesiastes-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say of the one who dieth, and the other?",
+  "choices": [
+   "The man lives, the beast dies",
+   "The beast lives on",
+   "Both rise again",
+   "As the one dieth, so dieth the other"
+  ],
+  "answer": 3,
+  "explanation": "\"As the one dieth, so dieth the other.\"",
+  "ref": "Ecclesiastes 3:19"
+ },
+ {
+  "id": "ecclesiastes-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he call all that has been, and is to be?",
+  "choices": [
+   "It is new",
+   "It is lost",
+   "It is hidden",
+   "It hath already been"
+  ],
+  "answer": 3,
+  "explanation": "\"That which hath been is now; and that which is to be hath already been.\"",
+  "ref": "Ecclesiastes 3:15"
+ },
+ {
+  "id": "ecclesiastes-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the fool do with his hands?",
+  "choices": [
+   "Foldeth them together",
+   "Hides them",
+   "Lifts them up",
+   "Washes them"
+  ],
+  "answer": 0,
+  "explanation": "\"The fool foldeth his hands together, and eateth his own flesh.\"",
+  "ref": "Ecclesiastes 4:5"
+ },
+ {
+  "id": "ecclesiastes-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who is better than an old and foolish king?",
+  "choices": [
+   "A rich and wise man",
+   "A poor and wise child",
+   "A strong young soldier",
+   "A priest"
+  ],
+  "answer": 1,
+  "explanation": "\"Better is a poor and a wise child than an old and foolish king, who will no more be admonished.\"",
+  "ref": "Ecclesiastes 4:13"
+ },
+ {
+  "id": "ecclesiastes-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If one falls, what does the other do?",
+  "choices": [
+   "Runs away",
+   "Calls the watchmen",
+   "Lifts up his fellow",
+   "Pays the debt"
+  ],
+  "answer": 2,
+  "explanation": "\"If they fall, the one will lift up his fellow.\"",
+  "ref": "Ecclesiastes 4:10"
+ },
+ {
+  "id": "ecclesiastes-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of the oppressed, what did he see they had not?",
+  "choices": [
+   "A voice",
+   "A home",
+   "A judge",
+   "A comforter"
+  ],
+  "answer": 3,
+  "explanation": "\"Behold the tears of such as were oppressed, and they had no comforter.\"",
+  "ref": "Ecclesiastes 4:1"
+ },
+ {
+  "id": "ecclesiastes-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is better than both hands full with travail?",
+  "choices": [
+   "An handful with quietness",
+   "A purse of silver",
+   "A field of wheat",
+   "A house of cedar"
+  ],
+  "answer": 0,
+  "explanation": "\"Better is an handful with quietness, than both the hands full with travail and vexation of spirit.\"",
+  "ref": "Ecclesiastes 4:6"
+ },
+ {
+  "id": "ecclesiastes-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of the one alone, what does he say he hath neither?",
+  "choices": [
+   "Silver nor gold",
+   "Child nor brother",
+   "House nor land",
+   "Friend nor king"
+  ],
+  "answer": 1,
+  "explanation": "\"There is one alone, and there is not a second; yea, he hath neither child nor brother.\"",
+  "ref": "Ecclesiastes 4:8"
+ },
+ {
+  "id": "ecclesiastes-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say of the man alone when he falleth?",
+  "choices": [
+   "He rises by his own strength",
+   "God lifts him up",
+   "The poor help him",
+   "Woe to him, he hath not another to help him up"
+  ],
+  "answer": 3,
+  "explanation": "\"Woe to him that is alone when he falleth; for he hath not another to help him up.\"",
+  "ref": "Ecclesiastes 4:10"
+ },
+ {
+  "id": "ecclesiastes-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does he say two lying together have an advantage?",
+  "choices": [
+   "They are safe from thieves",
+   "They have heat",
+   "They sleep longer",
+   "They are rich"
+  ],
+  "answer": 1,
+  "explanation": "\"If two lie together, then they have heat: but how can one be warm alone?\"",
+  "ref": "Ecclesiastes 4:11"
+ },
+ {
+  "id": "ecclesiastes-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If one prevail against him, what shall two do?",
+  "choices": [
+   "Flee",
+   "Withstand him",
+   "Pay him",
+   "Pray"
+  ],
+  "answer": 1,
+  "explanation": "\"If one prevail against him, two shall withstand him.\"",
+  "ref": "Ecclesiastes 4:12"
+ },
+ {
+  "id": "ecclesiastes-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which king will no more be admonished?",
+  "choices": [
+   "The old and foolish king",
+   "The young and strong king",
+   "The king in prison",
+   "The child king"
+  ],
+  "answer": 0,
+  "explanation": "\"Better is a poor and a wise child than an old and foolish king, who will no more be admonished.\"",
+  "ref": "Ecclesiastes 4:13"
+ },
+ {
+  "id": "ecclesiastes-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does the wise child come from to reign?",
+  "choices": [
+   "Out of the temple",
+   "Out of Egypt",
+   "Out of prison",
+   "Out of the field"
+  ],
+  "answer": 2,
+  "explanation": "\"Out of prison he cometh to reign.\"",
+  "ref": "Ecclesiastes 4:14"
+ },
+ {
+  "id": "ecclesiastes-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who does he say is better than both the dead and the living?",
+  "choices": [
+   "He that hath not yet been",
+   "The king",
+   "The poor",
+   "The wise"
+  ],
+  "answer": 0,
+  "explanation": "\"Better is he than both they, which hath not yet been, who hath not seen the evil work.\"",
+  "ref": "Ecclesiastes 4:3"
+ },
+ {
+  "id": "ecclesiastes-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the fool eat?",
+  "choices": [
+   "His neighbour’s bread",
+   "The fruit of the vine",
+   "His own flesh",
+   "Nothing"
+  ],
+  "answer": 2,
+  "explanation": "\"The fool foldeth his hands together, and eateth his own flesh.\"",
+  "ref": "Ecclesiastes 4:5"
+ },
+ {
+  "id": "ecclesiastes-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question does the lonely man never ask?",
+  "choices": [
+   "Why was I born?",
+   "Where is my brother?",
+   "For whom do I labour?",
+   "Who will remember me?"
+  ],
+  "answer": 2,
+  "explanation": "\"Neither saith he, For whom do I labour, and bereave my soul of good?\"",
+  "ref": "Ecclesiastes 4:8"
+ },
+ {
+  "id": "ecclesiastes-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is not satisfied with riches?",
+  "choices": [
+   "His heart",
+   "His house",
+   "His hand",
+   "His eye"
+  ],
+  "answer": 3,
+  "explanation": "\"Neither is his eye satisfied with riches.\"",
+  "ref": "Ecclesiastes 4:8"
+ },
+ {
+  "id": "ecclesiastes-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What becomes of the one born in the king’s kingdom?",
+  "choices": [
+   "He reigns",
+   "He is made judge",
+   "He is sent to prison",
+   "He becomes poor"
+  ],
+  "answer": 3,
+  "explanation": "\"He that is born in his kingdom becometh poor.\"",
+  "ref": "Ecclesiastes 4:14"
+ },
+ {
+  "id": "ecclesiastes-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who shall stand up in the stead of the living?",
+  "choices": [
+   "The eldest son",
+   "The second child",
+   "The prince",
+   "The priest"
+  ],
+  "answer": 1,
+  "explanation": "\"All the living which walk under the sun, with the second child that shall stand up in his stead.\"",
+  "ref": "Ecclesiastes 4:15"
+ },
+ {
+  "id": "ecclesiastes-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall they that come after not do?",
+  "choices": [
+   "Remember him",
+   "Rejoice in him",
+   "Fear him",
+   "Serve him"
+  ],
+  "answer": 1,
+  "explanation": "\"They also that come after shall not rejoice in him.\"",
+  "ref": "Ecclesiastes 4:16"
+ },
+ {
+  "id": "ecclesiastes-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was on the side of the oppressors?",
+  "choices": [
+   "Power",
+   "Justice",
+   "Wisdom",
+   "Numbers"
+  ],
+  "answer": 0,
+  "explanation": "\"On the side of their oppressors there was power; but they had no comforter.\"",
+  "ref": "Ecclesiastes 4:1"
+ },
+ {
+  "id": "ecclesiastes-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is better than vowing and not paying?",
+  "choices": [
+   "Not to vow at all",
+   "To vow and pay late",
+   "To vow a small thing",
+   "To offer a larger sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "\"Better is it that thou shouldest not vow, than that thou shouldest vow and not pay.\"",
+  "ref": "Ecclesiastes 5:5"
+ },
+ {
+  "id": "ecclesiastes-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is a fool’s voice known?",
+  "choices": [
+   "By its loudness",
+   "By multitude of words",
+   "By its anger",
+   "By its silence"
+  ],
+  "answer": 1,
+  "explanation": "\"A fool’s voice is known by multitude of words.\"",
+  "ref": "Ecclesiastes 5:3"
+ },
+ {
+  "id": "ecclesiastes-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose sleep is sweet?",
+  "choices": [
+   "The king’s",
+   "The labouring man’s",
+   "The rich man’s",
+   "The old man’s"
+  ],
+  "answer": 1,
+  "explanation": "\"The sleep of a labouring man is sweet, whether he eat little or much.\"",
+  "ref": "Ecclesiastes 5:12"
+ },
+ {
+  "id": "ecclesiastes-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How shall a man return, as he came forth of his mother’s womb?",
+  "choices": [
+   "Clothed in honour",
+   "Naked, taking nothing of his labour",
+   "With his sons beside him",
+   "Rich in years"
+  ],
+  "answer": 1,
+  "explanation": "\"As he came forth of his mother’s womb, naked shall he return to go as he came.\"",
+  "ref": "Ecclesiastes 5:15"
+ },
+ {
+  "id": "ecclesiastes-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who is served by the field?",
+  "choices": [
+   "The poor only",
+   "The king himself",
+   "The priests",
+   "The strangers"
+  ],
+  "answer": 1,
+  "explanation": "\"The profit of the earth is for all: the king himself is served by the field.\"",
+  "ref": "Ecclesiastes 5:9"
+ },
+ {
+  "id": "ecclesiastes-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should one be more ready to do than give the sacrifice of fools?",
+  "choices": [
+   "Pray",
+   "Speak",
+   "Hear",
+   "Run"
+  ],
+  "answer": 2,
+  "explanation": "\"Be more ready to hear, than to give the sacrifice of fools.\"",
+  "ref": "Ecclesiastes 5:1"
+ },
+ {
+  "id": "ecclesiastes-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should one not let his mouth cause?",
+  "choices": [
+   "His flesh to sin",
+   "His brother to stumble",
+   "His house to fall",
+   "His vow to fail"
+  ],
+  "answer": 0,
+  "explanation": "\"Suffer not thy mouth to cause thy flesh to sin.\"",
+  "ref": "Ecclesiastes 5:6"
+ },
+ {
+  "id": "ecclesiastes-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why should a man not marvel at oppression of the poor?",
+  "choices": [
+   "The king will soon end it",
+   "He that is higher than the highest regardeth",
+   "It never lasts long",
+   "The poor are not wronged"
+  ],
+  "answer": 1,
+  "explanation": "\"Marvel not at the matter: for he that is higher than the highest regardeth; and there be higher than they.\"",
+  "ref": "Ecclesiastes 5:8"
+ },
+ {
+  "id": "ecclesiastes-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When goods increase, who increase with them?",
+  "choices": [
+   "The poor",
+   "The owner’s sons",
+   "They that eat them",
+   "The king’s officers"
+  ],
+  "answer": 2,
+  "explanation": "\"When goods increase, they are increased that eat them.\"",
+  "ref": "Ecclesiastes 5:11"
+ },
+ {
+  "id": "ecclesiastes-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will not suffer the rich man to sleep?",
+  "choices": [
+   "His abundance",
+   "His fears",
+   "His debts",
+   "His servants"
+  ],
+  "answer": 0,
+  "explanation": "\"The abundance of the rich will not suffer him to sleep.\"",
+  "ref": "Ecclesiastes 5:12"
+ },
+ {
+  "id": "ecclesiastes-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What sore evil did he see under the sun?",
+  "choices": [
+   "Riches kept for the owners to their hurt",
+   "A king who rules in anger",
+   "A poor man who is forgotten",
+   "A fool who is praised"
+  ],
+  "answer": 0,
+  "explanation": "\"There is a sore evil which I have seen under the sun, namely, riches kept for the owners thereof to their hurt.\"",
+  "ref": "Ecclesiastes 5:13"
+ },
+ {
+  "id": "ecclesiastes-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the man who begets a son, when his riches perish?",
+  "choices": [
+   "A field",
+   "Nothing in his hand",
+   "A name",
+   "A house"
+  ],
+  "answer": 1,
+  "explanation": "\"Those riches perish by evil travail: and he begetteth a son, and there is nothing in his hand.\"",
+  "ref": "Ecclesiastes 5:14"
+ },
+ {
+  "id": "ecclesiastes-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say to do among many dreams and words?",
+  "choices": [
+   "Keep silent",
+   "Fear thou God",
+   "Go to the priest",
+   "Write them down"
+  ],
+  "answer": 1,
+  "explanation": "\"In the multitude of dreams and many words there are also divers vanities: but fear thou God.\"",
+  "ref": "Ecclesiastes 5:7"
+ },
+ {
+  "id": "ecclesiastes-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say it is good and comely to do?",
+  "choices": [
+   "Build a house",
+   "Keep the feast days",
+   "Eat, drink and enjoy the good of his labour",
+   "Count his wealth"
+  ],
+  "answer": 2,
+  "explanation": "\"It is good and comely for one to eat and to drink, and to enjoy the good of all his labour.\"",
+  "ref": "Ecclesiastes 5:18"
+ },
+ {
+  "id": "ecclesiastes-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say about the rich man to whom God has given power to eat of his riches?",
+  "choices": [
+   "This is his reward for wisdom",
+   "This is the gift of God",
+   "This is a snare",
+   "This is for his sons"
+  ],
+  "answer": 1,
+  "explanation": "\"To whom God hath given riches and wealth, and hath given him power to eat thereof... this is the gift of God.\"",
+  "ref": "Ecclesiastes 5:19"
+ },
+ {
+  "id": "ecclesiastes-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whom does God have no pleasure?",
+  "choices": [
+   "The poor",
+   "Fools",
+   "The proud",
+   "The rich"
+  ],
+  "answer": 1,
+  "explanation": "\"Defer not to pay it; for he hath no pleasure in fools: pay that which thou hast vowed.\"",
+  "ref": "Ecclesiastes 5:4"
+ },
+ {
+  "id": "ecclesiastes-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must a man not say before the angel?",
+  "choices": [
+   "That he was afraid",
+   "That he was ready",
+   "That the priest told him",
+   "That it was an error"
+  ],
+  "answer": 3,
+  "explanation": "\"Neither say thou before the angel, that it was an error.\"",
+  "ref": "Ecclesiastes 5:6"
+ },
+ {
+  "id": "ecclesiastes-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What may God destroy if he is angry at thy voice?",
+  "choices": [
+   "Thy house",
+   "Thy flock",
+   "The work of thine hands",
+   "Thy name"
+  ],
+  "answer": 2,
+  "explanation": "\"Wherefore should God be angry at thy voice, and destroy the work of thine hands?\"",
+  "ref": "Ecclesiastes 5:6"
+ },
+ {
+  "id": "ecclesiastes-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what has the man laboured, according to verse 16?",
+  "choices": [
+   "The king",
+   "The wind",
+   "His children",
+   "The temple"
+  ],
+  "answer": 1,
+  "explanation": "\"What profit hath he that hath laboured for the wind?\"",
+  "ref": "Ecclesiastes 5:16"
+ },
+ {
+  "id": "ecclesiastes-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does he eat all his days?",
+  "choices": [
+   "In darkness",
+   "In haste",
+   "In fear",
+   "In silence"
+  ],
+  "answer": 0,
+  "explanation": "\"All his days also he eateth in darkness, and he hath much sorrow and wrath with his sickness.\"",
+  "ref": "Ecclesiastes 5:17"
+ },
+ {
+  "id": "ecclesiastes-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does God answer the man to whom he has given riches?",
+  "choices": [
+   "In his sleep",
+   "In a dream",
+   "In the joy of his heart",
+   "By the priest"
+  ],
+  "answer": 2,
+  "explanation": "\"God answereth him in the joy of his heart.\"",
+  "ref": "Ecclesiastes 5:20"
+ },
+ {
+  "id": "ecclesiastes-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the good that owners have of goods, saving the beholding of them?",
+  "choices": [
+   "With their hands",
+   "In their house",
+   "With their eyes",
+   "In the market"
+  ],
+  "answer": 2,
+  "explanation": "\"What good is there to the owners thereof, saving the beholding of them with their eyes?\"",
+  "ref": "Ecclesiastes 5:11"
+ },
+ {
+  "id": "ecclesiastes-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Where is the violent perverting of judgment and justice seen?",
+  "choices": [
+   "In the temple",
+   "In a province",
+   "In the king’s house",
+   "On the road"
+  ],
+  "answer": 1,
+  "explanation": "\"If thou seest the oppression of the poor, and violent perverting of judgment and justice in a province, marvel not at the matter.\"",
+  "ref": "Ecclesiastes 5:8"
+ },
+ {
+  "id": "ecclesiastes-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How shall a man go, in all points?",
+  "choices": [
+   "As a king",
+   "As he came",
+   "As a stranger",
+   "With his goods"
+  ],
+  "answer": 1,
+  "explanation": "\"In all points as he came, so shall he go.\"",
+  "ref": "Ecclesiastes 5:16"
+ },
+ {
+  "id": "ecclesiastes-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are found in the multitude of dreams and many words?",
+  "choices": [
+   "Great wisdom",
+   "Many blessings",
+   "Hidden judgments",
+   "Divers vanities"
+  ],
+  "answer": 3,
+  "explanation": "\"In the multitude of dreams and many words there are also divers vanities: but fear thou God.\"",
+  "ref": "Ecclesiastes 5:7"
+ },
+ {
+  "id": "ecclesiastes-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who eats the riches of the man God has given riches, wealth and honour?",
+  "choices": [
+   "A stranger",
+   "His son",
+   "His servant",
+   "The king"
+  ],
+  "answer": 0,
+  "explanation": "\"God giveth him not power to eat thereof, but a stranger eateth it: this is vanity, and it is an evil disease.\"",
+  "ref": "Ecclesiastes 6:2"
+ },
+ {
+  "id": "ecclesiastes-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many children might a man beget, and still not be filled with good?",
+  "choices": [
+   "Twelve",
+   "Seventy",
+   "A thousand",
+   "An hundred"
+  ],
+  "answer": 3,
+  "explanation": "\"If a man beget an hundred children, and live many years... and his soul be not filled with good.\"",
+  "ref": "Ecclesiastes 6:3"
+ },
+ {
+  "id": "ecclesiastes-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Preacher say is better than a man with a hundred children, long life and no burial?",
+  "choices": [
+   "An untimely birth",
+   "A poor man",
+   "A wise child",
+   "A stranger"
+  ],
+  "answer": 0,
+  "explanation": "\"I say, that an untimely birth is better than he.\"",
+  "ref": "Ecclesiastes 6:3"
+ },
+ {
+  "id": "ecclesiastes-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall be covered with darkness?",
+  "choices": [
+   "His house",
+   "His field",
+   "His name",
+   "His sons"
+  ],
+  "answer": 2,
+  "explanation": "\"He cometh in with vanity, and departeth in darkness, and his name shall be covered with darkness.\"",
+  "ref": "Ecclesiastes 6:4"
+ },
+ {
+  "id": "ecclesiastes-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Though a man live a thousand years twice told, what has he seen?",
+  "choices": [
+   "Much good",
+   "No good",
+   "Great wealth",
+   "The sun"
+  ],
+  "answer": 1,
+  "explanation": "\"Though he live a thousand years twice told, yet hath he seen no good: do not all go to one place?\"",
+  "ref": "Ecclesiastes 6:6"
+ },
+ {
+  "id": "ecclesiastes-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is better than the wandering of the desire?",
+  "choices": [
+   "The sight of the eyes",
+   "The counsel of the wise",
+   "A full house",
+   "A quiet mind"
+  ],
+  "answer": 0,
+  "explanation": "\"Better is the sight of the eyes than the wandering of the desire.\"",
+  "ref": "Ecclesiastes 6:9"
+ },
+ {
+  "id": "ecclesiastes-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With whom may a man not contend?",
+  "choices": [
+   "The wise",
+   "The king",
+   "His brother",
+   "Him that is mightier than he"
+  ],
+  "answer": 3,
+  "explanation": "\"Neither may he contend with him that is mightier than he.\"",
+  "ref": "Ecclesiastes 6:10"
+ },
+ {
+  "id": "ecclesiastes-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man want nothing of, for his soul?",
+  "choices": [
+   "Honour",
+   "All that he desired",
+   "Children",
+   "Rest"
+  ],
+  "answer": 1,
+  "explanation": "\"A man to whom God hath given riches, wealth, and honour, so that he wanteth nothing for his soul of all that he desireth.\"",
+  "ref": "Ecclesiastes 6:2"
+ },
+ {
+  "id": "ecclesiastes-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Preacher say of the one who has not seen the sun?",
+  "choices": [
+   "This hath more rest than the other",
+   "This is cursed more",
+   "This is rich in sorrow",
+   "This is wise"
+  ],
+  "answer": 0,
+  "explanation": "\"He hath not seen the sun, nor known any thing: this hath more rest than the other.\"",
+  "ref": "Ecclesiastes 6:5"
+ },
+ {
+  "id": "ecclesiastes-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are the days of man’s vain life spent?",
+  "choices": [
+   "As a dream",
+   "As the grass",
+   "As a shadow",
+   "As a vapour"
+  ],
+  "answer": 2,
+  "explanation": "\"All the days of his vain life which he spendeth as a shadow.\"",
+  "ref": "Ecclesiastes 6:12"
+ },
+ {
+  "id": "ecclesiastes-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the labour of man for?",
+  "choices": [
+   "His children",
+   "His mouth",
+   "His honour",
+   "His house"
+  ],
+  "answer": 1,
+  "explanation": "\"All the labour of man is for his mouth, and yet the appetite is not filled.\"",
+  "ref": "Ecclesiastes 6:7"
+ },
+ {
+  "id": "ecclesiastes-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who can tell a man what shall be after him?",
+  "choices": [
+   "The wise",
+   "Nobody can",
+   "The prophets",
+   "The king"
+  ],
+  "answer": 1,
+  "explanation": "\"For who can tell a man what shall be after him under the sun?\"",
+  "ref": "Ecclesiastes 6:12"
+ },
+ {
+  "id": "ecclesiastes-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does he say all go?",
+  "choices": [
+   "To Jerusalem",
+   "To the house of mourning",
+   "To one place",
+   "To the field"
+  ],
+  "answer": 2,
+  "explanation": "\"Do not all go to one place?\"",
+  "ref": "Ecclesiastes 6:6"
+ },
+ {
+  "id": "ecclesiastes-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he ask about the many things that increase vanity?",
+  "choices": [
+   "What is man the better?",
+   "Who will be remembered?",
+   "Where is the profit?",
+   "Who can count them?"
+  ],
+  "answer": 0,
+  "explanation": "\"Seeing there be many things that increase vanity, what is man the better?\"",
+  "ref": "Ecclesiastes 6:11"
+ },
+ {
+  "id": "ecclesiastes-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does he say is better than the day of one’s birth?",
+  "choices": [
+   "The day of marriage",
+   "The day of harvest",
+   "The day of the feast",
+   "The day of death"
+  ],
+  "answer": 3,
+  "explanation": "\"A good name is better than precious ointment; and the day of death than the day of one’s birth.\"",
+  "ref": "Ecclesiastes 7:1"
+ },
+ {
+  "id": "ecclesiastes-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is better than to hear the song of fools?",
+  "choices": [
+   "The counsel of kings",
+   "The rebuke of the wise",
+   "The voice of a friend",
+   "The silence of the night"
+  ],
+  "answer": 1,
+  "explanation": "\"It is better to hear the rebuke of the wise, than for a man to hear the song of fools.\"",
+  "ref": "Ecclesiastes 7:5"
+ },
+ {
+  "id": "ecclesiastes-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The laughter of the fool is like what?",
+  "choices": [
+   "The crackling of thorns under a pot",
+   "A wind in the vineyard",
+   "A flame in the wilderness",
+   "A river after rain"
+  ],
+  "answer": 0,
+  "explanation": "\"As the crackling of thorns under a pot, so is the laughter of the fool.\"",
+  "ref": "Ecclesiastes 7:6"
+ },
+ {
+  "id": "ecclesiastes-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is better than the beginning of a thing?",
+  "choices": [
+   "The middle thereof",
+   "The cost thereof",
+   "The end thereof",
+   "The name thereof"
+  ],
+  "answer": 2,
+  "explanation": "\"Better is the end of a thing than the beginning thereof: and the patient in spirit is better than the proud in spirit.\"",
+  "ref": "Ecclesiastes 7:8"
+ },
+ {
+  "id": "ecclesiastes-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where does anger rest?",
+  "choices": [
+   "In the heart of kings",
+   "In the house of mourning",
+   "In the bosom of fools",
+   "In the camp of war"
+  ],
+  "answer": 2,
+  "explanation": "\"Be not hasty in thy spirit to be angry: for anger resteth in the bosom of fools.\"",
+  "ref": "Ecclesiastes 7:9"
+ },
+ {
+  "id": "ecclesiastes-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What strengtheneth the wise more than ten mighty men in the city?",
+  "choices": [
+   "Wisdom",
+   "Gold",
+   "Counsel",
+   "Silver"
+  ],
+  "answer": 0,
+  "explanation": "\"Wisdom strengtheneth the wise more than ten mighty men which are in the city.\"",
+  "ref": "Ecclesiastes 7:19"
+ },
+ {
+  "id": "ecclesiastes-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does he say about being righteous?",
+  "choices": [
+   "Be righteous in all things",
+   "Be not righteous over much",
+   "Be righteous only in the temple",
+   "Be righteous before kings"
+  ],
+  "answer": 1,
+  "explanation": "\"Be not righteous over much; neither make thyself over wise: why shouldest thou destroy thyself?\"",
+  "ref": "Ecclesiastes 7:16"
+ },
+ {
+  "id": "ecclesiastes-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God make man?",
+  "choices": [
+   "Wise",
+   "Rich",
+   "Strong",
+   "Upright"
+  ],
+  "answer": 3,
+  "explanation": "\"God hath made man upright; but they have sought out many inventions.\"",
+  "ref": "Ecclesiastes 7:29"
+ },
+ {
+  "id": "ecclesiastes-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are wisdom and money, said of both?",
+  "choices": [
+   "A defence",
+   "A snare",
+   "A burden",
+   "A gift"
+  ],
+  "answer": 0,
+  "explanation": "\"Wisdom is a defence, and money is a defence.\"",
+  "ref": "Ecclesiastes 7:12"
+ },
+ {
+  "id": "ecclesiastes-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where is the heart of the wise?",
+  "choices": [
+   "In the house of feasting",
+   "In the king’s court",
+   "In the house of mourning",
+   "In the field"
+  ],
+  "answer": 2,
+  "explanation": "\"The heart of the wise is in the house of mourning; but the heart of fools is in the house of mirth.\"",
+  "ref": "Ecclesiastes 7:4"
+ },
+ {
+  "id": "ecclesiastes-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What maketh a wise man mad?",
+  "choices": [
+   "Wine",
+   "Oppression",
+   "Riches",
+   "Many words"
+  ],
+  "answer": 1,
+  "explanation": "\"Surely oppression maketh a wise man mad; and a gift destroyeth the heart.\"",
+  "ref": "Ecclesiastes 7:7"
+ },
+ {
+  "id": "ecclesiastes-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does a gift destroy?",
+  "choices": [
+   "The house",
+   "The name",
+   "The heart",
+   "The peace"
+  ],
+  "answer": 2,
+  "explanation": "\"A gift destroyeth the heart.\"",
+  "ref": "Ecclesiastes 7:7"
+ },
+ {
+  "id": "ecclesiastes-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is good with an inheritance?",
+  "choices": [
+   "Silver",
+   "Wisdom",
+   "Land",
+   "Honour"
+  ],
+  "answer": 1,
+  "explanation": "\"Wisdom is good with an inheritance: and by it there is profit to them that see the sun.\"",
+  "ref": "Ecclesiastes 7:11"
+ },
+ {
+  "id": "ecclesiastes-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who can make straight what God hath made crooked?",
+  "choices": [
+   "No one",
+   "The king",
+   "The wise",
+   "The priest"
+  ],
+  "answer": 0,
+  "explanation": "\"Consider the work of God: for who can make that straight, which he hath made crooked?\"",
+  "ref": "Ecclesiastes 7:13"
+ },
+ {
+  "id": "ecclesiastes-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should one do in the day of adversity?",
+  "choices": [
+   "Flee",
+   "Consider",
+   "Fast",
+   "Sleep"
+  ],
+  "answer": 1,
+  "explanation": "\"In the day of prosperity be joyful, but in the day of adversity consider.\"",
+  "ref": "Ecclesiastes 7:14"
+ },
+ {
+  "id": "ecclesiastes-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What perishes in his righteousness?",
+  "choices": [
+   "A just man",
+   "A king",
+   "A wise man",
+   "A rich man"
+  ],
+  "answer": 0,
+  "explanation": "\"There is a just man that perisheth in his righteousness.\"",
+  "ref": "Ecclesiastes 7:15"
+ },
+ {
+  "id": "ecclesiastes-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why should one not be over much wicked?",
+  "choices": [
+   "Why shouldest thou fear the king?",
+   "Why shouldest thou lose thy name?",
+   "Why shouldest thou be poor?",
+   "Why shouldest thou die before thy time?"
+  ],
+  "answer": 3,
+  "explanation": "\"Be not over much wicked, neither be thou foolish: why shouldest thou die before thy time?\"",
+  "ref": "Ecclesiastes 7:17"
+ },
+ {
+  "id": "ecclesiastes-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who shall come forth of them all?",
+  "choices": [
+   "He that feareth God",
+   "He that is wise",
+   "He that is rich",
+   "He that is righteous over much"
+  ],
+  "answer": 0,
+  "explanation": "\"He that feareth God shall come forth of them all.\"",
+  "ref": "Ecclesiastes 7:18"
+ },
+ {
+  "id": "ecclesiastes-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should one not take heed to, lest he hear his servant curse him?",
+  "choices": [
+   "The counsel of kings",
+   "The voice of the poor",
+   "The rebuke of the wise",
+   "All words that are spoken"
+  ],
+  "answer": 3,
+  "explanation": "\"Take no heed unto all words that are spoken; lest thou hear thy servant curse thee.\"",
+  "ref": "Ecclesiastes 7:21"
+ },
+ {
+  "id": "ecclesiastes-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does his own heart know about himself?",
+  "choices": [
+   "That he has likewise cursed others",
+   "That he is wise",
+   "That he is righteous",
+   "That he is forgotten"
+  ],
+  "answer": 0,
+  "explanation": "\"Thine own heart knoweth that thou thyself likewise hast cursed others.\"",
+  "ref": "Ecclesiastes 7:22"
+ },
+ {
+  "id": "ecclesiastes-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did he say when he set out to be wise?",
+  "choices": [
+   "It was granted to me",
+   "It came quickly",
+   "It was hidden in Jerusalem",
+   "It was far from me"
+  ],
+  "answer": 3,
+  "explanation": "\"I said, I will be wise; but it was far from me.\"",
+  "ref": "Ecclesiastes 7:23"
+ },
+ {
+  "id": "ecclesiastes-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he ask about that which is far off and exceeding deep?",
+  "choices": [
+   "Who can number it",
+   "Who can measure it",
+   "Who can remember it",
+   "Who can find it out"
+  ],
+  "answer": 3,
+  "explanation": "\"That which is far off, and exceeding deep, who can find it out?\"",
+  "ref": "Ecclesiastes 7:24"
+ },
+ {
+  "id": "ecclesiastes-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men among a thousand did he find?",
+  "choices": [
+   "One",
+   "Ten",
+   "Three",
+   "None"
+  ],
+  "answer": 0,
+  "explanation": "\"One man among a thousand have I found.\"",
+  "ref": "Ecclesiastes 7:28"
+ },
+ {
+  "id": "ecclesiastes-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has God set over against the other?",
+  "choices": [
+   "The wise and the fool",
+   "The day of prosperity and the day of adversity",
+   "The rich and the poor",
+   "The king and the priest"
+  ],
+  "answer": 1,
+  "explanation": "\"God also hath set the one over against the other, to the end that man should find nothing after him.\"",
+  "ref": "Ecclesiastes 7:14"
+ },
+ {
+  "id": "ecclesiastes-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does wisdom give to them that have it?",
+  "choices": [
+   "Riches",
+   "Honour",
+   "Rest",
+   "Life"
+  ],
+  "answer": 3,
+  "explanation": "\"The excellency of knowledge is, that wisdom giveth life to them that have it.\"",
+  "ref": "Ecclesiastes 7:12"
+ },
+ {
+  "id": "ecclesiastes-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the living lay to his heart in the house of mourning?",
+  "choices": [
+   "The grief of the family",
+   "The cost of the funeral",
+   "The end of all men",
+   "The name of the dead"
+  ],
+  "answer": 2,
+  "explanation": "\"It is better to go to the house of mourning... for that is the end of all men; and the living will lay it to his heart.\"",
+  "ref": "Ecclesiastes 7:2"
+ },
+ {
+  "id": "ecclesiastes-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does a wicked man do in his wickedness?",
+  "choices": [
+   "Loses his name",
+   "Grows poor",
+   "Prolongeth his life",
+   "Repents"
+  ],
+  "answer": 2,
+  "explanation": "\"There is a wicked man that prolongeth his life in his wickedness.\"",
+  "ref": "Ecclesiastes 7:15"
+ },
+ {
+  "id": "ecclesiastes-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did he apply his heart to know, even of foolishness and madness?",
+  "choices": [
+   "The number of the stars",
+   "The ways of kings",
+   "The wickedness of folly",
+   "The law of Moses"
+  ],
+  "answer": 2,
+  "explanation": "\"I applied mine heart to know... the wickedness of folly, even of foolishness and madness.\"",
+  "ref": "Ecclesiastes 7:25"
+ },
+ {
+  "id": "ecclesiastes-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the heart of the woman he describes?",
+  "choices": [
+   "Snares and nets",
+   "A garden",
+   "A fountain",
+   "Gold"
+  ],
+  "answer": 0,
+  "explanation": "\"I find more bitter than death the woman, whose heart is snares and nets, and her hands as bands.\"",
+  "ref": "Ecclesiastes 7:26"
+ },
+ {
+  "id": "ecclesiastes-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who shall escape from her?",
+  "choices": [
+   "The wise",
+   "Whoso pleaseth God",
+   "The king",
+   "The poor"
+  ],
+  "answer": 1,
+  "explanation": "\"Whoso pleaseth God shall escape from her; but the sinner shall be taken by her.\"",
+  "ref": "Ecclesiastes 7:26"
+ },
+ {
+  "id": "ecclesiastes-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom is there profit by wisdom?",
+  "choices": [
+   "Them that see the sun",
+   "Them that keep the law",
+   "Them that fear the king",
+   "Them that sit in the gate"
+  ],
+  "answer": 0,
+  "explanation": "\"By it there is profit to them that see the sun.\"",
+  "ref": "Ecclesiastes 7:11"
+ },
+ {
+  "id": "ecclesiastes-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why should one not say the former days were better?",
+  "choices": [
+   "Thou dost not enquire wisely concerning this",
+   "The days are all alike",
+   "God has forgotten them",
+   "They were worse"
+  ],
+  "answer": 0,
+  "explanation": "\"Say not thou, What is the cause that the former days were better than these? for thou dost not enquire wisely concerning this.\"",
+  "ref": "Ecclesiastes 7:10"
+ },
+ {
+  "id": "ecclesiastes-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he call the days in which he has seen all things?",
+  "choices": [
+   "The days of my youth",
+   "The days of my kingdom",
+   "The days of my wisdom",
+   "The days of my vanity"
+  ],
+  "answer": 3,
+  "explanation": "\"All things have I seen in the days of my vanity.\"",
+  "ref": "Ecclesiastes 7:15"
+ },
+ {
+  "id": "ecclesiastes-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What have men sought out, though God made man upright?",
+  "choices": [
+   "Many riches",
+   "Many inventions",
+   "Many wives",
+   "Many kingdoms"
+  ],
+  "answer": 1,
+  "explanation": "\"God hath made man upright; but they have sought out many inventions.\"",
+  "ref": "Ecclesiastes 7:29"
+ },
+ {
+  "id": "ecclesiastes-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is there not upon earth, that doeth good and sinneth not?",
+  "choices": [
+   "A king",
+   "A priest",
+   "A prophet",
+   "A just man"
+  ],
+  "answer": 3,
+  "explanation": "\"There is not a just man upon earth, that doeth good, and sinneth not.\"",
+  "ref": "Ecclesiastes 7:20"
+ },
+ {
+  "id": "ecclesiastes-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what is the heart made better?",
+  "choices": [
+   "The counsel of friends",
+   "The rebuke of kings",
+   "The sadness of the countenance",
+   "The song of the wise"
+  ],
+  "answer": 2,
+  "explanation": "\"By the sadness of the countenance the heart is made better.\"",
+  "ref": "Ecclesiastes 7:3"
+ },
+ {
+  "id": "ecclesiastes-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say was found by counting one by one?",
+  "choices": [
+   "The number of the wise",
+   "The sins of kings",
+   "His search to find out the account",
+   "The days of man"
+  ],
+  "answer": 2,
+  "explanation": "\"Behold, this have I found, saith the preacher, counting one by one, to find out the account.\"",
+  "ref": "Ecclesiastes 7:27"
+ },
+ {
+  "id": "ecclesiastes-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should a man be in the day of prosperity?",
+  "choices": [
+   "Silent",
+   "Joyful",
+   "Afraid",
+   "Generous"
+  ],
+  "answer": 1,
+  "explanation": "\"In the day of prosperity be joyful, but in the day of adversity consider.\"",
+  "ref": "Ecclesiastes 7:14"
+ },
+ {
+  "id": "ecclesiastes-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where is the heart of fools?",
+  "choices": [
+   "In the king’s court",
+   "In the field",
+   "In the house of mirth",
+   "In the house of mourning"
+  ],
+  "answer": 2,
+  "explanation": "\"The heart of fools is in the house of mirth.\"",
+  "ref": "Ecclesiastes 7:4"
+ },
+ {
+  "id": "ecclesiastes-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides wisdom, what did he apply his heart to seek out?",
+  "choices": [
+   "The way of the stars",
+   "The reason of things",
+   "The laws of kings",
+   "The names of the dead"
+  ],
+  "answer": 1,
+  "explanation": "\"I applied mine heart to know, and to search, and to seek out wisdom, and the reason of things.\"",
+  "ref": "Ecclesiastes 7:25"
+ },
+ {
+  "id": "ecclesiastes-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where the word of a king is, what is there?",
+  "choices": [
+   "Peace",
+   "Fear",
+   "Power",
+   "Truth"
+  ],
+  "answer": 2,
+  "explanation": "\"Where the word of a king is, there is power: and who may say unto him, What doest thou?\"",
+  "ref": "Ecclesiastes 8:4"
+ },
+ {
+  "id": "ecclesiastes-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What power has no man in the day of death?",
+  "choices": [
+   "To retain the spirit",
+   "To choose his burial",
+   "To command the king",
+   "To delay judgment"
+  ],
+  "answer": 0,
+  "explanation": "\"There is no man that hath power over the spirit to retain the spirit; neither hath he power in the day of death.\"",
+  "ref": "Ecclesiastes 8:8"
+ },
+ {
+  "id": "ecclesiastes-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whom does the Preacher say it shall be well?",
+  "choices": [
+   "Them that rule",
+   "Them that fear God",
+   "Them that are rich",
+   "Them that are young"
+  ],
+  "answer": 1,
+  "explanation": "\"It shall be well with them that fear God, which fear before him.\"",
+  "ref": "Ecclesiastes 8:12"
+ },
+ {
+  "id": "ecclesiastes-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose days are as a shadow, because he feareth not God?",
+  "choices": [
+   "The poor",
+   "The wise",
+   "The king’s servant",
+   "The wicked"
+  ],
+  "answer": 3,
+  "explanation": "\"It shall not be well with the wicked, neither shall he prolong his days, which are as a shadow.\"",
+  "ref": "Ecclesiastes 8:13"
+ },
+ {
+  "id": "ecclesiastes-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In regard of what is the king’s commandment to be kept?",
+  "choices": [
+   "The law of Moses",
+   "The temple",
+   "The oath of God",
+   "The covenant of David"
+  ],
+  "answer": 2,
+  "explanation": "\"Keep the king’s commandment, and that in regard of the oath of God.\"",
+  "ref": "Ecclesiastes 8:2"
+ },
+ {
+  "id": "ecclesiastes-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say a man should not be hasty to do?",
+  "choices": [
+   "Speak before the elders",
+   "Pay his vow",
+   "Judge his neighbour",
+   "Go out of the king’s sight"
+  ],
+  "answer": 3,
+  "explanation": "\"Be not hasty to go out of his sight: stand not in an evil thing.\"",
+  "ref": "Ecclesiastes 8:3"
+ },
+ {
+  "id": "ecclesiastes-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the king do whatsoever he pleases?",
+  "choices": [
+   "He doeth whatsoever pleaseth him",
+   "Because the people allow it",
+   "Because God commands it",
+   "Because he is wise"
+  ],
+  "answer": 0,
+  "explanation": "\"He doeth whatsoever pleaseth him.\"",
+  "ref": "Ecclesiastes 8:3"
+ },
+ {
+  "id": "ecclesiastes-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the one who keeps the commandment feel?",
+  "choices": [
+   "Great joy",
+   "No evil thing",
+   "No sleep",
+   "Great fear"
+  ],
+  "answer": 1,
+  "explanation": "\"Whoso keepeth the commandment shall feel no evil thing.\"",
+  "ref": "Ecclesiastes 8:5"
+ },
+ {
+  "id": "ecclesiastes-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say is great upon man?",
+  "choices": [
+   "His wealth",
+   "His wisdom",
+   "His misery",
+   "His strength"
+  ],
+  "answer": 2,
+  "explanation": "\"To every purpose there is time and judgment, therefore the misery of man is great upon him.\"",
+  "ref": "Ecclesiastes 8:6"
+ },
+ {
+  "id": "ecclesiastes-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does man not know?",
+  "choices": [
+   "The day of his birth",
+   "That which shall be",
+   "The name of God",
+   "The king’s plans"
+  ],
+  "answer": 1,
+  "explanation": "\"He knoweth not that which shall be: for who can tell him when it shall be?\"",
+  "ref": "Ecclesiastes 8:7"
+ },
+ {
+  "id": "ecclesiastes-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is there no discharge in?",
+  "choices": [
+   "That city",
+   "That court",
+   "That house",
+   "That war"
+  ],
+  "answer": 3,
+  "explanation": "\"There is no discharge in that war; neither shall wickedness deliver those that are given to it.\"",
+  "ref": "Ecclesiastes 8:8"
+ },
+ {
+  "id": "ecclesiastes-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When does one man rule over another to his own hurt?",
+  "choices": [
+   "There is a time wherein it happens",
+   "Always",
+   "Only under a foolish king",
+   "Never in Israel"
+  ],
+  "answer": 0,
+  "explanation": "\"There is a time wherein one man ruleth over another to his own hurt.\"",
+  "ref": "Ecclesiastes 8:9"
+ },
+ {
+  "id": "ecclesiastes-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "From where had the wicked who were buried come and gone?",
+  "choices": [
+   "The house of mourning",
+   "The king’s court",
+   "The gate of the city",
+   "The place of the holy"
+  ],
+  "answer": 3,
+  "explanation": "\"I saw the wicked buried, who had come and gone from the place of the holy, and they were forgotten in the city.\"",
+  "ref": "Ecclesiastes 8:10"
+ },
+ {
+  "id": "ecclesiastes-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does a man’s wisdom make shine?",
+  "choices": [
+   "His eyes",
+   "His house",
+   "His face",
+   "His name"
+  ],
+  "answer": 2,
+  "explanation": "\"A man’s wisdom maketh his face to shine, and the boldness of his face shall be changed.\"",
+  "ref": "Ecclesiastes 8:1"
+ },
+ {
+  "id": "ecclesiastes-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall be changed?",
+  "choices": [
+   "The word of the king",
+   "The oath of God",
+   "The day of death",
+   "The boldness of his face"
+  ],
+  "answer": 3,
+  "explanation": "\"The boldness of his face shall be changed.\"",
+  "ref": "Ecclesiastes 8:1"
+ },
+ {
+  "id": "ecclesiastes-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say not to stand in?",
+  "choices": [
+   "The king’s way",
+   "An evil thing",
+   "The gate",
+   "The house of mourning"
+  ],
+  "answer": 1,
+  "explanation": "\"Be not hasty to go out of his sight: stand not in an evil thing.\"",
+  "ref": "Ecclesiastes 8:3"
+ },
+ {
+  "id": "ecclesiastes-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom does it happen according to the work of the wicked?",
+  "choices": [
+   "The poor",
+   "Kings",
+   "Just men",
+   "The wise"
+  ],
+  "answer": 2,
+  "explanation": "\"There be just men, unto whom it happeneth according to the work of the wicked.\"",
+  "ref": "Ecclesiastes 8:14"
+ },
+ {
+  "id": "ecclesiastes-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say neither day nor night seeth?",
+  "choices": [
+   "The sun",
+   "Rest",
+   "A friend",
+   "Sleep with his eyes"
+  ],
+  "answer": 3,
+  "explanation": "\"There is that neither day nor night seeth sleep with his eyes.\"",
+  "ref": "Ecclesiastes 8:16"
+ },
+ {
+  "id": "ecclesiastes-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What cannot the wise man find, though he think to know it?",
+  "choices": [
+   "The day of his death",
+   "The king’s heart",
+   "The way of the wind",
+   "The work that is done under the sun"
+  ],
+  "answer": 3,
+  "explanation": "\"Though a wise man think to know it, yet shall he not be able to find it.\"",
+  "ref": "Ecclesiastes 8:17"
+ },
+ {
+  "id": "ecclesiastes-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which city were the wicked forgotten?",
+  "choices": [
+   "Where they had so done",
+   "Jerusalem",
+   "Hebron",
+   "Tyre"
+  ],
+  "answer": 0,
+  "explanation": "\"They were forgotten in the city where they had so done: this is also vanity.\"",
+  "ref": "Ecclesiastes 8:10"
+ },
+ {
+  "id": "ecclesiastes-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times may a sinner do evil, and his days be prolonged?",
+  "choices": [
+   "Seven times",
+   "Seventy times",
+   "An hundred times",
+   "A thousand times"
+  ],
+  "answer": 2,
+  "explanation": "\"Though a sinner do evil an hundred times, and his days be prolonged, yet surely I know that it shall be well with them that fear God.\"",
+  "ref": "Ecclesiastes 8:12"
+ },
+ {
+  "id": "ecclesiastes-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say shall abide with a man of his labour?",
+  "choices": [
+   "Eating, drinking and being merry",
+   "Silver and gold",
+   "His name",
+   "His children"
+  ],
+  "answer": 0,
+  "explanation": "\"A man hath no better thing under the sun, than to eat, and to drink, and to be merry: for that shall abide with him of his labour.\"",
+  "ref": "Ecclesiastes 8:15"
+ },
+ {
+  "id": "ecclesiastes-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What colour should thy garments always be?",
+  "choices": [
+   "White",
+   "Scarlet",
+   "Purple",
+   "Blue"
+  ],
+  "answer": 0,
+  "explanation": "\"Let thy garments be always white; and let thy head lack no ointment.\"",
+  "ref": "Ecclesiastes 9:8"
+ },
+ {
+  "id": "ecclesiastes-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With whom is a man told to live joyfully?",
+  "choices": [
+   "His brothers",
+   "His servants",
+   "The wife whom he loveth",
+   "The elders of the city"
+  ],
+  "answer": 2,
+  "explanation": "\"Live joyfully with the wife whom thou lovest all the days of the life of thy vanity.\"",
+  "ref": "Ecclesiastes 9:9"
+ },
+ {
+  "id": "ecclesiastes-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the poor wise man do for the little city?",
+  "choices": [
+   "Built its walls",
+   "Fought the great king",
+   "Delivered it by his wisdom",
+   "Paid the king’s tribute"
+  ],
+  "answer": 2,
+  "explanation": "\"There was found in it a poor wise man, and he by his wisdom delivered the city.\"",
+  "ref": "Ecclesiastes 9:15"
+ },
+ {
+  "id": "ecclesiastes-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is better than a dead lion?",
+  "choices": [
+   "A living lion",
+   "A sleeping dog",
+   "A wise man",
+   "A living dog"
+  ],
+  "answer": 3,
+  "explanation": "\"A living dog is better than a dead lion.\"",
+  "ref": "Ecclesiastes 9:4"
+ },
+ {
+  "id": "ecclesiastes-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is better than strength?",
+  "choices": [
+   "Gold",
+   "A great name",
+   "An army",
+   "Wisdom"
+  ],
+  "answer": 3,
+  "explanation": "\"Wisdom is better than strength: nevertheless the poor man’s wisdom is despised.\"",
+  "ref": "Ecclesiastes 9:16"
+ },
+ {
+  "id": "ecclesiastes-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where are the righteous, and the wise, and their works?",
+  "choices": [
+   "In the hand of God",
+   "In the book of the law",
+   "In the king’s keeping",
+   "In the grave"
+  ],
+  "answer": 0,
+  "explanation": "\"The righteous, and the wise, and their works, are in the hand of God.\"",
+  "ref": "Ecclesiastes 9:1"
+ },
+ {
+  "id": "ecclesiastes-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What befalls him that sacrificeth and him that sacrificeth not?",
+  "choices": [
+   "Different rewards",
+   "Different judgments",
+   "A long life",
+   "One event"
+  ],
+  "answer": 3,
+  "explanation": "\"There is one event to... him that sacrificeth, and to him that sacrificeth not.\"",
+  "ref": "Ecclesiastes 9:2"
+ },
+ {
+  "id": "ecclesiastes-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the heart of the sons of men full of?",
+  "choices": [
+   "Evil",
+   "Fear",
+   "Wisdom",
+   "Hope"
+  ],
+  "answer": 0,
+  "explanation": "\"The heart of the sons of men is full of evil, and madness is in their heart while they live.\"",
+  "ref": "Ecclesiastes 9:3"
+ },
+ {
+  "id": "ecclesiastes-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the dead no more have?",
+  "choices": [
+   "A reward",
+   "A burial",
+   "A home",
+   "A name written"
+  ],
+  "answer": 0,
+  "explanation": "\"The dead know not any thing, neither have they any more a reward; for the memory of them is forgotten.\"",
+  "ref": "Ecclesiastes 9:5"
+ },
+ {
+  "id": "ecclesiastes-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God now accept, so that a man may eat his bread with joy?",
+  "choices": [
+   "His works",
+   "His sacrifices",
+   "His prayers",
+   "His vows"
+  ],
+  "answer": 0,
+  "explanation": "\"Eat thy bread with joy, and drink thy wine with a merry heart; for God now accepteth thy works.\"",
+  "ref": "Ecclesiastes 9:7"
+ },
+ {
+  "id": "ecclesiastes-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is there not in the grave, whither thou goest?",
+  "choices": [
+   "Fear or sorrow",
+   "Gold or silver",
+   "Sleep or rest",
+   "Work, device, knowledge or wisdom"
+  ],
+  "answer": 3,
+  "explanation": "\"There is no work, nor device, nor knowledge, nor wisdom, in the grave, whither thou goest.\"",
+  "ref": "Ecclesiastes 9:10"
+ },
+ {
+  "id": "ecclesiastes-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happeneth to them all, since the race is not to the swift?",
+  "choices": [
+   "Wisdom and strength",
+   "Wealth and honour",
+   "Time and chance",
+   "Sorrow and joy"
+  ],
+  "answer": 2,
+  "explanation": "\"Time and chance happeneth to them all.\"",
+  "ref": "Ecclesiastes 9:11"
+ },
+ {
+  "id": "ecclesiastes-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what are the sons of men compared, snared in an evil time?",
+  "choices": [
+   "Sheep among wolves",
+   "A ship in a storm",
+   "Grass before the fire",
+   "Fishes in an evil net and birds in a snare"
+  ],
+  "answer": 3,
+  "explanation": "\"As the fishes that are taken in an evil net, and as the birds that are caught in the snare; so are the sons of men snared.\"",
+  "ref": "Ecclesiastes 9:12"
+ },
+ {
+  "id": "ecclesiastes-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the great king build against the little city?",
+  "choices": [
+   "A siege tower",
+   "A wall of stones",
+   "A ditch of fire",
+   "Great bulwarks"
+  ],
+  "answer": 3,
+  "explanation": "\"There came a great king against it, and besieged it, and built great bulwarks against it.\"",
+  "ref": "Ecclesiastes 9:14"
+ },
+ {
+  "id": "ecclesiastes-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the poor wise man afterward?",
+  "choices": [
+   "He was made ruler",
+   "No man remembered him",
+   "He was richly rewarded",
+   "He was sent away"
+  ],
+  "answer": 1,
+  "explanation": "\"Yet no man remembered that same poor man.\"",
+  "ref": "Ecclesiastes 9:15"
+ },
+ {
+  "id": "ecclesiastes-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of the poor man’s words?",
+  "choices": [
+   "They are not heard",
+   "They are written down",
+   "They are copied by scribes",
+   "They are praised"
+  ],
+  "answer": 0,
+  "explanation": "\"The poor man’s wisdom is despised, and his words are not heard.\"",
+  "ref": "Ecclesiastes 9:16"
+ },
+ {
+  "id": "ecclesiastes-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are the words of wise men heard?",
+  "choices": [
+   "In the gate, with the elders",
+   "With trumpets",
+   "In quiet, more than the cry of him that ruleth among fools",
+   "Only by kings"
+  ],
+  "answer": 2,
+  "explanation": "\"The words of wise men are heard in quiet more than the cry of him that ruleth among fools.\"",
+  "ref": "Ecclesiastes 9:17"
+ },
+ {
+  "id": "ecclesiastes-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does one sinner destroy?",
+  "choices": [
+   "The city",
+   "The king’s house",
+   "Much good",
+   "His brother"
+  ],
+  "answer": 2,
+  "explanation": "\"Wisdom is better than weapons of war: but one sinner destroyeth much good.\"",
+  "ref": "Ecclesiastes 9:18"
+ },
+ {
+  "id": "ecclesiastes-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What should his head lack?",
+  "choices": [
+   "No crown",
+   "No covering",
+   "No ointment",
+   "No hair"
+  ],
+  "answer": 2,
+  "explanation": "\"Let thy garments be always white; and let thy head lack no ointment.\"",
+  "ref": "Ecclesiastes 9:8"
+ },
+ {
+  "id": "ecclesiastes-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has now perished for the dead?",
+  "choices": [
+   "Their names",
+   "Their houses",
+   "Their love, hatred and envy",
+   "Their works"
+  ],
+  "answer": 2,
+  "explanation": "\"Their love, and their hatred, and their envy, is now perished.\"",
+  "ref": "Ecclesiastes 9:6"
+ },
+ {
+  "id": "ecclesiastes-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is the same as he that feareth an oath?",
+  "choices": [
+   "He that sacrificeth",
+   "He that sweareth",
+   "He that is clean",
+   "He that is good"
+  ],
+  "answer": 1,
+  "explanation": "\"As is the good, so is the sinner; and he that sweareth, as he that feareth an oath.\"",
+  "ref": "Ecclesiastes 9:2"
+ },
+ {
+  "id": "ecclesiastes-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Neither is bread to the wise, nor favour to whom?",
+  "choices": [
+   "Men of war",
+   "Men of the city",
+   "Men of skill",
+   "Men of peace"
+  ],
+  "answer": 2,
+  "explanation": "\"Neither yet bread to the wise, nor yet riches to men of understanding, nor yet favour to men of skill.\"",
+  "ref": "Ecclesiastes 9:11"
+ },
+ {
+  "id": "ecclesiastes-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where do the sons of men go after their madness while they live?",
+  "choices": [
+   "To the dead",
+   "To Jerusalem",
+   "To the grave of kings",
+   "Before the king"
+  ],
+  "answer": 0,
+  "explanation": "\"Madness is in their heart while they live, and after that they go to the dead.\"",
+  "ref": "Ecclesiastes 9:3"
  }
 ]

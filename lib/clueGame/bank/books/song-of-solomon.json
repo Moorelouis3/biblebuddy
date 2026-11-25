@@ -1,21 +1,5 @@
 [
  {
-  "id": "old-song-of-solomon-1-1",
-  "chapter": 1,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How is the book introduced?",
-  "choices": [
-   "The prophecy of Solomon",
-   "The wisdom of the king",
-   "The song of songs, which is Solomon's",
-   "The lament of Jerusalem"
-  ],
-  "answer": 2,
-  "explanation": "The book opens by calling itself the song of songs, associated with Solomon.",
-  "ref": "Song of Solomon 1:1"
- },
- {
   "id": "old-song-of-solomon-1-2",
   "chapter": 1,
   "level": "beginner",
@@ -222,38 +206,6 @@
   "answer": 0,
   "explanation": "She clings to him once she finds him.",
   "ref": "Song of Solomon 3:4"
- },
- {
-  "id": "old-song-of-solomon-3-5",
-  "chapter": 3,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What royal figure is highlighted later in the chapter?",
-  "choices": [
-   "David",
-   "Solomon",
-   "Absalom",
-   "Samuel"
-  ],
-  "answer": 1,
-  "explanation": "The chapter shifts to imagery around Solomon and his procession.",
-  "ref": "Song of Solomon 3:7"
- },
- {
-  "id": "old-song-of-solomon-4-1",
-  "chapter": 4,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What repeated compliment opens the chapter?",
-  "choices": [
-   "Thou art wise",
-   "Thou art strong",
-   "Thou art fair",
-   "Thou art faithful"
-  ],
-  "answer": 2,
-  "explanation": "The beloved begins by declaring her beauty.",
-  "ref": "Song of Solomon 4:1"
  },
  {
   "id": "old-song-of-solomon-4-2",
@@ -496,38 +448,6 @@
   "ref": "Song of Solomon 7:1"
  },
  {
-  "id": "old-song-of-solomon-7-2",
-  "chapter": 7,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What is compared to a round goblet?",
-  "choices": [
-   "Her eyes",
-   "Her navel",
-   "Her lips",
-   "Her neck"
-  ],
-  "answer": 1,
-  "explanation": "The imagery continues with poetic praise of her form.",
-  "ref": "Song of Solomon 7:2"
- },
- {
-  "id": "old-song-of-solomon-7-3",
-  "chapter": 7,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What are compared to two young roes that are twins?",
-  "choices": [
-   "Her hands",
-   "Her eyes",
-   "Her cheeks",
-   "Her breasts"
-  ],
-  "answer": 3,
-  "explanation": "The same imagery from earlier returns here.",
-  "ref": "Song of Solomon 7:3"
- },
- {
   "id": "old-song-of-solomon-7-4",
   "chapter": 7,
   "level": "beginner",
@@ -638,5 +558,2373 @@
   "answer": 2,
   "explanation": "The closing poetry says many waters cannot quench love.",
   "ref": "Song of Solomon 8:7"
+ },
+ {
+  "id": "song-of-solomon-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom does the woman address when she says, \"I am black, but comely\"?",
+  "choices": [
+   "The watchmen",
+   "The daughters of Jerusalem",
+   "Her mother",
+   "The shepherds"
+  ],
+  "answer": 1,
+  "explanation": "She says, \"I am black, but comely, O ye daughters of Jerusalem, as the tents of Kedar, as the curtains of Solomon.\"",
+  "ref": "Song of Solomon 1:5"
+ },
+ {
+  "id": "song-of-solomon-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What work did her mother’s children give her?",
+  "choices": [
+   "Keeper of the vineyards",
+   "Tending the king’s table",
+   "Weaving curtains",
+   "Drawing water"
+  ],
+  "answer": 0,
+  "explanation": "\"They made me the keeper of the vineyards; but mine own vineyard have I not kept.\"",
+  "ref": "Song of Solomon 1:6"
+ },
+ {
+  "id": "song-of-solomon-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does he compare her to in Pharaoh’s chariots?",
+  "choices": [
+   "A line of pillars",
+   "A company of horses",
+   "A cloud of dust",
+   "A chain of gold"
+  ],
+  "answer": 1,
+  "explanation": "\"I have compared thee, O my love, to a company of horses in Pharaoh’s chariots.\"",
+  "ref": "Song of Solomon 1:9"
+ },
+ {
+  "id": "song-of-solomon-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does he say her eyes are like?",
+  "choices": [
+   "Pools of water",
+   "Stars",
+   "Doves’ eyes",
+   "Jewels"
+  ],
+  "answer": 2,
+  "explanation": "\"Behold, thou art fair, my love; behold, thou art fair; thou hast doves’ eyes.\"",
+  "ref": "Song of Solomon 1:15"
+ },
+ {
+  "id": "song-of-solomon-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose song of songs is it?",
+  "choices": [
+   "David’s",
+   "Solomon’s",
+   "Asaph’s",
+   "Jeduthun’s"
+  ],
+  "answer": 1,
+  "explanation": "\"The song of songs, which is Solomon’s.\"",
+  "ref": "Song of Solomon 1:1"
+ },
+ {
+  "id": "song-of-solomon-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Her darkness is compared to the tents of Kedar and the curtains of whom?",
+  "choices": [
+   "David",
+   "Pharaoh",
+   "Solomon",
+   "Hiram"
+  ],
+  "answer": 2,
+  "explanation": "\"I am black, but comely... as the tents of Kedar, as the curtains of Solomon.\"",
+  "ref": "Song of Solomon 1:5"
+ },
+ {
+  "id": "song-of-solomon-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does she say she has not kept?",
+  "choices": [
+   "Her flock",
+   "Her own vineyard",
+   "Her mother’s house",
+   "Her promise"
+  ],
+  "answer": 1,
+  "explanation": "\"They made me the keeper of the vineyards; but mine own vineyard have I not kept.\"",
+  "ref": "Song of Solomon 1:6"
+ },
+ {
+  "id": "song-of-solomon-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does she say she would be like if she did not know where he feeds his flock?",
+  "choices": [
+   "One who turns aside by the flocks of his companions",
+   "A sheep without a shepherd",
+   "A bird without a nest",
+   "A vine without a wall"
+  ],
+  "answer": 0,
+  "explanation": "\"For why should I be as one that turneth aside by the flocks of thy companions?\"",
+  "ref": "Song of Solomon 1:7"
+ },
+ {
+  "id": "song-of-solomon-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where is she told to feed her kids?",
+  "choices": [
+   "In the king’s garden",
+   "Beside the shepherds’ tents",
+   "By the city gate",
+   "On the mountains of Bether"
+  ],
+  "answer": 1,
+  "explanation": "\"Go thy way forth by the footsteps of the flock, and feed thy kids beside the shepherds’ tents.\"",
+  "ref": "Song of Solomon 1:8"
+ },
+ {
+  "id": "song-of-solomon-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is comely with rows of jewels?",
+  "choices": [
+   "Thy hands",
+   "Thy cheeks",
+   "Thy lips",
+   "Thy feet"
+  ],
+  "answer": 1,
+  "explanation": "\"Thy cheeks are comely with rows of jewels, thy neck with chains of gold.\"",
+  "ref": "Song of Solomon 1:10"
+ },
+ {
+  "id": "song-of-solomon-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will they make her borders of gold with?",
+  "choices": [
+   "Studs of silver",
+   "Pearls",
+   "Purple thread",
+   "Rubies"
+  ],
+  "answer": 0,
+  "explanation": "\"We will make thee borders of gold with studs of silver.\"",
+  "ref": "Song of Solomon 1:11"
+ },
+ {
+  "id": "song-of-solomon-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does her spikenard do while the king sits at his table?",
+  "choices": [
+   "It fades",
+   "Sendeth forth the smell thereof",
+   "Is poured out",
+   "Is sold"
+  ],
+  "answer": 1,
+  "explanation": "\"While the king sitteth at his table, my spikenard sendeth forth the smell thereof.\"",
+  "ref": "Song of Solomon 1:12"
+ },
+ {
+  "id": "song-of-solomon-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does she say the king hath brought her?",
+  "choices": [
+   "Into his chambers",
+   "To the banqueting house",
+   "To the vineyard",
+   "Up to Lebanon"
+  ],
+  "answer": 0,
+  "explanation": "\"The king hath brought me into his chambers: we will be glad and rejoice in thee.\"",
+  "ref": "Song of Solomon 1:4"
+ },
+ {
+  "id": "song-of-solomon-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "At what time of day does she ask where he makes his flock to rest?",
+  "choices": [
+   "Morning",
+   "Noon",
+   "Evening",
+   "Midnight"
+  ],
+  "answer": 1,
+  "explanation": "\"Tell me... where thou makest thy flock to rest at noon.\"",
+  "ref": "Song of Solomon 1:7"
+ },
+ {
+  "id": "song-of-solomon-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the beams of their house?",
+  "choices": [
+   "Cedar",
+   "Fir",
+   "Olive wood",
+   "Gold"
+  ],
+  "answer": 0,
+  "explanation": "\"The beams of our house are cedar, and our rafters of fir.\"",
+  "ref": "Song of Solomon 1:17"
+ },
+ {
+  "id": "song-of-solomon-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the rafters of their house?",
+  "choices": [
+   "Cedar",
+   "Gopher wood",
+   "Fir",
+   "Almug"
+  ],
+  "answer": 2,
+  "explanation": "\"The beams of our house are cedar, and our rafters of fir.\"",
+  "ref": "Song of Solomon 1:17"
+ },
+ {
+  "id": "song-of-solomon-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What colour does she say their bed is?",
+  "choices": [
+   "White",
+   "Purple",
+   "Scarlet",
+   "Green"
+  ],
+  "answer": 3,
+  "explanation": "\"Behold, thou art fair, my beloved, yea, pleasant: also our bed is green.\"",
+  "ref": "Song of Solomon 1:16"
+ },
+ {
+  "id": "song-of-solomon-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who does she say love him, in the same verse where the king brings her to his chambers?",
+  "choices": [
+   "The upright",
+   "The shepherds",
+   "The daughters of Zion",
+   "The mighty men"
+  ],
+  "answer": 0,
+  "explanation": "\"We will remember thy love more than wine: the upright love thee.\"",
+  "ref": "Song of Solomon 1:4"
+ },
+ {
+  "id": "song-of-solomon-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What title does he give her when he tells her where to find the flock?",
+  "choices": [
+   "Fairest among women",
+   "Rose of Sharon",
+   "My dove",
+   "Daughter of Zion"
+  ],
+  "answer": 0,
+  "explanation": "\"If thou know not, O thou fairest among women, go thy way forth by the footsteps of the flock.\"",
+  "ref": "Song of Solomon 1:8"
+ },
+ {
+  "id": "song-of-solomon-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "In the vineyards of which place is her beloved like a cluster of camphire?",
+  "choices": [
+   "Carmel",
+   "En-gedi",
+   "Hebron",
+   "Baalhamon"
+  ],
+  "answer": 1,
+  "explanation": "\"My beloved is unto me as a cluster of camphire in the vineyards of En-gedi.\"",
+  "ref": "Song of Solomon 1:14"
+ },
+ {
+  "id": "song-of-solomon-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do they say they will do if he draws them?",
+  "choices": [
+   "Run after thee",
+   "Flee to the hills",
+   "Sit in his shadow",
+   "Sing before him"
+  ],
+  "answer": 0,
+  "explanation": "\"Draw me, we will run after thee: the king hath brought me into his chambers.\"",
+  "ref": "Song of Solomon 1:4"
+ },
+ {
+  "id": "song-of-solomon-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who love him because of the savour of his good ointments?",
+  "choices": [
+   "The virgins",
+   "The shepherds",
+   "The watchmen",
+   "His brothers"
+  ],
+  "answer": 0,
+  "explanation": "\"Because of the savour of thy good ointments thy name is as ointment poured forth, therefore do the virgins love thee.\"",
+  "ref": "Song of Solomon 1:3"
+ },
+ {
+  "id": "song-of-solomon-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is her wellbeloved to her, lying all night betwixt her breasts?",
+  "choices": [
+   "A bundle of myrrh",
+   "A cluster of grapes",
+   "A sprig of hyssop",
+   "A flask of wine"
+  ],
+  "answer": 0,
+  "explanation": "\"A bundle of myrrh is my wellbeloved unto me; he shall lie all night betwixt my breasts.\"",
+  "ref": "Song of Solomon 1:13"
+ },
+ {
+  "id": "song-of-solomon-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does she do under the shadow of her beloved, the apple tree?",
+  "choices": [
+   "Slept until morning",
+   "Gathered the fruit",
+   "Sat down with great delight",
+   "Hid from the sun"
+  ],
+  "answer": 2,
+  "explanation": "\"I sat down under his shadow with great delight, and his fruit was sweet to my taste.\"",
+  "ref": "Song of Solomon 2:3"
+ },
+ {
+  "id": "song-of-solomon-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does she say she is sick of?",
+  "choices": [
+   "Waiting",
+   "Love",
+   "Travel",
+   "Wine"
+  ],
+  "answer": 1,
+  "explanation": "\"Stay me with flagons, comfort me with apples: for I am sick of love.\"",
+  "ref": "Song of Solomon 2:5"
+ },
+ {
+  "id": "song-of-solomon-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is her beloved like, leaping upon the mountains?",
+  "choices": [
+   "A roe or a young hart",
+   "A lion",
+   "A wild ox",
+   "A fleeing bird"
+  ],
+  "answer": 0,
+  "explanation": "\"My beloved is like a roe or a young hart: behold, he standeth behind our wall.\"",
+  "ref": "Song of Solomon 2:9"
+ },
+ {
+  "id": "song-of-solomon-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What season does he say is past?",
+  "choices": [
+   "Summer",
+   "Autumn",
+   "Winter",
+   "The dry season"
+  ],
+  "answer": 2,
+  "explanation": "\"For, lo, the winter is past, the rain is over and gone.\"",
+  "ref": "Song of Solomon 2:11"
+ },
+ {
+  "id": "song-of-solomon-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does she ask for to stay and comfort her?",
+  "choices": [
+   "Bread and honey",
+   "Water and olives",
+   "Milk and figs",
+   "Flagons and apples"
+  ],
+  "answer": 3,
+  "explanation": "\"Stay me with flagons, comfort me with apples.\"",
+  "ref": "Song of Solomon 2:5"
+ },
+ {
+  "id": "song-of-solomon-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does she charge the daughters of Jerusalem not to do?",
+  "choices": [
+   "Follow him to the mountains",
+   "Tell the king",
+   "Stir up nor awake her love till he please",
+   "Leave the city"
+  ],
+  "answer": 2,
+  "explanation": "\"I charge you... that ye stir not up, nor awake my love, till he please.\"",
+  "ref": "Song of Solomon 2:7"
+ },
+ {
+  "id": "song-of-solomon-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does her beloved stand behind?",
+  "choices": [
+   "The vineyard gate",
+   "A cedar",
+   "Our wall",
+   "A tent"
+  ],
+  "answer": 2,
+  "explanation": "\"Behold, he standeth behind our wall, he looketh forth at the windows.\"",
+  "ref": "Song of Solomon 2:9"
+ },
+ {
+  "id": "song-of-solomon-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Through what does he show himself?",
+  "choices": [
+   "The lattice",
+   "A curtain",
+   "A doorway",
+   "A cloud"
+  ],
+  "answer": 0,
+  "explanation": "\"He looketh forth at the windows, shewing himself through the lattice.\"",
+  "ref": "Song of Solomon 2:9"
+ },
+ {
+  "id": "song-of-solomon-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say is over and gone along with the winter?",
+  "choices": [
+   "The drought",
+   "The rain",
+   "The wind",
+   "The night"
+  ],
+  "answer": 1,
+  "explanation": "\"The winter is past, the rain is over and gone.\"",
+  "ref": "Song of Solomon 2:11"
+ },
+ {
+  "id": "song-of-solomon-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What voice is heard in the land when the time of singing of birds is come?",
+  "choices": [
+   "The lamb",
+   "The shepherd",
+   "The turtle",
+   "The nightingale"
+  ],
+  "answer": 2,
+  "explanation": "\"The time of the singing of birds is come, and the voice of the turtle is heard in our land.\"",
+  "ref": "Song of Solomon 2:12"
+ },
+ {
+  "id": "song-of-solomon-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the fig tree put forth?",
+  "choices": [
+   "Green figs",
+   "Blossoms only",
+   "Dry leaves",
+   "Dates"
+  ],
+  "answer": 0,
+  "explanation": "\"The fig tree putteth forth her green figs.\"",
+  "ref": "Song of Solomon 2:13"
+ },
+ {
+  "id": "song-of-solomon-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Where is his dove, that he calls to come away?",
+  "choices": [
+   "In the clefts of the rock",
+   "In the garden",
+   "In the palace",
+   "By the river"
+  ],
+  "answer": 0,
+  "explanation": "\"O my dove, that art in the clefts of the rock, in the secret places of the stairs.\"",
+  "ref": "Song of Solomon 2:14"
+ },
+ {
+  "id": "song-of-solomon-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why must the little foxes be taken?",
+  "choices": [
+   "Our vines have tender grapes",
+   "They steal the flock",
+   "They dig at the wall",
+   "They frighten the doves"
+  ],
+  "answer": 0,
+  "explanation": "\"Take us the foxes, the little foxes, that spoil the vines: for our vines have tender grapes.\"",
+  "ref": "Song of Solomon 2:15"
+ },
+ {
+  "id": "song-of-solomon-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did he bring her?",
+  "choices": [
+   "The king’s garden",
+   "The house of cedar",
+   "The tower",
+   "The banqueting house"
+  ],
+  "answer": 3,
+  "explanation": "\"He brought me to the banqueting house, and his banner over me was love.\"",
+  "ref": "Song of Solomon 2:4"
+ },
+ {
+  "id": "song-of-solomon-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Among what does her beloved feed?",
+  "choices": [
+   "The lilies",
+   "The cedars",
+   "The vines",
+   "The flocks of Kedar"
+  ],
+  "answer": 0,
+  "explanation": "\"My beloved is mine, and I am his: he feedeth among the lilies.\"",
+  "ref": "Song of Solomon 2:16"
+ },
+ {
+  "id": "song-of-solomon-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Upon which mountains does she ask him to turn like a roe or young hart?",
+  "choices": [
+   "Hermon",
+   "Bether",
+   "Gilead",
+   "Amana"
+  ],
+  "answer": 1,
+  "explanation": "\"Turn, my beloved, and be thou like a roe or a young hart upon the mountains of Bether.\"",
+  "ref": "Song of Solomon 2:17"
+ },
+ {
+  "id": "song-of-solomon-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides the clefts of the rock, where is his dove?",
+  "choices": [
+   "The shadow of the wall",
+   "The garden of spices",
+   "The vineyards of En-gedi",
+   "The secret places of the stairs"
+  ],
+  "answer": 3,
+  "explanation": "\"O my dove, that art in the clefts of the rock, in the secret places of the stairs.\"",
+  "ref": "Song of Solomon 2:14"
+ },
+ {
+  "id": "song-of-solomon-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say is sweet, and her countenance comely?",
+  "choices": [
+   "Thy breath",
+   "Thy song",
+   "Thy voice",
+   "Thy name"
+  ],
+  "answer": 2,
+  "explanation": "\"Let me hear thy voice; for sweet is thy voice, and thy countenance is comely.\"",
+  "ref": "Song of Solomon 2:14"
+ },
+ {
+  "id": "song-of-solomon-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the vines with the tender grape give?",
+  "choices": [
+   "A good smell",
+   "New wine",
+   "Shade",
+   "Fruit in summer"
+  ],
+  "answer": 0,
+  "explanation": "\"The vines with the tender grape give a good smell.\"",
+  "ref": "Song of Solomon 2:13"
+ },
+ {
+  "id": "song-of-solomon-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what does she charge the daughters of Jerusalem?",
+  "choices": [
+   "The altar and the temple",
+   "The roes and the hinds of the field",
+   "The stars and the moon",
+   "The vines and the figs"
+  ],
+  "answer": 1,
+  "explanation": "\"I charge you, O ye daughters of Jerusalem, by the roes, and by the hinds of the field.\"",
+  "ref": "Song of Solomon 2:7"
+ },
+ {
+  "id": "song-of-solomon-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has come, according to the beloved, when the flowers appear on the earth?",
+  "choices": [
+   "The time of harvest",
+   "The time of the feast",
+   "The time of vine-dressing",
+   "The time of the singing of birds"
+  ],
+  "answer": 3,
+  "explanation": "\"The flowers appear on the earth; the time of the singing of birds is come.\"",
+  "ref": "Song of Solomon 2:12"
+ },
+ {
+  "id": "song-of-solomon-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was sweet to her taste, under the apple tree?",
+  "choices": [
+   "His wine",
+   "His honey",
+   "His fruit",
+   "His bread"
+  ],
+  "answer": 2,
+  "explanation": "\"I sat down under his shadow with great delight, and his fruit was sweet to my taste.\"",
+  "ref": "Song of Solomon 2:3"
+ },
+ {
+  "id": "song-of-solomon-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose bed does she say has threescore valiant men about it?",
+  "choices": [
+   "David’s",
+   "Pharaoh’s",
+   "Hiram’s",
+   "Solomon’s"
+  ],
+  "answer": 3,
+  "explanation": "\"Behold his bed, which is Solomon’s; threescore valiant men are about it.\"",
+  "ref": "Song of Solomon 3:7"
+ },
+ {
+  "id": "song-of-solomon-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did King Solomon make for himself from the wood of Lebanon?",
+  "choices": [
+   "A throne",
+   "A ship",
+   "A tent",
+   "A chariot"
+  ],
+  "answer": 3,
+  "explanation": "\"King Solomon made himself a chariot of the wood of Lebanon.\"",
+  "ref": "Song of Solomon 3:9"
+ },
+ {
+  "id": "song-of-solomon-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many valiant men are about Solomon’s bed?",
+  "choices": [
+   "Forty",
+   "Seventy",
+   "A hundred",
+   "Sixty"
+  ],
+  "answer": 3,
+  "explanation": "\"Threescore valiant men are about it, of the valiant of Israel.\"",
+  "ref": "Song of Solomon 3:7"
+ },
+ {
+  "id": "song-of-solomon-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does every man have his sword upon his thigh?",
+  "choices": [
+   "Because of the king’s command",
+   "Because of the wild beasts",
+   "Because of fear in the night",
+   "Because of the festival"
+  ],
+  "answer": 2,
+  "explanation": "\"Every man hath his sword upon his thigh because of fear in the night.\"",
+  "ref": "Song of Solomon 3:8"
+ },
+ {
+  "id": "song-of-solomon-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does she bring him when she finds him?",
+  "choices": [
+   "Into her mother’s house",
+   "Into the king’s palace",
+   "To the vineyards",
+   "Into the city"
+  ],
+  "answer": 0,
+  "explanation": "\"I held him, and would not let him go, until I had brought him into my mother’s house.\"",
+  "ref": "Song of Solomon 3:4"
+ },
+ {
+  "id": "song-of-solomon-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who crowned Solomon on the day of his espousals?",
+  "choices": [
+   "The priests",
+   "The daughters of Zion",
+   "His father David",
+   "His mother"
+  ],
+  "answer": 3,
+  "explanation": "\"Behold king Solomon with the crown wherewith his mother crowned him in the day of his espousals.\"",
+  "ref": "Song of Solomon 3:11"
+ },
+ {
+  "id": "song-of-solomon-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the pillars of Solomon’s chariot made of?",
+  "choices": [
+   "Gold",
+   "Silver",
+   "Cedar",
+   "Brass"
+  ],
+  "answer": 1,
+  "explanation": "\"He made the pillars thereof of silver, the bottom thereof of gold.\"",
+  "ref": "Song of Solomon 3:10"
+ },
+ {
+  "id": "song-of-solomon-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the one coming out of the wilderness perfumed with?",
+  "choices": [
+   "Myrrh and frankincense",
+   "Spikenard and saffron",
+   "Cinnamon and aloes",
+   "Camphire and calamus"
+  ],
+  "answer": 0,
+  "explanation": "\"Who is this that cometh out of the wilderness like pillars of smoke, perfumed with myrrh and frankincense?\"",
+  "ref": "Song of Solomon 3:6"
+ },
+ {
+  "id": "song-of-solomon-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the bottom of Solomon’s chariot?",
+  "choices": [
+   "Silver",
+   "Gold",
+   "Cedar",
+   "Ivory"
+  ],
+  "answer": 1,
+  "explanation": "\"The pillars thereof of silver, the bottom thereof of gold, the covering of it of purple.\"",
+  "ref": "Song of Solomon 3:10"
+ },
+ {
+  "id": "song-of-solomon-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the covering of the chariot?",
+  "choices": [
+   "Purple",
+   "Scarlet",
+   "Fine linen",
+   "Gold"
+  ],
+  "answer": 0,
+  "explanation": "\"The covering of it of purple, the midst thereof being paved with love.\"",
+  "ref": "Song of Solomon 3:10"
+ },
+ {
+  "id": "song-of-solomon-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "For whom is the midst of the chariot paved with love?",
+  "choices": [
+   "The daughters of Zion",
+   "The virgins",
+   "The king’s mother",
+   "The daughters of Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "\"The midst thereof being paved with love, for the daughters of Jerusalem.\"",
+  "ref": "Song of Solomon 3:10"
+ },
+ {
+  "id": "song-of-solomon-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who are called to go forth and behold King Solomon?",
+  "choices": [
+   "The daughters of Zion",
+   "The watchmen",
+   "The valiant of Israel",
+   "The virgins of Kedar"
+  ],
+  "answer": 0,
+  "explanation": "\"Go forth, O ye daughters of Zion, and behold king Solomon.\"",
+  "ref": "Song of Solomon 3:11"
+ },
+ {
+  "id": "song-of-solomon-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom are the valiant men about Solomon’s bed drawn?",
+  "choices": [
+   "The valiant of Israel",
+   "The mighty of Judah",
+   "The guard of Pharaoh",
+   "The sons of Lebanon"
+  ],
+  "answer": 0,
+  "explanation": "\"Threescore valiant men are about it, of the valiant of Israel.\"",
+  "ref": "Song of Solomon 3:7"
+ },
+ {
+  "id": "song-of-solomon-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does she ask the watchmen who find her?",
+  "choices": [
+   "Where the king is",
+   "Which way leads to the vineyard",
+   "Why they walk by night",
+   "Whether they have seen him whom her soul loveth"
+  ],
+  "answer": 3,
+  "explanation": "\"The watchmen that go about the city found me: to whom I said, Saw ye him whom my soul loveth?\"",
+  "ref": "Song of Solomon 3:3"
+ },
+ {
+  "id": "song-of-solomon-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is her neck like?",
+  "choices": [
+   "A pillar of marble",
+   "The tower of David",
+   "A column of cedar",
+   "A gate of brass"
+  ],
+  "answer": 1,
+  "explanation": "\"Thy neck is like the tower of David builded for an armoury.\"",
+  "ref": "Song of Solomon 4:4"
+ },
+ {
+  "id": "song-of-solomon-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does he say drops from her lips?",
+  "choices": [
+   "Dew",
+   "Oil",
+   "Wine",
+   "Honeycomb"
+  ],
+  "answer": 3,
+  "explanation": "\"Thy lips, O my spouse, drop as the honeycomb: honey and milk are under thy tongue.\"",
+  "ref": "Song of Solomon 4:11"
+ },
+ {
+  "id": "song-of-solomon-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does she call upon the north wind and the south to do?",
+  "choices": [
+   "Blow upon her garden",
+   "Bring rain",
+   "Carry her away",
+   "Scatter the clouds"
+  ],
+  "answer": 0,
+  "explanation": "\"Awake, O north wind; and come, thou south; blow upon my garden, that the spices thereof may flow out.\"",
+  "ref": "Song of Solomon 4:16"
+ },
+ {
+  "id": "song-of-solomon-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is she called, a well of what?",
+  "choices": [
+   "Sweet honey",
+   "Fine oil",
+   "Mountain springs",
+   "Living waters"
+  ],
+  "answer": 3,
+  "explanation": "\"A fountain of gardens, a well of living waters, and streams from Lebanon.\"",
+  "ref": "Song of Solomon 4:15"
+ },
+ {
+  "id": "song-of-solomon-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are her teeth like?",
+  "choices": [
+   "A string of pearls",
+   "Rows of white lilies",
+   "Twin doves",
+   "A flock of sheep even shorn, come up from the washing"
+  ],
+  "answer": 3,
+  "explanation": "\"Thy teeth are like a flock of sheep that are even shorn, which came up from the washing.\"",
+  "ref": "Song of Solomon 4:2"
+ },
+ {
+  "id": "song-of-solomon-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are her temples like within her locks?",
+  "choices": [
+   "A cluster of grapes",
+   "A piece of a pomegranate",
+   "A rose",
+   "A thread of gold"
+  ],
+  "answer": 1,
+  "explanation": "\"Thy temples are like a piece of a pomegranate within thy locks.\"",
+  "ref": "Song of Solomon 4:3"
+ },
+ {
+  "id": "song-of-solomon-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What hangs on the tower of David?",
+  "choices": [
+   "Banners of silver",
+   "Crowns of gold",
+   "A thousand bucklers",
+   "Swords of the mighty"
+  ],
+  "answer": 2,
+  "explanation": "\"Whereon there hang a thousand bucklers, all shields of mighty men.\"",
+  "ref": "Song of Solomon 4:4"
+ },
+ {
+  "id": "song-of-solomon-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where does he say he will get himself until the day break?",
+  "choices": [
+   "The garden of Lebanon",
+   "The vineyards of En-gedi",
+   "The mountain of myrrh and the hill of frankincense",
+   "The mountains of Bether"
+  ],
+  "answer": 2,
+  "explanation": "\"Until the day break... I will get me to the mountain of myrrh, and to the hill of frankincense.\"",
+  "ref": "Song of Solomon 4:6"
+ },
+ {
+  "id": "song-of-solomon-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What dwells in the mountains he calls her away from?",
+  "choices": [
+   "Wolves and bears",
+   "Foxes and jackals",
+   "Eagles and ravens",
+   "Lions and leopards"
+  ],
+  "answer": 3,
+  "explanation": "\"From the lions’ dens, from the mountains of the leopards.\"",
+  "ref": "Song of Solomon 4:8"
+ },
+ {
+  "id": "song-of-solomon-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did she do to his heart with one of her eyes?",
+  "choices": [
+   "Ravished it",
+   "Broke it",
+   "Healed it",
+   "Filled it with fear"
+  ],
+  "answer": 0,
+  "explanation": "\"Thou hast ravished my heart with one of thine eyes, with one chain of thy neck.\"",
+  "ref": "Song of Solomon 4:9"
+ },
+ {
+  "id": "song-of-solomon-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The smell of her garments is like the smell of what?",
+  "choices": [
+   "Carmel",
+   "Lebanon",
+   "Sharon",
+   "Gilead"
+  ],
+  "answer": 1,
+  "explanation": "\"The smell of thy garments is like the smell of Lebanon.\"",
+  "ref": "Song of Solomon 4:11"
+ },
+ {
+  "id": "song-of-solomon-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say is better than wine, and her ointments better than all spices?",
+  "choices": [
+   "Her voice",
+   "Her beauty",
+   "Her garden",
+   "Her love"
+  ],
+  "answer": 3,
+  "explanation": "\"How much better is thy love than wine! and the smell of thine ointments than all spices!\"",
+  "ref": "Song of Solomon 4:10"
+ },
+ {
+  "id": "song-of-solomon-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "From the top of which mountains does he tell her to look?",
+  "choices": [
+   "Amana, Shenir and Hermon",
+   "Gilead, Carmel and Tabor",
+   "Bether, Lebanon and Zion",
+   "Sinai, Horeb and Hermon"
+  ],
+  "answer": 0,
+  "explanation": "\"Look from the top of Amana, from the top of Shenir and Hermon.\"",
+  "ref": "Song of Solomon 4:8"
+ },
+ {
+  "id": "song-of-solomon-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "From which mount do the goats of her hair appear?",
+  "choices": [
+   "Hermon",
+   "Carmel",
+   "Zion",
+   "Gilead"
+  ],
+  "answer": 3,
+  "explanation": "\"Thy hair is as a flock of goats, that appear from mount Gilead.\"",
+  "ref": "Song of Solomon 4:1"
+ },
+ {
+  "id": "song-of-solomon-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the tower of David builded for?",
+  "choices": [
+   "A watch",
+   "An armoury",
+   "A treasury",
+   "A refuge"
+  ],
+  "answer": 1,
+  "explanation": "\"Thy neck is like the tower of David builded for an armoury.\"",
+  "ref": "Song of Solomon 4:4"
+ },
+ {
+  "id": "song-of-solomon-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Streams from where are named beside the fountain of gardens?",
+  "choices": [
+   "Lebanon",
+   "Hermon",
+   "Gilead",
+   "Sharon"
+  ],
+  "answer": 0,
+  "explanation": "\"A fountain of gardens, a well of living waters, and streams from Lebanon.\"",
+  "ref": "Song of Solomon 4:15"
+ },
+ {
+  "id": "song-of-solomon-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two titles does he give her in verse 9?",
+  "choices": [
+   "My dove, my fair one",
+   "My daughter, my queen",
+   "My lily, my rose",
+   "My sister, my spouse"
+  ],
+  "answer": 3,
+  "explanation": "\"Thou hast ravished my heart, my sister, my spouse.\"",
+  "ref": "Song of Solomon 4:9"
+ },
+ {
+  "id": "song-of-solomon-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say she is, besides a garden inclosed?",
+  "choices": [
+   "A tower of ivory",
+   "A spring shut up, a fountain sealed",
+   "A vineyard of En-gedi",
+   "A cedar of Lebanon"
+  ],
+  "answer": 1,
+  "explanation": "\"A garden inclosed is my sister, my spouse; a spring shut up, a fountain sealed.\"",
+  "ref": "Song of Solomon 4:12"
+ },
+ {
+  "id": "song-of-solomon-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Her plants are an orchard of what?",
+  "choices": [
+   "Figs",
+   "Olives",
+   "Almonds",
+   "Pomegranates"
+  ],
+  "answer": 3,
+  "explanation": "\"Thy plants are an orchard of pomegranates, with pleasant fruits.\"",
+  "ref": "Song of Solomon 4:13"
+ },
+ {
+  "id": "song-of-solomon-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does she invite her beloved to do in his garden?",
+  "choices": [
+   "Rest in the shade",
+   "Come and eat his pleasant fruits",
+   "Draw water",
+   "Gather lilies"
+  ],
+  "answer": 1,
+  "explanation": "\"Let my beloved come into his garden, and eat his pleasant fruits.\"",
+  "ref": "Song of Solomon 4:16"
+ },
+ {
+  "id": "song-of-solomon-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Among how many is her beloved the chiefest?",
+  "choices": [
+   "A thousand",
+   "Ten thousand",
+   "A hundred",
+   "Threescore"
+  ],
+  "answer": 1,
+  "explanation": "\"My beloved is white and ruddy, the chiefest among ten thousand.\"",
+  "ref": "Song of Solomon 5:10"
+ },
+ {
+  "id": "song-of-solomon-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does she ask the daughters of Jerusalem to tell him if they find him?",
+  "choices": [
+   "That she is waiting at the gate",
+   "That the vineyard is ready",
+   "That she has gone home",
+   "That she is sick of love"
+  ],
+  "answer": 3,
+  "explanation": "\"If ye find my beloved, that ye tell him, that I am sick of love.\"",
+  "ref": "Song of Solomon 5:8"
+ },
+ {
+  "id": "song-of-solomon-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is her beloved’s head like?",
+  "choices": [
+   "The most fine gold",
+   "Polished brass",
+   "White marble",
+   "Fine ivory"
+  ],
+  "answer": 0,
+  "explanation": "\"His head is as the most fine gold, his locks are bushy, and black as a raven.\"",
+  "ref": "Song of Solomon 5:11"
+ },
+ {
+  "id": "song-of-solomon-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does she say when he asks her to open the door?",
+  "choices": [
+   "She is afraid of the watchmen",
+   "She does not know his voice",
+   "She has no light",
+   "She has put off her coat and washed her feet"
+  ],
+  "answer": 3,
+  "explanation": "\"I have put off my coat; how shall I put it on? I have washed my feet; how shall I defile them?\"",
+  "ref": "Song of Solomon 5:3"
+ },
+ {
+  "id": "song-of-solomon-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does he put in his hand?",
+  "choices": [
+   "By the hole of the door",
+   "Through the window",
+   "Over the wall",
+   "Into the lattice"
+  ],
+  "answer": 0,
+  "explanation": "\"My beloved put in his hand by the hole of the door, and my bowels were moved for him.\"",
+  "ref": "Song of Solomon 5:4"
+ },
+ {
+  "id": "song-of-solomon-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What dropped from her hands upon the handles of the lock?",
+  "choices": [
+   "Oil",
+   "Dew",
+   "Myrrh",
+   "Water"
+  ],
+  "answer": 2,
+  "explanation": "\"My hands dropped with myrrh, and my fingers with sweet smelling myrrh, upon the handles of the lock.\"",
+  "ref": "Song of Solomon 5:5"
+ },
+ {
+  "id": "song-of-solomon-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the keepers of the walls take from her?",
+  "choices": [
+   "Her veil",
+   "Her coat",
+   "Her ointment",
+   "Her ring"
+  ],
+  "answer": 0,
+  "explanation": "\"The keepers of the walls took away my veil from me.\"",
+  "ref": "Song of Solomon 5:7"
+ },
+ {
+  "id": "song-of-solomon-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the daughters of Jerusalem ask her?",
+  "choices": [
+   "Where the king has gone",
+   "Why she sleeps by day",
+   "What her beloved is more than another beloved",
+   "Who made the watchmen strike her"
+  ],
+  "answer": 2,
+  "explanation": "\"What is thy beloved more than another beloved, O thou fairest among women?\"",
+  "ref": "Song of Solomon 5:9"
+ },
+ {
+  "id": "song-of-solomon-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "His locks are bushy, and what colour?",
+  "choices": [
+   "White as wool",
+   "Golden as grain",
+   "Purple as a robe",
+   "Black as a raven"
+  ],
+  "answer": 3,
+  "explanation": "\"His locks are bushy, and black as a raven.\"",
+  "ref": "Song of Solomon 5:11"
+ },
+ {
+  "id": "song-of-solomon-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "His eyes are as the eyes of what, by the rivers of waters?",
+  "choices": [
+   "Lions",
+   "Roes",
+   "Eagles",
+   "Doves"
+  ],
+  "answer": 3,
+  "explanation": "\"His eyes are as the eyes of doves by the rivers of waters, washed with milk.\"",
+  "ref": "Song of Solomon 5:12"
+ },
+ {
+  "id": "song-of-solomon-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is his head filled with when he knocks?",
+  "choices": [
+   "Dew",
+   "Oil",
+   "Dust",
+   "Rain"
+  ],
+  "answer": 0,
+  "explanation": "\"My head is filled with dew, and my locks with the drops of the night.\"",
+  "ref": "Song of Solomon 5:2"
+ },
+ {
+  "id": "song-of-solomon-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "His hands are as gold rings set with what?",
+  "choices": [
+   "The sapphire",
+   "The beryl",
+   "The onyx",
+   "The ruby"
+  ],
+  "answer": 1,
+  "explanation": "\"His hands are as gold rings set with the beryl.\"",
+  "ref": "Song of Solomon 5:14"
+ },
+ {
+  "id": "song-of-solomon-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "His legs are as pillars of what?",
+  "choices": [
+   "Brass",
+   "Cedar",
+   "Marble",
+   "Silver"
+  ],
+  "answer": 2,
+  "explanation": "\"His legs are as pillars of marble, set upon sockets of fine gold.\"",
+  "ref": "Song of Solomon 5:15"
+ },
+ {
+  "id": "song-of-solomon-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "His countenance is as what mountain, excellent as the cedars?",
+  "choices": [
+   "Carmel",
+   "Hermon",
+   "Lebanon",
+   "Gilead"
+  ],
+  "answer": 2,
+  "explanation": "\"His countenance is as Lebanon, excellent as the cedars.\"",
+  "ref": "Song of Solomon 5:15"
+ },
+ {
+  "id": "song-of-solomon-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say he has drunk with his milk?",
+  "choices": [
+   "Wine",
+   "Water",
+   "Honey",
+   "Oil"
+  ],
+  "answer": 0,
+  "explanation": "\"I have drunk my wine with my milk: eat, O friends; drink, yea, drink abundantly, O beloved.\"",
+  "ref": "Song of Solomon 5:1"
+ },
+ {
+  "id": "song-of-solomon-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened when she called him?",
+  "choices": [
+   "He came at once",
+   "He gave no answer",
+   "He sent a servant",
+   "He called back from the street"
+  ],
+  "answer": 1,
+  "explanation": "\"I sought him, but I could not find him; I called him, but he gave me no answer.\"",
+  "ref": "Song of Solomon 5:6"
+ },
+ {
+  "id": "song-of-solomon-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "His cheeks are as a bed of what?",
+  "choices": [
+   "Lilies",
+   "Myrrh",
+   "Spices",
+   "Roses"
+  ],
+  "answer": 2,
+  "explanation": "\"His cheeks are as a bed of spices, as sweet flowers.\"",
+  "ref": "Song of Solomon 5:13"
+ },
+ {
+  "id": "song-of-solomon-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "His lips are like lilies, dropping what?",
+  "choices": [
+   "Honey",
+   "Sweet smelling myrrh",
+   "Milk",
+   "Fine oil"
+  ],
+  "answer": 1,
+  "explanation": "\"His lips like lilies, dropping sweet smelling myrrh.\"",
+  "ref": "Song of Solomon 5:13"
+ },
+ {
+  "id": "song-of-solomon-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does she say she has gathered with her spice?",
+  "choices": [
+   "Her honey",
+   "Her wine",
+   "Her myrrh",
+   "Her grapes"
+  ],
+  "answer": 2,
+  "explanation": "\"I have gathered my myrrh with my spice; I have eaten my honeycomb with my honey.\"",
+  "ref": "Song of Solomon 5:1"
+ },
+ {
+  "id": "song-of-solomon-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "As what is she terrible, in the beloved’s words?",
+  "choices": [
+   "A lion",
+   "An army with banners",
+   "A storm",
+   "A fortress"
+  ],
+  "answer": 1,
+  "explanation": "\"Thou art beautiful, O my love, as Tirzah, comely as Jerusalem, terrible as an army with banners.\"",
+  "ref": "Song of Solomon 6:4"
+ },
+ {
+  "id": "song-of-solomon-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom is his dove, his undefiled, the only one?",
+  "choices": [
+   "Her sister",
+   "Her mother",
+   "The king",
+   "Her brothers"
+  ],
+  "answer": 1,
+  "explanation": "\"She is the only one of her mother, she is the choice one of her that bare her.\"",
+  "ref": "Song of Solomon 6:9"
+ },
+ {
+  "id": "song-of-solomon-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many queens are there?",
+  "choices": [
+   "Fourscore",
+   "Threescore",
+   "A hundred",
+   "Seventy"
+  ],
+  "answer": 1,
+  "explanation": "\"There are threescore queens, and fourscore concubines, and virgins without number.\"",
+  "ref": "Song of Solomon 6:8"
+ },
+ {
+  "id": "song-of-solomon-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Who are without number?",
+  "choices": [
+   "Concubines",
+   "Virgins",
+   "Queens",
+   "Daughters"
+  ],
+  "answer": 1,
+  "explanation": "\"Threescore queens, and fourscore concubines, and virgins without number.\"",
+  "ref": "Song of Solomon 6:8"
+ },
+ {
+  "id": "song-of-solomon-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Who saw his dove and blessed her?",
+  "choices": [
+   "The watchmen",
+   "The shepherds",
+   "The daughters",
+   "The mighty men"
+  ],
+  "answer": 2,
+  "explanation": "\"The daughters saw her, and blessed her; yea, the queens and the concubines, and they praised her.\"",
+  "ref": "Song of Solomon 6:9"
+ },
+ {
+  "id": "song-of-solomon-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into what garden did he go down to see the fruits of the valley?",
+  "choices": [
+   "The garden of nuts",
+   "The garden of spices",
+   "The king’s garden",
+   "The garden of figs"
+  ],
+  "answer": 0,
+  "explanation": "\"I went down into the garden of nuts to see the fruits of the valley.\"",
+  "ref": "Song of Solomon 6:11"
+ },
+ {
+  "id": "song-of-solomon-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did he go to see about the vine and the pomegranates?",
+  "choices": [
+   "Whether they had been stolen",
+   "Whether the vine flourished and the pomegranates budded",
+   "Whether the foxes had spoiled them",
+   "Whether the fruit was ready for market"
+  ],
+  "answer": 1,
+  "explanation": "\"To see whether the vine flourished, and the pomegranates budded.\"",
+  "ref": "Song of Solomon 6:11"
+ },
+ {
+  "id": "song-of-solomon-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "By what name is she called when they say \"Return, return\"?",
+  "choices": [
+   "The Shulamite",
+   "The daughter of Zion",
+   "The Egyptian",
+   "The Tirzite"
+  ],
+  "answer": 0,
+  "explanation": "\"Return, return, O Shulamite; return, return, that we may look upon thee.\"",
+  "ref": "Song of Solomon 6:13"
+ },
+ {
+  "id": "song-of-solomon-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will they see in the Shulamite?",
+  "choices": [
+   "A garden of spices",
+   "The company of two armies",
+   "A flock of goats",
+   "A tower of David"
+  ],
+  "answer": 1,
+  "explanation": "\"What will ye see in the Shulamite? As it were the company of two armies.\"",
+  "ref": "Song of Solomon 6:13"
+ },
+ {
+  "id": "song-of-solomon-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many concubines are there?",
+  "choices": [
+   "Threescore",
+   "Fifty",
+   "Fourscore",
+   "A thousand"
+  ],
+  "answer": 2,
+  "explanation": "\"Threescore queens, and fourscore concubines.\"",
+  "ref": "Song of Solomon 6:8"
+ },
+ {
+  "id": "song-of-solomon-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who looks forth as the morning, fair as the moon and clear as the sun?",
+  "choices": [
+   "The daughters of Zion",
+   "The one he calls his dove",
+   "The Shulamite’s mother",
+   "The queens"
+  ],
+  "answer": 1,
+  "explanation": "\"Who is she that looketh forth as the morning, fair as the moon, clear as the sun.\"",
+  "ref": "Song of Solomon 6:10"
+ },
+ {
+  "id": "song-of-solomon-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose chariots does her soul make her like?",
+  "choices": [
+   "Pharaoh",
+   "Amminadib",
+   "Solomon",
+   "Hiram"
+  ],
+  "answer": 1,
+  "explanation": "\"Or ever I was aware, my soul made me like the chariots of Amminadib.\"",
+  "ref": "Song of Solomon 6:12"
+ },
+ {
+  "id": "song-of-solomon-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Where has her beloved gone down to feed and gather lilies?",
+  "choices": [
+   "To the vineyards of En-gedi",
+   "To the mountains of Bether",
+   "To the garden of nuts",
+   "To the beds of spices"
+  ],
+  "answer": 3,
+  "explanation": "\"My beloved is gone down into his garden, to the beds of spices, to feed in the gardens, and to gather lilies.\"",
+  "ref": "Song of Solomon 6:2"
+ },
+ {
+  "id": "song-of-solomon-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "From which place do the goats of her hair appear?",
+  "choices": [
+   "Carmel",
+   "Gilead",
+   "Hermon",
+   "Lebanon"
+  ],
+  "answer": 1,
+  "explanation": "\"Thy hair is as a flock of goats that appear from Gilead.\"",
+  "ref": "Song of Solomon 6:5"
+ },
+ {
+  "id": "song-of-solomon-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the daughters, who also praised her?",
+  "choices": [
+   "The watchmen",
+   "The shepherds",
+   "The valiant of Israel",
+   "The queens and the concubines"
+  ],
+  "answer": 3,
+  "explanation": "\"The daughters saw her, and blessed her; yea, the queens and the concubines, and they praised her.\"",
+  "ref": "Song of Solomon 6:9"
+ },
+ {
+  "id": "song-of-solomon-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he ask her to turn away, for they have overcome him?",
+  "choices": [
+   "Her eyes",
+   "Her face",
+   "Her voice",
+   "Her hands"
+  ],
+  "answer": 0,
+  "explanation": "\"Turn away thine eyes from me, for they have overcome me.\"",
+  "ref": "Song of Solomon 6:5"
+ },
+ {
+  "id": "song-of-solomon-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is her stature like?",
+  "choices": [
+   "A cedar",
+   "A palm tree",
+   "A tower",
+   "A vine"
+  ],
+  "answer": 1,
+  "explanation": "\"This thy stature is like to a palm tree.\"",
+  "ref": "Song of Solomon 7:7"
+ },
+ {
+  "id": "song-of-solomon-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where does he say they will lodge?",
+  "choices": [
+   "In the city",
+   "In the villages",
+   "In the king’s house",
+   "In the mountains"
+  ],
+  "answer": 1,
+  "explanation": "\"Come, my beloved, let us go forth into the field; let us lodge in the villages.\"",
+  "ref": "Song of Solomon 7:11"
+ },
+ {
+  "id": "song-of-solomon-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has she laid up for her beloved at their gates?",
+  "choices": [
+   "Spices and myrrh",
+   "Wine and honey",
+   "Pleasant fruits, new and old",
+   "Silver and gold"
+  ],
+  "answer": 2,
+  "explanation": "\"At our gates are all manner of pleasant fruits, new and old, which I have laid up for thee.\"",
+  "ref": "Song of Solomon 7:13"
+ },
+ {
+  "id": "song-of-solomon-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What gives a smell at their gates?",
+  "choices": [
+   "The cedars",
+   "The lilies",
+   "The pomegranates",
+   "The mandrakes"
+  ],
+  "answer": 3,
+  "explanation": "\"The mandrakes give a smell, and at our gates are all manner of pleasant fruits.\"",
+  "ref": "Song of Solomon 7:13"
+ },
+ {
+  "id": "song-of-solomon-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is like a tower of ivory?",
+  "choices": [
+   "Thy hands",
+   "Thy head",
+   "Thy neck",
+   "Thy stature"
+  ],
+  "answer": 2,
+  "explanation": "\"Thy neck is as a tower of ivory.\"",
+  "ref": "Song of Solomon 7:4"
+ },
+ {
+  "id": "song-of-solomon-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Her eyes are like the fishpools in which city?",
+  "choices": [
+   "Damascus",
+   "Heshbon",
+   "Hebron",
+   "Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "\"Thine eyes like the fishpools in Heshbon, by the gate of Bath-rabbim.\"",
+  "ref": "Song of Solomon 7:4"
+ },
+ {
+  "id": "song-of-solomon-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Her head upon her is like which mountain?",
+  "choices": [
+   "Hermon",
+   "Gilead",
+   "Lebanon",
+   "Carmel"
+  ],
+  "answer": 3,
+  "explanation": "\"Thine head upon thee is like Carmel, and the hair of thine head like purple.\"",
+  "ref": "Song of Solomon 7:5"
+ },
+ {
+  "id": "song-of-solomon-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What colour is her hair said to be like?",
+  "choices": [
+   "Scarlet",
+   "Purple",
+   "Gold",
+   "Black"
+  ],
+  "answer": 1,
+  "explanation": "\"The hair of thine head like purple; the king is held in the galleries.\"",
+  "ref": "Song of Solomon 7:5"
+ },
+ {
+  "id": "song-of-solomon-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where is the king held?",
+  "choices": [
+   "In the chariot",
+   "At the gate",
+   "In the garden",
+   "In the galleries"
+  ],
+  "answer": 3,
+  "explanation": "\"The king is held in the galleries.\"",
+  "ref": "Song of Solomon 7:5"
+ },
+ {
+  "id": "song-of-solomon-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say he will do to the palm tree?",
+  "choices": [
+   "Take hold of its boughs",
+   "Sit under it",
+   "Climb its top",
+   "Plant another beside it"
+  ],
+  "answer": 0,
+  "explanation": "\"I said, I will go up to the palm tree, I will take hold of the boughs thereof.\"",
+  "ref": "Song of Solomon 7:8"
+ },
+ {
+  "id": "song-of-solomon-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do they go to see in the vineyards?",
+  "choices": [
+   "Whether the foxes have come",
+   "Whether the harvest is ready",
+   "Whether the vine flourishes and the grape appears",
+   "Whether the wall is whole"
+  ],
+  "answer": 2,
+  "explanation": "\"Let us see if the vine flourish, whether the tender grape appear, and the pomegranates bud forth.\"",
+  "ref": "Song of Solomon 7:12"
+ },
+ {
+  "id": "song-of-solomon-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "At the gate of which place are the fishpools of Heshbon?",
+  "choices": [
+   "Bethlehem",
+   "Bath-rabbim",
+   "Baal-hamon",
+   "Beth-shemesh"
+  ],
+  "answer": 1,
+  "explanation": "\"The fishpools in Heshbon, by the gate of Bath-rabbim.\"",
+  "ref": "Song of Solomon 7:4"
+ },
+ {
+  "id": "song-of-solomon-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "The tower of Lebanon looketh toward which city?",
+  "choices": [
+   "Jerusalem",
+   "Tirzah",
+   "Heshbon",
+   "Damascus"
+  ],
+  "answer": 3,
+  "explanation": "\"Thy nose is as the tower of Lebanon which looketh toward Damascus.\"",
+  "ref": "Song of Solomon 7:4"
+ },
+ {
+  "id": "song-of-solomon-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Where will she give him her loves, after rising early?",
+  "choices": [
+   "In the villages",
+   "In the vineyards",
+   "At the gates",
+   "In the garden of nuts"
+  ],
+  "answer": 1,
+  "explanation": "\"Let us get up early to the vineyards... there will I give thee my loves.\"",
+  "ref": "Song of Solomon 7:12"
+ },
+ {
+  "id": "song-of-solomon-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose work are the joints of her thighs said to be?",
+  "choices": [
+   "A king",
+   "A cunning workman",
+   "A goldsmith",
+   "A shepherd"
+  ],
+  "answer": 1,
+  "explanation": "\"The joints of thy thighs are like jewels, the work of the hands of a cunning workman.\"",
+  "ref": "Song of Solomon 7:1"
+ },
+ {
+  "id": "song-of-solomon-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "What is she called when her feet are praised?",
+  "choices": [
+   "Daughter of Zion",
+   "Daughter of Jerusalem",
+   "Prince’s daughter",
+   "King’s sister"
+  ],
+  "answer": 2,
+  "explanation": "\"How beautiful are thy feet with shoes, O prince’s daughter!\"",
+  "ref": "Song of Solomon 7:1"
+ },
+ {
+  "id": "song-of-solomon-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the best wine cause the lips of those that are asleep to do?",
+  "choices": [
+   "Smile",
+   "Sing",
+   "Speak",
+   "Rest"
+  ],
+  "answer": 2,
+  "explanation": "\"The best wine for my beloved, that goeth down sweetly, causing the lips of those that are asleep to speak.\"",
+  "ref": "Song of Solomon 7:9"
+ },
+ {
+  "id": "song-of-solomon-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The smell of her nose is like what?",
+  "choices": [
+   "Cedar",
+   "Myrrh",
+   "Apples",
+   "Lilies"
+  ],
+  "answer": 2,
+  "explanation": "\"The smell of thy nose like apples.\"",
+  "ref": "Song of Solomon 7:8"
+ },
+ {
+  "id": "song-of-solomon-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Solomon’s vineyard?",
+  "choices": [
+   "Baal-hamon",
+   "En-gedi",
+   "Sharon",
+   "Carmel"
+  ],
+  "answer": 0,
+  "explanation": "\"Solomon had a vineyard at Baal-hamon; he let out the vineyard unto keepers.\"",
+  "ref": "Song of Solomon 8:11"
+ },
+ {
+  "id": "song-of-solomon-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Upon what does she ask to be set as a seal?",
+  "choices": [
+   "His finger and his hand",
+   "His heart and his arm",
+   "His crown and his throne",
+   "His door and his wall"
+  ],
+  "answer": 1,
+  "explanation": "\"Set me as a seal upon thine heart, as a seal upon thine arm: for love is strong as death.\"",
+  "ref": "Song of Solomon 8:6"
+ },
+ {
+  "id": "song-of-solomon-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will they build upon the little sister if she be a wall?",
+  "choices": [
+   "A tower of ivory",
+   "A house of cedar",
+   "A palace of silver",
+   "A garden of spices"
+  ],
+  "answer": 2,
+  "explanation": "\"If she be a wall, we will build upon her a palace of silver.\"",
+  "ref": "Song of Solomon 8:9"
+ },
+ {
+  "id": "song-of-solomon-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will they enclose her with if she be a door?",
+  "choices": [
+   "Bars of iron",
+   "Boards of cedar",
+   "Gates of brass",
+   "Curtains of purple"
+  ],
+  "answer": 1,
+  "explanation": "\"If she be a door, we will inclose her with boards of cedar.\"",
+  "ref": "Song of Solomon 8:9"
+ },
+ {
+  "id": "song-of-solomon-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom did Solomon let out the vineyard?",
+  "choices": [
+   "Keepers",
+   "His sons",
+   "The daughters of Zion",
+   "Strangers"
+  ],
+  "answer": 0,
+  "explanation": "\"He let out the vineyard unto keepers; every one for the fruit thereof was to bring a thousand pieces of silver.\"",
+  "ref": "Song of Solomon 8:11"
+ },
+ {
+  "id": "song-of-solomon-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much was each keeper to bring for the fruit?",
+  "choices": [
+   "A hundred pieces of gold",
+   "Two hundred pieces of silver",
+   "A thousand pieces of silver",
+   "Threescore shekels"
+  ],
+  "answer": 2,
+  "explanation": "\"Every one for the fruit thereof was to bring a thousand pieces of silver.\"",
+  "ref": "Song of Solomon 8:11"
+ },
+ {
+  "id": "song-of-solomon-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Under what tree did he raise her up?",
+  "choices": [
+   "The fig tree",
+   "The apple tree",
+   "The palm tree",
+   "The olive tree"
+  ],
+  "answer": 1,
+  "explanation": "\"I raised thee up under the apple tree: there thy mother brought thee forth.\"",
+  "ref": "Song of Solomon 8:5"
+ },
+ {
+  "id": "song-of-solomon-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Jealousy is as cruel as what?",
+  "choices": [
+   "The sea",
+   "The grave",
+   "The fire",
+   "The sword"
+  ],
+  "answer": 1,
+  "explanation": "\"Love is strong as death; jealousy is cruel as the grave.\"",
+  "ref": "Song of Solomon 8:6"
+ },
+ {
+  "id": "song-of-solomon-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen if a man gave all the substance of his house for love?",
+  "choices": [
+   "It would be returned",
+   "It would be blessed",
+   "It would be enough",
+   "It would utterly be contemned"
+  ],
+  "answer": 3,
+  "explanation": "\"If a man would give all the substance of his house for love, it would utterly be contemned.\"",
+  "ref": "Song of Solomon 8:7"
+ },
+ {
+  "id": "song-of-solomon-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much do those who keep the fruit receive?",
+  "choices": [
+   "A thousand",
+   "Fifty",
+   "Three hundred",
+   "Two hundred"
+  ],
+  "answer": 3,
+  "explanation": "\"Thou, O Solomon, must have a thousand, and those that keep the fruit thereof two hundred.\"",
+  "ref": "Song of Solomon 8:12"
+ },
+ {
+  "id": "song-of-solomon-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Upon which mountains does she ask him to be like a roe or young hart?",
+  "choices": [
+   "The mountains of Bether",
+   "The mountains of Gilead",
+   "The mountains of spices",
+   "The mountains of Lebanon"
+  ],
+  "answer": 2,
+  "explanation": "\"Be thou like to a roe or to a young hart upon the mountains of spices.\"",
+  "ref": "Song of Solomon 8:14"
+ },
+ {
+  "id": "song-of-solomon-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the speakers ask about their little sister?",
+  "choices": [
+   "Where shall she live",
+   "Who will teach her",
+   "How shall she be clothed",
+   "What shall we do for her in the day she is spoken for"
+  ],
+  "answer": 3,
+  "explanation": "\"What shall we do for our sister in the day when she shall be spoken for?\"",
+  "ref": "Song of Solomon 8:8"
+ },
+ {
+  "id": "song-of-solomon-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does she say she was in his eyes, being a wall?",
+  "choices": [
+   "One that was a stranger",
+   "One that was too young",
+   "One who stood alone",
+   "One that found favour"
+  ],
+  "answer": 3,
+  "explanation": "\"I am a wall, and my breasts like towers: then was I in his eyes as one that found favour.\"",
+  "ref": "Song of Solomon 8:10"
+ },
+ {
+  "id": "song-of-solomon-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who hearken to the voice of the one that dwells in the gardens?",
+  "choices": [
+   "The watchmen",
+   "The companions",
+   "The keepers",
+   "The daughters of Zion"
+  ],
+  "answer": 1,
+  "explanation": "\"Thou that dwellest in the gardens, the companions hearken to thy voice: cause me to hear it.\"",
+  "ref": "Song of Solomon 8:13"
+ },
+ {
+  "id": "song-of-solomon-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where does she wish to lead him, who would instruct her?",
+  "choices": [
+   "To the king’s palace",
+   "Into her mother’s house",
+   "Into the vineyard",
+   "To the city gate"
+  ],
+  "answer": 1,
+  "explanation": "\"I would lead thee, and bring thee into my mother’s house, who would instruct me.\"",
+  "ref": "Song of Solomon 8:2"
+ },
+ {
+  "id": "song-of-solomon-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does she say of her own vineyard when she answers Solomon?",
+  "choices": [
+   "It is far away",
+   "It is shared with the keepers",
+   "It is let out",
+   "It is before her"
+  ],
+  "answer": 3,
+  "explanation": "\"My vineyard, which is mine, is before me: thou, O Solomon, must have a thousand.\"",
+  "ref": "Song of Solomon 8:12"
  }
 ]
