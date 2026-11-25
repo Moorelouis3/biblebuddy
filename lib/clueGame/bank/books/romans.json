@@ -16,22 +16,6 @@
   "ref": "Romans 1:1"
  },
  {
-  "id": "old-romans-1-2",
-  "chapter": 1,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "According to Romans 1:4, what declared Jesus to be the Son of God with power?",
-  "choices": [
-   "His miracles",
-   "His resurrection from the dead",
-   "His birth in Bethlehem",
-   "His sermon on the mount"
-  ],
-  "answer": 1,
-  "explanation": "Paul says Jesus was declared the Son of God with power by the resurrection from the dead.",
-  "ref": "Romans 1:4"
- },
- {
   "id": "old-romans-1-3",
   "chapter": 1,
   "level": "beginner",
@@ -96,22 +80,6 @@
   "ref": "Romans 2:4"
  },
  {
-  "id": "old-romans-2-2",
-  "chapter": 2,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Romans 2:6 say God will render to every man according to?",
-  "choices": [
-   "His deeds",
-   "His words",
-   "His tribe",
-   "His feelings"
-  ],
-  "answer": 0,
-  "explanation": "God will render to every man according to his deeds.",
-  "ref": "Romans 2:6"
- },
- {
   "id": "old-romans-2-3",
   "chapter": 2,
   "level": "beginner",
@@ -144,22 +112,6 @@
   "ref": "Romans 2:14–15"
  },
  {
-  "id": "old-romans-2-5",
-  "chapter": 2,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "According to Romans 2:29, true circumcision is of what?",
-  "choices": [
-   "The flesh",
-   "The heart",
-   "The nation",
-   "The temple"
-  ],
-  "answer": 1,
-  "explanation": "Paul says true circumcision is that of the heart, in the spirit.",
-  "ref": "Romans 2:29"
- },
- {
   "id": "old-romans-3-1",
   "chapter": 3,
   "level": "beginner",
@@ -174,22 +126,6 @@
   "answer": 3,
   "explanation": "Paul says unto them were committed the oracles of God.",
   "ref": "Romans 3:2"
- },
- {
-  "id": "old-romans-3-2",
-  "chapter": 3,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "In the scripture Paul quotes, how many people are righteous?",
-  "choices": [
-   "A few",
-   "None",
-   "Only the prophets",
-   "Only the faithful Jews"
-  ],
-  "answer": 1,
-  "explanation": "Paul writes, 'There is none righteous, no, not one.'",
-  "ref": "Romans 3:10"
  },
  {
   "id": "old-romans-3-3",
@@ -5438,5 +5374,4021 @@
   "answer": 2,
   "explanation": "Behold, I lay in Sion a stumblingstone and rock of offence.",
   "ref": "Romans 9:33"
+ },
+ {
+  "id": "romans-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul describe himself at the start of the letter?",
+  "choices": [
+   "A prophet sent only to Israel",
+   "A servant of Jesus Christ, called to be an apostle",
+   "An elder of the church at Rome",
+   "A soldier in the service of Caesar"
+  ],
+  "answer": 1,
+  "explanation": "Paul calls himself a servant of Jesus Christ, called to be an apostle, separated unto the gospel of God.",
+  "ref": "Romans 1:1"
+ },
+ {
+  "id": "romans-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose seed was Jesus Christ made of, according to the flesh?",
+  "choices": [
+   "David",
+   "Abraham",
+   "Moses",
+   "Solomon"
+  ],
+  "answer": 0,
+  "explanation": "Paul says God's Son Jesus Christ was made of the seed of David according to the flesh.",
+  "ref": "Romans 1:3"
+ },
+ {
+  "id": "romans-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "To the believers in which city is Paul writing?",
+  "choices": [
+   "Corinth",
+   "Antioch",
+   "Jerusalem",
+   "Rome"
+  ],
+  "answer": 3,
+  "explanation": "Paul writes to all that be in Rome, beloved of God, called to be saints.",
+  "ref": "Romans 1:7"
+ },
+ {
+  "id": "romans-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does Paul thank God for the believers in Rome?",
+  "choices": [
+   "They sent him money in prison",
+   "They had kept the law without fail",
+   "Their faith is spoken of throughout the whole world",
+   "They had never been persecuted"
+  ],
+  "answer": 2,
+  "explanation": "Paul thanks God through Jesus Christ that their faith is spoken of throughout the whole world.",
+  "ref": "Romans 1:8"
+ },
+ {
+  "id": "romans-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Of what does Paul say he is not ashamed?",
+  "choices": [
+   "The law of Moses",
+   "The gospel of Christ",
+   "His chains",
+   "His Jewish birth"
+  ],
+  "answer": 1,
+  "explanation": "Paul says, I am not ashamed of the gospel of Christ.",
+  "ref": "Romans 1:16"
+ },
+ {
+  "id": "romans-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The gospel is the power of God unto salvation to whom?",
+  "choices": [
+   "Every one that believeth",
+   "Only those born as Jews",
+   "Only those who keep the law",
+   "Only the wise and learned"
+  ],
+  "answer": 0,
+  "explanation": "It is the power of God unto salvation to every one that believeth; to the Jew first, and also to the Greek.",
+  "ref": "Romans 1:16"
+ },
+ {
+  "id": "romans-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is revealed from heaven against all ungodliness and unrighteousness?",
+  "choices": [
+   "The fire of the Lord",
+   "The glory of the Son",
+   "A sign of the covenant",
+   "The wrath of God"
+  ],
+  "answer": 3,
+  "explanation": "The wrath of God is revealed from heaven against all ungodliness and unrighteousness of men.",
+  "ref": "Romans 1:18"
+ },
+ {
+  "id": "romans-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Professing themselves to be wise, what did people become?",
+  "choices": [
+   "Prophets",
+   "Teachers",
+   "Fools",
+   "Rulers"
+  ],
+  "answer": 2,
+  "explanation": "Professing themselves to be wise, they became fools.",
+  "ref": "Romans 1:22"
+ },
+ {
+  "id": "romans-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What declared Jesus to be the Son of God with power?",
+  "choices": [
+   "His miracles in Galilee",
+   "The resurrection from the dead",
+   "His birth in David's city",
+   "His baptism in the Jordan"
+  ],
+  "answer": 1,
+  "explanation": "Jesus was declared to be the Son of God with power by the resurrection from the dead.",
+  "ref": "Romans 1:4"
+ },
+ {
+  "id": "romans-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul wish for the Romans in his greeting?",
+  "choices": [
+   "Grace and peace",
+   "Joy and strength",
+   "Mercy and truth",
+   "Wisdom and power"
+  ],
+  "answer": 0,
+  "explanation": "Paul writes, Grace to you and peace from God our Father, and the Lord Jesus Christ.",
+  "ref": "Romans 1:7"
+ },
+ {
+  "id": "romans-1-e-11",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By whom had God promised the gospel beforehand in the holy scriptures?",
+  "choices": [
+   "His angels",
+   "The elders of Israel",
+   "The kings of Judah",
+   "His prophets"
+  ],
+  "answer": 3,
+  "explanation": "The gospel was promised afore by his prophets in the holy scriptures.",
+  "ref": "Romans 1:2"
+ },
+ {
+  "id": "romans-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Paul long to see the believers in Rome?",
+  "choices": [
+   "To collect an offering for the poor",
+   "To appoint elders over them",
+   "To impart some spiritual gift so they may be established",
+   "To defend himself before them"
+  ],
+  "answer": 2,
+  "explanation": "Paul longs to see them that he may impart some spiritual gift, to the end they may be established.",
+  "ref": "Romans 1:11"
+ },
+ {
+  "id": "romans-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say he is ready to do in Rome?",
+  "choices": [
+   "Settle a dispute among the elders",
+   "Preach the gospel",
+   "Raise up a new church",
+   "Collect tribute for the saints"
+  ],
+  "answer": 1,
+  "explanation": "As much as in him is, Paul is ready to preach the gospel to them that are at Rome also.",
+  "ref": "Romans 1:15"
+ },
+ {
+  "id": "romans-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How often does Paul say he mentions the Romans in his prayers?",
+  "choices": [
+   "Without ceasing, always",
+   "Once every sabbath",
+   "Only on feast days",
+   "Only when he is in chains"
+  ],
+  "answer": 0,
+  "explanation": "Paul says that without ceasing he makes mention of them always in his prayers.",
+  "ref": "Romans 1:9"
+ },
+ {
+  "id": "romans-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does Paul call as his witness that he prays for them without ceasing?",
+  "choices": [
+   "Timothy",
+   "Peter",
+   "The church at Jerusalem",
+   "God"
+  ],
+  "answer": 3,
+  "explanation": "Paul says, God is my witness, whom I serve with my spirit in the gospel of his Son.",
+  "ref": "Romans 1:9"
+ },
+ {
+  "id": "romans-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say is revealed in the gospel from faith to faith?",
+  "choices": [
+   "The wrath of the Lamb",
+   "The mystery of the kingdom",
+   "The righteousness of God",
+   "The glory of the temple"
+  ],
+  "answer": 2,
+  "explanation": "Therein is the righteousness of God revealed from faith to faith.",
+  "ref": "Romans 1:17"
+ },
+ {
+  "id": "romans-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Against whom is the wrath of God revealed?",
+  "choices": [
+   "Nations that persecute Israel",
+   "Men who hold the truth in unrighteousness",
+   "Only the rulers of Rome",
+   "Those who have never heard of God"
+  ],
+  "answer": 1,
+  "explanation": "The wrath of God is revealed against men, who hold the truth in unrighteousness.",
+  "ref": "Romans 1:18"
+ },
+ {
+  "id": "romans-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Paul say people are without excuse?",
+  "choices": [
+   "God's eternal power is clearly seen in what he made",
+   "They have all read the law of Moses",
+   "Prophets warned every nation",
+   "Angels have appeared to them"
+  ],
+  "answer": 0,
+  "explanation": "His invisible things from the creation are clearly seen by the things that are made, even his eternal power and Godhead.",
+  "ref": "Romans 1:20"
+ },
+ {
+  "id": "romans-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What became of the foolish heart of those who did not glorify God?",
+  "choices": [
+   "It was broken",
+   "It was made new",
+   "It was turned to stone",
+   "It was darkened"
+  ],
+  "answer": 3,
+  "explanation": "When they knew God they glorified him not as God, and their foolish heart was darkened.",
+  "ref": "Romans 1:21"
+ },
+ {
+  "id": "romans-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God do to those who changed his glory into images?",
+  "choices": [
+   "Sent a flood upon the earth",
+   "Scattered them among the nations",
+   "Gave them up to uncleanness",
+   "Sent prophets to warn them"
+  ],
+  "answer": 2,
+  "explanation": "God gave them up to uncleanness through the lusts of their own hearts.",
+  "ref": "Romans 1:24"
+ },
+ {
+  "id": "romans-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did God give them over to a reprobate mind?",
+  "choices": [
+   "They broke the covenant of circumcision",
+   "They did not like to retain God in their knowledge",
+   "They refused to offer sacrifices",
+   "They rejected the prophets"
+  ],
+  "answer": 1,
+  "explanation": "Even as they did not like to retain God in their knowledge, God gave them over to a reprobate mind.",
+  "ref": "Romans 1:28"
+ },
+ {
+  "id": "romans-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom does Paul say these people are disobedient?",
+  "choices": [
+   "Parents",
+   "Kings",
+   "Priests",
+   "Elders"
+  ],
+  "answer": 0,
+  "explanation": "The list includes inventors of evil things and those disobedient to parents.",
+  "ref": "Romans 1:30"
+ },
+ {
+  "id": "romans-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say about those who know God's judgment on such sins?",
+  "choices": [
+   "They repent and turn away",
+   "They hide it from others",
+   "They teach it to their children",
+   "They do the same and take pleasure in those who do them"
+  ],
+  "answer": 3,
+  "explanation": "They not only do the same, but have pleasure in them that do them.",
+  "ref": "Romans 1:32"
+ },
+ {
+  "id": "romans-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul describe the Roman believers in his greeting?",
+  "choices": [
+   "Chosen of Israel, keepers of the law",
+   "Elders of the church, faithful stewards",
+   "Beloved of God, called to be saints",
+   "Strangers and pilgrims, scattered abroad"
+  ],
+  "answer": 2,
+  "explanation": "Paul writes to all that be in Rome, beloved of God, called to be saints.",
+  "ref": "Romans 1:7"
+ },
+ {
+  "id": "romans-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul say he and the Romans would be comforted together?",
+  "choices": [
+   "By a gift of money",
+   "By the mutual faith of both of them",
+   "By the laying on of hands",
+   "By sharing Paul's chains"
+  ],
+  "answer": 1,
+  "explanation": "That I may be comforted together with you by the mutual faith both of you and me.",
+  "ref": "Romans 1:12"
+ },
+ {
+  "id": "romans-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Among whom did Paul receive apostleship for obedience to the faith?",
+  "choices": [
+   "All nations",
+   "The twelve tribes",
+   "The Jews of Rome",
+   "The churches of Asia"
+  ],
+  "answer": 0,
+  "explanation": "By Christ Paul received grace and apostleship, for obedience to the faith among all nations, for his name.",
+  "ref": "Romans 1:5"
+ },
+ {
+  "id": "romans-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul hope to have among the Romans, as among other Gentiles?",
+  "choices": [
+   "Some rest",
+   "A harvest of tithes",
+   "A written testimony",
+   "Some fruit"
+  ],
+  "answer": 3,
+  "explanation": "Paul purposed to come that he might have some fruit among them also, even as among other Gentiles.",
+  "ref": "Romans 1:13"
+ },
+ {
+  "id": "romans-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul ask God for in his prayers about Rome?",
+  "choices": [
+   "Release from prison",
+   "Silver for the road",
+   "A prosperous journey to come to them",
+   "Safety from the Jews"
+  ],
+  "answer": 2,
+  "explanation": "He asks, if by any means he might have a prosperous journey by the will of God to come unto them.",
+  "ref": "Romans 1:10"
+ },
+ {
+  "id": "romans-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into an image made like what did people change the glory of God?",
+  "choices": [
+   "The sun, moon and stars",
+   "Corruptible man, birds, beasts and creeping things",
+   "Kings and warriors",
+   "Fish and trees"
+  ],
+  "answer": 1,
+  "explanation": "They changed the glory of the uncorruptible God into an image made like to corruptible man, and to birds, and fourfooted beasts, and creeping things.",
+  "ref": "Romans 1:23"
+ },
+ {
+  "id": "romans-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Paul say he serves God in the gospel of his Son?",
+  "choices": [
+   "With his spirit",
+   "With his hands",
+   "With his possessions",
+   "With his chains"
+  ],
+  "answer": 0,
+  "explanation": "Paul says God is his witness, whom he serves with his spirit in the gospel of his Son.",
+  "ref": "Romans 1:9"
+ },
+ {
+  "id": "romans-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Through whom does Paul thank his God for the Romans?",
+  "choices": [
+   "Timothy",
+   "The Holy Ghost",
+   "The prophets",
+   "Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "First, I thank my God through Jesus Christ for you all.",
+  "ref": "Romans 1:8"
+ },
+ {
+  "id": "romans-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does the gospel come to first, before the Greek?",
+  "choices": [
+   "The Roman",
+   "The Barbarian",
+   "The Jew",
+   "The Samaritan"
+  ],
+  "answer": 2,
+  "explanation": "It is the power of God unto salvation to the Jew first, and also to the Greek.",
+  "ref": "Romans 1:16"
+ },
+ {
+  "id": "romans-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did people become vain when they knew God?",
+  "choices": [
+   "Their words",
+   "Their imaginations",
+   "Their idols",
+   "Their wisdom"
+  ],
+  "answer": 1,
+  "explanation": "They became vain in their imaginations, and their foolish heart was darkened.",
+  "ref": "Romans 1:21"
+ },
+ {
+  "id": "romans-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the Greeks, to whom does Paul say he is a debtor?",
+  "choices": [
+   "The Barbarians",
+   "The Romans",
+   "The Samaritans",
+   "The Egyptians"
+  ],
+  "answer": 0,
+  "explanation": "I am debtor both to the Greeks, and to the Barbarians; both to the wise, and to the unwise.",
+  "ref": "Romans 1:14"
+ },
+ {
+  "id": "romans-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to what spirit was Jesus declared the Son of God?",
+  "choices": [
+   "The spirit of adoption",
+   "The spirit of truth",
+   "The spirit of wisdom",
+   "The spirit of holiness"
+  ],
+  "answer": 3,
+  "explanation": "He was declared to be the Son of God according to the spirit of holiness, by the resurrection from the dead.",
+  "ref": "Romans 1:4"
+ },
+ {
+  "id": "romans-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is said to be blessed for ever?",
+  "choices": [
+   "The creature",
+   "The apostle",
+   "The Creator",
+   "The Son of David"
+  ],
+  "answer": 2,
+  "explanation": "Those who served the creature more than the Creator, who is blessed for ever. Amen.",
+  "ref": "Romans 1:25"
+ },
+ {
+  "id": "romans-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides not glorifying God as God, what else did they fail to be?",
+  "choices": [
+   "Humble",
+   "Thankful",
+   "Obedient",
+   "Patient"
+  ],
+  "answer": 1,
+  "explanation": "When they knew God, they glorified him not as God, neither were thankful.",
+  "ref": "Romans 1:21"
+ },
+ {
+  "id": "romans-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does Paul say some of these people are haters of?",
+  "choices": [
+   "God",
+   "The Jews",
+   "Their rulers",
+   "Their neighbours"
+  ],
+  "answer": 0,
+  "explanation": "The list includes backbiters, haters of God, despiteful, proud, boasters.",
+  "ref": "Romans 1:30"
+ },
+ {
+  "id": "romans-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does the gospel of God concern?",
+  "choices": [
+   "The kingdom of Israel",
+   "The temple of God",
+   "The law and the prophets",
+   "His Son Jesus Christ our Lord"
+  ],
+  "answer": 3,
+  "explanation": "The gospel is concerning his Son Jesus Christ our Lord.",
+  "ref": "Romans 1:3"
+ },
+ {
+  "id": "romans-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Paul not have the brethren ignorant of?",
+  "choices": [
+   "That the law was given by Moses",
+   "That he had been in prison for Christ",
+   "That he had often purposed to come to them but was hindered",
+   "That the Jews had rejected the gospel"
+  ],
+  "answer": 2,
+  "explanation": "I would not have you ignorant, brethren, that oftentimes I purposed to come unto you, but was let hitherto.",
+  "ref": "Romans 1:13"
+ },
+ {
+  "id": "romans-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "From where is the wrath of God revealed?",
+  "choices": [
+   "From Sinai",
+   "From heaven",
+   "From Zion",
+   "From the temple"
+  ],
+  "answer": 1,
+  "explanation": "The wrath of God is revealed from heaven.",
+  "ref": "Romans 1:18"
+ },
+ {
+  "id": "romans-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say the man who judges another is really doing?",
+  "choices": [
+   "Pleasing God by his zeal",
+   "Condemning himself, for he does the same things",
+   "Keeping the law for the Gentiles",
+   "Warning the unrighteous"
+  ],
+  "answer": 1,
+  "explanation": "Wherein thou judgest another, thou condemnest thyself; for thou that judgest doest the same things.",
+  "ref": "Romans 2:1"
+ },
+ {
+  "id": "romans-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "According to what is the judgment of God?",
+  "choices": [
+   "Truth",
+   "The traditions of the elders",
+   "A man's lineage",
+   "A man's riches"
+  ],
+  "answer": 0,
+  "explanation": "We are sure that the judgment of God is according to truth.",
+  "ref": "Romans 2:2"
+ },
+ {
+  "id": "romans-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "God will render to every man according to what?",
+  "choices": [
+   "His words",
+   "His tribe",
+   "His feelings",
+   "His deeds"
+  ],
+  "answer": 3,
+  "explanation": "God will render to every man according to his deeds.",
+  "ref": "Romans 2:6"
+ },
+ {
+  "id": "romans-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who will receive tribulation and anguish?",
+  "choices": [
+   "Only the Gentiles",
+   "Only those without the law",
+   "Every soul of man that doeth evil",
+   "Only the rulers of the earth"
+  ],
+  "answer": 2,
+  "explanation": "Tribulation and anguish come upon every soul of man that doeth evil, of the Jew first, and also of the Gentile.",
+  "ref": "Romans 2:9"
+ },
+ {
+  "id": "romans-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Of what does the man called a Jew make his boast?",
+  "choices": [
+   "His sacrifices",
+   "God",
+   "His lineage",
+   "His temple"
+  ],
+  "answer": 1,
+  "explanation": "Thou art called a Jew, and restest in the law, and makest thy boast of God.",
+  "ref": "Romans 2:17"
+ },
+ {
+  "id": "romans-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what does the man called a Jew rest?",
+  "choices": [
+   "The law",
+   "The temple",
+   "The sacrifices",
+   "The fathers"
+  ],
+  "answer": 0,
+  "explanation": "Paul says, Thou art called a Jew, and restest in the law.",
+  "ref": "Romans 2:17"
+ },
+ {
+  "id": "romans-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul asks the man who preaches against what whether he does it himself?",
+  "choices": [
+   "Lying",
+   "Murder",
+   "Idle talk",
+   "Stealing"
+  ],
+  "answer": 3,
+  "explanation": "Thou that preachest a man should not steal, dost thou steal?",
+  "ref": "Romans 2:21"
+ },
+ {
+  "id": "romans-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of circumcision does Paul say counts before God?",
+  "choices": [
+   "Of the flesh, on the eighth day",
+   "Of the nation, by the priests",
+   "Of the heart, in the spirit",
+   "Of the law, in the letter"
+  ],
+  "answer": 2,
+  "explanation": "Circumcision is that of the heart, in the spirit, and not in the letter.",
+  "ref": "Romans 2:29"
+ },
+ {
+  "id": "romans-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom does Paul call a Jew?",
+  "choices": [
+   "He who is born of Abraham",
+   "He who is one inwardly",
+   "He who keeps the feasts",
+   "He who lives in Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "He is a Jew, which is one inwardly; and circumcision is that of the heart.",
+  "ref": "Romans 2:29"
+ },
+ {
+  "id": "romans-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose name is blasphemed among the Gentiles through the lawbreakers?",
+  "choices": [
+   "God's",
+   "Moses'",
+   "The king's",
+   "The high priest'"
+  ],
+  "answer": 0,
+  "explanation": "The name of God is blasphemed among the Gentiles through you, as it is written.",
+  "ref": "Romans 2:24"
+ },
+ {
+  "id": "romans-2-e-11",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul says God will judge the secrets of men according to what?",
+  "choices": [
+   "The law of Moses",
+   "The traditions of the fathers",
+   "Each man's wealth",
+   "His gospel"
+  ],
+  "answer": 3,
+  "explanation": "God shall judge the secrets of men by Jesus Christ according to Paul's gospel.",
+  "ref": "Romans 2:16"
+ },
+ {
+  "id": "romans-2-e-12",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "By whom will God judge the secrets of men?",
+  "choices": [
+   "Moses",
+   "The angels",
+   "Jesus Christ",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "In the day when God shall judge the secrets of men by Jesus Christ.",
+  "ref": "Romans 2:16"
+ },
+ {
+  "id": "romans-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do people despise if they do not know the goodness of God leads to repentance?",
+  "choices": [
+   "The sacrifices of the temple",
+   "The riches of his goodness, forbearance and longsuffering",
+   "The warnings of the prophets",
+   "The commandments of Moses"
+  ],
+  "answer": 1,
+  "explanation": "Or despisest thou the riches of his goodness and forbearance and longsuffering?",
+  "ref": "Romans 2:4"
+ },
+ {
+  "id": "romans-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does a hard and impenitent heart treasure up?",
+  "choices": [
+   "Wrath against the day of wrath",
+   "Riches for the last day",
+   "Mercy at the judgment",
+   "Honour among men"
+  ],
+  "answer": 0,
+  "explanation": "After thy hardness and impenitent heart treasurest up unto thyself wrath against the day of wrath.",
+  "ref": "Romans 2:5"
+ },
+ {
+  "id": "romans-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom will God give eternal life?",
+  "choices": [
+   "Those who keep every feast",
+   "Those descended from Abraham",
+   "Those who preach the law",
+   "Those who seek glory and honour by patient well doing"
+  ],
+  "answer": 3,
+  "explanation": "To them who by patient continuance in well doing seek for glory and honour and immortality, eternal life.",
+  "ref": "Romans 2:7"
+ },
+ {
+  "id": "romans-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is for those who are contentious and do not obey the truth?",
+  "choices": [
+   "Silence and exile",
+   "Poverty and shame",
+   "Indignation and wrath",
+   "Famine and plague"
+  ],
+  "answer": 2,
+  "explanation": "Unto them that are contentious, and do not obey the truth, but obey unrighteousness, indignation and wrath.",
+  "ref": "Romans 2:8"
+ },
+ {
+  "id": "romans-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to those who sinned without law?",
+  "choices": [
+   "They shall be judged by the law",
+   "They shall perish without law",
+   "They shall be forgiven",
+   "They shall be spared"
+  ],
+  "answer": 1,
+  "explanation": "As many as have sinned without law shall also perish without law.",
+  "ref": "Romans 2:12"
+ },
+ {
+  "id": "romans-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who shall be justified, according to Paul?",
+  "choices": [
+   "The doers of the law",
+   "The hearers of the law",
+   "The sons of Abraham",
+   "The circumcised"
+  ],
+  "answer": 0,
+  "explanation": "Not the hearers of the law are just before God, but the doers of the law shall be justified.",
+  "ref": "Romans 2:13"
+ },
+ {
+  "id": "romans-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What bears witness in the hearts of Gentiles who do the law by nature?",
+  "choices": [
+   "The prophets",
+   "The elders",
+   "Their dreams",
+   "Their conscience"
+  ],
+  "answer": 3,
+  "explanation": "Their conscience also bearing witness, and their thoughts accusing or else excusing one another.",
+  "ref": "Romans 2:15"
+ },
+ {
+  "id": "romans-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the man called a Jew confidently call himself towards the blind?",
+  "choices": [
+   "A healer of the blind",
+   "A shepherd of the blind",
+   "A guide of the blind",
+   "A judge of the blind"
+  ],
+  "answer": 2,
+  "explanation": "Thou art confident that thou thyself art a guide of the blind, a light of them which are in darkness.",
+  "ref": "Romans 2:19"
+ },
+ {
+  "id": "romans-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say the boaster of the law does by breaking it?",
+  "choices": [
+   "Pleases God",
+   "Dishonours God",
+   "Reveals God",
+   "Honours the fathers"
+  ],
+  "answer": 1,
+  "explanation": "Thou that makest thy boast of the law, through breaking the law dishonourest thou God?",
+  "ref": "Romans 2:23"
+ },
+ {
+  "id": "romans-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If an uncircumcised man keeps the law, what is his uncircumcision counted for?",
+  "choices": [
+   "Circumcision",
+   "Nothing",
+   "Sin",
+   "A curse"
+  ],
+  "answer": 0,
+  "explanation": "If the uncircumcision keep the righteousness of the law, shall not his uncircumcision be counted for circumcision?",
+  "ref": "Romans 2:26"
+ },
+ {
+  "id": "romans-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who will judge the Jew who breaks the law?",
+  "choices": [
+   "The high priest",
+   "The prophets of old",
+   "The Roman governor",
+   "The uncircumcised man who fulfils it"
+  ],
+  "answer": 3,
+  "explanation": "Uncircumcision which is by nature, if it fulfil the law, shall judge thee who dost transgress the law.",
+  "ref": "Romans 2:27"
+ },
+ {
+  "id": "romans-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "From whom does the inward Jew receive praise?",
+  "choices": [
+   "Men",
+   "The priests",
+   "God",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "His praise is not of men, but of God.",
+  "ref": "Romans 2:29"
+ },
+ {
+  "id": "romans-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul ask the man who judges others and does the same?",
+  "choices": [
+   "Whether he knows the law",
+   "Whether he thinks he shall escape the judgment of God",
+   "Whether he has repented",
+   "Whether he fears the Gentiles"
+  ],
+  "answer": 1,
+  "explanation": "Thinkest thou this, O man, that doest the same, that thou shalt escape the judgment of God?",
+  "ref": "Romans 2:3"
+ },
+ {
+  "id": "romans-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God give to every man that worketh good?",
+  "choices": [
+   "Glory, honour and peace",
+   "Wealth, rest and length of days",
+   "Mercy, wisdom and joy",
+   "Strength, victory and fame"
+  ],
+  "answer": 0,
+  "explanation": "Glory, honour, and peace, to every man that worketh good, to the Jew first, and also to the Gentile.",
+  "ref": "Romans 2:10"
+ },
+ {
+  "id": "romans-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When does Paul say circumcision profiteth?",
+  "choices": [
+   "If it is done on the eighth day",
+   "If a priest does it",
+   "If it is done in faith",
+   "If thou keep the law"
+  ],
+  "answer": 3,
+  "explanation": "Circumcision verily profiteth, if thou keep the law.",
+  "ref": "Romans 2:25"
+ },
+ {
+  "id": "romans-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is revealed on the day of wrath?",
+  "choices": [
+   "The book of life",
+   "The hidden things of the temple",
+   "The righteous judgment of God",
+   "The kingdom of the Son"
+  ],
+  "answer": 2,
+  "explanation": "The day of wrath and revelation of the righteous judgment of God.",
+  "ref": "Romans 2:5"
+ },
+ {
+  "id": "romans-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what shall those who have sinned in the law be judged?",
+  "choices": [
+   "Their conscience",
+   "The law",
+   "The prophets",
+   "Their fathers"
+  ],
+  "answer": 1,
+  "explanation": "As many as have sinned in the law shall be judged by the law.",
+  "ref": "Romans 2:12"
+ },
+ {
+  "id": "romans-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Gentiles who do the things of the law by nature are a law unto whom?",
+  "choices": [
+   "Themselves",
+   "Israel",
+   "The priests",
+   "Their rulers"
+  ],
+  "answer": 0,
+  "explanation": "These, having not the law, are a law unto themselves.",
+  "ref": "Romans 2:14"
+ },
+ {
+  "id": "romans-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the thoughts of the Gentiles do in the meanwhile?",
+  "choices": [
+   "Pray and give thanks",
+   "Praise and bless",
+   "Doubt and divide",
+   "Accuse or else excuse one another"
+  ],
+  "answer": 3,
+  "explanation": "Their thoughts the mean while accusing or else excusing one another.",
+  "ref": "Romans 2:15"
+ },
+ {
+  "id": "romans-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the man called a Jew have in the law?",
+  "choices": [
+   "The fullness of the Spirit",
+   "The glory of Moses",
+   "The form of knowledge and of the truth",
+   "The seal of God"
+  ],
+  "answer": 2,
+  "explanation": "Which hast the form of knowledge and of the truth in the law.",
+  "ref": "Romans 2:20"
+ },
+ {
+  "id": "romans-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "The man called a Jew thinks he is an instructor of the foolish and a teacher of whom?",
+  "choices": [
+   "Kings",
+   "Babes",
+   "Sinners",
+   "Strangers"
+  ],
+  "answer": 1,
+  "explanation": "An instructor of the foolish, a teacher of babes.",
+  "ref": "Romans 2:20"
+ },
+ {
+  "id": "romans-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Paul asks the man who teaches another: teachest thou not whom?",
+  "choices": [
+   "Thyself",
+   "The Gentiles",
+   "Thy children",
+   "Thy servants"
+  ],
+  "answer": 0,
+  "explanation": "Thou therefore which teachest another, teachest thou not thyself?",
+  "ref": "Romans 2:21"
+ },
+ {
+  "id": "romans-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul asks the one who abhors idols whether he commits what?",
+  "choices": [
+   "Blasphemy",
+   "Perjury",
+   "Witchcraft",
+   "Sacrilege"
+  ],
+  "answer": 3,
+  "explanation": "Thou that abhorrest idols, dost thou commit sacrilege?",
+  "ref": "Romans 2:22"
+ },
+ {
+  "id": "romans-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul call the man who judges another yet does the same?",
+  "choices": [
+   "Unclean",
+   "Unprofitable",
+   "Inexcusable",
+   "Unwise"
+  ],
+  "answer": 2,
+  "explanation": "Therefore thou art inexcusable, O man, whosoever thou art that judgest.",
+  "ref": "Romans 2:1"
+ },
+ {
+  "id": "romans-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The contentious do not obey the truth but obey what?",
+  "choices": [
+   "The law",
+   "Unrighteousness",
+   "Their elders",
+   "Their conscience"
+  ],
+  "answer": 1,
+  "explanation": "They are contentious, and do not obey the truth, but obey unrighteousness.",
+  "ref": "Romans 2:8"
+ },
+ {
+  "id": "romans-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the man called a Jew know God's will?",
+  "choices": [
+   "By being instructed out of the law",
+   "By visions in the night",
+   "By the voice of the prophets",
+   "By the temple priests"
+  ],
+  "answer": 0,
+  "explanation": "Thou knowest his will, being instructed out of the law.",
+  "ref": "Romans 2:18"
+ },
+ {
+  "id": "romans-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will God judge in the day he judges by Jesus Christ?",
+  "choices": [
+   "The nations of the earth",
+   "The works of angels",
+   "The idols of the Gentiles",
+   "The secrets of men"
+  ],
+  "answer": 3,
+  "explanation": "In the day when God shall judge the secrets of men by Jesus Christ.",
+  "ref": "Romans 2:16"
+ },
+ {
+  "id": "romans-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides glory and honour, what do the well-doers seek?",
+  "choices": [
+   "Dominion",
+   "Wisdom",
+   "Immortality",
+   "Riches"
+  ],
+  "answer": 2,
+  "explanation": "They seek for glory and honour and immortality, eternal life.",
+  "ref": "Romans 2:7"
+ },
+ {
+  "id": "romans-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The man called a Jew thinks himself a light of those who are in what?",
+  "choices": [
+   "Prison",
+   "Darkness",
+   "Sin",
+   "Exile"
+  ],
+  "answer": 1,
+  "explanation": "A light of them which are in darkness.",
+  "ref": "Romans 2:19"
+ },
+ {
+  "id": "romans-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the man called a Jew approve, being instructed out of the law?",
+  "choices": [
+   "The things that are more excellent",
+   "The traditions of the elders",
+   "The sacrifices of the temple",
+   "The words of the prophets"
+  ],
+  "answer": 0,
+  "explanation": "Approvest the things that are more excellent, being instructed out of the law.",
+  "ref": "Romans 2:18"
+ },
+ {
+  "id": "romans-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul says let God be true, but every man what?",
+  "choices": [
+   "A sinner",
+   "A liar",
+   "A servant",
+   "A stranger"
+  ],
+  "answer": 1,
+  "explanation": "Let God be true, but every man a liar.",
+  "ref": "Romans 3:4"
+ },
+ {
+  "id": "romans-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Under what does Paul say Jews and Gentiles all are?",
+  "choices": [
+   "Sin",
+   "The Roman law",
+   "Death",
+   "The curse"
+  ],
+  "answer": 0,
+  "explanation": "Paul has proved both Jews and Gentiles, that they are all under sin.",
+  "ref": "Romans 3:9"
+ },
+ {
+  "id": "romans-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the scripture say the throat of sinners is like?",
+  "choices": [
+   "A fountain of lies",
+   "A burning fire",
+   "A sharp sword",
+   "An open sepulchre"
+  ],
+  "answer": 3,
+  "explanation": "Their throat is an open sepulchre.",
+  "ref": "Romans 3:13"
+ },
+ {
+  "id": "romans-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To do what are their feet swift?",
+  "choices": [
+   "Run from God",
+   "Carry the gospel",
+   "Shed blood",
+   "Pursue peace"
+  ],
+  "answer": 2,
+  "explanation": "Their feet are swift to shed blood.",
+  "ref": "Romans 3:15"
+ },
+ {
+  "id": "romans-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is not before their eyes?",
+  "choices": [
+   "The law",
+   "The fear of God",
+   "The temple",
+   "The sabbath"
+  ],
+  "answer": 1,
+  "explanation": "There is no fear of God before their eyes.",
+  "ref": "Romans 3:18"
+ },
+ {
+  "id": "romans-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The righteousness of God by faith of Jesus Christ is unto whom?",
+  "choices": [
+   "All them that believe",
+   "Only the Jews",
+   "Only the circumcised",
+   "Those who keep the law"
+  ],
+  "answer": 0,
+  "explanation": "The righteousness of God which is by faith of Jesus Christ unto all and upon all them that believe.",
+  "ref": "Romans 3:22"
+ },
+ {
+  "id": "romans-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did God set forth to be a propitiation through faith in his blood?",
+  "choices": [
+   "Moses",
+   "Abraham",
+   "The high priest",
+   "Christ Jesus"
+  ],
+  "answer": 3,
+  "explanation": "God set forth Christ Jesus to be a propitiation through faith in his blood.",
+  "ref": "Romans 3:24"
+ },
+ {
+  "id": "romans-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "A man is justified by faith without what?",
+  "choices": [
+   "The grace of God",
+   "The blood of Christ",
+   "The deeds of the law",
+   "The love of the brethren"
+  ],
+  "answer": 2,
+  "explanation": "We conclude that a man is justified by faith without the deeds of the law.",
+  "ref": "Romans 3:28"
+ },
+ {
+  "id": "romans-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Of whom is God the God, besides the Jews?",
+  "choices": [
+   "The Samaritans",
+   "The Gentiles",
+   "The Egyptians",
+   "The Romans only"
+  ],
+  "answer": 1,
+  "explanation": "Is he the God of the Jews only? Yes, of the Gentiles also.",
+  "ref": "Romans 3:29"
+ },
+ {
+  "id": "romans-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Does faith make void the law, according to Paul?",
+  "choices": [
+   "No, it establishes the law",
+   "Yes, the law is ended",
+   "Yes, for the Gentiles only",
+   "Yes, but only the ceremonial law"
+  ],
+  "answer": 0,
+  "explanation": "Do we then make void the law through faith? God forbid: yea, we establish the law.",
+  "ref": "Romans 3:31"
+ },
+ {
+  "id": "romans-3-e-11",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How great is the Jew's advantage, says Paul?",
+  "choices": [
+   "Little",
+   "None",
+   "Only in the temple",
+   "Much every way"
+  ],
+  "answer": 3,
+  "explanation": "What advantage hath the Jew? Much every way.",
+  "ref": "Romans 3:2"
+ },
+ {
+  "id": "romans-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul ask whether unbelief can make without effect?",
+  "choices": [
+   "The law of Moses",
+   "The promise to Abraham",
+   "The faith of God",
+   "The sign of circumcision"
+  ],
+  "answer": 2,
+  "explanation": "Shall their unbelief make the faith of God without effect?",
+  "ref": "Romans 3:3"
+ },
+ {
+  "id": "romans-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul says God is not unrighteous, for then how shall he do what?",
+  "choices": [
+   "Keep his covenant",
+   "Judge the world",
+   "Forgive sins",
+   "Send the Messiah"
+  ],
+  "answer": 1,
+  "explanation": "God forbid: for then how shall God judge the world?",
+  "ref": "Romans 3:6"
+ },
+ {
+  "id": "romans-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What slanderous saying does Paul say is reported of them?",
+  "choices": [
+   "Let us do evil, that good may come",
+   "Let us keep the law, that God may be pleased",
+   "Let us boast, that faith may grow",
+   "Let us wait, that wrath may pass"
+  ],
+  "answer": 0,
+  "explanation": "Some say, Let us do evil, that good may come? whose damnation is just.",
+  "ref": "Romans 3:8"
+ },
+ {
+  "id": "romans-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul asks, are we better than they? What is his answer?",
+  "choices": [
+   "Yes, because of the law",
+   "Yes, because of circumcision",
+   "Yes, in some ways",
+   "No, in no wise"
+  ],
+  "answer": 3,
+  "explanation": "What then? are we better than they? No, in no wise.",
+  "ref": "Romans 3:9"
+ },
+ {
+  "id": "romans-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "The scripture says there is none that understandeth, none that seeketh after whom?",
+  "choices": [
+   "The law",
+   "The prophets",
+   "God",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "There is none that understandeth, there is none that seeketh after God.",
+  "ref": "Romans 3:11"
+ },
+ {
+  "id": "romans-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What have they together become, says the scripture?",
+  "choices": [
+   "Strong",
+   "Unprofitable",
+   "Wise",
+   "Blessed"
+  ],
+  "answer": 1,
+  "explanation": "They are all gone out of the way, they are together become unprofitable.",
+  "ref": "Romans 3:12"
+ },
+ {
+  "id": "romans-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is under their lips?",
+  "choices": [
+   "The poison of asps",
+   "The fire of coals",
+   "A two-edged sword",
+   "The sting of scorpions"
+  ],
+  "answer": 0,
+  "explanation": "With their tongues they have used deceit; the poison of asps is under their lips.",
+  "ref": "Romans 3:13"
+ },
+ {
+  "id": "romans-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is in their ways, says the scripture?",
+  "choices": [
+   "Peace and plenty",
+   "Wisdom and fear",
+   "Darkness and silence",
+   "Destruction and misery"
+  ],
+  "answer": 3,
+  "explanation": "Destruction and misery are in their ways.",
+  "ref": "Romans 3:16"
+ },
+ {
+  "id": "romans-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the law do to every mouth?",
+  "choices": [
+   "Fills it with praise",
+   "Opens it to teach the Gentiles",
+   "Stops it, making all the world guilty before God",
+   "Teaches it to pray"
+  ],
+  "answer": 2,
+  "explanation": "What the law saith, it saith that every mouth may be stopped, and all the world may become guilty before God.",
+  "ref": "Romans 3:19"
+ },
+ {
+  "id": "romans-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By the law is the knowledge of what?",
+  "choices": [
+   "Grace",
+   "Sin",
+   "God",
+   "Salvation"
+  ],
+  "answer": 1,
+  "explanation": "By the deeds of the law shall no flesh be justified: for by the law is the knowledge of sin.",
+  "ref": "Romans 3:20"
+ },
+ {
+  "id": "romans-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who witnesses to the righteousness of God without the law?",
+  "choices": [
+   "The law and the prophets",
+   "The priests and the kings",
+   "The apostles and the elders",
+   "The psalms and proverbs"
+  ],
+  "answer": 0,
+  "explanation": "The righteousness of God without the law is manifested, being witnessed by the law and the prophets.",
+  "ref": "Romans 3:21"
+ },
+ {
+  "id": "romans-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "All have sinned and come short of what?",
+  "choices": [
+   "The law of Moses",
+   "The kingdom of heaven",
+   "The promised land",
+   "The glory of God"
+  ],
+  "answer": 3,
+  "explanation": "All have sinned, and come short of the glory of God.",
+  "ref": "Romans 3:23"
+ },
+ {
+  "id": "romans-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what does Paul say God declared his righteousness in Christ?",
+  "choices": [
+   "The building of a new temple",
+   "The ending of all sacrifices",
+   "The remission of sins that are past",
+   "The gathering of Israel"
+  ],
+  "answer": 2,
+  "explanation": "God declares his righteousness for the remission of sins that are past, through the forbearance of God.",
+  "ref": "Romans 3:25"
+ },
+ {
+  "id": "romans-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "God is just and the justifier of whom?",
+  "choices": [
+   "Him that keepeth the law",
+   "Him which believeth in Jesus",
+   "Him that is circumcised",
+   "Him that offers sacrifices"
+  ],
+  "answer": 1,
+  "explanation": "That he might be just, and the justifier of him which believeth in Jesus.",
+  "ref": "Romans 3:26"
+ },
+ {
+  "id": "romans-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the scripture say God might do when he is judged?",
+  "choices": [
+   "Overcome",
+   "Repent",
+   "Retreat",
+   "Be silent"
+  ],
+  "answer": 0,
+  "explanation": "That thou mightest be justified in thy sayings, and mightest overcome when thou art judged.",
+  "ref": "Romans 3:4"
+ },
+ {
+  "id": "romans-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Boasting is excluded by what law?",
+  "choices": [
+   "The law of works",
+   "The law of Moses",
+   "The law of the Spirit",
+   "The law of faith"
+  ],
+  "answer": 3,
+  "explanation": "Where is boasting then? It is excluded. By what law? of works? Nay: but by the law of faith.",
+  "ref": "Romans 3:27"
+ },
+ {
+  "id": "romans-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Through faith in what has God set forth Christ as a propitiation?",
+  "choices": [
+   "His name",
+   "His law",
+   "His blood",
+   "His life"
+  ],
+  "answer": 2,
+  "explanation": "God set forth Christ to be a propitiation through faith in his blood.",
+  "ref": "Romans 3:25"
+ },
+ {
+  "id": "romans-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The way of what have they not known?",
+  "choices": [
+   "Truth",
+   "Peace",
+   "Life",
+   "Righteousness"
+  ],
+  "answer": 1,
+  "explanation": "And the way of peace have they not known.",
+  "ref": "Romans 3:17"
+ },
+ {
+  "id": "romans-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say of those who say, Let us do evil, that good may come?",
+  "choices": [
+   "Their damnation is just",
+   "Their sin is forgiven",
+   "They are blessed",
+   "They shall be pardoned"
+  ],
+  "answer": 0,
+  "explanation": "Let us do evil, that good may come? whose damnation is just.",
+  "ref": "Romans 3:8"
+ },
+ {
+  "id": "romans-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul asks, why am I still judged as what?",
+  "choices": [
+   "A liar",
+   "A servant",
+   "A stranger",
+   "A sinner"
+  ],
+  "answer": 3,
+  "explanation": "If the truth of God hath more abounded through my lie unto his glory; why yet am I also judged as a sinner?",
+  "ref": "Romans 3:7"
+ },
+ {
+  "id": "romans-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the one God justify the uncircumcision?",
+  "choices": [
+   "By works",
+   "By the law",
+   "Through faith",
+   "By circumcision"
+  ],
+  "answer": 2,
+  "explanation": "It is one God, which shall justify the circumcision by faith, and uncircumcision through faith.",
+  "ref": "Romans 3:30"
+ },
+ {
+  "id": "romans-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With their tongues, what have they used?",
+  "choices": [
+   "Praise",
+   "Deceit",
+   "Wisdom",
+   "Flattery"
+  ],
+  "answer": 1,
+  "explanation": "With their tongues they have used deceit.",
+  "ref": "Romans 3:13"
+ },
+ {
+  "id": "romans-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say he speaks as when he asks if God is unrighteous?",
+  "choices": [
+   "A man",
+   "An apostle",
+   "A Pharisee",
+   "A servant"
+  ],
+  "answer": 0,
+  "explanation": "Is God unrighteous who taketh vengeance? (I speak as a man)",
+  "ref": "Romans 3:5"
+ },
+ {
+  "id": "romans-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom does the law speak?",
+  "choices": [
+   "The Gentiles",
+   "The prophets",
+   "The uncircumcised",
+   "Them who are under the law"
+  ],
+  "answer": 3,
+  "explanation": "What things soever the law saith, it saith to them who are under the law.",
+  "ref": "Romans 3:19"
+ },
+ {
+  "id": "romans-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the Jew's advantage, of what does Paul ask the profit?",
+  "choices": [
+   "The temple",
+   "The sabbath",
+   "Circumcision",
+   "The sacrifices"
+  ],
+  "answer": 2,
+  "explanation": "What advantage then hath the Jew? or what profit is there of circumcision?",
+  "ref": "Romans 3:1"
+ },
+ {
+  "id": "romans-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what does the scripture say God might be justified?",
+  "choices": [
+   "His works",
+   "His sayings",
+   "His temple",
+   "His judgments"
+  ],
+  "answer": 1,
+  "explanation": "That thou mightest be justified in thy sayings.",
+  "ref": "Romans 3:4"
+ },
+ {
+  "id": "romans-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what is their mouth full?",
+  "choices": [
+   "Cursing and bitterness",
+   "Wine and gladness",
+   "Boasting and pride",
+   "Flattery and lies"
+  ],
+  "answer": 0,
+  "explanation": "Whose mouth is full of cursing and bitterness.",
+  "ref": "Romans 3:14"
+ },
+ {
+  "id": "romans-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the scripture say they are all gone out of?",
+  "choices": [
+   "The land",
+   "The city",
+   "The covenant",
+   "The way"
+  ],
+  "answer": 3,
+  "explanation": "They are all gone out of the way.",
+  "ref": "Romans 3:12"
+ },
+ {
+  "id": "romans-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Before whom may all the world become guilty?",
+  "choices": [
+   "The priests",
+   "The judges",
+   "God",
+   "The Roman governor"
+  ],
+  "answer": 2,
+  "explanation": "That every mouth may be stopped, and all the world may become guilty before God.",
+  "ref": "Romans 3:19"
+ },
+ {
+  "id": "romans-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Through what of God were sins that are past passed over?",
+  "choices": [
+   "His wrath",
+   "His forbearance",
+   "His covenant",
+   "His silence"
+  ],
+  "answer": 1,
+  "explanation": "For the remission of sins that are past, through the forbearance of God.",
+  "ref": "Romans 3:25"
+ },
+ {
+  "id": "romans-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who describes the blessedness of the man God counts righteous without works?",
+  "choices": [
+   "Moses",
+   "David",
+   "Isaiah",
+   "Solomon"
+  ],
+  "answer": 1,
+  "explanation": "Even as David also describeth the blessedness of the man, unto whom God imputeth righteousness without works.",
+  "ref": "Romans 4:6"
+ },
+ {
+  "id": "romans-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Blessed is the man to whom the Lord will not impute what?",
+  "choices": [
+   "Sin",
+   "Debt",
+   "Shame",
+   "Judgment"
+  ],
+  "answer": 0,
+  "explanation": "Blessed is the man to whom the Lord will not impute sin.",
+  "ref": "Romans 4:8"
+ },
+ {
+  "id": "romans-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "About how old was Abraham when he considered his own body dead?",
+  "choices": [
+   "About seventy",
+   "About eighty",
+   "About one hundred and twenty",
+   "About a hundred years old"
+  ],
+  "answer": 3,
+  "explanation": "He considered not his own body now dead, when he was about an hundred years old.",
+  "ref": "Romans 4:19"
+ },
+ {
+  "id": "romans-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose womb was dead, as Abraham considered not?",
+  "choices": [
+   "Hagar's",
+   "Rebekah's",
+   "Sarah's",
+   "Rachel's"
+  ],
+  "answer": 2,
+  "explanation": "He considered not the deadness of Sarah's womb.",
+  "ref": "Romans 4:19"
+ },
+ {
+  "id": "romans-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Of how many nations had God made Abraham a father?",
+  "choices": [
+   "One great nation",
+   "Many nations",
+   "Twelve tribes",
+   "The Jews and the Gentiles"
+  ],
+  "answer": 1,
+  "explanation": "As it is written, I have made thee a father of many nations.",
+  "ref": "Romans 4:17"
+ },
+ {
+  "id": "romans-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Christ raised again, according to Paul?",
+  "choices": [
+   "For our justification",
+   "To judge the world",
+   "To restore Israel",
+   "To fulfil the law"
+  ],
+  "answer": 0,
+  "explanation": "Christ was delivered for our offences, and was raised again for our justification.",
+  "ref": "Romans 4:25"
+ },
+ {
+  "id": "romans-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On whom must we believe for righteousness to be imputed to us?",
+  "choices": [
+   "The prophets of old",
+   "The angel of the covenant",
+   "The high priest in the temple",
+   "Him that raised up Jesus our Lord from the dead"
+  ],
+  "answer": 3,
+  "explanation": "It shall be imputed to us, if we believe on him that raised up Jesus our Lord from the dead.",
+  "ref": "Romans 4:24"
+ },
+ {
+  "id": "romans-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Abraham give to God when he was strong in faith?",
+  "choices": [
+   "Tithes",
+   "A sacrifice",
+   "Glory",
+   "His son"
+  ],
+  "answer": 2,
+  "explanation": "He staggered not at the promise of God through unbelief; but was strong in faith, giving glory to God.",
+  "ref": "Romans 4:20"
+ },
+ {
+  "id": "romans-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If Abraham were justified by works, what would he have?",
+  "choices": [
+   "A great name among the nations",
+   "Something to glory in, but not before God",
+   "The right to the land",
+   "A place in the temple"
+  ],
+  "answer": 1,
+  "explanation": "If Abraham were justified by works, he hath whereof to glory; but not before God.",
+  "ref": "Romans 4:2"
+ },
+ {
+  "id": "romans-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To him that worketh, the reward is not reckoned of grace but of what?",
+  "choices": [
+   "Debt",
+   "Merit",
+   "Faith",
+   "Law"
+  ],
+  "answer": 0,
+  "explanation": "To him that worketh is the reward not reckoned of grace, but of debt.",
+  "ref": "Romans 4:4"
+ },
+ {
+  "id": "romans-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To him that worketh not, his faith is counted for righteousness if he believes on whom?",
+  "choices": [
+   "Him that rewardeth the righteous",
+   "Him that giveth the law",
+   "Him that judgeth the nations",
+   "Him that justifieth the ungodly"
+  ],
+  "answer": 3,
+  "explanation": "To him that worketh not, but believeth on him that justifieth the ungodly, his faith is counted for righteousness.",
+  "ref": "Romans 4:5"
+ },
+ {
+  "id": "romans-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul asks if this blessedness is for the circumcision only, or for whom also?",
+  "choices": [
+   "The priests",
+   "The Samaritans",
+   "The uncircumcision",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "Cometh this blessedness upon the circumcision only, or upon the uncircumcision also?",
+  "ref": "Romans 4:9"
+ },
+ {
+  "id": "romans-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of what was circumcision a seal for Abraham?",
+  "choices": [
+   "The covenant of the land",
+   "The righteousness of the faith he had while uncircumcised",
+   "The promise of a son",
+   "The law of Moses"
+  ],
+  "answer": 1,
+  "explanation": "He received the sign of circumcision, a seal of the righteousness of the faith which he had yet being uncircumcised.",
+  "ref": "Romans 4:11"
+ },
+ {
+  "id": "romans-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom does David call blessed?",
+  "choices": [
+   "Those whose iniquities are forgiven",
+   "Those who keep the law",
+   "Those who are circumcised",
+   "Those who bring offerings"
+  ],
+  "answer": 0,
+  "explanation": "Blessed are they whose iniquities are forgiven, and whose sins are covered.",
+  "ref": "Romans 4:7"
+ },
+ {
+  "id": "romans-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The promise that Abraham should be heir of the world came through what?",
+  "choices": [
+   "Circumcision",
+   "The works of the law",
+   "The priesthood",
+   "The righteousness of faith"
+  ],
+  "answer": 3,
+  "explanation": "The promise was not through the law, but through the righteousness of faith.",
+  "ref": "Romans 4:13"
+ },
+ {
+  "id": "romans-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If those of the law are heirs, what is made void?",
+  "choices": [
+   "The sabbath",
+   "The sacrifices",
+   "Faith",
+   "The temple"
+  ],
+  "answer": 2,
+  "explanation": "If they which are of the law be heirs, faith is made void, and the promise made of none effect.",
+  "ref": "Romans 4:14"
+ },
+ {
+  "id": "romans-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the law work, says Paul?",
+  "choices": [
+   "Peace",
+   "Wrath",
+   "Grace",
+   "Faith"
+  ],
+  "answer": 1,
+  "explanation": "Because the law worketh wrath.",
+  "ref": "Romans 4:15"
+ },
+ {
+  "id": "romans-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is the promise of faith, so that it is by grace?",
+  "choices": [
+   "So the promise might be sure to all the seed",
+   "So it might be kept secret for Israel",
+   "So it might be earned by works",
+   "So it might end with the law"
+  ],
+  "answer": 0,
+  "explanation": "It is of faith, that it might be by grace; to the end the promise might be sure to all the seed.",
+  "ref": "Romans 4:16"
+ },
+ {
+  "id": "romans-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul describe the God whom Abraham believed?",
+  "choices": [
+   "He dwells in unapproachable light",
+   "He sends fire from heaven",
+   "He shuts the mouths of lions",
+   "He quickeneth the dead"
+  ],
+  "answer": 3,
+  "explanation": "Before him whom he believed, even God, who quickeneth the dead.",
+  "ref": "Romans 4:17"
+ },
+ {
+  "id": "romans-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abraham, not weak in faith, not consider?",
+  "choices": [
+   "The distance of the journey",
+   "The strength of his enemies",
+   "His own body now dead",
+   "The anger of Sarah"
+  ],
+  "answer": 2,
+  "explanation": "Being not weak in faith, he considered not his own body now dead.",
+  "ref": "Romans 4:19"
+ },
+ {
+  "id": "romans-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Through what did Abraham not stagger at the promise of God?",
+  "choices": [
+   "Fear",
+   "Unbelief",
+   "Weakness",
+   "Old age"
+  ],
+  "answer": 1,
+  "explanation": "He staggered not at the promise of God through unbelief.",
+  "ref": "Romans 4:20"
+ },
+ {
+  "id": "romans-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David say God imputes without works?",
+  "choices": [
+   "Righteousness",
+   "Mercy",
+   "Inheritance",
+   "Blessing"
+  ],
+  "answer": 0,
+  "explanation": "God imputeth righteousness without works.",
+  "ref": "Romans 4:6"
+ },
+ {
+  "id": "romans-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Blessed are they whose sins are what?",
+  "choices": [
+   "Remembered no more",
+   "Washed away",
+   "Cast into the sea",
+   "Covered"
+  ],
+  "answer": 3,
+  "explanation": "Blessed are they whose iniquities are forgiven, and whose sins are covered.",
+  "ref": "Romans 4:7"
+ },
+ {
+  "id": "romans-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what was Abraham promised to be the heir?",
+  "choices": [
+   "Canaan",
+   "Egypt",
+   "The world",
+   "The temple"
+  ],
+  "answer": 2,
+  "explanation": "The promise, that he should be the heir of the world.",
+  "ref": "Romans 4:13"
+ },
+ {
+  "id": "romans-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides Abraham, for whom was it written that righteousness shall be imputed?",
+  "choices": [
+   "For the Gentiles only",
+   "For us also",
+   "For the prophets",
+   "For the circumcised only"
+  ],
+  "answer": 1,
+  "explanation": "It was not written for his sake alone, that it was imputed to him; but for us also.",
+  "ref": "Romans 4:23"
+ },
+ {
+  "id": "romans-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Paul describe Abraham in his opening question?",
+  "choices": [
+   "Our father, as pertaining to the flesh",
+   "Our judge",
+   "Our priest",
+   "Our king"
+  ],
+  "answer": 0,
+  "explanation": "What shall we say then that Abraham our father, as pertaining to the flesh, hath found?",
+  "ref": "Romans 4:1"
+ },
+ {
+  "id": "romans-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God calls what as though they were?",
+  "choices": [
+   "Those who are far off",
+   "The dead in sin",
+   "The nations of the earth",
+   "Those things which be not"
+  ],
+  "answer": 3,
+  "explanation": "God calleth those things which be not as though they were.",
+  "ref": "Romans 4:17"
+ },
+ {
+  "id": "romans-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where no law is, there is no what?",
+  "choices": [
+   "Wrath",
+   "Promise",
+   "Transgression",
+   "Grace"
+  ],
+  "answer": 2,
+  "explanation": "Where no law is, there is no transgression.",
+  "ref": "Romans 4:15"
+ },
+ {
+  "id": "romans-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was Christ delivered?",
+  "choices": [
+   "For our healing",
+   "For our offences",
+   "For our hope",
+   "For our judgment"
+  ],
+  "answer": 1,
+  "explanation": "Christ was delivered for our offences.",
+  "ref": "Romans 4:25"
+ },
+ {
+  "id": "romans-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The promise is sure not only to the seed of the law but to those of what?",
+  "choices": [
+   "The faith of Abraham",
+   "The sign of circumcision",
+   "The tribe of Judah",
+   "The covenant of Sinai"
+  ],
+  "answer": 0,
+  "explanation": "Not to that only which is of the law, but to that also which is of the faith of Abraham.",
+  "ref": "Romans 4:16"
+ },
+ {
+  "id": "romans-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Abraham is father of circumcision to those who also walk in the steps of what?",
+  "choices": [
+   "The law given by Moses",
+   "The sacrifices of the priests",
+   "The prophets of Israel",
+   "That faith he had while yet uncircumcised"
+  ],
+  "answer": 3,
+  "explanation": "The father of circumcision to them who also walk in the steps of that faith of our father Abraham, which he had being yet uncircumcised.",
+  "ref": "Romans 4:12"
+ },
+ {
+  "id": "romans-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Abraham believe, according to Paul?",
+  "choices": [
+   "By sight, in silence",
+   "With fear, in doubt",
+   "Against hope, in hope",
+   "By the law, in works"
+  ],
+  "answer": 2,
+  "explanation": "Who against hope believed in hope, that he might become the father of many nations.",
+  "ref": "Romans 4:18"
+ },
+ {
+  "id": "romans-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Abraham would have reason to glory by works, but not before whom?",
+  "choices": [
+   "Men",
+   "God",
+   "The priests",
+   "The kings"
+  ],
+  "answer": 1,
+  "explanation": "If Abraham were justified by works, he hath whereof to glory; but not before God.",
+  "ref": "Romans 4:2"
+ },
+ {
+  "id": "romans-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose reward is not reckoned of grace?",
+  "choices": [
+   "Him that worketh",
+   "Him that believeth",
+   "Him that is ungodly",
+   "Him that is circumcised"
+  ],
+  "answer": 0,
+  "explanation": "To him that worketh is the reward not reckoned of grace, but of debt.",
+  "ref": "Romans 4:4"
+ },
+ {
+  "id": "romans-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In hope of what do believers rejoice?",
+  "choices": [
+   "The promised land",
+   "The glory of God",
+   "Earthly peace",
+   "Escape from trials"
+  ],
+  "answer": 1,
+  "explanation": "By faith we stand in this grace, and rejoice in hope of the glory of God.",
+  "ref": "Romans 5:2"
+ },
+ {
+  "id": "romans-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "By whom is the love of God shed abroad in our hearts?",
+  "choices": [
+   "The Holy Ghost",
+   "The law",
+   "An angel",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "The love of God is shed abroad in our hearts by the Holy Ghost which is given unto us.",
+  "ref": "Romans 5:5"
+ },
+ {
+  "id": "romans-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whom did Christ die in due time?",
+  "choices": [
+   "The righteous only",
+   "The Jews only",
+   "The prophets",
+   "The ungodly"
+  ],
+  "answer": 3,
+  "explanation": "When we were yet without strength, in due time Christ died for the ungodly.",
+  "ref": "Romans 5:6"
+ },
+ {
+  "id": "romans-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God commend toward us in that Christ died for us?",
+  "choices": [
+   "His power",
+   "His law",
+   "His love",
+   "His wrath"
+  ],
+  "answer": 2,
+  "explanation": "God commendeth his love toward us, in that, while we were yet sinners, Christ died for us.",
+  "ref": "Romans 5:8"
+ },
+ {
+  "id": "romans-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Death passed upon all men because all have done what?",
+  "choices": [
+   "Doubted",
+   "Sinned",
+   "Rebelled against Moses",
+   "Forsaken the temple"
+  ],
+  "answer": 1,
+  "explanation": "Death passed upon all men, for that all have sinned.",
+  "ref": "Romans 5:12"
+ },
+ {
+  "id": "romans-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Grace reigns through righteousness unto what?",
+  "choices": [
+   "Eternal life",
+   "A kingdom on earth",
+   "Peace among nations",
+   "The promised land"
+  ],
+  "answer": 0,
+  "explanation": "Even so might grace reign through righteousness unto eternal life by Jesus Christ our Lord.",
+  "ref": "Romans 5:21"
+ },
+ {
+  "id": "romans-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "By whom do believers have access by faith into this grace?",
+  "choices": [
+   "Moses",
+   "The prophets",
+   "The priests",
+   "Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "By whom also we have access by faith into this grace wherein we stand.",
+  "ref": "Romans 5:2"
+ },
+ {
+  "id": "romans-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Patience works what, which in turn works hope?",
+  "choices": [
+   "Joy",
+   "Peace",
+   "Experience",
+   "Wisdom"
+  ],
+  "answer": 2,
+  "explanation": "Tribulation worketh patience; and patience, experience; and experience, hope.",
+  "ref": "Romans 5:4"
+ },
+ {
+  "id": "romans-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Hope maketh not what?",
+  "choices": [
+   "Weary",
+   "Ashamed",
+   "Afraid",
+   "Proud"
+  ],
+  "answer": 1,
+  "explanation": "And hope maketh not ashamed.",
+  "ref": "Romans 5:5"
+ },
+ {
+  "id": "romans-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what kind of man would some even dare to die?",
+  "choices": [
+   "A good man",
+   "A king",
+   "A prophet",
+   "A priest"
+  ],
+  "answer": 0,
+  "explanation": "Scarcely for a righteous man will one die: yet peradventure for a good man some would even dare to die.",
+  "ref": "Romans 5:7"
+ },
+ {
+  "id": "romans-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Being now justified by his blood, from what shall we be saved?",
+  "choices": [
+   "Temptation",
+   "The judgment of men",
+   "The power of Rome",
+   "Wrath"
+  ],
+  "answer": 3,
+  "explanation": "Being now justified by his blood, we shall be saved from wrath through him.",
+  "ref": "Romans 5:9"
+ },
+ {
+  "id": "romans-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what were we reconciled to God when we were enemies?",
+  "choices": [
+   "The works of the law",
+   "Our own repentance",
+   "The death of his Son",
+   "The sacrifices of bulls"
+  ],
+  "answer": 2,
+  "explanation": "When we were enemies, we were reconciled to God by the death of his Son.",
+  "ref": "Romans 5:10"
+ },
+ {
+  "id": "romans-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Being reconciled, by what shall we much more be saved?",
+  "choices": [
+   "His law",
+   "His life",
+   "His name",
+   "His kingdom"
+  ],
+  "answer": 1,
+  "explanation": "Much more, being reconciled, we shall be saved by his life.",
+  "ref": "Romans 5:10"
+ },
+ {
+  "id": "romans-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Through our Lord Jesus Christ, what have we now received?",
+  "choices": [
+   "The atonement",
+   "The kingdom",
+   "The law",
+   "The promise"
+  ],
+  "answer": 0,
+  "explanation": "We also joy in God through our Lord Jesus Christ, by whom we have now received the atonement.",
+  "ref": "Romans 5:11"
+ },
+ {
+  "id": "romans-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From whom to whom did death reign?",
+  "choices": [
+   "From Abraham to David",
+   "From Cain to Noah",
+   "From Moses to Christ",
+   "From Adam to Moses"
+  ],
+  "answer": 3,
+  "explanation": "Death reigned from Adam to Moses.",
+  "ref": "Romans 5:14"
+ },
+ {
+  "id": "romans-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where sin abounded, what did much more abound?",
+  "choices": [
+   "Judgment",
+   "The law",
+   "Grace",
+   "Death"
+  ],
+  "answer": 2,
+  "explanation": "Where sin abounded, grace did much more abound.",
+  "ref": "Romans 5:20"
+ },
+ {
+  "id": "romans-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Moreover the law entered that the offence might do what?",
+  "choices": [
+   "Cease",
+   "Abound",
+   "Be forgiven",
+   "Be hidden"
+  ],
+  "answer": 1,
+  "explanation": "Moreover the law entered, that the offence might abound.",
+  "ref": "Romans 5:20"
+ },
+ {
+  "id": "romans-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides hope of glory, in what do believers glory?",
+  "choices": [
+   "Tribulations",
+   "Their riches",
+   "Their works",
+   "Their wisdom"
+  ],
+  "answer": 0,
+  "explanation": "We glory in tribulations also: knowing that tribulation worketh patience.",
+  "ref": "Romans 5:3"
+ },
+ {
+  "id": "romans-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were we yet without when Christ died for the ungodly?",
+  "choices": [
+   "Hope",
+   "Faith",
+   "The law",
+   "Strength"
+  ],
+  "answer": 3,
+  "explanation": "When we were yet without strength, in due time Christ died for the ungodly.",
+  "ref": "Romans 5:6"
+ },
+ {
+  "id": "romans-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Adam is called the figure of whom?",
+  "choices": [
+   "Moses",
+   "Abraham",
+   "Him that was to come",
+   "The prophet"
+  ],
+  "answer": 2,
+  "explanation": "Adam, who is the figure of him that was to come.",
+  "ref": "Romans 5:14"
+ },
+ {
+  "id": "romans-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is not imputed when there is no law?",
+  "choices": [
+   "Righteousness",
+   "Sin",
+   "Death",
+   "Grace"
+  ],
+  "answer": 1,
+  "explanation": "Sin is not imputed when there is no law.",
+  "ref": "Romans 5:13"
+ },
+ {
+  "id": "romans-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The free gift is of many offences unto what?",
+  "choices": [
+   "Justification",
+   "Condemnation",
+   "Judgment",
+   "Death"
+  ],
+  "answer": 0,
+  "explanation": "The free gift is of many offences unto justification.",
+  "ref": "Romans 5:16"
+ },
+ {
+  "id": "romans-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Those who receive abundance of grace shall reign in what?",
+  "choices": [
+   "Glory",
+   "Heaven",
+   "Peace",
+   "Life"
+  ],
+  "answer": 3,
+  "explanation": "They which receive abundance of grace and of the gift of righteousness shall reign in life by one, Jesus Christ.",
+  "ref": "Romans 5:17"
+ },
+ {
+  "id": "romans-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By the offence of one, judgment came upon all men to what?",
+  "choices": [
+   "Exile",
+   "Shame",
+   "Condemnation",
+   "Slavery"
+  ],
+  "answer": 2,
+  "explanation": "By the offence of one judgment came upon all men to condemnation.",
+  "ref": "Romans 5:18"
+ },
+ {
+  "id": "romans-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By one man's disobedience, what were many made?",
+  "choices": [
+   "Exiles",
+   "Sinners",
+   "Strangers",
+   "Slaves"
+  ],
+  "answer": 1,
+  "explanation": "By one man's disobedience many were made sinners.",
+  "ref": "Romans 5:19"
+ },
+ {
+  "id": "romans-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what are believers now justified, according to Paul?",
+  "choices": [
+   "His blood",
+   "The law",
+   "Their works",
+   "Their baptism"
+  ],
+  "answer": 0,
+  "explanation": "Being now justified by his blood, we shall be saved from wrath through him.",
+  "ref": "Romans 5:9"
+ },
+ {
+  "id": "romans-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Sin hath reigned unto what?",
+  "choices": [
+   "Judgment",
+   "Darkness",
+   "Exile",
+   "Death"
+  ],
+  "answer": 3,
+  "explanation": "As sin hath reigned unto death, even so might grace reign through righteousness.",
+  "ref": "Romans 5:21"
+ },
+ {
+  "id": "romans-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Death reigned even over those who had not sinned after the similitude of whose transgression?",
+  "choices": [
+   "Cain's",
+   "Moses'",
+   "Adam's",
+   "Pharaoh'"
+  ],
+  "answer": 2,
+  "explanation": "Death reigned even over them that had not sinned after the similitude of Adam's transgression.",
+  "ref": "Romans 5:14"
+ },
+ {
+  "id": "romans-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul answer whether we should continue in sin that grace may abound?",
+  "choices": [
+   "Yes, for grace is free",
+   "God forbid",
+   "Only in secret",
+   "Only for a season"
+  ],
+  "answer": 1,
+  "explanation": "Shall we continue in sin, that grace may abound? God forbid.",
+  "ref": "Romans 6:1"
+ },
+ {
+  "id": "romans-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Buried with Christ by baptism, we are buried into what?",
+  "choices": [
+   "Death",
+   "Life",
+   "His kingdom",
+   "The church"
+  ],
+  "answer": 0,
+  "explanation": "We are buried with him by baptism into death.",
+  "ref": "Romans 6:4"
+ },
+ {
+  "id": "romans-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what should we walk, as Christ was raised from the dead?",
+  "choices": [
+   "The old paths",
+   "The law of Moses",
+   "Fear of death",
+   "Newness of life"
+  ],
+  "answer": 3,
+  "explanation": "Like as Christ was raised up, even so we also should walk in newness of life.",
+  "ref": "Romans 6:4"
+ },
+ {
+  "id": "romans-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Christ being raised from the dead, death hath no more what over him?",
+  "choices": [
+   "Sting",
+   "Fear",
+   "Dominion",
+   "Hope"
+  ],
+  "answer": 2,
+  "explanation": "Christ being raised from the dead dieth no more; death hath no more dominion over him.",
+  "ref": "Romans 6:9"
+ },
+ {
+  "id": "romans-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Unto whom should we yield ourselves as those alive from the dead?",
+  "choices": [
+   "The law",
+   "God",
+   "The church",
+   "Moses"
+  ],
+  "answer": 1,
+  "explanation": "Yield yourselves unto God, as those that are alive from the dead.",
+  "ref": "Romans 6:13"
+ },
+ {
+  "id": "romans-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Being made free from sin, of what did believers become servants?",
+  "choices": [
+   "Righteousness",
+   "The law",
+   "The flesh",
+   "The world"
+  ],
+  "answer": 0,
+  "explanation": "Being then made free from sin, ye became the servants of righteousness.",
+  "ref": "Romans 6:18"
+ },
+ {
+  "id": "romans-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the wages of sin?",
+  "choices": [
+   "Shame",
+   "Exile",
+   "Poverty",
+   "Death"
+  ],
+  "answer": 3,
+  "explanation": "The wages of sin is death.",
+  "ref": "Romans 6:23"
+ },
+ {
+  "id": "romans-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If planted together in the likeness of his death, we shall be in the likeness of what?",
+  "choices": [
+   "His glory",
+   "His kingdom",
+   "His resurrection",
+   "His suffering"
+  ],
+  "answer": 2,
+  "explanation": "If we have been planted together in the likeness of his death, we shall be also in the likeness of his resurrection.",
+  "ref": "Romans 6:5"
+ },
+ {
+  "id": "romans-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what was Christ raised up from the dead?",
+  "choices": [
+   "The law of Moses",
+   "The glory of the Father",
+   "The prayers of the apostles",
+   "The power of angels"
+  ],
+  "answer": 1,
+  "explanation": "Christ was raised up from the dead by the glory of the Father.",
+  "ref": "Romans 6:4"
+ },
+ {
+  "id": "romans-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is to happen to the body of sin?",
+  "choices": [
+   "It might be destroyed",
+   "It might be healed",
+   "It might be hidden",
+   "It might be redeemed"
+  ],
+  "answer": 0,
+  "explanation": "Our old man is crucified with him, that the body of sin might be destroyed.",
+  "ref": "Romans 6:6"
+ },
+ {
+  "id": "romans-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was our old man crucified with Christ?",
+  "choices": [
+   "That we might keep the law",
+   "That we might gain wisdom",
+   "That we might escape death",
+   "That henceforth we should not serve sin"
+  ],
+  "answer": 3,
+  "explanation": "Our old man is crucified with him, that henceforth we should not serve sin.",
+  "ref": "Romans 6:6"
+ },
+ {
+  "id": "romans-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "He that is dead is freed from what?",
+  "choices": [
+   "The law",
+   "Judgment",
+   "Sin",
+   "Fear"
+  ],
+  "answer": 2,
+  "explanation": "For he that is dead is freed from sin.",
+  "ref": "Romans 6:7"
+ },
+ {
+  "id": "romans-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If we be dead with Christ, what do we believe we shall also do?",
+  "choices": [
+   "Reign on earth",
+   "Live with him",
+   "Judge the nations",
+   "Rest in Abraham's bosom"
+  ],
+  "answer": 1,
+  "explanation": "If we be dead with Christ, we believe that we shall also live with him.",
+  "ref": "Romans 6:8"
+ },
+ {
+  "id": "romans-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Let not sin reign in what?",
+  "choices": [
+   "Your mortal body",
+   "Your immortal soul",
+   "Your house",
+   "Your city"
+  ],
+  "answer": 0,
+  "explanation": "Let not sin therefore reign in your mortal body, that ye should obey it in the lusts thereof.",
+  "ref": "Romans 6:12"
+ },
+ {
+  "id": "romans-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should believers yield their members as instruments of unto God?",
+  "choices": [
+   "War against sin",
+   "Peace among men",
+   "Worship in the temple",
+   "Righteousness"
+  ],
+  "answer": 3,
+  "explanation": "Yield your members as instruments of righteousness unto God.",
+  "ref": "Romans 6:13"
+ },
+ {
+  "id": "romans-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why shall sin not have dominion over believers?",
+  "choices": [
+   "They have kept the law",
+   "They have been circumcised",
+   "They are not under the law, but under grace",
+   "They have offered sacrifices"
+  ],
+  "answer": 2,
+  "explanation": "Sin shall not have dominion over you: for ye are not under the law, but under grace.",
+  "ref": "Romans 6:14"
+ },
+ {
+  "id": "romans-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose servants are you, according to Paul?",
+  "choices": [
+   "His who gave you the law",
+   "His to whom you yield yourselves to obey",
+   "His who baptized you",
+   "His who bore you"
+  ],
+  "answer": 1,
+  "explanation": "To whom ye yield yourselves servants to obey, his servants ye are to whom ye obey.",
+  "ref": "Romans 6:16"
+ },
+ {
+  "id": "romans-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From the heart, they obeyed that form of what?",
+  "choices": [
+   "Doctrine",
+   "Worship",
+   "Baptism",
+   "Prayer"
+  ],
+  "answer": 0,
+  "explanation": "Ye have obeyed from the heart that form of doctrine which was delivered you.",
+  "ref": "Romans 6:17"
+ },
+ {
+  "id": "romans-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the end of the things of which they are now ashamed?",
+  "choices": [
+   "Shame",
+   "Bondage",
+   "Poverty",
+   "Death"
+  ],
+  "answer": 3,
+  "explanation": "What fruit had ye then in those things whereof ye are now ashamed? for the end of those things is death.",
+  "ref": "Romans 6:21"
+ },
+ {
+  "id": "romans-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How should we yield ourselves unto God?",
+  "choices": [
+   "As servants of the law",
+   "As strangers in a strange land",
+   "As those that are alive from the dead",
+   "As debtors"
+  ],
+  "answer": 2,
+  "explanation": "Yield yourselves unto God, as those that are alive from the dead.",
+  "ref": "Romans 6:13"
+ },
+ {
+  "id": "romans-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what does Paul thank God that they once were servants?",
+  "choices": [
+   "The law",
+   "Sin",
+   "The Gentiles",
+   "Moses"
+  ],
+  "answer": 1,
+  "explanation": "God be thanked, that ye were the servants of sin, but ye have obeyed from the heart.",
+  "ref": "Romans 6:17"
+ },
+ {
+  "id": "romans-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does Paul say he speaks after the manner of men?",
+  "choices": [
+   "Because of the infirmity of their flesh",
+   "Because of their ignorance of the law",
+   "Because of their unbelief",
+   "Because of their persecutors"
+  ],
+  "answer": 0,
+  "explanation": "I speak after the manner of men because of the infirmity of your flesh.",
+  "ref": "Romans 6:19"
+ },
+ {
+  "id": "romans-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Yielding members servants to righteousness leads unto what?",
+  "choices": [
+   "Peace",
+   "Wisdom",
+   "Glory",
+   "Holiness"
+  ],
+  "answer": 3,
+  "explanation": "Yield your members servants to righteousness unto holiness.",
+  "ref": "Romans 6:19"
+ },
+ {
+  "id": "romans-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When they were servants of sin, they were free from what?",
+  "choices": [
+   "The law",
+   "Death",
+   "Righteousness",
+   "Judgment"
+  ],
+  "answer": 2,
+  "explanation": "When ye were the servants of sin, ye were free from righteousness.",
+  "ref": "Romans 6:20"
+ },
+ {
+  "id": "romans-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Made free from sin, they became servants to whom?",
+  "choices": [
+   "The law",
+   "God",
+   "Moses",
+   "The flesh"
+  ],
+  "answer": 1,
+  "explanation": "Now being made free from sin, and become servants to God, ye have your fruit unto holiness.",
+  "ref": "Romans 6:22"
+ },
+ {
+  "id": "romans-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul tell believers to reckon themselves to be?",
+  "choices": [
+   "Dead indeed unto sin, but alive unto God",
+   "Dead to the law, alive to the flesh",
+   "Free from the law, bound to sin",
+   "Alive in Adam, dead in Christ"
+  ],
+  "answer": 0,
+  "explanation": "Likewise reckon ye yourselves to be dead indeed unto sin, but alive unto God through Jesus Christ our Lord.",
+  "ref": "Romans 6:11"
+ },
+ {
+  "id": "romans-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Believers should not yield their members as instruments of what unto sin?",
+  "choices": [
+   "War",
+   "Idolatry",
+   "Pride",
+   "Unrighteousness"
+  ],
+  "answer": 3,
+  "explanation": "Neither yield ye your members as instruments of unrighteousness unto sin.",
+  "ref": "Romans 6:13"
+ },
+ {
+  "id": "romans-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Yielding to sin as servants leads unto what?",
+  "choices": [
+   "Wealth",
+   "Wisdom",
+   "Death",
+   "Freedom"
+  ],
+  "answer": 2,
+  "explanation": "Whether of sin unto death, or of obedience unto righteousness.",
+  "ref": "Romans 6:16"
+ },
+ {
+  "id": "romans-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what had they yielded their members as servants?",
+  "choices": [
+   "Idols and altars",
+   "Uncleanness and iniquity",
+   "Pride and ambition",
+   "Silence and sloth"
+  ],
+  "answer": 1,
+  "explanation": "As ye have yielded your members servants to uncleanness and to iniquity unto iniquity.",
+  "ref": "Romans 6:19"
+ },
+ {
+  "id": "romans-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Christ liveth unto whom?",
+  "choices": [
+   "God",
+   "The law",
+   "Men",
+   "Sin"
+  ],
+  "answer": 0,
+  "explanation": "In that he liveth, he liveth unto God.",
+  "ref": "Romans 6:10"
+ },
+ {
+  "id": "romans-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Made free from sin and servants to God, what fruit do they have?",
+  "choices": [
+   "Fruit unto wealth",
+   "Fruit unto fame",
+   "Fruit unto knowledge",
+   "Fruit unto holiness"
+  ],
+  "answer": 3,
+  "explanation": "Ye have your fruit unto holiness, and the end everlasting life.",
+  "ref": "Romans 6:22"
+ },
+ {
+  "id": "romans-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The law has dominion over a man as long as he does what?",
+  "choices": [
+   "Sinneth",
+   "Liveth",
+   "Believeth",
+   "Worketh"
+  ],
+  "answer": 1,
+  "explanation": "The law hath dominion over a man as long as he liveth.",
+  "ref": "Romans 7:1"
+ },
+ {
+  "id": "romans-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If her husband is dead, what is the woman?",
+  "choices": [
+   "Loosed from the law of her husband",
+   "Bound to his house",
+   "Called an adulteress",
+   "Bound to the law for ever"
+  ],
+  "answer": 0,
+  "explanation": "If the husband be dead, she is loosed from the law of her husband.",
+  "ref": "Romans 7:2"
+ },
+ {
+  "id": "romans-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the woman called who marries another while her husband liveth?",
+  "choices": [
+   "A widow",
+   "A stranger",
+   "A wanderer",
+   "An adulteress"
+  ],
+  "answer": 3,
+  "explanation": "If, while her husband liveth, she be married to another man, she shall be called an adulteress.",
+  "ref": "Romans 7:3"
+ },
+ {
+  "id": "romans-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Having died to the law, to whom are believers married?",
+  "choices": [
+   "The law of Moses",
+   "The church at Rome",
+   "Him who is raised from the dead",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "Ye are become dead to the law, that ye should be married to another, even to him who is raised from the dead.",
+  "ref": "Romans 7:4"
+ },
+ {
+  "id": "romans-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul asks, Is the law sin? What is his answer?",
+  "choices": [
+   "Yes, in part",
+   "God forbid",
+   "Only for the Gentiles",
+   "It was, until Christ came"
+  ],
+  "answer": 1,
+  "explanation": "What shall we say then? Is the law sin? God forbid.",
+  "ref": "Romans 7:7"
+ },
+ {
+  "id": "romans-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which commandment showed Paul that he knew lust?",
+  "choices": [
+   "Thou shalt not covet",
+   "Thou shalt not steal",
+   "Thou shalt not kill",
+   "Thou shalt not bear false witness"
+  ],
+  "answer": 0,
+  "explanation": "I had not known lust, except the law had said, Thou shalt not covet.",
+  "ref": "Romans 7:7"
+ },
+ {
+  "id": "romans-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what does the wretched man ask who shall deliver him?",
+  "choices": [
+   "The law of Moses",
+   "The wrath to come",
+   "The power of Rome",
+   "The body of this death"
+  ],
+  "answer": 3,
+  "explanation": "O wretched man that I am! who shall deliver me from the body of this death?",
+  "ref": "Romans 7:24"
+ },
+ {
+  "id": "romans-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what does Paul delight after the inward man?",
+  "choices": [
+   "The temple",
+   "The prophets",
+   "The law of God",
+   "The feasts"
+  ],
+  "answer": 2,
+  "explanation": "I delight in the law of God after the inward man.",
+  "ref": "Romans 7:22"
+ },
+ {
+  "id": "romans-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When we were in the flesh, the motions of sins brought forth fruit unto what?",
+  "choices": [
+   "Holiness",
+   "Death",
+   "Wealth",
+   "Pride"
+  ],
+  "answer": 1,
+  "explanation": "The motions of sins did work in our members to bring forth fruit unto death.",
+  "ref": "Romans 7:5"
+ },
+ {
+  "id": "romans-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "We are to serve in newness of spirit, and not in the oldness of what?",
+  "choices": [
+   "The letter",
+   "The flesh",
+   "The temple",
+   "The covenant"
+  ],
+  "answer": 0,
+  "explanation": "We should serve in newness of spirit, and not in the oldness of the letter.",
+  "ref": "Romans 7:6"
+ },
+ {
+  "id": "romans-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Without the law, what was sin?",
+  "choices": [
+   "Hidden",
+   "Strong",
+   "Forgiven",
+   "Dead"
+  ],
+  "answer": 3,
+  "explanation": "Without the law sin was dead.",
+  "ref": "Romans 7:8"
+ },
+ {
+  "id": "romans-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When the commandment came, sin revived and what happened to Paul?",
+  "choices": [
+   "He fled",
+   "He repented",
+   "He died",
+   "He prospered"
+  ],
+  "answer": 2,
+  "explanation": "When the commandment came, sin revived, and I died.",
+  "ref": "Romans 7:9"
+ },
+ {
+  "id": "romans-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The commandment was ordained to life, but Paul found it to be unto what?",
+  "choices": [
+   "Wrath",
+   "Death",
+   "Shame",
+   "Fear"
+  ],
+  "answer": 1,
+  "explanation": "The commandment, which was ordained to life, I found to be unto death.",
+  "ref": "Romans 7:10"
+ },
+ {
+  "id": "romans-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did sin do, taking occasion by the commandment?",
+  "choices": [
+   "Deceived Paul and slew him",
+   "Blinded him and bound him",
+   "Hid him and left him",
+   "Taught him and healed him"
+  ],
+  "answer": 0,
+  "explanation": "Sin, taking occasion by the commandment, deceived me, and by it slew me.",
+  "ref": "Romans 7:11"
+ },
+ {
+  "id": "romans-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By the commandment, sin might become what?",
+  "choices": [
+   "Hidden",
+   "Forgiven",
+   "Weak",
+   "Exceeding sinful"
+  ],
+  "answer": 3,
+  "explanation": "That sin by the commandment might become exceeding sinful.",
+  "ref": "Romans 7:13"
+ },
+ {
+  "id": "romans-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The law is spiritual, but what does Paul say he himself is?",
+  "choices": [
+   "Strong in the flesh",
+   "Free from sin",
+   "Carnal, sold under sin",
+   "Zealous for the law"
+  ],
+  "answer": 2,
+  "explanation": "We know that the law is spiritual: but I am carnal, sold under sin.",
+  "ref": "Romans 7:14"
+ },
+ {
+  "id": "romans-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When Paul does what he would not, who does it?",
+  "choices": [
+   "The law that condemns him",
+   "Sin that dwelleth in him",
+   "A neighbour who tempts him",
+   "The devil who accuses him"
+  ],
+  "answer": 1,
+  "explanation": "It is no more I that do it, but sin that dwelleth in me.",
+  "ref": "Romans 7:17"
+ },
+ {
+  "id": "romans-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say dwells in his flesh?",
+  "choices": [
+   "No good thing",
+   "The Spirit of God",
+   "Nothing but the law",
+   "A good conscience"
+  ],
+  "answer": 0,
+  "explanation": "In me (that is, in my flesh,) dwelleth no good thing.",
+  "ref": "Romans 7:18"
+ },
+ {
+  "id": "romans-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When Paul would do good, what is present with him?",
+  "choices": [
+   "Fear",
+   "The law",
+   "Pride",
+   "Evil"
+  ],
+  "answer": 3,
+  "explanation": "When I would do good, evil is present with me.",
+  "ref": "Romans 7:21"
+ },
+ {
+  "id": "romans-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Another law in his members wars against the law of his what?",
+  "choices": [
+   "Heart",
+   "Spirit",
+   "Mind",
+   "Fathers"
+  ],
+  "answer": 2,
+  "explanation": "I see another law in my members, warring against the law of my mind.",
+  "ref": "Romans 7:23"
+ },
+ {
+  "id": "romans-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With the flesh, Paul serves the law of what?",
+  "choices": [
+   "Death",
+   "Sin",
+   "Moses",
+   "The world"
+  ],
+  "answer": 1,
+  "explanation": "With the mind I myself serve the law of God; but with the flesh the law of sin.",
+  "ref": "Romans 7:25"
+ },
+ {
+  "id": "romans-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says he speaks to those who know what?",
+  "choices": [
+   "The law",
+   "The prophets",
+   "The gospel",
+   "The Greek tongue"
+  ],
+  "answer": 0,
+  "explanation": "Know ye not, brethren, (for I speak to them that know the law).",
+  "ref": "Romans 7:1"
+ },
+ {
+  "id": "romans-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "That we are married to Christ, that we should bring forth fruit unto whom?",
+  "choices": [
+   "The law",
+   "The apostles",
+   "The church",
+   "God"
+  ],
+  "answer": 3,
+  "explanation": "That we should bring forth fruit unto God.",
+  "ref": "Romans 7:4"
+ },
+ {
+  "id": "romans-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the motions of sins work?",
+  "choices": [
+   "In our houses",
+   "In the nations",
+   "In our members",
+   "In the temple"
+  ],
+  "answer": 2,
+  "explanation": "The motions of sins did work in our members.",
+  "ref": "Romans 7:5"
+ },
+ {
+  "id": "romans-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says he had not known sin, but by what?",
+  "choices": [
+   "The prophets",
+   "The law",
+   "His conscience",
+   "His parents"
+  ],
+  "answer": 1,
+  "explanation": "I had not known sin, but by the law.",
+  "ref": "Romans 7:7"
+ },
+ {
+  "id": "romans-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Sin, taking occasion by the commandment, wrought in Paul all manner of what?",
+  "choices": [
+   "Concupiscence",
+   "Wisdom",
+   "Zeal",
+   "Fear"
+  ],
+  "answer": 0,
+  "explanation": "Sin, taking occasion by the commandment, wrought in me all manner of concupiscence.",
+  "ref": "Romans 7:8"
+ },
+ {
+  "id": "romans-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul asks if the good law was made death to him. What is his answer?",
+  "choices": [
+   "Yes, because of the flesh",
+   "Yes, for a time",
+   "Only for the Gentiles",
+   "God forbid"
+  ],
+  "answer": 3,
+  "explanation": "Was then that which is good made death unto me? God forbid.",
+  "ref": "Romans 7:13"
+ },
+ {
+  "id": "romans-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what does sin work death in Paul?",
+  "choices": [
+   "By the flesh alone",
+   "By the Gentiles",
+   "By that which is good",
+   "By the devil"
+  ],
+  "answer": 2,
+  "explanation": "Sin, working death in me by that which is good.",
+  "ref": "Romans 7:13"
+ },
+ {
+  "id": "romans-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of law does Paul say the law is?",
+  "choices": [
+   "Carnal",
+   "Spiritual",
+   "Temporary",
+   "Weak"
+  ],
+  "answer": 1,
+  "explanation": "We know that the law is spiritual.",
+  "ref": "Romans 7:14"
+ },
+ {
+  "id": "romans-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Doing what he would not, Paul consents that the law is what?",
+  "choices": [
+   "Good",
+   "Weak",
+   "Hard",
+   "Done"
+  ],
+  "answer": 0,
+  "explanation": "If then I do that which I would not, I consent unto the law that it is good.",
+  "ref": "Romans 7:16"
+ },
+ {
+  "id": "romans-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say is present with him, though he finds not how to perform good?",
+  "choices": [
+   "Strength",
+   "Peace",
+   "Knowledge",
+   "To will"
+  ],
+  "answer": 3,
+  "explanation": "To will is present with me; but how to perform that which is good I find not.",
+  "ref": "Romans 7:18"
+ },
+ {
+  "id": "romans-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The law in his members brings Paul into captivity to the law of what?",
+  "choices": [
+   "Death and darkness",
+   "The flesh and the devil",
+   "Sin which is in his members",
+   "Moses and the prophets"
+  ],
+  "answer": 2,
+  "explanation": "Bringing me into captivity to the law of sin which is in my members.",
+  "ref": "Romans 7:23"
+ },
+ {
+  "id": "romans-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When does Paul say he was alive?",
+  "choices": [
+   "Under the law of Moses",
+   "Without the law, once",
+   "Before he was born",
+   "In the flesh"
+  ],
+  "answer": 1,
+  "explanation": "I was alive without the law once.",
+  "ref": "Romans 7:9"
+ },
+ {
+  "id": "romans-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Paul describe himself in his cry for deliverance?",
+  "choices": [
+   "A wretched man",
+   "A blind man",
+   "A sinful king",
+   "A weary traveller"
+  ],
+  "answer": 0,
+  "explanation": "O wretched man that I am!",
+  "ref": "Romans 7:24"
  }
 ]

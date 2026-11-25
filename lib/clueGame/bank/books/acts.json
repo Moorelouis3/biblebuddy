@@ -2238,5 +2238,1925 @@
   "answer": 2,
   "explanation": "Acts ends with Paul preaching the kingdom of God.",
   "ref": "Acts 28:31"
+ },
+ {
+  "id": "acts-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Paul and Barnabas go up to settle the question of circumcision?",
+  "choices": [
+   "Rome",
+   "Jerusalem",
+   "Corinth",
+   "Damascus"
+  ],
+  "answer": 1,
+  "explanation": "They determined that Paul and Barnabas and certain others should go up to Jerusalem unto the apostles and elders.",
+  "ref": "Acts 15:2"
+ },
+ {
+  "id": "acts-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which sect of believers said it was needful to circumcise the Gentiles?",
+  "choices": [
+   "The Sadducees",
+   "The Essenes",
+   "The Pharisees",
+   "The Zealots"
+  ],
+  "answer": 2,
+  "explanation": "Certain of the sect of the Pharisees which believed said it was needful to circumcise them and command them to keep the law of Moses.",
+  "ref": "Acts 15:5"
+ },
+ {
+  "id": "acts-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God give the Gentiles to bear witness to them, as Peter said?",
+  "choices": [
+   "The law of Moses",
+   "The Holy Ghost",
+   "A sign in heaven",
+   "A prophet of their own"
+  ],
+  "answer": 1,
+  "explanation": "God, which knoweth the hearts, bare them witness, giving them the Holy Ghost, even as he did unto us.",
+  "ref": "Acts 15:8"
+ },
+ {
+  "id": "acts-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Barnabas and Paul tell the council about?",
+  "choices": [
+   "Their sufferings in prison",
+   "The money they had collected",
+   "Miracles and wonders God had wrought among the Gentiles",
+   "The ships they had sailed in"
+  ],
+  "answer": 2,
+  "explanation": "The multitude heard Barnabas and Paul declaring what miracles and wonders God had wrought among the Gentiles by them.",
+  "ref": "Acts 15:12"
+ },
+ {
+  "id": "acts-15-e-05",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the brethren feel when Paul and Barnabas told them the Gentiles had turned to God?",
+  "choices": [
+   "Fearful",
+   "Great joy",
+   "Angry",
+   "Doubtful"
+  ],
+  "answer": 1,
+  "explanation": "As they passed through Phenice and Samaria declaring the conversion of the Gentiles, they caused great joy unto all the brethren.",
+  "ref": "Acts 15:3"
+ },
+ {
+  "id": "acts-15-e-06",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the church at Antioch respond when they read the letter?",
+  "choices": [
+   "They rejoiced for the consolation",
+   "They argued over it",
+   "They sent it back",
+   "They fasted three days"
+  ],
+  "answer": 0,
+  "explanation": "When they had read it, they rejoiced for the consolation.",
+  "ref": "Acts 15:31"
+ },
+ {
+  "id": "acts-15-e-07",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Barnabas want to take along on the next journey?",
+  "choices": [
+   "Timotheus",
+   "Silas",
+   "Judas Barsabas",
+   "John, whose surname was Mark"
+  ],
+  "answer": 3,
+  "explanation": "Barnabas determined to take with them John, whose surname was Mark.",
+  "ref": "Acts 15:37"
+ },
+ {
+  "id": "acts-15-e-08",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened between Paul and Barnabas over Mark?",
+  "choices": [
+   "They prayed and agreed",
+   "A sharp contention, and they parted",
+   "They drew lots",
+   "They asked the elders to decide"
+  ],
+  "answer": 1,
+  "explanation": "The contention was so sharp between them, that they departed asunder one from the other.",
+  "ref": "Acts 15:39"
+ },
+ {
+  "id": "acts-15-e-09",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Paul choose to go with him after he parted from Barnabas?",
+  "choices": [
+   "Silas",
+   "Mark",
+   "Peter",
+   "Jason"
+  ],
+  "answer": 0,
+  "explanation": "Paul chose Silas, and departed, being recommended by the brethren unto the grace of God.",
+  "ref": "Acts 15:40"
+ },
+ {
+  "id": "acts-15-e-10",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "Through which regions did Paul go, confirming the churches?",
+  "choices": [
+   "Egypt and Libya",
+   "Galatia and Asia",
+   "Syria and Cilicia",
+   "Macedonia and Achaia"
+  ],
+  "answer": 2,
+  "explanation": "He went through Syria and Cilicia, confirming the churches.",
+  "ref": "Acts 15:41"
+ },
+ {
+  "id": "acts-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Peter say God did to the Gentiles' hearts by faith?",
+  "choices": [
+   "Hardened them",
+   "Purified them",
+   "Wrote the law upon them",
+   "Made them circumcised"
+  ],
+  "answer": 1,
+  "explanation": "God put no difference between us and them, purifying their hearts by faith.",
+  "ref": "Acts 15:9"
+ },
+ {
+  "id": "acts-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Peter say we shall be saved, even as the Gentiles?",
+  "choices": [
+   "By keeping the law of Moses",
+   "By being circumcised",
+   "By the grace of the Lord Jesus Christ",
+   "By the works of the fathers"
+  ],
+  "answer": 2,
+  "explanation": "We believe that through the grace of the Lord Jesus Christ we shall be saved, even as they.",
+  "ref": "Acts 15:11"
+ },
+ {
+  "id": "acts-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did James quote the prophets as saying the Lord would build again?",
+  "choices": [
+   "The temple of Solomon",
+   "The walls of Jerusalem",
+   "The tabernacle of David",
+   "The house of Jacob"
+  ],
+  "answer": 2,
+  "explanation": "After this I will return, and will build again the tabernacle of David, which is fallen down.",
+  "ref": "Acts 15:16"
+ },
+ {
+  "id": "acts-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Peter say God knoweth?",
+  "choices": [
+   "The hearts",
+   "The days",
+   "The law",
+   "The nations"
+  ],
+  "answer": 0,
+  "explanation": "God, which knoweth the hearts, bare them witness, giving them the Holy Ghost.",
+  "ref": "Acts 15:8"
+ },
+ {
+  "id": "acts-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did James say Moses is read every sabbath day?",
+  "choices": [
+   "In the temple",
+   "In the synagogues",
+   "In the houses",
+   "In the market"
+  ],
+  "answer": 1,
+  "explanation": "Moses of old time hath in every city them that preach him, being read in the synagogues every sabbath day.",
+  "ref": "Acts 15:21"
+ },
+ {
+  "id": "acts-15-m-06",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the letter say about the men who troubled the Gentiles about circumcision?",
+  "choices": [
+   "They had been put out of the church",
+   "They were sent by Peter",
+   "They came from Antioch",
+   "The apostles gave them no such commandment"
+  ],
+  "answer": 3,
+  "explanation": "Certain which went out from us have troubled you with words, subverting your souls: to whom we gave no such commandment.",
+  "ref": "Acts 15:24"
+ },
+ {
+  "id": "acts-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the letter describe Barnabas and Paul?",
+  "choices": [
+   "Men that hazarded their lives for the name of the Lord",
+   "Men learned in the law of Moses",
+   "Elders of the church at Jerusalem",
+   "Men who had seen the Lord in the flesh"
+  ],
+  "answer": 0,
+  "explanation": "Men that have hazarded their lives for the name of our Lord Jesus Christ.",
+  "ref": "Acts 15:26"
+ },
+ {
+  "id": "acts-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul think it not good to take Mark with them?",
+  "choices": [
+   "He was too young",
+   "He departed from them at Pamphylia and went not to the work",
+   "He had quarrelled with Silas",
+   "He was not circumcised"
+  ],
+  "answer": 1,
+  "explanation": "Paul thought not good to take him, who departed from them from Pamphylia, and went not with them to the work.",
+  "ref": "Acts 15:38"
+ },
+ {
+  "id": "acts-15-m-09",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom did the letter say it seemed good, in laying on no greater burden than the necessary things?",
+  "choices": [
+   "The Holy Ghost, and to us",
+   "Moses and the elders",
+   "James alone",
+   "The church at Antioch"
+  ],
+  "answer": 0,
+  "explanation": "It seemed good to the Holy Ghost, and to us, to lay upon you no greater burden than these necessary things.",
+  "ref": "Acts 15:28"
+ },
+ {
+  "id": "acts-15-m-10",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these did the letter tell the Gentiles to abstain from?",
+  "choices": [
+   "Keeping the sabbath",
+   "Meats offered to idols",
+   "Paying tithes",
+   "Eating with Jews"
+  ],
+  "answer": 1,
+  "explanation": "Abstain from meats offered to idols, and from blood, and from things strangled, and from fornication.",
+  "ref": "Acts 15:29"
+ },
+ {
+  "id": "acts-15-m-11",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Who chose to stay on at Antioch when the others were let go?",
+  "choices": [
+   "Judas",
+   "Barnabas",
+   "Silas",
+   "Peter"
+  ],
+  "answer": 2,
+  "explanation": "Notwithstanding it pleased Silas to abide there still.",
+  "ref": "Acts 15:34"
+ },
+ {
+  "id": "acts-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did all the multitude do when Barnabas and Paul spoke?",
+  "choices": [
+   "Rose up in anger",
+   "Kept silence and gave audience",
+   "Departed",
+   "Sang praises"
+  ],
+  "answer": 1,
+  "explanation": "Then all the multitude kept silence, and gave audience to Barnabas and Paul.",
+  "ref": "Acts 15:12"
+ },
+ {
+  "id": "acts-15-m-13",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul propose to Barnabas some days later?",
+  "choices": [
+   "To visit the brethren in every city where they preached",
+   "To return to Jerusalem",
+   "To sail to Rome",
+   "To write another letter"
+  ],
+  "answer": 0,
+  "explanation": "Let us go again and visit our brethren in every city where we have preached the word of the Lord, and see how they do.",
+  "ref": "Acts 15:36"
+ },
+ {
+  "id": "acts-15-m-14",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were Judas and Silas besides chief men among the brethren?",
+  "choices": [
+   "Elders of Antioch",
+   "Prophets",
+   "Apostles",
+   "Pharisees"
+  ],
+  "answer": 1,
+  "explanation": "Judas and Silas, being prophets also themselves, exhorted the brethren with many words, and confirmed them.",
+  "ref": "Acts 15:32"
+ },
+ {
+  "id": "acts-15-m-15",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did James say God did at the first to the Gentiles?",
+  "choices": [
+   "Sent a famine upon them",
+   "Visited them to take out of them a people for his name",
+   "Gave them the law at Sinai",
+   "Left them to their own ways"
+  ],
+  "answer": 1,
+  "explanation": "Simeon hath declared how God at the first did visit the Gentiles, to take out of them a people for his name.",
+  "ref": "Acts 15:14"
+ },
+ {
+  "id": "acts-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In the prophecy James quoted, why will the Lord rebuild David's tabernacle?",
+  "choices": [
+   "That the residue of men might seek after the Lord",
+   "That Israel might never fall again",
+   "That the temple might be hid",
+   "That kings might bow to David"
+  ],
+  "answer": 0,
+  "explanation": "That the residue of men might seek after the Lord, and all the Gentiles, upon whom my name is called.",
+  "ref": "Acts 15:17"
+ },
+ {
+  "id": "acts-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Through which two regions did Paul and Barnabas pass on the way to Jerusalem?",
+  "choices": [
+   "Phenice and Samaria",
+   "Galilee and Decapolis",
+   "Phrygia and Galatia",
+   "Asia and Bithynia"
+  ],
+  "answer": 0,
+  "explanation": "They passed through Phenice and Samaria, declaring the conversion of the Gentiles.",
+  "ref": "Acts 15:3"
+ },
+ {
+  "id": "acts-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the letter say the false teachers had done to the Gentiles' souls?",
+  "choices": [
+   "Strengthened them",
+   "Subverted them",
+   "Redeemed them",
+   "Hidden them"
+  ],
+  "answer": 1,
+  "explanation": "Certain which went out from us have troubled you with words, subverting your souls.",
+  "ref": "Acts 15:24"
+ },
+ {
+  "id": "acts-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Judas and Silas do at Antioch?",
+  "choices": [
+   "Healed the sick",
+   "Exhorted the brethren with many words and confirmed them",
+   "Cast out unclean spirits",
+   "Baptized the multitude"
+  ],
+  "answer": 1,
+  "explanation": "Judas and Silas exhorted the brethren with many words, and confirmed them.",
+  "ref": "Acts 15:32"
+ },
+ {
+  "id": "acts-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did James say is known unto God from the beginning of the world?",
+  "choices": [
+   "All his works",
+   "All men's names",
+   "The day of judgement",
+   "The hearts of kings"
+  ],
+  "answer": 0,
+  "explanation": "Known unto God are all his works from the beginning of the world.",
+  "ref": "Acts 15:18"
+ },
+ {
+  "id": "acts-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By whom were Paul and Barnabas received when they came to Jerusalem?",
+  "choices": [
+   "The apostles only",
+   "The church, and the apostles and elders",
+   "The Pharisees",
+   "James and Peter alone"
+  ],
+  "answer": 1,
+  "explanation": "They were received of the church, and of the apostles and elders, and they declared all things that God had done with them.",
+  "ref": "Acts 15:4"
+ },
+ {
+  "id": "acts-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul and Barnabas do in Antioch after Judas and Silas were gone?",
+  "choices": [
+   "Taught and preached the word of the Lord, with many others",
+   "Fasted and prayed in silence",
+   "Built a new synagogue",
+   "Waited for word from Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Paul also and Barnabas continued in Antioch, teaching and preaching the word of the Lord, with many others also.",
+  "ref": "Acts 15:35"
+ },
+ {
+  "id": "acts-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was Paul sent off when he left with Silas?",
+  "choices": [
+   "Recommended by the brethren unto the grace of God",
+   "Given silver for the journey",
+   "Blessed by James",
+   "Led out by the elders to the gate"
+  ],
+  "answer": 0,
+  "explanation": "Paul chose Silas, and departed, being recommended by the brethren unto the grace of God.",
+  "ref": "Acts 15:40"
+ },
+ {
+  "id": "acts-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the letter say it would lay upon the Gentiles?",
+  "choices": [
+   "The whole law of Moses",
+   "No greater burden than these necessary things",
+   "A yearly offering",
+   "Only the sign of circumcision"
+  ],
+  "answer": 1,
+  "explanation": "It seemed good to the Holy Ghost, and to us, to lay upon you no greater burden than these necessary things.",
+  "ref": "Acts 15:28"
+ },
+ {
+  "id": "acts-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "To the Gentiles in which places was the letter addressed?",
+  "choices": [
+   "Antioch, Syria and Cilicia",
+   "Jerusalem and Judaea",
+   "Cyprus and Pamphylia",
+   "Phenice and Samaria"
+  ],
+  "answer": 0,
+  "explanation": "The letter greeted the brethren which are of the Gentiles in Antioch and Syria and Cilicia.",
+  "ref": "Acts 15:23"
+ },
+ {
+  "id": "acts-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom were Judas and Silas let go in peace after they tarried at Antioch?",
+  "choices": [
+   "Unto the apostles",
+   "Unto the elders of Cyprus",
+   "Unto Barnabas",
+   "Unto James alone"
+  ],
+  "answer": 0,
+  "explanation": "After they had tarried a space, they were let go in peace from the brethren unto the apostles.",
+  "ref": "Acts 15:33"
+ },
+ {
+  "id": "acts-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who chose the men to send to Antioch with Paul and Barnabas?",
+  "choices": [
+   "Peter alone",
+   "James and the elders only",
+   "The apostles and elders, with the whole church",
+   "The brethren of Antioch"
+  ],
+  "answer": 2,
+  "explanation": "It pleased the apostles and elders, with the whole church, to send chosen men of their own company.",
+  "ref": "Acts 15:22"
+ },
+ {
+  "id": "acts-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How would Judas and Silas confirm the contents of the letter?",
+  "choices": [
+   "By signing it as witnesses",
+   "By telling the same things by mouth",
+   "By reading it in every synagogue",
+   "By bringing a gift from Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "We have sent Judas and Silas, who shall also tell you the same things by mouth.",
+  "ref": "Acts 15:27"
+ },
+ {
+  "id": "acts-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the letter describe Judas Barsabas and Silas?",
+  "choices": [
+   "Chief men among the brethren",
+   "Servants of the elders",
+   "Fellow prisoners",
+   "Children of the prophets"
+  ],
+  "answer": 0,
+  "explanation": "Judas surnamed Barsabas, and Silas, chief men among the brethren.",
+  "ref": "Acts 15:22"
+ },
+ {
+  "id": "acts-15-h-15",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Peter say they did to God by putting a yoke on the Gentile disciples?",
+  "choices": [
+   "Tempt him",
+   "Honour him",
+   "Obey him",
+   "Forget him"
+  ],
+  "answer": 0,
+  "explanation": "Why tempt ye God, to put a yoke upon the neck of the disciples?",
+  "ref": "Acts 15:10"
+ },
+ {
+  "id": "acts-22-e-01",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what language did Paul speak that made the crowd keep the more silence?",
+  "choices": [
+   "Greek",
+   "Latin",
+   "Hebrew",
+   "Syriac"
+  ],
+  "answer": 2,
+  "explanation": "When they heard that he spake in the Hebrew tongue to them, they kept the more silence.",
+  "ref": "Acts 22:2"
+ },
+ {
+  "id": "acts-22-e-02",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which city was Paul born?",
+  "choices": [
+   "Jerusalem",
+   "Tarsus",
+   "Damascus",
+   "Antioch"
+  ],
+  "answer": 1,
+  "explanation": "Paul said he was a Jew, born in Tarsus, a city in Cilicia.",
+  "ref": "Acts 22:3"
+ },
+ {
+  "id": "acts-22-e-03",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul say he did to the followers of this way before he met Jesus?",
+  "choices": [
+   "Persecuted them unto the death",
+   "Taught them in secret",
+   "Gave them money",
+   "Sent them to Rome"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, I persecuted this way unto the death, binding and delivering into prisons both men and women.",
+  "ref": "Acts 22:4"
+ },
+ {
+  "id": "acts-22-e-04",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shone from heaven as Paul came near Damascus?",
+  "choices": [
+   "A burning bush",
+   "A pillar of cloud",
+   "A falling star",
+   "A great light"
+  ],
+  "answer": 3,
+  "explanation": "About noon, suddenly there shone from heaven a great light round about him.",
+  "ref": "Acts 22:6"
+ },
+ {
+  "id": "acts-22-e-05",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul fall into while he prayed in the temple at Jerusalem?",
+  "choices": [
+   "A deep sleep",
+   "A sickness",
+   "A trance",
+   "A fast"
+  ],
+  "answer": 2,
+  "explanation": "When he came again to Jerusalem, even while he prayed in the temple, Paul was in a trance.",
+  "ref": "Acts 22:17"
+ },
+ {
+  "id": "acts-22-e-06",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose death did Paul say he stood by and consented to?",
+  "choices": [
+   "James",
+   "Stephen",
+   "Peter",
+   "Barnabas"
+  ],
+  "answer": 1,
+  "explanation": "Paul said that when the blood of thy martyr Stephen was shed, he was standing by, and consenting unto his death.",
+  "ref": "Acts 22:20"
+ },
+ {
+  "id": "acts-22-e-07",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the crowd throw into the air as they cried out against Paul?",
+  "choices": [
+   "Dust",
+   "Stones",
+   "Water",
+   "Palm branches"
+  ],
+  "answer": 0,
+  "explanation": "As they cried out, they cast off their clothes, and threw dust into the air.",
+  "ref": "Acts 22:23"
+ },
+ {
+  "id": "acts-22-e-08",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the chief captain command that Paul be examined?",
+  "choices": [
+   "By a vote of the elders",
+   "By the oath of witnesses",
+   "By casting lots",
+   "By scourging"
+  ],
+  "answer": 3,
+  "explanation": "The chief captain bade that Paul should be examined by scourging, that he might know why they cried so against him.",
+  "ref": "Acts 22:24"
+ },
+ {
+  "id": "acts-22-e-09",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was afraid after he learned Paul was a Roman?",
+  "choices": [
+   "The centurion",
+   "The high priest",
+   "The chief captain",
+   "Ananias"
+  ],
+  "answer": 2,
+  "explanation": "The chief captain also was afraid, after he knew that Paul was a Roman, and because he had bound him.",
+  "ref": "Acts 22:29"
+ },
+ {
+  "id": "acts-22-e-10",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On the next day, whom did the chief captain command to appear before Paul?",
+  "choices": [
+   "King Agrippa",
+   "The chief priests and all their council",
+   "The governor Felix",
+   "The leaders of the synagogue"
+  ],
+  "answer": 1,
+  "explanation": "On the morrow he loosed Paul from his bands and commanded the chief priests and all their council to appear.",
+  "ref": "Acts 22:30"
+ },
+ {
+  "id": "acts-22-m-01",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Paul on his way to Damascus?",
+  "choices": [
+   "To bring believers there bound to Jerusalem",
+   "To preach in the synagogue",
+   "To visit his family",
+   "To collect an offering"
+  ],
+  "answer": 0,
+  "explanation": "He received letters to the brethren and went to Damascus to bring them bound unto Jerusalem, to be punished.",
+  "ref": "Acts 22:5"
+ },
+ {
+  "id": "acts-22-m-02",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was true of the men who travelled with Paul on the Damascus road?",
+  "choices": [
+   "They heard the voice but saw no light",
+   "They saw and heard everything",
+   "They saw nothing at all",
+   "They saw the light but did not hear the voice"
+  ],
+  "answer": 3,
+  "explanation": "They that were with Paul saw indeed the light, and were afraid; but they heard not the voice of him that spake.",
+  "ref": "Acts 22:9"
+ },
+ {
+  "id": "acts-22-m-03",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord tell Paul to do after Paul asked what to do?",
+  "choices": [
+   "Return to Jerusalem",
+   "Go to the temple",
+   "Arise and go into Damascus",
+   "Wait where he was"
+  ],
+  "answer": 2,
+  "explanation": "The Lord said, Arise, and go into Damascus; and there it shall be told thee of all things which are appointed for thee to do.",
+  "ref": "Acts 22:10"
+ },
+ {
+  "id": "acts-22-m-04",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Paul get into Damascus after the light?",
+  "choices": [
+   "Carried on a litter",
+   "Led by the hand of those with him",
+   "On a donkey",
+   "He walked alone"
+  ],
+  "answer": 1,
+  "explanation": "Paul could not see for the glory of that light, and was led by the hand of them that were with him.",
+  "ref": "Acts 22:11"
+ },
+ {
+  "id": "acts-22-m-05",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Paul describe Ananias of Damascus?",
+  "choices": [
+   "A devout man according to the law",
+   "A leader of the synagogue",
+   "A Roman officer",
+   "A rich merchant"
+  ],
+  "answer": 0,
+  "explanation": "Ananias was a devout man according to the law, having a good report of all the Jews which dwelt there.",
+  "ref": "Acts 22:12"
+ },
+ {
+  "id": "acts-22-m-06",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Ananias address Paul when he came and stood by him?",
+  "choices": [
+   "Master Saul",
+   "Servant of Christ",
+   "Man of Tarsus",
+   "Brother Saul"
+  ],
+  "answer": 3,
+  "explanation": "Ananias said, Brother Saul, receive thy sight. And the same hour Paul looked up upon him.",
+  "ref": "Acts 22:13"
+ },
+ {
+  "id": "acts-22-m-07",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ananias say Paul would be unto all men?",
+  "choices": [
+   "His judge",
+   "His servant only",
+   "His witness",
+   "His teacher"
+  ],
+  "answer": 2,
+  "explanation": "Ananias said, Thou shalt be his witness unto all men of what thou hast seen and heard.",
+  "ref": "Acts 22:15"
+ },
+ {
+  "id": "acts-22-m-08",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Lord tell Paul to get quickly out of Jerusalem?",
+  "choices": [
+   "The temple was to be destroyed",
+   "They would not receive his testimony about Jesus",
+   "Soldiers were seeking him",
+   "A famine was coming"
+  ],
+  "answer": 1,
+  "explanation": "The Lord said, Make haste, and get thee quickly out of Jerusalem: for they will not receive thy testimony concerning me.",
+  "ref": "Acts 22:18"
+ },
+ {
+  "id": "acts-22-m-09",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul tell the Lord he had done in every synagogue?",
+  "choices": [
+   "Imprisoned and beat them that believed",
+   "Prayed for the sick",
+   "Read from the prophets",
+   "Collected offerings"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, They know that I imprisoned and beat in every synagogue them that believed on thee.",
+  "ref": "Acts 22:19"
+ },
+ {
+  "id": "acts-22-m-10",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul do while Stephen was being put to death?",
+  "choices": [
+   "Argued with him",
+   "Prayed for him",
+   "Carried the stones",
+   "Kept the raiment of those who slew him"
+  ],
+  "answer": 3,
+  "explanation": "Paul stood by, consenting unto his death, and kept the raiment of them that slew him.",
+  "ref": "Acts 22:20"
+ },
+ {
+  "id": "acts-22-m-11",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the crowd cry about Paul after he spoke of the Gentiles?",
+  "choices": [
+   "Let him go free",
+   "Bring him to the temple",
+   "Away with such a fellow from the earth",
+   "Let Caesar judge him"
+  ],
+  "answer": 2,
+  "explanation": "They said, Away with such a fellow from the earth: for it is not fit that he should live.",
+  "ref": "Acts 22:22"
+ },
+ {
+  "id": "acts-22-m-12",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the chief captain want Paul scourged?",
+  "choices": [
+   "To punish him for blasphemy",
+   "To know why they cried so against him",
+   "To make him confess he was a Roman",
+   "To please the crowd"
+  ],
+  "answer": 1,
+  "explanation": "He bade that Paul be examined by scourging, that he might know wherefore they cried so against him.",
+  "ref": "Acts 22:24"
+ },
+ {
+  "id": "acts-22-m-13",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul ask the centurion as they bound him with thongs?",
+  "choices": [
+   "Whether it is lawful to scourge a Roman uncondemned",
+   "Whether he could speak to Caesar",
+   "Where the chief captain was",
+   "Whether he could send a letter"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, Is it lawful for you to scourge a man that is a Roman, and uncondemned?",
+  "ref": "Acts 22:25"
+ },
+ {
+  "id": "acts-22-m-14",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "Who went and told the chief captain to take heed because Paul was a Roman?",
+  "choices": [
+   "A soldier of the guard",
+   "The high priest",
+   "Ananias",
+   "The centurion"
+  ],
+  "answer": 3,
+  "explanation": "When the centurion heard that, he went and told the chief captain, Take heed what thou doest: for this man is a Roman.",
+  "ref": "Acts 22:26"
+ },
+ {
+  "id": "acts-22-m-15",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the chief captain afraid when he learned Paul was a Roman?",
+  "choices": [
+   "Because Paul had threatened him",
+   "Because Paul was a Pharisee",
+   "Because he had bound him",
+   "Because the crowd was rioting"
+  ],
+  "answer": 2,
+  "explanation": "The chief captain was afraid, after he knew that Paul was a Roman, and because he had bound him.",
+  "ref": "Acts 22:29"
+ },
+ {
+  "id": "acts-22-h-01",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Paul name as witnesses to the letters he received to go to Damascus?",
+  "choices": [
+   "Gamaliel and the scribes",
+   "The high priest and all the estate of the elders",
+   "The chief captain",
+   "The Pharisees alone"
+  ],
+  "answer": 1,
+  "explanation": "Paul said the high priest doth bear me witness, and all the estate of the elders, from whom he received letters.",
+  "ref": "Acts 22:5"
+ },
+ {
+  "id": "acts-22-h-02",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "About what time of day did the great light shine round Paul?",
+  "choices": [
+   "About noon",
+   "At sunrise",
+   "In the evening",
+   "In the dead of night"
+  ],
+  "answer": 0,
+  "explanation": "As Paul was come nigh unto Damascus about noon, suddenly there shone from heaven a great light.",
+  "ref": "Acts 22:6"
+ },
+ {
+  "id": "acts-22-h-03",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul ask the Lord after he learned the voice was Jesus of Nazareth?",
+  "choices": [
+   "Why hast thou chosen me?",
+   "Where shall I go?",
+   "Wilt thou forgive me?",
+   "What shall I do, Lord?"
+  ],
+  "answer": 3,
+  "explanation": "Paul said, What shall I do, Lord? And the Lord told him to arise and go into Damascus.",
+  "ref": "Acts 22:10"
+ },
+ {
+  "id": "acts-22-h-04",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What title did Ananias give Jesus when he said Paul would see him?",
+  "choices": [
+   "The Holy Child",
+   "The Good Shepherd",
+   "That Just One",
+   "The Prince of Peace"
+  ],
+  "answer": 2,
+  "explanation": "Ananias said God chose Paul to know his will, and see that Just One, and hear the voice of his mouth.",
+  "ref": "Acts 22:14"
+ },
+ {
+  "id": "acts-22-h-05",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ananias say Paul should be doing as he was baptized and washed his sins away?",
+  "choices": [
+   "Fasting three days",
+   "Calling on the name of the Lord",
+   "Confessing before the elders",
+   "Giving thanks to Caesar"
+  ],
+  "answer": 1,
+  "explanation": "Ananias said, Arise, and be baptized, and wash away thy sins, calling on the name of the Lord.",
+  "ref": "Acts 22:16"
+ },
+ {
+  "id": "acts-22-h-06",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to what was Paul taught at the feet of Gamaliel?",
+  "choices": [
+   "The perfect manner of the law of the fathers",
+   "The wisdom of the Greeks",
+   "The sayings of the prophets only",
+   "The customs of Rome"
+  ],
+  "answer": 0,
+  "explanation": "Paul was taught according to the perfect manner of the law of the fathers, and was zealous toward God.",
+  "ref": "Acts 22:3"
+ },
+ {
+  "id": "acts-22-h-07",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who gave Ananias a good report, according to Paul?",
+  "choices": [
+   "The elders of Jerusalem",
+   "The Roman governor",
+   "His own household",
+   "All the Jews which dwelt there"
+  ],
+  "answer": 3,
+  "explanation": "Ananias was a devout man according to the law, having a good report of all the Jews which dwelt there.",
+  "ref": "Acts 22:12"
+ },
+ {
+  "id": "acts-22-h-08",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what was Paul bound when he told the centurion he was a Roman?",
+  "choices": [
+   "Iron chains",
+   "Ropes of hair",
+   "Thongs",
+   "Cords of flax"
+  ],
+  "answer": 2,
+  "explanation": "As they bound him with thongs, Paul said unto the centurion that stood by, Is it lawful for you to scourge a man that is a Roman?",
+  "ref": "Acts 22:25"
+ },
+ {
+  "id": "acts-22-h-09",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the chief captain say he paid to obtain his freedom as a Roman?",
+  "choices": [
+   "Two talents of silver",
+   "A great sum",
+   "His years of service",
+   "A gift to Caesar"
+  ],
+  "answer": 1,
+  "explanation": "The chief captain said, With a great sum obtained I this freedom.",
+  "ref": "Acts 22:28"
+ },
+ {
+  "id": "acts-22-h-10",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul answer the chief captain about his own citizenship?",
+  "choices": [
+   "I was free born",
+   "I bought it long ago",
+   "My father earned it",
+   "It was given me by Caesar"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, But I was free born.",
+  "ref": "Acts 22:28"
+ },
+ {
+  "id": "acts-22-h-11",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Paul address the crowd when he began his defence?",
+  "choices": [
+   "Sons of Israel",
+   "Rulers of the people",
+   "Citizens of Rome",
+   "Men, brethren, and fathers"
+  ],
+  "answer": 3,
+  "explanation": "Paul began, Men, brethren, and fathers, hear ye my defence which I make now unto you.",
+  "ref": "Acts 22:1"
+ },
+ {
+  "id": "acts-22-h-12",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men who were about to examine Paul do when they heard he was a Roman?",
+  "choices": [
+   "Bound him tighter",
+   "Called the council",
+   "Straightway departed from him",
+   "Struck him on the mouth"
+  ],
+  "answer": 2,
+  "explanation": "Straightway they departed from him which should have examined him.",
+  "ref": "Acts 22:29"
+ },
+ {
+  "id": "acts-22-h-13",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the chief captain ask Paul when the centurion warned him?",
+  "choices": [
+   "Who is thy father?",
+   "Tell me, art thou a Roman?",
+   "Whence art thou?",
+   "Hast thou appealed to Caesar?"
+  ],
+  "answer": 1,
+  "explanation": "The chief captain said, Tell me, art thou a Roman? He said, Yea.",
+  "ref": "Acts 22:27"
+ },
+ {
+  "id": "acts-22-h-14",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the voice say to Paul on the road when he fell to the ground?",
+  "choices": [
+   "Saul, Saul, why persecutest thou me?",
+   "Saul, rise and stand upon thy feet",
+   "Saul, thy sins are forgiven",
+   "Saul, go into Damascus"
+  ],
+  "answer": 0,
+  "explanation": "Paul fell unto the ground and heard a voice saying, Saul, Saul, why persecutest thou me?",
+  "ref": "Acts 22:7"
+ },
+ {
+  "id": "acts-22-h-15",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ananias say the God of our fathers had chosen Paul to know?",
+  "choices": [
+   "The day of judgment",
+   "The Gentiles' lands",
+   "The law of Moses",
+   "His will"
+  ],
+  "answer": 3,
+  "explanation": "Ananias said, The God of our fathers hath chosen thee, that thou shouldest know his will.",
+  "ref": "Acts 22:14"
+ },
+ {
+  "id": "acts-23-e-01",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul call the high priest when he was told to be struck on the mouth?",
+  "choices": [
+   "A blind guide",
+   "A broken cistern",
+   "A painted tomb",
+   "A whited wall"
+  ],
+  "answer": 3,
+  "explanation": "Paul said, God shall smite thee, thou whited wall.",
+  "ref": "Acts 23:3"
+ },
+ {
+  "id": "acts-23-e-02",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul cry out that he was when he saw the council was part Sadducees and part Pharisees?",
+  "choices": [
+   "A Sadducee, the son of a Sadducee",
+   "A scribe of the law",
+   "A Pharisee, the son of a Pharisee",
+   "A priest of the temple"
+  ],
+  "answer": 2,
+  "explanation": "Paul cried out, Men and brethren, I am a Pharisee, the son of a Pharisee.",
+  "ref": "Acts 23:6"
+ },
+ {
+  "id": "acts-23-e-03",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the chief captain fear would happen to Paul in the council?",
+  "choices": [
+   "That he would escape",
+   "That he would be pulled in pieces",
+   "That he would be stoned at once",
+   "That he would be poisoned"
+  ],
+  "answer": 1,
+  "explanation": "The chief captain feared lest Paul should have been pulled in pieces of them, and commanded the soldiers to take him by force.",
+  "ref": "Acts 23:10"
+ },
+ {
+  "id": "acts-23-e-04",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which city did the Lord say Paul must bear witness, as he had in Jerusalem?",
+  "choices": [
+   "Rome",
+   "Antioch",
+   "Athens",
+   "Caesarea"
+  ],
+  "answer": 0,
+  "explanation": "The Lord said, As thou hast testified of me in Jerusalem, so must thou bear witness also at Rome.",
+  "ref": "Acts 23:11"
+ },
+ {
+  "id": "acts-23-e-05",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Jews who banded together swear not to do until they had killed Paul?",
+  "choices": [
+   "Sleep nor rest",
+   "Enter the temple",
+   "Speak to the council",
+   "Eat nor drink"
+  ],
+  "answer": 3,
+  "explanation": "They bound themselves under a curse, saying that they would neither eat nor drink till they had killed Paul.",
+  "ref": "Acts 23:12"
+ },
+ {
+  "id": "acts-23-e-06",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two groups in the council became divided over Paul?",
+  "choices": [
+   "The scribes and the priests",
+   "The elders and the soldiers",
+   "The Pharisees and the Sadducees",
+   "The Romans and the Greeks"
+  ],
+  "answer": 2,
+  "explanation": "There arose a dissension between the Pharisees and the Sadducees, and the multitude was divided.",
+  "ref": "Acts 23:7"
+ },
+ {
+  "id": "acts-23-e-07",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did the soldiers bring Paul to the governor?",
+  "choices": [
+   "Antioch",
+   "Caesarea",
+   "Tarsus",
+   "Joppa"
+  ],
+  "answer": 1,
+  "explanation": "When they came to Caesarea, they delivered the epistle to the governor, and presented Paul also before him.",
+  "ref": "Acts 23:33"
+ },
+ {
+  "id": "acts-23-e-08",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who wrote the letter to Felix about Paul?",
+  "choices": [
+   "Claudius Lysias",
+   "Ananias",
+   "Julius",
+   "Tertullus"
+  ],
+  "answer": 0,
+  "explanation": "The letter began, Claudius Lysias unto the most excellent governor Felix sendeth greeting.",
+  "ref": "Acts 23:26"
+ },
+ {
+  "id": "acts-23-e-09",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Felix command that Paul be kept?",
+  "choices": [
+   "In the temple",
+   "In the prison at Antioch",
+   "In the castle at Jerusalem",
+   "In Herod's judgment hall"
+  ],
+  "answer": 3,
+  "explanation": "Felix commanded him to be kept in Herod's judgment hall.",
+  "ref": "Acts 23:35"
+ },
+ {
+  "id": "acts-23-e-10",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the chief captain command the soldiers to do when the dissension grew great?",
+  "choices": [
+   "Release Paul to the council",
+   "Scourge Paul at once",
+   "Take Paul by force and bring him into the castle",
+   "Send Paul to Caesar"
+  ],
+  "answer": 2,
+  "explanation": "He commanded the soldiers to go down, and to take him by force from among them, and to bring him into the castle.",
+  "ref": "Acts 23:10"
+ },
+ {
+  "id": "acts-23-m-01",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul rebuke Ananias for commanding him to be smitten?",
+  "choices": [
+   "Ananias was not a priest",
+   "Ananias sat to judge him by the law yet broke the law",
+   "Ananias was a Sadducee",
+   "Ananias had no witnesses"
+  ],
+  "answer": 1,
+  "explanation": "Paul said, Sittest thou to judge me after the law, and commandest me to be smitten contrary to the law?",
+  "ref": "Acts 23:3"
+ },
+ {
+  "id": "acts-23-m-02",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say when told he was reviling God's high priest?",
+  "choices": [
+   "I wist not, brethren, that he was the high priest",
+   "I spoke the truth before God",
+   "I will say it again",
+   "I was struck first"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, I wist not, brethren, that he was the high priest.",
+  "ref": "Acts 23:5"
+ },
+ {
+  "id": "acts-23-m-03",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Sadducees say there is not?",
+  "choices": [
+   "Heaven or hell",
+   "A Messiah or a kingdom",
+   "A temple or a priesthood",
+   "Resurrection, angel, or spirit"
+  ],
+  "answer": 3,
+  "explanation": "The Sadducees say that there is no resurrection, neither angel, nor spirit: but the Pharisees confess both.",
+  "ref": "Acts 23:8"
+ },
+ {
+  "id": "acts-23-m-04",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the scribes of the Pharisees' part say they found in Paul?",
+  "choices": [
+   "A false teacher",
+   "A mover of sedition",
+   "No evil",
+   "A Roman citizen"
+  ],
+  "answer": 2,
+  "explanation": "The scribes of the Pharisees' part said, We find no evil in this man.",
+  "ref": "Acts 23:9"
+ },
+ {
+  "id": "acts-23-m-05",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord say Paul had done in Jerusalem?",
+  "choices": [
+   "Healed the sick",
+   "Testified of him",
+   "Raised the dead",
+   "Built up the church"
+  ],
+  "answer": 1,
+  "explanation": "The Lord said, As thou hast testified of me in Jerusalem, so must thou bear witness also at Rome.",
+  "ref": "Acts 23:11"
+ },
+ {
+  "id": "acts-23-m-06",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men made the conspiracy to kill Paul?",
+  "choices": [
+   "More than forty",
+   "More than twenty",
+   "More than seventy",
+   "More than two hundred"
+  ],
+  "answer": 0,
+  "explanation": "They were more than forty which had made this conspiracy.",
+  "ref": "Acts 23:13"
+ },
+ {
+  "id": "acts-23-m-07",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did the conspirators go with their plan to kill Paul?",
+  "choices": [
+   "The Roman governor",
+   "The chief captain",
+   "The Pharisees only",
+   "The chief priests and elders"
+  ],
+  "answer": 3,
+  "explanation": "They came to the chief priests and elders and said, We have bound ourselves under a great curse.",
+  "ref": "Acts 23:14"
+ },
+ {
+  "id": "acts-23-m-08",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason were the council to give the chief captain for bringing Paul down?",
+  "choices": [
+   "To release him",
+   "To hear his sentence",
+   "To enquire something more perfectly concerning him",
+   "To send him to Felix"
+  ],
+  "answer": 2,
+  "explanation": "They said to signify to the chief captain to bring him down, as though ye would enquire something more perfectly concerning him.",
+  "ref": "Acts 23:15"
+ },
+ {
+  "id": "acts-23-m-09",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul ask a centurion to do for the young man?",
+  "choices": [
+   "Hide him in the castle",
+   "Bring him to the chief captain",
+   "Send him to Felix",
+   "Give him a letter"
+  ],
+  "answer": 1,
+  "explanation": "Paul said, Bring this young man unto the chief captain: for he hath a certain thing to tell him.",
+  "ref": "Acts 23:17"
+ },
+ {
+  "id": "acts-23-m-10",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the chief captain treat the young man when he came?",
+  "choices": [
+   "Took him by the hand and went aside privately",
+   "Had him bound",
+   "Sent him away at once",
+   "Brought him before the council"
+  ],
+  "answer": 0,
+  "explanation": "The chief captain took him by the hand, and went with him aside privately, and asked him what he had to tell.",
+  "ref": "Acts 23:19"
+ },
+ {
+  "id": "acts-23-m-11",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the chief captain charge the young man to do?",
+  "choices": [
+   "Return to the council",
+   "Go to Caesarea",
+   "Bring more witnesses",
+   "Tell no man what he had shown"
+  ],
+  "answer": 3,
+  "explanation": "The chief captain charged him, See thou tell no man that thou hast shewed these things to me.",
+  "ref": "Acts 23:22"
+ },
+ {
+  "id": "acts-23-m-12",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Lysias say in his letter when he rescued Paul?",
+  "choices": [
+   "He found Paul guilty",
+   "He paid a great sum",
+   "He understood Paul was a Roman",
+   "He had seen Paul preach"
+  ],
+  "answer": 2,
+  "explanation": "Lysias wrote that he came with an army and rescued Paul, having understood that he was a Roman.",
+  "ref": "Acts 23:27"
+ },
+ {
+  "id": "acts-23-m-13",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Lysias write that Paul had nothing laid to his charge worthy of?",
+  "choices": [
+   "Prison or exile",
+   "Death or of bonds",
+   "Stripes or fines",
+   "The temple or the council"
+  ],
+  "answer": 1,
+  "explanation": "Lysias perceived Paul to have nothing laid to his charge worthy of death or of bonds.",
+  "ref": "Acts 23:29"
+ },
+ {
+  "id": "acts-23-m-14",
+  "chapter": 23,
+  "level": "medium",
+  "category": "place",
+  "question": "Which province did Felix learn Paul was from?",
+  "choices": [
+   "Cilicia",
+   "Syria",
+   "Judaea",
+   "Asia"
+  ],
+  "answer": 0,
+  "explanation": "When Felix read the letter, he asked of what province Paul was, and understood that he was of Cilicia.",
+  "ref": "Acts 23:34"
+ },
+ {
+  "id": "acts-23-m-15",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Felix say he would do when Paul's accusers were also come?",
+  "choices": [
+   "Set him free",
+   "Send him to Rome",
+   "Judge him in the temple",
+   "Hear him"
+  ],
+  "answer": 3,
+  "explanation": "Felix said, I will hear thee, when thine accusers are also come.",
+  "ref": "Acts 23:35"
+ },
+ {
+  "id": "acts-23-h-01",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What Scripture did Paul quote when he said he did not know Ananias was the high priest?",
+  "choices": [
+   "Thou shalt not bear false witness",
+   "Honour thy father and thy mother",
+   "Thou shalt not speak evil of the ruler of thy people",
+   "Thou shalt not strike the Lord's anointed"
+  ],
+  "answer": 2,
+  "explanation": "Paul said, It is written, Thou shalt not speak evil of the ruler of thy people.",
+  "ref": "Acts 23:5"
+ },
+ {
+  "id": "acts-23-h-02",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did those standing by say to Paul after he answered Ananias?",
+  "choices": [
+   "Who gave thee this authority?",
+   "Revilest thou God's high priest?",
+   "Hast thou no fear of Caesar?",
+   "Art thou a Roman?"
+  ],
+  "answer": 1,
+  "explanation": "They that stood by said, Revilest thou God's high priest?",
+  "ref": "Acts 23:4"
+ },
+ {
+  "id": "acts-23-h-03",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the forty men waiting for from the chief captain?",
+  "choices": [
+   "A promise",
+   "A letter",
+   "A guard",
+   "A signal"
+  ],
+  "answer": 0,
+  "explanation": "They said they were ready, looking for a promise from thee.",
+  "ref": "Acts 23:21"
+ },
+ {
+  "id": "acts-23-h-04",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Paul's sister's son go to tell Paul of the ambush?",
+  "choices": [
+   "Into the temple",
+   "To the house of Ananias",
+   "To the synagogue",
+   "Into the castle"
+  ],
+  "answer": 3,
+  "explanation": "When Paul's sister's son heard of their lying in wait, he went and entered into the castle, and told Paul.",
+  "ref": "Acts 23:16"
+ },
+ {
+  "id": "acts-23-h-05",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many soldiers did the chief captain order made ready to go to Caesarea?",
+  "choices": [
+   "Fifty",
+   "One hundred",
+   "Two hundred",
+   "Four hundred"
+  ],
+  "answer": 2,
+  "explanation": "He said, Make ready two hundred soldiers to go to Caesarea, and horsemen threescore and ten, and spearmen two hundred.",
+  "ref": "Acts 23:23"
+ },
+ {
+  "id": "acts-23-h-06",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many horsemen were ordered to go with Paul?",
+  "choices": [
+   "Twenty",
+   "Threescore and ten",
+   "Forty",
+   "Two hundred"
+  ],
+  "answer": 1,
+  "explanation": "The chief captain ordered horsemen threescore and ten to go with the soldiers.",
+  "ref": "Acts 23:23"
+ },
+ {
+  "id": "acts-23-h-07",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At what hour of the night were the soldiers to leave?",
+  "choices": [
+   "The third hour",
+   "The first hour",
+   "The sixth hour",
+   "The ninth hour"
+  ],
+  "answer": 0,
+  "explanation": "They were to go to Caesarea at the third hour of the night.",
+  "ref": "Acts 23:23"
+ },
+ {
+  "id": "acts-23-h-08",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the chief captain say to provide for Paul's journey?",
+  "choices": [
+   "A litter",
+   "A ship",
+   "A covered cart",
+   "Beasts for Paul to ride"
+  ],
+  "answer": 3,
+  "explanation": "He said, Provide them beasts, that they may set Paul on, and bring him safe unto Felix the governor.",
+  "ref": "Acts 23:24"
+ },
+ {
+  "id": "acts-23-h-09",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Lysias say he came with when he rescued Paul?",
+  "choices": [
+   "A few soldiers",
+   "The elders",
+   "An army",
+   "A letter from Felix"
+  ],
+  "answer": 2,
+  "explanation": "Lysias wrote that Paul should have been killed of them: then came I with an army, and rescued him.",
+  "ref": "Acts 23:27"
+ },
+ {
+  "id": "acts-23-h-10",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what did Lysias say Paul was accused?",
+  "choices": [
+   "Raising a riot",
+   "Questions of their law",
+   "Stealing from the temple",
+   "Plotting against Rome"
+  ],
+  "answer": 1,
+  "explanation": "Lysias perceived Paul to be accused of questions of their law.",
+  "ref": "Acts 23:29"
+ },
+ {
+  "id": "acts-23-h-11",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Lysias say he commanded Paul's accusers to do?",
+  "choices": [
+   "Say before Felix what they had against him",
+   "Pay a fine",
+   "Go home",
+   "Wait for Caesar"
+  ],
+  "answer": 0,
+  "explanation": "Lysias gave commandment to his accusers also to say before Felix what they had against him.",
+  "ref": "Acts 23:30"
+ },
+ {
+  "id": "acts-23-h-12",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the soldiers bring Paul by night on the first stage of the journey?",
+  "choices": [
+   "Joppa",
+   "Lydda",
+   "Caesarea",
+   "Antipatris"
+  ],
+  "answer": 3,
+  "explanation": "The soldiers took Paul, and brought him by night to Antipatris.",
+  "ref": "Acts 23:31"
+ },
+ {
+  "id": "acts-23-h-13",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who went on with Paul to Caesarea on the next day?",
+  "choices": [
+   "The spearmen",
+   "The centurions",
+   "The horsemen",
+   "The chief captain"
+  ],
+  "answer": 2,
+  "explanation": "On the morrow they left the horsemen to go with him, and returned to the castle.",
+  "ref": "Acts 23:32"
+ },
+ {
+  "id": "acts-23-h-14",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Lysias say he brought Paul to learn why they accused him?",
+  "choices": [
+   "Into the temple",
+   "Into their council",
+   "Before the high priest alone",
+   "Into the castle"
+  ],
+  "answer": 1,
+  "explanation": "Lysias wrote that when he would have known the cause wherefore they accused him, he brought him forth into their council.",
+  "ref": "Acts 23:28"
+ },
+ {
+  "id": "acts-23-h-15",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the Lord stand by Paul and bid him be of good cheer?",
+  "choices": [
+   "The night following",
+   "At the third hour",
+   "The next morning",
+   "After two days"
+  ],
+  "answer": 0,
+  "explanation": "The night following the Lord stood by him, and said, Be of good cheer, Paul.",
+  "ref": "Acts 23:11"
  }
 ]
