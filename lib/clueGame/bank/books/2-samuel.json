@@ -2992,6 +2992,646 @@
   "ref": "2 Samuel 5:19–20"
  },
  {
+  "id": "2-samuel-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to David at Hebron and said, \"We are thy bone and thy flesh\"?",
+  "choices": [
+   "All the tribes of Israel",
+   "The men of Judah only",
+   "The Philistines",
+   "The Jebusites"
+  ],
+  "answer": 0,
+  "explanation": "All the tribes of Israel came to David unto Hebron, and said, We are thy bone and thy flesh.",
+  "ref": "2 Samuel 5:1"
+ },
+ {
+  "id": "2-samuel-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who made a league with David and anointed him king over Israel?",
+  "choices": [
+   "The priests",
+   "The Philistine lords",
+   "The men of Tyre",
+   "The elders of Israel"
+  ],
+  "answer": 3,
+  "explanation": "All the elders of Israel came to the king to Hebron, and they anointed David king over Israel.",
+  "ref": "2 Samuel 5:3"
+ },
+ {
+  "id": "2-samuel-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years in all did David reign?",
+  "choices": [
+   "Twenty",
+   "Thirty",
+   "Forty",
+   "Fifty"
+  ],
+  "answer": 2,
+  "explanation": "David was thirty years old when he began to reign, and he reigned forty years.",
+  "ref": "2 Samuel 5:4"
+ },
+ {
+  "id": "2-samuel-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the Jebusites say would keep David out of Jerusalem?",
+  "choices": [
+   "The mighty men",
+   "The blind and the lame",
+   "The elders",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "They said, Except thou take away the blind and the lame, thou shalt not come in hither.",
+  "ref": "2 Samuel 5:6"
+ },
+ {
+  "id": "2-samuel-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "What did David call the stronghold of Zion?",
+  "choices": [
+   "The city of David",
+   "The house of the LORD",
+   "The hold of Judah",
+   "The gate of Zion"
+  ],
+  "answer": 0,
+  "explanation": "David took the strong hold of Zion: the same is the city of David.",
+  "ref": "2 Samuel 5:7"
+ },
+ {
+  "id": "2-samuel-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was with David as he grew great?",
+  "choices": [
+   "Joab alone",
+   "King Hiram",
+   "The elders of Israel",
+   "The LORD God of hosts"
+  ],
+  "answer": 3,
+  "explanation": "David went on, and grew great, and the LORD God of hosts was with him.",
+  "ref": "2 Samuel 5:10"
+ },
+ {
+  "id": "2-samuel-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came up to seek David when they heard he was anointed king?",
+  "choices": [
+   "The Syrians",
+   "The Moabites",
+   "The Philistines",
+   "The Ammonites"
+  ],
+  "answer": 2,
+  "explanation": "When the Philistines heard that they had anointed David king over Israel, all the Philistines came up to seek David.",
+  "ref": "2 Samuel 5:17"
+ },
+ {
+  "id": "2-samuel-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which valley did the Philistines spread themselves?",
+  "choices": [
+   "The valley of Salt",
+   "The valley of Rephaim",
+   "The valley of Elah",
+   "The valley of Jezreel"
+  ],
+  "answer": 1,
+  "explanation": "The Philistines also came and spread themselves in the valley of Rephaim.",
+  "ref": "2 Samuel 5:18"
+ },
+ {
+  "id": "2-samuel-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do before going up against the Philistines?",
+  "choices": [
+   "He enquired of the LORD",
+   "He called a feast",
+   "He sent for Hiram",
+   "He made a treaty"
+  ],
+  "answer": 0,
+  "explanation": "David enquired of the LORD, saying, Shall I go up to the Philistines?",
+  "ref": "2 Samuel 5:19"
+ },
+ {
+  "id": "2-samuel-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David and his men do with the images the Philistines left?",
+  "choices": [
+   "Carried them to Jerusalem",
+   "Buried them",
+   "Sold them",
+   "Burned them"
+  ],
+  "answer": 3,
+  "explanation": "There they left their images, and David and his men burned them.",
+  "ref": "2 Samuel 5:21"
+ },
+ {
+  "id": "2-samuel-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did David reign over Judah in Hebron?",
+  "choices": [
+   "Three years",
+   "Seven years exactly",
+   "Seven years and six months",
+   "Ten years"
+  ],
+  "answer": 2,
+  "explanation": "In Hebron he reigned over Judah seven years and six months.",
+  "ref": "2 Samuel 5:5"
+ },
+ {
+  "id": "2-samuel-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did David reign in Jerusalem over all Israel and Judah?",
+  "choices": [
+   "Forty",
+   "Thirty and three",
+   "Twenty",
+   "Seven and a half"
+  ],
+  "answer": 1,
+  "explanation": "In Jerusalem he reigned thirty and three years over all Israel and Judah.",
+  "ref": "2 Samuel 5:5"
+ },
+ {
+  "id": "2-samuel-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD tell David he would do for his people?",
+  "choices": [
+   "Feed my people Israel",
+   "Judge my people Israel",
+   "Lead my people to Egypt",
+   "Teach my people Israel"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said to thee, Thou shalt feed my people Israel, and thou shalt be a captain over Israel.",
+  "ref": "2 Samuel 5:2"
+ },
+ {
+  "id": "2-samuel-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had David done in the time when Saul was king?",
+  "choices": [
+   "Hidden in the wilderness",
+   "Served the Philistines",
+   "Judged the tribes",
+   "Led out and brought in Israel"
+  ],
+  "answer": 3,
+  "explanation": "When Saul was king over us, thou wast he that leddest out and broughtest in Israel.",
+  "ref": "2 Samuel 5:2"
+ },
+ {
+  "id": "2-samuel-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Before whom did David make a league with the elders at Hebron?",
+  "choices": [
+   "Before Abner",
+   "Before the ark",
+   "Before the LORD",
+   "Before Hiram"
+  ],
+  "answer": 2,
+  "explanation": "King David made a league with them in Hebron before the LORD.",
+  "ref": "2 Samuel 5:3"
+ },
+ {
+  "id": "2-samuel-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David promise whoever got up to the gutter and smote the Jebusites?",
+  "choices": [
+   "He would receive great silver",
+   "He would be chief and captain",
+   "He would marry the king's daughter",
+   "He would dwell in Zion"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever getteth up to the gutter, and smiteth the Jebusites, he shall be chief and captain.",
+  "ref": "2 Samuel 5:8"
+ },
+ {
+  "id": "2-samuel-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David perceive the LORD had done for him?",
+  "choices": [
+   "Established him king over Israel",
+   "Given him Saul's house",
+   "Made him a priest",
+   "Sent him a prophet"
+  ],
+  "answer": 0,
+  "explanation": "David perceived that the LORD had established him king over Israel.",
+  "ref": "2 Samuel 5:12"
+ },
+ {
+  "id": "2-samuel-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David take after he came from Hebron to Jerusalem?",
+  "choices": [
+   "More chariots",
+   "More land",
+   "More cedar",
+   "More concubines and wives"
+  ],
+  "answer": 3,
+  "explanation": "David took him more concubines and wives out of Jerusalem, after he was come from Hebron.",
+  "ref": "2 Samuel 5:13"
+ },
+ {
+  "id": "2-samuel-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD answer when David asked whether to go up against the Philistines?",
+  "choices": [
+   "Wait",
+   "Go down to the hold",
+   "Go up",
+   "Do not fight"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said unto David, Go up: for I will doubtless deliver the Philistines into thine hand.",
+  "ref": "2 Samuel 5:19"
+ },
+ {
+  "id": "2-samuel-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "What name did David give the place where he smote the Philistines the first time?",
+  "choices": [
+   "Rephaim",
+   "Baal-perazim",
+   "Gazer",
+   "Geba"
+  ],
+  "answer": 1,
+  "explanation": "David called the name of that place Baal-perazim.",
+  "ref": "2 Samuel 5:20"
+ },
+ {
+  "id": "2-samuel-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD tell David to do the second time the Philistines came?",
+  "choices": [
+   "Fetch a compass behind them",
+   "Go up at once",
+   "Stay in the hold",
+   "Wait three days"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Thou shalt not go up; but fetch a compass behind them.",
+  "ref": "2 Samuel 5:23"
+ },
+ {
+  "id": "2-samuel-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the LORD say David should come upon the Philistines?",
+  "choices": [
+   "By the pool of Hebron",
+   "At the gate of Gath",
+   "In the valley of Salt",
+   "Over against the mulberry trees"
+  ],
+  "answer": 3,
+  "explanation": "Come upon them over against the mulberry trees.",
+  "ref": "2 Samuel 5:23"
+ },
+ {
+  "id": "2-samuel-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What sound was David to wait for before he bestirred himself?",
+  "choices": [
+   "A trumpet from Jerusalem",
+   "A shout from the hold",
+   "A going in the tops of the mulberry trees",
+   "A thunder in the valley"
+  ],
+  "answer": 2,
+  "explanation": "When thou hearest the sound of a going in the tops of the mulberry trees, then shalt thou bestir thyself.",
+  "ref": "2 Samuel 5:24"
+ },
+ {
+  "id": "2-samuel-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David describe what the LORD had done to his enemies?",
+  "choices": [
+   "Scattered them like chaff",
+   "Broken forth like the breach of waters",
+   "Swallowed them like the sea",
+   "Burned them like stubble"
+  ],
+  "answer": 1,
+  "explanation": "David said, The LORD hath broken forth upon mine enemies before me, as the breach of waters.",
+  "ref": "2 Samuel 5:20"
+ },
+ {
+  "id": "2-samuel-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Jebusites think when they spoke to David?",
+  "choices": [
+   "David cannot come in hither",
+   "David will make peace",
+   "David has no army",
+   "David will fear the walls"
+  ],
+  "answer": 0,
+  "explanation": "They said, thinking, David cannot come in hither.",
+  "ref": "2 Samuel 5:6"
+ },
+ {
+  "id": "2-samuel-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "From where did David build round about inward?",
+  "choices": [
+   "Zion",
+   "Hebron",
+   "Baale",
+   "Millo"
+  ],
+  "answer": 3,
+  "explanation": "David built round about from Millo and inward.",
+  "ref": "2 Samuel 5:9"
+ },
+ {
+  "id": "2-samuel-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "The Philistines were smitten from Geba until you come to where?",
+  "choices": [
+   "Gath",
+   "Gibeon",
+   "Gazer",
+   "Gaza"
+  ],
+  "answer": 2,
+  "explanation": "David smote the Philistines from Geba until thou come to Gazer.",
+  "ref": "2 Samuel 5:25"
+ },
+ {
+  "id": "2-samuel-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son born to David in Jerusalem is named first in the list?",
+  "choices": [
+   "Solomon",
+   "Shammuah",
+   "Nathan",
+   "Shobab"
+  ],
+  "answer": 1,
+  "explanation": "These be the names of those that were born unto him in Jerusalem; Shammuah, and Shobab, and Nathan, and Solomon.",
+  "ref": "2 Samuel 5:14"
+ },
+ {
+  "id": "2-samuel-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons of David are named as born in Jerusalem?",
+  "choices": [
+   "Eleven",
+   "Seven",
+   "Nine",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "Shammuah, Shobab, Nathan, Solomon, Ibhar, Elishua, Nepheg, Japhia, Elishama, Eliada and Eliphalet.",
+  "ref": "2 Samuel 5:14–16"
+ },
+ {
+  "id": "2-samuel-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hiram's carpenters and masons build?",
+  "choices": [
+   "A temple",
+   "A wall for Jerusalem",
+   "A tent for the ark",
+   "An house for David"
+  ],
+  "answer": 3,
+  "explanation": "Hiram sent cedar trees, and carpenters, and masons: and they built David an house.",
+  "ref": "2 Samuel 5:11"
+ },
+ {
+  "id": "2-samuel-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did David go when he heard the Philistines had come up to seek him?",
+  "choices": [
+   "Up to Jerusalem",
+   "Out to Gibeon",
+   "Down to the hold",
+   "Back to Ziklag"
+  ],
+  "answer": 2,
+  "explanation": "David heard of it, and went down to the hold.",
+  "ref": "2 Samuel 5:17"
+ },
+ {
+  "id": "2-samuel-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did David perceive that the LORD had exalted his kingdom?",
+  "choices": [
+   "For his own righteousness",
+   "For his people Israel's sake",
+   "Because of Hiram's gifts",
+   "Because Saul was gone"
+  ],
+  "answer": 1,
+  "explanation": "He had exalted his kingdom for his people Israel's sake.",
+  "ref": "2 Samuel 5:12"
+ },
+ {
+  "id": "2-samuel-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Over whom did David reign in Hebron?",
+  "choices": [
+   "Judah",
+   "All Israel",
+   "Benjamin",
+   "Ephraim"
+  ],
+  "answer": 0,
+  "explanation": "In Hebron he reigned over Judah seven years and six months.",
+  "ref": "2 Samuel 5:5"
+ },
+ {
+  "id": "2-samuel-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did David say were hated of his soul?",
+  "choices": [
+   "The Philistines",
+   "The Jebusite kings",
+   "The false prophets",
+   "The lame and the blind"
+  ],
+  "answer": 3,
+  "explanation": "The lame and the blind, that are hated of David's soul.",
+  "ref": "2 Samuel 5:8"
+ },
+ {
+  "id": "2-samuel-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say would go out before David to smite the Philistines?",
+  "choices": [
+   "An angel",
+   "The ark",
+   "The LORD himself",
+   "The host of Israel"
+  ],
+  "answer": 2,
+  "explanation": "Then shall the LORD go out before thee, to smite the host of the Philistines.",
+  "ref": "2 Samuel 5:24"
+ },
+ {
+  "id": "2-samuel-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Which is the last son of David named in the list born in Jerusalem?",
+  "choices": [
+   "Eliada",
+   "Eliphalet",
+   "Elishama",
+   "Nepheg"
+  ],
+  "answer": 1,
+  "explanation": "The last names in the list are Elishama, and Eliada, and Eliphalet.",
+  "ref": "2 Samuel 5:16"
+ },
+ {
+  "id": "2-samuel-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which valley did the Philistines come the second time?",
+  "choices": [
+   "Rephaim",
+   "Elah",
+   "Salt",
+   "Sorek"
+  ],
+  "answer": 0,
+  "explanation": "The Philistines came up yet again, and spread themselves in the valley of Rephaim.",
+  "ref": "2 Samuel 5:22"
+ },
+ {
+  "id": "2-samuel-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hiram king of Tyre send along with cedar trees?",
+  "choices": [
+   "Carpenters and masons",
+   "Chariots and horsemen",
+   "Gold and silver",
+   "Priests and singers"
+  ],
+  "answer": 0,
+  "explanation": "Hiram sent messengers to David, and cedar trees, and carpenters, and masons.",
+  "ref": "2 Samuel 5:11"
+ },
+ {
+  "id": "2-samuel-5-m-15",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Which king of Tyre sent messengers to David?",
+  "choices": [
+   "Hiram",
+   "Toi",
+   "Hadadezer",
+   "Talmai"
+  ],
+  "answer": 0,
+  "explanation": "Hiram king of Tyre sent messengers to David.",
+  "ref": "2 Samuel 5:11"
+ },
+ {
+  "id": "2-samuel-5-h-15",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Which people lived in the land where David and his men went to Jerusalem?",
+  "choices": [
+   "The Amalekites",
+   "The Geshurites",
+   "The Hittites",
+   "The Jebusites"
+  ],
+  "answer": 3,
+  "explanation": "The king and his men went to Jerusalem unto the Jebusites, the inhabitants of the land.",
+  "ref": "2 Samuel 5:6"
+ },
+ {
   "id": "old-2-samuel-6-1",
   "chapter": 6,
   "level": "beginner",
