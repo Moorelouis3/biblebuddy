@@ -7296,6 +7296,646 @@
   "ref": "1 Kings 11:29–31"
  },
  {
+  "id": "1-kings-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Solomon's stead after he died?",
+  "choices": [
+   "Jeroboam",
+   "Rehoboam",
+   "Hadad",
+   "Rezon"
+  ],
+  "answer": 1,
+  "explanation": "Solomon slept with his fathers, and was buried in the city of David his father: and Rehoboam his son reigned in his stead.",
+  "ref": "1 Kings 11:43"
+ },
+ {
+  "id": "1-kings-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Solomon reign in Jerusalem over all Israel?",
+  "choices": [
+   "Twenty years",
+   "Thirty years",
+   "Forty years",
+   "Fifty years"
+  ],
+  "answer": 2,
+  "explanation": "The time that Solomon reigned in Jerusalem over all Israel was forty years.",
+  "ref": "1 Kings 11:42"
+ },
+ {
+  "id": "1-kings-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophet met Jeroboam in the way?",
+  "choices": [
+   "Ahijah the Shilonite",
+   "Nathan",
+   "Elijah",
+   "Samuel"
+  ],
+  "answer": 0,
+  "explanation": "The prophet Ahijah the Shilonite found him in the way.",
+  "ref": "1 Kings 11:29"
+ },
+ {
+  "id": "1-kings-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many pieces of the torn garment did Ahijah tell Jeroboam to take?",
+  "choices": [
+   "Two",
+   "Ten",
+   "Twelve",
+   "One"
+  ],
+  "answer": 1,
+  "explanation": "And he said to Jeroboam, Take thee ten pieces.",
+  "ref": "1 Kings 11:31"
+ },
+ {
+  "id": "1-kings-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jeroboam flee from Solomon?",
+  "choices": [
+   "Edom",
+   "Syria",
+   "Egypt",
+   "Moab"
+  ],
+  "answer": 2,
+  "explanation": "Jeroboam arose, and fled into Egypt, unto Shishak king of Egypt.",
+  "ref": "1 Kings 11:40"
+ },
+ {
+  "id": "1-kings-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For which god of Moab did Solomon build a high place?",
+  "choices": [
+   "Chemosh",
+   "Milcom",
+   "Ashtoreth",
+   "Dagon"
+  ],
+  "answer": 0,
+  "explanation": "Solomon did build an high place for Chemosh, the abomination of Moab.",
+  "ref": "1 Kings 11:7"
+ },
+ {
+  "id": "1-kings-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which Edomite did the Lord stir up as an adversary to Solomon?",
+  "choices": [
+   "Rezon",
+   "Hadad",
+   "Jeroboam",
+   "Ahijah"
+  ],
+  "answer": 1,
+  "explanation": "The Lord stirred up an adversary unto Solomon, Hadad the Edomite.",
+  "ref": "1 Kings 11:14"
+ },
+ {
+  "id": "1-kings-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Solomon buried?",
+  "choices": [
+   "In Hebron",
+   "In Egypt",
+   "In the city of David",
+   "In Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "Solomon slept with his fathers, and was buried in the city of David his father.",
+  "ref": "1 Kings 11:43"
+ },
+ {
+  "id": "1-kings-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the Lord commanded Solomon about other gods?",
+  "choices": [
+   "That he should not go after them",
+   "That he should destroy their altars",
+   "That he should let his wives worship them",
+   "That he should send them gifts"
+  ],
+  "answer": 0,
+  "explanation": "The Lord had commanded him that he should not go after other gods: but he kept not that which the Lord commanded.",
+  "ref": "1 Kings 11:10"
+ },
+ {
+  "id": "1-kings-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Solomon's heart was not perfect with the Lord as was whose heart?",
+  "choices": [
+   "Abraham's",
+   "David his father's",
+   "Moses'",
+   "Samuel's"
+  ],
+  "answer": 1,
+  "explanation": "His heart was not perfect with the Lord his God, as was the heart of David his father.",
+  "ref": "1 Kings 11:4"
+ },
+ {
+  "id": "1-kings-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these peoples did Solomon's strange women come from?",
+  "choices": [
+   "Philistines",
+   "Syrians",
+   "Hittites",
+   "Amalekites"
+  ],
+  "answer": 2,
+  "explanation": "King Solomon loved many strange women, of the Moabites, Ammonites, Edomites, Zidonians, and Hittites.",
+  "ref": "1 Kings 11:1"
+ },
+ {
+  "id": "1-kings-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why had the Lord told Israel not to join with those nations?",
+  "choices": [
+   "They would turn away their heart after their gods",
+   "They would take their land",
+   "They would sell them as slaves",
+   "They would not pay tribute"
+  ],
+  "answer": 0,
+  "explanation": "For surely they will turn away your heart after their gods: Solomon clave unto these in love.",
+  "ref": "1 Kings 11:2"
+ },
+ {
+  "id": "1-kings-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Solomon build the high place for Chemosh?",
+  "choices": [
+   "In the valley of Hinnom",
+   "In the hill that is before Jerusalem",
+   "On Mount Moriah",
+   "In the house of the forest"
+  ],
+  "answer": 1,
+  "explanation": "In the hill that is before Jerusalem.",
+  "ref": "1 Kings 11:7"
+ },
+ {
+  "id": "1-kings-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Molech was the abomination of which people?",
+  "choices": [
+   "Moab",
+   "Zidon",
+   "The children of Ammon",
+   "Edom"
+  ],
+  "answer": 2,
+  "explanation": "For Molech, the abomination of the children of Ammon.",
+  "ref": "1 Kings 11:7"
+ },
+ {
+  "id": "1-kings-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many times had the Lord appeared to Solomon?",
+  "choices": [
+   "Twice",
+   "Once",
+   "Three times",
+   "Seven times"
+  ],
+  "answer": 0,
+  "explanation": "The Lord God of Israel, which had appeared unto him twice.",
+  "ref": "1 Kings 11:9"
+ },
+ {
+  "id": "1-kings-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the Lord not rend the kingdom in Solomon's own days?",
+  "choices": [
+   "Because Solomon repented",
+   "For David thy father's sake",
+   "Because of the temple",
+   "For Rehoboam's sake"
+  ],
+  "answer": 1,
+  "explanation": "Notwithstanding in thy days I will not do it for David thy father's sake.",
+  "ref": "1 Kings 11:12"
+ },
+ {
+  "id": "1-kings-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was captain of the host when Joab went to bury the slain in Edom?",
+  "choices": [
+   "Abner",
+   "Benaiah",
+   "Joab",
+   "Amasa"
+  ],
+  "answer": 2,
+  "explanation": "Joab the captain of the host was gone up to bury the slain, after he had smitten every male in Edom.",
+  "ref": "1 Kings 11:15"
+ },
+ {
+  "id": "1-kings-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Hadad when he fled to Egypt?",
+  "choices": [
+   "A little child",
+   "A mighty man",
+   "A priest",
+   "A captain"
+  ],
+  "answer": 0,
+  "explanation": "Hadad fled, he and certain Edomites of his father's servants with him, to go into Egypt; Hadad being yet a little child.",
+  "ref": "1 Kings 11:17"
+ },
+ {
+  "id": "1-kings-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh give Hadad?",
+  "choices": [
+   "A chariot and horses",
+   "A house, food, and land",
+   "Gold and silver",
+   "A fortified city"
+  ],
+  "answer": 1,
+  "explanation": "Pharaoh gave him an house, and appointed him victuals, and gave him land.",
+  "ref": "1 Kings 11:18"
+ },
+ {
+  "id": "1-kings-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose sister did Pharaoh give Hadad to wife?",
+  "choices": [
+   "Tahpenes",
+   "Zeruah",
+   "Genubath",
+   "Eliadah"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh gave him to wife the sister of his own wife, the sister of Tahpenes the queen.",
+  "ref": "1 Kings 11:19"
+ },
+ {
+  "id": "1-kings-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "From which lord did Rezon flee?",
+  "choices": [
+   "Hadad",
+   "Shishak",
+   "Hadadezer king of Zobah",
+   "Pharaoh"
+  ],
+  "answer": 2,
+  "explanation": "Rezon the son of Eliadah, which fled from his lord Hadadezer king of Zobah.",
+  "ref": "1 Kings 11:23"
+ },
+ {
+  "id": "1-kings-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "In which city did Rezon dwell and reign?",
+  "choices": [
+   "Damascus",
+   "Zobah",
+   "Tyre",
+   "Hamath"
+  ],
+  "answer": 0,
+  "explanation": "They went to Damascus, and dwelt therein, and reigned in Damascus.",
+  "ref": "1 Kings 11:24"
+ },
+ {
+  "id": "1-kings-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "What was the name of Jeroboam's mother?",
+  "choices": [
+   "Tahpenes",
+   "Zeruah",
+   "Eliadah",
+   "Genubath"
+  ],
+  "answer": 1,
+  "explanation": "Jeroboam the son of Nebat, whose mother's name was Zeruah, a widow woman.",
+  "ref": "1 Kings 11:26"
+ },
+ {
+  "id": "1-kings-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon do that was the cause of Jeroboam lifting up his hand?",
+  "choices": [
+   "Built Millo and repaired the breaches of the city of David",
+   "Sent Jeroboam to Egypt",
+   "Took his lands",
+   "Raised the tribute on Israel"
+  ],
+  "answer": 0,
+  "explanation": "Solomon built Millo, and repaired the breaches of the city of David his father.",
+  "ref": "1 Kings 11:27"
+ },
+ {
+  "id": "1-kings-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon make Jeroboam ruler over?",
+  "choices": [
+   "The army of Israel",
+   "All the charge of the house of Joseph",
+   "The cities of store",
+   "The king's household"
+  ],
+  "answer": 1,
+  "explanation": "He made him ruler over all the charge of the house of Joseph.",
+  "ref": "1 Kings 11:28"
+ },
+ {
+  "id": "1-kings-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many wives, princesses, did Solomon have?",
+  "choices": [
+   "Three hundred",
+   "Seven hundred",
+   "Twelve hundred",
+   "Seventy"
+  ],
+  "answer": 1,
+  "explanation": "And he had seven hundred wives, princesses, and three hundred concubines.",
+  "ref": "1 Kings 11:3"
+ },
+ {
+  "id": "1-kings-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many concubines did Solomon have?",
+  "choices": [
+   "Three hundred",
+   "Seven hundred",
+   "Twelve hundred",
+   "Seventy"
+  ],
+  "answer": 0,
+  "explanation": "And he had seven hundred wives, princesses, and three hundred concubines.",
+  "ref": "1 Kings 11:3"
+ },
+ {
+  "id": "1-kings-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many months did Joab remain in Edom until he had cut off every male?",
+  "choices": [
+   "Three",
+   "Six",
+   "Twelve",
+   "Forty"
+  ],
+  "answer": 1,
+  "explanation": "For six months did Joab remain there with all Israel, until he had cut off every male in Edom.",
+  "ref": "1 Kings 11:16"
+ },
+ {
+  "id": "1-kings-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Jeroboam wearing when Ahijah found him?",
+  "choices": [
+   "A new garment",
+   "A robe of blue",
+   "Sackcloth",
+   "A priest's ephod"
+  ],
+  "answer": 0,
+  "explanation": "He had clad himself with a new garment; and they two were alone in the field.",
+  "ref": "1 Kings 11:29"
+ },
+ {
+  "id": "1-kings-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Jeroboam?",
+  "choices": [
+   "Eliadah",
+   "Hadad",
+   "Nebat",
+   "Joab"
+  ],
+  "answer": 2,
+  "explanation": "Jeroboam the son of Nebat, an Ephrathite of Zereda, Solomon's servant.",
+  "ref": "1 Kings 11:26"
+ },
+ {
+  "id": "1-kings-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "What was the name of Hadad's son?",
+  "choices": [
+   "Genubath",
+   "Rezon",
+   "Shishak",
+   "Rehoboam"
+  ],
+  "answer": 0,
+  "explanation": "The sister of Tahpenes bare him Genubath his son.",
+  "ref": "1 Kings 11:20"
+ },
+ {
+  "id": "1-kings-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What news made Hadad ask Pharaoh to let him go home?",
+  "choices": [
+   "Pharaoh's daughter had died",
+   "Edom had a new king",
+   "David slept with his fathers, and Joab was dead",
+   "Solomon had died"
+  ],
+  "answer": 2,
+  "explanation": "When Hadad heard in Egypt that David slept with his fathers, and that Joab was dead, Hadad said to Pharaoh, Let me depart.",
+  "ref": "1 Kings 11:21"
+ },
+ {
+  "id": "1-kings-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Hadad and his men arose out of which place before coming to Paran?",
+  "choices": [
+   "Moab",
+   "Midian",
+   "Zobah",
+   "Damascus"
+  ],
+  "answer": 1,
+  "explanation": "And they arose out of Midian, and came to Paran.",
+  "ref": "1 Kings 11:18"
+ },
+ {
+  "id": "1-kings-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why would the Lord leave one tribe to Solomon's son?",
+  "choices": [
+   "Because Solomon repented",
+   "So the temple would be finished",
+   "That David may have a light alway before him in Jerusalem",
+   "So Egypt would not attack"
+  ],
+  "answer": 2,
+  "explanation": "Unto his son will I give one tribe, that David my servant may have a light alway before me in Jerusalem.",
+  "ref": "1 Kings 11:36"
+ },
+ {
+  "id": "1-kings-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord promise to build Jeroboam if he obeyed?",
+  "choices": [
+   "A sure house",
+   "A great city",
+   "A strong army",
+   "A golden throne"
+  ],
+  "answer": 0,
+  "explanation": "I will be with thee, and build thee a sure house, as I built for David.",
+  "ref": "1 Kings 11:38"
+ },
+ {
+  "id": "1-kings-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did the Lord say he would afflict the seed of David?",
+  "choices": [
+   "Seven years",
+   "Forty years",
+   "Not for ever",
+   "Until Egypt fell"
+  ],
+  "answer": 2,
+  "explanation": "And I will for this afflict the seed of David, but not for ever.",
+  "ref": "1 Kings 11:39"
+ },
+ {
+  "id": "1-kings-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Jeroboam fled to which king of Egypt?",
+  "choices": [
+   "Hadad",
+   "Shishak",
+   "Hadadezer",
+   "Hiram"
+  ],
+  "answer": 1,
+  "explanation": "Jeroboam fled into Egypt, unto Shishak king of Egypt.",
+  "ref": "1 Kings 11:40"
+ },
+ {
+  "id": "1-kings-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Rezon became captain over a band when David slew whom?",
+  "choices": [
+   "Them of Zobah",
+   "The Moabites",
+   "The Edomites",
+   "The Philistines"
+  ],
+  "answer": 0,
+  "explanation": "He gathered men unto him, and became captain over a band, when David slew them of Zobah.",
+  "ref": "1 Kings 11:24"
+ },
+ {
+  "id": "1-kings-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is Jeroboam described before Solomon made him ruler?",
+  "choices": [
+   "A priest of Shiloh",
+   "A mighty man of valour",
+   "A captain of Egypt",
+   "A son of Joab"
+  ],
+  "answer": 1,
+  "explanation": "The man Jeroboam was a mighty man of valour: and Solomon seeing the young man that he was industrious.",
+  "ref": "1 Kings 11:28"
+ },
+ {
+  "id": "1-kings-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what book were the rest of Solomon's acts written?",
+  "choices": [
+   "The book of Jasher",
+   "The book of the wars of the Lord",
+   "The book of the acts of Solomon",
+   "The book of Nathan"
+  ],
+  "answer": 2,
+  "explanation": "The rest of the acts of Solomon, and his wisdom, are they not written in the book of the acts of Solomon?",
+  "ref": "1 Kings 11:41"
+ },
+ {
   "id": "old-1-kings-12-1",
   "chapter": 12,
   "level": "beginner",
