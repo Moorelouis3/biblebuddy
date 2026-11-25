@@ -80,6 +80,454 @@
   "ref": "Job 1:21"
  },
  {
+  "id": "job-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which land did Job live?",
+  "choices": [
+   "Uz",
+   "Edom",
+   "Midian",
+   "Canaan"
+  ],
+  "answer": 0,
+  "explanation": "There was a man in the land of Uz, whose name was Job.",
+  "ref": "Job 1:1"
+ },
+ {
+  "id": "job-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many daughters did Job have?",
+  "choices": [
+   "Three",
+   "Two",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 0,
+  "explanation": "There were born unto him seven sons and three daughters.",
+  "ref": "Job 1:2"
+ },
+ {
+  "id": "job-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came among the sons of God when they presented themselves before the LORD?",
+  "choices": [
+   "Satan",
+   "Eliphaz",
+   "Michael",
+   "Gabriel"
+  ],
+  "answer": 0,
+  "explanation": "The sons of God came to present themselves before the LORD, and Satan came also among them.",
+  "ref": "Job 1:6"
+ },
+ {
+  "id": "job-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Satan say Job would do if God touched all that he had?",
+  "choices": [
+   "Curse God to his face",
+   "Pray for mercy",
+   "Offer more sacrifices",
+   "Flee from Uz"
+  ],
+  "answer": 0,
+  "explanation": "Satan said, put forth thine hand now, and touch all that he hath, and he will curse thee to thy face.",
+  "ref": "Job 1:11"
+ },
+ {
+  "id": "job-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD forbid Satan to touch?",
+  "choices": [
+   "Job himself",
+   "Job's wife",
+   "Job's house",
+   "Job's servants"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, all that he hath is in thy power; only upon himself put not forth thine hand.",
+  "ref": "Job 1:12"
+ },
+ {
+  "id": "job-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Job respond when he heard that his children were dead?",
+  "choices": [
+   "He fell down and worshipped",
+   "He cursed the day",
+   "He sat in ashes",
+   "He ran to the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "Job arose, and rent his mantle, and shaved his head, and fell down upon the ground, and worshipped.",
+  "ref": "Job 1:20"
+ },
+ {
+  "id": "job-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many sheep did Job have?",
+  "choices": [
+   "Seven thousand",
+   "Three thousand",
+   "Five hundred",
+   "Ten thousand"
+  ],
+  "answer": 0,
+  "explanation": "His substance was seven thousand sheep, and three thousand camels, and five hundred yoke of oxen.",
+  "ref": "Job 1:3"
+ },
+ {
+  "id": "job-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who fell upon the oxen and asses and took them away?",
+  "choices": [
+   "The Sabeans",
+   "The Chaldeans",
+   "The Edomites",
+   "The Philistines"
+  ],
+  "answer": 0,
+  "explanation": "The Sabeans fell upon them, and took them away; yea, they have slain the servants with the edge of the sword.",
+  "ref": "Job 1:15"
+ },
+ {
+  "id": "job-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What burned up Job's sheep and servants?",
+  "choices": [
+   "The fire of God from heaven",
+   "A raiding band",
+   "A great wind",
+   "A flood"
+  ],
+  "answer": 0,
+  "explanation": "The fire of God is fallen from heaven, and hath burned up the sheep, and the servants.",
+  "ref": "Job 1:16"
+ },
+ {
+  "id": "job-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which people carried away Job's camels?",
+  "choices": [
+   "The Chaldeans",
+   "The Sabeans",
+   "The Midianites",
+   "The Egyptians"
+  ],
+  "answer": 0,
+  "explanation": "The Chaldeans made out three bands, and fell upon the camels, and have carried them away.",
+  "ref": "Job 1:17"
+ },
+ {
+  "id": "job-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What killed Job's sons and daughters?",
+  "choices": [
+   "A great wind from the wilderness",
+   "A fire from heaven",
+   "A band of raiders",
+   "A sudden sickness"
+  ],
+  "answer": 0,
+  "explanation": "There came a great wind from the wilderness, and smote the four corners of the house, and it fell upon the young men.",
+  "ref": "Job 1:19"
+ },
+ {
+  "id": "job-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "In whose house were Job's children eating and drinking wine?",
+  "choices": [
+   "Their eldest brother's",
+   "Job's own house",
+   "The house of the Chaldeans",
+   "Their youngest sister's"
+  ],
+  "answer": 0,
+  "explanation": "His sons and his daughters were eating and drinking wine in their eldest brother's house.",
+  "ref": "Job 1:13"
+ },
+ {
+  "id": "job-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say of Job to Satan?",
+  "choices": [
+   "That none was like him in the earth",
+   "That he would soon fall",
+   "That he was too proud",
+   "That he must be tried"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, there is none like him in the earth, a perfect and an upright man, one that feareth God, and escheweth evil.",
+  "ref": "Job 1:8"
+ },
+ {
+  "id": "job-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Satan say the LORD had made about Job and his house?",
+  "choices": [
+   "A hedge",
+   "A wall",
+   "A tower",
+   "A covenant"
+  ],
+  "answer": 0,
+  "explanation": "Satan said, Hast not thou made an hedge about him, and about his house, and about all that he hath on every side?",
+  "ref": "Job 1:10"
+ },
+ {
+  "id": "job-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Job offer burnt offerings after his sons' feasts?",
+  "choices": [
+   "They might have sinned and cursed God in their hearts",
+   "They had left the land",
+   "They had forgotten the feast",
+   "They had no sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "Job said, It may be that my sons have sinned, and cursed God in their hearts. Thus did Job continually.",
+  "ref": "Job 1:5"
+ },
+ {
+  "id": "job-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Job called among all the men of the east?",
+  "choices": [
+   "The greatest",
+   "The oldest",
+   "The wisest",
+   "The strongest"
+  ],
+  "answer": 0,
+  "explanation": "This man was the greatest of all the men of the east.",
+  "ref": "Job 1:3"
+ },
+ {
+  "id": "job-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the chapter say of Job in all this?",
+  "choices": [
+   "He sinned not, nor charged God foolishly",
+   "He murmured against God",
+   "He was silent in fear",
+   "He asked God why"
+  ],
+  "answer": 0,
+  "explanation": "In all this Job sinned not, nor charged God foolishly.",
+  "ref": "Job 1:22"
+ },
+ {
+  "id": "job-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many yoke of oxen did Job have?",
+  "choices": [
+   "Five hundred",
+   "Three hundred",
+   "One thousand",
+   "Seven hundred"
+  ],
+  "answer": 0,
+  "explanation": "His substance also was five hundred yoke of oxen, and five hundred she asses.",
+  "ref": "Job 1:3"
+ },
+ {
+  "id": "job-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many camels did Job have?",
+  "choices": [
+   "Three thousand",
+   "Seven thousand",
+   "Five hundred",
+   "One thousand"
+  ],
+  "answer": 0,
+  "explanation": "His substance was seven thousand sheep, and three thousand camels.",
+  "ref": "Job 1:3"
+ },
+ {
+  "id": "job-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the oxen doing when the Sabeans attacked?",
+  "choices": [
+   "Plowing",
+   "Grazing in the hills",
+   "Drinking at a stream",
+   "Resting in the shade"
+  ],
+  "answer": 0,
+  "explanation": "The oxen were plowing, and the asses feeding beside them.",
+  "ref": "Job 1:14"
+ },
+ {
+  "id": "job-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Satan say he had been doing when the LORD asked where he came from?",
+  "choices": [
+   "Going to and fro and walking up and down in the earth",
+   "Standing before the throne",
+   "Watching the sons of Job",
+   "Resting in the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "Satan answered, From going to and fro in the earth, and from walking up and down in it.",
+  "ref": "Job 1:7"
+ },
+ {
+  "id": "job-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which corners of the house did the great wind strike?",
+  "choices": [
+   "The four corners",
+   "The east and west sides",
+   "The roof beams",
+   "The door and gate"
+  ],
+  "answer": 0,
+  "explanation": "A great wind from the wilderness smote the four corners of the house, and it fell upon the young men.",
+  "ref": "Job 1:19"
+ },
+ {
+  "id": "job-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Job's sons call to eat and drink with them?",
+  "choices": [
+   "Their three sisters",
+   "Their servants",
+   "Their neighbours",
+   "Job and his wife"
+  ],
+  "answer": 0,
+  "explanation": "His sons feasted in their houses, every one his day, and called for their three sisters to eat and to drink with them.",
+  "ref": "Job 1:4"
+ },
+ {
+  "id": "job-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which disaster did the second messenger report?",
+  "choices": [
+   "Fire from heaven burning the sheep",
+   "The Sabeans taking the oxen",
+   "The Chaldeans taking the camels",
+   "The wind destroying the house"
+  ],
+  "answer": 0,
+  "explanation": "The second messenger said, The fire of God is fallen from heaven, and hath burned up the sheep, and the servants.",
+  "ref": "Job 1:16"
+ },
+ {
+  "id": "job-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many bands did the Chaldeans make out?",
+  "choices": [
+   "Three",
+   "Two",
+   "Four",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "The Chaldeans made out three bands, and fell upon the camels.",
+  "ref": "Job 1:17"
+ },
+ {
+  "id": "job-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did each messenger say about himself?",
+  "choices": [
+   "He alone had escaped to tell Job",
+   "He had seen the fire",
+   "He was sent by the king",
+   "He was wounded"
+  ],
+  "answer": 0,
+  "explanation": "Each said, I only am escaped alone to tell thee.",
+  "ref": "Job 1:15–19"
+ },
+ {
+  "id": "job-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Job rise to offer burnt offerings after the days of feasting?",
+  "choices": [
+   "Early in the morning",
+   "At the close of the day",
+   "At the new moon",
+   "In the dead of night"
+  ],
+  "answer": 0,
+  "explanation": "Job sent and sanctified them, and rose up early in the morning, and offered burnt offerings according to the number of them all.",
+  "ref": "Job 1:5"
+ },
+ {
+  "id": "job-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Job's sons take turns at feasting?",
+  "choices": [
+   "Each in his own house on his day",
+   "All in Job's house",
+   "All in the eldest's house",
+   "Only on the sabbath"
+  ],
+  "answer": 0,
+  "explanation": "His sons went and feasted in their houses, every one his day.",
+  "ref": "Job 1:4"
+ },
+ {
   "id": "old-job-2-1",
   "chapter": 2,
   "level": "beginner",
