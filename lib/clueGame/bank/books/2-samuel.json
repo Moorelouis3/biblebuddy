@@ -16064,6 +16064,662 @@
   "ref": "2 Samuel 23:20"
  },
  {
+  "id": "2-samuel-23-e-01",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose last words does the chapter begin with?",
+  "choices": [
+   "Saul",
+   "David the son of Jesse",
+   "Solomon",
+   "Samuel"
+  ],
+  "answer": 1,
+  "explanation": "These be the last words of David. David the son of Jesse said.",
+  "ref": "2 Samuel 23:1"
+ },
+ {
+  "id": "2-samuel-23-e-02",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom does David call the anointed of the God of whom?",
+  "choices": [
+   "Abraham",
+   "Jacob",
+   "Isaac",
+   "Moses"
+  ],
+  "answer": 1,
+  "explanation": "The anointed of the God of Jacob, and the sweet psalmist of Israel.",
+  "ref": "2 Samuel 23:1"
+ },
+ {
+  "id": "2-samuel-23-e-03",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must he that ruleth over men be?",
+  "choices": [
+   "Wise and rich",
+   "Just, ruling in the fear of God",
+   "Strong in battle",
+   "A man of the priests"
+  ],
+  "answer": 1,
+  "explanation": "He that ruleth over men must be just, ruling in the fear of God.",
+  "ref": "2 Samuel 23:3"
+ },
+ {
+  "id": "2-samuel-23-e-04",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of covenant did God make with David?",
+  "choices": [
+   "A covenant of salt",
+   "An everlasting covenant",
+   "A covenant of peace only",
+   "A covenant of the sword"
+  ],
+  "answer": 1,
+  "explanation": "He hath made with me an everlasting covenant, ordered in all things, and sure.",
+  "ref": "2 Samuel 23:5"
+ },
+ {
+  "id": "2-samuel-23-e-05",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which mighty man slew eight hundred at one time?",
+  "choices": [
+   "Eleazar",
+   "Adino the Eznite",
+   "Shammah",
+   "Abishai"
+  ],
+  "answer": 1,
+  "explanation": "Adino the Eznite lift up his spear against eight hundred, whom he slew at one time.",
+  "ref": "2 Samuel 23:8"
+ },
+ {
+  "id": "2-samuel-23-e-06",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David long for water from?",
+  "choices": [
+   "The brook Kidron",
+   "The well of Bethlehem by the gate",
+   "The pool of Gibeon",
+   "The Jordan"
+  ],
+  "answer": 1,
+  "explanation": "David said, Oh that one would give me drink of the water of the well of Bethlehem, which is by the gate!",
+  "ref": "2 Samuel 23:15"
+ },
+ {
+  "id": "2-samuel-23-e-07",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many mighty men brake through the Philistine host for the water?",
+  "choices": [
+   "Two",
+   "Three",
+   "Thirty",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "The three mighty men brake through the host of the Philistines, and drew water out of the well of Bethlehem.",
+  "ref": "2 Samuel 23:16"
+ },
+ {
+  "id": "2-samuel-23-e-08",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Benaiah slay in the midst of a pit?",
+  "choices": [
+   "A bear",
+   "A lion",
+   "A wolf",
+   "A serpent"
+  ],
+  "answer": 1,
+  "explanation": "He went down also and slew a lion in the midst of a pit in time of snow.",
+  "ref": "2 Samuel 23:20"
+ },
+ {
+  "id": "2-samuel-23-e-09",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Benaiah use to take the spear from the Egyptian?",
+  "choices": [
+   "His sword",
+   "A staff",
+   "His bow",
+   "A sling"
+  ],
+  "answer": 1,
+  "explanation": "He went down to him with a staff, and plucked the spear out of the Egyptian's hand.",
+  "ref": "2 Samuel 23:21"
+ },
+ {
+  "id": "2-samuel-23-e-10",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which man is named last among the thirty and seven?",
+  "choices": [
+   "Zelek the Ammonite",
+   "Uriah the Hittite",
+   "Ittai",
+   "Benaiah"
+  ],
+  "answer": 1,
+  "explanation": "Uriah the Hittite: thirty and seven in all.",
+  "ref": "2 Samuel 23:39"
+ },
+ {
+  "id": "2-samuel-23-m-01",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say would be like the light of the morning?",
+  "choices": [
+   "The anointed king",
+   "The people",
+   "The priests",
+   "The just ruler"
+  ],
+  "answer": 3,
+  "explanation": "He that ruleth over men shall be as the light of the morning, even a morning without clouds.",
+  "ref": "2 Samuel 23:4"
+ },
+ {
+  "id": "2-samuel-23-m-02",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say of the sons of Belial?",
+  "choices": [
+   "They are as chaff",
+   "They are as dust",
+   "They are as stubble",
+   "They are as thorns thrust away"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Belial shall be all of them as thorns thrust away.",
+  "ref": "2 Samuel 23:6"
+ },
+ {
+  "id": "2-samuel-23-m-03",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How must a man be fenced to touch the sons of Belial?",
+  "choices": [
+   "With armour of brass",
+   "With a shield",
+   "With priests",
+   "With iron and the staff of a spear"
+  ],
+  "answer": 3,
+  "explanation": "The man that shall touch them must be fenced with iron and the staff of a spear.",
+  "ref": "2 Samuel 23:7"
+ },
+ {
+  "id": "2-samuel-23-m-04",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Eleazar's father?",
+  "choices": [
+   "Agee",
+   "Jehoiada",
+   "Zeruiah",
+   "Dodo the Ahohite"
+  ],
+  "answer": 3,
+  "explanation": "Eleazar the son of Dodo the Ahohite, one of the three mighty men with David.",
+  "ref": "2 Samuel 23:9"
+ },
+ {
+  "id": "2-samuel-23-m-05",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to Eleazar's hand in the battle?",
+  "choices": [
+   "It was wounded",
+   "It lost its grip",
+   "It was burned",
+   "It clave unto the sword"
+  ],
+  "answer": 3,
+  "explanation": "He smote the Philistines until his hand was weary, and his hand clave unto the sword.",
+  "ref": "2 Samuel 23:10"
+ },
+ {
+  "id": "2-samuel-23-m-06",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people do after Eleazar's victory?",
+  "choices": [
+   "Pursued the Philistines",
+   "Praised the LORD",
+   "Went home",
+   "Returned after him only to spoil"
+  ],
+  "answer": 3,
+  "explanation": "The people returned after him only to spoil.",
+  "ref": "2 Samuel 23:10"
+ },
+ {
+  "id": "2-samuel-23-m-07",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of ground did Shammah stand in the midst of?",
+  "choices": [
+   "A field of barley",
+   "A vineyard",
+   "An olive grove",
+   "A piece of ground full of lentiles"
+  ],
+  "answer": 3,
+  "explanation": "The Philistines were gathered into a troop, where was a piece of ground full of lentiles.",
+  "ref": "2 Samuel 23:11"
+ },
+ {
+  "id": "2-samuel-23-m-08",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Shammah the son of?",
+  "choices": [
+   "Dodo",
+   "Ahasbai",
+   "Ikkesh",
+   "Agee the Hararite"
+  ],
+  "answer": 3,
+  "explanation": "After him was Shammah the son of Agee the Hararite.",
+  "ref": "2 Samuel 23:11"
+ },
+ {
+  "id": "2-samuel-23-m-09",
+  "chapter": 23,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the three of the thirty chief come to David in harvest time?",
+  "choices": [
+   "Hebron",
+   "Bethlehem",
+   "Gibeah",
+   "The cave of Adullam"
+  ],
+  "answer": 3,
+  "explanation": "Three of the thirty chief came to David in the harvest time unto the cave of Adullam.",
+  "ref": "2 Samuel 23:13"
+ },
+ {
+  "id": "2-samuel-23-m-10",
+  "chapter": 23,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were the Philistines pitched in that time?",
+  "choices": [
+   "The plain of Gilgal",
+   "The hills of Ephraim",
+   "The valley of Elah",
+   "The valley of Rephaim"
+  ],
+  "answer": 3,
+  "explanation": "The troop of the Philistines pitched in the valley of Rephaim.",
+  "ref": "2 Samuel 23:13"
+ },
+ {
+  "id": "2-samuel-23-m-11",
+  "chapter": 23,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the Philistine garrison at that time?",
+  "choices": [
+   "Adullam",
+   "Gath",
+   "Jerusalem",
+   "Bethlehem"
+  ],
+  "answer": 3,
+  "explanation": "The garrison of the Philistines was then in Bethlehem.",
+  "ref": "2 Samuel 23:14"
+ },
+ {
+  "id": "2-samuel-23-m-12",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would David not drink the water?",
+  "choices": [
+   "It was unclean",
+   "It was not his",
+   "It had been poisoned",
+   "It was the blood of men who went in jeopardy of their lives"
+  ],
+  "answer": 3,
+  "explanation": "Is not this the blood of the men that went in jeopardy of their lives? therefore he would not drink it.",
+  "ref": "2 Samuel 23:17"
+ },
+ {
+  "id": "2-samuel-23-m-13",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was chief among the three, and the brother of Joab?",
+  "choices": [
+   "Asahel",
+   "Benaiah",
+   "Elika",
+   "Abishai"
+  ],
+  "answer": 3,
+  "explanation": "Abishai, the brother of Joab, the son of Zeruiah, was chief among three.",
+  "ref": "2 Samuel 23:18"
+ },
+ {
+  "id": "2-samuel-23-m-14",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many did Abishai lift up his spear against and slay?",
+  "choices": [
+   "Eight hundred",
+   "Two hundred",
+   "A thousand",
+   "Three hundred"
+  ],
+  "answer": 3,
+  "explanation": "He lifted up his spear against three hundred, and slew them.",
+  "ref": "2 Samuel 23:18"
+ },
+ {
+  "id": "2-samuel-23-m-15",
+  "chapter": 23,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Benaiah the son of Jehoiada from?",
+  "choices": [
+   "Pirathon",
+   "Tekoa",
+   "Gilead",
+   "Kabzeel"
+  ],
+  "answer": 3,
+  "explanation": "Benaiah the son of Jehoiada, the son of a valiant man, of Kabzeel.",
+  "ref": "2 Samuel 23:20"
+ },
+ {
+  "id": "2-samuel-23-h-01",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Benaiah slay in Moab?",
+  "choices": [
+   "Two lionlike men",
+   "A giant",
+   "Three captains",
+   "A troop of horsemen"
+  ],
+  "answer": 0,
+  "explanation": "He slew two lionlike men of Moab.",
+  "ref": "2 Samuel 23:20"
+ },
+ {
+  "id": "2-samuel-23-h-02",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Benaiah slay the lion?",
+  "choices": [
+   "In time of snow",
+   "At harvest",
+   "At night",
+   "In the spring"
+  ],
+  "answer": 0,
+  "explanation": "He slew a lion in the midst of a pit in time of snow.",
+  "ref": "2 Samuel 23:20"
+ },
+ {
+  "id": "2-samuel-23-h-03",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David set Benaiah over?",
+  "choices": [
+   "His guard",
+   "The thirty",
+   "The host",
+   "The treasure"
+  ],
+  "answer": 0,
+  "explanation": "He was more honourable than the thirty. And David set him over his guard.",
+  "ref": "2 Samuel 23:23"
+ },
+ {
+  "id": "2-samuel-23-h-04",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Which brother of Joab was one of the thirty?",
+  "choices": [
+   "Asahel",
+   "Abishai",
+   "Eliab",
+   "Elika"
+  ],
+  "answer": 0,
+  "explanation": "Asahel the brother of Joab was one of the thirty.",
+  "ref": "2 Samuel 23:24"
+ },
+ {
+  "id": "2-samuel-23-h-05",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Elhanan the son of Dodo from?",
+  "choices": [
+   "Bethlehem",
+   "Netophah",
+   "Gibeah",
+   "Carmel"
+  ],
+  "answer": 0,
+  "explanation": "Elhanan the son of Dodo of Bethlehem.",
+  "ref": "2 Samuel 23:24"
+ },
+ {
+  "id": "2-samuel-23-h-06",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the armourbearer to Joab among the thirty?",
+  "choices": [
+   "Nahari the Beerothite",
+   "Zelek the Ammonite",
+   "Igal",
+   "Bani the Gadite"
+  ],
+  "answer": 0,
+  "explanation": "Nahari the Beerothite, armourbearer to Joab the son of Zeruiah.",
+  "ref": "2 Samuel 23:37"
+ },
+ {
+  "id": "2-samuel-23-h-07",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tribe was Ittai the son of Ribai from?",
+  "choices": [
+   "Benjamin",
+   "Judah",
+   "Dan",
+   "Gad"
+  ],
+  "answer": 0,
+  "explanation": "Ittai the son of Ribai out of Gibeah of the children of Benjamin.",
+  "ref": "2 Samuel 23:29"
+ },
+ {
+  "id": "2-samuel-23-h-08",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Eliam, one of the thirty, was the son of whom?",
+  "choices": [
+   "Ahithophel the Gilonite",
+   "Sharar",
+   "Ahasbai",
+   "Nathan"
+  ],
+  "answer": 0,
+  "explanation": "Eliam the son of Ahithophel the Gilonite.",
+  "ref": "2 Samuel 23:34"
+ },
+ {
+  "id": "2-samuel-23-h-09",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of the thirty was a Gadite?",
+  "choices": [
+   "Bani",
+   "Igal",
+   "Zalmon",
+   "Helez"
+  ],
+  "answer": 0,
+  "explanation": "Bani the Gadite.",
+  "ref": "2 Samuel 23:36"
+ },
+ {
+  "id": "2-samuel-23-h-10",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of the thirty was an Ammonite?",
+  "choices": [
+   "Zelek",
+   "Nahari",
+   "Heleb",
+   "Gareb"
+  ],
+  "answer": 0,
+  "explanation": "Zelek the Ammonite.",
+  "ref": "2 Samuel 23:37"
+ },
+ {
+  "id": "2-samuel-23-h-11",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two Ithrites are named among the thirty?",
+  "choices": [
+   "Ira and Gareb",
+   "Ira and Heleb",
+   "Gareb and Hiddai",
+   "Ira and Igal"
+  ],
+  "answer": 0,
+  "explanation": "Ira an Ithrite, Gareb an Ithrite.",
+  "ref": "2 Samuel 23:38"
+ },
+ {
+  "id": "2-samuel-23-h-12",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of the thirty was a Hittite?",
+  "choices": [
+   "Uriah",
+   "Helez",
+   "Eliahba",
+   "Hezrai"
+  ],
+  "answer": 0,
+  "explanation": "Uriah the Hittite: thirty and seven in all.",
+  "ref": "2 Samuel 23:39"
+ },
+ {
+  "id": "2-samuel-23-h-13",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the mighty men in all in the list?",
+  "choices": [
+   "Thirty and seven",
+   "Thirty",
+   "Forty",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "Uriah the Hittite: thirty and seven in all.",
+  "ref": "2 Samuel 23:39"
+ },
+ {
+  "id": "2-samuel-23-h-14",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of the thirty was the son of Ikkesh the Tekoite?",
+  "choices": [
+   "Ira",
+   "Elika",
+   "Heleb",
+   "Abiezer"
+  ],
+  "answer": 0,
+  "explanation": "Ira the son of Ikkesh the Tekoite.",
+  "ref": "2 Samuel 23:26"
+ },
+ {
+  "id": "2-samuel-23-h-15",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what did David say his house was not so with God?",
+  "choices": [
+   "Ordered and sure covenant, though not so grown",
+   "The kingdom of peace",
+   "Rest in his days",
+   "Wealth and honour"
+  ],
+  "answer": 0,
+  "explanation": "Although my house be not so with God; yet he hath made with me an everlasting covenant, ordered in all things, and sure.",
+  "ref": "2 Samuel 23:5"
+ },
+ {
+  "id": "2-samuel-23-h-16",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Benaiah take the Egyptian's spear?",
+  "choices": [
+   "Plucked it out of his hand, and slew him with it",
+   "Broke it",
+   "Threw it away",
+   "Took it by night"
+  ],
+  "answer": 0,
+  "explanation": "He plucked the spear out of the Egyptian's hand, and slew him with his own spear.",
+  "ref": "2 Samuel 23:21"
+ },
+ {
   "id": "old-2-samuel-24-1",
   "chapter": 24,
   "level": "beginner",
