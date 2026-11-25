@@ -512,6 +512,358 @@
   "ref": "2 Chronicles 2:17–18"
  },
  {
+  "id": "2-chronicles-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon say the heaven and heaven of heavens cannot do?",
+  "choices": [
+   "Hear his prayer",
+   "Contain God",
+   "Reach the earth",
+   "Praise him"
+  ],
+  "answer": 1,
+  "explanation": "Solomon said the heaven and heaven of heavens cannot contain him.",
+  "ref": "2 Chronicles 2:6"
+ },
+ {
+  "id": "2-chronicles-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon promise to give the servants who cut the timber?",
+  "choices": [
+   "Silver and gold",
+   "Sheep and oxen",
+   "Wheat, barley, wine and oil",
+   "Horses and chariots"
+  ],
+  "answer": 2,
+  "explanation": "Solomon would give the hewers twenty thousand measures of wheat and barley, and twenty thousand baths of wine and oil.",
+  "ref": "2 Chronicles 2:10"
+ },
+ {
+  "id": "2-chronicles-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which kind of trees did Solomon ask Huram to send from Lebanon?",
+  "choices": [
+   "Olive trees",
+   "Palm trees",
+   "Almond trees",
+   "Cedar trees"
+  ],
+  "answer": 3,
+  "explanation": "Solomon asked, Send me also cedar trees, fir trees, and algum trees, out of Lebanon.",
+  "ref": "2 Chronicles 2:8"
+ },
+ {
+  "id": "2-chronicles-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Huram describe the Lord God of Israel?",
+  "choices": [
+   "He made heaven and earth",
+   "He rules only Judah",
+   "He dwells in Tyre",
+   "He is the god of the sea"
+  ],
+  "answer": 0,
+  "explanation": "Huram said, Blessed be the LORD God of Israel, that made heaven and earth.",
+  "ref": "2 Chronicles 2:12"
+ },
+ {
+  "id": "2-chronicles-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon say he would burn before God in the house?",
+  "choices": [
+   "Fat of lambs",
+   "Sweet incense",
+   "Barley",
+   "Oil of anointing"
+  ],
+  "answer": 1,
+  "explanation": "Solomon would build the house to burn before him sweet incense, and for the continual shewbread.",
+  "ref": "2 Chronicles 2:4"
+ },
+ {
+  "id": "2-chronicles-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Huram answer Solomon?",
+  "choices": [
+   "By a messenger only",
+   "By coming himself",
+   "In writing",
+   "By silence"
+  ],
+  "answer": 2,
+  "explanation": "Huram the king of Tyre answered in writing, which he sent to Solomon.",
+  "ref": "2 Chronicles 2:11"
+ },
+ {
+  "id": "2-chronicles-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Huram say Solomon was made king over Israel?",
+  "choices": [
+   "Because David had asked it",
+   "Because Egypt allowed it",
+   "Because of Solomon's riches",
+   "Because the LORD loved his people"
+  ],
+  "answer": 3,
+  "explanation": "Huram said, Because the LORD hath loved his people, he hath made thee king over them.",
+  "ref": "2 Chronicles 2:11"
+ },
+ {
+  "id": "2-chronicles-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which metals was the cunning man sent by Huram skilful to work in?",
+  "choices": [
+   "Gold, silver, brass and iron",
+   "Only gold",
+   "Tin and lead",
+   "Only brass"
+  ],
+  "answer": 0,
+  "explanation": "He was a man of Tyre, skilful to work in gold, and in silver, in brass, in iron, in stone, and in timber.",
+  "ref": "2 Chronicles 2:14"
+ },
+ {
+  "id": "2-chronicles-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "To which port would Huram's servants bring the wood by sea?",
+  "choices": [
+   "Tyre",
+   "Joppa",
+   "Ezion-geber",
+   "Gaza"
+  ],
+  "answer": 1,
+  "explanation": "We will bring it to thee in flotes by sea to Joppa; and thou shall carry it up to Jerusalem.",
+  "ref": "2 Chronicles 2:16"
+ },
+ {
+  "id": "2-chronicles-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who would carry the wood up from Joppa to Jerusalem?",
+  "choices": [
+   "Huram",
+   "The Levites",
+   "Solomon",
+   "Pharaoh"
+  ],
+  "answer": 2,
+  "explanation": "Huram said, thou shall carry it up to Jerusalem.",
+  "ref": "2 Chronicles 2:16"
+ },
+ {
+  "id": "2-chronicles-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had David provided for Solomon in Judah and Jerusalem?",
+  "choices": [
+   "Cedar trees",
+   "Chariots",
+   "Gold of Parvaim",
+   "Cunning men"
+  ],
+  "answer": 3,
+  "explanation": "Solomon wanted a man that can skill to grave with the cunning men in Judah and in Jerusalem, whom David my father did provide.",
+  "ref": "2 Chronicles 2:7"
+ },
+ {
+  "id": "2-chronicles-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Huram describe Solomon, the wise son of David?",
+  "choices": [
+   "Endued with prudence and understanding",
+   "Strong in battle",
+   "Rich beyond measure",
+   "Slow to anger"
+  ],
+  "answer": 0,
+  "explanation": "Huram said God had given David a wise son, endued with prudence and understanding.",
+  "ref": "2 Chronicles 2:12"
+ },
+ {
+  "id": "2-chronicles-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon do with the strangers in the land of Israel?",
+  "choices": [
+   "Sent them away",
+   "Numbered them and set them to work",
+   "Made them priests",
+   "Gave them land"
+  ],
+  "answer": 1,
+  "explanation": "Solomon numbered all the strangers that were in the land of Israel, and set them a work.",
+  "ref": "2 Chronicles 2:17–18"
+ },
+ {
+  "id": "2-chronicles-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men did Solomon set to bear burdens?",
+  "choices": [
+   "Eighty thousand",
+   "Three thousand six hundred",
+   "Seventy thousand",
+   "Twenty thousand"
+  ],
+  "answer": 2,
+  "explanation": "Solomon told out threescore and ten thousand men to bear burdens.",
+  "ref": "2 Chronicles 2:2"
+ },
+ {
+  "id": "2-chronicles-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men did Solomon set to hew in the mountain?",
+  "choices": [
+   "Seventy thousand",
+   "Twenty thousand",
+   "One hundred and fifty thousand",
+   "Eighty thousand"
+  ],
+  "answer": 3,
+  "explanation": "Solomon told out fourscore thousand to hew in the mountain.",
+  "ref": "2 Chronicles 2:2"
+ },
+ {
+  "id": "2-chronicles-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many overseers did Solomon appoint over the workers?",
+  "choices": [
+   "Three thousand six hundred",
+   "Three hundred",
+   "Six thousand",
+   "Seventy thousand"
+  ],
+  "answer": 0,
+  "explanation": "Solomon set three thousand and six hundred to oversee them.",
+  "ref": "2 Chronicles 2:2"
+ },
+ {
+  "id": "2-chronicles-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many measures of beaten wheat did Solomon offer the hewers?",
+  "choices": [
+   "Two thousand",
+   "Twenty thousand",
+   "Seventy thousand",
+   "Eighty thousand"
+  ],
+  "answer": 1,
+  "explanation": "I will give thy servants twenty thousand measures of beaten wheat, and twenty thousand measures of barley.",
+  "ref": "2 Chronicles 2:10"
+ },
+ {
+  "id": "2-chronicles-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many strangers did Solomon number in all?",
+  "choices": [
+   "70,000",
+   "80,000",
+   "153,600",
+   "3,600"
+  ],
+  "answer": 2,
+  "explanation": "They were found an hundred and fifty and three thousand and six hundred.",
+  "ref": "2 Chronicles 2:17"
+ },
+ {
+  "id": "2-chronicles-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Above whom did Solomon say the God of Israel is great?",
+  "choices": [
+   "All kings",
+   "All nations",
+   "All cities",
+   "All gods"
+  ],
+  "answer": 3,
+  "explanation": "Solomon said, the house which I build is great: for great is our God above all gods.",
+  "ref": "2 Chronicles 2:5"
+ },
+ {
+  "id": "2-chronicles-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides cedar and fir, which timber did Solomon ask for from Lebanon?",
+  "choices": [
+   "Algum trees",
+   "Olive trees",
+   "Sycomore trees",
+   "Almond trees"
+  ],
+  "answer": 0,
+  "explanation": "Send me also cedar trees, fir trees, and algum trees, out of Lebanon.",
+  "ref": "2 Chronicles 2:8"
+ },
+ {
+  "id": "2-chronicles-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "The father of the craftsman Huram sent was a man of which city?",
+  "choices": [
+   "Dan",
+   "Tyre",
+   "Joppa",
+   "Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "The craftsman was the son of a woman of the daughters of Dan, and his father was a man of Tyre.",
+  "ref": "2 Chronicles 2:14"
+ },
+ {
+  "id": "2-chronicles-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which occasions besides sabbaths would sacrifices be offered in the house?",
+  "choices": [
+   "Only the Passover",
+   "Every seventh year",
+   "New moons and solemn feasts",
+   "Only at harvest"
+  ],
+  "answer": 2,
+  "explanation": "The burnt offerings were for morning and evening, on the sabbaths, and on the new moons, and on the solemn feasts of the LORD.",
+  "ref": "2 Chronicles 2:4"
+ },
+ {
   "id": "old-2-chronicles-3-1",
   "chapter": 3,
   "level": "beginner",
