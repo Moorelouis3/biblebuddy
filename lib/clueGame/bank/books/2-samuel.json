@@ -16774,7 +16774,7 @@
   "category": "place",
   "question": "Where was the angel of the Lord when the Lord said, 'It is enough'?",
   "choices": [
-   "By the threshingfloor of Araunah the Jebusite",
+   "By the threshingplace of Araunah the Jebusite",
    "At Shiloh",
    "In Bethlehem",
    "On Mount Gilboa"
@@ -16790,13 +16790,653 @@
   "category": "keyword",
   "question": "Why did David insist on buying the threshingfloor instead of taking it freely?",
   "choices": [
-   "He needed a deed",
-   "Araunah refused to help",
-   "The law required silver",
-   "He would not offer burnt offerings unto the Lord of that which cost him nothing"
+   "He would not offer burnt offerings unto the Lord of that which cost him nothing",
+   "Araunah demanded a high price",
+   "Gad commanded him to",
+   "The law required silver"
   ],
-  "answer": 3,
+  "answer": 0,
   "explanation": "David insisted on paying because sacrifice should cost him something.",
   "ref": "2 Samuel 24:24"
+ },
+ {
+  "id": "2-samuel-24-e-01",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was David's seer, sent by the LORD with a message about the census?",
+  "choices": [
+   "Nathan",
+   "Gad",
+   "Abiathar",
+   "Zadok"
+  ],
+  "answer": 1,
+  "explanation": "The word of the LORD came unto the prophet Gad, David's seer.",
+  "ref": "2 Samuel 24:11"
+ },
+ {
+  "id": "2-samuel-24-e-02",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David confess to the LORD after the people were numbered?",
+  "choices": [
+   "That he had sinned greatly",
+   "That Joab had deceived him",
+   "That Gad had lied to him",
+   "That the people had rebelled"
+  ],
+  "answer": 0,
+  "explanation": "David said unto the LORD, I have sinned greatly in that I have done.",
+  "ref": "2 Samuel 24:10"
+ },
+ {
+  "id": "2-samuel-24-e-03",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which of the three punishments did David choose to fall into?",
+  "choices": [
+   "The seven years of famine",
+   "Fleeing before his enemies",
+   "A drought on the land",
+   "The three days' pestilence"
+  ],
+  "answer": 3,
+  "explanation": "David said, Let us fall now into the hand of the LORD; so the LORD sent a pestilence upon Israel.",
+  "ref": "2 Samuel 24:14–15"
+ },
+ {
+  "id": "2-samuel-24-e-04",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Araunah offer David for the burnt sacrifice?",
+  "choices": [
+   "Lambs",
+   "Doves",
+   "Oxen",
+   "Goats"
+  ],
+  "answer": 2,
+  "explanation": "Araunah said, Behold, here be oxen for burnt sacrifice.",
+  "ref": "2 Samuel 24:22"
+ },
+ {
+  "id": "2-samuel-24-e-05",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Araunah do when he saw the king coming?",
+  "choices": [
+   "Ran away",
+   "Bowed on his face to the ground",
+   "Closed his threshingfloor",
+   "Sent for his servants to fight"
+  ],
+  "answer": 1,
+  "explanation": "Araunah went out, and bowed himself before the king on his face upon the ground.",
+  "ref": "2 Samuel 24:20"
+ },
+ {
+  "id": "2-samuel-24-e-06",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened after David built the altar and offered sacrifices?",
+  "choices": [
+   "The plague was stayed from Israel",
+   "The census was finished",
+   "Joab returned to the king",
+   "Araunah became a king"
+  ],
+  "answer": 0,
+  "explanation": "The LORD was intreated for the land, and the plague was stayed from Israel.",
+  "ref": "2 Samuel 24:25"
+ },
+ {
+  "id": "2-samuel-24-e-07",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Joab and the captains come back to when the counting was finished?",
+  "choices": [
+   "Hebron",
+   "Gilead",
+   "Zidon",
+   "Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "When they had gone through all the land, they came to Jerusalem.",
+  "ref": "2 Samuel 24:8"
+ },
+ {
+  "id": "2-samuel-24-e-08",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David ask the LORD to take away after he numbered the people?",
+  "choices": [
+   "The pestilence from Israel",
+   "The famine from the land",
+   "The iniquity of his servant",
+   "The sword from his house"
+  ],
+  "answer": 2,
+  "explanation": "David said, I beseech thee, O LORD, take away the iniquity of thy servant.",
+  "ref": "2 Samuel 24:10"
+ },
+ {
+  "id": "2-samuel-24-e-09",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of men were counted in the census?",
+  "choices": [
+   "Priests and Levites",
+   "Valiant men that drew the sword",
+   "Shepherds and herdsmen",
+   "Men over sixty years old"
+  ],
+  "answer": 1,
+  "explanation": "Israel had eight hundred thousand valiant men that drew the sword.",
+  "ref": "2 Samuel 24:9"
+ },
+ {
+  "id": "2-samuel-24-e-10",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David build on Araunah's threshingfloor?",
+  "choices": [
+   "An altar",
+   "A house",
+   "A wall",
+   "A tower"
+  ],
+  "answer": 0,
+  "explanation": "David built there an altar unto the LORD.",
+  "ref": "2 Samuel 24:25"
+ },
+ {
+  "id": "2-samuel-24-m-01",
+  "chapter": 24,
+  "level": "medium",
+  "category": "place",
+  "question": "The census ran from Dan to which city in the south?",
+  "choices": [
+   "Hebron",
+   "Jericho",
+   "Bethel",
+   "Beer-sheba"
+  ],
+  "answer": 3,
+  "explanation": "David told Joab to go through all the tribes from Dan even to Beer-sheba.",
+  "ref": "2 Samuel 24:2"
+ },
+ {
+  "id": "2-samuel-24-m-02",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joab say the LORD should do for the people?",
+  "choices": [
+   "Spare them from war",
+   "Give them rest on every side",
+   "Add to them an hundredfold",
+   "Make them a great nation"
+  ],
+  "answer": 2,
+  "explanation": "Joab said, Now the LORD thy God add unto the people, how many soever they be, an hundredfold.",
+  "ref": "2 Samuel 24:3"
+ },
+ {
+  "id": "2-samuel-24-m-03",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What prevailed against Joab and the captains of the host?",
+  "choices": [
+   "Gad's warning",
+   "The king's word",
+   "Their own counsel",
+   "The people's pleas"
+  ],
+  "answer": 1,
+  "explanation": "The king's word prevailed against Joab, and against the captains of the host.",
+  "ref": "2 Samuel 24:4"
+ },
+ {
+  "id": "2-samuel-24-m-04",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did it take to go through the land and number the people?",
+  "choices": [
+   "Nine months and twenty days",
+   "Seven months and ten days",
+   "Forty days",
+   "One year"
+  ],
+  "answer": 0,
+  "explanation": "They came to Jerusalem at the end of nine months and twenty days.",
+  "ref": "2 Samuel 24:8"
+ },
+ {
+  "id": "2-samuel-24-m-05",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many valiant men that drew the sword were counted in Israel?",
+  "choices": [
+   "Five hundred thousand",
+   "One million",
+   "Four hundred thousand",
+   "Eight hundred thousand"
+  ],
+  "answer": 3,
+  "explanation": "There were in Israel eight hundred thousand valiant men that drew the sword.",
+  "ref": "2 Samuel 24:9"
+ },
+ {
+  "id": "2-samuel-24-m-06",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many things did the LORD offer David to choose from?",
+  "choices": [
+   "Two",
+   "Four",
+   "Three",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said, I offer thee three things; choose thee one of them.",
+  "ref": "2 Samuel 24:12"
+ },
+ {
+  "id": "2-samuel-24-m-07",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long a famine did the LORD offer David?",
+  "choices": [
+   "Three years",
+   "Seven years",
+   "Ten years",
+   "Forty years"
+  ],
+  "answer": 1,
+  "explanation": "Gad asked, Shall seven years of famine come unto thee in thy land?",
+  "ref": "2 Samuel 24:13"
+ },
+ {
+  "id": "2-samuel-24-m-08",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David choose to fall into the hand of the LORD?",
+  "choices": [
+   "His mercies are great",
+   "His anger lasts only three days",
+   "His hand spares kings",
+   "Gad would plead for him"
+  ],
+  "answer": 0,
+  "explanation": "David said, Let us fall now into the hand of the LORD; for his mercies are great.",
+  "ref": "2 Samuel 24:14"
+ },
+ {
+  "id": "2-samuel-24-m-09",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men of the people died from Dan to Beer-sheba?",
+  "choices": [
+   "Seven thousand",
+   "Thirty thousand",
+   "Fifty thousand",
+   "Seventy thousand"
+  ],
+  "answer": 3,
+  "explanation": "There died of the people from Dan even to Beer-sheba seventy thousand men.",
+  "ref": "2 Samuel 24:15"
+ },
+ {
+  "id": "2-samuel-24-m-10",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say to the angel who was destroying the people?",
+  "choices": [
+   "Go and number them again",
+   "Spare the firstborn",
+   "It is enough: stay now thine hand",
+   "Strike the king"
+  ],
+  "answer": 2,
+  "explanation": "The LORD repented him of the evil, and said to the angel, It is enough: stay now thine hand.",
+  "ref": "2 Samuel 24:16"
+ },
+ {
+  "id": "2-samuel-24-m-11",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did David give Araunah for buying the threshingfloor?",
+  "choices": [
+   "To enlarge his palace",
+   "To build an altar so the plague would stop",
+   "To make a camp for the army",
+   "To pay a debt to Joab"
+  ],
+  "answer": 1,
+  "explanation": "David said, To buy the threshingfloor of thee, to build an altar unto the LORD, that the plague may be stayed.",
+  "ref": "2 Samuel 24:21"
+ },
+ {
+  "id": "2-samuel-24-m-12",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Against whom did David ask the LORD's hand to be turned instead of the people?",
+  "choices": [
+   "Against him and his father's house",
+   "Against Joab and the captains",
+   "Against the Jebusites",
+   "Against Israel's enemies"
+  ],
+  "answer": 0,
+  "explanation": "David said, Let thine hand, I pray thee, be against me, and against my father's house.",
+  "ref": "2 Samuel 24:17"
+ },
+ {
+  "id": "2-samuel-24-m-13",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Araunah say could be used for wood on the altar?",
+  "choices": [
+   "The doors of his house",
+   "The cedar of Lebanon",
+   "The old tent poles",
+   "Threshing instruments and the oxen's instruments"
+  ],
+  "answer": 3,
+  "explanation": "Araunah offered threshing instruments and other instruments of the oxen for wood.",
+  "ref": "2 Samuel 24:22"
+ },
+ {
+  "id": "2-samuel-24-m-14",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much did David pay for the threshingfloor and the oxen?",
+  "choices": [
+   "Six hundred shekels of gold",
+   "Ten talents of silver",
+   "Fifty shekels of silver",
+   "Thirty pieces of silver"
+  ],
+  "answer": 2,
+  "explanation": "David bought the threshingfloor and the oxen for fifty shekels of silver.",
+  "ref": "2 Samuel 24:24"
+ },
+ {
+  "id": "2-samuel-24-m-15",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What two kinds of offerings did David offer on the altar?",
+  "choices": [
+   "Sin offerings and trespass offerings",
+   "Burnt offerings and peace offerings",
+   "Meat offerings and drink offerings",
+   "Wave offerings and heave offerings"
+  ],
+  "answer": 1,
+  "explanation": "David built there an altar unto the LORD, and offered burnt offerings and peace offerings.",
+  "ref": "2 Samuel 24:25"
+ },
+ {
+  "id": "2-samuel-24-h-01",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of Judah were counted in the census?",
+  "choices": [
+   "Five hundred thousand",
+   "Eight hundred thousand",
+   "Three hundred thousand",
+   "One hundred thousand"
+  ],
+  "answer": 0,
+  "explanation": "The men of Judah were five hundred thousand men.",
+  "ref": "2 Samuel 24:9"
+ },
+ {
+  "id": "2-samuel-24-h-02",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was David offered to flee before his enemies?",
+  "choices": [
+   "Three days",
+   "Seven months",
+   "Forty days",
+   "Three months"
+  ],
+  "answer": 3,
+  "explanation": "Wilt thou flee three months before thine enemies, while they pursue thee?",
+  "ref": "2 Samuel 24:13"
+ },
+ {
+  "id": "2-samuel-24-h-03",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was the pestilence offered to David?",
+  "choices": [
+   "Three months",
+   "Seven days",
+   "Three days",
+   "Forty days"
+  ],
+  "answer": 2,
+  "explanation": "Or that there be three days' pestilence in thy land?",
+  "ref": "2 Samuel 24:13"
+ },
+ {
+  "id": "2-samuel-24-h-04",
+  "chapter": 24,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Joab and the host pitch first after they passed over Jordan?",
+  "choices": [
+   "Gilead",
+   "Aroer",
+   "Zidon",
+   "Tyre"
+  ],
+  "answer": 1,
+  "explanation": "They passed over Jordan, and pitched in Aroer, on the right side of the city that lieth in the midst of the river of Gad.",
+  "ref": "2 Samuel 24:5"
+ },
+ {
+  "id": "2-samuel-24-h-05",
+  "chapter": 24,
+  "level": "hard",
+  "category": "place",
+  "question": "Which strong hold did the numberers reach after they came about to Zidon?",
+  "choices": [
+   "Tyre",
+   "Hebron",
+   "Gilead",
+   "Jericho"
+  ],
+  "answer": 0,
+  "explanation": "They came about to Zidon, and came to the strong hold of Tyre.",
+  "ref": "2 Samuel 24:6–7"
+ },
+ {
+  "id": "2-samuel-24-h-06",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until what time did the pestilence last from the morning?",
+  "choices": [
+   "Evening",
+   "Midnight",
+   "The third day",
+   "The time appointed"
+  ],
+  "answer": 3,
+  "explanation": "The LORD sent a pestilence upon Israel from the morning even to the time appointed.",
+  "ref": "2 Samuel 24:15"
+ },
+ {
+  "id": "2-samuel-24-h-07",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What blessing did Araunah speak over David?",
+  "choices": [
+   "The LORD thy God bless thy house",
+   "The LORD thy God give thee peace",
+   "The LORD thy God accept thee",
+   "The LORD thy God keep thee"
+  ],
+  "answer": 2,
+  "explanation": "Araunah said unto the king, The LORD thy God accept thee.",
+  "ref": "2 Samuel 24:23"
+ },
+ {
+  "id": "2-samuel-24-h-08",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did David describe his situation when Gad offered the three choices?",
+  "choices": [
+   "A deep pit",
+   "A great strait",
+   "A narrow place",
+   "A heavy burden"
+  ],
+  "answer": 1,
+  "explanation": "David said unto Gad, I am in a great strait.",
+  "ref": "2 Samuel 24:14"
+ },
+ {
+  "id": "2-samuel-24-h-09",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did David say he had acted in numbering the people?",
+  "choices": [
+   "Very foolishly",
+   "Very proudly",
+   "Very hastily",
+   "Very rashly"
+  ],
+  "answer": 0,
+  "explanation": "David said, I beseech thee, O LORD, take away the iniquity of thy servant; for I have done very foolishly.",
+  "ref": "2 Samuel 24:10"
+ },
+ {
+  "id": "2-samuel-24-h-10",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David call the people when he asked what they had done?",
+  "choices": [
+   "Children",
+   "Servants",
+   "Brethren",
+   "Sheep"
+  ],
+  "answer": 3,
+  "explanation": "David said, But these sheep, what have they done?",
+  "ref": "2 Samuel 24:17"
+ },
+ {
+  "id": "2-samuel-24-h-11",
+  "chapter": 24,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city was the angel stretching out his hand to destroy when the LORD said, It is enough?",
+  "choices": [
+   "Bethlehem",
+   "Hebron",
+   "Jerusalem",
+   "Jericho"
+  ],
+  "answer": 2,
+  "explanation": "When the angel stretched out his hand upon Jerusalem to destroy it, the LORD repented him of the evil.",
+  "ref": "2 Samuel 24:16"
+ },
+ {
+  "id": "2-samuel-24-h-12",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was kindled against Israel at the start of the chapter?",
+  "choices": [
+   "The wrath of Joab",
+   "The anger of the LORD",
+   "The envy of the Philistines",
+   "The pride of Judah"
+  ],
+  "answer": 1,
+  "explanation": "The anger of the LORD was kindled against Israel, and he moved David against them.",
+  "ref": "2 Samuel 24:1"
+ },
+ {
+  "id": "2-samuel-24-h-13",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joab ask the king about the census?",
+  "choices": [
+   "Why the king delighted in this thing",
+   "Who would pay for the journey",
+   "Whether Gad had approved it",
+   "How long it would take"
+  ],
+  "answer": 0,
+  "explanation": "Joab said, Why doth my lord the king delight in this thing?",
+  "ref": "2 Samuel 24:3"
+ },
+ {
+  "id": "2-samuel-24-h-14",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the Canaanites, whose cities did the numberers come to?",
+  "choices": [
+   "The Hittites",
+   "The Amorites",
+   "The Perizzites",
+   "The Hivites"
+  ],
+  "answer": 3,
+  "explanation": "They came to all the cities of the Hivites, and of the Canaanites.",
+  "ref": "2 Samuel 24:7"
+ },
+ {
+  "id": "2-samuel-24-h-15",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Araunah ask when he saw David coming to the threshingfloor?",
+  "choices": [
+   "Whether the king brought an army",
+   "What price the king would pay",
+   "Why the king had come to his servant",
+   "Who had sent the king"
+  ],
+  "answer": 2,
+  "explanation": "Araunah said, Wherefore is my lord the king come to his servant?",
+  "ref": "2 Samuel 24:21"
  }
 ]
