@@ -13504,6 +13504,438 @@
   "ref": "2 Kings 22:14"
  },
  {
+  "id": "2-kings-22-e-01",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Josiah reign in Jerusalem?",
+  "choices": [
+   "Eight years",
+   "Fifty-five years",
+   "Thirty and one years",
+   "Eleven years"
+  ],
+  "answer": 2,
+  "explanation": "Josiah reigned thirty and one years in Jerusalem.",
+  "ref": "2 Kings 22:1"
+ },
+ {
+  "id": "2-kings-22-e-02",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the money in the house of the LORD to be used for?",
+  "choices": [
+   "To pay the army",
+   "To repair the house",
+   "To pay tribute to Egypt",
+   "To buy sacrifices"
+  ],
+  "answer": 1,
+  "explanation": "Let them give it to the doers of the work to repair the breaches of the house.",
+  "ref": "2 Kings 22:5"
+ },
+ {
+  "id": "2-kings-22-e-03",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which scribe did the king send to the house of the LORD?",
+  "choices": [
+   "Hilkiah",
+   "Shaphan",
+   "Achbor",
+   "Shallum"
+  ],
+  "answer": 1,
+  "explanation": "The king sent Shaphan the son of Azaliah, the scribe, to the house of the LORD.",
+  "ref": "2 Kings 22:3"
+ },
+ {
+  "id": "2-kings-22-e-04",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king tell his men to do about the book?",
+  "choices": [
+   "Enquire of the LORD",
+   "Burn it",
+   "Hide it",
+   "Send it to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Go ye, enquire of the LORD for me, and for the people, and for all Judah.",
+  "ref": "2 Kings 22:13"
+ },
+ {
+  "id": "2-kings-22-e-05",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Huldah say about Josiah's death?",
+  "choices": [
+   "He would be gathered to his grave in peace",
+   "He would die in battle",
+   "He would die in exile",
+   "He would not die at all"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt be gathered into thy grave in peace.",
+  "ref": "2 Kings 22:20"
+ },
+ {
+  "id": "2-kings-22-m-01",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "What was the name of Josiah's mother?",
+  "choices": [
+   "Hephzi-bah",
+   "Hamutal",
+   "Zebudah",
+   "Jedidah"
+  ],
+  "answer": 3,
+  "explanation": "His mother's name was Jedidah, the daughter of Adaiah of Boscath.",
+  "ref": "2 Kings 22:1"
+ },
+ {
+  "id": "2-kings-22-m-02",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year of Josiah's reign did he send Shaphan to the house of the LORD?",
+  "choices": [
+   "The eighth",
+   "The twelfth",
+   "The eighteenth",
+   "The thirty-first"
+  ],
+  "answer": 2,
+  "explanation": "In the eighteenth year of king Josiah, the king sent Shaphan.",
+  "ref": "2 Kings 22:3"
+ },
+ {
+  "id": "2-kings-22-m-03",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had gathered the money of the people at the house of the LORD?",
+  "choices": [
+   "The Levites of Kidron",
+   "The scribes",
+   "The keepers of the door",
+   "The captains"
+  ],
+  "answer": 2,
+  "explanation": "The silver which the keepers of the door have gathered of the people.",
+  "ref": "2 Kings 22:4"
+ },
+ {
+  "id": "2-kings-22-m-04",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the money to buy, besides paying carpenters, builders and masons?",
+  "choices": [
+   "Gold and silver",
+   "Timber and hewn stone",
+   "Cedar and iron",
+   "Oil and wine"
+  ],
+  "answer": 1,
+  "explanation": "Carpenters, and builders, and masons, and to buy timber and hewn stone to repair the house.",
+  "ref": "2 Kings 22:6"
+ },
+ {
+  "id": "2-kings-22-m-05",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was no reckoning made of the money given to the workmen?",
+  "choices": [
+   "The king trusted Shaphan",
+   "It was too much to count",
+   "They dealt faithfully",
+   "It belonged to the priests"
+  ],
+  "answer": 2,
+  "explanation": "There was no reckoning made with them of the money, because they dealt faithfully.",
+  "ref": "2 Kings 22:7"
+ },
+ {
+  "id": "2-kings-22-m-06",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Shaphan tell the king that Hilkiah had delivered to him?",
+  "choices": [
+   "A sword",
+   "A letter from Egypt",
+   "A book",
+   "A crown"
+  ],
+  "answer": 2,
+  "explanation": "Shaphan said, Hilkiah the priest hath delivered me a book. And Shaphan read it before the king.",
+  "ref": "2 Kings 22:10"
+ },
+ {
+  "id": "2-kings-22-m-07",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Josiah say the LORD's wrath was kindled against them?",
+  "choices": [
+   "The temple had been left unrepaired",
+   "Their fathers had not hearkened to the words of the book",
+   "The priests had stolen the silver",
+   "Israel had been carried away"
+  ],
+  "answer": 1,
+  "explanation": "Great is the wrath of the LORD, because our fathers have not hearkened unto the words of this book.",
+  "ref": "2 Kings 22:13"
+ },
+ {
+  "id": "2-kings-22-m-08",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose wife was Huldah the prophetess?",
+  "choices": [
+   "Shallum's",
+   "Hilkiah's",
+   "Shaphan's",
+   "Ahikam's"
+  ],
+  "answer": 0,
+  "explanation": "Huldah the prophetess, the wife of Shallum the son of Tikvah.",
+  "ref": "2 Kings 22:14"
+ },
+ {
+  "id": "2-kings-22-m-09",
+  "chapter": 22,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Huldah live?",
+  "choices": [
+   "In Jerusalem, in the college",
+   "In Bethel",
+   "In Anathoth",
+   "In Samaria"
+  ],
+  "answer": 0,
+  "explanation": "Now she dwelt in Jerusalem in the college.",
+  "ref": "2 Kings 22:14"
+ },
+ {
+  "id": "2-kings-22-m-10",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the LORD's wrath kindled against the place?",
+  "choices": [
+   "They forsook him and burned incense to other gods",
+   "They would not repair the temple",
+   "They broke the passover",
+   "They shed innocent blood only"
+  ],
+  "answer": 0,
+  "explanation": "They have forsaken me, and have burned incense unto other gods.",
+  "ref": "2 Kings 22:17"
+ },
+ {
+  "id": "2-kings-22-m-11",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD hear Josiah?",
+  "choices": [
+   "He had rebuilt the temple",
+   "His heart was tender and he humbled himself",
+   "He had offered a thousand sacrifices",
+   "He was David's descendant"
+  ],
+  "answer": 1,
+  "explanation": "Because thine heart was tender, and thou hast humbled thyself before the LORD.",
+  "ref": "2 Kings 22:19"
+ },
+ {
+  "id": "2-kings-22-h-01",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Shaphan the scribe?",
+  "choices": [
+   "Azaliah's",
+   "Hilkiah's",
+   "Michaiah's",
+   "Tikvah's"
+  ],
+  "answer": 0,
+  "explanation": "The king sent Shaphan the son of Azaliah, the son of Meshullam, the scribe.",
+  "ref": "2 Kings 22:3"
+ },
+ {
+  "id": "2-kings-22-h-02",
+  "chapter": 22,
+  "level": "hard",
+  "category": "place",
+  "question": "Josiah's mother Jedidah was the daughter of Adaiah of which place?",
+  "choices": [
+   "Boscath",
+   "Jotbah",
+   "Libnah",
+   "Rumah"
+  ],
+  "answer": 0,
+  "explanation": "Jedidah, the daughter of Adaiah of Boscath.",
+  "ref": "2 Kings 22:1"
+ },
+ {
+  "id": "2-kings-22-h-03",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Hilkiah told to do with the silver brought into the house?",
+  "choices": [
+   "Sum it",
+   "Hide it",
+   "Send it to Egypt",
+   "Give it to the poor"
+  ],
+  "answer": 0,
+  "explanation": "Go up to Hilkiah the high priest, that he may sum the silver which is brought into the house of the LORD.",
+  "ref": "2 Kings 22:4"
+ },
+ {
+  "id": "2-kings-22-h-04",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Ahikam, sent to enquire of the LORD?",
+  "choices": [
+   "Achbor's",
+   "Hilkiah's",
+   "Shaphan's",
+   "Michaiah's"
+  ],
+  "answer": 2,
+  "explanation": "The king commanded... Ahikam the son of Shaphan, and Achbor the son of Michaiah.",
+  "ref": "2 Kings 22:12"
+ },
+ {
+  "id": "2-kings-22-h-05",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Asahiah among those sent to Huldah?",
+  "choices": [
+   "The high priest",
+   "The scribe",
+   "A servant of the king's",
+   "The keeper of the door"
+  ],
+  "answer": 2,
+  "explanation": "Asahiah a servant of the king's.",
+  "ref": "2 Kings 22:12"
+ },
+ {
+  "id": "2-kings-22-h-06",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Huldah's husband Shallum the keeper of?",
+  "choices": [
+   "The gate",
+   "The treasury",
+   "The wardrobe",
+   "The armoury"
+  ],
+  "answer": 2,
+  "explanation": "Shallum the son of Tikvah, the son of Harhas, keeper of the wardrobe.",
+  "ref": "2 Kings 22:14"
+ },
+ {
+  "id": "2-kings-22-h-07",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the place and its people become, as Josiah had heard?",
+  "choices": [
+   "A prey and a spoil",
+   "A desolation and a curse",
+   "A reproach and a hissing",
+   "A wilderness and a ruin"
+  ],
+  "answer": 1,
+  "explanation": "They should become a desolation and a curse.",
+  "ref": "2 Kings 22:19"
+ },
+ {
+  "id": "2-kings-22-h-08",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides humbling himself and tearing his clothes, what did Josiah do before the LORD?",
+  "choices": [
+   "He fasted forty days",
+   "He wept",
+   "He offered burnt offerings",
+   "He lay on the ground"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast rent thy clothes, and wept before me.",
+  "ref": "2 Kings 22:19"
+ },
+ {
+  "id": "2-kings-22-h-09",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say his wrath against the place would never do?",
+  "choices": [
+   "Be quenched",
+   "Be turned aside",
+   "Be spoken of",
+   "Be written down"
+  ],
+  "answer": 0,
+  "explanation": "My wrath shall be kindled against this place, and shall not be quenched.",
+  "ref": "2 Kings 22:17"
+ },
+ {
+  "id": "2-kings-22-h-10",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Josiah's eyes not see?",
+  "choices": [
+   "The temple finished",
+   "Babylon's army",
+   "His sons crowned",
+   "All the evil the LORD would bring"
+  ],
+  "answer": 3,
+  "explanation": "Thine eyes shall not see all the evil which I will bring upon this place.",
+  "ref": "2 Kings 22:20"
+ },
+ {
+  "id": "2-kings-22-h-11",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which way did Josiah not turn aside from the way of David?",
+  "choices": [
+   "To the east or to the west",
+   "To Egypt or to Assyria",
+   "To the high places or the groves",
+   "To the right hand or to the left"
+  ],
+  "answer": 3,
+  "explanation": "He walked in all the way of David his father, and turned not aside to the right hand or to the left.",
+  "ref": "2 Kings 22:2"
+ },
+ {
   "id": "old-2-kings-23-1",
   "chapter": 23,
   "level": "beginner",
