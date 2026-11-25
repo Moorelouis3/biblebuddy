@@ -2144,6 +2144,406 @@
   "ref": "Nehemiah 5:14–18"
  },
  {
+  "id": "nehemiah-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Nehemiah rebuke for charging usury to their brethren?",
+  "choices": [
+   "The priests",
+   "The Levites",
+   "The Persian governors",
+   "The nobles and rulers"
+  ],
+  "answer": 3,
+  "explanation": "Nehemiah rebuked the nobles, and the rulers, and said, Ye exact usury, every one of his brother.",
+  "ref": "Nehemiah 5:7"
+ },
+ {
+  "id": "nehemiah-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nehemiah set against the nobles who charged usury?",
+  "choices": [
+   "A watch at the gate",
+   "A fine of silver",
+   "A letter to the king",
+   "A great assembly"
+  ],
+  "answer": 3,
+  "explanation": "I rebuked the nobles, and the rulers... And I set a great assembly against them.",
+  "ref": "Nehemiah 5:7"
+ },
+ {
+  "id": "nehemiah-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nehemiah shake to show what would happen to anyone who broke the promise?",
+  "choices": [
+   "His staff",
+   "His sword",
+   "His cloak",
+   "His lap"
+  ],
+  "answer": 3,
+  "explanation": "I shook my lap, and said, So God shake out every man from his house, and from his labour, that performeth not this promise.",
+  "ref": "Nehemiah 5:13"
+ },
+ {
+  "id": "nehemiah-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the congregation say and do after Nehemiah's warning?",
+  "choices": [
+   "Wept and tore their clothes",
+   "Went home in silence",
+   "Built an altar",
+   "Said Amen and praised the LORD"
+  ],
+  "answer": 3,
+  "explanation": "All the congregation said, Amen, and praised the LORD. And the people did according to this promise.",
+  "ref": "Nehemiah 5:13"
+ },
+ {
+  "id": "nehemiah-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Nehemiah call to take an oath that the promise would be kept?",
+  "choices": [
+   "The Levites",
+   "The elders of Samaria",
+   "The singers",
+   "The priests"
+  ],
+  "answer": 3,
+  "explanation": "I called the priests, and took an oath of them, that they should do according to this promise.",
+  "ref": "Nehemiah 5:12"
+ },
+ {
+  "id": "nehemiah-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did some of the people take up corn on credit?",
+  "choices": [
+   "They had many sons and daughters to feed",
+   "The king demanded it",
+   "The wall workers had no pay",
+   "They wanted to sell it"
+  ],
+  "answer": 0,
+  "explanation": "We, our sons, and our daughters, are many: therefore we take up corn for them, that we may eat, and live.",
+  "ref": "Nehemiah 5:2"
+ },
+ {
+  "id": "nehemiah-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had some of the people borrowed money to pay?",
+  "choices": [
+   "The king's tribute",
+   "The temple tithe",
+   "The builders' wages",
+   "The priests' portion"
+  ],
+  "answer": 0,
+  "explanation": "We have borrowed money for the king's tribute, and that upon our lands and vineyards.",
+  "ref": "Nehemiah 5:4"
+ },
+ {
+  "id": "nehemiah-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the poor forced to do with their sons and daughters?",
+  "choices": [
+   "Bring them into bondage as servants",
+   "Send them to Babylon",
+   "Hide them in the temple",
+   "Give them to the priests"
+  ],
+  "answer": 0,
+  "explanation": "We bring into bondage our sons and our daughters to be servants, and some of our daughters are brought unto bondage already.",
+  "ref": "Nehemiah 5:5"
+ },
+ {
+  "id": "nehemiah-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why could the poor not redeem their children from bondage?",
+  "choices": [
+   "Other men had their lands and vineyards",
+   "The king forbade it",
+   "The wall had to be finished first",
+   "The priests refused them"
+  ],
+  "answer": 0,
+  "explanation": "Neither is it in our power to redeem them; for other men have our lands and vineyards.",
+  "ref": "Nehemiah 5:5"
+ },
+ {
+  "id": "nehemiah-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Nehemiah and others done for Jews who were sold to the heathen?",
+  "choices": [
+   "Redeemed them",
+   "Hidden them",
+   "Taught them the law",
+   "Sent them to Persia"
+  ],
+  "answer": 0,
+  "explanation": "We after our ability have redeemed our brethren the Jews, which were sold unto the heathen; and will ye even sell your brethren?",
+  "ref": "Nehemiah 5:8"
+ },
+ {
+  "id": "nehemiah-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Nehemiah say they ought to walk in the fear of God?",
+  "choices": [
+   "Because of the reproach of the heathen enemies",
+   "Because the king was watching",
+   "Because the wall was unfinished",
+   "Because of the coming famine"
+  ],
+  "answer": 0,
+  "explanation": "Ought ye not to walk in the fear of our God because of the reproach of the heathen our enemies?",
+  "ref": "Nehemiah 5:9"
+ },
+ {
+  "id": "nehemiah-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nehemiah ask the nobles to leave off?",
+  "choices": [
+   "Usury",
+   "Building the wall",
+   "Paying tribute",
+   "Keeping the Sabbath"
+  ],
+  "answer": 0,
+  "explanation": "I pray you, let us leave off this usury.",
+  "ref": "Nehemiah 5:10"
+ },
+ {
+  "id": "nehemiah-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the lands, what did Nehemiah ask to be restored to the poor?",
+  "choices": [
+   "The hundredth part of the money, corn, wine and oil",
+   "Half of their flocks",
+   "Their servants' wages",
+   "Ten years of rent"
+  ],
+  "answer": 0,
+  "explanation": "Restore also the hundredth part of the money, and of the corn, the wine, and the oil, that ye exact of them.",
+  "ref": "Nehemiah 5:11"
+ },
+ {
+  "id": "nehemiah-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to a man who did not keep the promise?",
+  "choices": [
+   "He would be shaken out of his house and labour",
+   "He would be sent to Babylon",
+   "He would pay a fine",
+   "He would lose his sons"
+  ],
+  "answer": 0,
+  "explanation": "So God shake out every man from his house, and from his labour, that performeth not this promise.",
+  "ref": "Nehemiah 5:13"
+ },
+ {
+  "id": "nehemiah-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did Nehemiah give for not taking the governor's bread?",
+  "choices": [
+   "The bondage was heavy upon the people",
+   "He had his own farms",
+   "The king had forbidden it",
+   "There was no corn left"
+  ],
+  "answer": 0,
+  "explanation": "Yet for all this required not I the bread of the governor, because the bondage was heavy upon this people.",
+  "ref": "Nehemiah 5:18"
+ },
+ {
+  "id": "nehemiah-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how many years did Nehemiah not eat the governor's bread?",
+  "choices": [
+   "Seven years",
+   "Ten years",
+   "Twelve years",
+   "Thirty-two years"
+  ],
+  "answer": 2,
+  "explanation": "From the twentieth year even unto the two and thirtieth year of Artaxerxes the king, that is, twelve years.",
+  "ref": "Nehemiah 5:14"
+ },
+ {
+  "id": "nehemiah-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much silver had the former governors taken beside bread and wine?",
+  "choices": [
+   "Ten shekels",
+   "A hundred shekels",
+   "Forty shekels",
+   "Twenty shekels"
+  ],
+  "answer": 2,
+  "explanation": "The former governors had taken of them bread and wine, beside forty shekels of silver.",
+  "ref": "Nehemiah 5:15"
+ },
+ {
+  "id": "nehemiah-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Jews and rulers ate at Nehemiah's table?",
+  "choices": [
+   "Seventy",
+   "Two hundred",
+   "A hundred and fifty",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "There were at my table an hundred and fifty of the Jews and rulers.",
+  "ref": "Nehemiah 5:17"
+ },
+ {
+  "id": "nehemiah-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was prepared for Nehemiah daily?",
+  "choices": [
+   "Two oxen and ten lambs",
+   "One lamb and twelve fowls",
+   "One ox and six choice sheep",
+   "Six oxen"
+  ],
+  "answer": 2,
+  "explanation": "That which was prepared for me daily was one ox and six choice sheep; also fowls.",
+  "ref": "Nehemiah 5:18"
+ },
+ {
+  "id": "nehemiah-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How often was a store of all sorts of wine prepared at Nehemiah's table?",
+  "choices": [
+   "Every day",
+   "Once a week",
+   "Once in ten days",
+   "Once a month"
+  ],
+  "answer": 2,
+  "explanation": "Once in ten days store of all sorts of wine.",
+  "ref": "Nehemiah 5:18"
+ },
+ {
+  "id": "nehemiah-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the nobles answer when Nehemiah rebuked them?",
+  "choices": [
+   "They accused Nehemiah of pride",
+   "They appealed to Persia",
+   "They held their peace and found nothing to answer",
+   "They walked out"
+  ],
+  "answer": 2,
+  "explanation": "Then held they their peace, and found nothing to answer.",
+  "ref": "Nehemiah 5:8"
+ },
+ {
+  "id": "nehemiah-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "In the reign of which king did Nehemiah serve as governor?",
+  "choices": [
+   "Cyrus",
+   "Darius",
+   "Artaxerxes",
+   "Ahasuerus"
+  ],
+  "answer": 2,
+  "explanation": "From the twentieth year even unto the two and thirtieth year of Artaxerxes the king.",
+  "ref": "Nehemiah 5:14"
+ },
+ {
+  "id": "nehemiah-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Nehemiah and his servants not buy while they worked on the wall?",
+  "choices": [
+   "Any corn",
+   "Any horses",
+   "Any land",
+   "Any timber"
+  ],
+  "answer": 2,
+  "explanation": "I continued in the work of this wall, neither bought we any land.",
+  "ref": "Nehemiah 5:16"
+ },
+ {
+  "id": "nehemiah-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Nehemiah end his words in the chapter?",
+  "choices": [
+   "He asked God to destroy usurers",
+   "He asked for more workers",
+   "He asked God to think upon him for good",
+   "He thanked the king"
+  ],
+  "answer": 2,
+  "explanation": "Think upon me, my God, for good, according to all that I have done for this people.",
+  "ref": "Nehemiah 5:19"
+ },
+ {
+  "id": "nehemiah-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the Jews and rulers, who else came to Nehemiah's table?",
+  "choices": [
+   "The priests of Samaria",
+   "The king's officers",
+   "Those from the heathen round about",
+   "The Levites only"
+  ],
+  "answer": 2,
+  "explanation": "Beside those that came unto us from among the heathen that are about us.",
+  "ref": "Nehemiah 5:17"
+ },
+ {
   "id": "old-nehemiah-6-1",
   "chapter": 6,
   "level": "beginner",
@@ -2222,6 +2622,406 @@
   "answer": 0,
   "explanation": "The wall was completed in fifty-two days.",
   "ref": "Nehemiah 6:15"
+ },
+ {
+  "id": "nehemiah-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who carried Sanballat's fifth letter to Nehemiah?",
+  "choices": [
+   "Geshem the Arabian",
+   "Tobiah",
+   "The prophet Shemaiah",
+   "Sanballat's servant"
+  ],
+  "answer": 3,
+  "explanation": "Sanballat sent his servant unto me the fifth time with an open letter in his hand.",
+  "ref": "Nehemiah 6:5"
+ },
+ {
+  "id": "nehemiah-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the false prophet who told Nehemiah to hide in the temple?",
+  "choices": [
+   "Noadiah",
+   "Gashmu",
+   "Hanani",
+   "Shemaiah"
+  ],
+  "answer": 3,
+  "explanation": "I came unto the house of Shemaiah, who was shut up; and he said, Let us meet together in the house of God.",
+  "ref": "Nehemiah 6:10"
+ },
+ {
+  "id": "nehemiah-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nehemiah ask God to do for his hands?",
+  "choices": [
+   "Heal them",
+   "Bless them with gold",
+   "Wash them",
+   "Strengthen them"
+  ],
+  "answer": 3,
+  "explanation": "Now therefore, O God, strengthen my hands.",
+  "ref": "Nehemiah 6:9"
+ },
+ {
+  "id": "nehemiah-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Tobiah send to try to put Nehemiah in fear?",
+  "choices": [
+   "Soldiers",
+   "Spies",
+   "Gifts",
+   "Letters"
+  ],
+  "answer": 3,
+  "explanation": "Tobiah sent letters to put me in fear.",
+  "ref": "Nehemiah 6:19"
+ },
+ {
+  "id": "nehemiah-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the enemies perceive when they heard the wall was finished?",
+  "choices": [
+   "The king had helped",
+   "The wall was weak",
+   "The Jews had many soldiers",
+   "The work was wrought of God"
+  ],
+  "answer": 3,
+  "explanation": "They perceived that this work was wrought of our God.",
+  "ref": "Nehemiah 6:16"
+ },
+ {
+  "id": "nehemiah-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Nehemiah not yet done when the wall had no breach left?",
+  "choices": [
+   "Set up the doors upon the gates",
+   "Appointed the singers",
+   "Counted the people",
+   "Offered the sacrifices"
+  ],
+  "answer": 0,
+  "explanation": "Though at that time I had not set up the doors upon the gates.",
+  "ref": "Nehemiah 6:1"
+ },
+ {
+  "id": "nehemiah-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Sanballat and Geshem really intend by their invitation?",
+  "choices": [
+   "To do him mischief",
+   "To make peace",
+   "To buy the wall",
+   "To honour him"
+  ],
+  "answer": 0,
+  "explanation": "Come, let us meet together in the plain of Ono. But they thought to do me mischief.",
+  "ref": "Nehemiah 6:2"
+ },
+ {
+  "id": "nehemiah-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the open letter say Nehemiah had appointed prophets to preach?",
+  "choices": [
+   "That there was a king in Judah",
+   "That the wall would fall",
+   "That Persia must leave",
+   "That the temple be rebuilt"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast also appointed prophets to preach of thee at Jerusalem, saying, There is a king in Judah.",
+  "ref": "Nehemiah 6:7"
+ },
+ {
+  "id": "nehemiah-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Nehemiah answer the charges in the letter?",
+  "choices": [
+   "He said they were made up out of Sanballat's own heart",
+   "He agreed to meet",
+   "He asked for forgiveness",
+   "He sent the letter to the king"
+  ],
+  "answer": 0,
+  "explanation": "There are no such things done as thou sayest, but thou feignest them out of thine own heart.",
+  "ref": "Nehemiah 6:8"
+ },
+ {
+  "id": "nehemiah-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nehemiah say the enemies wanted by making them afraid?",
+  "choices": [
+   "Their hands weakened from the work",
+   "The wall pulled down",
+   "Nehemiah sent to Persia",
+   "The gates left open"
+  ],
+  "answer": 0,
+  "explanation": "They all made us afraid, saying, Their hands shall be weakened from the work, that it be not done.",
+  "ref": "Nehemiah 6:9"
+ },
+ {
+  "id": "nehemiah-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Shemaiah urge Nehemiah to do?",
+  "choices": [
+   "Shut himself in the temple because they would kill him",
+   "Flee to Persia",
+   "Call the army",
+   "Meet the enemy at Ono"
+  ],
+  "answer": 0,
+  "explanation": "Let us meet together in the house of God, within the temple, and let us shut the doors of the temple: for they will come to slay thee.",
+  "ref": "Nehemiah 6:10"
+ },
+ {
+  "id": "nehemiah-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "How did Nehemiah learn God had not sent Shemaiah?",
+  "choices": [
+   "Tobiah and Sanballat had hired him",
+   "The priests told him",
+   "Shemaiah confessed",
+   "The king's letter said so"
+  ],
+  "answer": 0,
+  "explanation": "I perceived that God had not sent him... for Tobiah and Sanballat had hired him.",
+  "ref": "Nehemiah 6:12"
+ },
+ {
+  "id": "nehemiah-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why had Tobiah and Sanballat hired Shemaiah?",
+  "choices": [
+   "So Nehemiah would be afraid, sin and get a bad name",
+   "To steal the temple gold",
+   "To end the building",
+   "To buy the wall"
+  ],
+  "answer": 0,
+  "explanation": "He was hired, that I should be afraid, and do so, and sin, and that they might have matter for an evil report.",
+  "ref": "Nehemiah 6:13"
+ },
+ {
+  "id": "nehemiah-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Why were many in Judah sworn to Tobiah?",
+  "choices": [
+   "He was the son-in-law of Shechaniah",
+   "He was a priest",
+   "He was the governor",
+   "He had paid their debts"
+  ],
+  "answer": 0,
+  "explanation": "There were many in Judah sworn unto him, because he was the son in law of Shechaniah the son of Arah.",
+  "ref": "Nehemiah 6:18"
+ },
+ {
+  "id": "nehemiah-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Who did the open letter say reported the rumour of rebellion?",
+  "choices": [
+   "Geshem",
+   "Gashmu",
+   "Shemaiah",
+   "Noadiah"
+  ],
+  "answer": 1,
+  "explanation": "It is reported among the heathen, and Gashmu saith it, that thou and the Jews think to rebel.",
+  "ref": "Nehemiah 6:6"
+ },
+ {
+  "id": "nehemiah-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times did they send to Nehemiah before the fifth letter?",
+  "choices": [
+   "Twice",
+   "Four times",
+   "Seven times",
+   "Ten times"
+  ],
+  "answer": 1,
+  "explanation": "Yet they sent unto me four times after this sort; and I answered them after the same manner.",
+  "ref": "Nehemiah 6:4"
+ },
+ {
+  "id": "nehemiah-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Shemaiah?",
+  "choices": [
+   "Shechaniah's",
+   "Delaiah's",
+   "Meshullam's",
+   "Arah's"
+  ],
+  "answer": 1,
+  "explanation": "The house of Shemaiah the son of Delaiah the son of Mehetabeel.",
+  "ref": "Nehemiah 6:10"
+ },
+ {
+  "id": "nehemiah-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Which prophetess did Nehemiah name beside Tobiah and Sanballat in his prayer?",
+  "choices": [
+   "Huldah",
+   "Noadiah",
+   "Deborah",
+   "Anna"
+  ],
+  "answer": 1,
+  "explanation": "My God, think thou upon Tobiah and Sanballat... and on the prophetess Noadiah.",
+  "ref": "Nehemiah 6:14"
+ },
+ {
+  "id": "nehemiah-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month was the wall finished?",
+  "choices": [
+   "Nisan",
+   "Elul",
+   "Tishri",
+   "Kislev"
+  ],
+  "answer": 1,
+  "explanation": "So the wall was finished in the twenty and fifth day of the month Elul, in fifty and two days.",
+  "ref": "Nehemiah 6:15"
+ },
+ {
+  "id": "nehemiah-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose daughter had Tobiah's son Johanan married?",
+  "choices": [
+   "Shechaniah's",
+   "Meshullam's",
+   "Arah's",
+   "Delaiah's"
+  ],
+  "answer": 1,
+  "explanation": "His son Johanan had taken the daughter of Meshullam the son of Berechiah.",
+  "ref": "Nehemiah 6:18"
+ },
+ {
+  "id": "nehemiah-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Who sent many letters to Tobiah?",
+  "choices": [
+   "The priests of Samaria",
+   "The nobles of Judah",
+   "The Arabians",
+   "The Ashdodites"
+  ],
+  "answer": 1,
+  "explanation": "The nobles of Judah sent many letters unto Tobiah, and the letters of Tobiah came unto them.",
+  "ref": "Nehemiah 6:17"
+ },
+ {
+  "id": "nehemiah-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the nobles of Judah do with Nehemiah's words?",
+  "choices": [
+   "Hid them from the king",
+   "Told them to Tobiah",
+   "Wrote them down",
+   "Read them in the temple"
+  ],
+  "answer": 1,
+  "explanation": "They reported his good deeds before me, and uttered my words to him.",
+  "ref": "Nehemiah 6:19"
+ },
+ {
+  "id": "nehemiah-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the nobles report before Nehemiah about Tobiah?",
+  "choices": [
+   "His plans for war",
+   "His good deeds",
+   "His debts",
+   "His letters to Persia"
+  ],
+  "answer": 1,
+  "explanation": "They reported his good deeds before me.",
+  "ref": "Nehemiah 6:19"
+ },
+ {
+  "id": "nehemiah-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two men sent Nehemiah the invitation to meet at Ono?",
+  "choices": [
+   "Sanballat and Tobiah",
+   "Sanballat and Geshem",
+   "Geshem and Gashmu",
+   "Tobiah and Shemaiah"
+  ],
+  "answer": 1,
+  "explanation": "Sanballat and Geshem sent unto me, saying, Come, let us meet together in some one of the villages in the plain of Ono.",
+  "ref": "Nehemiah 6:2"
+ },
+ {
+  "id": "nehemiah-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did the open letter say the rumours would be reported?",
+  "choices": [
+   "The governor of Samaria",
+   "The priests",
+   "The king",
+   "The Arabians"
+  ],
+  "answer": 2,
+  "explanation": "Now shall it be reported to the king according to these words.",
+  "ref": "Nehemiah 6:7"
  },
  {
   "id": "old-nehemiah-7-1",
@@ -2304,6 +3104,166 @@
   "ref": "Nehemiah 7:6–73"
  },
  {
+  "id": "nehemiah-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was said of Hananiah, the ruler of the palace?",
+  "choices": [
+   "He was a priest of Zadok",
+   "He was the king's cupbearer",
+   "He had built the gates",
+   "He was a faithful man who feared God above many"
+  ],
+  "answer": 3,
+  "explanation": "Nehemiah gave Hananiah charge over Jerusalem: for he was a faithful man, and feared God above many.",
+  "ref": "Nehemiah 7:2"
+ },
+ {
+  "id": "nehemiah-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nehemiah find when he set out to reckon the people by genealogy?",
+  "choices": [
+   "A letter from Cyrus",
+   "The law of Moses",
+   "A list of the wall builders",
+   "A register of those who first came up"
+  ],
+  "answer": 3,
+  "explanation": "I found a register of the genealogy of them which came up at the first.",
+  "ref": "Nehemiah 7:5"
+ },
+ {
+  "id": "nehemiah-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who is named first among those who came back from captivity?",
+  "choices": [
+   "Ezra",
+   "Daniel",
+   "Mordecai of Susa",
+   "Zerubbabel"
+  ],
+  "answer": 3,
+  "explanation": "These are the children of the province that came with Zerubbabel, Jeshua, Nehemiah.",
+  "ref": "Nehemiah 7:7"
+ },
+ {
+  "id": "nehemiah-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the priests who could not find their genealogy?",
+  "choices": [
+   "They were sent to Babylon",
+   "They were made singers",
+   "They were given the wall to guard",
+   "They were put out of the priesthood as polluted"
+  ],
+  "answer": 3,
+  "explanation": "These sought their register, but it was not found: therefore were they, as polluted, put from the priesthood.",
+  "ref": "Nehemiah 7:64"
+ },
+ {
+  "id": "nehemiah-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when were those priests not to eat the most holy things?",
+  "choices": [
+   "Till the wall was dedicated",
+   "Till the king returned",
+   "Till the seventh month",
+   "Till a priest stood up with Urim and Thummim"
+  ],
+  "answer": 3,
+  "explanation": "The Tirshatha said that they should not eat of the most holy things, till there stood up a priest with Urim and Thummim.",
+  "ref": "Nehemiah 7:65"
+ },
+ {
+  "id": "nehemiah-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How large was the whole congregation that returned, apart from servants?",
+  "choices": [
+   "42,360",
+   "24,600",
+   "12,360",
+   "7,337"
+  ],
+  "answer": 0,
+  "explanation": "The whole congregation together was forty and two thousand three hundred and threescore.",
+  "ref": "Nehemiah 7:66"
+ },
+ {
+  "id": "nehemiah-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many singing men and singing women did they have?",
+  "choices": [
+   "245",
+   "148",
+   "138",
+   "435"
+  ],
+  "answer": 0,
+  "explanation": "They had two hundred forty and five singing men and singing women.",
+  "ref": "Nehemiah 7:67"
+ },
+ {
+  "id": "nehemiah-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many camels did they have?",
+  "choices": [
+   "435",
+   "736",
+   "245",
+   "6,720"
+  ],
+  "answer": 0,
+  "explanation": "Their camels, four hundred thirty and five.",
+  "ref": "Nehemiah 7:69"
+ },
+ {
+  "id": "nehemiah-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many drams of gold did the Tirshatha give to the treasure?",
+  "choices": [
+   "A thousand",
+   "Twenty thousand",
+   "Five hundred",
+   "Fifty"
+  ],
+  "answer": 0,
+  "explanation": "The Tirshatha gave to the treasure a thousand drams of gold, fifty basons, five hundred and thirty priests' garments.",
+  "ref": "Nehemiah 7:70"
+ },
+ {
+  "id": "nehemiah-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose daughter did one priest marry, taking her father's name?",
+  "choices": [
+   "Barzillai the Gileadite's",
+   "Zerubbabel's",
+   "Jeshua's",
+   "Hananiah's"
+  ],
+  "answer": 0,
+  "explanation": "Barzillai, which took one of the daughters of Barzillai the Gileadite to wife, and was called after their name.",
+  "ref": "Nehemiah 7:63"
+ },
+ {
   "id": "old-nehemiah-8-1",
   "chapter": 8,
   "level": "beginner",
@@ -2384,6 +3344,358 @@
   "ref": "Nehemiah 8:14–17"
  },
  {
+  "id": "nehemiah-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the people ask to bring the book of the law of Moses?",
+  "choices": [
+   "Nehemiah",
+   "Jeshua",
+   "Hanani",
+   "Ezra the scribe"
+  ],
+  "answer": 3,
+  "explanation": "They spake unto Ezra the scribe to bring the book of the law of Moses.",
+  "ref": "Nehemiah 8:1"
+ },
+ {
+  "id": "nehemiah-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Until when did Ezra read from the book each morning?",
+  "choices": [
+   "Sunset",
+   "Noon of the next day",
+   "Midnight",
+   "Midday"
+  ],
+  "answer": 3,
+  "explanation": "He read therein from the morning until midday.",
+  "ref": "Nehemiah 8:3"
+ },
+ {
+  "id": "nehemiah-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did all the people do when Ezra opened the book?",
+  "choices": [
+   "Knelt in silence",
+   "Sat down",
+   "Left the street",
+   "Stood up"
+  ],
+  "answer": 3,
+  "explanation": "When he opened it, all the people stood up.",
+  "ref": "Nehemiah 8:5"
+ },
+ {
+  "id": "nehemiah-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people answer when Ezra blessed the LORD?",
+  "choices": [
+   "Hallelujah",
+   "Holy, holy",
+   "Blessed be the king",
+   "Amen, Amen"
+  ],
+  "answer": 3,
+  "explanation": "All the people answered, Amen, Amen, with lifting up their hands.",
+  "ref": "Nehemiah 8:6"
+ },
+ {
+  "id": "nehemiah-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what day did Ezra bring the law before the congregation?",
+  "choices": [
+   "The tenth day of the first month",
+   "The fifteenth day of the seventh month",
+   "The twenty-fourth day of the sixth month",
+   "The first day of the seventh month"
+  ],
+  "answer": 3,
+  "explanation": "Ezra brought the law upon the first day of the seventh month.",
+  "ref": "Nehemiah 8:2"
+ },
+ {
+  "id": "nehemiah-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the people worship after Ezra blessed the LORD?",
+  "choices": [
+   "Sang a psalm",
+   "Danced before the altar",
+   "Offered burnt offerings",
+   "Bowed their heads and worshipped with faces to the ground"
+  ],
+  "answer": 3,
+  "explanation": "They bowed their heads, and worshipped the LORD with their faces to the ground.",
+  "ref": "Nehemiah 8:6"
+ },
+ {
+  "id": "nehemiah-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did all the people weep?",
+  "choices": [
+   "The wall was unfinished",
+   "A famine had come",
+   "Ezra was leaving",
+   "They heard the words of the law"
+  ],
+  "answer": 3,
+  "explanation": "All the people wept, when they heard the words of the law.",
+  "ref": "Nehemiah 8:9"
+ },
+ {
+  "id": "nehemiah-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nehemiah tell the people to do instead of mourning?",
+  "choices": [
+   "Fast until evening",
+   "Sacrifice a lamb",
+   "Return to the wall",
+   "Eat, drink and send portions to the needy"
+  ],
+  "answer": 3,
+  "explanation": "Go your way, eat the fat, and drink the sweet, and send portions unto them for whom nothing is prepared.",
+  "ref": "Nehemiah 8:10"
+ },
+ {
+  "id": "nehemiah-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people make great mirth?",
+  "choices": [
+   "The harvest was good",
+   "The wall was finished",
+   "The king sent gifts",
+   "They had understood the words declared to them"
+  ],
+  "answer": 3,
+  "explanation": "They went their way to make great mirth, because they had understood the words that were declared unto them.",
+  "ref": "Nehemiah 8:12"
+ },
+ {
+  "id": "nehemiah-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who gathered to Ezra on the second day to understand the law?",
+  "choices": [
+   "Only the priests",
+   "The singers and porters",
+   "The nobles of Persia",
+   "The chief of the fathers, the priests and the Levites"
+  ],
+  "answer": 3,
+  "explanation": "On the second day were gathered together the chief of the fathers, the priests, and the Levites unto Ezra the scribe.",
+  "ref": "Nehemiah 8:13"
+ },
+ {
+  "id": "nehemiah-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which branches did the people fetch to make booths?",
+  "choices": [
+   "Cedar, fig and vine",
+   "Willow and reed only",
+   "Oak and juniper",
+   "Olive, pine, myrtle and palm"
+  ],
+  "answer": 3,
+  "explanation": "Fetch olive branches, and pine branches, and myrtle branches, and palm branches, and branches of thick trees.",
+  "ref": "Nehemiah 8:15"
+ },
+ {
+  "id": "nehemiah-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the people make their booths?",
+  "choices": [
+   "Only in the wilderness",
+   "Only outside the walls",
+   "Only on Mount Zion",
+   "On roofs, in courts, in the temple courts and the streets"
+  ],
+  "answer": 3,
+  "explanation": "They made themselves booths, every one upon the roof of his house, and in their courts, and in the courts of the house of God.",
+  "ref": "Nehemiah 8:16"
+ },
+ {
+  "id": "nehemiah-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Levites say to quiet the people?",
+  "choices": [
+   "Let us fast",
+   "Go back to the wall",
+   "The king is coming",
+   "Hold your peace, for the day is holy"
+  ],
+  "answer": 3,
+  "explanation": "The Levites stilled all the people, saying, Hold your peace, for the day is holy.",
+  "ref": "Nehemiah 8:11"
+ },
+ {
+  "id": "nehemiah-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who stood first at Ezra's right hand?",
+  "choices": [
+   "Mattithiah",
+   "Pedaiah",
+   "Hilkiah",
+   "Zechariah"
+  ],
+  "answer": 0,
+  "explanation": "Beside him stood Mattithiah, and Shema, and Anaiah, on his right hand.",
+  "ref": "Nehemiah 8:4"
+ },
+ {
+  "id": "nehemiah-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who stood first at Ezra's left hand?",
+  "choices": [
+   "Pedaiah",
+   "Mattithiah",
+   "Urijah",
+   "Meshullam"
+  ],
+  "answer": 0,
+  "explanation": "On his left hand, Pedaiah, and Mishael, and Malchiah.",
+  "ref": "Nehemiah 8:4"
+ },
+ {
+  "id": "nehemiah-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why could all the people see Ezra open the book?",
+  "choices": [
+   "He was above all the people",
+   "He climbed the wall",
+   "The Levites lifted it",
+   "He stood on the altar"
+  ],
+  "answer": 0,
+  "explanation": "Ezra opened the book in the sight of all the people; for he was above all the people.",
+  "ref": "Nehemiah 8:5"
+ },
+ {
+  "id": "nehemiah-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Since whose days had Israel not kept the feast in this way?",
+  "choices": [
+   "Jeshua the son of Nun",
+   "King David",
+   "Moses",
+   "Solomon"
+  ],
+  "answer": 0,
+  "explanation": "Since the days of Jeshua the son of Nun unto that day had not the children of Israel done so.",
+  "ref": "Nehemiah 8:17"
+ },
+ {
+  "id": "nehemiah-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was held on the eighth day of the feast?",
+  "choices": [
+   "A solemn assembly",
+   "A burnt offering of oxen",
+   "A fast",
+   "A reading of the wall's names"
+  ],
+  "answer": 0,
+  "explanation": "They kept the feast seven days; and on the eighth day was a solemn assembly.",
+  "ref": "Nehemiah 8:18"
+ },
+ {
+  "id": "nehemiah-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Which gate's street had booths besides the Water Gate?",
+  "choices": [
+   "The gate of Ephraim",
+   "The Sheep Gate",
+   "The Fish Gate",
+   "The Dung Gate"
+  ],
+  "answer": 0,
+  "explanation": "In the street of the water gate, and in the street of the gate of Ephraim.",
+  "ref": "Nehemiah 8:16"
+ },
+ {
+  "id": "nehemiah-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What title is given to Nehemiah in this chapter?",
+  "choices": [
+   "Tirshatha",
+   "Scribe",
+   "High priest",
+   "Watchman"
+  ],
+  "answer": 0,
+  "explanation": "Nehemiah, which is the Tirshatha, and Ezra the priest the scribe.",
+  "ref": "Nehemiah 8:9"
+ },
+ {
+  "id": "nehemiah-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did they read in the book of the law?",
+  "choices": [
+   "Distinctly, giving the sense",
+   "Only by the priests",
+   "In a whisper",
+   "Only from memory"
+  ],
+  "answer": 0,
+  "explanation": "They read in the book in the law of God distinctly, and gave the sense, and caused them to understand the reading.",
+  "ref": "Nehemiah 8:8"
+ },
+ {
+  "id": "nehemiah-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom were portions to be sent on the holy day?",
+  "choices": [
+   "Those for whom nothing was prepared",
+   "The priests only",
+   "The king's servants",
+   "The enemies of Judah"
+  ],
+  "answer": 0,
+  "explanation": "Send portions unto them for whom nothing is prepared.",
+  "ref": "Nehemiah 8:10"
+ },
+ {
   "id": "old-nehemiah-9-1",
   "chapter": 9,
   "level": "beginner",
@@ -2435,17 +3747,17 @@
   "id": "old-nehemiah-9-4",
   "chapter": 9,
   "level": "beginner",
-  "category": "keyword",
-  "question": "Which major acts of God are rehearsed in the long prayer?",
+  "category": "person",
+  "question": "Whom did the prayer say God chose and brought out of Ur of the Chaldees?",
   "choices": [
-   "Only David's kingship",
-   "Only the exile",
-   "Only temple rituals",
-   "Creation, covenant with Abraham, exodus, wilderness care, and conquest"
+   "Abram",
+   "Noah",
+   "Moses",
+   "Jacob"
   ],
-  "answer": 3,
-  "explanation": "The prayer reviews God's works from creation through settlement in the land.",
-  "ref": "Nehemiah 9:6–25"
+  "answer": 0,
+  "explanation": "Thou art the LORD the God, who didst choose Abram, and broughtest him forth out of Ur of the Chaldees, and gavest him the name of Abraham.",
+  "ref": "Nehemiah 9:7"
  },
  {
   "id": "old-nehemiah-9-5",
@@ -2462,6 +3774,646 @@
   "answer": 0,
   "explanation": "The prayer highlights God's mercy even when the people rebelled.",
   "ref": "Nehemiah 9:17"
+ },
+ {
+  "id": "nehemiah-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "At which sea did God hear the cry of Israel's fathers?",
+  "choices": [
+   "The Sea of Galilee",
+   "The Great Sea",
+   "The Dead Sea",
+   "The Red Sea"
+  ],
+  "answer": 3,
+  "explanation": "Thou didst see the affliction of our fathers in Egypt, and heardest their cry by the Red sea.",
+  "ref": "Nehemiah 9:9"
+ },
+ {
+  "id": "nehemiah-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What led Israel by night?",
+  "choices": [
+   "A star",
+   "A cloud of smoke only",
+   "An angel with a sword",
+   "A pillar of fire"
+  ],
+  "answer": 3,
+  "explanation": "Thou leddest them in the night by a pillar of fire, to give them light in the way wherein they should go.",
+  "ref": "Nehemiah 9:12"
+ },
+ {
+  "id": "nehemiah-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which mountain did God come down and speak with Israel?",
+  "choices": [
+   "Mount Carmel",
+   "Mount Zion",
+   "Mount Nebo",
+   "Mount Sinai"
+  ],
+  "answer": 3,
+  "explanation": "Thou camest down also upon mount Sinai, and spakest with them from heaven.",
+  "ref": "Nehemiah 9:13"
+ },
+ {
+  "id": "nehemiah-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God give Israel from heaven for their hunger?",
+  "choices": [
+   "Quail only",
+   "Fruit",
+   "Honey",
+   "Bread"
+  ],
+  "answer": 3,
+  "explanation": "Thou gavest them bread from heaven for their hunger.",
+  "ref": "Nehemiah 9:15"
+ },
+ {
+  "id": "nehemiah-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God bring out of the rock for their thirst?",
+  "choices": [
+   "Oil",
+   "Wine",
+   "Milk",
+   "Water"
+  ],
+  "answer": 3,
+  "explanation": "Thou broughtest forth water for them out of the rock for their thirst.",
+  "ref": "Nehemiah 9:15"
+ },
+ {
+  "id": "nehemiah-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the rebellious Israelites make and call their god?",
+  "choices": [
+   "A brazen serpent",
+   "A golden ark",
+   "A stone pillar",
+   "A molten calf"
+  ],
+  "answer": 3,
+  "explanation": "When they had made them a molten calf, and said, This is thy God that brought thee up out of Egypt.",
+  "ref": "Nehemiah 9:18"
+ },
+ {
+  "id": "nehemiah-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did God sustain Israel in the wilderness?",
+  "choices": [
+   "Seven",
+   "Twenty",
+   "Seventy",
+   "Forty"
+  ],
+  "answer": 3,
+  "explanation": "Forty years didst thou sustain them in the wilderness, so that they lacked nothing.",
+  "ref": "Nehemiah 9:21"
+ },
+ {
+  "id": "nehemiah-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Bashan's land did Israel possess?",
+  "choices": [
+   "Sihon",
+   "Balak",
+   "Agag",
+   "Og"
+  ],
+  "answer": 3,
+  "explanation": "They possessed the land of Sihon, and the land of the king of Heshbon, and the land of Og king of Bashan.",
+  "ref": "Nehemiah 9:22"
+ },
+ {
+  "id": "nehemiah-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do to God's prophets who testified against them?",
+  "choices": [
+   "Honoured them",
+   "Sent them to Egypt",
+   "Hid them",
+   "Slew them"
+  ],
+  "answer": 3,
+  "explanation": "They cast thy law behind their backs, and slew thy prophets which testified against them.",
+  "ref": "Nehemiah 9:26"
+ },
+ {
+  "id": "nehemiah-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people do at the end of the chapter?",
+  "choices": [
+   "Built another altar",
+   "Left Jerusalem",
+   "Chose a new king",
+   "Made a sure covenant, wrote it and sealed it"
+  ],
+  "answer": 3,
+  "explanation": "We make a sure covenant, and write it; and our princes, Levites, and priests, seal unto it.",
+  "ref": "Nehemiah 9:38"
+ },
+ {
+  "id": "nehemiah-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who stood on the stairs and cried to the LORD with a loud voice?",
+  "choices": [
+   "The priests",
+   "The Levites",
+   "The nobles",
+   "The singers"
+  ],
+  "answer": 1,
+  "explanation": "Then stood up upon the stairs, of the Levites, Jeshua, and Bani, Kadmiel, and cried with a loud voice.",
+  "ref": "Nehemiah 9:4"
+ },
+ {
+  "id": "nehemiah-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Levites tell the people to do?",
+  "choices": [
+   "Return to their homes",
+   "Stand up and bless the LORD for ever",
+   "Offer sacrifices",
+   "Fast another day"
+  ],
+  "answer": 1,
+  "explanation": "Stand up and bless the LORD your God for ever and ever.",
+  "ref": "Nehemiah 9:5"
+ },
+ {
+  "id": "nehemiah-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Whose land did God covenant to give to Abraham's seed?",
+  "choices": [
+   "The Egyptians and Philistines",
+   "The Canaanites, Hittites and Amorites, among others",
+   "The Moabites and Edomites",
+   "The Syrians and Assyrians"
+  ],
+  "answer": 1,
+  "explanation": "Madest a covenant with him to give the land of the Canaanites, the Hittites, the Amorites, and the Perizzites, and the Jebusites, and the Girgashites.",
+  "ref": "Nehemiah 9:8"
+ },
+ {
+  "id": "nehemiah-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did God show signs and wonders on Pharaoh?",
+  "choices": [
+   "Pharaoh refused tribute",
+   "They dealt proudly against Israel",
+   "Pharaoh worshipped idols",
+   "Israel asked for them"
+  ],
+  "answer": 1,
+  "explanation": "Thou shewedst signs and wonders upon Pharaoh... for thou knewest that they dealt proudly against them.",
+  "ref": "Nehemiah 9:10"
+ },
+ {
+  "id": "nehemiah-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to Israel's persecutors in the sea?",
+  "choices": [
+   "They fled to Sinai",
+   "They were thrown into the deeps like a stone",
+   "They turned back",
+   "They were taken captive"
+  ],
+  "answer": 1,
+  "explanation": "Their persecutors thou threwest into the deeps, as a stone into the mighty waters.",
+  "ref": "Nehemiah 9:11"
+ },
+ {
+  "id": "nehemiah-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God give at Sinai?",
+  "choices": [
+   "Gold and silver",
+   "Right judgments, true laws and good statutes",
+   "A king",
+   "A new temple"
+  ],
+  "answer": 1,
+  "explanation": "Thou gavest them right judgments, and true laws, good statutes and commandments.",
+  "ref": "Nehemiah 9:13"
+ },
+ {
+  "id": "nehemiah-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What holy day did God make known to them by Moses?",
+  "choices": [
+   "The Passover",
+   "The sabbath",
+   "The day of trumpets",
+   "The feast of weeks"
+  ],
+  "answer": 1,
+  "explanation": "Madest known unto them thy holy sabbath, and commandedst them precepts, statutes, and laws, by the hand of Moses.",
+  "ref": "Nehemiah 9:14"
+ },
+ {
+  "id": "nehemiah-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the rebels appoint in order to go back to bondage?",
+  "choices": [
+   "A priest",
+   "A captain",
+   "A king",
+   "A judge"
+  ],
+  "answer": 1,
+  "explanation": "In their rebellion appointed a captain to return to their bondage.",
+  "ref": "Nehemiah 9:17"
+ },
+ {
+  "id": "nehemiah-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God give to instruct them in the wilderness?",
+  "choices": [
+   "A written book",
+   "His good spirit",
+   "A prophet",
+   "The ark"
+  ],
+  "answer": 1,
+  "explanation": "Thou gavest also thy good spirit to instruct them.",
+  "ref": "Nehemiah 9:20"
+ },
+ {
+  "id": "nehemiah-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did not happen to their clothes and feet in the wilderness?",
+  "choices": [
+   "They went without shoes",
+   "Clothes did not wear out and feet did not swell",
+   "Their tents burned",
+   "They were robbed"
+  ],
+  "answer": 1,
+  "explanation": "Their clothes waxed not old, and their feet swelled not.",
+  "ref": "Nehemiah 9:21"
+ },
+ {
+  "id": "nehemiah-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what did the prayer compare their children's number?",
+  "choices": [
+   "The sand of the sea",
+   "The stars of heaven",
+   "The dust of the earth",
+   "The locusts"
+  ],
+  "answer": 1,
+  "explanation": "Their children also multipliedst thou as the stars of heaven.",
+  "ref": "Nehemiah 9:23"
+ },
+ {
+  "id": "nehemiah-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the houses they took in the land full of?",
+  "choices": [
+   "Silver and gold",
+   "All goods",
+   "Gifts for the king",
+   "Idols"
+  ],
+  "answer": 1,
+  "explanation": "They possessed houses full of all goods, wells digged, vineyards, and oliveyards.",
+  "ref": "Nehemiah 9:25"
+ },
+ {
+  "id": "nehemiah-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God do when they cried in the time of their trouble?",
+  "choices": [
+   "Sent more enemies",
+   "Heard them and gave them saviours",
+   "Destroyed them",
+   "Said nothing"
+  ],
+  "answer": 1,
+  "explanation": "In the time of their trouble, when they cried unto thee, thou heardest them from heaven; and thou gavest them saviours.",
+  "ref": "Nehemiah 9:27"
+ },
+ {
+  "id": "nehemiah-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the people say the kings have dominion over?",
+  "choices": [
+   "Their temple",
+   "Their bodies and cattle",
+   "Their wall",
+   "Their sons only"
+  ],
+  "answer": 1,
+  "explanation": "They have dominion over our bodies, and over our cattle, at their pleasure, and we are in great distress.",
+  "ref": "Nehemiah 9:37"
+ },
+ {
+  "id": "nehemiah-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what day of the month were the people assembled with fasting?",
+  "choices": [
+   "The first",
+   "The tenth",
+   "The fifteenth",
+   "The twenty-fourth"
+  ],
+  "answer": 3,
+  "explanation": "In the twenty and fourth day of this month the children of Israel were assembled with fasting.",
+  "ref": "Nehemiah 9:1"
+ },
+ {
+  "id": "nehemiah-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whom did the people of Israel separate themselves?",
+  "choices": [
+   "The Levites",
+   "The Persians only",
+   "Their kings",
+   "All strangers"
+  ],
+  "answer": 3,
+  "explanation": "The seed of Israel separated themselves from all strangers.",
+  "ref": "Nehemiah 9:2"
+ },
+ {
+  "id": "nehemiah-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Above what is God's glorious name exalted?",
+  "choices": [
+   "All the heavens",
+   "All kings",
+   "All the earth",
+   "All blessing and praise"
+  ],
+  "answer": 3,
+  "explanation": "Blessed be thy glorious name, which is exalted above all blessing and praise.",
+  "ref": "Nehemiah 9:5"
+ },
+ {
+  "id": "nehemiah-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the prayer say the host of heaven does?",
+  "choices": [
+   "Judges the earth",
+   "Fights for Israel",
+   "Hides from God",
+   "Worships God"
+  ],
+  "answer": 3,
+  "explanation": "Thou preservest them all; and the host of heaven worshippeth thee.",
+  "ref": "Nehemiah 9:6"
+ },
+ {
+  "id": "nehemiah-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God not withhold from Israel's mouth?",
+  "choices": [
+   "Quail",
+   "Fish",
+   "Honey",
+   "Manna"
+  ],
+  "answer": 3,
+  "explanation": "Withheldest not thy manna from their mouth, and gavest them water for their thirst.",
+  "ref": "Nehemiah 9:20"
+ },
+ {
+  "id": "nehemiah-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel cast behind their backs?",
+  "choices": [
+   "Their idols",
+   "Their swords",
+   "Their garments",
+   "God's law"
+  ],
+  "answer": 3,
+  "explanation": "They were disobedient, and rebelled against thee, and cast thy law behind their backs.",
+  "ref": "Nehemiah 9:26"
+ },
+ {
+  "id": "nehemiah-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel do again after they had rest?",
+  "choices": [
+   "Rebuilt the temple",
+   "Made a covenant",
+   "Went to Egypt",
+   "Evil before God"
+  ],
+  "answer": 3,
+  "explanation": "After they had rest, they did evil again before thee.",
+  "ref": "Nehemiah 9:28"
+ },
+ {
+  "id": "nehemiah-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what did God testify against them in the prophets?",
+  "choices": [
+   "Fire from heaven",
+   "A pillar of cloud",
+   "The ark",
+   "His spirit"
+  ],
+  "answer": 3,
+  "explanation": "Thou forbear them, and testifiedst against them by thy spirit in thy prophets.",
+  "ref": "Nehemiah 9:30"
+ },
+ {
+  "id": "nehemiah-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did God forbear them before giving them to the peoples of the lands?",
+  "choices": [
+   "Seven days",
+   "Forty years",
+   "One generation",
+   "Many years"
+  ],
+  "answer": 3,
+  "explanation": "Yet many years didst thou forbear them... therefore gavest thou them into the hand of the people of the lands.",
+  "ref": "Nehemiah 9:30"
+ },
+ {
+  "id": "nehemiah-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the prayer ask God not to let seem little?",
+  "choices": [
+   "The people's sin",
+   "The covenant",
+   "The wall's height",
+   "The trouble that had come upon them"
+  ],
+  "answer": 3,
+  "explanation": "Let not all the trouble seem little before thee, that hath come upon us.",
+  "ref": "Nehemiah 9:32"
+ },
+ {
+  "id": "nehemiah-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Since the time of the kings of which land had the trouble come?",
+  "choices": [
+   "Babylon",
+   "Egypt",
+   "Persia",
+   "Assyria"
+  ],
+  "answer": 3,
+  "explanation": "The trouble that hath come upon us... since the time of the kings of Assyria unto this day.",
+  "ref": "Nehemiah 9:32"
+ },
+ {
+  "id": "nehemiah-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the prayer say of God's judgement on them?",
+  "choices": [
+   "He was unfair",
+   "He had forgotten them",
+   "He was slow to hear",
+   "He was just and they had done wickedly"
+  ],
+  "answer": 3,
+  "explanation": "Thou art just in all that is brought upon us; for thou hast done right, but we have done wickedly.",
+  "ref": "Nehemiah 9:33"
+ },
+ {
+  "id": "nehemiah-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the prayer say of Israel in the land God gave their fathers?",
+  "choices": [
+   "They were kings",
+   "They had no crops",
+   "They were forgotten",
+   "They were servants in it"
+  ],
+  "answer": 3,
+  "explanation": "Behold, we are servants this day, and for the land that thou gavest unto our fathers... behold, we are servants in it.",
+  "ref": "Nehemiah 9:36"
+ },
+ {
+  "id": "nehemiah-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who sealed the covenant at the chapter's end?",
+  "choices": [
+   "Only Ezra",
+   "The kings of Persia",
+   "The scribes",
+   "Princes, Levites and priests"
+  ],
+  "answer": 3,
+  "explanation": "Our princes, Levites, and priests, seal unto it.",
+  "ref": "Nehemiah 9:38"
+ },
+ {
+  "id": "nehemiah-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people withdraw when they would not hear?",
+  "choices": [
+   "Their gifts",
+   "Their hands",
+   "Their sons",
+   "The shoulder"
+  ],
+  "answer": 3,
+  "explanation": "They dealt proudly, and withdrew the shoulder, and hardened their neck, and would not hear.",
+  "ref": "Nehemiah 9:29"
+ },
+ {
+  "id": "nehemiah-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God find in Abraham's heart before making a covenant with him?",
+  "choices": [
+   "It was proud",
+   "It was faithful",
+   "It was fearful",
+   "It was divided"
+  ],
+  "answer": 1,
+  "explanation": "Thou foundest his heart faithful before thee, and madest a covenant with him to give the land.",
+  "ref": "Nehemiah 9:8"
  },
  {
   "id": "old-nehemiah-10-1",
@@ -2541,6 +4493,166 @@
   ],
   "answer": 2,
   "explanation": "They pledged not to neglect God's house.",
+  "ref": "Nehemiah 10:39"
+ },
+ {
+  "id": "nehemiah-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people enter into a curse and an oath to do?",
+  "choices": [
+   "Rebuild the temple",
+   "Leave Jerusalem",
+   "Pay tribute to Persia",
+   "Walk in God's law given by Moses"
+  ],
+  "answer": 3,
+  "explanation": "They entered into a curse, and into an oath, to walk in God's law, which was given by Moses the servant of God.",
+  "ref": "Nehemiah 10:29"
+ },
+ {
+  "id": "nehemiah-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they promise to leave in the seventh year?",
+  "choices": [
+   "Their cattle",
+   "The wall",
+   "The tithes",
+   "The exaction of every debt"
+  ],
+  "answer": 3,
+  "explanation": "We would leave the seventh year, and the exaction of every debt.",
+  "ref": "Nehemiah 10:31"
+ },
+ {
+  "id": "nehemiah-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the yearly third of a shekel to pay for?",
+  "choices": [
+   "The walls of Jerusalem",
+   "Tribute to Persia",
+   "The priests' homes",
+   "Shewbread and the continual offerings"
+  ],
+  "answer": 3,
+  "explanation": "A third part of a shekel for the service of the house of our God; for the shewbread, and for the continual meat offering, and for the continual burnt offering.",
+  "ref": "Nehemiah 10:32–33"
+ },
+ {
+  "id": "nehemiah-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did they decide who would bring the wood offering?",
+  "choices": [
+   "The king appointed them",
+   "The oldest family decided",
+   "They drew from the treasury",
+   "They cast lots"
+  ],
+  "answer": 3,
+  "explanation": "We cast the lots among the priests, the Levites, and the people, for the wood offering.",
+  "ref": "Nehemiah 10:34"
+ },
+ {
+  "id": "nehemiah-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were to receive the tithes of the ground?",
+  "choices": [
+   "The priests only",
+   "The singers",
+   "The porters",
+   "The Levites"
+  ],
+  "answer": 3,
+  "explanation": "The tithes of our ground unto the Levites, that the same Levites might have the tithes in all the cities.",
+  "ref": "Nehemiah 10:37"
+ },
+ {
+  "id": "nehemiah-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Nehemiah, the first to seal the covenant?",
+  "choices": [
+   "Hachaliah's",
+   "Hilkiah's",
+   "Hananiah's",
+   "Shechaniah's"
+  ],
+  "answer": 0,
+  "explanation": "Nehemiah, the Tirshatha, the son of Hachaliah.",
+  "ref": "Nehemiah 10:1"
+ },
+ {
+  "id": "nehemiah-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was to be with the Levites when they took tithes?",
+  "choices": [
+   "The priest the son of Aaron",
+   "Ezra",
+   "The governor",
+   "The king's officer"
+  ],
+  "answer": 0,
+  "explanation": "The priest the son of Aaron shall be with the Levites, when the Levites take tithes.",
+  "ref": "Nehemiah 10:38"
+ },
+ {
+  "id": "nehemiah-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Levites bring to the treasure house chambers?",
+  "choices": [
+   "The tithe of the tithes",
+   "The firstborn of cattle",
+   "The wood offering",
+   "The shewbread"
+  ],
+  "answer": 0,
+  "explanation": "The Levites shall bring up the tithe of the tithes unto the house of our God, to the chambers, into the treasure house.",
+  "ref": "Nehemiah 10:38"
+ },
+ {
+  "id": "nehemiah-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides priests and Levites, who joined the covenant?",
+  "choices": [
+   "Wives, sons and daughters with understanding",
+   "Only the nobles",
+   "Only the men of Judah",
+   "Only the singers"
+  ],
+  "answer": 0,
+  "explanation": "Their wives, their sons, and their daughters, every one having knowledge, and having understanding.",
+  "ref": "Nehemiah 10:28"
+ },
+ {
+  "id": "nehemiah-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Where were the corn, wine and oil brought?",
+  "choices": [
+   "The chambers where the sanctuary vessels were",
+   "The city gates",
+   "The king's house",
+   "The Water Gate"
+  ],
+  "answer": 0,
+  "explanation": "Unto the chambers, where are the vessels of the sanctuary, and the priests that minister, and the porters, and the singers.",
   "ref": "Nehemiah 10:39"
  },
  {
