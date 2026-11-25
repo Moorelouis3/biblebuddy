@@ -80,6 +80,646 @@
   "ref": "1 Kings 1:50"
  },
  {
+  "id": "1-kings-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was wrong with King David at the start of the chapter?",
+  "choices": [
+   "He was sick with a plague",
+   "He was old and could not get warm",
+   "He was blind",
+   "He was in prison"
+  ],
+  "answer": 1,
+  "explanation": "King David was old and stricken in years; they covered him with clothes, but he gat no heat.",
+  "ref": "1 Kings 1:1"
+ },
+ {
+  "id": "1-kings-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Adonijah's mother?",
+  "choices": [
+   "Haggith",
+   "Bath-sheba",
+   "Abishag",
+   "Zeruiah"
+  ],
+  "answer": 0,
+  "explanation": "Adonijah the son of Haggith exalted himself, saying, I will be king.",
+  "ref": "1 Kings 1:5"
+ },
+ {
+  "id": "1-kings-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophet told Bath-sheba how to save her life and Solomon's?",
+  "choices": [
+   "Gad",
+   "Zadok",
+   "Abiathar",
+   "Nathan"
+  ],
+  "answer": 3,
+  "explanation": "Nathan spake unto Bath-sheba: let me give thee counsel, that thou mayest save thine own life, and the life of thy son Solomon.",
+  "ref": "1 Kings 1:11–12"
+ },
+ {
+  "id": "1-kings-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Adonijah prepare for himself when he said he would be king?",
+  "choices": [
+   "A crown of gold",
+   "A great army of Judah",
+   "Chariots, horsemen and fifty men to run before him",
+   "A throne of ivory"
+  ],
+  "answer": 2,
+  "explanation": "He prepared him chariots and horsemen, and fifty men to run before him.",
+  "ref": "1 Kings 1:5"
+ },
+ {
+  "id": "1-kings-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what did David say Solomon should ride to Gihon?",
+  "choices": [
+   "A white horse",
+   "David's own mule",
+   "A chariot",
+   "A camel"
+  ],
+  "answer": 1,
+  "explanation": "Cause Solomon my son to ride upon mine own mule, and bring him down to Gihon.",
+  "ref": "1 Kings 1:33"
+ },
+ {
+  "id": "1-kings-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Zadok the priest use to anoint Solomon?",
+  "choices": [
+   "A horn of oil from the tabernacle",
+   "A jar of myrrh",
+   "Oil from the temple",
+   "A vial of spikenard"
+  ],
+  "answer": 0,
+  "explanation": "Zadok the priest took an horn of oil out of the tabernacle, and anointed Solomon.",
+  "ref": "1 Kings 1:39"
+ },
+ {
+  "id": "1-kings-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say when Solomon was anointed?",
+  "choices": [
+   "Long live king David",
+   "Peace be on Israel",
+   "Hosanna to the king",
+   "God save king Solomon"
+  ],
+  "answer": 3,
+  "explanation": "They blew the trumpet; and all the people said, God save king Solomon.",
+  "ref": "1 Kings 1:39"
+ },
+ {
+  "id": "1-kings-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who swore to Bath-sheba that Solomon would reign after him?",
+  "choices": [
+   "Nathan",
+   "Zadok",
+   "David",
+   "Joab"
+  ],
+  "answer": 2,
+  "explanation": "Bath-sheba said, My lord, thou swarest by the LORD thy God unto thine handmaid, Solomon thy son shall reign after me.",
+  "ref": "1 Kings 1:17"
+ },
+ {
+  "id": "1-kings-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Adonijah do for his guests at the stone of Zoheleth?",
+  "choices": [
+   "Gave them gifts of silver",
+   "Slew sheep, oxen and fat cattle",
+   "Read the law to them",
+   "Anointed them as captains"
+  ],
+  "answer": 1,
+  "explanation": "Adonijah slew sheep and oxen and fat cattle by the stone of Zoheleth.",
+  "ref": "1 Kings 1:9"
+ },
+ {
+  "id": "1-kings-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon tell Adonijah to do after he was brought down from the altar?",
+  "choices": [
+   "Go to his house",
+   "Leave Israel",
+   "Serve in the army",
+   "Stay in the palace"
+  ],
+  "answer": 0,
+  "explanation": "Solomon said unto him, Go to thine house.",
+  "ref": "1 Kings 1:53"
+ },
+ {
+  "id": "1-kings-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Adonijah confer with who helped him?",
+  "choices": [
+   "Zadok and Nathan",
+   "Benaiah and Shimei",
+   "Rei and Zadok",
+   "Joab and Abiathar the priest"
+  ],
+  "answer": 3,
+  "explanation": "He conferred with Joab the son of Zeruiah, and with Abiathar the priest: and they following Adonijah helped him.",
+  "ref": "1 Kings 1:7"
+ },
+ {
+  "id": "1-kings-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which priest and prophet were not with Adonijah?",
+  "choices": [
+   "Abiathar and Joab",
+   "Zadok and Abiathar",
+   "Zadok and Nathan",
+   "Nathan and Joab"
+  ],
+  "answer": 2,
+  "explanation": "But Zadok the priest, and Benaiah, and Nathan the prophet were not with Adonijah.",
+  "ref": "1 Kings 1:8"
+ },
+ {
+  "id": "1-kings-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Adonijah hold his feast?",
+  "choices": [
+   "At Gihon",
+   "By the stone of Zoheleth by En-rogel",
+   "At Hebron",
+   "At the tabernacle"
+  ],
+  "answer": 1,
+  "explanation": "Adonijah slew sheep and oxen by the stone of Zoheleth, which is by En-rogel.",
+  "ref": "1 Kings 1:9"
+ },
+ {
+  "id": "1-kings-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which brother did Adonijah not call to his feast?",
+  "choices": [
+   "Solomon",
+   "Absalom",
+   "Amnon",
+   "Chileab"
+  ],
+  "answer": 0,
+  "explanation": "Nathan the prophet, and Benaiah, and the mighty men, and Solomon his brother, he called not.",
+  "ref": "1 Kings 1:10"
+ },
+ {
+  "id": "1-kings-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nathan say would happen to Bath-sheba and Solomon if David died?",
+  "choices": [
+   "They would be sent to Egypt",
+   "They would be put in prison",
+   "They would lose their inheritance",
+   "They would be counted offenders"
+  ],
+  "answer": 3,
+  "explanation": "When the king shall sleep with his fathers, I and my son Solomon shall be counted offenders.",
+  "ref": "1 Kings 1:21"
+ },
+ {
+  "id": "1-kings-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was told to confirm Bath-sheba's words after she went in?",
+  "choices": [
+   "Joab",
+   "Benaiah",
+   "Nathan",
+   "Zadok"
+  ],
+  "answer": 2,
+  "explanation": "Nathan said, While thou yet talkest with the king, I also will come in after thee, and confirm thy words.",
+  "ref": "1 Kings 1:14"
+ },
+ {
+  "id": "1-kings-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Adonijah's guests react when they heard Solomon was made king?",
+  "choices": [
+   "They fought the guards",
+   "They were afraid and went their way",
+   "They cheered for David",
+   "They stayed to feast"
+  ],
+  "answer": 1,
+  "explanation": "All the guests that were with Adonijah were afraid, and rose up, and went every man his way.",
+  "ref": "1 Kings 1:49"
+ },
+ {
+  "id": "1-kings-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who told Adonijah that Solomon was king?",
+  "choices": [
+   "Jonathan the son of Abiathar",
+   "Joab",
+   "Nathan",
+   "Benaiah"
+  ],
+  "answer": 0,
+  "explanation": "Jonathan the son of Abiathar the priest came: and Jonathan said, Verily our lord king David hath made Solomon king.",
+  "ref": "1 Kings 1:42–43"
+ },
+ {
+  "id": "1-kings-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nathan tell Bath-sheba that Adonijah was doing without David knowing?",
+  "choices": [
+   "Plotting to kill David",
+   "Fleeing to Egypt",
+   "Gathering an army against Solomon",
+   "Reigning"
+  ],
+  "answer": 3,
+  "explanation": "Nathan said, Hast thou not heard that Adonijah doth reign, and David our lord knoweth it not?",
+  "ref": "1 Kings 1:11"
+ },
+ {
+  "id": "1-kings-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be blown when Solomon was anointed?",
+  "choices": [
+   "Harps",
+   "Cymbals",
+   "A trumpet",
+   "Timbrels"
+  ],
+  "answer": 2,
+  "explanation": "Let Zadok and Nathan anoint him there king over Israel: and blow ye with the trumpet, and say, God save king Solomon.",
+  "ref": "1 Kings 1:34"
+ },
+ {
+  "id": "1-kings-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did David call before him to anoint Solomon?",
+  "choices": [
+   "Joab, Abiathar and Shimei",
+   "Zadok, Nathan and Benaiah",
+   "Zadok, Joab and Rei",
+   "Nathan, Abiathar and Benaiah"
+  ],
+  "answer": 1,
+  "explanation": "King David said, Call me Zadok the priest, and Nathan the prophet, and Benaiah the son of Jehoiada.",
+  "ref": "1 Kings 1:32"
+ },
+ {
+  "id": "1-kings-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the servants say to bless David about Solomon?",
+  "choices": [
+   "God make Solomon's name better than thy name",
+   "God keep Solomon in peace",
+   "God give Solomon thy sword",
+   "God send Solomon wisdom"
+  ],
+  "answer": 0,
+  "explanation": "The king's servants said, God make the name of Solomon better than thy name, and make his throne greater than thy throne.",
+  "ref": "1 Kings 1:47"
+ },
+ {
+  "id": "1-kings-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Adonijah ask Solomon to swear to him?",
+  "choices": [
+   "That he would give him a city",
+   "That he would make him captain",
+   "That he would share the throne",
+   "That he would not slay his servant with the sword"
+  ],
+  "answer": 3,
+  "explanation": "Let king Solomon swear unto me to day that he will not slay his servant with the sword.",
+  "ref": "1 Kings 1:51"
+ },
+ {
+  "id": "1-kings-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon say would happen if wickedness was found in Adonijah?",
+  "choices": [
+   "He would be exiled",
+   "He would lose his inheritance",
+   "He would die",
+   "He would be in chains"
+  ],
+  "answer": 2,
+  "explanation": "If wickedness shall be found in him, he shall die.",
+  "ref": "1 Kings 1:52"
+ },
+ {
+  "id": "1-kings-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who answered 'Amen' when David gave his command?",
+  "choices": [
+   "Nathan the prophet",
+   "Benaiah the son of Jehoiada",
+   "Zadok the priest",
+   "Joab"
+  ],
+  "answer": 1,
+  "explanation": "Benaiah the son of Jehoiada answered the king, and said, Amen.",
+  "ref": "1 Kings 1:36"
+ },
+ {
+  "id": "1-kings-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is the damsel who cherished David described?",
+  "choices": [
+   "Very fair",
+   "Very wise",
+   "Very faithful",
+   "Very humble"
+  ],
+  "answer": 0,
+  "explanation": "The damsel was very fair, and cherished the king, and ministered to him: but the king knew her not.",
+  "ref": "1 Kings 1:4"
+ },
+ {
+  "id": "1-kings-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two groups went down with Zadok, Nathan and Benaiah to bring Solomon to Gihon?",
+  "choices": [
+   "The Gibeonites and the Jebusites",
+   "The Levites and the Nethinims",
+   "The Gadites and the Reubenites",
+   "The Cherethites and the Pelethites"
+  ],
+  "answer": 3,
+  "explanation": "Zadok, Nathan, Benaiah, and the Cherethites, and the Pelethites went down.",
+  "ref": "1 Kings 1:38"
+ },
+ {
+  "id": "1-kings-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men did Adonijah prepare to run before him?",
+  "choices": [
+   "Ten",
+   "Seventy",
+   "Fifty",
+   "One hundred"
+  ],
+  "answer": 2,
+  "explanation": "He prepared him chariots and horsemen, and fifty men to run before him.",
+  "ref": "1 Kings 1:5"
+ },
+ {
+  "id": "1-kings-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Adonijah's father never do to him?",
+  "choices": [
+   "Give him a gift",
+   "Displease him by asking why he had done so",
+   "Take him to the tabernacle",
+   "Name him heir"
+  ],
+  "answer": 1,
+  "explanation": "His father had not displeased him at any time in saying, Why hast thou done so?",
+  "ref": "1 Kings 1:6"
+ },
+ {
+  "id": "1-kings-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people do that caused the earth to rend with their sound?",
+  "choices": [
+   "They piped with pipes and rejoiced",
+   "They beat drums",
+   "They sang psalms",
+   "They clapped their hands"
+  ],
+  "answer": 0,
+  "explanation": "The people piped with pipes, and rejoiced with great joy, so that the earth rent with the sound of them.",
+  "ref": "1 Kings 1:40"
+ },
+ {
+  "id": "1-kings-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Nathan do when he came before the king?",
+  "choices": [
+   "Knelt and prayed",
+   "Spoke at the door",
+   "Stood without bowing",
+   "Bowed with his face to the ground"
+  ],
+  "answer": 3,
+  "explanation": "He bowed himself before the king with his face to the ground.",
+  "ref": "1 Kings 1:23"
+ },
+ {
+  "id": "1-kings-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Adonijah and his guests hear the noise of the trumpet?",
+  "choices": [
+   "As they began to eat",
+   "While they slept",
+   "As they had made an end of eating",
+   "As they went home"
+  ],
+  "answer": 2,
+  "explanation": "Adonijah and all the guests heard it as they had made an end of eating.",
+  "ref": "1 Kings 1:41"
+ },
+ {
+  "id": "1-kings-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the king answer when Bath-sheba came back after Nathan spoke?",
+  "choices": [
+   "He wept and was silent",
+   "He sware that Solomon would reign",
+   "He sent her away",
+   "He sent for Adonijah"
+  ],
+  "answer": 1,
+  "explanation": "The king sware: Assuredly Solomon thy son shall reign after me, and he shall sit upon my throne in my stead.",
+  "ref": "1 Kings 1:29–30"
+ },
+ {
+  "id": "1-kings-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joab say when he heard the sound of the trumpet?",
+  "choices": [
+   "Why is this noise of the city in an uproar?",
+   "Who is the king of Israel?",
+   "Where is Solomon?",
+   "Has David died?"
+  ],
+  "answer": 0,
+  "explanation": "Joab said, Wherefore is this noise of the city being in an uproar?",
+  "ref": "1 Kings 1:41"
+ },
+ {
+  "id": "1-kings-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David do on his bed after hearing the servants bless him?",
+  "choices": [
+   "He called Solomon in",
+   "He wept",
+   "He rose and walked",
+   "He bowed himself upon the bed"
+  ],
+  "answer": 3,
+  "explanation": "And the king bowed himself upon the bed.",
+  "ref": "1 Kings 1:47"
+ },
+ {
+  "id": "1-kings-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did David say had redeemed his soul out of all distress?",
+  "choices": [
+   "Nathan",
+   "Joab",
+   "The LORD",
+   "Zadok"
+  ],
+  "answer": 2,
+  "explanation": "As the LORD liveth, that hath redeemed my soul out of all distress.",
+  "ref": "1 Kings 1:29"
+ },
+ {
+  "id": "1-kings-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Adonijah run to catch hold when he feared Solomon?",
+  "choices": [
+   "The gate of the city",
+   "The horns of the altar",
+   "The tent of meeting",
+   "The throne of David"
+  ],
+  "answer": 1,
+  "explanation": "Adonijah feared because of Solomon, and arose, and went, and caught hold on the horns of the altar.",
+  "ref": "1 Kings 1:50"
+ },
+ {
+  "id": "1-kings-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Bath-sheba say when she bowed to David after his oath?",
+  "choices": [
+   "Let my lord king David live for ever",
+   "Blessed be the LORD God of Israel",
+   "Amen and amen",
+   "God save king Solomon"
+  ],
+  "answer": 0,
+  "explanation": "Bath-sheba bowed with her face to the earth, and said, Let my lord king David live for ever.",
+  "ref": "1 Kings 1:31"
+ },
+ {
+  "id": "1-kings-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did David say had appointed Solomon ruler over Israel and Judah?",
+  "choices": [
+   "Nathan",
+   "Zadok",
+   "Benaiah",
+   "David himself"
+  ],
+  "answer": 3,
+  "explanation": "David said, I have appointed him to be ruler over Israel and over Judah.",
+  "ref": "1 Kings 1:35"
+ },
+ {
+  "id": "1-kings-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what condition did Solomon say not a hair of Adonijah would fall?",
+  "choices": [
+   "If he paid a ransom",
+   "If he left Jerusalem",
+   "If he showed himself a worthy man",
+   "If Joab was captured"
+  ],
+  "answer": 2,
+  "explanation": "If he will shew himself a worthy man, there shall not an hair of him fall to the earth.",
+  "ref": "1 Kings 1:52"
+ },
+ {
   "id": "old-1-kings-2-1",
   "chapter": 2,
   "level": "beginner",
