@@ -3920,6 +3920,406 @@
   "ref": "2 Kings 7:17–20"
  },
  {
+  "id": "2-kings-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the leprous men do first when they reached the first Syrian tent?",
+  "choices": [
+   "Counted the horses",
+   "Ate and drank",
+   "Slept",
+   "Prayed"
+  ],
+  "answer": 1,
+  "explanation": "They went into one tent, and did eat and drink.",
+  "ref": "2 Kings 7:8"
+ },
+ {
+  "id": "2-kings-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would a measure of fine flour cost in Samaria, as Elisha foretold?",
+  "choices": [
+   "Five pieces of silver",
+   "A ten-fold price",
+   "A shekel",
+   "A talent"
+  ],
+  "answer": 2,
+  "explanation": "A measure of fine flour was sold for a shekel, according to the word of the LORD.",
+  "ref": "2 Kings 7:16"
+ },
+ {
+  "id": "2-kings-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Syrians leave behind in their camp when they fled?",
+  "choices": [
+   "The ark",
+   "Tents, horses and asses",
+   "Their swords only",
+   "Their captains"
+  ],
+  "answer": 1,
+  "explanation": "They left their tents, and their horses, and their asses, even the camp as it was.",
+  "ref": "2 Kings 7:7"
+ },
+ {
+  "id": "2-kings-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the lepers decide to do after they said, We do not well?",
+  "choices": [
+   "Hide the silver forever",
+   "Flee to Jordan",
+   "Return to the Syrians",
+   "Tell the king's household"
+  ],
+  "answer": 3,
+  "explanation": "They said, Come, that we may go and tell the king's household.",
+  "ref": "2 Kings 7:9"
+ },
+ {
+  "id": "2-kings-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where in Samaria would flour and barley be sold cheaply, said Elisha?",
+  "choices": [
+   "In the temple",
+   "On the wall",
+   "In the winepress",
+   "In the gate"
+  ],
+  "answer": 3,
+  "explanation": "A measure of fine flour shall be sold in the gate of Samaria.",
+  "ref": "2 Kings 7:1"
+ },
+ {
+  "id": "2-kings-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who doubted Elisha's word about the food?",
+  "choices": [
+   "A lord on whose hand the king leaned",
+   "Gehazi",
+   "The king's porter",
+   "Hazael"
+  ],
+  "answer": 0,
+  "explanation": "A lord on whose hand the king leaned answered the man of God.",
+  "ref": "2 Kings 7:2"
+ },
+ {
+  "id": "2-kings-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elisha tell the doubting lord would happen to him?",
+  "choices": [
+   "He would leave Samaria",
+   "He would see it but not eat of it",
+   "He would eat first",
+   "He would be made king"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt see it with thine eyes, but shalt not eat thereof.",
+  "ref": "2 Kings 7:2"
+ },
+ {
+  "id": "2-kings-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the lepers decide to go to the Syrian camp?",
+  "choices": [
+   "They wanted to steal horses",
+   "They would die in the city or at the gate anyway",
+   "The king had sent them",
+   "Elisha had told them"
+  ],
+  "answer": 1,
+  "explanation": "If they save us alive, we shall live; and if they kill us, we shall but die.",
+  "ref": "2 Kings 7:3–4"
+ },
+ {
+  "id": "2-kings-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "At what time of day did the lepers go to the Syrian camp?",
+  "choices": [
+   "At midday",
+   "At the dawn after",
+   "At midnight",
+   "In the twilight"
+  ],
+  "answer": 3,
+  "explanation": "They rose up in the twilight, to go unto the camp of the Syrians.",
+  "ref": "2 Kings 7:5"
+ },
+ {
+  "id": "2-kings-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the Syrians think the king of Israel had hired against them?",
+  "choices": [
+   "The kings of Moab and Edom",
+   "The kings of Tyre and Sidon",
+   "The Philistines",
+   "The kings of the Hittites and the Egyptians"
+  ],
+  "answer": 3,
+  "explanation": "They said, the king of Israel hath hired against us the kings of the Hittites, and the kings of the Egyptians.",
+  "ref": "2 Kings 7:6"
+ },
+ {
+  "id": "2-kings-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the lepers call to at the city?",
+  "choices": [
+   "The porter of the city",
+   "The elders",
+   "The captain of the host",
+   "Elisha"
+  ],
+  "answer": 0,
+  "explanation": "They came and called unto the porter of the city.",
+  "ref": "2 Kings 7:10"
+ },
+ {
+  "id": "2-kings-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king think the Syrians were doing outside the city?",
+  "choices": [
+   "Retreating to Damascus",
+   "Burying their dead",
+   "Hiding in the field to catch Israel alive",
+   "Waiting for Hittite help"
+  ],
+  "answer": 2,
+  "explanation": "They are gone out of the camp to hide themselves in the field, that we may be caught alive.",
+  "ref": "2 Kings 7:12"
+ },
+ {
+  "id": "2-kings-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many of the remaining horses did the servant suggest sending?",
+  "choices": [
+   "Ten",
+   "Twelve",
+   "Five",
+   "Two"
+  ],
+  "answer": 2,
+  "explanation": "One of his servants said, Let some take five of the horses that remain.",
+  "ref": "2 Kings 7:13"
+ },
+ {
+  "id": "2-kings-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "How far did the king's messengers follow the trail of the Syrians?",
+  "choices": [
+   "To Damascus",
+   "To Dothan",
+   "To Jericho",
+   "To the Jordan"
+  ],
+  "answer": 3,
+  "explanation": "They went after them unto Jordan.",
+  "ref": "2 Kings 7:15"
+ },
+ {
+  "id": "2-kings-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king appoint the doubting lord to do?",
+  "choices": [
+   "Carry the news to Elisha",
+   "Judge the people",
+   "Have charge of the gate",
+   "Lead the army"
+  ],
+  "answer": 2,
+  "explanation": "The king appointed the lord to have the charge of the gate.",
+  "ref": "2 Kings 7:17"
+ },
+ {
+  "id": "2-kings-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the lepers say about the day when they chose to tell the news?",
+  "choices": [
+   "This day is a day of good tidings",
+   "This is a day of mourning",
+   "This is a day of rest",
+   "This day is a day of wrath"
+  ],
+  "answer": 0,
+  "explanation": "They said, We do not well: this day is a day of good tidings, and we hold our peace.",
+  "ref": "2 Kings 7:9"
+ },
+ {
+  "id": "2-kings-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the lepers fear would come upon them if they waited until morning?",
+  "choices": [
+   "Some mischief",
+   "A plague",
+   "The Syrian king",
+   "Famine"
+  ],
+  "answer": 0,
+  "explanation": "If we tarry till the morning light, some mischief will come upon us.",
+  "ref": "2 Kings 7:9"
+ },
+ {
+  "id": "2-kings-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many chariot horses did the king's men take to go and see?",
+  "choices": [
+   "Two",
+   "Five",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "They took therefore two chariot horses; and the king sent after the host of the Syrians, saying, Go and see.",
+  "ref": "2 Kings 7:14"
+ },
+ {
+  "id": "2-kings-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the lepers carry out of the tents?",
+  "choices": [
+   "Tents and cords",
+   "Silver, gold and raiment",
+   "Swords and shields",
+   "Bread and wine"
+  ],
+  "answer": 1,
+  "explanation": "They carried thence silver, and gold, and raiment, and went and hid it.",
+  "ref": "2 Kings 7:8"
+ },
+ {
+  "id": "2-kings-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the lepers report they found in the Syrian camp?",
+  "choices": [
+   "Burning tents",
+   "No man, but horses tied and asses tied",
+   "Wounded soldiers",
+   "A feast laid out"
+  ],
+  "answer": 1,
+  "explanation": "There was no man there, neither voice of man, but horses tied, and asses tied, and the tents as they were.",
+  "ref": "2 Kings 7:10"
+ },
+ {
+  "id": "2-kings-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the porters pass on the lepers' report?",
+  "choices": [
+   "To Elisha",
+   "To the elders in the gate",
+   "To the Syrian captains",
+   "To the king's house"
+  ],
+  "answer": 3,
+  "explanation": "He called the porters; and they told it to the king's house within.",
+  "ref": "2 Kings 7:11"
+ },
+ {
+  "id": "2-kings-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What filled the way to the Jordan?",
+  "choices": [
+   "Broken chariots",
+   "Bread and wine",
+   "Garments and vessels the Syrians cast away",
+   "Dead soldiers"
+  ],
+  "answer": 2,
+  "explanation": "All the way was full of garments and vessels, which the Syrians had cast away in their haste.",
+  "ref": "2 Kings 7:15"
+ },
+ {
+  "id": "2-kings-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the king arise to speak of what the Syrians had done?",
+  "choices": [
+   "At the gate at dawn",
+   "At noon",
+   "In the evening",
+   "In the night"
+  ],
+  "answer": 3,
+  "explanation": "The king arose in the night, and said unto his servants.",
+  "ref": "2 Kings 7:12"
+ },
+ {
+  "id": "2-kings-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Where in the Syrian camp did the lepers find that no one was there?",
+  "choices": [
+   "The gate",
+   "The hill above the camp",
+   "The uttermost part of the camp",
+   "The king's tent"
+  ],
+  "answer": 2,
+  "explanation": "When they were come to the uttermost part of the camp of Syria, behold, there was no man there.",
+  "ref": "2 Kings 7:5"
+ },
+ {
+  "id": "2-kings-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When the lepers had hidden the first loot, what did they do?",
+  "choices": [
+   "Returned to the city",
+   "Burned the camp",
+   "Followed the army",
+   "Entered another tent and carried off more"
+  ],
+  "answer": 3,
+  "explanation": "They came again, and entered into another tent, and carried thence also, and went and hid it.",
+  "ref": "2 Kings 7:8"
+ },
+ {
   "id": "old-2-kings-8-1",
   "chapter": 8,
   "level": "beginner",
