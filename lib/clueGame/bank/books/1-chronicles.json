@@ -9008,6 +9008,646 @@
   "ref": "1 Chronicles 15:29"
  },
  {
+  "id": "1-chronicles-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David pitch for the ark in the city of David?",
+  "choices": [
+   "A temple",
+   "A tent",
+   "A palace",
+   "A tabernacle of cedar"
+  ],
+  "answer": 1,
+  "explanation": "David prepared a place for the ark of God, and pitched for it a tent.",
+  "ref": "1 Chronicles 15:1"
+ },
+ {
+  "id": "1-chronicles-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did David gather all Israel to bring up the ark?",
+  "choices": [
+   "Hebron",
+   "Gibeon",
+   "Jerusalem",
+   "Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "David gathered all Israel together to Jerusalem, to bring up the ark of the LORD unto his place.",
+  "ref": "1 Chronicles 15:3"
+ },
+ {
+  "id": "1-chronicles-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David tell the priests and Levites to do before bringing up the ark?",
+  "choices": [
+   "Fast for forty days",
+   "Offer a bullock",
+   "Wash the cart",
+   "Sanctify themselves"
+  ],
+  "answer": 3,
+  "explanation": "Sanctify yourselves, both ye and your brethren, that ye may bring up the ark of the LORD God of Israel.",
+  "ref": "1 Chronicles 15:12"
+ },
+ {
+  "id": "1-chronicles-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the Levites carry the ark this time?",
+  "choices": [
+   "Upon their shoulders with the staves",
+   "In a new cart",
+   "On oxen",
+   "On a wagon of gold"
+  ],
+  "answer": 0,
+  "explanation": "The children of the Levites bare the ark of God upon their shoulders with the staves thereon.",
+  "ref": "1 Chronicles 15:15"
+ },
+ {
+  "id": "1-chronicles-15-e-05",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who had commanded that the ark be carried this way?",
+  "choices": [
+   "Samuel",
+   "Moses",
+   "Aaron",
+   "Joshua"
+  ],
+  "answer": 1,
+  "explanation": "They bare the ark upon their shoulders with the staves thereon, as Moses commanded according to the word of the LORD.",
+  "ref": "1 Chronicles 15:15"
+ },
+ {
+  "id": "1-chronicles-15-e-06",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two priests did David call for, with the Levites?",
+  "choices": [
+   "Uriel and Asaiah",
+   "Heman and Asaph",
+   "Zadok and Abiathar",
+   "Eliel and Joel"
+  ],
+  "answer": 2,
+  "explanation": "David called for Zadok and Abiathar the priests, and for the Levites.",
+  "ref": "1 Chronicles 15:11"
+ },
+ {
+  "id": "1-chronicles-15-e-07",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priests do before the ark of God?",
+  "choices": [
+   "Sang psalms",
+   "Burned incense",
+   "Beat the drums",
+   "Blew with the trumpets"
+  ],
+  "answer": 3,
+  "explanation": "The priests did blow with the trumpets before the ark of God.",
+  "ref": "1 Chronicles 15:24"
+ },
+ {
+  "id": "1-chronicles-15-e-08",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What offering was made when God helped the Levites who bare the ark?",
+  "choices": [
+   "Seven bullocks and seven rams",
+   "Twelve lambs",
+   "A hundred oxen",
+   "Two turtledoves"
+  ],
+  "answer": 0,
+  "explanation": "God helped the Levites that bare the ark, and they offered seven bullocks and seven rams.",
+  "ref": "1 Chronicles 15:26"
+ },
+ {
+  "id": "1-chronicles-15-e-09",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of robe was David clothed with?",
+  "choices": [
+   "A purple robe",
+   "A robe of fine linen",
+   "A robe of sackcloth",
+   "A robe of scarlet"
+  ],
+  "answer": 1,
+  "explanation": "David was clothed with a robe of fine linen.",
+  "ref": "1 Chronicles 15:27"
+ },
+ {
+  "id": "1-chronicles-15-e-10",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "From whose house was the ark brought up?",
+  "choices": [
+   "Abinadab",
+   "Uzza",
+   "Obed-edom",
+   "Zadok"
+  ],
+  "answer": 2,
+  "explanation": "They went to bring up the ark of the covenant of the LORD out of the house of Obed-edom with joy.",
+  "ref": "1 Chronicles 15:25"
+ },
+ {
+  "id": "1-chronicles-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David say only the Levites could carry the ark?",
+  "choices": [
+   "They were the strongest",
+   "Samuel commanded it",
+   "The LORD had chosen them to carry it and minister to Him",
+   "They were Saul's kin"
+  ],
+  "answer": 2,
+  "explanation": "None ought to carry the ark of God but the Levites: for them hath the LORD chosen to carry the ark of God, and to minister unto him for ever.",
+  "ref": "1 Chronicles 15:2"
+ },
+ {
+  "id": "1-chronicles-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Heman the singer's father?",
+  "choices": [
+   "Berechiah",
+   "Kushaiah",
+   "Elkanah",
+   "Joel"
+  ],
+  "answer": 3,
+  "explanation": "The Levites appointed Heman the son of Joel; and Asaph the son of Berechiah.",
+  "ref": "1 Chronicles 15:17"
+ },
+ {
+  "id": "1-chronicles-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Asaph the singer was the son of whom?",
+  "choices": [
+   "Berechiah",
+   "Joel",
+   "Kushaiah",
+   "Chenaniah"
+  ],
+  "answer": 0,
+  "explanation": "Of his brethren, Asaph the son of Berechiah.",
+  "ref": "1 Chronicles 15:17"
+ },
+ {
+  "id": "1-chronicles-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The singers Heman, Asaph and Ethan were appointed to sound with what?",
+  "choices": [
+   "Trumpets of silver",
+   "Cymbals of brass",
+   "Harps of gold",
+   "Timbrels"
+  ],
+  "answer": 1,
+  "explanation": "The singers, Heman, Asaph, and Ethan, were appointed to sound with cymbals of brass.",
+  "ref": "1 Chronicles 15:19"
+ },
+ {
+  "id": "1-chronicles-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was chief of the Levites for song because he was skilful?",
+  "choices": [
+   "Heman",
+   "Asaph",
+   "Chenaniah",
+   "Obed-edom"
+  ],
+  "answer": 2,
+  "explanation": "Chenaniah, chief of the Levites, was for song: he instructed about the song, because he was skilful.",
+  "ref": "1 Chronicles 15:22"
+ },
+ {
+  "id": "1-chronicles-15-m-06",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two men were doorkeepers for the ark?",
+  "choices": [
+   "Zadok and Abiathar",
+   "Heman and Asaph",
+   "Joel and Eliel",
+   "Berechiah and Elkanah"
+  ],
+  "answer": 3,
+  "explanation": "Berechiah and Elkanah were doorkeepers for the ark.",
+  "ref": "1 Chronicles 15:23"
+ },
+ {
+  "id": "1-chronicles-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What garment of linen did David also have upon him?",
+  "choices": [
+   "An ephod",
+   "A crown",
+   "A breastplate",
+   "A girdle"
+  ],
+  "answer": 0,
+  "explanation": "David also had upon him an ephod of linen.",
+  "ref": "1 Chronicles 15:27"
+ },
+ {
+  "id": "1-chronicles-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which men went with David to bring up the ark?",
+  "choices": [
+   "The priests and prophets",
+   "The elders of Israel and the captains over thousands",
+   "The tribe of Judah only",
+   "The singers and porters"
+  ],
+  "answer": 1,
+  "explanation": "David, and the elders of Israel, and the captains over thousands, went to bring up the ark.",
+  "ref": "1 Chronicles 15:25"
+ },
+ {
+  "id": "1-chronicles-15-m-09",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was Michal when she saw David dancing and playing?",
+  "choices": [
+   "On the housetop",
+   "In the street",
+   "Looking out at a window",
+   "At the gate"
+  ],
+  "answer": 2,
+  "explanation": "Michal the daughter of Saul looking out at a window saw king David dancing and playing.",
+  "ref": "1 Chronicles 15:29"
+ },
+ {
+  "id": "1-chronicles-15-m-10",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel bring up the ark with, besides trumpets and cymbals?",
+  "choices": [
+   "Silence and prayer",
+   "Drums and flutes",
+   "Only singing",
+   "Shouting and the sound of the cornet"
+  ],
+  "answer": 3,
+  "explanation": "All Israel brought up the ark with shouting, and with sound of the cornet, and with trumpets, and with cymbals.",
+  "ref": "1 Chronicles 15:28"
+ },
+ {
+  "id": "1-chronicles-15-m-11",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say was the reason the LORD made a breach upon them?",
+  "choices": [
+   "They did it not at the first",
+   "The ark was unclean",
+   "The cart was new",
+   "The Levites were afraid"
+  ],
+  "answer": 0,
+  "explanation": "Because ye did it not at the first, the LORD our God made a breach upon us.",
+  "ref": "1 Chronicles 15:13"
+ },
+ {
+  "id": "1-chronicles-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the singers to lift up their voice?",
+  "choices": [
+   "With weeping",
+   "With joy",
+   "In silence",
+   "In fear"
+  ],
+  "answer": 1,
+  "explanation": "Appoint the singers with instruments of musick, sounding, by lifting up the voice with joy.",
+  "ref": "1 Chronicles 15:16"
+ },
+ {
+  "id": "1-chronicles-15-m-13",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David make in the city of David?",
+  "choices": [
+   "Walls",
+   "Gardens",
+   "Houses",
+   "Storehouses"
+  ],
+  "answer": 2,
+  "explanation": "David made him houses in the city of David.",
+  "ref": "1 Chronicles 15:1"
+ },
+ {
+  "id": "1-chronicles-15-m-14",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which instruments did David tell the Levites' chiefs to appoint singers with?",
+  "choices": [
+   "Drums and flutes",
+   "Only trumpets",
+   "Cornets and timbrels",
+   "Psalteries, harps and cymbals"
+  ],
+  "answer": 3,
+  "explanation": "Appoint their brethren to be the singers with instruments of musick, psalteries and harps and cymbals.",
+  "ref": "1 Chronicles 15:16"
+ },
+ {
+  "id": "1-chronicles-15-m-15",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Obed-edom's work as the ark came up?",
+  "choices": [
+   "Doorkeeper for the ark",
+   "Singer with cymbals",
+   "Priest with the trumpets",
+   "Captain over thousands"
+  ],
+  "answer": 0,
+  "explanation": "Obed-edom and Jehiah were doorkeepers for the ark.",
+  "ref": "1 Chronicles 15:24"
+ },
+ {
+  "id": "1-chronicles-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was chief of the sons of Kohath?",
+  "choices": [
+   "Asaiah",
+   "Joel",
+   "Shemaiah",
+   "Uriel"
+  ],
+  "answer": 3,
+  "explanation": "Of the sons of Kohath; Uriel the chief, and his brethren an hundred and twenty.",
+  "ref": "1 Chronicles 15:5"
+ },
+ {
+  "id": "1-chronicles-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many brethren did Uriel, chief of Kohath's sons, have?",
+  "choices": [
+   "An hundred and twenty",
+   "Two hundred and twenty",
+   "An hundred and thirty",
+   "Fourscore"
+  ],
+  "answer": 0,
+  "explanation": "Uriel the chief, and his brethren an hundred and twenty.",
+  "ref": "1 Chronicles 15:5"
+ },
+ {
+  "id": "1-chronicles-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many brethren did Asaiah, chief of the sons of Merari, have?",
+  "choices": [
+   "An hundred and twenty",
+   "Two hundred and twenty",
+   "Two hundred",
+   "An hundred and twelve"
+  ],
+  "answer": 1,
+  "explanation": "Of the sons of Merari; Asaiah the chief, and his brethren two hundred and twenty.",
+  "ref": "1 Chronicles 15:6"
+ },
+ {
+  "id": "1-chronicles-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many brethren did Joel, chief of the sons of Gershom, have?",
+  "choices": [
+   "An hundred and twenty",
+   "An hundred and twelve",
+   "An hundred and thirty",
+   "Two hundred"
+  ],
+  "answer": 2,
+  "explanation": "Of the sons of Gershom; Joel the chief, and his brethren an hundred and thirty.",
+  "ref": "1 Chronicles 15:7"
+ },
+ {
+  "id": "1-chronicles-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many brethren did Shemaiah, chief of the sons of Elizaphan, have?",
+  "choices": [
+   "Two hundred and twenty",
+   "An hundred and thirty",
+   "Fourscore",
+   "Two hundred"
+  ],
+  "answer": 3,
+  "explanation": "Of the sons of Elizaphan; Shemaiah the chief, and his brethren two hundred.",
+  "ref": "1 Chronicles 15:8"
+ },
+ {
+  "id": "1-chronicles-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many brethren did Eliel, chief of the sons of Hebron, have?",
+  "choices": [
+   "Fourscore",
+   "An hundred and twelve",
+   "An hundred and twenty",
+   "Two hundred"
+  ],
+  "answer": 0,
+  "explanation": "Of the sons of Hebron; Eliel the chief, and his brethren fourscore.",
+  "ref": "1 Chronicles 15:9"
+ },
+ {
+  "id": "1-chronicles-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was chief of the sons of Uzziel?",
+  "choices": [
+   "Eliel",
+   "Amminadab",
+   "Shemaiah",
+   "Uriel"
+  ],
+  "answer": 1,
+  "explanation": "Of the sons of Uzziel; Amminadab the chief, and his brethren an hundred and twelve.",
+  "ref": "1 Chronicles 15:10"
+ },
+ {
+  "id": "1-chronicles-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Ethan the singer, of the sons of Merari, was the son of whom?",
+  "choices": [
+   "Joel",
+   "Berechiah",
+   "Kushaiah",
+   "Elkanah"
+  ],
+  "answer": 2,
+  "explanation": "Of the sons of Merari their brethren, Ethan the son of Kushaiah.",
+  "ref": "1 Chronicles 15:17"
+ },
+ {
+  "id": "1-chronicles-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The singers sounded with psalteries on what?",
+  "choices": [
+   "Sheminith",
+   "Gittith",
+   "Shushan",
+   "Alamoth"
+  ],
+  "answer": 3,
+  "explanation": "Zechariah and the others, with psalteries on Alamoth.",
+  "ref": "1 Chronicles 15:20"
+ },
+ {
+  "id": "1-chronicles-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Mattithiah and his brethren played harps on what, to excel?",
+  "choices": [
+   "The Sheminith",
+   "Alamoth",
+   "Neginoth",
+   "Gittith"
+  ],
+  "answer": 0,
+  "explanation": "Mattithiah, and Elipheleh, and Mikneiah, and Obed-edom, and Jeiel, and Azaziah, with harps on the Sheminith to excel.",
+  "ref": "1 Chronicles 15:21"
+ },
+ {
+  "id": "1-chronicles-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these priests blew with the trumpets before the ark?",
+  "choices": [
+   "Zadok",
+   "Nethaneel",
+   "Uriel",
+   "Chenaniah"
+  ],
+  "answer": 1,
+  "explanation": "Shebaniah, and Jehoshaphat, and Nethaneel, and Amasai, and Zechariah, and Benaiah, and Eliezer, the priests, did blow with the trumpets.",
+  "ref": "1 Chronicles 15:24"
+ },
+ {
+  "id": "1-chronicles-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was doorkeeper for the ark along with Obed-edom?",
+  "choices": [
+   "Berechiah",
+   "Elkanah",
+   "Jehiah",
+   "Azaziah"
+  ],
+  "answer": 2,
+  "explanation": "Obed-edom and Jehiah were doorkeepers for the ark.",
+  "ref": "1 Chronicles 15:24"
+ },
+ {
+  "id": "1-chronicles-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of the Levite families listed had the fewest brethren?",
+  "choices": [
+   "The sons of Kohath",
+   "The sons of Gershom",
+   "The sons of Uzziel",
+   "The sons of Hebron"
+  ],
+  "answer": 3,
+  "explanation": "Of the sons of Hebron; Eliel the chief, and his brethren fourscore.",
+  "ref": "1 Chronicles 15:9"
+ },
+ {
+  "id": "1-chronicles-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many brethren did Amminadab, chief of the sons of Uzziel, have?",
+  "choices": [
+   "An hundred and twelve",
+   "An hundred and thirty",
+   "Two hundred",
+   "Fourscore"
+  ],
+  "answer": 0,
+  "explanation": "Amminadab the chief, and his brethren an hundred and twelve.",
+  "ref": "1 Chronicles 15:10"
+ },
+ {
+  "id": "1-chronicles-15-h-15",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "David told the chief men, You are the chief of what?",
+  "choices": [
+   "The priests of Israel",
+   "The fathers of the Levites",
+   "The captains of thousands",
+   "The singers of Judah"
+  ],
+  "answer": 1,
+  "explanation": "Ye are the chief of the fathers of the Levites: sanctify yourselves.",
+  "ref": "1 Chronicles 15:12"
+ },
+ {
   "id": "old-1-chronicles-16-1",
   "chapter": 16,
   "level": "beginner",
