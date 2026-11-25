@@ -3184,22 +3184,6 @@
   "ref": "Ezekiel 40:4"
  },
  {
-  "id": "old-ezekiel-40-5",
-  "chapter": 40,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What major feature dominates the rest of the chapter?",
-  "choices": [
-   "Battle scenes",
-   "Measured gates and courts",
-   "Dry bones rising",
-   "A river flowing"
-  ],
-  "answer": 1,
-  "explanation": "The chapter carefully details the outer structures of the future temple.",
-  "ref": "Ezekiel 40:1"
- },
- {
   "id": "old-ezekiel-41-1",
   "chapter": 41,
   "level": "beginner",
@@ -3264,22 +3248,6 @@
   "ref": "Ezekiel 41:22"
  },
  {
-  "id": "old-ezekiel-41-5",
-  "chapter": 41,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What repeated emphasis governs the whole chapter?",
-  "choices": [
-   "War against Gog",
-   "Judgment on Egypt",
-   "Temple measurements and structure",
-   "The dry bones vision"
-  ],
-  "answer": 2,
-  "explanation": "The chapter continues the detailed architectural revelation of the temple.",
-  "ref": "Ezekiel 41:1"
- },
- {
   "id": "old-ezekiel-42-1",
   "chapter": 42,
   "level": "beginner",
@@ -3326,22 +3294,6 @@
   "answer": 2,
   "explanation": "Holy garments are not to be worn casually into the common areas.",
   "ref": "Ezekiel 42:14"
- },
- {
-  "id": "old-ezekiel-42-4",
-  "chapter": 42,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What large structure encloses the whole complex at the end of the chapter?",
-  "choices": [
-   "A moat",
-   "A river",
-   "A wall round about",
-   "A row of cedars"
-  ],
-  "answer": 2,
-  "explanation": "The wall separates the holy place from the common.",
-  "ref": "Ezekiel 42:20"
  },
  {
   "id": "old-ezekiel-42-5",
@@ -3422,22 +3374,6 @@
   "answer": 2,
   "explanation": "Holiness in the restored temple requires the removal of former defilement.",
   "ref": "Ezekiel 43:9"
- },
- {
-  "id": "old-ezekiel-43-5",
-  "chapter": 43,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What section closes the chapter?",
-  "choices": [
-   "Instructions for the altar's purification",
-   "The fall of Babylon",
-   "A lament for Tyre",
-   "The dry bones"
-  ],
-  "answer": 0,
-  "explanation": "The altar is consecrated through a sequence of offerings over several days.",
-  "ref": "Ezekiel 43:18–27"
  },
  {
   "id": "old-ezekiel-44-1",
@@ -3632,22 +3568,6 @@
   "ref": "Ezekiel 46:2"
  },
  {
-  "id": "old-ezekiel-46-3",
-  "chapter": 46,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does the chapter regulate besides offerings?",
-  "choices": [
-   "Temple music only",
-   "The prince's inheritance and gifts",
-   "Foreign treaties",
-   "Military campaigns"
-  ],
-  "answer": 1,
-  "explanation": "The prince is warned not to oppress by taking the people's inheritance.",
-  "ref": "Ezekiel 46:16–18"
- },
- {
   "id": "old-ezekiel-46-4",
   "chapter": 46,
   "level": "beginner",
@@ -3662,22 +3582,6 @@
   "answer": 0,
   "explanation": "A gift to his sons remains theirs as an inheritance.",
   "ref": "Ezekiel 46:16"
- },
- {
-  "id": "old-ezekiel-46-5",
-  "chapter": 46,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What practical temple feature is shown at the end of the chapter?",
-  "choices": [
-   "A hidden treasury",
-   "Cooking places for the ministers",
-   "A second altar",
-   "A royal throne room"
-  ],
-  "answer": 1,
-  "explanation": "The vision includes designated places where offerings are prepared.",
-  "ref": "Ezekiel 46:19–24"
  },
  {
   "id": "old-ezekiel-47-1",
@@ -3760,38 +3664,6 @@
   "ref": "Ezekiel 47:22–23"
  },
  {
-  "id": "old-ezekiel-48-1",
-  "chapter": 48,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What takes up most of this final chapter?",
-  "choices": [
-   "A battle plan",
-   "A lament over Babylon",
-   "The dry bones vision again",
-   "The tribal allotments of the land"
-  ],
-  "answer": 3,
-  "explanation": "The final chapter arranges the land among the tribes and the holy portions.",
-  "ref": "Ezekiel 48:1"
- },
- {
-  "id": "old-ezekiel-48-2",
-  "chapter": 48,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What special portion lies in the center of the tribal allotments?",
-  "choices": [
-   "Egypt's territory",
-   "The old kingdom of Saul",
-   "The oblation for the sanctuary, priests, city, and prince",
-   "The forest of Lebanon"
-  ],
-  "answer": 2,
-  "explanation": "The heart of the land remains centered on the Lord's holy district.",
-  "ref": "Ezekiel 48:8–22"
- },
- {
   "id": "old-ezekiel-48-3",
   "chapter": 48,
   "level": "beginner",
@@ -3824,19 +3696,4899 @@
   "ref": "Ezekiel 48:35"
  },
  {
-  "id": "old-ezekiel-48-5",
+  "id": "ezekiel-37-e-11",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What carried Ezekiel out and set him down in the valley of bones?",
+  "choices": [
+   "An angel with a measuring line",
+   "The hand of the LORD",
+   "A chariot of fire",
+   "A whirlwind from the north"
+  ],
+  "answer": 1,
+  "explanation": "The hand of the LORD was upon him and carried him out in the spirit of the LORD and set him in the valley.",
+  "ref": "Ezekiel 37:1"
+ },
+ {
+  "id": "ezekiel-37-e-12",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezekiel answer when God asked if these bones could live?",
+  "choices": [
+   "O Lord GOD, thou knowest",
+   "No, they are too dry",
+   "Yes, by my own prophesying",
+   "I do not know the answer"
+  ],
+  "answer": 0,
+  "explanation": "Ezekiel said, O Lord GOD, thou knowest.",
+  "ref": "Ezekiel 37:3"
+ },
+ {
+  "id": "ezekiel-37-e-13",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the bones as Ezekiel first prophesied?",
+  "choices": [
+   "They crumbled to dust",
+   "They burned with fire",
+   "They came together, bone to his bone",
+   "They were carried away by water"
+  ],
+  "answer": 2,
+  "explanation": "There was a noise, a shaking, and the bones came together, bone to his bone.",
+  "ref": "Ezekiel 37:7"
+ },
+ {
+  "id": "ezekiel-37-e-14",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the bones become once breath came into them?",
+  "choices": [
+   "A flock of sheep",
+   "A great city",
+   "A company of priests",
+   "An exceeding great army"
+  ],
+  "answer": 3,
+  "explanation": "They lived and stood up upon their feet, an exceeding great army.",
+  "ref": "Ezekiel 37:10"
+ },
+ {
+  "id": "ezekiel-37-e-15",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did God say the bones are?",
+  "choices": [
+   "The kings of Judah",
+   "The whole house of Israel",
+   "The armies of Egypt",
+   "The priests of Levi"
+  ],
+  "answer": 1,
+  "explanation": "These bones are the whole house of Israel.",
+  "ref": "Ezekiel 37:11"
+ },
+ {
+  "id": "ezekiel-37-e-16",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where would God bring his people up out of their graves?",
+  "choices": [
+   "Into Babylon",
+   "Into Egypt",
+   "Into the land of Israel",
+   "Into the wilderness"
+  ],
+  "answer": 2,
+  "explanation": "God would open their graves and bring them into the land of Israel.",
+  "ref": "Ezekiel 37:12"
+ },
+ {
+  "id": "ezekiel-37-e-17",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would Israel and Judah no longer be?",
+  "choices": [
+   "Two nations in two kingdoms",
+   "Under any king",
+   "Gathered in one land",
+   "A people of God"
+  ],
+  "answer": 0,
+  "explanation": "They shall be no more two nations, neither divided into two kingdoms any more at all.",
+  "ref": "Ezekiel 37:22"
+ },
+ {
+  "id": "ezekiel-37-e-18",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would God set in the midst of his people for evermore?",
+  "choices": [
+   "A throne of gold",
+   "A wall of fire",
+   "A great altar",
+   "His sanctuary"
+  ],
+  "answer": 3,
+  "explanation": "God would set his sanctuary in the midst of them for evermore.",
+  "ref": "Ezekiel 37:26"
+ },
+ {
+  "id": "ezekiel-37-e-19",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of covenant would God make with his people?",
+  "choices": [
+   "A covenant of fire",
+   "A covenant of peace",
+   "A covenant of silver",
+   "A covenant of kings"
+  ],
+  "answer": 1,
+  "explanation": "I will make a covenant of peace with them; it shall be an everlasting covenant.",
+  "ref": "Ezekiel 37:26"
+ },
+ {
+  "id": "ezekiel-37-m-01",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was still missing from the bodies after the sinews, flesh and skin came on?",
+  "choices": [
+   "A heart",
+   "Blood",
+   "Breath",
+   "A voice"
+  ],
+  "answer": 2,
+  "explanation": "The sinews, flesh and skin covered them, but there was no breath in them.",
+  "ref": "Ezekiel 37:8"
+ },
+ {
+  "id": "ezekiel-37-m-02",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom was Ezekiel told to prophesy to the second time?",
+  "choices": [
+   "The wind",
+   "The sea",
+   "The mountains",
+   "The graves"
+  ],
+  "answer": 0,
+  "explanation": "Then said he, Prophesy unto the wind, son of man.",
+  "ref": "Ezekiel 37:9"
+ },
+ {
+  "id": "ezekiel-37-m-03",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From where was the breath told to come?",
+  "choices": [
+   "The east only",
+   "The deep",
+   "The temple",
+   "The four winds"
+  ],
+  "answer": 3,
+  "explanation": "Come from the four winds, O breath, and breathe upon these slain.",
+  "ref": "Ezekiel 37:9"
+ },
+ {
+  "id": "ezekiel-37-m-04",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel say about themselves in exile?",
+  "choices": [
+   "We are strong in the land",
+   "Our bones are dried, and our hope is lost",
+   "The LORD has forgotten Jerusalem",
+   "We will return by our own might"
+  ],
+  "answer": 1,
+  "explanation": "They say, Our bones are dried, and our hope is lost: we are cut off for our parts.",
+  "ref": "Ezekiel 37:11"
+ },
+ {
+  "id": "ezekiel-37-m-05",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Israel know when God opened their graves?",
+  "choices": [
+   "That I am the LORD",
+   "That the temple was rebuilt",
+   "That Babylon had fallen",
+   "That David had returned"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall know that I am the LORD, when I have opened your graves.",
+  "ref": "Ezekiel 37:13"
+ },
+ {
+  "id": "ezekiel-37-m-06",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would God put in his people so that they live?",
+  "choices": [
+   "A new name",
+   "A sword",
+   "My spirit",
+   "Silver and gold"
+  ],
+  "answer": 2,
+  "explanation": "I shall put my spirit in you, and ye shall live.",
+  "ref": "Ezekiel 37:14"
+ },
+ {
+  "id": "ezekiel-37-m-07",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was written on the first stick?",
+  "choices": [
+   "For Levi and the priests",
+   "For Judah, and for the children of Israel his companions",
+   "For Benjamin alone",
+   "For David and his sons"
+  ],
+  "answer": 1,
+  "explanation": "Write upon it, For Judah, and for the children of Israel his companions.",
+  "ref": "Ezekiel 37:16"
+ },
+ {
+  "id": "ezekiel-37-m-08",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was written on the second stick?",
+  "choices": [
+   "For Reuben, the firstborn",
+   "For Moses the lawgiver",
+   "For Zion and Jerusalem",
+   "For Joseph, the stick of Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "Write upon it, For Joseph, the stick of Ephraim, and for all the house of Israel his companions.",
+  "ref": "Ezekiel 37:16"
+ },
+ {
+  "id": "ezekiel-37-m-09",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezekiel told to do with the two sticks?",
+  "choices": [
+   "Join them into one stick",
+   "Burn them on an altar",
+   "Bury them in the valley",
+   "Break them in front of the people"
+  ],
+  "answer": 0,
+  "explanation": "Join them one to another into one stick; and they shall become one in thine hand.",
+  "ref": "Ezekiel 37:17"
+ },
+ {
+  "id": "ezekiel-37-m-10",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the people ask Ezekiel about the sticks?",
+  "choices": [
+   "Where he found them",
+   "Who had cut them",
+   "What he meant by them",
+   "Whether they were holy"
+  ],
+  "answer": 2,
+  "explanation": "The people would say, Wilt thou not shew us what thou meanest by these?",
+  "ref": "Ezekiel 37:18"
+ },
+ {
+  "id": "ezekiel-37-m-11",
+  "chapter": 37,
+  "level": "medium",
+  "category": "place",
+  "question": "From where would God take the children of Israel and gather them?",
+  "choices": [
+   "From the mountains of Judah",
+   "From among the heathen",
+   "From the temple courts",
+   "From the valley of Hinnom"
+  ],
+  "answer": 1,
+  "explanation": "I will take the children of Israel from among the heathen, whither they be gone.",
+  "ref": "Ezekiel 37:21"
+ },
+ {
+  "id": "ezekiel-37-m-12",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Israel no longer do to defile themselves?",
+  "choices": [
+   "Eat unclean food",
+   "Marry foreign wives",
+   "Break the sabbath",
+   "Worship idols and detestable things"
+  ],
+  "answer": 3,
+  "explanation": "They shall not defile themselves any more with their idols, nor with their detestable things.",
+  "ref": "Ezekiel 37:23"
+ },
+ {
+  "id": "ezekiel-37-m-13",
+  "chapter": 37,
+  "level": "medium",
+  "category": "place",
+  "question": "What land would they dwell in with their children forever?",
+  "choices": [
+   "The land given to Jacob my servant",
+   "The land of Egypt",
+   "The land of Babylon",
+   "The land of Moab"
+  ],
+  "answer": 0,
+  "explanation": "They shall dwell in the land that I have given unto Jacob my servant.",
+  "ref": "Ezekiel 37:25"
+ },
+ {
+  "id": "ezekiel-37-m-14",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say would be with them?",
+  "choices": [
+   "My ark of cedar",
+   "My great army",
+   "My tabernacle",
+   "My city of refuge"
+  ],
+  "answer": 2,
+  "explanation": "My tabernacle also shall be with them: I will be their God, and they shall be my people.",
+  "ref": "Ezekiel 37:27"
+ },
+ {
+  "id": "ezekiel-37-h-01",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ezekiel hear as he prophesied to the bones?",
+  "choices": [
+   "A trumpet",
+   "A noise and a shaking",
+   "A roaring lion",
+   "A still small voice"
+  ],
+  "answer": 1,
+  "explanation": "There was a noise, and behold a shaking.",
+  "ref": "Ezekiel 37:7"
+ },
+ {
+  "id": "ezekiel-37-h-02",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say he would lay upon the bones?",
+  "choices": [
+   "Garments",
+   "Ashes",
+   "Armour",
+   "Sinews"
+  ],
+  "answer": 3,
+  "explanation": "I will lay sinews upon you, and will bring up flesh upon you.",
+  "ref": "Ezekiel 37:6"
+ },
+ {
+  "id": "ezekiel-37-h-03",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are the bones described in the open valley?",
+  "choices": [
+   "Very many and very dry",
+   "Scattered and burned",
+   "White and broken",
+   "Few and buried"
+  ],
+  "answer": 0,
+  "explanation": "There were very many in the open valley; and they were very dry.",
+  "ref": "Ezekiel 37:2"
+ },
+ {
+  "id": "ezekiel-37-h-04",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did God tell the breath to breathe upon?",
+  "choices": [
+   "The sleeping",
+   "The captives",
+   "These slain",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "Breathe upon these slain, that they may live.",
+  "ref": "Ezekiel 37:9"
+ },
+ {
+  "id": "ezekiel-37-h-05",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the army do when breath came into them?",
+  "choices": [
+   "Marched to Jerusalem",
+   "Stood up upon their feet",
+   "Sang a psalm",
+   "Cried out for water"
+  ],
+  "answer": 1,
+  "explanation": "The breath came into them, and they lived, and stood up upon their feet.",
+  "ref": "Ezekiel 37:10"
+ },
+ {
+  "id": "ezekiel-37-h-06",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would God say he had done when Israel knew it?",
+  "choices": [
+   "Spoken it and performed it",
+   "Cursed and forgotten it",
+   "Hidden it and shown it",
+   "Judged it and ended it"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall know that I the LORD have spoken it, and performed it.",
+  "ref": "Ezekiel 37:14"
+ },
+ {
+  "id": "ezekiel-37-h-07",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose hand does God say the two sticks shall be one?",
+  "choices": [
+   "Ephraim's",
+   "Judah's",
+   "Mine",
+   "David's"
+  ],
+  "answer": 2,
+  "explanation": "They shall be one in mine hand.",
+  "ref": "Ezekiel 37:19"
+ },
+ {
+  "id": "ezekiel-37-h-08",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tribe's hand held the stick of Joseph?",
+  "choices": [
+   "Manasseh",
+   "Benjamin",
+   "Reuben",
+   "Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "The stick of Joseph is in the hand of Ephraim.",
+  "ref": "Ezekiel 37:19"
+ },
+ {
+  "id": "ezekiel-37-h-09",
+  "chapter": 37,
+  "level": "hard",
+  "category": "person",
+  "question": "What does God say David shall be to them for ever?",
+  "choices": [
+   "Their judge",
+   "Their prince",
+   "Their priest",
+   "Their prophet"
+  ],
+  "answer": 1,
+  "explanation": "My servant David shall be their prince for ever.",
+  "ref": "Ezekiel 37:25"
+ },
+ {
+  "id": "ezekiel-37-h-10",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would God do for them from all their dwellingplaces where they had sinned?",
+  "choices": [
+   "Save them and cleanse them",
+   "Judge them and scatter them",
+   "Hide them and feed them",
+   "Number them and send them"
+  ],
+  "answer": 0,
+  "explanation": "I will save them out of all their dwellingplaces, and will cleanse them.",
+  "ref": "Ezekiel 37:23"
+ },
+ {
+  "id": "ezekiel-37-h-11",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would God do with his people in the land besides place them?",
+  "choices": [
+   "Divide them",
+   "Test them",
+   "Multiply them",
+   "Arm them"
+  ],
+  "answer": 2,
+  "explanation": "I will place them, and multiply them.",
+  "ref": "Ezekiel 37:26"
+ },
+ {
+  "id": "ezekiel-37-h-12",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who shall know that the LORD sanctifies Israel?",
+  "choices": [
+   "The elders",
+   "The Levites",
+   "The kings",
+   "The heathen"
+  ],
+  "answer": 3,
+  "explanation": "The heathen shall know that I the LORD do sanctify Israel.",
+  "ref": "Ezekiel 37:28"
+ },
+ {
+  "id": "ezekiel-37-h-13",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall they all have, walking in God's judgments?",
+  "choices": [
+   "One temple",
+   "One shepherd",
+   "One priest",
+   "One city"
+  ],
+  "answer": 1,
+  "explanation": "They all shall have one shepherd: they shall walk in my judgments.",
+  "ref": "Ezekiel 37:24"
+ },
+ {
+  "id": "ezekiel-37-h-14",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does God address Ezekiel when he commands him?",
+  "choices": [
+   "Son of man",
+   "Servant of David",
+   "Watchman of Judah",
+   "Priest of Zadok"
+  ],
+  "answer": 0,
+  "explanation": "God says, Son of man, can these bones live?",
+  "ref": "Ezekiel 37:3"
+ },
+ {
+  "id": "ezekiel-38-e-11",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say he will put into Gog's jaws?",
+  "choices": [
+   "Hooks",
+   "A bridle of gold",
+   "A chain of iron",
+   "A yoke of wood"
+  ],
+  "answer": 0,
+  "explanation": "God says, I will put hooks into thy jaws, and bring thee forth, and all thine army.",
+  "ref": "Ezekiel 38:4"
+ },
+ {
+  "id": "ezekiel-38-e-12",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which three nations are named as marching with Gog, with shield and helmet?",
+  "choices": [
+   "Egypt, Edom and Moab",
+   "Assyria, Syria and Tyre",
+   "Persia, Ethiopia and Libya",
+   "Sheba, Dedan and Tarshish"
+  ],
+  "answer": 2,
+  "explanation": "Persia, Ethiopia and Libya are with them, all with shield and helmet.",
+  "ref": "Ezekiel 38:5"
+ },
+ {
+  "id": "ezekiel-38-e-13",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Gog's coming against the land compared?",
+  "choices": [
+   "A flood and a fire",
+   "A storm and a cloud to cover the land",
+   "A lion and a wolf",
+   "A river and a flame"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt ascend and come like a storm, like a cloud to cover the land.",
+  "ref": "Ezekiel 38:9"
+ },
+ {
+  "id": "ezekiel-38-e-14",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who ask Gog, Art thou come to take a spoil?",
+  "choices": [
+   "The elders of Israel",
+   "The kings of Egypt",
+   "The priests of Jerusalem",
+   "Sheba, Dedan and the merchants of Tarshish"
+  ],
+  "answer": 3,
+  "explanation": "Sheba, and Dedan, and the merchants of Tarshish shall say unto thee, Art thou come to take a spoil?",
+  "ref": "Ezekiel 38:13"
+ },
+ {
+  "id": "ezekiel-38-e-15",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Gog plan to take from the people dwelling in the land?",
+  "choices": [
+   "A spoil and a prey",
+   "A tribute of grain",
+   "Hostages",
+   "The temple vessels"
+  ],
+  "answer": 0,
+  "explanation": "Gog says he will go to take a spoil, and to take a prey.",
+  "ref": "Ezekiel 38:12"
+ },
+ {
+  "id": "ezekiel-38-e-16",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will God rain upon Gog and his bands?",
+  "choices": [
+   "Locusts and darkness",
+   "Blood and frogs",
+   "Overflowing rain, great hailstones, fire and brimstone",
+   "Manna and quail"
+  ],
+  "answer": 2,
+  "explanation": "I will rain upon him an overflowing rain, and great hailstones, fire, and brimstone.",
+  "ref": "Ezekiel 38:22"
+ },
+ {
+  "id": "ezekiel-38-e-17",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will happen among Gog's army when God calls for a sword?",
+  "choices": [
+   "They shall flee to Egypt",
+   "Every man's sword shall be against his brother",
+   "They shall lay down their arms",
+   "They shall build a wall"
+  ],
+  "answer": 1,
+  "explanation": "Every man's sword shall be against his brother.",
+  "ref": "Ezekiel 38:21"
+ },
+ {
+  "id": "ezekiel-38-m-01",
+  "chapter": 38,
+  "level": "medium",
+  "category": "person",
+  "question": "Of which two peoples is Gog called the chief prince?",
+  "choices": [
+   "Meshech and Tubal",
+   "Gomer and Togarmah",
+   "Sheba and Dedan",
+   "Persia and Libya"
+  ],
+  "answer": 0,
+  "explanation": "Gog is the chief prince of Meshech and Tubal.",
+  "ref": "Ezekiel 38:2"
+ },
+ {
+  "id": "ezekiel-38-m-02",
+  "chapter": 38,
+  "level": "medium",
+  "category": "place",
+  "question": "From which direction does Gog come against Israel?",
+  "choices": [
+   "The south",
+   "The west, by the sea",
+   "The east, from Babylon",
+   "The north parts"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt come from thy place out of the north parts.",
+  "ref": "Ezekiel 38:15"
+ },
+ {
+  "id": "ezekiel-38-m-03",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When is Gog to be visited and come into the land?",
+  "choices": [
+   "In the days of the judges",
+   "After many days, in the latter years",
+   "In the time of the exile",
+   "At the next feast of tabernacles"
+  ],
+  "answer": 1,
+  "explanation": "After many days thou shalt be visited: in the latter years thou shalt come into the land.",
+  "ref": "Ezekiel 38:8"
+ },
+ {
+  "id": "ezekiel-38-m-04",
+  "chapter": 38,
+  "level": "medium",
+  "category": "place",
+  "question": "Against what mountains does Gog come, which had been always waste?",
+  "choices": [
+   "The mountains of Seir",
+   "The mountains of Gilead",
+   "The mountains of Israel",
+   "The mountains of Ararat"
+  ],
+  "answer": 2,
+  "explanation": "He comes against the mountains of Israel, which have been always waste.",
+  "ref": "Ezekiel 38:8"
+ },
+ {
+  "id": "ezekiel-38-m-05",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of thought will come into Gog's mind?",
+  "choices": [
+   "An evil thought",
+   "A thought of peace",
+   "A thought of fear",
+   "A wise thought"
+  ],
+  "answer": 0,
+  "explanation": "Things shall come into thy mind, and thou shalt think an evil thought.",
+  "ref": "Ezekiel 38:10"
+ },
+ {
+  "id": "ezekiel-38-m-06",
+  "chapter": 38,
+  "level": "medium",
+  "category": "place",
+  "question": "Which kind of land does Gog say he will go up to?",
+  "choices": [
+   "The land of strong cities",
+   "The land of vineyards",
+   "The land of the temple",
+   "The land of unwalled villages"
+  ],
+  "answer": 3,
+  "explanation": "I will go up to the land of unwalled villages; I will go to them that are at rest.",
+  "ref": "Ezekiel 38:11"
+ },
+ {
+  "id": "ezekiel-38-m-07",
+  "chapter": 38,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does God say had spoken of Gog in old time?",
+  "choices": [
+   "The kings of Judah",
+   "His servants the prophets of Israel",
+   "The priests of Levi",
+   "The elders of Babylon"
+  ],
+  "answer": 1,
+  "explanation": "Art thou he of whom I have spoken in old time by my servants the prophets of Israel?",
+  "ref": "Ezekiel 38:17"
+ },
+ {
+  "id": "ezekiel-38-m-08",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God say shall come up in his face when Gog comes?",
+  "choices": [
+   "My laughter",
+   "My sorrow",
+   "My fury",
+   "My silence"
+  ],
+  "answer": 2,
+  "explanation": "When Gog shall come against the land of Israel, my fury shall come up in my face.",
+  "ref": "Ezekiel 38:18"
+ },
+ {
+  "id": "ezekiel-38-m-09",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who shall shake at God's presence?",
+  "choices": [
+   "Fishes, fowls, beasts, creeping things and all men",
+   "Only the soldiers of Gog",
+   "Only the people of Israel",
+   "The kings of the nations"
+  ],
+  "answer": 0,
+  "explanation": "The fishes of the sea, the fowls of the heaven, the beasts of the field, and all men shall shake at my presence.",
+  "ref": "Ezekiel 38:20"
+ },
+ {
+  "id": "ezekiel-38-m-10",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall fall to the ground in the great shaking, along with the steep places?",
+  "choices": [
+   "The altar",
+   "Every wall",
+   "Every tent",
+   "The gates of Gog"
+  ],
+  "answer": 1,
+  "explanation": "The mountains shall be thrown down, and the steep places shall fall, and every wall shall fall to the ground.",
+  "ref": "Ezekiel 38:20"
+ },
+ {
+  "id": "ezekiel-38-m-11",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What two things will God plead against Gog with?",
+  "choices": [
+   "Famine and drought",
+   "Snow and ice",
+   "Darkness and thunder",
+   "Pestilence and blood"
+  ],
+  "answer": 3,
+  "explanation": "I will plead against him with pestilence and with blood.",
+  "ref": "Ezekiel 38:22"
+ },
+ {
+  "id": "ezekiel-38-m-12",
+  "chapter": 38,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom would Gog turn his hand upon, those with cattle and goods?",
+  "choices": [
+   "The priests of the temple",
+   "The soldiers of Egypt",
+   "The people gathered out of the nations",
+   "The merchants of Tarshish"
+  ],
+  "answer": 2,
+  "explanation": "Gog would turn his hand upon the people gathered out of the nations, which have gotten cattle and goods.",
+  "ref": "Ezekiel 38:12"
+ },
+ {
+  "id": "ezekiel-38-h-01",
+  "chapter": 38,
+  "level": "hard",
+  "category": "place",
+  "question": "Which house of the north quarters is named with Gomer among Gog's helpers?",
+  "choices": [
+   "Togarmah",
+   "Meshech",
+   "Dedan",
+   "Tubal"
+  ],
+  "answer": 0,
+  "explanation": "Gomer, and all his bands; the house of Togarmah of the north quarters.",
+  "ref": "Ezekiel 38:6"
+ },
+ {
+  "id": "ezekiel-38-h-02",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is Gog told to be to the company assembled with him?",
+  "choices": [
+   "A shepherd",
+   "A judge",
+   "A guard",
+   "A watchman on the wall"
+  ],
+  "answer": 2,
+  "explanation": "Be thou prepared, and be thou a guard unto them.",
+  "ref": "Ezekiel 38:7"
+ },
+ {
+  "id": "ezekiel-38-h-03",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the land lack that Gog thinks makes it easy prey?",
+  "choices": [
+   "Horses and chariots",
+   "Bars and gates",
+   "Wells and cisterns",
+   "Priests and kings"
+  ],
+  "answer": 1,
+  "explanation": "They dwell without walls, and having neither bars nor gates.",
+  "ref": "Ezekiel 38:11"
+ },
+ {
+  "id": "ezekiel-38-h-04",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the merchants of Tarshish bring with them in the question to Gog?",
+  "choices": [
+   "Their young lions",
+   "Their ships",
+   "Their silver",
+   "Their camels"
+  ],
+  "answer": 0,
+  "explanation": "Sheba, Dedan, and the merchants of Tarshish, with all the young lions thereof.",
+  "ref": "Ezekiel 38:13"
+ },
+ {
+  "id": "ezekiel-38-h-05",
+  "chapter": 38,
+  "level": "hard",
+  "category": "person",
+  "question": "In whom does God say he will be sanctified before the eyes of the heathen?",
+  "choices": [
+   "Israel",
+   "Magog",
+   "The merchants",
+   "Gog"
+  ],
+  "answer": 3,
+  "explanation": "The heathen may know me, when I shall be sanctified in thee, O Gog, before their eyes.",
+  "ref": "Ezekiel 38:16"
+ },
+ {
+  "id": "ezekiel-38-h-06",
+  "chapter": 38,
+  "level": "hard",
+  "category": "place",
+  "question": "Where will God call for a sword against Gog?",
+  "choices": [
+   "At the gates of Jerusalem",
+   "In the valley of Hinnom",
+   "Throughout all my mountains",
+   "In the wilderness"
+  ],
+  "answer": 2,
+  "explanation": "I will call for a sword against him throughout all my mountains.",
+  "ref": "Ezekiel 38:21"
+ },
+ {
+  "id": "ezekiel-38-h-07",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do Gog's soldiers carry besides swords?",
+  "choices": [
+   "Bows and slings",
+   "Bucklers and shields",
+   "Chariots of iron",
+   "Spears of brass"
+  ],
+  "answer": 1,
+  "explanation": "A great company with bucklers and shields, all of them handling swords.",
+  "ref": "Ezekiel 38:4"
+ },
+ {
+  "id": "ezekiel-38-h-08",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God ask Gog about the day Israel dwells safely?",
+  "choices": [
+   "Wilt thou not repent?",
+   "Shalt thou not know it?",
+   "Who shall stand before thee?",
+   "Where is thy army?"
+  ],
+  "answer": 1,
+  "explanation": "In that day when my people of Israel dwelleth safely, shalt thou not know it?",
+  "ref": "Ezekiel 38:14"
+ },
+ {
+  "id": "ezekiel-38-h-09",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are Gog's soldiers riding?",
+  "choices": [
+   "In chariots",
+   "On camels",
+   "Upon horses",
+   "On foot"
+  ],
+  "answer": 2,
+  "explanation": "Many people with thee, all of them riding upon horses, a great company, and a mighty army.",
+  "ref": "Ezekiel 38:15"
+ },
+ {
+  "id": "ezekiel-38-h-10",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God say he will do to be known in the eyes of many nations?",
+  "choices": [
+   "Send a prophet",
+   "Magnify and sanctify myself",
+   "Build a new temple",
+   "Raise a king"
+  ],
+  "answer": 1,
+  "explanation": "Thus will I magnify myself, and sanctify myself, and I will be known in the eyes of many nations.",
+  "ref": "Ezekiel 38:23"
+ },
+ {
+  "id": "ezekiel-38-h-11",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to the mountains in the great shaking?",
+  "choices": [
+   "They are covered with snow",
+   "They become a plain of gold",
+   "They are thrown down",
+   "They are moved to the sea"
+  ],
+  "answer": 2,
+  "explanation": "The mountains shall be thrown down, and the steep places shall fall.",
+  "ref": "Ezekiel 38:20"
+ },
+ {
+  "id": "ezekiel-38-h-12",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God declare to Gog when Ezekiel sets his face against him?",
+  "choices": [
+   "Behold, I am against thee",
+   "Behold, I have chosen thee",
+   "Behold, I will bless thee",
+   "Behold, I am with thee"
+  ],
+  "answer": 0,
+  "explanation": "Thus saith the Lord GOD; Behold I am against thee, O Gog.",
+  "ref": "Ezekiel 38:3"
+ },
+ {
+  "id": "ezekiel-39-e-11",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will God smite out of Gog's left hand?",
+  "choices": [
+   "His bow",
+   "His sword",
+   "His shield",
+   "His spear"
+  ],
+  "answer": 0,
+  "explanation": "I will smite thy bow out of thy left hand, and cause thine arrows to fall out of thy right hand.",
+  "ref": "Ezekiel 39:3"
+ },
+ {
+  "id": "ezekiel-39-e-12",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who will devour Gog's fallen army?",
+  "choices": [
+   "The sons of Israel",
+   "Ravenous birds and beasts of the field",
+   "The priests",
+   "The sea"
+  ],
+  "answer": 1,
+  "explanation": "I will give thee unto the ravenous birds of every sort, and to the beasts of the field to be devoured.",
+  "ref": "Ezekiel 39:4"
+ },
+ {
+  "id": "ezekiel-39-e-13",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does God say Gog will fall?",
+  "choices": [
+   "Within the walls of Jerusalem",
+   "On a ship at sea",
+   "Upon the open field",
+   "In the temple court"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt fall upon the open field: for I have spoken it.",
+  "ref": "Ezekiel 39:5"
+ },
+ {
+  "id": "ezekiel-39-e-14",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "place",
+  "question": "On whom will God send a fire?",
+  "choices": [
+   "Magog and those who dwell carelessly in the isles",
+   "Egypt and Edom",
+   "Tyre and Sidon",
+   "Babylon and Persia"
+  ],
+  "answer": 0,
+  "explanation": "I will send a fire on Magog, and among them that dwell carelessly in the isles.",
+  "ref": "Ezekiel 39:6"
+ },
+ {
+  "id": "ezekiel-39-e-15",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "place",
+  "question": "What name is given to the valley where Gog is buried?",
+  "choices": [
+   "The valley of Jehoshaphat",
+   "The valley of Achor",
+   "The valley of Slaughter",
+   "The valley of Hamon-gog"
+  ],
+  "answer": 3,
+  "explanation": "They shall bury Gog and all his multitude, and call it The valley of Hamon-gog.",
+  "ref": "Ezekiel 39:11"
+ },
+ {
+  "id": "ezekiel-39-e-16",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who will bury Gog's multitude?",
+  "choices": [
+   "The priests alone",
+   "All the people of the land",
+   "Strangers from Egypt",
+   "The army of Judah"
+  ],
+  "answer": 1,
+  "explanation": "All the people of the land shall bury them.",
+  "ref": "Ezekiel 39:13"
+ },
+ {
+  "id": "ezekiel-39-e-17",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who does God invite to gather to his great sacrifice upon the mountains of Israel?",
+  "choices": [
+   "Every feathered fowl and every beast of the field",
+   "The elders of Israel",
+   "The kings of the nations",
+   "The priests and Levites"
+  ],
+  "answer": 0,
+  "explanation": "Speak unto every feathered fowl, and to every beast of the field, Assemble yourselves.",
+  "ref": "Ezekiel 39:17"
+ },
+ {
+  "id": "ezekiel-39-e-18",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the house of Israel go into captivity, as the heathen will know?",
+  "choices": [
+   "For the sins of their kings only",
+   "Because of a famine",
+   "For their iniquity",
+   "Because God forgot them"
+  ],
+  "answer": 2,
+  "explanation": "The heathen shall know that Israel went into captivity for their iniquity.",
+  "ref": "Ezekiel 39:23"
+ },
+ {
+  "id": "ezekiel-39-e-19",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will God do for the whole house of Israel after their captivity?",
+  "choices": [
+   "Make them a nation of conquerors",
+   "Bring again the captivity of Jacob and have mercy",
+   "Give them a new king from Egypt",
+   "Send them to the isles"
+  ],
+  "answer": 1,
+  "explanation": "Now will I bring again the captivity of Jacob, and have mercy upon the whole house of Israel.",
+  "ref": "Ezekiel 39:25"
+ },
+ {
+  "id": "ezekiel-39-e-20",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has God poured out upon the house of Israel?",
+  "choices": [
+   "His wrath only",
+   "Oil from heaven",
+   "Water from the rock",
+   "His spirit"
+  ],
+  "answer": 3,
+  "explanation": "I have poured out my spirit upon the house of Israel.",
+  "ref": "Ezekiel 39:29"
+ },
+ {
+  "id": "ezekiel-39-m-01",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much of Gog's army will God leave?",
+  "choices": [
+   "The sixth part",
+   "The half",
+   "The tenth part",
+   "The third part"
+  ],
+  "answer": 0,
+  "explanation": "I will turn thee back, and leave but the sixth part of thee.",
+  "ref": "Ezekiel 39:2"
+ },
+ {
+  "id": "ezekiel-39-m-02",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long will Israel burn the enemy weapons?",
+  "choices": [
+   "Seven days",
+   "Forty days",
+   "Seven years",
+   "Seven months"
+  ],
+  "answer": 2,
+  "explanation": "They shall burn the weapons with fire seven years.",
+  "ref": "Ezekiel 39:9"
+ },
+ {
+  "id": "ezekiel-39-m-03",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will they take no wood from the field or the forests?",
+  "choices": [
+   "They have no axes",
+   "They burn the weapons for fuel",
+   "The wood is cursed",
+   "The trees are holy"
+  ],
+  "answer": 1,
+  "explanation": "They shall take no wood out of the field, for they shall burn the weapons with fire.",
+  "ref": "Ezekiel 39:10"
+ },
+ {
+  "id": "ezekiel-39-m-04",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will Israel do to those who spoiled and robbed them?",
+  "choices": [
+   "Spoil and rob them in return",
+   "Make a treaty with them",
+   "Send them away in peace",
+   "Sell them as servants"
+  ],
+  "answer": 0,
+  "explanation": "They shall spoil those that spoiled them, and rob those that robbed them.",
+  "ref": "Ezekiel 39:10"
+ },
+ {
+  "id": "ezekiel-39-m-05",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the burial ground do to the passengers passing by?",
+  "choices": [
+   "Close their eyes",
+   "Make them weep",
+   "Turn them back",
+   "Stop their noses"
+  ],
+  "answer": 3,
+  "explanation": "It shall stop the noses of the passengers.",
+  "ref": "Ezekiel 39:11"
+ },
+ {
+  "id": "ezekiel-39-m-06",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the burying be to the people of the land?",
+  "choices": [
+   "A renown on the day God is glorified",
+   "A shame for seven years",
+   "A burden of the priests",
+   "A secret kept"
+  ],
+  "answer": 0,
+  "explanation": "It shall be to them a renown the day that I shall be glorified.",
+  "ref": "Ezekiel 39:13"
+ },
+ {
+  "id": "ezekiel-39-m-07",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom will they sever out to bury those who remain?",
+  "choices": [
+   "The elders of the city",
+   "Men of continual employment",
+   "The sons of Levi",
+   "The captives of war"
+  ],
+  "answer": 1,
+  "explanation": "They shall sever out men of continual employment, to bury those that remain.",
+  "ref": "Ezekiel 39:14"
+ },
+ {
+  "id": "ezekiel-39-m-08",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does a passerby do when he sees a man's bone?",
+  "choices": [
+   "Buries it at once",
+   "Burns it in fire",
+   "Sets up a sign by it",
+   "Carries it to the temple"
+  ],
+  "answer": 2,
+  "explanation": "When any seeth a man's bone, he shall set up a sign by it, till the buriers have buried it.",
+  "ref": "Ezekiel 39:15"
+ },
+ {
+  "id": "ezekiel-39-m-09",
+  "chapter": 39,
+  "level": "medium",
+  "category": "place",
+  "question": "What shall be the name of the city?",
+  "choices": [
+   "Hamonah",
+   "Hamon-gog",
+   "Tirzah",
+   "Salem"
+  ],
+  "answer": 0,
+  "explanation": "The name of the city shall be Hamonah.",
+  "ref": "Ezekiel 39:16"
+ },
+ {
+  "id": "ezekiel-39-m-10",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose flesh will the birds and beasts eat and whose blood drink?",
+  "choices": [
+   "The flocks of Israel",
+   "The mighty and the princes of the earth",
+   "The idols of Gog",
+   "The prophets"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall eat the flesh of the mighty, and drink the blood of the princes of the earth.",
+  "ref": "Ezekiel 39:18"
+ },
+ {
+  "id": "ezekiel-39-m-11",
+  "chapter": 39,
+  "level": "medium",
+  "category": "place",
+  "question": "The fatlings of which region are named in God's sacrifice?",
+  "choices": [
+   "Gilead",
+   "Carmel",
+   "Sharon",
+   "Bashan"
+  ],
+  "answer": 3,
+  "explanation": "Rams, lambs, goats, bullocks, all of them fatlings of Bashan.",
+  "ref": "Ezekiel 39:18"
+ },
+ {
+  "id": "ezekiel-39-m-12",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who will fill God's table with horses and chariots?",
+  "choices": [
+   "The princes of Israel",
+   "The sons of Levi",
+   "The birds and beasts",
+   "The merchants of Tarshish"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall be filled at my table with horses and chariots, with mighty men, and all men of war.",
+  "ref": "Ezekiel 39:20"
+ },
+ {
+  "id": "ezekiel-39-m-13",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will God not let Israel do to his holy name any more?",
+  "choices": [
+   "Pollute it",
+   "Forget it",
+   "Speak it",
+   "Write it"
+  ],
+  "answer": 0,
+  "explanation": "I will not let them pollute my holy name any more.",
+  "ref": "Ezekiel 39:7"
+ },
+ {
+  "id": "ezekiel-39-m-14",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God do with his face when Israel trespassed?",
+  "choices": [
+   "Turned it toward them",
+   "Hid it from them",
+   "Covered it with a cloud",
+   "Set it against Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Because they trespassed against me, therefore hid I my face from them.",
+  "ref": "Ezekiel 39:23"
+ },
+ {
+  "id": "ezekiel-39-m-15",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God say of the day he spoke about?",
+  "choices": [
+   "It is far off",
+   "It is hidden",
+   "It is delayed",
+   "It is come, and it is done"
+  ],
+  "answer": 3,
+  "explanation": "Behold, it is come, and it is done, saith the Lord GOD; this is the day whereof I have spoken.",
+  "ref": "Ezekiel 39:8"
+ },
+ {
+  "id": "ezekiel-39-h-01",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of which hand will the arrows fall?",
+  "choices": [
+   "The right hand",
+   "The left hand",
+   "Both hands",
+   "His horseman's hand"
+  ],
+  "answer": 0,
+  "explanation": "I will cause thine arrows to fall out of thy right hand.",
+  "ref": "Ezekiel 39:3"
+ },
+ {
+  "id": "ezekiel-39-h-02",
+  "chapter": 39,
+  "level": "hard",
+  "category": "place",
+  "question": "Where does the valley of Gog's graves lie?",
+  "choices": [
+   "East of the sea",
+   "West of Jerusalem",
+   "North of Magog",
+   "South of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "The valley of the passengers on the east of the sea.",
+  "ref": "Ezekiel 39:11"
+ },
+ {
+  "id": "ezekiel-39-h-03",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When will those men of employment search?",
+  "choices": [
+   "After seven years",
+   "After forty days",
+   "After the end of seven months",
+   "After the first month"
+  ],
+  "answer": 2,
+  "explanation": "After the end of seven months shall they search.",
+  "ref": "Ezekiel 39:14"
+ },
+ {
+  "id": "ezekiel-39-h-04",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what title does God say the heathen shall know him in Israel?",
+  "choices": [
+   "The Holy One in Israel",
+   "The Mighty One of Jacob",
+   "The King of Zion",
+   "The Rock of Judah"
+  ],
+  "answer": 0,
+  "explanation": "The heathen shall know that I am the LORD, the Holy One in Israel.",
+  "ref": "Ezekiel 39:7"
+ },
+ {
+  "id": "ezekiel-39-h-05",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What weapons are burned along with the shields and bucklers?",
+  "choices": [
+   "Chariots and horses",
+   "Harps and trumpets",
+   "Helmets and breastplates",
+   "Bows, arrows, handstaves and spears"
+  ],
+  "answer": 3,
+  "explanation": "They shall burn the shields, the bucklers, the bows and the arrows, the handstaves, and the spears.",
+  "ref": "Ezekiel 39:9"
+ },
+ {
+  "id": "ezekiel-39-h-06",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the birds and beasts drink till they are drunken?",
+  "choices": [
+   "Blood",
+   "Wine",
+   "Water",
+   "Oil"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall eat fat till ye be full, and drink blood till ye be drunken.",
+  "ref": "Ezekiel 39:19"
+ },
+ {
+  "id": "ezekiel-39-h-07",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God call the great feast he prepares upon the mountains of Israel?",
+  "choices": [
+   "My passover",
+   "My feast of weeks",
+   "My sacrifice",
+   "My offering of peace"
+  ],
+  "answer": 2,
+  "explanation": "A great sacrifice upon the mountains of Israel, that ye may eat flesh, and drink blood.",
+  "ref": "Ezekiel 39:17"
+ },
+ {
+  "id": "ezekiel-39-h-08",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will all the heathen see that God has laid upon them?",
+  "choices": [
+   "His hand and his judgment",
+   "His glory and his rest",
+   "His rod and his staff",
+   "His peace and his gift"
+  ],
+  "answer": 0,
+  "explanation": "All the heathen shall see my judgment that I have executed, and my hand that I have laid upon them.",
+  "ref": "Ezekiel 39:21"
+ },
+ {
+  "id": "ezekiel-39-h-09",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From when will Israel know the LORD is their God?",
+  "choices": [
+   "From the day of the exile",
+   "From that day and forward",
+   "From the day of the temple's fall",
+   "From the seventh month"
+  ],
+  "answer": 1,
+  "explanation": "The house of Israel shall know that I am the LORD their God from that day and forward.",
+  "ref": "Ezekiel 39:22"
+ },
+ {
+  "id": "ezekiel-39-h-10",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to what did God deal with Israel in captivity?",
+  "choices": [
+   "According to their uncleanness and transgressions",
+   "According to the prayers of the priests",
+   "According to the will of the kings",
+   "According to the covenant of Moses"
+  ],
+  "answer": 0,
+  "explanation": "According to their uncleanness and according to their transgressions have I done unto them.",
+  "ref": "Ezekiel 39:24"
+ },
+ {
+  "id": "ezekiel-39-h-11",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God say he will be jealous for?",
+  "choices": [
+   "His holy name",
+   "His holy city",
+   "His holy mountain",
+   "His holy day"
+  ],
+  "answer": 0,
+  "explanation": "Now will I be jealous for my holy name.",
+  "ref": "Ezekiel 39:25"
+ },
+ {
+  "id": "ezekiel-39-h-12",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will Israel have borne before they are brought back?",
+  "choices": [
+   "The yoke of Egypt",
+   "The curse of the law",
+   "Their shame and their trespasses",
+   "The sword of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "After that they have borne their shame, and all their trespasses.",
+  "ref": "Ezekiel 39:26"
+ },
+ {
+  "id": "ezekiel-39-h-13",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How had Israel dwelt in their land when they trespassed, as the chapter says?",
+  "choices": [
+   "In poverty and hunger",
+   "Safely, with none to make them afraid",
+   "Under foreign kings",
+   "Behind great walls"
+  ],
+  "answer": 1,
+  "explanation": "They dwelt safely in their land, and none made them afraid.",
+  "ref": "Ezekiel 39:26"
+ },
+ {
+  "id": "ezekiel-39-h-14",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of Israel will God leave in captivity among the heathen?",
+  "choices": [
+   "None of them any more",
+   "Half of them",
+   "Only the old",
+   "A tenth part"
+  ],
+  "answer": 0,
+  "explanation": "I have gathered them unto their own land, and have left none of them any more there.",
+  "ref": "Ezekiel 39:28"
+ },
+ {
+  "id": "ezekiel-39-h-15",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose sight will God be sanctified in his people?",
+  "choices": [
+   "The elders only",
+   "The priests of Zadok",
+   "Many nations",
+   "Gog's children"
+  ],
+  "answer": 2,
+  "explanation": "I am sanctified in them in the sight of many nations.",
+  "ref": "Ezekiel 39:27"
+ },
+ {
+  "id": "ezekiel-40-e-11",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the man standing in the gate look like?",
+  "choices": [
+   "Like the appearance of brass",
+   "Like a flame of fire",
+   "Like a child",
+   "Like an angel in white"
+  ],
+  "answer": 0,
+  "explanation": "There was a man, whose appearance was like the appearance of brass, with a line of flax and a measuring reed.",
+  "ref": "Ezekiel 40:3"
+ },
+ {
+  "id": "ezekiel-40-m-01",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the man with the measuring reed stand?",
+  "choices": [
+   "On the wall",
+   "In the gate",
+   "By the altar",
+   "At the river"
+  ],
+  "answer": 1,
+  "explanation": "He stood in the gate, with a line of flax in his hand, and a measuring reed.",
+  "ref": "Ezekiel 40:3"
+ },
+ {
+  "id": "ezekiel-40-m-02",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was in the outward court round about?",
+  "choices": [
+   "A garden of palms",
+   "A great pool",
+   "A pavement with chambers upon it",
+   "A row of idols"
+  ],
+  "answer": 2,
+  "explanation": "There were chambers, and a pavement made for the court round about: thirty chambers were upon the pavement.",
+  "ref": "Ezekiel 40:17"
+ },
+ {
+  "id": "ezekiel-40-m-03",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was upon each post of the gate?",
+  "choices": [
+   "Palm trees",
+   "Cherubim",
+   "Lions",
+   "Pomegranates"
+  ],
+  "answer": 0,
+  "explanation": "Upon each post were palm trees.",
+  "ref": "Ezekiel 40:16"
+ },
+ {
+  "id": "ezekiel-40-m-04",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done in the chambers by the posts of the gates?",
+  "choices": [
+   "They stored the weapons",
+   "They kept the king's guard",
+   "They taught the people",
+   "They washed the burnt offering"
+  ],
+  "answer": 3,
+  "explanation": "The chambers and entries were by the posts of the gates, where they washed the burnt offering.",
+  "ref": "Ezekiel 40:38"
+ },
+ {
+  "id": "ezekiel-40-h-01",
+  "chapter": 40,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose chambers were in the inner court beside the north gate?",
+  "choices": [
+   "The watchmen",
+   "The singers",
+   "The elders",
+   "The captains"
+  ],
+  "answer": 1,
+  "explanation": "Without the inner gate were the chambers of the singers in the inner court.",
+  "ref": "Ezekiel 40:44"
+ },
+ {
+  "id": "ezekiel-40-h-02",
+  "chapter": 40,
+  "level": "hard",
+  "category": "person",
+  "question": "The chamber toward the south was for which priests?",
+  "choices": [
+   "The keepers of the charge of the house",
+   "The keepers of the charge of the altar",
+   "The singers of the temple",
+   "The captains of the guard"
+  ],
+  "answer": 0,
+  "explanation": "This chamber, whose prospect is toward the south, is for the priests, the keepers of the charge of the house.",
+  "ref": "Ezekiel 40:45"
+ },
+ {
+  "id": "ezekiel-40-h-03",
+  "chapter": 40,
+  "level": "hard",
+  "category": "person",
+  "question": "Who are the priests that keep the charge of the altar?",
+  "choices": [
+   "The sons of Zadok among the sons of Levi",
+   "The sons of Aaron only",
+   "The sons of Gershon",
+   "The sons of Korah"
+  ],
+  "answer": 0,
+  "explanation": "These are the sons of Zadok among the sons of Levi, which come near to the LORD to minister unto him.",
+  "ref": "Ezekiel 40:46"
+ },
+ {
+  "id": "ezekiel-40-h-04",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What stood in the court before the house?",
+  "choices": [
+   "The brazen sea",
+   "The ark",
+   "The altar",
+   "The table of bread"
+  ],
+  "answer": 2,
+  "explanation": "He measured the court, foursquare; and the altar that was before the house.",
+  "ref": "Ezekiel 40:47"
+ },
+ {
+  "id": "ezekiel-40-h-05",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What lay upon the tables of hewn stone?",
+  "choices": [
+   "The garments of the priests",
+   "The flesh of the offering",
+   "The harps of the singers",
+   "The loaves of the presence"
+  ],
+  "answer": 1,
+  "explanation": "Upon the tables was the flesh of the offering.",
+  "ref": "Ezekiel 40:43"
+ },
+ {
+  "id": "ezekiel-40-m-05",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the man tell Ezekiel to set upon all that he would show him?",
+  "choices": [
+   "His hand",
+   "His sword",
+   "His heart",
+   "His face"
+  ],
+  "answer": 2,
+  "explanation": "Set thine heart upon all that I shall shew thee.",
+  "ref": "Ezekiel 40:4"
+ },
+ {
+  "id": "ezekiel-41-e-11",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What stood between each cherub and the next one on the walls?",
+  "choices": [
+   "A palm tree",
+   "A lamp",
+   "A pomegranate",
+   "A lily"
+  ],
+  "answer": 0,
+  "explanation": "A palm tree was between a cherub and a cherub.",
+  "ref": "Ezekiel 41:18"
+ },
+ {
+  "id": "ezekiel-41-m-01",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were carved on the doors of the temple?",
+  "choices": [
+   "Lions and oxen",
+   "Cherubims and palm trees",
+   "Vines and grapes",
+   "Stars and moons"
+  ],
+  "answer": 1,
+  "explanation": "There were made on the doors of the temple cherubims and palm trees, like as were made upon the walls.",
+  "ref": "Ezekiel 41:25"
+ },
+ {
+  "id": "ezekiel-41-m-02",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What ran round about the house, three one over another?",
+  "choices": [
+   "Great pillars",
+   "Water channels",
+   "Side chambers",
+   "Stone steps"
+  ],
+  "answer": 2,
+  "explanation": "The side chambers were three, one over another, and thirty in order.",
+  "ref": "Ezekiel 41:6"
+ },
+ {
+  "id": "ezekiel-41-m-03",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were set on the sides of the porch besides palm trees?",
+  "choices": [
+   "Narrow windows",
+   "Golden lamps",
+   "Carved oxen",
+   "Hanging veils"
+  ],
+  "answer": 0,
+  "explanation": "There were narrow windows and palm trees on the one side and on the other side, on the sides of the porch.",
+  "ref": "Ezekiel 41:26"
+ },
+ {
+  "id": "ezekiel-41-m-04",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What two faces did each cherub show toward the palm trees?",
+  "choices": [
+   "An ox and an eagle",
+   "A man and an ox",
+   "A lion and an eagle",
+   "A man and a young lion"
+  ],
+  "answer": 3,
+  "explanation": "The face of a man was toward the palm tree on one side, and the face of a young lion on the other.",
+  "ref": "Ezekiel 41:19"
+ },
+ {
+  "id": "ezekiel-41-h-01",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shape were the posts of the temple?",
+  "choices": [
+   "Squared",
+   "Round",
+   "Carved like palms",
+   "Hung with gold"
+  ],
+  "answer": 0,
+  "explanation": "The posts of the temple were squared.",
+  "ref": "Ezekiel 41:21"
+ },
+ {
+  "id": "ezekiel-41-h-02",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the side chambers not have hold in?",
+  "choices": [
+   "The floor of the temple",
+   "The roof of the porch",
+   "The wall of the house",
+   "The door of the sanctuary"
+  ],
+  "answer": 2,
+  "explanation": "They entered into the wall of the house, that they might have hold, but they had not hold in the wall of the house.",
+  "ref": "Ezekiel 41:6"
+ },
+ {
+  "id": "ezekiel-41-h-03",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The breadth of the posts was the breadth of what?",
+  "choices": [
+   "The altar",
+   "The tabernacle",
+   "The ark",
+   "The porch"
+  ],
+  "answer": 1,
+  "explanation": "He measured the posts, which was the breadth of the tabernacle.",
+  "ref": "Ezekiel 41:1"
+ },
+ {
+  "id": "ezekiel-41-h-04",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the temple and sanctuary doors made to open?",
+  "choices": [
+   "Two turning leaves for each door",
+   "One sliding slab each",
+   "A curtain of blue",
+   "A single great gate"
+  ],
+  "answer": 0,
+  "explanation": "The doors had two leaves apiece, two turning leaves.",
+  "ref": "Ezekiel 41:24"
+ },
+ {
+  "id": "ezekiel-41-h-05",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was upon the face of the porch without?",
+  "choices": [
+   "Golden plates",
+   "Carved clouds",
+   "Hanging lamps",
+   "Thick planks"
+  ],
+  "answer": 3,
+  "explanation": "There were thick planks upon the face of the porch without.",
+  "ref": "Ezekiel 41:25"
+ },
+ {
+  "id": "ezekiel-41-m-05",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the man call the altar of wood before the LORD?",
+  "choices": [
+   "The altar of burnt offering",
+   "The table that is before the LORD",
+   "The seat of the king",
+   "The ark of the covenant"
+  ],
+  "answer": 1,
+  "explanation": "This is the table that is before the LORD.",
+  "ref": "Ezekiel 41:22"
+ },
+ {
+  "id": "ezekiel-42-e-11",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priests lay in the holy chambers besides the most holy things?",
+  "choices": [
+   "The meat offering, sin offering and trespass offering",
+   "Their swords and spears",
+   "The tithes of silver",
+   "The harps of the singers"
+  ],
+  "answer": 0,
+  "explanation": "There shall they lay the most holy things, and the meat offering, and the sin offering, and the trespass offering.",
+  "ref": "Ezekiel 42:13"
+ },
+ {
+  "id": "ezekiel-42-m-01",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the north and south chambers called?",
+  "choices": [
+   "Chambers of the king",
+   "Holy chambers",
+   "Chambers of the guard",
+   "Chambers of the poor"
+  ],
+  "answer": 1,
+  "explanation": "The north chambers and the south chambers, they be holy chambers.",
+  "ref": "Ezekiel 42:13"
+ },
+ {
+  "id": "ezekiel-42-m-02",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the priests lay in the holy place when they enter it?",
+  "choices": [
+   "Their sandals and staves",
+   "Their crowns and robes of gold",
+   "Their garments wherein they minister",
+   "Their scrolls and trumpets"
+  ],
+  "answer": 2,
+  "explanation": "There they shall lay their garments wherein they minister; for they are holy.",
+  "ref": "Ezekiel 42:14"
+ },
+ {
+  "id": "ezekiel-42-m-03",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the priests put on before they approach the people?",
+  "choices": [
+   "Other garments",
+   "Sackcloth",
+   "Linen of the king",
+   "Armour"
+  ],
+  "answer": 0,
+  "explanation": "They shall put on other garments, and approach to those things which are for the people.",
+  "ref": "Ezekiel 42:14"
+ },
+ {
+  "id": "ezekiel-42-m-04",
+  "chapter": 42,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were the priests not to go out in their holy garments?",
+  "choices": [
+   "Into the inner house",
+   "Into the porch",
+   "Into the city",
+   "Out of the holy place into the utter court"
+  ],
+  "answer": 3,
+  "explanation": "They shall not go out of the holy place into the utter court, but there lay their garments.",
+  "ref": "Ezekiel 42:14"
+ },
+ {
+  "id": "ezekiel-42-h-01",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shape was the walled area measured on all four sides?",
+  "choices": [
+   "Square, equal on every side",
+   "A long rectangle",
+   "A circle",
+   "A triangle"
+  ],
+  "answer": 0,
+  "explanation": "It had a wall round about, five hundred reeds long, and five hundred broad.",
+  "ref": "Ezekiel 42:20"
+ },
+ {
+  "id": "ezekiel-42-h-02",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the three-story chambers not have that the courts had?",
+  "choices": [
+   "Windows",
+   "Pillars",
+   "Doors",
+   "Roofs"
+  ],
+  "answer": 1,
+  "explanation": "They were in three stories, but had not pillars as the pillars of the courts.",
+  "ref": "Ezekiel 42:6"
+ },
+ {
+  "id": "ezekiel-42-h-03",
+  "chapter": 42,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the entry to the chambers as one goes in from the utter court?",
+  "choices": [
+   "On the east side",
+   "On the south side",
+   "On the west side",
+   "On the north side"
+  ],
+  "answer": 0,
+  "explanation": "From under these chambers was the entry on the east side, as one goeth into them from the utter court.",
+  "ref": "Ezekiel 42:9"
+ },
+ {
+  "id": "ezekiel-42-h-04",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Toward which gate did the man bring Ezekiel after measuring the inner house?",
+  "choices": [
+   "The gate whose prospect is toward the east",
+   "The gate toward the south",
+   "The gate toward the north",
+   "The gate toward the west"
+  ],
+  "answer": 0,
+  "explanation": "When he had made an end of measuring the inner house, he brought me forth toward the gate whose prospect is toward the east.",
+  "ref": "Ezekiel 42:15"
+ },
+ {
+  "id": "ezekiel-42-h-05",
+  "chapter": 42,
+  "level": "hard",
+  "category": "place",
+  "question": "Which way did the man first lead Ezekiel into the utter court?",
+  "choices": [
+   "Toward the north",
+   "Toward the south",
+   "Toward the east",
+   "Toward the west"
+  ],
+  "answer": 0,
+  "explanation": "He brought me forth into the utter court, the way toward the north.",
+  "ref": "Ezekiel 42:1"
+ },
+ {
+  "id": "ezekiel-42-m-05",
+  "chapter": 42,
+  "level": "medium",
+  "category": "place",
+  "question": "Where shall the priests who approach the LORD eat the most holy things?",
+  "choices": [
+   "In the inner court",
+   "In the holy chambers north and south",
+   "In the porch of the temple",
+   "In the outer city"
+  ],
+  "answer": 1,
+  "explanation": "The holy chambers are where the priests that approach unto the LORD shall eat the most holy things.",
+  "ref": "Ezekiel 42:13"
+ },
+ {
+  "id": "ezekiel-43-e-11",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the voice of the God of Israel like?",
+  "choices": [
+   "A noise of many waters",
+   "A trumpet",
+   "A still small voice",
+   "Thunder in the mountains"
+  ],
+  "answer": 0,
+  "explanation": "His voice was like a noise of many waters.",
+  "ref": "Ezekiel 43:2"
+ },
+ {
+  "id": "ezekiel-43-e-12",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shined with God's glory when it came from the east?",
+  "choices": [
+   "The temple walls",
+   "The earth",
+   "The sea",
+   "The city of Babylon"
+  ],
+  "answer": 1,
+  "explanation": "The glory of the God of Israel came from the way of the east, and the earth shined with his glory.",
+  "ref": "Ezekiel 43:2"
+ },
+ {
+  "id": "ezekiel-43-e-13",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "place",
+  "question": "By which gate did the glory of the LORD come into the house?",
+  "choices": [
+   "The north gate",
+   "The south gate",
+   "The gate whose prospect is toward the east",
+   "The gate of the inner court"
+  ],
+  "answer": 2,
+  "explanation": "The glory of the LORD came into the house by the way of the gate whose prospect is toward the east.",
+  "ref": "Ezekiel 43:4"
+ },
+ {
+  "id": "ezekiel-43-e-14",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God call the house, where he will dwell among Israel for ever?",
+  "choices": [
+   "The place of my throne and the place of the soles of my feet",
+   "The house of Jacob",
+   "The mountain of Moab",
+   "The city of David"
+  ],
+  "answer": 0,
+  "explanation": "The place of my throne, and the place of the soles of my feet, where I will dwell in the midst of the children of Israel for ever.",
+  "ref": "Ezekiel 43:7"
+ },
+ {
+  "id": "ezekiel-43-e-15",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Ezekiel told to show the house to Israel?",
+  "choices": [
+   "That they may be ashamed of their iniquities",
+   "That they may build a wall",
+   "That they may count their gold",
+   "That they may choose a king"
+  ],
+  "answer": 0,
+  "explanation": "Shew the house to the house of Israel, that they may be ashamed of their iniquities.",
+  "ref": "Ezekiel 43:10"
+ },
+ {
+  "id": "ezekiel-43-e-16",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was to be put on the four horns of the altar to cleanse it?",
+  "choices": [
+   "Blood",
+   "Oil",
+   "Water",
+   "Ashes"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt take of the blood and put it on the four horns of it, thus shalt thou cleanse and purge it.",
+  "ref": "Ezekiel 43:20"
+ },
+ {
+  "id": "ezekiel-43-e-17",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall be offered on the second day to cleanse the altar?",
+  "choices": [
+   "A young bullock",
+   "A ram",
+   "A kid of the goats without blemish",
+   "A lamb"
+  ],
+  "answer": 2,
+  "explanation": "On the second day thou shalt offer a kid of the goats without blemish for a sin offering.",
+  "ref": "Ezekiel 43:22"
+ },
+ {
+  "id": "ezekiel-43-e-18",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For how many days shall they purge the altar and consecrate themselves?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Forty days",
+   "Twelve days"
+  ],
+  "answer": 1,
+  "explanation": "Seven days shall they purge the altar and purify it; and they shall consecrate themselves.",
+  "ref": "Ezekiel 43:26"
+ },
+ {
+  "id": "ezekiel-43-e-19",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God promise when the priests make their offerings from the eighth day?",
+  "choices": [
+   "I will forgive Egypt",
+   "I will rebuild the city",
+   "I will accept you",
+   "I will send a king"
+  ],
+  "answer": 2,
+  "explanation": "Upon the eighth day the priests shall make your offerings, and I will accept you.",
+  "ref": "Ezekiel 43:27"
+ },
+ {
+  "id": "ezekiel-43-e-20",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will God do in the midst of Israel if they put away their sin?",
+  "choices": [
+   "Send a prophet again",
+   "Raise a new wall",
+   "Give them a new law",
+   "Dwell in the midst of them for ever"
+  ],
+  "answer": 3,
+  "explanation": "Let them put away their whoredom far from me, and I will dwell in the midst of them for ever.",
+  "ref": "Ezekiel 43:9"
+ },
+ {
+  "id": "ezekiel-43-m-01",
+  "chapter": 43,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the spirit bring Ezekiel after he saw the glory at the gate?",
+  "choices": [
+   "To the river Chebar",
+   "Into the inner court",
+   "To the mountain of Moab",
+   "Back to Babylon"
+  ],
+  "answer": 1,
+  "explanation": "The spirit took me up, and brought me into the inner court.",
+  "ref": "Ezekiel 43:5"
+ },
+ {
+  "id": "ezekiel-43-m-02",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From where did Ezekiel hear God speaking to him?",
+  "choices": [
+   "Out of the house",
+   "From the mountain",
+   "From a cloud above Babylon",
+   "From the river"
+  ],
+  "answer": 0,
+  "explanation": "I heard him speaking unto me out of the house; and the man stood by me.",
+  "ref": "Ezekiel 43:6"
+ },
+ {
+  "id": "ezekiel-43-m-03",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which earlier visions did the glory resemble?",
+  "choices": [
+   "His coming to destroy the city, and Chebar",
+   "The vision of dry bones",
+   "The vision of the lion",
+   "The vision of the two sticks"
+  ],
+  "answer": 0,
+  "explanation": "The vision was like the vision when I came to destroy the city, and like that by the river Chebar.",
+  "ref": "Ezekiel 43:3"
+ },
+ {
+  "id": "ezekiel-43-m-04",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Israel defiled by setting their threshold by God's thresholds?",
+  "choices": [
+   "His holy name",
+   "His altar of brass",
+   "His mountain",
+   "His ark"
+  ],
+  "answer": 0,
+  "explanation": "They have defiled my holy name by their abominations that they have committed.",
+  "ref": "Ezekiel 43:8"
+ },
+ {
+  "id": "ezekiel-43-m-05",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had God done to Israel because of their abominations?",
+  "choices": [
+   "Sent them to Egypt",
+   "Consumed them in his anger",
+   "Gave them a new king",
+   "Hid the ark"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore I have consumed them in mine anger.",
+  "ref": "Ezekiel 43:8"
+ },
+ {
+  "id": "ezekiel-43-m-06",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezekiel told to do with the form of the house and its laws?",
+  "choices": [
+   "Write it in their sight so they keep and do it",
+   "Hide it until the exile ended",
+   "Bury it under the altar",
+   "Read it only to the priests"
+  ],
+  "answer": 0,
+  "explanation": "Write it in their sight, that they may keep the whole form thereof, and do them.",
+  "ref": "Ezekiel 43:11"
+ },
+ {
+  "id": "ezekiel-43-m-07",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the people of Israel told to measure?",
+  "choices": [
+   "The wall of the city",
+   "The river",
+   "The pattern",
+   "The land of Judah"
+  ],
+  "answer": 2,
+  "explanation": "Let them measure the pattern.",
+  "ref": "Ezekiel 43:10"
+ },
+ {
+  "id": "ezekiel-43-m-08",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be given to the priests of Zadok's seed as a sin offering?",
+  "choices": [
+   "A young bullock",
+   "A lamb",
+   "A pair of doves",
+   "A kid"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt give to the priests the Levites of the seed of Zadok a young bullock for a sin offering.",
+  "ref": "Ezekiel 43:19"
+ },
+ {
+  "id": "ezekiel-43-m-09",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the ordinances of the altar for?",
+  "choices": [
+   "To store the tithes",
+   "To offer burnt offerings and sprinkle blood",
+   "To seat the prince",
+   "To light the lamps"
+  ],
+  "answer": 1,
+  "explanation": "These are the ordinances of the altar to offer burnt offerings thereon, and to sprinkle blood thereon.",
+  "ref": "Ezekiel 43:18"
+ },
+ {
+  "id": "ezekiel-43-m-10",
+  "chapter": 43,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the bullock of the sin offering burned?",
+  "choices": [
+   "In the appointed place of the house, without the sanctuary",
+   "On the altar itself",
+   "In the valley",
+   "By the river"
+  ],
+  "answer": 0,
+  "explanation": "He shall burn it in the appointed place of the house, without the sanctuary.",
+  "ref": "Ezekiel 43:21"
+ },
+ {
+  "id": "ezekiel-43-m-11",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the whole limit of the house on top of the mountain to be?",
+  "choices": [
+   "Most holy",
+   "A place of kings",
+   "Open to all",
+   "A pasture"
+  ],
+  "answer": 0,
+  "explanation": "Upon the top of the mountain the whole limit thereof round about shall be most holy.",
+  "ref": "Ezekiel 43:12"
+ },
+ {
+  "id": "ezekiel-43-m-12",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was shown to Israel, along with the form, the goings out and the comings in?",
+  "choices": [
+   "The treasures of the temple",
+   "The graves of the kings",
+   "The plans of Babylon",
+   "The ordinances and the laws of the house"
+  ],
+  "answer": 3,
+  "explanation": "Shew them the form of the house, the goings out, the comings in, all the ordinances and laws thereof.",
+  "ref": "Ezekiel 43:11"
+ },
+ {
+  "id": "ezekiel-43-m-13",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezekiel do when he saw the vision?",
+  "choices": [
+   "Ran to the gate",
+   "Fell upon his face",
+   "Sang a song",
+   "Offered a bullock"
+  ],
+  "answer": 1,
+  "explanation": "I saw, and I fell upon my face.",
+  "ref": "Ezekiel 43:3"
+ },
+ {
+  "id": "ezekiel-43-m-14",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who stood by Ezekiel while God spoke out of the house?",
+  "choices": [
+   "The man",
+   "An angel with wings",
+   "The prince",
+   "A priest of Zadok"
+  ],
+  "answer": 0,
+  "explanation": "I heard him speaking unto me out of the house; and the man stood by me.",
+  "ref": "Ezekiel 43:6"
+ },
+ {
+  "id": "ezekiel-43-h-01",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What rose from the altar upward?",
+  "choices": [
+   "Four horns",
+   "Four pillars",
+   "Four lamps",
+   "Four steps"
+  ],
+  "answer": 0,
+  "explanation": "From the altar and upward shall be four horns.",
+  "ref": "Ezekiel 43:15"
+ },
+ {
+  "id": "ezekiel-43-h-02",
+  "chapter": 43,
+  "level": "hard",
+  "category": "place",
+  "question": "Which way did the altar's stairs face?",
+  "choices": [
+   "Toward the east",
+   "Toward the west",
+   "Toward the north",
+   "Toward the south"
+  ],
+  "answer": 0,
+  "explanation": "His stairs shall look toward the east.",
+  "ref": "Ezekiel 43:17"
+ },
+ {
+  "id": "ezekiel-43-h-03",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where besides the horns was the blood put?",
+  "choices": [
+   "On the doors of the house",
+   "On the four corners of the settle and upon the border",
+   "On the gate of the east",
+   "On the priests' garments"
+  ],
+  "answer": 1,
+  "explanation": "Put it on the four horns, and on the four corners of the settle, and upon the border round about.",
+  "ref": "Ezekiel 43:20"
+ },
+ {
+  "id": "ezekiel-43-h-04",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was offered after the cleansing was finished?",
+  "choices": [
+   "Two lambs",
+   "A bullock and a goat",
+   "A young bullock and a ram without blemish",
+   "Two rams"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt offer a young bullock without blemish, and a ram out of the flock without blemish.",
+  "ref": "Ezekiel 43:23"
+ },
+ {
+  "id": "ezekiel-43-h-05",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was prepared every day for the seven days?",
+  "choices": [
+   "A goat for a sin offering",
+   "A lamb for a peace offering",
+   "A dove for a burnt offering",
+   "A bullock for a drink offering"
+  ],
+  "answer": 0,
+  "explanation": "Seven days shalt thou prepare every day a goat for a sin offering.",
+  "ref": "Ezekiel 43:25"
+ },
+ {
+  "id": "ezekiel-43-h-06",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What lies between God and Israel because of their thresholds and posts?",
+  "choices": [
+   "A river of fire",
+   "A veil of blue",
+   "A gate of brass",
+   "The wall between me and them"
+  ],
+  "answer": 3,
+  "explanation": "Their setting of their threshold by my thresholds, and the wall between me and them.",
+  "ref": "Ezekiel 43:8"
+ },
+ {
+  "id": "ezekiel-43-h-07",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose carcases were in their high places?",
+  "choices": [
+   "Their prophets",
+   "Their kings",
+   "Their priests",
+   "Their captives"
+  ],
+  "answer": 1,
+  "explanation": "The carcases of their kings in their high places.",
+  "ref": "Ezekiel 43:7"
+ },
+ {
+  "id": "ezekiel-43-h-08",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what condition was Ezekiel to show Israel the form of the house?",
+  "choices": [
+   "If they be ashamed of all they have done",
+   "If they offer a bullock",
+   "If they ask for it",
+   "If they return from Babylon"
+  ],
+  "answer": 0,
+  "explanation": "If they be ashamed of all that they have done, shew them the form of the house.",
+  "ref": "Ezekiel 43:11"
+ },
+ {
+  "id": "ezekiel-43-h-09",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When do the ordinances of the altar apply?",
+  "choices": [
+   "In the day when they shall make it",
+   "When the prince returns",
+   "At the new moon",
+   "At the end of seven years"
+  ],
+  "answer": 0,
+  "explanation": "These are the ordinances of the altar in the day when they shall make it.",
+  "ref": "Ezekiel 43:18"
+ },
+ {
+  "id": "ezekiel-43-h-10",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the seed of Zadok approach God to do?",
+  "choices": [
+   "Minister unto him",
+   "Rule the city",
+   "Judge the nations",
+   "Guard the east gate"
+  ],
+  "answer": 0,
+  "explanation": "The seed of Zadok approach unto me, to minister unto me.",
+  "ref": "Ezekiel 43:19"
+ },
+ {
+  "id": "ezekiel-43-h-11",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From which day do the priests make the burnt and peace offerings?",
+  "choices": [
+   "The eighth day and so forward",
+   "The first day of the year",
+   "The day of the new moon",
+   "The seventh day"
+  ],
+  "answer": 0,
+  "explanation": "Upon the eighth day, and so forward, the priests shall make your burnt offerings.",
+  "ref": "Ezekiel 43:27"
+ },
+ {
+  "id": "ezekiel-43-h-12",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what condition must the young bullock and ram be?",
+  "choices": [
+   "Without blemish",
+   "Spotted",
+   "Newly weaned",
+   "Of the first litter"
+  ],
+  "answer": 0,
+  "explanation": "A young bullock without blemish, and a ram out of the flock without blemish.",
+  "ref": "Ezekiel 43:23"
+ },
+ {
+  "id": "ezekiel-43-h-13",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priests cast upon the offerings before offering them up?",
+  "choices": [
+   "Oil",
+   "Wine",
+   "Salt",
+   "Incense"
+  ],
+  "answer": 2,
+  "explanation": "The priests shall cast salt upon them, and they shall offer them up for a burnt offering.",
+  "ref": "Ezekiel 43:24"
+ },
+ {
+  "id": "ezekiel-43-h-14",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the altar cleansed on the second day?",
+  "choices": [
+   "As it was cleansed with the bullock",
+   "With water from the river",
+   "With oil of anointing",
+   "With fire from heaven"
+  ],
+  "answer": 0,
+  "explanation": "They shall cleanse the altar, as they did cleanse it with the bullock.",
+  "ref": "Ezekiel 43:22"
+ },
+ {
+  "id": "ezekiel-44-e-11",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why must the east gate stay shut?",
+  "choices": [
+   "Because it was broken in the siege",
+   "Because the LORD, the God of Israel, entered in by it",
+   "Because Babylon had burned it",
+   "Because the people had forgotten it"
+  ],
+  "answer": 1,
+  "explanation": "The LORD, the God of Israel, hath entered in by it, therefore it shall be shut.",
+  "ref": "Ezekiel 44:2"
+ },
+ {
+  "id": "ezekiel-44-e-12",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezekiel see filling the house at the north gate?",
+  "choices": [
+   "The glory of the LORD",
+   "Smoke and fire",
+   "A great cloud of locusts",
+   "The priests at prayer"
+  ],
+  "answer": 0,
+  "explanation": "I looked, and behold, the glory of the LORD filled the house of the LORD: and I fell upon my face.",
+  "ref": "Ezekiel 44:4"
+ },
+ {
+  "id": "ezekiel-44-e-13",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom had Israel brought into God's sanctuary to pollute it?",
+  "choices": [
+   "Kings from Babylon",
+   "Captive priests",
+   "Idols of gold",
+   "Strangers, uncircumcised in heart and flesh"
+  ],
+  "answer": 3,
+  "explanation": "Ye have brought into my sanctuary strangers, uncircumcised in heart, and uncircumcised in flesh.",
+  "ref": "Ezekiel 44:7"
+ },
+ {
+  "id": "ezekiel-44-e-14",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who may now enter God's sanctuary?",
+  "choices": [
+   "Any visitor from the nations",
+   "Only the king's household",
+   "No stranger uncircumcised in heart or flesh",
+   "Every captive soldier"
+  ],
+  "answer": 2,
+  "explanation": "No stranger, uncircumcised in heart, nor uncircumcised in flesh, shall enter into my sanctuary.",
+  "ref": "Ezekiel 44:9"
+ },
+ {
+  "id": "ezekiel-44-e-15",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall the Levites who went astray be as ministers in the sanctuary?",
+  "choices": [
+   "Priests at the most holy place",
+   "Judges of the land",
+   "Gate keepers who slay the burnt offering",
+   "Princes of the city"
+  ],
+  "answer": 2,
+  "explanation": "They shall be ministers in my sanctuary, having charge at the gates, and shall slay the burnt offering for the people.",
+  "ref": "Ezekiel 44:11"
+ },
+ {
+  "id": "ezekiel-44-e-16",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did God lift up his hand against those Levites?",
+  "choices": [
+   "They refused to leave Egypt",
+   "They served idols and made Israel fall",
+   "They sold the temple gold",
+   "They would not teach the law"
+  ],
+  "answer": 1,
+  "explanation": "Because they ministered unto them before their idols, therefore have I lifted up mine hand against them.",
+  "ref": "Ezekiel 44:12"
+ },
+ {
+  "id": "ezekiel-44-e-17",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of garments shall the priests wear in the inner court gates?",
+  "choices": [
+   "Linen, with no wool",
+   "Wool dyed blue",
+   "Garments of gold",
+   "Sackcloth"
+  ],
+  "answer": 0,
+  "explanation": "They shall be clothed with linen garments; and no wool shall come upon them.",
+  "ref": "Ezekiel 44:17"
+ },
+ {
+  "id": "ezekiel-44-e-18",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall no priest drink when entering the inner court?",
+  "choices": [
+   "Water from the river",
+   "Milk",
+   "Oil",
+   "Wine"
+  ],
+  "answer": 3,
+  "explanation": "Neither shall any priest drink wine, when they enter into the inner court.",
+  "ref": "Ezekiel 44:21"
+ },
+ {
+  "id": "ezekiel-44-e-19",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom may the priests take as wives?",
+  "choices": [
+   "Any foreign woman",
+   "Any widow of the land",
+   "A divorced woman",
+   "Maidens of Israel, or a widow of a priest"
+  ],
+  "answer": 3,
+  "explanation": "They shall take maidens of the seed of the house of Israel, or a widow that had a priest before.",
+  "ref": "Ezekiel 44:22"
+ },
+ {
+  "id": "ezekiel-44-e-20",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say is the inheritance of the priests?",
+  "choices": [
+   "The land of Judah",
+   "The king's treasure",
+   "I am their inheritance",
+   "The city of Zion"
+  ],
+  "answer": 2,
+  "explanation": "It shall be unto them for an inheritance: I am their inheritance: ye shall give them no possession in Israel.",
+  "ref": "Ezekiel 44:28"
+ },
+ {
+  "id": "ezekiel-44-m-01",
+  "chapter": 44,
+  "level": "medium",
+  "category": "person",
+  "question": "Who shall bear their iniquity for going away from God after idols?",
+  "choices": [
+   "The princes",
+   "The Levites",
+   "The kings of Babylon",
+   "The sons of Zadok"
+  ],
+  "answer": 1,
+  "explanation": "The Levites that are gone away far from me shall even bear their iniquity.",
+  "ref": "Ezekiel 44:10"
+ },
+ {
+  "id": "ezekiel-44-m-02",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the Levites not be allowed to do?",
+  "choices": [
+   "Come near to do the office of a priest",
+   "Slay the burnt offering",
+   "Keep the gates",
+   "Minister to the people"
+  ],
+  "answer": 0,
+  "explanation": "They shall not come near unto me, to do the office of a priest, nor to come near any of my holy things.",
+  "ref": "Ezekiel 44:13"
+ },
+ {
+  "id": "ezekiel-44-m-03",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will God make the Levites who went astray?",
+  "choices": [
+   "Keepers of the charge of the house",
+   "Priests of the altar",
+   "Judges in Israel",
+   "Princes of the tribes"
+  ],
+  "answer": 0,
+  "explanation": "I will make them keepers of the charge of the house, for all the service thereof.",
+  "ref": "Ezekiel 44:14"
+ },
+ {
+  "id": "ezekiel-44-m-04",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where do the priests lay their garments of ministry?",
+  "choices": [
+   "In the river",
+   "On the altar",
+   "At the east gate",
+   "In the holy chambers"
+  ],
+  "answer": 3,
+  "explanation": "They shall put off their garments wherein they ministered, and lay them in the holy chambers.",
+  "ref": "Ezekiel 44:19"
+ },
+ {
+  "id": "ezekiel-44-m-05",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the priests wear on their heads and loins?",
+  "choices": [
+   "Golden crowns and girdles",
+   "Turbans of blue",
+   "Linen bonnets and linen breeches",
+   "Helmets of brass"
+  ],
+  "answer": 2,
+  "explanation": "They shall have linen bonnets upon their heads, and linen breeches upon their loins.",
+  "ref": "Ezekiel 44:18"
+ },
+ {
+  "id": "ezekiel-44-m-06",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the priests not to gird themselves with?",
+  "choices": [
+   "Anything of wool",
+   "Anything that causeth sweat",
+   "Anything of gold",
+   "Anything with a seal"
+  ],
+  "answer": 1,
+  "explanation": "They shall not gird themselves with any thing that causeth sweat.",
+  "ref": "Ezekiel 44:18"
+ },
+ {
+  "id": "ezekiel-44-m-07",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the priests to do with their hair?",
+  "choices": [
+   "Shave them entirely",
+   "Only poll their heads, neither shave nor let them grow long",
+   "Let them grow long as vows",
+   "Cover them with ashes"
+  ],
+  "answer": 1,
+  "explanation": "Neither shall they shave their heads, nor suffer their locks to grow long; they shall only poll their heads.",
+  "ref": "Ezekiel 44:20"
+ },
+ {
+  "id": "ezekiel-44-m-08",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the priests do in a controversy?",
+  "choices": [
+   "Stand in judgment and judge by God's judgments",
+   "Send it to the prince",
+   "Cast lots",
+   "Hand it to the elders"
+  ],
+  "answer": 0,
+  "explanation": "In controversy they shall stand in judgment; and they shall judge it according to my judgments.",
+  "ref": "Ezekiel 44:24"
+ },
+ {
+  "id": "ezekiel-44-m-09",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which days shall the priests hallow?",
+  "choices": [
+   "The harvest feasts only",
+   "The new year",
+   "The days of Passover only",
+   "My sabbaths"
+  ],
+  "answer": 3,
+  "explanation": "They shall keep my laws and my statutes in all mine assemblies; and they shall hallow my sabbaths.",
+  "ref": "Ezekiel 44:24"
+ },
+ {
+  "id": "ezekiel-44-m-10",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the priests not to do concerning a dead person?",
+  "choices": [
+   "Speak the law over him",
+   "Bury him in the temple",
+   "Come near to defile themselves, except for close kin",
+   "Offer a sacrifice for him"
+  ],
+  "answer": 2,
+  "explanation": "They shall come at no dead person to defile themselves: but for father, mother, son, daughter, brother, or sister they may.",
+  "ref": "Ezekiel 44:25"
+ },
+ {
+  "id": "ezekiel-44-m-11",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long shall a priest be reckoned unclean after he is cleansed from a dead person?",
+  "choices": [
+   "Three days",
+   "One month",
+   "Seven days",
+   "Until the evening"
+  ],
+  "answer": 2,
+  "explanation": "After he is cleansed, they shall reckon unto him seven days.",
+  "ref": "Ezekiel 44:26"
+ },
+ {
+  "id": "ezekiel-44-m-12",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the priests eat?",
+  "choices": [
+   "The firstborn of the flock",
+   "The meat offering, sin offering and trespass offering",
+   "The bread of the king",
+   "Fruits of the vineyard"
+  ],
+  "answer": 1,
+  "explanation": "They shall eat the meat offering, and the sin offering, and the trespass offering.",
+  "ref": "Ezekiel 44:29"
+ },
+ {
+  "id": "ezekiel-44-m-13",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the priests to receive of the first of all firstfruits?",
+  "choices": [
+   "All of it, even the first of the dough",
+   "One tenth only",
+   "Half of it",
+   "Nothing"
+  ],
+  "answer": 0,
+  "explanation": "The first of all the firstfruits shall be the priest's: give the first of your dough, that he may cause the blessing to rest in thine house.",
+  "ref": "Ezekiel 44:30"
+ },
+ {
+  "id": "ezekiel-44-m-14",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the priests not to eat?",
+  "choices": [
+   "The firstfruits",
+   "Unleavened bread",
+   "Any bread of the prince",
+   "Anything dead of itself or torn"
+  ],
+  "answer": 3,
+  "explanation": "The priests shall not eat of any thing that is dead of itself, or torn, whether fowl or beast.",
+  "ref": "Ezekiel 44:31"
+ },
+ {
+  "id": "ezekiel-44-m-15",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezekiel have to do with eyes and ears at the north gate?",
+  "choices": [
+   "Close them against the vision",
+   "Cover them in prayer",
+   "Look only at the wall",
+   "Mark well, behold with eyes and hear with ears"
+  ],
+  "answer": 3,
+  "explanation": "Son of man, mark well, and behold with thine eyes, and hear with thine ears all that I say unto thee.",
+  "ref": "Ezekiel 44:5"
+ },
+ {
+  "id": "ezekiel-44-h-01",
+  "chapter": 44,
+  "level": "hard",
+  "category": "place",
+  "question": "Where does the prince enter and leave the east gate?",
+  "choices": [
+   "Over the wall",
+   "By the way of its porch",
+   "By the north door",
+   "Through the inner court"
+  ],
+  "answer": 1,
+  "explanation": "He shall enter by the way of the porch of that gate, and shall go out by the way of the same.",
+  "ref": "Ezekiel 44:3"
+ },
+ {
+  "id": "ezekiel-44-h-02",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does Ezekiel say God addresses with the message about abominations?",
+  "choices": [
+   "The rebellious house of Israel",
+   "The priests of Zadok",
+   "The princes of Judah",
+   "The nations round about"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt say to the rebellious, even to the house of Israel, Let it suffice you of all your abominations.",
+  "ref": "Ezekiel 44:6"
+ },
+ {
+  "id": "ezekiel-44-h-03",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which strangers are barred, according to God?",
+  "choices": [
+   "Any stranger among the children of Israel",
+   "Only those from Babylon",
+   "Only those from Egypt",
+   "Only kings of other lands"
+  ],
+  "answer": 0,
+  "explanation": "No stranger shall enter into my sanctuary, of any stranger that is among the children of Israel.",
+  "ref": "Ezekiel 44:9"
+ },
+ {
+  "id": "ezekiel-44-h-04",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Levites do when Israel went astray?",
+  "choices": [
+   "Fled to Egypt",
+   "Hid the ark",
+   "Became kings",
+   "Went away far from God after their idols"
+  ],
+  "answer": 3,
+  "explanation": "The Levites that are gone away far from me, when Israel went astray, went astray after their idols.",
+  "ref": "Ezekiel 44:10"
+ },
+ {
+  "id": "ezekiel-44-h-05",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom would the Levites stand before to minister?",
+  "choices": [
+   "The prince",
+   "The kings of nations",
+   "The people",
+   "The elders of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "They shall stand before them to minister unto them.",
+  "ref": "Ezekiel 44:11"
+ },
+ {
+  "id": "ezekiel-44-h-06",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the sons of Zadok done when Israel went astray?",
+  "choices": [
+   "Joined the idols",
+   "Kept the charge of God's sanctuary",
+   "Left the city",
+   "Hid the vessels"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Zadok kept the charge of my sanctuary when the children of Israel went astray from me.",
+  "ref": "Ezekiel 44:15"
+ },
+ {
+  "id": "ezekiel-44-h-07",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the sons of Zadok offer to God?",
+  "choices": [
+   "Oil and wine",
+   "The fat and the blood",
+   "Incense and gold",
+   "Bread and fish"
+  ],
+  "answer": 1,
+  "explanation": "They shall stand before me to offer unto me the fat and the blood.",
+  "ref": "Ezekiel 44:15"
+ },
+ {
+  "id": "ezekiel-44-h-08",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what shall the sons of Zadok come near?",
+  "choices": [
+   "My table",
+   "The throne of the king",
+   "The ark of cedar",
+   "The sea of brass"
+  ],
+  "answer": 0,
+  "explanation": "They shall come near to my table, to minister unto me, and they shall keep my charge.",
+  "ref": "Ezekiel 44:16"
+ },
+ {
+  "id": "ezekiel-44-h-09",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom must the priests not sanctify with their ministering garments?",
+  "choices": [
+   "The prince",
+   "The strangers",
+   "The Levites",
+   "The people"
+  ],
+  "answer": 3,
+  "explanation": "They shall not sanctify the people with their garments.",
+  "ref": "Ezekiel 44:19"
+ },
+ {
+  "id": "ezekiel-44-h-10",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What women may a priest not take as wives?",
+  "choices": [
+   "Any maiden",
+   "A daughter of a priest",
+   "A widow or a woman put away",
+   "A kinswoman"
+  ],
+  "answer": 2,
+  "explanation": "Neither shall they take for their wives a widow, nor her that is put away.",
+  "ref": "Ezekiel 44:22"
+ },
+ {
+  "id": "ezekiel-44-h-11",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which sister may a priest defile himself for?",
+  "choices": [
+   "A married sister",
+   "Any sister",
+   "One that has had no husband",
+   "None"
+  ],
+  "answer": 2,
+  "explanation": "For a sister that hath had no husband they may defile themselves.",
+  "ref": "Ezekiel 44:25"
+ },
+ {
+  "id": "ezekiel-44-h-12",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall a priest offer on the day he goes into the inner court to minister?",
+  "choices": [
+   "A drink offering",
+   "His sin offering",
+   "A peace offering",
+   "A firstborn"
+  ],
+  "answer": 1,
+  "explanation": "In the day that he goeth into the sanctuary, he shall offer his sin offering.",
+  "ref": "Ezekiel 44:27"
+ },
+ {
+  "id": "ezekiel-44-h-13",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom does the prince sit in the east gate to eat bread?",
+  "choices": [
+   "The LORD",
+   "The priests",
+   "The elders",
+   "The people"
+  ],
+  "answer": 0,
+  "explanation": "The prince shall sit in it to eat bread before the LORD.",
+  "ref": "Ezekiel 44:3"
+ },
+ {
+  "id": "ezekiel-44-h-14",
+  "chapter": 44,
+  "level": "hard",
+  "category": "place",
+  "question": "Into which court do the priests put off their ministering garments before going out to the people?",
+  "choices": [
+   "The inner court",
+   "The temple porch",
+   "The holy of holies",
+   "The utter court"
+  ],
+  "answer": 3,
+  "explanation": "When they go forth into the utter court to the people, they shall put off their garments wherein they ministered.",
+  "ref": "Ezekiel 44:19"
+ },
+ {
+  "id": "ezekiel-44-h-15",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God tell Israel to let suffice them?",
+  "choices": [
+   "All your sacrifices",
+   "All your wars",
+   "All your feasts",
+   "All your abominations"
+  ],
+  "answer": 3,
+  "explanation": "O ye house of Israel, let it suffice you of all your abominations.",
+  "ref": "Ezekiel 44:6"
+ },
+ {
+  "id": "ezekiel-45-m-01",
+  "chapter": 45,
+  "level": "medium",
+  "category": "person",
+  "question": "For whom is the holy portion of the land set apart, to hold their houses and the sanctuary?",
+  "choices": [
+   "The princes",
+   "The priests, the ministers of the sanctuary",
+   "The captains of the army",
+   "The merchants"
+  ],
+  "answer": 1,
+  "explanation": "The holy portion shall be for the priests the ministers of the sanctuary, a place for their houses and an holy place for the sanctuary.",
+  "ref": "Ezekiel 45:4"
+ },
+ {
+  "id": "ezekiel-45-m-02",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the princes of Israel no more do to God's people?",
+  "choices": [
+   "Rule them",
+   "Number them",
+   "Oppress them",
+   "Teach them"
+  ],
+  "answer": 2,
+  "explanation": "My princes shall no more oppress my people.",
+  "ref": "Ezekiel 45:8"
+ },
+ {
+  "id": "ezekiel-45-m-03",
+  "chapter": 45,
+  "level": "medium",
+  "category": "person",
+  "question": "Who shall give the oblation for the prince in Israel?",
+  "choices": [
+   "All the people of the land",
+   "Only the priests",
+   "The Levites",
+   "The merchants"
+  ],
+  "answer": 0,
+  "explanation": "All the people of the land shall give this oblation for the prince in Israel.",
+  "ref": "Ezekiel 45:16"
+ },
+ {
+  "id": "ezekiel-45-m-04",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the prince prepare for himself and all the people on the day of Passover?",
+  "choices": [
+   "A lamb for a peace offering",
+   "A basket of firstfruits",
+   "A bath of oil",
+   "A bullock for a sin offering"
+  ],
+  "answer": 3,
+  "explanation": "Upon that day shall the prince prepare for himself and for all the people of the land a bullock for a sin offering.",
+  "ref": "Ezekiel 45:22"
+ },
+ {
+  "id": "ezekiel-45-m-05",
+  "chapter": 45,
+  "level": "medium",
+  "category": "person",
+  "question": "Who have a possession of twenty chambers in the holy portion?",
+  "choices": [
+   "The princes",
+   "The Levites, the ministers of the house",
+   "The sons of Zadok",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "The Levites, the ministers of the house, shall have for themselves a possession for twenty chambers.",
+  "ref": "Ezekiel 45:5"
+ },
+ {
+  "id": "ezekiel-45-h-01",
+  "chapter": 45,
+  "level": "hard",
+  "category": "person",
+  "question": "For whom shall the possession of the city be?",
+  "choices": [
+   "The whole house of Israel",
+   "The prince alone",
+   "The priests",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall appoint the possession of the city: it shall be for the whole house of Israel.",
+  "ref": "Ezekiel 45:6"
+ },
+ {
+  "id": "ezekiel-45-h-02",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom shall the rest of the land be given?",
+  "choices": [
+   "The priests",
+   "The prince",
+   "The house of Israel, according to their tribes",
+   "The Levites"
+  ],
+  "answer": 2,
+  "explanation": "The rest of the land shall they give to the house of Israel according to their tribes.",
+  "ref": "Ezekiel 45:8"
+ },
+ {
+  "id": "ezekiel-45-h-03",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is taken on the first day of the first month to cleanse the sanctuary?",
+  "choices": [
+   "A young bullock without blemish",
+   "A ram",
+   "A kid of the goats",
+   "A pair of turtledoves"
+  ],
+  "answer": 0,
+  "explanation": "In the first month, in the first day, thou shalt take a young bullock without blemish, and cleanse the sanctuary.",
+  "ref": "Ezekiel 45:18"
+ },
+ {
+  "id": "ezekiel-45-h-04",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where does the priest put the blood of the sin offering?",
+  "choices": [
+   "On the heads of the people",
+   "Posts of the house, altar corners, inner gate posts",
+   "On the east gate only",
+   "On the prince's seat"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall put it upon the posts of the house, the four corners of the settle, and the posts of the gate of the inner court.",
+  "ref": "Ezekiel 45:19"
+ },
+ {
+  "id": "ezekiel-45-h-05",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is done on the fifteenth day of the seventh month?",
+  "choices": [
+   "The land lies fallow",
+   "The people fast",
+   "The priests anoint the altar",
+   "The prince does the like for a feast of seven days"
+  ],
+  "answer": 3,
+  "explanation": "In the seventh month, in the fifteenth day, shall he do the like in the feast of the seven days.",
+  "ref": "Ezekiel 45:25"
+ },
+ {
+  "id": "ezekiel-46-e-11",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By which way shall the prince enter the inner east gate?",
+  "choices": [
+   "Over the wall",
+   "The way of its porch",
+   "By the north gate",
+   "By the south door"
+  ],
+  "answer": 1,
+  "explanation": "The prince shall enter by the way of the porch of that gate without, and stand by the post of the gate.",
+  "ref": "Ezekiel 46:2"
+ },
+ {
+  "id": "ezekiel-46-e-12",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who prepare the prince's burnt offering and peace offerings?",
+  "choices": [
+   "The priests",
+   "The Levites",
+   "His sons",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "The priests shall prepare his burnt offering and his peace offerings.",
+  "ref": "Ezekiel 46:2"
+ },
+ {
+  "id": "ezekiel-46-e-13",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where do the people of the land worship on sabbaths and new moons?",
+  "choices": [
+   "Within the holy of holies",
+   "On the roof of the house",
+   "At the river",
+   "At the door of this gate before the LORD"
+  ],
+  "answer": 3,
+  "explanation": "The people of the land shall worship at the door of this gate before the LORD in the sabbaths and in the new moons.",
+  "ref": "Ezekiel 46:3"
+ },
+ {
+  "id": "ezekiel-46-e-14",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What burnt offering is prepared every morning?",
+  "choices": [
+   "A young bullock",
+   "A ram of two years",
+   "A lamb of the first year without blemish",
+   "A pair of doves"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt daily prepare a burnt offering of a lamb of the first year without blemish, every morning.",
+  "ref": "Ezekiel 46:13"
+ },
+ {
+  "id": "ezekiel-46-e-15",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What offerings does the prince prepare willingly beside the daily one?",
+  "choices": [
+   "A sin offering",
+   "A trespass offering",
+   "A voluntary burnt offering or peace offerings",
+   "A drink offering"
+  ],
+  "answer": 2,
+  "explanation": "When the prince shall prepare a voluntary burnt offering or peace offerings voluntarily unto the LORD.",
+  "ref": "Ezekiel 46:12"
+ },
+ {
+  "id": "ezekiel-46-e-16",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall the prince not take from the people?",
+  "choices": [
+   "Their firstborn",
+   "Their inheritance by oppression",
+   "Their tithes",
+   "Their lambs"
+  ],
+  "answer": 1,
+  "explanation": "The prince shall not take of the people's inheritance by oppression, to thrust them out of their possession.",
+  "ref": "Ezekiel 46:18"
+ },
+ {
+  "id": "ezekiel-46-e-17",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to a gift the prince gives his servant from his inheritance?",
+  "choices": [
+   "His till the year of liberty, then the prince",
+   "It is his for ever",
+   "It goes to the priests",
+   "It is shared with the sons"
+  ],
+  "answer": 0,
+  "explanation": "It shall be his to the year of liberty; after it shall return to the prince.",
+  "ref": "Ezekiel 46:17"
+ },
+ {
+  "id": "ezekiel-46-e-18",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where do the priests boil the trespass offering and the sin offering?",
+  "choices": [
+   "At the river",
+   "By the east gate",
+   "In the porch of the house",
+   "In the holy chambers of the priests"
+  ],
+  "answer": 3,
+  "explanation": "This is the place where the priests shall boil the trespass offering and the sin offering, that they bear them not out into the utter court.",
+  "ref": "Ezekiel 46:20"
+ },
+ {
+  "id": "ezekiel-46-e-19",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who boil the sacrifice of the people in the courts at the corners?",
+  "choices": [
+   "The princes",
+   "The strangers",
+   "The elders",
+   "The ministers of the house"
+  ],
+  "answer": 3,
+  "explanation": "These are the places of them that boil, where the ministers of the house shall boil the sacrifice of the people.",
+  "ref": "Ezekiel 46:24"
+ },
+ {
+  "id": "ezekiel-46-m-01",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When is the inner east gate shut?",
+  "choices": [
+   "The sabbath",
+   "The new moon",
+   "The six working days",
+   "Every evening only"
+  ],
+  "answer": 2,
+  "explanation": "The gate of the inner court that looketh toward the east shall be shut the six working days.",
+  "ref": "Ezekiel 46:1"
+ },
+ {
+  "id": "ezekiel-46-m-02",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the burnt offering the prince offers on the sabbath?",
+  "choices": [
+   "A bullock and a goat",
+   "Six lambs and a ram without blemish",
+   "Two rams",
+   "A lamb and a dove"
+  ],
+  "answer": 1,
+  "explanation": "The burnt offering on the sabbath day shall be six lambs without blemish, and a ram without blemish.",
+  "ref": "Ezekiel 46:4"
+ },
+ {
+  "id": "ezekiel-46-m-03",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What offering is made on the day of the new moon?",
+  "choices": [
+   "A young bullock, six lambs and a ram",
+   "Two goats",
+   "A single lamb",
+   "A heifer"
+  ],
+  "answer": 0,
+  "explanation": "In the day of the new moon it shall be a young bullock without blemish, and six lambs, and a ram.",
+  "ref": "Ezekiel 46:6"
+ },
+ {
+  "id": "ezekiel-46-m-04",
+  "chapter": 46,
+  "level": "medium",
+  "category": "place",
+  "question": "If people enter by the north gate at the feasts, by which gate do they go out?",
+  "choices": [
+   "The south gate",
+   "The north gate again",
+   "The east gate",
+   "The west gate"
+  ],
+  "answer": 0,
+  "explanation": "He that entereth by the way of the north gate shall go forth by the way of the south gate.",
+  "ref": "Ezekiel 46:9"
+ },
+ {
+  "id": "ezekiel-46-m-05",
+  "chapter": 46,
+  "level": "medium",
+  "category": "person",
+  "question": "Where is the prince among the people when they go in and out?",
+  "choices": [
+   "Ahead of them",
+   "Behind them",
+   "Apart from them",
+   "In the midst of them"
+  ],
+  "answer": 3,
+  "explanation": "The prince in the midst of them, when they go in, shall go in; and when they go forth, shall go forth.",
+  "ref": "Ezekiel 46:10"
+ },
+ {
+  "id": "ezekiel-46-m-06",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When shall the east gate not be shut on the prince's worship day?",
+  "choices": [
+   "Until the morning",
+   "Until the priests leave",
+   "Until the evening",
+   "Until the new moon"
+  ],
+  "answer": 2,
+  "explanation": "The gate shall not be shut until the evening.",
+  "ref": "Ezekiel 46:2"
+ },
+ {
+  "id": "ezekiel-46-m-07",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How often is the lamb prepared as a continual burnt offering?",
+  "choices": [
+   "Every evening",
+   "Every morning",
+   "Every sabbath",
+   "Every new moon"
+  ],
+  "answer": 1,
+  "explanation": "They shall prepare the lamb, the meat offering, and the oil, every morning for a continual burnt offering.",
+  "ref": "Ezekiel 46:15"
+ },
+ {
+  "id": "ezekiel-46-m-08",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God want to prevent by forbidding the prince to oppress?",
+  "choices": [
+   "That the temple be defiled",
+   "That my people be not scattered from their land",
+   "That the priests grow poor",
+   "That the city be shut"
+  ],
+  "answer": 1,
+  "explanation": "That my people be not scattered every man from his possession.",
+  "ref": "Ezekiel 46:18"
+ },
+ {
+  "id": "ezekiel-46-m-09",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose inheritance does a gift to the prince's sons become?",
+  "choices": [
+   "Their possession by inheritance",
+   "The prince's alone",
+   "The priests'",
+   "The people's"
+  ],
+  "answer": 0,
+  "explanation": "If the prince give a gift unto any of his sons, the inheritance thereof shall be his sons'.",
+  "ref": "Ezekiel 46:16"
+ },
+ {
+  "id": "ezekiel-46-m-10",
+  "chapter": 46,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the man take Ezekiel after the gate entry?",
+  "choices": [
+   "To the river",
+   "To the east gate",
+   "To the altar",
+   "Into the holy chambers of the priests toward the north"
+  ],
+  "answer": 3,
+  "explanation": "He brought me into the holy chambers of the priests, which looked toward the north.",
+  "ref": "Ezekiel 46:19"
+ },
+ {
+  "id": "ezekiel-46-m-11",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was in every corner of the utter court?",
+  "choices": [
+   "A well",
+   "An altar",
+   "A court",
+   "A tower"
+  ],
+  "answer": 2,
+  "explanation": "In every corner of the court there was a court.",
+  "ref": "Ezekiel 46:21"
+ },
+ {
+  "id": "ezekiel-46-m-12",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the meat offering for the daily burnt offering called by God?",
+  "choices": [
+   "A temporary offering",
+   "A gift of kings",
+   "A perpetual ordinance",
+   "An offering of firstfruits"
+  ],
+  "answer": 2,
+  "explanation": "A meat offering continually by a perpetual ordinance unto the LORD.",
+  "ref": "Ezekiel 46:14"
+ },
+ {
+  "id": "ezekiel-46-h-01",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If a man enters a gate at the feast, where must he not go out?",
+  "choices": [
+   "By the north gate",
+   "By the way he came in",
+   "By the east gate",
+   "By the porch"
+  ],
+  "answer": 1,
+  "explanation": "He shall not return by the way of the gate whereby he came in, but shall go forth over against it.",
+  "ref": "Ezekiel 46:9"
+ },
+ {
+  "id": "ezekiel-46-h-02",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much of the lambs' meat offering shall the prince give?",
+  "choices": [
+   "As he shall be able to give",
+   "A tenth",
+   "A full ephah",
+   "Half"
+  ],
+  "answer": 0,
+  "explanation": "The meat offering for the lambs as he shall be able to give.",
+  "ref": "Ezekiel 46:5"
+ },
+ {
+  "id": "ezekiel-46-h-03",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old is the daily lamb?",
+  "choices": [
+   "Of the second year",
+   "Newly weaned",
+   "Three years",
+   "Of the first year"
+  ],
+  "answer": 3,
+  "explanation": "A lamb of the first year without blemish.",
+  "ref": "Ezekiel 46:13"
+ },
+ {
+  "id": "ezekiel-46-h-04",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are under the rows of building in the corner courts?",
+  "choices": [
+   "Altars of stone",
+   "Treasure rooms",
+   "Wells of water",
+   "Boiling places"
+  ],
+  "answer": 3,
+  "explanation": "It was made with boiling places under the rows round about.",
+  "ref": "Ezekiel 46:23"
+ },
+ {
+  "id": "ezekiel-46-h-05",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whose own possession must the prince give his sons inheritance?",
+  "choices": [
+   "The Levites'",
+   "The people's",
+   "His own",
+   "The city's"
+  ],
+  "answer": 2,
+  "explanation": "He shall give his sons inheritance out of his own possession.",
+  "ref": "Ezekiel 46:18"
+ },
+ {
+  "id": "ezekiel-46-h-06",
+  "chapter": 46,
+  "level": "hard",
+  "category": "place",
+  "question": "Where do the priests bake the meat offering?",
+  "choices": [
+   "In the courts of the city",
+   "In the place in the holy chambers",
+   "On the altar",
+   "At the east gate"
+  ],
+  "answer": 1,
+  "explanation": "The priests shall boil the trespass offering and bake the meat offering in this place.",
+  "ref": "Ezekiel 46:20"
+ },
+ {
+  "id": "ezekiel-46-h-07",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why must the priests not carry the offerings into the utter court?",
+  "choices": [
+   "To avoid sanctifying the people",
+   "To keep them warm",
+   "To hide them",
+   "To feed the poor"
+  ],
+  "answer": 0,
+  "explanation": "That they bear them not out into the utter court, to sanctify the people.",
+  "ref": "Ezekiel 46:20"
+ },
+ {
+  "id": "ezekiel-46-h-08",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which gate is opened for the prince's voluntary offering?",
+  "choices": [
+   "The gate that looketh toward the east",
+   "The north gate",
+   "The south gate",
+   "The west gate"
+  ],
+  "answer": 0,
+  "explanation": "One shall open him the gate that looketh toward the east.",
+  "ref": "Ezekiel 46:12"
+ },
+ {
+  "id": "ezekiel-46-h-09",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was joined in the four corners of the court?",
+  "choices": [
+   "Towers of cedar",
+   "Altars of stone",
+   "Cisterns",
+   "Courts of one measure"
+  ],
+  "answer": 3,
+  "explanation": "In the four corners of the court there were courts joined: these four corners were of one measure.",
+  "ref": "Ezekiel 46:22"
+ },
+ {
+  "id": "ezekiel-46-h-10",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the oil used for in the daily meat offering?",
+  "choices": [
+   "To light the lamps",
+   "To anoint the priests",
+   "To temper with the fine flour",
+   "To wash the altar"
+  ],
+  "answer": 2,
+  "explanation": "The third part of an hin of oil, to temper with the fine flour.",
+  "ref": "Ezekiel 46:14"
+ },
+ {
+  "id": "ezekiel-46-h-11",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When is the east gate shut after the prince offers willingly?",
+  "choices": [
+   "Before he enters",
+   "After his going forth",
+   "At the new moon",
+   "When the priests leave"
+  ],
+  "answer": 1,
+  "explanation": "After his going forth one shall shut the gate.",
+  "ref": "Ezekiel 46:12"
+ },
+ {
+  "id": "ezekiel-46-h-12",
+  "chapter": 46,
+  "level": "hard",
+  "category": "place",
+  "question": "What did the man cause Ezekiel to pass by in the utter court?",
+  "choices": [
+   "The twelve gates",
+   "The four corners of the court",
+   "The altar steps",
+   "The river bank"
+  ],
+  "answer": 1,
+  "explanation": "He caused me to pass by the four corners of the court.",
+  "ref": "Ezekiel 46:21"
+ },
+ {
+  "id": "ezekiel-47-e-11",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the man ask Ezekiel when they reached the deep river?",
+  "choices": [
+   "Canst thou cross it?",
+   "Son of man, hast thou seen this?",
+   "Where is thy faith?",
+   "Who made this river?"
+  ],
+  "answer": 1,
+  "explanation": "He said unto me, Son of man, hast thou seen this?",
+  "ref": "Ezekiel 47:6"
+ },
+ {
+  "id": "ezekiel-47-e-12",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezekiel see on the bank of the river when he returned?",
+  "choices": [
+   "Very many trees on the one side and the other",
+   "A line of tents",
+   "Dry bones",
+   "A ruined wall"
+  ],
+  "answer": 0,
+  "explanation": "At the bank of the river were very many trees on the one side and on the other.",
+  "ref": "Ezekiel 47:7"
+ },
+ {
+  "id": "ezekiel-47-e-13",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall live wherever the river comes?",
+  "choices": [
+   "Only the fish",
+   "Only the trees",
+   "Only men",
+   "Every thing"
+  ],
+  "answer": 3,
+  "explanation": "Every thing that liveth, which moveth, whithersoever the rivers shall come, shall live.",
+  "ref": "Ezekiel 47:9"
+ },
+ {
+  "id": "ezekiel-47-e-14",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall stand upon the shore from En-gedi to En-eglaim?",
+  "choices": [
+   "The shepherds",
+   "The priests",
+   "The fishers",
+   "The princes"
+  ],
+  "answer": 2,
+  "explanation": "The fishers shall stand upon it from En-gedi even unto En-eglaim; a place to spread forth nets.",
+  "ref": "Ezekiel 47:10"
+ },
+ {
+  "id": "ezekiel-47-e-15",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the leaf of the trees for?",
+  "choices": [
+   "Roofing",
+   "Dyeing cloth",
+   "Medicine",
+   "Burning"
+  ],
+  "answer": 2,
+  "explanation": "The fruit thereof shall be for meat, and the leaf thereof for medicine.",
+  "ref": "Ezekiel 47:12"
+ },
+ {
+  "id": "ezekiel-47-e-16",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why do the trees bear new fruit every month?",
+  "choices": [
+   "The soil is rich",
+   "Their waters issued out of the sanctuary",
+   "The rains are plentiful",
+   "The sun is strong"
+  ],
+  "answer": 1,
+  "explanation": "It shall bring forth new fruit according to his months, because their waters they issued out of the sanctuary.",
+  "ref": "Ezekiel 47:12"
+ },
+ {
+  "id": "ezekiel-47-e-17",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom does the land fall to by inheritance, as God lifted his hand to give?",
+  "choices": [
+   "The fathers' descendants, the twelve tribes",
+   "Only Judah",
+   "The priests",
+   "The strangers alone"
+  ],
+  "answer": 0,
+  "explanation": "I lifted up mine hand to give it unto your fathers: and this land shall fall unto you for inheritance.",
+  "ref": "Ezekiel 47:14"
+ },
+ {
+  "id": "ezekiel-47-m-01",
+  "chapter": 47,
+  "level": "medium",
+  "category": "place",
+  "question": "Where do the waters flow after they leave the house?",
+  "choices": [
+   "Westward to the Great Sea only",
+   "Northward to Hamath",
+   "Into the city wall",
+   "East country, the desert, then the sea"
+  ],
+  "answer": 3,
+  "explanation": "These waters issue out toward the east country, and go down into the desert, and go into the sea.",
+  "ref": "Ezekiel 47:8"
+ },
+ {
+  "id": "ezekiel-47-m-02",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the sea when the waters are brought into it?",
+  "choices": [
+   "It dries up",
+   "It turns red",
+   "It freezes",
+   "The waters are healed"
+  ],
+  "answer": 3,
+  "explanation": "Which being brought forth into the sea, the waters shall be healed.",
+  "ref": "Ezekiel 47:8"
+ },
+ {
+  "id": "ezekiel-47-m-03",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will fill the waters because the river has come?",
+  "choices": [
+   "Reeds and rushes",
+   "Ships",
+   "A very great multitude of fish",
+   "Birds"
+  ],
+  "answer": 2,
+  "explanation": "There shall be a very great multitude of fish, because these waters shall come thither.",
+  "ref": "Ezekiel 47:9"
+ },
+ {
+  "id": "ezekiel-47-m-04",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the fishers to do on the shore?",
+  "choices": [
+   "Build houses",
+   "Spread forth nets",
+   "Sacrifice",
+   "Dry salt"
+  ],
+  "answer": 1,
+  "explanation": "They shall be a place to spread forth nets.",
+  "ref": "Ezekiel 47:10"
+ },
+ {
+  "id": "ezekiel-47-m-05",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall be like the fish of the great sea?",
+  "choices": [
+   "Their fish, exceeding many in kinds",
+   "The birds on the shore",
+   "The reeds",
+   "The ships"
+  ],
+  "answer": 0,
+  "explanation": "Their fish shall be according to their kinds, as the fish of the great sea, exceeding many.",
+  "ref": "Ezekiel 47:10"
+ },
+ {
+  "id": "ezekiel-47-m-06",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will become of the miry places and marshes?",
+  "choices": [
+   "They shall not be healed, but given to salt",
+   "They will bear fruit",
+   "They will be dry land",
+   "They will be fishponds"
+  ],
+  "answer": 0,
+  "explanation": "The miry places and the marishes shall not be healed; they shall be given to salt.",
+  "ref": "Ezekiel 47:11"
+ },
+ {
+  "id": "ezekiel-47-m-07",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the trees by the river do every month?",
+  "choices": [
+   "Lose their leaves",
+   "Stand dry",
+   "Flower only",
+   "Bring forth new fruit"
+  ],
+  "answer": 3,
+  "explanation": "It shall bring forth new fruit according to his months.",
+  "ref": "Ezekiel 47:12"
+ },
+ {
+  "id": "ezekiel-47-m-08",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of the leaf and fruit of the trees?",
+  "choices": [
+   "They wither in winter",
+   "Only the fruit remains",
+   "The leaf shall not fade and the fruit shall not be consumed",
+   "They are poison"
+  ],
+  "answer": 2,
+  "explanation": "Whose leaf shall not fade, neither shall the fruit thereof be consumed.",
+  "ref": "Ezekiel 47:12"
+ },
+ {
+  "id": "ezekiel-47-m-09",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the land to be inherited according to the twelve tribes?",
+  "choices": [
+   "The eldest first",
+   "One as well as another",
+   "By strength",
+   "By wealth"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall inherit it, one as well as another.",
+  "ref": "Ezekiel 47:14"
+ },
+ {
+  "id": "ezekiel-47-m-10",
+  "chapter": 47,
+  "level": "medium",
+  "category": "person",
+  "question": "Who besides the tribes receive an inheritance by lot?",
+  "choices": [
+   "Foreign merchants",
+   "Strangers who sojourn and have children among them",
+   "The captives of Babylon",
+   "The kings of nations"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall divide it by lot unto you, and to the strangers that sojourn among you, which shall beget children among you.",
+  "ref": "Ezekiel 47:22"
+ },
+ {
+  "id": "ezekiel-47-m-11",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How are the sojourning strangers to be counted?",
+  "choices": [
+   "As born in the country among the children of Israel",
+   "As servants",
+   "As guests only",
+   "As princes"
+  ],
+  "answer": 0,
+  "explanation": "They shall be unto you as born in the country among the children of Israel.",
+  "ref": "Ezekiel 47:22"
+ },
+ {
+  "id": "ezekiel-47-m-12",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where is the stranger given his inheritance?",
+  "choices": [
+   "In the priests' portion",
+   "In the city only",
+   "Beside the prince",
+   "In whatever tribe he sojourns"
+  ],
+  "answer": 3,
+  "explanation": "In what tribe the stranger sojourneth, there shall ye give him his inheritance.",
+  "ref": "Ezekiel 47:23"
+ },
+ {
+  "id": "ezekiel-47-h-01",
+  "chapter": 47,
+  "level": "hard",
+  "category": "place",
+  "question": "By which way did the man lead Ezekiel out to see the waters on the right side?",
+  "choices": [
+   "The south gate",
+   "The west wall",
+   "The way of the gate northward",
+   "The river bank"
+  ],
+  "answer": 2,
+  "explanation": "Then brought he me out of the way of the gate northward, and led me about the way without unto the utter gate.",
+  "ref": "Ezekiel 47:2"
+ },
+ {
+  "id": "ezekiel-47-h-02",
+  "chapter": 47,
+  "level": "hard",
+  "category": "place",
+  "question": "Where do the waters come down from, relative to the altar?",
+  "choices": [
+   "The north side of the altar",
+   "Under the altar itself",
+   "Right side of the house, south of the altar",
+   "From the roof"
+  ],
+  "answer": 2,
+  "explanation": "The waters came down from under from the right side of the house, at the south side of the altar.",
+  "ref": "Ezekiel 47:1"
+ },
+ {
+  "id": "ezekiel-47-h-03",
+  "chapter": 47,
+  "level": "hard",
+  "category": "place",
+  "question": "The fishers stand from En-gedi to where?",
+  "choices": [
+   "Hazar-enan",
+   "En-eglaim",
+   "Tamar",
+   "Kadesh"
+  ],
+  "answer": 1,
+  "explanation": "From En-gedi even unto En-eglaim.",
+  "ref": "Ezekiel 47:10"
+ },
+ {
+  "id": "ezekiel-47-h-04",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the man call the river that was too deep to cross?",
+  "choices": [
+   "Waters to swim in",
+   "A flood to burn",
+   "A stream to wade",
+   "A ford to cross"
+  ],
+  "answer": 0,
+  "explanation": "Waters to swim in, a river that could not be passed over.",
+  "ref": "Ezekiel 47:5"
+ },
+ {
+  "id": "ezekiel-47-h-05",
+  "chapter": 47,
+  "level": "hard",
+  "category": "person",
+  "question": "Which tribe shall have two portions?",
+  "choices": [
+   "Judah",
+   "Levi",
+   "Dan",
+   "Joseph"
+  ],
+  "answer": 3,
+  "explanation": "Joseph shall have two portions.",
+  "ref": "Ezekiel 47:13"
+ },
+ {
+  "id": "ezekiel-47-h-06",
+  "chapter": 47,
+  "level": "hard",
+  "category": "place",
+  "question": "What shall be the west border of the land?",
+  "choices": [
+   "The Jordan",
+   "The wilderness",
+   "The mountains",
+   "The great sea"
+  ],
+  "answer": 3,
+  "explanation": "The west side also shall be the great sea.",
+  "ref": "Ezekiel 47:20"
+ },
+ {
+  "id": "ezekiel-47-h-07",
+  "chapter": 47,
+  "level": "hard",
+  "category": "place",
+  "question": "What forms the east side of the land, from Hauran and Damascus and Gilead?",
+  "choices": [
+   "The great sea",
+   "Tamar",
+   "Jordan",
+   "Kadesh"
+  ],
+  "answer": 2,
+  "explanation": "The east side from Hauran, Damascus, Gilead, and the land of Israel by Jordan.",
+  "ref": "Ezekiel 47:18"
+ },
+ {
+  "id": "ezekiel-47-h-08",
+  "chapter": 47,
+  "level": "hard",
+  "category": "place",
+  "question": "At what waters does the south side end, from Tamar?",
+  "choices": [
+   "The Dead Sea",
+   "The waters of strife in Kadesh",
+   "The Nile",
+   "Jordan"
+  ],
+  "answer": 1,
+  "explanation": "The south side southward from Tamar even to the waters of strife in Kadesh.",
+  "ref": "Ezekiel 47:19"
+ },
+ {
+  "id": "ezekiel-47-h-09",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the man have Ezekiel return to?",
+  "choices": [
+   "The brink of the river",
+   "The wall of the city",
+   "The altar",
+   "The house"
+  ],
+  "answer": 0,
+  "explanation": "He caused me to return to the brink of the river.",
+  "ref": "Ezekiel 47:6"
+ },
+ {
+  "id": "ezekiel-47-h-10",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which hand did the waters run out?",
+  "choices": [
+   "The right side",
+   "The left side",
+   "Both sides",
+   "Beneath"
+  ],
+  "answer": 0,
+  "explanation": "Behold, there ran out waters on the right side.",
+  "ref": "Ezekiel 47:2"
+ },
+ {
+  "id": "ezekiel-47-h-11",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what did God say he would divide the land?",
+  "choices": [
+   "By election",
+   "By the prince",
+   "By the sword",
+   "By lot"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall divide it by lot for an inheritance.",
+  "ref": "Ezekiel 47:22"
+ },
+ {
+  "id": "ezekiel-47-h-12",
+  "chapter": 47,
+  "level": "hard",
+  "category": "place",
+  "question": "Along which way does the north border run from the great sea?",
+  "choices": [
+   "The way of Tarshish",
+   "The way of Kadesh",
+   "The way of Hethlon, toward Zedad",
+   "The way of Gilead"
+  ],
+  "answer": 2,
+  "explanation": "This shall be the border toward the north, from the great sea, the way of Hethlon, as men go to Zedad.",
+  "ref": "Ezekiel 47:15"
+ },
+ {
+  "id": "ezekiel-48-e-11",
   "chapter": 48,
   "level": "beginner",
   "category": "keyword",
-  "question": "Which tribe receives the first portion at the north end of the land?",
+  "question": "After what shall the gates of the city be named?",
   "choices": [
-   "Dan",
-   "Judah",
-   "Levi",
-   "Benjamin"
+   "The kings of Judah",
+   "The names of the tribes of Israel",
+   "The prophets",
+   "The patriarchs of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "The gates of the city shall be after the names of the tribes of Israel.",
+  "ref": "Ezekiel 48:31"
+ },
+ {
+  "id": "ezekiel-48-e-12",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "place",
+  "question": "What shall be in the midst of the holy oblation?",
+  "choices": [
+   "The sanctuary of the LORD",
+   "The prince's house",
+   "The city market",
+   "The Levites' tents"
   ],
   "answer": 0,
-  "explanation": "The list of tribes begins at the north end with a portion for Dan.",
-  "ref": "Ezekiel 48:1"
+  "explanation": "The sanctuary of the LORD shall be in the midst thereof.",
+  "ref": "Ezekiel 48:10"
+ },
+ {
+  "id": "ezekiel-48-e-13",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who are given the holy oblation of the land?",
+  "choices": [
+   "The princes",
+   "The merchants",
+   "The elders",
+   "The priests of the sons of Zadok"
+  ],
+  "answer": 3,
+  "explanation": "It shall be for the priests that are sanctified of the sons of Zadok.",
+  "ref": "Ezekiel 48:11"
+ },
+ {
+  "id": "ezekiel-48-m-01",
+  "chapter": 48,
+  "level": "medium",
+  "category": "person",
+  "question": "Why is the holy portion given to the sons of Zadok?",
+  "choices": [
+   "They were the oldest",
+   "They led the army",
+   "They kept God's charge and did not go astray with Israel",
+   "They built the temple"
+  ],
+  "answer": 2,
+  "explanation": "They kept my charge, which went not astray when the children of Israel went astray, as the Levites went astray.",
+  "ref": "Ezekiel 48:11"
+ },
+ {
+  "id": "ezekiel-48-m-02",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What may the Levites not do with their portion of the land?",
+  "choices": [
+   "Farm it",
+   "Build on it",
+   "Sell it, exchange it or alienate it",
+   "Share it with priests"
+  ],
+  "answer": 2,
+  "explanation": "They shall not sell of it, neither exchange, nor alienate the firstfruits of the land: for it is holy unto the LORD.",
+  "ref": "Ezekiel 48:14"
+ },
+ {
+  "id": "ezekiel-48-m-03",
+  "chapter": 48,
+  "level": "medium",
+  "category": "person",
+  "question": "From which tribes shall those who serve the city come?",
+  "choices": [
+   "Only Judah",
+   "All the tribes of Israel",
+   "Only Levi",
+   "Only the prince's tribe"
+  ],
+  "answer": 1,
+  "explanation": "They that serve the city shall serve it out of all the tribes of Israel.",
+  "ref": "Ezekiel 48:19"
+ },
+ {
+  "id": "ezekiel-48-m-04",
+  "chapter": 48,
+  "level": "medium",
+  "category": "person",
+  "question": "For whom shall the rest of the land on either side be?",
+  "choices": [
+   "The prince",
+   "The priests",
+   "The Levites",
+   "The strangers"
+  ],
+  "answer": 0,
+  "explanation": "The residue shall be for the prince, on the one side and on the other of the holy oblation.",
+  "ref": "Ezekiel 48:21"
+ },
+ {
+  "id": "ezekiel-48-m-05",
+  "chapter": 48,
+  "level": "medium",
+  "category": "place",
+  "question": "What was the leftover space in the breadth set apart for?",
+  "choices": [
+   "The king's gardens",
+   "The market",
+   "A burial ground",
+   "A profane place for the city, for dwelling and suburbs"
+  ],
+  "answer": 3,
+  "explanation": "The five thousand that are left shall be a profane place for the city, for dwelling, and for suburbs.",
+  "ref": "Ezekiel 48:15"
+ },
+ {
+  "id": "ezekiel-48-h-01",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which three gates stand on the north side of the city?",
+  "choices": [
+   "Joseph, Benjamin and Dan",
+   "Simeon, Issachar and Zebulun",
+   "Gad, Asher and Naphtali",
+   "Reuben, Judah and Levi"
+  ],
+  "answer": 3,
+  "explanation": "Three gates northward; one gate of Reuben, one gate of Judah, one gate of Levi.",
+  "ref": "Ezekiel 48:31"
+ },
+ {
+  "id": "ezekiel-48-h-02",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which three gates stand on the east side of the city?",
+  "choices": [
+   "Reuben, Judah and Levi",
+   "Gad, Asher and Naphtali",
+   "Joseph, Benjamin and Dan",
+   "Simeon, Issachar and Zebulun"
+  ],
+  "answer": 2,
+  "explanation": "At the east side three gates; one gate of Joseph, one gate of Benjamin, one gate of Dan.",
+  "ref": "Ezekiel 48:32"
+ },
+ {
+  "id": "ezekiel-48-h-03",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which three gates stand on the south side of the city?",
+  "choices": [
+   "Reuben, Judah and Levi",
+   "Simeon, Issachar and Zebulun",
+   "Joseph, Benjamin and Dan",
+   "Gad, Asher and Naphtali"
+  ],
+  "answer": 1,
+  "explanation": "At the south side three gates; one gate of Simeon, one gate of Issachar, one gate of Zebulun.",
+  "ref": "Ezekiel 48:33"
+ },
+ {
+  "id": "ezekiel-48-h-04",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which three gates stand on the west side of the city?",
+  "choices": [
+   "Gad, Asher and Naphtali",
+   "Simeon, Issachar and Zebulun",
+   "Reuben, Judah and Levi",
+   "Joseph, Benjamin and Dan"
+  ],
+  "answer": 0,
+  "explanation": "At the west side three gates; one gate of Gad, one gate of Asher, one gate of Naphtali.",
+  "ref": "Ezekiel 48:34"
+ },
+ {
+  "id": "ezekiel-48-h-05",
+  "chapter": 48,
+  "level": "hard",
+  "category": "place",
+  "question": "Between the borders of which two tribes does the prince's portion lie?",
+  "choices": [
+   "Judah and Benjamin",
+   "Dan and Asher",
+   "Reuben and Gad",
+   "Simeon and Levi"
+  ],
+  "answer": 0,
+  "explanation": "It shall be for the prince between the border of Judah and the border of Benjamin.",
+  "ref": "Ezekiel 48:22"
  }
 ]
