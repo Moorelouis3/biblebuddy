@@ -7360,6 +7360,646 @@
   "ref": "2 Samuel 11:27"
  },
  {
+  "id": "2-samuel-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David send with the army to destroy Ammon and besiege Rabbah?",
+  "choices": [
+   "Abishai",
+   "Joab",
+   "Uriah",
+   "Nathan"
+  ],
+  "answer": 1,
+  "explanation": "David sent Joab, and his servants with him, and all Israel; they destroyed the children of Ammon, and besieged Rabbah.",
+  "ref": "2 Samuel 11:1"
+ },
+ {
+  "id": "2-samuel-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was David when he saw Bath-sheba washing herself?",
+  "choices": [
+   "On the roof of the king's house",
+   "By the river",
+   "In the temple",
+   "On the city wall"
+  ],
+  "answer": 0,
+  "explanation": "David walked upon the roof of the king's house: and from the roof he saw a woman washing herself.",
+  "ref": "2 Samuel 11:2"
+ },
+ {
+  "id": "2-samuel-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What message did Bath-sheba send to David?",
+  "choices": [
+   "My husband is dead",
+   "Send Uriah home",
+   "Come and see me",
+   "I am with child"
+  ],
+  "answer": 3,
+  "explanation": "The woman conceived, and sent and told David, and said, I am with child.",
+  "ref": "2 Samuel 11:5"
+ },
+ {
+  "id": "2-samuel-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David ask Joab to send to him from the war?",
+  "choices": [
+   "Abishai",
+   "Eliam",
+   "Uriah the Hittite",
+   "Jonadab"
+  ],
+  "answer": 2,
+  "explanation": "David sent to Joab, saying, Send me Uriah the Hittite.",
+  "ref": "2 Samuel 11:6"
+ },
+ {
+  "id": "2-samuel-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Uriah sleep instead of going to his house?",
+  "choices": [
+   "In the temple",
+   "At the door of the king's house",
+   "In the open field",
+   "In Joab's tent"
+  ],
+  "answer": 1,
+  "explanation": "Uriah slept at the door of the king's house with all the servants of his lord, and went not down to his house.",
+  "ref": "2 Samuel 11:9"
+ },
+ {
+  "id": "2-samuel-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Uriah refuse to do even when David urged him?",
+  "choices": [
+   "Go down to his house",
+   "Eat with the king",
+   "Return to the war",
+   "Speak to Joab"
+  ],
+  "answer": 0,
+  "explanation": "Uriah went not down to his house, and said, I will not do this thing.",
+  "ref": "2 Samuel 11:9–11"
+ },
+ {
+  "id": "2-samuel-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who carried David's letter to Joab?",
+  "choices": [
+   "Abishai",
+   "A servant of Eliam",
+   "Nathan",
+   "Uriah himself"
+  ],
+  "answer": 3,
+  "explanation": "David wrote a letter to Joab, and sent it by the hand of Uriah.",
+  "ref": "2 Samuel 11:14"
+ },
+ {
+  "id": "2-samuel-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Uriah in the battle?",
+  "choices": [
+   "He was captured",
+   "He escaped to Jerusalem",
+   "He died",
+   "He was made captain"
+  ],
+  "answer": 2,
+  "explanation": "There fell some of the people of the servants of David; and Uriah the Hittite died also.",
+  "ref": "2 Samuel 11:17"
+ },
+ {
+  "id": "2-samuel-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "How did Bath-sheba react when she heard Uriah was dead?",
+  "choices": [
+   "She fled Jerusalem",
+   "She mourned for her husband",
+   "She rejoiced",
+   "She sent for Joab"
+  ],
+  "answer": 1,
+  "explanation": "When the wife of Uriah heard that Uriah her husband was dead, she mourned for her husband.",
+  "ref": "2 Samuel 11:26"
+ },
+ {
+  "id": "2-samuel-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Bath-sheba bear to David after she became his wife?",
+  "choices": [
+   "A son",
+   "A daughter",
+   "Twin sons",
+   "Nothing; she had no child"
+  ],
+  "answer": 0,
+  "explanation": "She became his wife, and bare him a son.",
+  "ref": "2 Samuel 11:27"
+ },
+ {
+  "id": "2-samuel-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David do when he saw that the woman was very beautiful?",
+  "choices": [
+   "Looked away and went inside",
+   "Called for Joab",
+   "Sent her a gift",
+   "Sent and enquired after her"
+  ],
+  "answer": 3,
+  "explanation": "David sent and enquired after the woman.",
+  "ref": "2 Samuel 11:3"
+ },
+ {
+  "id": "2-samuel-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David first ask Uriah when he came to him?",
+  "choices": [
+   "Whether he had a wife",
+   "Where the ark was",
+   "How Joab, the people and the war did",
+   "How far he had traveled"
+  ],
+  "answer": 2,
+  "explanation": "David demanded of him how Joab did, and how the people did, and how the war prospered.",
+  "ref": "2 Samuel 11:7"
+ },
+ {
+  "id": "2-samuel-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David tell Uriah to do when he arrived?",
+  "choices": [
+   "Return to the battle",
+   "Go down to his house and wash his feet",
+   "Rest in the palace",
+   "Visit Joab's family"
+  ],
+  "answer": 1,
+  "explanation": "David said to Uriah, Go down to thy house, and wash thy feet.",
+  "ref": "2 Samuel 11:8"
+ },
+ {
+  "id": "2-samuel-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What followed Uriah when he left the king's house?",
+  "choices": [
+   "A mess of meat from the king",
+   "A guard of soldiers",
+   "A servant of Joab",
+   "A gift of silver"
+  ],
+  "answer": 0,
+  "explanation": "Uriah departed out of the king's house, and there followed him a mess of meat from the king.",
+  "ref": "2 Samuel 11:8"
+ },
+ {
+  "id": "2-samuel-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would Uriah not go home to eat, drink and lie with his wife?",
+  "choices": [
+   "He was ill",
+   "He feared Joab",
+   "He was ashamed to see her",
+   "The ark, Israel and Judah abide in tents"
+  ],
+  "answer": 3,
+  "explanation": "Uriah said, The ark, and Israel, and Judah, abide in tents; shall I then go into mine house?",
+  "ref": "2 Samuel 11:11"
+ },
+ {
+  "id": "2-samuel-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David try to make Uriah go home the second night?",
+  "choices": [
+   "He ordered him to go",
+   "He gave him leave to rest a month",
+   "He made him drunk",
+   "He sent Bath-sheba to him"
+  ],
+  "answer": 2,
+  "explanation": "David called him, and he did eat and drink before him; and he made him drunk.",
+  "ref": "2 Samuel 11:13"
+ },
+ {
+  "id": "2-samuel-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Uriah go after David made him drunk?",
+  "choices": [
+   "Down to his house",
+   "To lie on his bed with his lord's servants",
+   "Back to Rabbah",
+   "To the temple"
+  ],
+  "answer": 1,
+  "explanation": "At even he went out to lie on his bed with the servants of his lord, but went not down to his house.",
+  "ref": "2 Samuel 11:13"
+ },
+ {
+  "id": "2-samuel-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David do on the morning after Uriah would not go home?",
+  "choices": [
+   "Wrote a letter to Joab",
+   "Sent Uriah back with gold",
+   "Went to Rabbah himself",
+   "Called Nathan"
+  ],
+  "answer": 0,
+  "explanation": "It came to pass in the morning, that David wrote a letter to Joab.",
+  "ref": "2 Samuel 11:14"
+ },
+ {
+  "id": "2-samuel-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Joab assign Uriah during the siege?",
+  "choices": [
+   "Among the archers on the wall",
+   "At the rear of the camp",
+   "At the king's tent",
+   "Where he knew valiant men were"
+  ],
+  "answer": 3,
+  "explanation": "Joab observed the city, and assigned Uriah unto a place where he knew that valiant men were.",
+  "ref": "2 Samuel 11:16"
+ },
+ {
+  "id": "2-samuel-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joab tell the messenger to say if the king was angry?",
+  "choices": [
+   "The city is taken",
+   "Joab is wounded",
+   "Thy servant Uriah the Hittite is dead also",
+   "The Ammonites have fled"
+  ],
+  "answer": 2,
+  "explanation": "Joab said, then say thou, Thy servant Uriah the Hittite is dead also.",
+  "ref": "2 Samuel 11:21"
+ },
+ {
+  "id": "2-samuel-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say devours one as well as another?",
+  "choices": [
+   "Famine",
+   "The sword",
+   "Pestilence",
+   "The pit"
+  ],
+  "answer": 1,
+  "explanation": "David said, Let not this thing displease thee, for the sword devoureth one as well as another.",
+  "ref": "2 Samuel 11:25"
+ },
+ {
+  "id": "2-samuel-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David tell the messenger to say to encourage Joab?",
+  "choices": [
+   "Make the battle stronger and overthrow the city",
+   "Return to Jerusalem",
+   "Wait for more men",
+   "Make peace with Ammon"
+  ],
+  "answer": 0,
+  "explanation": "David said, make thy battle more strong against the city, and overthrow it: and encourage thou him.",
+  "ref": "2 Samuel 11:25"
+ },
+ {
+  "id": "2-samuel-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did David send and fetch Bath-sheba to his house?",
+  "choices": [
+   "The next day",
+   "After the child was born",
+   "Before Uriah's death",
+   "When the mourning was past"
+  ],
+  "answer": 3,
+  "explanation": "When the mourning was past, David sent and fetched her to his house, and she became his wife.",
+  "ref": "2 Samuel 11:27"
+ },
+ {
+  "id": "2-samuel-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Uriah say was encamped in the open fields?",
+  "choices": [
+   "The ark alone",
+   "David and his guard",
+   "My lord Joab and the servants of my lord",
+   "The Ammonites"
+  ],
+  "answer": 2,
+  "explanation": "Uriah said, my lord Joab, and the servants of my lord, are encamped in the open fields.",
+  "ref": "2 Samuel 11:11"
+ },
+ {
+  "id": "2-samuel-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Bath-sheba's father?",
+  "choices": [
+   "Ahithophel",
+   "Eliam",
+   "Jonadab",
+   "Nahash"
+  ],
+  "answer": 1,
+  "explanation": "One said, Is not this Bath-sheba, the daughter of Eliam, the wife of Uriah the Hittite?",
+  "ref": "2 Samuel 11:3"
+ },
+ {
+  "id": "2-samuel-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At what time of day did David rise and walk on the roof?",
+  "choices": [
+   "Eveningtide",
+   "Early morning",
+   "Midday",
+   "Midnight"
+  ],
+  "answer": 0,
+  "explanation": "It came to pass in an eveningtide, that David arose from off his bed, and walked upon the roof.",
+  "ref": "2 Samuel 11:2"
+ },
+ {
+  "id": "2-samuel-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whom did Uriah sleep at the door of the king's house?",
+  "choices": [
+   "The priests",
+   "The Cherethites",
+   "Joab's armourbearers",
+   "All the servants of his lord"
+  ],
+  "answer": 3,
+  "explanation": "Uriah slept at the door of the king's house with all the servants of his lord.",
+  "ref": "2 Samuel 11:9"
+ },
+ {
+  "id": "2-samuel-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did David tell Uriah to stay in Jerusalem before leaving?",
+  "choices": [
+   "Seven days",
+   "A month",
+   "Until the next day",
+   "Until the siege ended"
+  ],
+  "answer": 2,
+  "explanation": "David said, Tarry here to day also, and to morrow I will let thee depart.",
+  "ref": "2 Samuel 11:12"
+ },
+ {
+  "id": "2-samuel-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David tell Joab to do after setting Uriah in the hottest battle?",
+  "choices": [
+   "Send him more men",
+   "Retire from him, that he may be smitten",
+   "Fetch him back at dusk",
+   "Make him captain"
+  ],
+  "answer": 1,
+  "explanation": "Set ye Uriah in the forefront of the hottest battle, and retire ye from him, that he may be smitten, and die.",
+  "ref": "2 Samuel 11:15"
+ },
+ {
+  "id": "2-samuel-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Joab say a woman killed with a piece of a millstone?",
+  "choices": [
+   "Abimelech the son of Jerubbesheth",
+   "Abimelech the son of Gideon",
+   "Sisera",
+   "Abner"
+  ],
+  "answer": 0,
+  "explanation": "Joab asked, Who smote Abimelech the son of Jerubbesheth? did not a woman cast a piece of a millstone upon him?",
+  "ref": "2 Samuel 11:21"
+ },
+ {
+  "id": "2-samuel-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Abimelech die when the woman cast the millstone?",
+  "choices": [
+   "Rabbah",
+   "Shechem",
+   "Jericho",
+   "Thebez"
+  ],
+  "answer": 3,
+  "explanation": "Did not a woman cast a piece of a millstone upon him from the wall, that he died in Thebez?",
+  "ref": "2 Samuel 11:21"
+ },
+ {
+  "id": "2-samuel-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was thrown from the wall upon Abimelech?",
+  "choices": [
+   "A spear",
+   "A stone jar",
+   "A piece of a millstone",
+   "A burning torch"
+  ],
+  "answer": 2,
+  "explanation": "A woman cast a piece of a millstone upon him from the wall, that he died.",
+  "ref": "2 Samuel 11:21"
+ },
+ {
+  "id": "2-samuel-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joab say the king might ask the messenger about the fighting?",
+  "choices": [
+   "Why they had not retreated",
+   "Why they approached so near the city wall",
+   "Where Uriah was buried",
+   "How many Ammonites fell"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore approached ye so nigh unto the city when ye did fight? knew ye not that they would shoot from the wall?",
+  "ref": "2 Samuel 11:20"
+ },
+ {
+  "id": "2-samuel-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Up to where did the messenger say the men were upon the enemy in the field?",
+  "choices": [
+   "The entering of the gate",
+   "The river bank",
+   "The hill of Helam",
+   "The king's tent"
+  ],
+  "answer": 0,
+  "explanation": "The men prevailed against us, and we were upon them even unto the entering of the gate.",
+  "ref": "2 Samuel 11:23"
+ },
+ {
+  "id": "2-samuel-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where did the messenger say the shooters shot at the servants?",
+  "choices": [
+   "From the hills",
+   "From chariots",
+   "From the gate tower",
+   "Off the wall"
+  ],
+  "answer": 3,
+  "explanation": "The shooters shot from off the wall upon thy servants; and some of the king's servants be dead.",
+  "ref": "2 Samuel 11:24"
+ },
+ {
+  "id": "2-samuel-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city did Joab besiege at the start of the chapter?",
+  "choices": [
+   "Thebez",
+   "Jericho",
+   "Rabbah",
+   "Helam"
+  ],
+  "answer": 2,
+  "explanation": "They destroyed the children of Ammon, and besieged Rabbah.",
+  "ref": "2 Samuel 11:1"
+ },
+ {
+  "id": "2-samuel-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the text say about Bath-sheba when she came to David?",
+  "choices": [
+   "She had fasted",
+   "She was purified from her uncleanness",
+   "She had come from the temple",
+   "She was a widow"
+  ],
+  "answer": 1,
+  "explanation": "She came in unto him, and he lay with her; for she was purified from her uncleanness.",
+  "ref": "2 Samuel 11:4"
+ },
+ {
+  "id": "2-samuel-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What reason did David give for asking why Uriah did not go home?",
+  "choices": [
+   "He had come from a journey",
+   "He was sick",
+   "The war was over",
+   "Joab had called him"
+  ],
+  "answer": 0,
+  "explanation": "David said unto Uriah, Camest thou not from thy journey? why then didst thou not go down unto thine house?",
+  "ref": "2 Samuel 11:10"
+ },
+ {
+  "id": "2-samuel-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Uriah swear by when he refused to go home?",
+  "choices": [
+   "The ark of the LORD",
+   "The name of Joab",
+   "The altar at Hebron",
+   "The life of David and his soul"
+  ],
+  "answer": 3,
+  "explanation": "Uriah said, as thou livest, and as thy soul liveth, I will not do this thing.",
+  "ref": "2 Samuel 11:11"
+ },
+ {
+  "id": "2-samuel-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who sent Uriah to David from the army?",
+  "choices": [
+   "Abishai",
+   "Eliam",
+   "Joab",
+   "Nathan"
+  ],
+  "answer": 2,
+  "explanation": "David sent to Joab, saying, Send me Uriah the Hittite. And Joab sent Uriah to David.",
+  "ref": "2 Samuel 11:6"
+ },
+ {
   "id": "old-2-samuel-12-1",
   "chapter": 12,
   "level": "beginner",
