@@ -78,5 +78,645 @@
   "answer": 2,
   "explanation": "Jude urges believers to keep themselves in God's love while waiting for Christ's mercy.",
   "ref": "Jude 1:21"
+ },
+ {
+  "id": "jude-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which archangel contended with the devil about the body of Moses?",
+  "choices": [
+   "Gabriel",
+   "Michael",
+   "Raphael",
+   "Uriel"
+  ],
+  "answer": 1,
+  "explanation": "Michael the archangel, contending with the devil, disputed about the body of Moses.",
+  "ref": "Jude 1:9"
+ },
+ {
+  "id": "jude-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Michael say to the devil?",
+  "choices": [
+   "Get thee hence",
+   "The Lord rebuke thee",
+   "Peace be still",
+   "Depart from me"
+  ],
+  "answer": 1,
+  "explanation": "Michael durst not bring a railing accusation, but said, The Lord rebuke thee.",
+  "ref": "Jude 1:9"
+ },
+ {
+  "id": "jude-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which cities are set forth as an example, suffering the vengeance of eternal fire?",
+  "choices": [
+   "Nineveh and Babylon",
+   "Sodom and Gomorrha",
+   "Jericho and Ai",
+   "Tyre and Sidon"
+  ],
+  "answer": 1,
+  "explanation": "Sodom and Gomorrha, and the cities about them, are set forth for an example, suffering the vengeance of eternal fire.",
+  "ref": "Jude 1:7"
+ },
+ {
+  "id": "jude-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Out of which land did the Lord save the people before destroying those who believed not?",
+  "choices": [
+   "Babylon",
+   "Egypt",
+   "Canaan",
+   "Assyria"
+  ],
+  "answer": 1,
+  "explanation": "The Lord saved the people out of the land of Egypt, afterward destroyed them that believed not.",
+  "ref": "Jude 1:5"
+ },
+ {
+  "id": "jude-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who prophesied, Behold, the Lord cometh with ten thousands of his saints?",
+  "choices": [
+   "Moses",
+   "Enoch",
+   "Noah",
+   "Elijah"
+  ],
+  "answer": 1,
+  "explanation": "Enoch also, the seventh from Adam, prophesied of these.",
+  "ref": "Jude 1:14"
+ },
+ {
+  "id": "jude-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose way did the ungodly men go in, according to Jude?",
+  "choices": [
+   "Abel",
+   "Cain",
+   "Seth",
+   "Esau"
+  ],
+  "answer": 1,
+  "explanation": "They have gone in the way of Cain.",
+  "ref": "Jude 1:11"
+ },
+ {
+  "id": "jude-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was once delivered unto the saints?",
+  "choices": [
+   "The covenant",
+   "The faith",
+   "The temple",
+   "The kingdom"
+  ],
+  "answer": 1,
+  "explanation": "Jude urged them to contend for the faith which was once delivered unto the saints.",
+  "ref": "Jude 1:3"
+ },
+ {
+  "id": "jude-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jude first want to write to them about?",
+  "choices": [
+   "The coming kingdom",
+   "The common salvation",
+   "The temple worship",
+   "The feast days"
+  ],
+  "answer": 1,
+  "explanation": "Jude gave all diligence to write of the common salvation.",
+  "ref": "Jude 1:3"
+ },
+ {
+  "id": "jude-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom does Jude ascribe glory and majesty at the end of his letter?",
+  "choices": [
+   "The angels of heaven",
+   "The only wise God our Saviour",
+   "The apostles of the Lord",
+   "The saints of old"
+  ],
+  "answer": 1,
+  "explanation": "To the only wise God our Saviour be glory and majesty, dominion and power, both now and ever.",
+  "ref": "Jude 1:25"
+ },
+ {
+  "id": "jude-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is God able to do for those who are kept by Him?",
+  "choices": [
+   "Give them great riches",
+   "Keep them from falling",
+   "Make them kings",
+   "Hide them from enemies"
+  ],
+  "answer": 1,
+  "explanation": "He is able to keep you from falling, and to present you faultless before the presence of his glory.",
+  "ref": "Jude 1:24"
+ },
+ {
+  "id": "jude-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By whom does Jude say his readers are sanctified?",
+  "choices": [
+   "The apostles",
+   "The prophets",
+   "The elders",
+   "God the Father"
+  ],
+  "answer": 3,
+  "explanation": "Jude writes to them that are sanctified by God the Father, and preserved in Jesus Christ.",
+  "ref": "Jude 1:1"
+ },
+ {
+  "id": "jude-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which three things does Jude wish to be multiplied to his readers?",
+  "choices": [
+   "Faith, hope and love",
+   "Grace, truth and joy",
+   "Wisdom, power and glory",
+   "Mercy, peace and love"
+  ],
+  "answer": 3,
+  "explanation": "Mercy unto you, and peace, and love, be multiplied.",
+  "ref": "Jude 1:2"
+ },
+ {
+  "id": "jude-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How had the certain ungodly men come in among them?",
+  "choices": [
+   "By force",
+   "By invitation",
+   "By night",
+   "Unawares"
+  ],
+  "answer": 3,
+  "explanation": "Certain men crept in unawares, who were before of old ordained to this condemnation.",
+  "ref": "Jude 1:4"
+ },
+ {
+  "id": "jude-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom were these ungodly men denying?",
+  "choices": [
+   "Moses and the prophets",
+   "The apostles and the elders",
+   "The law and the temple",
+   "The only Lord God and our Lord Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "They were denying the only Lord God, and our Lord Jesus Christ.",
+  "ref": "Jude 1:4"
+ },
+ {
+  "id": "jude-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord do to those who believed not after saving the people out of Egypt?",
+  "choices": [
+   "Scattered them",
+   "Sent them to Babylon",
+   "Gave them a new land",
+   "Destroyed them"
+  ],
+  "answer": 3,
+  "explanation": "The Lord, having saved the people out of Egypt, afterward destroyed them that believed not.",
+  "ref": "Jude 1:5"
+ },
+ {
+  "id": "jude-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angels who kept not their first estate leave?",
+  "choices": [
+   "Their golden thrones",
+   "The mountain of God",
+   "The holy city",
+   "Their own habitation"
+  ],
+  "answer": 3,
+  "explanation": "The angels kept not their first estate, but left their own habitation.",
+  "ref": "Jude 1:6"
+ },
+ {
+  "id": "jude-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where are those angels reserved until the judgment of the great day?",
+  "choices": [
+   "In a deep pit of fire",
+   "In the wilderness",
+   "In the sea",
+   "In everlasting chains under darkness"
+  ],
+  "answer": 3,
+  "explanation": "He hath reserved them in everlasting chains under darkness unto the judgment of the great day.",
+  "ref": "Jude 1:6"
+ },
+ {
+  "id": "jude-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides defiling the flesh, what do the filthy dreamers despise?",
+  "choices": [
+   "Wealth",
+   "Strangers",
+   "Feast days",
+   "Dominion"
+  ],
+  "answer": 3,
+  "explanation": "These filthy dreamers defile the flesh, despise dominion, and speak evil of dignities.",
+  "ref": "Jude 1:8"
+ },
+ {
+  "id": "jude-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Michael not dare to bring against the devil?",
+  "choices": [
+   "A burning torch",
+   "A sword of judgment",
+   "A loud cry",
+   "A railing accusation"
+  ],
+  "answer": 3,
+  "explanation": "Michael durst not bring against him a railing accusation.",
+  "ref": "Jude 1:9"
+ },
+ {
+  "id": "jude-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "In whose gainsaying did these men perish?",
+  "choices": [
+   "Balaam",
+   "Cain",
+   "Enoch",
+   "Core"
+  ],
+  "answer": 3,
+  "explanation": "They perished in the gainsaying of Core.",
+  "ref": "Jude 1:11"
+ },
+ {
+  "id": "jude-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jude call these men who are without water and carried about of winds?",
+  "choices": [
+   "Rivers",
+   "Wells",
+   "Valleys",
+   "Clouds"
+  ],
+  "answer": 3,
+  "explanation": "Clouds they are without water, carried about of winds.",
+  "ref": "Jude 1:12"
+ },
+ {
+  "id": "jude-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Enoch say the Lord would do upon all?",
+  "choices": [
+   "Send rain",
+   "Show mercy",
+   "Raise the dead",
+   "Execute judgment"
+  ],
+  "answer": 3,
+  "explanation": "The Lord cometh to execute judgment upon all, and to convince all that are ungodly.",
+  "ref": "Jude 1:15"
+ },
+ {
+  "id": "jude-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jude say the apostles told them there should be in the last time?",
+  "choices": [
+   "Famines",
+   "Earthquakes",
+   "Wars",
+   "Mockers"
+  ],
+  "answer": 3,
+  "explanation": "They told you there should be mockers in the last time, who should walk after their own ungodly lusts.",
+  "ref": "Jude 1:18"
+ },
+ {
+  "id": "jude-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whom are believers told to pray?",
+  "choices": [
+   "The Son of man",
+   "The name of Moses",
+   "The holy city",
+   "The Holy Ghost"
+  ],
+  "answer": 3,
+  "explanation": "Beloved, building up yourselves on your most holy faith, praying in the Holy Ghost.",
+  "ref": "Jude 1:20"
+ },
+ {
+  "id": "jude-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jude say to do with others, pulling them out of the fire?",
+  "choices": [
+   "Send them away",
+   "Teach them the law",
+   "Pay them wages",
+   "Save them with fear"
+  ],
+  "answer": 3,
+  "explanation": "And others save with fear, pulling them out of the fire.",
+  "ref": "Jude 1:23"
+ },
+ {
+  "id": "jude-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Jude say Enoch was from Adam?",
+  "choices": [
+   "The third",
+   "The tenth",
+   "The seventh",
+   "The fifth"
+  ],
+  "answer": 2,
+  "explanation": "Enoch also, the seventh from Adam, prophesied of these.",
+  "ref": "Jude 1:14"
+ },
+ {
+  "id": "jude-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the ungodly men called in the feasts of charity?",
+  "choices": [
+   "Guests",
+   "Servants",
+   "Spots",
+   "Priests"
+  ],
+  "answer": 2,
+  "explanation": "These are spots in your feasts of charity, when they feast with you, feeding themselves without fear.",
+  "ref": "Jude 1:12"
+ },
+ {
+  "id": "jude-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are the trees whose fruit withereth described?",
+  "choices": [
+   "Cut down and burned",
+   "Planted by rivers",
+   "Twice dead, plucked up by the roots",
+   "Bearing fruit in season"
+  ],
+  "answer": 2,
+  "explanation": "They are trees whose fruit withereth, without fruit, twice dead, plucked up by the roots.",
+  "ref": "Jude 1:12"
+ },
+ {
+  "id": "jude-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is foaming out their own shame?",
+  "choices": [
+   "Rivers in flood",
+   "Fountains of the deep",
+   "Raging waves of the sea",
+   "Springs in the desert"
+  ],
+  "answer": 2,
+  "explanation": "They are raging waves of the sea, foaming out their own shame.",
+  "ref": "Jude 1:13"
+ },
+ {
+  "id": "jude-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is reserved for the wandering stars?",
+  "choices": [
+   "A place in the heavens",
+   "A fire without end",
+   "The blackness of darkness for ever",
+   "A pit under the earth"
+  ],
+  "answer": 2,
+  "explanation": "Wandering stars, to whom is reserved the blackness of darkness for ever.",
+  "ref": "Jude 1:13"
+ },
+ {
+  "id": "jude-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How do these men act in those things they know naturally?",
+  "choices": [
+   "As wise men",
+   "As little children",
+   "As brute beasts",
+   "As watchmen"
+  ],
+  "answer": 2,
+  "explanation": "What they know naturally, as brute beasts, in those things they corrupt themselves.",
+  "ref": "Jude 1:10"
+ },
+ {
+  "id": "jude-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do these men have in admiration because of advantage?",
+  "choices": [
+   "Great riches",
+   "Ancient writings",
+   "Men's persons",
+   "Their own works"
+  ],
+  "answer": 2,
+  "explanation": "Their mouth speaketh great swelling words, having men's persons in admiration because of advantage.",
+  "ref": "Jude 1:16"
+ },
+ {
+  "id": "jude-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are these men called, who walk after their own lusts?",
+  "choices": [
+   "Prophets, teachers",
+   "Strangers, pilgrims",
+   "Murmurers, complainers",
+   "Rulers, judges"
+  ],
+  "answer": 2,
+  "explanation": "These are murmurers, complainers, walking after their own lusts.",
+  "ref": "Jude 1:16"
+ },
+ {
+  "id": "jude-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do those who separate themselves not have?",
+  "choices": [
+   "Any friends",
+   "Any riches",
+   "The Spirit",
+   "The law"
+  ],
+  "answer": 2,
+  "explanation": "These be they who separate themselves, sensual, having not the Spirit.",
+  "ref": "Jude 1:19"
+ },
+ {
+  "id": "jude-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What garment does Jude say to hate?",
+  "choices": [
+   "The garment of praise",
+   "The garment rolled in blood",
+   "The garment spotted by the flesh",
+   "The garment of linen"
+  ],
+  "answer": 2,
+  "explanation": "Hating even the garment spotted by the flesh.",
+  "ref": "Jude 1:23"
+ },
+ {
+  "id": "jude-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what are believers to be presented faultless before His glory?",
+  "choices": [
+   "Great fear",
+   "Loud trumpets",
+   "Exceeding joy",
+   "Deep silence"
+  ],
+  "answer": 2,
+  "explanation": "He is able to present you faultless before the presence of his glory with exceeding joy.",
+  "ref": "Jude 1:24"
+ },
+ {
+  "id": "jude-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Jude say to do with some, making a difference?",
+  "choices": [
+   "Cast them out",
+   "Drive them away",
+   "Have compassion",
+   "Ignore them"
+  ],
+  "answer": 2,
+  "explanation": "And of some have compassion, making a difference.",
+  "ref": "Jude 1:22"
+ },
+ {
+  "id": "jude-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Looking for the mercy of the Lord Jesus Christ unto what?",
+  "choices": [
+   "A heavenly city",
+   "Everlasting peace",
+   "Eternal life",
+   "A new body"
+  ],
+  "answer": 2,
+  "explanation": "Keep yourselves in the love of God, looking for the mercy of our Lord Jesus Christ unto eternal life.",
+  "ref": "Jude 1:21"
+ },
+ {
+  "id": "jude-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were Sodom and Gomorrha and the cities about them giving themselves over to?",
+  "choices": [
+   "Idolatry",
+   "Violence",
+   "Fornication",
+   "Theft"
+  ],
+  "answer": 2,
+  "explanation": "They gave themselves over to fornication, and going after strange flesh.",
+  "ref": "Jude 1:7"
+ },
+ {
+  "id": "jude-1-h-16",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what does Enoch say the ungodly will be convinced?",
+  "choices": [
+   "Their wealth",
+   "All their ungodly deeds",
+   "Their long journeys",
+   "Their many teachers"
+  ],
+  "answer": 1,
+  "explanation": "To convince all that are ungodly among them of all their ungodly deeds which they have ungodly committed.",
+  "ref": "Jude 1:15"
  }
 ]

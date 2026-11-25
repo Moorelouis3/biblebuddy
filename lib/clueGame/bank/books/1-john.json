@@ -398,5 +398,2645 @@
   "answer": 1,
   "explanation": "John closes the letter by warning believers to keep themselves from idols.",
   "ref": "1 John 5:21"
+ },
+ {
+  "id": "1-john-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had John's hands done to the Word of life?",
+  "choices": [
+   "Written it",
+   "Carried it",
+   "Handled it",
+   "Hidden it"
+  ],
+  "answer": 2,
+  "explanation": "That which we have seen with our eyes, and our hands have handled, of the Word of life.",
+  "ref": "1 John 1:1"
+ },
+ {
+  "id": "1-john-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "With whom was the eternal life before it was manifested to them?",
+  "choices": [
+   "The angels",
+   "The prophets",
+   "The world",
+   "The Father"
+  ],
+  "answer": 3,
+  "explanation": "That eternal life, which was with the Father, and was manifested unto us.",
+  "ref": "1 John 1:2"
+ },
+ {
+  "id": "1-john-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do John and the others declare what they have seen and heard?",
+  "choices": [
+   "That ye may become rich",
+   "That ye also may have fellowship with us",
+   "That ye may rule over us",
+   "That ye may build a temple"
+  ],
+  "answer": 1,
+  "explanation": "That which we have seen and heard declare we unto you, that ye also may have fellowship with us.",
+  "ref": "1 John 1:3"
+ },
+ {
+  "id": "1-john-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did John and the others do about the life that was manifested?",
+  "choices": [
+   "Doubted it",
+   "Hid it",
+   "Bear witness of it",
+   "Forgot it"
+  ],
+  "answer": 2,
+  "explanation": "The life was manifested, and we have seen it, and bear witness.",
+  "ref": "1 John 1:2"
+ },
+ {
+  "id": "1-john-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two qualities does John give God in forgiving our confessed sins?",
+  "choices": [
+   "Gentle and mild",
+   "Strong and swift",
+   "Faithful and just",
+   "Near and far"
+  ],
+  "answer": 2,
+  "explanation": "If we confess our sins, he is faithful and just to forgive us our sins.",
+  "ref": "1 John 1:9"
+ },
+ {
+  "id": "1-john-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is not in us if we say we have no sin?",
+  "choices": [
+   "The light",
+   "The truth",
+   "The Spirit",
+   "The law"
+  ],
+  "answer": 1,
+  "explanation": "If we say that we have no sin, we deceive ourselves, and the truth is not in us.",
+  "ref": "1 John 1:8"
+ },
+ {
+  "id": "1-john-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what does God cleanse us when we confess our sins?",
+  "choices": [
+   "All sorrow",
+   "All fear",
+   "All trouble",
+   "All unrighteousness"
+  ],
+  "answer": 3,
+  "explanation": "He is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness.",
+  "ref": "1 John 1:9"
+ },
+ {
+  "id": "1-john-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides seeing with their eyes and handling it, what had they done to the Word of life?",
+  "choices": [
+   "Tasted it",
+   "Looked upon it",
+   "Wept over it",
+   "Written it"
+  ],
+  "answer": 1,
+  "explanation": "Which we have seen with our eyes, which we have looked upon, and our hands have handled.",
+  "ref": "1 John 1:1"
+ },
+ {
+  "id": "1-john-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is not in us if we say we have not sinned?",
+  "choices": [
+   "His peace",
+   "His blood",
+   "His word",
+   "His light"
+  ],
+  "answer": 2,
+  "explanation": "If we say that we have not sinned, we make him a liar, and his word is not in us.",
+  "ref": "1 John 1:10"
+ },
+ {
+  "id": "1-john-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do those who say they have fellowship but walk in darkness not do?",
+  "choices": [
+   "The law",
+   "The will of men",
+   "The truth",
+   "The feast"
+  ],
+  "answer": 2,
+  "explanation": "We lie, and do not the truth.",
+  "ref": "1 John 1:6"
+ },
+ {
+  "id": "1-john-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whose sins, besides ours, is Jesus the propitiation?",
+  "choices": [
+   "Israel only",
+   "The whole world",
+   "The apostles only",
+   "The elders only"
+  ],
+  "answer": 1,
+  "explanation": "He is the propitiation for our sins: and not for ours only, but also for the sins of the whole world.",
+  "ref": "1 John 2:2"
+ },
+ {
+  "id": "1-john-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is he who says he knows Him but keeps not His commandments?",
+  "choices": [
+   "A prophet",
+   "A liar",
+   "A teacher",
+   "A stranger"
+  ],
+  "answer": 1,
+  "explanation": "He that saith, I know him, and keepeth not his commandments, is a liar, and the truth is not in him.",
+  "ref": "1 John 2:4"
+ },
+ {
+  "id": "1-john-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "He that loves his brother abides in what?",
+  "choices": [
+   "The house",
+   "The light",
+   "The law",
+   "The temple"
+  ],
+  "answer": 1,
+  "explanation": "He that loveth his brother abideth in the light.",
+  "ref": "1 John 2:10"
+ },
+ {
+  "id": "1-john-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "He that hates his brother is in what?",
+  "choices": [
+   "Fire",
+   "Darkness",
+   "Sorrow",
+   "Prison"
+  ],
+  "answer": 1,
+  "explanation": "He that hateth his brother is in darkness, and walketh in darkness.",
+  "ref": "1 John 2:11"
+ },
+ {
+  "id": "1-john-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which of these is named among the things that are in the world?",
+  "choices": [
+   "The fear of death",
+   "The pride of life",
+   "The love of God",
+   "The joy of heaven"
+  ],
+  "answer": 1,
+  "explanation": "The lust of the flesh, and the lust of the eyes, and the pride of life, is not of the Father, but is of the world.",
+  "ref": "1 John 2:16"
+ },
+ {
+  "id": "1-john-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What passes away, along with its lust?",
+  "choices": [
+   "The law",
+   "The world",
+   "The heavens",
+   "The church"
+  ],
+  "answer": 1,
+  "explanation": "The world passeth away, and the lust thereof.",
+  "ref": "1 John 2:17"
+ },
+ {
+  "id": "1-john-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long does he who does the will of God abide?",
+  "choices": [
+   "For a season",
+   "For ever",
+   "For a year",
+   "Until the end"
+  ],
+  "answer": 1,
+  "explanation": "He that doeth the will of God abideth for ever.",
+  "ref": "1 John 2:17"
+ },
+ {
+  "id": "1-john-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who is a liar, according to John?",
+  "choices": [
+   "He that doubts the apostles",
+   "He that denieth that Jesus is the Christ",
+   "He that forgets the feast",
+   "He that fears the world"
+  ],
+  "answer": 1,
+  "explanation": "Who is a liar but he that denieth that Jesus is the Christ?",
+  "ref": "1 John 2:22"
+ },
+ {
+  "id": "1-john-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do believers have from the Holy One?",
+  "choices": [
+   "A throne",
+   "An unction",
+   "A sword",
+   "A scroll"
+  ],
+  "answer": 1,
+  "explanation": "But ye have an unction from the Holy One, and ye know all things.",
+  "ref": "1 John 2:20"
+ },
+ {
+  "id": "1-john-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does John write these things to his little children?",
+  "choices": [
+   "That ye be rich",
+   "That ye travel",
+   "That ye fast",
+   "That ye sin not"
+  ],
+  "answer": 3,
+  "explanation": "My little children, these things write I unto you, that ye sin not.",
+  "ref": "1 John 2:1"
+ },
+ {
+  "id": "1-john-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whom is the love of God perfected?",
+  "choices": [
+   "Whoso speaks well",
+   "Whoso gives much",
+   "Whoso fasts often",
+   "Whoso keepeth his word"
+  ],
+  "answer": 3,
+  "explanation": "Whoso keepeth his word, in him verily is the love of God perfected.",
+  "ref": "1 John 2:5"
+ },
+ {
+  "id": "1-john-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How ought he who says he abides in Him to walk?",
+  "choices": [
+   "As the world walks",
+   "As the prophets walked",
+   "Without fear",
+   "Even as He walked"
+  ],
+  "answer": 3,
+  "explanation": "He that saith he abideth in him ought himself also so to walk, even as he walked.",
+  "ref": "1 John 2:6"
+ },
+ {
+  "id": "1-john-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does John say the old commandment is?",
+  "choices": [
+   "The law given on Sinai",
+   "The sacrifice of the lamb",
+   "The feast of weeks",
+   "The word which ye have heard from the beginning"
+  ],
+  "answer": 3,
+  "explanation": "The old commandment is the word which ye have heard from the beginning.",
+  "ref": "1 John 2:7"
+ },
+ {
+  "id": "1-john-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is the new commandment true in Him and in them?",
+  "choices": [
+   "The temple is rebuilt",
+   "The law is finished",
+   "The enemy is defeated",
+   "The darkness is past, and the true light now shineth"
+  ],
+  "answer": 3,
+  "explanation": "A new commandment I write unto you: because the darkness is past, and the true light now shineth.",
+  "ref": "1 John 2:8"
+ },
+ {
+  "id": "1-john-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does he who hates his brother not know whither he goes?",
+  "choices": [
+   "He has lost his way",
+   "He is a stranger",
+   "He is very old",
+   "Darkness hath blinded his eyes"
+  ],
+  "answer": 3,
+  "explanation": "He knoweth not whither he goeth, because that darkness hath blinded his eyes.",
+  "ref": "1 John 2:11"
+ },
+ {
+  "id": "1-john-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does John write to the little children?",
+  "choices": [
+   "They are strong",
+   "They are wise",
+   "They are old",
+   "Their sins are forgiven for his name's sake"
+  ],
+  "answer": 3,
+  "explanation": "I write unto you, little children, because your sins are forgiven you for his name's sake.",
+  "ref": "1 John 2:12"
+ },
+ {
+  "id": "1-john-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does John write to the fathers?",
+  "choices": [
+   "They have overcome the wicked one",
+   "They are strong",
+   "They are many",
+   "They have known Him that is from the beginning"
+  ],
+  "answer": 3,
+  "explanation": "I write unto you, fathers, because ye have known him that is from the beginning.",
+  "ref": "1 John 2:13"
+ },
+ {
+  "id": "1-john-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does John write to the young men, at first?",
+  "choices": [
+   "They have known the Father",
+   "They are forgiven",
+   "They are fathers",
+   "They have overcome the wicked one"
+  ],
+  "answer": 3,
+  "explanation": "I write unto you, young men, because ye have overcome the wicked one.",
+  "ref": "1 John 2:13"
+ },
+ {
+  "id": "1-john-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is true of those who went out from them?",
+  "choices": [
+   "They were of us",
+   "They were fathers",
+   "They were saints",
+   "They were not of us"
+  ],
+  "answer": 3,
+  "explanation": "They went out from us, but they were not of us.",
+  "ref": "1 John 2:19"
+ },
+ {
+  "id": "1-john-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he who denies the Son not have?",
+  "choices": [
+   "The Spirit",
+   "The law",
+   "The truth",
+   "The Father"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever denieth the Son, the same hath not the Father.",
+  "ref": "1 John 2:23"
+ },
+ {
+  "id": "1-john-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does John say the anointing does?",
+  "choices": [
+   "Gives you power",
+   "Heals the sick",
+   "Writes the law",
+   "Teaches you of all things"
+  ],
+  "answer": 3,
+  "explanation": "The same anointing teacheth you of all things, and is truth, and is no lie.",
+  "ref": "1 John 2:27"
+ },
+ {
+  "id": "1-john-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does John tell little children to abide in Him?",
+  "choices": [
+   "That we may rule the earth",
+   "That we may escape the plague",
+   "That we may build the temple",
+   "That we may have confidence and not be ashamed at His coming"
+  ],
+  "answer": 3,
+  "explanation": "Abide in him; that, when he shall appear, we may have confidence, and not be ashamed before him at his coming.",
+  "ref": "1 John 2:28"
+ },
+ {
+  "id": "1-john-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do those who do righteousness show about themselves?",
+  "choices": [
+   "They are fathers",
+   "They are rich",
+   "They are teachers",
+   "They are born of him"
+  ],
+  "answer": 3,
+  "explanation": "Every one that doeth righteousness is born of him.",
+  "ref": "1 John 2:29"
+ },
+ {
+  "id": "1-john-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does John say the young men are strong?",
+  "choices": [
+   "They are many",
+   "They fear the Lord",
+   "The word of God abideth in them",
+   "They are wise"
+  ],
+  "answer": 2,
+  "explanation": "I have written unto you, young men, because ye are strong, and the word of God abideth in you.",
+  "ref": "1 John 2:14"
+ },
+ {
+  "id": "1-john-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Concerning whom did John write these things?",
+  "choices": [
+   "Them that persecute you",
+   "Them that follow you",
+   "Them that seduce you",
+   "Them that teach you"
+  ],
+  "answer": 2,
+  "explanation": "These things have I written unto you concerning them that seduce you.",
+  "ref": "1 John 2:26"
+ },
+ {
+  "id": "1-john-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Along with the lust of the flesh and the pride of life, what is named?",
+  "choices": [
+   "The love of money",
+   "The fear of men",
+   "The lust of the eyes",
+   "The wealth of kings"
+  ],
+  "answer": 2,
+  "explanation": "The lust of the flesh, and the lust of the eyes, and the pride of life.",
+  "ref": "1 John 2:16"
+ },
+ {
+  "id": "1-john-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is not in him that loves his brother?",
+  "choices": [
+   "Fear of death",
+   "Love of the world",
+   "Occasion of stumbling",
+   "The wicked one"
+  ],
+  "answer": 2,
+  "explanation": "He that loveth his brother abideth in the light, and there is none occasion of stumbling in him.",
+  "ref": "1 John 2:10"
+ },
+ {
+  "id": "1-john-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did those who went out from them go out?",
+  "choices": [
+   "That they might build a church",
+   "That they might travel",
+   "To be made manifest as not of us",
+   "That they might teach"
+  ],
+  "answer": 2,
+  "explanation": "They went out, that they might be made manifest that they were not all of us.",
+  "ref": "1 John 2:19"
+ },
+ {
+  "id": "1-john-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "He is antichrist who denies whom?",
+  "choices": [
+   "The Spirit and the law",
+   "Moses and the prophets",
+   "The Father and the Son",
+   "The Son only"
+  ],
+  "answer": 2,
+  "explanation": "He is antichrist, that denieth the Father and the Son.",
+  "ref": "1 John 2:22"
+ },
+ {
+  "id": "1-john-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when does he who says he is in the light and hates his brother stay in darkness?",
+  "choices": [
+   "Until the feast",
+   "Until he dies",
+   "Even until now",
+   "Until the end"
+  ],
+  "answer": 2,
+  "explanation": "He that saith he is in the light, and hateth his brother, is in darkness even until now.",
+  "ref": "1 John 2:9"
+ },
+ {
+  "id": "1-john-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would those who were of us no doubt have done?",
+  "choices": [
+   "Gone to Rome",
+   "Taught the law",
+   "Continued with us",
+   "Built a church"
+  ],
+  "answer": 2,
+  "explanation": "If they had been of us, they would no doubt have continued with us.",
+  "ref": "1 John 2:19"
+ },
+ {
+  "id": "1-john-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do believers know, having an unction from the Holy One?",
+  "choices": [
+   "Only the law",
+   "Only the future",
+   "All things",
+   "Only the past"
+  ],
+  "answer": 2,
+  "explanation": "But ye have an unction from the Holy One, and ye know all things.",
+  "ref": "1 John 2:20"
+ },
+ {
+  "id": "1-john-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does John say they need not, because of the anointing?",
+  "choices": [
+   "That they travel",
+   "That they fast",
+   "That any man teach you",
+   "That they be silent"
+  ],
+  "answer": 2,
+  "explanation": "Ye need not that any man teach you: but the same anointing teacheth you of all things.",
+  "ref": "1 John 2:27"
+ },
+ {
+  "id": "1-john-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the little children have known, in the first writing?",
+  "choices": [
+   "The law",
+   "The Son",
+   "The Father",
+   "The world"
+  ],
+  "answer": 2,
+  "explanation": "I write unto you, little children, because ye have known the Father.",
+  "ref": "1 John 2:13"
+ },
+ {
+  "id": "1-john-2-e-11",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who has the Father also, according to John?",
+  "choices": [
+   "He that keeps the feasts",
+   "He that acknowledgeth the Son",
+   "He that fears the world",
+   "He that hears the law"
+  ],
+  "answer": 1,
+  "explanation": "He that acknowledgeth the Son hath the Father also.",
+  "ref": "1 John 2:23"
+ },
+ {
+  "id": "1-john-2-m-16",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does John say he has written to them?",
+  "choices": [
+   "Because ye know the truth",
+   "Because ye are strangers",
+   "Because ye are rich",
+   "Because ye are few"
+  ],
+  "answer": 0,
+  "explanation": "I have not written unto you because ye know not the truth, but because ye know it, and that no lie is of the truth.",
+  "ref": "1 John 2:21"
+ },
+ {
+  "id": "1-john-2-h-16",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Which three groups does John say he writes to?",
+  "choices": [
+   "Fathers, mothers and children",
+   "Little children, fathers and young men",
+   "Priests, kings and servants",
+   "Elders, widows and strangers"
+  ],
+  "answer": 1,
+  "explanation": "I write unto you, little children... fathers... young men.",
+  "ref": "1 John 2:12–13"
+ },
+ {
+  "id": "1-john-2-h-17",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does John say about the anointing, besides that it teaches all things?",
+  "choices": [
+   "It is truth, and is no lie",
+   "It is for the elders only",
+   "It must be renewed yearly",
+   "It was given to the prophets"
+  ],
+  "answer": 0,
+  "explanation": "The same anointing teacheth you of all things, and is truth, and is no lie.",
+  "ref": "1 John 2:27"
+ },
+ {
+  "id": "1-john-2-h-18",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does John tell the little children to do, so that they may have confidence at His coming?",
+  "choices": [
+   "Fast and pray",
+   "Flee the city",
+   "Abide in him",
+   "Teach the elders"
+  ],
+  "answer": 2,
+  "explanation": "And now, little children, abide in him; that, when he shall appear, we may have confidence.",
+  "ref": "1 John 2:28"
+ },
+ {
+  "id": "1-john-2-h-19",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must remain in them if they are to continue in the Son and in the Father?",
+  "choices": [
+   "The law of Moses",
+   "That which they heard from the beginning",
+   "The feast of weeks",
+   "The sacrifice"
+  ],
+  "answer": 1,
+  "explanation": "If that which ye have heard from the beginning shall remain in you, ye also shall continue in the Son, and in the Father.",
+  "ref": "1 John 2:24"
+ },
+ {
+  "id": "1-john-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John say sin is?",
+  "choices": [
+   "The fear of man",
+   "The transgression of the law",
+   "The love of money",
+   "The pride of life"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever committeth sin transgresseth also the law: for sin is the transgression of the law.",
+  "ref": "1 John 3:4"
+ },
+ {
+  "id": "1-john-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For what purpose was the Son of God manifested?",
+  "choices": [
+   "To build a temple",
+   "To destroy the works of the devil",
+   "To judge the nations",
+   "To rule Israel"
+  ],
+  "answer": 1,
+  "explanation": "For this purpose the Son of God was manifested, that he might destroy the works of the devil.",
+  "ref": "1 John 3:8"
+ },
+ {
+  "id": "1-john-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Of whom is he that commits sin?",
+  "choices": [
+   "The world",
+   "The devil",
+   "Cain",
+   "The law"
+  ],
+  "answer": 1,
+  "explanation": "He that committeth sin is of the devil; for the devil sinneth from the beginning.",
+  "ref": "1 John 3:8"
+ },
+ {
+  "id": "1-john-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does the world not know believers?",
+  "choices": [
+   "It is blind",
+   "It knew him not",
+   "It is far away",
+   "It is afraid"
+  ],
+  "answer": 1,
+  "explanation": "Therefore the world knoweth us not, because it knew him not.",
+  "ref": "1 John 3:1"
+ },
+ {
+  "id": "1-john-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John call the one who hates his brother?",
+  "choices": [
+   "A thief",
+   "A murderer",
+   "A liar",
+   "A stranger"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever hateth his brother is a murderer.",
+  "ref": "1 John 3:15"
+ },
+ {
+  "id": "1-john-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does every man who has this hope in Him do?",
+  "choices": [
+   "Fasteth often",
+   "Purifieth himself",
+   "Giveth his goods",
+   "Teacheth others"
+  ],
+  "answer": 1,
+  "explanation": "Every man that hath this hope in him purifieth himself, even as he is pure.",
+  "ref": "1 John 3:3"
+ },
+ {
+  "id": "1-john-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John say not to do if the world hates you?",
+  "choices": [
+   "Fear",
+   "Marvel",
+   "Weep",
+   "Hide"
+  ],
+  "answer": 1,
+  "explanation": "Marvel not, my brethren, if the world hate you.",
+  "ref": "1 John 3:13"
+ },
+ {
+  "id": "1-john-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How do we know we have passed from death unto life?",
+  "choices": [
+   "Because we keep the feasts",
+   "Because we love the brethren",
+   "Because we are old",
+   "Because we are rich"
+  ],
+  "answer": 1,
+  "explanation": "We know that we have passed from death unto life, because we love the brethren.",
+  "ref": "1 John 3:14"
+ },
+ {
+  "id": "1-john-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "What is the commandment, that we should believe on the name of whom?",
+  "choices": [
+   "The prophets",
+   "His Son Jesus Christ",
+   "The apostles",
+   "Moses"
+  ],
+  "answer": 1,
+  "explanation": "This is his commandment, That we should believe on the name of his Son Jesus Christ, and love one another.",
+  "ref": "1 John 3:23"
+ },
+ {
+  "id": "1-john-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Cain slay?",
+  "choices": [
+   "His father",
+   "His brother",
+   "A stranger",
+   "A shepherd"
+  ],
+  "answer": 1,
+  "explanation": "Cain, who was of that wicked one, and slew his brother.",
+  "ref": "1 John 3:12"
+ },
+ {
+  "id": "1-john-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is in Him, who was manifested to take away our sins?",
+  "choices": [
+   "No fear",
+   "No end",
+   "No change",
+   "No sin"
+  ],
+  "answer": 3,
+  "explanation": "He was manifested to take away our sins; and in him is no sin.",
+  "ref": "1 John 3:5"
+ },
+ {
+  "id": "1-john-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does John say we shall do when He shall appear?",
+  "choices": [
+   "Rule the earth",
+   "Build a house",
+   "Teach the world",
+   "See him as he is"
+  ],
+  "answer": 3,
+  "explanation": "When he shall appear, we shall be like him; for we shall see him as he is.",
+  "ref": "1 John 3:2"
+ },
+ {
+  "id": "1-john-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Cain slay his brother?",
+  "choices": [
+   "He was hungry",
+   "His brother was rich",
+   "His brother was proud",
+   "His own works were evil, and his brother's righteous"
+  ],
+  "answer": 3,
+  "explanation": "Wherefore slew he him? Because his own works were evil, and his brother's righteous.",
+  "ref": "1 John 3:12"
+ },
+ {
+  "id": "1-john-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he that doeth righteousness prove to be?",
+  "choices": [
+   "Rich",
+   "Old",
+   "A teacher",
+   "Righteous, even as he is righteous"
+  ],
+  "answer": 3,
+  "explanation": "He that doeth righteousness is righteous, even as he is righteous.",
+  "ref": "1 John 3:7"
+ },
+ {
+  "id": "1-john-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does whosoever is born of God not commit sin?",
+  "choices": [
+   "He is old",
+   "He is wise",
+   "He is rich",
+   "His seed remaineth in him"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever is born of God doth not commit sin; for his seed remaineth in him.",
+  "ref": "1 John 3:9"
+ },
+ {
+  "id": "1-john-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the message they heard from the beginning?",
+  "choices": [
+   "That we should fast",
+   "That we should travel",
+   "That we should build",
+   "That we should love one another"
+  ],
+  "answer": 3,
+  "explanation": "For this is the message that ye heard from the beginning, that we should love one another.",
+  "ref": "1 John 3:11"
+ },
+ {
+  "id": "1-john-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who sinneth from the beginning?",
+  "choices": [
+   "Cain",
+   "The world",
+   "The law",
+   "The devil"
+  ],
+  "answer": 3,
+  "explanation": "He that committeth sin is of the devil; for the devil sinneth from the beginning.",
+  "ref": "1 John 3:8"
+ },
+ {
+  "id": "1-john-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who is not of God, besides he who does not do righteousness?",
+  "choices": [
+   "He that is young",
+   "He that is poor",
+   "He that is old",
+   "He that loveth not his brother"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever doeth not righteousness is not of God, neither he that loveth not his brother.",
+  "ref": "1 John 3:10"
+ },
+ {
+  "id": "1-john-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does no murderer have abiding in him?",
+  "choices": [
+   "The truth",
+   "The law",
+   "Joy",
+   "Eternal life"
+  ],
+  "answer": 3,
+  "explanation": "No murderer hath eternal life abiding in him.",
+  "ref": "1 John 3:15"
+ },
+ {
+  "id": "1-john-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he who shuts up his bowels of compassion from a brother in need lack?",
+  "choices": [
+   "The law",
+   "The faith",
+   "The truth",
+   "The love of God"
+  ],
+  "answer": 3,
+  "explanation": "How dwelleth the love of God in him?",
+  "ref": "1 John 3:17"
+ },
+ {
+  "id": "1-john-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If our heart condemn us, what is greater than our heart?",
+  "choices": [
+   "The law",
+   "The prophets",
+   "The world",
+   "God"
+  ],
+  "answer": 3,
+  "explanation": "If our heart condemn us, God is greater than our heart, and knoweth all things.",
+  "ref": "1 John 3:20"
+ },
+ {
+  "id": "1-john-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If our heart condemn us not, what do we have toward God?",
+  "choices": [
+   "Fear",
+   "Silence",
+   "Sorrow",
+   "Confidence"
+  ],
+  "answer": 3,
+  "explanation": "Beloved, if our heart condemn us not, then have we confidence toward God.",
+  "ref": "1 John 3:21"
+ },
+ {
+  "id": "1-john-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do we receive whatsoever we ask of Him?",
+  "choices": [
+   "Because we ask loudly",
+   "Because we fast",
+   "Because we give",
+   "Because we keep his commandments"
+  ],
+  "answer": 3,
+  "explanation": "Whatsoever we ask, we receive of him, because we keep his commandments, and do those things that are pleasing in his sight.",
+  "ref": "1 John 3:22"
+ },
+ {
+  "id": "1-john-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what do we know that He abideth in us?",
+  "choices": [
+   "By the law of Moses",
+   "By the prophets",
+   "By miracles",
+   "By the Spirit which he hath given us"
+  ],
+  "answer": 3,
+  "explanation": "Hereby we know that he abideth in us, by the Spirit which he hath given us.",
+  "ref": "1 John 3:24"
+ },
+ {
+  "id": "1-john-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does he that loveth not his brother abide?",
+  "choices": [
+   "In darkness",
+   "In the world",
+   "In the law",
+   "In death"
+  ],
+  "answer": 3,
+  "explanation": "He that loveth not his brother abideth in death.",
+  "ref": "1 John 3:14"
+ },
+ {
+  "id": "1-john-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does John say of whosoever sinneth?",
+  "choices": [
+   "He is a stranger",
+   "He is forgiven",
+   "He hath not seen him, neither known him",
+   "He is a teacher"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever abideth in him sinneth not: whosoever sinneth hath not seen him, neither known him.",
+  "ref": "1 John 3:6"
+ },
+ {
+  "id": "1-john-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does John say not to let any man do to the little children?",
+  "choices": [
+   "Teach them",
+   "Judge them",
+   "Deceive them",
+   "Hide them"
+  ],
+  "answer": 2,
+  "explanation": "Little children, let no man deceive you.",
+  "ref": "1 John 3:7"
+ },
+ {
+  "id": "1-john-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What ought we to do for the brethren?",
+  "choices": [
+   "Give our gold",
+   "Teach them",
+   "Lay down our lives",
+   "Build houses"
+  ],
+  "answer": 2,
+  "explanation": "He laid down his life for us: and we ought to lay down our lives for the brethren.",
+  "ref": "1 John 3:16"
+ },
+ {
+  "id": "1-john-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does John say is not yet apparent?",
+  "choices": [
+   "Who God is",
+   "Where Christ is",
+   "What we shall be",
+   "When he shall come"
+  ],
+  "answer": 2,
+  "explanation": "It doth not yet appear what we shall be.",
+  "ref": "1 John 3:2"
+ },
+ {
+  "id": "1-john-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall assure our hearts before Him?",
+  "choices": [
+   "That we keep feasts",
+   "That we are old",
+   "That we are of the truth",
+   "That we are rich"
+  ],
+  "answer": 2,
+  "explanation": "Hereby we know that we are of the truth, and shall assure our hearts before him.",
+  "ref": "1 John 3:19"
+ },
+ {
+  "id": "1-john-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the Son of God manifested to take away?",
+  "choices": [
+   "Our fears",
+   "Our enemies",
+   "Our sins",
+   "Our burdens"
+  ],
+  "answer": 2,
+  "explanation": "Ye know that he was manifested to take away our sins; and in him is no sin.",
+  "ref": "1 John 3:5"
+ },
+ {
+  "id": "1-john-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does whoso hath this world's good do if he sees his brother in need?",
+  "choices": [
+   "Giveth him a feast",
+   "Sendeth him away",
+   "Shutteth up his bowels of compassion",
+   "Writeth a letter"
+  ],
+  "answer": 2,
+  "explanation": "Whoso hath this world's good, and seeth his brother have need, and shutteth up his bowels of compassion from him.",
+  "ref": "1 John 3:17"
+ },
+ {
+  "id": "1-john-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose seed remaineth in him who is born of God?",
+  "choices": [
+   "The devil's",
+   "Cain's",
+   "God's",
+   "Adam's"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever is born of God doth not commit sin; for his seed remaineth in him.",
+  "ref": "1 John 3:9"
+ },
+ {
+  "id": "1-john-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who are made manifest by whether they do righteousness?",
+  "choices": [
+   "The rich and the poor",
+   "The old and the young",
+   "The children of God and the children of the devil",
+   "The Jews and the Gentiles"
+  ],
+  "answer": 2,
+  "explanation": "In this the children of God are manifest, and the children of the devil.",
+  "ref": "1 John 3:10"
+ },
+ {
+  "id": "1-john-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he who keepeth His commandments do?",
+  "choices": [
+   "Fears him",
+   "Hides from him",
+   "Dwelleth in him",
+   "Departs from him"
+  ],
+  "answer": 2,
+  "explanation": "He that keepeth his commandments dwelleth in him, and he in him.",
+  "ref": "1 John 3:24"
+ },
+ {
+  "id": "1-john-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the second part of His commandment, besides believing on His Son?",
+  "choices": [
+   "Keep the feasts",
+   "Fast often",
+   "Love one another",
+   "Honour the elders"
+  ],
+  "answer": 2,
+  "explanation": "This is his commandment, That we should believe on the name of his Son Jesus Christ, and love one another.",
+  "ref": "1 John 3:23"
+ },
+ {
+  "id": "1-john-3-h-16",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides keeping His commandments, what do those who receive what they ask do?",
+  "choices": [
+   "Fast often",
+   "Give much",
+   "Those things that are pleasing in his sight",
+   "Build houses"
+  ],
+  "answer": 2,
+  "explanation": "Whatsoever we ask, we receive of him, because we keep his commandments, and do those things that are pleasing in his sight.",
+  "ref": "1 John 3:22"
+ },
+ {
+  "id": "1-john-3-h-17",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what to what have those who love the brethren passed?",
+  "choices": [
+   "From death unto life",
+   "From law unto grace",
+   "From sorrow unto joy",
+   "From fear unto peace"
+  ],
+  "answer": 0,
+  "explanation": "We know that we have passed from death unto life, because we love the brethren.",
+  "ref": "1 John 3:14"
+ },
+ {
+  "id": "1-john-3-h-18",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whosoever commits sin transgresses what?",
+  "choices": [
+   "The feast",
+   "The law",
+   "The temple",
+   "The vow"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever committeth sin transgresseth also the law: for sin is the transgression of the law.",
+  "ref": "1 John 3:4"
+ },
+ {
+  "id": "1-john-3-h-19",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does whosoever abides in Him not do?",
+  "choices": [
+   "Hate the world",
+   "Sin",
+   "Fear",
+   "Grieve"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever abideth in him sinneth not: whosoever sinneth hath not seen him, neither known him.",
+  "ref": "1 John 3:6"
+ },
+ {
+  "id": "1-john-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why are believers told to try the spirits?",
+  "choices": [
+   "The world is ending",
+   "Many false prophets are gone out into the world",
+   "The temple is empty",
+   "The law is changed"
+  ],
+  "answer": 1,
+  "explanation": "Try the spirits whether they are of God: because many false prophets are gone out into the world.",
+  "ref": "1 John 4:1"
+ },
+ {
+  "id": "1-john-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did God send into the world that we might live through Him?",
+  "choices": [
+   "An angel",
+   "His only begotten Son",
+   "Moses",
+   "Elijah"
+  ],
+  "answer": 1,
+  "explanation": "God sent his only begotten Son into the world, that we might live through him.",
+  "ref": "1 John 4:9"
+ },
+ {
+  "id": "1-john-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who is greater: he that is in you, or he that is in the world?",
+  "choices": [
+   "He that is in the world",
+   "He that is in you",
+   "They are equal",
+   "Neither"
+  ],
+  "answer": 1,
+  "explanation": "Greater is he that is in you, than he that is in the world.",
+  "ref": "1 John 4:4"
+ },
+ {
+  "id": "1-john-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If we love one another, who dwells in us?",
+  "choices": [
+   "The angels",
+   "God",
+   "The prophets",
+   "The apostles"
+  ],
+  "answer": 1,
+  "explanation": "If we love one another, God dwelleth in us, and his love is perfected in us.",
+  "ref": "1 John 4:12"
+ },
+ {
+  "id": "1-john-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who has no man seen at any time?",
+  "choices": [
+   "The apostles",
+   "God",
+   "The prophets",
+   "The Son"
+  ],
+  "answer": 1,
+  "explanation": "No man hath seen God at any time.",
+  "ref": "1 John 4:12"
+ },
+ {
+  "id": "1-john-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Father send the Son to be?",
+  "choices": [
+   "The king of Israel",
+   "The Saviour of the world",
+   "The high priest",
+   "The judge of Rome"
+  ],
+  "answer": 1,
+  "explanation": "The Father sent the Son to be the Saviour of the world.",
+  "ref": "1 John 4:14"
+ },
+ {
+  "id": "1-john-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "What does he that loveth not not know?",
+  "choices": [
+   "The law",
+   "God",
+   "The world",
+   "The truth"
+  ],
+  "answer": 1,
+  "explanation": "He that loveth not knoweth not God; for God is love.",
+  "ref": "1 John 4:8"
+ },
+ {
+  "id": "1-john-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What commandment have we from Him?",
+  "choices": [
+   "That we keep the feasts",
+   "That he who loveth God love his brother also",
+   "That we fast often",
+   "That we build churches"
+  ],
+  "answer": 1,
+  "explanation": "This commandment have we from him, That he who loveth God love his brother also.",
+  "ref": "1 John 4:21"
+ },
+ {
+  "id": "1-john-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is a man who says I love God but hates his brother?",
+  "choices": [
+   "A prophet",
+   "A liar",
+   "A teacher",
+   "A stranger"
+  ],
+  "answer": 1,
+  "explanation": "If a man say, I love God, and hateth his brother, he is a liar.",
+  "ref": "1 John 4:20"
+ },
+ {
+  "id": "1-john-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whosoever confesses that Jesus is the Son of God, who dwells in him?",
+  "choices": [
+   "The law",
+   "God",
+   "The world",
+   "The prophets"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever shall confess that Jesus is the Son of God, God dwelleth in him, and he in God.",
+  "ref": "1 John 4:15"
+ },
+ {
+  "id": "1-john-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is every spirit that confesses not that Jesus Christ is come in the flesh?",
+  "choices": [
+   "Of God",
+   "Of the world only",
+   "Of the prophets",
+   "Not of God"
+  ],
+  "answer": 3,
+  "explanation": "Every spirit that confesseth not that Jesus Christ is come in the flesh is not of God.",
+  "ref": "1 John 4:3"
+ },
+ {
+  "id": "1-john-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What spirit is it that is already in the world?",
+  "choices": [
+   "The spirit of truth",
+   "The spirit of the prophets",
+   "The spirit of peace",
+   "The spirit of antichrist"
+  ],
+  "answer": 3,
+  "explanation": "This is that spirit of antichrist, whereof ye have heard that it should come; and even now already is it in the world.",
+  "ref": "1 John 4:3"
+ },
+ {
+  "id": "1-john-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What have the little children done to them, because they are of God?",
+  "choices": [
+   "Followed them",
+   "Taught them",
+   "Hidden from them",
+   "Overcome them"
+  ],
+  "answer": 3,
+  "explanation": "Ye are of God, little children, and have overcome them.",
+  "ref": "1 John 4:4"
+ },
+ {
+  "id": "1-john-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who speak of the world, and whom the world hears?",
+  "choices": [
+   "They that are of God",
+   "The apostles",
+   "The prophets",
+   "They that are of the world"
+  ],
+  "answer": 3,
+  "explanation": "They are of the world: therefore speak they of the world, and the world heareth them.",
+  "ref": "1 John 4:5"
+ },
+ {
+  "id": "1-john-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who hears the apostles?",
+  "choices": [
+   "He that is rich",
+   "He that is old",
+   "He that is young",
+   "He that knoweth God"
+  ],
+  "answer": 3,
+  "explanation": "We are of God: he that knoweth God heareth us.",
+  "ref": "1 John 4:6"
+ },
+ {
+  "id": "1-john-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Every one that loveth is born of whom?",
+  "choices": [
+   "The world",
+   "The law",
+   "The elders",
+   "God"
+  ],
+  "answer": 3,
+  "explanation": "Every one that loveth is born of God, and knoweth God.",
+  "ref": "1 John 4:7"
+ },
+ {
+  "id": "1-john-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the love of God manifested toward us?",
+  "choices": [
+   "He gave the law",
+   "He sent angels",
+   "He gave manna",
+   "He sent his only begotten Son into the world"
+  ],
+  "answer": 3,
+  "explanation": "In this was manifested the love of God toward us, because that God sent his only begotten Son into the world.",
+  "ref": "1 John 4:9"
+ },
+ {
+  "id": "1-john-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the Son sent to be for our sins?",
+  "choices": [
+   "The judge",
+   "The scapegoat",
+   "The priest",
+   "The propitiation"
+  ],
+  "answer": 3,
+  "explanation": "He loved us, and sent his Son to be the propitiation for our sins.",
+  "ref": "1 John 4:10"
+ },
+ {
+  "id": "1-john-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose love came first, ours or God's?",
+  "choices": [
+   "Ours",
+   "Both together",
+   "Neither",
+   "God's"
+  ],
+  "answer": 3,
+  "explanation": "Herein is love, not that we loved God, but that he loved us.",
+  "ref": "1 John 4:10"
+ },
+ {
+  "id": "1-john-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How do we know that we dwell in Him?",
+  "choices": [
+   "We keep the feasts",
+   "We are old",
+   "We are rich",
+   "He hath given us of his Spirit"
+  ],
+  "answer": 3,
+  "explanation": "Hereby know we that we dwell in him, and he in us, because he hath given us of his Spirit.",
+  "ref": "1 John 4:13"
+ },
+ {
+  "id": "1-john-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does perfect love have in the day of judgment?",
+  "choices": [
+   "Fear",
+   "Silence",
+   "Sorrow",
+   "Boldness"
+  ],
+  "answer": 3,
+  "explanation": "Herein is our love made perfect, that we may have boldness in the day of judgment.",
+  "ref": "1 John 4:17"
+ },
+ {
+  "id": "1-john-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why can he not love God who loveth not his brother?",
+  "choices": [
+   "He is poor",
+   "He is old",
+   "He is young",
+   "The brother he has seen, and God he has not seen"
+  ],
+  "answer": 3,
+  "explanation": "He that loveth not his brother whom he hath seen, how can he love God whom he hath not seen?",
+  "ref": "1 John 4:20"
+ },
+ {
+  "id": "1-john-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What ought we to do if God so loved us?",
+  "choices": [
+   "Keep the feasts",
+   "Fast",
+   "Build",
+   "Love one another"
+  ],
+  "answer": 3,
+  "explanation": "Beloved, if God so loved us, we ought also to love one another.",
+  "ref": "1 John 4:11"
+ },
+ {
+  "id": "1-john-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do John and the others do about the Father sending the Son?",
+  "choices": [
+   "Doubt",
+   "Hide",
+   "Forget",
+   "See and testify"
+  ],
+  "answer": 3,
+  "explanation": "We have seen and do testify that the Father sent the Son to be the Saviour of the world.",
+  "ref": "1 John 4:14"
+ },
+ {
+  "id": "1-john-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does John say not to do to every spirit?",
+  "choices": [
+   "Hear it",
+   "Judge it",
+   "Believe it",
+   "Fear it"
+  ],
+  "answer": 2,
+  "explanation": "Beloved, believe not every spirit, but try the spirits whether they are of God.",
+  "ref": "1 John 4:1"
+ },
+ {
+  "id": "1-john-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two spirits do we know by whether they hear the apostles?",
+  "choices": [
+   "The spirit of peace and the spirit of war",
+   "The spirit of life and the spirit of death",
+   "The spirit of truth and the spirit of error",
+   "The spirit of law and the spirit of grace"
+  ],
+  "answer": 2,
+  "explanation": "Hereby know we the spirit of truth, and the spirit of error.",
+  "ref": "1 John 4:6"
+ },
+ {
+  "id": "1-john-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is perfected in us if we love one another?",
+  "choices": [
+   "His law",
+   "His word",
+   "His love",
+   "His peace"
+  ],
+  "answer": 2,
+  "explanation": "If we love one another, God dwelleth in us, and his love is perfected in us.",
+  "ref": "1 John 4:12"
+ },
+ {
+  "id": "1-john-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does John say of believers in this world?",
+  "choices": [
+   "As the world is, so are we",
+   "As the prophets were",
+   "As he is, so are we",
+   "As the angels are"
+  ],
+  "answer": 2,
+  "explanation": "Because as he is, so are we in this world.",
+  "ref": "1 John 4:17"
+ },
+ {
+  "id": "1-john-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he that dwelleth in love do?",
+  "choices": [
+   "Fears God",
+   "Hides from God",
+   "Dwelleth in God",
+   "Waits for God"
+  ],
+  "answer": 2,
+  "explanation": "He that dwelleth in love dwelleth in God, and God in him.",
+  "ref": "1 John 4:16"
+ },
+ {
+  "id": "1-john-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What have the apostles known and believed, according to John?",
+  "choices": [
+   "The law of Moses",
+   "The word of the prophets",
+   "The love that God hath to us",
+   "The feast of weeks"
+  ],
+  "answer": 2,
+  "explanation": "And we have known and believed the love that God hath to us.",
+  "ref": "1 John 4:16"
+ },
+ {
+  "id": "1-john-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what purpose was the Son sent, so that we might do what?",
+  "choices": [
+   "Rule the earth",
+   "Judge the world",
+   "Live through him",
+   "Build a house"
+  ],
+  "answer": 2,
+  "explanation": "God sent his only begotten Son into the world, that we might live through him.",
+  "ref": "1 John 4:9"
+ },
+ {
+  "id": "1-john-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had they heard about the spirit of antichrist?",
+  "choices": [
+   "That it was gone",
+   "That it was hidden",
+   "That it should come",
+   "That it was good"
+  ],
+  "answer": 2,
+  "explanation": "This is that spirit of antichrist, whereof ye have heard that it should come.",
+  "ref": "1 John 4:3"
+ },
+ {
+  "id": "1-john-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Every one that loveth knoweth whom?",
+  "choices": [
+   "The prophets",
+   "The world",
+   "God",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "Every one that loveth is born of God, and knoweth God.",
+  "ref": "1 John 4:7"
+ },
+ {
+  "id": "1-john-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who sent the Son to be the Saviour of the world?",
+  "choices": [
+   "The Spirit",
+   "Moses",
+   "The Father",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "We have seen and do testify that the Father sent the Son to be the Saviour of the world.",
+  "ref": "1 John 4:14"
+ },
+ {
+  "id": "1-john-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what day does John say we may have boldness?",
+  "choices": [
+   "The day of rest",
+   "The day of feasts",
+   "The day of judgment",
+   "The day of harvest"
+  ],
+  "answer": 2,
+  "explanation": "Herein is our love made perfect, that we may have boldness in the day of judgment.",
+  "ref": "1 John 4:17"
+ },
+ {
+  "id": "1-john-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do they of the world speak of?",
+  "choices": [
+   "The law",
+   "The kingdom",
+   "The world",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "They are of the world: therefore speak they of the world.",
+  "ref": "1 John 4:5"
+ },
+ {
+  "id": "1-john-4-h-16",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is not made perfect in love?",
+  "choices": [
+   "He that is poor",
+   "He that feareth",
+   "He that is old",
+   "He that is young"
+  ],
+  "answer": 1,
+  "explanation": "There is no fear in love; but perfect love casteth out fear: because fear hath torment. He that feareth is not made perfect in love.",
+  "ref": "1 John 4:18"
+ },
+ {
+  "id": "1-john-4-h-17",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is made perfect so that we may have boldness in the day of judgment?",
+  "choices": [
+   "Our love",
+   "Our law",
+   "Our word",
+   "Our peace"
+  ],
+  "answer": 0,
+  "explanation": "Herein is our love made perfect, that we may have boldness in the day of judgment.",
+  "ref": "1 John 4:17"
+ },
+ {
+  "id": "1-john-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John say about God's commandments?",
+  "choices": [
+   "They are too hard",
+   "They are not grievous",
+   "They are only for priests",
+   "They are ended"
+  ],
+  "answer": 1,
+  "explanation": "For this is the love of God, that we keep his commandments: and his commandments are not grievous.",
+  "ref": "1 John 5:3"
+ },
+ {
+  "id": "1-john-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the love of God, according to John?",
+  "choices": [
+   "That we give gifts",
+   "That we keep his commandments",
+   "That we fast",
+   "That we build churches"
+  ],
+  "answer": 1,
+  "explanation": "This is the love of God, that we keep his commandments.",
+  "ref": "1 John 5:3"
+ },
+ {
+  "id": "1-john-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "He that hath the Son hath what?",
+  "choices": [
+   "Riches",
+   "Life",
+   "Honour",
+   "Peace"
+  ],
+  "answer": 1,
+  "explanation": "He that hath the Son hath life; and he that hath not the Son of God hath not life.",
+  "ref": "1 John 5:12"
+ },
+ {
+  "id": "1-john-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does he make God who believes not the record God gave of His Son?",
+  "choices": [
+   "A judge",
+   "A liar",
+   "A stranger",
+   "A king"
+  ],
+  "answer": 1,
+  "explanation": "He that believeth not God hath made him a liar; because he believeth not the record that God gave of his Son.",
+  "ref": "1 John 5:10"
+ },
+ {
+  "id": "1-john-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom does John write these things?",
+  "choices": [
+   "The elders of Ephesus",
+   "Them that believe on the name of the Son of God",
+   "The Gentiles",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "These things have I written unto you that believe on the name of the Son of God.",
+  "ref": "1 John 5:13"
+ },
+ {
+  "id": "1-john-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If we ask any thing according to His will, what does He do?",
+  "choices": [
+   "Delays",
+   "Heareth us",
+   "Judges us",
+   "Hides"
+  ],
+  "answer": 1,
+  "explanation": "If we ask any thing according to his will, he heareth us.",
+  "ref": "1 John 5:14"
+ },
+ {
+  "id": "1-john-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John say all unrighteousness is?",
+  "choices": [
+   "Death",
+   "Sin",
+   "Darkness",
+   "Law"
+  ],
+  "answer": 1,
+  "explanation": "All unrighteousness is sin: and there is a sin not unto death.",
+  "ref": "1 John 5:17"
+ },
+ {
+  "id": "1-john-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what does the whole world lie?",
+  "choices": [
+   "Darkness",
+   "Wickedness",
+   "Fear",
+   "Sorrow"
+  ],
+  "answer": 1,
+  "explanation": "We are of God, and the whole world lieth in wickedness.",
+  "ref": "1 John 5:19"
+ },
+ {
+  "id": "1-john-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does John call the true God and eternal life?",
+  "choices": [
+   "Moses",
+   "His Son Jesus Christ",
+   "Elijah",
+   "The Spirit only"
+  ],
+  "answer": 1,
+  "explanation": "We are in him that is true, even in his Son Jesus Christ. This is the true God, and eternal life.",
+  "ref": "1 John 5:20"
+ },
+ {
+  "id": "1-john-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has the Son of God given us, that we may know Him that is true?",
+  "choices": [
+   "A kingdom",
+   "An understanding",
+   "A throne",
+   "A sword"
+  ],
+  "answer": 1,
+  "explanation": "The Son of God is come, and hath given us an understanding, that we may know him that is true.",
+  "ref": "1 John 5:20"
+ },
+ {
+  "id": "1-john-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Who came by water and blood?",
+  "choices": [
+   "Moses",
+   "John the Baptist",
+   "Elijah",
+   "Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "This is he that came by water and blood, even Jesus Christ.",
+  "ref": "1 John 5:6"
+ },
+ {
+  "id": "1-john-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who are the three that bear record in heaven?",
+  "choices": [
+   "The Spirit, the water and the blood",
+   "The law, the prophets and the psalms",
+   "Faith, hope and love",
+   "The Father, the Word and the Holy Ghost"
+  ],
+  "answer": 3,
+  "explanation": "There are three that bear record in heaven, the Father, the Word, and the Holy Ghost.",
+  "ref": "1 John 5:7"
+ },
+ {
+  "id": "1-john-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Of whom has God testified?",
+  "choices": [
+   "Moses",
+   "The prophets",
+   "The apostles",
+   "His Son"
+  ],
+  "answer": 3,
+  "explanation": "This is the witness of God which he hath testified of his Son.",
+  "ref": "1 John 5:9"
+ },
+ {
+  "id": "1-john-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Where does he that believeth on the Son of God have the witness?",
+  "choices": [
+   "In the church",
+   "In the temple",
+   "In heaven",
+   "In himself"
+  ],
+  "answer": 3,
+  "explanation": "He that believeth on the Son of God hath the witness in himself.",
+  "ref": "1 John 5:10"
+ },
+ {
+  "id": "1-john-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the record that God has given?",
+  "choices": [
+   "The law of Moses",
+   "The kingdom of Israel",
+   "The temple of David",
+   "Eternal life, and this life is in his Son"
+  ],
+  "answer": 3,
+  "explanation": "This is the record, that God hath given to us eternal life, and this life is in his Son.",
+  "ref": "1 John 5:11"
+ },
+ {
+  "id": "1-john-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does John write these things to them that believe?",
+  "choices": [
+   "That ye may keep the law",
+   "That ye may build a temple",
+   "That ye may fast",
+   "That ye may know that ye have eternal life"
+  ],
+  "answer": 3,
+  "explanation": "These things have I written unto you that ye may know that ye have eternal life.",
+  "ref": "1 John 5:13"
+ },
+ {
+  "id": "1-john-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the confidence we have in Him?",
+  "choices": [
+   "He forgives all at once",
+   "He judges quickly",
+   "He gives us riches",
+   "He heareth us if we ask according to his will"
+  ],
+  "answer": 3,
+  "explanation": "This is the confidence that we have in him, that, if we ask any thing according to his will, he heareth us.",
+  "ref": "1 John 5:14"
+ },
+ {
+  "id": "1-john-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If we know He hears us, what do we know we have?",
+  "choices": [
+   "A throne in heaven",
+   "A new name",
+   "A crown",
+   "The petitions that we desired of him"
+  ],
+  "answer": 3,
+  "explanation": "We know that we have the petitions that we desired of him.",
+  "ref": "1 John 5:15"
+ },
+ {
+  "id": "1-john-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does John say about praying for a sin unto death?",
+  "choices": [
+   "He shall pray for it",
+   "He shall fast for it",
+   "He shall offer for it",
+   "I do not say that he shall pray for it"
+  ],
+  "answer": 3,
+  "explanation": "There is a sin unto death: I do not say that he shall pray for it.",
+  "ref": "1 John 5:16"
+ },
+ {
+  "id": "1-john-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whosoever is born of God, what does he do?",
+  "choices": [
+   "Forsakes the law",
+   "Fasts always",
+   "Wanders",
+   "Keepeth himself"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever is born of God sinneth not; but he that is begotten of God keepeth himself.",
+  "ref": "1 John 5:18"
+ },
+ {
+  "id": "1-john-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom does everyone who loves Him that begat also love?",
+  "choices": [
+   "The apostles",
+   "The prophets",
+   "The world",
+   "Him that is begotten of him"
+  ],
+  "answer": 3,
+  "explanation": "Every one that loveth him that begat loveth him also that is begotten of him.",
+  "ref": "1 John 5:1"
+ },
+ {
+  "id": "1-john-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How do we know that we love the children of God?",
+  "choices": [
+   "When we give gifts",
+   "When we fast",
+   "When we pray loudly",
+   "When we love God, and keep his commandments"
+  ],
+  "answer": 3,
+  "explanation": "By this we know that we love the children of God, when we love God, and keep his commandments.",
+  "ref": "1 John 5:2"
+ },
+ {
+  "id": "1-john-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Spirit do, because the Spirit is truth?",
+  "choices": [
+   "Judges",
+   "Departs",
+   "Sleeps",
+   "Beareth witness"
+  ],
+  "answer": 3,
+  "explanation": "It is the Spirit that beareth witness, because the Spirit is truth.",
+  "ref": "1 John 5:6"
+ },
+ {
+  "id": "1-john-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does John say if any man sees his brother sin a sin not unto death?",
+  "choices": [
+   "He shall rebuke him",
+   "He shall cast him out",
+   "He shall ignore him",
+   "He shall ask, and God shall give him life"
+  ],
+  "answer": 3,
+  "explanation": "If any man see his brother sin a sin which is not unto death, he shall ask, and he shall give him life.",
+  "ref": "1 John 5:16"
+ },
+ {
+  "id": "1-john-5-m-15",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "In whom are we, who is true?",
+  "choices": [
+   "The elders",
+   "The law",
+   "The temple",
+   "His Son Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "We are in him that is true, even in his Son Jesus Christ.",
+  "ref": "1 John 5:20"
+ },
+ {
+  "id": "1-john-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what does John say Jesus Christ came, not by water only?",
+  "choices": [
+   "Fire and spirit",
+   "Wind and fire",
+   "Water and blood",
+   "Oil and wine"
+  ],
+  "answer": 2,
+  "explanation": "Not by water only, but by water and blood.",
+  "ref": "1 John 5:6"
+ },
+ {
+  "id": "1-john-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the three that bear witness in earth do?",
+  "choices": [
+   "Dwell in heaven",
+   "Come in turn",
+   "Agree in one",
+   "Depart in peace"
+  ],
+  "answer": 2,
+  "explanation": "These three agree in one.",
+  "ref": "1 John 5:8"
+ },
+ {
+  "id": "1-john-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does John say of the three that bear record in heaven?",
+  "choices": [
+   "These three are many",
+   "These three are hidden",
+   "These three are one",
+   "These three are silent"
+  ],
+  "answer": 2,
+  "explanation": "For there are three that bear record in heaven: and these three are one.",
+  "ref": "1 John 5:7"
+ },
+ {
+  "id": "1-john-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the witness of God compare with the witness of men?",
+  "choices": [
+   "It is equal",
+   "It is smaller",
+   "It is greater",
+   "It is hidden"
+  ],
+  "answer": 2,
+  "explanation": "If we receive the witness of men, the witness of God is greater.",
+  "ref": "1 John 5:9"
+ },
+ {
+  "id": "1-john-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does John say we know about ourselves, in the nineteenth verse?",
+  "choices": [
+   "That we are rich",
+   "That we are old",
+   "That we are of God",
+   "That we are many"
+  ],
+  "answer": 2,
+  "explanation": "And we know that we are of God.",
+  "ref": "1 John 5:19"
+ },
+ {
+  "id": "1-john-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God give of His Son, which the unbeliever believes not?",
+  "choices": [
+   "The law",
+   "The sign",
+   "The record",
+   "The crown"
+  ],
+  "answer": 2,
+  "explanation": "He believeth not the record that God gave of his Son.",
+  "ref": "1 John 5:10"
+ },
+ {
+  "id": "1-john-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "That ye may believe on what, does John also say he writes?",
+  "choices": [
+   "The law of Moses",
+   "The word of the prophets",
+   "The name of the Son of God",
+   "The temple"
+  ],
+  "answer": 2,
+  "explanation": "These things have I written that ye may believe on the name of the Son of God.",
+  "ref": "1 John 5:13"
+ },
+ {
+  "id": "1-john-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does the wicked one not touch?",
+  "choices": [
+   "He that is rich",
+   "He that is old",
+   "He that is begotten of God",
+   "He that fasts"
+  ],
+  "answer": 2,
+  "explanation": "He that is begotten of God keepeth himself, and that wicked one toucheth him not.",
+  "ref": "1 John 5:18"
+ },
+ {
+  "id": "1-john-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whatsoever is born of God overcometh what?",
+  "choices": [
+   "The law",
+   "The grave",
+   "The world",
+   "The wicked"
+  ],
+  "answer": 2,
+  "explanation": "For whatsoever is born of God overcometh the world.",
+  "ref": "1 John 5:4"
+ },
+ {
+  "id": "1-john-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whom does he give life, when a brother asks?",
+  "choices": [
+   "Them that deny the Son",
+   "Them that love the world",
+   "Them that sin not unto death",
+   "Them that fear the law"
+  ],
+  "answer": 2,
+  "explanation": "He shall ask, and he shall give him life for them that sin not unto death.",
+  "ref": "1 John 5:16"
+ },
+ {
+  "id": "1-john-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Son of God has given us an understanding that we may know whom?",
+  "choices": [
+   "The prophets",
+   "The apostles",
+   "Him that is true",
+   "The world"
+  ],
+  "answer": 2,
+  "explanation": "The Son of God hath given us an understanding, that we may know him that is true.",
+  "ref": "1 John 5:20"
+ },
+ {
+  "id": "1-john-5-h-16",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is he that overcometh the world, according to John?",
+  "choices": [
+   "He that keeps the feast",
+   "He that believeth that Jesus is the Son of God",
+   "He that gives much",
+   "He that fasts"
+  ],
+  "answer": 1,
+  "explanation": "Who is he that overcometh the world, but he that believeth that Jesus is the Son of God?",
+  "ref": "1 John 5:5"
  }
 ]
