@@ -9390,5 +9390,645 @@
   "answer": 0,
   "explanation": "O wretched man that I am!",
   "ref": "Romans 7:24"
+ },
+ {
+  "id": "romans-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "There is no condemnation to those who walk after what?",
+  "choices": [
+   "The law",
+   "The Spirit",
+   "The flesh",
+   "Their fathers"
+  ],
+  "answer": 1,
+  "explanation": "No condemnation to them which are in Christ Jesus, who walk not after the flesh, but after the Spirit.",
+  "ref": "Romans 8:1"
+ },
+ {
+  "id": "romans-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "God sent his own Son in the likeness of what?",
+  "choices": [
+   "Sinful flesh",
+   "Angels",
+   "A king",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "God sent his own Son in the likeness of sinful flesh, and for sin, condemned sin in the flesh.",
+  "ref": "Romans 8:3"
+ },
+ {
+  "id": "romans-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To be carnally minded is what?",
+  "choices": [
+   "Peace",
+   "Wisdom",
+   "Poverty",
+   "Death"
+  ],
+  "answer": 3,
+  "explanation": "To be carnally minded is death; but to be spiritually minded is life and peace.",
+  "ref": "Romans 8:6"
+ },
+ {
+  "id": "romans-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What can those who are in the flesh not do?",
+  "choices": [
+   "Hear the law",
+   "Enter the temple",
+   "Please God",
+   "See the Spirit"
+  ],
+  "answer": 2,
+  "explanation": "So then they that are in the flesh cannot please God.",
+  "ref": "Romans 8:8"
+ },
+ {
+  "id": "romans-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The Spirit of him that raised up Jesus shall quicken our what?",
+  "choices": [
+   "Immortal souls",
+   "Mortal bodies",
+   "Dead works",
+   "Ancient fathers"
+  ],
+  "answer": 1,
+  "explanation": "He that raised up Christ from the dead shall also quicken your mortal bodies by his Spirit.",
+  "ref": "Romans 8:11"
+ },
+ {
+  "id": "romans-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "As many as are led by the Spirit of God are what?",
+  "choices": [
+   "The sons of God",
+   "Servants of the law",
+   "Heirs of Moses",
+   "Elders of Israel"
+  ],
+  "answer": 0,
+  "explanation": "As many as are led by the Spirit of God, they are the sons of God.",
+  "ref": "Romans 8:14"
+ },
+ {
+  "id": "romans-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Believers are heirs of God and joint-heirs with whom?",
+  "choices": [
+   "Abraham",
+   "Moses",
+   "David",
+   "Christ"
+  ],
+  "answer": 3,
+  "explanation": "If children, then heirs; heirs of God, and joint-heirs with Christ.",
+  "ref": "Romans 8:17"
+ },
+ {
+  "id": "romans-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The Spirit helpeth our what?",
+  "choices": [
+   "Enemies",
+   "Riches",
+   "Infirmities",
+   "Journeys"
+  ],
+  "answer": 2,
+  "explanation": "Likewise the Spirit also helpeth our infirmities.",
+  "ref": "Romans 8:26"
+ },
+ {
+  "id": "romans-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who died, is risen again, and sits at the right hand of God?",
+  "choices": [
+   "Moses",
+   "Christ",
+   "Elijah",
+   "An angel"
+  ],
+  "answer": 1,
+  "explanation": "It is Christ that died, yea rather, that is risen again, who is even at the right hand of God.",
+  "ref": "Romans 8:34"
+ },
+ {
+  "id": "romans-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In all these things we are more than what?",
+  "choices": [
+   "Conquerors",
+   "Servants",
+   "Soldiers",
+   "Survivors"
+  ],
+  "answer": 0,
+  "explanation": "In all these things we are more than conquerors through him that loved us.",
+  "ref": "Romans 8:37"
+ },
+ {
+  "id": "romans-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The law of the Spirit of life hath made Paul free from what?",
+  "choices": [
+   "The law of Moses",
+   "The curse of Adam",
+   "The wrath of Rome",
+   "The law of sin and death"
+  ],
+  "answer": 3,
+  "explanation": "The law of the Spirit of life in Christ Jesus hath made me free from the law of sin and death.",
+  "ref": "Romans 8:2"
+ },
+ {
+  "id": "romans-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What the law could not do, it was weak through what?",
+  "choices": [
+   "Sin",
+   "Man's will",
+   "The flesh",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "What the law could not do, in that it was weak through the flesh.",
+  "ref": "Romans 8:3"
+ },
+ {
+  "id": "romans-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whom might the righteousness of the law be fulfilled?",
+  "choices": [
+   "Israel only",
+   "Us who walk after the Spirit",
+   "Those who keep the sabbath",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "That the righteousness of the law might be fulfilled in us, who walk not after the flesh, but after the Spirit.",
+  "ref": "Romans 8:4"
+ },
+ {
+  "id": "romans-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "The carnal mind is enmity against whom?",
+  "choices": [
+   "God",
+   "The law",
+   "The prophets",
+   "The church"
+  ],
+  "answer": 0,
+  "explanation": "The carnal mind is enmity against God.",
+  "ref": "Romans 8:7"
+ },
+ {
+  "id": "romans-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If any man have not the Spirit of Christ, what is he?",
+  "choices": [
+   "A servant only",
+   "Under wrath",
+   "Still a child",
+   "None of his"
+  ],
+  "answer": 3,
+  "explanation": "If any man have not the Spirit of Christ, he is none of his.",
+  "ref": "Romans 8:9"
+ },
+ {
+  "id": "romans-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If Christ be in you, the Spirit is life because of what?",
+  "choices": [
+   "Faith",
+   "Grace",
+   "Righteousness",
+   "Hope"
+  ],
+  "answer": 2,
+  "explanation": "The body is dead because of sin; but the Spirit is life because of righteousness.",
+  "ref": "Romans 8:10"
+ },
+ {
+  "id": "romans-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who justifies God's elect, so that none can lay anything to their charge?",
+  "choices": [
+   "The law",
+   "God",
+   "Moses",
+   "The apostles"
+  ],
+  "answer": 1,
+  "explanation": "Who shall lay any thing to the charge of God's elect? It is God that justifieth.",
+  "ref": "Romans 8:33"
+ },
+ {
+  "id": "romans-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If through the Spirit you mortify the deeds of the body, you shall what?",
+  "choices": [
+   "Live",
+   "Die",
+   "Be judged",
+   "Be silent"
+  ],
+  "answer": 0,
+  "explanation": "If ye through the Spirit do mortify the deeds of the body, ye shall live.",
+  "ref": "Romans 8:13"
+ },
+ {
+  "id": "romans-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Believers have not received the spirit of bondage again to what?",
+  "choices": [
+   "Sin",
+   "Death",
+   "The law",
+   "Fear"
+  ],
+  "answer": 3,
+  "explanation": "Ye have not received the spirit of bondage again to fear.",
+  "ref": "Romans 8:15"
+ },
+ {
+  "id": "romans-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The Spirit beareth witness with our spirit that we are what?",
+  "choices": [
+   "Free from the law",
+   "Heirs of Abraham",
+   "The children of God",
+   "The firstfruits"
+  ],
+  "answer": 2,
+  "explanation": "The Spirit itself beareth witness with our spirit, that we are the children of God.",
+  "ref": "Romans 8:16"
+ },
+ {
+  "id": "romans-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The sufferings of this present time are not worthy to be compared with what?",
+  "choices": [
+   "The riches of Rome",
+   "The glory which shall be revealed in us",
+   "The peace of the world",
+   "The days of old"
+  ],
+  "answer": 1,
+  "explanation": "The sufferings of this present time are not worthy to be compared with the glory which shall be revealed in us.",
+  "ref": "Romans 8:18"
+ },
+ {
+  "id": "romans-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what does the earnest expectation of the creature wait?",
+  "choices": [
+   "The manifestation of the sons of God",
+   "The coming of a king",
+   "The end of the law",
+   "The rebuilding of the temple"
+  ],
+  "answer": 0,
+  "explanation": "The earnest expectation of the creature waiteth for the manifestation of the sons of God.",
+  "ref": "Romans 8:19"
+ },
+ {
+  "id": "romans-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From the bondage of what shall the creature be delivered?",
+  "choices": [
+   "Egypt",
+   "Sin",
+   "The law",
+   "Corruption"
+  ],
+  "answer": 3,
+  "explanation": "The creature itself shall be delivered from the bondage of corruption into the glorious liberty of the children of God.",
+  "ref": "Romans 8:21"
+ },
+ {
+  "id": "romans-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The whole creation groaneth and travaileth in what?",
+  "choices": [
+   "Hope",
+   "Silence",
+   "Pain",
+   "Fear"
+  ],
+  "answer": 2,
+  "explanation": "The whole creation groaneth and travaileth in pain together until now.",
+  "ref": "Romans 8:22"
+ },
+ {
+  "id": "romans-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are believers waiting for when they groan within themselves?",
+  "choices": [
+   "The coming of the kingdom",
+   "The redemption of our body",
+   "The end of persecution",
+   "The return of Israel"
+  ],
+  "answer": 1,
+  "explanation": "We groan within ourselves, waiting for the adoption, to wit, the redemption of our body.",
+  "ref": "Romans 8:23"
+ },
+ {
+  "id": "romans-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The carnal mind is not subject to what?",
+  "choices": [
+   "The law of God",
+   "The king",
+   "The elders",
+   "The flesh"
+  ],
+  "answer": 0,
+  "explanation": "It is not subject to the law of God, neither indeed can be.",
+  "ref": "Romans 8:7"
+ },
+ {
+  "id": "romans-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Believers are in the Spirit, if so be that what?",
+  "choices": [
+   "They keep the law",
+   "They are baptized",
+   "They suffer for him",
+   "The Spirit of God dwell in them"
+  ],
+  "answer": 3,
+  "explanation": "Ye are in the Spirit, if so be that the Spirit of God dwell in you.",
+  "ref": "Romans 8:9"
+ },
+ {
+  "id": "romans-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As what are believers accounted, according to the scripture Paul quotes?",
+  "choices": [
+   "Wolves in the field",
+   "Servants of the law",
+   "Sheep for the slaughter",
+   "Strangers in the land"
+  ],
+  "answer": 2,
+  "explanation": "We are accounted as sheep for the slaughter.",
+  "ref": "Romans 8:36"
+ },
+ {
+  "id": "romans-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Instead of the spirit of bondage, what have believers received?",
+  "choices": [
+   "The Spirit of wisdom",
+   "The Spirit of adoption",
+   "The Spirit of truth",
+   "The Spirit of power"
+  ],
+  "answer": 1,
+  "explanation": "Ye have received the Spirit of adoption, whereby we cry, Abba, Father.",
+  "ref": "Romans 8:15"
+ },
+ {
+  "id": "romans-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If we suffer with him, we may also be what?",
+  "choices": [
+   "Glorified together",
+   "Healed together",
+   "Judged together",
+   "Comforted together"
+  ],
+  "answer": 0,
+  "explanation": "If so be that we suffer with him, that we may be also glorified together.",
+  "ref": "Romans 8:17"
+ },
+ {
+  "id": "romans-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By reason of whom was the creature made subject to vanity?",
+  "choices": [
+   "Adam",
+   "Satan",
+   "The angels",
+   "Him who subjected it in hope"
+  ],
+  "answer": 3,
+  "explanation": "The creature was made subject to vanity, not willingly, but by reason of him who hath subjected the same in hope.",
+  "ref": "Romans 8:20"
+ },
+ {
+  "id": "romans-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do those who groan within themselves have?",
+  "choices": [
+   "The seal of the covenant",
+   "The oil of gladness",
+   "The firstfruits of the Spirit",
+   "The sword of the Spirit"
+  ],
+  "answer": 2,
+  "explanation": "We which have the firstfruits of the Spirit, even we ourselves groan within ourselves.",
+  "ref": "Romans 8:23"
+ },
+ {
+  "id": "romans-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what are we saved, according to Paul?",
+  "choices": [
+   "Works",
+   "Hope",
+   "Sight",
+   "Sacrifice"
+  ],
+  "answer": 1,
+  "explanation": "For we are saved by hope.",
+  "ref": "Romans 8:24"
+ },
+ {
+  "id": "romans-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If we hope for what we see not, with what do we wait?",
+  "choices": [
+   "Patience",
+   "Fear",
+   "Haste",
+   "Anger"
+  ],
+  "answer": 0,
+  "explanation": "If we hope for that we see not, then do we with patience wait for it.",
+  "ref": "Romans 8:25"
+ },
+ {
+  "id": "romans-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what does the Spirit make intercession for us?",
+  "choices": [
+   "Songs of praise",
+   "Words of the law",
+   "Tongues of angels",
+   "Groanings which cannot be uttered"
+  ],
+  "answer": 3,
+  "explanation": "The Spirit itself maketh intercession for us with groanings which cannot be uttered.",
+  "ref": "Romans 8:26"
+ },
+ {
+  "id": "romans-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The love of God is in whom?",
+  "choices": [
+   "The Holy Ghost",
+   "The law",
+   "Christ Jesus our Lord",
+   "Abraham's covenant"
+  ],
+  "answer": 2,
+  "explanation": "Nothing shall be able to separate us from the love of God, which is in Christ Jesus our Lord.",
+  "ref": "Romans 8:39"
+ },
+ {
+  "id": "romans-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "All things work together for good to the called according to what?",
+  "choices": [
+   "His law",
+   "His purpose",
+   "His promise",
+   "His mercy"
+  ],
+  "answer": 1,
+  "explanation": "To them who are the called according to his purpose.",
+  "ref": "Romans 8:28"
+ },
+ {
+  "id": "romans-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God predestined believers to the image of his Son so that he might be what?",
+  "choices": [
+   "The firstborn among many brethren",
+   "The judge of many nations",
+   "The king of many kingdoms",
+   "The shepherd of many flocks"
+  ],
+  "answer": 0,
+  "explanation": "Conformed to the image of his Son, that he might be the firstborn among many brethren.",
+  "ref": "Romans 8:29"
+ },
+ {
+  "id": "romans-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom he justified, them he also what?",
+  "choices": [
+   "Sanctified",
+   "Sealed",
+   "Redeemed",
+   "Glorified"
+  ],
+  "answer": 3,
+  "explanation": "Whom he justified, them he also glorified.",
+  "ref": "Romans 8:30"
+ },
+ {
+  "id": "romans-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "He that spared not his own Son will with him freely give us what?",
+  "choices": [
+   "Peace only",
+   "Wisdom",
+   "All things",
+   "The kingdom"
+  ],
+  "answer": 2,
+  "explanation": "He that spared not his own Son, how shall he not with him also freely give us all things?",
+  "ref": "Romans 8:32"
  }
 ]
