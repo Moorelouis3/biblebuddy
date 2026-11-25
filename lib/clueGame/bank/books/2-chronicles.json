@@ -4,7 +4,7 @@
   "chapter": 1,
   "level": "beginner",
   "category": "keyword",
-  "question": "At what high place did Solomon offer sacrifices at the start of the chapter?",
+  "question": "To which high place did Solomon and the congregation go to seek God?",
   "choices": [
    "Gibeon",
    "Bethel",
@@ -78,6 +78,358 @@
   "answer": 0,
   "explanation": "The ark was in Jerusalem though the tabernacle altar was at Gibeon.",
   "ref": "2 Chronicles 1:4"
+ },
+ {
+  "id": "2-chronicles-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son was Solomon, who was strengthened in his kingdom?",
+  "choices": [
+   "Saul",
+   "David",
+   "Nathan",
+   "Hiram"
+  ],
+  "answer": 1,
+  "explanation": "Solomon the son of David was strengthened in his kingdom, and the LORD his God was with him.",
+  "ref": "2 Chronicles 1:1"
+ },
+ {
+  "id": "2-chronicles-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon offer on the brasen altar before the Lord?",
+  "choices": [
+   "Peace offerings only",
+   "Firstfruits only",
+   "Burnt offerings",
+   "Drink offerings only"
+  ],
+  "answer": 2,
+  "explanation": "Solomon went up to the brasen altar and offered a thousand burnt offerings upon it.",
+  "ref": "2 Chronicles 1:6"
+ },
+ {
+  "id": "2-chronicles-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Solomon go back to after his journey from Gibeon?",
+  "choices": [
+   "Hebron",
+   "Bethel",
+   "Kirjath-jearim",
+   "Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "Solomon came from his journey to the high place at Gibeon to Jerusalem, and reigned over Israel.",
+  "ref": "2 Chronicles 1:13"
+ },
+ {
+  "id": "2-chronicles-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which country did Solomon have horses brought out?",
+  "choices": [
+   "Egypt",
+   "Syria",
+   "Tyre",
+   "Babylon"
+  ],
+  "answer": 0,
+  "explanation": "Solomon had horses brought out of Egypt, and linen yarn.",
+  "ref": "2 Chronicles 1:16"
+ },
+ {
+  "id": "2-chronicles-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many burnt offerings did Solomon offer on the brasen altar?",
+  "choices": [
+   "One hundred",
+   "A thousand",
+   "Seven hundred",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Solomon offered a thousand burnt offerings upon the brasen altar before the LORD.",
+  "ref": "2 Chronicles 1:6"
+ },
+ {
+  "id": "2-chronicles-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had made the brasen altar that Solomon put before the tabernacle?",
+  "choices": [
+   "Huram",
+   "Aholiab",
+   "Bezaleel",
+   "Hur"
+  ],
+  "answer": 2,
+  "explanation": "The brasen altar that Bezaleel the son of Uri, the son of Hur, had made, he put before the tabernacle of the LORD.",
+  "ref": "2 Chronicles 1:5"
+ },
+ {
+  "id": "2-chronicles-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the tabernacle of the congregation at Gibeon?",
+  "choices": [
+   "David had moved it there",
+   "Solomon had built it",
+   "It was taken from the Philistines",
+   "Moses had made it in the wilderness"
+  ],
+  "answer": 3,
+  "explanation": "At Gibeon was the tabernacle of the congregation of God, which Moses the servant of the LORD had made in the wilderness.",
+  "ref": "2 Chronicles 1:3"
+ },
+ {
+  "id": "2-chronicles-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "From where had David brought up the ark of God?",
+  "choices": [
+   "Kirjath-jearim",
+   "Shiloh",
+   "Gibeon",
+   "Bethlehem"
+  ],
+  "answer": 0,
+  "explanation": "The ark of God had David brought up from Kirjath-jearim to the place which David had prepared for it.",
+  "ref": "2 Chronicles 1:4"
+ },
+ {
+  "id": "2-chronicles-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon say the people were like in multitude?",
+  "choices": [
+   "The stars of heaven",
+   "The dust of the earth",
+   "The sand of the sea",
+   "The leaves of the trees"
+  ],
+  "answer": 1,
+  "explanation": "Solomon said God had made him king over a people like the dust of the earth in multitude.",
+  "ref": "2 Chronicles 1:9"
+ },
+ {
+  "id": "2-chronicles-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Solomon ask God for wisdom and knowledge?",
+  "choices": [
+   "To build a palace",
+   "To defeat his enemies",
+   "To judge so great a people",
+   "To grow rich"
+  ],
+  "answer": 2,
+  "explanation": "Solomon asked for wisdom and knowledge to go out and come in before the people: for who can judge this so great a people?",
+  "ref": "2 Chronicles 1:10"
+ },
+ {
+  "id": "2-chronicles-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Solomon place the chariots and horsemen he gathered?",
+  "choices": [
+   "Only in Gibeon",
+   "In the wilderness",
+   "In the tabernacle court",
+   "In the chariot cities and with him at Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "He placed them in the chariot cities, and with the king at Jerusalem.",
+  "ref": "2 Chronicles 1:14"
+ },
+ {
+  "id": "2-chronicles-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Solomon speak to before they went to Gibeon?",
+  "choices": [
+   "All Israel, including captains, judges and governors",
+   "Only the priests",
+   "Only the Levites",
+   "Only the elders of Judah"
+  ],
+  "answer": 0,
+  "explanation": "Solomon spake unto all Israel, to the captains of thousands and of hundreds, and to the judges, and to every governor in all Israel.",
+  "ref": "2 Chronicles 1:2"
+ },
+ {
+  "id": "2-chronicles-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Solomon's silver and gold at Jerusalem compare to stones?",
+  "choices": [
+   "They were hidden away",
+   "The king made them as plenteous as stones",
+   "They were locked in the temple",
+   "They were scarcer than stones"
+  ],
+  "answer": 1,
+  "explanation": "The king made silver and gold at Jerusalem as plenteous as stones.",
+  "ref": "2 Chronicles 1:15"
+ },
+ {
+  "id": "2-chronicles-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many chariots did Solomon gather?",
+  "choices": [
+   "1,000",
+   "4,000",
+   "1,400",
+   "12,000"
+  ],
+  "answer": 2,
+  "explanation": "He had a thousand and four hundred chariots, and twelve thousand horsemen.",
+  "ref": "2 Chronicles 1:14"
+ },
+ {
+  "id": "2-chronicles-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many horsemen did Solomon have?",
+  "choices": [
+   "1,400",
+   "6,000",
+   "40,000",
+   "12,000"
+  ],
+  "answer": 3,
+  "explanation": "Solomon had a thousand and four hundred chariots, and twelve thousand horsemen.",
+  "ref": "2 Chronicles 1:14"
+ },
+ {
+  "id": "2-chronicles-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did a chariot from Egypt cost?",
+  "choices": [
+   "Six hundred shekels of silver",
+   "One hundred and fifty shekels",
+   "Fifty shekels of gold",
+   "A thousand shekels of silver"
+  ],
+  "answer": 0,
+  "explanation": "They brought a chariot out of Egypt for six hundred shekels of silver.",
+  "ref": "2 Chronicles 1:17"
+ },
+ {
+  "id": "2-chronicles-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did a horse from Egypt cost?",
+  "choices": [
+   "Six hundred shekels",
+   "One hundred and fifty shekels",
+   "Fifty shekels",
+   "Three hundred shekels"
+  ],
+  "answer": 1,
+  "explanation": "They brought out of Egypt a chariot for six hundred shekels of silver, and an horse for an hundred and fifty.",
+  "ref": "2 Chronicles 1:17"
+ },
+ {
+  "id": "2-chronicles-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Bezaleel's father?",
+  "choices": [
+   "Hur",
+   "Ornan",
+   "Uri",
+   "Huram"
+  ],
+  "answer": 2,
+  "explanation": "Bezaleel the son of Uri, the son of Hur, had made the brasen altar.",
+  "ref": "2 Chronicles 1:5"
+ },
+ {
+  "id": "2-chronicles-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "The kings of which peoples got horses through Solomon's merchants?",
+  "choices": [
+   "Moab and Edom",
+   "Philistia and Tyre",
+   "Ammon and Midian",
+   "The Hittites and Syria"
+  ],
+  "answer": 3,
+  "explanation": "They brought horses for all the kings of the Hittites, and for the kings of Syria, by their means.",
+  "ref": "2 Chronicles 1:17"
+ },
+ {
+  "id": "2-chronicles-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king's merchants receive at a price besides horses?",
+  "choices": [
+   "Linen yarn",
+   "Cedar wood",
+   "Spices",
+   "Gold of Ophir"
+  ],
+  "answer": 0,
+  "explanation": "Solomon had horses brought out of Egypt, and linen yarn: the king's merchants received the linen yarn at a price.",
+  "ref": "2 Chronicles 1:16"
+ },
+ {
+  "id": "2-chronicles-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Solomon say God had shown to David his father?",
+  "choices": [
+   "Great wrath",
+   "Great mercy",
+   "A long life",
+   "A new covenant"
+  ],
+  "answer": 1,
+  "explanation": "Solomon said, Thou hast shewed great mercy unto David my father, and hast made me to reign in his stead.",
+  "ref": "2 Chronicles 1:8"
+ },
+ {
+  "id": "2-chronicles-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the brasen altar stand when Solomon offered on it?",
+  "choices": [
+   "Inside the most holy place",
+   "In the royal palace",
+   "Before the tabernacle of the LORD",
+   "On the roof of the temple"
+  ],
+  "answer": 2,
+  "explanation": "Bezaleel's brasen altar was put before the tabernacle of the LORD, and Solomon went up thither to it.",
+  "ref": "2 Chronicles 1:5–6"
  },
  {
   "id": "old-2-chronicles-2-1",
