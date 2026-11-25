@@ -7840,6 +7840,406 @@
   "ref": "2 Chronicles 17:5"
  },
  {
+  "id": "2-chronicles-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Judah after Asa?",
+  "choices": [
+   "Jehoshaphat his son",
+   "Rehoboam",
+   "Joram",
+   "Hezekiah"
+  ],
+  "answer": 0,
+  "explanation": "Jehoshaphat his son reigned in his stead.",
+  "ref": "2 Chronicles 17:1"
+ },
+ {
+  "id": "2-chronicles-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Jehoshaphat not seek, according to the chapter?",
+  "choices": [
+   "Asa",
+   "The Levites",
+   "Baalim",
+   "The Lord"
+  ],
+  "answer": 2,
+  "explanation": "The LORD was with Jehoshaphat, because he sought not unto Baalim.",
+  "ref": "2 Chronicles 17:3"
+ },
+ {
+  "id": "2-chronicles-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Philistines bring to Jehoshaphat?",
+  "choices": [
+   "Presents and tribute silver",
+   "Chariots",
+   "Captives",
+   "Idols"
+  ],
+  "answer": 0,
+  "explanation": "Some of the Philistines brought Jehoshaphat presents, and tribute silver.",
+  "ref": "2 Chronicles 17:11"
+ },
+ {
+  "id": "2-chronicles-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Arabians bring to Jehoshaphat?",
+  "choices": [
+   "Camels and spices",
+   "Gold and ivory",
+   "Horses and chariots",
+   "Flocks of rams and he goats"
+  ],
+  "answer": 3,
+  "explanation": "The Arabians brought him flocks, seven thousand and seven hundred rams, and seven thousand and seven hundred he goats.",
+  "ref": "2 Chronicles 17:11"
+ },
+ {
+  "id": "2-chronicles-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Jehoshaphat send out to teach in the cities of Judah?",
+  "choices": [
+   "Elders of Egypt",
+   "Princes, Levites and priests",
+   "Prophets from Israel",
+   "Soldiers"
+  ],
+  "answer": 1,
+  "explanation": "He sent his princes, with Levites and priests, to teach in the cities of Judah.",
+  "ref": "2 Chronicles 17:7–8"
+ },
+ {
+  "id": "2-chronicles-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Against whom did Jehoshaphat strengthen himself?",
+  "choices": [
+   "Syria",
+   "Egypt",
+   "Philistia",
+   "Israel"
+  ],
+  "answer": 3,
+  "explanation": "Jehoshaphat his son reigned in his stead, and strengthened himself against Israel.",
+  "ref": "2 Chronicles 17:1"
+ },
+ {
+  "id": "2-chronicles-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoshaphat place in all the fenced cities of Judah?",
+  "choices": [
+   "Idols",
+   "Forces and garrisons",
+   "Treasuries",
+   "Altars"
+  ],
+  "answer": 1,
+  "explanation": "He placed forces in all the fenced cities of Judah, and set garrisons in the land of Judah.",
+  "ref": "2 Chronicles 17:2"
+ },
+ {
+  "id": "2-chronicles-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the Lord with Jehoshaphat?",
+  "choices": [
+   "He built the temple",
+   "He conquered Syria",
+   "He offered many sacrifices",
+   "He walked in the first ways of his father David"
+  ],
+  "answer": 3,
+  "explanation": "The LORD was with Jehoshaphat, because he walked in the first ways of his father David.",
+  "ref": "2 Chronicles 17:3"
+ },
+ {
+  "id": "2-chronicles-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did all Judah bring to Jehoshaphat after the Lord established his kingdom?",
+  "choices": [
+   "Presents",
+   "Soldiers",
+   "Captives",
+   "Idols"
+  ],
+  "answer": 0,
+  "explanation": "The LORD stablished the kingdom in his hand; and all Judah brought to Jehoshaphat presents.",
+  "ref": "2 Chronicles 17:5"
+ },
+ {
+  "id": "2-chronicles-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year of his reign did Jehoshaphat send his princes to teach?",
+  "choices": [
+   "The fifth year",
+   "The tenth year",
+   "The third year",
+   "The first year"
+  ],
+  "answer": 2,
+  "explanation": "In the third year of his reign he sent to his princes to teach in the cities of Judah.",
+  "ref": "2 Chronicles 17:7"
+ },
+ {
+  "id": "2-chronicles-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the teachers carry with them as they went through Judah?",
+  "choices": [
+   "The book of the law of the Lord",
+   "Bread and oil",
+   "Silver and gold",
+   "Letters from the king"
+  ],
+  "answer": 0,
+  "explanation": "They had the book of the law of the LORD with them, and went about throughout all the cities of Judah.",
+  "ref": "2 Chronicles 17:9"
+ },
+ {
+  "id": "2-chronicles-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the kingdoms round about not make war against Jehoshaphat?",
+  "choices": [
+   "He paid them tribute",
+   "They were at war with Israel",
+   "The fear of the Lord fell upon them",
+   "His army was the largest"
+  ],
+  "answer": 2,
+  "explanation": "The fear of the LORD fell upon all the kingdoms of the lands that were round about Judah.",
+  "ref": "2 Chronicles 17:10"
+ },
+ {
+  "id": "2-chronicles-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoshaphat build in Judah as he waxed great?",
+  "choices": [
+   "A new temple",
+   "Walls around Jerusalem",
+   "Altars",
+   "Castles and cities of store"
+  ],
+  "answer": 3,
+  "explanation": "Jehoshaphat waxed great exceedingly; and he built in Judah castles, and cities of store.",
+  "ref": "2 Chronicles 17:12"
+ },
+ {
+  "id": "2-chronicles-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were the men of war, mighty men of valour, stationed?",
+  "choices": [
+   "At the border",
+   "In Jerusalem",
+   "In Samaria",
+   "In Gibeah"
+  ],
+  "answer": 1,
+  "explanation": "The men of war, mighty men of valour, were in Jerusalem.",
+  "ref": "2 Chronicles 17:13"
+ },
+ {
+  "id": "2-chronicles-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the chief captain of Judah, with three hundred thousand mighty men?",
+  "choices": [
+   "Adnah",
+   "Jehohanan",
+   "Amasiah",
+   "Eliada"
+  ],
+  "answer": 0,
+  "explanation": "Of Judah, the captains of thousands; Adnah the chief, and with him mighty men of valour three hundred thousand.",
+  "ref": "2 Chronicles 17:14"
+ },
+ {
+  "id": "2-chronicles-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Which captain, next to Adnah, led two hundred and fourscore thousand?",
+  "choices": [
+   "Eliada",
+   "Jehohanan",
+   "Amasiah",
+   "Jehozabad"
+  ],
+  "answer": 1,
+  "explanation": "Next to him was Jehohanan the captain, and with him two hundred and fourscore thousand.",
+  "ref": "2 Chronicles 17:15"
+ },
+ {
+  "id": "2-chronicles-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Who willingly offered himself unto the Lord, leading two hundred thousand?",
+  "choices": [
+   "Adnah",
+   "Eliada",
+   "Jehozabad",
+   "Amasiah the son of Zichri"
+  ],
+  "answer": 3,
+  "explanation": "Next him was Amasiah the son of Zichri, who willingly offered himself unto the LORD.",
+  "ref": "2 Chronicles 17:16"
+ },
+ {
+  "id": "2-chronicles-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Which mighty man of valour led armed men of Benjamin with bow and shield?",
+  "choices": [
+   "Amasiah",
+   "Eliada",
+   "Adnah",
+   "Jehohanan"
+  ],
+  "answer": 1,
+  "explanation": "Of Benjamin; Eliada a mighty man of valour, and with him armed men with bow and shield two hundred thousand.",
+  "ref": "2 Chronicles 17:17"
+ },
+ {
+  "id": "2-chronicles-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Who followed Eliada with an hundred and fourscore thousand ready for war?",
+  "choices": [
+   "Adnah",
+   "Amasiah",
+   "Jehozabad",
+   "Jehohanan"
+  ],
+  "answer": 2,
+  "explanation": "Next him was Jehozabad, and with him an hundred and fourscore thousand ready prepared for the war.",
+  "ref": "2 Chronicles 17:18"
+ },
+ {
+  "id": "2-chronicles-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many rams did the Arabians bring Jehoshaphat?",
+  "choices": [
+   "Seven thousand and seven hundred",
+   "Seven hundred",
+   "Seventy thousand",
+   "Seven thousand"
+  ],
+  "answer": 0,
+  "explanation": "The Arabians brought him seven thousand and seven hundred rams, and seven thousand and seven hundred he goats.",
+  "ref": "2 Chronicles 17:11"
+ },
+ {
+  "id": "2-chronicles-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of the king's princes is named in the list who were sent to teach?",
+  "choices": [
+   "Nethaneel",
+   "Adnah",
+   "Eliada",
+   "Amasiah"
+  ],
+  "answer": 0,
+  "explanation": "The king sent his princes, Ben-hail, Obadiah, Zechariah, Nethaneel, and Michaiah.",
+  "ref": "2 Chronicles 17:7"
+ },
+ {
+  "id": "2-chronicles-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two priests went with the Levites to teach in Judah?",
+  "choices": [
+   "Jehoiada and Amariah",
+   "Elishama and Jehoram",
+   "Zadok and Abiathar",
+   "Hilkiah and Azariah"
+  ],
+  "answer": 1,
+  "explanation": "With them Elishama and Jehoram, priests.",
+  "ref": "2 Chronicles 17:8"
+ },
+ {
+  "id": "2-chronicles-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jehoshaphat take away out of Judah besides the high places?",
+  "choices": [
+   "Altars of the Lord",
+   "Silver vessels",
+   "Garrisons",
+   "Groves"
+  ],
+  "answer": 3,
+  "explanation": "He took away the high places and groves out of Judah.",
+  "ref": "2 Chronicles 17:6"
+ },
+ {
+  "id": "2-chronicles-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many mighty men of valour did Adnah lead?",
+  "choices": [
+   "Two hundred and eighty thousand",
+   "One hundred and eighty thousand",
+   "Three hundred thousand",
+   "Two hundred thousand"
+  ],
+  "answer": 2,
+  "explanation": "Adnah the chief, and with him mighty men of valour three hundred thousand.",
+  "ref": "2 Chronicles 17:14"
+ },
+ {
+  "id": "2-chronicles-17-h-11",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was one of the Levites sent to teach?",
+  "choices": [
+   "Shemaiah",
+   "Adnah",
+   "Eliada",
+   "Jehohanan"
+  ],
+  "answer": 0,
+  "explanation": "With them he sent Levites, even Shemaiah, and Nethaniah, and Zebadiah, and Asahel.",
+  "ref": "2 Chronicles 17:8"
+ },
+ {
   "id": "old-2-chronicles-18-1",
   "chapter": 18,
   "level": "beginner",
