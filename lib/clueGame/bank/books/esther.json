@@ -1568,6 +1568,358 @@
   "ref": "Esther 4:16"
  },
  {
+  "id": "esther-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Esther send to learn what was wrong with Mordecai?",
+  "choices": [
+   "Hatach",
+   "Hegai",
+   "Memucan",
+   "Shaashgaz"
+  ],
+  "answer": 0,
+  "explanation": "Esther called for Hatach, one of the king’s chamberlains, and gave him a commandment to Mordecai, to know what it was, and why it was.",
+  "ref": "Esther 4:5"
+ },
+ {
+  "id": "esther-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Esther react when her maids told her of Mordecai?",
+  "choices": [
+   "She was angry with him",
+   "She laughed",
+   "She went to the king at once",
+   "She was exceedingly grieved"
+  ],
+  "answer": 3,
+  "explanation": "Then was the queen exceedingly grieved; and she sent raiment to clothe Mordecai.",
+  "ref": "Esther 4:4"
+ },
+ {
+  "id": "esther-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Esther say about the outcome of her going in to the king?",
+  "choices": [
+   "The king will hear me gladly",
+   "I will return by morning",
+   "If I perish, I perish",
+   "I will surely be spared"
+  ],
+  "answer": 2,
+  "explanation": "I will go in unto the king, which is not according to the law: and if I perish, I perish.",
+  "ref": "Esther 4:16"
+ },
+ {
+  "id": "esther-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Jews do in every province when the decree came?",
+  "choices": [
+   "Sent gifts to the king",
+   "Mourned, fasted, wept, and wailed",
+   "Armed themselves",
+   "Fled to Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "In every province there was great mourning among the Jews, and fasting, and weeping, and wailing.",
+  "ref": "Esther 4:3"
+ },
+ {
+  "id": "esther-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why could Mordecai not enter the king’s gate?",
+  "choices": [
+   "None might enter clothed with sackcloth",
+   "The gate was shut by Haman",
+   "He was no longer a servant",
+   "He had not been called"
+  ],
+  "answer": 0,
+  "explanation": "He came even before the king’s gate: for none might enter into the king’s gate clothed with sackcloth.",
+  "ref": "Esther 4:2"
+ },
+ {
+  "id": "esther-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Mordecai respond to the raiment Esther sent him?",
+  "choices": [
+   "He wore it to the gate",
+   "He sent it to the poor",
+   "He thanked her and kept it",
+   "He received it not"
+  ],
+  "answer": 3,
+  "explanation": "She sent raiment to clothe Mordecai, and to take away his sackcloth from him: but he received it not.",
+  "ref": "Esther 4:4"
+ },
+ {
+  "id": "esther-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Hatach meet Mordecai?",
+  "choices": [
+   "In Mordecai’s house",
+   "In the court of the garden",
+   "In the street of the city before the king’s gate",
+   "In the house of the women"
+  ],
+  "answer": 2,
+  "explanation": "Hatach went forth to Mordecai unto the street of the city, which was before the king’s gate.",
+  "ref": "Esther 4:6"
+ },
+ {
+  "id": "esther-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Mordecai tell Hatach about the money Haman had promised?",
+  "choices": [
+   "That Mordecai would repay it",
+   "The sum Haman would pay the king for the Jews",
+   "That Haman had already paid it",
+   "That the king refused it"
+  ],
+  "answer": 1,
+  "explanation": "Mordecai told him of the sum of the money that Haman had promised to pay to the king’s treasuries for the Jews.",
+  "ref": "Esther 4:7"
+ },
+ {
+  "id": "esther-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Mordecai give Hatach to show Esther?",
+  "choices": [
+   "The copy of the writing of the decree",
+   "A letter to the king",
+   "A gift of silver",
+   "A scroll of the law"
+  ],
+  "answer": 0,
+  "explanation": "He gave him the copy of the writing of the decree that was given at Shushan to destroy them.",
+  "ref": "Esther 4:8"
+ },
+ {
+  "id": "esther-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Mordecai tell Esther she should not think?",
+  "choices": [
+   "That the king would hear her",
+   "That Haman would repent",
+   "That fasting would save them",
+   "That she would escape in the king’s house"
+  ],
+  "answer": 3,
+  "explanation": "Think not with thyself that thou shalt escape in the king’s house, more than all the Jews.",
+  "ref": "Esther 4:13"
+ },
+ {
+  "id": "esther-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Mordecai say deliverance would arise if Esther held her peace?",
+  "choices": [
+   "From the king’s own house",
+   "From the provinces of Persia",
+   "From another place",
+   "From Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "If thou altogether holdest thy peace, then shall there enlargement and deliverance arise to the Jews from another place.",
+  "ref": "Esther 4:14"
+ },
+ {
+  "id": "esther-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Esther say would fast likewise with her?",
+  "choices": [
+   "The princes",
+   "Her maidens",
+   "The king’s chamberlains",
+   "Hegai"
+  ],
+  "answer": 1,
+  "explanation": "Fast ye for me; I also and my maidens will fast likewise.",
+  "ref": "Esther 4:16"
+ },
+ {
+  "id": "esther-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Mordecai go crying with a loud and bitter cry?",
+  "choices": [
+   "Into the midst of the city",
+   "To the temple",
+   "Out of Shushan",
+   "Into the house of Haman"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai rent his clothes, and put on sackcloth with ashes, and went out into the midst of the city, and cried with a loud and a bitter cry.",
+  "ref": "Esther 4:1"
+ },
+ {
+  "id": "esther-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long had it been since Esther was called to come in to the king?",
+  "choices": [
+   "Seven days",
+   "A year",
+   "Three months",
+   "Thirty days"
+  ],
+  "answer": 3,
+  "explanation": "I have not been called to come in unto the king these thirty days.",
+  "ref": "Esther 4:11"
+ },
+ {
+  "id": "esther-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Hatach?",
+  "choices": [
+   "A servant of Haman",
+   "A scribe of Mordecai",
+   "One of the king’s chamberlains appointed to attend Esther",
+   "The keeper of the women"
+  ],
+  "answer": 2,
+  "explanation": "Esther called for Hatach, one of the king’s chamberlains, whom he had appointed to attend upon her.",
+  "ref": "Esther 4:5"
+ },
+ {
+  "id": "esther-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esther tell the Jews not to do for three days?",
+  "choices": [
+   "Sleep in their houses",
+   "Neither eat nor drink, night or day",
+   "Leave Shushan",
+   "Speak to the king’s servants"
+  ],
+  "answer": 1,
+  "explanation": "Fast ye for me, and neither eat nor drink three days, night or day.",
+  "ref": "Esther 4:16"
+ },
+ {
+  "id": "esther-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esther say about her going in to the king?",
+  "choices": [
+   "It was not according to the law",
+   "It was the king’s wish",
+   "It was Haman’s plan",
+   "It was a custom of the queens"
+  ],
+  "answer": 0,
+  "explanation": "I will go in unto the king, which is not according to the law.",
+  "ref": "Esther 4:16"
+ },
+ {
+  "id": "esther-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Mordecai warn would happen to Esther and her father’s house if she held her peace?",
+  "choices": [
+   "They would be exiled",
+   "They would be rewarded",
+   "They would be forgotten",
+   "They would be destroyed"
+  ],
+  "answer": 3,
+  "explanation": "Thou and thy father’s house shall be destroyed.",
+  "ref": "Esther 4:14"
+ },
+ {
+  "id": "esther-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Mordecai do after Esther gave her answer?",
+  "choices": [
+   "He went back to the gate and waited",
+   "He sent Hatach away",
+   "He did according to all that Esther had commanded him",
+   "He went to the king himself"
+  ],
+  "answer": 2,
+  "explanation": "Mordecai went his way, and did according to all that Esther had commanded him.",
+  "ref": "Esther 4:17"
+ },
+ {
+  "id": "esther-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Which Jews did Esther tell Mordecai to gather together?",
+  "choices": [
+   "Only the elders",
+   "All that were present in Shushan",
+   "All in the provinces",
+   "Only the priests"
+  ],
+  "answer": 1,
+  "explanation": "Go, gather together all the Jews that are present in Shushan, and fast ye for me.",
+  "ref": "Esther 4:16"
+ },
+ {
+  "id": "esther-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esther send Hatach to find out?",
+  "choices": [
+   "What it was, and why it was",
+   "Whether Haman was at the gate",
+   "Who had written the decree",
+   "How much silver was promised"
+  ],
+  "answer": 0,
+  "explanation": "She gave him a commandment to Mordecai, to know what it was, and why it was.",
+  "ref": "Esther 4:5"
+ },
+ {
+  "id": "esther-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides mourning, fasting, and weeping, what did the Jews do?",
+  "choices": [
+   "Sing songs of praise",
+   "Offer sacrifices at the gate",
+   "Send letters to Judah",
+   "Wail, and many lay in sackcloth and ashes"
+  ],
+  "answer": 3,
+  "explanation": "There was great mourning among the Jews, and fasting, and weeping, and wailing; and many lay in sackcloth and ashes.",
+  "ref": "Esther 4:3"
+ },
+ {
   "id": "old-esther-5-1",
   "chapter": 5,
   "level": "beginner",
