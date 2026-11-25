@@ -739,17 +739,17 @@
   "id": "old-1-chronicles-2-2",
   "chapter": 2,
   "level": "beginner",
-  "category": "keyword",
-  "question": "Which tribe receives special attention in this chapter's genealogy?",
+  "category": "person",
+  "question": "Which firstborn son of Judah was evil in the sight of the LORD?",
   "choices": [
-   "Benjamin",
-   "Judah",
-   "Levi",
-   "Dan"
+   "Er",
+   "Onan",
+   "Shelah",
+   "Pharez"
   ],
-  "answer": 1,
-  "explanation": "The chapter focuses heavily on Judah's line.",
-  "ref": "1 Chronicles 2:1"
+  "answer": 0,
+  "explanation": "Er, the firstborn of Judah, was evil in the sight of the LORD; and he slew him.",
+  "ref": "1 Chronicles 2:3"
  },
  {
   "id": "old-1-chronicles-2-3",
@@ -798,6 +798,646 @@
   "answer": 1,
   "explanation": "The line runs from Pharez through Hezron and Ram down to David.",
   "ref": "1 Chronicles 2:4–5"
+ },
+ {
+  "id": "1-chronicles-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who bare Pharez and Zerah to Judah?",
+  "choices": [
+   "Azubah",
+   "Ephrath",
+   "Tamar",
+   "Abigail"
+  ],
+  "answer": 2,
+  "explanation": "Tamar his daughter in law bare him Pharez and Zerah.",
+  "ref": "1 Chronicles 2:4"
+ },
+ {
+  "id": "1-chronicles-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Jesse's firstborn son?",
+  "choices": [
+   "Eliab",
+   "Shimma",
+   "Abinadab",
+   "Nethaneel"
+  ],
+  "answer": 0,
+  "explanation": "Jesse begat his firstborn Eliab, and Abinadab the second, and Shimma the third.",
+  "ref": "1 Chronicles 2:13"
+ },
+ {
+  "id": "1-chronicles-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two women are named as David's sisters?",
+  "choices": [
+   "Tamar and Maachah",
+   "Ephrath and Jerioth",
+   "Atarah and Azubah",
+   "Zeruiah and Abigail"
+  ],
+  "answer": 3,
+  "explanation": "David's sisters were Zeruiah, and Abigail.",
+  "ref": "1 Chronicles 2:15–16"
+ },
+ {
+  "id": "1-chronicles-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is called \"the troubler of Israel\"?",
+  "choices": [
+   "Hur",
+   "Jether",
+   "Zimri",
+   "Achar"
+  ],
+  "answer": 3,
+  "explanation": "Achar, the troubler of Israel, transgressed in the thing accursed.",
+  "ref": "1 Chronicles 2:7"
+ },
+ {
+  "id": "1-chronicles-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who begat Obed?",
+  "choices": [
+   "Boaz",
+   "Salma",
+   "Nahshon",
+   "Jesse"
+  ],
+  "answer": 0,
+  "explanation": "Boaz begat Obed, and Obed begat Jesse.",
+  "ref": "1 Chronicles 2:12"
+ },
+ {
+  "id": "1-chronicles-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who bare Amasa?",
+  "choices": [
+   "Zeruiah",
+   "Abihail",
+   "Abigail",
+   "Atarah"
+  ],
+  "answer": 2,
+  "explanation": "Abigail bare Amasa.",
+  "ref": "1 Chronicles 2:17"
+ },
+ {
+  "id": "1-chronicles-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which man had three and twenty cities in the land of Gilead?",
+  "choices": [
+   "Hur",
+   "Segub",
+   "Jair",
+   "Caleb"
+  ],
+  "answer": 2,
+  "explanation": "Segub begat Jair, who had three and twenty cities in the land of Gilead.",
+  "ref": "1 Chronicles 2:22"
+ },
+ {
+  "id": "1-chronicles-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who begat Bezaleel?",
+  "choices": [
+   "Segub",
+   "Uri",
+   "Hur",
+   "Caleb"
+  ],
+  "answer": 1,
+  "explanation": "Hur begat Uri, and Uri begat Bezaleel.",
+  "ref": "1 Chronicles 2:20"
+ },
+ {
+  "id": "1-chronicles-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who begat Boaz?",
+  "choices": [
+   "Obed",
+   "Nahshon",
+   "Salma",
+   "Ram"
+  ],
+  "answer": 2,
+  "explanation": "Nahshon begat Salma, and Salma begat Boaz.",
+  "ref": "1 Chronicles 2:11"
+ },
+ {
+  "id": "1-chronicles-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the father of Jerahmeel, Ram and Chelubai?",
+  "choices": [
+   "Pharez",
+   "Caleb",
+   "Hezron",
+   "Amminadab"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Hezron: Jerahmeel, and Ram, and Chelubai.",
+  "ref": "1 Chronicles 2:9"
+ },
+ {
+  "id": "1-chronicles-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the mother of Er, Onan and Shelah?",
+  "choices": [
+   "The daughter of Shua the Canaanitess",
+   "Azubah",
+   "Abihail",
+   "Tamar his daughter in law"
+  ],
+  "answer": 0,
+  "explanation": "The three were born unto Judah of the daughter of Shua the Canaanitess.",
+  "ref": "1 Chronicles 2:3"
+ },
+ {
+  "id": "1-chronicles-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Achar do?",
+  "choices": [
+   "Refused to fight",
+   "Transgressed in the thing accursed",
+   "Slew his brother",
+   "Worshipped idols in Gilead"
+  ],
+  "answer": 1,
+  "explanation": "Achar, the troubler of Israel, transgressed in the thing accursed.",
+  "ref": "1 Chronicles 2:7"
+ },
+ {
+  "id": "1-chronicles-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Nahshon is called prince of the children of which tribe?",
+  "choices": [
+   "Benjamin",
+   "Reuben",
+   "Levi",
+   "Judah"
+  ],
+  "answer": 3,
+  "explanation": "Amminadab begat Nahshon, prince of the children of Judah.",
+  "ref": "1 Chronicles 2:10"
+ },
+ {
+  "id": "1-chronicles-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does the list put David among Jesse's sons?",
+  "choices": [
+   "First",
+   "Third",
+   "Fourth",
+   "Seventh"
+  ],
+  "answer": 3,
+  "explanation": "Ozem the sixth, David the seventh.",
+  "ref": "1 Chronicles 2:15"
+ },
+ {
+  "id": "1-chronicles-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Caleb take after Azubah died?",
+  "choices": [
+   "Ephrath",
+   "Jerioth",
+   "Maachah",
+   "Atarah"
+  ],
+  "answer": 0,
+  "explanation": "When Azubah was dead, Caleb took unto him Ephrath, which bare him Hur.",
+  "ref": "1 Chronicles 2:19"
+ },
+ {
+  "id": "1-chronicles-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Hezron when he died?",
+  "choices": [
+   "Caleb-ephratah",
+   "Kirjath-jearim",
+   "Bethlehem",
+   "Gilead"
+  ],
+  "answer": 0,
+  "explanation": "After that Hezron was dead in Caleb-ephratah, then Abiah Hezron's wife bare him Ashur.",
+  "ref": "1 Chronicles 2:24"
+ },
+ {
+  "id": "1-chronicles-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who bare Hezron's son Ashur, the father of Tekoa?",
+  "choices": [
+   "Abiah",
+   "Ephrath",
+   "Azubah",
+   "Abihail"
+  ],
+  "answer": 0,
+  "explanation": "After Hezron was dead, Abiah Hezron's wife bare him Ashur the father of Tekoa.",
+  "ref": "1 Chronicles 2:24"
+ },
+ {
+  "id": "1-chronicles-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the second wife of Jerahmeel, the mother of Onam?",
+  "choices": [
+   "Azubah",
+   "Jerioth",
+   "Atarah",
+   "Maachah"
+  ],
+  "answer": 2,
+  "explanation": "Jerahmeel had also another wife, whose name was Atarah; she was the mother of Onam.",
+  "ref": "1 Chronicles 2:26"
+ },
+ {
+  "id": "1-chronicles-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Which son of Nadab died without children?",
+  "choices": [
+   "Appaim",
+   "Ahlai",
+   "Ishi",
+   "Seled"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Nadab; Seled, and Appaim: but Seled died without children.",
+  "ref": "1 Chronicles 2:30"
+ },
+ {
+  "id": "1-chronicles-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Sheshan have instead of sons?",
+  "choices": [
+   "Cities",
+   "Servants",
+   "Brothers",
+   "Daughters"
+  ],
+  "answer": 3,
+  "explanation": "Sheshan had no sons, but daughters.",
+  "ref": "1 Chronicles 2:34"
+ },
+ {
+  "id": "1-chronicles-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did Sheshan give his daughter as wife?",
+  "choices": [
+   "Jether",
+   "Jonathan",
+   "Attai",
+   "Jarha his servant"
+  ],
+  "answer": 3,
+  "explanation": "Sheshan gave his daughter to Jarha his servant to wife.",
+  "ref": "1 Chronicles 2:35"
+ },
+ {
+  "id": "1-chronicles-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the son of Sheshan's daughter and Jarha?",
+  "choices": [
+   "Zabad",
+   "Attai",
+   "Nathan",
+   "Ephlal"
+  ],
+  "answer": 1,
+  "explanation": "She bare him Attai.",
+  "ref": "1 Chronicles 2:35"
+ },
+ {
+  "id": "1-chronicles-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose concubine was Ephah, who bare Haran, Moza and Gazez?",
+  "choices": [
+   "Hezron's",
+   "Jerahmeel's",
+   "Sheshan's",
+   "Caleb's"
+  ],
+  "answer": 3,
+  "explanation": "Ephah, Caleb's concubine, bare Haran, and Moza, and Gazez.",
+  "ref": "1 Chronicles 2:46"
+ },
+ {
+  "id": "1-chronicles-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Salma is called the father of which town?",
+  "choices": [
+   "Tekoa",
+   "Hebron",
+   "Beth-zur",
+   "Bethlehem"
+  ],
+  "answer": 3,
+  "explanation": "Salma the father of Bethlehem.",
+  "ref": "1 Chronicles 2:51"
+ },
+ {
+  "id": "1-chronicles-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Shobal is called the father of which town?",
+  "choices": [
+   "Kirjath-jearim",
+   "Bethlehem",
+   "Beth-gader",
+   "Tekoa"
+  ],
+  "answer": 0,
+  "explanation": "Shobal the father of Kirjath-jearim.",
+  "ref": "1 Chronicles 2:50"
+ },
+ {
+  "id": "1-chronicles-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the father of Amasa?",
+  "choices": [
+   "Ahban",
+   "Joab",
+   "Jether the Ishmeelite",
+   "Jonathan"
+  ],
+  "answer": 2,
+  "explanation": "The father of Amasa was Jether the Ishmeelite.",
+  "ref": "1 Chronicles 2:17"
+ },
+ {
+  "id": "1-chronicles-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Hezron when he married the daughter of Machir?",
+  "choices": [
+   "Forty years",
+   "Thirty years",
+   "Threescore years",
+   "Fourscore years"
+  ],
+  "answer": 2,
+  "explanation": "Hezron married her when he was threescore years old; and she bare him Segub.",
+  "ref": "1 Chronicles 2:21"
+ },
+ {
+  "id": "1-chronicles-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the father of Jair?",
+  "choices": [
+   "Gilead",
+   "Segub",
+   "Machir",
+   "Hezron"
+  ],
+  "answer": 1,
+  "explanation": "Segub begat Jair, who had three and twenty cities in the land of Gilead.",
+  "ref": "1 Chronicles 2:22"
+ },
+ {
+  "id": "1-chronicles-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cities in all did Jair and Machir's sons hold, with Geshur and Aram?",
+  "choices": [
+   "Twenty",
+   "Three and twenty",
+   "Threescore",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "He took Geshur, and Aram, with the towns of Jair, even threescore cities.",
+  "ref": "1 Chronicles 2:23"
+ },
+ {
+  "id": "1-chronicles-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son of Jada died without children?",
+  "choices": [
+   "Peleth",
+   "Jonathan",
+   "Jether",
+   "Zaza"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Jada: Jether and Jonathan: and Jether died without children.",
+  "ref": "1 Chronicles 2:32"
+ },
+ {
+  "id": "1-chronicles-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Azariah in the line of Zerah?",
+  "choices": [
+   "Heman",
+   "Calcol",
+   "Ethan",
+   "Dara"
+  ],
+  "answer": 2,
+  "explanation": "And the sons of Ethan; Azariah.",
+  "ref": "1 Chronicles 2:8"
+ },
+ {
+  "id": "1-chronicles-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the father of Achar?",
+  "choices": [
+   "Zimri",
+   "Ethan",
+   "Hamul",
+   "Carmi"
+  ],
+  "answer": 3,
+  "explanation": "And the sons of Carmi; Achar, the troubler of Israel.",
+  "ref": "1 Chronicles 2:7"
+ },
+ {
+  "id": "1-chronicles-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the wife of Abishur, who bare Ahban and Molid?",
+  "choices": [
+   "Atarah",
+   "Abiah",
+   "Abihail",
+   "Azubah"
+  ],
+  "answer": 2,
+  "explanation": "The name of the wife of Abishur was Abihail, and she bare him Ahban, and Molid.",
+  "ref": "1 Chronicles 2:29"
+ },
+ {
+  "id": "1-chronicles-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Maon is called the father of which place?",
+  "choices": [
+   "Tekoa",
+   "Madmannah",
+   "Bethlehem",
+   "Beth-zur"
+  ],
+  "answer": 3,
+  "explanation": "The son of Shammai was Maon: and Maon was the father of Beth-zur.",
+  "ref": "1 Chronicles 2:45"
+ },
+ {
+  "id": "1-chronicles-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Kenites came of Hemath, the father of the house of whom?",
+  "choices": [
+   "Jabez",
+   "Caleb",
+   "Hur",
+   "Rechab"
+  ],
+  "answer": 3,
+  "explanation": "These are the Kenites that came of Hemath, the father of the house of Rechab.",
+  "ref": "1 Chronicles 2:55"
+ },
+ {
+  "id": "1-chronicles-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the families of the scribes dwell?",
+  "choices": [
+   "Gilead",
+   "Hebron",
+   "Bethlehem",
+   "Jabez"
+  ],
+  "answer": 3,
+  "explanation": "The families of the scribes which dwelt at Jabez.",
+  "ref": "1 Chronicles 2:55"
+ },
+ {
+  "id": "1-chronicles-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the firstborn of Jerahmeel?",
+  "choices": [
+   "Bunah",
+   "Ram",
+   "Oren",
+   "Ozem"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Jerahmeel the firstborn of Hezron were, Ram the firstborn.",
+  "ref": "1 Chronicles 2:25"
+ },
+ {
+  "id": "1-chronicles-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Mesha, Caleb's firstborn, was the father of whom?",
+  "choices": [
+   "Korah",
+   "Hebron",
+   "Ziph",
+   "Mareshah"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Caleb were Mesha his firstborn, which was the father of Ziph.",
+  "ref": "1 Chronicles 2:42"
+ },
+ {
+  "id": "1-chronicles-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the father of Salma?",
+  "choices": [
+   "Boaz",
+   "Amminadab",
+   "Nahshon",
+   "Ram"
+  ],
+  "answer": 2,
+  "explanation": "Nahshon begat Salma.",
+  "ref": "1 Chronicles 2:11"
+ },
+ {
+  "id": "1-chronicles-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Jarha, the husband of Sheshan's daughter, by nation?",
+  "choices": [
+   "A Canaanite",
+   "A Kenite",
+   "An Ishmeelite",
+   "An Egyptian"
+  ],
+  "answer": 3,
+  "explanation": "Sheshan had a servant, an Egyptian, whose name was Jarha.",
+  "ref": "1 Chronicles 2:34"
  },
  {
   "id": "old-1-chronicles-3-1",
