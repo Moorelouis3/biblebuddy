@@ -5168,6 +5168,662 @@
   "ref": "2 Samuel 8:16"
  },
  {
+  "id": "2-samuel-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do to the Philistines at the start of the chapter?",
+  "choices": [
+   "Smote them and subdued them",
+   "Made a treaty with them",
+   "Fled from them",
+   "Paid tribute to them"
+  ],
+  "answer": 0,
+  "explanation": "David smote the Philistines, and subdued them.",
+  "ref": "2 Samuel 8:1"
+ },
+ {
+  "id": "2-samuel-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Moabites become after David smote them?",
+  "choices": [
+   "Priests in Israel",
+   "Allies of Syria",
+   "Captives in Jerusalem",
+   "David's servants who brought gifts"
+  ],
+  "answer": 3,
+  "explanation": "The Moabites became David's servants, and brought gifts.",
+  "ref": "2 Samuel 8:2"
+ },
+ {
+  "id": "2-samuel-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the Syrians of Damascus come to help?",
+  "choices": [
+   "Toi king of Hamath",
+   "Hiram king of Tyre",
+   "Hadadezer king of Zobah",
+   "The Philistines"
+  ],
+  "answer": 2,
+  "explanation": "The Syrians of Damascus came to succour Hadadezer king of Zobah.",
+  "ref": "2 Samuel 8:5"
+ },
+ {
+  "id": "2-samuel-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David put in Syria of Damascus?",
+  "choices": [
+   "Priests",
+   "Garrisons",
+   "Altars",
+   "Judges"
+  ],
+  "answer": 1,
+  "explanation": "David put garrisons in Syria of Damascus: and the Syrians became servants to David.",
+  "ref": "2 Samuel 8:6"
+ },
+ {
+  "id": "2-samuel-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David take from Hadadezer's servants and bring to Jerusalem?",
+  "choices": [
+   "Shields of gold",
+   "Chariots of iron",
+   "Crowns of silver",
+   "Silken robes"
+  ],
+  "answer": 0,
+  "explanation": "David took the shields of gold that were on the servants of Hadadezer, and brought them to Jerusalem.",
+  "ref": "2 Samuel 8:7"
+ },
+ {
+  "id": "2-samuel-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did David dedicate the silver and gold from the nations?",
+  "choices": [
+   "The priests",
+   "Joab's army",
+   "The people of Judah",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "King David did dedicate them unto the LORD, with the silver and gold that he had dedicated of all nations which he subdued.",
+  "ref": "2 Samuel 8:11"
+ },
+ {
+  "id": "2-samuel-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which land did David put garrisons throughout?",
+  "choices": [
+   "Egypt",
+   "Moab",
+   "Edom",
+   "Ammon"
+  ],
+  "answer": 2,
+  "explanation": "He put garrisons in Edom; throughout all Edom put he garrisons.",
+  "ref": "2 Samuel 8:14"
+ },
+ {
+  "id": "2-samuel-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was over the host of David?",
+  "choices": [
+   "Abner",
+   "Joab the son of Zeruiah",
+   "Benaiah",
+   "Abishai"
+  ],
+  "answer": 1,
+  "explanation": "Joab the son of Zeruiah was over the host.",
+  "ref": "2 Samuel 8:16"
+ },
+ {
+  "id": "2-samuel-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was over the Cherethites and the Pelethites?",
+  "choices": [
+   "Benaiah the son of Jehoiada",
+   "Joab",
+   "Zadok",
+   "Seraiah"
+  ],
+  "answer": 0,
+  "explanation": "Benaiah the son of Jehoiada was over both the Cherethites and the Pelethites.",
+  "ref": "2 Samuel 8:18"
+ },
+ {
+  "id": "2-samuel-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Hamath sent his son to bless David?",
+  "choices": [
+   "Hadadezer",
+   "Rehob",
+   "Hiram",
+   "Toi"
+  ],
+  "answer": 3,
+  "explanation": "Toi sent Joram his son unto king David, to salute him, and to bless him.",
+  "ref": "2 Samuel 8:9–10"
+ },
+ {
+  "id": "2-samuel-8-e-11",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David execute unto all his people?",
+  "choices": [
+   "War and tribute",
+   "Mercy only",
+   "Judgment and justice",
+   "Taxes and tithes"
+  ],
+  "answer": 2,
+  "explanation": "David reigned over all Israel; and David executed judgment and justice unto all his people.",
+  "ref": "2 Samuel 8:15"
+ },
+ {
+  "id": "2-samuel-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many Syrians of Damascus did David slay?",
+  "choices": [
+   "Eighteen thousand",
+   "Two and twenty thousand",
+   "Seven thousand",
+   "Forty thousand"
+  ],
+  "answer": 1,
+  "explanation": "David slew of the Syrians two and twenty thousand men.",
+  "ref": "2 Samuel 8:5"
+ },
+ {
+  "id": "2-samuel-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David do to most of the chariot horses he took?",
+  "choices": [
+   "Houghed them",
+   "Sold them",
+   "Set them free",
+   "Gave them to Joab"
+  ],
+  "answer": 0,
+  "explanation": "David houghed all the chariot horses, but reserved of them for an hundred chariots.",
+  "ref": "2 Samuel 8:4"
+ },
+ {
+  "id": "2-samuel-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "At which river was Hadadezer going to recover his border?",
+  "choices": [
+   "The Jordan",
+   "The Nile",
+   "The Arnon",
+   "The Euphrates"
+  ],
+  "answer": 3,
+  "explanation": "David smote Hadadezer as he went to recover his border at the river Euphrates.",
+  "ref": "2 Samuel 8:3"
+ },
+ {
+  "id": "2-samuel-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many of the measured Moabites did David keep alive?",
+  "choices": [
+   "Two lines' worth",
+   "All of them",
+   "One full line's worth",
+   "Half of them"
+  ],
+  "answer": 2,
+  "explanation": "With two lines measured he to put to death, and with one full line to keep alive.",
+  "ref": "2 Samuel 8:2"
+ },
+ {
+  "id": "2-samuel-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David take from Betah and Berothai?",
+  "choices": [
+   "Cedar and gold",
+   "Exceeding much brass",
+   "Silver and spices",
+   "Many chariots"
+  ],
+  "answer": 1,
+  "explanation": "From Betah, and from Berothai, cities of Hadadezer, king David took exceeding much brass.",
+  "ref": "2 Samuel 8:8"
+ },
+ {
+  "id": "2-samuel-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Toi send his son Joram to David?",
+  "choices": [
+   "To salute and bless him for beating Hadadezer",
+   "To ask for help against Hadadezer",
+   "To demand a treaty",
+   "To bring his daughter to David"
+  ],
+  "answer": 0,
+  "explanation": "He sent Joram to salute him, and to bless him, because he had fought against Hadadezer, and smitten him.",
+  "ref": "2 Samuel 8:10"
+ },
+ {
+  "id": "2-samuel-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why had Hadadezer's defeat pleased Toi?",
+  "choices": [
+   "Hadadezer owed Toi silver",
+   "Toi wanted his chariots",
+   "Hadadezer had killed Toi's son",
+   "Hadadezer had wars with Toi"
+  ],
+  "answer": 3,
+  "explanation": "Hadadezer had wars with Toi.",
+  "ref": "2 Samuel 8:10"
+ },
+ {
+  "id": "2-samuel-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joram bring with him to David?",
+  "choices": [
+   "Horses and chariots",
+   "Sheep and oxen",
+   "Vessels of silver, gold and brass",
+   "Cedar and spices"
+  ],
+  "answer": 2,
+  "explanation": "Joram brought with him vessels of silver, and vessels of gold, and vessels of brass.",
+  "ref": "2 Samuel 8:10"
+ },
+ {
+  "id": "2-samuel-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David get when he returned from smiting the Syrians?",
+  "choices": [
+   "A crown",
+   "A name",
+   "A new wife",
+   "A city"
+  ],
+  "answer": 1,
+  "explanation": "David gat him a name when he returned from smiting of the Syrians in the valley of salt.",
+  "ref": "2 Samuel 8:13"
+ },
+ {
+  "id": "2-samuel-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the son of Ahitub, listed as a priest?",
+  "choices": [
+   "Zadok",
+   "Ahimelech",
+   "Abiathar",
+   "Seraiah"
+  ],
+  "answer": 0,
+  "explanation": "Zadok the son of Ahitub, and Ahimelech the son of Abiathar, were the priests.",
+  "ref": "2 Samuel 8:17"
+ },
+ {
+  "id": "2-samuel-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the recorder among David's officers?",
+  "choices": [
+   "Seraiah",
+   "Zadok",
+   "Benaiah",
+   "Jehoshaphat the son of Ahilud"
+  ],
+  "answer": 3,
+  "explanation": "Jehoshaphat the son of Ahilud was recorder.",
+  "ref": "2 Samuel 8:16"
+ },
+ {
+  "id": "2-samuel-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were chief rulers under David, according to the list?",
+  "choices": [
+   "The sons of Zeruiah",
+   "The elders of Judah",
+   "David's sons",
+   "The Cherethites"
+  ],
+  "answer": 2,
+  "explanation": "David's sons were chief rulers.",
+  "ref": "2 Samuel 8:18"
+ },
+ {
+  "id": "2-samuel-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Hadadezer?",
+  "choices": [
+   "Toi",
+   "Rehob",
+   "Ahilud",
+   "Jehoiada"
+  ],
+  "answer": 1,
+  "explanation": "David smote also Hadadezer, the son of Rehob, king of Zobah.",
+  "ref": "2 Samuel 8:3"
+ },
+ {
+  "id": "2-samuel-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many horsemen did David take from Hadadezer?",
+  "choices": [
+   "Seven hundred",
+   "One thousand",
+   "Twenty thousand",
+   "Seven thousand"
+  ],
+  "answer": 0,
+  "explanation": "David took from him a thousand chariots, and seven hundred horsemen, and twenty thousand footmen.",
+  "ref": "2 Samuel 8:4"
+ },
+ {
+  "id": "2-samuel-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many footmen did David take from Hadadezer?",
+  "choices": [
+   "Seven hundred",
+   "Eighteen thousand",
+   "Two and twenty thousand",
+   "Twenty thousand"
+  ],
+  "answer": 3,
+  "explanation": "David took twenty thousand footmen.",
+  "ref": "2 Samuel 8:4"
+ },
+ {
+  "id": "2-samuel-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how many chariots did David reserve horses?",
+  "choices": [
+   "A thousand",
+   "Seven hundred",
+   "An hundred",
+   "Twenty"
+  ],
+  "answer": 2,
+  "explanation": "David houghed all the chariot horses, but reserved of them for an hundred chariots.",
+  "ref": "2 Samuel 8:4"
+ },
+ {
+  "id": "2-samuel-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "In which valley were eighteen thousand men smitten?",
+  "choices": [
+   "The valley of Rephaim",
+   "The valley of salt",
+   "The valley of Elah",
+   "The valley of Jezreel"
+  ],
+  "answer": 1,
+  "explanation": "David gat him a name when he returned from smiting of the Syrians in the valley of salt, being eighteen thousand men.",
+  "ref": "2 Samuel 8:13"
+ },
+ {
+  "id": "2-samuel-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Ahimelech, listed as a priest?",
+  "choices": [
+   "Abiathar",
+   "Ahitub",
+   "Zadok",
+   "Ahilud"
+  ],
+  "answer": 0,
+  "explanation": "Ahimelech the son of Abiathar was a priest.",
+  "ref": "2 Samuel 8:17"
+ },
+ {
+  "id": "2-samuel-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the scribe among David's officers?",
+  "choices": [
+   "Jehoshaphat",
+   "Benaiah",
+   "Ahimelech",
+   "Seraiah"
+  ],
+  "answer": 3,
+  "explanation": "Seraiah was the scribe.",
+  "ref": "2 Samuel 8:17"
+ },
+ {
+  "id": "2-samuel-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Zadok?",
+  "choices": [
+   "Abiathar",
+   "Ahilud",
+   "Ahitub",
+   "Jehoiada"
+  ],
+  "answer": 2,
+  "explanation": "Zadok the son of Ahitub was a priest.",
+  "ref": "2 Samuel 8:17"
+ },
+ {
+  "id": "2-samuel-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Benaiah?",
+  "choices": [
+   "Ahilud",
+   "Jehoiada",
+   "Zeruiah",
+   "Rehob"
+  ],
+  "answer": 1,
+  "explanation": "Benaiah the son of Jehoiada was over both the Cherethites and the Pelethites.",
+  "ref": "2 Samuel 8:18"
+ },
+ {
+  "id": "2-samuel-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which nation is named among those whose silver and gold David dedicated?",
+  "choices": [
+   "Amalek",
+   "Egypt",
+   "Tyre",
+   "Hittites"
+  ],
+  "answer": 0,
+  "explanation": "Of Syria, and of Moab, and of the children of Ammon, and of the Philistines, and of Amalek.",
+  "ref": "2 Samuel 8:12"
+ },
+ {
+  "id": "2-samuel-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two cities of Hadadezer did David take brass from?",
+  "choices": [
+   "Gath and Ekron",
+   "Zobah and Hamath",
+   "Geba and Gazer",
+   "Betah and Berothai"
+  ],
+  "answer": 3,
+  "explanation": "From Betah, and from Berothai, cities of Hadadezer, king David took exceeding much brass.",
+  "ref": "2 Samuel 8:8"
+ },
+ {
+  "id": "2-samuel-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many chariots did David take from Hadadezer?",
+  "choices": [
+   "Seven hundred",
+   "Two hundred",
+   "A thousand",
+   "Twenty thousand"
+  ],
+  "answer": 2,
+  "explanation": "David took from him a thousand chariots.",
+  "ref": "2 Samuel 8:4"
+ },
+ {
+  "id": "2-samuel-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Over which land was Hadadezer king?",
+  "choices": [
+   "Zobah",
+   "Hamath",
+   "Damascus",
+   "Edom"
+  ],
+  "answer": 0,
+  "explanation": "David smote also Hadadezer, the son of Rehob, king of Zobah.",
+  "ref": "2 Samuel 8:3"
+ },
+ {
+  "id": "2-samuel-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "What happened to all of Edom?",
+  "choices": [
+   "They became David's servants",
+   "They were driven out",
+   "They joined Syria",
+   "They paid tribute to Tyre"
+  ],
+  "answer": 0,
+  "explanation": "All they of Edom became David's servants.",
+  "ref": "2 Samuel 8:14"
+ },
+ {
+  "id": "2-samuel-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Over which land was Toi king?",
+  "choices": [
+   "Hamath",
+   "Zobah",
+   "Tyre",
+   "Moab"
+  ],
+  "answer": 0,
+  "explanation": "Toi king of Hamath heard that David had smitten all the host of Hadadezer.",
+  "ref": "2 Samuel 8:9"
+ },
+ {
+  "id": "2-samuel-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Jehoshaphat the recorder?",
+  "choices": [
+   "Ahilud",
+   "Ahitub",
+   "Jehoiada",
+   "Rehob"
+  ],
+  "answer": 0,
+  "explanation": "Jehoshaphat the son of Ahilud was recorder.",
+  "ref": "2 Samuel 8:16"
+ },
+ {
+  "id": "2-samuel-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many lines did David measure out to put Moabites to death?",
+  "choices": [
+   "Two lines",
+   "One line",
+   "Three lines",
+   "Four lines"
+  ],
+  "answer": 0,
+  "explanation": "With two lines measured he to put to death, and with one full line to keep alive.",
+  "ref": "2 Samuel 8:2"
+ },
+ {
+  "id": "2-samuel-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Joram?",
+  "choices": [
+   "Hadadezer",
+   "Rehob",
+   "Hiram",
+   "Toi"
+  ],
+  "answer": 3,
+  "explanation": "Toi sent Joram his son unto king David.",
+  "ref": "2 Samuel 8:10"
+ },
+ {
   "id": "old-2-samuel-9-1",
   "chapter": 9,
   "level": "beginner",
