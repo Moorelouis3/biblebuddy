@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-29-explained",
+    title: "1 Samuel 29 Explained: Sent Home Before the Battle",
+    description:
+      "1 Samuel 29 explained verse by verse: the Philistine princes refuse to let David fight, Achish sends him home, and David avoids battling Israel.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-29-explained",
+    publishedAt: "2026-11-25",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 29 Explained 📖",
+      content:
+        "David marches out with the Philistines.\nTheir own officers refuse to let him fight.\n\n📌 Not every rescue looks like a miracle.\n\n📖 The princes fear David could turn on them mid battle.\n📖 Achish calls David upright, even an angel of God.\n📖 David is sent home before the fighting starts.\n\nNew article on:\n🟢 why the **Philistines** didn't trust David\n🟢 the old **song** that gave him away\n🟢 how this kept David out of **Saul's** last battle\n\nHave you ever been saved by someone else's suspicion of you? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-28-explained",
     title: "1 Samuel 28 Explained: Saul and the Witch of Endor",
     description:
