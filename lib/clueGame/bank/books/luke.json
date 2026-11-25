@@ -16,38 +16,6 @@
   "ref": "Luke 1:3"
  },
  {
-  "id": "old-luke-1-2",
-  "chapter": 1,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What priest was told he and Elizabeth would have a son?",
-  "choices": [
-   "Zechariah",
-   "Simeon",
-   "Joseph",
-   "Annas"
-  ],
-  "answer": 0,
-  "explanation": "The angel appeared to Zechariah while he ministered in the temple.",
-  "ref": "Luke 1:5–13"
- },
- {
-  "id": "old-luke-1-3",
-  "chapter": 1,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What name was Zechariah told to give his son?",
-  "choices": [
-   "John",
-   "Jesus",
-   "Samuel",
-   "Elijah"
-  ],
-  "answer": 0,
-  "explanation": "The promised child would be named John.",
-  "ref": "Luke 1:13"
- },
- {
   "id": "old-luke-1-4",
   "chapter": 1,
   "level": "beginner",
@@ -62,22 +30,6 @@
   "answer": 1,
   "explanation": "Gabriel announced to Mary that she would bear the Son of God.",
   "ref": "Luke 1:26–35"
- },
- {
-  "id": "old-luke-1-5",
-  "chapter": 1,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What happened to Zechariah until John's birth because he did not believe the angel?",
-  "choices": [
-   "He went blind",
-   "He became mute",
-   "He left the temple",
-   "He lost his priesthood"
-  ],
-  "answer": 1,
-  "explanation": "Zechariah was unable to speak until the promise was fulfilled.",
-  "ref": "Luke 1:20"
  },
  {
   "id": "old-luke-2-1",
@@ -12158,5 +12110,5173 @@
   "answer": 0,
   "explanation": "Whosoever will save his life shall lose it: but whosoever will lose his life for my sake, the same shall save it.",
   "ref": "Luke 9:24"
+ },
+ {
+  "id": "luke-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which angel appeared to Zacharias in the temple?",
+  "choices": [
+   "Michael",
+   "Gabriel",
+   "Raphael",
+   "Uriel"
+  ],
+  "answer": 1,
+  "explanation": "The angel answered, I am Gabriel, that stand in the presence of God.",
+  "ref": "Luke 1:19"
+ },
+ {
+  "id": "luke-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "What was the name of the priest whose wife was Elisabeth?",
+  "choices": [
+   "Zacharias",
+   "Simeon",
+   "Joseph",
+   "Abia"
+  ],
+  "answer": 0,
+  "explanation": "There was a certain priest named Zacharias, and his wife's name was Elisabeth.",
+  "ref": "Luke 1:5"
+ },
+ {
+  "id": "luke-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city of Galilee was Gabriel sent in the sixth month?",
+  "choices": [
+   "Bethlehem",
+   "Jerusalem",
+   "Capernaum",
+   "Nazareth"
+  ],
+  "answer": 3,
+  "explanation": "Gabriel was sent from God unto a city of Galilee, named Nazareth.",
+  "ref": "Luke 1:26"
+ },
+ {
+  "id": "luke-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name did Gabriel tell Mary to give her son?",
+  "choices": [
+   "John",
+   "Emmanuel",
+   "JESUS",
+   "David"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt conceive in thy womb, and bring forth a son, and shalt call his name JESUS.",
+  "ref": "Luke 1:31"
+ },
+ {
+  "id": "luke-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Mary's cousin who had also conceived a son in her old age?",
+  "choices": [
+   "Anna",
+   "Elisabeth",
+   "Martha",
+   "Joanna"
+  ],
+  "answer": 1,
+  "explanation": "Gabriel said, Thy cousin Elisabeth, she hath also conceived a son in her old age.",
+  "ref": "Luke 1:36"
+ },
+ {
+  "id": "luke-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened in Elisabeth's womb when she heard Mary's greeting?",
+  "choices": [
+   "The babe leaped",
+   "She fainted",
+   "She ran out of the house",
+   "Zacharias spoke again"
+  ],
+  "answer": 0,
+  "explanation": "When Elisabeth heard the salutation of Mary, the babe leaped in her womb.",
+  "ref": "Luke 1:41"
+ },
+ {
+  "id": "luke-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who wrote on a writing table, \"His name is John\"?",
+  "choices": [
+   "Elisabeth",
+   "A neighbour",
+   "A priest of the temple",
+   "Zacharias"
+  ],
+  "answer": 3,
+  "explanation": "Zacharias asked for a writing table, and wrote, saying, His name is John.",
+  "ref": "Luke 1:63"
+ },
+ {
+  "id": "luke-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "After whom did the neighbours want to name the child?",
+  "choices": [
+   "Abraham",
+   "Aaron",
+   "His father Zacharias",
+   "Elias"
+  ],
+  "answer": 2,
+  "explanation": "On the eighth day they called him Zacharias, after the name of his father.",
+  "ref": "Luke 1:59"
+ },
+ {
+  "id": "luke-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Mary answer Gabriel's message?",
+  "choices": [
+   "Whereby shall I know this?",
+   "Behold the handmaid of the Lord",
+   "Fear not",
+   "Why hast thou thus dealt with us?"
+  ],
+  "answer": 1,
+  "explanation": "Mary said, Behold the handmaid of the Lord; be it unto me according to thy word.",
+  "ref": "Luke 1:38"
+ },
+ {
+  "id": "luke-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Mary go with haste after the angel left her?",
+  "choices": [
+   "The hill country of Juda",
+   "Bethlehem",
+   "The wilderness",
+   "Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Mary arose and went into the hill country with haste, into a city of Juda.",
+  "ref": "Luke 1:39"
+ },
+ {
+  "id": "luke-1-e-11",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisabeth call Mary?",
+  "choices": [
+   "The queen of Israel",
+   "The daughter of Aaron",
+   "The handmaid of Zacharias",
+   "The mother of my Lord"
+  ],
+  "answer": 3,
+  "explanation": "Elisabeth said, Whence is this to me, that the mother of my Lord should come to me?",
+  "ref": "Luke 1:43"
+ },
+ {
+  "id": "luke-1-e-12",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the people doing outside while Zacharias burned incense?",
+  "choices": [
+   "Singing psalms",
+   "Fasting",
+   "Praying",
+   "Offering lambs"
+  ],
+  "answer": 2,
+  "explanation": "The whole multitude of the people were praying without at the time of incense.",
+  "ref": "Luke 1:10"
+ },
+ {
+  "id": "luke-1-e-13",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name did the angel tell Zacharias to give his son?",
+  "choices": [
+   "Zacharias",
+   "John",
+   "Abia",
+   "Elias"
+  ],
+  "answer": 1,
+  "explanation": "The angel said, Thy wife Elisabeth shall bear thee a son, and thou shalt call his name John.",
+  "ref": "Luke 1:13"
+ },
+ {
+  "id": "luke-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Luke describe Zacharias and Elisabeth before God?",
+  "choices": [
+   "Righteous and blameless in the commandments",
+   "Rich and generous",
+   "Zealous and fasting",
+   "Poor and humble"
+  ],
+  "answer": 0,
+  "explanation": "They were both righteous before God, walking in all the commandments and ordinances of the Lord blameless.",
+  "ref": "Luke 1:6"
+ },
+ {
+  "id": "luke-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the angel stand when he appeared to Zacharias?",
+  "choices": [
+   "Beside the ark",
+   "Behind the veil",
+   "At the temple gate",
+   "On the right side of the altar of incense"
+  ],
+  "answer": 3,
+  "explanation": "There appeared unto him an angel of the Lord standing on the right side of the altar of incense.",
+  "ref": "Luke 1:11"
+ },
+ {
+  "id": "luke-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was John forbidden to drink?",
+  "choices": [
+   "Vinegar",
+   "Milk",
+   "Wine and strong drink",
+   "Water from Jordan"
+  ],
+  "answer": 2,
+  "explanation": "He shall drink neither wine nor strong drink; and he shall be filled with the Holy Ghost.",
+  "ref": "Luke 1:15"
+ },
+ {
+  "id": "luke-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "In the spirit and power of whom would John go before the Lord?",
+  "choices": [
+   "Moses",
+   "Elias",
+   "Elisha",
+   "Samuel"
+  ],
+  "answer": 1,
+  "explanation": "He shall go before him in the spirit and power of Elias.",
+  "ref": "Luke 1:17"
+ },
+ {
+  "id": "luke-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Gabriel say he stood?",
+  "choices": [
+   "In the presence of God",
+   "At the altar of incense",
+   "Before the throne of David",
+   "At the gate of Nazareth"
+  ],
+  "answer": 0,
+  "explanation": "I am Gabriel, that stand in the presence of God; and am sent to speak unto thee.",
+  "ref": "Luke 1:19"
+ },
+ {
+  "id": "luke-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Zacharias made unable to speak?",
+  "choices": [
+   "He had burned incense wrongly",
+   "He had entered the temple unclean",
+   "He had prayed too long",
+   "He believed not the angel's words"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt be dumb, because thou believest not my words, which shall be fulfilled in their season.",
+  "ref": "Luke 1:20"
+ },
+ {
+  "id": "luke-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Mary ask the angel?",
+  "choices": [
+   "Whereby shall I know this?",
+   "Why hast thou thus dealt with us?",
+   "How shall this be, seeing I know not a man?",
+   "Whence is this to me?"
+  ],
+  "answer": 2,
+  "explanation": "Then said Mary unto the angel, How shall this be, seeing I know not a man?",
+  "ref": "Luke 1:34"
+ },
+ {
+  "id": "luke-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose throne did Gabriel say the Lord God would give to Jesus?",
+  "choices": [
+   "Solomon",
+   "David",
+   "Herod",
+   "Jacob"
+  ],
+  "answer": 1,
+  "explanation": "The Lord God shall give unto him the throne of his father David.",
+  "ref": "Luke 1:32"
+ },
+ {
+  "id": "luke-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gabriel say would overshadow Mary?",
+  "choices": [
+   "The power of the Highest",
+   "A cloud of glory",
+   "The wings of the cherubim",
+   "The shadow of the temple"
+  ],
+  "answer": 0,
+  "explanation": "The Holy Ghost shall come upon thee, and the power of the Highest shall overshadow thee.",
+  "ref": "Luke 1:35"
+ },
+ {
+  "id": "luke-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What news about her cousin did Gabriel give Mary?",
+  "choices": [
+   "She had gone to Nazareth",
+   "She had borne a daughter",
+   "She had been made dumb",
+   "She had conceived a son in her old age"
+  ],
+  "answer": 3,
+  "explanation": "Thy cousin Elisabeth hath also conceived a son in her old age: this is the sixth month with her.",
+  "ref": "Luke 1:36"
+ },
+ {
+  "id": "luke-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Elisabeth call Mary blessed?",
+  "choices": [
+   "She would bear a king",
+   "She had come with haste",
+   "She believed what the Lord told her",
+   "She was of the house of Aaron"
+  ],
+  "answer": 2,
+  "explanation": "Blessed is she that believed: for there shall be a performance of those things which were told her.",
+  "ref": "Luke 1:45"
+ },
+ {
+  "id": "luke-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In Mary's song, what does the Lord do to the rich?",
+  "choices": [
+   "Fills them with good things",
+   "Sends them empty away",
+   "Exalts them of low degree",
+   "Scatters them to the nations"
+  ],
+  "answer": 1,
+  "explanation": "He hath filled the hungry with good things; and the rich he hath sent empty away.",
+  "ref": "Luke 1:53"
+ },
+ {
+  "id": "luke-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the neighbours object to the name John?",
+  "choices": [
+   "None of his kindred was called by it",
+   "It was Elisabeth's father's name",
+   "Joseph had chosen another name",
+   "It was the name of a Gentile"
+  ],
+  "answer": 0,
+  "explanation": "They said, There is none of thy kindred that is called by this name.",
+  "ref": "Luke 1:61"
+ },
+ {
+  "id": "luke-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Zacharias do when his tongue was loosed?",
+  "choices": [
+   "He went back to the temple",
+   "He named the child Zacharias",
+   "He wrote a psalm",
+   "He spake and praised God"
+  ],
+  "answer": 3,
+  "explanation": "His mouth was opened immediately, and his tongue loosed, and he spake, and praised God.",
+  "ref": "Luke 1:64"
+ },
+ {
+  "id": "luke-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Zacharias say John would be called?",
+  "choices": [
+   "The Son of the Highest",
+   "The horn of salvation",
+   "The prophet of the Highest",
+   "The dayspring"
+  ],
+  "answer": 2,
+  "explanation": "Thou, child, shalt be called the prophet of the Highest.",
+  "ref": "Luke 1:76"
+ },
+ {
+  "id": "luke-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was king of Judaea in the days of Zacharias?",
+  "choices": [
+   "Caesar Augustus",
+   "Herod",
+   "Cyrenius",
+   "Pilate"
+  ],
+  "answer": 1,
+  "explanation": "There was in the days of Herod, the king of Judaea, a certain priest named Zacharias.",
+  "ref": "Luke 1:5"
+ },
+ {
+  "id": "luke-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of whose course was the priest Zacharias?",
+  "choices": [
+   "Abia",
+   "Aaron",
+   "Levi",
+   "Eleazar"
+  ],
+  "answer": 0,
+  "explanation": "A certain priest named Zacharias, of the course of Abia.",
+  "ref": "Luke 1:5"
+ },
+ {
+  "id": "luke-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the lot give Zacharias to do in the temple?",
+  "choices": [
+   "Offer the lamb",
+   "Read the law",
+   "Keep the doors",
+   "Burn incense"
+  ],
+  "answer": 3,
+  "explanation": "According to the custom of the priest's office, his lot was to burn incense when he went into the temple.",
+  "ref": "Luke 1:9"
+ },
+ {
+  "id": "luke-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Elisabeth hide herself after she conceived?",
+  "choices": [
+   "Three months",
+   "Six months",
+   "Five months",
+   "Nine months"
+  ],
+  "answer": 2,
+  "explanation": "After those days his wife Elisabeth conceived, and hid herself five months.",
+  "ref": "Luke 1:24"
+ },
+ {
+  "id": "luke-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month was Gabriel sent to Mary?",
+  "choices": [
+   "The third",
+   "The sixth",
+   "The fifth",
+   "The ninth"
+  ],
+  "answer": 1,
+  "explanation": "In the sixth month the angel Gabriel was sent from God unto a city of Galilee, named Nazareth.",
+  "ref": "Luke 1:26"
+ },
+ {
+  "id": "luke-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Of whose house was Joseph, the man Mary was espoused to?",
+  "choices": [
+   "David",
+   "Aaron",
+   "Abraham",
+   "Levi"
+  ],
+  "answer": 0,
+  "explanation": "A virgin espoused to a man whose name was Joseph, of the house of David.",
+  "ref": "Luke 1:27"
+ },
+ {
+  "id": "luke-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Mary stay with Elisabeth?",
+  "choices": [
+   "About five months",
+   "About six months",
+   "About a year",
+   "About three months"
+  ],
+  "answer": 3,
+  "explanation": "Mary abode with her about three months, and returned to her own house.",
+  "ref": "Luke 1:56"
+ },
+ {
+  "id": "luke-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day did they come to circumcise the child?",
+  "choices": [
+   "The third day",
+   "The seventh day",
+   "The eighth day",
+   "The fortieth day"
+  ],
+  "answer": 2,
+  "explanation": "On the eighth day they came to circumcise the child.",
+  "ref": "Luke 1:59"
+ },
+ {
+  "id": "luke-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Delivered from enemies, what did Zacharias say we might do?",
+  "choices": [
+   "Dwell in Jerusalem for ever",
+   "Serve him without fear",
+   "Offer sacrifice daily",
+   "Reign over the house of Jacob"
+  ],
+  "answer": 1,
+  "explanation": "That we being delivered out of the hand of our enemies might serve him without fear.",
+  "ref": "Luke 1:74"
+ },
+ {
+  "id": "luke-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "To which father did God swear an oath, as Zacharias said?",
+  "choices": [
+   "Abraham",
+   "Isaac",
+   "Jacob",
+   "Moses"
+  ],
+  "answer": 0,
+  "explanation": "The oath which he sware to our father Abraham.",
+  "ref": "Luke 1:73"
+ },
+ {
+  "id": "luke-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Zacharias say God raised up in the house of David?",
+  "choices": [
+   "A rod of iron",
+   "A branch of righteousness",
+   "A throne of glory",
+   "An horn of salvation"
+  ],
+  "answer": 3,
+  "explanation": "He hath raised up an horn of salvation for us in the house of his servant David.",
+  "ref": "Luke 1:69"
+ },
+ {
+  "id": "luke-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does the dayspring from on high give light to?",
+  "choices": [
+   "The proud in their hearts",
+   "The priests in the temple",
+   "Them that sit in darkness and in the shadow of death",
+   "The fathers of Israel"
+  ],
+  "answer": 2,
+  "explanation": "To give light to them that sit in darkness and in the shadow of death.",
+  "ref": "Luke 1:79"
+ },
+ {
+  "id": "luke-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was John until the day of his shewing unto Israel?",
+  "choices": [
+   "In the temple",
+   "In the deserts",
+   "In Nazareth",
+   "In the house of Elisabeth"
+  ],
+  "answer": 1,
+  "explanation": "The child grew, and waxed strong in spirit, and was in the deserts till the day of his shewing unto Israel.",
+  "ref": "Luke 1:80"
+ },
+ {
+  "id": "luke-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would John turn the hearts of the fathers to?",
+  "choices": [
+   "The children",
+   "The temple",
+   "The law",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "To turn the hearts of the fathers to the children.",
+  "ref": "Luke 1:17"
+ },
+ {
+  "id": "luke-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In Mary's song, whom has the Lord put down from their seats?",
+  "choices": [
+   "The hungry",
+   "The poor in spirit",
+   "The priests",
+   "The mighty"
+  ],
+  "answer": 3,
+  "explanation": "He hath put down the mighty from their seats, and exalted them of low degree.",
+  "ref": "Luke 1:52"
+ },
+ {
+  "id": "luke-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sent out the decree that all the world should be taxed?",
+  "choices": [
+   "Herod",
+   "Caesar Augustus",
+   "Cyrenius",
+   "Pilate"
+  ],
+  "answer": 1,
+  "explanation": "There went out a decree from Caesar Augustus, that all the world should be taxed.",
+  "ref": "Luke 2:1"
+ },
+ {
+  "id": "luke-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did Joseph go up from Nazareth?",
+  "choices": [
+   "Bethlehem",
+   "Jerusalem",
+   "Capernaum",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "Joseph went up from Galilee, out of Nazareth, into Judaea, unto the city of David, which is called Bethlehem.",
+  "ref": "Luke 2:4"
+ },
+ {
+  "id": "luke-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was the baby laid in a manger?",
+  "choices": [
+   "The family had no money",
+   "The inn was burning",
+   "The shepherds asked it",
+   "There was no room in the inn"
+  ],
+  "answer": 3,
+  "explanation": "She laid him in a manger; because there was no room for them in the inn.",
+  "ref": "Luke 2:7"
+ },
+ {
+  "id": "luke-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the shepherds doing when the angel came?",
+  "choices": [
+   "Bringing lambs to the temple",
+   "Sleeping in a cave",
+   "Keeping watch over their flock by night",
+   "Travelling to Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "There were shepherds abiding in the field, keeping watch over their flock by night.",
+  "ref": "Luke 2:8"
+ },
+ {
+  "id": "luke-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the multitude of the heavenly host say?",
+  "choices": [
+   "Peace be with you",
+   "Glory to God in the highest",
+   "Hosanna to the Son of David",
+   "Blessed be the Lord God of Israel"
+  ],
+  "answer": 1,
+  "explanation": "A multitude of the heavenly host praised God, saying, Glory to God in the highest, and on earth peace, good will toward men.",
+  "ref": "Luke 2:13–14"
+ },
+ {
+  "id": "luke-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the child named when eight days were accomplished?",
+  "choices": [
+   "JESUS",
+   "John",
+   "Emmanuel",
+   "Joseph"
+  ],
+  "answer": 0,
+  "explanation": "When eight days were accomplished for the circumcising of the child, his name was called JESUS.",
+  "ref": "Luke 2:21"
+ },
+ {
+  "id": "luke-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophetess served God in the temple with fastings and prayers?",
+  "choices": [
+   "Elisabeth",
+   "Mary",
+   "Martha",
+   "Anna"
+  ],
+  "answer": 3,
+  "explanation": "There was one Anna, a prophetess, which departed not from the temple, but served God with fastings and prayers night and day.",
+  "ref": "Luke 2:36–37"
+ },
+ {
+  "id": "luke-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Mary do with all the things the shepherds told?",
+  "choices": [
+   "Told them to Herod",
+   "Wrote them down",
+   "Kept them and pondered them in her heart",
+   "Forgot them in her haste"
+  ],
+  "answer": 2,
+  "explanation": "Mary kept all these things, and pondered them in her heart.",
+  "ref": "Luke 2:19"
+ },
+ {
+  "id": "luke-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did the family return after the temple visit?",
+  "choices": [
+   "Bethlehem",
+   "Nazareth",
+   "Jerusalem",
+   "Capernaum"
+  ],
+  "answer": 1,
+  "explanation": "They returned into Galilee, to their own city Nazareth.",
+  "ref": "Luke 2:39"
+ },
+ {
+  "id": "luke-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Joseph and Mary find Jesus after seeking him?",
+  "choices": [
+   "In the temple",
+   "In Nazareth",
+   "On the road home",
+   "In the house of Simeon"
+  ],
+  "answer": 0,
+  "explanation": "After three days they found him in the temple, sitting in the midst of the doctors.",
+  "ref": "Luke 2:46"
+ },
+ {
+  "id": "luke-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel say was born this day in the city of David?",
+  "choices": [
+   "A king of Israel",
+   "A prophet like Moses",
+   "A deliverer from Rome",
+   "A Saviour, which is Christ the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Unto you is born this day in the city of David a Saviour, which is Christ the Lord.",
+  "ref": "Luke 2:11"
+ },
+ {
+  "id": "luke-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was governor of Syria when this taxing was first made?",
+  "choices": [
+   "Herod",
+   "Caesar Augustus",
+   "Cyrenius",
+   "Pilate"
+  ],
+  "answer": 2,
+  "explanation": "This taxing was first made when Cyrenius was governor of Syria.",
+  "ref": "Luke 2:2"
+ },
+ {
+  "id": "luke-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the shepherds do after they had seen the child?",
+  "choices": [
+   "Stayed in Bethlehem",
+   "Made known abroad what they were told",
+   "Kept it secret",
+   "Took him to Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "They made known abroad the saying which was told them concerning this child.",
+  "ref": "Luke 2:17"
+ },
+ {
+  "id": "luke-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they offer for the sacrifice, according to the law?",
+  "choices": [
+   "A pair of turtledoves, or two young pigeons",
+   "A lamb and a goat",
+   "Two rams",
+   "A bullock"
+  ],
+  "answer": 0,
+  "explanation": "To offer a sacrifice according to that which is said in the law of the Lord, A pair of turtledoves, or two young pigeons.",
+  "ref": "Luke 2:24"
+ },
+ {
+  "id": "luke-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the Holy Ghost revealed to Simeon?",
+  "choices": [
+   "He would be a priest",
+   "He would live to see Jerusalem rebuilt",
+   "He would baptize the Messiah",
+   "He would not see death before seeing the Lord's Christ"
+  ],
+  "answer": 3,
+  "explanation": "It was revealed unto him by the Holy Ghost, that he should not see death, before he had seen the Lord's Christ.",
+  "ref": "Luke 2:26"
+ },
+ {
+  "id": "luke-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Simeon do when he saw the child Jesus?",
+  "choices": [
+   "Fell on his face before him",
+   "Wept and tore his clothes",
+   "Took him up in his arms and blessed God",
+   "Sent for the priests"
+  ],
+  "answer": 2,
+  "explanation": "Then took he him up in his arms, and blessed God.",
+  "ref": "Luke 2:28"
+ },
+ {
+  "id": "luke-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Simeon tell Mary would pierce through her own soul?",
+  "choices": [
+   "An arrow",
+   "A sword",
+   "Sorrow alone",
+   "A spear"
+  ],
+  "answer": 1,
+  "explanation": "A sword shall pierce through thy own soul also, that the thoughts of many hearts may be revealed.",
+  "ref": "Luke 2:35"
+ },
+ {
+  "id": "luke-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what was Simeon waiting?",
+  "choices": [
+   "The consolation of Israel",
+   "The kingdom of David",
+   "The temple's rebuilding",
+   "The return of Elias"
+  ],
+  "answer": 0,
+  "explanation": "The same man was just and devout, waiting for the consolation of Israel.",
+  "ref": "Luke 2:25"
+ },
+ {
+  "id": "luke-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what did Simeon say the child was set?",
+  "choices": [
+   "The judgement of Rome",
+   "The building of the temple",
+   "The feeding of the poor",
+   "The fall and rising again of many in Israel"
+  ],
+  "answer": 3,
+  "explanation": "This child is set for the fall and rising again of many in Israel; and for a sign which shall be spoken against.",
+  "ref": "Luke 2:34"
+ },
+ {
+  "id": "luke-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For which feast did his parents go to Jerusalem every year?",
+  "choices": [
+   "Pentecost",
+   "Tabernacles",
+   "The passover",
+   "The feast of lights"
+  ],
+  "answer": 2,
+  "explanation": "His parents went to Jerusalem every year at the feast of the passover.",
+  "ref": "Luke 2:41"
+ },
+ {
+  "id": "luke-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Joseph and Mary go a day's journey without Jesus?",
+  "choices": [
+   "He had told them to go ahead",
+   "They supposed he was in the company",
+   "He had gone back to Nazareth",
+   "He was with the priests"
+  ],
+  "answer": 1,
+  "explanation": "They, supposing him to have been in the company, went a day's journey.",
+  "ref": "Luke 2:44"
+ },
+ {
+  "id": "luke-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did all who heard Jesus in the temple feel?",
+  "choices": [
+   "They were astonished at his understanding",
+   "They were angry at him",
+   "They wanted him to leave",
+   "They bowed before him"
+  ],
+  "answer": 0,
+  "explanation": "All that heard him were astonished at his understanding and answers.",
+  "ref": "Luke 2:47"
+ },
+ {
+  "id": "luke-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say when his mother asked why he had dealt thus with them?",
+  "choices": [
+   "I must keep the passover",
+   "I must teach the doctors",
+   "I must return to Nazareth",
+   "I must be about my Father's business"
+  ],
+  "answer": 3,
+  "explanation": "He said, How is it that ye sought me? wist ye not that I must be about my Father's business?",
+  "ref": "Luke 2:48–49"
+ },
+ {
+  "id": "luke-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Joseph and Mary bring Jesus to Jerusalem?",
+  "choices": [
+   "To be taxed again",
+   "To keep the passover",
+   "To present him to the Lord",
+   "To show him to Simeon"
+  ],
+  "answer": 2,
+  "explanation": "When the days of her purification were accomplished, they brought him to Jerusalem, to present him to the Lord.",
+  "ref": "Luke 2:22"
+ },
+ {
+  "id": "luke-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the shepherds say to one another when the angels were gone?",
+  "choices": [
+   "Let us tell Herod",
+   "Let us now go even unto Bethlehem",
+   "Let us return to the flock",
+   "Let us go up to Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "The shepherds said one to another, Let us now go even unto Bethlehem, and see this thing which is come to pass.",
+  "ref": "Luke 2:15"
+ },
+ {
+  "id": "luke-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph and Mary not understand?",
+  "choices": [
+   "The saying Jesus spoke to them",
+   "The decree of Caesar",
+   "The words of the shepherds",
+   "The words of Simeon"
+  ],
+  "answer": 0,
+  "explanation": "They understood not the saying which he spake unto them.",
+  "ref": "Luke 2:50"
+ },
+ {
+  "id": "luke-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After how many days did they find Jesus in the temple?",
+  "choices": [
+   "One day",
+   "Two days",
+   "Seven days",
+   "Three days"
+  ],
+  "answer": 3,
+  "explanation": "It came to pass, that after three days they found him in the temple.",
+  "ref": "Luke 2:46"
+ },
+ {
+  "id": "luke-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "About how old was the widow Anna?",
+  "choices": [
+   "About sixty years",
+   "About seventy years",
+   "About fourscore and four years",
+   "About a hundred years"
+  ],
+  "answer": 2,
+  "explanation": "She was a widow of about fourscore and four years.",
+  "ref": "Luke 2:37"
+ },
+ {
+  "id": "luke-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of which tribe was Anna the prophetess?",
+  "choices": [
+   "Juda",
+   "Aser",
+   "Levi",
+   "Benjamin"
+  ],
+  "answer": 1,
+  "explanation": "There was one Anna, a prophetess, the daughter of Phanuel, of the tribe of Aser.",
+  "ref": "Luke 2:36"
+ },
+ {
+  "id": "luke-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long had Anna lived with her husband?",
+  "choices": [
+   "Seven years",
+   "Twelve years",
+   "Two years",
+   "Forty years"
+  ],
+  "answer": 0,
+  "explanation": "She had lived with an husband seven years from her virginity.",
+  "ref": "Luke 2:36"
+ },
+ {
+  "id": "luke-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the law say every male that openeth the womb shall be?",
+  "choices": [
+   "Redeemed with silver",
+   "Given to the priest",
+   "Circumcised in the temple",
+   "Called holy to the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Every male that openeth the womb shall be called holy to the Lord.",
+  "ref": "Luke 2:23"
+ },
+ {
+  "id": "luke-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is Simeon described?",
+  "choices": [
+   "Rich and learned",
+   "A priest of the course of Abia",
+   "Just and devout",
+   "A ruler of the synagogue"
+  ],
+  "answer": 2,
+  "explanation": "The same man was just and devout, waiting for the consolation of Israel.",
+  "ref": "Luke 2:25"
+ },
+ {
+  "id": "luke-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was upon the child Jesus as he grew?",
+  "choices": [
+   "The glory of the Lord",
+   "The grace of God",
+   "The law of Moses",
+   "The shadow of the Highest"
+  ],
+  "answer": 1,
+  "explanation": "The child grew, and waxed strong in spirit, filled with wisdom: and the grace of God was upon him.",
+  "ref": "Luke 2:40"
+ },
+ {
+  "id": "luke-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did the angel say the good tidings would be of great joy?",
+  "choices": [
+   "All people",
+   "The shepherds only",
+   "The house of David",
+   "The poor of Israel"
+  ],
+  "answer": 0,
+  "explanation": "I bring you good tidings of great joy, which shall be to all people.",
+  "ref": "Luke 2:10"
+ },
+ {
+  "id": "luke-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Jesus toward his parents after he went down to Nazareth?",
+  "choices": [
+   "Silent before them",
+   "Their teacher",
+   "Far from them",
+   "Subject unto them"
+  ],
+  "answer": 3,
+  "explanation": "He went down with them, and came to Nazareth, and was subject unto them.",
+  "ref": "Luke 2:51"
+ },
+ {
+  "id": "luke-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did Jesus increase, along with favour with God and man?",
+  "choices": [
+   "Silver and gold",
+   "Strength and honour",
+   "Wisdom and stature",
+   "Knowledge and riches"
+  ],
+  "answer": 2,
+  "explanation": "Jesus increased in wisdom and stature, and in favour with God and man.",
+  "ref": "Luke 2:52"
+ },
+ {
+  "id": "luke-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Simeon ask the Lord to let him do?",
+  "choices": [
+   "See the temple rebuilt",
+   "Depart in peace",
+   "Return to Galilee",
+   "Preach to the Gentiles"
+  ],
+  "answer": 1,
+  "explanation": "Lord, now lettest thou thy servant depart in peace, according to thy word.",
+  "ref": "Luke 2:29"
+ },
+ {
+  "id": "luke-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the father of the prophetess Anna?",
+  "choices": [
+   "Phanuel",
+   "Simeon",
+   "Aser",
+   "Cyrenius"
+  ],
+  "answer": 0,
+  "explanation": "There was one Anna, a prophetess, the daughter of Phanuel.",
+  "ref": "Luke 2:36"
+ },
+ {
+  "id": "luke-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did Anna speak of the child?",
+  "choices": [
+   "The priests of the temple",
+   "The shepherds",
+   "The doctors",
+   "All that looked for redemption in Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "She gave thanks likewise unto the Lord, and spake of him to all them that looked for redemption in Jerusalem.",
+  "ref": "Luke 2:38"
+ },
+ {
+  "id": "luke-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Simeon say his eyes had seen?",
+  "choices": [
+   "A sword",
+   "The consolation of Israel",
+   "Thy salvation",
+   "The glory of the Lord"
+  ],
+  "answer": 2,
+  "explanation": "Mine eyes have seen thy salvation, which thou hast prepared before the face of all people.",
+  "ref": "Luke 2:30–31"
+ },
+ {
+  "id": "luke-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son was John, to whom the word of God came?",
+  "choices": [
+   "Joseph",
+   "Zacharias",
+   "Heli",
+   "Philip"
+  ],
+  "answer": 1,
+  "explanation": "The word of God came unto John the son of Zacharias in the wilderness.",
+  "ref": "Luke 3:2"
+ },
+ {
+  "id": "luke-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was John when the word of God came to him?",
+  "choices": [
+   "In the wilderness",
+   "In the temple",
+   "In Jerusalem",
+   "In Nazareth"
+  ],
+  "answer": 0,
+  "explanation": "The word of God came unto John the son of Zacharias in the wilderness.",
+  "ref": "Luke 3:2"
+ },
+ {
+  "id": "luke-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophet's words did Luke quote about the voice crying in the wilderness?",
+  "choices": [
+   "Jeremias",
+   "Elias",
+   "Daniel",
+   "Esaias"
+  ],
+  "answer": 3,
+  "explanation": "As it is written in the book of the words of Esaias the prophet, The voice of one crying in the wilderness.",
+  "ref": "Luke 3:4"
+ },
+ {
+  "id": "luke-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was baptized after all the people had been baptized?",
+  "choices": [
+   "Herod",
+   "Philip",
+   "Jesus",
+   "Caiaphas"
+  ],
+  "answer": 2,
+  "explanation": "When all the people were baptized, Jesus also being baptized, and praying, the heaven was opened.",
+  "ref": "Luke 3:21"
+ },
+ {
+  "id": "luke-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Jesus doing when the heaven was opened?",
+  "choices": [
+   "Fasting",
+   "Praying",
+   "Reading the law",
+   "Teaching the people"
+  ],
+  "answer": 1,
+  "explanation": "Jesus also being baptized, and praying, the heaven was opened.",
+  "ref": "Luke 3:21"
+ },
+ {
+  "id": "luke-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the voice from heaven say to Jesus?",
+  "choices": [
+   "Thou art my beloved Son",
+   "Thou art the Christ",
+   "This is my chosen servant",
+   "Follow me"
+  ],
+  "answer": 0,
+  "explanation": "A voice came from heaven, which said, Thou art my beloved Son; in thee I am well pleased.",
+  "ref": "Luke 3:22"
+ },
+ {
+  "id": "luke-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "About how old was Jesus when he began?",
+  "choices": [
+   "About twelve",
+   "About twenty",
+   "About forty",
+   "About thirty"
+  ],
+  "answer": 3,
+  "explanation": "Jesus himself began to be about thirty years of age.",
+  "ref": "Luke 3:23"
+ },
+ {
+  "id": "luke-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people wonder in their hearts about John?",
+  "choices": [
+   "Whether he was Elias",
+   "Whether he was a Pharisee",
+   "Whether he were the Christ",
+   "Whether Herod would kill him"
+  ],
+  "answer": 2,
+  "explanation": "All men mused in their hearts of John, whether he were the Christ, or not.",
+  "ref": "Luke 3:15"
+ },
+ {
+  "id": "luke-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what did John say he baptized?",
+  "choices": [
+   "Fire",
+   "Water",
+   "Oil",
+   "The Holy Ghost"
+  ],
+  "answer": 1,
+  "explanation": "John answered, saying unto them all, I indeed baptize you with water.",
+  "ref": "Luke 3:16"
+ },
+ {
+  "id": "luke-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did John tell the man with two coats to do?",
+  "choices": [
+   "Impart to him that hath none",
+   "Sell one and give the money",
+   "Keep both for the winter",
+   "Give one to the priest"
+  ],
+  "answer": 0,
+  "explanation": "He that hath two coats, let him impart to him that hath none.",
+  "ref": "Luke 3:11"
+ },
+ {
+  "id": "luke-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "In the fifteenth year of which Caesar did the word of God come to John?",
+  "choices": [
+   "Augustus",
+   "Herod",
+   "Cyrenius",
+   "Tiberius"
+  ],
+  "answer": 3,
+  "explanation": "In the fifteenth year of the reign of Tiberius Caesar, the word of God came unto John.",
+  "ref": "Luke 3:1–2"
+ },
+ {
+  "id": "luke-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were the high priests when the word came to John?",
+  "choices": [
+   "Zacharias and Abia",
+   "Pilate and Herod",
+   "Annas and Caiaphas",
+   "Simeon and Levi"
+  ],
+  "answer": 2,
+  "explanation": "Annas and Caiaphas being the high priests, the word of God came unto John.",
+  "ref": "Luke 3:2"
+ },
+ {
+  "id": "luke-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did John ask the multitude that came to be baptized?",
+  "choices": [
+   "Who hath sent you to the Jordan?",
+   "Who hath warned you to flee from the wrath to come?",
+   "Where is the Christ?",
+   "Why have ye left the temple?"
+  ],
+  "answer": 1,
+  "explanation": "O generation of vipers, who hath warned you to flee from the wrath to come?",
+  "ref": "Luke 3:7"
+ },
+ {
+  "id": "luke-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did John tell the multitude to bring forth?",
+  "choices": [
+   "Fruits worthy of repentance",
+   "Offerings of the first fruits",
+   "Their two coats",
+   "A sacrifice of doves"
+  ],
+  "answer": 0,
+  "explanation": "Bring forth therefore fruits worthy of repentance.",
+  "ref": "Luke 3:8"
+ },
+ {
+  "id": "luke-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did John say God is able to raise from stones?",
+  "choices": [
+   "Altars to the Lord",
+   "Prophets for Israel",
+   "Walls for Jerusalem",
+   "Children unto Abraham"
+  ],
+  "answer": 3,
+  "explanation": "God is able of these stones to raise up children unto Abraham.",
+  "ref": "Luke 3:8"
+ },
+ {
+  "id": "luke-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to every tree that brings not forth good fruit?",
+  "choices": [
+   "It is dug about and dunged",
+   "It is left for another year",
+   "It is hewn down and cast into the fire",
+   "It is carried to the garner"
+  ],
+  "answer": 2,
+  "explanation": "Every tree which bringeth not forth good fruit is hewn down, and cast into the fire.",
+  "ref": "Luke 3:9"
+ },
+ {
+  "id": "luke-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did John tell the soldiers to be content with?",
+  "choices": [
+   "Their armour",
+   "Their wages",
+   "Their rations",
+   "Their lot"
+  ],
+  "answer": 1,
+  "explanation": "He said unto them, Do violence to no man, neither accuse any falsely; and be content with your wages.",
+  "ref": "Luke 3:14"
+ },
+ {
+  "id": "luke-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was John not worthy to do for the one mightier than he?",
+  "choices": [
+   "Unloose the latchet of his shoes",
+   "Carry his burden",
+   "Open the temple door",
+   "Wash his hands"
+  ],
+  "answer": 0,
+  "explanation": "One mightier than I cometh, the latchet of whose shoes I am not worthy to unloose.",
+  "ref": "Luke 3:16"
+ },
+ {
+  "id": "luke-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the one mightier than John do with the chaff?",
+  "choices": [
+   "Cast it into the sea",
+   "Scatter it to the winds",
+   "Keep it in the garner",
+   "Burn it with fire unquenchable"
+  ],
+  "answer": 3,
+  "explanation": "He will gather the wheat into his garner; but the chaff he will burn with fire unquenchable.",
+  "ref": "Luke 3:17"
+ },
+ {
+  "id": "luke-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose wife was Herodias, for whom John reproved Herod?",
+  "choices": [
+   "Pilate's",
+   "Lysanias's",
+   "His brother Philip's",
+   "Caiaphas's"
+  ],
+  "answer": 2,
+  "explanation": "Herod the tetrarch, being reproved by him for Herodias his brother Philip's wife.",
+  "ref": "Luke 3:19"
+ },
+ {
+  "id": "luke-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Herod add above all his evils?",
+  "choices": [
+   "He put John to death",
+   "He shut up John in prison",
+   "He banished John",
+   "He drove John from Galilee"
+  ],
+  "answer": 1,
+  "explanation": "Herod added yet this above all, that he shut up John in prison.",
+  "ref": "Luke 3:20"
+ },
+ {
+  "id": "luke-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people ask John after his warning?",
+  "choices": [
+   "What shall we do then?",
+   "Who art thou?",
+   "Art thou Elias?",
+   "Who hath warned us?"
+  ],
+  "answer": 0,
+  "explanation": "The people asked him, saying, What shall we do then?",
+  "ref": "Luke 3:10"
+ },
+ {
+  "id": "luke-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Jesus supposed to be?",
+  "choices": [
+   "Heli",
+   "David",
+   "Zacharias",
+   "Joseph"
+  ],
+  "answer": 3,
+  "explanation": "Jesus began to be about thirty years of age, being (as was supposed) the son of Joseph.",
+  "ref": "Luke 3:23"
+ },
+ {
+  "id": "luke-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where will the one mightier than John gather the wheat?",
+  "choices": [
+   "Into his barn at Nazareth",
+   "Onto the threshing floor",
+   "Into his garner",
+   "Into the temple"
+  ],
+  "answer": 2,
+  "explanation": "He will gather the wheat into his garner.",
+  "ref": "Luke 3:17"
+ },
+ {
+  "id": "luke-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the voice in the wilderness say to prepare?",
+  "choices": [
+   "The temple of the Lord",
+   "The way of the Lord",
+   "The feast of the Lord",
+   "The altar of the Lord"
+  ],
+  "answer": 1,
+  "explanation": "The voice of one crying in the wilderness, Prepare ye the way of the Lord, make his paths straight.",
+  "ref": "Luke 3:4"
+ },
+ {
+  "id": "luke-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was governor of Judaea in the fifteenth year of Tiberius?",
+  "choices": [
+   "Pontius Pilate",
+   "Herod",
+   "Annas",
+   "Philip"
+  ],
+  "answer": 0,
+  "explanation": "Pontius Pilate being governor of Judaea.",
+  "ref": "Luke 3:1"
+ },
+ {
+  "id": "luke-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did John tell the soldiers not to do?",
+  "choices": [
+   "Take bribes from the poor",
+   "Serve in Herod's guard",
+   "Exact more than appointed",
+   "Do violence to no man, nor accuse falsely"
+  ],
+  "answer": 3,
+  "explanation": "He said unto them, Do violence to no man, neither accuse any falsely; and be content with your wages.",
+  "ref": "Luke 3:14"
+ },
+ {
+  "id": "luke-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did John say to him that hath meat?",
+  "choices": [
+   "Let him sell it",
+   "Let him keep it for the wilderness",
+   "Let him do likewise",
+   "Let him offer it to the priests"
+  ],
+  "answer": 2,
+  "explanation": "He that hath two coats, let him impart to him that hath none; and he that hath meat, let him do likewise.",
+  "ref": "Luke 3:11"
+ },
+ {
+  "id": "luke-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Of which region was Herod tetrarch?",
+  "choices": [
+   "Judaea",
+   "Galilee",
+   "Abilene",
+   "Ituraea"
+  ],
+  "answer": 1,
+  "explanation": "Herod being tetrarch of Galilee.",
+  "ref": "Luke 3:1"
+ },
+ {
+  "id": "luke-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esaias say shall be filled?",
+  "choices": [
+   "Every valley",
+   "Every pit",
+   "Every well",
+   "Every field"
+  ],
+  "answer": 0,
+  "explanation": "Every valley shall be filled, and every mountain and hill shall be brought low.",
+  "ref": "Luke 3:5"
+ },
+ {
+  "id": "luke-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esaias say all flesh shall see?",
+  "choices": [
+   "The glory of the Lord",
+   "The Son of David",
+   "The face of the Highest",
+   "The salvation of God"
+  ],
+  "answer": 3,
+  "explanation": "All flesh shall see the salvation of God.",
+  "ref": "Luke 3:6"
+ },
+ {
+  "id": "luke-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the mightier one throughly purge?",
+  "choices": [
+   "His field",
+   "His vineyard",
+   "His floor",
+   "His temple"
+  ],
+  "answer": 2,
+  "explanation": "Whose fan is in his hand, and he will throughly purge his floor.",
+  "ref": "Luke 3:17"
+ },
+ {
+  "id": "luke-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Which group asked, \"Master, what shall we do?\"",
+  "choices": [
+   "Soldiers",
+   "Publicans",
+   "Pharisees",
+   "Priests"
+  ],
+  "answer": 1,
+  "explanation": "Then came also publicans to be baptized, and said unto him, Master, what shall we do?",
+  "ref": "Luke 3:12"
+ },
+ {
+  "id": "luke-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did John say they must not begin to say within themselves?",
+  "choices": [
+   "We have Abraham to our father",
+   "We are the sons of David",
+   "We keep the law",
+   "We are free from sin"
+  ],
+  "answer": 0,
+  "explanation": "Begin not to say within yourselves, We have Abraham to our father.",
+  "ref": "Luke 3:8"
+ },
+ {
+  "id": "luke-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Into what country did John come preaching?",
+  "choices": [
+   "All the hill country of Juda",
+   "The region of Galilee",
+   "The streets of Jerusalem",
+   "All the country about Jordan"
+  ],
+  "answer": 3,
+  "explanation": "He came into all the country about Jordan, preaching the baptism of repentance.",
+  "ref": "Luke 3:3"
+ },
+ {
+  "id": "luke-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what did John say the mightier one would baptize?",
+  "choices": [
+   "Water and oil",
+   "Wind and fire",
+   "The Holy Ghost and with fire",
+   "Water and blood"
+  ],
+  "answer": 2,
+  "explanation": "He shall baptize you with the Holy Ghost and with fire.",
+  "ref": "Luke 3:16"
+ },
+ {
+  "id": "luke-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides Herodias, for what did John reprove Herod?",
+  "choices": [
+   "His taxes on the people",
+   "All the evils which Herod had done",
+   "His dealings with Pilate",
+   "His slaying of the priests"
+  ],
+  "answer": 1,
+  "explanation": "Herod the tetrarch, being reproved by him for Herodias and for all the evils which Herod had done, shut up John in prison.",
+  "ref": "Luke 3:19–20"
+ },
+ {
+  "id": "luke-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Of whom was David the son in Luke's list?",
+  "choices": [
+   "Jesse",
+   "Obed",
+   "Nathan",
+   "Booz"
+  ],
+  "answer": 0,
+  "explanation": "Which was the son of Nathan, which was the son of David, which was the son of Jesse.",
+  "ref": "Luke 3:31–32"
+ },
+ {
+  "id": "luke-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esaias say shall be made straight?",
+  "choices": [
+   "The rough ways",
+   "The valleys",
+   "The paths of the wilderness",
+   "The crooked"
+  ],
+  "answer": 3,
+  "explanation": "The crooked shall be made straight, and the rough ways shall be made smooth.",
+  "ref": "Luke 3:5"
+ },
+ {
+  "id": "luke-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Unto what did John say the axe is laid?",
+  "choices": [
+   "The branch of the vine",
+   "The stones of the field",
+   "The root of the trees",
+   "The gate of the city"
+  ],
+  "answer": 2,
+  "explanation": "Now also the axe is laid unto the root of the trees: every tree which bringeth not forth good fruit is hewn down.",
+  "ref": "Luke 3:9"
+ },
+ {
+  "id": "luke-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days was Jesus tempted of the devil?",
+  "choices": [
+   "Seven days",
+   "Forty days",
+   "Twelve days",
+   "Three days"
+  ],
+  "answer": 1,
+  "explanation": "Jesus was led by the Spirit into the wilderness, being forty days tempted of the devil.",
+  "ref": "Luke 4:1–2"
+ },
+ {
+  "id": "luke-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Jesus led by the Spirit?",
+  "choices": [
+   "Into the wilderness",
+   "To Capernaum",
+   "To Nazareth",
+   "To the temple"
+  ],
+  "answer": 0,
+  "explanation": "Jesus returned from Jordan, and was led by the Spirit into the wilderness.",
+  "ref": "Luke 4:1"
+ },
+ {
+  "id": "luke-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jesus answer the devil about bread?",
+  "choices": [
+   "Command the stones yourself",
+   "Get thee behind me",
+   "Thou shalt not tempt the Lord",
+   "Man shall not live by bread alone"
+  ],
+  "answer": 3,
+  "explanation": "It is written, That man shall not live by bread alone, but by every word of God.",
+  "ref": "Luke 4:4"
+ },
+ {
+  "id": "luke-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the devil show Jesus from a high mountain?",
+  "choices": [
+   "The land of Israel",
+   "The walls of Jerusalem",
+   "All the kingdoms of the world",
+   "The gold of the temple"
+  ],
+  "answer": 2,
+  "explanation": "The devil shewed unto him all the kingdoms of the world in a moment of time.",
+  "ref": "Luke 4:5"
+ },
+ {
+  "id": "luke-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "On what did the devil set Jesus in Jerusalem?",
+  "choices": [
+   "The roof of Simon's house",
+   "A pinnacle of the temple",
+   "The brow of a hill",
+   "A tower of the city wall"
+  ],
+  "answer": 1,
+  "explanation": "He brought him to Jerusalem, and set him on a pinnacle of the temple.",
+  "ref": "Luke 4:9"
+ },
+ {
+  "id": "luke-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which town did Jesus come down to after leaving Nazareth?",
+  "choices": [
+   "Capernaum",
+   "Bethlehem",
+   "Jericho",
+   "Sarepta"
+  ],
+  "answer": 0,
+  "explanation": "He came down to Capernaum, a city of Galilee, and taught them on the sabbath days.",
+  "ref": "Luke 4:31"
+ },
+ {
+  "id": "luke-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the man with the unclean spirit call Jesus?",
+  "choices": [
+   "The Son of David",
+   "The King of Israel",
+   "The Prophet of Galilee",
+   "The Holy One of God"
+  ],
+  "answer": 3,
+  "explanation": "I know thee who thou art; the Holy One of God.",
+  "ref": "Luke 4:34"
+ },
+ {
+  "id": "luke-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus do for the sick when the sun was setting?",
+  "choices": [
+   "Sent them to the priests",
+   "Told them to wash in Jordan",
+   "Laid his hands on every one and healed them",
+   "Prayed for them from afar"
+  ],
+  "answer": 2,
+  "explanation": "He laid his hands on every one of them, and healed them.",
+  "ref": "Luke 4:40"
+ },
+ {
+  "id": "luke-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus go when it was day?",
+  "choices": [
+   "The synagogue",
+   "A desert place",
+   "Simon's house",
+   "Nazareth"
+  ],
+  "answer": 1,
+  "explanation": "When it was day, he departed and went into a desert place.",
+  "ref": "Luke 4:42"
+ },
+ {
+  "id": "luke-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which town had Jesus been brought up?",
+  "choices": [
+   "Nazareth",
+   "Capernaum",
+   "Bethlehem",
+   "Sarepta"
+  ],
+  "answer": 0,
+  "explanation": "He came to Nazareth, where he had been brought up.",
+  "ref": "Luke 4:16"
+ },
+ {
+  "id": "luke-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the devil say about the power over the kingdoms?",
+  "choices": [
+   "It was lent to him by Caesar",
+   "It was promised to Jesus already",
+   "It was his by right of Adam",
+   "It was delivered to him to give to whom he would"
+  ],
+  "answer": 3,
+  "explanation": "All this power will I give thee: for that is delivered unto me; and to whomsoever I will I give it.",
+  "ref": "Luke 4:6"
+ },
+ {
+  "id": "luke-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the devil ask of Jesus for all the kingdoms?",
+  "choices": [
+   "To serve him forty years",
+   "To bow to Herod",
+   "To worship him",
+   "To give up his ministry"
+  ],
+  "answer": 2,
+  "explanation": "If thou therefore wilt worship me, all shall be thine.",
+  "ref": "Luke 4:7"
+ },
+ {
+  "id": "luke-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say in answer to the call to worship?",
+  "choices": [
+   "Thou shalt not tempt the Lord thy God",
+   "Worship the Lord thy God, and him only serve",
+   "Man shall not live by bread alone",
+   "Get thee behind me, Satan, and follow me"
+  ],
+  "answer": 1,
+  "explanation": "Get thee behind me, Satan: for it is written, Thou shalt worship the Lord thy God, and him only shalt thou serve.",
+  "ref": "Luke 4:8"
+ },
+ {
+  "id": "luke-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the devil say God's angels would do for Jesus?",
+  "choices": [
+   "Bear him up lest he dash his foot against a stone",
+   "Feed him in the wilderness",
+   "Fight for him against his enemies",
+   "Open the temple doors"
+  ],
+  "answer": 0,
+  "explanation": "He shall give his angels charge over thee; in their hands they shall bear thee up, lest thou dash thy foot against a stone.",
+  "ref": "Luke 4:10–11"
+ },
+ {
+  "id": "luke-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the devil do when he had ended all the temptation?",
+  "choices": [
+   "Fled for ever",
+   "Returned with seven others",
+   "Was cast into the sea",
+   "Departed from him for a season"
+  ],
+  "answer": 3,
+  "explanation": "When the devil had ended all the temptation, he departed from him for a season.",
+  "ref": "Luke 4:13"
+ },
+ {
+  "id": "luke-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom did the Spirit anoint Jesus to preach the gospel?",
+  "choices": [
+   "The rulers",
+   "The priests",
+   "The poor",
+   "The Gentiles"
+  ],
+  "answer": 2,
+  "explanation": "The Spirit of the Lord is upon me, because he hath anointed me to preach the gospel to the poor.",
+  "ref": "Luke 4:18"
+ },
+ {
+  "id": "luke-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say after he sat down in the synagogue?",
+  "choices": [
+   "The kingdom is far off",
+   "This day is this scripture fulfilled in your ears",
+   "This is a hard saying",
+   "Search the scriptures"
+  ],
+  "answer": 1,
+  "explanation": "He began to say unto them, This day is this scripture fulfilled in your ears.",
+  "ref": "Luke 4:21"
+ },
+ {
+  "id": "luke-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people say of Jesus in the synagogue?",
+  "choices": [
+   "Is not this Joseph's son?",
+   "Is not this the prophet?",
+   "Whence hath this man this wisdom?",
+   "Is not this Elias?"
+  ],
+  "answer": 0,
+  "explanation": "All bare him witness, and wondered at the gracious words; and they said, Is not this Joseph's son?",
+  "ref": "Luke 4:22"
+ },
+ {
+  "id": "luke-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What proverb did Jesus say they would quote to him?",
+  "choices": [
+   "Physician, heal thy servant",
+   "The first shall be last",
+   "Peace be to this house",
+   "Physician, heal thyself"
+  ],
+  "answer": 3,
+  "explanation": "Ye will surely say unto me this proverb, Physician, heal thyself.",
+  "ref": "Luke 4:23"
+ },
+ {
+  "id": "luke-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say is not accepted in his own country?",
+  "choices": [
+   "A priest",
+   "A physician",
+   "A prophet",
+   "A scribe"
+  ],
+  "answer": 2,
+  "explanation": "Verily I say unto you, No prophet is accepted in his own country.",
+  "ref": "Luke 4:24"
+ },
+ {
+  "id": "luke-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "To which widow's city in Sidon was Elias sent?",
+  "choices": [
+   "Nain",
+   "Sarepta",
+   "Capernaum",
+   "Sidon itself"
+  ],
+  "answer": 1,
+  "explanation": "Unto none of them was Elias sent, save unto Sarepta, a city of Sidon, unto a woman that was a widow.",
+  "ref": "Luke 4:26"
+ },
+ {
+  "id": "luke-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Which leper in Israel was cleansed in the time of Eliseus?",
+  "choices": [
+   "Naaman the Syrian",
+   "Gehazi",
+   "Simon",
+   "Levi"
+  ],
+  "answer": 0,
+  "explanation": "Many lepers were in Israel in the time of Eliseus the prophet; none was cleansed, saving Naaman the Syrian.",
+  "ref": "Luke 4:27"
+ },
+ {
+  "id": "luke-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the people in the synagogue react to these things?",
+  "choices": [
+   "They worshipped him",
+   "They fell silent",
+   "They asked for a sign",
+   "They were filled with wrath"
+  ],
+  "answer": 3,
+  "explanation": "All they in the synagogue, when they heard these things, were filled with wrath.",
+  "ref": "Luke 4:28"
+ },
+ {
+  "id": "luke-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the people at Capernaum astonished?",
+  "choices": [
+   "He healed them all",
+   "He fed the multitude",
+   "His word was with power",
+   "He read from the scroll"
+  ],
+  "answer": 2,
+  "explanation": "They were astonished at his doctrine: for his word was with power.",
+  "ref": "Luke 4:32"
+ },
+ {
+  "id": "luke-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the unclean spirit ask Jesus?",
+  "choices": [
+   "Who art thou, Lord?",
+   "Art thou come to destroy us?",
+   "Why hast thou sent us?",
+   "Wilt thou cast us out?"
+  ],
+  "answer": 1,
+  "explanation": "Let us alone; what have we to do with thee, thou Jesus of Nazareth? art thou come to destroy us?",
+  "ref": "Luke 4:34"
+ },
+ {
+  "id": "luke-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what was Jesus full when he returned from Jordan?",
+  "choices": [
+   "The Holy Ghost",
+   "Wisdom and grace",
+   "Power and authority",
+   "Zeal for the temple"
+  ],
+  "answer": 0,
+  "explanation": "Jesus being full of the Holy Ghost returned from Jordan.",
+  "ref": "Luke 4:1"
+ },
+ {
+  "id": "luke-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do in those forty days?",
+  "choices": [
+   "He ate only wild honey",
+   "He fasted every second day",
+   "He ate with the angels",
+   "He ate nothing"
+  ],
+  "answer": 3,
+  "explanation": "In those days he did eat nothing: and when they were ended, he afterward hungered.",
+  "ref": "Luke 4:2"
+ },
+ {
+  "id": "luke-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how long was the heaven shut up in the days of Elias?",
+  "choices": [
+   "Three years",
+   "Seven years",
+   "Three years and six months",
+   "Forty days"
+  ],
+  "answer": 2,
+  "explanation": "The heaven was shut up three years and six months, when great famine was throughout all the land.",
+  "ref": "Luke 4:25"
+ },
+ {
+  "id": "luke-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the people lead Jesus to cast him down?",
+  "choices": [
+   "The pinnacle of the temple",
+   "The brow of the hill their city was built on",
+   "The edge of the lake",
+   "A cliff by Jordan"
+  ],
+  "answer": 1,
+  "explanation": "They led him unto the brow of the hill whereon their city was built, that they might cast him down headlong.",
+  "ref": "Luke 4:29"
+ },
+ {
+  "id": "luke-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jesus escape the crowd at Nazareth?",
+  "choices": [
+   "He passed through the midst of them",
+   "He hid in a house",
+   "He was carried off by angels",
+   "He called for the priests"
+  ],
+  "answer": 0,
+  "explanation": "He passing through the midst of them went his way.",
+  "ref": "Luke 4:30"
+ },
+ {
+  "id": "luke-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did Jesus give the book after reading?",
+  "choices": [
+   "Simon",
+   "The priest",
+   "The scribe",
+   "The minister"
+  ],
+  "answer": 3,
+  "explanation": "He closed the book, and he gave it again to the minister, and sat down.",
+  "ref": "Luke 4:20"
+ },
+ {
+  "id": "luke-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say he was sent to preach to the captives?",
+  "choices": [
+   "Rest",
+   "Forgiveness",
+   "Deliverance",
+   "Judgement"
+  ],
+  "answer": 2,
+  "explanation": "He hath sent me to preach deliverance to the captives, and recovering of sight to the blind.",
+  "ref": "Luke 4:18"
+ },
+ {
+  "id": "luke-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Jesus' custom on the sabbath day?",
+  "choices": [
+   "To teach by the lake",
+   "To go into the synagogue",
+   "To pray in the wilderness",
+   "To go up to Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "As his custom was, he went into the synagogue on the sabbath day, and stood up for to read.",
+  "ref": "Luke 4:16"
+ },
+ {
+  "id": "luke-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the devil do to the man before he came out of him?",
+  "choices": [
+   "Threw him in the midst",
+   "Dragged him out of the city",
+   "Cast him into the fire",
+   "Made him dumb"
+  ],
+  "answer": 0,
+  "explanation": "When the devil had thrown him in the midst, he came out of him, and hurt him not.",
+  "ref": "Luke 4:35"
+ },
+ {
+  "id": "luke-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Simon's wife's mother do after the fever left her?",
+  "choices": [
+   "Went to the synagogue",
+   "Praised God aloud",
+   "Followed Jesus",
+   "Arose and ministered unto them"
+  ],
+  "answer": 3,
+  "explanation": "Immediately she arose and ministered unto them.",
+  "ref": "Luke 4:39"
+ },
+ {
+  "id": "luke-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jesus not let the devils speak?",
+  "choices": [
+   "They were speaking falsely",
+   "The people were afraid",
+   "They knew that he was Christ",
+   "He wanted them to wait"
+  ],
+  "answer": 2,
+  "explanation": "He rebuking them suffered them not to speak: for they knew that he was Christ.",
+  "ref": "Luke 4:41"
+ },
+ {
+  "id": "luke-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say he must do in other cities also?",
+  "choices": [
+   "Heal the sick",
+   "Preach the kingdom of God",
+   "Cast out devils",
+   "Read the scroll"
+  ],
+  "answer": 1,
+  "explanation": "I must preach the kingdom of God to other cities also: for therefore am I sent.",
+  "ref": "Luke 4:43"
+ },
+ {
+  "id": "luke-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people do when Jesus tried to leave them?",
+  "choices": [
+   "They stayed him that he should not depart",
+   "They followed him in silence",
+   "They sent him gifts",
+   "They shut the city gates"
+  ],
+  "answer": 0,
+  "explanation": "The people sought him, and came unto him, and stayed him, that he should not depart from them.",
+  "ref": "Luke 4:42"
+ },
+ {
+  "id": "luke-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into which region did Jesus return in the power of the Spirit?",
+  "choices": [
+   "Judaea",
+   "Samaria",
+   "Syria",
+   "Galilee"
+  ],
+  "answer": 3,
+  "explanation": "Jesus returned in the power of the Spirit into Galilee.",
+  "ref": "Luke 4:14"
+ },
+ {
+  "id": "luke-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How far did the fame of Jesus go after the unclean spirit left?",
+  "choices": [
+   "Only to Capernaum",
+   "Only to Nazareth",
+   "Into every place of the country round about",
+   "To Jerusalem and Judaea"
+  ],
+  "answer": 2,
+  "explanation": "The fame of him went out into every place of the country round about.",
+  "ref": "Luke 4:37"
+ },
+ {
+  "id": "luke-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Beside which lake did Jesus stand as the people pressed upon him?",
+  "choices": [
+   "Galilee",
+   "Gennesaret",
+   "Jordan",
+   "Capernaum"
+  ],
+  "answer": 1,
+  "explanation": "As the people pressed upon him to hear the word of God, he stood by the lake of Gennesaret.",
+  "ref": "Luke 5:1"
+ },
+ {
+  "id": "luke-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose ship did Jesus enter to teach the people?",
+  "choices": [
+   "Simon's",
+   "Levi's",
+   "Zebedee's",
+   "Philip's"
+  ],
+  "answer": 0,
+  "explanation": "He entered into one of the ships, which was Simon's, and prayed him that he would thrust out a little from the land.",
+  "ref": "Luke 5:3"
+ },
+ {
+  "id": "luke-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had Simon and his partners caught all night?",
+  "choices": [
+   "A few small fish",
+   "Only broken nets",
+   "Half a boatload",
+   "Nothing"
+  ],
+  "answer": 3,
+  "explanation": "Simon said, Master, we have toiled all the night, and have taken nothing.",
+  "ref": "Luke 5:5"
+ },
+ {
+  "id": "luke-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the net when they enclosed the fishes?",
+  "choices": [
+   "It sank",
+   "It caught fire",
+   "It brake",
+   "It was lost"
+  ],
+  "answer": 2,
+  "explanation": "They inclosed a great multitude of fishes: and their net brake.",
+  "ref": "Luke 5:6"
+ },
+ {
+  "id": "luke-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell Simon he would catch from henceforth?",
+  "choices": [
+   "Fish",
+   "Men",
+   "Sheep",
+   "Souls of the dead"
+  ],
+  "answer": 1,
+  "explanation": "Fear not; from henceforth thou shalt catch men.",
+  "ref": "Luke 5:10"
+ },
+ {
+  "id": "luke-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who were Simon's partners, the sons of Zebedee?",
+  "choices": [
+   "James and John",
+   "Andrew and Philip",
+   "Levi and Matthew",
+   "Peter and James"
+  ],
+  "answer": 0,
+  "explanation": "James, and John, the sons of Zebedee, which were partners with Simon.",
+  "ref": "Luke 5:10"
+ },
+ {
+  "id": "luke-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to the leper when he touched him?",
+  "choices": [
+   "Go and sin no more",
+   "Thy faith hath saved thee",
+   "Arise and walk",
+   "I will: be thou clean"
+  ],
+  "answer": 3,
+  "explanation": "He put forth his hand, and touched him, saying, I will: be thou clean.",
+  "ref": "Luke 5:13"
+ },
+ {
+  "id": "luke-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say first to the man sick of the palsy?",
+  "choices": [
+   "Arise, and take up thy couch",
+   "Follow me",
+   "Thy sins are forgiven thee",
+   "Thy faith hath made thee whole"
+  ],
+  "answer": 2,
+  "explanation": "When he saw their faith, he said unto him, Man, thy sins are forgiven thee.",
+  "ref": "Luke 5:20"
+ },
+ {
+  "id": "luke-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who asked, \"Who can forgive sins, but God alone?\"",
+  "choices": [
+   "Simon and his partners",
+   "The scribes and the Pharisees",
+   "The disciples of John",
+   "The crowd at the door"
+  ],
+  "answer": 1,
+  "explanation": "The scribes and the Pharisees began to reason, saying, Who can forgive sins, but God alone?",
+  "ref": "Luke 5:21"
+ },
+ {
+  "id": "luke-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the healed man do as he departed?",
+  "choices": [
+   "Took up his couch and went home glorifying God",
+   "Followed Jesus",
+   "Went to the priest",
+   "Hid himself"
+  ],
+  "answer": 0,
+  "explanation": "He rose up before them, and took up that whereon he lay, and departed to his own house, glorifying God.",
+  "ref": "Luke 5:25"
+ },
+ {
+  "id": "luke-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Simon say before he let down the net?",
+  "choices": [
+   "We have no nets to spare",
+   "The fish are gone",
+   "It is not the season",
+   "Nevertheless at thy word I will let down the net"
+  ],
+  "answer": 3,
+  "explanation": "Master, we have toiled all the night, and have taken nothing: nevertheless at thy word I will let down the net.",
+  "ref": "Luke 5:5"
+ },
+ {
+  "id": "luke-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to both ships when they were filled?",
+  "choices": [
+   "They were driven ashore",
+   "They broke apart",
+   "They began to sink",
+   "They drifted away"
+  ],
+  "answer": 2,
+  "explanation": "They filled both the ships, so that they began to sink.",
+  "ref": "Luke 5:7"
+ },
+ {
+  "id": "luke-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they do when they brought their ships to land?",
+  "choices": [
+   "Sold the fish",
+   "Forsook all and followed him",
+   "Went home to rest",
+   "Mended their nets"
+  ],
+  "answer": 1,
+  "explanation": "When they had brought their ships to land, they forsook all, and followed him.",
+  "ref": "Luke 5:11"
+ },
+ {
+  "id": "luke-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Jesus tell the cleansed leper to show himself to?",
+  "choices": [
+   "The priest",
+   "The scribes",
+   "The elders",
+   "His family"
+  ],
+  "answer": 0,
+  "explanation": "Go, and shew thyself to the priest, and offer for thy cleansing, according as Moses commanded.",
+  "ref": "Luke 5:14"
+ },
+ {
+  "id": "luke-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus do after great multitudes came to be healed?",
+  "choices": [
+   "Went up to Jerusalem",
+   "Sailed across the lake",
+   "Sent them home",
+   "Withdrew into the wilderness and prayed"
+  ],
+  "answer": 3,
+  "explanation": "He withdrew himself into the wilderness, and prayed.",
+  "ref": "Luke 5:16"
+ },
+ {
+  "id": "luke-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who sat by while Jesus was teaching?",
+  "choices": [
+   "Publicans and sinners",
+   "Priests and Levites",
+   "Pharisees and doctors of the law",
+   "Soldiers and centurions"
+  ],
+  "answer": 2,
+  "explanation": "There were Pharisees and doctors of the law sitting by, which were come out of every town of Galilee, and Judaea, and Jerusalem.",
+  "ref": "Luke 5:17"
+ },
+ {
+  "id": "luke-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus see that led him to forgive the sick man?",
+  "choices": [
+   "Their tears",
+   "Their faith",
+   "Their gift",
+   "Their haste"
+  ],
+  "answer": 1,
+  "explanation": "When he saw their faith, he said unto him, Man, thy sins are forgiven thee.",
+  "ref": "Luke 5:20"
+ },
+ {
+  "id": "luke-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question did Jesus put to the scribes and Pharisees?",
+  "choices": [
+   "Which is easier: forgive sins or say Rise up and walk",
+   "Whether the man had sinned",
+   "Whether the law forbade healing",
+   "Whether God alone could heal"
+  ],
+  "answer": 0,
+  "explanation": "Whether is easier, to say, Thy sins be forgiven thee; or to say, Rise up and walk?",
+  "ref": "Luke 5:23"
+ },
+ {
+  "id": "luke-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus heal the man with the palsy?",
+  "choices": [
+   "To honour the faith of the crowd",
+   "To prove the law of Moses",
+   "To silence John's disciples",
+   "To show the Son of man can forgive sins"
+  ],
+  "answer": 3,
+  "explanation": "That ye may know that the Son of man hath power upon earth to forgive sins, I say unto thee, Arise.",
+  "ref": "Luke 5:24"
+ },
+ {
+  "id": "luke-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Levi make for Jesus in his own house?",
+  "choices": [
+   "A gift of silver",
+   "A synagogue",
+   "A great feast",
+   "A small supper"
+  ],
+  "answer": 2,
+  "explanation": "Levi made him a great feast in his own house: and there was a great company of publicans and of others.",
+  "ref": "Luke 5:29"
+ },
+ {
+  "id": "luke-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the scribes and Pharisees ask the disciples?",
+  "choices": [
+   "Why do ye not fast?",
+   "Why do ye eat and drink with publicans and sinners?",
+   "Why do ye break the sabbath?",
+   "Why do ye follow this man?"
+  ],
+  "answer": 1,
+  "explanation": "Their scribes and Pharisees murmured against his disciples, saying, Why do ye eat and drink with publicans and sinners?",
+  "ref": "Luke 5:30"
+ },
+ {
+  "id": "luke-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say they that are whole do not need?",
+  "choices": [
+   "A physician",
+   "A teacher",
+   "A sacrifice",
+   "A priest"
+  ],
+  "answer": 0,
+  "explanation": "They that are whole need not a physician; but they that are sick.",
+  "ref": "Luke 5:31"
+ },
+ {
+  "id": "luke-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Jesus say he came to call to repentance?",
+  "choices": [
+   "The righteous",
+   "The Pharisees",
+   "The poor",
+   "Sinners"
+  ],
+  "answer": 3,
+  "explanation": "I came not to call the righteous, but sinners to repentance.",
+  "ref": "Luke 5:32"
+ },
+ {
+  "id": "luke-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Jesus say was with the children of the bridechamber?",
+  "choices": [
+   "The priest",
+   "The prophet",
+   "The bridegroom",
+   "The master"
+  ],
+  "answer": 2,
+  "explanation": "Can ye make the children of the bridechamber fast, while the bridegroom is with them?",
+  "ref": "Luke 5:34"
+ },
+ {
+  "id": "luke-5-m-15",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the amazed people say?",
+  "choices": [
+   "We have never seen the like in Israel",
+   "We have seen strange things to day",
+   "God hath visited his people",
+   "This is a prophet"
+  ],
+  "answer": 1,
+  "explanation": "They were all amazed, and they glorified God, and were filled with fear, saying, We have seen strange things to day.",
+  "ref": "Luke 5:26"
+ },
+ {
+  "id": "luke-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Simon Peter fall down at?",
+  "choices": [
+   "Jesus' knees",
+   "The side of the ship",
+   "The shore",
+   "The feet of the sick"
+  ],
+  "answer": 0,
+  "explanation": "When Simon Peter saw it, he fell down at Jesus' knees, saying, Depart from me.",
+  "ref": "Luke 5:8"
+ },
+ {
+  "id": "luke-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men do who could not get the man in because of the multitude?",
+  "choices": [
+   "Broke open the door",
+   "Waited until the crowd left",
+   "Called Jesus outside",
+   "Went upon the housetop and let him down through the tiling"
+  ],
+  "answer": 3,
+  "explanation": "They went upon the housetop, and let him down through the tiling with his couch into the midst before Jesus.",
+  "ref": "Luke 5:19"
+ },
+ {
+  "id": "luke-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "According to whom did Jesus tell the leper to offer for his cleansing?",
+  "choices": [
+   "Aaron",
+   "Abraham",
+   "Moses",
+   "Elias"
+  ],
+  "answer": 2,
+  "explanation": "Shew thyself to the priest, and offer for thy cleansing, according as Moses commanded, for a testimony unto them.",
+  "ref": "Luke 5:14"
+ },
+ {
+  "id": "luke-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose disciples besides John's did they say fasted often?",
+  "choices": [
+   "The scribes'",
+   "The Pharisees'",
+   "The priests'",
+   "The doctors'"
+  ],
+  "answer": 1,
+  "explanation": "Why do the disciples of John fast often, and make prayers, and likewise the disciples of the Pharisees; but thine eat and drink?",
+  "ref": "Luke 5:33"
+ },
+ {
+  "id": "luke-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say would happen when the bridegroom is taken away?",
+  "choices": [
+   "They shall fast in those days",
+   "They shall mourn for ever",
+   "They shall scatter",
+   "They shall feast more"
+  ],
+  "answer": 0,
+  "explanation": "The days will come, when the bridegroom shall be taken away from them, and then shall they fast in those days.",
+  "ref": "Luke 5:35"
+ },
+ {
+  "id": "luke-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does no man put upon an old garment?",
+  "choices": [
+   "A patch of sackcloth",
+   "A new cord",
+   "Fine linen",
+   "A piece of a new garment"
+  ],
+  "answer": 3,
+  "explanation": "No man putteth a piece of a new garment upon an old; the new maketh a rent.",
+  "ref": "Luke 5:36"
+ },
+ {
+  "id": "luke-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would burst if new wine is put into old bottles?",
+  "choices": [
+   "The wine",
+   "The skins of the new",
+   "The bottles",
+   "The press"
+  ],
+  "answer": 2,
+  "explanation": "No man putteth new wine into old bottles; else the new wine will burst the bottles, and be spilled.",
+  "ref": "Luke 5:37"
+ },
+ {
+  "id": "luke-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the man who has drunk old wine say?",
+  "choices": [
+   "The new is sweeter",
+   "The old is better",
+   "Both are good",
+   "Give me water"
+  ],
+  "answer": 1,
+  "explanation": "No man having drunk old wine straightway desireth new: for he saith, The old is better.",
+  "ref": "Luke 5:39"
+ },
+ {
+  "id": "luke-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into what must new wine be put?",
+  "choices": [
+   "New bottles",
+   "Clay jars",
+   "The old wine",
+   "Cedar casks"
+  ],
+  "answer": 0,
+  "explanation": "New wine must be put into new bottles; and both are preserved.",
+  "ref": "Luke 5:38"
+ },
+ {
+  "id": "luke-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where had Pharisees and doctors come to hear Jesus?",
+  "choices": [
+   "Only Jerusalem",
+   "Galilee and Samaria",
+   "Capernaum and Nazareth",
+   "Every town of Galilee, Judaea and Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "They were come out of every town of Galilee, and Judaea, and Jerusalem.",
+  "ref": "Luke 5:17"
+ },
+ {
+  "id": "luke-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Simon and all with him feel at the draught of fishes?",
+  "choices": [
+   "Angry",
+   "Ashamed",
+   "Astonished",
+   "Joyful and calm"
+  ],
+  "answer": 2,
+  "explanation": "He was astonished, and all that were with him, at the draught of the fishes which they had taken.",
+  "ref": "Luke 5:9"
+ },
+ {
+  "id": "luke-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did great multitudes come together to Jesus?",
+  "choices": [
+   "To see a sign from heaven",
+   "To hear him and to be healed of their infirmities",
+   "To bring him gifts",
+   "To take him by force"
+  ],
+  "answer": 1,
+  "explanation": "There went there a fame abroad of him: and great multitudes came together to hear, and to be healed by him of their infirmities.",
+  "ref": "Luke 5:15"
+ },
+ {
+  "id": "luke-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where did Jesus teach the people at the lake?",
+  "choices": [
+   "Out of the ship",
+   "From a hill",
+   "From the synagogue",
+   "From the shore"
+  ],
+  "answer": 0,
+  "explanation": "He sat down, and taught the people out of the ship.",
+  "ref": "Luke 5:3"
+ },
+ {
+  "id": "luke-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the scribes and Pharisees say Jesus spoke?",
+  "choices": [
+   "Lies",
+   "Parables",
+   "Prophecies",
+   "Blasphemies"
+  ],
+  "answer": 3,
+  "explanation": "The scribes and the Pharisees began to reason, saying, Who is this which speaketh blasphemies?",
+  "ref": "Luke 5:21"
+ },
+ {
+  "id": "luke-5-h-15",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jesus tell the healed man to go?",
+  "choices": [
+   "To the priest",
+   "To the temple",
+   "Into his house",
+   "To Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Arise, and take up thy couch, and go into thine house.",
+  "ref": "Luke 5:24"
+ },
+ {
+  "id": "luke-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus name as having eaten the shewbread when hungry?",
+  "choices": [
+   "Moses",
+   "David",
+   "Aaron",
+   "Elias"
+  ],
+  "answer": 1,
+  "explanation": "Have ye not read what David did, when himself was an hungred, how he went into the house of God and did eat the shewbread?",
+  "ref": "Luke 6:3–4"
+ },
+ {
+  "id": "luke-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Of what did Jesus say the Son of man is Lord?",
+  "choices": [
+   "The sabbath",
+   "The temple",
+   "The harvest",
+   "The law"
+  ],
+  "answer": 0,
+  "explanation": "The Son of man is Lord also of the sabbath.",
+  "ref": "Luke 6:5"
+ },
+ {
+  "id": "luke-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name did Jesus give the twelve he chose?",
+  "choices": [
+   "Elders",
+   "Servants",
+   "Fishers of men",
+   "Apostles"
+  ],
+  "answer": 3,
+  "explanation": "Of them he chose twelve, whom also he named apostles.",
+  "ref": "Luke 6:13"
+ },
+ {
+  "id": "luke-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which disciple did Jesus also name Peter?",
+  "choices": [
+   "Andrew",
+   "Philip",
+   "Simon",
+   "Thomas"
+  ],
+  "answer": 2,
+  "explanation": "Simon, whom he also named Peter, and Andrew his brother.",
+  "ref": "Luke 6:14"
+ },
+ {
+  "id": "luke-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which apostle is called the traitor?",
+  "choices": [
+   "Judas the brother of James",
+   "Judas Iscariot",
+   "Thomas",
+   "Simon Zelotes"
+  ],
+  "answer": 1,
+  "explanation": "Judas Iscariot, which also was the traitor.",
+  "ref": "Luke 6:16"
+ },
+ {
+  "id": "luke-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which sea coast cities did people come to hear Jesus?",
+  "choices": [
+   "Tyre and Sidon",
+   "Joppa and Caesarea",
+   "Capernaum and Nain",
+   "Sarepta and Nazareth"
+  ],
+  "answer": 0,
+  "explanation": "A great multitude came from the sea coast of Tyre and Sidon, to hear him, and to be healed of their diseases.",
+  "ref": "Luke 6:17"
+ },
+ {
+  "id": "luke-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the whole multitude seek to touch Jesus?",
+  "choices": [
+   "He had fed them",
+   "He had called them",
+   "He had a crown",
+   "Virtue went out of him and healed them all"
+  ],
+  "answer": 3,
+  "explanation": "The whole multitude sought to touch him: for there went virtue out of him, and healed them all.",
+  "ref": "Luke 6:19"
+ },
+ {
+  "id": "luke-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell his hearers to do for their enemies?",
+  "choices": [
+   "Avoid them",
+   "Pray for their defeat",
+   "Love them and do good to them",
+   "Judge them"
+  ],
+  "answer": 2,
+  "explanation": "I say unto you which hear, Love your enemies, do good to them which hate you.",
+  "ref": "Luke 6:27"
+ },
+ {
+  "id": "luke-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say we should do to others?",
+  "choices": [
+   "As they have done to us",
+   "As we would that men should do to us",
+   "As the law commands",
+   "As the Pharisees teach"
+  ],
+  "answer": 1,
+  "explanation": "As ye would that men should do to you, do ye also to them likewise.",
+  "ref": "Luke 6:31"
+ },
+ {
+  "id": "luke-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens when the blind lead the blind?",
+  "choices": [
+   "They both fall into the ditch",
+   "They both reach the city",
+   "They both turn back",
+   "They both stumble but rise"
+  ],
+  "answer": 0,
+  "explanation": "Can the blind lead the blind? shall they not both fall into the ditch?",
+  "ref": "Luke 6:39"
+ },
+ {
+  "id": "luke-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the scribes and Pharisees watch Jesus in the synagogue?",
+  "choices": [
+   "To hear his teaching",
+   "To ask him to heal",
+   "To honour him",
+   "To find an accusation against him"
+  ],
+  "answer": 3,
+  "explanation": "They watched him, whether he would heal on the sabbath day; that they might find an accusation against him.",
+  "ref": "Luke 6:7"
+ },
+ {
+  "id": "luke-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus ask them about the sabbath days?",
+  "choices": [
+   "Is it lawful to heal or to fast?",
+   "Is it lawful to travel or to rest?",
+   "Is it lawful to do good, or to do evil?",
+   "Is it lawful to teach or to eat?"
+  ],
+  "answer": 2,
+  "explanation": "Is it lawful on the sabbath days to do good, or to do evil? to save life, or to destroy it?",
+  "ref": "Luke 6:9"
+ },
+ {
+  "id": "luke-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were they affected after the hand was restored?",
+  "choices": [
+   "They glorified God",
+   "They were filled with madness",
+   "They were amazed",
+   "They fled"
+  ],
+  "answer": 1,
+  "explanation": "They were filled with madness; and communed one with another what they might do to Jesus.",
+  "ref": "Luke 6:11"
+ },
+ {
+  "id": "luke-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David and his men eat in the house of God?",
+  "choices": [
+   "The shewbread",
+   "The firstfruits",
+   "The passover lamb",
+   "The wave offering"
+  ],
+  "answer": 0,
+  "explanation": "David did take and eat the shewbread, which it is not lawful to eat but for the priests alone.",
+  "ref": "Luke 6:4"
+ },
+ {
+  "id": "luke-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say will happen to those who hunger now?",
+  "choices": [
+   "They shall be fed by the rich",
+   "They shall hunger more",
+   "They shall be given bread",
+   "They shall be filled"
+  ],
+  "answer": 3,
+  "explanation": "Blessed are ye that hunger now: for ye shall be filled.",
+  "ref": "Luke 6:21"
+ },
+ {
+  "id": "luke-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to the rich?",
+  "choices": [
+   "Blessed, for theirs is the kingdom",
+   "Rejoice, for they shall inherit",
+   "Woe, for they have received their consolation",
+   "Fear not, for they are safe"
+  ],
+  "answer": 2,
+  "explanation": "Woe unto you that are rich! for ye have received your consolation.",
+  "ref": "Luke 6:24"
+ },
+ {
+  "id": "luke-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to do for them that despitefully use you?",
+  "choices": [
+   "Forgive them seven times",
+   "Pray for them",
+   "Avoid them",
+   "Report them"
+  ],
+  "answer": 1,
+  "explanation": "Bless them that curse you, and pray for them which despitefully use you.",
+  "ref": "Luke 6:28"
+ },
+ {
+  "id": "luke-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to offer the one who smites you on one cheek?",
+  "choices": [
+   "The other also",
+   "A rebuke",
+   "A coat",
+   "Silence"
+  ],
+  "answer": 0,
+  "explanation": "Unto him that smiteth thee on the one cheek offer also the other.",
+  "ref": "Luke 6:29"
+ },
+ {
+  "id": "luke-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Who also love those that love them?",
+  "choices": [
+   "Pharisees",
+   "Publicans",
+   "Gentiles",
+   "Sinners"
+  ],
+  "answer": 3,
+  "explanation": "If ye love them which love you, what thank have ye? for sinners also love those that love them.",
+  "ref": "Luke 6:32"
+ },
+ {
+  "id": "luke-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to be, as your Father also is?",
+  "choices": [
+   "Holy",
+   "Righteous",
+   "Merciful",
+   "Patient"
+  ],
+  "answer": 2,
+  "explanation": "Be ye therefore merciful, as your Father also is merciful.",
+  "ref": "Luke 6:36"
+ },
+ {
+  "id": "luke-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say follows if you judge not?",
+  "choices": [
+   "Ye shall be praised",
+   "Ye shall not be judged",
+   "Ye shall be rich",
+   "Ye shall be heard"
+  ],
+  "answer": 1,
+  "explanation": "Judge not, and ye shall not be judged: condemn not, and ye shall not be condemned.",
+  "ref": "Luke 6:37"
+ },
+ {
+  "id": "luke-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus call the man who pulls out a mote with a beam in his own eye?",
+  "choices": [
+   "A hypocrite",
+   "A blind guide",
+   "A Pharisee",
+   "A fool"
+  ],
+  "answer": 0,
+  "explanation": "Thou hypocrite, cast out first the beam out of thine own eye.",
+  "ref": "Luke 6:42"
+ },
+ {
+  "id": "luke-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does a good tree not bring forth?",
+  "choices": [
+   "Any fruit at all",
+   "Thorns",
+   "Late fruit",
+   "Corrupt fruit"
+  ],
+  "answer": 3,
+  "explanation": "A good tree bringeth not forth corrupt fruit; neither doth a corrupt tree bring forth good fruit.",
+  "ref": "Luke 6:43"
+ },
+ {
+  "id": "luke-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus ask those who called him Lord, Lord?",
+  "choices": [
+   "Whether they truly believed",
+   "Who had sent them",
+   "Why they did not do what he said",
+   "Where they had come from"
+  ],
+  "answer": 2,
+  "explanation": "Why call ye me, Lord, Lord, and do not the things which I say?",
+  "ref": "Luke 6:46"
+ },
+ {
+  "id": "luke-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the house built without a foundation?",
+  "choices": [
+   "It stood but leaned",
+   "It fell, and its ruin was great",
+   "It was washed away slowly",
+   "It was rebuilt"
+  ],
+  "answer": 1,
+  "explanation": "Immediately it fell; and the ruin of that house was great.",
+  "ref": "Luke 6:49"
+ },
+ {
+  "id": "luke-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the disciples do with the ears of corn?",
+  "choices": [
+   "Rubbed them in their hands and ate",
+   "Gave them to the poor",
+   "Carried them away",
+   "Burned them"
+  ],
+  "answer": 0,
+  "explanation": "His disciples plucked the ears of corn, and did eat, rubbing them in their hands.",
+  "ref": "Luke 6:1"
+ },
+ {
+  "id": "luke-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Which apostle was called Zelotes?",
+  "choices": [
+   "Judas",
+   "Thomas",
+   "Matthew",
+   "Simon"
+  ],
+  "answer": 3,
+  "explanation": "Matthew and Thomas, James the son of Alphaeus, and Simon called Zelotes.",
+  "ref": "Luke 6:15"
+ },
+ {
+  "id": "luke-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was the apostle James named after Matthew and Thomas?",
+  "choices": [
+   "Zebedee",
+   "Jonas",
+   "Alphaeus",
+   "Cleophas"
+  ],
+  "answer": 2,
+  "explanation": "James the son of Alphaeus.",
+  "ref": "Luke 6:15"
+ },
+ {
+  "id": "luke-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jesus stand with his disciples and the multitude after coming down?",
+  "choices": [
+   "On the mountain",
+   "In the plain",
+   "By the lake",
+   "In the synagogue"
+  ],
+  "answer": 1,
+  "explanation": "He came down with them, and stood in the plain.",
+  "ref": "Luke 6:17"
+ },
+ {
+  "id": "luke-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did Jesus say the fathers spoke well, in the woe about men speaking well of you?",
+  "choices": [
+   "The false prophets",
+   "The Pharisees",
+   "The priests",
+   "The kings"
+  ],
+  "answer": 0,
+  "explanation": "Woe unto you, when all men shall speak well of you! for so did their fathers to the false prophets.",
+  "ref": "Luke 6:26"
+ },
+ {
+  "id": "luke-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say about the measure that ye mete?",
+  "choices": [
+   "It shall be pressed down",
+   "It shall be lessened",
+   "It shall be forgotten",
+   "It shall be measured to you again"
+  ],
+  "answer": 3,
+  "explanation": "With the same measure that ye mete withal it shall be measured to you again.",
+  "ref": "Luke 6:38"
+ },
+ {
+  "id": "luke-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of whom did Jesus say the disciple is not above?",
+  "choices": [
+   "The prophets",
+   "The scribes",
+   "His master",
+   "The Pharisees"
+  ],
+  "answer": 2,
+  "explanation": "The disciple is not above his master: but every one that is perfect shall be as his master.",
+  "ref": "Luke 6:40"
+ },
+ {
+  "id": "luke-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of what does a man's mouth speak?",
+  "choices": [
+   "The wisdom of the mind",
+   "The abundance of the heart",
+   "The law of the Lord",
+   "The thoughts of the night"
+  ],
+  "answer": 1,
+  "explanation": "Of the abundance of the heart his mouth speaketh.",
+  "ref": "Luke 6:45"
+ },
+ {
+  "id": "luke-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what do men not gather figs?",
+  "choices": [
+   "Thorns",
+   "Brambles",
+   "Vines",
+   "Reeds"
+  ],
+  "answer": 0,
+  "explanation": "Of thorns men do not gather figs, nor of a bramble bush gather they grapes.",
+  "ref": "Luke 6:44"
+ },
+ {
+  "id": "luke-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the man who built on a rock lay his foundation?",
+  "choices": [
+   "He dug a trench around",
+   "He laid it in haste",
+   "He built it in the plain",
+   "He digged deep"
+  ],
+  "answer": 3,
+  "explanation": "He is like a man which built an house, and digged deep, and laid the foundation on a rock.",
+  "ref": "Luke 6:48"
+ },
+ {
+  "id": "luke-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did Jesus say the Highest is kind?",
+  "choices": [
+   "The poor and the sick",
+   "The righteous",
+   "The unthankful and the evil",
+   "The merciful"
+  ],
+  "answer": 2,
+  "explanation": "Your reward shall be great: for he is kind unto the unthankful and to the evil.",
+  "ref": "Luke 6:35"
+ },
+ {
+  "id": "luke-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say about giving to every man that asketh?",
+  "choices": [
+   "Give only to the poor",
+   "Do not ask your goods again from the taker",
+   "Give half and keep half",
+   "Give after counsel"
+  ],
+  "answer": 1,
+  "explanation": "Give to every man that asketh of thee; and of him that taketh away thy goods ask them not again.",
+  "ref": "Luke 6:30"
+ },
+ {
+  "id": "luke-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jesus say the reward of the persecuted is great?",
+  "choices": [
+   "In heaven",
+   "In the temple",
+   "In Israel",
+   "In the kingdom of Caesar"
+  ],
+  "answer": 0,
+  "explanation": "Rejoice ye in that day, and leap for joy: for, behold, your reward is great in heaven.",
+  "ref": "Luke 6:23"
+ },
+ {
+  "id": "luke-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say to hope for when you lend?",
+  "choices": [
+   "The same amount",
+   "A good return",
+   "Thanks from the borrower",
+   "Nothing again"
+  ],
+  "answer": 3,
+  "explanation": "Love ye your enemies, and do good, and lend, hoping for nothing again; and your reward shall be great.",
+  "ref": "Luke 6:35"
+ },
+ {
+  "id": "luke-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus tell the man to do before restoring his hand?",
+  "choices": [
+   "Wash in the pool",
+   "Go to the priest",
+   "Rise up and stand forth in the midst",
+   "Wait until the sabbath ended"
+  ],
+  "answer": 2,
+  "explanation": "He said to the man which had the withered hand, Rise up, and stand forth in the midst. And he arose and stood forth.",
+  "ref": "Luke 6:8"
+ },
+ {
+  "id": "luke-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Into which town did Jesus enter after ending his sayings?",
+  "choices": [
+   "Nain",
+   "Capernaum",
+   "Nazareth",
+   "Sarepta"
+  ],
+  "answer": 1,
+  "explanation": "When he had ended all his sayings in the audience of the people, he entered into Capernaum.",
+  "ref": "Luke 7:1"
+ },
+ {
+  "id": "luke-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the centurion send to Jesus first?",
+  "choices": [
+   "The elders of the Jews",
+   "His soldiers",
+   "His servant",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "He sent unto him the elders of the Jews, beseeching him that he would come and heal his servant.",
+  "ref": "Luke 7:3"
+ },
+ {
+  "id": "luke-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the centurion say he was not worthy of?",
+  "choices": [
+   "Receiving a servant",
+   "Meeting the elders",
+   "Hearing the law",
+   "Jesus entering under his roof"
+  ],
+  "answer": 3,
+  "explanation": "Lord, trouble not thyself: for I am not worthy that thou shouldest enter under my roof.",
+  "ref": "Luke 7:6"
+ },
+ {
+  "id": "luke-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say about the centurion's faith?",
+  "choices": [
+   "It was equal to the disciples'",
+   "It was small but true",
+   "He had not found so great faith, no, not in Israel",
+   "It was learned from the elders"
+  ],
+  "answer": 2,
+  "explanation": "I say unto you, I have not found so great faith, no, not in Israel.",
+  "ref": "Luke 7:9"
+ },
+ {
+  "id": "luke-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to the widow at Nain?",
+  "choices": [
+   "Fear not",
+   "Weep not",
+   "Peace be with you",
+   "Follow me"
+  ],
+  "answer": 1,
+  "explanation": "When the Lord saw her, he had compassion on her, and said unto her, Weep not.",
+  "ref": "Luke 7:13"
+ },
+ {
+  "id": "luke-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to the dead young man?",
+  "choices": [
+   "Arise",
+   "Come forth",
+   "Be thou clean",
+   "Follow me"
+  ],
+  "answer": 0,
+  "explanation": "He said, Young man, I say unto thee, Arise.",
+  "ref": "Luke 7:14"
+ },
+ {
+  "id": "luke-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say after the young man was raised?",
+  "choices": [
+   "This is the Christ",
+   "This is Elias",
+   "This is the king of Israel",
+   "A great prophet is risen up among us"
+  ],
+  "answer": 3,
+  "explanation": "They glorified God, saying, That a great prophet is risen up among us; and, That God hath visited his people.",
+  "ref": "Luke 7:16"
+ },
+ {
+  "id": "luke-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus touch at Nain?",
+  "choices": [
+   "The young man's hand",
+   "The widow's garment",
+   "The bier",
+   "The city gate"
+  ],
+  "answer": 2,
+  "explanation": "He came and touched the bier: and they that bare him stood still.",
+  "ref": "Luke 7:14"
+ },
+ {
+  "id": "luke-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who desired Jesus to eat with him?",
+  "choices": [
+   "A centurion",
+   "One of the Pharisees",
+   "A publican",
+   "A scribe"
+  ],
+  "answer": 1,
+  "explanation": "One of the Pharisees desired him that he would eat with him.",
+  "ref": "Luke 7:36"
+ },
+ {
+  "id": "luke-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the woman who was a sinner bring to the Pharisee's house?",
+  "choices": [
+   "An alabaster box of ointment",
+   "A jar of water",
+   "A loaf of bread",
+   "A cup of wine"
+  ],
+  "answer": 0,
+  "explanation": "A woman in the city, which was a sinner, brought an alabaster box of ointment.",
+  "ref": "Luke 7:37"
+ },
+ {
+  "id": "luke-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the elders say the centurion had built for them?",
+  "choices": [
+   "A temple",
+   "A wall",
+   "A house for Jesus",
+   "A synagogue"
+  ],
+  "answer": 3,
+  "explanation": "He loveth our nation, and he hath built us a synagogue.",
+  "ref": "Luke 7:5"
+ },
+ {
+  "id": "luke-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the centurion say his servant could be healed?",
+  "choices": [
+   "By Jesus' touch",
+   "By anointing with oil",
+   "By a word from Jesus",
+   "By a visit to the house"
+  ],
+  "answer": 2,
+  "explanation": "Say in a word, and my servant shall be healed.",
+  "ref": "Luke 7:7"
+ },
+ {
+  "id": "luke-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the centurion describe himself?",
+  "choices": [
+   "A man of wealth",
+   "A man set under authority with soldiers under him",
+   "A friend of Caesar",
+   "A ruler of the synagogue"
+  ],
+  "answer": 1,
+  "explanation": "I also am a man set under authority, having under me soldiers.",
+  "ref": "Luke 7:8"
+ },
+ {
+  "id": "luke-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the messengers find when they returned to the house?",
+  "choices": [
+   "The servant whole",
+   "The servant dead",
+   "The servant still sick",
+   "The servant gone"
+  ],
+  "answer": 0,
+  "explanation": "They that were sent, returning to the house, found the servant whole that had been sick.",
+  "ref": "Luke 7:10"
+ },
+ {
+  "id": "luke-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the dead man when Jesus came to Nain?",
+  "choices": [
+   "In the synagogue",
+   "At the widow's house",
+   "In the marketplace",
+   "Being carried out at the gate of the city"
+  ],
+  "answer": 3,
+  "explanation": "When he came nigh to the gate of the city, behold, there was a dead man carried out.",
+  "ref": "Luke 7:12"
+ },
+ {
+  "id": "luke-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did John's messengers ask Jesus?",
+  "choices": [
+   "Wilt thou free Israel?",
+   "Where is the kingdom?",
+   "Art thou he that should come? or look we for another?",
+   "Hast thou baptized with fire?"
+  ],
+  "answer": 2,
+  "explanation": "Art thou he that should come? or look we for another?",
+  "ref": "Luke 7:19–20"
+ },
+ {
+  "id": "luke-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus tell John's messengers to do?",
+  "choices": [
+   "Wait in Capernaum",
+   "Tell John what things they had seen and heard",
+   "Be baptized",
+   "Go back to the wilderness silent"
+  ],
+  "answer": 1,
+  "explanation": "Go your way, and tell John what things ye have seen and heard.",
+  "ref": "Luke 7:22"
+ },
+ {
+  "id": "luke-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say John was, beyond a prophet?",
+  "choices": [
+   "Much more than a prophet",
+   "The Christ",
+   "Elias returned",
+   "A king"
+  ],
+  "answer": 0,
+  "explanation": "A prophet? Yea, I say unto you, and much more than a prophet.",
+  "ref": "Luke 7:26"
+ },
+ {
+  "id": "luke-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who justified God, being baptized with John's baptism?",
+  "choices": [
+   "The Pharisees and lawyers",
+   "The priests",
+   "The elders",
+   "All the people and the publicans"
+  ],
+  "answer": 3,
+  "explanation": "All the people that heard him, and the publicans, justified God, being baptized with the baptism of John.",
+  "ref": "Luke 7:29"
+ },
+ {
+  "id": "luke-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Pharisees and lawyers reject?",
+  "choices": [
+   "The baptism of Jesus",
+   "The temple",
+   "The counsel of God",
+   "The sabbath"
+  ],
+  "answer": 2,
+  "explanation": "The Pharisees and lawyers rejected the counsel of God against themselves, being not baptized of him.",
+  "ref": "Luke 7:30"
+ },
+ {
+  "id": "luke-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they say of John the Baptist, who came neither eating bread nor drinking wine?",
+  "choices": [
+   "He is a prophet",
+   "He hath a devil",
+   "He is mad",
+   "He is Elias"
+  ],
+  "answer": 1,
+  "explanation": "John the Baptist came neither eating bread nor drinking wine; and ye say, He hath a devil.",
+  "ref": "Luke 7:33"
+ },
+ {
+  "id": "luke-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they call the Son of man who came eating and drinking?",
+  "choices": [
+   "A gluttonous man and a winebibber",
+   "A drunkard and a thief",
+   "A false prophet",
+   "A friend of Caesar"
+  ],
+  "answer": 0,
+  "explanation": "Behold a gluttonous man, and a winebibber, a friend of publicans and sinners!",
+  "ref": "Luke 7:34"
+ },
+ {
+  "id": "luke-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Pharisee say within himself about Jesus?",
+  "choices": [
+   "He is a friend of sinners",
+   "He is the Christ",
+   "He has a devil",
+   "If he were a prophet, he would know she is a sinner"
+  ],
+  "answer": 3,
+  "explanation": "This man, if he were a prophet, would have known who and what manner of woman this is that toucheth him: for she is a sinner.",
+  "ref": "Luke 7:39"
+ },
+ {
+  "id": "luke-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In Jesus' story, which debtor would love the creditor most?",
+  "choices": [
+   "The one who owed least",
+   "The one who paid first",
+   "The one who was forgiven most",
+   "Neither of them"
+  ],
+  "answer": 2,
+  "explanation": "I suppose that he, to whom he forgave most. And he said unto him, Thou hast rightly judged.",
+  "ref": "Luke 7:43"
+ },
+ {
+  "id": "luke-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to the woman at the end?",
+  "choices": [
+   "Go and sin no more",
+   "Thy faith hath saved thee; go in peace",
+   "Be thou whole",
+   "Arise and follow me"
+  ],
+  "answer": 1,
+  "explanation": "He said to the woman, Thy faith hath saved thee; go in peace.",
+  "ref": "Luke 7:50"
+ },
+ {
+  "id": "luke-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what did the woman wipe Jesus' feet?",
+  "choices": [
+   "The hairs of her head",
+   "A linen cloth",
+   "Her veil",
+   "Her garment"
+  ],
+  "answer": 0,
+  "explanation": "She began to wash his feet with tears, and did wipe them with the hairs of her head.",
+  "ref": "Luke 7:38"
+ },
+ {
+  "id": "luke-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "What was the name of the Pharisee at whose house Jesus ate?",
+  "choices": [
+   "Levi",
+   "Zacharias",
+   "Annas",
+   "Simon"
+  ],
+  "answer": 3,
+  "explanation": "Jesus answering said unto him, Simon, I have somewhat to say unto thee.",
+  "ref": "Luke 7:40"
+ },
+ {
+  "id": "luke-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much did the two debtors owe?",
+  "choices": [
+   "Two hundred and twenty",
+   "A thousand and ten",
+   "Five hundred pence and fifty",
+   "Five hundred and fifty talents"
+  ],
+  "answer": 2,
+  "explanation": "The one owed five hundred pence, and the other fifty.",
+  "ref": "Luke 7:41"
+ },
+ {
+  "id": "luke-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say Simon had not given him for his feet?",
+  "choices": [
+   "Oil",
+   "Water",
+   "A kiss",
+   "A towel"
+  ],
+  "answer": 1,
+  "explanation": "I entered into thine house, thou gavest me no water for my feet.",
+  "ref": "Luke 7:44"
+ },
+ {
+  "id": "luke-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the woman not ceased to do since Jesus came in?",
+  "choices": [
+   "Kiss his feet",
+   "Weep aloud",
+   "Pray for him",
+   "Call him Lord"
+  ],
+  "answer": 0,
+  "explanation": "This woman since the time I came in hath not ceased to kiss my feet.",
+  "ref": "Luke 7:45"
+ },
+ {
+  "id": "luke-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what did Simon not anoint Jesus' head?",
+  "choices": [
+   "Ointment of spikenard",
+   "Water",
+   "Perfume",
+   "Oil"
+  ],
+  "answer": 3,
+  "explanation": "My head with oil thou didst not anoint: but this woman hath anointed my feet with ointment.",
+  "ref": "Luke 7:46"
+ },
+ {
+  "id": "luke-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jesus say her many sins were forgiven?",
+  "choices": [
+   "For she wept",
+   "For she was poor",
+   "For she loved much",
+   "For she kept the law"
+  ],
+  "answer": 2,
+  "explanation": "Her sins, which are many, are forgiven; for she loved much.",
+  "ref": "Luke 7:47"
+ },
+ {
+  "id": "luke-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they that sat at meat say within themselves?",
+  "choices": [
+   "Is this the Christ?",
+   "Who is this that forgiveth sins also?",
+   "Is not this Joseph's son?",
+   "Who is this that eats with sinners?"
+  ],
+  "answer": 1,
+  "explanation": "They that sat at meat with him began to say within themselves, Who is this that forgiveth sins also?",
+  "ref": "Luke 7:49"
+ },
+ {
+  "id": "luke-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did Jesus say is greater than John in the kingdom of God?",
+  "choices": [
+   "He that is least",
+   "Elias",
+   "The apostles",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "He that is least in the kingdom of God is greater than he.",
+  "ref": "Luke 7:28"
+ },
+ {
+  "id": "luke-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Of whom is it written, \"I send my messenger before thy face\"?",
+  "choices": [
+   "Elias",
+   "Esaias",
+   "Simeon",
+   "John the Baptist"
+  ],
+  "answer": 3,
+  "explanation": "This is he, of whom it is written, Behold, I send my messenger before thy face.",
+  "ref": "Luke 7:27"
+ },
+ {
+  "id": "luke-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the children in the marketplace say they had done?",
+  "choices": [
+   "Sung and wept",
+   "Prayed and fasted",
+   "Piped and mourned",
+   "Worked and rested"
+  ],
+  "answer": 2,
+  "explanation": "We have piped unto you, and ye have not danced; we have mourned to you, and ye have not wept.",
+  "ref": "Luke 7:32"
+ },
+ {
+  "id": "luke-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day did Jesus go to Nain?",
+  "choices": [
+   "The same day",
+   "The day after",
+   "The sabbath",
+   "The third day"
+  ],
+  "answer": 1,
+  "explanation": "It came to pass the day after, that he went into a city called Nain.",
+  "ref": "Luke 7:11"
+ },
+ {
+  "id": "luke-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did the centurion send when Jesus was not far from the house?",
+  "choices": [
+   "Friends",
+   "The elders again",
+   "His servant",
+   "His soldiers"
+  ],
+  "answer": 0,
+  "explanation": "The centurion sent friends to him, saying unto him, Lord, trouble not thyself.",
+  "ref": "Luke 7:6"
+ },
+ {
+  "id": "luke-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the rumour of Jesus' raising the young man go?",
+  "choices": [
+   "Only to Nain",
+   "To Jerusalem alone",
+   "To Rome",
+   "Throughout all Judaea and the region round about"
+  ],
+  "answer": 3,
+  "explanation": "This rumour of him went forth throughout all Judaea, and throughout all the region round about.",
+  "ref": "Luke 7:17"
+ },
+ {
+  "id": "luke-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the woman stand when she began to weep?",
+  "choices": [
+   "At the door",
+   "Beside Simon",
+   "At his feet behind him",
+   "At the table"
+  ],
+  "answer": 2,
+  "explanation": "She stood at his feet behind him weeping, and began to wash his feet with tears.",
+  "ref": "Luke 7:38"
+ },
+ {
+  "id": "luke-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which woman had seven devils go out of her?",
+  "choices": [
+   "Joanna",
+   "Mary called Magdalene",
+   "Susanna",
+   "Mary the mother of Jesus"
+  ],
+  "answer": 1,
+  "explanation": "Certain women, Mary called Magdalene, out of whom went seven devils.",
+  "ref": "Luke 8:2"
+ },
+ {
+  "id": "luke-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What devoured the seed that fell by the way side?",
+  "choices": [
+   "The fowls of the air",
+   "The thorns",
+   "The sun",
+   "The wind"
+  ],
+  "answer": 0,
+  "explanation": "Some fell by the way side; and it was trodden down, and the fowls of the air devoured it.",
+  "ref": "Luke 8:5"
+ },
+ {
+  "id": "luke-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much fruit did the seed on good ground bear?",
+  "choices": [
+   "Thirtyfold",
+   "Sixtyfold",
+   "Tenfold",
+   "An hundredfold"
+  ],
+  "answer": 3,
+  "explanation": "Other fell on good ground, and sprang up, and bare fruit an hundredfold.",
+  "ref": "Luke 8:8"
+ },
+ {
+  "id": "luke-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Jesus when the storm came down on the lake?",
+  "choices": [
+   "On the shore",
+   "Praying on a mountain",
+   "Asleep in the ship",
+   "In Capernaum"
+  ],
+  "answer": 2,
+  "explanation": "As they sailed he fell asleep: and there came down a storm of wind on the lake.",
+  "ref": "Luke 8:23"
+ },
+ {
+  "id": "luke-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus ask his disciples after the calm?",
+  "choices": [
+   "Why are ye afraid?",
+   "Where is your faith?",
+   "Who touched me?",
+   "What manner of men are ye?"
+  ],
+  "answer": 1,
+  "explanation": "He said unto them, Where is your faith? And they being afraid wondered.",
+  "ref": "Luke 8:25"
+ },
+ {
+  "id": "luke-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the man with devils live?",
+  "choices": [
+   "In the tombs",
+   "In the synagogue",
+   "In a ship",
+   "In Capernaum"
+  ],
+  "answer": 0,
+  "explanation": "A certain man, which had devils long time, neither abode in any house, but in the tombs.",
+  "ref": "Luke 8:27"
+ },
+ {
+  "id": "luke-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into what did the devils ask to enter?",
+  "choices": [
+   "A flock of sheep",
+   "The sea",
+   "The tombs",
+   "The herd of swine"
+  ],
+  "answer": 3,
+  "explanation": "They besought him that he would suffer them to enter into them. And he suffered them.",
+  "ref": "Luke 8:32"
+ },
+ {
+  "id": "luke-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the swine after the devils entered?",
+  "choices": [
+   "They ran into the tombs",
+   "They scattered through the city",
+   "They ran down a steep place into the lake",
+   "They fell asleep"
+  ],
+  "answer": 2,
+  "explanation": "The herd ran violently down a steep place into the lake, and were choked.",
+  "ref": "Luke 8:33"
+ },
+ {
+  "id": "luke-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "What was the name of the ruler of the synagogue who came to Jesus?",
+  "choices": [
+   "Chuza",
+   "Jairus",
+   "Simon",
+   "Levi"
+  ],
+  "answer": 1,
+  "explanation": "There came a man named Jairus, and he was a ruler of the synagogue.",
+  "ref": "Luke 8:41"
+ },
+ {
+  "id": "luke-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to the maid when he took her by the hand?",
+  "choices": [
+   "Maid, arise",
+   "Talitha cumi",
+   "Be thou clean",
+   "Come forth"
+  ],
+  "answer": 0,
+  "explanation": "He took her by the hand, and called, saying, Maid, arise.",
+  "ref": "Luke 8:54"
+ },
+ {
+  "id": "luke-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Of whom was Joanna the wife?",
+  "choices": [
+   "Philip",
+   "Zebedee",
+   "Jairus",
+   "Chuza, Herod's steward"
+  ],
+  "answer": 3,
+  "explanation": "Joanna the wife of Chuza Herod's steward, and Susanna, and many others, which ministered unto him of their substance.",
+  "ref": "Luke 8:3"
+ },
+ {
+  "id": "luke-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the seed on the rock wither?",
+  "choices": [
+   "The birds ate it",
+   "The thorns choked it",
+   "It lacked moisture",
+   "The sun scorched it"
+  ],
+  "answer": 2,
+  "explanation": "Some fell upon a rock; and as soon as it was sprung up, it withered away, because it lacked moisture.",
+  "ref": "Luke 8:6"
+ },
+ {
+  "id": "luke-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say the devil does to those by the way side?",
+  "choices": [
+   "Hardens their hearts",
+   "Takes away the word out of their hearts",
+   "Blinds their eyes",
+   "Makes them forget"
+  ],
+  "answer": 1,
+  "explanation": "Then cometh the devil, and taketh away the word out of their hearts, lest they should believe and be saved.",
+  "ref": "Luke 8:12"
+ },
+ {
+  "id": "luke-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say of those on the rock?",
+  "choices": [
+   "They receive the word with joy but have no root",
+   "They hear but never believe",
+   "They bear fruit with patience",
+   "They are choked with cares"
+  ],
+  "answer": 0,
+  "explanation": "They receive the word with joy; and these have no root, which for a while believe, and in time of temptation fall away.",
+  "ref": "Luke 8:13"
+ },
+ {
+  "id": "luke-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What chokes those who are like the seed among thorns?",
+  "choices": [
+   "Persecution and fear",
+   "The devil and his angels",
+   "Pride and envy",
+   "Cares and riches and pleasures of this life"
+  ],
+  "answer": 3,
+  "explanation": "They are choked with cares and riches and pleasures of this life, and bring no fruit to perfection.",
+  "ref": "Luke 8:14"
+ },
+ {
+  "id": "luke-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where is a lighted candle set?",
+  "choices": [
+   "Under a bed",
+   "Under a vessel",
+   "On a candlestick",
+   "In the window"
+  ],
+  "answer": 2,
+  "explanation": "No man covereth it with a vessel, or putteth it under a bed; but setteth it on a candlestick, that they which enter in may see the light.",
+  "ref": "Luke 8:16"
+ },
+ {
+  "id": "luke-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Jesus say are his mother and his brethren?",
+  "choices": [
+   "His disciples only",
+   "Those who hear the word of God and do it",
+   "Those of the house of David",
+   "Those who follow him to the sea"
+  ],
+  "answer": 1,
+  "explanation": "My mother and my brethren are these which hear the word of God, and do it.",
+  "ref": "Luke 8:21"
+ },
+ {
+  "id": "luke-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the disciples say when they woke Jesus?",
+  "choices": [
+   "Master, master, we perish",
+   "Lord, save us",
+   "Master, do you not care",
+   "Help us, Son of David"
+  ],
+  "answer": 0,
+  "explanation": "They came to him, and awoke him, saying, Master, master, we perish.",
+  "ref": "Luke 8:24"
+ },
+ {
+  "id": "luke-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "In which country did they arrive after the storm?",
+  "choices": [
+   "Galilee",
+   "Judaea",
+   "Tyre and Sidon",
+   "The country of the Gadarenes"
+  ],
+  "answer": 3,
+  "explanation": "They arrived at the country of the Gadarenes, which is over against Galilee.",
+  "ref": "Luke 8:26"
+ },
+ {
+  "id": "luke-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the devils beg Jesus not to do?",
+  "choices": [
+   "Send them to the tombs",
+   "Cast them into the fire",
+   "Command them to go out into the deep",
+   "Speak their name"
+  ],
+  "answer": 2,
+  "explanation": "They besought him that he would not command them to go out into the deep.",
+  "ref": "Luke 8:31"
+ },
+ {
+  "id": "luke-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the healed man found when the people came?",
+  "choices": [
+   "Standing before the city gate",
+   "Sitting at Jesus' feet, clothed, in his right mind",
+   "Hiding in the tombs",
+   "Praising God aloud"
+  ],
+  "answer": 1,
+  "explanation": "They found the man, out of whom the devils were departed, sitting at the feet of Jesus, clothed, and in his right mind.",
+  "ref": "Luke 8:35"
+ },
+ {
+  "id": "luke-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the whole multitude of the Gadarenes ask of Jesus?",
+  "choices": [
+   "To depart from them",
+   "To heal their sick",
+   "To stay with them",
+   "To drive out more devils"
+  ],
+  "answer": 0,
+  "explanation": "The whole multitude of the country of the Gadarenes round about besought him to depart from them; for they were taken with great fear.",
+  "ref": "Luke 8:37"
+ },
+ {
+  "id": "luke-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus tell the healed man to do?",
+  "choices": [
+   "Follow him in the ship",
+   "Go to the priests",
+   "Tell no man",
+   "Return home and shew how great things God hath done"
+  ],
+  "answer": 3,
+  "explanation": "Return to thine own house, and shew how great things God hath done unto thee.",
+  "ref": "Luke 8:39"
+ },
+ {
+  "id": "luke-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the woman declare before all the people?",
+  "choices": [
+   "That she was unclean",
+   "That she had been a sinner",
+   "Why she had touched him and how she was healed",
+   "That she believed in Moses"
+  ],
+  "answer": 2,
+  "explanation": "She declared unto him before all the people for what cause she had touched him and how she was healed immediately.",
+  "ref": "Luke 8:47"
+ },
+ {
+  "id": "luke-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What message came from the ruler's house?",
+  "choices": [
+   "Come quickly, she wakes",
+   "Thy daughter is dead; trouble not the Master",
+   "Thy daughter is healed",
+   "Bring the physician"
+  ],
+  "answer": 1,
+  "explanation": "There cometh one from the ruler of the synagogue's house, saying to him, Thy daughter is dead; trouble not the Master.",
+  "ref": "Luke 8:49"
+ },
+ {
+  "id": "luke-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say was given to the disciples to know?",
+  "choices": [
+   "The mysteries of the kingdom of God",
+   "The day of judgement",
+   "The names of the prophets",
+   "The secrets of the law"
+  ],
+  "answer": 0,
+  "explanation": "Unto you it is given to know the mysteries of the kingdom of God: but to others in parables.",
+  "ref": "Luke 8:10"
+ },
+ {
+  "id": "luke-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jesus speak to others in parables?",
+  "choices": [
+   "To hide it from Herod",
+   "To test their patience",
+   "To teach the children",
+   "Seeing they might not see, and hearing not understand"
+  ],
+  "answer": 3,
+  "explanation": "To others in parables; that seeing they might not see, and hearing they might not understand.",
+  "ref": "Luke 8:10"
+ },
+ {
+  "id": "luke-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say will be given to whosoever hath?",
+  "choices": [
+   "Nothing more",
+   "The kingdom at once",
+   "More shall be given",
+   "A reward in heaven only"
+  ],
+  "answer": 2,
+  "explanation": "Take heed therefore how ye hear: for whosoever hath, to him shall be given.",
+  "ref": "Luke 8:18"
+ },
+ {
+  "id": "luke-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Which woman is named with Joanna as ministering to Jesus of their substance?",
+  "choices": [
+   "Martha",
+   "Susanna",
+   "Salome",
+   "Anna"
+  ],
+  "answer": 1,
+  "explanation": "Joanna the wife of Chuza Herod's steward, and Susanna, and many others, which ministered unto him of their substance.",
+  "ref": "Luke 8:3"
+ },
+ {
+  "id": "luke-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what had the man been kept bound?",
+  "choices": [
+   "Chains and fetters",
+   "Ropes and cords",
+   "Iron gates",
+   "Strong bands of leather"
+  ],
+  "answer": 0,
+  "explanation": "He was kept bound with chains and in fetters; and he brake the bands.",
+  "ref": "Luke 8:29"
+ },
+ {
+  "id": "luke-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the herd of swine feeding?",
+  "choices": [
+   "In the plain",
+   "By the lake shore",
+   "In the tombs",
+   "On the mountain"
+  ],
+  "answer": 3,
+  "explanation": "There was there an herd of many swine feeding on the mountain.",
+  "ref": "Luke 8:32"
+ },
+ {
+  "id": "luke-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "About how old was Jairus's only daughter?",
+  "choices": [
+   "Seven years",
+   "Ten years",
+   "Twelve years",
+   "Sixteen years"
+  ],
+  "answer": 2,
+  "explanation": "He had one only daughter, about twelve years of age, and she lay a dying.",
+  "ref": "Luke 8:42"
+ },
+ {
+  "id": "luke-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the woman spent on physicians?",
+  "choices": [
+   "Half her goods",
+   "All her living",
+   "Her husband's gold",
+   "Only a little"
+  ],
+  "answer": 1,
+  "explanation": "A woman having an issue of blood twelve years, which had spent all her living upon physicians.",
+  "ref": "Luke 8:43"
+ },
+ {
+  "id": "luke-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the woman touch?",
+  "choices": [
+   "The border of his garment",
+   "His hand",
+   "His feet",
+   "His sleeve"
+  ],
+  "answer": 0,
+  "explanation": "She came behind him, and touched the border of his garment: and immediately her issue of blood stanched.",
+  "ref": "Luke 8:44"
+ },
+ {
+  "id": "luke-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who said, \"The multitude throng thee and press thee\"?",
+  "choices": [
+   "John",
+   "James",
+   "Jairus",
+   "Peter"
+  ],
+  "answer": 3,
+  "explanation": "Peter and they that were with him said, Master, the multitude throng thee and press thee, and sayest thou, Who touched me?",
+  "ref": "Luke 8:45"
+ },
+ {
+  "id": "luke-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say he perceived was gone out of him?",
+  "choices": [
+   "Strength",
+   "Faith",
+   "Virtue",
+   "Power to heal"
+  ],
+  "answer": 2,
+  "explanation": "Somebody hath touched me: for I perceive that virtue is gone out of me.",
+  "ref": "Luke 8:46"
+ },
+ {
+  "id": "luke-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Jesus allow to go into the house with the parents?",
+  "choices": [
+   "The twelve",
+   "Peter, James and John",
+   "The elders",
+   "Jairus's friends"
+  ],
+  "answer": 1,
+  "explanation": "He suffered no man to go in, save Peter, and James, and John, and the father and the mother of the maiden.",
+  "ref": "Luke 8:51"
+ },
+ {
+  "id": "luke-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say of the maiden?",
+  "choices": [
+   "She is not dead, but sleepeth",
+   "She shall live",
+   "She is in peace",
+   "She is far from death"
+  ],
+  "answer": 0,
+  "explanation": "Weep not; she is not dead, but sleepeth.",
+  "ref": "Luke 8:52"
+ },
+ {
+  "id": "luke-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus command to be given the girl after she arose?",
+  "choices": [
+   "Water",
+   "A garment",
+   "Wine",
+   "Meat"
+  ],
+  "answer": 3,
+  "explanation": "Her spirit came again, and she arose straightway: and he commanded to give her meat.",
+  "ref": "Luke 8:55"
+ },
+ {
+  "id": "luke-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus charge the girl's parents to do?",
+  "choices": [
+   "Thank the priest",
+   "Bring an offering",
+   "Tell no man what was done",
+   "Follow him"
+  ],
+  "answer": 2,
+  "explanation": "Her parents were astonished: but he charged them that they should tell no man what was done.",
+  "ref": "Luke 8:56"
  }
 ]
