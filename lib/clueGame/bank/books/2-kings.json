@@ -5840,6 +5840,646 @@
   "ref": "2 Kings 10:29–31"
  },
  {
+  "id": "2-kings-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jehu say to all the people the morning after the heads were piled at the gate?",
+  "choices": [
+   "Ye are guilty",
+   "Ye shall flee",
+   "Ye are my servants",
+   "Ye be righteous"
+  ],
+  "answer": 3,
+  "explanation": "He said to all the people, Ye be righteous: behold, I conspired against my master, and slew him: but who slew all these?",
+  "ref": "2 Kings 10:9"
+ },
+ {
+  "id": "2-kings-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jehu meet at the shearing house on the way to Samaria?",
+  "choices": [
+   "The priests of Baal",
+   "The brethren of Ahaziah king of Judah",
+   "The sons of Hazael",
+   "The servants of Elisha"
+  ],
+  "answer": 1,
+  "explanation": "Jehu met with the brethren of Ahaziah king of Judah.",
+  "ref": "2 Kings 10:12–13"
+ },
+ {
+  "id": "2-kings-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many of Ahaziah's brethren did Jehu's men slay at the pit?",
+  "choices": [
+   "Two and forty",
+   "Seventy",
+   "Twelve",
+   "Fourscore"
+  ],
+  "answer": 0,
+  "explanation": "They slew them at the pit of the shearing house, even two and forty men.",
+  "ref": "2 Kings 10:14"
+ },
+ {
+  "id": "2-kings-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jehu tell the people to proclaim for Baal?",
+  "choices": [
+   "A feast of trumpets",
+   "A solemn assembly",
+   "A fast",
+   "A war"
+  ],
+  "answer": 1,
+  "explanation": "Jehu said, Proclaim a solemn assembly for Baal. And they proclaimed it.",
+  "ref": "2 Kings 10:20"
+ },
+ {
+  "id": "2-kings-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the house of Baal made into after it was broken down?",
+  "choices": [
+   "A storehouse",
+   "A temple of the LORD",
+   "A fortress",
+   "A draught house"
+  ],
+  "answer": 3,
+  "explanation": "They brake down the house of Baal, and made it a draught house unto this day.",
+  "ref": "2 Kings 10:27"
+ },
+ {
+  "id": "2-kings-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jehu do in Samaria to all that remained to Ahab?",
+  "choices": [
+   "He slew them",
+   "He sent them to Syria",
+   "He made them servants",
+   "He spared them"
+  ],
+  "answer": 0,
+  "explanation": "He slew all that remained unto Ahab in Samaria, till he had destroyed him, according to the saying of the LORD.",
+  "ref": "2 Kings 10:17"
+ },
+ {
+  "id": "2-kings-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Jehu buried?",
+  "choices": [
+   "In Bethel",
+   "In Dan",
+   "In Samaria",
+   "In Jezreel"
+  ],
+  "answer": 2,
+  "explanation": "Jehu slept with his fathers: and they buried him in Samaria.",
+  "ref": "2 Kings 10:35"
+ },
+ {
+  "id": "2-kings-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did Jehu reign over Israel in Samaria?",
+  "choices": [
+   "Forty",
+   "Twelve",
+   "Seven",
+   "Twenty and eight"
+  ],
+  "answer": 3,
+  "explanation": "The time that Jehu reigned over Israel in Samaria was twenty and eight years.",
+  "ref": "2 Kings 10:36"
+ },
+ {
+  "id": "2-kings-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who smote Israel in all its coasts when the LORD began to cut Israel short?",
+  "choices": [
+   "Ben-hadad",
+   "Joash",
+   "Naaman",
+   "Hazael"
+  ],
+  "answer": 3,
+  "explanation": "In those days the LORD began to cut Israel short: and Hazael smote them in all the coasts of Israel.",
+  "ref": "2 Kings 10:32"
+ },
+ {
+  "id": "2-kings-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jehu destroy out of Israel?",
+  "choices": [
+   "The golden calves",
+   "The temple",
+   "The ark",
+   "Baal"
+  ],
+  "answer": 3,
+  "explanation": "Thus Jehu destroyed Baal out of Israel.",
+  "ref": "2 Kings 10:28"
+ },
+ {
+  "id": "2-kings-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehu's first letter tell the rulers of Samaria to do?",
+  "choices": [
+   "Send tribute to Jezreel",
+   "Surrender the city",
+   "Bring Ahab's treasures",
+   "Set the best of Ahab's sons on his throne and fight"
+  ],
+  "answer": 3,
+  "explanation": "Look even out the best and meetest of your master's sons, and set him on his father's throne, and fight for your master's house.",
+  "ref": "2 Kings 10:2–3"
+ },
+ {
+  "id": "2-kings-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the rulers exceedingly afraid of Jehu?",
+  "choices": [
+   "He had a great army at the gate",
+   "He had seized the city",
+   "Elisha had cursed them",
+   "Two kings had not stood before him"
+  ],
+  "answer": 3,
+  "explanation": "They said, Behold, two kings stood not before him: how then shall we stand?",
+  "ref": "2 Kings 10:4"
+ },
+ {
+  "id": "2-kings-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the rulers answer when they sent to Jehu?",
+  "choices": [
+   "We will send Ahab's sons to Judah",
+   "We will not make any king: do what is good in thine eyes",
+   "We will fight for Ahab",
+   "We will flee to Syria"
+  ],
+  "answer": 1,
+  "explanation": "We are thy servants; we will not make any king: do thou that which is good in thine eyes.",
+  "ref": "2 Kings 10:5"
+ },
+ {
+  "id": "2-kings-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehu's second letter tell them to bring by the next day?",
+  "choices": [
+   "The heads of Ahab's sons",
+   "The sons themselves, alive",
+   "Gold and silver",
+   "Ahab's chariots"
+  ],
+  "answer": 0,
+  "explanation": "Take ye the heads of the men your master's sons, and come to me to Jezreel by to morrow this time.",
+  "ref": "2 Kings 10:6"
+ },
+ {
+  "id": "2-kings-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose word did Jehu say the LORD had done to the house of Ahab?",
+  "choices": [
+   "Elisha's",
+   "Nathan's",
+   "Samuel's",
+   "Elijah's"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hath done that which he spake by his servant Elijah.",
+  "ref": "2 Kings 10:10"
+ },
+ {
+  "id": "2-kings-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the errand of Ahaziah's brethren when Jehu met them?",
+  "choices": [
+   "To salute the children of the king and queen",
+   "To buy horses",
+   "To fight Jehu",
+   "To worship Baal"
+  ],
+  "answer": 0,
+  "explanation": "We go down to salute the children of the king and the children of the queen.",
+  "ref": "2 Kings 10:13"
+ },
+ {
+  "id": "2-kings-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehu ask Jehonadab the son of Rechab?",
+  "choices": [
+   "Do you serve Baal?",
+   "Where is Elijah?",
+   "Is thine heart right, as my heart is with thy heart?",
+   "Will you fight for me?"
+  ],
+  "answer": 2,
+  "explanation": "Is thine heart right, as my heart is with thy heart? And Jehonadab answered, It is.",
+  "ref": "2 Kings 10:15"
+ },
+ {
+  "id": "2-kings-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehu tell the priest of the vestry to bring out?",
+  "choices": [
+   "Spears for the guard",
+   "Torches for the altar",
+   "Vestments for all the worshippers of Baal",
+   "Wine for the feast"
+  ],
+  "answer": 2,
+  "explanation": "Bring forth vestments for all the worshippers of Baal.",
+  "ref": "2 Kings 10:22"
+ },
+ {
+  "id": "2-kings-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehu say to the worshippers about the servants of the LORD?",
+  "choices": [
+   "Let them sing",
+   "Let none be here, but worshippers of Baal only",
+   "Welcome them all",
+   "Send them to the gate"
+  ],
+  "answer": 1,
+  "explanation": "Search, and look that there be here with you none of the servants of the LORD, but the worshippers of Baal only.",
+  "ref": "2 Kings 10:23"
+ },
+ {
+  "id": "2-kings-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehu say would happen to a man who let one of the worshippers escape?",
+  "choices": [
+   "He would be fined",
+   "His life would be for the life of him",
+   "He would lose his hand",
+   "He would be sent to Syria"
+  ],
+  "answer": 1,
+  "explanation": "He that letteth him go, his life shall be for the life of him.",
+  "ref": "2 Kings 10:24"
+ },
+ {
+  "id": "2-kings-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Jehu command to go in and slay the worshippers of Baal?",
+  "choices": [
+   "Jehonadab alone",
+   "The elders",
+   "The guard and the captains",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "Jehu said to the guard and to the captains, Go in, and slay them; let none come forth.",
+  "ref": "2 Kings 10:25"
+ },
+ {
+  "id": "2-kings-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehu's men break down in the house of Baal?",
+  "choices": [
+   "The golden calves of Bethel",
+   "The altar of the LORD",
+   "The gates of Samaria",
+   "The image of Baal and his house"
+  ],
+  "answer": 3,
+  "explanation": "They brake down the image of Baal, and brake down the house of Baal.",
+  "ref": "2 Kings 10:27"
+ },
+ {
+  "id": "2-kings-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD promise Jehu for doing what was right in his eyes?",
+  "choices": [
+   "He would rule Judah",
+   "He would live a hundred years",
+   "He would defeat Syria",
+   "His sons to the fourth generation would reign"
+  ],
+  "answer": 3,
+  "explanation": "Thy children of the fourth generation shall sit on the throne of Israel.",
+  "ref": "2 Kings 10:30"
+ },
+ {
+  "id": "2-kings-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jehu fall short even after destroying Baal?",
+  "choices": [
+   "He married a daughter of Ahab",
+   "He refused to fight",
+   "He did not walk in the LORD's law with all his heart",
+   "He built a house of Baal"
+  ],
+  "answer": 2,
+  "explanation": "Jehu took no heed to walk in the law of the LORD God of Israel with all his heart.",
+  "ref": "2 Kings 10:31"
+ },
+ {
+  "id": "2-kings-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who sent word to Jehu that they were his servants?",
+  "choices": [
+   "The priests of Baal",
+   "The steward, the city governor, the elders and the guardians",
+   "The captains of the host",
+   "Ahab's sons"
+  ],
+  "answer": 1,
+  "explanation": "He that was over the house, he that was over the city, the elders also, and the bringers up sent to Jehu, saying, We are thy servants.",
+  "ref": "2 Kings 10:5"
+ },
+ {
+  "id": "2-kings-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jehu tell them to lay the heads of the king's sons?",
+  "choices": [
+   "At the shearing house",
+   "Before the temple",
+   "In two heaps at the entering in of the gate",
+   "In the house of Baal"
+  ],
+  "answer": 2,
+  "explanation": "Lay ye them in two heaps at the entering in of the gate until the morning.",
+  "ref": "2 Kings 10:8"
+ },
+ {
+  "id": "2-kings-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jehu meet the brethren of Ahaziah?",
+  "choices": [
+   "At the shearing house",
+   "At Megiddo",
+   "At the gate of Jezreel",
+   "At the Jordan"
+  ],
+  "answer": 0,
+  "explanation": "As he was at the shearing house in the way, Jehu met with the brethren of Ahaziah.",
+  "ref": "2 Kings 10:12"
+ },
+ {
+  "id": "2-kings-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jehu command his men to do with Ahaziah's brethren?",
+  "choices": [
+   "Let them go",
+   "Bind them",
+   "Send them to Samaria",
+   "Take them alive"
+  ],
+  "answer": 3,
+  "explanation": "He said, Take them alive. And they took them alive, and slew them.",
+  "ref": "2 Kings 10:14"
+ },
+ {
+  "id": "2-kings-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much did Jehu say Ahab served Baal?",
+  "choices": [
+   "Yearly",
+   "A little",
+   "Not at all",
+   "Greatly"
+  ],
+  "answer": 1,
+  "explanation": "Ahab served Baal a little; but Jehu shall serve him much.",
+  "ref": "2 Kings 10:18"
+ },
+ {
+  "id": "2-kings-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What threat did Jehu make about the great sacrifice to Baal?",
+  "choices": [
+   "Whoever came would be seized",
+   "Whoever spoke would be slain",
+   "Whoever was wanting should not live",
+   "Whoever came would be paid"
+  ],
+  "answer": 2,
+  "explanation": "Let none be wanting: whosoever shall be wanting, he shall not live.",
+  "ref": "2 Kings 10:19"
+ },
+ {
+  "id": "2-kings-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How full was the house of Baal when the worshippers came?",
+  "choices": [
+   "Empty at one end",
+   "Full only of priests",
+   "Full from one end to another",
+   "Half full"
+  ],
+  "answer": 2,
+  "explanation": "The house of Baal was full from one end to another.",
+  "ref": "2 Kings 10:21"
+ },
+ {
+  "id": "2-kings-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men did Jehu appoint outside the house of Baal?",
+  "choices": [
+   "Forty",
+   "Twelve",
+   "Fourscore",
+   "Seventy"
+  ],
+  "answer": 2,
+  "explanation": "Jehu appointed fourscore men without.",
+  "ref": "2 Kings 10:24"
+ },
+ {
+  "id": "2-kings-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Jehu done before he told the guard to go in and slay them?",
+  "choices": [
+   "Made an end of offering the burnt offering",
+   "Prayed to the LORD",
+   "Blown the trumpet",
+   "Sent Jehonadab away"
+  ],
+  "answer": 0,
+  "explanation": "As soon as he had made an end of offering the burnt offering, Jehu said to the guard and to the captains, Go in, and slay them.",
+  "ref": "2 Kings 10:25"
+ },
+ {
+  "id": "2-kings-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which sins of Jeroboam did Jehu not depart from?",
+  "choices": [
+   "The golden calves in Bethel and Dan",
+   "The high places of Judah",
+   "The idols of Tyre",
+   "The altar of Baal"
+  ],
+  "answer": 0,
+  "explanation": "Jehu departed not from the sins of Jeroboam, to wit, the golden calves that were in Bethel, and that were in Dan.",
+  "ref": "2 Kings 10:29"
+ },
+ {
+  "id": "2-kings-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tribes' lands did Hazael smite east of the Jordan?",
+  "choices": [
+   "Gad, Reuben and Manasseh",
+   "Judah, Simeon and Benjamin",
+   "Ephraim, Dan and Asher",
+   "Zebulun, Issachar and Naphtali"
+  ],
+  "answer": 0,
+  "explanation": "From Jordan eastward, all the land of Gilead, the Gadites, and the Reubenites, and the Manassites.",
+  "ref": "2 Kings 10:33"
+ },
+ {
+  "id": "2-kings-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "What river was near Aroer in the land Hazael smote?",
+  "choices": [
+   "Arnon",
+   "Kishon",
+   "Jabbok",
+   "Kidron"
+  ],
+  "answer": 0,
+  "explanation": "From Aroer, which is by the river Arnon, even Gilead and Bashan.",
+  "ref": "2 Kings 10:33"
+ },
+ {
+  "id": "2-kings-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who reigned after Jehu?",
+  "choices": [
+   "Jehoahaz his son",
+   "Joash",
+   "Jeroboam",
+   "Ahaziah"
+  ],
+  "answer": 0,
+  "explanation": "Jehu slept with his fathers: Jehoahaz his son reigned in his stead.",
+  "ref": "2 Kings 10:35"
+ },
+ {
+  "id": "2-kings-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say should not fall to the earth?",
+  "choices": [
+   "The walls of Samaria",
+   "Nothing of the word the LORD spoke about the house of Ahab",
+   "Any of the temple stones",
+   "Any of Jehu's sons"
+  ],
+  "answer": 1,
+  "explanation": "There shall fall unto the earth nothing of the word of the LORD, which the LORD spake concerning the house of Ahab.",
+  "ref": "2 Kings 10:10"
+ },
+ {
+  "id": "2-kings-10-h-14",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Jehu slay in Jezreel besides the sons of Ahab?",
+  "choices": [
+   "His great men, kinsfolks and priests",
+   "Hazael's captains",
+   "The priests of Baal",
+   "The elders of Samaria"
+  ],
+  "answer": 0,
+  "explanation": "Jehu slew all that remained of the house of Ahab in Jezreel, and all his great men, and his kinsfolks, and his priests.",
+  "ref": "2 Kings 10:11"
+ },
+ {
+  "id": "2-kings-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jehu say the rulers must do to be his?",
+  "choices": [
+   "Pay him tribute",
+   "Hearken unto his voice and take the heads",
+   "Fight for Ahab's house",
+   "Serve Baal"
+  ],
+  "answer": 1,
+  "explanation": "If ye be mine, and if ye will hearken unto my voice, take ye the heads of the men your master's sons.",
+  "ref": "2 Kings 10:6"
+ },
+ {
   "id": "old-2-kings-11-1",
   "chapter": 11,
   "level": "beginner",
