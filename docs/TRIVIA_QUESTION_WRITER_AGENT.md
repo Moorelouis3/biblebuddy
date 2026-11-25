@@ -59,7 +59,15 @@ how many of each level to write. For each chapter, in order:
    named right after Juda"); a blank in a sentence's grammar ("As he is in
    what…"); trivial quantities ("how many sins? All"); the same fact from two
    sides or at two levels. Write every question by hand from the text, never
-   with a generator script. Add them to `lib/clueGame/bank/books/<book>.json` (the same file for
+   with a generator script.
+
+   The answer must be a person or nation, a place, an action someone takes,
+   a reason given, a comparison or image that stands out, or a promise or
+   warning with its content. A single common word lifted out of a clause is
+   not an answer ("What will Israel not be, though she eats? Satisfied").
+   In poetry and prophecy (Psalms, Proverbs, the prophets) ask who is
+   addressed, what is promised or threatened and why, and the striking
+   images, not the wording of a line. Add them to `lib/clueGame/bank/books/<book>.json` (the same file for
    Genesis; never add new ones to the .ts files).
 5. `npx tsx scripts/trivia-import-old.ts --index`
 6. `npx tsx scripts/trivia-writer.ts check <book> <chapter>` must say `ok`.
