@@ -6736,22 +6736,6 @@
   "ref": "1 Chronicles 11:6"
  },
  {
-  "id": "old-1-chronicles-11-4",
-  "chapter": 11,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What title is given to David's famous warriors later in the chapter?",
-  "choices": [
-   "Priests of valor",
-   "Captains of Judah",
-   "Watchmen",
-   "Mighty men"
-  ],
-  "answer": 3,
-  "explanation": "The chapter honors David's mighty men.",
-  "ref": "1 Chronicles 11:10"
- },
- {
   "id": "old-1-chronicles-11-5",
   "chapter": 11,
   "level": "beginner",
@@ -6766,6 +6750,694 @@
   "answer": 3,
   "explanation": "David poured it out to the Lord because it represented their blood.",
   "ref": "1 Chronicles 11:17–19"
+ },
+ {
+  "id": "1-chronicles-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did all Israel say to David when they gathered to him at Hebron?",
+  "choices": [
+   "We are thy servants",
+   "We are thy bone and thy flesh",
+   "We will make thee king",
+   "Thou art our shepherd"
+  ],
+  "answer": 1,
+  "explanation": "All Israel gathered themselves to David unto Hebron, saying, Behold, we are thy bone and thy flesh.",
+  "ref": "1 Chronicles 11:1"
+ },
+ {
+  "id": "1-chronicles-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "By the word of the LORD through whom was David anointed king?",
+  "choices": [
+   "Nathan",
+   "Gad",
+   "Samuel",
+   "Abiathar"
+  ],
+  "answer": 2,
+  "explanation": "They anointed David king over Israel, according to the word of the LORD by Samuel.",
+  "ref": "1 Chronicles 11:3"
+ },
+ {
+  "id": "1-chronicles-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "What was Jebus, where the Jebusites lived?",
+  "choices": [
+   "Hebron",
+   "Bethlehem",
+   "Gibeon",
+   "Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "David and all Israel went to Jerusalem, which is Jebus; where the Jebusites were.",
+  "ref": "1 Chronicles 11:4"
+ },
+ {
+  "id": "1-chronicles-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name was the castle of Zion given after David dwelt in it?",
+  "choices": [
+   "The city of David",
+   "The house of the LORD",
+   "Millo",
+   "The city of Judah"
+  ],
+  "answer": 0,
+  "explanation": "David dwelt in the castle; therefore they called it the city of David.",
+  "ref": "1 Chronicles 11:7"
+ },
+ {
+  "id": "1-chronicles-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the chief of the captains of David's mighty men?",
+  "choices": [
+   "Abishai",
+   "Jashobeam",
+   "Eleazar",
+   "Benaiah"
+  ],
+  "answer": 1,
+  "explanation": "Jashobeam, an Hachmonite, the chief of the captains.",
+  "ref": "1 Chronicles 11:11"
+ },
+ {
+  "id": "1-chronicles-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the brother of Joab and chief of the three?",
+  "choices": [
+   "Asahel",
+   "Elhanan",
+   "Abishai",
+   "Ira"
+  ],
+  "answer": 2,
+  "explanation": "Abishai the brother of Joab, he was chief of the three.",
+  "ref": "1 Chronicles 11:20"
+ },
+ {
+  "id": "1-chronicles-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal did Benaiah slay in a pit on a snowy day?",
+  "choices": [
+   "A bear",
+   "A wolf",
+   "A wild ox",
+   "A lion"
+  ],
+  "answer": 3,
+  "explanation": "He went down and slew a lion in a pit in a snowy day.",
+  "ref": "1 Chronicles 11:22"
+ },
+ {
+  "id": "1-chronicles-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Benaiah use to slay the Egyptian?",
+  "choices": [
+   "The Egyptian's own spear",
+   "A sling and stone",
+   "A sword",
+   "A bow"
+  ],
+  "answer": 0,
+  "explanation": "He plucked the spear out of the Egyptian's hand, and slew him with his own spear.",
+  "ref": "1 Chronicles 11:23"
+ },
+ {
+  "id": "1-chronicles-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which well did David long to drink?",
+  "choices": [
+   "The well of Hebron",
+   "The well of Bethlehem",
+   "The well of Jerusalem",
+   "The well of Adullam"
+  ],
+  "answer": 1,
+  "explanation": "David said, Oh that one would give me drink of the water of the well of Bethlehem, that is at the gate!",
+  "ref": "1 Chronicles 11:17"
+ },
+ {
+  "id": "1-chronicles-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do with the water the three brought him?",
+  "choices": [
+   "He drank it",
+   "He gave it to Joab",
+   "He poured it out to the LORD",
+   "He shared it with all"
+  ],
+  "answer": 2,
+  "explanation": "David would not drink of it, but poured it out to the LORD.",
+  "ref": "1 Chronicles 11:18"
+ },
+ {
+  "id": "1-chronicles-11-e-11",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these mighty men was a Hittite?",
+  "choices": [
+   "Zelek",
+   "Ithmah",
+   "Hezro",
+   "Uriah"
+  ],
+  "answer": 3,
+  "explanation": "Uriah the Hittite, Zabad the son of Ahlai.",
+  "ref": "1 Chronicles 11:41"
+ },
+ {
+  "id": "1-chronicles-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David promise to whoever smote the Jebusites first?",
+  "choices": [
+   "He would marry the king's daughter",
+   "He would receive the castle",
+   "He would be chief and captain",
+   "He would be rich"
+  ],
+  "answer": 2,
+  "explanation": "David said, Whosoever smiteth the Jebusites first shall be chief and captain.",
+  "ref": "1 Chronicles 11:6"
+ },
+ {
+  "id": "1-chronicles-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the inhabitants of Jebus say to David?",
+  "choices": [
+   "We will pay tribute",
+   "Thou art welcome",
+   "Go to Hebron",
+   "Thou shalt not come hither"
+  ],
+  "answer": 3,
+  "explanation": "The inhabitants of Jebus said to David, Thou shalt not come hither.",
+  "ref": "1 Chronicles 11:5"
+ },
+ {
+  "id": "1-chronicles-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say David would do for His people Israel?",
+  "choices": [
+   "Feed them and be ruler over them",
+   "Lead them to Egypt",
+   "Judge them as a priest",
+   "Build His house"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God said unto thee, Thou shalt feed my people Israel, and thou shalt be ruler over my people Israel.",
+  "ref": "1 Chronicles 11:2"
+ },
+ {
+  "id": "1-chronicles-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David make with the elders of Israel at Hebron?",
+  "choices": [
+   "A treaty with Philistia",
+   "A covenant before the LORD",
+   "A tax",
+   "A feast"
+  ],
+  "answer": 1,
+  "explanation": "David made a covenant with them in Hebron before the LORD.",
+  "ref": "1 Chronicles 11:3"
+ },
+ {
+  "id": "1-chronicles-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David wax greater and greater?",
+  "choices": [
+   "He had many wives",
+   "His army was the largest",
+   "The LORD of hosts was with him",
+   "He built the city"
+  ],
+  "answer": 2,
+  "explanation": "David waxed greater and greater: for the LORD of hosts was with him.",
+  "ref": "1 Chronicles 11:9"
+ },
+ {
+  "id": "1-chronicles-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who repaired the rest of the city after David built from Millo?",
+  "choices": [
+   "Abishai",
+   "Benaiah",
+   "Eleazar",
+   "Joab"
+  ],
+  "answer": 3,
+  "explanation": "David built the city round about, even from Millo round about: and Joab repaired the rest of the city.",
+  "ref": "1 Chronicles 11:8"
+ },
+ {
+  "id": "1-chronicles-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many did Jashobeam slay at one time with his spear?",
+  "choices": [
+   "Three hundred",
+   "Three thousand",
+   "Thirty",
+   "Eight hundred"
+  ],
+  "answer": 0,
+  "explanation": "He lifted up his spear against three hundred slain by him at one time.",
+  "ref": "1 Chronicles 11:11"
+ },
+ {
+  "id": "1-chronicles-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was a parcel of ground full of barley that Eleazar defended?",
+  "choices": [
+   "Adullam",
+   "Pas-dammim",
+   "Rephaim",
+   "Kabzeel"
+  ],
+  "answer": 1,
+  "explanation": "He was with David at Pas-dammim, where was a parcel of ground full of barley.",
+  "ref": "1 Chronicles 11:13"
+ },
+ {
+  "id": "1-chronicles-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did three of the thirty captains go down to David?",
+  "choices": [
+   "The castle of Zion",
+   "The valley of Rephaim",
+   "The cave of Adullam",
+   "The gate of Hebron"
+  ],
+  "answer": 2,
+  "explanation": "Three of the thirty captains went down to the rock to David, into the cave of Adullam.",
+  "ref": "1 Chronicles 11:15"
+ },
+ {
+  "id": "1-chronicles-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the Philistines' garrison when David longed for water?",
+  "choices": [
+   "Gath",
+   "Adullam",
+   "Hebron",
+   "Bethlehem"
+  ],
+  "answer": 3,
+  "explanation": "David was then in the hold, and the Philistines' garrison was then at Bethlehem.",
+  "ref": "1 Chronicles 11:16"
+ },
+ {
+  "id": "1-chronicles-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David say he could not drink the water?",
+  "choices": [
+   "It was the blood of men who risked their lives",
+   "It was unclean",
+   "It was too bitter",
+   "It belonged to the LORD"
+  ],
+  "answer": 0,
+  "explanation": "Shall I drink the blood of these men that have put their lives in jeopardy? for with the jeopardy of their lives they brought it.",
+  "ref": "1 Chronicles 11:19"
+ },
+ {
+  "id": "1-chronicles-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Benaiah's father?",
+  "choices": [
+   "Zeruiah",
+   "Jehoiada",
+   "Dodo",
+   "Ahlai"
+  ],
+  "answer": 1,
+  "explanation": "Benaiah the son of Jehoiada, the son of a valiant man of Kabzeel.",
+  "ref": "1 Chronicles 11:22"
+ },
+ {
+  "id": "1-chronicles-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How tall was the Egyptian that Benaiah slew?",
+  "choices": [
+   "Three cubits",
+   "Seven cubits",
+   "Five cubits",
+   "Ten cubits"
+  ],
+  "answer": 2,
+  "explanation": "He slew an Egyptian, a man of great stature, five cubits high.",
+  "ref": "1 Chronicles 11:23"
+ },
+ {
+  "id": "1-chronicles-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the Egyptian's spear like?",
+  "choices": [
+   "A tree trunk",
+   "A ship's mast",
+   "A shepherd's rod",
+   "A weaver's beam"
+  ],
+  "answer": 3,
+  "explanation": "In the Egyptian's hand was a spear like a weaver's beam.",
+  "ref": "1 Chronicles 11:23"
+ },
+ {
+  "id": "1-chronicles-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Benaiah carry when he went down to the Egyptian?",
+  "choices": [
+   "A staff",
+   "A sword",
+   "A sling",
+   "Nothing"
+  ],
+  "answer": 0,
+  "explanation": "He went down to him with a staff, and plucked the spear out of the Egyptian's hand.",
+  "ref": "1 Chronicles 11:23"
+ },
+ {
+  "id": "1-chronicles-11-m-16",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which enemy's two lionlike men did Benaiah slay?",
+  "choices": [
+   "Philistia",
+   "Moab",
+   "Egypt",
+   "Edom"
+  ],
+  "answer": 1,
+  "explanation": "He slew two lionlike men of Moab.",
+  "ref": "1 Chronicles 11:22"
+ },
+ {
+  "id": "1-chronicles-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Eleazar, one of the three mighties, was the son of whom?",
+  "choices": [
+   "Zeruiah",
+   "Hachmon",
+   "Ahlai",
+   "Dodo"
+  ],
+  "answer": 3,
+  "explanation": "After him was Eleazar the son of Dodo, the Ahohite, who was one of the three mighties.",
+  "ref": "1 Chronicles 11:12"
+ },
+ {
+  "id": "1-chronicles-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of the thirty captains went down to the rock to David?",
+  "choices": [
+   "Three",
+   "Two",
+   "Seven",
+   "Thirty"
+  ],
+  "answer": 0,
+  "explanation": "Now three of the thirty captains went down to the rock to David.",
+  "ref": "1 Chronicles 11:15"
+ },
+ {
+  "id": "1-chronicles-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abishai not attain to?",
+  "choices": [
+   "The thirty",
+   "The first three",
+   "The captaincy of the host",
+   "A name among the people"
+  ],
+  "answer": 1,
+  "explanation": "Of the three, he was more honourable than the two; howbeit he attained not to the first three.",
+  "ref": "1 Chronicles 11:21"
+ },
+ {
+  "id": "1-chronicles-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David set Benaiah over?",
+  "choices": [
+   "The thirty",
+   "The treasury",
+   "His guard",
+   "The host of Judah"
+  ],
+  "answer": 2,
+  "explanation": "Benaiah was honourable among the thirty, but attained not to the first three: and David set him over his guard.",
+  "ref": "1 Chronicles 11:25"
+ },
+ {
+  "id": "1-chronicles-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man, the son of Dodo, was of Bethlehem?",
+  "choices": [
+   "Shammoth",
+   "Sibbecai",
+   "Maharai",
+   "Elhanan"
+  ],
+  "answer": 3,
+  "explanation": "Elhanan the son of Dodo of Bethlehem.",
+  "ref": "1 Chronicles 11:26"
+ },
+ {
+  "id": "1-chronicles-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Joab's armourbearer?",
+  "choices": [
+   "Naharai the Berothite",
+   "Zelek the Ammonite",
+   "Hezro the Carmelite",
+   "Ira the Ithrite"
+  ],
+  "answer": 0,
+  "explanation": "Naharai the Berothite, the armourbearer of Joab the son of Zeruiah.",
+  "ref": "1 Chronicles 11:39"
+ },
+ {
+  "id": "1-chronicles-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these mighty men was an Ammonite?",
+  "choices": [
+   "Ithmah",
+   "Zelek",
+   "Hezro",
+   "Adina"
+  ],
+  "answer": 1,
+  "explanation": "Zelek the Ammonite, Naharai the Berothite.",
+  "ref": "1 Chronicles 11:39"
+ },
+ {
+  "id": "1-chronicles-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these mighty men was a Moabite?",
+  "choices": [
+   "Zelek",
+   "Zabad",
+   "Ithmah",
+   "Joel"
+  ],
+  "answer": 2,
+  "explanation": "Eliel the Mahavite, and Jeribai, and Joshaviah, the sons of Elnaam, and Ithmah the Moabite.",
+  "ref": "1 Chronicles 11:46"
+ },
+ {
+  "id": "1-chronicles-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Adina the son of Shiza was a captain of which tribe?",
+  "choices": [
+   "Gad",
+   "Benjamin",
+   "Judah",
+   "Reuben"
+  ],
+  "answer": 3,
+  "explanation": "Adina the son of Shiza the Reubenite, a captain of the Reubenites, and thirty with him.",
+  "ref": "1 Chronicles 11:42"
+ },
+ {
+  "id": "1-chronicles-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Joel, one of the mighty men, was the brother of whom?",
+  "choices": [
+   "Nathan",
+   "Joab",
+   "Hanan",
+   "Zabad"
+  ],
+  "answer": 0,
+  "explanation": "Joel the brother of Nathan, Mibhar the son of Haggeri.",
+  "ref": "1 Chronicles 11:38"
+ },
+ {
+  "id": "1-chronicles-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the father of Eliphal?",
+  "choices": [
+   "Sacar",
+   "Ur",
+   "Shage",
+   "Ezbai"
+  ],
+  "answer": 1,
+  "explanation": "Ahiam the son of Sacar the Hararite, Eliphal the son of Ur.",
+  "ref": "1 Chronicles 11:35"
+ },
+ {
+  "id": "1-chronicles-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the father of Zabad among the mighty men?",
+  "choices": [
+   "Ezbai",
+   "Ribai",
+   "Ahlai",
+   "Haggeri"
+  ],
+  "answer": 2,
+  "explanation": "Uriah the Hittite, Zabad the son of Ahlai.",
+  "ref": "1 Chronicles 11:41"
+ },
+ {
+  "id": "1-chronicles-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Ithai the son of Ribai was of Gibeah, belonging to which tribe?",
+  "choices": [
+   "Judah",
+   "Reuben",
+   "Ephraim",
+   "Benjamin"
+  ],
+  "answer": 3,
+  "explanation": "Ithai the son of Ribai of Gibeah, that pertained to the children of Benjamin.",
+  "ref": "1 Chronicles 11:31"
+ },
+ {
+  "id": "1-chronicles-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Hurai, one of the mighty men, was of the brooks of which place?",
+  "choices": [
+   "Gaash",
+   "Kabzeel",
+   "Gibeah",
+   "Adullam"
+  ],
+  "answer": 0,
+  "explanation": "Hurai of the brooks of Gaash, Abiel the Arbathite.",
+  "ref": "1 Chronicles 11:32"
+ },
+ {
+  "id": "1-chronicles-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Which mighty man was the son of Ikkesh the Tekoite?",
+  "choices": [
+   "Heled",
+   "Ira",
+   "Hepher",
+   "Ahijah"
+  ],
+  "answer": 1,
+  "explanation": "Ira the son of Ikkesh the Tekoite, Abi-ezer the Antothite.",
+  "ref": "1 Chronicles 11:28"
+ },
+ {
+  "id": "1-chronicles-11-h-16",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two men, both Netophathites, are named together?",
+  "choices": [
+   "Ira and Gareb",
+   "Eliel and Obed",
+   "Maharai and Heled",
+   "Shama and Jehiel"
+  ],
+  "answer": 2,
+  "explanation": "Maharai the Netophathite, Heled the son of Baanah the Netophathite.",
+  "ref": "1 Chronicles 11:30"
  },
  {
   "id": "old-1-chronicles-12-1",
