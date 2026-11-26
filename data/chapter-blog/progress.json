@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-11-25T13:43:01.189Z",
-  "nextChapter": "2 Samuel 3",
+  "updatedAt": "2026-11-26T02:34:05.213Z",
+  "nextChapter": "2 Samuel 4",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -2067,33 +2067,43 @@
     },
     "1-samuel-29-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-25T02:35:56.733Z",
-      "committedAt": "2026-11-25T02:42:45.684Z"
+      "committedAt": "2026-11-25T02:42:45.684Z",
+      "publishedAt": "2026-11-26T02:34:04.501Z"
     },
     "1-samuel-30-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-25T04:34:16.906Z",
-      "committedAt": "2026-11-25T04:44:09.188Z"
+      "committedAt": "2026-11-25T04:44:09.188Z",
+      "publishedAt": "2026-11-26T02:34:04.698Z"
     },
     "1-samuel-31-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-25T06:34:12.031Z",
-      "committedAt": "2026-11-25T06:42:41.218Z"
+      "committedAt": "2026-11-25T06:42:41.218Z",
+      "publishedAt": "2026-11-26T02:34:04.861Z"
     },
     "2-samuel-1-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-25T10:33:30.347Z",
-      "committedAt": "2026-11-25T10:45:50.001Z"
+      "committedAt": "2026-11-25T10:45:50.001Z",
+      "publishedAt": "2026-11-26T02:34:05.053Z"
     },
     "2-samuel-2-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-25T13:33:26.928Z",
-      "committedAt": "2026-11-25T13:43:01.189Z"
+      "committedAt": "2026-11-25T13:43:01.189Z",
+      "publishedAt": "2026-11-26T02:34:05.213Z"
+    },
+    "2-samuel-3-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-26T02:33:50.904Z"
     }
   },
   "priorityBooks": [
