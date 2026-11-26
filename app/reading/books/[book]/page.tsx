@@ -1,5 +1,20 @@
 "use client";
 
+/**
+ * The page where a reader picks a chapter of one book.
+ *
+ * Rebuilt 2026-11-26 to match the new Bible menu (components/bible/
+ * BibleMenu.tsx), after Louis asked how the chapter page should look and said
+ * "yes build it": the book's own picture as a banner, one gold button for the
+ * reader's next chapter, the same grid of numbers but with a tick on every
+ * finished chapter and a gold edge on the next one, and the book intro folded
+ * shut underneath instead of above the chapters.
+ *
+ * Colours come from the selected Bible Cover (the --bb-* variables).
+ * Banner pictures: public/bible-menu/wide/<book>.webp, made by
+ * scripts/make-bible-menu-thumbs.mjs.
+ */
+
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
@@ -8,6 +23,13 @@ import { trackNavigationActionOnce } from "../../../../lib/navigationActionTrack
 import { getCompletedChapters, getBookTotalChapters } from "../../../../lib/readingProgress";
 import { supabase } from "../../../../lib/supabaseClient";
 import RequireAccount from "../../../../components/RequireAccount";
+import { BIBLE_MENU_THUMBS } from "../../../../lib/bibleMenuThumbs.generated";
+
+const GOLD = "var(--bb-accent,#e9b45a)";
+const TEXT = "var(--bb-text-primary,#fbf3e4)";
+const SOFT = "var(--bb-text-secondary,#e9dcc6)";
+const CARD = "var(--bb-card,rgba(28,20,16,.72))";
+const mix = (c: string, pct: number) => `color-mix(in srgb, ${c} ${pct}%, transparent)`;
 
 // Book descriptions (short subtitle under the title)
 const BOOK_DESCRIPTIONS: Record<string, string> = {
@@ -267,6 +289,9 @@ function BookPageInner() {
   // Could not read this person's progress. Without it, "0 / 50 chapters
   // finished" is not a fact about them, so the bar says so instead.
   const [progressFailed, setProgressFailed] = useState(false);
+  // Until the read answers, nobody knows which chapter is next, so the
+  // continue button waits instead of guessing "Start chapter 1".
+  const [progressLoaded, setProgressLoaded] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
 
@@ -313,6 +338,7 @@ function BookPageInner() {
         const completed = await getCompletedChapters(userId, bookKey);
         setCompletedChapters(completed);
         setProgressFailed(false);
+        setProgressLoaded(true);
       } catch (err) {
         // This used to swallow a failure and leave the list empty, so the bar
         // read "0 / N chapters finished" to somebody who had finished most of
@@ -327,178 +353,203 @@ function BookPageInner() {
     }
   }, [userId, bookKey, totalChapters]);
 
-  const finishedChapters = completedChapters.length;
-  const progressPercent = Math.min(100, (finishedChapters / totalChapters) * 100);
+  const doneSet = new Set(completedChapters.filter((chapter) => chapter >= 1 && chapter <= totalChapters));
+  const finishedChapters = doneSet.size;
+  const progressPercent = totalChapters ? Math.min(100, (finishedChapters / totalChapters) * 100) : 0;
   const allChapters = Array.from({ length: totalChapters }, (_, index) => index + 1);
+  const bookDone = progressLoaded && totalChapters > 0 && finishedChapters >= totalChapters;
+  // The first chapter not finished yet. Null while that is unknown.
+  const nextChapter = progressLoaded && !bookDone ? allChapters.find((chapter) => !doneSet.has(chapter)) ?? null : null;
+  const slug = bookKey.replace(/\s+/g, "-");
+  const hasPicture = BIBLE_MENU_THUMBS.includes(slug);
+  const description = BOOK_DESCRIPTIONS[bookKey] || "Walk through this book chapter by chapter.";
+  const chapterHref = (chapter: number) => `/bible/${encodeURIComponent(bookKey)}/${chapter}`;
+
+  function chapterOpened(chapter: number) {
+    if (!userId) return;
+    void trackNavigationActionOnce({
+      userId,
+      username,
+      actionType: ACTION_TYPE.bible_chapter_opened,
+      actionLabel: `${bookDisplayName} ${chapter}`,
+      dedupeKey: `bible-chapter-opened:${bookKey}:${chapter}`,
+    }).catch((error) => {
+      console.error("[NAV] Failed to track Bible chapter click:", error);
+    });
+  }
+
+  const mainChapter = nextChapter ?? 1;
+  const mainLabel = bookDone
+    ? `Read again: ${bookDisplayName} 1`
+    : finishedChapters > 0 && nextChapter
+      ? `Continue: ${bookDisplayName} ${nextChapter}`
+      : `Start ${bookDisplayName} 1`;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
-        {/* PAGE HEADER */}
-        <h1 className="text-3xl font-bold mb-1">The {bookDisplayName}</h1>
-        <p className="text-gray-700 mb-4">
-          {BOOK_DESCRIPTIONS[bookKey] || "Walk through this book chapter by chapter."}
-        </p>
+    <div className="mx-auto w-full max-w-5xl px-3 pb-28 pt-4 sm:px-4">
+      <Link href="/reading" className="inline-flex items-center gap-1 text-[14px] font-black" style={{ color: TEXT, textShadow: "0 1px 6px rgba(0,0,0,.6)" }}>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>
+        All books
+      </Link>
 
-        {/* MAIN CARD */}
-        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 relative overflow-hidden">
-          {/* BOOK INTRO CARD */}
-          <div className="mt-1 mb-5 overflow-hidden rounded-xl border border-blue-100 bg-blue-50/40 shadow-sm">
-            <button
-              type="button"
-              onClick={() => setBookIntroOpen((open) => !open)}
-              className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left"
-              aria-expanded={bookIntroOpen}
-            >
-              <div className="min-w-0">
-                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-blue-600">
-                  Book Intro
-                </p>
-                <h2 className="mt-1 text-lg font-black text-gray-950">
-                  Understanding {bookDisplayName}
-                </h2>
-                <p className="mt-1 text-sm leading-6 text-gray-700">
-                  {BOOK_DESCRIPTIONS[bookKey] || `A simple overview before you read ${bookDisplayName}.`}
-                </p>
-              </div>
-              <span
-                className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border border-blue-200 bg-white text-lg font-black text-blue-600 transition ${
-                  bookIntroOpen ? "rotate-180" : ""
-                }`}
-                aria-hidden="true"
-              >
-                v
-              </span>
-            </button>
-
-            <div
-              className={`grid transition-all duration-300 ease-out ${
-                bookIntroOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-              }`}
-            >
-              <div className="overflow-hidden">
-                <div className="border-t border-blue-100 bg-white px-4 py-4">
-                  <p className="text-sm leading-7 text-gray-800">
-                    {BOOK_INTROS[bookKey] || `Let's walk through ${bookDisplayName} together, one chapter at a time.`}
-                  </p>
-
-                  {BOOK_CHAPTER_TOPICS[bookKey]?.length ? (
-                    <div className="mt-4">
-                      <p className="text-xs font-black uppercase tracking-[0.16em] text-gray-500">
-                        Chapter Roadmap
-                      </p>
-                      <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                        {BOOK_CHAPTER_TOPICS[bookKey].map((topic, index) => {
-                          const chapter = index + 1;
-                          return (
-                          <Link
-                            key={`${bookKey}-topic-${index + 1}`}
-                            href={`/bible/${encodeURIComponent(bookKey)}/${chapter}`}
-                            onClick={() => {
-                              if (!userId) return;
-
-                              void trackNavigationActionOnce({
-                                userId,
-                                username,
-                                actionType: ACTION_TYPE.bible_chapter_opened,
-                                actionLabel: `${bookDisplayName} ${chapter}`,
-                                dedupeKey: `bible-chapter-opened:${bookKey}:${chapter}`,
-                              }).catch((error) => {
-                                console.error("[NAV] Failed to track Bible roadmap chapter click:", error);
-                              });
-                            }}
-                            className="block rounded-lg border border-gray-200 bg-gray-50 px-3 py-3 transition hover:border-blue-200 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-200"
-                          >
-                            <p className="text-xs font-black text-blue-600">
-                              {bookDisplayName} {chapter}
-                            </p>
-                            <p className="mt-1 text-sm leading-6 text-gray-800">
-                              {topic}
-                            </p>
-                          </Link>
-                        );
-                        })}
-                      </div>
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* PROGRESS BAR */}
-          <div className="mb-4">
-            <div className="flex justify-between text-xs text-gray-600 mb-1">
-              <span>Progress in {bookDisplayName}</span>
+      {/* BANNER: the book's own picture */}
+      <header
+        className="relative mt-2 overflow-hidden rounded-3xl"
+        style={{ background: CARD, boxShadow: `inset 0 0 0 1.5px ${mix(GOLD, 55)}, 0 14px 34px rgba(0,0,0,.4)` }}
+      >
+        {hasPicture ? (
+          <img src={`/bible-menu/wide/${slug}.webp`} alt="" className="absolute inset-0 h-full w-full object-cover" />
+        ) : null}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.55) 45%, rgba(0,0,0,.15) 100%), linear-gradient(0deg, rgba(0,0,0,.55), transparent 60%)" }} aria-hidden="true" />
+        <div className="relative flex min-h-[190px] flex-col justify-end p-4 sm:min-h-[240px] sm:p-7">
+          <h1 className="text-[38px] font-black leading-none sm:text-[54px]" style={{ color: "#fff6e3", textShadow: "0 2px 12px rgba(0,0,0,.7)" }}>
+            {bookDisplayName}
+          </h1>
+          <p className="mt-2 max-w-xl text-[14px] font-semibold leading-snug sm:text-[17px]" style={{ color: "#f1e6d2", textShadow: "0 1px 6px rgba(0,0,0,.8)" }}>
+            {description}
+          </p>
+          <div className="mt-3 max-w-md">
+            <div className="flex justify-between text-[12px] font-bold sm:text-[13px]" style={{ color: "#f1e6d2" }}>
               <span>
                 {progressFailed
                   ? "Couldn't load your progress"
-                  : `${progressPercent.toFixed(0)}% (${finishedChapters} / ${totalChapters} chapters finished)`}
+                  : progressLoaded
+                    ? bookDone
+                      ? "Completed"
+                      : `${finishedChapters} of ${totalChapters} chapters`
+                    : `${totalChapters} chapters`}
               </span>
+              {progressLoaded && !progressFailed ? <span>{progressPercent.toFixed(0)}%</span> : null}
             </div>
-            <div className="h-2 rounded-full bg-gray-200 overflow-hidden">
-              {!progressFailed && (
-                <div
-                  className="h-full bg-blue-500 rounded-full transition-all"
-                  style={{ width: `${progressPercent}%` }}
-                />
-              )}
+            <div className="mt-1 h-2 overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,.22)" }}>
+              {progressLoaded && !progressFailed ? (
+                <div className="h-full rounded-full transition-all" style={{ width: `${progressPercent}%`, background: GOLD }} />
+              ) : null}
             </div>
-          </div>
-
-          {/* CHAPTER GRID */}
-          <div className="space-y-4 mt-1">
-            <div className="grid grid-cols-4 gap-2 sm:gap-3 mt-2">
-              {allChapters.map((chapter) => {
-                const done = completedChapters.includes(chapter);
-                const href = `/bible/${encodeURIComponent(bookKey)}/${chapter}`;
-                const stateClasses = done
-                  ? "border-green-300 bg-green-100 text-green-800"
-                  : "border-gray-200 bg-white text-gray-900 hover:border-blue-200 hover:bg-blue-50";
-
-                return (
-                  <Link
-                    key={chapter}
-                    href={href}
-                    onClick={() => {
-                      if (!userId) return;
-
-                      void trackNavigationActionOnce({
-                        userId,
-                        username,
-                        actionType: ACTION_TYPE.bible_chapter_opened,
-                        actionLabel: `${bookDisplayName} ${chapter}`,
-                        dedupeKey: `bible-chapter-opened:${bookKey}:${chapter}`,
-                      }).catch((error) => {
-                        console.error("[NAV] Failed to track Bible chapter click:", error);
-                      });
-                    }}
-                    aria-label={`${bookDisplayName} chapter ${chapter}${done ? ", finished" : ""}`}
-                    className={`flex h-14 items-center justify-center rounded-xl border text-base font-black shadow-sm transition sm:h-16 sm:text-lg ${stateClasses}`}
-                  >
-                    <span>{chapter}</span>
-                  </Link>
-                );
-              })}
-            </div>
-
-            <div className="mt-2 flex items-center justify-between text-xs sm:text-sm text-blue-600">
-              <Link href="/dashboard" className="hover:underline">
-                Home
-              </Link>
-
-              <span className="text-gray-400">Scroll for all chapters</span>
-            </div>
-
-            <Link
-              href="/reading"
-              className="text-xs sm:text-sm text-blue-600 hover:underline mt-1 inline-block"
-            >
-              Change book
-            </Link>
           </div>
         </div>
-      </div>
+      </header>
+
+      {/* THE ONE BUTTON: the reader's next chapter */}
+      {progressLoaded || progressFailed ? (
+        <Link
+          href={chapterHref(mainChapter)}
+          onClick={() => chapterOpened(mainChapter)}
+          className="mt-3 flex min-h-[56px] items-center justify-center gap-2 rounded-2xl px-5 text-[18px] font-black transition hover:-translate-y-0.5 sm:text-[20px]"
+          style={{ background: "var(--bb-button,#d99a3e)", color: "var(--bb-button-text,#2a1d05)", boxShadow: `0 0 18px ${mix(GOLD, 45)}, inset 0 1px 0 rgba(255,255,255,.45)` }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+          {progressFailed ? `Open ${bookDisplayName} 1` : mainLabel}
+        </Link>
+      ) : (
+        <div className="mt-3 min-h-[56px] rounded-2xl" style={{ background: CARD, boxShadow: `inset 0 0 0 1px ${mix(GOLD, 30)}` }} aria-hidden="true" />
+      )}
+
+      {/* CHAPTERS */}
+      <section
+        className="mt-3 rounded-3xl p-3 sm:p-5"
+        style={{ background: "var(--bb-surface-soft,rgba(20,13,9,.55))", boxShadow: `inset 0 0 0 1px ${mix(GOLD, 35)}, 0 14px 34px rgba(0,0,0,.35)` }}
+      >
+        <h2 className="px-1 text-[16px] font-black sm:text-[18px]" style={{ color: TEXT }}>
+          Pick a chapter
+        </h2>
+        <div className="mt-2 grid grid-cols-4 gap-2 sm:grid-cols-5 sm:gap-3 md:grid-cols-6">
+          {allChapters.map((chapter) => {
+            const done = doneSet.has(chapter);
+            const isNext = chapter === nextChapter;
+            return (
+              <Link
+                key={chapter}
+                href={chapterHref(chapter)}
+                onClick={() => chapterOpened(chapter)}
+                aria-label={`${bookDisplayName} chapter ${chapter}${done ? ", finished" : isNext ? ", next" : ""}`}
+                className="relative flex h-14 items-center justify-center rounded-xl text-[18px] font-black transition hover:-translate-y-0.5 sm:h-16 sm:text-[20px]"
+                style={{
+                  color: TEXT,
+                  background: isNext ? `linear-gradient(180deg, ${mix(GOLD, 30)}, transparent), ${CARD}` : CARD,
+                  boxShadow: isNext
+                    ? `inset 0 0 0 2px ${GOLD}, 0 0 16px ${mix(GOLD, 40)}`
+                    : done
+                      ? "inset 0 0 0 1.5px rgba(47,168,96,.75)"
+                      : `inset 0 0 0 1px ${mix(GOLD, 28)}`,
+                }}
+              >
+                {chapter}
+                {done ? (
+                  <span className="absolute right-1.5 top-1.5 grid h-[17px] w-[17px] place-items-center rounded-full" style={{ background: "#2fa860", color: "#fff" }} aria-hidden="true">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+                  </span>
+                ) : null}
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* BOOK INTRO, folded shut, under the chapters */}
+      <section className="mt-3 overflow-hidden rounded-3xl" style={{ background: CARD, boxShadow: `inset 0 0 0 1px ${mix(GOLD, 30)}` }}>
+        <button
+          type="button"
+          onClick={() => setBookIntroOpen((open) => !open)}
+          className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left sm:px-5"
+          aria-expanded={bookIntroOpen}
+        >
+          <span className="min-w-0">
+            <span className="block text-[11px] font-black uppercase tracking-[0.18em]" style={{ color: GOLD }}>
+              Book intro
+            </span>
+            <span className="mt-0.5 block text-[18px] font-black" style={{ color: TEXT }}>
+              Understanding {bookDisplayName}
+            </span>
+          </span>
+          <span
+            className={`grid h-9 w-9 shrink-0 place-items-center rounded-full transition ${bookIntroOpen ? "rotate-180" : ""}`}
+            style={{ color: TEXT, boxShadow: `inset 0 0 0 1px ${mix(SOFT, 45)}` }}
+            aria-hidden="true"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+          </span>
+        </button>
+
+        <div className={`grid transition-all duration-300 ease-out ${bookIntroOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+          <div className="overflow-hidden">
+            <div className="px-4 pb-4 sm:px-5" style={{ borderTop: `1px solid ${mix(GOLD, 25)}` }}>
+              <p className="pt-4 text-[15px] leading-7" style={{ color: SOFT }}>
+                {BOOK_INTROS[bookKey] || `Let's walk through ${bookDisplayName} together, one chapter at a time.`}
+              </p>
+
+              {BOOK_CHAPTER_TOPICS[bookKey]?.length ? (
+                <div className="mt-4">
+                  <p className="text-[11px] font-black uppercase tracking-[0.16em]" style={{ color: GOLD }}>
+                    Chapter roadmap
+                  </p>
+                  <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                    {BOOK_CHAPTER_TOPICS[bookKey].map((topic, index) => {
+                      const chapter = index + 1;
+                      return (
+                        <Link
+                          key={`${bookKey}-topic-${chapter}`}
+                          href={chapterHref(chapter)}
+                          onClick={() => chapterOpened(chapter)}
+                          className="block rounded-xl px-3 py-3 transition hover:-translate-y-0.5"
+                          style={{ background: "var(--bb-surface-soft,rgba(0,0,0,.3))", boxShadow: `inset 0 0 0 1px ${mix(GOLD, 22)}` }}
+                        >
+                          <span className="block text-[12px] font-black" style={{ color: GOLD }}>
+                            {bookDisplayName} {chapter}
+                          </span>
+                          <span className="mt-1 block text-[14px] leading-6" style={{ color: TEXT }}>
+                            {topic}
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

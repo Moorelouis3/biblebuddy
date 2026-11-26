@@ -6,7 +6,9 @@
  * The originals are one PNG per book, named after the book ("1 Samuel.png"),
  * around 2 MB each. A row shows its picture about 104 px wide, so this writes
  * a 320 px WebP per book into public/bible-menu/ (about 15 KB each) and the
- * list of books that have one into lib/bibleMenuThumbs.generated.ts. A book
+ * list of books that have one into lib/bibleMenuThumbs.generated.ts. It also
+ * writes a wide 1100 px banner per book into public/bible-menu/wide/ for the
+ * book's chapter page. A book
  * with no picture falls back to a plain tile, so a missing file is never a
  * broken image.
  *
@@ -38,7 +40,8 @@ if (!source || !fs.existsSync(source)) {
 
 const root = path.resolve(import.meta.dirname, "..");
 const outDir = path.join(root, "public", "bible-menu");
-fs.mkdirSync(outDir, { recursive: true });
+const wideDir = path.join(outDir, "wide");
+fs.mkdirSync(wideDir, { recursive: true });
 
 const byName = new Map(BOOKS.map((book) => [book.toLowerCase(), book]));
 const slug = (book) => book.toLowerCase().replace(/\s+/g, "-");
@@ -57,6 +60,11 @@ for (const file of fs.readdirSync(source)) {
     .resize({ width: 320, height: 208, fit: "cover", position: "attention" })
     .webp({ quality: 76 })
     .toFile(path.join(outDir, `${slug(book)}.webp`));
+  // The banner on the book's chapter page (app/reading/books/[book]).
+  await sharp(path.join(source, file))
+    .resize({ width: 1100, height: 440, fit: "cover", position: "attention", withoutEnlargement: false })
+    .webp({ quality: 70 })
+    .toFile(path.join(wideDir, `${slug(book)}.webp`));
   made.add(book);
 }
 
