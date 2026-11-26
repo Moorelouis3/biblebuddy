@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-7-explained",
+    title: "2 Samuel 7 Explained: God's Covenant Promise to David",
+    description:
+      "2 Samuel 7 explained verse by verse: David offers to build God a temple, and God promises instead to build David an everlasting house, throne, and kingdom.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-7-explained",
+    publishedAt: "2026-11-26",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 7 Explained 📖",
+      content:
+        "David wants to build God a temple.\nGod says no, and promises something bigger instead.\n\n📌 Instead of David building God a house, God builds David one.\n\n📖 A throne promised to last forever, three times in two verses.\n📖 David responds by asking who he even is to get this.\n📖 The New Testament applies this same promise straight to Jesus.\n\nNew article on:\n🟢 why God turned down David's **good** idea\n🟢 what it means that God will **build** David a house\n🟢 how one promise to a king reaches all the way to **Jesus**\n\nHave you ever offered God something good, only to find His plan was bigger? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-6-explained",
     title: "2 Samuel 6 Explained: Uzzah's Death and the Ark in Jerusalem",
     description:
