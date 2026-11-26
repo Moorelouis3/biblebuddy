@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-4-explained",
+    title: "2 Samuel 4 Explained: Ishbosheth Murdered in His Bed",
+    description:
+      "2 Samuel 4 explained verse by verse: Ishbosheth's house falls apart, Mephibosheth is introduced, and David judges his killers by the same standard as the Amalekite.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-4-explained",
+    publishedAt: "2026-11-26",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 4 Explained 📖",
+      content:
+        "Saul's last son is murdered in his own bed.\nThe killers expect David to pay them for it.\n\n📌 David judges them by the same standard as before.\n\n📖 Ishbosheth's rule collapses once Abner is dead.\n📖 A lame boy named Mephibosheth is introduced.\n📖 David buries his rival's head with honor.\n\nNew article on:\n🟢 why Saul's house falls apart this **fast**\n🟢 the name quietly introduced before the **murder**\n🟢 why David won't let anyone's **crime** buy him a crown\n\nHave you ever watched someone's whole position collapse once the one person holding it up was gone? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-3-explained",
     title: "2 Samuel 3 Explained: Abner's Defection and Murder",
     description:
