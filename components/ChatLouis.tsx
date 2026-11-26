@@ -41,6 +41,12 @@ type Message = {
 
 type ChatLouisProps = {
   displayMode?: "floating" | "embedded";
+  /**
+   * Embedded only: the parent has a set height and the chat should fill it
+   * (the Lil Louis tab). Without it the chat keeps a minimum height of its
+   * own, which is what the dashboard embed needs.
+   */
+  fill?: boolean;
   studyContext?: LouisStudyContext | null;
 };
 
@@ -596,50 +602,45 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
 
 /**
  * The Lil Louis tab's look (2026-11-26, from Louis's mock-up: "do lil louis
- * screen better now"): one wide dark glass panel with a gold edge, his face
- * and name as the header, bigger bubbles, and a round gold send button.
- * Colours come from the selected Bible Cover, like the Games and Bible menus.
+ * screen better now").
  *
- * Every rule sits under .bbll, the class on the embedded panel only, so the
+ * There is NO panel around the chat. The first version drew one, and Louis
+ * the same day: "why you make the box inside another box inside a page thats
+ * weird and now the chat is so weird you can barely read one message thats
+ * not how a chat looks". So it is laid out the way a chat is: a slim header
+ * row, the messages straight on the page taking all the height there is, and
+ * the input pinned at the bottom. The only boxes are the bubbles.
+ *
+ * Colours come from the selected Bible Cover, like the Games and Bible menus.
+ * Every rule sits under .bbll, the class on the embedded chat only, so the
  * floating chat bubble elsewhere in the app keeps the look it had.
  */
 const LL_GOLD = "var(--bb-accent,#e9b45a)";
 const llMix = (pct: number, color = LL_GOLD) => `color-mix(in srgb, ${color} ${pct}%, transparent)`;
 const LL_CSS = `
-.bbll { background: var(--bb-surface-soft,rgba(20,13,9,.6)); box-shadow: inset 0 0 0 1.5px ${llMix(50)}, 0 0 28px ${llMix(18)}, 0 16px 38px rgba(0,0,0,.4); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-.bbll-head { position:relative; padding: 14px 14px 10px; text-align:center; border-bottom: 1px solid ${llMix(25)}; }
-.bbll-head-row { display:flex; align-items:center; justify-content:center; gap:14px; }
-.bbll-rule { height:1px; flex:1; max-width:110px; }
-.bbll-face { flex:none; display:grid; place-items:center; width:72px; height:72px; border-radius:999px; overflow:hidden; background: var(--bb-card,#1c120a); box-shadow: 0 0 0 2.5px ${LL_GOLD}, 0 0 18px ${llMix(45)}; }
-.bbll-title { font-size:34px; font-weight:900; line-height:1; color: var(--bb-text-primary,#fff6e3); text-shadow: 0 2px 14px ${llMix(45)}, 0 2px 4px rgba(0,0,0,.5); text-align:left; }
-.bbll-sub { margin-top:3px; font-size:17px; font-weight:900; color: ${LL_GOLD}; text-align:left; }
-.bbll-tag { margin-top:8px; font-size:13px; font-weight:600; color: var(--bb-text-secondary,#e9dcc6); }
-.bbll-new { position:absolute; right:12px; top:12px; display:inline-flex; align-items:center; gap:6px; padding: 8px 12px; border-radius:14px; font-size:13px; font-weight:900;
-  color: var(--bb-text-primary,#fbf3e4); background: var(--bb-card,rgba(28,20,16,.72)); box-shadow: inset 0 0 0 1px ${llMix(45)}; }
+.bbll-head { flex:none; display:flex; align-items:center; gap:10px; padding: 2px 4px 10px; border-bottom: 1px solid ${llMix(30)}; }
+.bbll-face { flex:none; display:grid; place-items:center; width:46px; height:46px; border-radius:999px; overflow:hidden; background: var(--bb-card,#1c120a); box-shadow: 0 0 0 2px ${LL_GOLD}, 0 0 12px ${llMix(40)}; }
+.bbll-title { font-size:22px; font-weight:900; line-height:1.05; color: var(--bb-text-primary,#fff6e3); text-shadow: 0 2px 6px rgba(0,0,0,.5); }
+.bbll-sub { font-size:13px; font-weight:800; color: ${LL_GOLD}; text-shadow: 0 1px 4px rgba(0,0,0,.5); }
+.bbll-new { margin-left:auto; flex:none; display:inline-flex; align-items:center; gap:6px; padding: 8px 12px; border-radius:14px; font-size:13px; font-weight:900;
+  color: var(--bb-text-primary,#fbf3e4); background: var(--bb-card,rgba(28,20,16,.72)); border: 1px solid ${llMix(45)}; }
 .bbll-new:disabled { opacity:.5; }
-.bbll .bbll-name { margin-bottom:4px; font-size:14px; font-weight:900; color: ${LL_GOLD}; }
-.bbll .bbll-bubble { border: 1px solid ${llMix(55)}; border-radius:20px; padding: 11px 16px; color: var(--bb-text-primary,#fbf3e4); background: var(--bb-card,rgba(28,20,16,.82)); box-shadow: inset 0 0 0 1px ${llMix(55)}, 0 6px 16px rgba(0,0,0,.28); }
-.bbll .bbll-bubble.is-user { border-color: ${llMix(75)}; background: linear-gradient(180deg, ${llMix(42)}, ${llMix(24)}), var(--bb-card,rgba(28,20,16,.82)); box-shadow: inset 0 0 0 1px ${llMix(70)}, 0 6px 16px rgba(0,0,0,.28); }
+.bbll .bbll-name { margin-bottom:4px; font-size:13px; font-weight:900; color: ${LL_GOLD}; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
+.bbll .bbll-bubble { border: 1px solid ${llMix(55)}; border-radius:20px; padding: 10px 15px; color: var(--bb-text-primary,#fbf3e4); background: var(--bb-card,rgba(28,20,16,.86)); }
+.bbll .bbll-bubble.is-user { border-color: ${llMix(75)}; background: linear-gradient(180deg, ${llMix(42)}, ${llMix(24)}), var(--bb-card,rgba(28,20,16,.86)); }
 .bbll .bbll-bubble p { font-size:16px; line-height:1.5; }
 .bbll .bbll-bubble strong { color: inherit; font-weight:800; }
 .bbll .bbll-empty { font-size:16px; color: var(--bb-text-secondary,#e9dcc6); }
-.bbll .bbll-foot { background: transparent; border-top: 1px solid ${llMix(25)}; padding: 12px; }
-.bbll .bbll-field { min-height:52px; border:0; border-radius:26px; padding: 14px 18px; font-size:16px; color: var(--bb-text-primary,#fbf3e4); background: var(--bb-card,rgba(28,20,16,.82)); box-shadow: inset 0 0 0 1px ${llMix(45)}; }
-.bbll .bbll-field::placeholder { color: var(--bb-text-secondary,#e9dcc6); opacity:.75; }
-.bbll .bbll-field:focus { outline:none; box-shadow: inset 0 0 0 2px ${LL_GOLD}; }
-.bbll .bbll-send { flex:none; display:grid; place-items:center; width:52px; height:52px; padding:0; border-radius:999px; color: var(--bb-button-text,#2a1d05); background: var(--bb-button,#d99a3e); box-shadow: 0 0 14px ${llMix(50)}, inset 0 1px 0 rgba(255,255,255,.45); }
-.bbll .bbll-note { color: var(--bb-text-secondary,#e9dcc6); }
-@media (max-width: 639px) {
-  .bbll-head { padding: 12px 12px 8px; }
-  .bbll-head-row { justify-content:flex-start; gap:10px; }
-  .bbll-rule { display:none; }
-  .bbll-face { width:54px; height:54px; }
-  .bbll-title { font-size:25px; }
-  .bbll-sub { font-size:14px; }
-  .bbll-tag { font-size:11.5px; text-align:left; }
-  .bbll-new { padding: 7px 10px; font-size:12px; }
-  .bbll .bbll-bubble { padding: 10px 14px; }
-  .bbll .bbll-bubble p { font-size:15px; }
+.bbll .bbll-foot { flex:none; background: transparent; border-top: 0; padding: 8px 2px 6px; }
+.bbll .bbll-field { min-height:50px; height:50px; border: 1px solid ${llMix(50)}; border-radius:25px; padding: 13px 18px; font-size:16px; color: var(--bb-text-primary,#fbf3e4); background: var(--bb-card,rgba(28,20,16,.9)); }
+.bbll .bbll-field::placeholder { color: var(--bb-text-secondary,#e9dcc6); opacity:.75; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.bbll .bbll-field:focus { outline:none; border-color: ${LL_GOLD}; box-shadow: 0 0 0 1px ${LL_GOLD}; }
+.bbll .bbll-send { flex:none; display:grid; place-items:center; width:50px; height:50px; padding:0; border-radius:999px; color: var(--bb-button-text,#2a1d05); background: var(--bb-button,#d99a3e); }
+.bbll .bbll-note { color: var(--bb-text-secondary,#e9dcc6); text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+@media (min-width: 640px) {
+  .bbll-face { width:56px; height:56px; }
+  .bbll-title { font-size:28px; }
+  .bbll-sub { font-size:15px; }
 }
 `;
 
@@ -1610,7 +1611,7 @@ function buildLouisJourneyRecommendation({
   return null;
 }
 
-export function ChatLouis({ displayMode = "floating", studyContext = null }: ChatLouisProps) {
+export function ChatLouis({ displayMode = "floating", studyContext = null, fill = false }: ChatLouisProps) {
   const { featureToursEnabled } = useFeatureRenderPriority();
   const isEmbedded = displayMode === "embedded";
   // App Store 5.1.2: say plainly that Little Louis is an AI and that messages
@@ -1991,6 +1992,11 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
   // Auto-resize textarea
   useEffect(() => {
     if (textareaRef.current) {
+      // Empty: one line, whatever the placeholder would wrap to.
+      if (!input) {
+        textareaRef.current.style.height = "";
+        return;
+      }
       textareaRef.current.style.height = "auto";
       textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 120)}px`;
     }
@@ -3714,7 +3720,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
           }
           className={
             isEmbedded
-              ? "bbll mx-auto flex h-[calc(100dvh-178px)] min-h-[460px] w-full flex-col overflow-hidden rounded-[28px]"
+              ? `bbll mx-auto flex w-full flex-col ${fill ? "h-full min-h-0" : "min-h-[620px]"}`
               : "z-[70] w-[360px] h-[500px] rounded-t-2xl bg-white border border-gray-200 shadow-2xl flex flex-col"
           }
         >
@@ -3750,18 +3756,13 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
           ) : (
             <header className="bbll-head">
               <style>{LL_CSS}</style>
-              <div className="bbll-head-row">
-                <span className="bbll-rule" style={{ background: `linear-gradient(90deg,transparent,${LL_GOLD})` }} aria-hidden="true" />
-                <span className="bbll-face">
-                  <LouisAvatar buddyId={selectedBuddy.id} mood="peace" size={62} />
-                </span>
-                <div>
-                  <h1 className="bbll-title">{selectedBuddy.id === "louis" ? "Lil Louis" : selectedBuddy.name}</h1>
-                  <p className="bbll-sub">My Bible Chat</p>
-                </div>
-                <span className="bbll-rule" style={{ background: `linear-gradient(90deg,${LL_GOLD},transparent)` }} aria-hidden="true" />
+              <span className="bbll-face">
+                <LouisAvatar buddyId={selectedBuddy.id} mood="peace" size={40} />
+              </span>
+              <div className="min-w-0">
+                <h1 className="bbll-title">{selectedBuddy.id === "louis" ? "Lil Louis" : selectedBuddy.name}</h1>
+                <p className="bbll-sub">My Bible Chat</p>
               </div>
-              <p className="bbll-tag">Ask questions &bull; Study Scripture &bull; Get clarity &bull; Grow in your faith</p>
               <button type="button" onClick={startNewChat} disabled={isSending} className="bbll-new">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M12 5v14M5 12h14" />
@@ -3776,7 +3777,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
             ref={messagesContainerRef}
             className={
               isEmbedded
-                ? "flex-1 space-y-3 overflow-y-auto px-3 py-4 sm:px-6"
+                ? "min-h-0 flex-1 space-y-3 overflow-y-auto px-1 py-3 sm:px-2"
                 : "flex-1 overflow-y-auto bg-[var(--bb-card,#ffffff)] px-4 py-4 space-y-3"
             }
           >
