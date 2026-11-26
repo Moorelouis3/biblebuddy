@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-3-explained",
+    title: "2 Samuel 3 Explained: Abner's Defection and Murder",
+    description:
+      "2 Samuel 3 explained verse by verse: Abner defects to David, demands Michal's return, builds an alliance with Israel, and is murdered by Joab.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-3-explained",
+    publishedAt: "2026-11-26",
+    readTime: "16 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 3 Explained 📖",
+      content:
+        "Saul's own commander finally switches sides.\nThen he's murdered right after sealing peace.\n\n📌 A crown doesn't automatically grant control.\n\n📖 Abner breaks with Ishbosheth and turns to David.\n📖 David demands his wife Michal back first.\n📖 Joab kills Abner over an old blood debt.\n\nNew article on:\n🟢 why **Abner's** defection came this late\n🟢 the price David set before any **peace**\n🟢 the king who admits he's too **weak** to stop his own men\n\nHave you ever been sure something was right, but still couldn't force it on your own timeline? 🙏",
+    },
+  },
+  {
     slug: "who-created-god",
     title: "Who Created God?",
     description:
