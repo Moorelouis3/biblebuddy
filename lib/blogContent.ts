@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-6-explained",
+    title: "2 Samuel 6 Explained: Uzzah's Death and the Ark in Jerusalem",
+    description:
+      "2 Samuel 6 explained verse by verse: Uzzah dies touching the ark, David leaves it at Obededom's house, then brings it to Jerusalem with dancing as Michal despises him.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-6-explained",
+    publishedAt: "2026-11-26",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 6 Explained 📖",
+      content:
+        "David sends for the ark on a brand new cart.\nA man dies before it ever reaches the city.\n\n📌 Three months later, David tries again, the right way.\n\n📖 Uzzah reaches out to steady it, and is struck down.\n📖 The ark blesses the next house it rests in instead.\n📖 David dances so hard his own wife despises him for it.\n\nNew article on:\n🟢 why the **cart** was the real mistake, not Uzzah's hand\n🟢 what changed between the **first** and second attempt\n🟢 why David's wife watched from a **window** instead of joining in\n\nHave you ever had the right goal and the wrong method, and paid for it? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-5-explained",
     title: "2 Samuel 5 Explained: David Takes the Throne and Jerusalem",
     description:
