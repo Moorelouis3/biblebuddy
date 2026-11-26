@@ -6,9 +6,11 @@
  * Rebuilt 2026-11-26 to match the new Bible menu (components/bible/
  * BibleMenu.tsx), after Louis asked how the chapter page should look and said
  * "yes build it": the book's own picture as a banner, one gold button for the
- * reader's next chapter, the same grid of numbers but with a tick on every
- * finished chapter and a gold edge on the next one, and the book intro folded
- * shut underneath instead of above the chapters.
+ * reader's next chapter, and the same grid of numbers but with every finished
+ * chapter filled green and a gold edge on the next one. The book intro sits
+ * folded shut between the banner and the button; a finished chapter is green
+ * all over (both Louis, the same day: "add understanding leviticus above
+ * continue button and i would make the whole box green when its done").
  *
  * Colours come from the selected Bible Cover (the --bb-* variables).
  * Banner pictures: public/bible-menu/wide/<book>.webp, made by
@@ -430,63 +432,7 @@ function BookPageInner() {
         </div>
       </header>
 
-      {/* THE ONE BUTTON: the reader's next chapter */}
-      {progressLoaded || progressFailed ? (
-        <Link
-          href={chapterHref(mainChapter)}
-          onClick={() => chapterOpened(mainChapter)}
-          className="mt-3 flex min-h-[56px] items-center justify-center gap-2 rounded-2xl px-5 text-[18px] font-black transition hover:-translate-y-0.5 sm:text-[20px]"
-          style={{ background: "var(--bb-button,#d99a3e)", color: "var(--bb-button-text,#2a1d05)", boxShadow: `0 0 18px ${mix(GOLD, 45)}, inset 0 1px 0 rgba(255,255,255,.45)` }}
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
-          {progressFailed ? `Open ${bookDisplayName} 1` : mainLabel}
-        </Link>
-      ) : (
-        <div className="mt-3 min-h-[56px] rounded-2xl" style={{ background: CARD, boxShadow: `inset 0 0 0 1px ${mix(GOLD, 30)}` }} aria-hidden="true" />
-      )}
-
-      {/* CHAPTERS */}
-      <section
-        className="mt-3 rounded-3xl p-3 sm:p-5"
-        style={{ background: "var(--bb-surface-soft,rgba(20,13,9,.55))", boxShadow: `inset 0 0 0 1px ${mix(GOLD, 35)}, 0 14px 34px rgba(0,0,0,.35)` }}
-      >
-        <h2 className="px-1 text-[16px] font-black sm:text-[18px]" style={{ color: TEXT }}>
-          Pick a chapter
-        </h2>
-        <div className="mt-2 grid grid-cols-4 gap-2 sm:grid-cols-5 sm:gap-3 md:grid-cols-6">
-          {allChapters.map((chapter) => {
-            const done = doneSet.has(chapter);
-            const isNext = chapter === nextChapter;
-            return (
-              <Link
-                key={chapter}
-                href={chapterHref(chapter)}
-                onClick={() => chapterOpened(chapter)}
-                aria-label={`${bookDisplayName} chapter ${chapter}${done ? ", finished" : isNext ? ", next" : ""}`}
-                className="relative flex h-14 items-center justify-center rounded-xl text-[18px] font-black transition hover:-translate-y-0.5 sm:h-16 sm:text-[20px]"
-                style={{
-                  color: TEXT,
-                  background: isNext ? `linear-gradient(180deg, ${mix(GOLD, 30)}, transparent), ${CARD}` : CARD,
-                  boxShadow: isNext
-                    ? `inset 0 0 0 2px ${GOLD}, 0 0 16px ${mix(GOLD, 40)}`
-                    : done
-                      ? "inset 0 0 0 1.5px rgba(47,168,96,.75)"
-                      : `inset 0 0 0 1px ${mix(GOLD, 28)}`,
-                }}
-              >
-                {chapter}
-                {done ? (
-                  <span className="absolute right-1.5 top-1.5 grid h-[17px] w-[17px] place-items-center rounded-full" style={{ background: "#2fa860", color: "#fff" }} aria-hidden="true">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
-                  </span>
-                ) : null}
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* BOOK INTRO, folded shut, under the chapters */}
+      {/* BOOK INTRO, folded shut, above the button (Louis, 2026-11-26) */}
       <section className="mt-3 overflow-hidden rounded-3xl" style={{ background: CARD, boxShadow: `inset 0 0 0 1px ${mix(GOLD, 30)}` }}>
         <button
           type="button"
@@ -548,6 +494,66 @@ function BookPageInner() {
               ) : null}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* THE ONE BUTTON: the reader's next chapter */}
+      {progressLoaded || progressFailed ? (
+        <Link
+          href={chapterHref(mainChapter)}
+          onClick={() => chapterOpened(mainChapter)}
+          className="mt-3 flex min-h-[56px] items-center justify-center gap-2 rounded-2xl px-5 text-[18px] font-black transition hover:-translate-y-0.5 sm:text-[20px]"
+          style={{ background: "var(--bb-button,#d99a3e)", color: "var(--bb-button-text,#2a1d05)", boxShadow: `0 0 18px ${mix(GOLD, 45)}, inset 0 1px 0 rgba(255,255,255,.45)` }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+          {progressFailed ? `Open ${bookDisplayName} 1` : mainLabel}
+        </Link>
+      ) : (
+        <div className="mt-3 min-h-[56px] rounded-2xl" style={{ background: CARD, boxShadow: `inset 0 0 0 1px ${mix(GOLD, 30)}` }} aria-hidden="true" />
+      )}
+
+      {/* CHAPTERS */}
+      <section
+        className="mt-3 rounded-3xl p-3 sm:p-5"
+        style={{ background: "var(--bb-surface-soft,rgba(20,13,9,.55))", boxShadow: `inset 0 0 0 1px ${mix(GOLD, 35)}, 0 14px 34px rgba(0,0,0,.35)` }}
+      >
+        <h2 className="px-1 text-[16px] font-black sm:text-[18px]" style={{ color: TEXT }}>
+          Pick a chapter
+        </h2>
+        <div className="mt-2 grid grid-cols-4 gap-2 sm:grid-cols-5 sm:gap-3 md:grid-cols-6">
+          {allChapters.map((chapter) => {
+            const done = doneSet.has(chapter);
+            const isNext = chapter === nextChapter;
+            return (
+              <Link
+                key={chapter}
+                href={chapterHref(chapter)}
+                onClick={() => chapterOpened(chapter)}
+                aria-label={`${bookDisplayName} chapter ${chapter}${done ? ", finished" : isNext ? ", next" : ""}`}
+                className="relative flex h-14 items-center justify-center rounded-xl text-[18px] font-black transition hover:-translate-y-0.5 sm:h-16 sm:text-[20px]"
+                style={{
+                  color: done ? "#ffffff" : TEXT,
+                  background: done
+                    ? "linear-gradient(180deg,#35b56a,#1f8a4c)"
+                    : isNext
+                      ? `linear-gradient(180deg, ${mix(GOLD, 30)}, transparent), ${CARD}`
+                      : CARD,
+                  boxShadow: done
+                    ? "inset 0 1px 0 rgba(255,255,255,.3), 0 4px 10px rgba(0,0,0,.3)"
+                    : isNext
+                      ? `inset 0 0 0 2px ${GOLD}, 0 0 16px ${mix(GOLD, 40)}`
+                      : `inset 0 0 0 1px ${mix(GOLD, 28)}`,
+                }}
+              >
+                {chapter}
+                {done ? (
+                  <span className="absolute right-1.5 top-1.5 grid h-[17px] w-[17px] place-items-center rounded-full" style={{ background: "rgba(255,255,255,.92)", color: "#1f8a4c" }} aria-hidden="true">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+                  </span>
+                ) : null}
+              </Link>
+            );
+          })}
         </div>
       </section>
     </div>
