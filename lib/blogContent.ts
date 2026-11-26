@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-5-explained",
+    title: "2 Samuel 5 Explained: David Takes the Throne and Jerusalem",
+    description:
+      "2 Samuel 5 explained verse by verse: all Israel crowns David king, he captures Jerusalem from the Jebusites, and defeats the Philistines twice.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-5-explained",
+    publishedAt: "2026-11-26",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 5 Explained 📖",
+      content:
+        "All Israel finally crowns David king over the whole nation.\nThen he takes a city nobody else could ever take.\n\n📌 Jerusalem becomes his, and it stays the city for the rest of the Bible.\n\n📖 The Jebusites taunt him, confident their walls can't be broken.\n📖 David asks God before both of his battles, and gets two different plans.\n📖 One of his new sons, born in this chapter, is named Solomon.\n\nNew article on:\n🟢 why it took **years** for every tribe to come to David\n🟢 how a city nobody could take finally **fell**\n🟢 why God answered the **same** enemy two different ways\n\nHave you ever waited years for something, only to watch it arrive all at once? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-4-explained",
     title: "2 Samuel 4 Explained: Ishbosheth Murdered in His Bed",
     description:
