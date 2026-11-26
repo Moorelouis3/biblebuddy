@@ -14,7 +14,11 @@ import path from "node:path";
 import {
   MAX_LEVEL,
   ORDER_MAX_WORDS,
-  SESSION_LENGTH,
+  LEARN_LENGTH,
+  TEST_LENGTH,
+  buildLearnSession,
+  buildTestSession,
+  isKnown,
   WELL_KNOWN_REFERENCES,
   answerPoints,
   buildFadeQuestion,
@@ -26,12 +30,10 @@ import {
   sessionStars,
   buildOrderQuestion,
   buildReferenceQuestion,
-  buildSession,
   canonicalBookName,
   formatReference,
   isFillChoiceCorrect,
   isOrderCorrect,
-  memoryLabel,
   nextLevel,
   normalizeWord,
   orderForPractice,
@@ -79,6 +81,7 @@ function verse(book: string, chapter: number, number: number, extra: Partial<Mem
     correct_count: 0,
     mistake_count: 0,
     last_practised_at: null,
+    known_at: null,
     created_at: "2026-11-12T00:00:00.000Z",
     ...extra,
   };
@@ -224,18 +227,52 @@ check("match the reference: every spare reference is a real verse in public/kjv"
   }
 });
 
-check("a session is five questions, and one saved verse is enough for one", () => {
+check("learning is one verse: ten steps, all on that verse, read first and said from memory last", () => {
   for (let seed = 1; seed <= 100; seed += 1) {
-    const one = buildSession([verses[1]], NOW, seeded(seed));
-    assert.equal(one.length, SESSION_LENGTH);
-    assert.ok(one.every((question) => question.verseId === verses[1].id));
-    assert.equal(new Set(one.map((question) => question.type)).size, 5, "all five games turn up");
-
-    const many = buildSession(verses, NOW, seeded(seed));
-    assert.equal(many.length, SESSION_LENGTH);
-    assert.equal(new Set(many.map((question) => question.verseId)).size, SESSION_LENGTH);
+    for (const target of verses) {
+      const others = verses.filter((other) => other.id !== target.id);
+      const steps = buildLearnSession(target, others, seeded(seed));
+      assert.equal(steps.length, LEARN_LENGTH);
+      assert.ok(steps.every((step) => step.verseId === target.id), "no other verse is ever asked");
+      assert.equal(steps[0].type, "read");
+      assert.equal(steps[steps.length - 1].type, "recite");
+      assert.equal(new Set(steps.map((step) => step.type)).size, 7, "all seven kinds of step turn up");
+    }
   }
-  assert.deepEqual(buildSession([], NOW), []);
+  // It gets harder as it goes: more blanks, then more of the verse faded.
+  const steps = buildLearnSession(verses[1], [], seeded(3));
+  const fills = steps.filter((step) => step.type === "fill");
+  assert.ok(fills[0].type === "fill" && fills[1].type === "fill" && fills[0].blanks.length < fills[1].blanks.length);
+  const fades = steps.filter((step) => step.type === "fade").map((step) => (step.type === "fade" ? step.hidden.length : 0));
+  assert.ok(fades[0] <= fades[1] && fades[1] <= fades[2], fades.join(" "));
+  // One saved verse is enough to learn it.
+  assert.equal(buildLearnSession(verses[0], [], seeded(1)).length, LEARN_LENGTH);
+});
+
+check("the test is ten questions over known verses only, and a verse never meets one game twice in a row", () => {
+  const stamp = "2026-11-20T00:00:00.000Z";
+  const known = verses.slice(0, 4).map((item) => ({ ...item, known_at: stamp }));
+  const learning = verses.slice(4);
+  const everything = [...known, ...learning];
+  const knownIds = new Set(known.map((item) => item.id));
+  for (let seed = 1; seed <= 100; seed += 1) {
+    // Handed every verse by mistake, it still only asks the known ones.
+    const test = buildTestSession(everything, everything, NOW, seeded(seed));
+    assert.equal(test.length, TEST_LENGTH);
+    assert.ok(test.every((question) => knownIds.has(question.verseId)), "a verse still being learned is never tested");
+    assert.ok(test.every((question) => question.type !== "read" && question.type !== "recite"));
+    for (const item of known) {
+      const games: string[] = test.filter((question) => question.verseId === item.id).map((question) => question.type);
+      assert.equal(new Set(games).size, games.length, `${games.join(",")}`);
+    }
+    for (const count of [1, 2, 3, 5, 12]) {
+      const some = verses.slice(0, count).map((item) => ({ ...item, known_at: stamp }));
+      const run = buildTestSession(some, verses, NOW, seeded(seed));
+      assert.equal(run.length, TEST_LENGTH);
+      assert.equal(new Set(run.map((question) => question.verseId)).size, Math.min(count, TEST_LENGTH));
+    }
+  }
+  assert.deepEqual(buildTestSession(learning, everything, NOW), [], "nothing known, nothing to test");
 });
 
 check("review: shaky and overdue verses come first, rested ones last", () => {
@@ -251,15 +288,17 @@ check("review: shaky and overdue verses come first, rested ones last", () => {
   assert.ok(order.indexOf(overdue.id) < order.indexOf(resting.id));
 });
 
-check("labels stay modest: New, Practising, Ready for review - and nothing is ever called memorized", () => {
-  assert.equal(memoryLabel({ level: 0, last_practised_at: null }, NOW), "New");
-  assert.equal(memoryLabel({ level: 0, last_practised_at: daysAgo(0.01) }, NOW), "Practising");
-  assert.equal(memoryLabel({ level: 1, last_practised_at: daysAgo(0.01) }, NOW), "Practising");
-  assert.equal(memoryLabel({ level: 1, last_practised_at: daysAgo(1.5) }, NOW), "Ready for review");
-  assert.equal(memoryLabel({ level: 3, last_practised_at: daysAgo(6) }, NOW), "Practising");
-  assert.equal(memoryLabel({ level: 3, last_practised_at: daysAgo(7.5) }, NOW), "Ready for review");
-  const source = fs.readFileSync(path.join(root, "lib", "bibleMemoryGames.ts"), "utf8");
-  assert.ok(!/"Memori[sz]ed"|"Mastered"/.test(source));
+check("known is the reader's own word: only the I know it button writes it", () => {
+  assert.equal(isKnown({ known_at: null }), false);
+  assert.equal(isKnown({ known_at: "2026-11-26T08:00:00.000Z" }), true);
+  const read = (file: string) => fs.readFileSync(path.join(root, file), "utf8");
+  // The rules never decide it, and a practice score never writes it.
+  assert.ok(!/known_at\s*[:=](?!\s*string)/.test(read("lib/bibleMemoryGames.ts")));
+  const saving = read("lib/bibleMemory.ts");
+  assert.equal(saving.split("known_at: known ?").length, 2, "one place writes known_at");
+  assert.ok(!/MemoryProgressPatch[^;]*known_at/.test(saving), "saving progress cannot mark a verse known");
+  assert.ok(read("components/memory/MemoryPractice.tsx").includes("setMemoryVerseKnown(userId, focus.id, true)"));
+  assert.ok(read("supabase/migrations/20261126_memory_verses_known.sql").includes("known_at"));
 });
 
 check("levels: up one after a clean session, down one after a mistake, never outside 0 to 3", () => {

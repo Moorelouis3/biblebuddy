@@ -1,8 +1,16 @@
 "use client";
 
 /**
- * One Bible Memory practice session: five questions across five games, then
- * the results.
+ * One Bible Memory session, in either of its two modes (2026-11-26):
+ *
+ *   learn  one verse, ten steps on that verse alone, no hearts to lose. It
+ *          ends by asking "Do you know this verse now?" - "I know it" moves
+ *          the verse to the known list, "Keep studying" leaves it where it is.
+ *   test   ten questions across the verses the reader has said they know,
+ *          with hearts, and a clean test moves a verse up a medal.
+ *
+ * Before that date there was one mode that mixed every saved verse into five
+ * questions. Louis: "that's not how you learn."
  *
  * The rules (what is asked, what counts as right, the points) are all in
  * lib/bibleMemoryGames.ts. This file is only the screens.
@@ -23,10 +31,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { FloatPoints, GameHud, GameResults, GameStage, GameTopBar } from "@/components/games/GameStage";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
-import { saveMemoryProgress } from "@/lib/bibleMemory";
+import { saveMemoryProgress, setMemoryVerseKnown } from "@/lib/bibleMemory";
 import {
   answerPoints,
-  buildSession,
+  buildLearnSession,
+  buildTestSession,
   cleanVerseText,
   firstLetter,
   formatReference,
@@ -46,14 +55,20 @@ import {
   type MemoryVerse,
   type OrderQuestion,
   type OrderTile,
+  type ReadQuestion,
+  type ReciteQuestion,
   type ReferenceQuestion,
 } from "@/lib/bibleMemoryGames";
 import { bookScene } from "@/lib/games/bookScene";
 import { matchSound } from "@/lib/match/sound";
 
 type Props = {
+  mode: "learn" | "test";
   userId: string;
+  /** Every saved verse. The test picks the known ones; learning borrows wrong choices from the rest. */
   verses: MemoryVerse[];
+  /** Learn mode: the one verse being studied. */
+  focus?: MemoryVerse | null;
   onFinished: () => void;
   onExit: () => void;
   onAgain: () => void;
@@ -65,6 +80,8 @@ const GAME_TITLES: Record<MemoryQuestion["type"], string> = {
   reference: "Where is it found?",
   letters: "First letters",
   fade: "The fading verse",
+  read: "Read it",
+  recite: "Say it from memory",
 };
 
 const GAME_HINTS: Record<MemoryQuestion["type"], string> = {
@@ -73,18 +90,31 @@ const GAME_HINTS: Record<MemoryQuestion["type"], string> = {
   reference: "Pick the reference for this verse.",
   letters: "Say the verse to yourself and tap the first letter of each word.",
   fade: "Tap the missing words back into the verse, in order.",
+  read: "Read the verse out loud, slowly, two times.",
+  recite: "Say the whole verse without looking. Then check yourself.",
 };
+
+/** An answer, or the read-it step, which is not a question and is never scored. */
+type Mark = AnswerResult & { unscored?: boolean };
 
 const MEDAL_ICON: Record<string, string> = { Bronze: "🥉", Silver: "🥈", Gold: "🥇" };
 const CALLOUTS: Record<number, string> = { 3: "Amen!", 5: "Hallelujah!" };
 
-export default function MemoryPractice({ userId, verses, onFinished, onExit, onAgain }: Props) {
+export default function MemoryPractice({ mode, userId, verses, focus = null, onFinished, onExit, onAgain }: Props) {
+  const learning = mode === "learn";
   // Built once per session: the verse list must not reshuffle the questions
   // when progress saves and the parent hands down fresh rows.
-  const [questions] = useState<MemoryQuestion[]>(() => buildSession(verses, new Date()));
+  const [questions] = useState<MemoryQuestion[]>(() =>
+    learning
+      ? focus
+        ? buildLearnSession(focus, verses.filter((other) => other.id !== focus.id))
+        : []
+      : buildTestSession(verses, verses, new Date()),
+  );
   const [startVerses] = useState<MemoryVerse[]>(() => verses);
   const [index, setIndex] = useState(0);
-  const [results, setResults] = useState<AnswerResult[]>([]);
+  const [results, setResults] = useState<Mark[]>([]);
+  const [known, setKnown] = useState<"no" | "saving" | "yes" | "failed">("no");
   const [answered, setAnswered] = useState<boolean | null>(null);
   const [done, setDone] = useState(false);
   const [saveFailed, setSaveFailed] = useState(false);
@@ -146,7 +176,8 @@ export default function MemoryPractice({ userId, verses, onFinished, onExit, onA
       if (nextStreak >= 3) window.setTimeout(() => matchSound.power(), 120);
     } else {
       setStreak(0);
-      setHearts((value) => Math.max(0, value - 1));
+      // Learning has no hearts: a miss shows the verse and carries on.
+      if (!learning) setHearts((value) => Math.max(0, value - 1));
       setShake((n) => n + 1);
       matchSound.lose();
     }
@@ -166,9 +197,30 @@ export default function MemoryPractice({ userId, verses, onFinished, onExit, onA
     });
   }
 
-  async function finish(allResults: AnswerResult[]) {
+  /** The read-it step: nothing to get right, so it moves straight on. */
+  function readDone() {
+    if (!question || answered !== null) return;
+    const nextResults: Mark[] = [...results, { verseId: question.verseId, correct: true, unscored: true }];
+    setResults(nextResults);
+    matchSound.swap();
+    if (index < questions.length - 1) setIndex(index + 1);
+    else void finish(nextResults);
+  }
+
+  async function markKnown() {
+    if (!focus || known === "saving" || known === "yes") return;
+    setKnown("saving");
+    const ok = await setMemoryVerseKnown(userId, focus.id, true);
+    setKnown(ok ? "yes" : "failed");
+    if (ok) onFinished();
+  }
+
+  async function finish(everyMark: Mark[]) {
     setFinishing(true);
-    const outcomes = summariseSession(startVerses, allResults);
+    const allResults = everyMark.filter((mark) => !mark.unscored);
+    // Learning never moves a verse's medal: that is what the test is for. Its
+    // right and wrong counts were already written answer by answer.
+    const outcomes = learning ? [] : summariseSession(startVerses, allResults);
     const now = new Date().toISOString();
     const saved = await Promise.all(
       outcomes.map((outcome) => {
@@ -189,7 +241,11 @@ export default function MemoryPractice({ userId, verses, onFinished, onExit, onA
     // A failure here must not cost the person their results screen.
     const right = allResults.filter((result) => result.correct).length;
     try {
-      await logActionToMasterActions(userId, ACTION_TYPE.bible_memory_session_completed, `Bible Memory - ${right}/${allResults.length}`);
+      await logActionToMasterActions(
+        userId,
+        ACTION_TYPE.bible_memory_session_completed,
+        `Bible Memory ${learning ? "study" : "test"} - ${right}/${allResults.length}`,
+      );
     } catch {
       // Logged by the recorder. Practice progress is already saved above.
     }
@@ -199,7 +255,7 @@ export default function MemoryPractice({ userId, verses, onFinished, onExit, onA
   }
 
   function next() {
-    if (hearts > 0 && index < questions.length - 1) {
+    if ((learning || hearts > 0) && index < questions.length - 1) {
       setIndex(index + 1);
       setAnswered(null);
       cardRef.current?.scrollIntoView({ block: "start" });
@@ -208,7 +264,7 @@ export default function MemoryPractice({ userId, verses, onFinished, onExit, onA
     void finish(results);
   }
 
-  const outOfHearts = hearts <= 0;
+  const outOfHearts = !learning && hearts <= 0;
   const lastQuestion = index >= questions.length - 1;
 
   if (!question && !done) {
@@ -217,11 +273,60 @@ export default function MemoryPractice({ userId, verses, onFinished, onExit, onA
         <GameTopBar title="Bible Memory" onBack={onExit} />
         <div className="bbg-col">
           <div className="bbg-parch text-center">
-            <p className="bbg-serif text-lg font-bold">Add a verse first, then come back to practise.</p>
+            <p className="bbg-serif text-lg font-bold">
+              {learning ? "Pick a verse to study first." : "Nothing to test yet. Finish a verse and tap I know it, and it will be here."}
+            </p>
             <button type="button" onClick={onExit} className="bbg-btn bbg-btn-green mt-4">
               Back to my verses
             </button>
           </div>
+        </div>
+      </GameStage>
+    );
+  }
+
+  if (done && learning && focus) {
+    const scored = results.filter((result) => !result.unscored);
+    const right = scored.filter((result) => result.correct).length;
+    return (
+      <GameStage scene={scene}>
+        <style>{MEM_CSS}</style>
+        <GameTopBar title="Bible Memory" sub={formatReference(focus)} onBack={onExit} />
+        <div className="bbg-col">
+          <GameResults
+            heading={known === "yes" ? "You know it!" : "Verse finished"}
+            name={formatReference(focus)}
+            stars={sessionStars(right, scored.length)}
+            score={score}
+            lines={<p>{right} of {scored.length} right</p>}
+          >
+            <p className="bbg-serif text-[16px] font-bold leading-7">&ldquo;{cleanVerseText(focus.verse_text)}&rdquo;</p>
+            {known === "yes" ? (
+              <>
+                <p className="text-[14px] font-black">✓ Moved to Verses I know. It is in your test from now on.</p>
+                <button type="button" onClick={onExit} className="bbg-btn bbg-btn-green">
+                  Back to my verses
+                </button>
+              </>
+            ) : (
+              <>
+                <p className="bbg-serif text-[19px] font-black">Do you know this verse now?</p>
+                <button type="button" onClick={() => void markKnown()} disabled={known === "saving"} className="bbg-btn bbg-btn-green">
+                  {known === "saving" ? "Saving..." : "✓ I know it"}
+                </button>
+                <button type="button" onClick={onExit} className="bbg-btn bbg-btn-cream">
+                  Keep studying
+                </button>
+                <button type="button" onClick={onAgain} className="bbmem-small mx-auto">
+                  ↻ Study it again now
+                </button>
+                {known === "failed" ? (
+                  <p className="text-[13px] font-bold">That did not save. Check your connection and tap I know it again.</p>
+                ) : null}
+                {saveFailed ? <p className="text-[13px] font-bold">Some of this session did not save.</p> : null}
+              </>
+            )}
+          </GameResults>
         </div>
       </GameStage>
     );
@@ -237,7 +342,7 @@ export default function MemoryPractice({ userId, verses, onFinished, onExit, onA
         <GameTopBar title="Bible Memory" onBack={onExit} />
         <div className="bbg-col">
           <GameResults
-            heading={outOfHearts ? "Out of hearts" : stars === 3 ? "Perfect!" : "Practice finished"}
+            heading={outOfHearts ? "Out of hearts" : stars === 3 ? "Perfect!" : "Test finished"}
             name="Bible Memory"
             stars={stars}
             score={score}
@@ -280,7 +385,7 @@ export default function MemoryPractice({ userId, verses, onFinished, onExit, onA
               {saveFailed ? "Some of this session did not save. Check your connection before you practise again." : "Your progress was saved."}
             </p>
             <button type="button" onClick={onAgain} className="bbg-btn bbg-btn-green">
-              ▶ Practise again
+              ▶ Test again
             </button>
             <button type="button" onClick={onExit} className="bbg-btn bbg-btn-cream">
               Back to my verses
@@ -299,12 +404,19 @@ export default function MemoryPractice({ userId, verses, onFinished, onExit, onA
   return (
     <GameStage scene={scene}>
       <style>{MEM_CSS}</style>
-      <GameTopBar title="Bible Memory" sub={`Question ${index + 1} of ${questions.length}`} onBack={onExit} />
+      <GameTopBar
+        title="Bible Memory"
+        sub={learning ? reference : `Test · Question ${index + 1} of ${questions.length}`}
+        onBack={onExit}
+      />
       <div className="bbg-col">
         <div className="relative">
           <GameHud
             items={[
-              {
+              ...(learning
+                ? [{ label: "Step", value: `${index + 1}/${questions.length}` }]
+                : []),
+              ...(learning ? [] : [{
                 label: "Hearts",
                 value: (
                   <span className="bbmem-hearts" aria-label={`${hearts} of ${HEARTS} hearts`}>
@@ -315,7 +427,7 @@ export default function MemoryPractice({ userId, verses, onFinished, onExit, onA
                     ))}
                   </span>
                 ),
-              },
+              }]),
               { label: "Streak", value: streak ? `🔥${streak}` : "0" },
               { label: "Score", value: score.toLocaleString(), bump },
             ]}
@@ -334,7 +446,11 @@ export default function MemoryPractice({ userId, verses, onFinished, onExit, onA
           <p className="bbmem-chip">{GAME_TITLES[question.type]}</p>
           <p className="mt-1 text-center text-[13px] font-bold opacity-80">{GAME_HINTS[question.type]}</p>
           <div className="mt-4">
-            {question.type === "fill" ? (
+            {question.type === "read" ? (
+              <ReadStep question={question} onDone={readDone} />
+            ) : question.type === "recite" ? (
+              <ReciteStep question={question} locked={answered !== null} onDone={recordAnswer} />
+            ) : question.type === "fill" ? (
               <FillGame question={question} locked={answered !== null} onDone={recordAnswer} />
             ) : question.type === "order" ? (
               <OrderGame question={question} locked={answered !== null} onDone={recordAnswer} />
@@ -349,13 +465,15 @@ export default function MemoryPractice({ userId, verses, onFinished, onExit, onA
 
           {answered !== null ? (
             <div className={`bbmem-answer ${answered ? "is-right" : "is-wrong"}`}>
-              <p className="bbg-serif text-[20px] font-black">{answered ? "✓ Correct!" : outOfHearts ? "Out of hearts. Here it is:" : "Not quite. Here it is:"}</p>
+              <p className="bbg-serif text-[20px] font-black">{answered
+                  ? question.type === "recite" ? "✓ Well done!" : "✓ Correct!"
+                  : outOfHearts ? "Out of hearts. Here it is:" : question.type === "recite" ? "Nearly. Here it is again:" : "Not quite. Here it is:"}</p>
               <p className="bbg-serif mt-2 text-[18px] font-bold leading-7">{fullText}</p>
               <p className="mt-1 text-[13px] font-black opacity-80">
                 {reference} · {question.translation}
               </p>
               <button type="button" ref={nextRef} onClick={next} disabled={finishing} className="bbg-btn bbg-btn-green mt-4">
-                {finishing ? "Saving..." : outOfHearts || lastQuestion ? "See results" : "Next ›"}
+                {finishing ? "Saving..." : outOfHearts || lastQuestion ? (learning ? "Finish ›" : "See results") : "Next ›"}
               </button>
             </div>
           ) : null}
@@ -421,6 +539,58 @@ const MEM_CSS = `
 @keyframes bbmem-slide { from { opacity:0; transform: translateY(16px) scale(.96); } }
 @keyframes bbmem-break { 0% { transform: scale(1.6); color:#d6283b; } 100% { transform: scale(1); } }
 `;
+
+// ───────────────────────── read it, and say it ─────────────────────────
+
+function ReadStep({ question, onDone }: { question: ReadQuestion; onDone: () => void }) {
+  return (
+    <div className="text-center">
+      <p className="bbmem-verse" style={{ fontSize: 22 }}>
+        &ldquo;{question.text}&rdquo;
+      </p>
+      <p className="mt-2 text-[14px] font-black opacity-80">
+        {question.reference} · {question.translation}
+      </p>
+      <button type="button" onClick={onDone} className="bbg-btn bbg-btn-green mt-5">
+        I read it ›
+      </button>
+    </div>
+  );
+}
+
+function ReciteStep({ question, locked, onDone }: { question: ReciteQuestion; locked: boolean; onDone: (correct: boolean) => void }) {
+  const [shown, setShown] = useState(false);
+  if (locked) return null;
+  return (
+    <div className="text-center">
+      <p className="bbg-serif text-[22px] font-black">{question.reference}</p>
+      <p className="text-[12px] font-black opacity-70">{question.translation}</p>
+      {shown ? (
+        <>
+          <p className="bbmem-verse mt-3">&ldquo;{question.text}&rdquo;</p>
+          <p className="mt-4 text-[14px] font-black">Did you say it right?</p>
+          <div className="mt-2 grid grid-cols-2 gap-3">
+            <button type="button" onClick={() => onDone(true)} className="bbmem-choice">
+              ✓ I had it
+            </button>
+            <button type="button" onClick={() => onDone(false)} className="bbmem-choice">
+              Not yet
+            </button>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="bbmem-tray mt-3 justify-center" style={{ minHeight: "6rem" }}>
+            <span className="px-2 text-[14px] font-bold opacity-70">The verse is hidden. Say it out loud.</span>
+          </div>
+          <button type="button" onClick={() => setShown(true)} className="bbg-btn bbg-btn-green mt-4">
+            Show the verse
+          </button>
+        </>
+      )}
+    </div>
+  );
+}
 
 // ───────────────────────── fill in the blank ─────────────────────────
 

@@ -16,8 +16,10 @@ import { supabase } from "./supabaseClient";
 import { canonicalBookName, cleanVerseText, type MemoryVerse } from "./bibleMemoryGames";
 import { trackFeatureEvent, type MemorySaveSource } from "./featureEvents";
 
-const COLUMNS =
+const BASE_COLUMNS =
   "id, book, chapter, verse, verse_end, translation, verse_text, level, correct_count, mistake_count, last_practised_at, created_at";
+// known_at arrived on 2026-11-26 (supabase/migrations/20261126_memory_verses_known.sql).
+const COLUMNS = `${BASE_COLUMNS}, known_at`;
 
 /** Far more than anyone will save, and under the 1,000-row response cap. */
 const MAX_VERSES = 500;
@@ -66,14 +68,19 @@ export function onMemoryVersesChange(listener: () => void) {
  * yet", and a failed read must never be allowed to say that.
  */
 export async function listMemoryVerses(userId: string): Promise<MemoryVerse[]> {
-  const { data, error } = await supabase
-    .from("memory_verses")
-    .select(COLUMNS)
-    .eq("user_id", userId)
-    .order("created_at", { ascending: false })
-    .limit(MAX_VERSES);
+  const read = (columns: string) =>
+    supabase
+      .from("memory_verses")
+      .select(columns)
+      .eq("user_id", userId)
+      .order("created_at", { ascending: false })
+      .limit(MAX_VERSES);
+  let { data, error } = await read(COLUMNS);
+  // 42703: the database does not have known_at yet. The verses must still
+  // load; every one of them is simply still being learned.
+  if (error && error.code === "42703") ({ data, error } = await read(BASE_COLUMNS));
   if (error) throw new Error(error.message);
-  return (data || []) as MemoryVerse[];
+  return ((data || []) as unknown as MemoryVerse[]).map((verse) => ({ ...verse, known_at: verse.known_at ?? null }));
 }
 
 /** The saved row's id, or null when this verse is not in the collection. */
@@ -125,6 +132,22 @@ export async function addMemoryVerse(userId: string, input: MemoryVerseInput): P
 
 export async function removeMemoryVerse(userId: string, id: string): Promise<boolean> {
   const { error } = await supabase.from("memory_verses").delete().eq("user_id", userId).eq("id", id);
+  if (error) return false;
+  announce();
+  return true;
+}
+
+/**
+ * "I know it" (known = true) moves a verse to the list the test draws from.
+ * known = false sends it back to be learned again. Returns false when it did
+ * not save.
+ */
+export async function setMemoryVerseKnown(userId: string, id: string, known: boolean): Promise<boolean> {
+  const { error } = await supabase
+    .from("memory_verses")
+    .update({ known_at: known ? new Date().toISOString() : null })
+    .eq("user_id", userId)
+    .eq("id", id);
   if (error) return false;
   announce();
   return true;

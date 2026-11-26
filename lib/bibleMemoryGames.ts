@@ -1,6 +1,18 @@
 /**
  * Bible Memory: the game rules, with nothing else in the file (2026-11-12).
  *
+ * Two ways in since 2026-11-26 (Louis: "do one verse at a time and have like
+ * ten different questions or activities for that one verse... if you say that
+ * you know it, then it goes to the master list, and then you can do the test"):
+ *
+ *   Learn  one verse, ten steps on that verse alone (buildLearnSession).
+ *          At the end the reader says "I know it" or "Keep studying".
+ *   Test   ten questions across the verses the reader has said they know,
+ *          and only those (buildTestSession).
+ *
+ * "Known" is the reader's own word (known_at on the row), never something a
+ * score decides for them.
+ *
  * Everything here is a plain function of its inputs: no Supabase, no window,
  * no clock it did not get passed. That is what lets scripts/verify-memory.ts
  * play thousands of rounds offline and prove the three promises the games
@@ -24,12 +36,17 @@ export type MemoryVerse = {
   correct_count: number;
   mistake_count: number;
   last_practised_at: string | null;
+  /** When the reader said "I know it". Null while the verse is still being learned. */
+  known_at: string | null;
   created_at: string;
 };
 
 export type Rng = () => number;
 
-export const SESSION_LENGTH = 5;
+/** Steps in one verse's learning session. */
+export const LEARN_LENGTH = 10;
+/** Questions in a test over the known verses. */
+export const TEST_LENGTH = 10;
 export const MAX_LEVEL = 3;
 
 /**
@@ -101,10 +118,13 @@ export function shuffle<T>(items: readonly T[], rng: Rng = Math.random): T[] {
 
 // ───────────────────────── progress and review ─────────────────────────
 
-export type MemoryLabel = "New" | "Practising" | "Ready for review";
-
 function clampLevel(level: number) {
   return Math.min(MAX_LEVEL, Math.max(0, Math.round(Number(level) || 0)));
+}
+
+/** Has the reader said they know this verse? Only their word counts. */
+export function isKnown(verse: Pick<MemoryVerse, "known_at">): boolean {
+  return Boolean(verse.known_at);
 }
 
 /** Has this verse rested long enough to be asked again? */
@@ -113,16 +133,6 @@ export function isDue(verse: Pick<MemoryVerse, "level" | "last_practised_at">, n
   const last = Date.parse(verse.last_practised_at);
   if (!Number.isFinite(last)) return true;
   return now.getTime() >= last + REVIEW_WAIT_DAYS[clampLevel(verse.level)] * DAY_MS;
-}
-
-/**
- * Deliberately modest. Nothing here says "memorized": a few right taps on a
- * multiple-choice screen is practice, not a verse known by heart.
- */
-export function memoryLabel(verse: Pick<MemoryVerse, "level" | "last_practised_at">, now: Date): MemoryLabel {
-  if (!verse.last_practised_at) return "New";
-  if (clampLevel(verse.level) >= 1 && isDue(verse, now)) return "Ready for review";
-  return "Practising";
 }
 
 /**
@@ -507,7 +517,7 @@ export function isFadePickCorrect(question: FadeQuestion, gap: number, word: str
 
 export type Medal = "Bronze" | "Silver" | "Gold";
 
-/** A verse's medal by its level: one clean session earns Bronze, three in a row Gold. */
+/** A known verse's medal by its level: one clean test earns Bronze, three in a row Gold. */
 export function medalFor(level: number): Medal | null {
   const value = clampLevel(level);
   return value >= 3 ? "Gold" : value === 2 ? "Silver" : value === 1 ? "Bronze" : null;
@@ -538,30 +548,92 @@ export const HEARTS = 3;
 
 // ───────────────────────── a session ─────────────────────────
 
-export type MemoryQuestion = FillQuestion | OrderQuestion | ReferenceQuestion | LettersQuestion | FadeQuestion;
+/** Step one of learning: the verse in full, to be read out loud. Not a question, never scored. */
+export type ReadQuestion = { type: "read"; verseId: string; reference: string; translation: string; text: string };
 
-const GAME_ORDER: Array<MemoryQuestion["type"]> = ["fill", "letters", "order", "fade", "reference"];
+/** The last step: the verse hidden, said from memory, and the reader marks themself. */
+export type ReciteQuestion = { type: "recite"; verseId: string; reference: string; translation: string; text: string };
+
+export type MemoryQuestion =
+  | FillQuestion
+  | OrderQuestion
+  | ReferenceQuestion
+  | LettersQuestion
+  | FadeQuestion
+  | ReadQuestion
+  | ReciteQuestion;
+
+type GameType = "fill" | "letters" | "order" | "fade" | "reference";
+const GAME_ORDER: GameType[] = ["fill", "letters", "order", "fade", "reference"];
+
+function buildGame(game: GameType, verse: MemoryVerse, others: readonly MemoryVerse[], rng: Rng): MemoryQuestion {
+  if (game === "fill") return buildFillQuestion(verse, others, rng);
+  if (game === "order") return buildOrderQuestion(verse, rng);
+  if (game === "letters") return buildLettersQuestion(verse, rng);
+  if (game === "fade") return buildFadeQuestion(verse, others, rng);
+  return buildReferenceQuestion(verse, others, rng);
+}
 
 /**
- * Five questions. With five or more verses saved, the five most in need get
- * one each. With fewer, they take turns, and a verse that comes round again
- * meets a different game - so one saved verse is still a full session.
+ * Learning one verse: ten steps, every one about this verse and no other.
+ *
+ * It climbs. Read it, find one missing word, place it in the Bible, find
+ * three missing words, rebuild it, then watch more and more of it fade, and
+ * finish by saying it with nothing on the screen. The other saved verses are
+ * only borrowed from for wrong choices.
  */
-export function buildSession(verses: readonly MemoryVerse[], now: Date, rng: Rng = Math.random): MemoryQuestion[] {
-  if (!verses.length) return [];
-  const ordered = orderForPractice(verses, now).slice(0, SESSION_LENGTH);
+export function buildLearnSession(
+  verse: MemoryVerse,
+  otherVerses: readonly MemoryVerse[],
+  rng: Rng = Math.random,
+): MemoryQuestion[] {
+  // The builders read the verse's level to decide how hard to be. Learning
+  // sets its own difficulty per step, whatever the verse's test level is.
+  const at = (level: number): MemoryVerse => ({ ...verse, level });
+  const whole = {
+    verseId: verse.id,
+    reference: formatReference(verse),
+    translation: verse.translation,
+    text: cleanVerseText(verse.verse_text),
+  };
+  return [
+    { type: "read", ...whole },
+    buildFillQuestion(at(0), otherVerses, rng),
+    buildReferenceQuestion(verse, otherVerses, rng),
+    buildFillQuestion(at(2), otherVerses, rng),
+    buildOrderQuestion(verse, rng),
+    buildFadeQuestion(at(0), otherVerses, rng),
+    buildLettersQuestion(verse, rng),
+    buildFadeQuestion(at(1), otherVerses, rng),
+    buildFadeQuestion(at(2), otherVerses, rng),
+    { type: "recite", ...whole },
+  ];
+}
+
+/**
+ * The test: ten questions, and only over verses the reader has said they
+ * know. With ten or more known, the ten most in need get one each. With
+ * fewer they take turns, and a verse that comes round again meets a different
+ * game. `allVerses` is only borrowed from for wrong choices.
+ */
+export function buildTestSession(
+  known: readonly MemoryVerse[],
+  allVerses: readonly MemoryVerse[],
+  now: Date,
+  rng: Rng = Math.random,
+): MemoryQuestion[] {
+  const pool = known.filter(isKnown);
+  if (!pool.length) return [];
+  const ordered = orderForPractice(pool, now).slice(0, TEST_LENGTH);
   const firstGame = Math.floor(rng() * GAME_ORDER.length);
 
   const questions: MemoryQuestion[] = [];
-  for (let index = 0; index < SESSION_LENGTH; index += 1) {
-    const verse = ordered[index % ordered.length];
-    const others = verses.filter((other) => other.id !== verse.id);
-    const game = GAME_ORDER[(firstGame + index) % GAME_ORDER.length];
-    if (game === "fill") questions.push(buildFillQuestion(verse, others, rng));
-    else if (game === "order") questions.push(buildOrderQuestion(verse, rng));
-    else if (game === "letters") questions.push(buildLettersQuestion(verse, rng));
-    else if (game === "fade") questions.push(buildFadeQuestion(verse, others, rng));
-    else questions.push(buildReferenceQuestion(verse, others, rng));
+  for (let index = 0; index < TEST_LENGTH; index += 1) {
+    const slot = index % ordered.length;
+    const round = Math.floor(index / ordered.length);
+    const verse = ordered[slot];
+    const others = allVerses.filter((other) => other.id !== verse.id);
+    questions.push(buildGame(GAME_ORDER[(firstGame + slot + round) % GAME_ORDER.length], verse, others, rng));
   }
   return questions;
 }
