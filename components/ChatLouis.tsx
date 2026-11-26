@@ -594,6 +594,55 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
   return null;
 }
 
+/**
+ * The Lil Louis tab's look (2026-11-26, from Louis's mock-up: "do lil louis
+ * screen better now"): one wide dark glass panel with a gold edge, his face
+ * and name as the header, bigger bubbles, and a round gold send button.
+ * Colours come from the selected Bible Cover, like the Games and Bible menus.
+ *
+ * Every rule sits under .bbll, the class on the embedded panel only, so the
+ * floating chat bubble elsewhere in the app keeps the look it had.
+ */
+const LL_GOLD = "var(--bb-accent,#e9b45a)";
+const llMix = (pct: number, color = LL_GOLD) => `color-mix(in srgb, ${color} ${pct}%, transparent)`;
+const LL_CSS = `
+.bbll { background: var(--bb-surface-soft,rgba(20,13,9,.6)); box-shadow: inset 0 0 0 1.5px ${llMix(50)}, 0 0 28px ${llMix(18)}, 0 16px 38px rgba(0,0,0,.4); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.bbll-head { position:relative; padding: 14px 14px 10px; text-align:center; border-bottom: 1px solid ${llMix(25)}; }
+.bbll-head-row { display:flex; align-items:center; justify-content:center; gap:14px; }
+.bbll-rule { height:1px; flex:1; max-width:110px; }
+.bbll-face { flex:none; display:grid; place-items:center; width:72px; height:72px; border-radius:999px; overflow:hidden; background: var(--bb-card,#1c120a); box-shadow: 0 0 0 2.5px ${LL_GOLD}, 0 0 18px ${llMix(45)}; }
+.bbll-title { font-size:34px; font-weight:900; line-height:1; color: var(--bb-text-primary,#fff6e3); text-shadow: 0 2px 14px ${llMix(45)}, 0 2px 4px rgba(0,0,0,.5); text-align:left; }
+.bbll-sub { margin-top:3px; font-size:17px; font-weight:900; color: ${LL_GOLD}; text-align:left; }
+.bbll-tag { margin-top:8px; font-size:13px; font-weight:600; color: var(--bb-text-secondary,#e9dcc6); }
+.bbll-new { position:absolute; right:12px; top:12px; display:inline-flex; align-items:center; gap:6px; padding: 8px 12px; border-radius:14px; font-size:13px; font-weight:900;
+  color: var(--bb-text-primary,#fbf3e4); background: var(--bb-card,rgba(28,20,16,.72)); box-shadow: inset 0 0 0 1px ${llMix(45)}; }
+.bbll-new:disabled { opacity:.5; }
+.bbll .bbll-name { margin-bottom:4px; font-size:14px; font-weight:900; color: ${LL_GOLD}; }
+.bbll .bbll-bubble { border: 1px solid ${llMix(55)}; border-radius:20px; padding: 11px 16px; color: var(--bb-text-primary,#fbf3e4); background: var(--bb-card,rgba(28,20,16,.82)); box-shadow: inset 0 0 0 1px ${llMix(55)}, 0 6px 16px rgba(0,0,0,.28); }
+.bbll .bbll-bubble.is-user { border-color: ${llMix(75)}; background: linear-gradient(180deg, ${llMix(42)}, ${llMix(24)}), var(--bb-card,rgba(28,20,16,.82)); box-shadow: inset 0 0 0 1px ${llMix(70)}, 0 6px 16px rgba(0,0,0,.28); }
+.bbll .bbll-bubble p { font-size:16px; line-height:1.5; }
+.bbll .bbll-bubble strong { color: inherit; font-weight:800; }
+.bbll .bbll-empty { font-size:16px; color: var(--bb-text-secondary,#e9dcc6); }
+.bbll .bbll-foot { background: transparent; border-top: 1px solid ${llMix(25)}; padding: 12px; }
+.bbll .bbll-field { min-height:52px; border:0; border-radius:26px; padding: 14px 18px; font-size:16px; color: var(--bb-text-primary,#fbf3e4); background: var(--bb-card,rgba(28,20,16,.82)); box-shadow: inset 0 0 0 1px ${llMix(45)}; }
+.bbll .bbll-field::placeholder { color: var(--bb-text-secondary,#e9dcc6); opacity:.75; }
+.bbll .bbll-field:focus { outline:none; box-shadow: inset 0 0 0 2px ${LL_GOLD}; }
+.bbll .bbll-send { flex:none; display:grid; place-items:center; width:52px; height:52px; padding:0; border-radius:999px; color: var(--bb-button-text,#2a1d05); background: var(--bb-button,#d99a3e); box-shadow: 0 0 14px ${llMix(50)}, inset 0 1px 0 rgba(255,255,255,.45); }
+.bbll .bbll-note { color: var(--bb-text-secondary,#e9dcc6); }
+@media (max-width: 639px) {
+  .bbll-head { padding: 12px 12px 8px; }
+  .bbll-head-row { justify-content:flex-start; gap:10px; }
+  .bbll-rule { display:none; }
+  .bbll-face { width:54px; height:54px; }
+  .bbll-title { font-size:25px; }
+  .bbll-sub { font-size:14px; }
+  .bbll-tag { font-size:11.5px; text-align:left; }
+  .bbll-new { padding: 7px 10px; font-size:12px; }
+  .bbll .bbll-bubble { padding: 10px 14px; }
+  .bbll .bbll-bubble p { font-size:15px; }
+}
+`;
+
 function renderLouisFormattedText(content: string) {
   const blocks = content.split(/\n{2,}/);
 
@@ -2532,7 +2581,9 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
     ? "Type today or tomorrow..."
     : hasPendingDevotionalChallengePrompt || hasPendingDashboardDailyPrompt
       ? "Type yes or no..."
-      : `Talk to ${selectedBuddy.name}...`;
+      : isEmbedded
+        ? "Ask a question, share a verse, or talk about what you're studying..."
+        : `Talk to ${selectedBuddy.name}...`;
 
   function formatInboxMessage(row: LouisInboxMessageRow) {
     const actionLine =
@@ -3588,6 +3639,25 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
           top: `${customPanelTop ?? viewportPadding}px`,
         };
 
+  /**
+   * The New Chat button on the Lil Louis tab: back to his opening line. The
+   * save effect above writes the emptied thread, so it stays cleared on the
+   * next visit and on other devices.
+   */
+  function startNewChat() {
+    if (isSending) return;
+    const hasSaidSomething = messages.some((message) => message.role === "user");
+    if (hasSaidSomething && !window.confirm("Start a new chat? This clears the conversation you have now.")) return;
+    setInput("");
+    setMessages([
+      {
+        role: "assistant",
+        content: buildBuddySelectedMessage(selectedBuddy.id, studyContext),
+        eventKey: buildBuddySelectedEventKey(selectedBuddy.id, studyContext),
+      },
+    ]);
+  }
+
   const isLouisActive = hasPendingLouisMoment;
   const bubbleOuterSize = isLouisActive ? "h-32 w-32" : "h-28 w-28";
   const avatarSize = isLouisActive ? 118 : 104;
@@ -3644,7 +3714,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
           }
           className={
             isEmbedded
-              ? "mx-auto flex min-h-[620px] w-full max-w-xl flex-col overflow-hidden rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-[0_14px_36px_rgba(38,63,99,0.12)]"
+              ? "bbll mx-auto flex h-[calc(100dvh-178px)] min-h-[460px] w-full flex-col overflow-hidden rounded-[28px]"
               : "z-[70] w-[360px] h-[500px] rounded-t-2xl bg-white border border-gray-200 shadow-2xl flex flex-col"
           }
         >
@@ -3677,16 +3747,42 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
                 ?
               </button>
             </div>
-          ) : null}
+          ) : (
+            <header className="bbll-head">
+              <style>{LL_CSS}</style>
+              <div className="bbll-head-row">
+                <span className="bbll-rule" style={{ background: `linear-gradient(90deg,transparent,${LL_GOLD})` }} aria-hidden="true" />
+                <span className="bbll-face">
+                  <LouisAvatar buddyId={selectedBuddy.id} mood="peace" size={62} />
+                </span>
+                <div>
+                  <h1 className="bbll-title">{selectedBuddy.id === "louis" ? "Lil Louis" : selectedBuddy.name}</h1>
+                  <p className="bbll-sub">My Bible Chat</p>
+                </div>
+                <span className="bbll-rule" style={{ background: `linear-gradient(90deg,${LL_GOLD},transparent)` }} aria-hidden="true" />
+              </div>
+              <p className="bbll-tag">Ask questions &bull; Study Scripture &bull; Get clarity &bull; Grow in your faith</p>
+              <button type="button" onClick={startNewChat} disabled={isSending} className="bbll-new">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+                New Chat
+              </button>
+            </header>
+          )}
 
           {/* Messages area */}
           <div
             ref={messagesContainerRef}
-            className="flex-1 overflow-y-auto bg-[var(--bb-card,#ffffff)] px-4 py-4 space-y-3"
+            className={
+              isEmbedded
+                ? "flex-1 space-y-3 overflow-y-auto px-3 py-4 sm:px-6"
+                : "flex-1 overflow-y-auto bg-[var(--bb-card,#ffffff)] px-4 py-4 space-y-3"
+            }
           >
             {messages.length === 0 && (
               <div className="flex items-center justify-center h-full">
-                <p className="max-w-xs text-center text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
+                <p className="bbll-empty max-w-xs text-center text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
                   {emptyStatePrompt}
                 </p>
               </div>
@@ -3732,15 +3828,15 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
 
                   <div className={isUserMessage ? "max-w-[78%] text-right" : "max-w-[78%]"}>
                     {startsMessageRun ? (
-                      <div className="mb-1 text-[10px] font-medium text-[var(--bb-text-muted,#64748b)]">
-                        {isUserMessage ? "You" : selectedBuddy.name}
+                      <div className="bbll-name mb-1 text-[10px] font-medium text-[var(--bb-text-muted,#64748b)]">
+                        {isUserMessage ? "You" : isEmbedded && selectedBuddy.id === "louis" ? "Lil Louis" : selectedBuddy.name}
                       </div>
                     ) : null}
                     <div
                       className={
                         isUserMessage
-                          ? `inline-block rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-accent-soft,#eaf5ff)] px-3.5 py-2.5 text-left text-[var(--bb-text-primary,#111827)] shadow-sm ${endsMessageRun ? "rounded-br-md" : ""}`
-                          : `inline-block rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3.5 py-2.5 text-[var(--bb-text-primary,#111827)] shadow-sm ${endsMessageRun ? "rounded-bl-md" : ""}`
+                          ? `bbll-bubble is-user inline-block rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-accent-soft,#eaf5ff)] px-3.5 py-2.5 text-left text-[var(--bb-text-primary,#111827)] shadow-sm ${endsMessageRun ? "rounded-br-md" : ""}`
+                          : `bbll-bubble inline-block rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3.5 py-2.5 text-[var(--bb-text-primary,#111827)] shadow-sm ${endsMessageRun ? "rounded-bl-md" : ""}`
                       }
                     >
                       {m.role === "assistant" ? (
@@ -3765,8 +3861,8 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
                   <LouisAvatar buddyId={selectedBuddy.id} mood="thinking" size={31} />
                 </div>
                 <div className="max-w-[78%]">
-                  <div className="mb-1 text-[10px] font-medium text-[var(--bb-text-muted,#64748b)]">{selectedBuddy.name}</div>
-                  <div className="inline-flex items-center gap-1 rounded-[22px] rounded-bl-md border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface-soft,#ffffff)] px-3.5 py-3 text-[var(--bb-text-primary,#1f2937)] shadow-sm">
+                  <div className="bbll-name mb-1 text-[10px] font-medium text-[var(--bb-text-muted,#64748b)]">{isEmbedded && selectedBuddy.id === "louis" ? "Lil Louis" : selectedBuddy.name}</div>
+                  <div className="bbll-bubble inline-flex items-center gap-1 rounded-[22px] rounded-bl-md border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface-soft,#ffffff)] px-3.5 py-3 text-[var(--bb-text-primary,#1f2937)] shadow-sm">
                     <span className="h-2 w-2 animate-bounce rounded-full bg-[var(--bb-accent,#94a3b8)] [animation-delay:-0.2s]" />
                     <span className="h-2 w-2 animate-bounce rounded-full bg-[var(--bb-accent,#94a3b8)] [animation-delay:-0.1s]" />
                     <span className="h-2 w-2 animate-bounce rounded-full bg-[var(--bb-accent,#94a3b8)]" />
@@ -3779,7 +3875,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
           </div>
 
           {quickReplies.length > 0 ? (
-            <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-3">
+            <div className="bbll-foot border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-3">
               <div className={`gap-2 ${quickReplies.length === 1 ? "flex justify-end" : "grid grid-cols-2"}`}>
                 {quickReplies.map((reply) => (
                   <button
@@ -3803,7 +3899,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
 
           {/* Input area */}
           <div
-            className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3"
+            className="bbll-foot border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3"
           >
             {!aiConsent ? (
               <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 text-xs leading-relaxed text-[var(--bb-text-primary,#111827)]">
@@ -3830,7 +3926,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
                   onKeyDown={handleKeyDown}
                   placeholder={inputPlaceholder}
                   rows={1}
-                  className="min-h-[40px] max-h-[130px] flex-1 resize-none overflow-y-auto rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-2 text-sm text-[var(--bb-text-primary,#111827)] focus:outline-none focus:ring-2 focus:ring-[var(--bb-accent,#2f7fe8)]"
+                  className="bbll-field min-h-[40px] max-h-[130px] flex-1 resize-none overflow-y-auto rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-2 text-sm text-[var(--bb-text-primary,#111827)] focus:outline-none focus:ring-2 focus:ring-[var(--bb-accent,#2f7fe8)]"
                 />
                 {isListening && audioLevels.length > 0 && (
                   <div className="flex items-end gap-0.5 h-8 pb-1">
@@ -3887,13 +3983,18 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
               <button
                 onClick={handleSend}
                 disabled={isSending || !input.trim()}
-                className="rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-2 text-xs font-black text-[var(--bb-button-text,#ffffff)] transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
+                aria-label={isSending ? "Sending" : "Send"}
+                className="bbll-send rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-2 text-xs font-black text-[var(--bb-button-text,#ffffff)] transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {isSending ? "Sending..." : "Send"}
+                {isEmbedded ? (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M3.4 20.4 21 12 3.4 3.6 3 10l12 2-12 2z" />
+                  </svg>
+                ) : isSending ? "Sending..." : "Send"}
               </button>
             </div>
             {aiConsent ? (
-              <p className="mt-1.5 text-center text-[10px] text-[var(--bb-text-secondary,#6b7280)]">
+              <p className="bbll-note mt-1.5 text-center text-[10px] text-[var(--bb-text-secondary,#6b7280)]">
                 Little Louis is an AI and can make mistakes.
               </p>
             ) : null}
