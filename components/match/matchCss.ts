@@ -62,8 +62,14 @@ html.bb-game-screen, html.bb-game-screen body { overflow:hidden !important; over
 .bbm-map .bbm-topbar { position:absolute; left:0; right:0; top:0; }
 .bbm-ribbon { padding: 8px 34px 10px; font-size: 24px; font-weight:800; color:#4a2a10 !important; border-radius: 8px;
   background: linear-gradient(180deg,#fbeccb,#ecd29b); box-shadow: inset 0 0 0 2px #c9934a, 0 6px 12px rgba(0,0,0,.3); }
-.bbm-map-scroll { flex:1; overflow-y:auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
-.bbm-map-world { position:relative; height: 200dvh; }
+/* Up and down only. A board's name or a buddy's name near the edge sticks out
+   past the map, and with only overflow-y set the browser let the whole map
+   slide sideways to reach it (Louis, 2026-11-27: "you can slide the game map
+   all around, its not like fixed"). */
+.bbm-map-scroll { flex:1; overflow-y:auto; overflow-x:hidden; touch-action: pan-y; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+/* Clipped at the sides too, so nothing sticking out can widen the map: with
+   hidden alone a scroll-into-view could still nudge it sideways. */
+.bbm-map-world { position:relative; height: 200dvh; overflow-x: clip; }
 .bbm-map-eden { position:absolute; left:0; right:0; top:0; height: 112dvh; background: url(/games/match/backgrounds/eden.webp) center / cover no-repeat;
   -webkit-mask-image: linear-gradient(180deg, #000 82%, transparent); mask-image: linear-gradient(180deg, #000 82%, transparent); z-index:1; }
 .bbm-map-creation { position:absolute; left:0; right:0; bottom:0; height: 100dvh; background: url(/games/match/backgrounds/creation.webp) center bottom / cover no-repeat; }
