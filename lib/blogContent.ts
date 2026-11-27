@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-8-explained",
+    title: "2 Samuel 8 Explained: David's Conquests and the Gold He Gave to God",
+    description:
+      "2 Samuel 8 explained verse by verse: David defeats the Philistines, Moab, Syria, and Edom, dedicates the spoils to the LORD, and sets up his kingdom's officials.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-8-explained",
+    publishedAt: "2026-11-27",
+    readTime: "13 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 8 Explained 📖",
+      content:
+        "David wins six wars in one chapter.\nThen he gives the winnings away.\n\n📌 Every nation's gold gets dedicated to God, not kept.\n\n📖 A thousand captured chariots, and David disables nearly all of them.\n📖 One repeated phrase explains every single victory.\n📖 A pagan prophet predicted Edom's defeat centuries earlier.\n\nNew article on:\n🟢 why David **disables** the chariots he just won\n🟢 what it means that David **dedicated** the gold instead of keeping it\n🟢 how an **old** prophecy about Edom lands in this chapter\n\nHave you ever watched someone win for so long you wondered what they were winning for? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-7-explained",
     title: "2 Samuel 7 Explained: God's Covenant Promise to David",
     description:
