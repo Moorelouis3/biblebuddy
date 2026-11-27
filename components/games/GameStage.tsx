@@ -55,7 +55,27 @@ export function GameStage({ scene, children, dim = 0.38 }: { scene: BookScene; c
 }
 
 /** Round back button, the gold title plaque, and the sound switch. */
-export function GameTopBar({ title, sub, back, onBack }: { title: string; sub?: string; back?: string; onBack?: () => void }) {
+/**
+ * `settings`: a screen with settings of its own hands them in here, and the
+ * round button on the right becomes a Settings button that opens a small
+ * panel holding the sound switch and those settings. Without it the button is
+ * the plain sound switch, as before. Bible Memory was the first to use it
+ * (Louis, 2026-11-27: "make a setting button where the sound button is, add
+ * the sound button and translation selection in the settings").
+ */
+export function GameTopBar({
+  title,
+  sub,
+  back,
+  onBack,
+  settings,
+}: {
+  title: string;
+  sub?: string;
+  back?: string;
+  onBack?: () => void;
+  settings?: ReactNode;
+}) {
   const backIcon = (
     // eslint-disable-next-line @next/next/no-img-element
     <img src="/games/clue/ui/icon-back.webp" alt="" />
@@ -75,33 +95,86 @@ export function GameTopBar({ title, sub, back, onBack }: { title: string; sub?: 
         <span className="bbg-plaque-title">{title}</span>
         {sub ? <span className="bbg-plaque-sub">{sub}</span> : null}
       </div>
-      <SoundButton />
+      {settings ? <SettingsButton>{settings}</SettingsButton> : <SoundButton />}
     </header>
   );
 }
 
-export function SoundButton() {
+/** The device's game-sound switch: its state and the way to flip it. */
+function useSoundSwitch(): [boolean, () => void] {
   const [on, setOn] = useState(true);
   useEffect(() => {
     const id = window.setTimeout(() => setOn(soundIsOn()), 0);
     return () => window.clearTimeout(id);
   }, []);
+  const toggle = () => {
+    const next = !on;
+    setOn(next);
+    try {
+      window.localStorage.setItem(SOUND_KEY, next ? "on" : "off");
+    } catch {
+      // The switch still works for this visit.
+    }
+    if (next) matchSound.step();
+  };
+  return [on, toggle];
+}
+
+/** The gear button and its panel: Sound first, then the screen's own settings. */
+function SettingsButton({ children }: { children: ReactNode }) {
+  const [open, setOpen] = useState(false);
+  const [soundOn, toggleSound] = useSoundSwitch();
+  const wrap = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const close = (event: PointerEvent) => {
+      if (!wrap.current?.contains(event.target as Node)) setOpen(false);
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", close);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", close);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  return (
+    <div ref={wrap} className="bbg-settings">
+      <button type="button" className="bbg-round" aria-label="Settings" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5c3a0c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3.2" />
+          <path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l2-1.5-2-3.5-2.4 1a7.6 7.6 0 0 0-2.6-1.500L14 2.500h-4l-.4 2.500a7.6 7.6 0 0 0-2.6 1.500l-2.4-1-2 3.5 2 1.500a7.6 7.6 0 0 0 0 3l-2 1.5 2 3.5 2.4-1a7.6 7.6 0 0 0 2.6 1.500l.4 2.500h4l.4-2.500a7.6 7.6 0 0 0 2.6-1.500l2.4 1 2-3.500z" />
+        </svg>
+      </button>
+      {open ? (
+        <div className="bbg-settings-panel" role="dialog" aria-label="Settings">
+          <p className="bbg-settings-title">Settings</p>
+          <div className="bbg-settings-row">
+            <span className="bbg-settings-label">Sound</span>
+            <button type="button" className={`bbg-switch${soundOn ? " is-on" : ""}`} role="switch" aria-checked={soundOn} aria-label="Sound" onClick={toggleSound}>
+              <span />
+            </button>
+          </div>
+          {children}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+export function SoundButton() {
+  const [on, toggle] = useSoundSwitch();
   return (
     <button
       type="button"
       className="bbg-round"
       aria-label={on ? "Turn sound off" : "Turn sound on"}
       aria-pressed={on}
-      onClick={() => {
-        const next = !on;
-        setOn(next);
-        try {
-          window.localStorage.setItem(SOUND_KEY, next ? "on" : "off");
-        } catch {
-          // The switch still works for this visit.
-        }
-        if (next) matchSound.step();
-      }}
+      onClick={toggle}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/games/clue/ui/icon-sound.webp" alt="" className={on ? "" : "is-off"} />
@@ -251,6 +324,21 @@ html.bb-native.bb-game-screen body::before { display:none !important; }
 .bbg-round img { width:26px; height:26px; object-fit:contain; }
 .bbg-round img.is-off { opacity:.35; filter:grayscale(1); }
 .bbg-round:active { transform: translateY(2px); box-shadow: 0 1px 0 #5c3a0c; }
+.bbg-settings { position:relative; flex:none; }
+.bbg-settings-panel { position:absolute; right:0; top:54px; z-index:60; width:min(290px, calc(100vw - 24px)); padding:14px; border-radius:18px; text-align:left;
+  color:#3b2412; background: linear-gradient(180deg,#fff9e8,#f3e2b8); border:2px solid #b8893c; box-shadow: 0 16px 34px rgba(0,0,0,.5); animation: bbg-pop-in .18s ease-out; }
+.bbg-settings-title { font-family: Georgia, serif; font-weight:900; font-size:18px; margin-bottom:6px; }
+.bbg-settings-row { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0; border-top:1px solid rgba(138,90,18,.3); }
+.bbg-settings-label { font-size:15px; font-weight:900; }
+.bbg-settings-note { font-size:12px; font-weight:700; opacity:.75; padding-bottom:2px; }
+.bbg-switch { position:relative; flex:none; width:50px; height:28px; border-radius:999px; cursor:pointer; background: rgba(138,90,18,.35); border:0; transition: background .15s; }
+.bbg-switch span { position:absolute; top:3px; left:3px; width:22px; height:22px; border-radius:999px; background:#fff; box-shadow: 0 1px 3px rgba(0,0,0,.4); transition: left .15s; }
+.bbg-switch.is-on { background:#2f8a55; }
+.bbg-switch.is-on span { left:25px; }
+.bbg-choice { display:flex; gap:6px; }
+.bbg-choice button { min-width:52px; padding: 6px 10px; border-radius:999px; cursor:pointer; font-family: Georgia, serif; font-weight:900; font-size:14px; color:#3b2412;
+  background: linear-gradient(180deg,#fff9e8,#f1dfb2); border:2px solid #b8893c; }
+.bbg-choice button.is-on { color:#fff8dc; background: linear-gradient(180deg,#3d9a5c,#1f6b3a); border-color:#14502a; }
 .bbg-plaque { flex:1; min-width:0; min-height:60px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 6px 16% 8px;
   background: url(/games/match/ui/board-title-plaque.webp) center / 100% 100% no-repeat; text-align:center; filter: drop-shadow(0 6px 10px rgba(0,0,0,.4)); }
 .bbg-plaque-title { font-family: Georgia, serif; font-weight:900; color:#3b2412; font-size: clamp(15px, 4.6vw, 21px); line-height:1.05; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%;

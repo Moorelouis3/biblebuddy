@@ -214,7 +214,39 @@ export default function BibleMemoryHome() {
   return (
     <GameStage scene={HOME_SCENE} dim={0.42}>
       <style>{HOME_CSS}</style>
-      <GameTopBar title="Bible Memory" back="/bible-study-games" />
+      {/* Settings sit behind the gear in the top bar: sound, and the Bible
+          version the verses are shown and practised in (Louis, 2026-11-27). */}
+      <GameTopBar
+        title="Bible Memory"
+        back="/bible-study-games"
+        settings={
+          <>
+            <div className="bbg-settings-row">
+              <span className="bbg-settings-label">Bible version</span>
+              <span className="bbg-choice" role="group" aria-label="Bible version">
+                {BIBLE_VERSIONS.map((option) => {
+                  const active = (version ?? "kjv") === option.value;
+                  return (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => pickVersion(option.value)}
+                      aria-pressed={active}
+                      title={option.name}
+                      className={active ? "is-on" : ""}
+                    >
+                      {option.label}
+                    </button>
+                  );
+                })}
+              </span>
+            </div>
+            <p className="bbg-settings-note">
+              {versionLoading ? "Loading your verses in this version..." : "Your verses are shown and practised in this version."}
+            </p>
+          </>
+        }
+      />
       <div className="bbg-col">
         {state === "loading" ? <p className="bbmh-note py-10 text-center">Loading your verses...</p> : null}
 
@@ -255,27 +287,6 @@ export default function BibleMemoryHome() {
 
         {state === "ready" && verses.length > 0 ? (
           <>
-            {/* The one setting on this screen: which Bible version the verses are
-                shown and practised in. Its own bar, apart from adding a verse
-                (Louis, 2026-11-27: "its one simple setting on memory"). */}
-            <div className="bbmh-setting" role="group" aria-label="Bible version">
-              <span className="bbmh-setting-label">Bible version</span>
-              {BIBLE_VERSIONS.map((option) => {
-                const active = (version ?? "kjv") === option.value;
-                return (
-                  <button
-                    key={option.value}
-                    type="button"
-                    onClick={() => pickVersion(option.value)}
-                    aria-pressed={active}
-                    title={option.name}
-                    className={`bbmh-version${active ? " is-on" : ""}`}
-                  >
-                    {versionLoading && active ? "..." : option.label}
-                  </button>
-                );
-              })}
-            </div>
             <div className="bbg-parch text-center">
               <h2 className="bbg-serif text-[20px] font-black">One verse at a time</h2>
               <p className="mx-auto mt-1 max-w-sm text-[14px] font-semibold leading-6">
@@ -406,9 +417,5 @@ const HOME_CSS = `
 .bbmh-ribbon { margin: 6px auto 0; width: min(100%, 320px); min-height:46px; display:flex; align-items:center; justify-content:center;
   font-family: Georgia, serif; font-weight:900; font-size:17px; color:#3b2412;
   background: url(/games/match/ui/level-name-plaque.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 4px 8px rgba(0,0,0,.4)); }
-.bbmh-setting { display:flex; align-items:center; justify-content:center; gap:8px; padding: 8px 10px; border-radius:999px; background: rgba(42,26,12,.72); box-shadow: inset 0 0 0 1px rgba(246,196,69,.45); }
-.bbmh-setting-label { margin-right:4px; font-size:13px; font-weight:900; color:#fff3dc; }
-.bbmh-version { min-width:56px; padding: 6px 12px; border-radius:999px; font-family: Georgia, serif; font-weight:900; font-size:15px; color:#3b2412; background: linear-gradient(180deg,#fff9e8,#f1dfb2); border:2px solid #b8893c; box-shadow: 0 3px 0 #7a5320; }
-.bbmh-version.is-on { color:#fff8dc; background: linear-gradient(180deg,#3d9a5c,#1f6b3a); border-color:#14502a; box-shadow: 0 3px 0 #0e3a1e; }
 .bbmh-picker { border-radius:18px; background: var(--bb-card,#ffffff); padding: 14px; box-shadow: 0 14px 30px rgba(0,0,0,.4); }
 `;
