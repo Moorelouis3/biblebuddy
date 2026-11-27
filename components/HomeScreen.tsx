@@ -49,6 +49,7 @@ import {
 } from "./home/HomeExtraWidgets";
 import { useHomeLayout } from "../lib/homeLayoutStore";
 import type { HomeWidget } from "../lib/homeWidgets";
+import { GameMenuRow } from "./games/GamesMenu";
 
 /** Chapters in the Protestant canon, so progress is a real fraction. */
 const TOTAL_BIBLE_CHAPTERS = 1189;
@@ -529,42 +530,16 @@ export default function HomeScreen() {
         );
       case "look_it_up":
         return <BibleReferenceCard onEvent={trackHomeEvent} />;
+      // The three game cards are the Games tab's own rows since 2026-11-27
+      // (Louis: "replace the game boxes on the dashboard with the same ones
+      // on the game feed"). See GameMenuRow in components/games/GamesMenu.tsx.
       case "game_trivia":
         return (
-          <Link
+          <GameMenuRow
+            gameKey="trivia"
             href="/bible-study-games/clue?from=home"
             onClick={() => trackHomeEvent("home_trivia_click", {})}
-            aria-label="Bible Trivia - test your Bible knowledge"
-            className="bb-cv-card bb-cv-game relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#f4dcc8] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
-            style={{
-              backgroundColor: "var(--bb-cv-light-bg, #fff3e6)",
-              backgroundImage: "url(/home-cards/bg-trivia.jpg)",
-              backgroundSize: "cover",
-              backgroundPosition: "center bottom",
-            }}
-          >
-            <span
-              className="bb-cv-game-art bb-cv-game-art-round grid h-20 w-20 shrink-0 place-items-center rounded-full text-4xl font-black text-white shadow-[0_6px_16px_rgba(240,130,90,0.35)]"
-              style={{ background: "linear-gradient(160deg, #ff9d7e 0%, #f2708a 100%)" }}
-              aria-hidden="true"
-            >
-              ?
-            </span>
-            <span className="bb-cv-game-text relative z-10 min-w-0 flex-1">
-              <span className="block text-lg font-black text-[#3d2417]">Bible Trivia</span>
-              <span className="mt-0.5 block text-xs font-semibold text-[#8a5c40]">
-                Any book · Easy to Hard · Challenge your Buddies
-              </span>
-              <span className="bb-cv-tag mt-2 inline-block rounded-full bg-[#ffe1d2] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#c1543a]">
-                🔥 CHALLENGE YOURSELF
-              </span>
-              <span className="mt-2.5 block">
-                <span className="bb-cv-cta inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
-                  Start →
-                </span>
-              </span>
-            </span>
-          </Link>
+          />
         );
       case "game_scrambled":
         return (
@@ -609,77 +584,9 @@ export default function HomeScreen() {
           </Link>
         );
       case "game_word_search":
-        return (
-          <Link
-            href="/bible-study-games/word-search"
-            onClick={() => trackHomeEvent("home_word_search_click", {})}
-            aria-label="Bible Word Search - find hidden Bible words"
-            className="bb-cv-card bb-cv-game relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#cfe0fb] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
-            style={{ background: "linear-gradient(135deg, #eef5ff 0%, #dbe9ff 100%)" }}
-          >
-            <span className="bb-cv-game-art grid w-20 shrink-0 gap-y-0.5 rounded-xl bg-white p-1.5 shadow-sm" aria-hidden="true">
-              {["FAITH", "GRACE", "TRUST"].map((row, rowIndex) => (
-                <span key={row} className={`grid grid-cols-5 rounded ${rowIndex === 1 ? "bb-cv-found bg-[#5eead4]" : ""}`}>
-                  {row.split("").map((letter, index) => (
-                    <span
-                      key={index}
-                      className={`grid h-[13px] place-items-center text-[10px] leading-none text-[#14213d] ${
-                        rowIndex === 1 ? "font-black" : "font-bold"
-                      }`}
-                    >
-                      {letter}
-                    </span>
-                  ))}
-                </span>
-              ))}
-            </span>
-            <span className="bb-cv-game-text relative z-10 min-w-0 flex-1">
-              <span className="block text-lg font-black text-[#14213d]">Bible Word Search</span>
-              <span className="mt-0.5 block text-xs font-semibold text-[#3f5d8a]">
-                Find hidden Bible words and strengthen your biblical vocabulary
-              </span>
-              <span className="bb-cv-tag mt-2 inline-block rounded-full bg-[#d3e3ff] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#1d4ed8]">
-                📖 ALL 66 BOOKS
-              </span>
-              <span className="mt-2.5 block">
-                <span className="bb-cv-cta inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
-                  Play Now →
-                </span>
-              </span>
-            </span>
-          </Link>
-        );
+        return <GameMenuRow gameKey="word-search" onClick={() => trackHomeEvent("home_word_search_click", {})} />;
       case "game_memory":
-        return (
-          <Link
-            href="/bible-study-games/memory"
-            onClick={() => trackHomeEvent("home_memory_click", {})}
-            aria-label="Bible Memory - practice remembering Scripture"
-            className="bb-cv-card bb-cv-game relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#dccdf8] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
-            style={{ background: "linear-gradient(135deg, #f6efff 0%, #eadcff 100%)" }}
-          >
-            <span className="bb-cv-game-art grid h-20 w-20 shrink-0 place-items-center rounded-2xl bg-white text-center shadow-sm" aria-hidden="true">
-              <span>
-                <span className="block text-[9px] font-bold leading-tight text-[#14213d]">The LORD is my</span>
-                <span className="bb-cv-found mt-1 inline-block rounded-full bg-[#7c3aed] px-2 py-0.5 text-[9px] font-black text-white">shepherd</span>
-              </span>
-            </span>
-            <span className="bb-cv-game-text relative z-10 min-w-0 flex-1">
-              <span className="block text-lg font-black text-[#2b1a52]">Bible Memory</span>
-              <span className="mt-0.5 block text-xs font-semibold text-[#5d4a8a]">
-                Practice remembering Scripture and strengthen your knowledge of God&apos;s Word
-              </span>
-              <span className="bb-cv-tag mt-2 inline-block rounded-full bg-[#e2d4fb] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#5b21b6]">
-                🧠 LEARN IT BY HEART
-              </span>
-              <span className="mt-2.5 block">
-                <span className="bb-cv-cta inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
-                  Play Now →
-                </span>
-              </span>
-            </span>
-          </Link>
-        );
+        return <GameMenuRow gameKey="memory" onClick={() => trackHomeEvent("home_memory_click", {})} />;
       case "study_guide":
         return widget.studyId ? <StudyGuideWidget studyId={widget.studyId} userId={userId} size={widget.size} /> : null;
       case "ask_lil_louis":

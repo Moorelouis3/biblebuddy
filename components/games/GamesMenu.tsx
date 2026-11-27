@@ -78,10 +78,11 @@ function ControllerBadge() {
   );
 }
 
-function Row({ game, featured }: { game: Game; featured: boolean }) {
+function Row({ game, featured, href, onClick }: { game: Game; featured: boolean; href?: string; onClick?: () => void }) {
   return (
     <Link
-      href={game.href}
+      href={href ?? game.href}
+      onClick={onClick}
       className="group flex items-center gap-3 rounded-2xl p-3 transition hover:-translate-y-0.5 sm:gap-4 sm:p-4"
       style={{
         background: featured
@@ -132,6 +133,18 @@ function Row({ game, featured }: { game: Game; featured: boolean }) {
       )}
     </Link>
   );
+}
+
+/**
+ * One game's row, for a screen that is not the Games tab. The Home screen's
+ * game cards are these since 2026-11-27 (Louis: "replace the game boxes on
+ * the dashboard with the same ones on the game feed"), so a game looks the
+ * same wherever it is offered and there is one place to change it.
+ */
+export function GameMenuRow({ gameKey, href, onClick }: { gameKey: string; href?: string; onClick?: () => void }) {
+  const game = GAMES.find((item) => item.key === gameKey);
+  if (!game) return null;
+  return <Row game={game} featured={false} href={href} onClick={onClick} />;
 }
 
 export default function GamesMenu() {
