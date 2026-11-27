@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-12-explained",
+    title: "2 Samuel 12 Explained: Nathan's Parable and David's Son",
+    description:
+      "2 Samuel 12 explained verse by verse: Nathan's parable exposes David's sin, the child's death, Solomon's birth, and the fall of Rabbah.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-12-explained",
+    publishedAt: "2026-11-27",
+    readTime: "17 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 12 Explained 📖",
+      content:
+        "A prophet walks in with a story about a stolen lamb.\nDavid has no idea it's about him yet.\n\n📌 David judges a stranger before he realizes he's judging himself.\n\n📖 Four words end the cover up: thou art the man.\n📖 David is forgiven the moment he confesses, with no excuse.\n📖 A father fasts for seven days, then stops the moment his question is answered.\n\nNew article on:\n🟢 why **forgiveness** and consequence both show up in the same chapter\n🟢 what David's **grief** actually tells us about hope\n🟢 how the chapter ends with **Solomon** born and Rabbah finally taken\n\nHave you ever had someone say the one sentence you needed to finally hear? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-11-explained",
     title: "2 Samuel 11 Explained: David, Bathsheba, and a Cover Up",
     description:
