@@ -14199,3 +14199,8 @@ Queue remaining: 35
 Article: Who Created God? | Words: ~3,068 | Category: Bible Insights | Status: pass
 Not live yet: no [deploy] tag on this commit (Louis removed the blog exception 2026-10-10) - goes live at the next scheduled deploy, `npm run pending`.
 Queue remaining: 34
+
+## 2026-11-27T22:15:25Z (blog writer run)
+Article: What Is the Trinity? One God in Three Persons Explained | Words: ~4,524 | Category: Christian Foundations | Status: pass
+Not live yet: no [deploy] tag on this commit (Louis removed the blog exception 2026-10-10) - goes live at the next scheduled deploy, `npm run pending`.
+Queue remaining: 33

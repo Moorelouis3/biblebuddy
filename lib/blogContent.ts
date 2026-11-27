@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-the-trinity",
+    title: "What Is the Trinity? One God in Three Persons Explained",
+    description:
+      "What is the Trinity? A plain, Bible only explanation of how God is one LORD and three persons, Father, Son, and Holy Spirit, each fully God.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/what-is-the-trinity",
+    publishedAt: "2026-11-27",
+    readTime: "23 min read",
+    image: "/what-is-the-trinity-banner.png",
+    groupPost: {
+      title: "What Is the Trinity? 📖",
+      content:
+        "Somebody asked if the Trinity means three gods.\nYou didn't have a clean answer.\n\n📌 One God. Three persons. Not three gods, not one in disguise.\n\n📖 The Father is called God.\n📖 The Son is called God.\n📖 The Holy Spirit is called God too.\n\nNew article on:\n🟢 why the word **Trinity** isn't even in the Bible\n🟢 the popular **illustrations** that actually get it wrong\n🟢 why this is too big for **any mind** to fully picture\n\nCould you explain the Trinity in one sentence? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-12-explained",
     title: "2 Samuel 12 Explained: Nathan's Parable and David's Son",
     description:
