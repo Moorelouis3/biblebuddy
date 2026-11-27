@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-11-explained",
+    title: "2 Samuel 11 Explained: David, Bathsheba, and a Cover Up",
+    description:
+      "2 Samuel 11 explained verse by verse: David's sin with Bathsheba, Uriah's two refusals to go home, the letter to Joab, and the verdict God renders in silence.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-11-explained",
+    publishedAt: "2026-11-27",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 11 Explained 📖",
+      content:
+        "A king stays home from a war he always used to fight.\nThat's where this chapter starts going wrong.\n\n📌 Every move after the roof is David trying to manage a problem he made bigger each time.\n\n📖 Uriah refuses to go home to his own wife, twice.\n📖 David hands him a letter ordering his own death.\n📖 The chapter ends in silence. God does not stay silent too.\n\nNew article on:\n🟢 why Uriah's **loyalty** held when David's didn't\n🟢 what Joab's mention of **Abimelech** was really for\n🟢 the nine words that **close the chapter** and change everything\n\nHave you ever made one small choice to cover a problem, and watched it grow? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-10-explained",
     title: "2 Samuel 10 Explained: The Insult That Started a War",
     description:
