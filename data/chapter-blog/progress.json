@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-11-27T06:34:37.475Z",
-  "nextChapter": "2 Samuel 10",
+  "updatedAt": "2026-11-27T06:34:57.637Z",
+  "nextChapter": "2 Samuel 11",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -2146,6 +2146,11 @@
       "status": "committed",
       "startedAt": "2026-11-27T04:35:06.266Z",
       "committedAt": "2026-11-27T04:43:42.132Z"
+    },
+    "2-samuel-10-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-27T06:34:57.637Z"
     }
   },
   "priorityBooks": [
