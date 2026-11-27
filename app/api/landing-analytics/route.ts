@@ -188,6 +188,9 @@ const ALLOWED_EVENTS = new Set([
   "home_memory_click",
   "home_word_search_impression",
   "home_memory_impression",
+  // Bible Buddy Match took Scrambled's place on the dashboard, 27 Nov 2026.
+  "home_match_click",
+  "home_match_impression",
   // The dashboard bookshelf (components/home/YourBookshelf.tsx): one event
   // for the row as shown, one per tap on a card.
   "bookshelf_shown",

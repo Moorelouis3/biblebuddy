@@ -384,7 +384,7 @@ export default function HomeScreen() {
     if (typeof IntersectionObserver === "undefined") return;
     const events: Record<string, string> = {
       game_trivia: "home_trivia_impression",
-      game_scrambled: "home_scrambled_impression",
+      game_match: "home_match_impression",
       game_word_search: "home_word_search_impression",
       game_memory: "home_memory_impression",
     };
@@ -541,47 +541,13 @@ export default function HomeScreen() {
             onClick={() => trackHomeEvent("home_trivia_click", {})}
           />
         );
-      case "game_scrambled":
+      case "game_match":
         return (
-          <Link
-            href="/bible-study-games/scrambled"
-            onClick={() => trackHomeEvent("home_scrambled_click", {})}
-            aria-label="Scrambled - unscramble the verse"
-            className="bb-cv-card bb-cv-game relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#cde9dc] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
-            style={{
-              backgroundColor: "var(--bb-cv-light-bg, #eefaf3)",
-              backgroundImage: "url(/home-cards/bg-scrambled.jpg)",
-              backgroundSize: "cover",
-              backgroundPosition: "center bottom",
-            }}
-          >
-            <span className="grid w-20 shrink-0 grid-cols-3 gap-1" aria-hidden="true">
-              {["B", "I", "B", "L", "E"].map((letter, index) => (
-                <span
-                  key={index}
-                  className={`bb-cv-tile grid h-6 w-6 place-items-center rounded-md bg-white text-xs font-black text-[#1e7f63] shadow-sm ${
-                    index === 3 ? "col-start-1" : ""
-                  } ${index >= 3 ? "translate-x-3" : ""}`}
-                >
-                  {letter}
-                </span>
-              ))}
-            </span>
-            <span className="bb-cv-game-text relative z-10 min-w-0 flex-1">
-              <span className="block text-lg font-black text-[#123f30]">Scrambled</span>
-              <span className="mt-0.5 block text-xs font-semibold text-[#3f7a63]">
-                Unscramble the verse before the hints run out
-              </span>
-              <span className="bb-cv-tag mt-2 inline-block rounded-full bg-[#d8f2e4] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#1e7f63]">
-                ⭐ EVERY CHAPTER
-              </span>
-              <span className="mt-2.5 block">
-                <span className="bb-cv-cta inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
-                  Play →
-                </span>
-              </span>
-            </span>
-          </Link>
+          <GameMenuRow
+            gameKey="match"
+            href="/bible-study-games/match?from=home"
+            onClick={() => trackHomeEvent("home_match_click", {})}
+          />
         );
       case "game_word_search":
         return <GameMenuRow gameKey="word-search" onClick={() => trackHomeEvent("home_word_search_click", {})} />;

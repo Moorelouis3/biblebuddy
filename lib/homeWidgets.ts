@@ -30,8 +30,8 @@ export type WidgetKind =
   | "group_study_today"
   | "quick_reads"
   | "look_it_up"
+  | "game_match"
   | "game_trivia"
-  | "game_scrambled"
   | "game_word_search"
   | "game_memory"
   // Added with the widget Home.
@@ -86,8 +86,11 @@ export const WIDGETS: Record<WidgetKind, WidgetDefinition> = {
   look_it_up: { kind: "look_it_up", name: "Look It Up", description: "Search people, places and keywords.", icon: "🔎", category: "ask", sizes: ["l"] },
   study_notes: { kind: "study_notes", name: "Study Notes", description: "Your latest note, or start a new one.", icon: "📝", category: "saved", sizes: ["m"] },
   saved_verses: { kind: "saved_verses", name: "Saved Verses", description: "A verse you saved, ready to open.", icon: "🔖", category: "saved", sizes: ["m"] },
+  // Bible Buddy Match took Scrambled's place on Home on 2026-11-27 (Louis:
+  // "remove scramble and bible match"). Scrambled had left the Games tab on
+  // the 23rd; sanitizeLayout below turns a saved Scrambled card into this one.
+  game_match: { kind: "game_match", name: "Bible Buddy Match", description: "Connect the tiles and walk through the Bible.", icon: "💎", category: "games", sizes: ["m"] },
   game_trivia: { kind: "game_trivia", name: "Bible Trivia", description: "Test your Bible knowledge.", icon: "❓", category: "games", sizes: ["m"] },
-  game_scrambled: { kind: "game_scrambled", name: "Scrambled", description: "Unscramble the verse.", icon: "🔤", category: "games", sizes: ["m"] },
   game_word_search: { kind: "game_word_search", name: "Bible Word Search", description: "Find hidden Bible words.", icon: "🧩", category: "games", sizes: ["m"] },
   game_memory: { kind: "game_memory", name: "Bible Memory", description: "Practise remembering Scripture.", icon: "🧠", category: "games", sizes: ["m"] },
   buddies: { kind: "buddies", name: "Buddies", description: "Your buddies and buddy requests.", icon: "🤝", category: "community", sizes: ["m"] },
@@ -124,8 +127,8 @@ export const DEFAULT_LAYOUT: HomeLayout = {
     one("group_study_today"),
     one("quick_reads"),
     one("look_it_up"),
+    one("game_match"),
     one("game_trivia"),
-    one("game_scrambled"),
     one("game_word_search"),
     one("game_memory"),
   ],
@@ -148,7 +151,10 @@ export function sanitizeLayout(raw: unknown): HomeLayout | null {
   const out: HomeWidget[] = [];
   for (const entry of items) {
     if (!entry || typeof entry !== "object") continue;
-    const { kind, size, studyId } = entry as Partial<HomeWidget>;
+    const { kind: savedKind, size, studyId } = entry as Partial<HomeWidget>;
+    // Scrambled is gone from Home. Whoever had its card gets Bible Buddy
+    // Match in the same spot, instead of a hole where a game used to be.
+    const kind = ((savedKind as string) === "game_scrambled" ? "game_match" : savedKind) as WidgetKind | undefined;
     if (!kind || !(kind in WIDGETS)) continue;
     const def = WIDGETS[kind];
     if (def.perStudy && (typeof studyId !== "string" || !studyId)) continue;
