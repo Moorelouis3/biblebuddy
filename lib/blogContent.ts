@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-10-explained",
+    title: "2 Samuel 10 Explained: The Insult That Started a War",
+    description:
+      "2 Samuel 10 explained verse by verse: Hanun humiliates David's comforters, Ammon hires Syrian mercenaries, and Joab wins a two front battle for Israel.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-10-explained",
+    publishedAt: "2026-11-27",
+    readTime: "12 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 10 Explained 📖",
+      content:
+        "David sends his men to comfort a grieving king.\nThey come home half shaved and half naked.\n\n📌 One bad guess about David's motives starts a war Ammon never needed to fight.\n\n📖 Hanun's own advisors talk him into the insult.\n📖 Ammon hires thirty three thousand mercenaries to cover its mistake.\n📖 Joab wins a battle on two fronts before David even shows up.\n\nNew article on:\n🟢 why a **shaved beard** was such a serious insult in the Bible\n🟢 how Joab's **two front** battle plan actually worked\n🟢 what the **numbers** really say when Samuel and Chronicles disagree\n\nHave you ever had someone read your kindness as a hidden motive? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-9-explained",
     title: "2 Samuel 9 Explained: David's Kindness to Mephibosheth",
     description:
