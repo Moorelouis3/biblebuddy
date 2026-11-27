@@ -15,17 +15,23 @@
  *                   test" button asks ten questions across these, and only
  *                   these. A clean test moves a verse up a medal.
  *
+ * A version picker (KJV, WEB, ASV) since 2026-11-27: the saved verses are
+ * shown and practised in the picked version. Nothing saved changes; see
+ * lib/bibleMemoryVersions.ts.
+ *
  * The views (list, add, learn, test) are views rather than routes so a
  * session cannot be reloaded half way into a broken state, and Back from the
  * Games tab always lands on the list.
  */
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { GameStage, GameTopBar } from "@/components/games/GameStage";
 import { supabase } from "@/lib/supabaseClient";
 import { listMemoryVerses, onMemoryVersesChange, removeMemoryVerse, setMemoryVerseKnown } from "@/lib/bibleMemory";
 import { trackFeatureEvent } from "@/lib/featureEvents";
 import { cleanVerseText, formatReference, isKnown, medalFor, TEST_LENGTH, type MemoryVerse } from "@/lib/bibleMemoryGames";
+import { loadVersesInVersion } from "@/lib/bibleMemoryVersions";
+import { BIBLE_VERSIONS, readPreferredBibleVersion, savePreferredBibleVersion, type BibleVersion } from "@/lib/bibleVersionPreference";
 import { bookScene } from "@/lib/games/bookScene";
 import MemoryPractice from "./MemoryPractice";
 import MemoryVersePicker from "./MemoryVersePicker";
@@ -38,13 +44,18 @@ const HOME_SCENE = bookScene("Psalms");
 
 export default function BibleMemoryHome() {
   const [userId, setUserId] = useState<string | null>(null);
-  const [verses, setVerses] = useState<MemoryVerse[]>([]);
+  const [savedVerses, setVerses] = useState<MemoryVerse[]>([]);
   const [state, setState] = useState<LoadState>("loading");
   const [view, setView] = useState<View>("list");
   const [focusId, setFocusId] = useState<string | null>(null);
   const [run, setRun] = useState(0);
   const [busy, setBusy] = useState<string | null>(null);
   const [problem, setProblem] = useState<string | null>(null);
+  // The version the verses are shown and practised in. Null until the reader
+  // picks one: every verse then shows in the wording it was saved in.
+  const [version, setVersion] = useState<BibleVersion | null>(null);
+  const [versionText, setVersionText] = useState<Record<string, string>>({});
+  const [versionLoading, setVersionLoading] = useState(false);
 
   const load = useCallback(async (id: string, quiet = false) => {
     if (!quiet) setState("loading");
@@ -83,6 +94,49 @@ export default function BibleMemoryHome() {
     if (!userId) return;
     return onMemoryVersesChange(() => void load(userId, true));
   }, [userId, load]);
+
+  useEffect(() => {
+    setVersion(readPreferredBibleVersion());
+  }, []);
+
+  // Fetch the saved verses in the picked version. Keyed on the references,
+  // not on the rows, so a progress save does not ask for them again.
+  const referenceKey = savedVerses.map((verse) => verse.id).join(",");
+  useEffect(() => {
+    if (!version || !savedVerses.length) {
+      setVersionText({});
+      return;
+    }
+    let cancelled = false;
+    setVersionText({});
+    setVersionLoading(true);
+    void loadVersesInVersion(savedVerses, version, (id, text) => {
+      if (!cancelled) setVersionText((current) => ({ ...current, [id]: text }));
+    }).finally(() => {
+      if (!cancelled) setVersionLoading(false);
+    });
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [version, referenceKey]);
+
+  function pickVersion(next: BibleVersion) {
+    setVersion(next);
+    savePreferredBibleVersion(next);
+  }
+
+  // The verses as every screen below sees them: in the picked version where
+  // that wording loaded, as saved where it did not.
+  const verses = useMemo(
+    () =>
+      version
+        ? savedVerses.map((verse) =>
+            versionText[verse.id] ? { ...verse, translation: version.toUpperCase(), verse_text: versionText[verse.id] } : verse,
+          )
+        : savedVerses,
+    [savedVerses, version, versionText],
+  );
 
   async function remove(verse: MemoryVerse) {
     if (!userId || busy) return;
@@ -147,7 +201,7 @@ export default function BibleMemoryHome() {
         <GameTopBar title="Bible Memory" sub="Add a verse" onBack={() => setView("list")} />
         <div className="bbg-col">
           <div className="bbmh-picker">
-            <MemoryVersePicker userId={userId} saved={verses} onAdded={() => void load(userId, true)} onClose={() => setView("list")} />
+            <MemoryVersePicker userId={userId} saved={savedVerses} onAdded={() => void load(userId, true)} onClose={() => setView("list")} />
           </div>
         </div>
       </GameStage>
@@ -201,6 +255,27 @@ export default function BibleMemoryHome() {
 
         {state === "ready" && verses.length > 0 ? (
           <>
+            {/* The one setting on this screen: which Bible version the verses are
+                shown and practised in. Its own bar, apart from adding a verse
+                (Louis, 2026-11-27: "its one simple setting on memory"). */}
+            <div className="bbmh-setting" role="group" aria-label="Bible version">
+              <span className="bbmh-setting-label">Bible version</span>
+              {BIBLE_VERSIONS.map((option) => {
+                const active = (version ?? "kjv") === option.value;
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => pickVersion(option.value)}
+                    aria-pressed={active}
+                    title={option.name}
+                    className={`bbmh-version${active ? " is-on" : ""}`}
+                  >
+                    {versionLoading && active ? "..." : option.label}
+                  </button>
+                );
+              })}
+            </div>
             <div className="bbg-parch text-center">
               <h2 className="bbg-serif text-[20px] font-black">One verse at a time</h2>
               <p className="mx-auto mt-1 max-w-sm text-[14px] font-semibold leading-6">
@@ -331,5 +406,9 @@ const HOME_CSS = `
 .bbmh-ribbon { margin: 6px auto 0; width: min(100%, 320px); min-height:46px; display:flex; align-items:center; justify-content:center;
   font-family: Georgia, serif; font-weight:900; font-size:17px; color:#3b2412;
   background: url(/games/match/ui/level-name-plaque.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 4px 8px rgba(0,0,0,.4)); }
+.bbmh-setting { display:flex; align-items:center; justify-content:center; gap:8px; padding: 8px 10px; border-radius:999px; background: rgba(42,26,12,.72); box-shadow: inset 0 0 0 1px rgba(246,196,69,.45); }
+.bbmh-setting-label { margin-right:4px; font-size:13px; font-weight:900; color:#fff3dc; }
+.bbmh-version { min-width:56px; padding: 6px 12px; border-radius:999px; font-family: Georgia, serif; font-weight:900; font-size:15px; color:#3b2412; background: linear-gradient(180deg,#fff9e8,#f1dfb2); border:2px solid #b8893c; box-shadow: 0 3px 0 #7a5320; }
+.bbmh-version.is-on { color:#fff8dc; background: linear-gradient(180deg,#3d9a5c,#1f6b3a); border-color:#14502a; box-shadow: 0 3px 0 #0e3a1e; }
 .bbmh-picker { border-radius:18px; background: var(--bb-card,#ffffff); padding: 14px; box-shadow: 0 14px 30px rgba(0,0,0,.4); }
 `;
