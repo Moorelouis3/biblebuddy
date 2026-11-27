@@ -158,6 +158,8 @@ html.bb-game-screen, html.bb-game-screen body { overflow:hidden !important; over
 .bbm-grid.is-reduced .bbm-tile.is-pop { opacity:.2; }
 .bbm-toast { position:absolute; left:50%; top:50%; transform: translate(-50%,-50%); z-index:6; padding: 10px 18px; border-radius: 14px; font-weight:800; color:#4a2a10 !important; background: #fbeccb; box-shadow: 0 0 0 2px #c9934a, 0 8px 18px rgba(0,0,0,.4); }
 .bbm-board-foot { width: var(--w); display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.bbm-foot-right { display:flex; align-items:center; gap:8px; }
+.bbm-foot-right .bbm-gearbtn { width: calc(var(--w) * .13); font-weight:900; }
 .bbm-mapbtn { display:inline-flex; align-items:center; gap:8px; padding: 10px 22px; border-radius: 16px; border:0; font-size: 20px; font-weight:800; color:#4a2a10 !important;
   background: linear-gradient(180deg,#fbeccb,#ecd29b); box-shadow: inset 0 0 0 2px #c9934a, 0 6px 12px rgba(0,0,0,.35); cursor:pointer; }
 .bbm-score { padding: 6px 14px; border-radius: 999px; font-weight:800; font-size: 15px; color:#fff3dc !important; background: rgba(40,20,6,.55); }

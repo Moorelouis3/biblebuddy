@@ -13,6 +13,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import MatchRules from "./MatchRules";
 import MatchSettings from "./MatchSettings";
 import { fireConfettiBurst } from "@/lib/celebration";
 import { ACTION_POINT_WEIGHTS } from "@/lib/levelSystem";
@@ -134,6 +135,7 @@ export default function MatchBoard({
   const [hint, setHint] = useState<Pos[] | null>(null);
   const [toast, setToast] = useState<string | null>(null);
   const [settings, setSettings] = useState(false);
+  const [rules, setRules] = useState(false);
   const [doves, setDoves] = useState<Array<{ from: Pos; to: Pos }>>([]);
   // One free +5 moves per try, when the goals are close (2026-11-23).
   const [extraUsed, setExtraUsed] = useState(false);
@@ -572,10 +574,18 @@ export default function MatchBoard({
           <span aria-hidden="true">←</span> Back
         </button>
         <span className="bbm-score">Score {score}</span>
-        <button type="button" className="bbm-gearbtn" onClick={() => setSettings(true)} aria-label="Settings: music and sounds" title="Settings">
-          <span aria-hidden="true">⚙</span>
-        </button>
+        {/* How to Play beside Settings (Louis, 2026-11-27: "add like a rules or
+            something on the game about matches, what they get"). */}
+        <span className="bbm-foot-right">
+          <button type="button" className="bbm-gearbtn" onClick={() => setRules(true)} aria-label="How to play" title="How to play">
+            <span aria-hidden="true">?</span>
+          </button>
+          <button type="button" className="bbm-gearbtn" onClick={() => setSettings(true)} aria-label="Settings: music and sounds" title="Settings">
+            <span aria-hidden="true">⚙</span>
+          </button>
+        </span>
       </div>
+      {rules ? <MatchRules onClose={() => setRules(false)} /> : null}
       {settings ? <MatchSettings onClose={() => setSettings(false)} /> : null}
 
       {/* A Genesis board won: its story screen (WinStory); other boards: the scroll. */}

@@ -10,10 +10,14 @@
 
 import { useEffect, useState } from "react";
 import { matchMusicOn, setMatchMusicOn } from "@/lib/match/sound";
+import MatchRules from "./MatchRules";
 
 export default function MatchSettings({ onClose }: { onClose: () => void }) {
   const [sound, setSound] = useState(true);
   const [music, setMusic] = useState(true);
+  // How to Play opens over Settings (2026-11-27), so the rules are one tap
+  // from the home screen as well as from every board.
+  const [rules, setRules] = useState(false);
   useEffect(() => {
     const id = window.setTimeout(() => {
       try {
@@ -47,10 +51,14 @@ export default function MatchSettings({ onClose }: { onClose: () => void }) {
         <button type="button" className="bbm-btn-cream" onClick={toggleSound}>
           Sound effects: {sound ? "On" : "Off"}
         </button>
+        <button type="button" className="bbm-btn-cream" onClick={() => setRules(true)}>
+          How to play
+        </button>
         <button type="button" className="bbm-btn-green" onClick={onClose}>
           Done
         </button>
       </div>
+      {rules ? <MatchRules onClose={() => setRules(false)} /> : null}
     </div>
   );
 }
