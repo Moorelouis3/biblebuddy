@@ -142,7 +142,8 @@ export default function MatchRules({ onClose }: { onClose: () => void }) {
           <h3>Good to know</h3>
           <ul>
             <li>
-              <b>Jubilee.</b> Finish a board with moves to spare and up to 8 of them turn into sweeps for bonus points.
+              <b>Jubilee.</b> Finish a board with moves to spare and every one of them is spent for you: each becomes a power-up and
+              bonus points, the count runs down to zero, and then they all go off.
             </li>
             <li>Stuck? A hint shows by itself after 10 seconds.</li>
             <li>If no swap is left, the board shuffles for free.</li>

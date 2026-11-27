@@ -31,6 +31,7 @@ import {
   ORB,
   DOVE,
   jubilee,
+  JUBILEE_BONUS,
   playSwap,
   tileArt,
   type Board,
@@ -283,37 +284,65 @@ export default function MatchBoard({
     }
     setBusy(false);
     if (goalsMet(level.goals, got)) {
-      // The Jubilee: spare moves (up to 8) become sweeps that all go off.
+      // The Jubilee: every spare move is spent, one by one, each becoming a
+      // power-up on the board while the Moves counter runs down to zero; then
+      // they all go off in turn. See jubilee() in lib/match/engine.ts.
       if (movesLeft > 0) {
         const j = jubilee(res.final, movesLeft, level.types, Math.random, ids.current);
         if (j.valid) {
           setBusy(true);
-          if (!reduced) setToast(`Jubilee! ${Math.min(8, movesLeft)} moves to spare`);
-          for (const step of j.steps) {
+          setHint(null);
+          if (!reduced) setToast("Jubilee!");
+          await sleep(reduced ? 80 : 500);
+          // 1. The countdown. Faster as it goes, so 20 moves do not drag.
+          let left = movesLeft;
+          for (const [i, spent] of j.placed.entries()) {
+            left -= 1;
+            total += JUBILEE_BONUS;
+            setDrops({});
+            setBoard(spent.board);
+            setMoves(left);
+            setScore(total);
+            matchSound.link(Math.min(12, i + 1));
+            await sleep(reduced ? 30 : Math.max(90, 210 - i * 8));
+          }
+          matchSound.power();
+          if (!reduced) {
+            setToast(`+${j.placed.length * JUBILEE_BONUS} bonus`);
+            fireConfettiBurst({ durationMs: 1400, origins: 2, peakParticleCount: 40, colors: ["#f6d36b", "#fff3cf", "#ff9a3c", "#b98cff", "#34a35a"] });
+          }
+          await sleep(reduced ? 80 : 450);
+          // 2. The fireworks: each power-up goes off, quicker than a normal move.
+          const J = reduced ? T : { flash: 150, pop: 150, between: 40, fall: 240 };
+          for (const [i, step] of j.steps.entries()) {
             const clearedIds = new Set(step.cleared.map((p) => step.before[p.r][p.c]?.id).filter((id): id is number => typeof id === "number"));
             setBoard(step.before);
             setFlash(clearedIds);
             setBeams(step.beams);
-            matchSound.beam();
-            await sleep(T.flash);
+            if (step.beams.some((b) => b.dove)) setDoves(step.beams.filter((b) => b.dove).map((b) => b.dove!));
+            if (step.beams.length) matchSound.beam();
+            else matchSound.match(Math.min(6, i));
+            matchSound.crack();
+            await sleep(J.flash);
             setPopping(clearedIds);
-            await sleep(T.pop);
+            await sleep(J.pop);
             total += step.points;
             setScore(total);
             setFlash(new Set());
             setPopping(new Set());
             setBeams([]);
+            setDoves([]);
             setBoard(step.afterClear);
-            await sleep(T.between);
+            await sleep(J.between);
             setDrops(step.dropFrom);
             setBoard(step.afterFill);
-            await sleep(T.fall);
+            await sleep(J.fall);
           }
           setToast(null);
           setBusy(false);
         }
       }
-      const finalScore = total + movesLeft * 25;
+      const finalScore = total;
       setScore(finalScore);
       onWin(finalScore);
       writeSavedBoard(null);

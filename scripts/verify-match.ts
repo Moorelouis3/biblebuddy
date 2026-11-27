@@ -207,15 +207,33 @@ ok("a 2x2 square clears its four and earns a Dove; a Dove flies to a kind the go
   assert.equal(withDove[to.r][to.c]!.type, "x", "to a tile the goals need");
 });
 
-ok("the Jubilee: spare moves become sweeps that all go off on a won board (up to 8)", () => {
+ok("the Jubilee: every spare move is spent, one power-up each, and they all go off", () => {
   const level = MATCH_LEVELS[5];
-  const ids = { next: 1 };
-  const b = createBoard(level.types, seededRng(3), ids);
-  const res = jubilee(b, 12, level.types, seededRng(4), ids);
-  assert.ok(res.valid);
-  assert.equal(res.steps[0].beams.length, 8, "8 sweeps, not 12");
-  assert.ok(res.points > 0);
-  assert.equal(jubilee(b, 0, level.types, seededRng(4), ids).valid, false, "no spare moves, no Jubilee");
+  for (let seed = 1; seed <= 40; seed += 1) {
+    const ids = { next: 1 };
+    const b = createBoard(level.types, seededRng(seed), ids);
+    for (const spare of [1, 5, 15, 22]) {
+      const res = jubilee(b, spare, level.types, seededRng(seed + 100), { next: ids.next });
+      assert.ok(res.valid);
+      assert.equal(res.placed.length, spare, `${spare} moves, ${spare} power-ups: none are dropped`);
+      // One more power-up on the board with each move spent, never on the same tile twice.
+      const seen = new Set<string>();
+      res.placed.forEach((p, i) => {
+        assert.ok(!seen.has(`${p.at.r},${p.at.c}`));
+        seen.add(`${p.at.r},${p.at.c}`);
+        assert.equal(p.board[p.at.r][p.at.c]!.power, p.power);
+        assert.equal(p.board.flat().filter((t) => t?.power).length, i + 1);
+      });
+      // The first step starts from the board with all of them placed, and every one goes off.
+      assert.equal(res.steps[0].before, res.placed[res.placed.length - 1].board);
+      const placedIds = new Set(res.placed.map((p) => res.placed[res.placed.length - 1].board[p.at.r][p.at.c]!.id));
+      const final = new Set(res.final.flat().map((t) => t?.id));
+      for (const id of placedIds) assert.ok(!final.has(id), "no placed power-up is left sitting on the board");
+      assert.ok(res.steps.length >= 1 && res.steps.length <= spare + 20);
+      assert.ok(res.points > 0);
+    }
+    assert.equal(jubilee(b, 0, level.types, seededRng(4), ids).valid, false, "no spare moves, no Jubilee");
+  }
 });
 
 ok("swap an orb with a tile: every tile of that kind clears; two orbs clear the board", () => {

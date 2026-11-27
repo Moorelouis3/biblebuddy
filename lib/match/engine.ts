@@ -581,32 +581,75 @@ function settle(swap: [Pos, Pos] | null, afterSwap: Board, steps: Step[], curren
 }
 
 /**
- * The Jubilee (2026-11-23): when a board is won with moves to spare, each
- * spare move (up to 8) becomes a Light Burst or Pillar of Fire somewhere on
- * the board and they all go off, with whatever chains follow, for points.
- * The big match-3 games all end a won level this way; it is the most
- * satisfying finish in the genre.
+ * The Jubilee: what a board won with moves to spare ends on.
+ *
+ * Every spare move is spent, one at a time. Each turns a tile somewhere on
+ * the board into a power-up (a Light Burst, a Pillar of Fire, and every fifth
+ * one a Trumpet Blast) and is worth JUBILEE_BONUS points. When the moves
+ * have run down to zero the power-ups go off one after another, each setting
+ * off whatever it catches, and the chains that follow play out.
+ *
+ * Louis, 2026-11-27: "each move should count down and be an extra move that
+ * gets made on the board, like in Candy Crush... it looks like a fireworks
+ * show and it goes one by one down to zero." The first version (2026-11-23)
+ * took at most 8 moves, placed them unseen and fired them all in one flash;
+ * with 15 moves left he saw "a couple of moves" and then it "cut off".
+ *
+ * JUBILEE_MAX only guards a board from being asked for more power-ups than
+ * it has tiles to hold; no board hands out that many moves.
  */
-export function jubilee(board: Board, movesLeft: number, types: string[], rng: Rng, ids: IdSource): Resolution {
-  const n = Math.min(8, Math.max(0, movesLeft));
-  if (!n) return { valid: false, swap: null, afterSwap: board, steps: [], final: board, removed: {}, points: 0, reshuffled: false };
-  const current = cloneBoard(board);
+export const JUBILEE_MAX = 30;
+/** Points for each spare move, paid as it is spent. */
+export const JUBILEE_BONUS = 50;
+
+export type JubileeResult = Resolution & {
+  /**
+   * One per spare move, in the order they land: where, which power-up, and
+   * the board with every power-up placed so far on it.
+   */
+  placed: Array<{ at: Pos; power: Power; board: Board }>;
+};
+
+export function jubilee(board: Board, movesLeft: number, types: string[], rng: Rng, ids: IdSource): JubileeResult {
+  const none: JubileeResult = { valid: false, swap: null, afterSwap: board, steps: [], final: board, removed: {}, points: 0, reshuffled: false, placed: [] };
   const cells: Pos[] = [];
-  current.forEach((row, r) => row.forEach((t, c) => t && !SPECIAL(t.type) && cells.push({ r, c })));
+  board.forEach((row, r) => row.forEach((t, c) => t && !SPECIAL(t.type) && !t.power && cells.push({ r, c })));
+  const n = Math.min(JUBILEE_MAX, Math.max(0, Math.floor(movesLeft)), cells.length);
+  if (!n) return none;
   for (let i = cells.length - 1; i > 0; i -= 1) {
     const j = Math.floor(rng() * (i + 1));
     [cells[i], cells[j]] = [cells[j], cells[i]];
   }
-  const start = new Set<string>();
+
+  // The moves are spent: one power-up each.
+  const placed: JubileeResult["placed"] = [];
+  const placedIds: number[] = [];
+  let current = board;
   cells.slice(0, n).forEach((p, i) => {
-    current[p.r][p.c]!.power = i % 2 ? "pillar" : "light";
-    start.add(key(p.r, p.c));
+    current = cloneBoard(current);
+    const power: Power = i % 5 === 4 ? "blast" : i % 2 ? "pillar" : "light";
+    current[p.r][p.c]!.power = power;
+    placedIds.push(current[p.r][p.c]!.id);
+    placed.push({ at: p, power, board: current });
   });
+  const ready = current;
+
+  // They go off one after another. One that an earlier sweep already caught
+  // has gone off with it, so it is skipped rather than fired twice.
   const steps: Step[] = [];
-  let now = current;
-  const first = clearStep(now, start, [], null, 0, 2, types, rng, ids);
-  steps.push(first);
-  now = first.afterFill;
+  let now = ready;
+  const find = (id: number): Pos | null => {
+    for (let r = 0; r < now.length; r += 1) for (let c = 0; c < now[0].length; c += 1) if (now[r][c]?.id === id) return { r, c };
+    return null;
+  };
+  for (const id of placedIds) {
+    const at = find(id);
+    if (!at) continue;
+    const step = clearStep(now, new Set([key(at.r, at.c)]), [], null, 0, 2, types, rng, ids);
+    steps.push(step);
+    now = step.afterFill;
+  }
+  // Then whatever lined up while they fell.
   for (let chain = 3; chain <= 20; chain += 1) {
     const runs = findRuns(now);
     const squares = findSquares(now, runs);
@@ -616,7 +659,7 @@ export function jubilee(board: Board, movesLeft: number, types: string[], rng: R
     steps.push(step);
     now = step.afterFill;
   }
-  return settle(null, current, steps, now, rng);
+  return { ...settle(null, ready, steps, now, rng), placed };
 }
 
 // ---------- levels ----------
