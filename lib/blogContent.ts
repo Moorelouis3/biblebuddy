@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-9-explained",
+    title: "2 Samuel 9 Explained: David's Kindness to Mephibosheth",
+    description:
+      "2 Samuel 9 explained verse by verse: David keeps his covenant with Jonathan, restores Saul's land to Mephibosheth, and seats him at the king's table for life.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-9-explained",
+    publishedAt: "2026-11-27",
+    readTime: "13 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 9 Explained 📖",
+      content:
+        "David's best friend has been dead for years.\nDavid keeps his promise to him anyway.\n\n📌 One grandson of Saul is still alive, hiding, and sure David wants him dead.\n\n📖 David calls it kindness for Jonathan's sake, twice.\n📖 The man calls himself a dead dog before he knows what's coming.\n📖 He ends up eating at the king's own table for life.\n\nNew article on:\n🟢 why David went looking for Saul's **family** instead of eliminating it\n🟢 what it means to be treated **as one of the king's sons**\n🟢 how an old **promise** outlived the man who asked for it\n\nHave you ever kept a promise to someone who wasn't around anymore to ask you to? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-8-explained",
     title: "2 Samuel 8 Explained: David's Conquests and the Gold He Gave to God",
     description:
