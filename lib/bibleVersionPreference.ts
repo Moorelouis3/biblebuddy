@@ -1,20 +1,31 @@
 /**
- * The Bible version a reader picked, remembered on the phone.
+ * The Bible version a reader picked: one setting for the whole app.
  *
- * First used by Bible Memory (2026-11-27). Louis: "someone complained about
- * the KJV being everywhere... pick the translation when you are there, so if
- * you save a verse from verse of the day or from the bible you can read it in
- * the other translations when trying to memorize".
+ * History. Each reader used to have its own KJV / WEB / ASV switch that
+ * forgot the choice on every chapter. Bible Memory got a remembered choice on
+ * 2026-11-27, and the same day Louis asked: "can we make it site wide for the
+ * translation instead of every place?" This file is that setting.
  *
- * One key for the whole app, so a screen that offers the same choice later
- * can honour it. The chapter reader and the Bible in One Year reader have
- * their own KJV / WEB / ASV switch and do NOT read this yet: each still opens
- * on the King James every time.
+ * Who obeys it: the chapter reader (both kinds: ChapterInsightReader and
+ * FullChapterReader), Bible in One Year's Follow Along reader, Bible Memory,
+ * and the picker in Settings. Changing it in any of them changes it in all.
  *
- * Only versions the app may publish freely belong in this list. All three
- * are in the public domain. A licensed version (ESV, NIV) is added only once
- * its licence is signed.
+ * Who does NOT, and why: everything written around the King James. Study
+ * notes and phrase cards, Verse of the Day, the study guides, Trivia, Word
+ * Search and the recorded Bible in One Year narration all quote or match KJV
+ * wording, so they stay KJV whatever is picked here.
+ *
+ * Where it is kept: on the phone (localStorage) so it is instant, and on the
+ * account (auth user metadata, `bible_version`) so it follows the reader to
+ * another device. No database column: a preference this small does not need
+ * a migration. The account's value wins when a page loads.
+ *
+ * Only versions the app may publish freely belong in the list. All three are
+ * public domain. A licensed version (ESV, NIV) is added only once its licence
+ * is signed.
  */
+
+import { supabase } from "./supabaseClient";
 
 export type BibleVersion = "kjv" | "web" | "asv";
 
@@ -25,6 +36,8 @@ export const BIBLE_VERSIONS: Array<{ value: BibleVersion; label: string; name: s
 ];
 
 const KEY = "bb:bible-version:v1";
+const CHANGE_EVENT = "bb:bible-version-changed";
+const ACCOUNT_FIELD = "bible_version";
 
 function isBibleVersion(value: unknown): value is BibleVersion {
   return value === "kjv" || value === "web" || value === "asv";
@@ -41,11 +54,62 @@ export function readPreferredBibleVersion(): BibleVersion | null {
   }
 }
 
-export function savePreferredBibleVersion(version: BibleVersion) {
-  if (typeof window === "undefined" || !isBibleVersion(version)) return;
+function writeLocal(version: BibleVersion) {
   try {
     window.localStorage.setItem(KEY, version);
   } catch {
     // Full or blocked storage: the version still holds for this visit.
   }
+  window.dispatchEvent(new CustomEvent(CHANGE_EVENT));
+}
+
+/** Hear about a change made on any screen. Returns unsubscribe. */
+export function onBibleVersionChange(listener: () => void) {
+  window.addEventListener(CHANGE_EVENT, listener);
+  return () => window.removeEventListener(CHANGE_EVENT, listener);
+}
+
+/**
+ * The reader picked a version. Kept on the phone at once, told to every
+ * screen that is listening, and written to the account in the background.
+ * A failed account write is not an error worth showing: the phone has it.
+ */
+export function savePreferredBibleVersion(version: BibleVersion) {
+  if (typeof window === "undefined" || !isBibleVersion(version)) return;
+  const changed = readPreferredBibleVersion() !== version;
+  writeLocal(version);
+  if (!changed) return;
+  void supabase.auth
+    .getSession()
+    .then(({ data }) => {
+      if (!data.session?.user) return;
+      if (data.session.user.user_metadata?.[ACCOUNT_FIELD] === version) return;
+      return supabase.auth.updateUser({ data: { [ACCOUNT_FIELD]: version } });
+    })
+    .catch(() => {
+      // Offline or signed out. The next change will try again.
+    });
+}
+
+let pulled: Promise<void> | null = null;
+
+/**
+ * Once per page load: adopt the version saved on the account, so a choice
+ * made on the phone shows up on the laptop. Does nothing when the account has
+ * none, or when it already matches.
+ */
+export function pullBibleVersionFromAccount(): Promise<void> {
+  if (typeof window === "undefined") return Promise.resolve();
+  if (!pulled) {
+    pulled = supabase.auth
+      .getSession()
+      .then(({ data }) => {
+        const saved = data.session?.user?.user_metadata?.[ACCOUNT_FIELD];
+        if (isBibleVersion(saved) && saved !== readPreferredBibleVersion()) writeLocal(saved);
+      })
+      .catch(() => {
+        // No session to read: the phone's own choice stands.
+      });
+  }
+  return pulled;
 }

@@ -7,6 +7,7 @@ import { supabase } from "../lib/supabaseClient";
 import { markChapterDone, isChapterCompleted, getBookTotalChapters, getCompletedChapters, isBookComplete } from "../lib/readingProgress";
 import ChapterReaderSkeleton from "./ChapterReaderSkeleton";
 import { GENESIS_ONE_KJV, isGenesisOneKjv } from "../lib/genesisOneText";
+import { useBibleVersion } from "../lib/useBibleVersion";
 import ShareToFeed from "./feed/ShareToFeed";
 
 /** Confetti is only needed on a celebration, so it is fetched on demand. */
@@ -284,7 +285,9 @@ export default function BibleChapterPage() {
   const [viewedPlaces, setViewedPlaces] = useState<Set<string>>(new Set());
   const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
   const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
-  const [translation, setTranslation] = useState<"web" | "asv" | "kjv">("kjv");
+  // The site-wide Bible version (lib/bibleVersionPreference.ts): picked here
+  // or anywhere else, it is remembered and every reader opens in it.
+  const [translation, setTranslation] = useBibleVersion();
   const [translationMenuOpen, setTranslationMenuOpen] = useState(false);
   const [plainTextMode, setPlainTextMode] = useState(false);
   const translationMenuRef = useRef<HTMLDivElement | null>(null);

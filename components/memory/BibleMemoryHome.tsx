@@ -31,7 +31,14 @@ import { listMemoryVerses, onMemoryVersesChange, removeMemoryVerse, setMemoryVer
 import { trackFeatureEvent } from "@/lib/featureEvents";
 import { cleanVerseText, formatReference, isKnown, medalFor, TEST_LENGTH, type MemoryVerse } from "@/lib/bibleMemoryGames";
 import { loadVersesInVersion } from "@/lib/bibleMemoryVersions";
-import { BIBLE_VERSIONS, readPreferredBibleVersion, savePreferredBibleVersion, type BibleVersion } from "@/lib/bibleVersionPreference";
+import {
+  BIBLE_VERSIONS,
+  onBibleVersionChange,
+  pullBibleVersionFromAccount,
+  readPreferredBibleVersion,
+  savePreferredBibleVersion,
+  type BibleVersion,
+} from "@/lib/bibleVersionPreference";
 import { bookScene } from "@/lib/games/bookScene";
 import MemoryPractice from "./MemoryPractice";
 import MemoryVersePicker from "./MemoryVersePicker";
@@ -95,8 +102,14 @@ export default function BibleMemoryHome() {
     return onMemoryVersesChange(() => void load(userId, true));
   }, [userId, load]);
 
+  // The site-wide Bible version: the phone's copy at once, then the account's
+  // if it differs, and any change made on another screen.
   useEffect(() => {
-    setVersion(readPreferredBibleVersion());
+    const adopt = () => setVersion(readPreferredBibleVersion());
+    adopt();
+    const stop = onBibleVersionChange(adopt);
+    void pullBibleVersionFromAccount();
+    return stop;
   }, []);
 
   // Fetch the saved verses in the picked version. Keyed on the references,

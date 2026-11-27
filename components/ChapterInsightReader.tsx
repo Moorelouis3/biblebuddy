@@ -13,6 +13,7 @@ import { getBibleChapterTtsSrc } from "../lib/bibleChapterTts";
 import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../lib/bibleReadingBackgroundMusic";
 import { getBookTotalChapters, isChapterCompleted, markChapterDone } from "../lib/readingProgress";
 import { supabase } from "../lib/supabaseClient";
+import { useBibleVersion } from "../lib/useBibleVersion";
 import type { TriviaChapterPack } from "../lib/triviaGameData";
 import type { ScrambledChapterPack } from "../lib/scrambledGameData";
 
@@ -72,7 +73,9 @@ export default function ChapterInsightReader({
   const bookSlug = useMemo(() => book.toLowerCase().replace(/\s+/g, ""), [book]);
 
   const [tab, setTab] = useState<Tab>("scripture");
-  const [translation, setTranslation] = useState<Translation>("kjv");
+  // The site-wide Bible version (lib/bibleVersionPreference.ts): picked here
+  // or anywhere else, it is remembered and every reader opens in it.
+  const [translation, setTranslation] = useBibleVersion();
   const [verses, setVerses] = useState<Verse[]>(() => getBundledChapter(book, chapter));
   const [insightPhrases, setInsightPhrases] = useState<InsightCardPhrase[]>([]);
 

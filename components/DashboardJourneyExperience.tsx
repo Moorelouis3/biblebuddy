@@ -107,6 +107,7 @@ const BIBLE_YEAR_DASHBOARD_DAY_STORAGE_PREFIX = "bb:bible-year-dashboard-day";
 const BIBLE_YEAR_DASHBOARD_DAY_TTL_MS = 60 * 60 * 1000;
 const BIBLE_YEAR_PROGRESS_CACHE_STORAGE_PREFIX = "bb:bible-year-progress";
 const BIBLE_YEAR_PROGRESS_CACHE_TTL_MS = 30 * 60 * 1000;
+import { useBibleVersion } from "../lib/useBibleVersion";
 type BibleYearReaderTranslation = "web" | "kjv" | "asv";
 type BibleYearReaderVerse = { verse: number; text: string };
 const BIBLE_YEAR_READER_TRANSLATION_OPTIONS: Array<{ value: BibleYearReaderTranslation; label: string }> = [
@@ -2476,7 +2477,9 @@ export default function DashboardJourneyExperience({
   const [bibleYearFollowAlongOpenByDay, setBibleYearFollowAlongOpenByDay] = useState<Record<number, boolean>>({});
   const [bibleYearUnlockedStudyNoteSectionsByDay, setBibleYearUnlockedStudyNoteSectionsByDay] = useState<Record<number, Record<string, true>>>({});
   const [bibleYearUnlockedTriviaByDay, setBibleYearUnlockedTriviaByDay] = useState<Record<number, true>>({});
-  const [bibleYearReaderTranslation, setBibleYearReaderTranslation] = useState<BibleYearReaderTranslation>("kjv");
+  // The site-wide Bible version (lib/bibleVersionPreference.ts): picked here
+  // or anywhere else, it is remembered and every reader opens in it.
+  const [bibleYearReaderTranslation, setBibleYearReaderTranslation] = useBibleVersion();
   const [bibleYearReaderPlainText, setBibleYearReaderPlainText] = useState(false);
   const [bibleYearReaderTranslatedVersesByChapter, setBibleYearReaderTranslatedVersesByChapter] = useState<Record<string, BibleYearReaderVerse[]>>({});
   const [bibleYearReaderTranslationLoading, setBibleYearReaderTranslationLoading] = useState(false);

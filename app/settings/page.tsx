@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { LouisAvatar } from "../../components/LouisAvatar";
 import SettingsSection from "../../components/SettingsSection";
+import { BIBLE_VERSIONS } from "../../lib/bibleVersionPreference";
+import { useBibleVersion } from "../../lib/useBibleVersion";
 import {
   APP_THEMES,
   applyAppThemeToDocument,
@@ -85,6 +87,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
   const [themeSaving, setThemeSaving] = useState<string | null>(null);
   const [flameSaving, setFlameSaving] = useState<string | null>(null);
   const [settingsMessage, setSettingsMessage] = useState<string | null>(null);
+  const [bibleVersion, setBibleVersion] = useBibleVersion();
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
   const [ownerHasUnlimitedDiamonds, setOwnerHasUnlimitedDiamonds] = useState(false);
   // ?open=cover: arrived from the Bible Covers popup, so open the shelf.
@@ -718,6 +721,38 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
           description="Pick the Bible you want to carry. It dresses every page of Bible Buddy."
         >
           <BibleCoverPicker />
+        </SettingsSection>
+
+        {/* One Bible version for the whole app (Louis, 2026-11-27: "can we make
+            it site wide for the translation instead of every place"). The
+            same choice the readers and Bible Memory offer; see
+            lib/bibleVersionPreference.ts for who obeys it and who cannot. */}
+        <SettingsSection title="Bible version" icon="📜" description="The version you read in. It is used in the Bible, Bible in One Year and Bible Memory.">
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Bible version">
+            {BIBLE_VERSIONS.map((option) => {
+              const active = bibleVersion === option.value;
+              return (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => setBibleVersion(option.value)}
+                  aria-pressed={active}
+                  className="min-h-[52px] flex-1 rounded-xl border px-3 py-2 text-left transition"
+                  style={
+                    active
+                      ? { background: "var(--bb-button,#0056FD)", color: "var(--bb-button-text,#ffffff)", borderColor: "transparent" }
+                      : { background: "var(--bb-card,#ffffff)", color: "var(--bb-text-primary,#111827)", borderColor: "var(--bb-card-border,#d1d5db)" }
+                  }
+                >
+                  <span className="block text-base font-black">{option.label}</span>
+                  <span className="block text-xs font-semibold opacity-80">{option.name}</span>
+                </button>
+              );
+            })}
+          </div>
+          <p className="mt-3 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+            Study notes, Verse of the Day, the study guides and the games are written from the King James Version, so they stay in it.
+          </p>
         </SettingsSection>
 
         {/* Bible Buddy Section */}
