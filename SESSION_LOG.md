@@ -14204,3 +14204,11 @@ Queue remaining: 34
 Article: What Is the Trinity? One God in Three Persons Explained | Words: ~4,524 | Category: Christian Foundations | Status: pass
 Not live yet: no [deploy] tag on this commit (Louis removed the blog exception 2026-10-10) - goes live at the next scheduled deploy, `npm run pending`.
 Queue remaining: 33
+
+## 2026-11-28 (Bug Fixer run, 06:30 UTC)
+Marching orders: work through open bug reports per docs/BUG_FIXER_AGENT.md.
+Today: fetched the open queue (25 open, not paused, nothing stale sitting in needs_louis/awaiting_approval), worked 5.
+Done: Rachel Moore's report (Scrambled game "won't save my progress") led to a real find - Scrambled's save/answer APIs had already been turned off in favor of Bible Trivia, but the Scrambled game screens were still fully playable and BB Chat was still actively sending people there, so nothing anyone played could ever save. Fixed by sending every Scrambled screen and chat reply to Bible Trivia instead (`tsc` clean, commit 0628c40, pushed to main untagged). 3 more (a recurring popup-settings check on /dashboard, and two "Failed to fetch" network blips on a blog page and on Psalm 103) were ordinary dropped-connection noise with code already failing safe - closed `not_a_bug`, 4 duplicate reports from the same Psalm 103 moment folded in. The 5th (Ariel Moody: app lagging, can't open studies, ios-app) had no error log and no matching pattern in the code I checked - left `new` with a diagnosis rather than guessing a fix.
+Not live yet: commit 0628c40 ("Bug fix: Scrambled game pages still playable with no way to save progress") - next scheduled deploy is Sat 18:05 Berlin (`npm run pending`).
+Still open: 16 more reports in the queue, left for the next run under the 5-bug cap, including a crash report (PushRegistration on /dashboard, web) and a one-off "conversations" load failure on /plan (ios-app) worth a look next run.
+Next: next scheduled run (14:30 UTC) picks up the oldest of the remaining 16.
