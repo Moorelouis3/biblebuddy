@@ -1,14 +1,7 @@
-import { notFound } from "next/navigation";
-import ScrambledBookClient from "@/components/ScrambledBookClient";
-import { getScrambledBook } from "@/lib/scrambledGameData";
+import { redirect } from "next/navigation";
 
-export default async function ScrambledBookPage({ params }: { params: Promise<{ book: string }> }) {
-  const { book } = await params;
-  const bookPack = getScrambledBook(book);
-
-  if (!bookPack) {
-    notFound();
-  }
-
-  return <ScrambledBookClient book={bookPack} />;
+// Scrambled is retired (app/api/scrambled-progress, app/api/scrambled-answer).
+// Send people to Bible Trivia, its replacement.
+export default function ScrambledBookPage() {
+  redirect("/bible-study-games/clue");
 }

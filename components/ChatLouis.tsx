@@ -532,7 +532,7 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
     { match: /\b(settings?)\b/, href: "/settings", reply: "Okay.\n\nI’m opening settings now." },
     { match: /\b(study tools?|guided studies?)\b/, href: "/guided-studies", reply: "Okay.\n\nI’m taking you to the study tools now." },
     { match: /\b(trivia)\b/, href: "/bible-study-games/clue", reply: "Okay.\n\nI’m opening Bible Trivia now." },
-    { match: /\b(scrambled)\b/, href: "/bible-study-games/scrambled", reply: "Okay.\n\nI’m opening Scrambled now." },
+    { match: /\b(scrambled)\b/, href: "/bible-study-games/clue", reply: "Scrambled moved into Bible Trivia.\n\nI’m opening that for you now." },
   ];
 
   const wantsNavigation = /\b(show|open|take me|go to|bring me|load)\b/.test(normalized);
@@ -549,8 +549,8 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
 
   if (book && chapter && /\bscrambled\b/.test(normalized)) {
     return {
-      href: `/bible-study-games/scrambled/${toGameBookSlug(book)}/${chapter}`,
-      reply: `Okay.\n\nI’m opening ${book} ${chapter} scrambled now.`,
+      href: `/bible-trivia/${toGameBookSlug(book)}/${chapter}`,
+      reply: `Scrambled moved into Bible Trivia.\n\nI’m opening ${book} ${chapter} trivia now.`,
     };
   }
 
@@ -577,8 +577,8 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
 
   if (!book && chapter && currentPage.book && /\bscrambled\b/.test(normalized)) {
     return {
-      href: `/bible-study-games/scrambled/${toGameBookSlug(currentPage.book)}/${chapter}`,
-      reply: `Okay.\n\nI’m opening ${currentPage.book} ${chapter} scrambled now.`,
+      href: `/bible-trivia/${toGameBookSlug(currentPage.book)}/${chapter}`,
+      reply: `Scrambled moved into Bible Trivia.\n\nI’m opening ${currentPage.book} ${chapter} trivia now.`,
     };
   }
 

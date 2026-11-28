@@ -1,16 +1,10 @@
-import { notFound } from "next/navigation";
-import ScrambledGamePlayer from "@/components/ScrambledGamePlayer";
-import { getScrambledBook, getScrambledChapter } from "@/lib/scrambledGameData";
+import { redirect } from "next/navigation";
 
-export default async function ScrambledChapterPage({ params }: { params: Promise<{ book: string; chapter: string }> }) {
-  const { book, chapter } = await params;
-  const chapterNumber = Number(chapter);
-  const bookPack = getScrambledBook(book);
-  const chapterPack = getScrambledChapter(book, chapterNumber);
-
-  if (!bookPack || !chapterPack || !Number.isInteger(chapterNumber)) {
-    notFound();
-  }
-
-  return <ScrambledGamePlayer bookName={bookPack.name} bookSlug={bookPack.slug} chapter={chapterPack} />;
+// Scrambled is retired: app/api/scrambled-progress and app/api/scrambled-answer
+// already return "retired" / 410 and never save anything. This page used to
+// still render a fully playable game with no way to save progress, which is
+// what Rachel Moore's bug report caught. Send people to Bible Trivia, its
+// replacement, instead.
+export default function ScrambledChapterPage() {
+  redirect("/bible-study-games/clue");
 }
