@@ -56,6 +56,32 @@ function formatMsgTime(dateStr: string): string {
   });
 }
 
+/**
+ * A chat reads as runs of bubbles with the time said once, between runs,
+ * the way every DM app does it (Louis, 2026-11-28: "make it more like social
+ * media DMs, it feels old"). A new time line appears when the day changes or
+ * more than an hour has gone by.
+ */
+function needsTimeBreak(previous: string | null, current: string): boolean {
+  if (!previous) return true;
+  const a = new Date(previous);
+  const b = new Date(current);
+  return a.toDateString() !== b.toDateString() || b.getTime() - a.getTime() > 60 * 60 * 1000;
+}
+
+function formatSeparator(dateStr: string): string {
+  const date = new Date(dateStr);
+  const time = date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+  const startOfToday = new Date();
+  startOfToday.setHours(0, 0, 0, 0);
+  const days = Math.round((startOfToday.getTime() - new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime()) / 86400000);
+  if (days <= 0) return time;
+  if (days === 1) return `Yesterday ${time}`;
+  if (days < 7) return `${date.toLocaleDateString("en-US", { weekday: "short" })} ${time}`;
+  const sameYear = date.getFullYear() === new Date().getFullYear();
+  return `${date.toLocaleDateString("en-US", sameYear ? { month: "short", day: "numeric" } : { month: "short", day: "numeric", year: "numeric" })}, ${time}`;
+}
+
 function formatHeaderStatus(lastActiveAt?: string | null): string {
   if (!lastActiveAt) return "Buddy";
   const date = new Date(lastActiveAt);
@@ -208,6 +234,7 @@ export default function ConversationPage({
   const photoQueueRef = useRef<Array<{ file: File; url: string }>>([]);
   const [expandedImageUrl, setExpandedImageUrl] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const firstScroll = useRef(true);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const editInputRef = useRef<HTMLTextAreaElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -258,15 +285,17 @@ export default function ConversationPage({
 
   useEffect(() => {
     async function init() {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      // The session is already on the phone; getUser() would be a round trip
+      // before the first message could even be asked for.
+      const { data } = await supabase.auth.getSession();
+      const user = data.session?.user;
 
       if (!user) {
         router.push("/login");
         return;
       }
 
+      firstScroll.current = true;
       setUserId(user.id);
       await loadConversation(user.id);
     }
@@ -274,9 +303,20 @@ export default function ConversationPage({
     void init();
   }, [conversationId, router]);
 
+  // Open at the newest message, already there; only later messages glide in.
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    if (loading || messages.length === 0) return;
+    bottomRef.current?.scrollIntoView({ behavior: firstScroll.current ? "auto" : "smooth" });
+    firstScroll.current = false;
+  }, [messages, loading]);
+
+  // The composer grows with what is typed, up to a few lines.
+  useEffect(() => {
+    const box = inputRef.current;
+    if (!box) return;
+    box.style.height = "auto";
+    box.style.height = `${Math.min(box.scrollHeight, 132)}px`;
+  }, [newMessage, loading]);
 
   useEffect(() => {
     if (!editingMessageId) return;
@@ -299,14 +339,25 @@ export default function ConversationPage({
     };
   }, [menuOpen]);
 
+  /**
+   * Opening a chat. It used to ask for five things one after the other (who
+   * am I, the thread, both profiles, the messages, blocks) and showed nothing
+   * until the last had answered. Now the thread and its messages are asked
+   * for together and shown the moment they land; the name, the face and the
+   * block state fill in behind them.
+   */
   async function loadConversation(uid: string) {
     setLoading(true);
+    setOtherUser(null);
     try {
-      const { data: convo } = await supabase
-        .from("conversations")
-        .select("id, user_id_1, user_id_2, last_message_preview, last_message_at")
-        .eq("id", conversationId)
-        .maybeSingle();
+      const [{ data: convo }, msgs] = await Promise.all([
+        supabase
+          .from("conversations")
+          .select("id, user_id_1, user_id_2, last_message_preview, last_message_at")
+          .eq("id", conversationId)
+          .maybeSingle(),
+        fetchConversationMessages(conversationId),
+      ]);
 
       if (!convo || (convo.user_id_1 !== uid && convo.user_id_2 !== uid)) {
         setNotFound(true);
@@ -315,44 +366,6 @@ export default function ConversationPage({
 
       const otherId = convo.user_id_1 === uid ? convo.user_id_2 : convo.user_id_1;
 
-      const { data: profiles } = await supabase
-        .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, last_active_at, current_streak, selected_streak_flame")
-        .in("user_id", otherId ? [uid, otherId] : [uid]);
-
-      const profileRows = profiles || [];
-      const myRow = profileRows.find((profile) => profile.user_id === uid) || null;
-      const otherRow = profileRows.find((profile) => profile.user_id === otherId) || null;
-
-      setMyProfile(
-        myRow || {
-          user_id: uid,
-          display_name: null,
-          username: null,
-          profile_image_url: null,
-          member_badge: null,
-          is_paid: false,
-          last_active_at: null,
-          current_streak: null,
-          selected_streak_flame: null,
-        },
-      );
-
-      setOtherUser(
-        otherRow || {
-          user_id: otherId ?? "",
-          display_name: otherId ? null : "Deleted account",
-          username: null,
-          profile_image_url: null,
-          member_badge: null,
-          is_paid: false,
-          last_active_at: null,
-          current_streak: null,
-          selected_streak_flame: null,
-        },
-      );
-
-      const msgs = await fetchConversationMessages(conversationId);
       const normalizedMessages =
         msgs.length === 0 && convo.last_message_preview
           ? [
@@ -370,13 +383,37 @@ export default function ConversationPage({
           : msgs;
 
       setMessages(normalizedMessages);
+      setLoading(false);
 
-      const { data: blockRows } = await supabase
-        .from("buddy_blocks")
-        .select("blocker_user_id, blocked_user_id")
-        .or(`and(blocker_user_id.eq.${uid},blocked_user_id.eq.${otherId}),and(blocker_user_id.eq.${otherId},blocked_user_id.eq.${uid})`)
-        .limit(1);
+      const [{ data: profiles }, { data: blockRows }] = await Promise.all([
+        supabase
+          .from("profile_stats")
+          .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, last_active_at, current_streak, selected_streak_flame")
+          .in("user_id", otherId ? [uid, otherId] : [uid]),
+        otherId
+          ? supabase
+              .from("buddy_blocks")
+              .select("blocker_user_id, blocked_user_id")
+              .or(`and(blocker_user_id.eq.${uid},blocked_user_id.eq.${otherId}),and(blocker_user_id.eq.${otherId},blocked_user_id.eq.${uid})`)
+              .limit(1)
+          : Promise.resolve({ data: null }),
+      ]);
 
+      const profileRows = profiles || [];
+      const myRow = profileRows.find((profile) => profile.user_id === uid) || null;
+      const otherRow = profileRows.find((profile) => profile.user_id === otherId) || null;
+      const blank = {
+        username: null,
+        profile_image_url: null,
+        member_badge: null,
+        is_paid: false,
+        last_active_at: null,
+        current_streak: null,
+        selected_streak_flame: null,
+      };
+
+      setMyProfile(myRow || { ...blank, user_id: uid, display_name: null });
+      setOtherUser(otherRow || { ...blank, user_id: otherId ?? "", display_name: otherId ? null : "Deleted account" });
       setBlockState(blockRows?.[0] ?? null);
 
       const hadUnreadMessages = msgs.some((message) => message.sender_id !== uid && !message.read_at);
@@ -820,8 +857,14 @@ export default function ConversationPage({
   if (loading) {
     return (
       <ModalShell isOpen={true} onClose={() => onExternalClose ? onExternalClose() : router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
-        <div className="h-[calc(100dvh-max(2rem,env(safe-area-inset-top,0px)+env(safe-area-inset-bottom,0px)))] w-screen bg-[var(--bb-card,#ffffff)] px-6 py-16 text-center text-[var(--bb-text-primary,#1f2937)] sm:mx-4 sm:h-auto sm:w-full sm:max-w-3xl sm:rounded-[28px] sm:shadow-2xl">
-          <p className="text-sm text-[var(--bb-text-muted,#9ca3af)]">Loading conversation...</p>
+        <div
+          aria-busy="true"
+          aria-label="Loading conversation"
+          className="flex h-[calc(100dvh-max(2rem,env(safe-area-inset-top,0px)+env(safe-area-inset-bottom,0px)))] w-screen flex-col justify-end gap-2 bg-[var(--bb-card,#ffffff)] px-4 pb-24 sm:mx-4 sm:h-[84vh] sm:w-full sm:max-w-xl sm:rounded-[28px] sm:shadow-2xl"
+        >
+          {["w-40 self-start", "w-56 self-start", "w-32 self-end", "w-48 self-start", "w-44 self-end"].map((shape, index) => (
+            <div key={index} className={`h-9 animate-pulse rounded-[20px] bg-[var(--bb-surface-soft,#eef0f3)] ${shape}`} />
+          ))}
         </div>
       </ModalShell>
     );
@@ -841,7 +884,7 @@ export default function ConversationPage({
     );
   }
 
-  const otherDisplay = otherUser?.display_name || otherUser?.username || "Bible Buddy";
+  const otherDisplay = otherUser ? otherUser.display_name || otherUser.username || "Bible Buddy" : "";
   const myDisplay = myProfile?.display_name || myProfile?.username || "You";
   const latestOwnMessageId =
     [...messages].reverse().find((message) => message.sender_id === userId)?.id ?? null;
@@ -865,45 +908,44 @@ export default function ConversationPage({
   return (
     <>
       <ModalShell isOpen={true} onClose={() => onExternalClose ? onExternalClose() : router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
-        <div className="flex h-[calc(100dvh-max(2rem,env(safe-area-inset-top,0px)+env(safe-area-inset-bottom,0px)))] w-screen flex-col overflow-hidden bg-[var(--bb-background,#f5f5f5)] text-[var(--bb-text-primary,#1f2937)] sm:mx-4 sm:h-[84vh] sm:w-full sm:max-w-4xl sm:rounded-[32px] sm:border sm:border-[var(--bb-card-border,#e5e7eb)] sm:shadow-2xl">
-          <div className="flex items-center gap-3 border-b border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-5 py-4">
+        <div className="flex h-[calc(100dvh-max(2rem,env(safe-area-inset-top,0px)+env(safe-area-inset-bottom,0px)))] w-screen flex-col overflow-hidden bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#1f2937)] sm:mx-4 sm:h-[84vh] sm:w-full sm:max-w-xl sm:rounded-[28px] sm:border sm:border-[var(--bb-card-border,#e5e7eb)] sm:shadow-2xl">
+          <div className="flex items-center gap-1 border-b border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-2 py-2">
             <button
               type="button"
               onClick={() => onExternalClose ? onExternalClose() : router.back()}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#f3f4f6)] text-[var(--bb-text-secondary,#4b5563)] transition hover:opacity-85"
-              aria-label="Close conversation"
+              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-[var(--bb-text-primary,#111827)] transition active:opacity-60"
+              aria-label="Back"
             >
-              x
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={2.4} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
             </button>
 
             <Link
               href={otherUser?.user_id ? `/profile/${otherUser.user_id}` : "/messages"}
-              className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl px-1 py-1 transition hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
+              className="flex min-w-0 flex-1 items-center gap-2.5 rounded-2xl py-1 pr-1"
             >
               {otherUser?.profile_image_url ? (
-                <img
-                  src={otherUser.profile_image_url}
-                  alt={otherDisplay}
-                  className="h-12 w-12 flex-shrink-0 rounded-full object-cover ring-2 ring-white/10"
-                />
+                <img src={otherUser.profile_image_url} alt="" className="h-9 w-9 flex-shrink-0 rounded-full object-cover" />
               ) : (
                 <div
-                  className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white"
-                  style={{ backgroundColor: otherColor }}
+                  className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                  style={{ backgroundColor: otherUser ? otherColor : "var(--bb-surface-soft,#eef0f3)" }}
                 >
                   {otherInitials}
                 </div>
               )}
               <div className="min-w-0">
-                <div className="flex min-w-0 items-center gap-2">
-                  <p className="truncate text-lg font-semibold text-[var(--bb-text-primary,#111827)]">{otherDisplay}</p>
+                <div className="flex min-w-0 items-center gap-1.5">
+                  <p className="truncate text-[16px] font-bold leading-tight text-[var(--bb-text-primary,#111827)]">{otherDisplay}</p>
                   <StreakFlameBadge currentStreak={otherUser?.current_streak} flameId={otherUser?.selected_streak_flame} />
                   <UserBadge customBadge={otherUser?.member_badge} isPaid={otherUser?.is_paid === true} />
                 </div>
-                <p className="truncate text-sm text-[var(--bb-text-secondary,#6b7280)]">
-                  {otherUser?.username ? `@${otherUser.username} · ` : ""}
-                  {formatHeaderStatus(otherUser?.last_active_at)}
-                </p>
+                {otherUser && (otherUser.username || otherUser.last_active_at) ? (
+                  <p className="truncate text-[12px] leading-tight text-[var(--bb-text-secondary,#6b7280)]">
+                    {otherUser.last_active_at ? formatHeaderStatus(otherUser.last_active_at) : `@${otherUser.username}`}
+                  </p>
+                ) : null}
               </div>
             </Link>
 
@@ -911,7 +953,7 @@ export default function ConversationPage({
               <button
                 type="button"
                 onClick={() => setMenuOpen((prev) => !prev)}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-[var(--bb-text-primary,#374151)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
+                className="flex h-10 w-10 items-center justify-center rounded-full text-[var(--bb-text-primary,#374151)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
                 aria-label="Conversation options"
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -922,7 +964,7 @@ export default function ConversationPage({
               </button>
 
               {menuOpen && otherUser && (
-                <div className="absolute right-0 top-14 z-20 w-64 overflow-hidden rounded-3xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] p-2 shadow-2xl">
+                <div className="absolute right-0 top-11 z-20 w-64 overflow-hidden rounded-3xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] p-2 shadow-2xl">
                   <Link
                     href={`/profile/${otherUser.user_id}`}
                     onClick={() => setMenuOpen(false)}
@@ -961,14 +1003,14 @@ export default function ConversationPage({
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto bg-[var(--bb-background,#f5f5f5)] px-5 py-5">
+          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-[var(--bb-card,#ffffff)] px-3 pb-3 pt-2">
             {messages.length === 0 && (
               <div className="py-16 text-center">
                 <p className="text-sm text-[var(--bb-text-muted,#9ca3af)]">No messages yet. Say hello!</p>
               </div>
             )}
 
-            {messages.map((msg) => {
+            {messages.map((msg, index) => {
               const isMine = msg.sender_id === userId;
               const presentation = getDirectMessagePresentation(
                 msg.content,
@@ -980,8 +1022,8 @@ export default function ConversationPage({
                 .map((line) => parseQuickActionLine(line) ?? parseLegacyActionButtonLine(line))
                 .filter((action): action is { label: string; href: string } => !!action);
               const messageActions = [...presentation.actions, ...rawInlineActions].filter(
-                (action, index, array) =>
-                  array.findIndex((candidate) => candidate.label === action.label && candidate.href === action.href) === index,
+                (action, actionIndex, array) =>
+                  array.findIndex((candidate) => candidate.label === action.label && candidate.href === action.href) === actionIndex,
               );
               const bodyLines = presentation.body.split(/\r?\n/);
               const shouldInlineActionsUnderHeader = bodyLines.some((line) => isQuickActionsHeader(line)) && messageActions.length > 0;
@@ -992,45 +1034,64 @@ export default function ConversationPage({
               const isEditing = editingMessageId === msg.id;
               const isSeen = msg.id === latestSeenMessageId;
               const canEdit = isMine && msg.id === latestOwnMessageId;
-              const senderName = isMine ? myDisplay : otherDisplay;
-              const senderImage = isMine ? myProfile?.profile_image_url : otherUser?.profile_image_url;
-              const senderInitials = isMine ? myInitials : otherInitials;
-              const senderColor = isMine ? myColor : otherColor;
-              const senderProfileHref = isMine ? (userId ? `/profile/${userId}` : null) : (otherUser?.user_id ? `/profile/${otherUser.user_id}` : null);
+
+              // Where this bubble sits in its run: a run is one person's
+              // messages in a row with no time line between them.
+              const previous = index > 0 ? messages[index - 1] : null;
+              const next = index < messages.length - 1 ? messages[index + 1] : null;
+              const showTime = needsTimeBreak(previous?.created_at ?? null, msg.created_at);
+              const firstOfRun = showTime || previous?.sender_id !== msg.sender_id;
+              const lastOfRun = !next || next.sender_id !== msg.sender_id || needsTimeBreak(msg.created_at, next.created_at);
+              const isPhoto = Boolean(msg.image_url) && !isEditing;
+              // My bubble is the solid brand colour; while I am editing it turns plain so the box reads.
+              const solid = isMine && !isEditing;
+              const corner = isMine
+                ? `${firstOfRun ? "" : "rounded-tr-[6px]"} ${lastOfRun ? "" : "rounded-br-[6px]"}`
+                : `${firstOfRun ? "" : "rounded-tl-[6px]"} ${lastOfRun ? "" : "rounded-bl-[6px]"}`;
+              const actionClass = `inline-flex min-h-10 items-center justify-center rounded-full px-4 py-2 text-sm font-bold transition hover:opacity-85 ${
+                solid ? "bg-white" : "border border-[var(--bb-card-border,#d8eadf)] bg-[var(--bb-card,#ffffff)]"
+              }`;
+              const actionStyle = { color: solid ? "var(--bb-button,#0056FD)" : "var(--bb-accent,#2f6f4f)" };
+              const linkClass = "font-semibold underline underline-offset-2";
+              const linkStyle = solid ? { color: "inherit" } : { color: "var(--bb-accent,#8d5d38)" };
 
               return (
-                <div key={msg.id} className={`mb-5 flex ${isMine ? "justify-end" : "justify-start"}`}>
-                  <div className={`flex max-w-[86%] items-end gap-3 ${isMine ? "flex-row-reverse" : "flex-row"}`}>
-                    {senderImage ? (
-                      <img
-                        src={senderImage}
-                        alt={senderName}
-                        className="h-10 w-10 flex-shrink-0 rounded-full object-cover ring-2 ring-white/10"
-                      />
+                <div key={msg.id}>
+                  {showTime ? (
+                    <p className="pb-2 pt-4 text-center text-[11px] font-semibold text-[var(--bb-text-muted,#9ca3af)]">{formatSeparator(msg.created_at)}</p>
+                  ) : null}
+                  <div className={`flex items-end gap-2 ${isMine ? "justify-end" : "justify-start"} ${firstOfRun && !showTime ? "mt-3" : "mt-[3px]"}`}>
+                    {isMine ? null : lastOfRun ? (
+                      otherUser?.profile_image_url ? (
+                        <img src={otherUser.profile_image_url} alt="" className="h-7 w-7 flex-shrink-0 rounded-full object-cover" />
+                      ) : (
+                        <div
+                          className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white"
+                          style={{ backgroundColor: otherColor }}
+                        >
+                          {otherInitials}
+                        </div>
+                      )
                     ) : (
-                      <div
-                        className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
-                        style={{ backgroundColor: senderColor }}
-                      >
-                        {senderInitials}
-                      </div>
+                      <div className="w-7 flex-shrink-0" aria-hidden="true" />
                     )}
 
-                    <div className={`flex min-w-0 flex-col gap-1 ${isMine ? "items-end" : "items-start"}`}>
-                      {senderProfileHref ? (
-                        <Link href={senderProfileHref} className="px-1 text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)] hover:underline">
-                          {senderName}
-                        </Link>
-                      ) : (
-                        <div className="px-1 text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">{senderName}</div>
-                      )}
-
+                    <div className={`flex min-w-0 max-w-[78%] flex-col ${isMine ? "items-end" : "items-start"}`}>
                       <div
-                        className={`rounded-[24px] border px-4 py-3 text-sm leading-relaxed shadow-sm ${
-                          isMine
-                            ? "rounded-br-md border-[var(--bb-card-border,#d8eadf)] bg-[var(--bb-accent-soft,#eef7f1)] text-[var(--bb-text-primary,#111827)]"
-                            : "rounded-bl-md border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)]"
-                        }`}
+                        className={
+                          isPhoto
+                            ? `overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#e5e7eb)] ${corner}`
+                            : `rounded-[20px] px-3.5 py-2 text-[15px] leading-snug ${corner} ${
+                                solid ? "" : "border border-[var(--bb-card-border,#e5e7eb)] text-[var(--bb-text-primary,#111827)]"
+                              }`
+                        }
+                        style={
+                          isPhoto
+                            ? undefined
+                            : solid
+                              ? { backgroundColor: "var(--bb-button,#0056FD)", color: "var(--bb-button-text,#ffffff)" }
+                              : { backgroundColor: isMine ? "var(--bb-card,#ffffff)" : "var(--bb-surface-soft,#eff1f3)" }
+                        }
                       >
                         {isEditing ? (
                           <div className="space-y-3">
@@ -1061,19 +1122,34 @@ export default function ConversationPage({
                             </div>
                           </div>
                         ) : msg.image_url ? (
+                          <>
                           <button
                             type="button"
                             onClick={() => setExpandedImageUrl(msg.image_url || null)}
-                            className="block overflow-hidden rounded-2xl text-left transition hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[var(--bb-accent,#4a9b6f)] focus:ring-offset-2 focus:ring-offset-[var(--bb-card,#ffffff)]"
+                            className="block text-left transition hover:opacity-95 focus:outline-none"
                             aria-label="Open shared photo"
                           >
                             <img
                               src={msg.image_url}
                               alt="Shared photo"
-                              className="max-w-[240px] object-cover"
-                              style={{ maxHeight: 320 }}
+                              className="block max-w-full bg-[var(--bb-surface-soft,#eff1f3)] object-cover"
+                              style={{ maxHeight: 320, minHeight: 120, width: 240 }}
                             />
                           </button>
+                          {/* A photo sent with words keeps its words. */}
+                          {msg.content.trim() ? (
+                            <p
+                              className="whitespace-pre-wrap px-3.5 py-2 text-[15px] leading-snug"
+                              style={
+                                solid
+                                  ? { width: 240, backgroundColor: "var(--bb-button,#0056FD)", color: "var(--bb-button-text,#ffffff)" }
+                                  : { width: 240, backgroundColor: "var(--bb-surface-soft,#eff1f3)", color: "var(--bb-text-primary,#111827)" }
+                              }
+                            >
+                              {msg.content}
+                            </p>
+                          ) : null}
+                          </>
                         ) : (
                           <>
                             <div className="whitespace-pre-wrap">
@@ -1090,7 +1166,7 @@ export default function ConversationPage({
                                     <div
                                       key={`msg-blank:${msg.id}:${lineIndex}`}
                                       aria-hidden="true"
-                                      className="h-6"
+                                      className="h-3"
                                     />
                                   );
                                 }
@@ -1110,7 +1186,8 @@ export default function ConversationPage({
                                           key={`${action.label}-${action.href}-${index}`}
                                           type="button"
                                           onClick={() => handleActionNavigation(action.href)}
-                                          className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-[var(--bb-card-border,#d8eadf)] bg-[var(--bb-accent-soft,#eef7f1)] px-4 py-2 text-sm font-semibold text-[var(--bb-accent,#2f6f4f)] transition hover:opacity-85"
+                                          className={actionClass}
+                                          style={actionStyle}
                                         >
                                           {action.label}
                                         </button>
@@ -1128,7 +1205,8 @@ export default function ConversationPage({
                                             key={`${action.label}-${action.href}-${index}`}
                                             type="button"
                                             onClick={() => handleActionNavigation(action.href)}
-                                            className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-[var(--bb-card-border,#d8eadf)] bg-[var(--bb-accent-soft,#eef7f1)] px-4 py-2 text-sm font-semibold text-[var(--bb-accent,#2f6f4f)] transition hover:opacity-85"
+                                            className={actionClass}
+                                          style={actionStyle}
                                           >
                                             {action.label}
                                           </button>
@@ -1142,7 +1220,8 @@ export default function ConversationPage({
                                             key={`msg-link:${msg.id}:${lineIndex}:${segmentIndex}`}
                                             type="button"
                                             onClick={() => handleActionNavigation(segment.href)}
-                                            className="font-semibold text-[var(--bb-accent,#8d5d38)] underline underline-offset-2"
+                                            className={linkClass}
+                                            style={linkStyle}
                                           >
                                             {segment.label}
                                           </button>
@@ -1178,7 +1257,8 @@ export default function ConversationPage({
                                     key={`${action.label}-${action.href}-${index}`}
                                     type="button"
                                     onClick={() => handleActionNavigation(action.href)}
-                                    className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-[var(--bb-card-border,#d8eadf)] bg-[var(--bb-accent-soft,#eef7f1)] px-4 py-2 text-sm font-semibold text-[var(--bb-accent,#2f6f4f)] transition hover:opacity-85"
+                                    className={actionClass}
+                                          style={actionStyle}
                                   >
                                     {action.label}
                                   </button>
@@ -1189,19 +1269,20 @@ export default function ConversationPage({
                         )}
                       </div>
 
-                      <div className={`flex items-center gap-2 px-1 text-[11px] text-[var(--bb-text-muted,#9ca3af)] ${isMine ? "justify-end" : "justify-start"}`}>
-                        <span>{formatMsgTime(msg.created_at)}</span>
-                        {canEdit && !isEditing && (
-                          <button
-                            type="button"
-                            onClick={() => startEditingMessage(msg)}
-                            className="font-medium text-[var(--bb-text-secondary,#6b7280)] transition hover:text-[var(--bb-text-primary,#1f2937)]"
-                          >
-                            Edit
-                          </button>
-                        )}
-                        {isMine && isSeen && <span className="font-medium text-[var(--bb-accent,#4a9b6f)]">Seen</span>}
-                      </div>
+                      {(canEdit && !isEditing) || (isMine && isSeen) ? (
+                        <div className="mt-1 flex items-center justify-end gap-2 px-1 text-[11px] text-[var(--bb-text-muted,#9ca3af)]">
+                          {canEdit && !isEditing && !msg.image_url && (
+                            <button
+                              type="button"
+                              onClick={() => startEditingMessage(msg)}
+                              className="font-semibold text-[var(--bb-text-secondary,#6b7280)] transition hover:text-[var(--bb-text-primary,#1f2937)]"
+                            >
+                              Edit
+                            </button>
+                          )}
+                          {isMine && isSeen && <span className="font-semibold">Seen</span>}
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -1211,7 +1292,7 @@ export default function ConversationPage({
             <div ref={bottomRef} />
           </div>
 
-          <div className="border-t border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-5 py-4">
+          <div className="bg-[var(--bb-card,#ffffff)] px-3 pb-3 pt-1.5">
             {composerNotice ? (
                 <div className="flex items-center justify-between gap-3 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
                 <span>{composerNotice}</span>
@@ -1248,8 +1329,7 @@ export default function ConversationPage({
                     </div>
                   </div>
                 )}
-                <div className="mx-auto flex max-w-3xl items-end gap-2">
-                  {/* Hidden file input */}
+                <div className="flex items-end gap-1 rounded-[26px] border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface-soft,#f1f2f4)] p-1">
                   <input
                     ref={photoInputRef}
                     type="file"
@@ -1258,41 +1338,42 @@ export default function ConversationPage({
                     className="hidden"
                     onChange={handlePhotoSelect}
                   />
-                  {/* Photo button */}
                   <button
                     type="button"
                     onClick={() => photoInputRef.current?.click()}
                     disabled={!!blockState}
-                    className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] text-[var(--bb-text-secondary,#6b7280)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] disabled:opacity-40"
-                    title="Send photo"
+                    className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-[var(--bb-text-secondary,#6b7280)] transition active:opacity-60 disabled:opacity-40"
+                    aria-label="Send a photo"
                   >
-                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   </button>
-                    <textarea
-                      ref={inputRef}
-                      value={newMessage}
-                      onChange={(e) => setNewMessage(e.target.value)}
-                      onKeyDown={handleComposerKeyDown}
-                      placeholder={`Message ${otherDisplay}`}
-                      rows={1}
-                      className="max-h-36 w-full resize-none overflow-y-auto rounded-[24px] border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] px-4 py-3 text-sm text-[var(--bb-text-primary,#111827)] placeholder-[var(--bb-text-muted,#9ca3af)] focus:outline-none focus:ring-2 focus:ring-[var(--bb-accent,#d62828)]"
-                      style={{ lineHeight: "1.5" }}
-                    />
-                  <button
-                    type="button"
-                    onClick={() => void handleSend()}
-                    disabled={(!newMessage.trim() && !photoPreview) || sending || uploadingPhoto}
-                    className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-[var(--bb-button-text,#ffffff)] transition disabled:opacity-40"
-                    style={{ backgroundColor: (newMessage.trim() || photoPreview) ? "var(--bb-button)" : "var(--bb-progress-track)" }}
-                  >
-                    <svg className="h-5 w-5 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
-                  </button>
+                  <textarea
+                    ref={inputRef}
+                    value={newMessage}
+                    onChange={(e) => setNewMessage(e.target.value)}
+                    onKeyDown={handleComposerKeyDown}
+                    placeholder="Message..."
+                    aria-label={otherDisplay ? `Message ${otherDisplay}` : "Message"}
+                    rows={1}
+                    className="min-w-0 flex-1 resize-none self-center overflow-y-auto border-0 bg-transparent px-1 py-2 text-[16px] leading-snug text-[var(--bb-text-primary,#111827)] placeholder-[var(--bb-text-muted,#9ca3af)] outline-none focus:outline-none focus:ring-0"
+                  />
+                  {newMessage.trim() || photoPreview ? (
+                    <button
+                      type="button"
+                      onClick={() => void handleSend()}
+                      disabled={sending || uploadingPhoto}
+                      className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full transition active:opacity-80 disabled:opacity-50"
+                      style={{ backgroundColor: "var(--bb-button,#0056FD)", color: "var(--bb-button-text,#ffffff)" }}
+                      aria-label="Send"
+                    >
+                      <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2.6} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6" />
+                      </svg>
+                    </button>
+                  ) : null}
                 </div>
-                <p className="mt-2 text-center text-[10px] text-[var(--bb-text-muted,#9ca3af)]">Enter to send | Shift+Enter for new line</p>
               </>
             )}
           </div>
