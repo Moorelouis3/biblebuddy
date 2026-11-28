@@ -1072,7 +1072,8 @@ uses the verse-breakdowns fallback (`/Whatisthebiblebanner.png`):
 2-samuel-4-explained, 2-samuel-5-explained, 2-samuel-6-explained,
 2-samuel-7-explained, 2-samuel-8-explained, 2-samuel-9-explained,
 2-samuel-10-explained, 2-samuel-11-explained, 2-samuel-12-explained,
-2-samuel-13-explained, 2-samuel-14-explained, 2-samuel-15-explained.
+2-samuel-13-explained, 2-samuel-14-explained, 2-samuel-15-explained,
+2-samuel-16-explained.
 (Ruth 1-4 and 1 Samuel 1-8 got their real banners from Louis on
 2026-11-21.) Updating this one line going forward (per the routine's own
 doc) rather than adding a new block each time a chapter lands without a

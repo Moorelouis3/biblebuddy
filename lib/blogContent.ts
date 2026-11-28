@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-16-explained",
+    title: "2 Samuel 16 Explained: Shimei's Curse and Ahithophel's Counsel",
+    description:
+      "2 Samuel 16 explained verse by verse: Ziba's report on Mephibosheth, Shimei's curse against David, Hushai's loyalty, and Ahithophel's counsel.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-16-explained",
+    publishedAt: "2026-11-28",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 16 Explained 📖",
+      content:
+        "A king loses his throne.\nThen a man from his old enemy's family curses him to his face.\n\n📌 David could silence him in a second. He chooses not to.\n\n📖 Ziba brings gifts, and a report nobody can check.\n📖 Shimei throws stones and dust the whole way down the road.\n📖 One rooftop decision fulfills a prophecy from two chapters back.\n\nNew article on:\n🟢 why David hands over a disabled man's **inheritance** on one word\n🟢 what David's answer to **Abishai** actually trusted God with\n🟢 how **Ahithophel's** advice quietly fulfills Nathan's warning\n\nHas someone ever told the truth about you in the cruelest way possible? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-15-explained",
     title: "2 Samuel 15 Explained: Absalom's Coup and David's Flight",
     description:
