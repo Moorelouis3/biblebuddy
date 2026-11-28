@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-13-explained",
+    title: "2 Samuel 13 Explained: Amnon, Tamar, and a Father's Silence",
+    description:
+      "2 Samuel 13 explained verse by verse: Amnon's plot against Tamar, her refusal and assault, Absalom's two year wait, and the murder that follows.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-13-explained",
+    publishedAt: "2026-11-28",
+    readTime: "16 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 13 Explained 📖",
+      content:
+        "One son plots for months.\nAnother waits two full years.\nTheir father does neither.\n\n📌 Nathan's warning from last chapter starts coming true inside David's own house.\n\n📖 Tamar names the wrong clearly, before it happens.\n📖 Amnon's love turns to hatred the moment he gets what he wanted.\n📖 Absalom's silence turns out to be two years of planning.\n\nNew article on:\n🟢 why **Jonadab** shows up twice, making things worse both times\n🟢 what David's **silence** actually cost\n🟢 how this chapter fulfills a **prophecy** from the chapter before it\n\nHave you ever spoken up clearly and still not been heard? 🙏",
+    },
+  },
+  {
     slug: "what-is-the-trinity",
     title: "What Is the Trinity? One God in Three Persons Explained",
     description:
