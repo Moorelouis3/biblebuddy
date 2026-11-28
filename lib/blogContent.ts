@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-15-explained",
+    title: "2 Samuel 15 Explained: Absalom's Coup and David's Flight",
+    description:
+      "2 Samuel 15 explained verse by verse: Absalom's rebellion, David's flight from Jerusalem, Ittai's loyalty, and his prayer against Ahithophel.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-15-explained",
+    publishedAt: "2026-11-28",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 15 Explained 📖",
+      content:
+        "A son spends years winning a crowd.\nThen he uses it to take a throne.\n\n📌 Absalom never attacks David's rule. He just offers to be the warmer alternative.\n\n📖 David flees Jerusalem instead of fighting for it.\n📖 He sends the ark of God back instead of keeping it as a guarantee.\n📖 One short prayer against his own advisor becomes the hinge of the whole story.\n\nNew article on:\n🟢 how Absalom **stole the hearts** of Israel one conversation at a time\n🟢 why **Ittai's** loyalty outshines David's own family\n🟢 what David's **one sentence prayer** actually trusted God with\n\nHas someone's charm ever done more damage than their honesty? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-14-explained",
     title: "2 Samuel 14 Explained: The Wise Woman and Absalom's Return",
     description:
