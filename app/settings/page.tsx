@@ -8,6 +8,8 @@ import { LouisAvatar } from "../../components/LouisAvatar";
 import SettingsSection from "../../components/SettingsSection";
 import { BIBLE_VERSIONS } from "../../lib/bibleVersionPreference";
 import { useBibleVersion } from "../../lib/useBibleVersion";
+import { APP_LANGUAGES, GERMAN_IS_PUBLIC } from "../../lib/i18n/language";
+import { useAppLanguage, useT } from "../../lib/i18n/useT";
 import {
   APP_THEMES,
   applyAppThemeToDocument,
@@ -88,6 +90,8 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
   const [flameSaving, setFlameSaving] = useState<string | null>(null);
   const [settingsMessage, setSettingsMessage] = useState<string | null>(null);
   const [bibleVersion, setBibleVersion] = useBibleVersion();
+  const [appLanguage, setAppLanguage] = useAppLanguage();
+  const t = useT();
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
   const [ownerHasUnlimitedDiamonds, setOwnerHasUnlimitedDiamonds] = useState(false);
   // ?open=cover: arrived from the Bible Covers popup, so open the shelf.
@@ -699,7 +703,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         </div>
       ) : null}
       <div className={`${embedded ? "max-w-xl px-1 py-1" : "max-w-2xl px-4 py-8"} mx-auto`}>
-        <h1 className="text-3xl font-bold mb-8 text-[var(--bb-text-primary,#f9fafb)]">Settings</h1>
+        <h1 className="text-3xl font-bold mb-8 text-[var(--bb-text-primary,#f9fafb)]">{t("settings.title")}</h1>
 
         {settingsMessage ? (
           <div className="mb-6 rounded-xl border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-accent-soft,#eaf5ff)] p-4 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
@@ -727,8 +731,53 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
             it site wide for the translation instead of every place"). The
             same choice the readers and Bible Memory offer; see
             lib/bibleVersionPreference.ts for who obeys it and who cannot. */}
-        <SettingsSection title="Bible version" icon="📜" description="The version you read in. It is used in the Bible, Bible in One Year and Bible Memory.">
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Bible version">
+        {/* The app's language (2026-11-28). An experiment for now: German is
+            shown to admins only until Louis opens it (GERMAN_IS_PUBLIC in
+            lib/i18n/language.ts). Separate from the Bible version below. */}
+        {GERMAN_IS_PUBLIC || ownerHasUnlimitedDiamonds ? (
+          <SettingsSection title={t("settings.language.title")} icon="🌍" description={t("settings.language.description")}>
+            <div className="flex flex-wrap gap-2" role="group" aria-label={t("settings.language.title")}>
+              {APP_LANGUAGES.map((option) => {
+                const active = appLanguage === option.value;
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => setAppLanguage(option.value)}
+                    aria-pressed={active}
+                    lang={option.value}
+                    className="min-h-[52px] flex-1 rounded-xl border px-3 py-2 text-left transition"
+                    style={
+                      active
+                        ? { background: "var(--bb-button,#0056FD)", color: "var(--bb-button-text,#ffffff)", borderColor: "transparent" }
+                        : { background: "var(--bb-card,#ffffff)", color: "var(--bb-text-primary,#111827)", borderColor: "var(--bb-card-border,#d1d5db)" }
+                    }
+                  >
+                    <span className="block text-base font-black">{option.name}</span>
+                  </button>
+                );
+              })}
+            </div>
+            {appLanguage === "de" ? (
+              <>
+                <p className="mt-3 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">{t("settings.language.note")}</p>
+                {bibleVersion !== "lut" ? (
+                  <button
+                    type="button"
+                    onClick={() => setBibleVersion("lut")}
+                    className="mt-3 rounded-xl border px-4 py-2.5 text-sm font-black"
+                    style={{ background: "var(--bb-card,#ffffff)", color: "var(--bb-text-primary,#111827)", borderColor: "var(--bb-card-border,#d1d5db)" }}
+                  >
+                    {t("settings.language.suggestBible")}
+                  </button>
+                ) : null}
+              </>
+            ) : null}
+          </SettingsSection>
+        ) : null}
+
+        <SettingsSection title={t("settings.bibleVersion.title")} icon="📜" description={t("settings.bibleVersion.description")}>
+          <div className="flex flex-wrap gap-2" role="group" aria-label={t("settings.bibleVersion.title")}>
             {BIBLE_VERSIONS.map((option) => {
               const active = bibleVersion === option.value;
               return (
@@ -751,7 +800,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
             })}
           </div>
           <p className="mt-3 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-            Study notes, Verse of the Day, the study guides and the games are written from the King James Version, so they stay in it.
+            {t("settings.bibleVersion.note")}
           </p>
         </SettingsSection>
 

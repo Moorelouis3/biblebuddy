@@ -60,9 +60,9 @@ function cacheKey(version: BibleVersion, verse: Reference) {
   return `${version}|${verse.book.toLowerCase()}|${verse.chapter}|${verse.verse}|${verse.verse_end ?? ""}`;
 }
 
-async function fetchKjv(verse: Reference): Promise<string | null> {
+async function fetchStatic(verse: Reference, folder: "kjv" | "luther1912"): Promise<string | null> {
   const slug = verse.book.toLowerCase().trim().replace(/\s+/g, "-");
-  const response = await fetch(`/kjv/${slug}/${verse.chapter}.json`);
+  const response = await fetch(`/${folder}/${slug}/${verse.chapter}.json`);
   if (!response.ok) return null;
   const rows = (await response.json()) as Array<{ number: number; text: string }>;
   const last = verse.verse_end && verse.verse_end > verse.verse ? verse.verse_end : verse.verse;
@@ -121,8 +121,13 @@ export async function loadVersesInVersion(
     if (!text) {
       try {
         // After the first dozen, wait between requests rather than be refused.
-        if (version !== "kjv" && fetched >= 12) await new Promise((resolve) => setTimeout(resolve, 2100));
-        text = version === "kjv" ? await fetchKjv(verse) : await fetchFromBibleApi(verse, version);
+        if (version !== "kjv" && version !== "lut" && fetched >= 12) await new Promise((resolve) => setTimeout(resolve, 2100));
+        text =
+          version === "kjv"
+            ? await fetchStatic(verse, "kjv")
+            : version === "lut"
+              ? await fetchStatic(verse, "luther1912")
+              : await fetchFromBibleApi(verse, version);
         fetched += 1;
       } catch {
         text = null;

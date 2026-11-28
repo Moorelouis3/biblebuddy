@@ -108,12 +108,13 @@ const BIBLE_YEAR_DASHBOARD_DAY_TTL_MS = 60 * 60 * 1000;
 const BIBLE_YEAR_PROGRESS_CACHE_STORAGE_PREFIX = "bb:bible-year-progress";
 const BIBLE_YEAR_PROGRESS_CACHE_TTL_MS = 30 * 60 * 1000;
 import { useBibleVersion } from "../lib/useBibleVersion";
-type BibleYearReaderTranslation = "web" | "kjv" | "asv";
+type BibleYearReaderTranslation = "web" | "kjv" | "asv" | "lut";
 type BibleYearReaderVerse = { verse: number; text: string };
 const BIBLE_YEAR_READER_TRANSLATION_OPTIONS: Array<{ value: BibleYearReaderTranslation; label: string }> = [
   { value: "kjv", label: "KJV" },
   { value: "web", label: "WEB" },
   { value: "asv", label: "ASV" },
+  { value: "lut", label: "LUT" },
 ];
 
 function getBibleYearFollowAlongChapterKey(book: string, chapter: number, translation: BibleYearReaderTranslation = "kjv") {
@@ -6962,6 +6963,13 @@ export default function DashboardJourneyExperience({
   }
 
   async function fetchBibleYearReaderChapter(book: string, chapter: number, translation: BibleYearReaderTranslation) {
+    if (translation === "lut") {
+      // Luther 1912 is the app's own files (public/luther1912).
+      const file = await fetch(`${window.location.origin}/luther1912/${book.trim().toLowerCase().replace(/\s+/g, "-")}/${chapter}.json`);
+      if (!file.ok) throw new Error(`Could not load Luther 1912 ${book} ${chapter}`);
+      const rows = (await file.json()) as Array<{ number: number; text: string }>;
+      return rows.map((row) => ({ verse: row.number, text: row.text }));
+    }
     const apiBook = book.trim().replace(/\s+/g, "+");
     const response = await fetch(`https://bible-api.com/${apiBook}+${chapter}?translation=${translation}`);
     if (!response.ok) throw new Error(`Could not load ${translation.toUpperCase()} ${book} ${chapter}`);

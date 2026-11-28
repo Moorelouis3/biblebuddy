@@ -20,27 +20,38 @@
  * another device. No database column: a preference this small does not need
  * a migration. The account's value wins when a page loads.
  *
- * Only versions the app may publish freely belong in the list. All three are
+ * Only versions the app may publish freely belong in the list. All four are
  * public domain. A licensed version (ESV, NIV) is added only once its licence
  * is signed.
  */
 
 import { supabase } from "./supabaseClient";
 
-export type BibleVersion = "kjv" | "web" | "asv";
+export type BibleVersion = "kjv" | "web" | "asv" | "lut";
 
 export const BIBLE_VERSIONS: Array<{ value: BibleVersion; label: string; name: string }> = [
   { value: "kjv", label: "KJV", name: "King James Version" },
   { value: "web", label: "WEB", name: "World English Bible" },
   { value: "asv", label: "ASV", name: "American Standard Version" },
+  // The first Bible in another language (2026-11-28). Luther 1912 is public
+  // domain; the text is public/luther1912, laid out on the King James verse
+  // numbers so notes, bookmarks and progress line up. See
+  // scripts/import-luther-1912.mjs.
+  { value: "lut", label: "LUT", name: "Luther 1912 (Deutsch)" },
 ];
+
+/**
+ * Versions the app holds as its own files (public/<folder>/<book>/<n>.json).
+ * The others are asked for from the verse service.
+ */
+export const STATIC_BIBLE_FOLDER: Partial<Record<BibleVersion, string>> = { kjv: "kjv", lut: "luther1912" };
 
 const KEY = "bb:bible-version:v1";
 const CHANGE_EVENT = "bb:bible-version-changed";
 const ACCOUNT_FIELD = "bible_version";
 
 function isBibleVersion(value: unknown): value is BibleVersion {
-  return value === "kjv" || value === "web" || value === "asv";
+  return value === "kjv" || value === "web" || value === "asv" || value === "lut";
 }
 
 /** The reader's saved version, or null when they have never picked one. */

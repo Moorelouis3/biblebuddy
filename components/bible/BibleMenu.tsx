@@ -32,6 +32,8 @@ import { getBookTotalChapters } from "@/lib/bibleBookChapters";
 import { BIBLE_MENU_THUMBS } from "@/lib/bibleMenuThumbs.generated";
 import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 import { supabase } from "@/lib/supabaseClient";
+import { bookMatches, bookName } from "@/lib/i18n/bookNames";
+import { useT } from "@/lib/i18n/useT";
 
 const OLD_TESTAMENT = [
   "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy", "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel",
@@ -116,6 +118,8 @@ function BookRow({
   onFavorite: () => void;
   onOpen: () => void;
 }) {
+  const t = useT();
+  const shown = bookName(book, t.language);
   const total = getBookTotalChapters(book);
   const complete = done !== null && total > 0 && done >= total;
   const started = done !== null && done > 0 && !complete;
@@ -153,7 +157,7 @@ function BookRow({
         </span>
         <span className="min-w-0 flex-1">
           <span className="block truncate text-[17px] font-black leading-tight sm:text-[20px]" style={{ color: TEXT }}>
-            {book}
+            {shown}
           </span>
           <span className="mt-1 flex items-center gap-1.5 text-[13px] font-semibold sm:text-[14px]" style={{ color: SOFT }}>
             {complete ? (
@@ -161,20 +165,20 @@ function BookRow({
                 <span className="grid h-[18px] w-[18px] shrink-0 place-items-center rounded-full" style={{ background: "#2fa860", color: "#fff" }}>
                   <Icon name="check" size={11} />
                 </span>
-                Completed
+                {t("common.completed")}
               </>
             ) : started ? (
               <>
                 <span className="h-[14px] w-[14px] shrink-0 rounded-full" style={{ background: `conic-gradient(${GOLD} ${Math.round(((done || 0) / total) * 360)}deg, ${mix(SOFT, 30)} 0deg)` }} />
-                {done} of {total} chapters
+                {t("bible.row.progress", { done: done || 0, total })}
               </>
             ) : known ? (
               <>
                 <span className="h-[14px] w-[14px] shrink-0 rounded-full" style={{ boxShadow: `inset 0 0 0 1.500px ${mix(SOFT, 70)}` }} />
-                Not started
+                {t("bible.row.notStarted")}
               </>
             ) : (
-              <>{total} chapters</>
+              <>{t.plural(total, "bible.row.chapters.one", "bible.row.chapters.other")}</>
             )}
           </span>
         </span>
@@ -183,7 +187,7 @@ function BookRow({
         type="button"
         onClick={onFavorite}
         aria-pressed={favorite}
-        aria-label={favorite ? `Remove ${book} from favorites` : `Add ${book} to favorites`}
+        aria-label={t(favorite ? "bible.favorite.remove" : "bible.favorite.add", { book: shown })}
         className="grid h-11 w-9 shrink-0 place-items-center"
         style={{ color: favorite ? GOLD : mix(SOFT, 55) }}
       >
@@ -212,6 +216,7 @@ function Stat({ label, value }: { label: string; value: string }) {
 }
 
 export default function BibleMenu() {
+  const t = useT();
   const [userId, setUserId] = useState<string | null>(null);
   const [userName, setUserName] = useState("buddy");
   const [progress, setProgress] = useState<Progress>({ state: "loading" });
@@ -325,15 +330,15 @@ export default function BibleMenu() {
     : tab === "progress" ? BOOKS.filter((book) => (doneFor(book) || 0) > 0)
     : BOOKS;
   const needle = query.trim().toLowerCase();
-  const filtered = needle ? base.filter((book) => book.toLowerCase().includes(needle)) : base;
-  const shown = alphabetical ? [...filtered].sort((a, b) => a.localeCompare(b, undefined, { numeric: true })) : filtered;
+  const filtered = needle ? base.filter((book) => bookMatches(book, needle)) : base;
+  const shown = alphabetical ? [...filtered].sort((a, b) => bookName(a, t.language).localeCompare(bookName(b, t.language), t.locale, { numeric: true })) : filtered;
 
   const TABS: Array<{ key: Tab; label: string; icon: "book" | "scroll" | "cross" | "bars" | "star" }> = [
-    { key: "all", label: "All Books", icon: "book" },
-    { key: "old", label: "Old Testament", icon: "scroll" },
-    { key: "new", label: "New Testament", icon: "cross" },
-    { key: "progress", label: "My Progress", icon: "bars" },
-    { key: "favorites", label: "Favorites", icon: "star" },
+    { key: "all", label: t("bible.tab.all"), icon: "book" },
+    { key: "old", label: t("bible.tab.old"), icon: "scroll" },
+    { key: "new", label: t("bible.tab.new"), icon: "cross" },
+    { key: "progress", label: t("bible.tab.progress"), icon: "bars" },
+    { key: "favorites", label: t("bible.tab.favorites"), icon: "star" },
   ];
 
   return (
@@ -353,14 +358,14 @@ export default function BibleMenu() {
           <span className="h-px max-w-[220px] flex-1" style={{ background: `linear-gradient(90deg,${GOLD},transparent)` }} aria-hidden="true" />
         </span>
         <h1 className="mt-2 text-[40px] font-black leading-none sm:text-[52px]" style={{ color: TEXT, textShadow: `0 2px 18px ${mix(GOLD, 45)}, 0 2px 4px rgba(0,0,0,.5)` }}>
-          The Bible
+          {t("bible.title")}
         </h1>
         <p className="mt-2 text-[14px] font-semibold sm:text-[16px]" style={{ color: SOFT, textShadow: "0 1px 6px rgba(0,0,0,.6)" }}>
-          Explore every book of the Bible. Read, study, and grow in your faith.
+          {t("bible.subtitle")}
         </p>
       </header>
 
-      <div className="bbm-tabs -mx-3 mt-4 flex gap-2 overflow-x-auto px-3 pb-1 sm:mx-0 sm:flex-wrap sm:justify-center sm:px-0" role="tablist" aria-label="Bible sections">
+      <div className="bbm-tabs -mx-3 mt-4 flex gap-2 overflow-x-auto px-3 pb-1 sm:mx-0 sm:flex-wrap sm:justify-center sm:px-0" role="tablist" aria-label={t("bible.tabs.label")}>
         {TABS.map((item) => {
           const active = tab === item.key;
           return (
@@ -394,25 +399,25 @@ export default function BibleMenu() {
           <div className="mb-3">
             {totals ? (
               <div className="grid grid-cols-3 gap-2 sm:gap-3">
-                <Stat label="Books completed" value={`${totals.books} / 66`} />
-                <Stat label="Chapters read" value={`${totals.chapters.toLocaleString()} / 1,189`} />
-                <Stat label="Of the Bible" value={`${totals.percent.toFixed(1)}%`} />
+                <Stat label={t("bible.stat.books")} value={`${totals.books} / 66`} />
+                <Stat label={t("bible.stat.chapters")} value={`${totals.chapters.toLocaleString(t.locale)} / ${TOTAL_CHAPTERS.toLocaleString(t.locale)}`} />
+                <Stat label={t("bible.stat.percent")} value={`${totals.percent.toLocaleString(t.locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`} />
               </div>
             ) : progress.state === "failed" ? (
               <div className="rounded-2xl p-4 text-center" style={{ background: "var(--bb-card,rgba(28,20,16,.72))", color: TEXT }}>
-                <p className="text-[15px] font-bold">Your progress did not load. It is still saved.</p>
+                <p className="text-[15px] font-bold">{t("bible.progress.failed")}</p>
                 <button
                   type="button"
                   onClick={() => setReload((n) => n + 1)}
                   className="mt-3 rounded-xl px-5 py-2 text-[14px] font-black"
                   style={{ background: "var(--bb-button,#d99a3e)", color: "var(--bb-button-text,#2a1d05)" }}
                 >
-                  Try again
+                  {t("common.tryAgain")}
                 </button>
               </div>
             ) : (
               <p className="py-4 text-center text-[14px] font-bold" style={{ color: SOFT }}>
-                Loading your progress...
+                {t("bible.progress.loading")}
               </p>
             )}
           </div>
@@ -428,14 +433,14 @@ export default function BibleMenu() {
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search for a book..."
-              aria-label="Search for a book"
+              placeholder={t("bible.search.placeholder")}
+              aria-label={t("bible.search.label")}
               className="bbm-search ml-2 w-full min-w-0 bg-transparent text-[15px] font-semibold outline-none"
               style={{ color: TEXT }}
             />
           </label>
           <label className="ml-auto flex cursor-pointer items-center gap-2.5 text-[14px] font-bold" style={{ color: TEXT }}>
-            <span className="mr-2">Alphabetical Order</span>
+            <span className="mr-2">{t("bible.alphabetical")}</span>
             <input type="checkbox" checked={alphabetical} onChange={(event) => setAlphabetical(event.target.checked)} className="sr-only" />
             <span
               className="relative block h-[26px] w-[48px] rounded-full transition-colors"
@@ -467,12 +472,12 @@ export default function BibleMenu() {
         ) : (
           <p className="px-3 py-10 text-center text-[15px] font-bold" style={{ color: SOFT }}>
             {needle
-              ? `No book matches "${query.trim()}".`
+              ? t("bible.empty.search", { query: query.trim() })
               : tab === "favorites"
-                ? "Tap the star on any book and it will be kept here."
+                ? t("bible.empty.favorites")
                 : tab === "progress"
                   ? progress.state === "ready"
-                    ? "Finish a chapter and its book will show up here."
+                    ? t("bible.empty.progress")
                     : ""
                   : ""}
           </p>

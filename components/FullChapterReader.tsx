@@ -1039,7 +1039,11 @@ RULES:
 
         // Step C: If NOT found in Supabase (or non-WEB translation), fetch from bible-api.com
         const normalizedBook = normalizeBookName(book);
-        const apiUrl = `https://bible-api.com/${normalizedBook}+${chapter}?translation=${translation}`;
+        // Luther 1912 is the app's own files (public/luther1912), not the verse service.
+        const apiUrl =
+          translation === "lut"
+            ? `${window.location.origin}/luther1912/${String(book).trim().toLowerCase().replace(/\s+/g, "-")}/${Number(chapter)}.json`
+            : `https://bible-api.com/${normalizedBook}+${chapter}?translation=${translation}`;
 
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 12000);
@@ -1050,7 +1054,10 @@ RULES:
           throw new Error(`Failed to fetch: ${response.statusText}`);
         }
 
-        const apiData: BibleApiResponse = await response.json();
+        const rawData = await response.json();
+        const apiData: BibleApiResponse = Array.isArray(rawData)
+          ? ({ verses: rawData.map((row: { number: number; text: string }) => ({ verse: row.number, text: row.text })) } as BibleApiResponse)
+          : rawData;
 
         // Step D: Generate enriched_content from verses
         const enriched = await enrichBibleVerses(apiData.verses);
@@ -2685,6 +2692,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                         { value: "kjv", label: "KJV" },
                         { value: "web", label: "WEB" },
                         { value: "asv", label: "ASV" },
+                      { value: "lut", label: "LUT" },
                       ] as const).map((option) => (
                         <button
                           key={option.value}
@@ -2860,6 +2868,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                             { value: "kjv", label: "KJV" },
                             { value: "web", label: "WEB" },
                             { value: "asv", label: "ASV" },
+                          { value: "lut", label: "LUT" },
                           ] as const).map((option) => (
                             <button
                               key={option.value}
@@ -2996,6 +3005,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                           { value: "kjv", label: "KJV" },
                           { value: "web", label: "WEB" },
                           { value: "asv", label: "ASV" },
+                        { value: "lut", label: "LUT" },
                         ] as const).map((option) => (
                           <button
                             key={option.value}
@@ -3173,6 +3183,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                       { value: "kjv", label: "KJV" },
                       { value: "asv", label: "ASV" },
                       { value: "web", label: "WEB" },
+                    { value: "lut", label: "LUT" },
                     ] as const).map((option) => (
                       <button
                         key={option.value}

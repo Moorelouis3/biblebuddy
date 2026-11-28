@@ -25,6 +25,11 @@ export function kjvStaticUrl(book: string, chapter: number) {
   return `/kjv/${chapterSlug(book)}/${Number(chapter)}.json`;
 }
 
+/** A chapter of a Bible the app holds as files: the King James, or Luther 1912. */
+export function staticBibleUrl(version: "kjv" | "lut", book: string, chapter: number) {
+  return `/${version === "lut" ? "luther1912" : "kjv"}/${chapterSlug(book)}/${Number(chapter)}.json`;
+}
+
 export function studyNotesStaticUrl(book: string, chapter: number) {
   return `/study-notes/${chapterSlug(book)}/${Number(chapter)}.json`;
 }

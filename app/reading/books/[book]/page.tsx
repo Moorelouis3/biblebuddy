@@ -17,6 +17,8 @@
  * scripts/make-bible-menu-thumbs.mjs.
  */
 
+import { bookName } from "@/lib/i18n/bookNames";
+import { useT } from "@/lib/i18n/useT";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
@@ -286,6 +288,9 @@ function BookPageInner() {
     .join(" ");
 
   const totalChapters = getBookTotalChapters(bookDisplayName);
+  // The English name stays the key (address, progress rows); this is only what is shown.
+  const t = useT();
+  const shownName = bookName(bookDisplayName, t.language);
 
   const [completedChapters, setCompletedChapters] = useState<number[]>([]);
   // Could not read this person's progress. Without it, "0 / 50 chapters
@@ -382,16 +387,16 @@ function BookPageInner() {
 
   const mainChapter = nextChapter ?? 1;
   const mainLabel = bookDone
-    ? `Read again: ${bookDisplayName} 1`
+    ? t("book.button.again", { book: shownName })
     : finishedChapters > 0 && nextChapter
-      ? `Continue: ${bookDisplayName} ${nextChapter}`
-      : `Start ${bookDisplayName} 1`;
+      ? t("book.button.continue", { book: shownName, chapter: nextChapter })
+      : t("book.button.start", { book: shownName });
 
   return (
     <div className="mx-auto w-full max-w-5xl px-3 pb-28 pt-4 sm:px-4">
       <Link href="/reading" className="inline-flex items-center gap-1 text-[14px] font-black" style={{ color: TEXT, textShadow: "0 1px 6px rgba(0,0,0,.6)" }}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>
-        All books
+        {t("book.allBooks")}
       </Link>
 
       {/* BANNER: the book's own picture */}
@@ -405,7 +410,7 @@ function BookPageInner() {
         <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.55) 45%, rgba(0,0,0,.15) 100%), linear-gradient(0deg, rgba(0,0,0,.55), transparent 60%)" }} aria-hidden="true" />
         <div className="relative flex min-h-[190px] flex-col justify-end p-4 sm:min-h-[240px] sm:p-7">
           <h1 className="text-[38px] font-black leading-none sm:text-[54px]" style={{ color: "#fff6e3", textShadow: "0 2px 12px rgba(0,0,0,.7)" }}>
-            {bookDisplayName}
+            {shownName}
           </h1>
           <p className="mt-2 max-w-xl text-[14px] font-semibold leading-snug sm:text-[17px]" style={{ color: "#f1e6d2", textShadow: "0 1px 6px rgba(0,0,0,.8)" }}>
             {description}
@@ -414,12 +419,12 @@ function BookPageInner() {
             <div className="flex justify-between text-[12px] font-bold sm:text-[13px]" style={{ color: "#f1e6d2" }}>
               <span>
                 {progressFailed
-                  ? "Couldn't load your progress"
+                  ? t("book.progress.failed")
                   : progressLoaded
                     ? bookDone
-                      ? "Completed"
-                      : `${finishedChapters} of ${totalChapters} chapters`
-                    : `${totalChapters} chapters`}
+                      ? t("common.completed")
+                      : t("bible.row.progress", { done: finishedChapters, total: totalChapters })
+                    : t.plural(totalChapters, "bible.row.chapters.one", "bible.row.chapters.other")}
               </span>
               {progressLoaded && !progressFailed ? <span>{progressPercent.toFixed(0)}%</span> : null}
             </div>
@@ -442,10 +447,10 @@ function BookPageInner() {
         >
           <span className="min-w-0">
             <span className="block text-[11px] font-black uppercase tracking-[0.18em]" style={{ color: GOLD }}>
-              Book intro
+              {t("book.intro.label")}
             </span>
             <span className="mt-0.5 block text-[18px] font-black" style={{ color: TEXT }}>
-              Understanding {bookDisplayName}
+              {t("book.intro.title", { book: shownName })}
             </span>
           </span>
           <span
@@ -461,13 +466,13 @@ function BookPageInner() {
           <div className="overflow-hidden">
             <div className="px-4 pb-4 sm:px-5" style={{ borderTop: `1px solid ${mix(GOLD, 25)}` }}>
               <p className="pt-4 text-[15px] leading-7" style={{ color: SOFT }}>
-                {BOOK_INTROS[bookKey] || `Let's walk through ${bookDisplayName} together, one chapter at a time.`}
+                {BOOK_INTROS[bookKey] || t("book.intro.fallback", { book: shownName })}
               </p>
 
               {BOOK_CHAPTER_TOPICS[bookKey]?.length ? (
                 <div className="mt-4">
                   <p className="text-[11px] font-black uppercase tracking-[0.16em]" style={{ color: GOLD }}>
-                    Chapter roadmap
+                    {t("book.roadmap")}
                   </p>
                   <div className="mt-3 grid gap-2 sm:grid-cols-2">
                     {BOOK_CHAPTER_TOPICS[bookKey].map((topic, index) => {
@@ -506,7 +511,7 @@ function BookPageInner() {
           style={{ background: "var(--bb-button,#d99a3e)", color: "var(--bb-button-text,#2a1d05)", boxShadow: `0 0 18px ${mix(GOLD, 45)}, inset 0 1px 0 rgba(255,255,255,.45)` }}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
-          {progressFailed ? `Open ${bookDisplayName} 1` : mainLabel}
+          {progressFailed ? t("book.button.open", { book: shownName }) : mainLabel}
         </Link>
       ) : (
         <div className="mt-3 min-h-[56px] rounded-2xl" style={{ background: CARD, boxShadow: `inset 0 0 0 1px ${mix(GOLD, 30)}` }} aria-hidden="true" />
@@ -518,7 +523,7 @@ function BookPageInner() {
         style={{ background: "var(--bb-surface-soft,rgba(20,13,9,.55))", boxShadow: `inset 0 0 0 1px ${mix(GOLD, 35)}, 0 14px 34px rgba(0,0,0,.35)` }}
       >
         <h2 className="px-1 text-[16px] font-black sm:text-[18px]" style={{ color: TEXT }}>
-          Pick a chapter
+          {t("book.pickChapter")}
         </h2>
         <div className="mt-2 grid grid-cols-4 gap-2 sm:grid-cols-5 sm:gap-3 md:grid-cols-6">
           {allChapters.map((chapter) => {
@@ -529,7 +534,7 @@ function BookPageInner() {
                 key={chapter}
                 href={chapterHref(chapter)}
                 onClick={() => chapterOpened(chapter)}
-                aria-label={`${bookDisplayName} chapter ${chapter}${done ? ", finished" : isNext ? ", next" : ""}`}
+                aria-label={t(done ? "book.chapter.finished" : isNext ? "book.chapter.next" : "book.chapter.label", { book: shownName, chapter })}
                 className="relative flex h-14 items-center justify-center rounded-xl text-[18px] font-black transition hover:-translate-y-0.5 sm:h-16 sm:text-[20px]"
                 style={{
                   color: done ? "#ffffff" : TEXT,

@@ -25,6 +25,9 @@ export function getBibleChapterTtsSrc(
 ) {
   const normalizedBook = normalizeBookForRoute(book);
   const chapterNumber = Number(chapter);
+  // No narration exists for the German Bible. Without this the reader would
+  // be handed the King James recording to play over Luther's text.
+  if (String(translation || "").trim().toLowerCase() === "lut") return null;
   const normalizedTranslation = normalizeTranslation(translation);
 
   if (!normalizedBook || !Number.isFinite(chapterNumber) || chapterNumber <= 0) {

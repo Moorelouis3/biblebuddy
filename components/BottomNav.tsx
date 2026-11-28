@@ -21,6 +21,8 @@
  * jumping as it goes - are each handled below.
  */
 
+import { useT } from "../lib/i18n/useT";
+import type { MessageKey } from "../lib/i18n/messages/en";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -31,6 +33,17 @@ type Tab = {
   icon: string;
   /** A tab lights up for any page underneath it, not just its own href. */
   prefixes: string[];
+};
+
+/** The tab's name in the reader's language. The English label stays the tab's identity. */
+const NAV_KEY: Record<string, MessageKey> = {
+  Home: "nav.home",
+  Bible: "nav.bible",
+  Library: "nav.library",
+  Games: "nav.games",
+  Feed: "nav.feed",
+  "Lil Louis": "nav.lilLouis",
+  TV: "nav.tv",
 };
 
 const TABS: Tab[] = [
@@ -205,6 +218,7 @@ function useKeyboardOpen() {
 
 export default function BottomNav() {
   const pathname = usePathname();
+  const t = useT();
   const navRef = useRef<HTMLElement | null>(null);
 
   const tabs = TABS;
@@ -276,7 +290,7 @@ export default function BottomNav() {
                 <span className="text-[17px] leading-none" aria-hidden="true">
                   {tab.icon}
                 </span>
-                {tab.label}
+                {NAV_KEY[tab.label] ? t(NAV_KEY[tab.label]) : tab.label}
               </Link>
             );
           })}

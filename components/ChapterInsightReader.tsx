@@ -7,7 +7,7 @@ import { VerseHighlighter } from "./VerseHighlighter";
 import BrowserTtsButton from "./BrowserTtsButton";
 import { getBundledChapter } from "../lib/bundledChapterText";
 import { deriveInsightCards, hasInsightCards, loadInsightCards, type InsightCardPhrase } from "../lib/insightCards";
-import { fetchStaticJson, kjvStaticUrl, loadChapterStudySections, prefetchChapterData } from "../lib/chapterStaticData";
+import { fetchStaticJson, kjvStaticUrl, staticBibleUrl, loadChapterStudySections, prefetchChapterData } from "../lib/chapterStaticData";
 import type { BibleReaderStudySection } from "../lib/bibleReaderStudyNotes";
 import { getBibleChapterTtsSrc } from "../lib/bibleChapterTts";
 import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../lib/bibleReadingBackgroundMusic";
@@ -36,7 +36,7 @@ const CommentSection = dynamic(() => import("./comments/CommentSection"), { ssr:
 
 
 type Verse = { number: number; text: string };
-type Translation = "kjv" | "asv" | "web";
+type Translation = "kjv" | "asv" | "web" | "lut";
 type Tab = "scripture" | "trivia" | "scrambled";
 
 const ALL_BIBLE_BOOKS = [
@@ -106,13 +106,15 @@ export default function ChapterInsightReader({
 
     let cancelled = false;
     void (async () => {
-      if (translation === "kjv") {
-        const cached = await fetchStaticJson<Verse[]>(kjvStaticUrl(book, chapter));
+      if (translation === "kjv" || translation === "lut") {
+        const cached = await fetchStaticJson<Verse[]>(staticBibleUrl(translation, book, chapter));
         if (cancelled) return;
         if (cached?.length) {
           setVerses(cached);
           return;
         }
+        // Luther 1912 exists only as these files; there is nowhere else to ask.
+        if (translation === "lut") return;
       }
       try {
         const reference = `${book.toLowerCase().replace(/\s+/g, "+")}+${chapter}`;
@@ -403,7 +405,7 @@ export default function ChapterInsightReader({
 
               {translationMenuOpen ? (
                 <div className="absolute right-0 top-full z-50 mt-2 w-32 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.18)]">
-                  {(["kjv", "asv", "web"] as const).map((option) => (
+                  {(["kjv", "asv", "web", "lut"] as const).map((option) => (
                     <button
                       key={option}
                       type="button"
