@@ -276,6 +276,8 @@ const BOOK_CHAPTER_TOPICS: Record<string, string[]> = {
   ],
 };
 
+type GermanBookContent = typeof import("@/lib/i18n/content/bookIntros.de");
+
 function BookPageInner() {
   const params = useParams();
   const bookParam = decodeURIComponent(String(params.book));
@@ -291,6 +293,26 @@ function BookPageInner() {
   // The English name stays the key (address, progress rows); this is only what is shown.
   const t = useT();
   const shownName = bookName(bookDisplayName, t.language);
+
+  // The German taglines, intros and roadmaps (lib/i18n/content/bookIntros.de.ts)
+  // are fetched only for a German reader. Until they arrive, and for any
+  // entry that has no German yet, the English below is shown.
+  const [germanContent, setGermanContent] = useState<GermanBookContent | null>(null);
+  useEffect(() => {
+    if (t.language !== "de") return;
+    let cancelled = false;
+    import("@/lib/i18n/content/bookIntros.de")
+      .then((content) => {
+        if (!cancelled) setGermanContent(content);
+      })
+      .catch(() => {
+        // The chunk did not arrive. English shows; the next visit tries again.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [t.language]);
+  const german = t.language === "de" ? germanContent : null;
 
   const [completedChapters, setCompletedChapters] = useState<number[]>([]);
   // Could not read this person's progress. Without it, "0 / 50 chapters
@@ -369,7 +391,12 @@ function BookPageInner() {
   const nextChapter = progressLoaded && !bookDone ? allChapters.find((chapter) => !doneSet.has(chapter)) ?? null : null;
   const slug = bookKey.replace(/\s+/g, "-");
   const hasPicture = BIBLE_MENU_THUMBS.includes(slug);
-  const description = BOOK_DESCRIPTIONS[bookKey] || "Walk through this book chapter by chapter.";
+  const description =
+    german?.BOOK_TAGLINES_DE[bookKey] || BOOK_DESCRIPTIONS[bookKey] || t("reader.book.descriptionFallback");
+  const intro = german?.BOOK_INTROS_DE[bookKey] || BOOK_INTROS[bookKey];
+  const englishRoadmap = BOOK_CHAPTER_TOPICS[bookKey] || [];
+  const germanRoadmap = german?.BOOK_ROADMAPS_DE[bookKey];
+  const roadmap = englishRoadmap.map((topic, index) => germanRoadmap?.[index] || topic);
   const chapterHref = (chapter: number) => `/bible/${encodeURIComponent(bookKey)}/${chapter}`;
 
   function chapterOpened(chapter: number) {
@@ -466,16 +493,16 @@ function BookPageInner() {
           <div className="overflow-hidden">
             <div className="px-4 pb-4 sm:px-5" style={{ borderTop: `1px solid ${mix(GOLD, 25)}` }}>
               <p className="pt-4 text-[15px] leading-7" style={{ color: SOFT }}>
-                {BOOK_INTROS[bookKey] || t("book.intro.fallback", { book: shownName })}
+                {intro || t("book.intro.fallback", { book: shownName })}
               </p>
 
-              {BOOK_CHAPTER_TOPICS[bookKey]?.length ? (
+              {roadmap.length ? (
                 <div className="mt-4">
                   <p className="text-[11px] font-black uppercase tracking-[0.16em]" style={{ color: GOLD }}>
                     {t("book.roadmap")}
                   </p>
                   <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                    {BOOK_CHAPTER_TOPICS[bookKey].map((topic, index) => {
+                    {roadmap.map((topic, index) => {
                       const chapter = index + 1;
                       return (
                         <Link
@@ -486,7 +513,7 @@ function BookPageInner() {
                           style={{ background: "var(--bb-surface-soft,rgba(0,0,0,.3))", boxShadow: `inset 0 0 0 1px ${mix(GOLD, 22)}` }}
                         >
                           <span className="block text-[12px] font-black" style={{ color: GOLD }}>
-                            {bookDisplayName} {chapter}
+                            {shownName} {chapter}
                           </span>
                           <span className="mt-1 block text-[14px] leading-6" style={{ color: TEXT }}>
                             {topic}

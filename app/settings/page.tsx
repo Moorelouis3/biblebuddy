@@ -54,13 +54,22 @@ type SettingsProfileRow = {
   selected_buddy_avatar?: string | null;
 };
 
+// Keys, not words: the label is looked up in the reader's language when shown.
+const BUDDY_READY_BUTTON_LABEL_KEYS = [
+  "settings.buddyReady.letsGo",
+  "settings.buddyReady.ok",
+  "settings.buddyReady.awesome",
+] as const;
+
 type BuddyReadyModal = {
   buddyId: BuddyAvatarId;
   buddyName: string;
-  buttonLabel: string;
+  buttonLabelKey: (typeof BUDDY_READY_BUTTON_LABEL_KEYS)[number];
 };
 
-const BUDDY_READY_BUTTON_LABELS = ["Let's go", "OK", "That's awesome"];
+// Set from the load effect, which runs before the saved language is known, so
+// it is stored as a marker and put into words at render.
+const SETTINGS_LOAD_FAILED = "@settings.loadFailed";
 
 function getBuddyStoreItemId(buddyId: BuddyAvatarId) {
   return buddyId === "louis" ? "buddy-lil-louis" : `buddy-${buddyId}`;
@@ -201,7 +210,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         }
       } catch (error) {
         console.error("[SETTINGS] Could not load settings:", error);
-        setSettingsMessage("Settings had trouble loading. Please try again in a moment.");
+        setSettingsMessage(SETTINGS_LOAD_FAILED);
       } finally {
         setLoading(false);
       }
@@ -213,7 +222,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
     if (!user) return;
     const fullName = buildFullName(firstName, lastName);
     if (!hasRequiredFullName(fullName)) {
-      alert("Please enter your first and last name.");
+      alert(t("settings.profile.nameRequired"));
       return;
     }
     
@@ -252,10 +261,10 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         if (emailError) throw emailError;
       }
 
-      alert("Profile updated successfully!");
+      alert(t("settings.profile.updated"));
     } catch (error: any) {
       console.error("Error updating profile:", error);
-      alert(`Error: ${error.message}`);
+      alert(t("settings.errorWithMessage", { message: error.message }));
     } finally {
       setSaving(false);
     }
@@ -281,7 +290,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
       setResetPasswordSuccess(true);
     } catch (error: any) {
       console.error("Error resetting password:", error);
-      alert(`Error: ${error.message}`);
+      alert(t("settings.errorWithMessage", { message: error.message }));
     } finally {
       setResetPasswordLoading(false);
     }
@@ -308,12 +317,12 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         window.localStorage.removeItem(cacheTimestampKey);
       }
 
-      alert("Reading plan has been reset. Your progress is now at 0.");
+      alert(t("settings.readingPlan.done"));
       setShowResetConfirm(false);
       router.push("/dashboard");
     } catch (error: any) {
       console.error("Error resetting reading plan:", error);
-      alert(`Error: ${error.message}`);
+      alert(t("settings.errorWithMessage", { message: error.message }));
     } finally {
       setResettingPlan(false);
     }
@@ -329,7 +338,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
 
   async function handleDeleteAccount() {
     if (deleteConfirmText.trim().toUpperCase() !== "DELETE") {
-      setDeleteAccountError('Type DELETE to confirm.');
+      setDeleteAccountError(t("settings.delete.typeError"));
       return;
     }
 
@@ -339,7 +348,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
     try {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session?.access_token) {
-        throw new Error("Please sign in again, then try deleting your account.");
+        throw new Error(t("settings.delete.signInAgain"));
       }
 
       const response = await fetch("/api/account/delete", {
@@ -351,7 +360,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
       const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        throw new Error(data.error || "We couldn't delete your account. Please try again.");
+        throw new Error(data.error || t("settings.delete.failed"));
       }
 
       setAccountDeleted(true);
@@ -375,7 +384,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
     } catch (error) {
       console.error("Error deleting account:", error);
       setDeleteAccountError(
-        (error instanceof Error && error.message) || "We couldn't delete your account. Please try again."
+        (error instanceof Error && error.message) || t("settings.delete.failed")
       );
       setDeletingAccount(false);
     }
@@ -416,7 +425,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
       }
       if (error) throw error;
       clearPendingAppThemeSync(user.id, themeId);
-      setSettingsMessage("Display mode updated.");
+      setSettingsMessage(t("settings.display.updated"));
     } catch (error: any) {
       setSelectedTheme(previousTheme);
       if (typeof window !== "undefined") {
@@ -424,7 +433,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         applyAppThemeToDocument(previousTheme);
         window.dispatchEvent(new CustomEvent("bb:app-theme-purchased", { detail: { themeId: previousTheme } }));
       }
-      setSettingsMessage(error.message || "Could not update display mode.");
+      setSettingsMessage(error.message || t("settings.display.updateFailed"));
     } finally {
       setThemeSaving(null);
     }
@@ -449,7 +458,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         })
         .eq("user_id", user.id);
       if (error) throw error;
-      setSettingsMessage("Streak flame updated.");
+      setSettingsMessage(t("settings.flame.updated"));
     } catch (error: any) {
       setSelectedFlame(previousFlame);
       if (typeof window !== "undefined") {
@@ -459,7 +468,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
       setSettingsMessage(
         /selected_streak_flame/i.test(error.message || "")
           ? "Streak flames need one database update before they can save. Run ADD_SELECTED_STREAK_FLAME.sql in Supabase."
-          : error.message || "Could not update streak flame.",
+          : error.message || t("settings.flame.updateFailed"),
       );
     } finally {
       setFlameSaving(null);
@@ -489,14 +498,14 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
           { onConflict: "user_id" },
         );
       if (error) throw error;
-      setSettingsMessage("Bible Buddy updated.");
+      setSettingsMessage(t("settings.buddy.updated"));
       setActiveBuddyIndex(0);
       const buddy = getBuddyAvatar(buddyId);
-      const labelIndex = Math.abs(buddyId.charCodeAt(0) + buddyId.length) % BUDDY_READY_BUTTON_LABELS.length;
+      const labelIndex = Math.abs(buddyId.charCodeAt(0) + buddyId.length) % BUDDY_READY_BUTTON_LABEL_KEYS.length;
       setBuddyReadyModal({
         buddyId,
         buddyName: buddy.name,
-        buttonLabel: BUDDY_READY_BUTTON_LABELS[labelIndex],
+        buttonLabelKey: BUDDY_READY_BUTTON_LABEL_KEYS[labelIndex],
       });
     } catch (error: any) {
       setSelectedBuddy(previousBuddy);
@@ -507,7 +516,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
       setSettingsMessage(
         /selected_buddy_avatar/i.test(error.message || "")
           ? "Bible Buddy selection needs the selected_buddy_avatar column in profile_stats before it can save."
-          : error.message || "Could not update Bible Buddy.",
+          : error.message || t("settings.buddy.updateFailed"),
       );
     } finally {
       setBuddySaving(null);
@@ -520,7 +529,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
       BUDDY_STORE_ITEMS.find((storeItem) => storeItem.id === itemId);
     if (!item) return;
 
-    const confirmed = window.confirm(`Remove ${item.title} from your account?`);
+    const confirmed = window.confirm(t("settings.buddy.removeConfirm", { item: item.title }));
     if (!confirmed) return;
 
     setRemovingItemId(itemId);
@@ -540,12 +549,12 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         await handleBuddySelect(DEFAULT_BUDDY_AVATAR);
       }
 
-      setSettingsMessage(`${item.title} removed.`);
+      setSettingsMessage(t("settings.buddy.removed", { item: item.title }));
     } catch (error: any) {
       setSettingsMessage(
         /row-level security|policy|permission/i.test(error.message || "")
           ? "Deleting purchases needs the store delete policy SQL. Run ADD_USER_STORE_PURCHASES_DELETE_POLICY.sql in Supabase."
-          : error.message || "Could not remove that item.",
+          : error.message || t("settings.buddy.removeFailed"),
       );
     } finally {
       setRemovingItemId(null);
@@ -569,7 +578,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
   if (loading) {
     return (
       <div className={`${embedded ? "min-h-[420px]" : "min-h-screen"} bg-[var(--bb-background,#0e1218)] flex items-center justify-center`}>
-        <p className="text-[var(--bb-text-secondary,#d1d5db)]">Loading...</p>
+        <p className="text-[var(--bb-text-secondary,#d1d5db)]">{t("settings.loading")}</p>
       </div>
     );
   }
@@ -591,6 +600,8 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
     ? [currentBuddyForSlides, ...availableBuddies.filter((buddy) => buddy.id !== currentBuddyForSlides.id)]
     : [];
   const activeBuddy = buddySlides[activeBuddyIndex] ?? buddySlides[0];
+  // One sentence with the word to type in bold in the middle of it.
+  const [deleteTypeBefore, deleteTypeAfter = ""] = t("settings.delete.typeToConfirm").split("{word}");
 
   function moveBuddyCard(direction: -1 | 1) {
     if (!buddySlides.length) return;
@@ -635,16 +646,16 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
       {guestLogoutWarningOpen ? (
         <div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/55 px-4">
           <div className="w-full max-w-md rounded-3xl border border-[#d8e7f2] bg-white p-6 text-center shadow-2xl">
-            <button type="button" onClick={() => setGuestLogoutWarningOpen(false)} className="ml-auto grid h-9 w-9 place-items-center rounded-full bg-gray-100 text-lg font-black text-gray-500 transition hover:bg-gray-200" aria-label="Close logout warning">
+            <button type="button" onClick={() => setGuestLogoutWarningOpen(false)} className="ml-auto grid h-9 w-9 place-items-center rounded-full bg-gray-100 text-lg font-black text-gray-500 transition hover:bg-gray-200" aria-label={t("settings.guest.closeAria")}>
               x
             </button>
             <div className="mx-auto mt-1 flex h-24 w-24 items-center justify-center rounded-full bg-[#edf7ff]">
               <LouisAvatar mood="think" size={82} />
             </div>
-            <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[#5f93b8]">Guest account</p>
-            <h2 className="mt-2 text-2xl font-black text-gray-950">Create an account before logging out?</h2>
+            <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[#5f93b8]">{t("settings.guest.eyebrow")}</p>
+            <h2 className="mt-2 text-2xl font-black text-gray-950">{t("settings.guest.title")}</h2>
             <p className="mt-3 text-sm leading-6 text-gray-600">
-              You are a guest right now. If you log out, you will not be able to log back into this guest journey unless you create an account first.
+              {t("settings.guest.body")}
             </p>
             <div className="mt-5 grid gap-3">
               <button
@@ -657,10 +668,10 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                 }}
                 className="w-full rounded-2xl bg-[#7BAFD4] px-5 py-3 text-sm font-black text-[#05111f] shadow-lg transition hover:bg-[#91c2df]"
               >
-                Create Account
+                {t("settings.guest.create")}
               </button>
               <button type="button" onClick={() => void performLogout()} className="w-full rounded-2xl border border-red-200 bg-red-50 px-5 py-3 text-sm font-bold text-red-700 transition hover:bg-red-100">
-                Log Out Anyway
+                {t("settings.guest.logoutAnyway")}
               </button>
             </div>
           </div>
@@ -675,7 +686,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                 type="button"
                 onClick={() => setBuddyReadyModal(null)}
                 className="relative ml-auto grid h-9 w-9 place-items-center rounded-full bg-white/85 text-xl font-black text-gray-500 shadow-sm transition hover:brightness-95"
-                aria-label="Close Buddy ready message"
+                aria-label={t("settings.buddyReady.closeAria")}
               >
                 x
               </button>
@@ -683,20 +694,20 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                 <LouisAvatar buddyId={buddyReadyModal.buddyId} mood="reading" size={136} />
               </div>
               <p className="mt-5 text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2563eb)]">
-                Bible Buddy ready
+                {t("settings.buddyReady.eyebrow")}
               </p>
               <h2 className="mt-2 text-3xl font-black leading-tight text-gray-950">
-                {buddyReadyModal.buddyName} is ready
+                {t("settings.buddyReady.title", { name: buddyReadyModal.buddyName })}
               </h2>
               <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-gray-600">
-                Your new Bible Buddy is ready to guide you through the Bible.
+                {t("settings.buddyReady.body")}
               </p>
               <button
                 type="button"
                 onClick={() => setBuddyReadyModal(null)}
                 className="mt-6 w-full rounded-full bg-[var(--bb-button,#2563eb)] px-6 py-3.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 active:scale-[0.98]"
               >
-                {buddyReadyModal.buttonLabel}
+                {t(buddyReadyModal.buttonLabelKey)}
               </button>
             </div>
           </div>
@@ -707,7 +718,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
 
         {settingsMessage ? (
           <div className="mb-6 rounded-xl border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-accent-soft,#eaf5ff)] p-4 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
-            {settingsMessage}
+            {settingsMessage === SETTINGS_LOAD_FAILED ? t("settings.loadFailed") : settingsMessage}
           </div>
         ) : null}
 
@@ -720,9 +731,9 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         <SettingsSection
           key={openCoverShelf ? "cover-open" : "cover"}
           defaultOpen={openCoverShelf}
-          title="Bible cover"
+          title={t("settings.cover.title")}
           icon="📖"
-          description="Pick the Bible you want to carry. It dresses every page of Bible Buddy."
+          description={t("settings.cover.description")}
         >
           <BibleCoverPicker />
         </SettingsSection>
@@ -805,7 +816,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         </SettingsSection>
 
         {/* Bible Buddy Section */}
-        <SettingsSection title="Bible Buddy" icon="🧑" description="Pick the Buddy that shows across your dashboard, menu, popups, games and study areas.">
+        <SettingsSection title={t("settings.buddy.title")} icon="🧑" description={t("settings.buddy.description")}>
 
           {activeBuddy ? (
             <div className="relative mx-auto max-w-[620px] px-0 sm:px-14">
@@ -813,7 +824,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                 type="button"
                 onClick={() => moveBuddyCard(-1)}
                 className="absolute left-1 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-2xl font-black text-[var(--bb-accent,#2563eb)] shadow-sm transition hover:brightness-95 active:scale-95 sm:left-0"
-                aria-label="Previous Bible Buddy"
+                aria-label={t("settings.buddy.previousAria")}
               >
                 ‹
               </button>
@@ -865,7 +876,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                               : "bg-[var(--bb-button,#2563eb)] text-[var(--bb-button-text,#ffffff)] hover:brightness-95"
                           } disabled:cursor-default disabled:opacity-95`}
                         >
-                          {buddySaving === buddy.id ? "Saving..." : isCurrent ? "Current Buddy" : "Select Buddy"}
+                          {buddySaving === buddy.id ? t("settings.saving") : isCurrent ? t("settings.buddy.current") : t("settings.buddy.select")}
                         </button>
 
                         {canDelete && storeItem ? (
@@ -875,7 +886,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                             disabled={removingItemId === storeItem.id}
                             className="relative mt-3 w-full rounded-full border border-red-200 px-3 py-2 text-xs font-black text-red-600 transition hover:bg-red-50 disabled:opacity-60"
                           >
-                            {removingItemId === storeItem.id ? "Removing..." : "Delete"}
+                            {removingItemId === storeItem.id ? t("settings.buddy.removing") : t("settings.buddy.delete")}
                           </button>
                         ) : null}
                       </article>
@@ -888,7 +899,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                 type="button"
                 onClick={() => moveBuddyCard(1)}
                 className="absolute right-1 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-2xl font-black text-[var(--bb-accent,#2563eb)] shadow-sm transition hover:brightness-95 active:scale-95 sm:right-0"
-                aria-label="Next Bible Buddy"
+                aria-label={t("settings.buddy.nextAria")}
               >
                 ›
               </button>
@@ -900,57 +911,57 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                     type="button"
                     onClick={() => setActiveBuddyIndex(index)}
                     className={`h-2.5 rounded-full transition ${index === activeBuddyIndex ? "w-7 bg-[var(--bb-accent,#2563eb)]" : "w-2.5 bg-[var(--bb-card-border,#dbe7f4)]"}`}
-                    aria-label={`Show ${buddy.name}`}
+                    aria-label={t("settings.buddy.showAria", { name: buddy.name })}
                   />
                 ))}
               </div>
             </div>
           ) : (
             <p className="rounded-2xl bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-500">
-              No Bible Buddies are available yet.
+              {t("settings.buddy.none")}
             </p>
           )}
         </SettingsSection>
 
         {/* Profile Section */}
-        <SettingsSection title="Profile" icon="👤" description="Your name and email address.">
+        <SettingsSection title={t("settings.profile.title")} icon="👤" description={t("settings.profile.description")}>
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                First Name
+                {t("settings.profile.firstName")}
               </label>
               <input
                 type="text"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Your first name"
+                placeholder={t("settings.profile.firstNamePlaceholder")}
               />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Last Name
+                {t("settings.profile.lastName")}
               </label>
               <input
                 type="text"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Your last name"
+                placeholder={t("settings.profile.lastNamePlaceholder")}
               />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Email Address
+                {t("settings.profile.email")}
               </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="your@email.com"
+                placeholder={t("settings.profile.emailPlaceholder")}
               />
             </div>
 
@@ -959,21 +970,21 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
               disabled={saving}
               className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {saving ? "Saving..." : "Save Changes"}
+              {saving ? t("settings.saving") : t("settings.profile.save")}
             </button>
           </div>
         </SettingsSection>
 
         {/* Password Section */}
-        <SettingsSection title="Password" icon="🔒" description="Send yourself a link to set a new one.">
+        <SettingsSection title={t("settings.password.title")} icon="🔒" description={t("settings.password.description")}>
           <div className="space-y-4">
             <p className="text-sm text-gray-600">
-              Reset your password by email. We'll send you a link to create a new password.
+              {t("settings.password.body")}
             </p>
             
             {resetPasswordSuccess && (
               <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
-                Password reset email sent! Please check your inbox.
+                {t("settings.password.sent")}
               </div>
             )}
             
@@ -982,7 +993,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
               disabled={resetPasswordLoading}
               className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {resetPasswordLoading ? "Sending..." : "Reset Password"}
+              {resetPasswordLoading ? t("settings.password.sending") : t("settings.password.reset")}
             </button>
           </div>
         </SettingsSection>
@@ -996,28 +1007,28 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         <BibleLockSettings />
 
         {/* Reading Plan Section */}
-        <SettingsSection title="Reading Plan" icon="📖" description="Reset your Bible reading progress back to the beginning.">
+        <SettingsSection title={t("settings.readingPlan.title")} icon="📖" description={t("settings.readingPlan.description")}>
           <div className="space-y-4">
             {!showResetConfirm ? (
               <>
                 <p className="text-sm text-gray-600">
-                  Reset your Bible reading progress back to the beginning.
+                  {t("settings.readingPlan.description")}
                 </p>
                 <button
                   onClick={() => setShowResetConfirm(true)}
                   className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
                 >
-                  Reset Bible Reading Plan
+                  {t("settings.readingPlan.resetButton")}
                 </button>
               </>
             ) : (
               <>
                 <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
                   <p className="text-sm font-semibold text-red-800 mb-2">
-                    ⚠️ Warning
+                    {t("settings.readingPlan.warningTitle")}
                   </p>
                   <p className="text-sm text-red-700">
-                    This will reset your reading progress, levels, and stats back to 0. This cannot be undone.
+                    {t("settings.readingPlan.warningBody")}
                   </p>
                 </div>
                 <div className="flex gap-3">
@@ -1026,14 +1037,14 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                     disabled={resettingPlan}
                     className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {resettingPlan ? "Resetting..." : "Yes, Reset"}
+                    {resettingPlan ? t("settings.readingPlan.resetting") : t("settings.readingPlan.confirm")}
                   </button>
                   <button
                     onClick={() => setShowResetConfirm(false)}
                     disabled={resettingPlan}
                     className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Cancel
+                    {t("settings.cancel")}
                   </button>
                 </div>
               </>
@@ -1042,24 +1053,24 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         </SettingsSection>
 
         {/* Account Section */}
-        <SettingsSection title="Account" icon="🪪" description="Your user ID and when you joined.">
+        <SettingsSection title={t("settings.account.title")} icon="🪪" description={t("settings.account.description")}>
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                User ID
+                {t("settings.account.userId")}
               </label>
               <p className="text-sm text-gray-600 font-mono bg-gray-50 px-3 py-2 rounded border">
-                {user?.id || "N/A"}
+                {user?.id || t("settings.account.notAvailable")}
               </p>
             </div>
 
             {user?.created_at && (
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Joined
+                  {t("settings.account.joined")}
                 </label>
                 <p className="text-sm text-gray-600">
-                  {new Date(user.created_at).toLocaleDateString()}
+                  {new Date(user.created_at).toLocaleDateString(t.locale)}
                 </p>
               </div>
             )}
@@ -1068,37 +1079,33 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
               onClick={handleLogout}
               className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300"
             >
-              Logout
+              {t("settings.account.logout")}
             </button>
           </div>
         </SettingsSection>
 
         {/* Help Section */}
-        <SettingsSection title="Help" icon="❓" description="Replay the dashboard walkthrough whenever you want a refresher.">
+        <SettingsSection title={t("settings.help.title")} icon="❓" description={t("settings.help.description")}>
           <button
             type="button"
             onClick={handleReplayDashboardIntro}
             className="rounded-full bg-[var(--bb-button,#2563eb)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
           >
-            Replay Dashboard Walkthrough
+            {t("settings.help.replay")}
           </button>
         </SettingsSection>
 
         {/* Delete Account Section */}
-        <SettingsSection title="Delete my account" icon="⚠️" tone="danger" description="Permanently remove your account and all of your data.">
+        <SettingsSection title={t("settings.delete.title")} icon="⚠️" tone="danger" description={t("settings.delete.description")}>
           <div className="space-y-4">
             {accountDeleted ? (
               <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
-                You are signed out and your account can no longer be used. Everything in it will be
-                permanently deleted in 30 days, and we have emailed you the date. If you change your
-                mind before then, just sign in again and it all carries on as it was.
+                {t("settings.delete.done")}
               </div>
             ) : !showDeleteAccount ? (
               <>
                 <p className="text-sm text-gray-600">
-                  Delete your Bible Buddy account and everything tied to it: your profile, progress,
-                  notes, highlights, bookmarks, posts, comments, messages, and chats with Little Louis.
-                  You are signed out straight away and it is all permanently deleted 30 days later.
+                  {t("settings.delete.intro")}
                 </p>
                 <button
                   onClick={() => {
@@ -1108,20 +1115,18 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                   }}
                   className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
                 >
-                  Delete my account
+                  {t("settings.delete.title")}
                 </button>
               </>
             ) : (
               <>
                 <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
                   <p className="text-sm font-semibold text-red-800 mb-2">
-                    You have 30 days to change your mind
+                    {t("settings.delete.warningTitle")}
                   </p>
                   <p className="text-sm text-red-700">
-                    You will be signed out everywhere immediately and your account stops working. Your
-                    progress and everything you have posted is then permanently deleted 30 days from
-                    now, and after that it cannot be recovered. Sign in again before then to cancel.
-                    Type <span className="font-bold">DELETE</span> below to confirm.
+                    {t("settings.delete.warningBody")}{" "}
+                    {deleteTypeBefore}<span className="font-bold">DELETE</span>{deleteTypeAfter}
                   </p>
                 </div>
 
@@ -1138,7 +1143,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                     setDeleteConfirmText(e.target.value);
                     setDeleteAccountError(null);
                   }}
-                  placeholder="Type DELETE"
+                  placeholder={t("settings.delete.placeholder")}
                   autoCapitalize="characters"
                   autoComplete="off"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-500 focus:border-red-500"
@@ -1151,14 +1156,14 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                     disabled={deletingAccount || deleteConfirmText.trim().toUpperCase() !== "DELETE"}
                     className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {deletingAccount ? "Deleting..." : "Permanently delete"}
+                    {deletingAccount ? t("settings.delete.deleting") : t("settings.delete.confirm")}
                   </button>
                   <button
                     onClick={() => setShowDeleteAccount(false)}
                     disabled={deletingAccount}
                     className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Cancel
+                    {t("settings.cancel")}
                   </button>
                 </div>
               </>
@@ -1167,11 +1172,11 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         </SettingsSection>
 
         <p className="text-center text-xs text-[var(--bb-text-secondary,#9ca3af)]">
-          <Link href="/privacy" className="underline hover:opacity-80">Privacy Policy</Link>
+          <Link href="/privacy" className="underline hover:opacity-80">{t("settings.legal.privacy")}</Link>
           {" · "}
-          <Link href="/terms" className="underline hover:opacity-80">Terms of Service</Link>
+          <Link href="/terms" className="underline hover:opacity-80">{t("settings.legal.terms")}</Link>
           {" · "}
-          <Link href="/community-guidelines" className="underline hover:opacity-80">Community Guidelines</Link>
+          <Link href="/community-guidelines" className="underline hover:opacity-80">{t("settings.legal.guidelines")}</Link>
         </p>
       </div>
     </div>

@@ -22,7 +22,7 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import {
   DEFAULT_LAYOUT,
-  SIZE_LABEL,
+  SIZE_LABEL_KEY,
   SIZE_SPAN,
   WIDGETS,
   WIDGET_CATEGORIES,
@@ -37,6 +37,7 @@ import {
 import { availability, withTotals, type LibraryStudy, type StudyProgress } from "../../lib/libraryCatalog";
 import { loadStudyShelf } from "./HomeExtraWidgets";
 import { imageThumb } from "../../lib/imageThumb";
+import { useT } from "../../lib/i18n/useT";
 
 const LONG_PRESS_MS = 550;
 /** In edit mode, how long a finger holds still on a widget to pick it up. */
@@ -53,6 +54,7 @@ type Props = {
 };
 
 export default function HomeWidgetBoard({ userId, layout, editing, setEditing, onSave, onReset, renderWidget }: Props) {
+  const t = useT();
   const [draft, setDraft] = useState<HomeWidget[]>(layout.items);
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [draggingId, setDraggingId] = useState<string | null>(null);
@@ -112,7 +114,11 @@ export default function HomeWidgetBoard({ userId, layout, editing, setEditing, o
   const resize = (id: string) => setDraft((current) => current.map((w) => (w.id === id ? { ...w, size: nextSize(w) } : w)));
   const add = (widget: HomeWidget) => {
     setDraft((current) => (current.some((w) => w.id === widget.id) ? current : [...current, widget]));
-    setNotice(`${widget.kind === "study_guide" ? "Study guide" : WIDGETS[widget.kind].name} added at the bottom`);
+    setNotice(
+      t("home.board.added", {
+        name: widget.kind === "study_guide" ? t("home.board.studyGuide") : t(WIDGETS[widget.kind].nameKey),
+      }),
+    );
   };
 
   const done = async () => {
@@ -120,7 +126,7 @@ export default function HomeWidgetBoard({ userId, layout, editing, setEditing, o
     setConfirmReset(false);
     const result = await onSave({ v: 1, items: draft });
     setEditing(false);
-    setNotice(result.ok ? "Home saved" : "Saved on this device. It will reach your account next time.");
+    setNotice(result.ok ? t("home.board.saved") : t("home.board.savedLocally"));
   };
   const reset = async () => {
     if (!confirmReset) {
@@ -132,7 +138,7 @@ export default function HomeWidgetBoard({ userId, layout, editing, setEditing, o
     await onReset();
     setDraft(DEFAULT_LAYOUT.items);
     setEditing(false);
-    setNotice("Home is back to the default");
+    setNotice(t("home.board.resetDone"));
   };
 
   useEffect(() => {
@@ -258,28 +264,28 @@ export default function HomeWidgetBoard({ userId, layout, editing, setEditing, o
 
       {editing ? (
         <div className="sticky top-2 z-40 mb-4 flex flex-wrap items-center gap-2 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-2 shadow-lg">
-          <p className="pl-2 text-sm font-black text-[var(--bb-text-primary,#111827)]">Editing Home</p>
+          <p className="pl-2 text-sm font-black text-[var(--bb-text-primary,#111827)]">{t("home.board.editing")}</p>
           <div className="ml-auto flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={() => setGalleryOpen(true)}
               className="min-h-[40px] rounded-xl border border-[var(--bb-card-border,#dbe7f4)] px-3 text-sm font-black text-[var(--bb-text-primary,#111827)]"
             >
-              ＋ Add Widget
+              {t("home.board.addWidget")}
             </button>
             <button
               type="button"
               onClick={reset}
               className="min-h-[40px] rounded-xl px-3 text-sm font-bold text-[var(--bb-text-muted,#6b7280)]"
             >
-              {confirmReset ? "Tap again to reset" : "Reset to Default"}
+              {confirmReset ? t("home.board.resetConfirm") : t("home.board.reset")}
             </button>
             <button
               type="button"
               onClick={done}
               className="min-h-[40px] rounded-xl bg-[var(--bb-button,#111827)] px-4 text-sm font-black text-[var(--bb-button-text,#ffffff)]"
             >
-              Done
+              {t("home.board.done")}
             </button>
           </div>
         </div>
@@ -319,13 +325,13 @@ export default function HomeWidgetBoard({ userId, layout, editing, setEditing, o
                     aria-hidden="true"
                   />
                   <span className="pointer-events-none absolute bottom-1.5 left-1.5 z-30 max-w-[90%] truncate rounded-full bg-black/60 px-2 py-0.5 text-[10px] font-bold text-white">
-                    {def.icon} {def.name}
+                    {def.icon} {t(def.nameKey)}
                   </span>
                   <button
                     type="button"
                     onClick={() => remove(widget.id)}
                     onPointerDown={(event) => event.stopPropagation()}
-                    aria-label={`Remove ${def.name} from Home`}
+                    aria-label={t("home.board.remove", { name: t(def.nameKey) })}
                     className="absolute -left-2 -top-2 z-30 grid h-7 w-7 place-items-center rounded-full bg-[#111827] text-sm font-black text-white shadow-md ring-2 ring-white"
                   >
                     −
@@ -333,7 +339,7 @@ export default function HomeWidgetBoard({ userId, layout, editing, setEditing, o
                   <div className="absolute right-1 top-1 z-30 flex gap-1" onPointerDown={(event) => event.stopPropagation()}>
                     <span
                       role="img"
-                      aria-label={`Drag to move ${def.name}`}
+                      aria-label={t("home.board.drag", { name: t(def.nameKey) })}
                       onPointerDown={(event) => pressGrip(event, widget.id)}
                       className="grid h-7 w-7 cursor-grab touch-none select-none place-items-center rounded-full bg-white/90 text-sm font-black leading-none text-[#111827] shadow active:cursor-grabbing"
                     >
@@ -343,10 +349,10 @@ export default function HomeWidgetBoard({ userId, layout, editing, setEditing, o
                       <button
                         type="button"
                         onClick={() => resize(widget.id)}
-                        aria-label={`Size: ${SIZE_LABEL[widget.size]}. Change size`}
+                        aria-label={t("home.board.size", { size: t(SIZE_LABEL_KEY[widget.size]) })}
                         className="h-7 rounded-full bg-white/90 px-2 text-[10px] font-black text-[#111827] shadow"
                       >
-                        {SIZE_LABEL[widget.size]}
+                        {t(SIZE_LABEL_KEY[widget.size])}
                       </button>
                     ) : null}
                   </div>
@@ -357,7 +363,7 @@ export default function HomeWidgetBoard({ userId, layout, editing, setEditing, o
         })}
         {editing && items.length === 0 ? (
           <p className="col-span-6 rounded-2xl border border-dashed border-[var(--bb-card-border,#dbe7f4)] p-6 text-center text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">
-            Home is empty. Tap Add Widget, or Reset to Default.
+            {t("home.board.empty")}
           </p>
         ) : null}
       </div>
@@ -389,6 +395,7 @@ function WidgetGallery({
   onAdd: (widget: HomeWidget) => void;
   onHome: HomeWidget[];
 }) {
+  const t = useT();
   const [view, setView] = useState<"all" | "studies">("all");
   const [mounted, setMounted] = useState(false);
   // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -409,7 +416,7 @@ function WidgetGallery({
       <div
         role="dialog"
         aria-modal="true"
-        aria-label="Add a widget"
+        aria-label={t("home.gallery.label")}
         onClick={(event) => event.stopPropagation()}
         className="flex max-h-[85vh] w-full max-w-lg flex-col overflow-hidden rounded-t-3xl bg-[var(--bb-surface,#ffffff)] shadow-2xl sm:rounded-3xl"
         style={{ backgroundColor: "var(--bb-cover-panel-strong, var(--bb-surface, #ffffff))" }}
@@ -417,14 +424,14 @@ function WidgetGallery({
         <div className="flex items-center gap-2 border-b border-[var(--bb-card-border,#dbe7f4)] px-4 py-3">
           {view === "studies" ? (
             <button type="button" onClick={() => setView("all")} className="min-h-[36px] rounded-lg px-2 text-sm font-black text-[var(--bb-accent,#2f7fe8)]">
-              ← Back
+              {t("home.gallery.back")}
             </button>
           ) : null}
-          <p className="text-base font-black text-[var(--bb-text-primary,#111827)]">{view === "studies" ? "Choose a study guide" : "Add Widget"}</p>
+          <p className="text-base font-black text-[var(--bb-text-primary,#111827)]">{view === "studies" ? t("home.gallery.chooseStudy") : t("home.gallery.title")}</p>
           <button
             type="button"
             onClick={onClose}
-            aria-label="Close"
+            aria-label={t("home.gallery.close")}
             className="ml-auto grid h-9 w-9 place-items-center rounded-full text-lg font-black text-[var(--bb-text-muted,#6b7280)]"
           >
             ✕
@@ -439,7 +446,7 @@ function WidgetGallery({
               if (!defs.length) return null;
               return (
                 <section key={category.id} className="mt-3">
-                  <h3 className="text-[11px] font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">{category.label}</h3>
+                  <h3 className="text-[11px] font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">{t(category.labelKey)}</h3>
                   <ul className="mt-1.5 space-y-2">
                     {defs.map((def) => {
                       const added = !def.perStudy && onBoard.has(def.kind);
@@ -452,8 +459,8 @@ function WidgetGallery({
                             {def.icon}
                           </span>
                           <span className="min-w-0 flex-1">
-                            <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">{def.name}</span>
-                            <span className="block text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">{def.description}</span>
+                            <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">{t(def.nameKey)}</span>
+                            <span className="block text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">{t(def.descriptionKey)}</span>
                           </span>
                           {def.perStudy ? (
                             <button
@@ -461,10 +468,10 @@ function WidgetGallery({
                               onClick={() => setView("studies")}
                               className="min-h-[36px] shrink-0 rounded-xl bg-[var(--bb-button,#111827)] px-3 text-xs font-black text-[var(--bb-button-text,#ffffff)]"
                             >
-                              Choose →
+                              {t("home.gallery.choose")}
                             </button>
                           ) : added ? (
-                            <span className="shrink-0 text-xs font-black text-[var(--bb-text-muted,#6b7280)]">On Home ✓</span>
+                            <span className="shrink-0 text-xs font-black text-[var(--bb-text-muted,#6b7280)]">{t("home.gallery.onHome")}</span>
                           ) : (
                             <span className="flex shrink-0 gap-1">
                               {def.sizes.map((size) => (
@@ -472,10 +479,10 @@ function WidgetGallery({
                                   key={size}
                                   type="button"
                                   onClick={() => onAdd(newWidget(def.kind as WidgetKind, size as WidgetSize))}
-                                  aria-label={`Add ${def.name}, ${SIZE_LABEL[size]}`}
+                                  aria-label={t("home.gallery.addSized", { name: t(def.nameKey), size: t(SIZE_LABEL_KEY[size]) })}
                                   className="min-h-[36px] rounded-xl bg-[var(--bb-button,#111827)] px-3 text-xs font-black text-[var(--bb-button-text,#ffffff)]"
                                 >
-                                  {def.sizes.length > 1 ? SIZE_LABEL[size] : "Add"}
+                                  {def.sizes.length > 1 ? t(SIZE_LABEL_KEY[size]) : t("home.gallery.add")}
                                 </button>
                               ))}
                             </span>
@@ -496,6 +503,7 @@ function WidgetGallery({
 }
 
 function StudyPicker({ userId, onBoard, onAdd }: { userId: string | null; onBoard: Set<string>; onAdd: (widget: HomeWidget) => void }) {
+  const t = useT();
   const [shelf, setShelf] = useState<{ studies: LibraryStudy[]; progress: Record<string, StudyProgress> } | null>(null);
   const [failed, setFailed] = useState(false);
   useEffect(() => {
@@ -508,7 +516,7 @@ function StudyPicker({ userId, onBoard, onAdd }: { userId: string | null; onBoar
     };
   }, [userId]);
 
-  if (failed) return <p className="mt-4 text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">Couldn&apos;t load the studies. Try again in a moment.</p>;
+  if (failed) return <p className="mt-4 text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">{t("home.gallery.studiesFailed")}</p>;
   if (!shelf) return <div className="mt-4 h-40 animate-pulse rounded-2xl bg-[var(--bb-surface-soft,#eef2f7)]" />;
 
   return (
@@ -524,7 +532,7 @@ function StudyPicker({ userId, onBoard, onAdd }: { userId: string | null; onBoar
               disabled={added}
               onClick={() => onAdd(studyWidget(study.id))}
               className="w-full rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-2 text-left disabled:opacity-60"
-              aria-label={added ? `${study.title}, already on Home` : `Add ${study.title} to Home`}
+              aria-label={added ? t("home.gallery.studyOnHome", { title: study.title }) : t("home.gallery.addStudy", { title: study.title })}
             >
               {study.cover_image ? (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -532,7 +540,11 @@ function StudyPicker({ userId, onBoard, onAdd }: { userId: string | null; onBoar
               ) : null}
               <span className="mt-1.5 line-clamp-2 block text-xs font-black text-[var(--bb-text-primary,#111827)]">{study.title}</span>
               <span className="block text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
-                {added ? "On Home ✓" : p.completedDays > 0 ? `Day ${p.nextDay} of ${study.total_days}` : `${study.total_days} days`}
+                {added
+                  ? t("home.gallery.onHome")
+                  : p.completedDays > 0
+                    ? t("home.day.ofTotal", { day: p.nextDay, total: study.total_days })
+                    : t.plural(study.total_days, "home.days.one", "home.days.other")}
               </span>
             </button>
           </li>

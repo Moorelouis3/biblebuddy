@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, Fragment, type ReactNode, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -8,7 +8,8 @@ import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import PublicHomeButton from "@/components/PublicHomeButton";
 import BrandHomeLink from "@/components/BrandHomeLink";
 import { supabase } from "../../lib/supabaseClient";
-import { authErrorMessage } from "../../lib/authErrorMessage";
+import { authErrorMessage, isUnreachableAuthError, type AuthErrorish } from "../../lib/authErrorMessage";
+import { useT, type Translate } from "../../lib/i18n/useT";
 import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending, recordTermsAcceptance } from "../../lib/termsAcceptance";
 import { signupSurface } from "@/lib/appDownload";
@@ -24,6 +25,21 @@ import {
 } from "../../lib/signupAttribution";
 
 const DASHBOARD_ENTRY_PATH = "/dashboard";
+
+/** What to tell the reader, with the two sentences the app wrote itself translated. */
+function authErrorText(t: Translate, error: AuthErrorish) {
+  if (isUnreachableAuthError(error)) return t("auth.error.unreachable");
+  const message = authErrorMessage(error);
+  // authErrorMessage(null) is its own "something went wrong" sentence.
+  return message === authErrorMessage(null) ? t("auth.error.generic") : message;
+}
+
+/** One translated sentence with links inside it: "{terms}" becomes that link. */
+function withLinks(text: string, links: Record<string, ReactNode>) {
+  return text.split(/\{(\w+)\}/g).map((part, index) =>
+    index % 2 === 1 ? <Fragment key={index}>{links[part] ?? part}</Fragment> : part,
+  );
+}
 
 // Honour ?next= the same way the login page does (2026-09-19): someone who
 // arrives from an email link and signs up should land where they were going.
@@ -145,6 +161,7 @@ async function recordLandingSignupEvent(userId: string, username: string, attrib
 
 export default function SignupPage() {
   const router = useRouter();
+  const t = useT();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [referrerUserId] = useState(() => {
@@ -244,7 +261,7 @@ export default function SignupPage() {
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
     if (!agreedToTerms) {
-      setError("Please agree to the Terms, Privacy Policy and Community Guidelines to create your account.");
+      setError(t("auth.signup.agreeRequired"));
       return;
     }
     setLoading(true);
@@ -271,19 +288,19 @@ export default function SignupPage() {
 
     if (error) {
       setLoading(false);
-      setError(authErrorMessage(error));
+      setError(authErrorText(t, error));
       return;
     }
 
     const user = data.user;
     if (!user) {
       setLoading(false);
-      setError("Signup failed: no user returned.");
+      setError(t("auth.signup.noUser"));
       return;
     }
     if (Array.isArray(user.identities) && user.identities.length === 0) {
       setLoading(false);
-      setError("This email may already have an account. Please log in instead, or use a different email.");
+      setError(t("auth.signup.emailTaken"));
       return;
     }
 
@@ -318,7 +335,7 @@ export default function SignupPage() {
     setError(
       loginError?.message?.toLowerCase().includes("email not confirmed")
         ? "Your account was created, but Supabase email confirmation is still turned on. Turn it off in Supabase Auth so new users can enter the dashboard immediately."
-        : loginError?.message || "Account created, but Bible Buddy could not start your session yet. Try logging in."
+        : loginError?.message || t("auth.signup.sessionFailed")
     );
   }
 
@@ -361,13 +378,13 @@ export default function SignupPage() {
         }
         setLoading(false);
         if (native.reason !== "cancelled") {
-          setError(native.message ?? "Sign-in did not complete. Please try again.");
+          setError(native.message ?? t("auth.error.signInIncomplete"));
         }
         return;
       }
     } catch (nativeError) {
       setLoading(false);
-      setError(nativeError instanceof Error ? nativeError.message : "Could not start sign-in.");
+      setError(nativeError instanceof Error ? nativeError.message : t("auth.error.signInStart"));
       return;
     }
     const { error } = await supabase.auth.signInWithOAuth({
@@ -377,9 +394,16 @@ export default function SignupPage() {
 
     if (error) {
       setLoading(false);
-      setError(authErrorMessage(error));
+      setError(authErrorText(t, error));
     }
   }
+
+  // The three links inside the "you agree to" sentences.
+  const legalLinks = {
+    terms: <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline">{t("auth.legal.terms")}</a>,
+    privacy: <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline">{t("auth.legal.privacyPolicy")}</a>,
+    guidelines: <a href="/community-guidelines" target="_blank" rel="noopener noreferrer" className="underline">{t("auth.legal.guidelines")}</a>,
+  };
 
   return (
     <div className="bb-auth-public flex min-h-screen flex-col bg-[#FAF7EF] text-[#102D4D]">
@@ -409,17 +433,15 @@ export default function SignupPage() {
       <div className="flex flex-1 items-center justify-center px-4 py-10">
         <div className="w-full max-w-md rounded-2xl border border-[#EFE6D6] bg-white/85 px-6 py-8 shadow-[0_24px_70px_rgba(7,22,47,0.08)]">
           <h1 className="mb-2 text-center text-3xl font-black text-[#07162f]">
-            Start your Bible journey
+            {t("auth.signup.title")}
           </h1>
           <p className="mb-7 text-center text-sm font-semibold leading-6 text-[#526075]">
-            Create your account and go straight to today&apos;s lesson.
+            {t("auth.signup.subtitle")}
           </p>
 
           {inAppBrowser && (
             <p className="mb-5 rounded-[14px] border border-[#F3C969] bg-[#FFF8E6] px-4 py-3 text-center text-[13px] font-semibold leading-5 text-[#7A5B00]">
-              This sign up page was opened inside another app and sign up may not work here.
-              Tap the ••• or share icon above and choose &quot;Open in Browser&quot; (Safari or
-              Chrome), then try again.
+              {t("auth.signup.inAppBrowser")}
             </p>
           )}
 
@@ -431,7 +453,7 @@ export default function SignupPage() {
               className="flex w-full items-center justify-center gap-3 min-h-[54px] rounded-[14px] border border-[#DCE1E8] bg-white px-4 text-[15px] font-black text-[#1F2937] transition active:scale-[0.99] disabled:opacity-60"
             >
               <GoogleLogo />
-              <span>Continue with Google</span>
+              <span>{t("auth.continueGoogle")}</span>
             </button>
           {/* Guideline 4.8: offering Google means Apple must be offered too.
               Native sheet inside the app; on the web it waits for the flag. */}
@@ -443,24 +465,20 @@ export default function SignupPage() {
             onError={(message) => setError(message)}
           />
             <p className="text-center text-[11px] font-semibold leading-5 text-[#526075]">
-              By continuing you agree to our{" "}
-              <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline">Terms</a>,{" "}
-              <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline">Privacy Policy</a>{" "}
-              and{" "}
-              <a href="/community-guidelines" target="_blank" rel="noopener noreferrer" className="underline">Community Guidelines</a>.
+              {withLinks(t("auth.legal.agreeContinue"), legalLinks)}
             </p>
           </div>
 
           <div className="my-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-400">
             <span className="h-px flex-1 bg-[#E7DFCE]" />
-            or
+            {t("auth.or")}
             <span className="h-px flex-1 bg-[#E7DFCE]" />
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="mb-1 block text-xs font-semibold text-gray-700">
-                Email
+                {t("auth.email")}
               </label>
               <input
                 type="email"
@@ -468,13 +486,13 @@ export default function SignupPage() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 className="w-full rounded-[14px] border border-[#E3DACA] bg-white px-4 py-3.5 text-[15px] text-[#102D4D] outline-none transition focus:border-[#102D4D]"
-                placeholder="you@example.com"
+                placeholder={t("auth.emailPlaceholder")}
               />
             </div>
 
             <div>
               <label className="mb-1 block text-xs font-semibold text-gray-700">
-                Password
+                {t("auth.password")}
               </label>
               <input
                 type="password"
@@ -483,7 +501,7 @@ export default function SignupPage() {
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 className="w-full rounded-[14px] border border-[#E3DACA] bg-white px-4 py-3.5 text-[15px] text-[#102D4D] outline-none transition focus:border-[#102D4D]"
-                placeholder="Create a password"
+                placeholder={t("auth.signup.passwordPlaceholder")}
               />
             </div>
 
@@ -499,11 +517,7 @@ export default function SignupPage() {
                 className="mt-0.5 h-4 w-4 shrink-0 rounded border-[#d9e3ee] accent-[#135397]"
               />
               <span>
-                I agree to the{" "}
-                <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline">Terms</a>,{" "}
-                <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline">Privacy Policy</a>{" "}
-                and{" "}
-                <a href="/community-guidelines" target="_blank" rel="noopener noreferrer" className="underline">Community Guidelines</a>.
+                {withLinks(t("auth.signup.agree"), legalLinks)}
               </span>
             </label>
 
@@ -518,14 +532,14 @@ export default function SignupPage() {
               disabled={loading || !agreedToTerms}
               className="mt-2 flex min-h-[54px] w-full items-center justify-center rounded-[14px] bg-[#102D4D] text-[15px] font-black text-white transition active:scale-[0.99] disabled:opacity-60"
             >
-              {loading ? "Creating account..." : "Create account"}
+              {loading ? t("auth.signup.creating") : t("auth.signup.create")}
             </button>
           </form>
 
           <p className="mt-4 text-center text-xs text-gray-600">
-            Already have an account?{" "}
+            {t("auth.signup.haveAccount")}{" "}
             <Link href="/login" className="font-semibold text-black hover:underline">
-              Log in
+              {t("auth.logIn")}
             </Link>
           </p>
         </div>

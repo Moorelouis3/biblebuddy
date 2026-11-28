@@ -16,6 +16,8 @@ import { supabase } from "../lib/supabaseClient";
 import { useBibleVersion } from "../lib/useBibleVersion";
 import type { TriviaChapterPack } from "../lib/triviaGameData";
 import type { ScrambledChapterPack } from "../lib/scrambledGameData";
+import { useT } from "../lib/i18n/useT";
+import { bookName } from "../lib/i18n/bookNames";
 
 /**
  * The Genesis 1 reader, on its own.
@@ -62,6 +64,7 @@ export default function ChapterInsightReader({
   initialSections?: BibleReaderStudySection[];
 }) {
   const router = useRouter();
+  const t = useT();
 
   // Display casing, so "genesis" out of a URL still reads as "Genesis".
   const BOOK = useMemo(
@@ -69,6 +72,8 @@ export default function ChapterInsightReader({
     [book],
   );
   const CHAPTER = chapter;
+  // Only what is shown. BOOK stays the key for addresses, progress and lookups.
+  const shownBook = bookName(BOOK, t.language);
   /** Slug the games and trivia catalogue use, e.g. "1 Samuel" -> "1samuel". */
   const bookSlug = useMemo(() => book.toLowerCase().replace(/\s+/g, ""), [book]);
 
@@ -305,7 +310,7 @@ export default function ChapterInsightReader({
                 aria-expanded={chapterMenuOpen}
                 className="flex items-center gap-1.5 rounded-xl px-2 py-1.5 text-lg font-black text-slate-900 transition hover:bg-slate-100"
               >
-                {BOOK} {CHAPTER}
+                {shownBook} {CHAPTER}
                 <span aria-hidden="true" className="text-xs text-slate-400">▼</span>
               </button>
 
@@ -314,13 +319,13 @@ export default function ChapterInsightReader({
                   {menuShowBooks ? (
                     <>
                       <div className="flex items-center justify-between border-b border-slate-200 px-3 py-2">
-                        <span className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">Books</span>
+                        <span className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">{t("reader.menu.books")}</span>
                         <button
                           type="button"
                           onClick={() => setMenuShowBooks(false)}
                           className="rounded-lg px-2 py-1 text-xs font-black text-sky-600 transition hover:bg-slate-50"
                         >
-                          Back
+                          {t("reader.menu.back")}
                         </button>
                       </div>
                       <div className="max-h-[16rem] overflow-y-auto p-2">
@@ -336,7 +341,7 @@ export default function ChapterInsightReader({
                               b === menuBookName ? "text-sky-600" : "text-slate-700"
                             }`}
                           >
-                            {b}
+                            {bookName(b, t.language)}
                           </button>
                         ))}
                       </div>
@@ -345,14 +350,14 @@ export default function ChapterInsightReader({
                     <>
                       <div className="flex items-center justify-between border-b border-slate-200 px-3 py-2">
                         <span className="min-w-0 truncate text-xs font-black uppercase tracking-[0.14em] text-slate-500">
-                          {menuBookName}
+                          {bookName(menuBookName, t.language)}
                         </span>
                         <button
                           type="button"
                           onClick={() => setMenuShowBooks(true)}
                           className="shrink-0 rounded-lg px-2 py-1 text-xs font-black text-sky-600 transition hover:bg-slate-50"
                         >
-                          All books
+                          {t("reader.menu.allBooks")}
                         </button>
                       </div>
                       <div className="max-h-[16rem] overflow-y-auto p-2">
@@ -427,9 +432,9 @@ export default function ChapterInsightReader({
 
           <div className="flex">
             {([
-              { id: "scripture", icon: "📖", label: "Scripture" },
-              { id: "trivia", icon: "❓", label: "Trivia" },
-              { id: "scrambled", icon: "🧩", label: "Scrambled" },
+              { id: "scripture", icon: "📖", labelKey: "reader.tab.scripture" },
+              { id: "trivia", icon: "❓", labelKey: "reader.tab.trivia" },
+              { id: "scrambled", icon: "🧩", labelKey: "reader.tab.scrambled" },
             ] as const).map((entry) => {
               const active = tab === entry.id;
               return (
@@ -443,7 +448,7 @@ export default function ChapterInsightReader({
                   }`}
                 >
                   <span aria-hidden="true">{entry.icon}</span>
-                  {entry.label}
+                  {t(entry.labelKey)}
                 </button>
               );
             })}
@@ -458,7 +463,7 @@ export default function ChapterInsightReader({
                 <div className="px-3 pb-3 pt-4 sm:px-5">
                   <BrowserTtsButton
                     text={speechText}
-                    label={`Listen to ${BOOK} ${CHAPTER}`}
+                    label={t("reader.listen", { book: shownBook, chapter: CHAPTER })}
                     audioSrc={audioSrc}
                     backgroundMusicSrcs={getBibleReadingBackgroundTracks(BOOK, CHAPTER)}
                     backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
@@ -474,9 +479,9 @@ export default function ChapterInsightReader({
                       <span className="flex min-w-0 items-center gap-2.5">
                         <span className="text-lg leading-none" aria-hidden="true">📖</span>
                         <span className="min-w-0">
-                          <span className="block text-[0.95rem] font-black leading-5 text-slate-900">Study Mode</span>
+                          <span className="block text-[0.95rem] font-black leading-5 text-slate-900">{t("reader.studyMode.title")}</span>
                           <span className="block truncate text-xs font-semibold leading-4 text-slate-500">
-                            {studyModeOn ? "Every Insight Card is listed under its verse." : "Tap highlighted words to explore deeper"}
+                            {studyModeOn ? t("reader.studyMode.on") : t("reader.studyMode.offPlayer")}
                           </span>
                         </span>
                       </span>
@@ -484,7 +489,7 @@ export default function ChapterInsightReader({
                         type="button"
                         role="switch"
                         aria-checked={studyModeOn}
-                        aria-label="Study Mode"
+                        aria-label={t("reader.studyMode.title")}
                         onClick={() => setStudyModeOn((on) => !on)}
                         className={`relative h-[30px] w-[52px] shrink-0 rounded-full transition-colors ${
                           studyModeOn ? "bg-[#0056fd]" : "bg-slate-300"
@@ -527,23 +532,22 @@ export default function ChapterInsightReader({
                     : "border-sky-500 bg-sky-500 text-white hover:bg-sky-400"
               }`}
             >
-              {completed ? "Chapter Completed" : saving ? "Saving..." : "Mark Chapter Completed"}
+              {completed ? t("reader.complete.done") : saving ? t("reader.complete.saving") : t("reader.complete.mark")}
             </button>
 
             <div className="mb-10">
               <div className="mx-auto mb-4 max-w-2xl rounded-2xl border border-blue-100 bg-gradient-to-br from-white via-blue-50 to-sky-50 p-5 shadow-sm">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">Chapter Discussion</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">{t("reader.discussion.label")}</p>
                 <p className="mt-3 text-xl font-black leading-snug text-gray-950">
-                  After reading {BOOK} {CHAPTER}, what is the one thing that stood out to you most, or that you learned
-                  about God in this chapter?
+                  {t("reader.discussion.question", { book: shownBook, chapter: CHAPTER })}
                 </p>
               </div>
 
               <CommentSection
                 articleSlug={`bible-chapter-${book.toLowerCase().replace(/\s+/g, "-")}-${CHAPTER}`}
-                headingText={`${BOOK} ${CHAPTER} Discussion`}
-                placeholderText="Start Typing Here"
-                submitButtonText="Post Comment"
+                headingText={t("reader.discussion.heading", { book: shownBook, chapter: CHAPTER })}
+                placeholderText={t("reader.discussion.placeholder")}
+                submitButtonText={t("reader.discussion.post")}
               />
             </div>
           </>
@@ -561,7 +565,7 @@ export default function ChapterInsightReader({
                 onClose={() => setTab("scripture")}
               />
             ) : (
-              <p className="px-4 py-8 text-center text-sm font-semibold text-slate-500">Loading trivia...</p>
+              <p className="px-4 py-8 text-center text-sm font-semibold text-slate-500">{t("reader.trivia.loading")}</p>
             )}
           </div>
         ) : null}
@@ -577,7 +581,7 @@ export default function ChapterInsightReader({
                 onClose={() => setTab("scripture")}
               />
             ) : (
-              <p className="px-4 py-8 text-center text-sm font-semibold text-slate-500">Loading scrambled...</p>
+              <p className="px-4 py-8 text-center text-sm font-semibold text-slate-500">{t("reader.scrambled.loading")}</p>
             )}
           </div>
         ) : null}

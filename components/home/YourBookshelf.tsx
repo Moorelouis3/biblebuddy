@@ -26,6 +26,7 @@ import {
   type LibraryStudy,
 } from "../../lib/libraryCatalog";
 import { imageThumb } from "../../lib/imageThumb";
+import { useT } from "../../lib/i18n/useT";
 
 /**
  * Your Bookshelf - one row of six books, chosen for the person looking.
@@ -65,6 +66,17 @@ const PLAN_TOTAL_DAYS = 365;
 const SHELF_MAX_BOOKS = SHELF_SEATS;
 
 type LiveAction = { label: string; href: string; kind: "join" | "study_today" | "view_discussion" | "catch_up" };
+
+/**
+ * What the live card's button says, in the reader's language. `label` above
+ * stays the English name of the action; the button reads this instead.
+ */
+const LIVE_ACTION_KEY = {
+  join: "home.shelf.live.join",
+  view_discussion: "home.shelf.live.viewDiscussion",
+  catch_up: "home.shelf.live.catchUp",
+  study_today: "home.shelf.live.studyToday",
+} as const;
 
 type ShelfBook = {
   key: string;
@@ -117,27 +129,30 @@ function safePercent(value: number): number {
 }
 
 /**
- * "today", "yesterday", "3 days ago" - or null when there is no stamp to
- * work from. Compared by calendar day in the reader's own timezone.
+ * Whole days since the stamp, for "Last read today / yesterday / 3 days ago":
+ * 0 is today, 1 yesterday. Null when there is no stamp to work from, or it is
+ * a month or more back. Compared by calendar day in the reader's own timezone.
  */
-function relativeDayLabel(stamp: string | null, now: number): string | null {
+function daysSince(stamp: string | null, now: number): number | null {
   if (!stamp) return null;
   const then = new Date(stamp);
   if (Number.isNaN(then.getTime())) return null;
   const startOfDay = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
   const days = Math.round((startOfDay(new Date(now)) - startOfDay(then)) / 86_400_000);
-  if (days <= 0) return "today";
-  if (days === 1) return "yesterday";
-  if (days < 30) return `${days} days ago`;
+  if (days <= 0) return 0;
+  if (days < 30) return days;
   return null;
 }
 
-/** "Nov 7, 2026" in the reader's own locale, or null. */
-function formatDate(stamp: string | null): string | null {
+/**
+ * "Nov 7, 2026", or null. `locale` is undefined for English, which leaves it
+ * to the reader's own device as before; German passes "de-DE".
+ */
+function formatDate(stamp: string | null, locale: string | undefined): string | null {
   if (!stamp) return null;
   const date = new Date(stamp);
   if (Number.isNaN(date.getTime())) return null;
-  return date.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+  return date.toLocaleDateString(locale, { month: "short", day: "numeric", year: "numeric" });
 }
 
 /**
@@ -193,6 +208,10 @@ export default function YourBookshelf({
   planDay: number | null;
   planCompletedDays: number;
 }) {
+  const t = useT();
+  // Dates and numbers: English keeps the device's own format, as it always
+  // has; any other app language uses that language's.
+  const ownLocale = t.language === "en" ? undefined : t.locale;
   const router = useRouter();
   const [books, setBooks] = useState<ShelfBook[]>([]);
   const [loading, setLoading] = useState(true);
@@ -466,16 +485,21 @@ export default function YourBookshelf({
   }
 
   /** "2 studies in progress · 1 completed · 1 upcoming", from the shelf itself. */
-  const shelfSummary = useMemo(() => {
+  const shelfCounts = useMemo(() => {
     const upcoming = books.filter((b) => b.role === "upcoming" || (b.currentDay === null && Boolean(countdownLabel(b, now)))).length;
     const completed = books.filter((b) => b.isComplete).length;
     const inProgress = books.filter((b) => !b.isComplete && b.currentDay !== null).length;
-    const parts: string[] = [];
-    if (inProgress) parts.push(`${inProgress} ${inProgress === 1 ? "study" : "studies"} in progress`);
-    if (completed) parts.push(`${completed} completed`);
-    if (upcoming) parts.push(`${upcoming} upcoming`);
-    return parts.join(" · ");
+    return { upcoming, completed, inProgress };
   }, [books, now]);
+  const shelfSummary = [
+    shelfCounts.inProgress
+      ? t.plural(shelfCounts.inProgress, "home.shelf.summary.inProgress.one", "home.shelf.summary.inProgress.other")
+      : "",
+    shelfCounts.completed ? t("home.shelf.summary.completed", { count: shelfCounts.completed }) : "",
+    shelfCounts.upcoming ? t("home.shelf.summary.upcoming", { count: shelfCounts.upcoming }) : "",
+  ]
+    .filter(Boolean)
+    .join(" · ");
 
   /** Flipped one frame after the books land, so the progress bars grow from nothing. */
   const [barsIn, setBarsIn] = useState(false);
@@ -513,7 +537,7 @@ export default function YourBookshelf({
   if (failed) {
     return (
       <section>
-        <LoadFailedNotice message="Couldn't load your bookshelf." onRetry={retryLoad} />
+        <LoadFailedNotice message={t("home.shelf.failed")} onRetry={retryLoad} />
       </section>
     );
   }
@@ -551,7 +575,7 @@ export default function YourBookshelf({
               className="flex items-center gap-1.5 whitespace-nowrap text-[17px] font-black text-[var(--bb-text-primary,#111827)] sm:text-2xl"
             >
               <span aria-hidden className="text-base sm:text-2xl">📖</span>
-              Your Bookshelf
+              {t("home.shelf.title")}
             </h2>
             {/* Counted from the shelf on screen, so it can never disagree with
                 the cards under it. A part that is zero is dropped. */}
@@ -563,7 +587,7 @@ export default function YourBookshelf({
             href="/library"
             className="shrink-0 rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-3 py-1.5 text-xs font-black text-[var(--bb-accent,#2f7fe8)] transition hover:bg-[#dceeff] sm:px-4 sm:py-2 sm:text-sm"
           >
-            Library →
+            {t("home.shelf.library")}
           </Link>
         </div>
 
@@ -575,6 +599,10 @@ export default function YourBookshelf({
           <ul className="flex w-max snap-x snap-mandatory items-stretch gap-3 sm:gap-4 lg:grid lg:w-full lg:grid-cols-6">
             {books.map((book, index) => {
               const tint = cardTint(index);
+              // Bible in One Year is a plan of ours, not a row in the
+              // catalogue, so its name is interface text. Every other title is
+              // the study's own and is shown as written.
+              const title = book.key === BIBLE_YEAR_KEY ? t("home.widget.bibleInOneYear.name") : book.title;
               const isUpcoming = book.role === "upcoming";
               const live = book.role === "live" ? book.live : null;
               const countdown = countdownParts(book, now);
@@ -582,9 +610,9 @@ export default function YourBookshelf({
               // placeholder until the morning it lands.
               const comingSoon = !isUpcoming && !live && book.currentDay === null && Boolean(countdownLabel(book, now));
               const percent = safePercent(book.percent);
-              const releaseDate = formatDate(book.availableFrom);
-              const finishedOn = book.isComplete ? formatDate(book.lastActivityAt) : null;
-              const lastRead = relativeDayLabel(book.lastActivityAt, now);
+              const releaseDate = formatDate(book.availableFrom, ownLocale);
+              const finishedOn = book.isComplete ? formatDate(book.lastActivityAt, ownLocale) : null;
+              const lastReadDays = daysSince(book.lastActivityAt, now);
               const groupPercent = live ? safePercent((live.communityDay / Math.max(1, book.totalDays)) * 100) : 0;
               // What this seat is, for a Bible Cover to style (bb-cv-* hooks,
               // app/bible-covers.css). Has no effect without a cover.
@@ -592,7 +620,7 @@ export default function YourBookshelf({
               // too and shows whichever is larger, which is the rule the
               // Library count already follows for community studies.
               const buddies = Math.max(buddyCounts[book.key] ?? 0, live ? liveCount ?? 0 : 0);
-              const buddiesLabel = buddies > 0 ? new Intl.NumberFormat().format(buddies) : null;
+              const buddiesLabel = buddies > 0 ? new Intl.NumberFormat(ownLocale).format(buddies) : null;
               const tone = isUpcoming ? "upcoming" : live ? "live" : comingSoon ? "soon" : book.isComplete ? "done" : book.role === "current" ? "current" : "other";
 
               // Where a tap goes, and what the button says.
@@ -620,31 +648,31 @@ export default function YourBookshelf({
                     {/* One badge, never a stack: what this seat is. */}
                     {isUpcoming ? (
                       <span className="bb-cv-badge absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#6d3fd4] px-2 py-1 text-[9px] font-black text-white shadow-md">
-                        <span aria-hidden>🗓️</span> Upcoming Study
+                        <span aria-hidden>🗓️</span> {t("home.shelf.badge.upcoming")}
                       </span>
                     ) : live ? (
                       <span className="bb-cv-badge absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#b91c1c] px-2 py-1 text-[9px] font-black text-white shadow-md">
-                        <span aria-hidden className="bb-shelf-live-dot h-1.5 w-1.5 rounded-full bg-white" /> Live Group Study
+                        <span aria-hidden className="bb-shelf-live-dot h-1.5 w-1.5 rounded-full bg-white" /> {t("home.shelf.badge.live")}
                       </span>
                     ) : comingSoon ? (
                       <span className="bb-cv-badge absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 rounded-full bg-[#6d3fd4] px-2 py-1 text-[9px] font-black text-white shadow-md">
-                        <span aria-hidden>🗓️</span> Coming Soon
+                        <span aria-hidden>🗓️</span> {t("home.shelf.badge.comingSoon")}
                       </span>
                     ) : book.isComplete ? (
                       <span className="bb-cv-badge absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#1f8f54] px-2 py-1 text-[9px] font-black text-white shadow-md">
-                        <span aria-hidden>✔</span> Study Completed
+                        <span aria-hidden>✔</span> {t("home.shelf.badge.completed")}
                       </span>
                     ) : book.role === "current" ? (
                       <span className="bb-cv-badge absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#5b3fd4] px-2 py-1 text-[9px] font-black text-white shadow-md">
-                        <span aria-hidden>📖</span> Currently Reading
+                        <span aria-hidden>📖</span> {t("home.shelf.badge.current")}
                       </span>
                     ) : book.role === "chosen" ? (
                       <span className="bb-cv-badge absolute left-1.5 top-1.5 z-10 rounded-full bg-[#2b2150] px-2 py-1 text-[9px] font-black uppercase tracking-wide text-white shadow-md">
-                        Your study
+                        {t("home.shelf.badge.chosen")}
                       </span>
                     ) : book.role === "recommended" ? (
                       <span className="bb-cv-badge absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 rounded-full bg-[#0056fd] px-2 py-1 text-[9px] font-black text-white shadow-md">
-                        <span aria-hidden>✨</span> For You
+                        <span aria-hidden>✨</span> {t("home.shelf.badge.forYou")}
                       </span>
                     ) : null}
                     <div className="overflow-hidden rounded-xl shadow-[0_6px_16px_rgba(16,33,58,0.2)]">
@@ -652,7 +680,7 @@ export default function YourBookshelf({
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
                           src={book.cover}
-                          alt={book.title}
+                          alt={title}
                           loading={index < 2 ? "eager" : "lazy"}
                           // Grey until it opens (Louis, 2026-11-15: "the next
                           // coming devotional cover should be gray"). The glow,
@@ -662,7 +690,7 @@ export default function YourBookshelf({
                         />
                       ) : (
                         <div className="flex aspect-[2/3] w-full items-center justify-center bg-[var(--bb-surface-soft,#eef2f7)] px-2 text-center text-[11px] font-black text-[var(--bb-text-muted,#6b7280)]">
-                          {book.title}
+                          {title}
                         </div>
                       )}
                     </div>
@@ -670,7 +698,7 @@ export default function YourBookshelf({
 
                   {/* Two lines reserved, so the rows under the titles line up. */}
                   <p className="bb-cv-book-title mt-2 line-clamp-2 min-h-[2.5em] text-xs font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[13px]">
-                    {book.title}
+                    {title}
                   </p>
 
                   <div className="bb-cv-book-body mt-1 flex-1">
@@ -680,9 +708,9 @@ export default function YourBookshelf({
                           <>
                             <div className="flex gap-1" role="timer" aria-live="off">
                               {[
-                                [countdown.days, "Days"],
-                                [countdown.hours, "Hours"],
-                                [countdown.minutes, "Minutes"],
+                                [countdown.days, t("home.shelf.count.days")],
+                                [countdown.hours, t("home.shelf.count.hours")],
+                                [countdown.minutes, t("home.shelf.count.minutes")],
                               ].map(([value, label]) => (
                                 <span key={label} className="bb-cv-count flex-1 rounded-lg bg-white/80 px-1 py-1 text-center">
                                   <span className="bb-cv-hl block text-[14px] font-black leading-none text-[#4b2fae]">{value}</span>
@@ -691,19 +719,22 @@ export default function YourBookshelf({
                               ))}
                             </div>
                             <p className="sr-only">
-                              Starts in {countdown.days} days, {countdown.hours} hours and {countdown.minutes} minutes
+                              {t("home.shelf.count.spoken", { days: countdown.days, hours: countdown.hours, minutes: countdown.minutes })}
                             </p>
                           </>
                         ) : (
-                          <p className="bb-cv-hl text-[11px] font-black text-[#4b2fae]">Starting now</p>
+                          <p className="bb-cv-hl text-[11px] font-black text-[#4b2fae]">{t("home.shelf.startingNow")}</p>
                         )}
                         {releaseDate ? (
                           <p className="bb-cv-hl mt-1.5 flex items-center gap-1 text-[11px] font-black text-[#c81e1e]">
-                            <span aria-hidden>📅</span> Starts {releaseDate}
+                            <span aria-hidden>📅</span> {t("home.shelf.starts", { date: releaseDate })}
                           </p>
                         ) : null}
                         <p className="mt-1 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
-                          <span aria-hidden>👥</span> {buddiesLabel ? `${buddiesLabel} joined` : `${book.totalDays}-day group study`}
+                          <span aria-hidden>👥</span>{" "}
+                          {buddiesLabel
+                            ? t("home.shelf.joined", { count: buddiesLabel })
+                            : t("home.shelf.groupStudyLength", { count: book.totalDays })}
                         </p>
                       </>
                     ) : live ? (
@@ -711,7 +742,7 @@ export default function YourBookshelf({
                         {/* The GROUP's day, from the calendar. Not this
                             person's: theirs is the line under the bar. */}
                         <p className="bb-cv-hl text-[11px] font-black text-[#b91c1c]">
-                          Day {live.communityDay} of {book.totalDays}
+                          {t("home.day.ofTotal", { day: live.communityDay, total: book.totalDays })}
                         </p>
                         <span className="bb-cv-track mt-1 block h-2 overflow-hidden rounded-full bg-white/80">
                           <span
@@ -721,19 +752,20 @@ export default function YourBookshelf({
                             aria-valuenow={groupPercent}
                             aria-valuemin={0}
                             aria-valuemax={100}
-                            aria-label={`${book.title}: the group is on day ${live.communityDay} of ${book.totalDays}`}
+                            aria-label={t("home.shelf.groupOnDay", { title, day: live.communityDay, total: book.totalDays })}
                           />
                         </span>
                         <p className="bb-cv-hl mt-1.5 flex items-center gap-1 text-[10px] font-black text-[var(--bb-text-primary,#111827)]">
-                          <span aria-hidden>📖</span> Today&apos;s reading is live!
+                          <span aria-hidden>📖</span> {t("home.shelf.liveToday")}
                         </p>
                         <p className="mt-1 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
                           <span aria-hidden>👥</span>{" "}
-                          {buddiesLabel ? `${buddiesLabel} studying together` : "Study with your Bible Buddies"}
+                          {buddiesLabel ? t("home.shelf.studyingTogether", { count: buddiesLabel }) : t("home.shelf.withBuddies")}
                         </p>
                         {live.participating && book.currentDay !== null ? (
                           <p className="mt-1 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
-                            <span aria-hidden>🙋</span> You: {book.isComplete ? "finished" : `Day ${book.currentDay}`}
+                            <span aria-hidden>🙋</span>{" "}
+                            {book.isComplete ? t("home.shelf.youFinished") : t("home.shelf.youOnDay", { day: book.currentDay })}
                           </p>
                         ) : null}
                       </>
@@ -742,18 +774,18 @@ export default function YourBookshelf({
                         <p className="bb-cv-hl text-[11px] font-black text-[#a57d2c]">{countdownLabel(book, now)}</p>
                         {releaseDate ? (
                           <p className="mt-1.5 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
-                            <span aria-hidden>📅</span> Releases {releaseDate}
+                            <span aria-hidden>📅</span> {t("home.shelf.releases", { date: releaseDate })}
                           </p>
                         ) : null}
                       </>
                     ) : book.isComplete ? (
                       <>
                         <p className="bb-cv-ok flex items-center gap-1 text-[11px] font-bold text-[#2f8f5b]">
-                          <span aria-hidden>✅</span> Completed
+                          <span aria-hidden>✅</span> {t("common.completed")}
                         </p>
                         {finishedOn ? (
                           <p className="mt-1 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
-                            <span aria-hidden>📅</span> Completed {finishedOn}
+                            <span aria-hidden>📅</span> {t("home.shelf.completedOn", { date: finishedOn })}
                           </p>
                         ) : null}
                       </>
@@ -761,7 +793,7 @@ export default function YourBookshelf({
                       <>
                         <div className="flex items-baseline justify-between gap-1">
                           <p className="text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
-                            Day {book.currentDay} of {book.totalDays}
+                            {t("home.day.ofTotal", { day: book.currentDay, total: book.totalDays })}
                           </p>
                           <span className="bb-cv-pill shrink-0 rounded-full bg-white/70 px-1.5 py-0.5 text-[10px] font-black text-[var(--bb-accent,#2f7fe8)]">
                             {percent}%
@@ -775,21 +807,22 @@ export default function YourBookshelf({
                             aria-valuenow={percent}
                             aria-valuemin={0}
                             aria-valuemax={100}
-                            aria-label={`${book.title}: ${percent}% complete`}
+                            aria-label={t("home.shelf.percentComplete", { title, percent })}
                           />
                         </span>
                         <p className="mt-1.5 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
-                          <span aria-hidden>📅</span> {daysRemaining(book)} days remaining
+                          <span aria-hidden>📅</span>{" "}
+                          {t.plural(daysRemaining(book), "home.shelf.daysRemaining.one", "home.shelf.daysRemaining.other")}
                         </p>
                       </>
                     ) : (
                       <>
                         {/* Why this one is here, when there is a reason. */}
                         <p className="text-[11px] font-bold leading-snug text-[var(--bb-text-muted,#6b7280)]">
-                          {book.reason && book.reason !== "Start this study" ? book.reason : "Start this study"}
+                          {book.reason && book.reason !== "Start this study" ? book.reason : t("home.shelf.startThis")}
                         </p>
                         <p className="mt-1.5 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
-                          <span aria-hidden>📅</span> {book.totalDays} days
+                          <span aria-hidden>📅</span> {t.plural(book.totalDays, "home.days.one", "home.days.other")}
                         </p>
                       </>
                     )}
@@ -798,16 +831,21 @@ export default function YourBookshelf({
                         seats already say it in their own words above. */}
                     {buddiesLabel && !isUpcoming && !live ? (
                       <p className="mt-1.5 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
-                        <span aria-hidden>👥</span> {buddiesLabel} studying together
+                        <span aria-hidden>👥</span> {t("home.shelf.studyingTogether", { count: buddiesLabel })}
                       </p>
                     ) : null}
 
                     {/* Last READ, not last opened. Hidden on the community
                         seats, which speak for the group, and on a finished
                         study, where the date above already says it. */}
-                    {lastRead && !book.isComplete && !isUpcoming && !live && book.currentDay !== null ? (
+                    {lastReadDays !== null && !book.isComplete && !isUpcoming && !live && book.currentDay !== null ? (
                       <p className="mt-1.5 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#9aa3b2)]">
-                        <span aria-hidden>🕒</span> Last read {lastRead}
+                        <span aria-hidden>🕒</span>{" "}
+                        {lastReadDays === 0
+                          ? t("home.shelf.lastRead.today")
+                          : lastReadDays === 1
+                            ? t("home.shelf.lastRead.yesterday")
+                            : t("home.shelf.lastRead.daysAgo", { count: lastReadDays })}
                       </p>
                     ) : null}
                   </div>
@@ -840,25 +878,25 @@ export default function YourBookshelf({
                     {isUpcoming ? (
                       book.signedUp ? (
                         <>
-                          <span className="text-[11px]">You&apos;re Signed Up! ✓</span>
+                          <span className="text-[11px]">{t("home.shelf.button.signedUp")}</span>
                         </>
                       ) : (
                         <>
-                          <span aria-hidden>🔔</span> Sign Up →
+                          <span aria-hidden>🔔</span> {t("home.shelf.button.signUp")}
                         </>
                       )
                     ) : live ? (
-                      <>{live.action.label} →</>
+                      <>{t(LIVE_ACTION_KEY[live.action.kind])} →</>
                     ) : comingSoon ? (
-                      "Coming soon"
+                      t("home.shelf.button.comingSoon")
                     ) : book.isComplete ? (
                       <>
-                        <span aria-hidden>↻</span> Read Again →
+                        <span aria-hidden>↻</span> {t("home.shelf.button.readAgain")}
                       </>
                     ) : book.currentDay !== null ? (
-                      "Continue →"
+                      t("home.shelf.button.continue")
                     ) : (
-                      "Start →"
+                      t("home.shelf.button.start")
                     )}
                   </button>
                 </li>

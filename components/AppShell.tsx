@@ -76,6 +76,7 @@ import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId, persistActiv
 import { getActivePopupFromQueue, markPopupShown, POPUP_QUEUE_PRIORITIES, type PopupQueueItem } from "../lib/popupQueue";
 import { BIRTHDAY_HAT_SRC, isBirthdayWindow, msUntilBirthdayChange } from "../lib/birthday";
 import { OPEN_REVIEW_FORM_EVENT } from "../lib/reviewForm";
+import { useT } from "../lib/i18n/useT";
 import {
   clearPendingSignupAttribution,
   getSignupAttributionFromBrowser,
@@ -495,6 +496,7 @@ function ProfileMenuHeading({ children }: { children: string }) {
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
+  const t = useT();
 
   // When loaded inside an iframe (group hub embed), skip the shell entirely
   const [isEmbedded, setIsEmbedded] = useState(false);
@@ -1044,11 +1046,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
        */
       if (isNativeApp()) {
         throw new Error(
-          "Use Settings > Notifications in the app to turn these on - the iPhone handles them, not the browser.",
+          t("shell.push.error.native"),
         );
       }
       if (typeof window === "undefined" || !("Notification" in window)) {
-        throw new Error("Push notifications are not supported on this device.");
+        throw new Error(t("shell.push.error.unsupported"));
       }
 
       const permission =
@@ -1059,7 +1061,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       if (permission !== "granted") {
         throw new Error(
-          "Notifications are blocked in this browser. Open your browser or phone site settings for Bible Buddy, allow notifications, then tap Enable again.",
+          t("shell.push.error.blocked"),
         );
       }
 
@@ -1069,7 +1071,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       }
       hidePushPrompt(true);
     } catch (error: any) {
-      setPushError(error?.message || "Could not enable push alerts.");
+      setPushError(error?.message || t("shell.push.error.enableFailed"));
     } finally {
       setPushLoading(false);
     }
@@ -1908,7 +1910,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         }
       } catch (error: any) {
         if (!cancelled) {
-          setPushError(error?.message || "Could not initialize push alerts.");
+          setPushError(error?.message || t("shell.push.error.initFailed"));
         }
       }
     }
@@ -2065,12 +2067,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     const diffMins = Math.floor(diffMs / 60000);
     const diffHours = Math.floor(diffMins / 60);
     const diffDays = Math.floor(diffHours / 24);
-    if (diffMins < 1) return "now";
-    if (diffMins < 60) return `${diffMins}m`;
-    if (diffHours < 24) return `${diffHours}h`;
-    if (diffDays === 1) return "yesterday";
-    if (diffDays < 7) return `${diffDays}d`;
-    return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    if (diffMins < 1) return t("shell.time.now");
+    if (diffMins < 60) return t("shell.time.minutes", { count: diffMins });
+    if (diffHours < 24) return t("shell.time.hours", { count: diffHours });
+    if (diffDays === 1) return t("shell.time.yesterday");
+    if (diffDays < 7) return t("shell.time.days", { count: diffDays });
+    return date.toLocaleDateString(t.locale, { month: "short", day: "numeric" });
   }
 
   function cleanNotificationMessageBody(actorName: string | null | undefined, message: string | null | undefined) {
@@ -2087,7 +2089,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       }
     }
 
-    return body || "sent you a new alert";
+    return body || t("shell.notif.fallbackBody");
   }
 
   function renderNotificationCopy(notif: {
@@ -2961,7 +2963,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               type="button"
               onClick={() => setGuestLogoutWarningOpen(false)}
               className="ml-auto grid h-9 w-9 place-items-center rounded-full bg-gray-100 text-lg font-black text-gray-500 transition hover:bg-gray-200"
-              aria-label="Close logout warning"
+              aria-label={t("shell.guestLogout.close")}
             >
               x
             </button>
@@ -2969,11 +2971,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               <LouisAvatar mood="think" size={82} />
             </div>
             <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[#5f93b8]">
-              Guest account
+              {t("shell.guestLogout.eyebrow")}
             </p>
-            <h2 className="mt-2 text-2xl font-black text-gray-950">Create an account before logging out?</h2>
+            <h2 className="mt-2 text-2xl font-black text-gray-950">{t("shell.guestLogout.title")}</h2>
             <p className="mt-3 text-sm leading-6 text-gray-600">
-              You are a guest right now. If you log out, you will not be able to log back into this guest journey unless you create an account first.
+              {t("shell.guestLogout.body")}
             </p>
             <div className="mt-5 grid gap-3">
               <button
@@ -2981,14 +2983,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 onClick={openGuestAccountPromptFromLogout}
                 className="w-full rounded-2xl bg-[#7BAFD4] px-5 py-3 text-sm font-black text-[#05111f] shadow-lg transition hover:bg-[#91c2df]"
               >
-                Create Account
+                {t("shell.guestLogout.create")}
               </button>
               <button
                 type="button"
                 onClick={() => void performLogout()}
                 className="w-full rounded-2xl border border-red-200 bg-red-50 px-5 py-3 text-sm font-bold text-red-700 transition hover:bg-red-100"
               >
-                Log Out Anyway
+                {t("shell.guestLogout.anyway")}
               </button>
             </div>
           </div>
@@ -3059,14 +3061,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             <div className="mx-auto mt-4 flex h-16 w-16 animate-bounce items-center justify-center rounded-2xl bg-blue-100 text-4xl shadow-[0_0_28px_rgba(59,130,246,0.35)]">
               💎
             </div>
-            <h2 className="mt-4 text-2xl font-black text-gray-900">You earned a Grace Day!</h2>
+            <h2 className="mt-4 text-2xl font-black text-gray-900">{t("shell.grace.earned.title")}</h2>
             <p className="mt-3 text-sm leading-6 text-gray-600">
               {graceReward.isBackfill || (graceReward.earnedGraceDays || 1) > 1
-                ? `Your ${graceReward.streak} day streak has earned you ${graceReward.earnedGraceDays || graceReward.graceDays} Grace Days to protect your streak when life gets busy.`
-                : `You’ve stayed active for ${graceReward.streak} days in a row. You received 1 Grace Day to protect your streak when life gets busy.`}
+                ? t("shell.grace.earned.many", { streak: graceReward.streak, count: graceReward.earnedGraceDays || graceReward.graceDays })
+                : t("shell.grace.earned.single", { streak: graceReward.streak })}
             </p>
             <p className="mt-3 rounded-2xl bg-blue-50 px-4 py-3 text-sm font-bold text-blue-700">
-              Grace Days Available: {Math.max(0, Math.min(5, graceReward.graceDays))}
+              {t("shell.grace.available", { count: Math.max(0, Math.min(5, graceReward.graceDays)) })}
             </p>
             <button
               type="button"
@@ -3076,7 +3078,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               }}
               className="mt-5 w-full rounded-2xl bg-[#2878f0] px-5 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-[#1f6ee3]"
             >
-              Awesome!
+              {t("shell.grace.awesome")}
             </button>
           </div>
         </div>
@@ -3091,14 +3093,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             <div className="mx-auto mt-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-3xl shadow-[0_0_22px_rgba(59,130,246,0.25)]">
               💎
             </div>
-            <h2 className="mt-4 text-2xl font-black text-gray-900">Use a Grace Day?</h2>
+            <h2 className="mt-4 text-2xl font-black text-gray-900">{t("shell.grace.use.title")}</h2>
             <p className="mt-3 text-sm leading-6 text-gray-600">
-              You missed {getGraceMissedDays(graceUsePrompt) === 1 ? "yesterday" : `${getGraceMissedDays(graceUsePrompt)} days`}, but you can use{" "}
-              {getGraceMissedDays(graceUsePrompt) === 1 ? "1 Grace Day" : `${getGraceMissedDays(graceUsePrompt)} Grace Days`} to continue your streak.
+              {t.plural(getGraceMissedDays(graceUsePrompt), "shell.grace.use.body.one", "shell.grace.use.body.other")}
             </p>
             <div className="mt-4 grid gap-2 rounded-2xl bg-gray-50 px-4 py-3 text-left text-sm font-bold text-gray-700">
-              <p>🔥 Current streak: {graceUsePrompt.currentStreak} days</p>
-              <p>💎 Grace Days remaining: {Math.max(0, Math.min(5, graceUsePrompt.graceDays))}</p>
+              <p>{t("shell.grace.use.currentStreak", { count: graceUsePrompt.currentStreak })}</p>
+              <p>{t("shell.grace.use.remaining", { count: Math.max(0, Math.min(5, graceUsePrompt.graceDays)) })}</p>
             </div>
             <div className="mt-5 grid gap-3">
               <button
@@ -3107,7 +3108,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 onClick={() => void handleUseGraceDay()}
                 className="w-full rounded-2xl bg-[#2878f0] px-5 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-[#1f6ee3] disabled:opacity-60"
               >
-                {getGraceMissedDays(graceUsePrompt) === 1 ? "Use Grace Day" : "Use Grace Days"}
+                {t.plural(getGraceMissedDays(graceUsePrompt), "shell.grace.use.cta.one", "shell.grace.use.cta.other")}
               </button>
               <button
                 type="button"
@@ -3115,7 +3116,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 onClick={() => void handleEndGraceStreak()}
                 className="w-full rounded-2xl border border-gray-200 bg-white px-5 py-3 text-sm font-bold text-gray-700 transition hover:bg-gray-50 disabled:opacity-60"
               >
-                End Streak
+                {t("shell.grace.use.end")}
               </button>
             </div>
           </div>
@@ -3225,11 +3226,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       window.dispatchEvent(new CustomEvent("bb:dashboard-open-streak-info"));
                     }}
                     className="relative flex h-9 items-center gap-1.5 rounded-full bg-[var(--bb-surface-soft,#1e2733)] px-3 text-[var(--bb-text-primary,#f9fafb)] transition-colors hover:brightness-110"
-                    aria-label={`Open streak details for ${headerCurrentStreak} day streak`}
-                    title={`${headerCurrentStreak} day streak`}
+                    aria-label={t("shell.header.streakLabel", { count: headerCurrentStreak })}
+                    title={t("shell.header.streakTitle", { count: headerCurrentStreak })}
                   >
                     <span aria-hidden="true">
-                      <StreakFlameEmoji flameId={shellDisplayFlameId} currentStreak={headerCurrentStreak} size={18} title={`${headerCurrentStreak} day streak`} />
+                      <StreakFlameEmoji flameId={shellDisplayFlameId} currentStreak={headerCurrentStreak} size={18} title={t("shell.header.streakTitle", { count: headerCurrentStreak })} />
                     </span>
                     <span className="text-xs font-semibold leading-none text-[var(--bb-text-primary,#f9fafb)]">
                       {headerCurrentStreak}
@@ -3238,8 +3239,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
                   <div
                     className="relative flex h-9 items-center gap-1.5 rounded-full bg-[var(--bb-surface-soft,#1e2733)] px-3 text-[var(--bb-text-primary,#f9fafb)]"
-                    aria-label={`${headerGraceDays} Grace Days available`}
-                    title={`${headerGraceDays} Grace Days available`}
+                    aria-label={t("shell.header.graceDays", { count: headerGraceDays })}
+                    title={t("shell.header.graceDays", { count: headerGraceDays })}
                   >
                     <span className="text-base leading-none" aria-hidden="true">💎</span>
                     <span className="text-xs font-semibold leading-none text-[var(--bb-text-primary,#f9fafb)]">
@@ -3253,8 +3254,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       window.dispatchEvent(new CustomEvent("bb:dashboard-open-level-info"));
                     }}
                     className="relative flex h-9 items-center gap-1.5 rounded-full bg-[var(--bb-surface-soft,#1e2733)] px-3 text-[var(--bb-text-primary,#f9fafb)] transition-colors hover:brightness-110"
-                    aria-label={`Open level details for level ${headerCurrentLevel}`}
-                    title={`Level ${headerCurrentLevel}`}
+                    aria-label={t("shell.header.levelLabel", { level: headerCurrentLevel })}
+                    title={t("shell.header.levelTitle", { level: headerCurrentLevel })}
                   >
                     <span className="text-base leading-none" aria-hidden="true">🛡️</span>
                     <span className="text-xs font-semibold leading-none text-[var(--bb-text-primary,#f9fafb)]">
@@ -3274,7 +3275,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       if (!isNotifOpen && userId) fetchNotifications(userId);
                     }}
                     className="relative flex h-9 w-9 items-center justify-center rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] hover:text-[var(--bb-accent,#2f7fe8)]"
-                    aria-label="Notifications"
+                    aria-label={t("shell.notif.title")}
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -3293,10 +3294,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   {isNotifOpen && (
                     <div className="bb-skin-notification-panel fixed top-16 left-4 right-4 z-50 overflow-hidden rounded-xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] shadow-lg sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mt-2 sm:w-80">
                       <div className="bb-skin-notification-header flex items-center justify-between border-b border-[var(--bb-card-border,#e5e7eb)] px-4 py-3">
-                        <span className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">Notifications</span>
+                        <span className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">{t("shell.notif.title")}</span>
                         {visibleUnreadNotificationCount > 0 && (
                           <button onClick={markAllRead} className="text-xs font-medium text-[var(--bb-accent,#2563eb)] transition hover:opacity-80">
-                            Mark all read
+                            {t("shell.notif.markAllRead")}
                           </button>
                         )}
                       </div>
@@ -3308,11 +3309,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                         >
                           <div className="flex items-center justify-between gap-3">
                             <div className="min-w-0">
-                              <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">Phone Push Alerts</p>
+                              <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">{t("shell.notif.push.title")}</p>
                               <p className="mt-0.5 text-xs text-[var(--bb-text-secondary,#6b7280)]">
                                 {pushPermission === "granted" && pushSubscribed
-                                  ? "Push alerts are on for this device."
-                                  : "Turn on push alerts so new Bible Buddy notifications reach this device."}
+                                  ? t("shell.notif.push.on")
+                                  : t("shell.notif.push.off")}
                               </p>
                             </div>
                             {!(pushPermission === "granted" && pushSubscribed) && (
@@ -3323,7 +3324,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                 className="bb-skin-notification-primary px-3 py-2 rounded-lg text-xs font-semibold text-white transition disabled:opacity-60"
                                 style={{ backgroundColor: "var(--bb-button)", color: "var(--bb-button-text)" }}
                               >
-                                {pushLoading ? "Saving..." : "Enable"}
+                                {pushLoading ? t("shell.notif.push.saving") : t("shell.notif.push.enable")}
                               </button>
                             )}
                           </div>
@@ -3333,10 +3334,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               onClick={() => hidePushPrompt(true)}
                               className="text-xs font-medium text-[var(--bb-text-muted,#9ca3af)] transition hover:text-[var(--bb-text-secondary,#6b7280)]"
                             >
-                              No thanks
+                              {t("shell.notif.push.noThanks")}
                             </button>
                             {pushPermission === "granted" && pushSubscribed && (
-                              <span className="text-[11px] font-medium text-[var(--bb-accent,#4a9b6f)]">Saved for this device</span>
+                              <span className="text-[11px] font-medium text-[var(--bb-accent,#4a9b6f)]">{t("shell.notif.push.saved")}</span>
                             )}
                           </div>
                           {pushError && <p className="text-xs text-red-500 mt-2">{pushError}</p>}
@@ -3348,9 +3349,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                             <div className="rounded-full bg-[#f4f8ff] p-2 shadow-sm">
                               <LouisAvatar mood="wave" size={44} />
                             </div>
-                            <p className="mt-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)]">No notifications yet</p>
+                            <p className="mt-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)]">{t("shell.notif.empty.title")}</p>
                             <p className="mt-1 text-xs leading-relaxed text-[var(--bb-text-secondary,#6b7280)]">
-                              Louis will keep this spot warm until your next update comes in.
+                              {t("shell.notif.empty.body")}
                             </p>
                           </div>
                         ) : (
@@ -3369,18 +3370,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                             // there isn't one, there is no label - printing
                             // the URL at somebody is not a fallback.
                             const notifSourceLabel = (() => {
-                              if (FEED_NOTIFICATION_TYPES.includes(notif.type ?? "")) return "Feed";
+                              if (FEED_NOTIFICATION_TYPES.includes(notif.type ?? "")) return t("shell.notif.source.feed");
                               const path = (notif.article_slug || "").split(/[?#]/)[0];
                               if (!path || path === "/") return "";
-                              if (path.startsWith("/bb-feed")) return "Feed";
-                              if (path.startsWith("/bible-study-games/clue")) return "Bible Trivia";
-                              if (path.startsWith("/dashboard") || path.startsWith("/study-groups")) return "Study Group";
+                              if (path.startsWith("/bb-feed")) return t("shell.notif.source.feed");
+                              if (path.startsWith("/bible-study-games/clue")) return t("shell.notif.source.trivia");
+                              if (path.startsWith("/dashboard") || path.startsWith("/study-groups")) return t("shell.notif.source.studyGroup");
                               if (path.startsWith("/messages")) return "";
                               const last = path.split("/").filter(Boolean).pop() || "";
                               if (!last || /^[0-9a-f-]{20,}$/i.test(last) || /^\d+$/.test(last)) return "";
                               return last.split("-").map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
                             })();
-                            const timeStr = new Date(notif.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+                            const timeStr = new Date(notif.created_at).toLocaleDateString(t.locale, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
 
                             // Buddy request — show Accept / Not Now buttons
                             if (notif.type === "buddy_request") {
@@ -3400,7 +3401,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                       className="bb-skin-notification-primary flex-1 py-1.5 rounded-lg text-xs font-semibold text-white transition disabled:opacity-60"
                                       style={{ backgroundColor: "var(--bb-button)", color: "var(--bb-button-text)" }}
                                     >
-                                      {isLoading ? "..." : "Accept"}
+                                      {isLoading ? "..." : t("shell.notif.accept")}
                                     </button>
                                     <button
                                       type="button"
@@ -3408,7 +3409,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                       onClick={() => handleBuddyRequestDecline(notif)}
                                       className="flex-1 rounded-lg border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface-soft,#f3f4f6)] py-1.5 text-xs font-semibold text-[var(--bb-text-secondary,#6b7280)] transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] disabled:opacity-60"
                                     >
-                                      Not Now
+                                      {t("shell.notif.notNow")}
                                     </button>
                                   </div>
                                 </div>
@@ -3460,7 +3461,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       if (opening && userId) void fetchConversationPreviews(userId);
                     }}
                     className="relative flex h-9 w-9 items-center justify-center rounded-[14px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] hover:text-[var(--bb-accent,#2f7fe8)]"
-                    aria-label="Messages"
+                    aria-label={t("shell.messages.title")}
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -3470,7 +3471,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       <span
                         className="absolute -top-1.5 -right-1.5 min-w-[1.1rem] h-[1.1rem] px-1 rounded-full border-2 border-[var(--bb-card,#ffffff)] text-[10px] leading-none font-bold flex items-center justify-center text-white"
                         style={{ backgroundColor: "var(--bb-button)", color: "var(--bb-button-text)" }}
-                        aria-label={`${unreadMessageCount} unread message${unreadMessageCount === 1 ? "" : "s"}`}
+                        aria-label={t.plural(unreadMessageCount, "shell.messages.unread.one", "shell.messages.unread.other")}
                       >
                         {unreadMessageCount > 99 ? "99+" : unreadMessageCount}
                       </span>
@@ -3480,7 +3481,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   {isMessagesOpen && (
                     <div className="fixed top-16 left-4 right-4 sm:absolute sm:top-full sm:left-auto sm:right-0 sm:mt-2 sm:w-80 bg-[var(--bb-card,#ffffff)] rounded-xl shadow-lg border border-[var(--bb-card-border,#e5e7eb)] z-50 overflow-hidden">
                       <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--bb-card-border,#e5e7eb)]">
-                        <span className="font-semibold text-sm text-[var(--bb-text-primary,#111827)]">Messages</span>
+                        <span className="font-semibold text-sm text-[var(--bb-text-primary,#111827)]">{t("shell.messages.title")}</span>
                         <div className="flex items-center gap-3">
                           {/* Forty-seven conversations were unread, some since June, because
                               a message is only marked read by opening its conversation
@@ -3502,7 +3503,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               }}
                               className="text-xs font-medium text-[var(--bb-text-muted,#6b7280)] hover:text-[var(--bb-text-primary,#111827)]"
                             >
-                              Mark all read
+                              {t("shell.messages.markAllRead")}
                             </button>
                           ) : null}
                           <Link
@@ -3511,22 +3512,22 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                             className="text-xs font-medium"
                             style={{ color: "var(--bb-accent)" }}
                           >
-                            See all
+                            {t("shell.messages.seeAll")}
                           </Link>
                         </div>
                       </div>
 
                       <div className="max-h-80 overflow-y-auto">
                         {loadingPreviews ? (
-                          <p className="text-sm text-[var(--bb-text-muted,#9ca3af)] text-center py-6">Loading...</p>
+                          <p className="text-sm text-[var(--bb-text-muted,#9ca3af)] text-center py-6">{t("shell.messages.loading")}</p>
                         ) : conversationPreviews.length === 0 ? (
                           <div className="text-center py-8 px-4">
                             <div className="mx-auto flex w-fit rounded-full bg-[var(--bb-accent-soft,#eef7f1)] p-2 shadow-sm">
                               <LouisAvatar mood="hands" size={48} />
                             </div>
-                            <p className="text-sm font-semibold text-[var(--bb-text-primary,#1f2937)] mt-3 mb-1">No messages yet</p>
+                            <p className="text-sm font-semibold text-[var(--bb-text-primary,#1f2937)] mt-3 mb-1">{t("shell.messages.empty.title")}</p>
                             <p className="text-xs text-[var(--bb-text-secondary,#6b7280)] leading-relaxed">
-                              Add a few Buddies and Louis will help this inbox start feeling alive.
+                              {t("shell.messages.empty.body")}
                             </p>
                           </div>
                         ) : (
@@ -3544,7 +3545,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                 {showBucketLabel && (
                                   <div className="border-b border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface-soft,#f3f4f6)] px-4 py-2">
                                     <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--bb-text-secondary,#6b7280)]">
-                                      {convo.bucket === "primary" ? "Primary" : "General"}
+                                      {convo.bucket === "primary" ? t("shell.messages.bucket.primary") : t("shell.messages.bucket.general")}
                                     </span>
                                   </div>
                                 )}
@@ -3607,7 +3608,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                       <span className="text-xs text-[var(--bb-text-muted,#9ca3af)] flex-shrink-0">{formatMessageTime(convo.lastMessageAt)}</span>
                                     </div>
                                     <p className={`text-xs truncate mt-0.5 ${convo.hasUnread ? "text-[var(--bb-text-primary,#1f2937)] font-medium" : "text-[var(--bb-text-muted,#9ca3af)]"}`}>
-                                      {convo.lastMessagePreview || "No messages yet"}
+                                      {convo.lastMessagePreview || t("shell.messages.empty.title")}
                                     </p>
                                   </div>
 
@@ -3627,7 +3628,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                           onClick={() => setIsMessagesOpen(false)}
                           className="block text-center text-sm font-medium text-[var(--bb-text-secondary,#4b5563)] hover:text-[var(--bb-text-primary,#111827)] transition"
                         >
-                          View all messages →
+                          {t("shell.messages.viewAll")}
                         </Link>
                       </div>
                     </div>
@@ -3642,13 +3643,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   type="button"
                   onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
                   className="bb-profile-glow-frame flex items-center justify-center w-9 h-9 overflow-hidden rounded-full border border-[var(--bb-card-border,#374151)] bg-[var(--bb-surface-soft,#1e2733)] text-[var(--bb-text-primary,#f9fafb)] transition-colors hover:brightness-110"
-                  aria-label="Profile menu"
+                  aria-label={t("shell.menu.label")}
                   aria-expanded={isProfileMenuOpen}
                 >
                   {headerProfileImageUrl && !headerProfileImageFailed ? (
                     <img
                       src={headerProfileImageUrl}
-                      alt="Your profile"
+                      alt={t("shell.menu.photoAlt")}
                       className="h-full w-full rounded-full object-cover"
                       onError={() => setHeaderProfileImageFailed(true)}
                     />
@@ -3665,18 +3666,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 {/* DROPDOWN MENU */}
                 {isProfileMenuOpen && (
                   <div className="absolute right-0 mt-2 w-60 max-h-[calc(100vh-5rem)] overflow-y-auto overscroll-contain bg-[var(--bb-card,#19212c)] rounded-lg shadow-lg border border-[var(--bb-card-border,#374151)] py-1.5 z-50">
-                    <ProfileMenuHeading>You</ProfileMenuHeading>
+                    <ProfileMenuHeading>{t("shell.menu.you")}</ProfileMenuHeading>
                     <ProfileMenuRow
                       href="/dashboard"
                       icon="🏠"
-                      label="Home"
+                      label={t("shell.menu.home")}
                       active={pathname?.startsWith("/dashboard")}
                       onSelect={closeProfileMenu}
                     />
                     <ProfileMenuRow
                       href="/profile"
                       icon="👤"
-                      label="Profile"
+                      label={t("shell.menu.profile")}
                       active={pathname?.startsWith("/profile")}
                       onSelect={closeProfileMenu}
                     />
@@ -3689,20 +3690,20 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     <ProfileMenuRow
                       href="/notes"
                       icon="📝"
-                      label="Notes"
+                      label={t("shell.menu.notes")}
                       active={pathname?.startsWith("/notes")}
                       onSelect={closeProfileMenu}
                     />
                     <ProfileMenuRow
                       href="/bookmarks"
                       icon="🔖"
-                      label="Bookmarks"
+                      label={t("shell.menu.bookmarks")}
                       active={pathname?.startsWith("/bookmarks")}
                       onSelect={closeProfileMenu}
                     />
 
                     <div className="my-1 border-t border-gray-200" />
-                    <ProfileMenuHeading>App</ProfileMenuHeading>
+                    <ProfileMenuHeading>{t("shell.menu.app")}</ProfileMenuHeading>
                     {/* A plain link to /settings, which is the whole fix (Louis,
                         2026-10-18: "make sure the settings button works cause it
                         don't now").
@@ -3718,7 +3719,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     <ProfileMenuRow
                       href="/settings"
                       icon="⚙️"
-                      label="Settings"
+                      label={t("shell.menu.settings")}
                       active={pathname?.startsWith("/settings")}
                       onSelect={closeProfileMenu}
                     />
@@ -3726,7 +3727,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     <ProfileMenuRow
                       href="/ambassador"
                       icon="💌"
-                      label="Invite a Buddy"
+                      label={t("shell.menu.invite")}
                       active={pathname?.startsWith("/ambassador")}
                       onSelect={closeProfileMenu}
                     />
@@ -3743,17 +3744,17 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                         tab in the bar. */}
 
                     <div className="my-1 border-t border-gray-200" />
-                    <ProfileMenuHeading>Help</ProfileMenuHeading>
+                    <ProfileMenuHeading>{t("shell.menu.help")}</ProfileMenuHeading>
                     <ProfileMenuRow
                       href="/lessons"
                       icon="🧭"
-                      label="How to Use"
+                      label={t("shell.menu.howTo")}
                       active={pathname?.startsWith("/lessons")}
                       onSelect={closeProfileMenu}
                     />
                     <ProfileMenuRow
                       icon="✉️"
-                      label="Contact Us"
+                      label={t("shell.menu.contact")}
                       onSelect={() => {
                         setIsProfileMenuOpen(false);
                         setShowContactUsModal(true);
@@ -3762,7 +3763,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     <ProfileMenuRow
                       href="/updates"
                       icon="📣"
-                      label="Updates"
+                      label={t("shell.menu.updates")}
                       active={pathname?.startsWith("/updates")}
                       onSelect={closeProfileMenu}
                     />
@@ -3843,7 +3844,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     <div className="my-1 border-t border-gray-200" />
                     <ProfileMenuRow
                       icon="🚪"
-                      label="Logout"
+                      label={t("shell.menu.logout")}
                       onSelect={() => {
                         setIsProfileMenuOpen(false);
                         handleLogout();
@@ -3950,12 +3951,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       {/* POST-COMPLETION PUSH ASK — a finished reading is the easy-yes moment */}
       {completionPushDay !== null && !(pushPermission === "granted" && pushSubscribed) && (
-        <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/60 px-6" role="dialog" aria-modal="true" aria-label="Daily reminder">
+        <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/60 px-6" role="dialog" aria-modal="true" aria-label={t("shell.completion.push.label")}>
           <div className="w-full max-w-sm rounded-[28px] bg-white p-6 text-center shadow-2xl">
             <div className="text-4xl" aria-hidden>🎉</div>
-            <h2 className="mt-2 text-xl font-black text-gray-950">Reading done - nice work!</h2>
+            <h2 className="mt-2 text-xl font-black text-gray-950">{t("shell.completion.readingDone")}</h2>
             <p className="mt-2 text-sm font-semibold text-gray-600">
-              Want a reminder when Day {completionPushDay} is ready tomorrow? One tap, and your streak takes care of itself.
+              {t("shell.completion.push.body", { day: completionPushDay })}
             </p>
             {pushError && <p className="mt-2 text-xs font-bold text-red-500">{pushError}</p>}
             <button
@@ -3968,14 +3969,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               className="mt-4 w-full rounded-2xl px-5 py-3 text-sm font-black transition hover:opacity-90 disabled:opacity-60"
               style={{ backgroundColor: "var(--bb-button, #2f7fe8)", color: "var(--bb-button-text, #ffffff)" }}
             >
-              {pushLoading ? "Turning on..." : "Remind me tomorrow"}
+              {pushLoading ? t("shell.completion.push.turningOn") : t("shell.completion.push.remind")}
             </button>
             <button
               type="button"
               onClick={() => setCompletionPushDay(null)}
               className="mt-2 w-full rounded-2xl px-5 py-2.5 text-sm font-bold text-gray-500 transition hover:text-gray-700"
             >
-              Not now
+              {t("shell.completion.notNow")}
             </button>
           </div>
         </div>
@@ -3983,17 +3984,17 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       {/* POST-COMPLETION INSTALL ASK — the icon on the phone is the way back */}
       {completionInstallDay !== null && (
-        <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/60 px-6" role="dialog" aria-modal="true" aria-label="Add to home screen">
+        <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/60 px-6" role="dialog" aria-modal="true" aria-label={t("shell.completion.install.label")}>
           <div className="w-full max-w-sm rounded-[28px] bg-white p-6 text-center shadow-2xl">
             <div className="text-4xl" aria-hidden>📱</div>
             <h2 className="mt-2 text-xl font-black text-gray-950">
-              {completionInstallDay ? `Day ${completionInstallDay} done - nice work!` : "Reading done - nice work!"}
+              {completionInstallDay ? t("shell.completion.dayDone", { day: completionInstallDay }) : t("shell.completion.readingDone")}
             </h2>
             <p className="mt-2 text-sm font-semibold text-gray-600">
               {completionInstallBlocked ||
                 (shouldOfferAppStore()
-                  ? "Get the real iPhone app so tomorrow is one tap away - free, and your streak comes with you."
-                  : "Put Bible Buddy on your phone so tomorrow is one tap away - no searching, no typing, just your icon.")}
+                  ? t("shell.completion.install.appStoreBody")
+                  : t("shell.completion.install.homeScreenBody"))}
             </p>
             {!completionInstallBlocked ? (
               <button
@@ -4002,7 +4003,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   const env = getInstallEnvironment();
                   if (env.isInAppBrowser) {
                     setCompletionInstallBlocked(
-                      "This in-app browser can't install apps. Open mybiblebuddy.net in Safari or Chrome, then tap Add to Home Screen.",
+                      t("shell.completion.install.inAppBrowser"),
                     );
                     return;
                   }
@@ -4032,12 +4033,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     setCompletionInstallDay(null);
                     return;
                   }
-                  setCompletionInstallBlocked("Install isn't available in this browser. Open Bible Buddy in Chrome to add it to your home screen.");
+                  setCompletionInstallBlocked(t("shell.completion.install.unavailable"));
                 }}
                 className="mt-4 w-full rounded-2xl px-5 py-3 text-sm font-black transition hover:opacity-90"
                 style={{ backgroundColor: "var(--bb-button, #2f7fe8)", color: "var(--bb-button-text, #ffffff)" }}
               >
-                {shouldOfferAppStore() ? "Get it on the App Store" : "Add to Home Screen"}
+                {shouldOfferAppStore() ? t("shell.completion.install.appStoreCta") : t("shell.completion.install.addCta")}
               </button>
             ) : null}
             <button
@@ -4045,7 +4046,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               onClick={() => setCompletionInstallDay(null)}
               className="mt-2 w-full rounded-2xl px-5 py-2.5 text-sm font-bold text-gray-500 transition hover:text-gray-700"
             >
-              {completionInstallBlocked ? "Got it" : "Not now"}
+              {completionInstallBlocked ? t("shell.completion.gotIt") : t("shell.completion.notNow")}
             </button>
           </div>
         </div>

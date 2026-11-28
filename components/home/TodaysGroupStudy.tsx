@@ -6,6 +6,8 @@ import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 import { useSupabaseUser } from "../../lib/useSupabaseUser";
 import { getActiveCommunityEvent, getCommunityEventState } from "../../lib/communityEvents";
+import { useT } from "../../lib/i18n/useT";
+import { bookName } from "../../lib/i18n/bookNames";
 
 /**
  * Today's Group Study.
@@ -32,6 +34,7 @@ import { getActiveCommunityEvent, getCommunityEventState } from "../../lib/commu
  * question AND the answers instead of on the answers alone.
  */
 export default function TodaysGroupStudy() {
+  const t = useT();
   const { userId } = useSupabaseUser();
   const event = useMemo(() => getActiveCommunityEvent(), []);
   const eventState = useMemo(() => (event ? getCommunityEventState(event) : null), [event]);
@@ -39,7 +42,9 @@ export default function TodaysGroupStudy() {
 
   const [todayStrip, setTodayStrip] = useState<{
     studyTitle: string;
-    reading: string;
+    /** The book by its English name, as stored; it is named in the reader's language where it is shown. */
+    book: string;
+    chapter: string;
     dayTitle: string;
   } | null>(null);
 
@@ -77,7 +82,8 @@ export default function TodaysGroupStudy() {
       const row = data as { day_title?: string | null; bible_reading_book?: string | null; bible_reading_chapter?: number | null };
       setTodayStrip({
         studyTitle: event.title,
-        reading: `${row.bible_reading_book} ${row.bible_reading_chapter}`,
+        book: String(row.bible_reading_book),
+        chapter: String(row.bible_reading_chapter),
         dayTitle: row.day_title || "",
       });
     })();
@@ -187,14 +193,14 @@ export default function TodaysGroupStudy() {
                   className="flex items-center gap-2 whitespace-nowrap text-base font-black text-[#2b2150] sm:text-xl"
                 >
                   <span aria-hidden>👥</span>
-                  Today&rsquo;s Group Study
+                  {t("home.groupToday.title")}
                 </h2>
                 <p className="mt-1 text-sm font-black text-[#2b2150] sm:text-[15px]">
-                  {todayStrip.reading}
+                  {bookName(todayStrip.book, t.language)} {todayStrip.chapter}
                   {todayStrip.dayTitle ? <> &middot; {todayStrip.dayTitle}</> : null}
                 </p>
                 <p className="mt-1 text-xs font-semibold text-[#6a5aa8] sm:text-sm">
-                  Read, reflect, and join the discussion with others in the Bible Buddy community.
+                  {t("home.groupToday.line")}
                 </p>
 
                 {/* Who has answered today, as faces.
@@ -240,7 +246,7 @@ export default function TodaysGroupStudy() {
                       ))}
                     </span>
                     <span className="text-xs font-black text-[#2b2150]">
-                      {discussion.count === 1 ? "1 answer so far" : `${discussion.count} answers so far`}
+                      {t.plural(discussion.count, "home.groupToday.answers.one", "home.groupToday.answers.other")}
                     </span>
                   </div>
                 ) : null}
@@ -284,10 +290,11 @@ export default function TodaysGroupStudy() {
                 style={{ color: "#ffffff" }}
               >
                 {studyState === "review"
-                  ? `Review Day ${communityDay} →`
+                  ? t("home.day.review", { day: communityDay ?? "" })
                   : studyState === "continue"
-                    ? `Continue Day ${communityDay} →`
-                    : `Start Day ${communityDay} →`}
+                    ? t("home.day.continue", { day: communityDay ?? "" })
+                    : t("home.day.start", { day: communityDay ?? "" })}{" "}
+                →
               </Link>
             </div>
           </div>

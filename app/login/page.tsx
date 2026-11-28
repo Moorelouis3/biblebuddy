@@ -1,7 +1,7 @@
 // app/login/page.tsx
 "use client";
 
-import { FormEvent, useState, useEffect, useSyncExternalStore } from "react";
+import { FormEvent, Fragment, type ReactNode, useState, useEffect, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import AppLoadingScreen from "@/components/AppLoadingScreen";
@@ -9,7 +9,8 @@ import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import PublicHomeButton from "@/components/PublicHomeButton";
 import BrandHomeLink from "@/components/BrandHomeLink";
 import { supabase } from "../../lib/supabaseClient";
-import { authErrorMessage } from "../../lib/authErrorMessage";
+import { authErrorMessage, isUnreachableAuthError, type AuthErrorish } from "../../lib/authErrorMessage";
+import { useT, type Translate } from "../../lib/i18n/useT";
 import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending } from "../../lib/termsAcceptance";
 import { hasCachedSupabaseSession } from "../../lib/authBoot";
@@ -29,8 +30,24 @@ function nextPath() {
   return raw;
 }
 
+/** What to tell the reader, with the two sentences the app wrote itself translated. */
+function authErrorText(t: Translate, error: AuthErrorish) {
+  if (isUnreachableAuthError(error)) return t("auth.error.unreachable");
+  const message = authErrorMessage(error);
+  // authErrorMessage(null) is its own "something went wrong" sentence.
+  return message === authErrorMessage(null) ? t("auth.error.generic") : message;
+}
+
+/** One translated sentence with links inside it: "{terms}" becomes that link. */
+function withLinks(text: string, links: Record<string, ReactNode>) {
+  return text.split(/\{(\w+)\}/g).map((part, index) =>
+    index % 2 === 1 ? <Fragment key={index}>{links[part] ?? part}</Fragment> : part,
+  );
+}
+
 export default function LoginPage() {
   const router = useRouter();
+  const t = useT();
   // Inside the app this page IS the "Continue with email" screen: Apple and
   // Google were already offered on the welcome screen one tap ago, and showing
   // them again made the email option look like an afterthought. The user agent
@@ -97,7 +114,7 @@ export default function LoginPage() {
 
     if (error) {
       setLoading(false);
-      setError(authErrorMessage(error));
+      setError(authErrorText(t, error));
       return;
     }
 
@@ -106,7 +123,7 @@ export default function LoginPage() {
     const { data: sessionData } = await supabase.auth.getSession();
     if (!sessionData?.session) {
       setLoading(false);
-      setError("Login failed: session not established");
+      setError(t("auth.login.sessionFailed"));
       return;
     }
 
@@ -160,13 +177,13 @@ export default function LoginPage() {
         // Cancelling is not a failure - give the controls back and say nothing.
         setLoading(false);
         if (native.reason !== "cancelled") {
-          setError(native.message ?? "Sign-in did not complete. Please try again.");
+          setError(native.message ?? t("auth.error.signInIncomplete"));
         }
         return;
       }
     } catch (nativeError) {
       setLoading(false);
-      setError(nativeError instanceof Error ? nativeError.message : "Could not start sign-in.");
+      setError(nativeError instanceof Error ? nativeError.message : t("auth.error.signInStart"));
       return;
     }
 
@@ -178,13 +195,20 @@ export default function LoginPage() {
 
     if (error) {
       setLoading(false);
-      setError(authErrorMessage(error));
+      setError(authErrorText(t, error));
     }
   }
 
   if (loading || checkingSession) {
     return <AppLoadingScreen />;
   }
+
+  // The three links inside the "you agree to" sentences.
+  const legalLinks = {
+    terms: <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline">{t("auth.legal.terms")}</a>,
+    privacy: <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline">{t("auth.legal.privacyPolicy")}</a>,
+    guidelines: <a href="/community-guidelines" target="_blank" rel="noopener noreferrer" className="underline">{t("auth.legal.guidelines")}</a>,
+  };
 
   return (
     <div className="bb-auth-public min-h-screen bg-[#FAF7EF] text-[#102D4D]">
@@ -222,9 +246,9 @@ export default function LoginPage() {
       <main className="flex min-h-[calc(100vh-88px)] items-center justify-center px-5 pb-12 pt-6 sm:px-8">
         <div className="w-full max-w-md rounded-[24px] border border-[#EFE6D6] bg-white/85 px-6 py-8 shadow-[0_24px_60px_rgba(16,45,77,0.07)] sm:px-7">
           <div className="text-center">
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#8A9AAE]">{nativeApp ? "Email" : "Welcome back"}</p>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#8A9AAE]">{nativeApp ? t("auth.email") : t("auth.login.eyebrow")}</p>
             <h1 className="bb-login-title bb-login-serif mt-3 text-4xl font-black leading-tight">
-              {nativeApp ? "Sign in or create an account" : "Log in to Bible Buddy"}
+              {nativeApp ? t("auth.login.titleApp") : t("auth.login.title")}
             </h1>
             <div className="mx-auto mt-5 flex max-w-[210px] items-center justify-center gap-3 text-[#A9B7C6]">
               <span className="h-px flex-1 bg-[#A9B7C6]/70" />
@@ -235,8 +259,8 @@ export default function LoginPage() {
             </div>
             <p className="mx-auto mt-4 max-w-sm text-sm font-semibold leading-6 text-[#596575]">
               {nativeApp
-                ? "Use an email address you already have. Creating a Bible Buddy account does not create an email address."
-                : "Pick up your Bible study journey right where you left off."}
+                ? t("auth.login.bodyApp")
+                : t("auth.login.body")}
             </p>
           </div>
 
@@ -250,7 +274,7 @@ export default function LoginPage() {
             style={{ backgroundColor: "var(--bb-cv-light-bg, #ffffff)", borderColor: "#DCE1E8", color: "#1F2937" }}
           >
             <GoogleLogo />
-            <span>Continue with Google</span>
+            <span>{t("auth.continueGoogle")}</span>
           </button>
           {/* Guideline 4.8: offering Google means Apple must be offered too.
               Native sheet inside the app; on the web it waits for the flag. */}
@@ -263,11 +287,11 @@ export default function LoginPage() {
             onBusyChange={setLoading}
             className="mt-3 flex min-h-[54px] w-full items-center justify-center gap-3 rounded-[14px] bg-black px-4 text-[15px] font-black text-white transition active:scale-[0.99] disabled:opacity-60"
           />
-          <p className="mt-2 text-center text-[11px] font-semibold leading-5 text-[#596575]">By continuing you agree to our <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline">Terms</a>, <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline">Privacy Policy</a> and <a href="/community-guidelines" target="_blank" rel="noopener noreferrer" className="underline">Community Guidelines</a>.</p>
+          <p className="mt-2 text-center text-[11px] font-semibold leading-5 text-[#596575]">{withLinks(t("auth.legal.agreeContinue"), legalLinks)}</p>
 
           <div className="my-5 flex items-center gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#8A93A3]">
             <span className="h-px flex-1 bg-[#E7DFCE]" />
-            or
+            {t("auth.or")}
             <span className="h-px flex-1 bg-[#E7DFCE]" />
           </div>
           </>
@@ -276,7 +300,7 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="grid gap-3">
             <div>
               <label className="mb-1.5 block text-xs font-black uppercase tracking-[0.12em] text-[#596575]">
-                Email
+                {t("auth.email")}
               </label>
               <input
                 type="email"
@@ -285,13 +309,13 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full rounded-[14px] border px-4 py-3.5 text-[15px] font-bold outline-none transition focus:border-[#102D4D]"
                 style={{ backgroundColor: "var(--bb-cv-light-bg, #FFFFFF)", borderColor: "#E3DACA", color: "#102D4D" }}
-                placeholder="you@example.com"
+                placeholder={t("auth.emailPlaceholder")}
               />
             </div>
 
             <div>
               <label className="mb-1.5 block text-xs font-black uppercase tracking-[0.12em] text-[#596575]">
-                Password
+                {t("auth.password")}
               </label>
               <input
                 type="password"
@@ -306,7 +330,7 @@ export default function LoginPage() {
                   href={email.trim() ? `/reset-password?email=${encodeURIComponent(email.trim())}` : "/reset-password"}
                   className="text-xs font-black text-[#102D4D] underline"
                 >
-                  Reset password
+                  {t("auth.login.resetPassword")}
                 </Link>
               </div>
             </div>
@@ -323,7 +347,7 @@ export default function LoginPage() {
               className="mt-2 flex min-h-[54px] w-full items-center justify-center rounded-[14px] px-5 text-[15px] font-black transition active:scale-[0.99] disabled:opacity-60"
               style={{ backgroundColor: "#102D4D", color: "#FFFFFF" }}
             >
-              {loading ? "Logging in..." : "Log in"}
+              {loading ? t("auth.login.loggingIn") : t("auth.logIn")}
             </button>
           </form>
 
@@ -332,20 +356,19 @@ export default function LoginPage() {
               href={`/signup${typeof window !== "undefined" ? window.location.search : ""}`}
               className="flex min-h-[54px] w-full items-center justify-center rounded-[14px] border border-[#102D4D] px-5 text-[15px] font-black text-[#102D4D] transition active:scale-[0.99]"
             >
-              Create an account
+              {t("auth.login.createAccount")}
             </Link>
             <p className="mt-2 text-center text-xs font-semibold leading-5 text-[#596575]">
-              New to Bible Buddy? Create an account with an email address you
-              already own - this does not create a new email address.
+              {t("auth.login.newHere")}
             </p>
           </div>
 
           <p className="mt-4 text-center text-xs font-semibold text-[#596575]">
-            <Link href="/privacy" className="hover:underline">Privacy</Link>
+            <Link href="/privacy" className="hover:underline">{t("auth.legal.privacy")}</Link>
             {" · "}
-            <Link href="/terms" className="hover:underline">Terms</Link>
+            <Link href="/terms" className="hover:underline">{t("auth.legal.terms")}</Link>
             {" · "}
-            <Link href="/community-guidelines" className="hover:underline">Community Guidelines</Link>
+            <Link href="/community-guidelines" className="hover:underline">{t("auth.legal.guidelines")}</Link>
           </p>
         </div>
       </main>

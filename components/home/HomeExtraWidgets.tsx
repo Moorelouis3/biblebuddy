@@ -43,6 +43,8 @@ import { BIBLE_YEAR_PLAN_HREF } from "../../lib/bibleYearProgress";
 import { fetchVotdEntriesByIds, type VerseOfTheDayEntry } from "../../lib/verseOfTheDayContent";
 import type { WidgetSize } from "../../lib/homeWidgets";
 import { imageThumb } from "../../lib/imageThumb";
+import { useT } from "../../lib/i18n/useT";
+import { bookName } from "../../lib/i18n/bookNames";
 
 /* ---------- shared pieces ---------- */
 
@@ -106,6 +108,7 @@ export function studyHref(studyId: string, started: boolean) {
 /* ---------- Study Guide (one per guide) ---------- */
 
 export function StudyGuideWidget({ studyId, userId, size }: { studyId: string; userId: string | null; size: WidgetSize }) {
+  const t = useT();
   const [shelf, setShelf] = useState<StudyShelf | null>(null);
   const [failed, setFailed] = useState(false);
   useEffect(() => {
@@ -122,15 +125,15 @@ export function StudyGuideWidget({ studyId, userId, size }: { studyId: string; u
   if (!shelf) {
     return (
       <WidgetCard size={size}>
-        {failed ? <Calm>Couldn&apos;t load this study.</Calm> : <div className="h-24 animate-pulse rounded-xl bg-[var(--bb-surface-soft,#eef2f7)]" />}
+        {failed ? <Calm>{t("home.study.failed")}</Calm> : <div className="h-24 animate-pulse rounded-xl bg-[var(--bb-surface-soft,#eef2f7)]" />}
       </WidgetCard>
     );
   }
   if (!study) {
     return (
       <WidgetCard size={size}>
-        <Title icon="📚">Study Guide</Title>
-        <Calm>This study is no longer in the Library.</Calm>
+        <Title icon="📚">{t("home.widget.studyGuide.name")}</Title>
+        <Calm>{t("home.study.gone")}</Calm>
       </WidgetCard>
     );
   }
@@ -139,7 +142,13 @@ export function StudyGuideWidget({ studyId, userId, size }: { studyId: string; u
   const started = p.completedDays > 0;
   const { comingSoon, label } = availability(study, started);
   const href = studyHref(study.id, started);
-  const action = p.isComplete ? "Read Again" : started ? `Continue Day ${p.nextDay}` : comingSoon ? "Sign Up" : "Start Study";
+  const action = p.isComplete
+    ? t("home.study.readAgain")
+    : started
+      ? t("home.day.continue", { day: p.nextDay })
+      : comingSoon
+        ? t("home.study.signUp")
+        : t("home.study.start");
 
   if (size === "s") {
     return (
@@ -152,7 +161,13 @@ export function StudyGuideWidget({ studyId, userId, size }: { studyId: string; u
           <span className="block h-full rounded-full bg-[var(--bb-accent,#2f7fe8)]" style={{ width: `${p.percent}%` }} />
         </span>
         <span className="mt-1 block truncate text-[11px] font-black text-[var(--bb-text-primary,#111827)]">
-          {started ? (p.isComplete ? "Completed" : `Day ${p.nextDay}`) : comingSoon ? "Soon" : "Start"}
+          {started
+            ? p.isComplete
+              ? t("common.completed")
+              : t("home.day.number", { day: p.nextDay })
+            : comingSoon
+              ? t("home.study.soonShort")
+              : t("home.study.startShort")}
         </span>
       </Link>
     );
@@ -166,10 +181,14 @@ export function StudyGuideWidget({ studyId, userId, size }: { studyId: string; u
           <img src={imageThumb(study.cover_image)} alt="" className={`h-28 w-[75px] shrink-0 rounded-lg object-cover shadow ${comingSoon ? "grayscale" : ""}`} />
         ) : null}
         <div className="flex min-w-0 flex-1 flex-col">
-          <Title icon="📚">Study Guide</Title>
+          <Title icon="📚">{t("home.widget.studyGuide.name")}</Title>
           <p className="mt-1 line-clamp-2 text-base font-black leading-tight text-[var(--bb-text-primary,#111827)]">{study.title}</p>
           <p className="mt-0.5 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-            {comingSoon && label ? label : started ? `Day ${Math.min(p.nextDay, study.total_days)} of ${study.total_days} · ${p.percent}%` : `${study.total_days} days`}
+            {comingSoon && label
+              ? label
+              : started
+                ? t("home.study.dayOfPercent", { day: Math.min(p.nextDay, study.total_days), total: study.total_days, percent: p.percent })
+                : t.plural(study.total_days, "home.days.one", "home.days.other")}
           </p>
           {started ? (
             <span className="mt-1.5 block h-2 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#eef2f7)]">
@@ -188,6 +207,7 @@ export function StudyGuideWidget({ studyId, userId, size }: { studyId: string; u
 /* ---------- Ask Lil Louis ---------- */
 
 export function AskLilLouisWidget({ size }: { size: WidgetSize }) {
+  const t = useT();
   const router = useRouter();
   const [question, setQuestion] = useState("");
 
@@ -195,7 +215,7 @@ export function AskLilLouisWidget({ size }: { size: WidgetSize }) {
     return (
       <Link href="/chat" className="bb-hw flex h-full flex-col items-center justify-center gap-1 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-2 text-center shadow-sm">
         <span className="text-2xl" aria-hidden>💬</span>
-        <span className="text-[11px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">Ask Lil Louis</span>
+        <span className="text-[11px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">{t("home.widget.askLilLouis.name")}</span>
       </Link>
     );
   }
@@ -208,8 +228,8 @@ export function AskLilLouisWidget({ size }: { size: WidgetSize }) {
 
   return (
     <WidgetCard size={size}>
-      <Title icon="💬">Ask Lil Louis</Title>
-      <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">Ask anything about the Bible.</p>
+      <Title icon="💬">{t("home.widget.askLilLouis.name")}</Title>
+      <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">{t("home.ask.line")}</p>
       <form
         className="mt-3 flex gap-2"
         onSubmit={(event) => {
@@ -220,13 +240,13 @@ export function AskLilLouisWidget({ size }: { size: WidgetSize }) {
         <input
           value={question}
           onChange={(event) => setQuestion(event.target.value)}
-          placeholder="Why did God test Abraham?"
-          aria-label="Your question for Lil Louis"
+          placeholder={t("home.ask.placeholder")}
+          aria-label={t("home.ask.inputLabel")}
           maxLength={2000}
           className="min-h-[44px] min-w-0 flex-1 rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)] outline-none placeholder:text-[var(--bb-text-muted,#9ca3af)] focus:border-[var(--bb-accent,#2f7fe8)]"
         />
-        <button type="submit" className={BUTTON} aria-label="Ask Lil Louis">
-          Ask
+        <button type="submit" className={BUTTON} aria-label={t("home.widget.askLilLouis.name")}>
+          {t("home.ask.button")}
         </button>
       </form>
     </WidgetCard>
@@ -253,6 +273,7 @@ function titleCase(book: string) {
 }
 
 export function ContinueReadingWidget({ userId, size }: { userId: string | null; size: WidgetSize }) {
+  const t = useT();
   const [last, setLast] = useState<{ book: string; chapter: number } | null | undefined>(undefined);
   useEffect(() => {
     if (!userId) return;
@@ -275,27 +296,30 @@ export function ContinueReadingWidget({ userId, size }: { userId: string | null;
 
   const next = last ? nextChapter(titleCase(last.book), last.chapter) : { book: "Genesis", chapter: 1 };
   const href = readerHref(next.book, next.chapter);
-  const lastLine = last ? `Last read ${titleCase(last.book)} ${last.chapter}` : "Start at the beginning";
+  // The English book name stays the key in the link; only what is shown changes.
+  const lastLine = last
+    ? t("home.reading.lastRead", { reference: `${bookName(titleCase(last.book), t.language)} ${last.chapter}` })
+    : t("home.reading.startAtBeginning");
 
   if (size === "s") {
     return (
       <Link href={href} className="bb-hw flex h-full flex-col justify-center rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-2.5 shadow-sm">
         <span className="text-xl" aria-hidden>🔖</span>
         <span className="mt-1 text-[11px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-          {next.book} {next.chapter}
+          {bookName(next.book, t.language)} {next.chapter}
         </span>
       </Link>
     );
   }
   return (
     <WidgetCard size={size}>
-      <Title icon="🔖">Continue Reading</Title>
+      <Title icon="🔖">{t("home.widget.continueReading.name")}</Title>
       <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#111827)]">
-        {next.book} {next.chapter}
+        {bookName(next.book, t.language)} {next.chapter}
       </p>
       <p className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">{last === undefined ? " " : lastLine}</p>
       <Link href={href} className={`${BUTTON} mt-3`}>
-        Open the Bible →
+        {t("home.reading.open")}
       </Link>
     </WidgetCard>
   );
@@ -314,6 +338,7 @@ export function BibleInOneYearWidget({
   planFinished: boolean;
   size: WidgetSize;
 }) {
+  const t = useT();
   const day = planDay ?? 1;
   const entry = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((d) => d.dayNumber === day) ?? null;
   const percent = Math.round((completedDays / 365) * 100);
@@ -334,9 +359,9 @@ export function BibleInOneYearWidget({
 
   return (
     <WidgetCard size={size}>
-      <Title icon="📅">Bible in One Year</Title>
+      <Title icon="📅">{t("home.widget.bibleInOneYear.name")}</Title>
       <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#111827)]">
-        {planFinished ? "Plan complete" : `Day ${day} of 365`}
+        {planFinished ? t("home.bibleYear.complete") : t("home.day.ofTotal", { day, total: 365 })}
       </p>
       {entry && !planFinished ? (
         <p className="text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
@@ -351,7 +376,7 @@ export function BibleInOneYearWidget({
       ) : null}
       <div className="mt-3 flex flex-wrap gap-2">
         <Link href={BIBLE_YEAR_PLAN_HREF} className={BUTTON}>
-          {planFinished ? "View plan" : completedDays === 0 ? `Start Day ${day}` : `Continue Day ${day}`} →
+          {planFinished ? t("home.bibleYear.viewPlan") : completedDays === 0 ? t("home.day.start", { day }) : t("home.day.continue", { day })} →
         </Link>
         {!planFinished ? (
           <button
@@ -360,7 +385,7 @@ export function BibleInOneYearWidget({
             className="inline-flex min-h-[40px] items-center rounded-xl border border-[var(--bb-card-border,#dbe7f4)] px-4 text-sm font-black text-[var(--bb-text-primary,#111827)]"
             aria-pressed={playing}
           >
-            {playing ? "⏸ Pause" : "▶ Listen"}
+            {playing ? t("home.bibleYear.pause") : t("home.bibleYear.listen")}
           </button>
         ) : null}
       </div>
@@ -377,6 +402,7 @@ function plain(text: string | null | undefined) {
 }
 
 export function StudyNotesWidget({ userId, size }: { userId: string | null; size: WidgetSize }) {
+  const t = useT();
   const [note, setNote] = useState<NoteRow | null | undefined>(undefined);
   useEffect(() => {
     if (!userId) return;
@@ -397,22 +423,22 @@ export function StudyNotesWidget({ userId, size }: { userId: string | null; size
   const preview = note ? plain(note.write) || plain(note.passage) : "";
   return (
     <WidgetCard size={size}>
-      <Title icon="📝">Study Notes</Title>
+      <Title icon="📝">{t("home.widget.studyNotes.name")}</Title>
       {note === undefined ? (
         <div className="mt-2 h-10 animate-pulse rounded-lg bg-[var(--bb-surface-soft,#eef2f7)]" />
       ) : note ? (
         <>
           <p className="mt-1 text-sm font-black text-[var(--bb-text-primary,#111827)]">
-            {note.book ? `${note.book} ${note.chapter ?? ""}`.trim() : "Your latest note"}
+            {note.book ? `${bookName(note.book, t.language)} ${note.chapter ?? ""}`.trim() : t("home.notes.latest")}
           </p>
           {preview ? <p className="mt-0.5 line-clamp-2 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">{preview}</p> : null}
         </>
       ) : (
-        <Calm>No notes yet. Write down what you are learning.</Calm>
+        <Calm>{t("home.notes.empty")}</Calm>
       )}
       <div className="mt-3 flex flex-wrap gap-2">
         <Link href="/notes" className={BUTTON}>
-          {note ? "Open notes" : "Start a note"} →
+          {note ? t("home.notes.open") : t("home.notes.start")} →
         </Link>
       </div>
     </WidgetCard>
@@ -422,6 +448,7 @@ export function StudyNotesWidget({ userId, size }: { userId: string | null; size
 /* ---------- Saved Verses ---------- */
 
 export function SavedVersesWidget({ userId, size }: { userId: string | null; size: WidgetSize }) {
+  const t = useT();
   const [verse, setVerse] = useState<VerseOfTheDayEntry | null | undefined>(undefined);
   useEffect(() => {
     if (!userId) return;
@@ -450,7 +477,7 @@ export function SavedVersesWidget({ userId, size }: { userId: string | null; siz
 
   return (
     <WidgetCard size={size}>
-      <Title icon="🔖">Saved Verses</Title>
+      <Title icon="🔖">{t("home.widget.savedVerses.name")}</Title>
       {verse === undefined ? (
         <div className="mt-2 h-12 animate-pulse rounded-lg bg-[var(--bb-surface-soft,#eef2f7)]" />
       ) : verse ? (
@@ -461,19 +488,19 @@ export function SavedVersesWidget({ userId, size }: { userId: string | null; siz
           <p className="mt-1 text-xs font-black text-[var(--bb-text-muted,#6b7280)]">{verse.reference}</p>
         </>
       ) : (
-        <Calm>Save a Verse of the Day with its bookmark and it appears here.</Calm>
+        <Calm>{t("home.saved.empty")}</Calm>
       )}
       <div className="mt-3 flex flex-wrap gap-2">
         {verse ? (
           <Link href={readerHref(verse.book, verse.chapter)} className={BUTTON}>
-            Open in the Bible →
+            {t("home.saved.open")}
           </Link>
         ) : null}
         <Link
           href="/bookmarks"
           className="inline-flex min-h-[40px] items-center rounded-xl border border-[var(--bb-card-border,#dbe7f4)] px-4 text-sm font-black text-[var(--bb-text-primary,#111827)]"
         >
-          All saved
+          {t("home.saved.all")}
         </Link>
       </div>
     </WidgetCard>
@@ -483,6 +510,7 @@ export function SavedVersesWidget({ userId, size }: { userId: string | null; siz
 /* ---------- Group Study Countdown ---------- */
 
 export function GroupCountdownWidget({ size }: { size: WidgetSize }) {
+  const t = useT();
   const [now, setNow] = useState(() => Date.now());
   useEffect(() => {
     const timer = window.setInterval(() => setNow(Date.now()), 60_000);
@@ -492,8 +520,8 @@ export function GroupCountdownWidget({ size }: { size: WidgetSize }) {
   if (!event) {
     return (
       <WidgetCard size={size}>
-        <Title icon="⏳">Group Study Countdown</Title>
-        <Calm>No group study is scheduled yet. The next one shows up here.</Calm>
+        <Title icon="⏳">{t("home.widget.groupCountdown.name")}</Title>
+        <Calm>{t("home.countdown.none")}</Calm>
       </WidgetCard>
     );
   }
@@ -502,13 +530,22 @@ export function GroupCountdownWidget({ size }: { size: WidgetSize }) {
   const hours = Math.floor((ms % 86_400_000) / 3_600_000);
   return (
     <WidgetCard size={size}>
-      <Title icon="⏳">Next Group Study</Title>
+      <Title icon="⏳">{t("home.countdown.next")}</Title>
       <p className="mt-1 line-clamp-2 text-base font-black text-[var(--bb-text-primary,#111827)]">{event.title}</p>
       <p className="text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">
-        Starts in {days} day{days === 1 ? "" : "s"}, {hours} hour{hours === 1 ? "" : "s"}
+        {t(
+          days === 1
+            ? hours === 1
+              ? "home.countdown.startsIn.dayHour"
+              : "home.countdown.startsIn.dayHours"
+            : hours === 1
+              ? "home.countdown.startsIn.daysHour"
+              : "home.countdown.startsIn.daysHours",
+          { days, hours },
+        )}
       </p>
       <Link href={`/events/${event.slug}?join=1&src=home_widget`} className={`${BUTTON} mt-3`}>
-        Sign up →
+        {t("home.countdown.signUp")}
       </Link>
     </WidgetCard>
   );
@@ -517,6 +554,7 @@ export function GroupCountdownWidget({ size }: { size: WidgetSize }) {
 /* ---------- Buddies ---------- */
 
 export function BuddiesWidget({ userId, size }: { userId: string | null; size: WidgetSize }) {
+  const t = useT();
   const [counts, setCounts] = useState<{ buddies: number; pending: number } | null>(null);
   useEffect(() => {
     if (!userId) return;
@@ -543,21 +581,23 @@ export function BuddiesWidget({ userId, size }: { userId: string | null; size: W
 
   return (
     <WidgetCard size={size}>
-      <Title icon="🤝">Buddies</Title>
+      <Title icon="🤝">{t("home.widget.buddies.name")}</Title>
       {counts ? (
         <>
           <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#111827)]">
-            {counts.buddies} {counts.buddies === 1 ? "buddy" : "buddies"}
+            {t.plural(counts.buddies, "home.buddies.count.one", "home.buddies.count.other")}
           </p>
           <p className="text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-            {counts.pending ? `${counts.pending} buddy request${counts.pending === 1 ? "" : "s"} waiting` : "Study alongside friends."}
+            {counts.pending
+              ? t.plural(counts.pending, "home.buddies.pending.one", "home.buddies.pending.other")
+              : t("home.buddies.line")}
           </p>
         </>
       ) : (
         <div className="mt-2 h-10 animate-pulse rounded-lg bg-[var(--bb-surface-soft,#eef2f7)]" />
       )}
       <Link href="/bb-feed" className={`${BUTTON} mt-3`}>
-        Open the feed →
+        {t("home.buddies.openFeed")}
       </Link>
     </WidgetCard>
   );
@@ -566,6 +606,7 @@ export function BuddiesWidget({ userId, size }: { userId: string | null; size: W
 /* ---------- Messages ---------- */
 
 export function MessagesWidget({ userId, size }: { userId: string | null; size: WidgetSize }) {
+  const t = useT();
   const [unread, setUnread] = useState<number | null>(null);
   useEffect(() => {
     if (!userId) return;
@@ -588,7 +629,7 @@ export function MessagesWidget({ userId, size }: { userId: string | null; size: 
     };
   }, [userId]);
 
-  const line = unread === null ? " " : unread ? `${unread} unread` : "All caught up";
+  const line = unread === null ? " " : unread ? t("home.messages.unread", { count: unread }) : t("home.messages.none");
   if (size === "s") {
     return (
       <Link href="/messages" className="bb-hw relative flex h-full flex-col items-center justify-center gap-1 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-2 text-center shadow-sm">
@@ -599,10 +640,10 @@ export function MessagesWidget({ userId, size }: { userId: string | null; size: 
   }
   return (
     <WidgetCard size={size}>
-      <Title icon="✉️">Messages</Title>
+      <Title icon="✉️">{t("home.widget.messages.name")}</Title>
       <p className="mt-1 text-lg font-black text-[var(--bb-text-primary,#111827)]">{line}</p>
       <Link href="/messages" className={`${BUTTON} mt-3`}>
-        Open messages →
+        {t("home.messages.open")}
       </Link>
     </WidgetCard>
   );
@@ -611,6 +652,7 @@ export function MessagesWidget({ userId, size }: { userId: string | null; size: 
 /* ---------- Prayer Requests ---------- */
 
 export function PrayerRequestsWidget({ size }: { size: WidgetSize }) {
+  const t = useT();
   const [post, setPost] = useState<{ content: string; created_at: string } | null | undefined>(undefined);
   useEffect(() => {
     let cancelled = false;
@@ -629,16 +671,16 @@ export function PrayerRequestsWidget({ size }: { size: WidgetSize }) {
 
   return (
     <WidgetCard size={size}>
-      <Title icon="🙏">Prayer Requests</Title>
+      <Title icon="🙏">{t("home.widget.prayerRequests.name")}</Title>
       {post === undefined ? (
         <div className="mt-2 h-10 animate-pulse rounded-lg bg-[var(--bb-surface-soft,#eef2f7)]" />
       ) : post ? (
         <p className="mt-1.5 line-clamp-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)]">{plain(post.content)}</p>
       ) : (
-        <Calm>No prayer requests right now.</Calm>
+        <Calm>{t("home.prayer.none")}</Calm>
       )}
       <Link href="/bb-feed" className={`${BUTTON} mt-3`}>
-        Pray with the community →
+        {t("home.prayer.open")}
       </Link>
     </WidgetCard>
   );

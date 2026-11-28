@@ -20,6 +20,7 @@
 
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { useT } from "../lib/i18n/useT";
 import { lockDocumentScroll } from "../hooks/useDocumentScrollLock";
 import { Sparkle } from "./NewGamesPopup";
 
@@ -33,19 +34,11 @@ const ENTRANCE_CSS = `
 }
 `;
 
+// The words are in lib/i18n/messages/en/shell.ts (and de/shell.ts).
 const HIGHLIGHTS = [
-  {
-    title: "You choose the apps",
-    detail: "Pick them in Apple's own Screen Time picker. Bible Buddy never sees which ones.",
-  },
-  {
-    title: "One Bible Buddy task unlocks them",
-    detail: "A chapter, a devotional day, a trivia round, a note and more.",
-  },
-  {
-    title: "Back on at midnight",
-    detail: "They lock again each day. Unlock now is always one tap away.",
-  },
+  { titleKey: "shell.bibleLockPopup.point1.title", detailKey: "shell.bibleLockPopup.point1.detail" },
+  { titleKey: "shell.bibleLockPopup.point2.title", detailKey: "shell.bibleLockPopup.point2.detail" },
+  { titleKey: "shell.bibleLockPopup.point3.title", detailKey: "shell.bibleLockPopup.point3.detail" },
 ] as const;
 
 export type BibleLockCloseMethod = "close_button" | "escape" | "backdrop" | "later";
@@ -61,6 +54,7 @@ export default function BibleLockPopup({
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const close = onClose;
   const setUp = onCta;
+  const t = useT();
 
   // Background scroll lock, shared with every other modal.
   useEffect(() => lockDocumentScroll('[aria-labelledby="bible-lock-popup-title"]'), []);
@@ -130,7 +124,7 @@ export default function BibleLockPopup({
         <button
           type="button"
           onClick={() => close("close_button")}
-          aria-label="Close"
+          aria-label={t("shell.popup.ui.close")}
           className="absolute right-3.5 top-3.5 z-20 grid h-11 w-11 place-items-center rounded-full bg-white text-[#111827] shadow-[0_4px_14px_rgba(60,40,120,0.22)] outline-none transition active:scale-95 focus-visible:ring-2 focus-visible:ring-[#7c3aed]"
         >
           <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
@@ -147,18 +141,18 @@ export default function BibleLockPopup({
             <div className="flex items-center gap-1.5 pr-14">
               <Sparkle color="#7c3aed" className="h-5 w-5 shrink-0 -rotate-12" />
               <p className="whitespace-nowrap rounded-full bg-[#dfcffb] px-3.5 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-[#5b21b6]">
-                New in Bible Buddy
+                {t("shell.popup.ui.newPill")}
               </p>
             </div>
             <h2
               id="bible-lock-popup-title"
               className="mt-3 text-[30px] font-black leading-[1.08] tracking-tight text-[#14122b] sm:text-[34px]"
             >
-              Bible first.{" "}
+              {t("shell.bibleLockPopup.headline1")}{" "}
               <span className="whitespace-nowrap">
-                Apps{" "}
+                {t("shell.bibleLockPopup.headline2")}{" "}
                 <span className="relative inline-block">
-                  after.
+                  {t("shell.bibleLockPopup.headline3")}
                   <svg
                     viewBox="0 0 100 10"
                     preserveAspectRatio="none"
@@ -171,7 +165,7 @@ export default function BibleLockPopup({
               </span>
             </h2>
             <p id="bible-lock-popup-sub" className="mt-2.5 text-[16px] font-semibold leading-snug text-[#4b5068]">
-              Bible Lock keeps the apps that pull you away locked until you have spent time with God today.
+              {t("shell.bibleLockPopup.sub")}
             </p>
           </div>
 
@@ -193,10 +187,10 @@ export default function BibleLockPopup({
                 </span>
                 <div className="min-w-0">
                   <h3 id="bible-lock-popup-card-title" className="text-[21px] font-black leading-tight text-[#14122b]">
-                    Bible Lock
+                    {t("shell.bibleLockPopup.cardTitle")}
                   </h3>
                   <p className="text-[14px] font-semibold leading-snug text-[#4b5068]">
-                    You pick the apps. Today&apos;s Bible time opens them.
+                    {t("shell.bibleLockPopup.cardLine")}
                   </p>
                 </div>
               </div>
@@ -211,11 +205,11 @@ export default function BibleLockPopup({
                   <LockedTile className="bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white">📷</LockedTile>
                   <LockedTile className="bg-[#ff0033] text-white">▶</LockedTile>
                   <span className="ml-auto rounded-full bg-[#ede4ff] px-3 py-1 text-[11px] font-black uppercase tracking-[0.1em] text-[#5b21b6] sm:hidden">
-                    Locked
+                    {t("shell.bibleLockPopup.locked")}
                   </span>
                   <p className="min-w-0 basis-full text-[13px] font-bold leading-snug text-[#14122b] sm:basis-0 sm:flex-1 sm:pl-1">
-                    3 apps chosen.
-                    <span className="font-semibold text-[#5b6079] sm:block"> Locked until today&apos;s reading is done.</span>
+                    {t("shell.bibleLockPopup.chosen")}
+                    <span className="font-semibold text-[#5b6079] sm:block">{" "}{t("shell.bibleLockPopup.lockedUntil")}</span>
                   </p>
                 </div>
                 <div className="mt-2.5 flex items-center gap-2 rounded-xl bg-[#e8fbf3] px-3 py-2">
@@ -223,7 +217,7 @@ export default function BibleLockPopup({
                     ✓
                   </span>
                   <p className="min-w-0 text-[13px] font-bold leading-snug text-[#0f5d45]">
-                    Finish a chapter and they come back until midnight.
+                    {t("shell.bibleLockPopup.finish")}
                   </p>
                 </div>
               </div>
@@ -231,7 +225,7 @@ export default function BibleLockPopup({
 
             <ul className="mt-3.5 flex flex-col gap-2.5 px-1 pb-3.5">
               {HIGHLIGHTS.map((item) => (
-                <li key={item.title} className="flex items-start gap-3">
+                <li key={item.titleKey} className="flex items-start gap-3">
                   <span
                     className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#ede4ff] text-[13px] font-black text-[#6d28d9]"
                     aria-hidden="true"
@@ -239,8 +233,8 @@ export default function BibleLockPopup({
                     ✓
                   </span>
                   <p className="min-w-0 text-[14px] leading-snug text-[#4b5068]">
-                    <span className="block text-[15px] font-black text-[#14122b]">{item.title}</span>
-                    {item.detail}
+                    <span className="block text-[15px] font-black text-[#14122b]">{t(item.titleKey)}</span>
+                    {t(item.detailKey)}
                   </p>
                 </li>
               ))}
@@ -259,16 +253,16 @@ export default function BibleLockPopup({
             className="bb-cv-fp-main flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full px-5 text-[17px] font-black text-white shadow-[0_8px_18px_rgba(109,40,217,0.35)] outline-none transition active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-[#c4b5fd]"
             style={{ background: "var(--bb-pop-button, linear-gradient(180deg, #8b45f0 0%, #6d28d9 100%))" }}
           >
-            Set up Bible Lock <span aria-hidden="true">→</span>
+            {t("shell.bibleLockPopup.cta")} <span aria-hidden="true">→</span>
           </button>
           <p className="mt-3 flex items-center justify-center gap-3 text-[13px] font-bold text-[#3b3f58]">
             <span className="h-px w-8 bg-[#cdbff0]" aria-hidden="true" />
             <span className="text-center">
-              100% FREE{" "}
+              {t("shell.popup.ui.free")}{" "}
               <span className="text-[#7c3aed]" aria-hidden="true">
                 •
               </span>{" "}
-              Unlock any time
+              {t("shell.bibleLockPopup.anyTime")}
             </span>
             <span className="h-px w-8 bg-[#cdbff0]" aria-hidden="true" />
           </p>
@@ -277,7 +271,7 @@ export default function BibleLockPopup({
             onClick={() => close("later")}
             className="mx-auto block min-h-[44px] rounded-xl px-6 text-[15px] font-bold text-[#7b8094] outline-none focus-visible:ring-2 focus-visible:ring-[#7c3aed]"
           >
-            Maybe later
+            {t("shell.popup.ui.later")}
           </button>
         </div>
       </div>

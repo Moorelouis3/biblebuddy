@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { useT } from "../lib/i18n/useT";
 
 interface ColorPickerProps {
   anchor: { x: number; y: number } | null;
@@ -28,14 +29,15 @@ interface ColorPickerProps {
 }
 
 const COLORS = [
-  { name: "yellow", code: "#FFF9C4" },
-  { name: "green", code: "#C8E6C9" },
-  { name: "blue", code: "#BBDEFB" },
-  { name: "purple", code: "#E1BEE7" },
-  { name: "orange", code: "#FFE0B2" },
-];
+  { name: "yellow", labelKey: "reader.color.yellow", code: "#FFF9C4" },
+  { name: "green", labelKey: "reader.color.green", code: "#C8E6C9" },
+  { name: "blue", labelKey: "reader.color.blue", code: "#BBDEFB" },
+  { name: "purple", labelKey: "reader.color.purple", code: "#E1BEE7" },
+  { name: "orange", labelKey: "reader.color.orange", code: "#FFE0B2" },
+] as const;
 
 export const ColorPicker: React.FC<ColorPickerProps> = ({ anchor, selectedColor, onSelect, onClose, memory, share }) => {
+  const t = useT();
   const ref = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -75,7 +77,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ anchor, selectedColor,
         {COLORS.map((c) => (
           <button
             key={c.name}
-            aria-label={c.name}
+            aria-label={t(c.labelKey)}
             className={`w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all duration-150 ${selectedColor === c.name ? "border-gray-800 scale-110" : "border-transparent"}`}
             style={{ backgroundColor: c.code }}
             onClick={() => onSelect(c.name)}
@@ -92,7 +94,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ anchor, selectedColor,
             memory.saved ? "border-green-600 bg-green-50 text-green-800" : "border-gray-200 bg-white text-gray-900 hover:bg-gray-50"
           }`}
         >
-          {memory.failed ? "Did not save. Tap to retry" : memory.saved ? "✓ In Bible Memory" : "🧠 Add to Bible Memory"}
+          {memory.failed ? t("reader.memory.failed") : memory.saved ? `✓ ${t("reader.memory.saved")}` : `🧠 ${t("reader.memory.add")}`}
         </button>
       ) : null}
       {share ? (
@@ -102,7 +104,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ anchor, selectedColor,
           disabled={share.busy}
           className="whitespace-nowrap rounded-lg border border-gray-200 bg-white px-3 py-2 text-left text-sm font-bold text-gray-900 transition hover:bg-gray-50 disabled:opacity-60"
         >
-          {share.busy ? "Preparing…" : "↗ Share verse"}
+          {share.busy ? t("reader.share.preparing") : `↗ ${t("reader.share.verse")}`}
         </button>
       ) : null}
     </div>,

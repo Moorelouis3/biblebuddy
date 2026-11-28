@@ -27,6 +27,8 @@ import { useEffect, useRef, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import { lockDocumentScroll } from "../../hooks/useDocumentScrollLock";
 import type { PopupDefinition, PopupEventSignup, PopupPreview } from "../../lib/popups/catalog";
+import { localizePopup } from "../../lib/popups/localize";
+import { useT } from "../../lib/i18n/useT";
 import { Sparkle } from "../NewGamesPopup";
 
 export type FeaturePopupCloseMethod =
@@ -170,7 +172,8 @@ export type FeaturePopupPoll = {
 export type FeaturePopupSignup = "idle" | "working" | "done";
 
 export default function FeaturePopup({
-  popup,
+  popup: catalogPopup,
+  override,
   inSection,
   onClose,
   onCta,
@@ -180,6 +183,11 @@ export default function FeaturePopup({
   onVote,
 }: {
   popup: PopupDefinition;
+  /**
+   * Words that replace the entry's own once it is in the reader's language:
+   * the week's trivia theme as the headline (PopupCoordinator).
+   */
+  override?: Partial<Pick<PopupDefinition, "headline" | "headlineAccent" | "description">>;
   /** The person is already where the feature lives: the button just closes. */
   inSection: boolean;
   onClose: (method: FeaturePopupCloseMethod) => void;
@@ -192,6 +200,9 @@ export default function FeaturePopup({
   poll?: FeaturePopupPoll;
   onVote?: (optionKey: string) => void;
 }) {
+  const t = useT();
+  // The catalog is English; this is the same entry in the reader's language.
+  const popup: PopupDefinition = { ...localizePopup(catalogPopup, t), ...override };
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const titleId = `feature-popup-title-${popup.id}`;
   const tone =
@@ -298,7 +309,7 @@ export default function FeaturePopup({
         <button
           type="button"
           onClick={() => onClose("close_button")}
-          aria-label="Close"
+          aria-label={t("shell.popup.ui.close")}
           className="absolute right-3.5 top-3.5 z-20 grid h-11 w-11 place-items-center rounded-full bg-white text-[#111827] shadow-[0_4px_14px_rgba(60,40,120,0.22)] outline-none transition active:scale-95 focus-visible:ring-2 focus-visible:ring-[#7c3aed]"
         >
           <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
@@ -443,7 +454,7 @@ export default function FeaturePopup({
                 ["--tw-ring-color" as string]: tone.ring,
               }}
             >
-              {signup === "done" ? "See the study page" : signup === "working" ? "Signing you up…" : popup.cta.label}
+              {signup === "done" ? t("shell.popup.ui.seeStudy") : signup === "working" ? t("shell.popup.ui.signingUp") : popup.cta.label}
               {signup === "done" ? <span aria-hidden="true">→</span> : null}
             </button>
           ) : poll && !poll.voted ? null : popup.cta.external ? (
@@ -500,7 +511,7 @@ export default function FeaturePopup({
               onClick={() => onClose("later")}
               className="min-h-[44px] rounded-xl px-4 text-[15px] font-bold text-[#7b8094] outline-none focus-visible:ring-2 focus-visible:ring-[#7c3aed]"
             >
-              {signup === "done" || poll?.voted ? "Close" : popup.event ? "Maybe Later" : "Maybe later"}
+              {signup === "done" || poll?.voted ? t("shell.popup.ui.close") : popup.event ? t("shell.popup.ui.laterEvent") : t("shell.popup.ui.later")}
             </button>
             {popup.offerNeverAgain ? (
               <>
@@ -512,7 +523,7 @@ export default function FeaturePopup({
                   onClick={() => onClose("never")}
                   className="min-h-[44px] rounded-xl px-4 text-[14px] font-semibold text-[#9aa0b4] outline-none focus-visible:ring-2 focus-visible:ring-[#7c3aed]"
                 >
-                  Don&apos;t show again
+                  {t("shell.popup.ui.never")}
                 </button>
               </>
             ) : null}
@@ -539,12 +550,13 @@ function PollOptions({
   onVote?: (optionKey: string) => void;
   tone: (typeof TONES)[keyof typeof TONES];
 }) {
+  const t = useT();
   const total = poll.totalVotes + (poll.voted ? 1 : 0);
   return (
     <section
       className="rounded-[26px] border p-3 shadow-[0_6px_18px_rgba(91,80,220,0.12)]"
       style={{ background: tone.card, borderColor: tone.border }}
-      aria-label="Answers"
+      aria-label={t("shell.popup.ui.answers")}
     >
       <div className="flex flex-col gap-2">
         {poll.options.map((option) => {
@@ -705,9 +717,13 @@ function PosterSignup({
   onCta: () => void;
   onDone?: () => void;
 }) {
+  const t = useT();
   const done = signup === "done";
   const working = signup === "working";
   const spot = poster.button;
+  // The wide artwork has its English words drawn into the picture, so any
+  // other language gets the phone layout (picture plus real text) at every size.
+  const textOnly = t.language !== "en";
 
   return (
     <div
@@ -731,7 +747,7 @@ function PosterSignup({
         aria-labelledby={titleId}
         aria-describedby={`${titleId}-sub`}
         className="bb-feature-popup-card relative flex max-h-full w-full flex-col"
-        style={{ maxWidth: done ? 460 : "min(880px, calc((100dvh - 48px) * 1.483))" }}
+        style={{ maxWidth: done || textOnly ? 460 : "min(880px, calc((100dvh - 48px) * 1.483))" }}
       >
         <h2 id={titleId} className="sr-only">
           {done ? event.doneTitle : popup.headline}
@@ -741,7 +757,7 @@ function PosterSignup({
         </p>
 
         {/* Wide screen: the artwork itself. */}
-        {done ? null : (
+        {done || textOnly ? null : (
           <div className="relative hidden overflow-hidden rounded-[28px] shadow-2xl sm:block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -755,7 +771,7 @@ function PosterSignup({
             <button
               type="button"
               onClick={() => onClose("close_button")}
-              aria-label="Close"
+              aria-label={t("shell.popup.ui.close")}
               className="absolute right-[1.6%] top-[2%] grid h-[7.5%] w-[5%] place-items-center rounded-full bg-black/45 text-[1.6vw] font-bold leading-none text-white/90 outline-none backdrop-blur-sm transition hover:bg-black/70 hover:text-white focus-visible:ring-2 focus-visible:ring-white lg:text-[20px]"
             >
               ✕
@@ -772,7 +788,7 @@ function PosterSignup({
               }`}
               style={{ left: `${spot.left}%`, top: `${spot.top}%`, width: `${spot.width}%`, height: `${spot.height}%` }}
             >
-              {working ? "Signing you up…" : null}
+              {working ? t("shell.popup.ui.signingUp") : null}
             </button>
           </div>
         )}
@@ -780,7 +796,7 @@ function PosterSignup({
         {/* Phone, and the "you're signed up" card at every size. */}
         <div
           className={`flex max-h-[calc(100dvh-24px)] min-h-0 flex-col overflow-hidden rounded-[24px] bg-[#0c0b12] text-white shadow-2xl ${
-            done ? "" : "sm:hidden"
+            done || textOnly ? "" : "sm:hidden"
           }`}
         >
           <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
@@ -796,7 +812,7 @@ function PosterSignup({
               <button
                 type="button"
                 onClick={() => onClose("close_button")}
-                aria-label="Close"
+                aria-label={t("shell.popup.ui.close")}
                 className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full bg-black/55 text-xl font-bold text-white outline-none backdrop-blur-sm focus-visible:ring-2 focus-visible:ring-white"
               >
                 ✕
@@ -845,7 +861,7 @@ function PosterSignup({
           </div>
           <div className="shrink-0 border-t border-white/10 bg-[#0c0b12] px-4 pb-2 pt-3">
             <button type="button" onClick={done ? onDone : onCta} disabled={working} className={GOLD_BUTTON}>
-              {done ? "See the study page" : working ? "Signing you up…" : poster.ctaLabel}
+              {done ? t("shell.popup.ui.seeStudy") : working ? t("shell.popup.ui.signingUp") : poster.ctaLabel}
               {working ? null : <span aria-hidden="true">→</span>}
             </button>
             <button
@@ -853,7 +869,7 @@ function PosterSignup({
               onClick={() => onClose("later")}
               className="mx-auto mt-1 block min-h-[44px] rounded-xl px-4 text-[15px] font-bold text-white/60 outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
-              {done ? "Close" : "Maybe Later"}
+              {done ? t("shell.popup.ui.close") : t("shell.popup.ui.laterEvent")}
             </button>
           </div>
         </div>
@@ -867,29 +883,30 @@ function PosterSignup({
 const chip = "rounded-full px-3 py-1 text-[12px] font-bold";
 
 function Preview({ kind }: { kind: PopupPreview }) {
+  const t = useT();
   switch (kind) {
     case "reader":
       return (
         <div>
           <p className="font-serif text-[15px] leading-relaxed text-[#14122b]">
             <sup className="mr-1 text-[10px] font-black text-[#8a8fa3]">1</sup>
-            In the beginning God{" "}
+            {t("shell.popup.preview.reader.before")}{" "}
             <span className="rounded bg-[#ede4ff] px-1 font-bold text-[#5b21b6] underline decoration-[#7c3aed] decoration-2 underline-offset-4">
-              created
+              {t("shell.popup.preview.reader.word")}
             </span>{" "}
-            the heaven and the earth.
+            {t("shell.popup.preview.reader.after")}
           </p>
           <div className="mt-2.5 rounded-xl border border-[#e4d8fb] bg-[#faf7ff] px-3 py-2">
             <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#6d28d9]">
-              Study note
+              {t("shell.popup.preview.reader.noteLabel")}
             </p>
             <p className="text-[13px] font-semibold leading-snug text-[#4b5068]">
-              What this word means, right under the verse.
+              {t("shell.popup.preview.reader.noteLine")}
             </p>
           </div>
           <div className="mt-2.5 flex items-center justify-between rounded-xl bg-[#f4f5fa] px-3 py-2">
             <span className="text-[13px] font-black text-[#14122b]">
-              📖 Study Mode
+              {t("shell.popup.preview.reader.studyMode")}
             </span>
             <span className="flex h-6 w-11 items-center justify-end rounded-full bg-[#7c3aed] px-0.5">
               <span className="h-5 w-5 rounded-full bg-white shadow" />
@@ -901,10 +918,10 @@ function Preview({ kind }: { kind: PopupPreview }) {
       return (
         <div className="grid grid-cols-2 gap-2">
           {[
-            ["📖", "Read", true],
-            ["📝", "Learn", true],
-            ["🧠", "Test", false],
-            ["💬", "Discuss", false],
+            ["📖", t("shell.popup.preview.studyDay.read"), true],
+            ["📝", t("shell.popup.preview.studyDay.learn"), true],
+            ["🧠", t("shell.popup.preview.studyDay.test"), false],
+            ["💬", t("shell.popup.preview.studyDay.discuss"), false],
           ].map(([icon, label, done]) => (
             <div
               key={label as string}
@@ -931,21 +948,21 @@ function Preview({ kind }: { kind: PopupPreview }) {
       return (
         <div>
           <p className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[15px] font-bold text-[#14122b]">
-            <span>The LORD is my</span>
+            <span>{t("shell.popup.preview.memory.before")}</span>
             <span className="rounded-full bg-[#7c3aed] px-3 py-0.5 font-black text-white shadow-[0_2px_0_#5b21b6]">
-              shepherd
+              {t("shell.popup.preview.memory.word")}
             </span>
             <span>.</span>
           </p>
           <div className="mt-2.5 flex flex-wrap gap-2">
             <span className={`${chip} bg-[#f1ecfb] text-[#8a8fa3]`}>
-              protector
+              {t("shell.popup.preview.memory.wrong1")}
             </span>
             <span className={`${chip} bg-[#f1ecfb] text-[#8a8fa3]`}>
-              teacher
+              {t("shell.popup.preview.memory.wrong2")}
             </span>
             <span className={`${chip} ml-auto bg-[#e8fbf3] text-[#0f5d45]`}>
-              Practising
+              {t("shell.popup.preview.memory.status")}
             </span>
           </div>
         </div>
@@ -954,7 +971,7 @@ function Preview({ kind }: { kind: PopupPreview }) {
       return (
         <div className="flex items-center gap-3">
           <div className="grid shrink-0 gap-y-0.5">
-            {["PSALM", "FAITH", "GRACE", "TRUST"].map((row, rowIndex) => (
+            {t("shell.popup.preview.wordSearch.grid").split(" ").slice(0, 4).map((row, rowIndex) => (
               <div
                 key={row}
                 className={`grid grid-cols-5 rounded-md ${rowIndex === 2 ? "bg-[#5eead4]" : ""}`}
@@ -971,9 +988,9 @@ function Preview({ kind }: { kind: PopupPreview }) {
             ))}
           </div>
           <div className="min-w-0 rounded-xl bg-[#eef7ff] px-3 py-2">
-            <p className="text-[13px] font-black text-[#14122b]">GRACE</p>
+            <p className="text-[13px] font-black text-[#14122b]">{t("shell.popup.preview.wordSearch.found")}</p>
             <p className="text-[12px] font-semibold leading-snug text-[#4b5068]">
-              What it means, and the verse it is from.
+              {t("shell.popup.preview.wordSearch.line")}
             </p>
           </div>
         </div>
@@ -982,20 +999,20 @@ function Preview({ kind }: { kind: PopupPreview }) {
       return (
         <div>
           <p className="text-[14px] font-black leading-snug text-[#14122b]">
-            Who built the ark?
+            {t("shell.popup.preview.trivia.question")}
           </p>
           <div className="mt-2 grid grid-cols-2 gap-2">
             <span className="rounded-xl border-2 border-[#10b981] bg-[#e8fbf3] px-3 py-2 text-[13px] font-black text-[#0f5d45]">
-              Noah ✓
+              {t("shell.popup.preview.trivia.right")}
             </span>
             <span className="rounded-xl border-2 border-[#e5e7f0] px-3 py-2 text-[13px] font-bold text-[#8a8fa3]">
-              Moses
+              {t("shell.popup.preview.trivia.wrong1")}
             </span>
             <span className="rounded-xl border-2 border-[#e5e7f0] px-3 py-2 text-[13px] font-bold text-[#8a8fa3]">
-              Abraham
+              {t("shell.popup.preview.trivia.wrong2")}
             </span>
             <span className="rounded-xl border-2 border-[#e5e7f0] px-3 py-2 text-[13px] font-bold text-[#8a8fa3]">
-              David
+              {t("shell.popup.preview.trivia.wrong3")}
             </span>
           </div>
         </div>
@@ -1014,11 +1031,11 @@ function Preview({ kind }: { kind: PopupPreview }) {
             <img src="/obedienceofabraham28day.png" alt="" className="h-12 w-8 rounded object-cover" />
             <span className="text-left text-[11px] font-black leading-tight text-[#14213d]">
               The Obedience of Abraham
-              <span className="block font-bold text-[#5b6b8a]">Study guide · pinned</span>
+              <span className="block font-bold text-[#5b6b8a]">{t("shell.popup.preview.home.pinned")}</span>
             </span>
           </span>
           <span className="col-span-3 rounded-xl bg-white/80 px-2 py-2 text-left text-[11px] font-bold text-[#5b6b8a] shadow-sm">
-            💬 Ask Lil Louis anything…
+            {t("shell.popup.preview.home.ask")}
           </span>
         </div>
       );
@@ -1033,7 +1050,7 @@ function Preview({ kind }: { kind: PopupPreview }) {
           </span>
           <span className="text-left">
             <span className="block text-[13px] font-black uppercase tracking-wide text-[var(--bb-text-primary,#111827)]">
-              Year one
+              {t("shell.popup.preview.birthday.yearOne")}
             </span>
             <span className="block text-[12px] font-bold text-[var(--bb-text-muted,#6b7280)]">Nov 2025 – Nov 2026</span>
           </span>
@@ -1067,7 +1084,7 @@ function Preview({ kind }: { kind: PopupPreview }) {
             ["/covers/winter-cabin-thumb.webp", "Winter Cabin"],
             ["/skins/optimized/midnight-garden-thumb.webp", "Midnight Garden"],
             ["/skins/optimized/ruby-village-thumb.webp", "Ruby Village"],
-            ["/covers/dark-thumb.webp", "Dark"],
+            ["/covers/dark-thumb.webp", t("shell.popup.preview.covers.dark")],
           ].map(([src, name]) => (
             <span key={name} className="block">
               <span
@@ -1091,22 +1108,22 @@ function Preview({ kind }: { kind: PopupPreview }) {
             </span>
             <div className="min-w-0">
               <p className="text-[13px] font-black leading-tight text-[#14122b]">
-                A Bible Buddy member
+                {t("shell.popup.preview.feed.member")}
               </p>
               <p className="text-[11px] font-semibold text-[#8a8fa3]">
-                Prayer request
+                {t("shell.popup.preview.feed.kind")}
               </p>
             </div>
           </div>
           <p className="mt-2 text-[13px] font-semibold leading-snug text-[#4b5068]">
-            Please pray for my family this week.
+            {t("shell.popup.preview.feed.text")}
           </p>
           <div className="mt-2.5 flex gap-2">
             <span className={`${chip} bg-[#eef7ff] text-[#1d4ed8]`}>
-              ❤️ Like
+              {t("shell.popup.preview.feed.like")}
             </span>
             <span className={`${chip} bg-[#f4f5fa] text-[#5b6079]`}>
-              💬 Comment
+              {t("shell.popup.preview.feed.comment")}
             </span>
           </div>
         </div>
@@ -1122,16 +1139,16 @@ function Preview({ kind }: { kind: PopupPreview }) {
           <div className="flex items-center gap-2">
             <span className="grid h-8 w-8 place-items-center rounded-full bg-[#cfe0ff] text-[14px]">🙏</span>
             <div className="min-w-0">
-              <p className="text-[13px] font-black leading-tight text-[#14122b]">This week&apos;s prayer post</p>
-              <p className="text-[11px] font-semibold text-[#8a8fa3]">Pinned on the feed</p>
+              <p className="text-[13px] font-black leading-tight text-[#14122b]">{t("shell.popup.preview.prayer.title")}</p>
+              <p className="text-[11px] font-semibold text-[#8a8fa3]">{t("shell.popup.preview.prayer.pinned")}</p>
             </div>
           </div>
           <p className="mt-2 rounded-xl bg-[#f4f7ff] px-3 py-2 text-[13px] font-semibold leading-snug text-[#4b5068]">
-            Please pray for me this week.
+            {t("shell.popup.preview.prayer.text")}
           </p>
           <div className="mt-2.5 flex flex-wrap gap-2">
-            <span className={`${chip} bg-[#0056fd] font-black text-white shadow-[0_2px_0_#0041c2]`}>🙏 Praying</span>
-            <span className={`${chip} bg-[#f4f5fa] text-[#5b6079]`}>💬 Comment</span>
+            <span className={`${chip} bg-[#0056fd] font-black text-white shadow-[0_2px_0_#0041c2]`}>{t("shell.popup.preview.prayer.praying")}</span>
+            <span className={`${chip} bg-[#f4f5fa] text-[#5b6079]`}>{t("shell.popup.preview.feed.comment")}</span>
           </div>
         </div>
       );
@@ -1155,8 +1172,8 @@ function Preview({ kind }: { kind: PopupPreview }) {
                 </p>
                 <p className="text-[13px] font-semibold leading-snug text-[#4b5068]">
                   {kind === "app_store"
-                    ? "On the App Store"
-                    : "On the Play Store"}
+                    ? t("shell.popup.preview.store.appStore")
+                    : t("shell.popup.preview.store.playStore")}
                 </p>
               </div>
             </div>
@@ -1164,14 +1181,12 @@ function Preview({ kind }: { kind: PopupPreview }) {
               <span
                 className={`${chip} bg-[#0056fd] font-black text-white shadow-[0_2px_0_#0041c2]`}
               >
-                Free
+                {t("shell.popup.preview.store.free")}
               </span>
               <span
                 className={`${chip} bg-white font-bold text-[#0041c2] shadow-[0_2px_8px_rgba(0,60,160,0.14)]`}
               >
-                {kind === "app_store"
-                  ? "Your streak comes too"
-                  : "Your streak comes too"}
+                {t("shell.popup.preview.store.streak")}
               </span>
             </div>
           </div>
@@ -1182,20 +1197,20 @@ function Preview({ kind }: { kind: PopupPreview }) {
       return (
         <div>
           <p className="text-[11px] font-black uppercase tracking-[0.14em] text-[#8a8fa3]">
-            Verse of the day
+            {t("shell.popup.preview.votd.label")}
           </p>
           <p className="mt-1 font-serif text-[15px] font-bold leading-snug text-[#14122b]">
-            And let us not be weary in well doing.
+            {t("shell.popup.preview.votd.verse")}
           </p>
           <p className="mt-0.5 text-[12px] font-bold text-[#5b6079]">
-            Galatians 6:9 · KJV
+            {t("shell.popup.preview.votd.ref")}
           </p>
           <div className="mt-2.5 flex flex-wrap gap-2">
             <span className={`${chip} bg-[#ede4ff] text-[#5b21b6]`}>
-              Read the breakdown →
+              {t("shell.popup.preview.votd.read")}
             </span>
             <span className={`${chip} bg-[#f4f5fa] text-[#14122b]`}>
-              🧠 Memorize
+              {t("shell.popup.preview.votd.memorize")}
             </span>
           </div>
         </div>

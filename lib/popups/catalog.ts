@@ -19,6 +19,13 @@
  * (lib/email/welcomeSequence.ts, days 2 and 3); the rest was checked against
  * the screens themselves. If a feature changes, change the words with it.
  *
+ * Other languages. The words here are the English, and the only English: the
+ * admin Popups tab and the reports read this list as it is. German is looked
+ * up when a popup is drawn (lib/popups/localize.ts) under the key
+ * `shell.popup.<id>.<field>` in lib/i18n/messages/de/shell.ts. Change a
+ * popup's words here and its German there; a field with no key shows this
+ * English.
+ *
  * `version` is the content version. Fixing a comma or redrawing the picture
  * does NOT change it. Raise it only when there is something new worth telling
  * a person who has already seen the popup - that is the one thing that makes

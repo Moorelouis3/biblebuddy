@@ -3,9 +3,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../lib/supabaseClient";
+import { useT } from "../lib/i18n/useT";
 
 export function NewMessageAlert() {
   const router = useRouter();
+  const t = useT();
   const [showAlert, setShowAlert] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [hasNewMessages, setHasNewMessages] = useState(false);
@@ -115,31 +117,31 @@ export function NewMessageAlert() {
       <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-4">
         <div className="flex items-start justify-between mb-3">
           <h3 className="text-lg font-semibold text-gray-900">
-            New message received
+            {t("shell.adminAlert.title")}
           </h3>
           <button
             onClick={handleDismiss}
             className="text-gray-400 hover:text-gray-600 text-xl font-bold ml-4"
-            aria-label="Dismiss"
+            aria-label={t("shell.adminAlert.dismiss")}
           >
             ×
           </button>
         </div>
         <p className="text-gray-700 mb-4">
-          You have a new message in your inbox.
+          {t("shell.adminAlert.body")}
         </p>
         <div className="flex gap-3">
           <button
             onClick={handleViewMessage}
             className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
           >
-            View message
+            {t("shell.adminAlert.view")}
           </button>
           <button
             onClick={handleDismiss}
             className="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition"
           >
-            Dismiss
+            {t("shell.adminAlert.dismiss")}
           </button>
         </div>
       </div>

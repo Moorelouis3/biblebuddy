@@ -15,53 +15,62 @@ import { useMemo, useState, type FormEvent } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { ModalShell } from "./ModalShell";
 import { supabase } from "../lib/supabaseClient";
+import type { MessageKey } from "../lib/i18n/messages/en";
+import { useT } from "../lib/i18n/useT";
 
-const REPORT_CATEGORIES = [
-  "App bug",
-  "Audio or video",
-  "Study Notes",
-  "Trivia",
-  "Billing or upgrade",
-  "Account or login",
-  "Other",
+// `value` is what the report carries to Louis and stays English; `labelKey`
+// is what the reader sees in the list.
+const REPORT_CATEGORIES: Array<{ value: string; labelKey: MessageKey }> = [
+  { value: "App bug", labelKey: "shell.report.category.appBug" },
+  { value: "Audio or video", labelKey: "shell.report.category.audioVideo" },
+  { value: "Study Notes", labelKey: "shell.report.category.studyNotes" },
+  { value: "Trivia", labelKey: "shell.report.category.trivia" },
+  { value: "Billing or upgrade", labelKey: "shell.report.category.billing" },
+  { value: "Account or login", labelKey: "shell.report.category.account" },
+  { value: "Other", labelKey: "shell.report.category.other" },
 ];
 
-/** A human name for the page being reported, from its path. */
-function pageLabel(pathname: string) {
-  const rules: Array<[string, string]> = [
-    ["/dashboard", "Home"],
-    ["/reading", "Bible Reader"],
-    ["/bible", "Bible Reader"],
-    ["/plan", "Plan Day"],
-    ["/plans", "Plans"],
-    ["/devotionals", "Plans"],
-    ["/bible-study-games", "Games"],
-    ["/bible-trivia", "Bible Trivia"],
-    ["/study-groups", "Study Group"],
-    ["/verse-of-the-day", "Verse of the Day"],
-    ["/events", "Community Event"],
-    ["/notes", "Notes"],
-    ["/chat", "BB Chat"],
-    ["/messages", "Messages"],
-    ["/settings", "Settings"],
-    ["/profile", "Profile"],
+/**
+ * A human name for the page being reported, from its path. `label` goes into
+ * the report and stays English; `labelKey` is the same name for the reader.
+ */
+function pageLabel(pathname: string): { label: string; labelKey: MessageKey | null } {
+  const rules: Array<[string, string, MessageKey]> = [
+    ["/dashboard", "Home", "shell.report.page.home"],
+    ["/reading", "Bible Reader", "shell.report.page.reader"],
+    ["/bible", "Bible Reader", "shell.report.page.reader"],
+    ["/plan", "Plan Day", "shell.report.page.planDay"],
+    ["/plans", "Plans", "shell.report.page.plans"],
+    ["/devotionals", "Plans", "shell.report.page.plans"],
+    ["/bible-study-games", "Games", "shell.report.page.games"],
+    ["/bible-trivia", "Bible Trivia", "shell.report.page.trivia"],
+    ["/study-groups", "Study Group", "shell.report.page.studyGroup"],
+    ["/verse-of-the-day", "Verse of the Day", "shell.report.page.verseOfTheDay"],
+    ["/events", "Community Event", "shell.report.page.event"],
+    ["/notes", "Notes", "shell.report.page.notes"],
+    ["/chat", "BB Chat", "shell.report.page.chat"],
+    ["/messages", "Messages", "shell.report.page.messages"],
+    ["/settings", "Settings", "shell.report.page.settings"],
+    ["/profile", "Profile", "shell.report.page.profile"],
   ];
-  for (const [prefix, label] of rules) {
-    if (pathname === prefix || pathname.startsWith(`${prefix}/`)) return label;
+  for (const [prefix, label, labelKey] of rules) {
+    if (pathname === prefix || pathname.startsWith(`${prefix}/`)) return { label, labelKey };
   }
-  return pathname;
+  return { label: pathname, labelKey: null };
 }
 
 export default function ReportProblemCard() {
   const pathname = usePathname() || "/";
   const router = useRouter();
+  const t = useT();
   const [isOpen, setIsOpen] = useState(false);
-  const [category, setCategory] = useState(REPORT_CATEGORIES[0]);
+  const [category, setCategory] = useState(REPORT_CATEGORIES[0].value);
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const area = useMemo(() => pageLabel(pathname), [pathname]);
+  const page = useMemo(() => pageLabel(pathname), [pathname]);
+  const area = page.label;
 
   function close() {
     if (submitting) return;
@@ -73,7 +82,7 @@ export default function ReportProblemCard() {
     event.preventDefault();
     if (submitting) return;
     if (!message.trim()) {
-      setError("Please describe what happened.");
+      setError(t("shell.report.error.empty"));
       return;
     }
     setSubmitting(true);
@@ -83,7 +92,7 @@ export default function ReportProblemCard() {
         data: { session },
       } = await supabase.auth.getSession();
       if (!session?.access_token) {
-        throw new Error("Please sign in again and try one more time.");
+        throw new Error(t("shell.report.error.signIn"));
       }
       const response = await fetch("/api/messages/support-report", {
         method: "POST",
@@ -102,7 +111,7 @@ export default function ReportProblemCard() {
       });
       const payload = await response.json().catch(() => null);
       if (!response.ok || !payload?.ok) {
-        throw new Error(payload?.error || "Could not send your report.");
+        throw new Error(payload?.error || t("shell.report.error.failed"));
       }
       setIsOpen(false);
       setMessage("");
@@ -110,10 +119,10 @@ export default function ReportProblemCard() {
       if (conversationId) {
         router.push(`/messages/${conversationId}`);
       } else {
-        window.alert("Your report was saved. You can check Messages if a follow-up is needed.");
+        window.alert(t("shell.report.saved"));
       }
     } catch (submitError) {
-      setError(submitError instanceof Error ? submitError.message : "Could not send your report.");
+      setError(submitError instanceof Error ? submitError.message : t("shell.report.error.failed"));
     } finally {
       setSubmitting(false);
     }
@@ -141,16 +150,16 @@ export default function ReportProblemCard() {
             🛟
           </span>
           <span className="bb-cv-game-text min-w-0 flex-1">
-            <span className="block text-base font-black text-[#111827] sm:text-lg">Report a Problem</span>
+            <span className="block text-base font-black text-[#111827] sm:text-lg">{t("shell.report.card.title")}</span>
             <span className="mt-0.5 block text-xs font-semibold text-[#334155]">
-              Something broken or confusing on this page? Tell Louis - it goes straight to him.
+              {t("shell.report.card.body")}
             </span>
           </span>
           <span
             className="bb-cv-cta hidden shrink-0 items-center rounded-lg bg-[#111827] px-5 py-2.5 text-xs font-black uppercase tracking-wide sm:flex"
             style={{ color: "#ffffff" }}
           >
-            Report →
+            {t("shell.report.card.cta")}
           </span>
         </button>
       </div>
@@ -160,20 +169,20 @@ export default function ReportProblemCard() {
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">
-                Report a problem
+                {t("shell.report.eyebrow")}
               </p>
               <h2 className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-                Help us fix it faster
+                {t("shell.report.title")}
               </h2>
               <p className="mt-2 text-sm font-medium leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-                Report a bug, issue, or suggestion.
+                {t("shell.report.subtitle")}
               </p>
             </div>
             <button
               type="button"
               onClick={close}
               className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-xl font-bold text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
-              aria-label="Close problem report"
+              aria-label={t("shell.report.close")}
             >
               ×
             </button>
@@ -183,35 +192,35 @@ export default function ReportProblemCard() {
               card living on every page. */}
           <div className="mt-4 rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3">
             <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
-              Reporting from
+              {t("shell.report.from")}
             </p>
-            <p className="mt-1 text-sm font-black text-[var(--bb-text-primary,#111827)]">{area}</p>
+            <p className="mt-1 text-sm font-black text-[var(--bb-text-primary,#111827)]">{page.labelKey ? t(page.labelKey) : area}</p>
             <p className="mt-1 break-all text-xs font-medium text-[var(--bb-text-muted,#6b7280)]">{pathname}</p>
           </div>
 
           <form className="mt-5 grid gap-4" onSubmit={submit}>
             <label className="grid gap-2 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
-              Type
+              {t("shell.report.type")}
               <select
                 value={category}
                 onChange={(event) => setCategory(event.target.value)}
                 className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)] outline-none transition focus:border-[var(--bb-accent,#2f7fe8)]"
               >
                 {REPORT_CATEGORIES.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
+                  <option key={option.value} value={option.value}>
+                    {t(option.labelKey)}
                   </option>
                 ))}
               </select>
             </label>
 
             <label className="grid gap-2 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
-              What happened?
+              {t("shell.report.what")}
               <textarea
                 value={message}
                 onChange={(event) => setMessage(event.target.value)}
                 rows={6}
-                placeholder="Tell us what broke, what you expected, and anything that helps us reproduce it."
+                placeholder={t("shell.report.placeholder")}
                 className="rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-3 text-sm font-medium leading-6 text-[var(--bb-text-primary,#111827)] outline-none transition placeholder:text-[var(--bb-text-muted,#6b7280)] focus:border-[var(--bb-accent,#2f7fe8)]"
               />
             </label>
@@ -228,7 +237,7 @@ export default function ReportProblemCard() {
                 onClick={close}
                 className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-white px-5 py-3 text-sm font-black text-[var(--bb-text-secondary,#4b5563)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
               >
-                Cancel
+                {t("shell.report.cancel")}
               </button>
               <button
                 type="submit"
@@ -236,7 +245,7 @@ export default function ReportProblemCard() {
                 className="rounded-2xl bg-[#111827] px-5 py-3 text-sm font-black shadow-sm transition hover:brightness-110 disabled:cursor-wait disabled:opacity-70"
                 style={{ color: "#ffffff" }}
               >
-                {submitting ? "Sending..." : "Send to Louis"}
+                {submitting ? t("shell.report.sending") : t("shell.report.send")}
               </button>
             </div>
           </form>

@@ -7,7 +7,25 @@ import { useRouter, useSearchParams } from "next/navigation";
 import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import PublicHomeButton from "@/components/PublicHomeButton";
 import { supabase } from "@/lib/supabaseClient";
-import { UNREACHABLE_MESSAGE, authErrorMessage, isUnreachableAuthError } from "@/lib/authErrorMessage";
+import { authErrorMessage, isUnreachableAuthError, type AuthErrorish } from "@/lib/authErrorMessage";
+import { useT } from "@/lib/i18n/useT";
+import type { MessageKey } from "@/lib/i18n/messages/en";
+
+/**
+ * Errors on this page are kept as "@" plus a message key and put into words
+ * when they are shown. The reset link is checked the moment the page opens,
+ * before the reader's saved language is known, so a sentence chosen then would
+ * always be English. Anything without the "@" is the auth service's own text.
+ */
+const UNREACHABLE_KEY = "@auth.error.unreachable";
+
+/** authErrorMessage, with the two sentences the app wrote itself as keys. */
+const authErrorKey = (err: AuthErrorish) => {
+  if (isUnreachableAuthError(err)) return UNREACHABLE_KEY;
+  const message = authErrorMessage(err);
+  // authErrorMessage(null) is its own "something went wrong" sentence.
+  return message === authErrorMessage(null) ? "@auth.error.generic" : message;
+};
 
 /**
  * A reset link that the server never answered about is not an expired link.
@@ -17,8 +35,8 @@ import { UNREACHABLE_MESSAGE, authErrorMessage, isUnreachableAuthError } from "@
  */
 const linkProblemMessage = (err: { message?: string; name?: string; status?: number }) =>
   isUnreachableAuthError(err)
-    ? UNREACHABLE_MESSAGE
-    : "This reset link is invalid or expired. Please request a new one.";
+    ? UNREACHABLE_KEY
+    : "@auth.reset.linkInvalid";
 
 export const dynamic = "force-dynamic";
 
@@ -64,9 +82,14 @@ const ResetCard = ({ children }: { children: ReactNode }) => (
   </div>
 );
 
+const ResetEyebrow = () => {
+  const t = useT();
+  return <>{t("auth.reset.eyebrow")}</>;
+};
+
 const ResetTitle = ({ title, description }: { title: string; description: string }) => (
   <div className="mb-7 text-center">
-    <p className="text-xs font-black uppercase tracking-[0.18em] text-[#8A9AAE]">Account help</p>
+    <p className="text-xs font-black uppercase tracking-[0.18em] text-[#8A9AAE]"><ResetEyebrow /></p>
     <h1 className="bb-reset-title bb-reset-serif mt-3 text-4xl font-black leading-tight text-black">
       {title}
     </h1>
@@ -108,6 +131,8 @@ function ResetPasswordForm() {
   const [resetEmail, setResetEmail] = useState(() => searchParams.get("email") || "");
   const [resetRequestSent, setResetRequestSent] = useState(false);
   const [hasRecoverySession, setHasRecoverySession] = useState(false);
+  const t = useT();
+  const errorText = error ? (error.startsWith("@") ? t(error.slice(1) as MessageKey) : error) : null;
 
   useEffect(() => {
     const checkToken = async () => {
@@ -192,7 +217,7 @@ function ResetPasswordForm() {
     // are already locked out.
     void checkToken().catch((err: unknown) => {
       console.error("[RESET_PASSWORD] Could not check the reset link:", err);
-      setError(authErrorMessage(err as { message?: string; name?: string }));
+      setError(authErrorKey(err as { message?: string; name?: string }));
       setIsValidToken(false);
     });
   }, [searchParams]);
@@ -204,7 +229,7 @@ function ResetPasswordForm() {
 
     const email = resetEmail.trim();
     if (!email) {
-      setError("Please enter your email address.");
+      setError("@auth.reset.emailRequired");
       return;
     }
 
@@ -215,7 +240,7 @@ function ResetPasswordForm() {
     setLoading(false);
 
     if (resetError) {
-      setError(authErrorMessage(resetError));
+      setError(authErrorKey(resetError));
       return;
     }
 
@@ -228,24 +253,24 @@ function ResetPasswordForm() {
     setSuccess(false);
 
     if (!password.trim()) {
-      setError("Please enter a new password");
+      setError("@auth.reset.passwordRequired");
       return;
     }
 
     if (password.length < 6) {
-      setError("Password must be at least 6 characters");
+      setError("@auth.reset.tooShort");
       return;
     }
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError("@auth.reset.mismatch");
       return;
     }
 
     setLoading(true);
 
     if (!hasRecoverySession) {
-      setError("Invalid or expired reset link. Please request a new one.");
+      setError("@auth.reset.linkExpired");
       setLoading(false);
       return;
     }
@@ -256,8 +281,8 @@ function ResetPasswordForm() {
     if (updateError) {
       setError(
         isUnreachableAuthError(updateError)
-          ? UNREACHABLE_MESSAGE
-          : updateError.message || "Failed to reset password. The link may have expired.",
+          ? UNREACHABLE_KEY
+          : updateError.message || "@auth.reset.failed",
       );
     } else {
       setSuccess(true);
@@ -269,7 +294,7 @@ function ResetPasswordForm() {
     return (
       <ResetShell>
         <ResetCard>
-          <p className="text-center text-sm font-semibold text-[#667085]">Verifying reset link...</p>
+          <p className="text-center text-sm font-semibold text-[#667085]">{t("auth.reset.verifying")}</p>
         </ResetCard>
       </ResetShell>
     );
@@ -279,11 +304,11 @@ function ResetPasswordForm() {
     return (
       <ResetShell>
         <ResetCard>
-          <ResetTitle title="Reset Your Password" description="Enter your email and we'll send you a link to create a new password." />
+          <ResetTitle title={t("auth.reset.title")} description={t("auth.reset.requestBody")} />
 
           <form onSubmit={handleRequestReset} className="space-y-4">
             <div>
-              <label className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[#667085]">Email</label>
+              <label className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[#667085]">{t("auth.email")}</label>
               <input
                 type="email"
                 required
@@ -291,20 +316,20 @@ function ResetPasswordForm() {
                 onChange={(e) => setResetEmail(e.target.value)}
                 className={inputClass}
                 style={inputStyle}
-                placeholder="you@example.com"
+                placeholder={t("auth.emailPlaceholder")}
               />
             </div>
 
-            {error && <p className="rounded-xl border border-red-100 bg-red-50 px-3 py-2 text-xs font-semibold text-red-600">{error}</p>}
-            {resetRequestSent && <p className="rounded-xl border border-[#E5E7EB] bg-[#EAF5FF] px-3 py-2 text-xs font-semibold text-[#111827]">Check your email for a password reset link.</p>}
+            {errorText && <p className="rounded-xl border border-red-100 bg-red-50 px-3 py-2 text-xs font-semibold text-red-600">{errorText}</p>}
+            {resetRequestSent && <p className="rounded-xl border border-[#E5E7EB] bg-[#EAF5FF] px-3 py-2 text-xs font-semibold text-[#111827]">{t("auth.reset.sent")}</p>}
 
             <button type="submit" disabled={loading} className={primaryButtonClass} style={{ backgroundColor: "#102D4D", color: "#FFFFFF" }}>
-              {loading ? "Sending..." : "Send reset link"}
+              {loading ? t("auth.reset.sending") : t("auth.reset.send")}
             </button>
           </form>
 
           <Link href="/login" className="mt-5 block text-center text-xs font-black text-[#2563EB] hover:underline">
-            Back to login
+            {t("auth.reset.backToLogin")}
           </Link>
         </ResetCard>
       </ResetShell>
@@ -315,7 +340,7 @@ function ResetPasswordForm() {
     return (
       <ResetShell>
         <ResetCard>
-          <ResetTitle title="Password Reset Successful" description="Your password has been updated. Redirecting to login..." />
+          <ResetTitle title={t("auth.reset.successTitle")} description={t("auth.reset.successBody")} />
         </ResetCard>
       </ResetShell>
     );
@@ -324,11 +349,11 @@ function ResetPasswordForm() {
   return (
     <ResetShell>
       <ResetCard>
-        <ResetTitle title="Reset Your Password" description="Enter your new password below." />
+        <ResetTitle title={t("auth.reset.title")} description={t("auth.reset.newBody")} />
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[#667085]">New Password</label>
+            <label className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[#667085]">{t("auth.reset.newPassword")}</label>
             <input
               type="password"
               required
@@ -336,13 +361,13 @@ function ResetPasswordForm() {
               onChange={(e) => setPassword(e.target.value)}
               className={inputClass}
               style={inputStyle}
-              placeholder="Enter new password"
+              placeholder={t("auth.reset.newPlaceholder")}
               minLength={6}
             />
           </div>
 
           <div>
-            <label className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[#667085]">Confirm Password</label>
+            <label className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[#667085]">{t("auth.reset.confirmPassword")}</label>
             <input
               type="password"
               required
@@ -350,22 +375,22 @@ function ResetPasswordForm() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               className={inputClass}
               style={inputStyle}
-              placeholder="Confirm new password"
+              placeholder={t("auth.reset.confirmPlaceholder")}
               minLength={6}
             />
           </div>
 
-          {error && <p className="rounded-xl border border-red-100 bg-red-50 px-3 py-2 text-xs font-semibold text-red-600">{error}</p>}
+          {errorText && <p className="rounded-xl border border-red-100 bg-red-50 px-3 py-2 text-xs font-semibold text-red-600">{errorText}</p>}
 
           <button type="submit" disabled={loading} className={primaryButtonClass} style={{ backgroundColor: "#102D4D", color: "#FFFFFF" }}>
-            {loading ? "Resetting Password..." : "Reset Password"}
+            {loading ? t("auth.reset.resetting") : t("auth.reset.submit")}
           </button>
         </form>
 
         <p className="mt-5 text-center text-xs font-semibold text-[#667085]">
-          Remember your password?{" "}
+          {t("auth.reset.remember")}{" "}
           <Link href="/login" className="font-black text-[#2563EB] hover:underline">
-            Log in
+            {t("auth.logIn")}
           </Link>
         </p>
       </ResetCard>
@@ -374,12 +399,13 @@ function ResetPasswordForm() {
 }
 
 export default function ResetPasswordPage() {
+  const t = useT();
   return (
     <Suspense
       fallback={
         <ResetShell>
           <ResetCard>
-            <p className="text-center text-sm font-semibold text-[#667085]">Loading...</p>
+            <p className="text-center text-sm font-semibold text-[#667085]">{t("auth.reset.loading")}</p>
           </ResetCard>
         </ResetShell>
       }

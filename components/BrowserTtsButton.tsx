@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { cleanTextForTts } from "@/lib/ttsSpeechText";
 import { bibleReadingBackgroundVolumeFor } from "@/lib/bibleReadingBackgroundMusic";
 import { useGlobalAudioPlayer } from "./GlobalAudioPlayer";
+import { useT } from "@/lib/i18n/useT";
 
 type BrowserTtsButtonProps = {
   text: string | null | undefined;
@@ -50,7 +51,7 @@ function chunkSpeechText(text: string) {
 
 export default function BrowserTtsButton({
   text,
-  label = "Listen",
+  label: labelProp,
   className = "",
   audioSrc,
   progressKey,
@@ -62,6 +63,8 @@ export default function BrowserTtsButton({
   onPrevious,
   onNext,
 }: BrowserTtsButtonProps) {
+  const t = useT();
+  const label = labelProp ?? t("reader.audio.listen");
   const [supported, setSupported] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [paused, setPaused] = useState(false);
@@ -420,8 +423,8 @@ export default function BrowserTtsButton({
             onClick={() => seekAudioBy(-15)}
             disabled={!canSeek}
             className={roundButton}
-            aria-label="Go back 15 seconds"
-            title="Back 15 seconds"
+            aria-label={t("reader.audio.back15")}
+            title={t("reader.audio.back15Short")}
           >
             {skipIcon("back")}
           </button>
@@ -431,8 +434,8 @@ export default function BrowserTtsButton({
             onClick={onPrevious}
             disabled={!onPrevious}
             className={roundButton}
-            aria-label="Previous chapter"
-            title="Previous chapter"
+            aria-label={t("reader.audio.previousChapter")}
+            title={t("reader.audio.previousChapter")}
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
               <rect x="5" y="5" width="2.5" height="14" rx="1" />
@@ -445,8 +448,8 @@ export default function BrowserTtsButton({
             onClick={canUseAudioSrc ? toggleAudio : toggleSpeech}
             disabled={audioIsLoading}
             className="grid h-[68px] w-[68px] shrink-0 place-items-center rounded-full bg-[#0056fd] text-white shadow-[0_8px_20px_rgba(0,86,253,0.35)] transition hover:bg-[#003bb0] disabled:opacity-60 sm:h-[76px] sm:w-[76px]"
-            aria-label={playing ? `Pause ${label}` : `Play ${label}`}
-            title={playing ? "Pause" : "Play"}
+            aria-label={playing ? t("reader.audio.pauseLabel", { label }) : t("reader.audio.playLabel", { label })}
+            title={playing ? t("reader.audio.pause") : t("reader.audio.play")}
           >
             {audioIsLoading ? (
               <span className="h-6 w-6 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
@@ -467,8 +470,8 @@ export default function BrowserTtsButton({
             onClick={onNext}
             disabled={!onNext}
             className={roundButton}
-            aria-label="Next chapter"
-            title="Next chapter"
+            aria-label={t("reader.audio.nextChapter")}
+            title={t("reader.audio.nextChapter")}
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
               <polygon points="5 5 15 12 5 19" />
@@ -481,8 +484,8 @@ export default function BrowserTtsButton({
             onClick={() => seekAudioBy(15)}
             disabled={!canSeek}
             className={roundButton}
-            aria-label="Go forward 15 seconds"
-            title="Forward 15 seconds"
+            aria-label={t("reader.audio.forward15")}
+            title={t("reader.audio.forward15Short")}
           >
             {skipIcon("forward")}
           </button>
@@ -490,9 +493,9 @@ export default function BrowserTtsButton({
         </div>
 
         {audioHasError ? (
-          <p className="mt-2 text-center text-xs font-black text-red-600">Audio unavailable</p>
+          <p className="mt-2 text-center text-xs font-black text-red-600">{t("reader.audio.unavailable")}</p>
         ) : !audioIsSpeaking && savedPosition > 2 ? (
-          <p className="mt-2 text-center text-xs font-bold text-slate-500">Saved at {formatTime(savedPosition)}</p>
+          <p className="mt-2 text-center text-xs font-bold text-slate-500">{t("reader.audio.savedAt", { time: formatTime(savedPosition) })}</p>
         ) : null}
       </div>
     );
@@ -506,7 +509,7 @@ export default function BrowserTtsButton({
           onClick={canUseAudioSrc ? toggleAudio : toggleSpeech}
           disabled={audioIsLoading}
           className="flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[var(--bb-button,#2563eb)] px-4 py-2 text-sm font-black text-[var(--bb-button-text,#ffffff)] transition hover:brightness-95"
-          aria-label={audioIsSpeaking && !audioIsPaused ? `Pause ${label}` : `Play ${label}`}
+          aria-label={audioIsSpeaking && !audioIsPaused ? t("reader.audio.pauseLabel", { label }) : t("reader.audio.playLabel", { label })}
         >
           {audioIsLoading ? (
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
@@ -520,10 +523,10 @@ export default function BrowserTtsButton({
               aria-hidden="true"
             />
           )}
-          <span>{audioIsLoading ? "Loading" : audioIsSpeaking && !audioIsPaused ? "Pause" : audioIsPaused || savedPosition > 2 ? "Resume" : "Play"}</span>
+          <span>{audioIsLoading ? t("reader.audio.loading") : audioIsSpeaking && !audioIsPaused ? t("reader.audio.pause") : audioIsPaused || savedPosition > 2 ? t("reader.audio.resume") : t("reader.audio.play")}</span>
         </button>
         {!audioIsSpeaking && savedPosition > 2 ? (
-          <p className="px-1 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">Saved at {formatTime(savedPosition)}</p>
+          <p className="px-1 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">{t("reader.audio.savedAt", { time: formatTime(savedPosition) })}</p>
         ) : null}
         {showAudioControls ? (
           <div className="flex flex-wrap items-center gap-1.5 pt-1">
@@ -531,7 +534,7 @@ export default function BrowserTtsButton({
               type="button"
               onClick={() => seekAudioBy(-10)}
               className="min-h-9 rounded-lg border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#f3f4f6)] px-3 text-xs font-black text-[var(--bb-text-primary,#1f2937)] transition hover:brightness-95"
-              aria-label="Go back 10 seconds"
+              aria-label={t("reader.audio.back10")}
             >
               -10s
             </button>
@@ -539,16 +542,16 @@ export default function BrowserTtsButton({
               type="button"
               onClick={() => seekAudioBy(10)}
               className="min-h-9 rounded-lg border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#f3f4f6)] px-3 text-xs font-black text-[var(--bb-text-primary,#1f2937)] transition hover:brightness-95"
-              aria-label="Go forward 10 seconds"
+              aria-label={t("reader.audio.forward10")}
             >
               +10s
             </button>
           </div>
         ) : null}
-        {audioHasError ? <p className="px-1 text-xs font-bold text-red-600">Audio unavailable. Try again.</p> : null}
+        {audioHasError ? <p className="px-1 text-xs font-bold text-red-600">{t("reader.audio.unavailableRetry")}</p> : null}
         {aiDisclosure && audioSrc ? (
           <p className="px-1 text-[11px] font-bold leading-4 text-[var(--bb-text-muted,#6b7280)]">
-            AI-generated narration with optional background music.
+            {t("reader.audio.aiDisclosure")}
           </p>
         ) : null}
       </div>
@@ -557,9 +560,9 @@ export default function BrowserTtsButton({
           type="button"
           onClick={canUseAudioSrc ? stopAudio : stopSpeech}
           className="min-h-11 rounded-xl border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#f3f4f6)] px-4 py-2 text-sm font-black text-[var(--bb-text-primary,#1f2937)] transition hover:brightness-95"
-          aria-label="Stop audio"
+          aria-label={t("reader.audio.stopLabel")}
         >
-          Stop
+          {t("reader.audio.stop")}
         </button>
       ) : null}
     </div>

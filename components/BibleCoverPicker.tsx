@@ -14,14 +14,17 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { BIBLE_COVERS, BIBLE_COVER_EVENT, EFFECT_LABELS, readBibleCover, setBibleCover, type BibleCoverId } from "@/lib/bibleCovers";
 import { setBibleCoverSnow } from "@/components/BibleCoverBackdrop";
+import { useT } from "@/lib/i18n/useT";
 
 const SNOW_PREF_KEY = "bb:bible-cover-snow:v1";
 
 type Counts = Partial<Record<BibleCoverId, number>>;
 
-const buddies = (n: number) => `${n.toLocaleString()} ${n === 1 ? "Buddy" : "Buddies"}`;
-
 export default function BibleCoverPicker() {
+  const t = useT();
+  /** "1 Buddy" / "56 Buddies", the number written the reader's way. */
+  const buddies = (n: number) =>
+    t.plural(n, "settings.cover.buddies.one", "settings.cover.buddies.other", { count: n.toLocaleString(t.locale) });
   const [current, setCurrent] = useState<BibleCoverId | null>(null);
   const [motionOn, setMotionOn] = useState(true);
   const [counts, setCounts] = useState<Counts | null>(null);
@@ -88,11 +91,11 @@ export default function BibleCoverPicker() {
    * (public/covers/{light,dark}-thumb.webp, scripts/generate-mode-thumbs.mjs),
    * labelled like the covers so the two sit on the shelf as equals.
    */
-  const plain = (id: BibleCoverId | null, label: string, thumb: string, edge: string) => {
+  const plain = (id: BibleCoverId | null, label: string, modeLabel: string, thumb: string, edge: string) => {
     const selected = current === id;
     const count = id ? counts?.[id] || 0 : 0;
     return (
-      <button type="button" onClick={() => void choose(id)} aria-pressed={selected} aria-label={`${label} mode`} className="text-left">
+      <button type="button" onClick={() => void choose(id)} aria-pressed={selected} aria-label={modeLabel} className="text-left">
         <span
           className={`relative block aspect-[3/4] w-full overflow-hidden rounded-l-md rounded-r-xl border bg-cover bg-top shadow-[0_10px_18px_-8px_rgba(14,26,58,0.55)] ${
             selected ? "ring-[3px] ring-[var(--bb-accent,#0056fd)] ring-offset-2" : ""
@@ -103,7 +106,7 @@ export default function BibleCoverPicker() {
           <span aria-hidden className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70" />
           <span className="absolute inset-x-2 bottom-2 text-white">
             <span className="block text-[7px] font-black tracking-[0.22em] opacity-85">BIBLE BUDDY</span>
-            <span className="block font-serif text-[12px] font-bold leading-tight">{label} mode</span>
+            <span className="block font-serif text-[12px] font-bold leading-tight">{modeLabel}</span>
           </span>
           {selected ? (
             <span className="absolute right-1.5 top-1.5 grid h-5 w-5 place-items-center rounded-full bg-[var(--bb-accent,#0056fd)] text-[11px] font-black text-[var(--bb-button-text,#ffffff)]">
@@ -122,8 +125,8 @@ export default function BibleCoverPicker() {
   return (
     <div>
       <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
-        {plain(null, "Light", "/covers/light-thumb.webp", "#DBE7F4")}
-        {plain("dark", "Dark", "/covers/dark-thumb.webp", "#2A3444")}
+        {plain(null, t("settings.cover.light"), t("settings.cover.lightMode"), "/covers/light-thumb.webp", "#DBE7F4")}
+        {plain("dark", t("settings.cover.dark"), t("settings.cover.darkMode"), "/covers/dark-thumb.webp", "#2A3444")}
         {covers.map((cover) => {
           const selected = current === cover.id;
           return (
@@ -132,7 +135,7 @@ export default function BibleCoverPicker() {
               type="button"
               onClick={() => void choose(cover.id)}
               aria-pressed={selected}
-              aria-label={`${cover.name} Bible cover`}
+              aria-label={t("settings.cover.coverAria", { cover: cover.name })}
               className="text-left"
             >
               <span
@@ -145,7 +148,7 @@ export default function BibleCoverPicker() {
                 <span aria-hidden className="absolute inset-y-0 left-0 w-1.5 bg-black/30" />
                 <span aria-hidden className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60" />
                 <span className="absolute inset-x-2 bottom-2 text-white">
-                  <span className="block text-[7px] font-black tracking-[0.22em] opacity-85">HOLY BIBLE</span>
+                  <span className="block text-[7px] font-black tracking-[0.22em] opacity-85">{t("settings.cover.bookTitle")}</span>
                   <span className="block font-serif text-[12px] font-bold leading-tight">{cover.name}</span>
                 </span>
                 {selected ? (
@@ -169,8 +172,13 @@ export default function BibleCoverPicker() {
         <p className="mt-4 rounded-xl border border-[var(--bb-card-border,#dbe7f4)] px-4 py-3 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
           <span aria-hidden>👥 </span>
           {(counts[current] || 0) <= 1
-            ? `You're the first Buddy using ${BIBLE_COVERS[current].art ? BIBLE_COVERS[current].name : "Dark mode"}.`
-            : `${buddies(counts[current] || 0)} are using ${BIBLE_COVERS[current].art ? BIBLE_COVERS[current].name : "Dark mode"}.`}
+            ? t("settings.cover.firstUsing", {
+                cover: BIBLE_COVERS[current].art ? BIBLE_COVERS[current].name : t("settings.cover.darkMode"),
+              })
+            : t("settings.cover.manyUsing", {
+                count: (counts[current] || 0).toLocaleString(t.locale),
+                cover: BIBLE_COVERS[current].art ? BIBLE_COVERS[current].name : t("settings.cover.darkMode"),
+              })}
         </p>
       ) : null}
 
@@ -181,7 +189,7 @@ export default function BibleCoverPicker() {
               {EFFECT_LABELS[BIBLE_COVERS[current].motion]}
             </span>
             <span className="block text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
-              Off keeps the picture still. It also goes still by itself on phones that cannot keep up.
+              {t("settings.cover.motionNote")}
             </span>
           </span>
           <input

@@ -21,14 +21,16 @@
 
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { useT } from "../lib/i18n/useT";
 import { lockDocumentScroll } from "../hooks/useDocumentScrollLock";
 
 const MEMORY = { key: "bible_memory", href: "/bible-study-games/memory" } as const;
 const WORD_SEARCH = { key: "word_search", href: "/bible-study-games/word-search" } as const;
 type Game = typeof MEMORY | typeof WORD_SEARCH;
 
-// The little letter grid on the Word Search card. GRACE is the found word.
-const GRID_ROWS = ["PSALM", "FAITH", "GRACE", "TRUST", "JOYLO"];
+// The little letter grid on the Word Search card is in the messages
+// (shell.popup.preview.wordSearch.grid): five words of five letters, and the
+// third is the found one.
 const GRID_FOUND_ROW = 2;
 
 const ENTRANCE_CSS = `
@@ -53,6 +55,7 @@ export default function NewGamesPopup({
 }) {
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const close = onClose;
+  const t = useT();
   const openGame = (game: Game) => onPick(game.key, game.href);
 
   // Background scroll lock, shared with every other modal.
@@ -125,7 +128,7 @@ export default function NewGamesPopup({
         <button
           type="button"
           onClick={() => close("close_button")}
-          aria-label="Close"
+          aria-label={t("shell.popup.ui.close")}
           className="absolute right-3.5 top-3.5 z-20 grid h-11 w-11 place-items-center rounded-full bg-white text-[#111827] shadow-[0_4px_14px_rgba(60,40,120,0.22)] outline-none transition active:scale-95 focus-visible:ring-2 focus-visible:ring-[#7c3aed]"
         >
           <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
@@ -142,16 +145,16 @@ export default function NewGamesPopup({
             <div className="flex items-center gap-1.5 pr-14">
               <Sparkle color="#7c3aed" className="h-5 w-5 shrink-0 -rotate-12" />
               <p className="whitespace-nowrap rounded-full bg-[#dfcffb] px-3.5 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-[#5b21b6]">
-                New in Bible Buddy
+                {t("shell.popup.ui.newPill")}
               </p>
             </div>
             <h2
               id="new-games-popup-title"
               className="mt-3 text-[30px] font-black leading-[1.08] tracking-tight text-[#14122b] sm:text-[34px]"
             >
-              Make Scripture{" "}
+              {t("shell.newGamesPopup.headline1")}{" "}
               <span className="relative inline-block whitespace-nowrap">
-                stick.
+                {t("shell.newGamesPopup.headline2")}
                 <svg
                   viewBox="0 0 100 10"
                   preserveAspectRatio="none"
@@ -163,7 +166,7 @@ export default function NewGamesPopup({
               </span>
             </h2>
             <p id="new-games-popup-sub" className="mt-2.5 text-[16px] font-semibold text-[#4b5068]">
-              Two new games. More ways to grow.
+              {t("shell.newGamesPopup.sub")}
             </p>
           </div>
 
@@ -190,24 +193,24 @@ export default function NewGamesPopup({
                   </span>
                   <div className="min-w-0">
                     <h3 id="new-games-memory-title" className="text-[21px] font-black leading-tight text-[#14122b]">
-                      Bible Memory
+                      {t("shell.newGamesPopup.memory.title")}
                     </h3>
-                    <p className="text-[14px] font-semibold leading-snug text-[#4b5068]">Save a verse. Learn it by heart.</p>
+                    <p className="text-[14px] font-semibold leading-snug text-[#4b5068]">{t("shell.newGamesPopup.memory.line")}</p>
                   </div>
                 </div>
 
                 {/* What the game looks like: a verse with one word to choose. */}
                 <div className="mt-3.5" aria-hidden="true">
                   <p className="inline-flex max-w-full flex-wrap items-center gap-x-1.5 gap-y-1 rounded-2xl bg-white px-3.5 py-2 text-[15px] font-bold text-[#14122b] shadow-[0_2px_8px_rgba(60,40,120,0.12)]">
-                    <span>The LORD is my</span>
+                    <span>{t("shell.popup.preview.memory.before")}</span>
                     <span className="rounded-full bg-[#7c3aed] px-3 py-0.5 font-black text-white shadow-[0_2px_0_#5b21b6]">
-                      shepherd
+                      {t("shell.popup.preview.memory.word")}
                     </span>
                     <span>.</span>
                   </p>
                   <div className="mt-2 flex gap-2 pl-6">
-                    <span className="rounded-full bg-white/70 px-3 py-1 text-[12px] font-bold text-[#8a8fa3]">protector</span>
-                    <span className="rounded-full bg-white/70 px-3 py-1 text-[12px] font-bold text-[#8a8fa3]">teacher</span>
+                    <span className="rounded-full bg-white/70 px-3 py-1 text-[12px] font-bold text-[#8a8fa3]">{t("shell.popup.preview.memory.wrong1")}</span>
+                    <span className="rounded-full bg-white/70 px-3 py-1 text-[12px] font-bold text-[#8a8fa3]">{t("shell.popup.preview.memory.wrong2")}</span>
                   </div>
                 </div>
 
@@ -217,7 +220,7 @@ export default function NewGamesPopup({
                   className="bb-cv-fp-main mt-3.5 inline-flex min-h-[48px] items-center gap-2 whitespace-nowrap rounded-full px-5 text-[16px] font-black text-white shadow-[0_6px_14px_rgba(109,40,217,0.35)] outline-none transition active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-[#c4b5fd]"
                   style={{ background: "var(--bb-pop-button, linear-gradient(180deg, #8b45f0 0%, #6d28d9 100%))" }}
                 >
-                  Try Bible Memory <span aria-hidden="true">→</span>
+                  {t("shell.newGamesPopup.memory.cta")} <span aria-hidden="true">→</span>
                 </button>
               </div>
             </section>
@@ -245,11 +248,11 @@ export default function NewGamesPopup({
                       🔎
                     </span>
                     <h3 id="new-games-search-title" className="min-w-0 text-[21px] font-black leading-[1.1] text-[#14122b]">
-                      Bible Word Search
+                      {t("shell.newGamesPopup.search.title")}
                     </h3>
                   </div>
                   <p className="col-start-1 mt-2 text-[14px] font-semibold leading-snug text-[#4b5068]">
-                    66 books. A new way to explore each one.
+                    {t("shell.newGamesPopup.search.line")}
                   </p>
                   <button
                     type="button"
@@ -257,7 +260,7 @@ export default function NewGamesPopup({
                     className="bb-cv-fp-main col-span-2 mt-3.5 inline-flex min-h-[48px] items-center gap-2 justify-self-start whitespace-nowrap rounded-full px-5 text-[16px] font-black text-white sm:col-span-1 sm:col-start-1 shadow-[0_6px_14px_rgba(29,78,216,0.35)] outline-none transition active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-[#93c5fd]"
                     style={{ background: "var(--bb-pop-button, linear-gradient(180deg, #2f6bf0 0%, #1d4ed8 100%))" }}
                   >
-                    Try Word Search <span aria-hidden="true">→</span>
+                    {t("shell.newGamesPopup.search.cta")} <span aria-hidden="true">→</span>
                   </button>
                 </div>
 
@@ -267,7 +270,7 @@ export default function NewGamesPopup({
                 >
                   <Sparkle color="#14b8a6" className="absolute -right-1 -top-3.5 h-4 w-4 rotate-12" />
                   <div className="grid gap-y-0.5">
-                    {GRID_ROWS.map((row, rowIndex) => (
+                    {t("shell.popup.preview.wordSearch.grid").split(" ").map((row, rowIndex) => (
                       <div key={row} className={`grid grid-cols-5 rounded-md ${rowIndex === GRID_FOUND_ROW ? "bg-[#5eead4]" : ""}`}>
                         {row.split("").map((letter, index) => (
                           <span
@@ -291,11 +294,11 @@ export default function NewGamesPopup({
             <p className="flex items-center justify-center gap-3 text-[13px] font-bold text-[#3b3f58]">
               <span className="h-px w-8 bg-[#cdbff0]" aria-hidden="true" />
               <span className="text-center">
-                100% FREE{" "}
+                {t("shell.popup.ui.free")}{" "}
                 <span className="text-[#7c3aed]" aria-hidden="true">
                   •
                 </span>{" "}
-                Find both in Games
+                {t("shell.newGamesPopup.findBoth")}
               </span>
               <span className="h-px w-8 bg-[#cdbff0]" aria-hidden="true" />
             </p>
@@ -304,7 +307,7 @@ export default function NewGamesPopup({
               onClick={() => close("later")}
               className="mx-auto block min-h-[44px] rounded-xl px-6 text-[15px] font-bold text-[#7b8094] outline-none focus-visible:ring-2 focus-visible:ring-[#7c3aed]"
             >
-              Maybe later
+              {t("shell.popup.ui.later")}
             </button>
           </div>
         </div>

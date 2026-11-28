@@ -12,25 +12,29 @@
  */
 
 import Link from "next/link";
+import { useT } from "../../lib/i18n/useT";
+import type { MessageKey } from "../../lib/i18n/messages/en";
 
-type Game = { key: string; href: string; title: string; line: string; emoji: string; tile: string; icon?: string; badge?: string };
+// The name, the line and the badge are message keys (lib/i18n/messages/en/home.ts),
+// read with t() where the row is drawn.
+type Game = { key: string; href: string; titleKey: MessageKey; lineKey: MessageKey; emoji: string; tile: string; icon?: string; badgeKey?: MessageKey };
 
 const GAMES: Game[] = [
   {
     key: "match",
     href: "/bible-study-games/match?from=games",
-    title: "Bible Buddy Match",
-    line: "Connect the tiles and walk through the Bible, board by board.",
+    titleKey: "home.games.match.title",
+    lineKey: "home.games.match.line",
     emoji: "💎",
     tile: "linear-gradient(145deg,#2f7bff 0%,#0b3db8 100%)",
     icon: "/games/menu/match.webp",
-    badge: "New",
+    badgeKey: "home.games.new",
   },
   {
     key: "trivia",
     href: "/bible-study-games/clue?from=games",
-    title: "Bible Trivia",
-    line: "Any book, any chapter. Play solo, with friends, or take a challenge.",
+    titleKey: "home.games.trivia.title",
+    lineKey: "home.games.trivia.line",
     emoji: "📜",
     tile: "linear-gradient(145deg,#2f8a55 0%,#0f4a2a 100%)",
     icon: "/games/menu/trivia.webp",
@@ -38,8 +42,8 @@ const GAMES: Game[] = [
   {
     key: "memory",
     href: "/bible-study-games/memory",
-    title: "Bible Memory",
-    line: "Save a verse and learn it by heart, a few minutes at a time.",
+    titleKey: "home.games.memory.title",
+    lineKey: "home.games.memory.line",
     emoji: "🧠",
     tile: "linear-gradient(145deg,#8b4fd1 0%,#4a1f86 100%)",
     icon: "/games/menu/memory.webp",
@@ -47,8 +51,8 @@ const GAMES: Game[] = [
   {
     key: "word-search",
     href: "/bible-study-games/word-search",
-    title: "Bible Word Search",
-    line: "Find the people, places and themes of every book.",
+    titleKey: "home.games.wordSearch.title",
+    lineKey: "home.games.wordSearch.line",
     emoji: "🔎",
     tile: "linear-gradient(145deg,#2f5fa8 0%,#132d5c 100%)",
     icon: "/games/menu/word-search.webp",
@@ -79,6 +83,7 @@ function ControllerBadge() {
 }
 
 function Row({ game, featured, href, onClick }: { game: Game; featured: boolean; href?: string; onClick?: () => void }) {
+  const t = useT();
   return (
     <Link
       href={href ?? game.href}
@@ -105,14 +110,14 @@ function Row({ game, featured, href, onClick }: { game: Game; featured: boolean;
       <span className="hidden h-12 w-px shrink-0 sm:block" style={{ background: mix(GOLD, 35) }} aria-hidden="true" />
       <span className="min-w-0 flex-1">
         <span className="flex flex-wrap items-center gap-2">
-          <span className="text-[19px] font-black leading-tight text-[var(--bb-text-primary,#fbf3e4)] sm:text-[22px]">{game.title}</span>
-          {game.badge ? (
+          <span className="text-[19px] font-black leading-tight text-[var(--bb-text-primary,#fbf3e4)] sm:text-[22px]">{t(game.titleKey)}</span>
+          {game.badgeKey ? (
             <span className="rounded-full px-2 py-0.5 text-[10px] font-black uppercase tracking-wide" style={{ background: "#f4c64e", color: "#2a1d05" }}>
-              {game.badge}
+              {t(game.badgeKey)}
             </span>
           ) : null}
         </span>
-        <span className="mt-0.5 block text-[13px] leading-snug text-[var(--bb-text-secondary,#e9dcc6)] sm:text-[15px]">{game.line}</span>
+        <span className="mt-0.5 block text-[13px] leading-snug text-[var(--bb-text-secondary,#e9dcc6)] sm:text-[15px]">{t(game.lineKey)}</span>
       </span>
       {featured ? (
         <span
@@ -148,6 +153,7 @@ export function GameMenuRow({ gameKey, href, onClick }: { gameKey: string; href?
 }
 
 export default function GamesMenu() {
+  const t = useT();
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-3 px-4 pb-28 pt-5 sm:gap-4">
       <header className="mb-1 flex flex-col items-center text-center">
@@ -160,10 +166,10 @@ export default function GamesMenu() {
           className="mt-2 text-[40px] font-black leading-none sm:text-[52px]"
           style={{ color: "var(--bb-text-primary,#fff6e3)", textShadow: `0 2px 18px ${mix(GOLD, 45)}, 0 2px 4px rgba(0,0,0,.5)` }}
         >
-          Games
+          {t("home.games.title")}
         </h1>
         <p className="mt-2 text-[14px] font-semibold text-[var(--bb-text-secondary,#e9dcc6)] sm:text-[16px]" style={{ textShadow: "0 1px 6px rgba(0,0,0,.6)" }}>
-          Test what you remember after reading and studying Scripture.
+          {t("home.games.subtitle")}
         </p>
       </header>
       {GAMES.map((g, i) => (

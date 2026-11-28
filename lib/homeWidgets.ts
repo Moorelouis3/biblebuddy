@@ -18,6 +18,8 @@
  * is the dashboard exactly as it was before widgets, in the same order.
  */
 
+import type { MessageKey } from "./i18n/messages/en";
+
 export type WidgetSize = "s" | "m" | "l";
 
 export type WidgetKind =
@@ -50,9 +52,14 @@ export type WidgetCategory = "daily" | "studies" | "ask" | "saved" | "games" | "
 
 export type WidgetDefinition = {
   kind: WidgetKind;
-  name: string;
+  /**
+   * The name and the gallery line are message keys, not text: this module has
+   * no reader's language to hand. Show them with t(def.nameKey). The English
+   * is in lib/i18n/messages/en/home.ts.
+   */
+  nameKey: MessageKey;
   /** One line in the gallery. */
-  description: string;
+  descriptionKey: MessageKey;
   icon: string;
   category: WidgetCategory;
   /** The first is the size it is added at. */
@@ -61,42 +68,42 @@ export type WidgetDefinition = {
   perStudy?: boolean;
 };
 
-export const WIDGET_CATEGORIES: Array<{ id: WidgetCategory; label: string }> = [
-  { id: "studies", label: "Study guides and reading" },
-  { id: "daily", label: "Daily habit" },
-  { id: "ask", label: "Ask and look up" },
-  { id: "saved", label: "Notes and saved verses" },
-  { id: "games", label: "Games" },
-  { id: "community", label: "Community" },
-  { id: "reading", label: "Articles" },
+export const WIDGET_CATEGORIES: Array<{ id: WidgetCategory; labelKey: MessageKey }> = [
+  { id: "studies", labelKey: "home.category.studies" },
+  { id: "daily", labelKey: "home.category.daily" },
+  { id: "ask", labelKey: "home.category.ask" },
+  { id: "saved", labelKey: "home.category.saved" },
+  { id: "games", labelKey: "home.category.games" },
+  { id: "community", labelKey: "home.category.community" },
+  { id: "reading", labelKey: "home.category.reading" },
 ];
 
 export const WIDGETS: Record<WidgetKind, WidgetDefinition> = {
-  streak: { kind: "streak", name: "Day Streak", description: "Your streak and its flame.", icon: "🔥", category: "daily", sizes: ["s"] },
-  bible_progress: { kind: "bible_progress", name: "Bible Progress", description: "How much of the Bible you have read.", icon: "📖", category: "daily", sizes: ["s"] },
-  level: { kind: "level", name: "Level", description: "Your level and points.", icon: "⭐", category: "daily", sizes: ["s"] },
-  verse_of_the_day: { kind: "verse_of_the_day", name: "Verse of the Day", description: "Today's verse, its breakdown and Memorize.", icon: "✨", category: "daily", sizes: ["l"] },
-  bible_in_one_year: { kind: "bible_in_one_year", name: "Bible in One Year", description: "Today's reading, your day and the audio.", icon: "📅", category: "daily", sizes: ["m", "l"] },
-  study_guide: { kind: "study_guide", name: "Study Guide", description: "One study guide of your choice: its cover, your progress, Continue.", icon: "📚", category: "studies", sizes: ["m", "s"], perStudy: true },
-  bookshelf: { kind: "bookshelf", name: "Your Bookshelf", description: "All your studies together.", icon: "🗂️", category: "studies", sizes: ["l"] },
-  group_study_today: { kind: "group_study_today", name: "Today's Group Study", description: "Today's reading and question in the group study.", icon: "👥", category: "studies", sizes: ["l"] },
-  group_countdown: { kind: "group_countdown", name: "Group Study Countdown", description: "The next group study and its sign-up.", icon: "⏳", category: "studies", sizes: ["m"] },
-  continue_reading: { kind: "continue_reading", name: "Continue Reading", description: "Open the Bible where you left off.", icon: "🔖", category: "studies", sizes: ["m", "s"] },
-  ask_lil_louis: { kind: "ask_lil_louis", name: "Ask Lil Louis", description: "Ask a question right from Home.", icon: "💬", category: "ask", sizes: ["m", "s"] },
-  look_it_up: { kind: "look_it_up", name: "Look It Up", description: "Search people, places and keywords.", icon: "🔎", category: "ask", sizes: ["l"] },
-  study_notes: { kind: "study_notes", name: "Study Notes", description: "Your latest note, or start a new one.", icon: "📝", category: "saved", sizes: ["m"] },
-  saved_verses: { kind: "saved_verses", name: "Saved Verses", description: "A verse you saved, ready to open.", icon: "🔖", category: "saved", sizes: ["m"] },
+  streak: { kind: "streak", nameKey: "home.widget.streak.name", descriptionKey: "home.widget.streak.description", icon: "🔥", category: "daily", sizes: ["s"] },
+  bible_progress: { kind: "bible_progress", nameKey: "home.widget.bibleProgress.name", descriptionKey: "home.widget.bibleProgress.description", icon: "📖", category: "daily", sizes: ["s"] },
+  level: { kind: "level", nameKey: "home.widget.level.name", descriptionKey: "home.widget.level.description", icon: "⭐", category: "daily", sizes: ["s"] },
+  verse_of_the_day: { kind: "verse_of_the_day", nameKey: "home.widget.verseOfTheDay.name", descriptionKey: "home.widget.verseOfTheDay.description", icon: "✨", category: "daily", sizes: ["l"] },
+  bible_in_one_year: { kind: "bible_in_one_year", nameKey: "home.widget.bibleInOneYear.name", descriptionKey: "home.widget.bibleInOneYear.description", icon: "📅", category: "daily", sizes: ["m", "l"] },
+  study_guide: { kind: "study_guide", nameKey: "home.widget.studyGuide.name", descriptionKey: "home.widget.studyGuide.description", icon: "📚", category: "studies", sizes: ["m", "s"], perStudy: true },
+  bookshelf: { kind: "bookshelf", nameKey: "home.widget.bookshelf.name", descriptionKey: "home.widget.bookshelf.description", icon: "🗂️", category: "studies", sizes: ["l"] },
+  group_study_today: { kind: "group_study_today", nameKey: "home.widget.groupStudyToday.name", descriptionKey: "home.widget.groupStudyToday.description", icon: "👥", category: "studies", sizes: ["l"] },
+  group_countdown: { kind: "group_countdown", nameKey: "home.widget.groupCountdown.name", descriptionKey: "home.widget.groupCountdown.description", icon: "⏳", category: "studies", sizes: ["m"] },
+  continue_reading: { kind: "continue_reading", nameKey: "home.widget.continueReading.name", descriptionKey: "home.widget.continueReading.description", icon: "🔖", category: "studies", sizes: ["m", "s"] },
+  ask_lil_louis: { kind: "ask_lil_louis", nameKey: "home.widget.askLilLouis.name", descriptionKey: "home.widget.askLilLouis.description", icon: "💬", category: "ask", sizes: ["m", "s"] },
+  look_it_up: { kind: "look_it_up", nameKey: "home.widget.lookItUp.name", descriptionKey: "home.widget.lookItUp.description", icon: "🔎", category: "ask", sizes: ["l"] },
+  study_notes: { kind: "study_notes", nameKey: "home.widget.studyNotes.name", descriptionKey: "home.widget.studyNotes.description", icon: "📝", category: "saved", sizes: ["m"] },
+  saved_verses: { kind: "saved_verses", nameKey: "home.widget.savedVerses.name", descriptionKey: "home.widget.savedVerses.description", icon: "🔖", category: "saved", sizes: ["m"] },
   // Bible Buddy Match took Scrambled's place on Home on 2026-11-27 (Louis:
   // "remove scramble and bible match"). Scrambled had left the Games tab on
   // the 23rd; sanitizeLayout below turns a saved Scrambled card into this one.
-  game_match: { kind: "game_match", name: "Bible Buddy Match", description: "Connect the tiles and walk through the Bible.", icon: "💎", category: "games", sizes: ["m"] },
-  game_trivia: { kind: "game_trivia", name: "Bible Trivia", description: "Test your Bible knowledge.", icon: "❓", category: "games", sizes: ["m"] },
-  game_word_search: { kind: "game_word_search", name: "Bible Word Search", description: "Find hidden Bible words.", icon: "🧩", category: "games", sizes: ["m"] },
-  game_memory: { kind: "game_memory", name: "Bible Memory", description: "Practise remembering Scripture.", icon: "🧠", category: "games", sizes: ["m"] },
-  buddies: { kind: "buddies", name: "Buddies", description: "Your buddies and buddy requests.", icon: "🤝", category: "community", sizes: ["m"] },
-  messages: { kind: "messages", name: "Messages", description: "Unread messages at a glance.", icon: "✉️", category: "community", sizes: ["s", "m"] },
-  prayer_requests: { kind: "prayer_requests", name: "Prayer Requests", description: "The newest prayer request in the feed.", icon: "🙏", category: "community", sizes: ["m"] },
-  quick_reads: { kind: "quick_reads", name: "Quick Reads", description: "Short articles to read next.", icon: "📰", category: "reading", sizes: ["l"] },
+  game_match: { kind: "game_match", nameKey: "home.games.match.title", descriptionKey: "home.widget.gameMatch.description", icon: "💎", category: "games", sizes: ["m"] },
+  game_trivia: { kind: "game_trivia", nameKey: "home.games.trivia.title", descriptionKey: "home.widget.gameTrivia.description", icon: "❓", category: "games", sizes: ["m"] },
+  game_word_search: { kind: "game_word_search", nameKey: "home.games.wordSearch.title", descriptionKey: "home.widget.gameWordSearch.description", icon: "🧩", category: "games", sizes: ["m"] },
+  game_memory: { kind: "game_memory", nameKey: "home.games.memory.title", descriptionKey: "home.widget.gameMemory.description", icon: "🧠", category: "games", sizes: ["m"] },
+  buddies: { kind: "buddies", nameKey: "home.widget.buddies.name", descriptionKey: "home.widget.buddies.description", icon: "🤝", category: "community", sizes: ["m"] },
+  messages: { kind: "messages", nameKey: "home.widget.messages.name", descriptionKey: "home.widget.messages.description", icon: "✉️", category: "community", sizes: ["s", "m"] },
+  prayer_requests: { kind: "prayer_requests", nameKey: "home.widget.prayerRequests.name", descriptionKey: "home.widget.prayerRequests.description", icon: "🙏", category: "community", sizes: ["m"] },
+  quick_reads: { kind: "quick_reads", nameKey: "home.widget.quickReads.name", descriptionKey: "home.widget.quickReads.description", icon: "📰", category: "reading", sizes: ["l"] },
 };
 
 export type HomeWidget = {
@@ -185,4 +192,5 @@ export const SIZE_SPAN: Record<WidgetSize, string> = {
   l: "col-span-6",
 };
 
-export const SIZE_LABEL: Record<WidgetSize, string> = { s: "Small", m: "Medium", l: "Large" };
+/** Message keys, like the widget names: t(SIZE_LABEL_KEY[size]). */
+export const SIZE_LABEL_KEY: Record<WidgetSize, MessageKey> = { s: "home.size.s", m: "home.size.m", l: "home.size.l" };

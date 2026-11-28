@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { bibleLockStatus } from "@/lib/bibleLock";
+import { useT } from "@/lib/i18n/useT";
 
 /**
  * The way in to the Bible lock, on the dashboard (Louis, 2026-10-17: "I don't
@@ -55,6 +56,7 @@ function AppTile({ className, children }: { className: string; children: React.R
 }
 
 export default function BibleLockBanner() {
+  const t = useT();
   const [show, setShow] = useState(false);
   /**
    * Whether the apps are shielded right now.
@@ -169,7 +171,7 @@ export default function BibleLockBanner() {
             id="home-bible-lock-heading"
             className="text-sm font-black leading-tight text-[var(--bb-text-primary,#0f1f3a)] sm:text-base"
           >
-            {locked ? "Apps locked" : "Bible Lock"}
+            {locked ? t("home.lock.titleLocked") : t("home.lock.title")}
           </h2>
           {/* The full line truncates on a 375px phone once the lock and the
               button have taken their share, and a sentence cut mid-word reads
@@ -184,15 +186,13 @@ export default function BibleLockBanner() {
                  than it is. One line cannot hold all of them, so it says what
                  they have in common and the full list is on /bible-lock. */
               <>
-                <span className="sm:hidden">Spend time with God to unlock them.</span>
-                <span className="hidden sm:inline">
-                  Spend time with God to unlock them &mdash; a chapter, a devotional day, trivia, a note.
-                </span>
+                <span className="sm:hidden">{t("home.lock.lockedShort")}</span>
+                <span className="hidden sm:inline">{t("home.lock.lockedLong")}</span>
               </>
             ) : (
               <>
-                <span className="sm:hidden">Block apps until you read.</span>
-                <span className="hidden sm:inline">Block distracting apps until you study the Bible.</span>
+                <span className="sm:hidden">{t("home.lock.pitchShort")}</span>
+                <span className="hidden sm:inline">{t("home.lock.pitchLong")}</span>
               </>
             )}
           </p>
@@ -224,13 +224,13 @@ export default function BibleLockBanner() {
              colour of its own. */
           style={{ color: "#ffffff" }}
         >
-          {locked ? "Pick a task →" : "Set Up →"}
+          {locked ? t("home.lock.pickTask") : t("home.lock.setUp")}
         </Link>
 
         <button
           type="button"
           onClick={dismiss}
-          aria-label="Hide this"
+          aria-label={t("home.lock.hide")}
           className="grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-black text-[#7c93b5] transition hover:bg-white/70 hover:text-[#44566f]"
         >
           ✕

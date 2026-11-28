@@ -73,6 +73,7 @@ import {
   type PopupSettings,
 } from "../../lib/popups/decide";
 import { supabase } from "../../lib/supabaseClient";
+import { useT } from "../../lib/i18n/useT";
 import BibleLockPopup from "../BibleLockPopup";
 import NewGamesPopup from "../NewGamesPopup";
 import FeaturePopup, { type FeaturePopupCloseMethod, type FeaturePopupPoll, type FeaturePopupSignup } from "./FeaturePopup";
@@ -462,8 +463,11 @@ export default function PopupCoordinator({
   blocked: boolean;
 }) {
   const router = useRouter();
+  const t = useT();
   const [open, setOpen] = useState<{
     popup: PopupDefinition;
+    /** Weekly Bible Trivia: the week's theme, which becomes the headline when drawn. */
+    trivia?: { title: string; intro: string };
     inSection: boolean;
     /** A weekly popup: the week's own post, instead of the list's address. */
     href?: string;
@@ -582,15 +586,10 @@ export default function PopupCoordinator({
         const post = popup.weekly === "poll" ? weekly?.pollPostId : weekly?.threadPostId;
         const trivia = popup.weekly === "trivia" ? weekly?.trivia : undefined;
         setOpen({
+          popup,
           // The week's theme is the headline: "This week: The 12 Disciples".
-          popup: trivia
-            ? {
-                ...popup,
-                headline: `This week: ${trivia.title}`,
-                headlineAccent: trivia.title,
-                description: `${trivia.intro} Everyone plays the same 10 questions. Highest score by Tuesday wins, and playing earns bonus XP.`,
-              }
-            : popup,
+          // Written where it is drawn, so it is in the reader's language.
+          trivia: trivia ? { title: trivia.title, intro: trivia.intro } : undefined,
           inSection: inSection(popup, pathRef.current),
           href: trivia
             ? `/bible-study-games/clue/challenge/${trivia.id}`
@@ -831,6 +830,15 @@ export default function PopupCoordinator({
     <FeaturePopup
       key={open.popup.id}
       popup={open.popup}
+      override={
+        open.trivia
+          ? {
+              headline: t("shell.popup.weeklyTrivia.liveHeadline", { title: open.trivia.title }),
+              headlineAccent: open.trivia.title,
+              description: t("shell.popup.weeklyTrivia.liveDescription", { intro: open.trivia.intro }),
+            }
+          : undefined
+      }
       inSection={open.inSection}
       onClose={close}
       onCta={act}

@@ -7,6 +7,7 @@ import { createPortal } from "react-dom";
 // downloading a 33 MB chunk it never reads from.
 const BibleStudySectionsLoader = dynamic(() => import("./BibleStudySectionsLoader"), { ssr: false });
 import { ColorPicker } from "./ColorPicker";
+import { useT } from "../lib/i18n/useT";
 import { useMemoryVerse } from "../lib/useMemoryVerse";
 import { formatVerseReference, shareVerseImage, warmVerseShareImage } from "../lib/verseShareImage";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
@@ -506,6 +507,7 @@ function GenesisOneInsightCard({
   onToggle: () => void;
   onClose?: () => void;
 }) {
+  const t = useT();
   const color = getInsightCardColor(colorIndex);
   const title = getInsightCardTitle(phrase);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -574,7 +576,7 @@ function GenesisOneInsightCard({
         <button
           type="button"
           onClick={onClose}
-          aria-label="Close this Insight Card"
+          aria-label={t("reader.insight.close")}
           className="absolute right-2 top-2 z-10 grid h-7 w-7 place-items-center rounded-full bg-white/70 text-base font-black leading-none text-slate-500 transition hover:bg-white hover:text-slate-800"
         >
           ×
@@ -605,7 +607,7 @@ failedNote ? (
             // let the reader fetch it again (closing and reopening retries),
             // rather than leaving a card that looks finished.
             <div className="rounded-lg bg-white/70 px-3 py-2.5 text-[0.82rem] font-semibold leading-5 text-slate-700" role="status">
-              The rest of this note did not load. Check your connection, then close this card and open it again.
+              {t("reader.insight.failed")}
             </div>
           ) : (
             <div className="space-y-2 pt-1" aria-live="polite" role="status">
@@ -614,7 +616,7 @@ failedNote ? (
                   aria-hidden="true"
                   className="inline-block h-3.5 w-3.5 animate-spin rounded-full border-2 border-slate-400 border-t-transparent"
                 />
-                Loading the full note…
+                {t("reader.insight.loading")}
               </p>
               <div className="animate-pulse space-y-2">
                 <div className="h-3 w-11/12 rounded bg-black/15" />
@@ -648,6 +650,7 @@ function HighlightActionMenu({
   onRemove: () => void;
   onClose: () => void;
 }) {
+  const t = useT();
   const ref = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -681,21 +684,21 @@ function HighlightActionMenu({
       className="fixed z-[9999] flex items-center gap-1 rounded-2xl border border-slate-200 bg-white p-1.5 text-slate-950 shadow-[0_18px_50px_rgba(15,23,42,0.22)]"
       style={{ top, left }}
       role="menu"
-      aria-label="Highlight actions"
+      aria-label={t("reader.highlight.actions")}
     >
       <button
         type="button"
         onClick={onAddNote}
         className="rounded-xl px-3 py-2 text-xs font-black transition hover:bg-slate-100"
       >
-        📝 {hasNote ? "Edit Note" : "Add Note"}
+        📝 {hasNote ? t("reader.note.edit") : t("reader.note.add")}
       </button>
       <button
         type="button"
         onClick={onChangeColor}
         className="rounded-xl px-3 py-2 text-xs font-black transition hover:bg-slate-100"
       >
-        🎨 Color
+        🎨 {t("reader.highlight.color")}
       </button>
       {hasSavedRange ? (
         <button
@@ -703,7 +706,7 @@ function HighlightActionMenu({
           onClick={onRemove}
           className="rounded-xl px-3 py-2 text-xs font-black text-rose-600 transition hover:bg-rose-50"
         >
-          ✕ Remove
+          ✕ {t("reader.highlight.remove")}
         </button>
       ) : null}
     </div>,
@@ -726,6 +729,7 @@ function HighlightNoteModal({
   onClose: () => void;
   saving: boolean;
 }) {
+  const t = useT();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -739,14 +743,14 @@ function HighlightNoteModal({
       <div className="flex max-h-[calc(100svh-24px-env(safe-area-inset-top)-env(safe-area-inset-bottom))] w-full max-w-lg flex-col overflow-hidden rounded-[24px] border border-slate-200 bg-white text-slate-950 shadow-[0_26px_90px_rgba(15,23,42,0.35)] sm:max-h-[86vh]">
         <div className="flex shrink-0 items-center justify-between border-b border-slate-100 px-4 py-3 sm:px-5 sm:py-4">
           <div>
-            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-sky-600">Highlight Note</p>
-            <h3 className="mt-1 text-base font-black leading-tight sm:text-lg">Add a note to this highlight</h3>
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-sky-600">{t("reader.note.label")}</p>
+            <h3 className="mt-1 text-base font-black leading-tight sm:text-lg">{t("reader.note.title")}</h3>
           </div>
           <button
             type="button"
             onClick={onClose}
             className="grid h-9 w-9 place-items-center rounded-full bg-slate-100 text-xl font-black text-slate-600 transition hover:bg-slate-200"
-            aria-label="Close note"
+            aria-label={t("reader.note.closeLabel")}
           >
             ×
           </button>
@@ -756,13 +760,13 @@ function HighlightNoteModal({
             “{state.range.selected_text}”
           </div>
           <label className="block">
-            <span className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">My Note</span>
+            <span className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">{t("reader.note.mine")}</span>
             <textarea
               value={state.noteText}
               onChange={(event) => onChange(event.target.value)}
               rows={6}
               autoFocus
-              placeholder="Write what this highlighted phrase means to you..."
+              placeholder={t("reader.note.placeholder")}
               className="mt-2 w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base font-semibold leading-6 text-slate-950 outline-none transition focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100 sm:text-sm"
             />
           </label>
@@ -774,7 +778,7 @@ function HighlightNoteModal({
             disabled={saving || !state.range.note_text}
             className="mb-2 w-full rounded-2xl border border-rose-200 px-4 py-3 text-sm font-black text-rose-600 transition hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-40 sm:mb-0 sm:w-auto"
           >
-            Delete Note
+            {t("reader.note.delete")}
           </button>
           <div className="flex gap-2">
             <button
@@ -782,7 +786,7 @@ function HighlightNoteModal({
               onClick={onClose}
               className="flex-1 rounded-2xl border border-slate-200 px-5 py-3 text-sm font-black text-slate-700 transition hover:bg-slate-50 sm:flex-none"
             >
-              Cancel
+              {t("reader.note.cancel")}
             </button>
             <button
               type="button"
@@ -790,7 +794,7 @@ function HighlightNoteModal({
               disabled={saving}
               className="flex-1 rounded-2xl bg-sky-500 px-5 py-3 text-sm font-black text-white shadow-[0_14px_32px_rgba(14,165,233,0.28)] transition hover:bg-sky-400 disabled:opacity-60 sm:flex-none"
             >
-              {saving ? "Saving..." : "Save Note"}
+              {saving ? t("reader.note.saving") : t("reader.note.save")}
             </button>
           </div>
         </div>
@@ -813,6 +817,7 @@ function HighlightNoteViewer({
   onClose: () => void;
   deleting: boolean;
 }) {
+  const t = useT();
   const ref = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -882,7 +887,7 @@ function HighlightNoteViewer({
           <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-slate-200 sm:hidden" aria-hidden="true" />
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-sky-600">📝 Note</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-sky-600">📝 {t("reader.note.viewerLabel")}</p>
               <p className="mt-2 rounded-2xl bg-amber-50 px-3 py-2 text-sm font-black leading-5 text-slate-900">
                 “{state.range.selected_text}”
               </p>
@@ -892,7 +897,7 @@ function HighlightNoteViewer({
                 type="button"
                 onClick={() => setMenuOpen((open) => !open)}
                 className="grid h-9 w-9 place-items-center rounded-full bg-slate-100 text-lg font-black text-slate-700 transition hover:bg-slate-200"
-                aria-label="Note options"
+                aria-label={t("reader.note.options")}
                 aria-expanded={menuOpen}
               >
                 ⋯
@@ -904,7 +909,7 @@ function HighlightNoteViewer({
                     onClick={onEdit}
                     className="block w-full rounded-xl px-3 py-2 text-left text-sm font-black text-slate-800 transition hover:bg-slate-100"
                   >
-                    Edit Note
+                    {t("reader.note.edit")}
                   </button>
                   <button
                     type="button"
@@ -912,7 +917,7 @@ function HighlightNoteViewer({
                     disabled={deleting}
                     className="block w-full rounded-xl px-3 py-2 text-left text-sm font-black text-rose-600 transition hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    {deleting ? "Deleting..." : "Delete Note"}
+                    {deleting ? t("reader.note.deleting") : t("reader.note.delete")}
                   </button>
                 </div>
               ) : null}
@@ -926,7 +931,7 @@ function HighlightNoteViewer({
             onClick={onClose}
             className="mt-4 w-full rounded-2xl bg-slate-100 px-4 py-3 text-sm font-black text-slate-700 transition hover:bg-slate-200 sm:hidden"
           >
-            Close
+            {t("reader.note.close")}
           </button>
         </div>
       </div>
@@ -1356,6 +1361,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   hideStudyModeHeader = false,
   translation,
 }) => {
+  const t = useT();
   const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
   const [rangeMap, setRangeMap] = useState<Record<number, VerseHighlightRange[]>>({});
   const [picker, setPicker] = useState<ColorPickerState | null>(null);
@@ -1580,7 +1586,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
           // Put it back rather than leave the verse looking un-highlighted
           // when the row is still there.
           setHighlightMap((current) => ({ ...current, [verse]: previousColor }));
-          setHighlightError("That highlight could not be removed. Check your connection and try again.");
+          setHighlightError(t("reader.highlight.removeFailed"));
         });
       }
 
@@ -1815,7 +1821,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       const removed = await deleteHighlight(book, chapter, verse);
       if (!removed.ok) {
         restorePrevious();
-        setHighlightError("That highlight could not be removed. Check your connection and try again.");
+        setHighlightError(t("reader.highlight.removeFailed"));
         return;
       }
       setHighlightError(null);
@@ -1830,7 +1836,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       const saved = await upsertHighlight(book, chapter, verse, color);
       if (!saved.ok) {
         restorePrevious();
-        setHighlightError("That highlight did not save. Check your connection and try again.");
+        setHighlightError(t("reader.highlight.saveFailed"));
         return;
       }
       setHighlightError(null);
@@ -2186,10 +2192,10 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
           title={
             range
               ? range.note_text
-                ? "Click to view this note"
-                : "Click to add a note, change color, or remove this highlight"
+                ? t("reader.highlight.viewNote")
+                : t("reader.highlight.rangeHint")
               : opensPhraseCard
-                ? `Open the ${getInsightCardTitle(underline!.phrase)} Insight Card`
+                ? t("reader.insight.open", { title: getInsightCardTitle(underline!.phrase) })
                 : undefined
           }
           onClick={
@@ -2345,7 +2351,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
           colours on top of it are not what they should be. */}
       {highlightsUnavailable && (
         <p role="alert" className="mb-3 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-800">
-          Couldn&apos;t load your highlights for this chapter. They&apos;re still saved — reopen the chapter to try again.
+          {t("reader.highlight.loadFailed")}
         </p>
       )}
       {highlightError && (
@@ -2363,18 +2369,18 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       {insightCardsAvailable && !hideStudyModeHeader ? (
         <div className="mb-4 flex items-center justify-between gap-3 rounded-[14px] border border-slate-200 bg-white px-3.5 py-3">
           <span className="min-w-0">
-            <span className="block text-[0.95rem] font-black leading-5 text-slate-900">Study Mode</span>
+            <span className="block text-[0.95rem] font-black leading-5 text-slate-900">{t("reader.studyMode.title")}</span>
             <span className="mt-0.5 block text-xs font-semibold leading-5 text-slate-500">
               {studyModeOn
-                ? "Every Insight Card is listed under its verse."
-                : "Tap any underlined phrase below to open its Insight Card."}
+                ? t("reader.studyMode.on")
+                : t("reader.studyMode.offInline")}
             </span>
           </span>
           <button
             type="button"
             role="switch"
             aria-checked={studyModeOn}
-            aria-label="Study Mode"
+            aria-label={t("reader.studyMode.title")}
             onClick={() => {
               setStudyModeOn((on) => !on);
               setOpenInsightCard(null);
@@ -2456,7 +2462,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
                   e.stopPropagation();
                   handleVerseClick(v.number, e);
                 }}
-                title={`Highlight verse ${v.number}`}
+                title={t("reader.highlight.verse", { verse: v.number })}
                 tabIndex={0}
               >
                 {v.number}
@@ -2483,7 +2489,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
                   e.stopPropagation();
                   if (!plainTextMode) handleVerseClick(v.number, e);
                 }}
-                title={`Highlight verse ${v.number}`}
+                title={t("reader.highlight.verse", { verse: v.number })}
                 tabIndex={0}
               >
                 {getNumberEmoji(v.number)}

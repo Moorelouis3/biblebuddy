@@ -50,10 +50,18 @@ import {
 import { useHomeLayout } from "../lib/homeLayoutStore";
 import type { HomeWidget } from "../lib/homeWidgets";
 import { GameMenuRow } from "./games/GamesMenu";
+import { useT } from "../lib/i18n/useT";
 
 /** Chapters in the Protestant canon, so progress is a real fraction. */
 const TOTAL_BIBLE_CHAPTERS = 1189;
 const PLAN_TOTAL_DAYS = 365;
+
+/** The greeting by time of day: with the reader's first name, and without one. */
+const GREETING_KEYS = {
+  morning: { named: "home.greeting.morning", unnamed: "home.greeting.morningFriend" },
+  afternoon: { named: "home.greeting.afternoon", unnamed: "home.greeting.afternoonFriend" },
+  evening: { named: "home.greeting.evening", unnamed: "home.greeting.eveningFriend" },
+} as const;
 
 type HomeStats = {
   loaded: boolean;
@@ -79,12 +87,13 @@ type GroupActivity = {
 };
 
 function SectionHeading({ label, href, onSeeAll }: { label: string; href?: string; onSeeAll?: () => void }) {
+  const t = useT();
   return (
     <div className="mb-2 flex items-end justify-between">
       <h2 className="text-xs font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">{label}</h2>
       {href ? (
         <Link href={href} onClick={onSeeAll} className="text-sm font-bold text-[var(--bb-accent,#2f7fe8)]">
-          See All
+          {t("home.seeAll")}
         </Link>
       ) : null}
     </div>
@@ -147,6 +156,7 @@ function writeHomeCache(key: string, value: unknown) {
 }
 
 export default function HomeScreen() {
+  const t = useT();
   const { userId } = useSupabaseUser();
   const homeLayout = useHomeLayout(userId ?? null);
   const [editingHome, setEditingHome] = useState(false);
@@ -357,15 +367,20 @@ export default function HomeScreen() {
     })();
   }, []);
 
-  const greetingName = (stats.displayName || "friend").split(/\s+/)[0];
+  // Empty when there is no name on record: that greeting has its own wording
+  // ("Good morning, friend" in English).
+  const greetingName = (stats.displayName || "").split(/\s+/)[0];
   // Matches the dashboard, which greets by time of day rather than always
   // saying morning.
-  const greeting = useMemo(() => {
+  const greetingPeriod = useMemo<keyof typeof GREETING_KEYS>(() => {
     const hour = new Date().getHours();
-    if (hour < 12) return "Good morning";
-    if (hour < 18) return "Good afternoon";
-    return "Good evening";
+    if (hour < 12) return "morning";
+    if (hour < 18) return "afternoon";
+    return "evening";
   }, []);
+  const greeting = greetingName
+    ? t(GREETING_KEYS[greetingPeriod].named, { name: greetingName })
+    : t(GREETING_KEYS[greetingPeriod].unnamed);
   const biblePercent =
     stats.chaptersRead === null ? null : Math.round((stats.chaptersRead / TOTAL_BIBLE_CHAPTERS) * 100);
   const completedDays = stats.lastCompletedDay ?? 0;
@@ -424,7 +439,7 @@ export default function HomeScreen() {
             <button
               type="button"
               onClick={() => setStreakShareOpen(true)}
-              aria-label={`${stats.streak} day streak. Share your streak`}
+              aria-label={t.plural(stats.streak, "home.streak.share.one", "home.streak.share.other")}
               className="bb-cv-stat flex w-full min-w-0 items-center gap-1.5 rounded-2xl border border-[#f4dcc8] px-2.5 py-2.5 text-left shadow-sm transition active:scale-[0.98] sm:gap-2.5 sm:px-4 sm:py-3"
               style={{
                 backgroundColor: "var(--bb-cv-light-bg, #fff3e6)",
@@ -438,11 +453,11 @@ export default function HomeScreen() {
                 flameId={stats.flameId}
                 currentStreak={stats.streak}
                 size={28}
-                title={`${stats.streak} day streak`}
+                title={t.plural(stats.streak, "home.streak.title.one", "home.streak.title.other")}
               />
               <div>
                 <p className="text-base font-black leading-tight text-[#3d2417] sm:text-xl">{stats.streak}</p>
-                <p className="text-[10px] font-bold text-[#8a5c40] sm:text-[11px]">Day Streak</p>
+                <p className="text-[10px] font-bold text-[#8a5c40] sm:text-[11px]">{t("home.streak.label")}</p>
               </div>
             </button>
           ) : !stats.loaded && userId ? (
@@ -468,7 +483,7 @@ export default function HomeScreen() {
               <BibleProgressRing percent={biblePercent} />
               <div>
                 <p className="text-base font-black leading-tight text-[#123f30] sm:text-xl">{biblePercent}%</p>
-                <p className="text-[10px] font-bold text-[#3f7a63] sm:text-[11px]">of Bible</p>
+                <p className="text-[10px] font-bold text-[#3f7a63] sm:text-[11px]">{t("home.bibleProgress.label")}</p>
               </div>
             </div>
           ) : !stats.loaded && userId ? (
@@ -493,7 +508,7 @@ export default function HomeScreen() {
         {/* "Quick Reads", not "Recommended For You" (Louis, 2026-10-17). The
             analytics key stays "recommended" so the history before the rename
             still joins up with the history after it. */}
-        <SectionHeading label="Quick Reads" href="/blog" onSeeAll={() => trackHomeEvent("home_see_all_click", { section: "recommended" })} />
+        <SectionHeading label={t("home.quickReads.title")} href="/blog" onSeeAll={() => trackHomeEvent("home_see_all_click", { section: "recommended" })} />
         <div className="flex snap-x gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {recommended.map((article, index) => {
             const tint = cardTint(index);
@@ -596,10 +611,10 @@ export default function HomeScreen() {
       <header className="flex items-start justify-between gap-3">
         <div>
           <h1 className="text-2xl font-black text-[var(--bb-text-primary,#111827)] sm:text-3xl">
-            {greeting}, {greetingName}
+            {greeting}
           </h1>
           <p className="mt-1 text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">
-            Let&apos;s grow closer to God today.
+            {t("home.greeting.subtitle")}
           </p>
         </div>
         {!editingHome ? (
@@ -608,7 +623,7 @@ export default function HomeScreen() {
             onClick={() => setEditingHome(true)}
             className="shrink-0 rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-1.5 text-xs font-black text-[var(--bb-text-primary,#111827)] shadow-sm"
           >
-            ✏️ Edit Home
+            {t("home.editHome")}
           </button>
         ) : null}
       </header>
