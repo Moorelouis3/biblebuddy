@@ -146,3 +146,4 @@
 2026-11-26T17:02:28Z | 8 commits | Bible menu rebuilt from Louis's mock-up (picture per book, tabs, search, progress), Bible Memory learn-then-test mode, and 2 Samuel 6-7 chapter library entries
 2026-11-27T09:03:46Z | 18 commits | Chapter library entries for 2 Samuel 8-10, Chapter picker rebuilt to match the new Bible menu, Lil Louis tab restyled (New Chat button, no chat box border), one Bible version setting for the whole app, Bible Memory version-selection + Settings button, Bible Buddy Match How to Play screen, and Home game cards synced with the Games tab
 2026-11-27T17:03:09Z | 5 commits | 2 Samuel 11-12 Explained chapter library entries
+2026-11-28T09:02:37Z | 13 commits | Blog article (What Is the Trinity?), Bible Buddy Match map-scrolling and Jubilee move-economy fixes, 2 Samuel 13-15 Explained chapter library entries, Messages inbox request-batching, and The Sons of Abraham 21-day book with its December sign-up
