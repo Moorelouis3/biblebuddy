@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-14-explained",
+    title: "2 Samuel 14 Explained: The Wise Woman and Absalom's Return",
+    description:
+      "2 Samuel 14 explained verse by verse: Joab's hired wise woman, the parable that turns on David, and Absalom's return without full reconciliation.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-14-explained",
+    publishedAt: "2026-11-28",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 14 Explained 📖",
+      content:
+        "A king misses his exiled son.\nHis general notices, and takes it into his own hands.\n\n📌 Joab hires an actress to talk David into something he wouldn't do himself.\n\n📖 A sad story about a stranger's son turns into a mirror held up to David.\n📖 Absalom comes home, but David won't look at him for two years.\n📖 A kiss finally closes the gap, with nothing actually settled underneath it.\n\nNew article on:\n🟢 why the **wise woman's** story was never really about her own family\n🟢 what David's **half mercy** actually cost later\n🟢 how Absalom's **hair** quietly foreshadows what comes next\n\nHave you ever let someone back in without ever really settling things? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-13-explained",
     title: "2 Samuel 13 Explained: Amnon, Tamar, and a Father's Silence",
     description:
