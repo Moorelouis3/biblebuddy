@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-17-explained",
+    title: "2 Samuel 17 Explained: Hushai's Counsel and Ahithophel's Death",
+    description:
+      "2 Samuel 17 explained verse by verse: Ahithophel's plan to strike David, Hushai's counsel that saves him, the well at Bahurim, and Ahithophel's death.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-17-explained",
+    publishedAt: "2026-11-28",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 17 Explained 📖",
+      content:
+        "A perfect plan gets presented.\nThen one random second opinion kills it.\n\n📌 The text calls the rejected plan good. God defeats it anyway.\n\n📖 Hushai talks Absalom out of striking that same night.\n📖 Two messengers almost get caught, saved by a well and ground corn.\n📖 Ahithophel sees his counsel ignored and hangs himself.\n\nNew article on:\n🟢 how verse 14 shows God answering a **one sentence prayer**\n🟢 why the same village gives David both an insult and a **rescue**\n🟢 who **Machir** is, and why feeding David here is not his first kindness\n\nHave you ever watched a bad outcome unravel for reasons you only understood later? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-16-explained",
     title: "2 Samuel 16 Explained: Shimei's Curse and Ahithophel's Counsel",
     description:
