@@ -11,8 +11,13 @@
  * while a screen is being converted; it is not fine at release.
  */
 import type { MessageKey } from "./en";
+import { authDe } from "./de/auth";
+import { homeDe } from "./de/home";
+import { readerDe } from "./de/reader";
+import { settingsDe } from "./de/settings";
+import { shellDe } from "./de/shell";
 
-export const de: Partial<Record<MessageKey, string>> = {
+const core: Partial<Record<MessageKey, string>> = {
   // Bottom menu
   "nav.home": "Start",
   "nav.bible": "Bibel",
@@ -83,3 +88,5 @@ export const de: Partial<Record<MessageKey, string>> = {
   // The chapter reader
   "reader.listen": "{book} {chapter} anhören",
 };
+
+export const de: Partial<Record<MessageKey, string>> = { ...core, ...settingsDe, ...authDe, ...homeDe, ...shellDe, ...readerDe };

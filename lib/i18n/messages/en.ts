@@ -11,7 +11,13 @@
  * - Add the German in ./de.ts in the same commit when you can. A key with no
  *   German shows this English, so nothing is ever blank.
  */
-export const en = {
+import { authEn } from "./en/auth";
+import { homeEn } from "./en/home";
+import { readerEn } from "./en/reader";
+import { settingsEn } from "./en/settings";
+import { shellEn } from "./en/shell";
+
+const core = {
   // Bottom menu
   "nav.home": "Home",
   "nav.bible": "Bible",
@@ -82,5 +88,8 @@ export const en = {
   // The chapter reader
   "reader.listen": "Listen to {book} {chapter}",
 } as const;
+
+/** Bigger areas keep their text in ./en/<area>.ts; they are merged here. */
+export const en = { ...core, ...settingsEn, ...authEn, ...homeEn, ...shellEn, ...readerEn } as const;
 
 export type MessageKey = keyof typeof en;
