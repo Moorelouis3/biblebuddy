@@ -51,8 +51,12 @@ if (!PDF_PATH || !fs.existsSync(PDF_PATH)) {
   console.error("Pass the path to the interior PDF.");
   process.exit(1);
 }
-const OUT_DIR = path.join("data", "abraham-book-days");
-const TOTAL_DAYS = 30;
+// The same interior design carries the sequel (The Sons of Abraham,
+// 2026-11-28), so the folder and the day count can be named:
+//   --out data/sons-of-abraham-book-days --days 21
+const flag = (name) => (process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : null);
+const OUT_DIR = flag("--out") || path.join("data", "abraham-book-days");
+const TOTAL_DAYS = Number(flag("--days") || 30);
 
 const skeleton = (text) => text.normalize("NFC").replace(/[^A-Za-z0-9]/g, "").toLowerCase();
 const collapse = (text) => text.replace(/\s+/g, "");
@@ -108,6 +112,20 @@ for (let p = 1; p <= doc.numPages; p += 1) {
   pages.push(lines);
 }
 
+/**
+ * The Sons of Abraham is set in the same design with one weight less: it has
+ * no SemiBold and no Bold at all. Headings, labels and the day number are the
+ * Regular face at the same sizes, the reading reference is plain Italic, and
+ * the ornaments come from DejaVu Sans instead of FreeSerif. With nothing bold,
+ * a reflection question is known by the numeral set beside it and an action
+ * step by its "1." alone.
+ */
+const PLAIN = !Object.values(fontNames).some((name) => /SemiBold|Bold/.test(name));
+const HEAD_FACE = PLAIN ? "EBGaramond-Regular" : "EBGaramond-SemiBold";
+const SUB_LABELS = new Set(["BEFOREYOUREAD", "ASYOUREAD,NOTICE"]);
+/** "<page>:<y>" of every reflection-question numeral, so the question beside it can be told from its prompt. */
+const questionMarks = [];
+
 // Word breaks for letter-spaced lines, from pdftotext.
 const spacedWords = new Map();
 {
@@ -152,20 +170,21 @@ function kind(line) {
   if (!run) return "blank";
   const name = face(run);
   const size = run.s;
-  if (line.y > 590 && name === "EBGaramond-SemiBold" && size === 8.5) return "running-header";
+  if (line.y > 590 && name === HEAD_FACE && size === 8.5) return "running-header";
   if (line.y < 40 && name === "EBGaramond-Regular" && size === 9) return "folio";
-  if (name === "FreeSerif" && size >= 9) return "ornament";
-  if (name === "FreeSerif") return "star";
-  if (name === "EBGaramond-SemiBold" && size === 52) return "day-number";
+  if ((name === "FreeSerif" || name === "DejaVuSans") && size >= 9) return "ornament";
+  if (name === "FreeSerif" || name === "DejaVuSans") return "star";
+  if (name === HEAD_FACE && size === 52) return "day-number";
   if (name === "EBGaramond-Regular" && size === 10.5 && collapse(lineText(line)) === "DAY" && line.y > 550) return "day-label";
   if (name === "Cormorant-Light" && size === 25) return "day-title";
   if (name === "Cormorant-Light" && size === 31) return "drop-cap";
   if (name === "Cormorant-Light" && size === 16) return "question-number";
   if (name === "Cormorant-Light" && size === 15) return "action-title";
   if (name === "Cormorant-Light") return "pull-quote";
-  if (name === "EBGaramond-SemiBold" && size === 13) return "heading";
+  if (name === HEAD_FACE && size === 13) return "heading";
   if (name === "EBGaramond-SemiBold") return "sub-label";
-  if (name === "EBGaramondBoldItalic" && size === 13) return "reading-ref";
+  if (PLAIN && SUB_LABELS.has(collapse(lineText(line)))) return "sub-label";
+  if (name === (PLAIN ? "EBGaramond-Italic" : "EBGaramondBoldItalic") && size === 13) return "reading-ref";
   if (name === "EBGaramond-Regular" && size === 8.5) return "reading-time";
   if (name === "EBGaramond-Regular" && size === 9.5) return "pull-ref";
   if (size === 10.5 || size === 10) return "body";
@@ -426,6 +445,7 @@ for (const day of days) {
     for (const line of lines) {
       const k = kind(line);
       if (k.startsWith("unknown")) unknown.add(`${k} p${page.number}: ${lineText(line).slice(0, 50)}`);
+      if (k === "question-number") questionMarks.push({ page: page.number, y: line.y });
       if (["running-header", "folio", "ornament", "day-label", "day-number", "reading-time", "question-number", "blank"].includes(k)) continue;
       if (k === "day-title") {
         title = `${title} ${lineText(line).trim()}`.trim();
@@ -536,7 +556,8 @@ for (const day of days) {
   const questions = [];
   for (const block of questionBlocks) {
     const spans = spansOf(block.lines);
-    if (allStyle(spans, "b")) questions.push({ question: plainOf(block.lines), prompt: [] });
+    const numbered = questionMarks.some((mark) => mark.page === block.page && Math.abs(mark.y - block.lines[0].y) < 5);
+    if (PLAIN ? numbered : allStyle(spans, "b")) questions.push({ question: plainOf(block.lines), prompt: [] });
     else if (questions.length) questions[questions.length - 1].prompt.push(markdownOf(spans));
     else throw new Error(`Day ${day.day}: reflection text before the first question`);
   }
@@ -547,7 +568,7 @@ for (const day of days) {
   for (const block of joinAcrossPages(sectionBlocks.action)) {
     const spans = spansOf(block.lines);
     const text = plainOf(block.lines);
-    if (allStyle(spans, "b") && /^\d+\.\s/.test(text)) {
+    if ((PLAIN || allStyle(spans, "b")) && /^\d+\.\s/.test(text)) {
       const lastPart = actionParts[actionParts.length - 1];
       if (lastPart && /^\d+\.\s/.test(lastPart.split("\n").pop())) actionParts[actionParts.length - 1] = `${lastPart}\n${text}`;
       else actionParts.push(text);

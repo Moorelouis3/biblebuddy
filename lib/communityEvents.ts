@@ -51,6 +51,12 @@ export type CommunityEvent = {
   joinedLine: string;
   /** Shown to members once the dated window has passed. */
   evergreenLine: string;
+  /**
+   * YYYY-MM-DD, Europe/Berlin. Before this day the study is not announced:
+   * it is kept off the Library shelf and its sign-up popup has not started.
+   * Absent = announced as soon as its row is published.
+   */
+  signupOpens?: string;
 };
 
 /**
@@ -176,7 +182,76 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     joinedLine: "walk through Abraham's story together",
     evergreenLine: "All 30 days are open. Go at your own pace, one day at a time.",
   },
+  {
+    /**
+     * The sequel, 2026-11-28. Louis: "make this one have the sign up and all
+     * that start dec 1 until the last day of dec, like we did with Abraham".
+     * So sign-ups run through December, while Abraham itself is live, and
+     * Day 1 opens on 1 January (devotionals.available_from 2027-01-01).
+     *
+     * It is the book: 21 days on Genesis 25 to 36, put in from the print
+     * interior by scripts/apply-sons-of-abraham-book-days.ts.
+     *
+     * No heroBanner: there is no approved wide artwork for it yet, so the
+     * sign-up header typesets the title over bannerArt, as Proverbs does.
+     * No entry in DAILY_POSTS_BY_EVENT yet either, so the daily feed post
+     * skips this study until its 21 posts are written.
+     */
+    slug: "sons-of-abraham",
+    title: "The Sons of Abraham",
+    subtitle: "A 21-Day Bible Buddy Community Devotional",
+    devotionalId: "17f72207-8693-4577-ac3f-80ddd806c0da",
+    startDate: "2027-01-01",
+    totalDays: 21,
+    signupOpens: "2026-12-01",
+    // Square crop of the cover between its subtitle and its byline.
+    bannerArt: "/events/sons-of-abraham-banner-art.webp",
+    bookUrl: null,
+    printBooksPath: null,
+    dateRangeLabel: "January 1–21",
+    countdownSub: "A 21-day devotional · Starting January 1",
+    liveSub: "Day {day} of Genesis 25-36",
+    evergreenSub: "Follow Abraham's family as it grows, one day at a time.",
+    intro: [
+      "Ask most people how many sons Abraham had, and they will say two. The Bible names eight.",
+      "",
+      "For twenty one days we walk through Genesis 25 to 36 together and follow Abraham's family as it grows. Along the way you will meet:",
+      "👑 Keturah's six sons and Ishmael's twelve princes",
+      "🍲 Jacob and Esau, the birthright and the stolen blessing",
+      "🤼 The night Jacob wrestled and came home with a new name",
+      "",
+      "A new day opens every day from 1 to 21 January. Join whenever you like, study each day when it suits you, then meet the community in the daily discussion.",
+    ].join("\n"),
+    howItWorks: [
+      "A new devotional unlocks each day. Read or listen, read that day's passage in Genesis, take the trivia, and answer the daily discussion question—whenever you have time.",
+      "We read the same passage each day, from Genesis 25 to Genesis 36, and meet in the discussion afterward.",
+    ],
+    joinedLine: "follow Abraham's family together",
+    evergreenLine: "All 21 days are open. Go at your own pace, one day at a time.",
+  },
 ];
+
+/** Midnight in Berlin on a YYYY-MM-DD day, as an ISO string. */
+export function berlinMidnight(day: string): string {
+  const [y, m, d] = day.split("-").map(Number);
+  for (const hour of [22, 23]) {
+    const candidate = new Date(Date.UTC(y, m - 1, d - 1, hour));
+    const berlin = berlinToday(candidate);
+    if (berlin.y === y && berlin.m === m && berlin.d === d) return candidate.toISOString();
+  }
+  return new Date(Date.UTC(y, m - 1, d)).toISOString();
+}
+
+/**
+ * False for a study whose community event has a signupOpens day still ahead.
+ * The Library shelf asks this, so a study can be finished and published and
+ * still stay out of sight until the day its sign-up begins.
+ */
+export function isStudyAnnounced(devotionalId: string, now = new Date()): boolean {
+  const event = COMMUNITY_EVENTS.find((entry) => entry.devotionalId === devotionalId);
+  if (!event?.signupOpens) return true;
+  return Date.parse(berlinMidnight(event.signupOpens)) <= now.getTime();
+}
 
 export function getCommunityEvent(slug: string) {
   return COMMUNITY_EVENTS.find((event) => event.slug === slug) || null;

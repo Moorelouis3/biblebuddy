@@ -45,6 +45,7 @@ const STUDY_SLUGS: Record<string, string> = {
   "higher-hope": "%Higher Hope%",
   "beginning-of-everything": "%Beginning of Everything%",
   "obedience-of-abraham": "%Obedience of Abraham%",
+  "sons-of-abraham": "%Sons of Abraham%",
 };
 
 /**

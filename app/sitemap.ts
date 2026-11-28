@@ -56,6 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "/devotionals/higher-hope",
       "/devotionals/beginning-of-everything",
       "/devotionals/obedience-of-abraham",
+      "/devotionals/sons-of-abraham",
       "/bible-in-one-year",
     ].map((path) => ({
       url: `${SITE_URL}${path}`,

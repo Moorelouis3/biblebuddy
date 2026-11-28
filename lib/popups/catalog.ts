@@ -26,7 +26,7 @@
  */
 
 import type { ActionType } from "../actionTypes";
-import { communityEventStartsAt, getCommunityEvent } from "../communityEvents";
+import { communityEventStartsAt, getCommunityEvent, berlinMidnight } from "../communityEvents";
 import { getPrayerWeekKey } from "../weeklyFeedPopups";
 import { weekKeyFor } from "../clueGame/weekly";
 import { BIRTHDAY_ENDS_AT, BIRTHDAY_HEADLINE, BIRTHDAY_MESSAGE, BIRTHDAY_SHORT_LINE, BIRTHDAY_STARTS_AT } from "../birthday";
@@ -224,6 +224,7 @@ export type PopupDefinition = {
 
 const ABRAHAM = getCommunityEvent("obedience-of-abraham");
 const BEGINNING = getCommunityEvent("beginning-of-everything");
+const SONS = getCommunityEvent("sons-of-abraham");
 
 const WEEK_MS = 7 * 24 * 3_600_000;
 
@@ -572,6 +573,48 @@ export const POPUP_CATALOG: PopupDefinition[] = [
         verseRef: "Hebrews 11:8",
         ctaLabel: "Sign up for the free study",
       },
+    },
+  },
+  // Sign-up for The Sons of Abraham (2026-11-28). Louis: "the sign up and all
+  // that start dec 1 until the last day of dec". It starts on the event's
+  // signupOpens day, the moment the Abraham sign-up above ends, and stops by
+  // itself when Day 1 opens on 1 January. No poster artwork yet, so it is
+  // drawn as the plain sign-up card with a crop of the cover.
+  {
+    id: "signup_sons_of_abraham",
+    version: 1,
+    kind: "announcement",
+    priority: 100,
+    sections: ["/events"],
+    pill: "Coming next · Live Bible study",
+    headline: "The Sons of Abraham",
+    headlineAccent: "Abraham",
+    description: "Abraham had eight sons. Join us as we follow his family through Genesis 25 to 36.",
+    cardTitle: "21-Day Bible Study",
+    cardLine: "Starts January 1st",
+    cardIcon: "📖",
+    preview: "event_signup",
+    steps: [],
+    cta: { label: "Sign Me Up", href: "/events/sons-of-abraham" },
+    ctaInSection: "Sign Me Up",
+    footnote: "",
+    usedWhen: [],
+    minAccountAgeDays: 0,
+    startsAt: berlinMidnight(SONS?.signupOpens || "2026-12-01"),
+    expiresAt: SONS ? communityEventStartsAt(SONS) : "2026-12-31T23:00:00.000Z",
+    event: {
+      slug: "sons-of-abraham",
+      art: "/events/sons-of-abraham-popup-art.webp",
+      facts: ["21-Day Bible Study", "Starts January 1st"],
+      bullets: [
+        "📖 Daily Bible study",
+        "🙏 Guided devotionals",
+        "🤔 Reflection questions",
+        "💬 Study together as a community",
+        "❤️ 100% FREE!",
+      ],
+      doneTitle: "You're signed up!",
+      doneLine: "The Sons of Abraham starts January 1st. Day 1 opens that morning.",
     },
   },
   // The Beginning of Everything invitation (2026-10-25). Its own component

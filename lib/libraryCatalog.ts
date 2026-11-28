@@ -1,6 +1,7 @@
 import { supabase } from "./supabaseClient";
 import { BIBLE_YEAR_PAPERBACK_URL } from "./bibleYearBook";
 import { releaseAtFrom } from "./studyLibrary";
+import { isStudyAnnounced } from "./communityEvents";
 
 /**
  * The Library catalog. Everything here comes from the `devotionals` table -
@@ -143,7 +144,9 @@ export async function fetchLibraryStudies(): Promise<LibraryStudy[]> {
     console.error("[LIBRARY] Could not load studies:", error.message);
     throw new LibraryLoadError("the studies", error.message);
   }
-  return (data as LibraryStudy[]) || [];
+  // A study whose sign-up has a start day stays off the shelf until then
+  // (CommunityEvent.signupOpens in lib/communityEvents.ts).
+  return ((data as LibraryStudy[]) || []).filter((study) => isStudyAnnounced(study.id));
 }
 
 export async function fetchStudyById(id: string): Promise<LibraryStudy | null> {
